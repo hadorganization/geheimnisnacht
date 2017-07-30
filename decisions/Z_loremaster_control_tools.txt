@@ -1,0 +1,58 @@
+targetted_decisions = {
+	z_loremaster_tools = {
+		ai_target_filter = self
+		filter = self
+
+		from_potential = {
+			age = 16
+			trait = loremaster		
+			ai = no
+		}
+	
+		allow = {	
+			age = 16
+			trait = loremaster		
+			ai = no
+		}
+	
+		effect = {
+		character_event = { id = loremaster.1 }
+		}
+	}
+	z_wake_slann = {
+		ai_target_filter = realm
+		filter = all
+		from_potential = {
+			ai = no
+			trait = loremaster	
+
+		}
+	
+		potential = {
+			trait = creature_slann
+		}
+		allow = { 
+			NOT = { character = FROM  } 
+		}
+		
+		effect = {			
+			save_event_target_as = designate_target
+			add_artifact = mages_tome
+			add_artifact = mages_tome_heavens
+			add_artifact = mages_tome_beasts
+			add_artifact = mages_ring_3
+			add_artifact = mages_amulet_3
+			add_artifact = mages_staff_3
+			
+			from = { 
+				character_event = { id = zara_slann.1 }
+				remove_trait = loremaster	
+			}
+		}
+	}	
+}	
+
+
+
+
+

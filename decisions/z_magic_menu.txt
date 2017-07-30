@@ -1,0 +1,92 @@
+targetted_decisions = {
+	z_magic_phase = {
+		ai_target_filter = self
+		filter = court
+
+		potential = {
+			age = 16
+			z_combat_magic_caster = yes
+			OR = { 
+				character = FROM
+				liege = { character = FROM } 
+			}
+
+			NOR = { 
+				trait = incapable
+				trait = resting
+				trait = incapacitated
+			}
+		}
+	
+		allow = {	
+			z_combat_magic_valid_caster = yes
+			in_command = yes					
+		}
+		effect = {
+			set_character_flag = casting
+			save_event_target_as = magic_caster
+			if = { 
+				limit = { 
+					not = { 
+						has_character_flag = magicxp
+					}
+				}
+				z_magic_xp_turnon = yes
+			}
+			location = {
+				save_event_target_as = spellloc
+			}			
+			FROM = {
+				save_event_target_as = spelllord
+				character_event = { id = z_spell_menu.1}
+			}
+		}
+	}
+	z_craft_magic_item = {
+		ai_target_filter = self
+		filter = court
+		from_potential = {
+			ai = no
+		}
+		potential = {
+			age = 16
+			z_combat_magic_caster = yes
+			OR = { 
+				character = FROM
+				liege = { character = FROM } 
+			}
+
+			NOR = { 
+				trait = incapable
+				trait = resting
+				trait = incapacitated
+			}
+		}
+	
+		allow = {	
+			z_combat_magic_valid_caster = yes
+			in_command = no					
+		}
+		effect = {
+			set_character_flag = casting
+			save_event_target_as = magic_caster
+			save_event_target_as = item_crafter
+			if = { 
+				limit = { 
+					not = { 
+						has_character_flag = magicxp
+					}
+				}
+				z_magic_xp_turnon = yes
+			}
+			location = {
+				save_event_target_as = spellloc
+			}			
+			FROM = {
+				save_event_target_as = spelllord
+				save_event_target_as = item_recipient
+				character_event = { id = z_item_crafting_menu.0}
+			}
+		}
+	}	
+}

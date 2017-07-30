@@ -1,0 +1,213 @@
+decisions = {
+	
+   convert_to_liege_religion = {
+        potential = {
+            is_playable = yes
+		trait = creature_human
+                NOT = { trait = witch_hunter }
+                NOT = { trait = khorne_demon }
+                NOT = { trait = nurgle_demon }
+                NOT = { trait = slaanesh_demon }
+                NOT = { trait = tzeentch_demon }
+			NOT = { trait = vampire_lahmian_visible }
+			NOT = { trait = vampire_carstein_visible }
+			NOT = { trait = vampire_blood_visible }
+			NOT = { trait = vampire_strigoi_visible }
+			NOT = { trait = vampire_necrarch_visible }
+			NOT = { trait = vampire_jade_visible }
+			NOT = { trait = vampire_mahtmasi_visible }
+			NOT = { trait = vampire_lahmian_hidden }
+			NOT = { trait = vampire_carstein_hidden }
+			NOT = { trait = vampire_blood_hidden }
+			NOT = { trait = vampire_strigoi_hidden }
+			NOT = { trait = vampire_necrarch_hidden }
+			NOT = { trait = vampire_jade_hidden }
+			NOT = { trait = vampire_mahtmasi_hidden }
+		NOR = { 	
+				culture_group = nehekharan_group							
+				culture_group = beastman_group
+				culture_group = orc_group
+				culture_group = goblin_group
+				culture = witchhunter_culture
+				culture = blooddragons_culture
+		}
+            liege = {
+		trait = creature_human
+                NOT = { character = ROOT }
+                NOT = { religion = ROOT }
+                religion_group = ROOT
+            }
+        }
+        allow = {
+            NOT = { trait = zealous }
+        }
+        effect = {
+            prestige = -500
+            if = {
+                limit = { higher_tier_than = BARON }
+                religion_authority = {
+                    modifier = ruler_converted_from
+                }
+            }
+            liege = {
+                reverse_religion = ROOT
+            }
+            if = {
+                limit = { higher_tier_than = BARON }
+                hidden_tooltip = {
+                    religion_authority = {
+                        modifier = ruler_converted_to
+                    }
+                }
+            }
+            piety = 200
+        }
+        revoke_allowed = {
+            always = no
+        }
+        ai_will_do = {
+            factor = 0
+        }
+    }
+    
+    convert_to_liege_culture = {
+        potential = {
+            is_playable = yes
+		trait = creature_human
+                NOT = { trait = witch_hunter }
+                NOT = { trait = khorne_demon }
+                NOT = { trait = nurgle_demon }
+                NOT = { trait = slaanesh_demon }
+                NOT = { trait = tzeentch_demon }
+			NOT = { trait = vampire_lahmian_visible }
+			NOT = { trait = vampire_carstein_visible }
+			NOT = { trait = vampire_blood_visible }
+			NOT = { trait = vampire_strigoi_visible }
+			NOT = { trait = vampire_necrarch_visible }
+			NOT = { trait = vampire_jade_visible }
+			NOT = { trait = vampire_mahtmasi_visible }
+			NOT = { trait = vampire_lahmian_hidden }
+			NOT = { trait = vampire_carstein_hidden }
+			NOT = { trait = vampire_blood_hidden }
+			NOT = { trait = vampire_strigoi_hidden }
+			NOT = { trait = vampire_necrarch_hidden }
+			NOT = { trait = vampire_jade_hidden }
+			NOT = { trait = vampire_mahtmasi_hidden }
+		NOR = { 	
+				culture_group = nehekharan_group							
+				culture_group = beastman_group
+				culture_group = orc_group
+				culture_group = goblin_group
+				culture = witchhunter_culture
+				culture = blooddragons_culture
+		}
+            liege = {
+		trait = creature_human
+                NOT = { character = ROOT }
+                NOT = { culture = ROOT }
+				culture_group = ROOT
+            }
+        }
+        allow = {
+            prestige = 200
+        }
+        effect = {
+            prestige = -200
+            liege = {
+                reverse_culture = ROOT
+            }
+        }
+        revoke_allowed = {
+            always = no
+        }
+        ai_will_do = {
+            factor = 0
+        }
+    }
+    
+    #convert_to_local_culture
+    # for now its deleted
+    
+    #convert_to_local_religion 
+    # for now deleted
+	
+	
+    convert_to_parent_religion = {
+        potential = {
+            is_playable = yes
+            independent = yes
+            is_heretic = yes
+		trait = creature_human
+                NOT = { trait = witch_hunter }
+                NOT = { trait = khorne_demon }
+                NOT = { trait = nurgle_demon }
+                NOT = { trait = slaanesh_demon }
+                NOT = { trait = tzeentch_demon }
+			NOT = { trait = vampire_lahmian_visible }
+			NOT = { trait = vampire_carstein_visible }
+			NOT = { trait = vampire_blood_visible }
+			NOT = { trait = vampire_strigoi_visible }
+			NOT = { trait = vampire_necrarch_visible }
+			NOT = { trait = vampire_jade_visible }
+			NOT = { trait = vampire_mahtmasi_visible }
+			NOT = { trait = vampire_lahmian_hidden }
+			NOT = { trait = vampire_carstein_hidden }
+			NOT = { trait = vampire_blood_hidden }
+			NOT = { trait = vampire_strigoi_hidden }
+			NOT = { trait = vampire_necrarch_hidden }
+			NOT = { trait = vampire_jade_hidden }
+			NOT = { trait = vampire_mahtmasi_hidden }
+		NOR = { 	
+				culture_group = nehekharan_group							
+				culture_group = beastman_group
+				culture_group = orc_group
+				culture_group = goblin_group
+				culture = witchhunter_culture
+				culture = blooddragons_culture
+		}
+        }
+        allow = {
+            NOT = { trait = zealous }
+        }
+        effect = {
+            prestige = -500
+            if = {
+                limit = { higher_tier_than = BARON }
+                religion_authority = {
+                    modifier = ruler_converted_from
+                }
+            }
+            
+            abandon_heresy = yes
+            
+            if = {
+                limit = { higher_tier_than = BARON }
+                hidden_tooltip = {
+                    religion_authority = {
+                        modifier = ruler_converted_to
+                    }
+                }
+            }
+            piety = 200
+        }
+        revoke_allowed = {
+            always = no
+        }
+        ai_will_do = {
+            factor = 0
+        }
+    }
+	
+	# TODO think about possible uses for chaos religions
+    # Pagans are allowed to convert to the attacker's religion when under holy war
+    #convert_to_attacker_religion
+    
+    #convert_to_reformed
+    
+    # TODO there is shitload of that kind of transformation
+    # we shoudl decide if we want to allow that kind of conversion for warhammer world
+    # character religion -> spouse religion
+    #
+    # Pagans can convert to the Catholic faith if their wife or a concubine is Catholic
+    #convert_to_spouse_catholic
+}

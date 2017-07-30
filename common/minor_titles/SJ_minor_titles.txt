@@ -1,0 +1,108 @@
+########################################################
+# MINOR TITLES
+# Characters can have any number of these
+########################################################
+#	grant_limit: Max number of holders.
+#	realm_in_name: Append the name of the country after the title (Queen [of Sweden])
+#	allow: conditions for the character to hold the title
+#	regent: This is the title for regents (not really "minor")
+#	gain_effect: fires when the title is granted
+#	lose_effect: fires when a title is lost if dismissal_trigger evaluates to false
+#	message: should fire a message to the its owner when set
+#	The other fields are all character modifiers.
+
+#######################################
+# HARD: AUTO-GRANTED - DO NOT REMOVE!
+#######################################
+
+title_hammerer = {
+	realm_in_name = no
+	dignity = 0.9
+	revoke_allowed = no
+	grant_limit = 100
+	opinion_effect = 25
+	
+	is_unique = yes
+	
+	monthly_salary = 0.15
+	monthly_prestige = 0.2
+	monthly_piety = 0.1
+	
+	allowed_to_hold = {
+		war = no
+		has_regent = no
+		culture_group = dwarf_group
+		religion_group = dwarf_gods_group
+		trait = creature_dwarf
+		higher_tier_than = duke
+		prisoner = no
+		OR = {
+			any_courtier = {
+				OR = {
+					trait = longbeard
+					trait = ironbreaker
+				}
+				martial = 15
+				opinion = {
+					who = ROOT
+					value = 20
+				}
+				NOT = {
+					has_character_flag = has_been_a_hammerer
+				}
+			}
+			any_vassal = {
+				OR = {
+					trait = longbeard
+					trait = ironbreaker
+				}
+				martial = 15
+				opinion = {
+					who = ROOT
+					value = 20
+				}
+				NOT = {
+					primary_title = {
+						temporary = yes
+					}
+					has_character_flag = has_been_a_hammerer
+				}
+			}
+		}
+		prisoner = no
+		NOT = {
+			primary_title = {
+				temporary = yes
+			}
+			ROOT = {
+				OR = {
+					any_courtier = {
+						trait = hammerer
+					}
+					any_vassal = {
+						trait = hammerer
+					}
+				}
+				count = 3
+			}
+		}
+	}
+
+	allowed_to_grant = {
+		always = no
+	 }
+	
+	gain_effect = {
+		character_event = {
+			id = SJDwarfevents.69
+		}
+	}
+	
+	lose_effect = {
+		character_event = {
+			id = SJDwarfevents.71
+		}
+	}
+	
+	message = no
+}

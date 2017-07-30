@@ -1,0 +1,93 @@
+# Supported types:
+# character, spouse, rivals, friends, liege_titles, vassal_titles, realm_titles, realm_characters, realm_characters_plus, independent_rulers
+
+###############
+# AMBITIONS
+###############
+
+obj_acquire_dark_crystal = {
+	type = character
+
+	allow = {
+		prisoner = no
+		is_adult = yes
+		higher_tier_than = COUNT
+		#is_incapacitated_trigger = no
+		OR = { trait = vampire_jade_visible
+			religion = draconite
+			AND = { ai = no
+				learning = 20 } }
+      		NOT = { culture_group = daemonic_group }
+		NOT = { trait = khemri_soldier }
+		NOT = { has_artifact = dark_crystal }
+      		NAND = { has_global_flag = tlaxtlan_crystal_found
+			 has_global_flag = calxi_crystal_found
+			 has_global_flag = mutiris_crystal_found }
+	}
+	chance = {
+		factor = 100
+		
+		modifier = {
+			factor = 0.01
+			trait = content
+		}
+		modifier = {
+			factor = 5
+			trait = vampire_jade_visible
+		}
+		modifier = {
+			factor = 0.25
+			trait = slothful
+		}
+		modifier = {
+			factor = 2
+			trait = ambitious
+		}
+		modifier = {
+			factor = 1.5
+			trait = greedy
+		}
+		modifier = {
+			factor = 1.5
+			trait = zealous
+			religion = draconite
+		}
+		modifier = {
+			factor = 2.0
+			trait = lunatic_2
+			trait = vampire_jade_visible
+		}
+		modifier = {
+			factor = 1.25
+			learning = 10
+		}
+		modifier = {
+			factor = 1.25
+			learning = 12
+		}
+		modifier = {
+			factor = 1.25
+			learning = 14
+		}
+		modifier = {
+			factor = 1.5
+			learning = 16
+		}
+	}
+	success = {
+		has_artifact = dark_crystal
+	}
+	abort = {
+		is_incapacitated_trigger = yes
+	}
+	abort_effect = {
+	}
+	effect = {
+		if = { limit = { religion = draconite }
+			piety = 500
+			change_diplomacy = 1
+			}
+	}
+}
+
+

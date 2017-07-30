@@ -1,0 +1,389 @@
+title_sir_bretonnian = {
+	dignity = 0.25
+	grant_limit = 100
+	show_as_title = yes
+	revoke_allowed = no
+	
+	allowed_to_hold = {
+		OR = {
+			trait = bretonnian_knight
+			trait = grail_knight
+		}
+		is_female = no
+	 }
+	allowed_to_grant = {
+		always = no
+	 }
+	
+	gain_effect = { }
+	lose_effect = { }
+
+	message = no
+}
+title_lady_knight_bretonnian = {
+	dignity = 0.25
+	grant_limit = 100
+	show_as_title = yes
+	revoke_allowed = no
+	
+	allowed_to_hold = {
+		OR = {
+			trait = bretonnian_knight
+			trait = grail_knight
+		}
+		is_female = yes
+	 }
+	allowed_to_grant = {
+		always = no
+	 }
+	
+	gain_effect = { }
+	lose_effect = { }
+
+	message = no
+}
+
+#Flavour minor titles
+#Old World humans
+#Scholars are very appreciated in all the Old World... except in Bretonnia
+title_court_scholar = {
+	dignity = 0.15
+	grant_limit = 1
+	opinion_effect = 15
+	
+	is_unique = yes
+	
+	monthly_salary = 0.1
+	monthly_prestige = 0.75
+	
+	allowed_to_hold = {
+		OR = {
+			primary_title = { temporary = no }
+			NOT = {
+				primary_title = {
+					always = yes
+				}
+			}
+		}
+		OR = {
+			learning = 10
+			trait = academic
+		}
+		is_adult = yes
+		NOT = { trait = incapable }
+	}
+	allowed_to_grant = {
+		religion_group = old_world_group
+		is_feudal = yes
+		NOR = {
+			religion = grail
+			religion = false_grail
+			religion = old_faith
+		}
+	}
+	
+	gain_effect = {}
+	lose_effect = {}
+	
+	message = no
+}
+
+#Scribes are much in demand in the Old world courts
+title_court_scribe = {
+	dignity = 0.05
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 5
+	
+	monthly_salary = 0.01
+	monthly_prestige = 0.02
+	
+	is_unique = yes
+	
+	allowed_to_hold = {
+		is_adult = yes
+		is_female = no
+		OR = {
+			diplomacy = 8
+			learning = 10
+		}
+		OR = {
+			primary_title = { temporary = no }
+			NOT = {
+				primary_title = {
+					always = yes
+				}
+			}
+		}
+	}
+	
+	allowed_to_grant = {
+		religion_group = old_world_group
+		is_feudal = yes
+		NOR = {
+			religion = grail
+			religion = false_grail
+			religion = old_faith
+		}
+	}
+	
+	gain_effect = { }
+	lose_effect = { }
+	
+	message = yes
+}
+
+# #Engineering is a valued skill all across the Old World
+# title_court_engineer = {
+	# dignity = 0.06
+	# realm_in_name = yes
+	# grant_limit = 1
+	# opinion_effect = 5
+	
+	# monthly_salary = 0.02
+	# monthly_prestige = 0.04
+	
+	# is_unique = yes
+	
+	# allowed_to_hold = {
+		# is_adult = yes
+		# is_female = no
+		
+		# OR = {
+			# primary_title = { temporary = no }
+			# NOT = {
+				# primary_title = {
+					# always = yes
+				# }
+			# }
+		# }
+	# }
+	
+	# allowed_to_grant = {
+		# OR = {
+			# religion_group = old_world_group
+			# religion_group = dwarf_gods_group
+		# }
+		# is_feudal = yes
+		# NOR = {
+			# religion = grail
+			# religion = false_grail
+			# religion = old_faith
+		# }
+	# }
+	
+	# gain_effect = { }
+	# lose_effect = { }
+	
+	# message = yes
+# }
+
+#Human culture-specific
+#the Estalian Diestros are some of the most skilled swordsmen in the Old World
+title_diestro = {
+	grant_limit = 3
+	opinion_effect = 5
+	monthly_prestige = 0.1
+	monthly_salary = 0.01
+	revoke_allowed = no
+	
+	allowed_to_hold = {
+		age = 16
+		trait = duelist
+		NOT = { trait = craven }
+		NOT = { trait = infirm }
+	}
+	allowed_to_grant = {
+		OR =  {
+			is_patrician = yes
+			is_feudal = yes
+		}
+		religion_group = old_world_group
+		culture_group = estalian_group
+	}
+	
+	gain_effect = { }
+	lose_effect = { }
+	
+	message = yes
+}
+
+#The Bretonnians, pompous as they are, like to flaunt their titles to everyone. That's the court herald's job.
+title_court_herald = {
+	dignity = 0.05
+	realm_in_name = yes
+	grant_limit = 1
+	opinion_effect = 5
+	
+	monthly_salary = 0.01
+	monthly_prestige = 0.02
+	
+	is_unique = yes
+	
+	allowed_to_hold = {
+		is_adult = yes
+		is_female = no
+		diplomacy = 8
+		OR = {
+			primary_title = { temporary = no }
+			NOT = {
+				primary_title = {
+					always = yes
+				}
+			}
+		}
+	}
+	
+	allowed_to_grant = {
+		is_feudal = yes
+		OR = {
+			religion = grail
+			religion = false_grail
+		}
+	}
+	
+	gain_effect = { }
+	lose_effect = { }
+	
+	message = yes
+}
+
+#Dwarfs
+#Court Goldsmith
+#Most renowned craftsmen in a Dwarfen court
+title_chief_goldsmith = {
+	dignity = 0.15
+	grant_limit = 1
+	opinion_effect = 15
+	
+	is_unique = yes
+	
+	monthly_salary = 0.1
+	monthly_prestige = 0.75
+	
+	allowed_to_hold = {
+		OR = {
+			primary_title = { temporary = no }
+			NOT = {
+				primary_title = {
+					always = yes
+				}
+			}
+		}
+		stewardship = 8
+		is_adult = yes
+		is_female = no
+		NOT = { trait = incapable }
+	}
+	
+	allowed_to_grant = {
+		religion_group = dwarf_gods_group
+		OR = {
+			is_feudal = yes
+			is_patrician = yes
+		}
+	}
+	
+	gain_effect = {}
+	lose_effect = {}
+	
+	message = no
+}
+
+#Leads Dwarf mining expeditions; a very appreciated effort in Dwarf realms
+title_chief_prospector = {
+	dignity = 0.15
+	grant_limit = 1
+	opinion_effect = 15
+	
+	is_unique = yes
+	
+	monthly_salary = 0.1
+	monthly_prestige = 0.75
+	
+	allowed_to_hold = {
+		OR = {
+			primary_title = { temporary = no }
+			NOT = {
+				primary_title = {
+					always = yes
+				}
+			}
+		}
+		stewardship = 8
+		is_adult = yes
+		is_female = no
+		NOT = { trait = incapable }
+	}
+	
+	allowed_to_grant = {
+		religion_group = dwarf_gods_group
+		OR = {
+			is_feudal = yes
+			is_patrician = yes
+		}
+	}
+	
+	gain_effect = {}
+	lose_effect = {}
+	
+	message = no
+}
+
+#Elfs
+
+#High Elves
+#(They also have access to vanilla's Court Poet )
+# title_sword_master = {
+	# dignity = 0.15
+	# realm_in_name = yes
+	# grant_limit = 1
+	# opinion_effect = 10
+	
+	# monthly_salary = 0.075
+	# monthly_prestige = 0.75
+	
+	# allowed_to_hold = {
+		# OR = {
+			# primary_title = { temporary = no }
+			# NOT = {
+				# primary_title = {
+					# always = yes
+				# }
+			# }
+		# }
+		# is_adult = yes
+		# OR = { 
+			# is_female = no
+			# liege = {
+				# OR = {
+					# primary_title = {
+						# has_law = status_of_women_3
+					# }
+					# primary_title = {
+						# has_law = status_of_women_4
+					# }
+					# has_game_rule = {
+						# name = gender
+						# value = all
+					# }
+				# }
+			# }
+		# }
+		# NOT = { trait = incapable } 
+	# }
+	
+	# allowed_to_grant = {
+		# is_feudal = yes
+		# religion = cadai
+		# culture_group = asur_group
+	# }
+	
+	# gain_effect = {
+	# }
+	# lose_effect = {
+	# }
+
+	# message = yes
+# }
+

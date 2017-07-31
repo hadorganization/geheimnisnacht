@@ -3,77 +3,89 @@
 
 namespace = aicleanup
 
+# may be make gateway for clean events
+
+
 # on death to pass an amazon barony to a randomly generated female
 character_event = {
 	id = aicleanup.001
 	hide_window = yes
-	
 	religion = amazon
 	culture = amazon_main
 	only_rulers = yes
 	max_age = 100
-
 	is_triggered_only = yes
-	
-	trigger = { primary_title = { tier = BARON }
-			religion = amazon  }
 
-	immediate = {  random_list = { 25 = {
-					create_character = {
-							random_traits = yes
-							dynasty = NONE
-							religion = ROOT
-							culture = ROOT
-							female = yes
-							age = 20
-							}
-						}
-					25 = {
-					create_character = {
-							random_traits = yes
-							dynasty = RANDOM
-							religion = ROOT
-							culture = ROOT
-							female = yes
-							age = 30
-							}
-						}
-					25 = {
-					create_character = {
-							random_traits = yes
-							dynasty = RANDOM
-							religion = ROOT
-							culture = ROOT
-							female = yes
-							age = 40
-							}
-						}
-					25 = {
-					create_character = {
-							random_traits = yes
-							dynasty = NONE
-							religion = ROOT
-							culture = ROOT
-							female = yes
-							age = 50
-							}
-						}
+	trigger = {
+		primary_title = {
+			tier = BARON
+		}
+		religion = amazon
+	}
+
+	immediate = {
+		random_list = {
+			25 = {
+				create_character = {
+					random_traits = yes
+					dynasty = NONE
+					religion = ROOT
+					culture = ROOT
+					female = yes
+					age = 20
 				}
-				new_character = {
-					add_trait = creature_amazon
-					character_event = { id = aicleanup.002 }
-					}
-		 }
+			}
+			25 = {
+				create_character = {
+					random_traits = yes
+					dynasty = RANDOM
+					religion = ROOT
+					culture = ROOT
+					female = yes
+					age = 30
+				}
+			}
+			25 = {
+				create_character = {
+					random_traits = yes
+					dynasty = RANDOM
+					religion = ROOT
+					culture = ROOT
+					female = yes
+					age = 40
+				}
+			}
+			25 = {
+				create_character = {
+					random_traits = yes
+					dynasty = NONE
+					religion = ROOT
+					culture = ROOT
+					female = yes
+					age = 50
+				}
+			}
+		}
+		new_character = {
+			add_trait = creature_amazon
+			character_event = { id = aicleanup.002 }
+		}
+	}
 }
 
 # New character receives inheritance
 character_event = {
 	id = aicleanup.002
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
-	immediate = { FROM = { any_demesne_title = { grant_title = ROOT } } }
+
+	immediate = {
+		FROM = {
+			any_demesne_title = {
+				rant_title = ROOT
+			}
+		}
+	}
 }
 
 ##################################################################
@@ -85,128 +97,155 @@ character_event = {
 	religion = cadai
 	only_rulers = yes
 	only_women = yes
-
 	is_triggered_only = yes
-	
-	trigger = { #	has_landed_title = k_avelorn
-			trait = everqueen
-			everqueen_heir = { is_alive = yes } 
-		}
 
-	immediate = { everqueen_heir = { character_event = { id = aicleanup.004 } }
-		 }
+	trigger = {
+		#	has_landed_title = k_avelorn
+		trait = everqueen
+		everqueen_heir = {
+			is_alive = yes
+		}
+	}
+
+	immediate = {
+		everqueen_heir = {
+			character_event = { id = aicleanup.004 }
+		}
+	}
 }
 
 # Inheritance Everqueen
 character_event = {
 	id = aicleanup.004
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
-	immediate = { remove_trait = everqueen_heir
-			add_trait = everqueen
-			 set_character_flag = ai_flag_refuse_conversion 
-			any_demesne_title = { limit = { has_title_flag = asur_supercourtier_flag }
-							unsafe_destroy_landed_title = THIS }
-			FROM = { any_demesne_title = { grant_title = ROOT } } 
+
+	immediate = {
+		remove_trait = everqueen_heir
+		add_trait = everqueen
+		set_character_flag = ai_flag_refuse_conversion
+		any_demesne_title = {
+			limit = {
+				has_title_flag = asur_supercourtier_flag
 			}
+			unsafe_destroy_landed_title = THIS
+		}
+		FROM = {
+			any_demesne_title = {
+				grant_title = ROOT
+			}
+		}
+	}
 }
-##################################################################
 
-### The Everqueen/Phoenix King traits
-
-# Everqueen Trait Lost
+# Everqueen Trait Lost for on_yearly_pulse on_new_holder
 character_event = {
 	id = aicleanup.005
 	hide_window = yes
 	religion = cadai
 	only_women = yes
-	
+	is_triggered_only = yes
+
 	trigger = {
 		trait = everqueen
-		NOT = { has_landed_title = k_avelorn }
+		NOT = {
+			has_landed_title = k_avelorn
+		}
 		is_alive = yes
 	}
-	
-	mean_time_to_happen = {
-		days = 1
-	}
-	
+
 	immediate = {
 		remove_trait = everqueen
 	}
 }
-# Phoenix King trait lost
+
+# Phoenix King trait lost for on_yearly_pulse on_new_holder
 character_event = {
 	id = aicleanup.006
 	hide_window = yes
 	only_men = yes
-	
+	is_triggered_only = yes
+
 	trigger = {
 		trait = phoenix_king
-		NOT = { has_landed_title = e_ulthuan }
+		NOT = {
+			has_landed_title = e_ulthuan
+		}
 		is_alive = yes
 	}
-	
-	mean_time_to_happen = {
-		days = 1
-	}
-	
+
 	immediate = {
 		remove_trait = phoenix_king
 	}
 }
-# Gain old age traits
+
+# Gain old age traits for on_yearly_pulse
 character_event = {
 	id = aicleanup.007
 	hide_window = yes
 	min_age = 50
+	is_triggered_only = yes
 
 	trigger = {
-		OR = { AND = { age = 50 
-				NOT = { trait = creature_dwarf
-					trait = creature_chaos_dwarf } } 
-			AND = { age = 200 
-				OR = { trait = creature_dwarf
-					trait = creature_chaos_dwarf } } 
+		OR = {
+			trait = creature_human
+			trait = creature_skaven
+			trait = creature_halfling
+			and = {
+				or = {
+					trait = creature_dwarf
+					trait = creature_chaos_dwarf
+				}
+				age = 200
 			}
+		}
 		is_immortal_trigger = no
+		nor = {
+			trait = old_1
+			trait = old_2
+			trait = old_3
+			trait = old_4
+		}
+	}
 
-		OR = { trait = creature_human
-			trait = creature_dwarf
-			trait = creature_skaven 
-			trait = creature_chaos_dwarf
-			trait = creature_halfling 			
-			}
-	}
-	
-	mean_time_to_happen = {
-		months = 12
-	}
 	immediate = {
-		if = { limit = { 
-		NOT = { trait = fair
-			trait = pretty
-			trait = beautiful } }
-			add_trait = old_1 }
-		if = { limit = { trait = fair }
-			add_trait = old_2 }
-		if = { limit = { trait = pretty }
-			add_trait = old_3 }
-		if = { limit = { trait = beautiful }
-			add_trait = old_4 }
+		if = {
+			limit = {
+				NOT = {
+					trait = fair
+					trait = pretty
+					trait = beautiful
+				}
+			}
+			add_trait = old_1
+		}
+		if = {
+			limit = {
+				trait = fair
+			}
+			add_trait = old_2
+		}
+		if = {
+			limit = {
+				trait = pretty
+			}
+			add_trait = old_3
+		}
+		if = {
+			limit = {
+				trait = beautiful
+			}
+			add_trait = old_4
+		}
 	}
 }
 
-
-#ROOT is the demander, FROM is the vassal
+# ROOT is the demander, FROM is the vassal
 character_event = {
-	id = aicleanup.008 
-	
+	id = aicleanup.008
 	is_triggered_only = yes
 	hide_window = yes
-	
+
 	immediate = {
 		FROM = {
 			character_event = { id = aicleanup.009 }
@@ -214,13 +253,12 @@ character_event = {
 	}
 }
 
-#ROOT is the vassal, FROM is the demander
+# ROOT is the vassal, FROM is the demander
 character_event = {
 	id = aicleanup.009
-	
 	is_triggered_only = yes
 	hide_window = yes
-	
+
 	immediate = {
 		# Fires for the vassal and each of his courtiers and vassals.
 		# Note: needs to fire for vassals/courtier before character
@@ -235,25 +273,26 @@ character_event = {
 	}
 }
 
-#Spell failed
+# Spell failed
 character_event = {
 	id = aicleanup.010
 	desc = EVTDESCAaicleanup010
 	is_triggered_only = yes
-	
 	notification = yes
 
 	immediate = { prestige = -25 }
 	option = {	}
 }
 
-#Remove woodwalking
+# Remove woodwalking
 character_event = {
 	id = aicleanup.011
 	hide_window = yes
 	is_triggered_only = yes
 
-	immediate = { remove_trait = woodwalking }
+	immediate = {
+		remove_trait = woodwalking
+	}
 }
 
 #Prisoners grow weak in the dungeon
@@ -264,17 +303,16 @@ character_event = {
 	border = GFX_event_normal_frame_intrigue
 
 	prisoner = yes
-	trigger = { 
-		NOT = { has_character_modifier = house_arrest }
-        	NOT = { culture_group = daemonic_group }
-
-		NOT = { trait = creature_nehekharan } 
-		NOT = { trait = creature_forestspirit } 
-		NOT = { trait = creature_treekin }
-
+	trigger = {
+		nor = {
+			has_character_modifier = house_arrest
+			culture_group = daemonic_group
+			trait = creature_nehekharan
+			trait = creature_forestspirit
+			trait = creature_treekin
+		}
 		is_vampire_trigger = no
-
-		 }
+	}
 
 	mean_time_to_happen = {
 		months = 90
@@ -379,58 +417,85 @@ character_event = {
 			trait = goblin_huge
 		}
 	}
-	option = { 
+	option = {
 		name = EVTOPTAaicleanup012
-		trigger = { trait = fat }
+		trigger = {
+			trait = fat
+		}
 		tooltip_info = fat
 		remove_trait = fat
-		}
-	option = { 
+	}
+	option = {
 		name = EVTOPTBaicleanup012
-		trigger = { NOT = { trait = fat } }
-		add_trait = undernourished
+		trigger = {
+			NOT = {
+				trait = fat
+			}
 		}
+		add_trait = undernourished
+	}
 }
 
-# Dwarf gains old gfx
+# Dwarf gains old gfx for on_yearly_pulse
 character_event = {
 	id = aicleanup.013
 	hide_window = yes
 	min_age = 200
 	max_age = 390
+	is_triggered_only = yes
 
 	trigger = {
-		age = 200
-		OR = { trait = creature_dwarf
-			trait = creature_chaos_dwarf }
-		NOT = { graphical_culture = olddwarfgfx }
-		NOT = { graphical_culture = oldchaosdwarfgfx }
-		NOT = { graphical_culture = slayerdwarfgfx }
+		OR = {
+			trait = creature_dwarf
+			trait = creature_chaos_dwarf
+		}
+		nor = {
+			graphical_culture = olddwarfgfx
+			graphical_culture = slayerdwarfgfx
+			graphical_culture = oldchaosdwarfgfx
+		}
 		is_immortal_trigger = no
 	}
-	
-	mean_time_to_happen = {
-		months = 36
-	}
-	immediate = {
-		if = { limit = { trait = creature_chaos_dwarf 
-				NOT = { trait = transgender } }
-			set_graphical_culture = dwarf_chaos_old 
-			break = yes }
-		if = { limit = { trait = creature_dwarf
-				NOT = { trait = transgender } }
-			set_graphical_culture = dwarf_old
-			break = yes }
 
-		if = { limit = { trait = creature_chaos_dwarf 
-					trait = transgender }
-			set_graphical_culture = oldchaosdwarfrev
-			break = yes }
-		if = { limit = { 	trait = creature_dwarf
-					trait = transgender }
-			set_graphical_culture = olddwarfrev
-			break = yes }
+	immediate = {
 		add_trait = infertile
+		if = {
+			limit = {
+				trait = creature_chaos_dwarf
+				NOT = {
+					trait = transgender
+				}
+			}
+			set_graphical_culture = dwarf_chaos_old
+			break = yes
+		}
+		if = {
+			limit = {
+				trait = creature_dwarf
+				NOT = {
+					trait = transgender
+				}
+			}
+			set_graphical_culture = dwarf_old
+			break = yes
+		}
+
+		if = {
+			limit = {
+				trait = creature_chaos_dwarf
+				trait = transgender
+			}
+			set_graphical_culture = oldchaosdwarfrev
+			break = yes
+		}
+		if = {
+			limit = {
+				trait = creature_dwarf
+				trait = transgender
+			}
+			set_graphical_culture = olddwarfrev
+			break = yes
+		}
 	}
 }
 
@@ -440,52 +505,66 @@ character_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
-
 	trigger = {
-		OR = { trait = creature_chaos_dwarf 
-			trait = creature_dwarf  }
-		
-		OR = { graphical_culture = olddwarfgfx
-			graphical_culture = oldchaosdwarfgfx }
+		OR = {
+			trait = creature_chaos_dwarf
+			trait = creature_dwarf
+		}
+		OR = {
+			graphical_culture = olddwarfgfx
+			graphical_culture = oldchaosdwarfgfx
+		}
 	}
-	
+
 	immediate = {
-		if = { limit = { OR = { graphical_culture = olddwarfgfx
-					graphical_culture = olddwarfrevgfx } }
+		if = {
+			limit = {
+				OR = {
+					graphical_culture = olddwarfgfx
+					graphical_culture = olddwarfrevgfx
+				}
+			}
 			set_graphical_culture = dwarf_main
-			break = yes }
-		if = { limit = { OR = { graphical_culture = oldchaosdwarfgfx
-					graphical_culture = oldchaosdwarfrevgfx } }
+			break = yes
+		}
+		if = {
+			limit = {
+				OR = {
+					graphical_culture = oldchaosdwarfgfx
+					graphical_culture = oldchaosdwarfrevgfx
+				}
+			}
 			set_graphical_culture = dwarf_chaos
-			break = yes }
+			break = yes
+		}
 	}
 }
 
 # # Remove patron if the norscan has changed religion
 # character_event = {
-	# id = aicleanup.015
-	# hide_window = yes
-	# is_triggered_only = yes
+# id = aicleanup.015
+# hide_window = yes
+# is_triggered_only = yes
 
-	# trigger = {
-		
-		# NOT = { religion_group = old_gods_group }
-		
-		# OR = { has_character_modifier = patron_tchar
-			# has_character_modifier = patron_kharneth
-			# has_character_modifier = patron_nurgleth
-			# has_character_modifier = patron_shornaal
-			# has_character_modifier = patron_ulric
-			# has_character_modifier = patron_ursun }
-	# }
-	
-	# immediate = {	remove_character_modifier = patron_tchar
-			# remove_character_modifier = patron_kharneth
-			# remove_character_modifier = patron_nurgleth
-			# remove_character_modifier = patron_shornaal
-			# remove_character_modifier = patron_ulric
-			# remove_character_modifier = patron_ursun 
-	# }
+# trigger = {
+
+# NOT = { religion_group = old_gods_group }
+
+# OR = { has_character_modifier = patron_tchar
+# has_character_modifier = patron_kharneth
+# has_character_modifier = patron_nurgleth
+# has_character_modifier = patron_shornaal
+# has_character_modifier = patron_ulric
+# has_character_modifier = patron_ursun }
+# }
+
+# immediate = {	remove_character_modifier = patron_tchar
+# remove_character_modifier = patron_kharneth
+# remove_character_modifier = patron_nurgleth
+# remove_character_modifier = patron_shornaal
+# remove_character_modifier = patron_ulric
+# remove_character_modifier = patron_ursun
+# }
 # }
 
 # On death of Master, free all pet_consorts and mage_apprentices
@@ -495,16 +574,32 @@ character_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		OR = { any_friend = { trait = mage_apprentice } 
-			any_lover = { trait = pet_consort } 
-			any_consort = { trait = pet_consort } }
+		OR = {
+			any_friend = {
+				trait = mage_apprentice
+			}
+			any_lover = {
+				trait = pet_consort
+			}
+			any_consort = {
+				trait = pet_consort
+			}
+		}
 	}
-	
-	immediate = {	any_friend = { remove_trait = mage_apprentice } 
-			any_lover = { remove_trait = pet_consort }
-			any_consort = { remove_trait = pet_consort }
+
+	immediate = {
+		any_friend = {
+			remove_trait = mage_apprentice
+		}
+		any_lover = {
+			remove_trait = pet_consort
+		}
+		any_consort = {
+			remove_trait = pet_consort
+		}
 	}
 }
+
 #Made obsolete after a vanilla patch
 # Set all Asur on start to proper government
 #character_event = {
@@ -515,10 +610,10 @@ character_event = {
 #	trigger = {	is_ruler = yes
 #			is_feudal = yes
 #			trait = creature_elf
-#			culture_group = asur_group 
+#			culture_group = asur_group
 #			NOT = { government = highborn_government }
 #	}
-#	
+#
 #	immediate = { set_government_type = highborn_government
 #				any_demesne_title = { refill_holding_levy = yes }
 #				liege = { any_demesne_title = { refill_holding_levy = yes } }
@@ -534,12 +629,12 @@ character_event = {
 #	trigger = {	is_ruler = yes
 #			religion = asrai_cadai
 ##			OR = { trait = creature_elf
-#				trait = creature_treekin 
+#				trait = creature_treekin
 #				trait = creature_forestspirit }
 #				capital_scope = { empire = { title = e_athel_loren } }
 #				NOT = { government = eternal_court_government }
 #	}
-#	
+#
 #	immediate = { set_government_type = eternal_court_government
 #				any_demesne_title = { refill_holding_levy = yes }
 #				liege = { any_demesne_title = { refill_holding_levy = yes } }
@@ -558,8 +653,8 @@ character_event = {
 #				OR = { ai = yes
 #					has_dlc = "Horse Lords" }
 #	}
-#	
-#	immediate = { set_government_type = beastman_government 
+#
+#	immediate = { set_government_type = beastman_government
 #				any_demesne_title = { refill_holding_levy = yes }
 #				liege = { any_demesne_title = { refill_holding_levy = yes } }
 #				top_liege = { any_demesne_title = { refill_holding_levy = yes } }
@@ -576,41 +671,66 @@ character_event = {
 #					trait = creature_goblin }
 #				NOT = { government = greenskin_government }
 #	}
-#	
-#	immediate = { set_government_type = greenskin_government 
+#
+#	immediate = { set_government_type = greenskin_government
 #				any_demesne_title = { refill_holding_levy = yes }
 #				liege = { any_demesne_title = { refill_holding_levy = yes } }
 #				top_liege = { any_demesne_title = { refill_holding_levy = yes } }
 #		 }
 #}
+
 # Set all Druchii on start to proper government and give Malekith the widowed trait when not used by a Player
 character_event = {
 	id = aicleanup.021
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = {	is_ruler = yes
-			is_feudal = yes
-			trait = malekith
+	trigger = {
+		is_ruler = yes
+		is_feudal = yes
+		trait = malekith
 	}
-	
-	immediate = { set_government_type = malekith_government 
-				any_demesne_title = { refill_holding_levy = yes }
-				if = { limit = { ai = yes }
-					add_trait = widowed }
-				any_vassal = { limit = { culture_group = druchi_group
-							is_feudal = yes }
+
+	immediate = {
+		set_government_type = malekith_government
+		any_demesne_title = {
+			refill_holding_levy = yes
+		}
+		if = {
+			limit = {
+				ai = yes
+			}
+			add_trait = widowed
+		}
+		any_vassal = {
+			limit = {
+				culture_group = druchi_group
+				is_feudal = yes
+			}
+			set_government_type = druchii_government
+			any_vassal = {
+				limit = {
+					culture_group = druchi_group
+					is_feudal = yes
+				}
+				set_government_type = druchii_government
+				any_vassal = {
+					limit = {
+						culture_group = druchi_group
+						is_feudal = yes
+					}
+					set_government_type = druchii_government
+					any_vassal = {
+						limit = {
+							culture_group = druchi_group
+							is_feudal = yes
+						}
 						set_government_type = druchii_government
-					any_vassal = { limit = { culture_group = druchi_group
-								is_feudal = yes }
-							set_government_type = druchii_government
-					any_vassal = { limit = { culture_group = druchi_group
-								is_feudal = yes }
-							set_government_type = druchii_government
-					any_vassal = { limit = { culture_group = druchi_group
-								is_feudal = yes }
-							set_government_type = druchii_government } } } }
-		 }
+					}
+				}
+			}
+		}
+	}
 }
 
 #character_event = {
@@ -626,8 +746,8 @@ character_event = {
 #				NOT = { trait = malekith }
 #				NOT = { government = druchii_government }
 #	}
-#	
-#	immediate = { set_government_type = druchii_government 
+#
+#	immediate = { set_government_type = druchii_government
 #				any_demesne_title = { refill_holding_levy = yes }
 #				liege = { any_demesne_title = { refill_holding_levy = yes } }
 #				top_liege = { any_demesne_title = { refill_holding_levy = yes } }
@@ -641,51 +761,83 @@ character_event = {
 	is_triggered_only = yes
 	min_age = 16
 	max_age = 550
-
 	religion_group = dwarf_gods_group
-	
-	trigger = { 
-		trait = creature_dwarf 
-		NOT = { trait = dwarf_slayer } 
+
+	trigger = {
+		trait = creature_dwarf
+		NOT = {
+			trait = dwarf_slayer
+		}
 	}
-	
-	immediate = { if = { limit = { NOT = { age = 75 } }
-				add_trait = beardling }
-		 if = { limit = {  is_female = no
+
+	immediate = {
+		if = {
+			limit = {
+				NOT = {
+					age = 75
+				}
+			}
+			add_trait = beardling
+		}
+		if = {
+			limit = {
+				is_female = no
 				age = 75
 				martial = 20
-				NOT = { trait = quarreller }
-				NOT = { trait = hammerer }
-				NOT = { trait = dwarf_warrior }
-				NOT = { trait = thunderer } }
+				nor = {
+					trait = quarreller
+					trait = hammerer
+					trait = dwarf_warrior
+					trait = thunderer
+				}
 				add_trait = thunderer
-				remove_trait = beardling }
-		 if = { limit = {  is_female = no
+				remove_trait = beardling
+			}
+		}
+		if = {
+			limit = {
+				is_female = no
 				age = 75
 				diplomacy = 15
-				NOT = { trait = quarreller }
-				NOT = { trait = hammerer }
-				NOT = { trait = dwarf_warrior }
-				NOT = { trait = thunderer } }
-				add_trait = quarreller
-				remove_trait = beardling }
-		 if = { limit = {  is_female = no
+				nor = {
+					trait = quarreller
+					trait = hammerer
+					trait = dwarf_warrior
+					trait = thunderer
+				}
+			}
+			add_trait = quarreller
+			remove_trait = beardling
+		}
+		if = {
+			limit = {
+				is_female = no
 				age = 75
-				NOT = { martial = 20 }
-				NOT = { diplomacy = 15 }
-				NOT = { trait = quarreller }
-				NOT = { trait = hammerer }
-				NOT = { trait = dwarf_warrior }
-				NOT = { trait = thunderer } }
-				add_trait = dwarf_warrior
-				remove_trait = beardling }
-		 if = { limit = {  is_female = no
+				nor = {
+					martial = 20
+					diplomacy = 15
+					trait = quarreller
+					trait = hammerer
+					trait = dwarf_warrior
+					trait = thunderer
+				}
+			}
+			add_trait = dwarf_warrior
+			remove_trait = beardling
+		}
+		if = {
+			limit = {
+				is_female = no
 				age = 250
-				NOT = { trait = longbeard }
-				NOT = { trait = ironbreaker } }
-				add_trait = longbeard
-				remove_trait = beardling }
-		 }
+				nor = {
+					trait = longbeard
+					trait = ironbreaker
+				}
+			}
+			add_trait = longbeard
+			remove_trait = beardling
+		}
+	}
 }
 
 #Red Dukedoms breaks on the character's death
@@ -694,11 +846,15 @@ character_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = { has_landed_title = k_red_dukedom
+	trigger = {
+		has_landed_title = k_red_dukedom
 	}
-	
-	immediate = { k_red_dukedom = { destroy_landed_title = THIS }
-		 }
+
+	immediate = {
+		k_red_dukedom = {
+			destroy_landed_title = THIS
+		}
+	}
 }
 
 #On birth, Amazonian males should be disinherited
@@ -706,18 +862,25 @@ character_event = {
 	id = aicleanup.025
 	hide_window = yes
 	is_triggered_only = yes
-
 	only_men = yes
 	religion = amazon
 
-	trigger = { liege = { trait = creature_amazon }
+	trigger = {
+		liege = {
+			trait = creature_amazon
+		}
 		is_female = no
-		mother = { OR = { trait = creature_human 
-				 trait = creature_amazon } }
+		mother = {
+			OR = {
+				trait = creature_human
+				trait = creature_amazon
+			}
+		}
 	}
-	
-	immediate = { add_trait = disinherited_amazon
-		 }
+
+	immediate = {
+		add_trait = disinherited_amazon
+	}
 }
 
 #On birth, Amazonian females should be legitimized and made amazons
@@ -725,24 +888,37 @@ character_event = {
 	id = aicleanup.026
 	hide_window = yes
 	is_triggered_only = yes
-
 	only_men = yes
 	religion = amazon
 
-	trigger = { liege = { trait = creature_amazon }
+	trigger = {
+		liege = { trait = creature_amazon }
 		is_female = yes
-		mother = { OR = { trait = creature_human 
-				 trait = creature_amazon } }
-		father = { OR = { trait = creature_human 
-				 trait = creature_amazon } }
+		mother = {
+			OR = {
+				trait = creature_human
+				trait = creature_amazon
+			}
+		}
+		father = {
+			OR = {
+				trait = creature_human
+				trait = creature_amazon
+			}
+		}
 	}
-	
-	immediate = { remove_trait = creature_human
-			add_trait = creature_amazon
-			remove_trait = bastard 
-			remove_trait = legit_bastard 
-		mother = { ROOT = { dynasty = PREV } }
-		 }
+
+	immediate = {
+		remove_trait = creature_human
+		add_trait = creature_amazon
+		remove_trait = bastard
+		remove_trait = legit_bastard
+		mother = {
+			ROOT = {
+				dynasty = PREV
+			}
+		}
+	}
 }
 
 #On_death. The Big Witch Doctor is always a mage.
@@ -751,66 +927,72 @@ character_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = { has_landed_title = d_akghan_church }
-	
-	immediate = {  random_list = { 25 = {
-					create_character = {
-							random_traits = yes
-							dynasty = NONE
-							religion = ROOT
-							culture = ROOT
-							female = no
-							age = 39
-							}
-						}
-					25 = {
-					create_character = {
-							random_traits = yes
-							dynasty = RANDOM
-							religion = ROOT
-							culture = ROOT
-							female = no
-							age = 56
-							}
-						}
-					25 = {
-					create_character = {
-							random_traits = yes
-							dynasty = RANDOM
-							religion = ROOT
-							culture = ROOT
-							female = yes
-							age = 42
-							}
-						}
-					25 = {
-					create_character = {
-							random_traits = yes
-							dynasty = NONE
-							religion = ROOT
-							culture = ROOT
-							female = yes
-							age = 54
-							}
-						}
+	trigger = {
+		has_landed_title = d_akghan_church
+	}
+
+	immediate = {
+		random_list = {
+			25 = {
+				create_character = {
+					random_traits = yes
+					dynasty = NONE
+					religion = ROOT
+					culture = ROOT
+					female = no
+					age = 39
 				}
-				new_character = {
-					add_trait = celibate
-					add_trait = creature_human
-					random_list = { 25 = { add_trait = lore_light }
-							25 = { add_trait = lore_fire }
-							25 = { add_trait = lore_metal }
-							25 = { add_trait = lore_life }
-							 }
-					random_list = { 50 = { add_trait = magic_potential_1 }
-							30 = { add_trait = magic_potential_2 }
-							15 = { add_trait = magic_potential_3 }
-							5 = { add_trait = magic_potential_4 }
-							 }
-					z_magic_power_random = yes
-					character_event = { id = aicleanup.002 }
-					}
-		 }
+			}
+			25 = {
+				create_character = {
+					random_traits = yes
+					dynasty = RANDOM
+					religion = ROOT
+					culture = ROOT
+					female = no
+					age = 56
+				}
+			}
+			25 = {
+				create_character = {
+					random_traits = yes
+					dynasty = RANDOM
+					religion = ROOT
+					culture = ROOT
+					female = yes
+					age = 42
+				}
+			}
+			25 = {
+				create_character = {
+					random_traits = yes
+					dynasty = NONE
+					religion = ROOT
+					culture = ROOT
+					female = yes
+					age = 54
+				}
+			}
+		}
+		new_character = {
+			add_trait = celibate
+			add_trait = creature_human
+			random_list = {
+				25 = { add_trait = lore_light }
+				25 = { add_trait = lore_fire }
+				25 = { add_trait = lore_metal }
+				25 = { add_trait = lore_life }
+			}
+			random_list = {
+				50 = { add_trait = magic_potential_1 }
+				30 = { add_trait = magic_potential_2 }
+				15 = { add_trait = magic_potential_3 }
+				5 = { add_trait = magic_potential_4 }
+			}
+			z_magic_power_random = yes
+			character_event = { id = aicleanup.002 }
+		}
+	}
 }
 
 #On_death. The holder of the university of Martek is always a scholar.
@@ -819,66 +1001,86 @@ character_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = { has_landed_title = d_university_of_martek }
-	
-	immediate = {  random_list = { 25 = {
-					create_character = {
-							random_traits = yes
-							dynasty = RANDOM
-							religion = ROOT
-							culture = ROOT
-							female = no
-							age = 48
-							}
-						}
-					25 = {
-					create_character = {
-							random_traits = yes
-							dynasty = RANDOM
-							religion = ROOT
-							culture = ROOT
-							female = no
-							age = 53
-							}
-						}
-					25 = {
-					create_character = {
-							random_traits = yes
-							dynasty = RANDOM
-							religion = ROOT
-							culture = ROOT
-							female = no
-							age = 65
-							}
-						}
-					25 = {
-					create_character = {
-							random_traits = yes
-							dynasty = RANDOM
-							religion = ROOT
-							culture = ROOT
-							female = no
-							age = 70
-							}
-						}
+	trigger = {
+		has_landed_title = d_university_of_martek
+	}
+
+	immediate = {
+		random_list = {
+			25 = {
+				create_character = {
+					random_traits = yes
+					dynasty = RANDOM
+					religion = ROOT
+					culture = ROOT
+					female = no
+					age = 48
 				}
-				new_character = {
-					add_trait = creature_human
-					add_trait = celibate
-					add_trait = arabyan_scholar
-					random_list = { 25 = { add_trait = lore_light }
-							50 = { add_trait = lore_fire }
-							25 = { add_trait = lore_metal }
-							 }
-					random_list = { 50 = { add_trait = magic_potential_1 }
-							30 = { add_trait = magic_potential_2 }
-							15 = { add_trait = magic_potential_3 }
-							5 = { add_trait = magic_potential_4 }
-							 }
-					z_magic_power_random = yes
-					character_event = { id = aicleanup.002 }
-					}
-		 }
+			}
+			25 = {
+				create_character = {
+					random_traits = yes
+					dynasty = RANDOM
+					religion = ROOT
+					culture = ROOT
+					female = no
+					age = 53
+				}
+			}
+			25 = {
+				create_character = {
+					random_traits = yes
+					dynasty = RANDOM
+					religion = ROOT
+					culture = ROOT
+					female = no
+					age = 65
+				}
+			}
+			25 = {
+				create_character = {
+					random_traits = yes
+					dynasty = RANDOM
+					religion = ROOT
+					culture = ROOT
+					female = no
+					age = 70
+				}
+			}
+		}
+		new_character = {
+			add_trait = creature_human
+			add_trait = celibate
+			add_trait = arabyan_scholar
+			random_list = {
+				25 = {
+					add_trait = lore_light
+				}
+				50 = {
+					add_trait = lore_fire
+				}
+				25 = {
+					add_trait = lore_metal
+				}
+			}
+			random_list = {
+				50 = {
+					add_trait = magic_potential_1
+				}
+				30 = {
+					add_trait = magic_potential_2
+				}
+				15 = {
+					add_trait = magic_potential_3
+				}
+				5 = {
+					add_trait = magic_potential_4
+				}
+			}
+			z_magic_power_random = yes
+			character_event = { id = aicleanup.002 }
+		}
+	}
 }
 
 #On Succession event - if holder of Samur's Witch Hunter chapter is not a Witch Hunter, the title disappears.
@@ -886,77 +1088,118 @@ character_event = {
 	id = aicleanup.029
 	hide_window = yes
 	only_rulers = yes
-	
+
 	is_triggered_only = yes
 
-	trigger = { FROM = { title = d_samur_chapter }
-		NOT = { trait = witch_hunter } }
+	trigger = {
+		FROM = {
+			title = d_samur_chapter
+		}
+		NOT = {
+			trait = witch_hunter
+		}
+	}
 
 	immediate = {
-		d_samur_chapter = { destroy_landed_title = THIS }
-		activate_title = { title = d_samur_chapter status = no }
-		 }
+		d_samur_chapter = {
+			destroy_landed_title = THIS
+		}
+		activate_title = {
+			title = d_samur_chapter status = no
+		}
+	}
 }
+
 #on_adolescence, elves receive the youngling trait, preventing them from wasting away themselves in lowborn marriages.
 character_event = {
 	id = aicleanup.030
 	hide_window = yes
-	
 	is_triggered_only = yes
 
-	trigger = { trait = creature_elf }
+	trigger = {
+		trait = creature_elf
+	}
 
 	immediate = {
-		if = { limit = { is_female = yes }
-			add_trait = elven_maiden }
-		if = { limit = { is_female = no }
-			add_trait = elven_scion }
-		 }
+		if = {
+			limit = {
+				is_female = yes
+			}
+			add_trait = elven_maiden
+		}
+		if = {
+			limit = {
+				is_female = no
+			}
+			add_trait = elven_scion
+		}
+	}
 }
+
 #At 45, elves lose their youngling traits and can be married off.
 character_event = {
 	id = aicleanup.031
 	hide_window = yes
 	min_age = 45
 	max_age = 60
-	
+
 	trigger = {
 		trait = creature_elf
-		OR = { trait = elven_scion
-			trait = elven_maiden }
+		OR = {
+			trait = elven_scion
+			trait = elven_maiden
+		}
 	}
-	
+
 	immediate = {
-			remove_trait = elven_scion
-			remove_trait = elven_maiden
-			prestige = 50
-		 }
+		remove_trait = elven_scion
+		remove_trait = elven_maiden
+		prestige = 50
+	}
 }
+
 #Cleansing event, on_ten_years
 character_event = {
 	id = aicleanup.032
-	hide_window = yes	
+	hide_window = yes
 	min_age = 16
 	ai = yes
-	
 	is_triggered_only = yes
 
 	trigger = {
-		OR = { AND = { trait = creature_skaven
+		OR = {
+			AND = {
+				trait = creature_skaven
 				lower_tier_than = COUNT
-				any_courtier = { trait = skaven_breeder
-						count = 10 } }
-			AND = { trait = creature_nehekharan
+				any_courtier = {
+					trait = skaven_breeder
+					count = 10
+				}
+			}
+			AND = {
+				trait = creature_nehekharan
 				lower_tier_than = DUKE
-				any_courtier = { trait = khemri_soldier
-						count = 10 } }
-		 }
+				any_courtier = {
+					trait = khemri_soldier
+					count = 10
+				}
+			}
+		}
 	}
-	
-	immediate = { #Bad AI, stop spawning useless stuff
-			any_courtier = { limit = { trait = skaven_breeder }
-					death = yes }
-			any_courtier = { limit = { trait = khemri_soldier }
-					death = yes }
-		 }
+
+	immediate = {
+		#Bad AI, stop spawning useless stuff
+		any_courtier = {
+			limit = {
+				trait = skaven_breeder
+			}
+			death = yes
+		}
+		any_courtier = {
+			limit = {
+				trait = khemri_soldier
+			}
+			death = yes
+		}
+	}
 }

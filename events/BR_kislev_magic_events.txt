@@ -1,90 +1,158 @@
-#namespace = kislevmagic
-##This event chain determines who gets to become ice mages/ice witches. For now, it is based on the inherited intelligence traits##
-#Landed characters only so far, as studying magic is expensive and we don't want all smart kislevites to become mages##
-#KISLEVITES NOW GET TAUGHT BY WANDERING WITCHES USING THE MAGIC APPRENTICE SYSTEM
-#character_event = {
-#	id = kislevmagic.0
-#	title = MAGIC
-#	desc = kislevmagic0 #Your natural abilities seem to run towards magic. Training will be expensive, but perhaps for 100 gold you could get started on building a magical lab and hiring someone to teach you.#
-#	picture = "GFX_evt_miscast"
-#	min_age = 16
-#
-#	trigger = {
-#	is_landed = yes
-#	culture_group = kislevite_group
-#	OR = {
-#		trait = magic_potential_1
-#		trait = magic_potential_2
-#		trait = magic_potential_3
-#		trait = magic_potential_4
-#		}
-#	NOT = { trait = lore_ice }
-#	NOT = { has_character_flag = refused_ice }
-#	}
-#	
-#	mean_time_to_happen = {
-#	months = 6 
-#	}
-#	
-#	option = {
-#	name = highelfmagic6A #Yes, I will build a lab and study magic!
-#	trigger = { 
-#	NOT = { trait = craven }
-#	NOT = { trait = content }
-#	}
-#	wealth = -100
-#	add_trait = lore_ice
-#	add_character_modifier = { name = magic_power_1 duration = -1 }
-#	top_liege = {
-#	if = {
-#	limit = { culture_group = kislevite_group }
-#	}
-#	character_event = { id = kislevmagic.2 days = 7 }
-#	}
-#	
-#	father  = {
-#	character_event = { id = kislevmagic.1 }
-#	}
-#	mother  = {
-#	character_event = { id = kislevmagic.1 }
-#	}
-#	}
-#	
-#	option = {
-#	name = highelfmagic6B #No, I do not wish to study magic
-#	trigger = { 
-#	trait = craven
-#	trait = content
-#	}
-#	set_character_flag = refused_ice_magic
-#	}
-#}
-	
-	#parents are informed#
-#character_event = {
-#	id = kislevmagic.1
-#	title = MAGIC
-#	desc = kislevmagic1 #Your child shows talent for magic, and has decided to build a lab at home and study under a tutor. This is a great honor for your house, to have an Ice Mage or Witch amongst you.#
-#	picture = "GFX_evt_miscast"
-#	
-#	is_triggered_only = yes
-#	
-#	option = {
-#	name = highelfmagic7A #A great honor indeed.#
-#	prestige = 200
-#	}
-#}	
-	
-	#the top liege, if kislevite culture group is informed someone is studying magic independently#
-#character_event = {
-#	id = kislevmagic.2
-#	title = MAGIC
-#	desc = kislevmagic2 #You hear that one of your vassals has taking up the study of ice magic. This is a great thing, and can only strengthen your realm.#
-#	picture = "GFX_evt_miscast"
-#	
-#	is_triggered_only = yes
-#	
-#	option = {
-#	name = kislevmagic2A #Yes, magic can help protect us against our enemies.#
-#	}
-#}
+
+# namespace = kislevmagic
+
+# This event chain determines who gets to become ice mages/ice witches. For now, it is based on the inherited intelligence traits
+
+# Landed characters only so far, as studying magic is expensive and we don't want all smart kislevites to become mages
+
+# KISLEVITES NOW GET TAUGHT BY WANDERING WITCHES USING THE MAGIC APPRENTICE SYSTEM
+
+# character_event = {
+
+# 	id = kislevmagic.0
+
+# 	title = MAGIC
+
+# 	desc = kislevmagic0 # Your natural abilities seem to run towards magic. Training will be expensive, but perhaps for 100 gold you could get started on building a magical lab and hiring someone to teach you.
+
+# 	picture = "GFX_evt_miscast"
+
+# 	min_age = 16
+
+# 	trigger = {
+
+# 	is_landed = yes
+
+# 	culture_group = kislevite_group
+
+# 	OR = {
+
+# 		trait = magic_potential_1
+
+# 		trait = magic_potential_2
+
+# 		trait = magic_potential_3
+
+# 		trait = magic_potential_4
+
+# 		}
+
+# 	NOT = { trait = lore_ice }
+
+# 	NOT = { has_character_flag = refused_ice }
+
+# 	}
+
+# 	mean_time_to_happen = {
+
+# 	months = 6
+
+# 	}
+
+# 	option = {
+
+# 	name = highelfmagic6A # Yes, I will build a lab and study magic!
+
+# 	trigger = {
+
+# 	NOT = { trait = craven }
+
+# 	NOT = { trait = content }
+
+# 	}
+
+# 	wealth = -100
+
+# 	add_trait = lore_ice
+
+# 	add_character_modifier = { name = magic_power_1 duration = -1 }
+
+# 	top_liege = {
+
+# 	if = {
+
+# 	limit = { culture_group = kislevite_group }
+
+# 	}
+
+# 	character_event = { id = kislevmagic.2 days = 7 }
+
+# 	}
+
+# 	father = {
+
+# 	character_event = { id = kislevmagic.1 }
+
+# 	}
+
+# 	mother = {
+
+# 	character_event = { id = kislevmagic.1 }
+
+# 	}
+
+# 	}
+
+# 	option = {
+
+# 	name = highelfmagic6B # No, I do not wish to study magic
+
+# 	trigger = {
+
+# 	trait = craven
+
+# 	trait = content
+
+# 	}
+
+# 	set_character_flag = refused_ice_magic
+
+# 	}
+
+# }
+
+# parents are informed
+
+# character_event = {
+
+# 	id = kislevmagic.1
+
+# 	title = MAGIC
+
+# 	desc = kislevmagic1 # Your child shows talent for magic, and has decided to build a lab at home and study under a tutor. This is a great honor for your house, to have an Ice Mage or Witch amongst you.
+
+# 	picture = "GFX_evt_miscast"
+
+# 	is_triggered_only = yes
+
+# 	option = {
+
+# 	name = highelfmagic7A # A great honor indeed.
+
+# 	prestige = 200
+
+# 	}
+
+# }
+
+# the top liege, if kislevite culture group is informed someone is studying magic independently
+
+# character_event = {
+
+# 	id = kislevmagic.2
+
+# 	title = MAGIC
+
+# 	desc = kislevmagic2 # You hear that one of your vassals has taking up the study of ice magic. This is a great thing, and can only strengthen your realm.
+
+# 	picture = "GFX_evt_miscast"
+
+# 	is_triggered_only = yes
+
+# 	option = {
+
+# 	name = kislevmagic2A # Yes, magic can help protect us against our enemies.
+
+# 	}
+
+# }

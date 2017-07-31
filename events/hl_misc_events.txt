@@ -1,11 +1,9 @@
+
 # Written by Magnus Karlsson
 
-###########################################
-#                                         #
-# Horse Lords Misc events				  #
-# ID HL.1-HL.49 	     	              #
-#                                         #
-###########################################
+# Horse Lords Misc events
+
+# ID HL.1-HL.49
 
 namespace = HL
 
@@ -14,12 +12,10 @@ narrative_event = {
 	id = HL.1
 	title = EVTNAMEHL1
 	desc = EVTDESCHL1
-	
 	picture = GFX_evt_steppe_mercenaries
 	border = GFX_event_narrative_frame_diplomacy
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA62911
 	}
@@ -30,12 +26,10 @@ narrative_event = {
 	id = HL.2
 	title = EVTNAMEHL2
 	desc = EVTDESCHL2
-	
 	picture = GFX_evt_council
 	border = GFX_event_narrative_frame_diplomacy
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA62911
 	}
@@ -43,11 +37,8 @@ narrative_event = {
 
 character_event = {
 	id = 44482
-
 	hide_window = yes
-
 	only_playable = yes
-
 	is_triggered_only = yes
 
 	trigger = {
@@ -58,27 +49,24 @@ character_event = {
 
 	immediate = {
 		ROOT = {
-			religion_authority = { modifier = temple_built years = 20 }
+			religion_authority = {
+				modifier = temple_built years = 20
+			}
 		}
 	}
 }
 
 character_event = {
 	id = HL.4
-
 	hide_window = yes
-
 	only_playable = yes
-
 	is_triggered_only = yes
 
 	trigger = {
 		has_dlc = "Horse Lords"
-
 		FROM = {
 			holding_type = TEMPLE
 		}
-
 		ROOT = {
 			clan_title = {
 				clan = yes
@@ -94,24 +82,31 @@ character_event = {
 						if = {
 							limit = {
 								religion = ROOT
-								NOT = { character = ROOT }
-								NOT = { has_feud_with = ROOT }
+								NOT = {
+									character = ROOT
+								}
+								NOT = {
+									has_feud_with = ROOT
+								}
 							}
 							clan_title = {
-								clan_reverse_opinion = { 
+								clan_reverse_opinion = {
 									who = PREVPREVPREV
 									modifier = opinion_built_temple
 									years = 20
 								}
 							}
 						}
-
 						any_vassal = {
 							limit = {
 								clan = yes
 								religion = ROOT
-								NOT = { character = ROOT }
-								NOT = { has_feud_with = ROOT }
+								NOT = {
+									character = ROOT
+								}
+								NOT = {
+									has_feud_with = ROOT
+								}
 							}
 							clan_title = {
 								clan_reverse_opinion = {
@@ -133,12 +128,9 @@ character_event = {
 	id = HL.6
 	title = EVTNAMEHL6
 	desc = EVTDESCHL6
-	
 	picture = GFX_evt_shaman
 	border = GFX_event_normal_frame_war
-
 	only_playable = yes
-
 	is_triggered_only = yes
 
 	trigger = {
@@ -150,35 +142,41 @@ character_event = {
 	}
 }
 
-## Feud started between two clans ( Bounce event )
-#character_event = {
-#	id = HL.7
-#
-#	hide_window = yes
-#
-#	only_playable = yes
-#
-#	is_triggered_only = yes
-#
-#	trigger = {
-#		has_dlc = "Horse Lords"
-#	}
-#
-#	immediate = {
-#		FROM = {
-#			character_event = { id = HL.6 }
-#		}
-#	}
-#}
+# Feud started between two clans ( Bounce event )
+
+# character_event = {
+
+# 	id = HL.7
+
+# 	hide_window = yes
+
+# 	only_playable = yes
+
+# 	is_triggered_only = yes
+
+# 	trigger = {
+
+# 		has_dlc = "Horse Lords"
+
+# 	}
+
+# 	immediate = {
+
+# 		FROM = {
+
+# 			character_event = { id = HL.6 }
+
+# 		}
+
+# 	}
+
+# }
 
 # Feud started between two clans because of raid and pillaging
 character_event = {
 	id = HL.8
-
 	hide_window = yes
-
 	only_playable = yes
-
 	is_triggered_only = yes
 
 	trigger = {
@@ -189,7 +187,9 @@ character_event = {
 				is_nomadic = yes
 				is_ruler = yes
 				same_realm = ROOT
-				NOT = { has_feud_with = ROOT }
+				NOT = {
+					has_feud_with = ROOT
+				}
 			}
 		}
 	}
@@ -201,8 +201,8 @@ character_event = {
 					clan_title = {
 						create_feud = PREVPREVPREV
 					}
-#					character_event = { id = HL.6 } # Already notified by on_feud_started
-#					character_event = { id = HL.7 }
+					# 					character_event = { id = HL.6 } # Already notified by on_feud_started
+					# 					character_event = { id = HL.7 }
 				}
 			}
 		}
@@ -214,12 +214,9 @@ character_event = {
 	id = HL.9
 	title = EVTNAMEHL9
 	desc = EVTDESCHL9
-	
 	picture = GFX_evt_tribal_shrine
 	border = GFX_event_normal_frame_religion
-
 	only_playable = yes
-
 	is_triggered_only = yes
 
 	trigger = {
@@ -236,12 +233,9 @@ character_event = {
 	id = HL.10
 	title = EVTNAMEHL10
 	desc = EVTDESCHL10
-	
 	picture = GFX_evt_tribal_shrine
 	border = GFX_event_normal_frame_religion
-
 	only_playable = yes
-
 	is_triggered_only = yes
 
 	trigger = {
@@ -258,12 +252,9 @@ character_event = {
 	id = HL.11
 	title = EVTNAMEHL11
 	desc = EVTDESCHL11
-	
 	picture = GFX_evt_tribal_shrine
 	border = GFX_event_normal_frame_religion
-
 	only_playable = yes
-
 	is_triggered_only = yes
 
 	trigger = {
@@ -275,15 +266,11 @@ character_event = {
 	}
 }
 
-
 # End blood oath on death
 character_event = {
 	id = HL.12
-
 	hide_window = yes
-
 	only_playable = yes
-
 	is_triggered_only = yes
 
 	trigger = {

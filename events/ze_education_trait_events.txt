@@ -1,25 +1,17 @@
-#############################################
-#############################################
-#                                         	#
-# ZE Education Trait Events				  	#
-# ID ZE.14000-ZE.14999                    	#
-#                                         	#
-#############################################
-#############################################
+
+
+# ZE Education Trait Events
+
+# ID ZE.14000-ZE.14999
 
 # Written by Tobias Bodlund
-
 namespace = ZE
 
-#############################################
-# Diplomacy									#
-#############################################
-
+# Diplomacy
 character_event = {
 	id = ZE.14100
 	picture = GFX_evt_council_speaker
 	border = GFX_event_normal_frame_diplomacy
-
 	desc = {
 		text = EVTDESCA_ZE_14100
 		trigger = {
@@ -44,17 +36,18 @@ character_event = {
 			has_character_flag = education_outcome_level_4
 		}
 	}
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_dlc = "Zeus"
 		has_focus = focus_ed_diplomacy
 	}
-	
+
 	immediate = {
 		set_character_flag = is_being_graded
-		educator = { save_event_target_as = education_outcome_educator }
+		educator = {
+			save_event_target_as = education_outcome_educator
+		}
 		clear_focus = yes
 		random_list = {
 			10 = {
@@ -321,7 +314,7 @@ character_event = {
 		clr_character_flag = was_timid
 		clr_character_flag = was_rowdy
 	}
-	
+
 	option = {
 		name = EVTOPTA_ZE_14100
 		trigger = {
@@ -330,8 +323,15 @@ character_event = {
 		add_trait = naive_appeaser
 		clr_character_flag = education_outcome_level_1
 		clr_character_flag = is_being_graded
-		hidden_tooltip = { event_target:education_outcome_educator = { character_event = { id = ZE.14110 } } } # Notify educator
+		hidden_tooltip = {
+			event_target:education_outcome_educator = {
+				character_event = {
+					id = ZE.14110
+				}
+			}
+		} # Notify educator
 	}
+
 	option = {
 		name = EVTOPTB_ZE_14100
 		trigger = {
@@ -340,8 +340,15 @@ character_event = {
 		add_trait = underhanded_rogue
 		clr_character_flag = education_outcome_level_2
 		clr_character_flag = is_being_graded
-		hidden_tooltip = { event_target:education_outcome_educator = { character_event = { id = ZE.14110 } } } # Notify educator
+		hidden_tooltip = {
+			event_target:education_outcome_educator = {
+				character_event = {
+					id = ZE.14110
+				}
+			}
+		} # Notify educator
 	}
+
 	option = {
 		name = EVTOPTC_ZE_14100
 		trigger = {
@@ -350,8 +357,15 @@ character_event = {
 		add_trait = charismatic_negotiator
 		clr_character_flag = education_outcome_level_3
 		clr_character_flag = is_being_graded
-		hidden_tooltip = { event_target:education_outcome_educator = { character_event = { id = ZE.14110 } } } # Notify educator
+		hidden_tooltip = {
+			event_target:education_outcome_educator = {
+				character_event = {
+					id = ZE.14110
+				}
+			}
+		} # Notify educator
 	}
+
 	option = {
 		name = EVTOPTD_ZE_14100
 		trigger = {
@@ -360,7 +374,13 @@ character_event = {
 		add_trait = grey_eminence
 		clr_character_flag = education_outcome_level_4
 		clr_character_flag = is_being_graded
-		hidden_tooltip = { event_target:education_outcome_educator = { character_event = { id = ZE.14110 } } } # Notify educator
+		hidden_tooltip = {
+			event_target:education_outcome_educator = {
+				character_event = {
+					id = ZE.14110
+				}
+			}
+		} # Notify educator
 	}
 }
 
@@ -369,75 +389,102 @@ character_event = {
 	id = ZE.14110
 	picture = GFX_evt_council_speaker
 	border = GFX_event_normal_frame_diplomacy
-
 	desc = {
 		text = EVTDESCA_ZE_14110
 		trigger = {
-			FROM = { trait = naive_appeaser }
+			FROM = {
+				trait = naive_appeaser
+			}
 		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_14110
 		trigger = {
-			FROM = { trait = underhanded_rogue }
+			FROM = {
+				trait = underhanded_rogue
+			}
 		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_14110
 		trigger = {
-			FROM = { trait = charismatic_negotiator }
+			FROM = {
+				trait = charismatic_negotiator
+			}
 		}
 	}
 	desc = {
 		text = EVTDESCD_ZE_14110
 		trigger = {
-			FROM = { trait = grey_eminence }
+			FROM = {
+				trait = grey_eminence
+			}
 		}
 	}
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_14110
 		trigger = {
-			FROM = { trait = naive_appeaser }
+			FROM = {
+				trait = naive_appeaser
+			}
 		}
-		tooltip = { FROM = { add_trait = naive_appeaser } }
+		tooltip = {
+			FROM = {
+				add_trait = naive_appeaser
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTB_ZE_14110
 		trigger = {
-			FROM = { trait = underhanded_rogue }
+			FROM = {
+				trait = underhanded_rogue
+			}
 		}
-		tooltip = { FROM = { add_trait = underhanded_rogue } }
+		tooltip = {
+			FROM = {
+				add_trait = underhanded_rogue
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTC_ZE_14110
 		trigger = {
-			FROM = { trait = charismatic_negotiator }
+			FROM = {
+				trait = charismatic_negotiator
+			}
 		}
-		tooltip = { FROM = { add_trait = charismatic_negotiator } }
+		tooltip = {
+			FROM = {
+				add_trait = charismatic_negotiator
+			}
+		}
 	}
+
 	option = {
 		name = EXCELLENT
 		trigger = {
-			FROM = { trait = grey_eminence }
+			FROM = {
+				trait = grey_eminence
+			}
 		}
-		tooltip = { FROM = { add_trait = grey_eminence } }
+		tooltip = {
+			FROM = {
+				add_trait = grey_eminence
+			}
+		}
 	}
 }
 
-
-
-#############################################
-# Martial									#
-#############################################
-
+# Martial
 character_event = {
 	id = ZE.14200
 	picture = GFX_evt_war_planning
 	border = GFX_event_normal_frame_war
-
 	desc = {
 		text = EVTDESCA_ZE_14200
 		trigger = {
@@ -462,17 +509,18 @@ character_event = {
 			has_character_flag = education_outcome_level_4
 		}
 	}
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_dlc = "Zeus"
 		has_focus = focus_ed_martial
 	}
-	
+
 	immediate = {
 		set_character_flag = is_being_graded
-		educator = { save_event_target_as = education_outcome_educator }
+		educator = {
+			save_event_target_as = education_outcome_educator
+		}
 		clear_focus = yes
 		random_list = {
 			10 = {
@@ -739,7 +787,7 @@ character_event = {
 		clr_character_flag = was_timid
 		clr_character_flag = was_rowdy
 	}
-	
+
 	option = {
 		name = EVTOPTA_ZE_14200
 		trigger = {
@@ -748,8 +796,15 @@ character_event = {
 		add_trait = misguided_warrior
 		clr_character_flag = education_outcome_level_1
 		clr_character_flag = is_being_graded
-		hidden_tooltip = { event_target:education_outcome_educator = { character_event = { id = ZE.14210 } } } # Notify educator
+		hidden_tooltip = {
+			event_target:education_outcome_educator = {
+				character_event = {
+					id = ZE.14210
+				}
+			}
+		} # Notify educator
 	}
+
 	option = {
 		name = EVTOPTB_ZE_14200
 		trigger = {
@@ -758,8 +813,15 @@ character_event = {
 		add_trait = tough_soldier
 		clr_character_flag = education_outcome_level_2
 		clr_character_flag = is_being_graded
-		hidden_tooltip = { event_target:education_outcome_educator = { character_event = { id = ZE.14210 } } } # Notify educator
+		hidden_tooltip = {
+			event_target:education_outcome_educator = {
+				character_event = {
+					id = ZE.14210
+				}
+			}
+		} # Notify educator
 	}
+
 	option = {
 		name = EVTOPTC_ZE_14200
 		trigger = {
@@ -768,8 +830,15 @@ character_event = {
 		add_trait = skilled_tactician
 		clr_character_flag = education_outcome_level_3
 		clr_character_flag = is_being_graded
-		hidden_tooltip = { event_target:education_outcome_educator = { character_event = { id = ZE.14210 } } } # Notify educator
+		hidden_tooltip = {
+			event_target:education_outcome_educator = {
+				character_event = {
+					id = ZE.14210
+				}
+			}
+		} # Notify educator
 	}
+
 	option = {
 		name = EVTOPTD_ZE_14200
 		trigger = {
@@ -778,22 +847,50 @@ character_event = {
 		add_trait = brilliant_strategist
 		hidden_tooltip = {
 			random_list = {
-				10 = { add_trait = light_foot_leader }
-				10 = { add_trait = heavy_infantry_leader }
-				10 = { add_trait = cavalry_leader }
-				10 = { add_trait = inspiring_leader }
-				10 = { add_trait = trickster }
-				10 = { add_trait = organizer }
-				10 = { add_trait = defensive_leader }
-				10 = { add_trait = experimenter }
-				10 = { add_trait = flanker }
-				10 = { add_trait = aggressive_leader }
-				10 = { add_trait = siege_leader }
+				10 = {
+					add_trait = light_foot_leader
+				}
+				10 = {
+					add_trait = heavy_infantry_leader
+				}
+				10 = {
+					add_trait = cavalry_leader
+				}
+				10 = {
+					add_trait = inspiring_leader
+				}
+				10 = {
+					add_trait = trickster
+				}
+				10 = {
+					add_trait = organizer
+				}
+				10 = {
+					add_trait = defensive_leader
+				}
+				10 = {
+					add_trait = experimenter
+				}
+				10 = {
+					add_trait = flanker
+				}
+				10 = {
+					add_trait = aggressive_leader
+				}
+				10 = {
+					add_trait = siege_leader
+				}
 			}
 		}
 		clr_character_flag = education_outcome_level_4
 		clr_character_flag = is_being_graded
-		hidden_tooltip = { event_target:education_outcome_educator = { character_event = { id = ZE.14210 } } } # Notify educator
+		hidden_tooltip = {
+			event_target:education_outcome_educator = {
+				character_event = {
+					id = ZE.14210
+				}
+			}
+		} # Notify educator
 	}
 }
 
@@ -802,75 +899,102 @@ character_event = {
 	id = ZE.14210
 	picture = GFX_evt_war_planning
 	border = GFX_event_normal_frame_war
-
 	desc = {
 		text = EVTDESCA_ZE_14210
 		trigger = {
-			FROM = { trait = misguided_warrior }
+			FROM = {
+				trait = misguided_warrior
+			}
 		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_14210
 		trigger = {
-			FROM = { trait = tough_soldier }
+			FROM = {
+				trait = tough_soldier
+			}
 		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_14210
 		trigger = {
-			FROM = { trait = skilled_tactician }
+			FROM = {
+				trait = skilled_tactician
+			}
 		}
 	}
 	desc = {
 		text = EVTDESCD_ZE_14210
 		trigger = {
-			FROM = { trait = brilliant_strategist }
+			FROM = {
+				trait = brilliant_strategist
+			}
 		}
 	}
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_14110
 		trigger = {
-			FROM = { trait = misguided_warrior }
+			FROM = {
+				trait = misguided_warrior
+			}
 		}
-		tooltip = { FROM = { add_trait = misguided_warrior } }
+		tooltip = {
+			FROM = {
+				add_trait = misguided_warrior
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTB_ZE_14110
 		trigger = {
-			FROM = { trait = tough_soldier }
+			FROM = {
+				trait = tough_soldier
+			}
 		}
-		tooltip = { FROM = { add_trait = tough_soldier } }
+		tooltip = {
+			FROM = {
+				add_trait = tough_soldier
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTC_ZE_14110
 		trigger = {
-			FROM = { trait = skilled_tactician }
+			FROM = {
+				trait = skilled_tactician
+			}
 		}
-		tooltip = { FROM = { add_trait = skilled_tactician } }
+		tooltip = {
+			FROM = {
+				add_trait = skilled_tactician
+			}
+		}
 	}
+
 	option = {
 		name = EXCELLENT
 		trigger = {
-			FROM = { trait = brilliant_strategist }
+			FROM = {
+				trait = brilliant_strategist
+			}
 		}
-		tooltip = { FROM = { add_trait = brilliant_strategist } }
+		tooltip = {
+			FROM = {
+				add_trait = brilliant_strategist
+			}
+		}
 	}
 }
 
-
-
-#############################################
-# Stewardship								#
-#############################################
-
+# Stewardship
 character_event = {
 	id = ZE.14300
 	picture = GFX_evt_relaxed_ruler
 	border = GFX_event_normal_frame_economy
-
 	desc = {
 		text = EVTDESCA_ZE_14300
 		trigger = {
@@ -895,17 +1019,18 @@ character_event = {
 			has_character_flag = education_outcome_level_4
 		}
 	}
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_dlc = "Zeus"
 		has_focus = focus_ed_stewardship
 	}
-	
+
 	immediate = {
 		set_character_flag = is_being_graded
-		educator = { save_event_target_as = education_outcome_educator }
+		educator = {
+			save_event_target_as = education_outcome_educator
+		}
 		clear_focus = yes
 		random_list = {
 			10 = {
@@ -1172,7 +1297,7 @@ character_event = {
 		clr_character_flag = was_timid
 		clr_character_flag = was_rowdy
 	}
-	
+
 	option = {
 		name = EVTOPTA_ZE_14300
 		trigger = {
@@ -1181,8 +1306,15 @@ character_event = {
 		add_trait = indulgent_wastrel
 		clr_character_flag = education_outcome_level_1
 		clr_character_flag = is_being_graded
-		hidden_tooltip = { event_target:education_outcome_educator = { character_event = { id = ZE.14310 } } } # Notify educator
+		hidden_tooltip = {
+			event_target:education_outcome_educator = {
+				character_event = {
+					id = ZE.14310
+				}
+			}
+		} # Notify educator
 	}
+
 	option = {
 		name = EVTOPTB_ZE_14300
 		trigger = {
@@ -1191,8 +1323,15 @@ character_event = {
 		add_trait = thrifty_clerk
 		clr_character_flag = education_outcome_level_2
 		clr_character_flag = is_being_graded
-		hidden_tooltip = { event_target:education_outcome_educator = { character_event = { id = ZE.14310 } } } # Notify educator
+		hidden_tooltip = {
+			event_target:education_outcome_educator = {
+				character_event = {
+					id = ZE.14310
+				}
+			}
+		} # Notify educator
 	}
+
 	option = {
 		name = EVTOPTC_ZE_14300
 		trigger = {
@@ -1201,8 +1340,15 @@ character_event = {
 		add_trait = fortune_builder
 		clr_character_flag = education_outcome_level_3
 		clr_character_flag = is_being_graded
-		hidden_tooltip = { event_target:education_outcome_educator = { character_event = { id = ZE.14310 } } } # Notify educator
+		hidden_tooltip = {
+			event_target:education_outcome_educator = {
+				character_event = {
+					id = ZE.14310
+				}
+			}
+		} # Notify educator
 	}
+
 	option = {
 		name = EVTOPTD_ZE_14300
 		trigger = {
@@ -1211,7 +1357,13 @@ character_event = {
 		add_trait = midas_touched
 		clr_character_flag = education_outcome_level_4
 		clr_character_flag = is_being_graded
-		hidden_tooltip = { event_target:education_outcome_educator = { character_event = { id = ZE.14310 } } } # Notify educator
+		hidden_tooltip = {
+			event_target:education_outcome_educator = {
+				character_event = {
+					id = ZE.14310
+				}
+			}
+		} # Notify educator
 	}
 }
 
@@ -1220,73 +1372,102 @@ character_event = {
 	id = ZE.14310
 	picture = GFX_evt_relaxed_ruler
 	border = GFX_event_normal_frame_economy
-
 	desc = {
 		text = EVTDESCA_ZE_14310
 		trigger = {
-			FROM = { trait = indulgent_wastrel }
+			FROM = {
+				trait = indulgent_wastrel
+			}
 		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_14310
 		trigger = {
-			FROM = { trait = thrifty_clerk }
+			FROM = {
+				trait = thrifty_clerk
+			}
 		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_14310
 		trigger = {
-			FROM = { trait = fortune_builder }
+			FROM = {
+				trait = fortune_builder
+			}
 		}
 	}
 	desc = {
 		text = EVTDESCD_ZE_14310
 		trigger = {
-			FROM = { trait = midas_touched }
+			FROM = {
+				trait = midas_touched
+			}
 		}
 	}
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_14110
 		trigger = {
-			FROM = { trait = indulgent_wastrel }
+			FROM = {
+				trait = indulgent_wastrel
+			}
 		}
-		tooltip = { FROM = { add_trait = indulgent_wastrel } }
+		tooltip = {
+			FROM = {
+				add_trait = indulgent_wastrel
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTB_ZE_14110
 		trigger = {
-			FROM = { trait = thrifty_clerk }
+			FROM = {
+				trait = thrifty_clerk
+			}
 		}
-		tooltip = { FROM = { add_trait = thrifty_clerk } }
+		tooltip = {
+			FROM = {
+				add_trait = thrifty_clerk
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTC_ZE_14110
 		trigger = {
-			FROM = { trait = fortune_builder }
+			FROM = {
+				trait = fortune_builder
+			}
 		}
-		tooltip = { FROM = { add_trait = fortune_builder } }
+		tooltip = {
+			FROM = {
+				add_trait = fortune_builder
+			}
+		}
 	}
+
 	option = {
 		name = EXCELLENT
 		trigger = {
-			FROM = { trait = midas_touched }
+			FROM = {
+				trait = midas_touched
+			}
 		}
-		tooltip = { FROM = { add_trait = midas_touched } }
+		tooltip = {
+			FROM = {
+				add_trait = midas_touched
+			}
+		}
 	}
 }
 
-#############################################
-# Intrigue									#
-#############################################
-
+# Intrigue
 character_event = {
 	id = ZE.14400
 	picture = GFX_evt_shadowy_cabal
 	border = GFX_event_normal_frame_intrigue
-
 	desc = {
 		text = EVTDESCA_ZE_14400
 		trigger = {
@@ -1311,17 +1492,18 @@ character_event = {
 			has_character_flag = education_outcome_level_4
 		}
 	}
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_dlc = "Zeus"
 		has_focus = focus_ed_intrigue
 	}
-	
+
 	immediate = {
 		set_character_flag = is_being_graded
-		educator = { save_event_target_as = education_outcome_educator }
+		educator = {
+			save_event_target_as = education_outcome_educator
+		}
 		clear_focus = yes
 		random_list = {
 			10 = {
@@ -1588,7 +1770,7 @@ character_event = {
 		clr_character_flag = was_timid
 		clr_character_flag = was_rowdy
 	}
-	
+
 	option = {
 		name = EVTOPTA_ZE_14400
 		trigger = {
@@ -1597,8 +1779,15 @@ character_event = {
 		add_trait = amateurish_plotter
 		clr_character_flag = education_outcome_level_1
 		clr_character_flag = is_being_graded
-		hidden_tooltip = { event_target:education_outcome_educator = { character_event = { id = ZE.14410 } } } # Notify educator
+		hidden_tooltip = {
+			event_target:education_outcome_educator = {
+				character_event = {
+					id = ZE.14410
+				}
+			}
+		} # Notify educator
 	}
+
 	option = {
 		name = EVTOPTB_ZE_14400
 		trigger = {
@@ -1607,8 +1796,15 @@ character_event = {
 		add_trait = flamboyant_schemer
 		clr_character_flag = education_outcome_level_2
 		clr_character_flag = is_being_graded
-		hidden_tooltip = { event_target:education_outcome_educator = { character_event = { id = ZE.14410 } } } # Notify educator
+		hidden_tooltip = {
+			event_target:education_outcome_educator = {
+				character_event = {
+					id = ZE.14410
+				}
+			}
+		} # Notify educator
 	}
+
 	option = {
 		name = EVTOPTC_ZE_14400
 		trigger = {
@@ -1617,8 +1813,15 @@ character_event = {
 		add_trait = intricate_webweaver
 		clr_character_flag = education_outcome_level_3
 		clr_character_flag = is_being_graded
-		hidden_tooltip = { event_target:education_outcome_educator = { character_event = { id = ZE.14410 } } } # Notify educator
+		hidden_tooltip = {
+			event_target:education_outcome_educator = {
+				character_event = {
+					id = ZE.14410
+				}
+			}
+		} # Notify educator
 	}
+
 	option = {
 		name = EVTOPTD_ZE_14400
 		trigger = {
@@ -1627,7 +1830,13 @@ character_event = {
 		add_trait = elusive_shadow
 		clr_character_flag = education_outcome_level_4
 		clr_character_flag = is_being_graded
-		hidden_tooltip = { event_target:education_outcome_educator = { character_event = { id = ZE.14410 } } } # Notify educator
+		hidden_tooltip = {
+			event_target:education_outcome_educator = {
+				character_event = {
+					id = ZE.14410
+				}
+			}
+		} # Notify educator
 	}
 }
 
@@ -1636,73 +1845,102 @@ character_event = {
 	id = ZE.14410
 	picture = GFX_evt_shadowy_cabal
 	border = GFX_event_normal_frame_intrigue
-
 	desc = {
 		text = EVTDESCA_ZE_14410
 		trigger = {
-			FROM = { trait = amateurish_plotter }
+			FROM = {
+				trait = amateurish_plotter
+			}
 		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_14410
 		trigger = {
-			FROM = { trait = flamboyant_schemer }
+			FROM = {
+				trait = flamboyant_schemer
+			}
 		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_14410
 		trigger = {
-			FROM = { trait = intricate_webweaver }
+			FROM = {
+				trait = intricate_webweaver
+			}
 		}
 	}
 	desc = {
 		text = EVTDESCD_ZE_14410
 		trigger = {
-			FROM = { trait = elusive_shadow }
+			FROM = {
+				trait = elusive_shadow
+			}
 		}
 	}
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_14110
 		trigger = {
-			FROM = { trait = amateurish_plotter }
+			FROM = {
+				trait = amateurish_plotter
+			}
 		}
-		tooltip = { FROM = { add_trait = amateurish_plotter } }
+		tooltip = {
+			FROM = {
+				add_trait = amateurish_plotter
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTB_ZE_14110
 		trigger = {
-			FROM = { trait = flamboyant_schemer }
+			FROM = {
+				trait = flamboyant_schemer
+			}
 		}
-		tooltip = { FROM = { add_trait = flamboyant_schemer } }
+		tooltip = {
+			FROM = {
+				add_trait = flamboyant_schemer
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTC_ZE_14110
 		trigger = {
-			FROM = { trait = intricate_webweaver }
+			FROM = {
+				trait = intricate_webweaver
+			}
 		}
-		tooltip = { FROM = { add_trait = intricate_webweaver } }
+		tooltip = {
+			FROM = {
+				add_trait = intricate_webweaver
+			}
+		}
 	}
+
 	option = {
 		name = EXCELLENT
 		trigger = {
-			FROM = { trait = elusive_shadow }
+			FROM = {
+				trait = elusive_shadow
+			}
 		}
-		tooltip = { FROM = { add_trait = elusive_shadow } }
+		tooltip = {
+			FROM = {
+				add_trait = elusive_shadow
+			}
+		}
 	}
 }
 
-#############################################
-# Learning									#
-#############################################
-
+# Learning
 character_event = {
 	id = ZE.14500
 	picture = GFX_evt_book_carolingian_script
 	border = GFX_event_normal_frame_religion
-
 	desc = {
 		text = EVTDESCA_ZE_14500
 		trigger = {
@@ -1727,17 +1965,18 @@ character_event = {
 			has_character_flag = education_outcome_level_4
 		}
 	}
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_dlc = "Zeus"
 		has_focus = focus_ed_learning
 	}
-	
+
 	immediate = {
 		set_character_flag = is_being_graded
-		educator = { save_event_target_as = education_outcome_educator }
+		educator = {
+			save_event_target_as = education_outcome_educator
+		}
 		clear_focus = yes
 		random_list = {
 			10 = {
@@ -2004,7 +2243,7 @@ character_event = {
 		clr_character_flag = was_timid
 		clr_character_flag = was_rowdy
 	}
-	
+
 	option = {
 		name = EVTOPTA_ZE_14500
 		trigger = {
@@ -2013,8 +2252,15 @@ character_event = {
 		add_trait = detached_priest
 		clr_character_flag = education_outcome_level_1
 		clr_character_flag = is_being_graded
-		hidden_tooltip = { event_target:education_outcome_educator = { character_event = { id = ZE.14510 } } } # Notify educator
+		hidden_tooltip = {
+			event_target:education_outcome_educator = {
+				character_event = {
+					id = ZE.14510
+				}
+			}
+		} # Notify educator
 	}
+
 	option = {
 		name = EVTOPTB_ZE_14500
 		trigger = {
@@ -2023,8 +2269,15 @@ character_event = {
 		add_trait = martial_cleric
 		clr_character_flag = education_outcome_level_2
 		clr_character_flag = is_being_graded
-		hidden_tooltip = { event_target:education_outcome_educator = { character_event = { id = ZE.14510 } } } # Notify educator
+		hidden_tooltip = {
+			event_target:education_outcome_educator = {
+				character_event = {
+					id = ZE.14510
+				}
+			}
+		} # Notify educator
 	}
+
 	option = {
 		name = EVTOPTC_ZE_14500
 		trigger = {
@@ -2033,8 +2286,15 @@ character_event = {
 		add_trait = scholarly_theologian
 		clr_character_flag = education_outcome_level_3
 		clr_character_flag = is_being_graded
-		hidden_tooltip = { event_target:education_outcome_educator = { character_event = { id = ZE.14510 } } } # Notify educator
+		hidden_tooltip = {
+			event_target:education_outcome_educator = {
+				character_event = {
+					id = ZE.14510
+				}
+			}
+		} # Notify educator
 	}
+
 	option = {
 		name = EVTOPTD_ZE_14500
 		trigger = {
@@ -2043,7 +2303,13 @@ character_event = {
 		add_trait = mastermind_theologian
 		clr_character_flag = education_outcome_level_4
 		clr_character_flag = is_being_graded
-		hidden_tooltip = { event_target:education_outcome_educator = { character_event = { id = ZE.14510 } } } # Notify educator
+		hidden_tooltip = {
+			event_target:education_outcome_educator = {
+				character_event = {
+					id = ZE.14510
+				}
+			}
+		} # Notify educator
 	}
 }
 
@@ -2052,74 +2318,102 @@ character_event = {
 	id = ZE.14510
 	picture = GFX_evt_book_carolingian_script
 	border = GFX_event_normal_frame_religion
-
 	desc = {
 		text = EVTDESCA_ZE_14510
 		trigger = {
-			FROM = { trait = detached_priest }
+			FROM = {
+				trait = detached_priest
+			}
 		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_14510
 		trigger = {
-			FROM = { trait = martial_cleric }
+			FROM = {
+				trait = martial_cleric
+			}
 		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_14510
 		trigger = {
-			FROM = { trait = scholarly_theologian }
+			FROM = {
+				trait = scholarly_theologian
+			}
 		}
 	}
 	desc = {
 		text = EVTDESCD_ZE_14510
 		trigger = {
-			FROM = { trait = mastermind_theologian }
+			FROM = {
+				trait = mastermind_theologian
+			}
 		}
 	}
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_14110
 		trigger = {
-			FROM = { trait = detached_priest }
+			FROM = {
+				trait = detached_priest
+			}
 		}
-		tooltip = { FROM = { add_trait = detached_priest } }
+		tooltip = {
+			FROM = {
+				add_trait = detached_priest
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTB_ZE_14110
 		trigger = {
-			FROM = { trait = martial_cleric }
+			FROM = {
+				trait = martial_cleric
+			}
 		}
-		tooltip = { FROM = { add_trait = martial_cleric } }
+		tooltip = {
+			FROM = {
+				add_trait = martial_cleric
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTC_ZE_14110
 		trigger = {
-			FROM = { trait = scholarly_theologian }
+			FROM = {
+				trait = scholarly_theologian
+			}
 		}
-		tooltip = { FROM = { add_trait = scholarly_theologian } }
+		tooltip = {
+			FROM = {
+				add_trait = scholarly_theologian
+			}
+		}
 	}
+
 	option = {
 		name = EXCELLENT
 		trigger = {
-			FROM = { trait = mastermind_theologian }
+			FROM = {
+				trait = mastermind_theologian
+			}
 		}
-		tooltip = { FROM = { add_trait = mastermind_theologian } }
+		tooltip = {
+			FROM = {
+				add_trait = mastermind_theologian
+			}
+		}
 	}
 }
 
-#############################################
-# No education focus selected               #
-#############################################
-
+# No education focus selected
 character_event = {
 	id = ZE.14700
 	picture = GFX_evt_noble_in_castle
-	
 	is_triggered_only = yes
-
 	desc = {
 		text = EVTDESCA_ZE_14700
 		trigger = {
@@ -2150,8 +2444,9 @@ character_event = {
 			has_character_flag = education_learning
 		}
 	}
-	
-	trigger = { # Make sure we have no education focus and no education outcome already set
+
+	trigger = {
+		# Make sure we have no education focus and no education outcome already set
 		has_dlc = "Zeus"
 		NOR = {
 			has_character_flag = is_being_graded
@@ -2184,7 +2479,9 @@ character_event = {
 	}
 
 	immediate = {
-		educator = { save_event_target_as = education_outcome_educator }
+		educator = {
+			save_event_target_as = education_outcome_educator
+		}
 		random_list = {
 			10 = {
 				set_character_flag = education_diplomacy
@@ -2224,7 +2521,13 @@ character_event = {
 		}
 		add_trait = naive_appeaser
 		clr_character_flag = education_diplomacy
-		hidden_tooltip = { event_target:education_outcome_educator = { character_event = { id = ZE.14710 } } } # Notify educator
+		hidden_tooltip = {
+			event_target:education_outcome_educator = {
+				character_event = {
+					id = ZE.14710
+				}
+			}
+		} # Notify educator
 	}
 
 	option = {
@@ -2234,8 +2537,15 @@ character_event = {
 		}
 		add_trait = misguided_warrior
 		clr_character_flag = education_martial
-		hidden_tooltip = { event_target:education_outcome_educator = { character_event = { id = ZE.14710 } } } # Notify educator
+		hidden_tooltip = {
+			event_target:education_outcome_educator = {
+				character_event = {
+					id = ZE.14710
+				}
+			}
+		} # Notify educator
 	}
+
 	option = {
 		name = EVTOPTA_ZE_14700
 		trigger = {
@@ -2243,8 +2553,15 @@ character_event = {
 		}
 		add_trait = indulgent_wastrel
 		clr_character_flag = education_stewardship
-		hidden_tooltip = { event_target:education_outcome_educator = { character_event = { id = ZE.14710 } } } # Notify educator
+		hidden_tooltip = {
+			event_target:education_outcome_educator = {
+				character_event = {
+					id = ZE.14710
+				}
+			}
+		} # Notify educator
 	}
+
 	option = {
 		name = EVTOPTA_ZE_14700
 		trigger = {
@@ -2252,8 +2569,15 @@ character_event = {
 		}
 		add_trait = amateurish_plotter
 		clr_character_flag = education_intrigue
-		hidden_tooltip = { event_target:education_outcome_educator = { character_event = { id = ZE.14710 } } } # Notify educator
+		hidden_tooltip = {
+			event_target:education_outcome_educator = {
+				character_event = {
+					id = ZE.14710
+				}
+			}
+		} # Notify educator
 	}
+
 	option = {
 		name = EVTOPTA_ZE_14700
 		trigger = {
@@ -2261,7 +2585,13 @@ character_event = {
 		}
 		add_trait = detached_priest
 		clr_character_flag = education_learning
-		hidden_tooltip = { event_target:education_outcome_educator = { character_event = { id = ZE.14710 } } } # Notify educator
+		hidden_tooltip = {
+			event_target:education_outcome_educator = {
+				character_event = {
+					id = ZE.14710
+				}
+			}
+		} # Notify educator
 	}
 }
 
@@ -2269,102 +2599,133 @@ character_event = {
 character_event = {
 	id = ZE.14710
 	picture = GFX_evt_noble_in_castle
-
 	desc = {
 		text = EVTDESCA_ZE_14710
 		trigger = {
-			FROM = { trait = naive_appeaser }
+			FROM = {
+				trait = naive_appeaser
+			}
 		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_14710
 		trigger = {
-			FROM = { trait = misguided_warrior }
+			FROM = {
+				trait = misguided_warrior
+			}
 		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_14710
 		trigger = {
-			FROM = { trait = indulgent_wastrel }
+			FROM = {
+				trait = indulgent_wastrel
+			}
 		}
 	}
 	desc = {
 		text = EVTDESCD_ZE_14710
 		trigger = {
-			FROM = { trait = amateurish_plotter }
+			FROM = {
+				trait = amateurish_plotter
+			}
 		}
 	}
 	desc = {
 		text = EVTDESCE_ZE_14710
 		trigger = {
-			FROM = { trait = detached_priest }
+			FROM = {
+				trait = detached_priest
+			}
 		}
 	}
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_14710
 		trigger = {
-			FROM = { trait = naive_appeaser }
+			FROM = {
+				trait = naive_appeaser
+			}
 		}
-		tooltip = { FROM = { add_trait = naive_appeaser } }
+		tooltip = {
+			FROM = {
+				add_trait = naive_appeaser
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTA_ZE_14710
 		trigger = {
-			FROM = { trait = misguided_warrior }
+			FROM = {
+				trait = misguided_warrior
+			}
 		}
-		tooltip = { FROM = { add_trait = misguided_warrior } }
+		tooltip = {
+			FROM = {
+				add_trait = misguided_warrior
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTA_ZE_14710
 		trigger = {
-			FROM = { trait = indulgent_wastrel }
+			FROM = {
+				trait = indulgent_wastrel
+			}
 		}
-		tooltip = { FROM = { add_trait = indulgent_wastrel } }
+		tooltip = {
+			FROM = {
+				add_trait = indulgent_wastrel
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTA_ZE_14710
 		trigger = {
-			FROM = { trait = amateurish_plotter }
+			FROM = {
+				trait = amateurish_plotter
+			}
 		}
-		tooltip = { FROM = { add_trait = amateurish_plotter } }
+		tooltip = {
+			FROM = {
+				add_trait = amateurish_plotter
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTA_ZE_14710
 		trigger = {
-			FROM = { trait = detached_priest }
+			FROM = {
+				trait = detached_priest
+			}
 		}
-		tooltip = { FROM = { add_trait = detached_priest } }
+		tooltip = {
+			FROM = {
+				add_trait = detached_priest
+			}
+		}
 	}
 }
 
-#############################################
-# Set flags affecting outcomes				#
-#############################################
+# Set flags affecting outcomes
 
 # Imprisoned (from on_action)
 character_event = {
 	id = ZE.14600
-
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		is_adult = no
 		age = 12
 	}
-	
+
 	immediate = {
 		set_character_flag = education_effect_imprisoned
 	}
 }
-
-
-
-
-
-
-

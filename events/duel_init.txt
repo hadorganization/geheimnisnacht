@@ -1,746 +1,1419 @@
-############################ STAT INIT #######################################
-#
+
+# STAT INIT
+
 # Here are events that init stats for dueles to be edited by you guys
-#
 namespace = duelinit
+
 # duelinit.0: triggered for both characters (A,B), stat init
 character_event = {
-   id = duelinit.0
-   hide_window = yes 
-   is_triggered_only = yes
+	id = duelinit.0
+	hide_window = yes
+	is_triggered_only = yes
 
-    immediate = {
-	   set_variable = { which =  z_assess value = 3 }
-	   set_variable = { which =  z_parry value = 3 }
-	   set_variable = { which =  z_dodge value = 3 }	  
-        set_variable = { which =  "dodge_timer" value = 0 }
-        set_variable = { which =  "block_timer" value = 0 }
-        set_variable = { which = "can_dodge" value = 1 }
-        set_variable = { which = "can_block" value = 1 }     
-     ###S ADDITIONS##
-       # Goblinoids and halflings      
-       if = { 
-           limit = { 
-               OR = {
-                   trait = creature_goblin
-                   trait = creature_snotling
-                   trait = creature_halfling
-                   trait = creature_skink
-               }
-           } 
-           set_variable = { which = "duel_max_hp" value = 5 }
-           set_variable = { which = "duel_att" value = 3 }
-           set_variable = { which = "duel_def" value = 3 }
-       }
-       # Man sized creatures
-       if = { 
-           limit = { 
-               OR = {
-                   trait = creature_human
-                   trait = creature_skaven
-           trait = creature_amazon
-               }
-           } 
-           set_variable = { which = "duel_max_hp" value = 7 }
-           set_variable = { which = "duel_att" value = 3 }
-           set_variable = { which = "duel_def" value = 4 }
-       }
-       # elves (they seem to be weaker however they gain martial bonus
-       # so its not true at all
-       if = { 
-           limit = { trait = creature_elf } 
-           set_variable = { which = "duel_max_hp" value = 7 }
-           set_variable = { which = "duel_att" value = 4 }
-           set_variable = { which = "duel_def" value = 3 }
-       }
-       # dwarves
-       if = { 
-           limit = { 
-               OR = {
-                   trait = creature_dwarf
-                   trait = creature_chaos_dwarf
-               }
-           } 
-           set_variable = { which = "duel_max_hp" value = 8 }
-           set_variable = { which = "duel_att" value = 3 }
-           set_variable = { which = "duel_def" value = 4 }
-       }
-       # orcs
-       if = { limit = { trait = creature_orc } 
-           set_variable = { which = "duel_max_hp" value =  8 }
-           set_variable = { which = "duel_att" value = 4 }
-           set_variable = { which = "duel_def" value = 4 }
-       }
-       # ogres are veryy big but slow witted
-       if = { limit = { trait = creature_ogre } 
-           set_variable = { which = "duel_max_hp" value = 10 }
-           set_variable = { which = "duel_att" value = 5 }
-           set_variable = { which = "duel_def" value = 4 }
-       }
-       if = { limit = { trait = creature_slann } 
-           set_variable = { which = "duel_max_hp" value = 12 }
-           set_variable = { which = "duel_att" value = 1 }
-           set_variable = { which = "duel_def" value = 8 }
-          set_variable = { which = "can_dodge" value = 0 }
-          set_variable = { which = "can_block" value = 0 }
-       }
-       if = { limit = { trait = prince_slaanesh } 
-           set_variable = { which = "duel_max_hp" value = 10 }
-           set_variable = { which = "duel_att" value = 5 }
-           set_variable = { which = "duel_def" value = 5 }
-       }
-       if = { limit = { trait = prince_tzeentch } 
-           set_variable = { which = "duel_max_hp" value = 12 }
-           set_variable = { which = "duel_att" value = 3 }
-           set_variable = { which = "duel_def" value = 3 }
-       }
-       if = { limit = { trait = prince_nurgle } 
-           set_variable = { which = "duel_max_hp" value = 18 }
-           set_variable = { which = "duel_att" value = 1 }
-           set_variable = { which = "duel_def" value = 8 }
-       }
-       if = { limit = { trait = prince_khorne } 
-           set_variable = { which = "duel_max_hp" value = 12 }
-           set_variable = { which = "duel_att" value = 7 }
-           set_variable = { which = "duel_def" value = 1 }
-       }                              
-       if = { limit = { trait = creature_saurus } 
-           set_variable = { which = "duel_max_hp" value = 9 }
-           set_variable = { which = "duel_att" value = 8 }
-           set_variable = { which = "duel_def" value = 6 }
-       } 
-       if = { limit = { trait = creature_black_orc } 
-           set_variable = { which = "duel_max_hp" value = 9 }
-           set_variable = { which = "duel_att" value = 6 }
-           set_variable = { which = "duel_def" value = 8 }
-       }                       
-     #BEASTMAN
-        if = { 
-           limit = { trait = creature_morghur }
-           set_variable = { which = "duel_def" value = 7 }
-           set_variable = { which = "duel_att" value = 8 }
-           set_variable = { which = "duel_max_hp" value = 7 }       
-       } 
-        if = { 
-           limit = { trait = creature_beastman }
-           set_variable = { which = "duel_def" value = 5 }
-           set_variable = { which = "duel_att" value = 6 }
-           set_variable = { which = "duel_max_hp" value = 5 }       
-       } 
-        if = { 
-           limit = { trait = horns_average }
-           change_variable = { which = "duel_att" value = 2 }      
-       } 
-        if = { 
-           limit = { trait = horns_big }
-           change_variable = { which = "duel_att" value = 3 }      
-       } 
-     #TREEKIN
-        if = { 
-           limit = { trait = creature_treekin }
-           set_variable = { which = "duel_def" value = 7 }
-           set_variable = { which = "duel_att" value = 5 }
-           set_variable = { which = "duel_max_hp" value = 7 }       
-       } 
-     #FOREST SPIRIT
-        if = { 
-           limit = { trait = creature_forestspirit }
-           set_variable = { which = "duel_def" value = 10 }
-           set_variable = { which = "duel_att" value = 8 }
-           set_variable = { which = "duel_max_hp" value = 10 }      
-       } 
-     #AVATAR ISHA
-        if = { 
-           limit = { trait = avatar_isha }
-           change_variable = { which = "duel_def" value = 7 }
-           change_variable = { which = "duel_att" value = 12 }
-           change_variable = { which = "duel_max_hp" value = 6 }       
-       } 
-     #FOREST SPIRIT
-        if = { 
-           limit = { trait = avatar_kurnous }
-           change_variable = { which = "duel_def" value = 12 }
-           change_variable = { which = "duel_att" value = 10 }
-           change_variable = { which = "duel_max_hp" value = 12 }      
-       } 
-     #KHORNE CHAMPION
-        if = { 
-           limit = { trait = champion_khorne }
-           change_variable = { which = "duel_def" value = 1 }
-           change_variable = { which = "duel_att" value = 3 }
-           change_variable = { which = "duel_max_hp" value = 2 }       
-       } 
-     #NURGLE CHAMPION
-        if = { 
-           limit = { trait = champion_nurgle }
-           change_variable = { which = "duel_def" value = 2 }
-           change_variable = { which = "duel_att" value = 1 }
-           change_variable = { which = "duel_max_hp" value = 5 }       
-       } 
-     #SLAANESH CHAMPION
-        if = { 
-           limit = { trait = champion_slaanesh }
-           change_variable = { which = "duel_att" value = 4 }
-           change_variable = { which = "duel_max_hp" value = 1 }       
-       } 
-     #TZEENTCH CHAMPION
-        if = { 
-           limit = { trait = champion_tzeentch }
-           change_variable = { which = "duel_att" value = 5 }    
-       } 
-     #KHORNE CHOSEN
-        if = { 
-           limit = { trait = chosen_khorne }
-           change_variable = { which = "duel_def" value = 2 }
-           change_variable = { which = "duel_att" value = 4 }
-           change_variable = { which = "duel_max_hp" value = 3 }       
-       } 
-     #NURGLE CHOSEN
-        if = { 
-           limit = { trait = chosen_nurgle }
-           change_variable = { which = "duel_def" value = 3 }
-           change_variable = { which = "duel_att" value = 2 }
-           change_variable = { which = "duel_max_hp" value = 6 }       
-       } 
-     #SLAANESH CHOSEN
-        if = { 
-           limit = { trait = chosen_slaanesh }
-           change_variable = { which = "duel_att" value = 5 }
-           change_variable = { which = "duel_max_hp" value = 2 }       
-       } 
-     #TZEENTCH CHOSEN
-        if = { 
-           limit = { trait = chosen_tzeentch }
-           change_variable = { which = "duel_att" value = 7 }    
-       }
-       
-        #Princes get these PLUS the ones after, for being daemons
-     #KHORNE PRINCE
-        if = { 
-           limit = { trait = prince_khorne }
-           change_variable = { which = "duel_def" value = 2 }
-           change_variable = { which = "duel_att" value = 4 }
-           change_variable = { which = "duel_max_hp" value = 3 }       
-       } 
-     #NURGLE PRINCE
-        if = { 
-           limit = { trait = prince_nurgle }
-           change_variable = { which = "duel_def" value = 3 }
-           change_variable = { which = "duel_att" value = 1 }
-           change_variable = { which = "duel_max_hp" value = 6 }       
-       } 
-     #SLAANESH PRINCE
-        if = { 
-           limit = { trait = prince_slaanesh }
-           change_variable = { which = "duel_def" value = 2 }
-           change_variable = { which = "duel_att" value = 3 }
-           change_variable = { which = "duel_max_hp" value = 2 }       
-       } 
-     #TZEENTCH PRINCE
-        if = { 
-           limit = { trait = prince_tzeentch }
-           change_variable = { which = "duel_def" value = 1 }
-           change_variable = { which = "duel_att" value = 6 }
-           change_variable = { which = "duel_max_hp" value = 1 }       
-       }  
-     #KHORNE DEMON
-        if = { 
-           limit = { trait = khorne_demon }
-           change_variable = { which = "duel_def" value = 4 }
-           change_variable = { which = "duel_att" value = 8 }
-           change_variable = { which = "duel_max_hp" value = 6 }       
-       } 
-     #NURGLE DEMON
-        if = { 
-           limit = { trait = nurgle_demon }
-           change_variable = { which = "duel_def" value = 6 }
-           change_variable = { which = "duel_att" value = 3 }
-           change_variable = { which = "duel_max_hp" value = 12 }      
-       } 
-     #SLAANESH DEMON
-        if = { 
-           limit = { trait = slaanesh_demon }
-           change_variable = { which = "duel_def" value = 4 }
-           change_variable = { which = "duel_att" value = 6 }
-           change_variable = { which = "duel_max_hp" value = 4 }       
-       } 
-     #TZEENTCH DEMON
-        if = { 
-           limit = { trait = tzeentch_demon }
-           change_variable = { which = "duel_def" value = 3 }
-           change_variable = { which = "duel_att" value = 12 }
-           change_variable = { which = "duel_max_hp" value = 3 }       
-       } 
-     #KHORNE FAMILIAR
-        if = { 
-           limit = { any_friend = { trait = khorne_demon } }
-           change_variable = { which = "duel_att" value = 4 }      
-       } 
-     #NURGLE FAMILIAR
-        if = { 
-           limit = { any_friend = { trait = khorne_demon } }
-           change_variable = { which = "duel_max_hp" value = 6 }       
-       } 
-       
-       #HASHUT DEMON
-      if = { 
-           limit = { trait = hashut_kdaai }
-           change_variable = { which = "duel_def" value = 5 }
-           change_variable = { which = "duel_att" value = 8 }
-           change_variable = { which = "duel_max_hp" value = 5 }       
-       } 
-       
-       #HASHUT FAMILIAR
-       if = { 
-           limit = { any_friend = { trait = hashut_kdaai } }
-           change_variable = { which = "duel_max_hp" value = 5 }       
-       } 
-      #SETTRA!!
-        if = { 
-            limit = { trait = king_settra }
-            change_variable = { which = "duel_def" value = 9 }
-            change_variable = { which = "duel_att" value = 6 }
-            change_variable = { which = "duel_max_hp" value = 9 }
-        }
-        if = { 
-            limit = { 
-                OR = { 
-                    trait = vampire_lahmian_visible  
-                    trait = vampire_carstein_visible  
-                    trait = vampire_blood_visible  
-                    trait = vampire_strigoi_visible   
-                    trait = vampire_necrarch_visible  
-                    trait = vampire_jade_visible  
-                    trait = vampire_mahtmasi_visible    
-                }
-            }
-            change_variable = { which = "duel_def" value = 3 }
-            change_variable = { which = "duel_att" value = 3 }
-            change_variable = { which = "duel_max_hp" value = 8 }
-        }
-     #Witch Hunters - their learning makes them better in combat#
-        if = { 
-           limit = { 
-                AND = { 
-                    trait = witch_hunter
-                    learning = 1
-                    NOT = { learning = 5 }
-                }
-            }
-            change_variable = { which = "duel_def" value = 1 }
-            change_variable = { which = "duel_att" value = 1 }
-            change_variable = { which = "duel_max_hp" value = 1 }       
-        }  
-        if = { 
-           limit = { 
-       AND = { 
-       trait = witch_hunter
-       learning = 10
-       NOT = { learning = 15 }
-       }
-       }
-           change_variable = { which = "duel_def" value = 2 }
-           change_variable = { which = "duel_att" value = 2 }
-           change_variable = { which = "duel_max_hp" value = 2 }       
-       }     
-        if = { 
-           limit = { 
-       AND = { 
-       trait = witch_hunter
-       learning = 15
-       NOT = { learning = 20 }
-       }
-       }
-           change_variable = { which = "duel_def" value = 3 }
-           change_variable = { which = "duel_att" value = 3 }
-           change_variable = { which = "duel_max_hp" value = 3 }       
-       }
-        if = { 
-           limit = { 
-       AND = { 
-       trait = witch_hunter
-       learning = 20
-       }
-       }
-           change_variable = { which = "duel_def" value = 5 }
-           change_variable = { which = "duel_att" value = 5 }
-           change_variable = { which = "duel_max_hp" value = 5 }       
-       }       
-     #Bretonnian Knights#
-      if = { 
-           limit = { 
-       trait = bretonnian_knight_errant  
-       }
-           change_variable = { which = "duel_def" value = 1 }
-           change_variable = { which = "duel_att" value = 1 }
-           change_variable = { which = "duel_max_hp" value = 1 }
-       }
-      if = { 
-           limit = { 
-       trait = bretonnian_knight  
-       }
-           change_variable = { which = "duel_def" value = 2 }
-           change_variable = { which = "duel_att" value = 2 }
-           change_variable = { which = "duel_max_hp" value = 2 }
-       }
-      if = { 
-           limit = { 
-       trait = grail_knight  
-       }
-           change_variable = { which = "duel_def" value = 3 }
-           change_variable = { which = "duel_att" value = 3 }
-           change_variable = { which = "duel_max_hp" value = 4 }
-       }      
-     #Dark Elves#
-      if = { 
-           limit = { 
-       trait = malekith  
-       }
-           change_variable = { which = "duel_def" value = 3 }
-           change_variable = { which = "duel_att" value = 3 }
-           change_variable = { which = "duel_max_hp" value = 5 }
-       }   
-      #High Elves#
-      if = { 
-           limit = { 
-       trait = phoenix_king  
-       }
-           change_variable = { which = "duel_def" value = 2 }
-           change_variable = { which = "duel_att" value = 2 }
-           change_variable = { which = "duel_max_hp" value = 2 }
-       }    
-       #Khemri#
-      if = { 
-           limit = { 
-       trait = khemri_tomb_king  
-       }
-           change_variable = { which = "duel_def" value = 2 }
-           change_variable = { which = "duel_att" value = 1 }
-           change_variable = { which = "duel_max_hp" value = 4 }
-       }    
-      if = { 
-             limit = { trait = druchi_witch_elf }
-           change_variable = { which = "duel_att" value = 4 }
-           change_variable = { which = "duel_def" value = -1 }
-       }          
-      if = { 
-            limit = { trait = druchi_assassin }
-           change_variable = { which = "duel_att" value = 3 }
-       }    
-      if = { 
-           limit = { 
-       trait = druchi_black_guard  
-       }
-             change_variable = { which = "duel_att" value = 1 }
-       change_variable = { which = "duel_def" value = 2 }
-       }  
-      if = { 
-           limit = { 
-       trait = druchi_sorceress  
-       }
-           change_variable = { which = "duel_att" value = 2 }
-       change_variable = { which = "duel_def" value = 2 }
-       } 
-     #Black Orc
-      if = { 
-             limit = { trait = black_orc_trait }
-             change_variable = { which = "duel_def" value = 2 }
-             change_variable = { which = "duel_att" value = 4 }
-             change_variable = { which = "duel_max_hp" value = 3 }       
-      }
+	immediate = {
+		set_variable = {
+			which = z_assess value = 3
+		}
+		set_variable = {
+			which = z_parry value = 3
+		}
+		set_variable = {
+			which = z_dodge value = 3
+		}
+		set_variable = {
+			which = "dodge_timer" value = 0
+		}
+		set_variable = {
+			which = "block_timer" value = 0
+		}
+		set_variable = {
+			which = "can_dodge" value = 1
+		}
+		set_variable = {
+			which = "can_block" value = 1
+		}
+		# S ADDITIONS
+		# Goblinoids and halflings
+		if = {
+			limit = {
+				OR = {
+					trait = creature_goblin
+					trait = creature_snotling
+					trait = creature_halfling
+					trait = creature_skink
+				}
+			}
+			set_variable = {
+				which = "duel_max_hp" value = 5
+			}
+			set_variable = {
+				which = "duel_att" value = 3
+			}
+			set_variable = {
+				which = "duel_def" value = 3
+			}
+		}
+		# Man sized creatures
+		if = {
+			limit = {
+				OR = {
+					trait = creature_human
+					trait = creature_skaven
+					trait = creature_amazon
+				}
+			}
+			set_variable = {
+				which = "duel_max_hp" value = 7
+			}
+			set_variable = {
+				which = "duel_att" value = 3
+			}
+			set_variable = {
+				which = "duel_def" value = 4
+			}
+		}
+		# elves (they seem to be weaker however they gain martial bonus
+		# so its not true at all
+		if = {
+			limit = {
+				trait = creature_elf
+			}
+			set_variable = {
+				which = "duel_max_hp" value = 7
+			}
+			set_variable = {
+				which = "duel_att" value = 4
+			}
+			set_variable = {
+				which = "duel_def" value = 3
+			}
+		}
+		# dwarves
+		if = {
+			limit = {
+				OR = {
+					trait = creature_dwarf
+					trait = creature_chaos_dwarf
+				}
+			}
+			set_variable = {
+				which = "duel_max_hp" value = 8
+			}
+			set_variable = {
+				which = "duel_att" value = 3
+			}
+			set_variable = {
+				which = "duel_def" value = 4
+			}
+		}
+		# orcs
+		if = {
+			limit = {
+				trait = creature_orc
+			}
+			set_variable = {
+				which = "duel_max_hp" value = 8
+			}
+			set_variable = {
+				which = "duel_att" value = 4
+			}
+			set_variable = {
+				which = "duel_def" value = 4
+			}
 
+		}
+		# ogres are veryy big but slow witted
+		if = {
+			limit = {
+				trait = creature_ogre
+			}
+			set_variable = {
+				which = "duel_max_hp" value = 10
+			}
+			set_variable = {
+				which = "duel_att" value = 5
+			}
+			set_variable = {
+				which = "duel_def" value = 4
+			}
 
-	   # Congenital traits
-       if = { limit = { trait = strong } 
-           change_variable = { which = "duel_att" value = 2 }
-       }
-       if = { limit = { trait = tough } 
-           change_variable = { which = "duel_att" value = 1 }
-       }
-       if = { limit = { trait = robust } 
-           change_variable = { which = "duel_att" value = 1 }
-       }
-       if = { limit = { trait = weak } 
-           change_variable = { which = "duel_att" value = -2 }
-       }
-       if = { limit = { trait = fragile } 
-           change_variable = { which = "duel_att" value = -1 }
-       }
-       if = { limit = { trait = feeble } 
-           change_variable = { which = "duel_att" value = -1 }
-       }
-       if = { limit = { trait = undernourished } 
-           change_variable = { which = "duel_max_hp" value = -2 }
-       }
-       if = { limit = { trait = fat } 
-           change_variable = { which = "duel_def" value = -1 }
-       }
-       # Hit point bonus basing on hp
-       if = {
-           limit = { NOT = { health = 2.5 } }
-           change_variable = { which = "duel_max_hp" value = -1 }
-       }
-       if = {
-           limit = { NOT = { health = 3.5 } }
-           change_variable = { which = "duel_max_hp" value = -1 }
-       }
-       if = {
-           limit = { health = 4.5 }
-           change_variable = { which = "duel_max_hp" value = 1 }
-       }
-       if = {
-           limit = { health = 5.5 }
-           change_variable = { which = "duel_max_hp" value = 1 }
-       }
-       if = {
-           limit = { health = 6.5 }
-           change_variable = { which = "duel_max_hp" value = 1 }
-       }
-       # Attack, defence, hp bonus basing on martial skill
-       #
-       # bonus for all ranges form 0-4
-       if = { 
-           limit = { NOT = { martial = 1 } }
-           change_variable = { which = "duel_att" value = -1 }
-       }
-       if = { 
-           limit = { NOT = { martial = 3 } }
-           change_variable = { which = "duel_def" value = -1 }
-       }
-       if = { 
-           limit = { martial = 7 }
-           change_variable = { which = "duel_att" value = 1 }
-       }
-       if = { 
-           limit = { martial = 9 }
-           change_variable = { which = "duel_def" value = 1 }
-       }
-       if = { 
-           limit = { martial = 11 }
-           change_variable = { which = "duel_max_hp" value = 1 }
-       }
-       if = { 
-           limit = { martial = 13 }
-           change_variable = { which = "duel_att" value = 1 }
-       }
-       if = { 
-           limit = { martial = 15 }
-           change_variable = { which = "duel_def" value = 1 }
-       }
-       if = { 
-           limit = { martial = 17 }
-           change_variable = { which = "duel_max_hp" value = 1 }
-       }
-       if = { 
-           limit = { martial = 19 }
-           change_variable = { which = "duel_att" value = 1 }
-       }
-       if = { 
-           limit = { martial = 21 }
-           change_variable = { which = "duel_def" value = 1 }
-       }
-       if = { 
-           limit = { martial = 23 }
-           change_variable = { which = "duel_max_hp" value = 1 }
-       }
-       if = { 
-           limit = { martial = 25 }
-           change_variable = { which = "duel_att" value = 1 }
-       }
-       if = { 
-           limit = { martial = 27 }
-           change_variable = { which = "duel_def" value = 1 }
-       }
-       # just to be sure
-       if = { 
-           limit = { NOT = {  check_variable = { which = "duel_max_hp" value = 1 } }}
-           set_variable = { which = "duel_max_hp" value  = 1 }
-       }
-       
-       # Ok now here should be traits bonus but i left them for now
-       if = { 
-           limit = { trait = wounded  }
-           change_variable = { which = "duel_def" value = -1 }
-           change_variable = { which = "duel_att" value = -1 }
-           set_variable = { which = "duel_max_hp" value = 3 }
-       }
-       if = { 
-           limit = { trait = maimed  }
-           change_variable = { which = "duel_def" value = -2 }
-           change_variable = { which = "duel_att" value = -2 }
-           set_variable = { which = "duel_max_hp" value = 2 }
-       }
- 
-		#Mount Traits#
-	    if = { 
-           limit = { 
-		      OR = {
-    		    has_artifact = black_dragon_mount  
-    		    has_artifact = blue_dragon_mount  
-    		    has_artifact = chaos_dragon_mount  
-    		    has_artifact = gold_dragon_mount  
-    		    has_artifact = green_dragon_mount  
-    		    has_artifact = red_dragon_mount  
-    		    has_artifact = white_dragon_mount
-		    }
-		   }
-           change_variable = { which = "duel_def" value = 5 }
-           change_variable = { which = "duel_att" value = 5 }
-           change_variable = { which = "duel_max_hp" value = 8 }
-       }	
-	     if = { 
-           limit = { 
-		   has_artifact = pegasus_mount  
-		   }
-           change_variable = { which = "duel_def" value = 2 }
-           change_variable = { which = "duel_att" value = 2 }
-           change_variable = { which = "duel_max_hp" value = 2 }
-       }
-	    if = { 
-           limit = { 
-		   has_artifact = nightmare_mount  
-		   }
-           change_variable = { which = "duel_def" value = 1 }
-           change_variable = { which = "duel_att" value = 3 }
-           change_variable = { which = "duel_max_hp" value = 2 }
-       }
-	     if = { 
-           limit = { 
-		   has_artifact = gryphon_mount  
-		   }
-           change_variable = { which = "duel_def" value = 3 }
-           change_variable = { which = "duel_att" value = 3 }
-           change_variable = { which = "duel_max_hp" value = 3 }
-       }
-	     if = { 
-           limit = { 
-		   has_artifact = wyvern_mount  
-		   }
-           change_variable = { which = "duel_def" value = 2 }
-           change_variable = { which = "duel_att" value = 3 }
-           change_variable = { which = "duel_max_hp" value = 4 }
-       }
-	     if = { 
-           limit = { 
-		   has_artifact = great_taurus_mount  
-		   }
-           change_variable = { which = "duel_def" value = 4 }
-           change_variable = { which = "duel_att" value = 4 }
-           change_variable = { which = "duel_max_hp" value = 5 }
-       }
-	  if = { 
-           limit = { 
-		   has_artifact = lamassu_mount  
-		   }
-           change_variable = { which = "duel_def" value = 3 }
-           change_variable = { which = "duel_att" value = 5 }
-           change_variable = { which = "duel_max_hp" value = 6 }
-       }
-	     if = { 
-           limit = { 
-		   has_artifact = abyssal_terror_mount
-		   }
-           change_variable = { which = "duel_def" value = 2 }
-           change_variable = { which = "duel_att" value = 4 }
-           change_variable = { which = "duel_max_hp" value = 3 }
-       }
-	   #MISC
- 	    if = { 
-           limit = { 
-		   trait = chaos_knight  
-		   }
-           change_variable = { which = "duel_def" value = 3 }
-           change_variable = { which = "duel_att" value = 3 }
-           change_variable = { which = "duel_max_hp" value = 4 }
-       } 	   
-	   #MAGIC ITEMS
- 	    if = { 
-           limit = { 
-		   has_artifact = sword_1 
-		   }
-           change_variable = { which = "duel_def" value = 1 }
-           change_variable = { which = "duel_att" value = 2 }
-       } 
- 	    if = { 
-           limit = { 
-		   has_artifact = sword_2 
-		   }
-           change_variable = { which = "duel_def" value = 2 }
-           change_variable = { which = "duel_att" value = 3 }
-       } 
- 	    if = { 
-           limit = { 
-		   has_artifact = sword_3 
-		   }
-           change_variable = { which = "duel_def" value = 3 }
-           change_variable = { which = "duel_att" value = 4 }
-       } 
- 	    if = { 
-           limit = { 
-		   has_artifact = sword_4 
-		   }
-           change_variable = { which = "duel_def" value = 4 }
-           change_variable = { which = "duel_att" value = 5 }
-       } 	 
- 	    if = { 
-           limit = { 
-		   has_artifact = sword_5 
-		   }
-           change_variable = { which = "duel_def" value = 5 }
-           change_variable = { which = "duel_att" value = 6 }
-       } 
-	   if = { 
-           limit = { 
-		   OR = { 
-		   has_artifact = mothers_ruin  
-		   has_artifact = stone_breaker  
-		   has_artifact = goblin_bane  
-		   has_artifact = crow_feeder   
-		   has_artifact = legbiter  
-		   has_artifact = brain_wounder  
-		   has_artifact = troll_cleaver
-		   has_artifact = dragon_tooth
-		   has_artifact = orc_hewer
-		   has_artifact = blood_bringer
-		   has_artifact = grudge_settler
-		   has_artifact = beast_slayer
-		   }
-		   }
-           change_variable = { which = "duel_def" value = 3 }
-           change_variable = { which = "duel_att" value = 4 }
-       }
-	    if = { 
-           limit = { 
-		   has_artifact = ghal_maraz 
-		   }
-           change_variable = { which = "duel_def" value = 3 }
-           change_variable = { which = "duel_att" value = 6 }
-       }
- 	    if = { 
-           limit = { 
-		   has_artifact = ring_of_invisibility 
-		   }
-           change_variable = { which = "duel_def" value = 3 }
-       }  
- 	    if = { 
-           limit = { 
-		   has_artifact = amulet_of_protection_1
-		   }
-           change_variable = { which = "duel_def" value = 3 }
-       }
- 	    if = { 
-           limit = { 
-		   has_artifact = amulet_of_protection_3
-		   }
-           change_variable = { which = "duel_def" value = 5 }
-       }  
- 	    if = { 
-           limit = { 
-		   has_artifact = amulet_of_protection_5
-		   }
-           change_variable = { which = "duel_def" value = 7 }
-       }   	
-		#SJ additions
+		}
+		if = {
+			limit = {
+				trait = creature_slann
+			}
+			set_variable = {
+				which = "duel_max_hp" value = 12
+			}
+			set_variable = {
+				which = "duel_att" value = 1
+			}
+			set_variable = {
+				which = "duel_def" value = 8
+			}
+			set_variable = {
+				which = "can_dodge" value = 0
+			}
+			set_variable = {
+				which = "can_block" value = 0
+			}
+
+		}
+		if = {
+			limit = {
+				trait = prince_slaanesh
+			}
+			set_variable = {
+				which = "duel_max_hp" value = 10
+			}
+			set_variable = {
+				which = "duel_att" value = 5
+			}
+			set_variable = {
+				which = "duel_def" value = 5
+			}
+
+		}
+		if = {
+			limit = {
+				trait = prince_tzeentch
+			}
+			set_variable = {
+				which = "duel_max_hp" value = 12
+			}
+			set_variable = {
+				which = "duel_att" value = 3
+			}
+			set_variable = {
+				which = "duel_def" value = 3
+			}
+
+		}
+		if = {
+			limit = {
+				trait = prince_nurgle
+			}
+			set_variable = {
+				which = "duel_max_hp" value = 18
+			}
+			set_variable = {
+				which = "duel_att" value = 1
+			}
+			set_variable = {
+				which = "duel_def" value = 8
+			}
+
+		}
+		if = {
+			limit = {
+				trait = prince_khorne
+			}
+			set_variable = {
+				which = "duel_max_hp" value = 12
+			}
+			set_variable = {
+				which = "duel_att" value = 7
+			}
+			set_variable = {
+				which = "duel_def" value = 1
+			}
+
+		}
+		if = {
+			limit = {
+				trait = creature_saurus
+			}
+			set_variable = {
+				which = "duel_max_hp" value = 9
+			}
+			set_variable = {
+				which = "duel_att" value = 8
+			}
+			set_variable = {
+				which = "duel_def" value = 6
+			}
+
+		}
+		if = {
+			limit = {
+				trait = creature_black_orc
+			}
+			set_variable = {
+				which = "duel_max_hp" value = 9
+			}
+			set_variable = {
+				which = "duel_att" value = 6
+			}
+			set_variable = {
+				which = "duel_def" value = 8
+			}
+
+		}
+		# BEASTMAN
+		if = {
+			limit = {
+				trait = creature_morghur
+			}
+			set_variable = {
+				which = "duel_def" value = 7
+			}
+			set_variable = {
+				which = "duel_att" value = 8
+			}
+			set_variable = {
+				which = "duel_max_hp" value = 7
+			}
+		}
+		if = {
+			limit = {
+				trait = creature_beastman
+			}
+			set_variable = {
+				which = "duel_def" value = 5
+			}
+			set_variable = {
+				which = "duel_att" value = 6
+			}
+			set_variable = {
+				which = "duel_max_hp" value = 5
+			}
+		}
+		if = {
+			limit = {
+				trait = horns_average
+			}
+			change_variable = {
+				which = "duel_att" value = 2
+			}
+		}
+		if = {
+			limit = {
+				trait = horns_big
+			}
+			change_variable = {
+				which = "duel_att" value = 3
+			}
+		}
+		# TREEKIN
+		if = {
+			limit = {
+				trait = creature_treekin
+			}
+			set_variable = {
+				which = "duel_def" value = 7
+			}
+			set_variable = {
+				which = "duel_att" value = 5
+			}
+			set_variable = {
+				which = "duel_max_hp" value = 7
+			}
+		}
+		# FOREST SPIRIT
+		if = {
+			limit = {
+				trait = creature_forestspirit
+			}
+			set_variable = {
+				which = "duel_def" value = 10
+			}
+			set_variable = {
+				which = "duel_att" value = 8
+			}
+			set_variable = {
+				which = "duel_max_hp" value = 10
+			}
+		}
+		# AVATAR ISHA
+		if = {
+			limit = {
+				trait = avatar_isha
+			}
+			change_variable = {
+				which = "duel_def" value = 7
+			}
+			change_variable = {
+				which = "duel_att" value = 12
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 6
+			}
+		}
+		# FOREST SPIRIT
+		if = {
+			limit = {
+				trait = avatar_kurnous
+			}
+			change_variable = {
+				which = "duel_def" value = 12
+			}
+			change_variable = {
+				which = "duel_att" value = 10
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 12
+			}
+		}
+		# KHORNE CHAMPION
+		if = {
+			limit = {
+				trait = champion_khorne
+			}
+			change_variable = {
+				which = "duel_def" value = 1
+			}
+			change_variable = {
+				which = "duel_att" value = 3
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 2
+			}
+		}
+		# NURGLE CHAMPION
+		if = {
+			limit = {
+				trait = champion_nurgle
+			}
+			change_variable = {
+				which = "duel_def" value = 2
+			}
+			change_variable = {
+				which = "duel_att" value = 1
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 5
+			}
+		}
+		# SLAANESH CHAMPION
+		if = {
+			limit = {
+				trait = champion_slaanesh
+			}
+			change_variable = {
+				which = "duel_att" value = 4
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 1
+			}
+		}
+		# TZEENTCH CHAMPION
+		if = {
+			limit = {
+				trait = champion_tzeentch
+			}
+			change_variable = {
+				which = "duel_att" value = 5
+			}
+		}
+		# KHORNE CHOSEN
+		if = {
+			limit = {
+				trait = chosen_khorne
+			}
+			change_variable = {
+				which = "duel_def" value = 2
+			}
+			change_variable = {
+				which = "duel_att" value = 4
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 3
+			}
+		}
+		# NURGLE CHOSEN
+		if = {
+			limit = {
+				trait = chosen_nurgle
+			}
+			change_variable = {
+				which = "duel_def" value = 3
+			}
+			change_variable = {
+				which = "duel_att" value = 2
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 6
+			}
+		}
+		# SLAANESH CHOSEN
+		if = {
+			limit = {
+				trait = chosen_slaanesh
+			}
+			change_variable = {
+				which = "duel_att" value = 5
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 2
+			}
+		}
+		# TZEENTCH CHOSEN
+		if = {
+			limit = {
+				trait = chosen_tzeentch
+			}
+			change_variable = {
+				which = "duel_att" value = 7
+			}
+		}
+		# Princes get these PLUS the ones after, for being daemons
+		# KHORNE PRINCE
+		if = {
+			limit = {
+				trait = prince_khorne
+			}
+			change_variable = {
+				which = "duel_def" value = 2
+			}
+			change_variable = {
+				which = "duel_att" value = 4
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 3
+			}
+		}
+		# NURGLE PRINCE
+		if = {
+			limit = {
+				trait = prince_nurgle
+			}
+			change_variable = {
+				which = "duel_def" value = 3
+			}
+			change_variable = {
+				which = "duel_att" value = 1
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 6
+			}
+		}
+		# SLAANESH PRINCE
+		if = {
+			limit = {
+				trait = prince_slaanesh
+			}
+			change_variable = {
+				which = "duel_def" value = 2
+			}
+			change_variable = {
+				which = "duel_att" value = 3
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 2
+			}
+		}
+		# TZEENTCH PRINCE
+		if = {
+			limit = {
+				trait = prince_tzeentch
+			}
+			change_variable = {
+				which = "duel_def" value = 1
+			}
+			change_variable = {
+				which = "duel_att" value = 6
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 1
+			}
+		}
+		# KHORNE DEMON
+		if = {
+			limit = {
+				trait = khorne_demon
+			}
+			change_variable = {
+				which = "duel_def" value = 4
+			}
+			change_variable = {
+				which = "duel_att" value = 8
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 6
+			}
+		}
+		# NURGLE DEMON
+		if = {
+			limit = {
+				trait = nurgle_demon
+			}
+			change_variable = {
+				which = "duel_def" value = 6
+			}
+			change_variable = {
+				which = "duel_att" value = 3
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 12
+			}
+		}
+		# SLAANESH DEMON
+		if = {
+			limit = {
+				trait = slaanesh_demon
+			}
+			change_variable = {
+				which = "duel_def" value = 4
+			}
+			change_variable = {
+				which = "duel_att" value = 6
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 4
+			}
+		}
+		# TZEENTCH DEMON
+		if = {
+			limit = {
+				trait = tzeentch_demon
+			}
+			change_variable = {
+				which = "duel_def" value = 3
+			}
+			change_variable = {
+				which = "duel_att" value = 12
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 3
+			}
+		}
+		# KHORNE FAMILIAR
+		if = {
+			limit = {
+				any_friend = {
+					trait = khorne_demon
+				}
+			}
+			change_variable = {
+				which = "duel_att" value = 4
+			}
+		}
+		# NURGLE FAMILIAR
+		if = {
+			limit = {
+				any_friend = {
+					trait = khorne_demon
+				}
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 6
+			}
+		}
+		# HASHUT DEMON
+		if = {
+			limit = {
+				trait = hashut_kdaai
+			}
+			change_variable = {
+				which = "duel_def" value = 5
+			}
+			change_variable = {
+				which = "duel_att" value = 8
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 5
+			}
+		}
+		# HASHUT FAMILIAR
+		if = {
+			limit = {
+				any_friend = {
+					trait = hashut_kdaai
+				}
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 5
+			}
+		}
+		# SETTRA!!
+		if = {
+			limit = {
+				trait = king_settra
+			}
+			change_variable = {
+				which = "duel_def" value = 9
+			}
+			change_variable = {
+				which = "duel_att" value = 6
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 9
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					trait = vampire_lahmian_visible
+					trait = vampire_carstein_visible
+					trait = vampire_blood_visible
+					trait = vampire_strigoi_visible
+					trait = vampire_necrarch_visible
+					trait = vampire_jade_visible
+					trait = vampire_mahtmasi_visible
+				}
+			}
+			change_variable = {
+				which = "duel_def" value = 3
+			}
+			change_variable = {
+				which = "duel_att" value = 3
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 8
+			}
+		}
+		# Witch Hunters - their learning makes them better in combat
+		if = {
+			limit = {
+				AND = {
+					trait = witch_hunter
+					learning = 1
+					NOT = {
+						learning = 5
+					}
+				}
+			}
+			change_variable = {
+				which = "duel_def" value = 1
+			}
+			change_variable = {
+				which = "duel_att" value = 1
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 1
+			}
+		}
+		if = {
+			limit = {
+				AND = {
+					trait = witch_hunter
+					learning = 10
+					NOT = {
+						learning = 15
+					}
+				}
+			}
+			change_variable = {
+				which = "duel_def" value = 2
+			}
+			change_variable = {
+				which = "duel_att" value = 2
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 2
+			}
+		}
+		if = {
+			limit = {
+				AND = {
+					trait = witch_hunter
+					learning = 15
+					NOT = {
+						learning = 20
+					}
+				}
+			}
+			change_variable = {
+				which = "duel_def" value = 3
+			}
+			change_variable = {
+				which = "duel_att" value = 3
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 3
+			}
+		}
+		if = {
+			limit = {
+				AND = {
+					trait = witch_hunter
+					learning = 20
+				}
+			}
+			change_variable = {
+				which = "duel_def" value = 5
+			}
+			change_variable = {
+				which = "duel_att" value = 5
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 5
+			}
+		}
+		# Bretonnian Knights
+		if = {
+			limit = {
+				trait = bretonnian_knight_errant
+			}
+			change_variable = {
+				which = "duel_def" value = 1
+			}
+			change_variable = {
+				which = "duel_att" value = 1
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 1
+			}
+		}
+		if = {
+			limit = {
+				trait = bretonnian_knight
+			}
+			change_variable = {
+				which = "duel_def" value = 2
+			}
+			change_variable = {
+				which = "duel_att" value = 2
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 2
+			}
+		}
+		if = {
+			limit = {
+				trait = grail_knight
+			}
+			change_variable = {
+				which = "duel_def" value = 3
+			}
+			change_variable = {
+				which = "duel_att" value = 3
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 4
+			}
+		}
+		# Dark Elves
+		if = {
+			limit = {
+				trait = malekith
+			}
+			change_variable = {
+				which = "duel_def" value = 3
+			}
+			change_variable = {
+				which = "duel_att" value = 3
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 5
+			}
+		}
+		# High Elves
+		if = {
+			limit = {
+				trait = phoenix_king
+			}
+			change_variable = {
+				which = "duel_def" value = 2
+			}
+			change_variable = {
+				which = "duel_att" value = 2
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 2
+			}
+		}
+		# Khemri
+		if = {
+			limit = {
+				trait = khemri_tomb_king
+			}
+			change_variable = {
+				which = "duel_def" value = 2
+			}
+			change_variable = {
+				which = "duel_att" value = 1
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 4
+			}
+		}
+		if = {
+			limit = {
+				trait = druchi_witch_elf
+			}
+			change_variable = {
+				which = "duel_att" value = 4
+			}
+			change_variable = {
+				which = "duel_def" value = -1
+			}
+		}
+		if = {
+			limit = {
+				trait = druchi_assassin
+			}
+			change_variable = {
+				which = "duel_att" value = 3
+			}
+		}
+		if = {
+			limit = {
+				trait = druchi_black_guard
+			}
+			change_variable = {
+				which = "duel_att" value = 1
+			}
+			change_variable = {
+				which = "duel_def" value = 2
+			}
+		}
+		if = {
+			limit = {
+				trait = druchi_sorceress
+			}
+			change_variable = {
+				which = "duel_att" value = 2
+			}
+			change_variable = {
+				which = "duel_def" value = 2
+			}
+		}
+		# Black Orc
+		if = {
+			limit = {
+				trait = black_orc_trait
+			}
+			change_variable = {
+				which = "duel_def" value = 2
+			}
+			change_variable = {
+				which = "duel_att" value = 4
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 3
+			}
+		}
+		# Congenital traits
+		if = {
+			limit = {
+				trait = strong
+			}
+			change_variable = {
+				which = "duel_att" value = 2
+			}
+
+		}
+		if = {
+			limit = {
+				trait = tough
+			}
+			change_variable = {
+				which = "duel_att" value = 1
+			}
+
+		}
+		if = {
+			limit = {
+				trait = robust
+			}
+			change_variable = {
+				which = "duel_att" value = 1
+			}
+
+		}
+		if = {
+			limit = {
+				trait = weak
+			}
+			change_variable = {
+				which = "duel_att" value = -2
+			}
+
+		}
+		if = {
+			limit = {
+				trait = fragile
+			}
+			change_variable = {
+				which = "duel_att" value = -1
+			}
+
+		}
+		if = {
+			limit = {
+				trait = feeble
+			}
+			change_variable = {
+				which = "duel_att" value = -1
+			}
+
+		}
+		if = {
+			limit = {
+				trait = undernourished
+			}
+			change_variable = {
+				which = "duel_max_hp" value = -2
+			}
+
+		}
+		if = {
+			limit = {
+				trait = fat
+			}
+			change_variable = {
+				which = "duel_def" value = -1
+			}
+
+		}
+		# Hit point bonus basing on hp
+		if = {
+			limit = {
+				NOT = {
+					health = 2.5
+				}
+			}
+			change_variable = {
+				which = "duel_max_hp" value = -1
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					health = 3.5
+				}
+			}
+			change_variable = {
+				which = "duel_max_hp" value = -1
+			}
+		}
+		if = {
+			limit = {
+				health = 4.5
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 1
+			}
+		}
+		if = {
+			limit = {
+				health = 5.5
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 1
+			}
+		}
+		if = {
+			limit = {
+				health = 6.5
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 1
+			}
+		}
+		# Attack, defence, hp bonus basing on martial skill
+		# bonus for all ranges form 0-4
+		if = {
+			limit = {
+				NOT = {
+					martial = 1
+				}
+			}
+			change_variable = {
+				which = "duel_att" value = -1
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					martial = 3
+				}
+			}
+			change_variable = {
+				which = "duel_def" value = -1
+			}
+		}
+		if = {
+			limit = {
+				martial = 7
+			}
+			change_variable = {
+				which = "duel_att" value = 1
+			}
+		}
+		if = {
+			limit = {
+				martial = 9
+			}
+			change_variable = {
+				which = "duel_def" value = 1
+			}
+		}
+		if = {
+			limit = {
+				martial = 11
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 1
+			}
+		}
+		if = {
+			limit = {
+				martial = 13
+			}
+			change_variable = {
+				which = "duel_att" value = 1
+			}
+		}
+		if = {
+			limit = {
+				martial = 15
+			}
+			change_variable = {
+				which = "duel_def" value = 1
+			}
+		}
+		if = {
+			limit = {
+				martial = 17
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 1
+			}
+		}
+		if = {
+			limit = {
+				martial = 19
+			}
+			change_variable = {
+				which = "duel_att" value = 1
+			}
+		}
+		if = {
+			limit = {
+				martial = 21
+			}
+			change_variable = {
+				which = "duel_def" value = 1
+			}
+		}
+		if = {
+			limit = {
+				martial = 23
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 1
+			}
+		}
+		if = {
+			limit = {
+				martial = 25
+			}
+			change_variable = {
+				which = "duel_att" value = 1
+			}
+		}
+		if = {
+			limit = {
+				martial = 27
+			}
+			change_variable = {
+				which = "duel_def" value = 1
+			}
+		}
+		# just to be sure
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = "duel_max_hp" value = 1
+					}
+				}
+			}
+			set_variable = {
+				which = "duel_max_hp" value = 1
+			}
+		}
+		# Ok now here should be traits bonus but i left them for now
+		if = {
+			limit = {
+				trait = wounded
+			}
+			change_variable = {
+				which = "duel_def" value = -1
+			}
+			change_variable = {
+				which = "duel_att" value = -1
+			}
+			set_variable = {
+				which = "duel_max_hp" value = 3
+			}
+		}
+		if = {
+			limit = {
+				trait = maimed
+			}
+			change_variable = {
+				which = "duel_def" value = -2
+			}
+			change_variable = {
+				which = "duel_att" value = -2
+			}
+			set_variable = {
+				which = "duel_max_hp" value = 2
+			}
+		}
+		# Mount Traits
+		if = {
+			limit = {
+				OR = {
+ 					has_artifact = black_dragon_mount
+ 					has_artifact = blue_dragon_mount
+ 					has_artifact = chaos_dragon_mount
+ 					has_artifact = gold_dragon_mount
+ 					has_artifact = green_dragon_mount
+ 					has_artifact = red_dragon_mount
+ 					has_artifact = white_dragon_mount
+				}
+			}
+			change_variable = {
+				which = "duel_def" value = 5
+			}
+			change_variable = {
+				which = "duel_att" value = 5
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 8
+			}
+		}
+		if = {
+			limit = {
+				has_artifact = pegasus_mount
+			}
+			change_variable = {
+				which = "duel_def" value = 2
+			}
+			change_variable = {
+				which = "duel_att" value = 2
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 2
+			}
+		}
+		if = {
+			limit = {
+				has_artifact = nightmare_mount
+			}
+			change_variable = {
+				which = "duel_def" value = 1
+			}
+			change_variable = {
+				which = "duel_att" value = 3
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 2
+			}
+		}
+		if = {
+			limit = {
+				has_artifact = gryphon_mount
+			}
+			change_variable = {
+				which = "duel_def" value = 3
+			}
+			change_variable = {
+				which = "duel_att" value = 3
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 3
+			}
+		}
+		if = {
+			limit = {
+				has_artifact = wyvern_mount
+			}
+			change_variable = {
+				which = "duel_def" value = 2
+			}
+			change_variable = {
+				which = "duel_att" value = 3
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 4
+			}
+		}
+		if = {
+			limit = {
+				has_artifact = great_taurus_mount
+			}
+			change_variable = {
+				which = "duel_def" value = 4
+			}
+			change_variable = {
+				which = "duel_att" value = 4
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 5
+			}
+		}
+		if = {
+			limit = {
+				has_artifact = lamassu_mount
+			}
+			change_variable = {
+				which = "duel_def" value = 3
+			}
+			change_variable = {
+				which = "duel_att" value = 5
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 6
+			}
+		}
+		if = {
+			limit = {
+				has_artifact = abyssal_terror_mount
+			}
+			change_variable = {
+				which = "duel_def" value = 2
+			}
+			change_variable = {
+				which = "duel_att" value = 4
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 3
+			}
+		}
+		# MISC
+ 		if = {
+			limit = {
+				trait = chaos_knight
+			}
+			change_variable = {
+				which = "duel_def" value = 3
+			}
+			change_variable = {
+				which = "duel_att" value = 3
+			}
+			change_variable = {
+				which = "duel_max_hp" value = 4
+			}
+		}
+		# MAGIC ITEMS
+ 		if = {
+			limit = {
+				has_artifact = sword_1
+			}
+			change_variable = {
+				which = "duel_def" value = 1
+			}
+			change_variable = {
+				which = "duel_att" value = 2
+			}
+		}
+ 		if = {
+			limit = {
+				has_artifact = sword_2
+			}
+			change_variable = {
+				which = "duel_def" value = 2
+			}
+			change_variable = {
+				which = "duel_att" value = 3
+			}
+		}
+ 		if = {
+			limit = {
+				has_artifact = sword_3
+			}
+			change_variable = {
+				which = "duel_def" value = 3
+			}
+			change_variable = {
+				which = "duel_att" value = 4
+			}
+		}
+ 		if = {
+			limit = {
+				has_artifact = sword_4
+			}
+			change_variable = {
+				which = "duel_def" value = 4
+			}
+			change_variable = {
+				which = "duel_att" value = 5
+			}
+		}
+ 		if = {
+			limit = {
+				has_artifact = sword_5
+			}
+			change_variable = {
+				which = "duel_def" value = 5
+			}
+			change_variable = {
+				which = "duel_att" value = 6
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					has_artifact = mothers_ruin
+					has_artifact = stone_breaker
+					has_artifact = goblin_bane
+					has_artifact = crow_feeder
+					has_artifact = legbiter
+					has_artifact = brain_wounder
+					has_artifact = troll_cleaver
+					has_artifact = dragon_tooth
+					has_artifact = orc_hewer
+					has_artifact = blood_bringer
+					has_artifact = grudge_settler
+					has_artifact = beast_slayer
+				}
+			}
+			change_variable = {
+				which = "duel_def" value = 3
+			}
+			change_variable = {
+				which = "duel_att" value = 4
+			}
+		}
+		if = {
+			limit = {
+				has_artifact = ghal_maraz
+			}
+			change_variable = {
+				which = "duel_def" value = 3
+			}
+			change_variable = {
+				which = "duel_att" value = 6
+			}
+		}
+ 		if = {
+			limit = {
+				has_artifact = ring_of_invisibility
+			}
+			change_variable = {
+				which = "duel_def" value = 3
+			}
+		}
+ 		if = {
+			limit = {
+				has_artifact = amulet_of_protection_1
+			}
+			change_variable = {
+				which = "duel_def" value = 3
+			}
+		}
+ 		if = {
+			limit = {
+				has_artifact = amulet_of_protection_3
+			}
+			change_variable = {
+				which = "duel_def" value = 5
+			}
+		}
+ 		if = {
+			limit = {
+				has_artifact = amulet_of_protection_5
+			}
+			change_variable = {
+				which = "duel_def" value = 7
+			}
+		}
+		# SJ additions
 		if = {
 			limit = {
 				trait = hammerer
@@ -809,13 +1482,22 @@ character_event = {
 				value = 2
 			}
 		}
+ 		if = {
+			limit = {
+				trait = incapacitated
+			}
+			set_variable = {
+				which = "duel_def" value = 0
+			}
+			set_variable = {
+				which = "duel_att" value = 0
+			}
+			set_variable = {
+				which = "duel_max_hp" value = 0
+			}
 
- 	    if = { limit = { trait = incapacitated }
-           set_variable = { which = "duel_def" value = 0 }
-           set_variable = { which = "duel_att" value = 0 }
-           set_variable = { which = "duel_max_hp" value = 0 }
-	   }  	   
-	   if = {
+		}
+		if = {
 			limit = {
 				trait = dwarf_slayer
 			}
@@ -823,10 +1505,11 @@ character_event = {
 				which = "duel_att"
 				value = 1
 			}
-			change_variable = { which = "duel_def" value = -1 }
+			change_variable = {
+				which = "duel_def" value = -1
+			}
 		}
-	   
-	     if = {
+		if = {
 			limit = {
 				has_character_modifier = dwarf_troll_slayer
 			}
@@ -834,10 +1517,11 @@ character_event = {
 				which = "duel_att"
 				value = 1
 			}
-			change_variable = { which = "duel_def" value = -1 }
+			change_variable = {
+				which = "duel_def" value = -1
+			}
 		}
-	   
-	     if = {
+		if = {
 			limit = {
 				has_character_modifier = dwarf_giant_slayer
 			}
@@ -845,10 +1529,11 @@ character_event = {
 				which = "duel_att"
 				value = 1
 			}
-			change_variable = { which = "duel_def" value = -1 }
+			change_variable = {
+				which = "duel_def" value = -1
+			}
 		}
-		
-		  if = {
+		if = {
 			limit = {
 				has_character_modifier = dwarf_dragon_slayer
 			}
@@ -856,10 +1541,11 @@ character_event = {
 				which = "duel_att"
 				value = 1
 			}
-			change_variable = { which = "duel_def" value = -1 }
+			change_variable = {
+				which = "duel_def" value = -1
+			}
 		}
-		
-		  if = {
+		if = {
 			limit = {
 				has_character_modifier = dwarf_daemon_slayer
 			}
@@ -867,164 +1553,286 @@ character_event = {
 				which = "duel_att"
 				value = 1
 			}
-			change_variable = { which = "duel_def" value = -1 }
+			change_variable = {
+				which = "duel_def" value = -1
+			}
 		}
-		
-		# setting starting hit points 
-        set_variable = { which = "duel_hp" which = "duel_max_hp" }
-        magic_points_setup = yes
-        magic_spells_known = yes
-        magic_xp_counter = yes
-
-      set_variable = { which = "high_magic_fire" value = 0}
-      set_variable = { which = "high_magic_curse" value = 0}
-      set_variable = {which = "channel_count" value = 0 }
-      
-      if = { 
-        limit = {
-          has_instances_of_character_modifier = { modifier = magic_lore_heavens_foresight amount = 1 } 
-        }
-        change_variable = {which = "duel_att" value = "3"}
-        change_variable = { which = "duel_def" value = "3" }
-        remove_character_modifiers = { which = magic_lore_heavens_foresight amount = 1 }
-      }      
-      if = { 
-        limit = {
-          has_character_modifier = z_foresight_curse_battle
-        }
-        set_variable = {which = "duel_hp" value = "1"}
-        remove_character_modifier = z_foresight_curse_battle
-      }
-      if = { 
-        limit = {
-          has_instances_of_character_modifier = { modifier = z_blazing_balde amount = 1 } 
-        }
-        change_variable = {which = "duel_att" value = "2"}
-        remove_character_modifiers = { which = z_blazing_balde amount = 1 }
-      }
-      if = { 
-        limit = {
-          has_instances_of_character_modifier = { modifier = z_blazing_balde amount = 2 }
-        }
-        change_variable = {which = "duel_att" value = "3"}
-        remove_character_modifiers = { which = z_blazing_balde amount = 2 }
-      }
-      if = { 
-        limit = {
-          has_instances_of_character_modifier = { modifier = z_blazing_balde amount = 3 }
-        }
-        change_variable = {which = "duel_att" value = "4"}
-        remove_character_modifiers = { which = z_blazing_balde amount = 3 }
-      }
-      if = { 
-        limit = {
-          has_instances_of_character_modifier = { modifier = z_blazing_balde amount = 4 }
-        }
-        change_variable = {which = "duel_att" value = "5"}
-        remove_character_modifiers = { which = z_blazing_balde amount = 4 }
-      }
-      if = { 
-        limit = {
-          has_instances_of_character_modifier = { modifier = z_blazing_balde amount = 5 }
-        }
-        change_variable = {which = "duel_att" value = "6"}
-        remove_character_modifiers = { which = z_blazing_balde amount = 5 }
-      }
-      if = { 
-        limit = {
-          has_instances_of_character_modifier = { modifier = z_blazing_balde amount = 6 }
-        }
-        change_variable = {which = "duel_att" value = "7"}
-        remove_character_modifiers = { which = z_blazing_balde amount = 6 }
-      }      
-
-      if = { 
-        limit = {
-          has_instances_of_character_modifier = { modifier = z_metal_magic_iron_soul amount = 1 } 
-        }
-        change_variable = {which = "duel_def" value = "2"}
-        remove_character_modifiers = { which = z_metal_magic_iron_soul amount = 1 }
-      }
-      if = { 
-        limit = {
-          has_instances_of_character_modifier = { modifier = z_metal_magic_iron_soul amount = 2 }
-        }
-        change_variable = {which = "duel_def" value = "3"}
-        remove_character_modifiers = { which = z_metal_magic_iron_soul amount = 2 }
-      }
-      if = { 
-        limit = {
-          has_instances_of_character_modifier = { modifier = z_metal_magic_iron_soul amount = 3 }
-        }
-        change_variable = {which = "duel_def" value = "4"}
-        remove_character_modifiers = { which = z_metal_magic_iron_soul amount = 3 }
-      }
-      if = { 
-        limit = {
-          has_instances_of_character_modifier = { modifier = z_metal_magic_iron_soul amount = 4 }
-        }
-        change_variable = {which = "duel_def" value = "5"}
-        remove_character_modifiers = { which = z_metal_magic_iron_soul amount = 4 }
-      }
-      if = { 
-        limit = {
-          has_instances_of_character_modifier = { modifier = z_metal_magic_iron_soul amount = 5 }
-        }
-        change_variable = {which = "duel_def" value = "6"}
-        remove_character_modifiers = { which = z_metal_magic_iron_soul amount = 5 }
-      }
-      if = { 
-        limit = {
-          has_instances_of_character_modifier = { modifier = z_metal_magic_iron_soul amount = 6 }
-        }
-        change_variable = {which = "duel_def" value = "7"}
-        remove_character_modifiers = { which = z_metal_magic_iron_soul amount = 6 }
-      }
-
-      if = { 
-        limit = {
-          has_instances_of_character_modifier = { modifier = z_high_magic_martial_boost amount = 1 } 
-        }
-        change_variable = {which = "duel_def" value = "2"}
-        change_variable = {which = "duel_att" value = "2"}
-      }
-      if = { 
-        limit = {
-          has_instances_of_character_modifier = { modifier = z_high_magic_martial_boost amount = 2 }
-        }
-        change_variable = {which = "duel_def" value = "2"}
-        change_variable = {which = "duel_att" value = "2"}        
-      }
-      if = { 
-        limit = {
-          has_instances_of_character_modifier = { modifier = z_high_magic_martial_boost amount = 3 }
-        }
-        change_variable = {which = "duel_def" value = "2"}
-        change_variable = {which = "duel_att" value = "2"}        
-      }
-      if = { 
-        limit = {
-          has_instances_of_character_modifier = { modifier = z_high_magic_martial_boost amount = 4 }
-        }
-        change_variable = {which = "duel_def" value = "2"}
-        change_variable = {which = "duel_att" value = "2"}        
-      }
-      if = { 
-        limit = {
-          has_instances_of_character_modifier = { modifier = z_high_magic_martial_boost amount = 5 }
-        }
-        change_variable = {which = "duel_def" value = "2"}
-        change_variable = {which = "duel_att" value = "2"}        
-      }
-      if = { 
-        limit = {
-          has_instances_of_character_modifier = { modifier = z_high_magic_martial_boost amount = 6 }
-        }
-        change_variable = {which = "duel_def" value = "2"}
-        change_variable = {which = "duel_att" value = "2"}        
-      }         
-
-       ################## MAGIC ################################
-       # read willpower and set magic points
-    }
+		# setting starting hit points
+		set_variable = {
+			which = "duel_hp" which = "duel_max_hp"
+		}
+		magic_points_setup = yes
+		magic_spells_known = yes
+		magic_xp_counter = yes
+		set_variable = {
+			which = "high_magic_fire" value = 0
+		}
+		set_variable = {
+			which = "high_magic_curse" value = 0
+		}
+		set_variable = {
+			which = "channel_count" value = 0
+		}
+		if = {
+			limit = {
+				has_instances_of_character_modifier = {
+					modifier = magic_lore_heavens_foresight amount = 1
+				}
+			}
+			change_variable = {
+				which = "duel_att" value = "3"
+			}
+			change_variable = {
+				which = "duel_def" value = "3"
+			}
+			remove_character_modifiers = {
+				which = magic_lore_heavens_foresight amount = 1
+			}
+		}
+		if = {
+			limit = {
+				has_character_modifier = z_foresight_curse_battle
+			}
+			set_variable = {
+				which = "duel_hp" value = "1"
+			}
+			remove_character_modifier = z_foresight_curse_battle
+		}
+		if = {
+			limit = {
+				has_instances_of_character_modifier = {
+					modifier = z_blazing_balde amount = 1
+				}
+			}
+			change_variable = {
+				which = "duel_att" value = "2"
+			}
+			remove_character_modifiers = {
+				which = z_blazing_balde amount = 1
+			}
+		}
+		if = {
+			limit = {
+				has_instances_of_character_modifier = {
+					modifier = z_blazing_balde amount = 2
+				}
+			}
+			change_variable = {
+				which = "duel_att" value = "3"
+			}
+			remove_character_modifiers = {
+				which = z_blazing_balde amount = 2
+			}
+		}
+		if = {
+			limit = {
+				has_instances_of_character_modifier = {
+					modifier = z_blazing_balde amount = 3
+				}
+			}
+			change_variable = {
+				which = "duel_att" value = "4"
+			}
+			remove_character_modifiers = {
+				which = z_blazing_balde amount = 3
+			}
+		}
+		if = {
+			limit = {
+				has_instances_of_character_modifier = {
+					modifier = z_blazing_balde amount = 4
+				}
+			}
+			change_variable = {
+				which = "duel_att" value = "5"
+			}
+			remove_character_modifiers = {
+				which = z_blazing_balde amount = 4
+			}
+		}
+		if = {
+			limit = {
+				has_instances_of_character_modifier = {
+					modifier = z_blazing_balde amount = 5
+				}
+			}
+			change_variable = {
+				which = "duel_att" value = "6"
+			}
+			remove_character_modifiers = {
+				which = z_blazing_balde amount = 5
+			}
+		}
+		if = {
+			limit = {
+				has_instances_of_character_modifier = {
+					modifier = z_blazing_balde amount = 6
+				}
+			}
+			change_variable = {
+				which = "duel_att" value = "7"
+			}
+			remove_character_modifiers = {
+				which = z_blazing_balde amount = 6
+			}
+		}
+		if = {
+			limit = {
+				has_instances_of_character_modifier = {
+					modifier = z_metal_magic_iron_soul amount = 1
+				}
+			}
+			change_variable = {
+				which = "duel_def" value = "2"
+			}
+			remove_character_modifiers = {
+				which = z_metal_magic_iron_soul amount = 1
+			}
+		}
+		if = {
+			limit = {
+				has_instances_of_character_modifier = {
+					modifier = z_metal_magic_iron_soul amount = 2
+				}
+			}
+			change_variable = {
+				which = "duel_def" value = "3"
+			}
+			remove_character_modifiers = {
+				which = z_metal_magic_iron_soul amount = 2
+			}
+		}
+		if = {
+			limit = {
+				has_instances_of_character_modifier = {
+					modifier = z_metal_magic_iron_soul amount = 3
+				}
+			}
+			change_variable = {
+				which = "duel_def" value = "4"
+			}
+			remove_character_modifiers = {
+				which = z_metal_magic_iron_soul amount = 3
+			}
+		}
+		if = {
+			limit = {
+				has_instances_of_character_modifier = {
+					modifier = z_metal_magic_iron_soul amount = 4
+				}
+			}
+			change_variable = {
+				which = "duel_def" value = "5"
+			}
+			remove_character_modifiers = {
+				which = z_metal_magic_iron_soul amount = 4
+			}
+		}
+		if = {
+			limit = {
+				has_instances_of_character_modifier = {
+					modifier = z_metal_magic_iron_soul amount = 5
+				}
+			}
+			change_variable = {
+				which = "duel_def" value = "6"
+			}
+			remove_character_modifiers = {
+				which = z_metal_magic_iron_soul amount = 5
+			}
+		}
+		if = {
+			limit = {
+				has_instances_of_character_modifier = {
+					modifier = z_metal_magic_iron_soul amount = 6
+				}
+			}
+			change_variable = {
+				which = "duel_def" value = "7"
+			}
+			remove_character_modifiers = {
+				which = z_metal_magic_iron_soul amount = 6
+			}
+		}
+		if = {
+			limit = {
+				has_instances_of_character_modifier = {
+					modifier = z_high_magic_martial_boost amount = 1
+				}
+			}
+			change_variable = {
+				which = "duel_def" value = "2"
+			}
+			change_variable = {
+				which = "duel_att" value = "2"
+			}
+		}
+		if = {
+			limit = {
+				has_instances_of_character_modifier = {
+					modifier = z_high_magic_martial_boost amount = 2
+				}
+			}
+			change_variable = {
+				which = "duel_def" value = "2"
+			}
+			change_variable = {
+				which = "duel_att" value = "2"
+			}
+		}
+		if = {
+			limit = {
+				has_instances_of_character_modifier = {
+					modifier = z_high_magic_martial_boost amount = 3
+				}
+			}
+			change_variable = {
+				which = "duel_def" value = "2"
+			}
+			change_variable = {
+				which = "duel_att" value = "2"
+			}
+		}
+		if = {
+			limit = {
+				has_instances_of_character_modifier = {
+					modifier = z_high_magic_martial_boost amount = 4
+				}
+			}
+			change_variable = {
+				which = "duel_def" value = "2"
+			}
+			change_variable = {
+				which = "duel_att" value = "2"
+			}
+		}
+		if = {
+			limit = {
+				has_instances_of_character_modifier = {
+					modifier = z_high_magic_martial_boost amount = 5
+				}
+			}
+			change_variable = {
+				which = "duel_def" value = "2"
+			}
+			change_variable = {
+				which = "duel_att" value = "2"
+			}
+		}
+		if = {
+			limit = {
+				has_instances_of_character_modifier = {
+					modifier = z_high_magic_martial_boost amount = 6
+				}
+			}
+			change_variable = {
+				which = "duel_def" value = "2"
+			}
+			change_variable = {
+				which = "duel_att" value = "2"
+			}
+		}
+		# MAGIC
+		# read willpower and set magic points
+	}
 }

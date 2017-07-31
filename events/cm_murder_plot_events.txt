@@ -1,19 +1,13 @@
-###########################################
-#                                         #
-# New Plot Events - characters in hiding  #
-#                                         #
-# ID CM.6000-CM.6999                      #
-#                                         #
-###########################################
+
+
+# New Plot Events - characters in hiding
+
+# ID CM.6000-CM.6999
 
 # Written by Tobias Bodlund
-
 namespace = CM
 
-###########################################
-# Hiding notifications                    #
-###########################################
-
+# Hiding notifications
 
 # Notify that character has gone into hiding
 character_event = {
@@ -21,35 +15,70 @@ character_event = {
 	desc = EVTDESC_CM_6000
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-	
 	is_triggered_only = yes
-	
 	ai = no
-	
+
 	option = {
 		name = EVTOPTA_CM_6000
 		trigger = {
-			NOT = { FROM = { is_plot_target_of = ROOT } }
-			NOT = {	FROM = { any_known_plotter = { any_plot_backer = { character = ROOT }	} }	}
-			NOT = { is_rival = FROM }
+			NOT = {
+				FROM = {
+					is_plot_target_of = ROOT
+				}
+			}
+			NOT = {
+				FROM = {
+					any_known_plotter = {
+						any_plot_backer = {
+							character = ROOT
+						}
+					}
+				}
+			}
+			NOT = {
+				is_rival = FROM
+			}
 			OR = {
-				any_spouse = { character = FROM }
-				father = { character = FROM }
-				mother = { character = FROM }
+				any_spouse = {
+					character = FROM
+				}
+				father = {
+					character = FROM
+				}
+				mother = {
+					character = FROM
+				}
 			}
 		}
-		tooltip = { FROM = { add_trait = in_hiding } }
+		tooltip = {
+			FROM = {
+				add_trait = in_hiding
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTB_CM_6000
 		trigger = {
 			OR = {
-				FROM = { is_plot_target_of = ROOT }
-				FROM = { any_known_plotter = { any_plot_backer = { character = ROOT }	} }
+				FROM = {
+					is_plot_target_of = ROOT
+				}
+				FROM = {
+					any_known_plotter = {
+						any_plot_backer = {
+							character = ROOT
+						}
+					}
+				}
 				is_rival = FROM
 			}
 		}
-		tooltip = { FROM = { add_trait = in_hiding } }
+		tooltip = {
+			FROM = {
+				add_trait = in_hiding
+			}
+		}
 	}
 }
 
@@ -59,35 +88,70 @@ character_event = {
 	desc = EVTDESC_CM_6001
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-	
 	is_triggered_only = yes
-	
 	ai = no
-	
+
 	option = {
 		name = EVTOPTA_CM_6001
 		trigger = {
-			NOT = { FROM = { is_plot_target_of = ROOT } }
-			NOT = {	FROM = { any_known_plotter = { any_plot_backer = { character = ROOT }	} }	}
-			NOT = { is_rival = FROM }
+			NOT = {
+				FROM = {
+					is_plot_target_of = ROOT
+				}
+			}
+			NOT = {
+				FROM = {
+					any_known_plotter = {
+						any_plot_backer = {
+							character = ROOT
+						}
+					}
+				}
+			}
+			NOT = {
+				is_rival = FROM
+			}
 			OR = {
-				any_spouse = { character = FROM }
-				father = { character = FROM }
-				mother = { character = FROM }
+				any_spouse = {
+					character = FROM
+				}
+				father = {
+					character = FROM
+				}
+				mother = {
+					character = FROM
+				}
 			}
 		}
-		tooltip = { FROM = { remove_trait = in_hiding } }
+		tooltip = {
+			FROM = {
+				remove_trait = in_hiding
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTB_CM_6001
 		trigger = {
 			OR = {
-				FROM = { is_plot_target_of = ROOT }
-				FROM = { any_known_plotter = { any_plot_backer = { character = ROOT }	} }
+				FROM = {
+					is_plot_target_of = ROOT
+				}
+				FROM = {
+					any_known_plotter = {
+						any_plot_backer = {
+							character = ROOT
+						}
+					}
+				}
 				is_rival = FROM
 			}
 		}
-		tooltip = { FROM = { remove_trait = in_hiding } }
+		tooltip = {
+			FROM = {
+				remove_trait = in_hiding
+			}
+		}
 	}
 }
 
@@ -97,31 +161,70 @@ character_event = {
 	desc = EVTDESC_CM_6002
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-	
 	is_triggered_only = yes
-	
 	ai = no
-	
+
 	option = {
 		name = EVTOPTA_CM_6002
 		trigger = {
-			NOT = { FROM = { is_plot_target_of = ROOT } }
-			NOT = {	FROM = { any_known_plotter = { any_plot_backer = { character = ROOT }	} }	}
-			NOT = { FROM = { is_rival = ROOT } }
-			FROM = { any_child  = { character = ROOT } }
+			NOT = {
+				FROM = {
+					is_plot_target_of = ROOT
+				}
+			}
+			NOT = {
+				FROM = {
+					any_known_plotter = {
+						any_plot_backer = {
+							character = ROOT
+						}
+					}
+				}
+			}
+			NOT = {
+				FROM = {
+					is_rival = ROOT
+				}
+			}
+			FROM = {
+				any_child = {
+					character = ROOT
+				}
+			}
 		}
-		tooltip = { FROM = { add_trait = in_hiding } }
+		tooltip = {
+			FROM = {
+				add_trait = in_hiding
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTB_CM_6002
 		trigger = {
 			OR = {
-				FROM = { is_plot_target_of = ROOT }
-				FROM = { any_known_plotter = { any_plot_backer = { character = ROOT } } }
-				FROM = { spouse = { is_rival = ROOT } }
+				FROM = {
+					is_plot_target_of = ROOT
+				}
+				FROM = {
+					any_known_plotter = {
+						any_plot_backer = {
+							character = ROOT
+						}
+					}
+				}
+				FROM = {
+					spouse = {
+						is_rival = ROOT
+					}
+				}
 			}
 		}
-		tooltip = { FROM = { add_trait = in_hiding } }
+		tooltip = {
+			FROM = {
+				add_trait = in_hiding
+			}
+		}
 	}
 }
 
@@ -131,31 +234,68 @@ character_event = {
 	desc = EVTDESC_CM_6003
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-	
 	is_triggered_only = yes
-	
 	ai = no
-	
+
 	option = {
 		name = EVTOPTA_CM_6003
 		trigger = {
-			NOT = { FROM = { is_plot_target_of = ROOT } }
-			NOT = {	FROM = { any_known_plotter = { any_plot_backer = { character = ROOT }	} }	}
-			NOT = { FROM = { is_rival = ROOT } }
-			FROM = { any_child  = { character = ROOT } }
+			NOT = {
+				FROM = {
+					is_plot_target_of = ROOT
+				}
+			}
+			NOT = {
+				FROM = {
+					any_known_plotter = {
+						any_plot_backer = {
+							character = ROOT
+						}
+					}
+				}
+			}
+			NOT = {
+				FROM = {
+					is_rival = ROOT
+				}
+			}
+			FROM = {
+				any_child = {
+					character = ROOT
+				}
+			}
 		}
-		tooltip = { FROM = { remove_trait = in_hiding } }
+		tooltip = {
+			FROM = {
+				remove_trait = in_hiding
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTB_CM_6003
 		trigger = {
 			OR = {
-				FROM = { is_plot_target_of = ROOT }
-				FROM = { any_known_plotter = { any_plot_backer = { character = ROOT } } }
-				FROM = { is_rival = ROOT }
+				FROM = {
+					is_plot_target_of = ROOT
+				}
+				FROM = {
+					any_known_plotter = {
+						any_plot_backer = {
+							character = ROOT
+						}
+					}
+				}
+				FROM = {
+					is_rival = ROOT
+				}
 			}
 		}
-		tooltip = { FROM = { remove_trait = in_hiding } }
+		tooltip = {
+			FROM = {
+				remove_trait = in_hiding
+			}
+		}
 	}
 }
 
@@ -165,31 +305,70 @@ character_event = {
 	desc = EVTDESC_CM_6004
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-	
 	is_triggered_only = yes
-	
 	ai = no
-	
+
 	option = {
 		name = EVTOPTA_CM_6004
 		trigger = {
-			NOT = { FROMFROM = { is_plot_target_of = ROOT } }
-			NOT = {	FROMFROM = { any_known_plotter = { any_plot_backer = { character = ROOT }	} }	}
-			NOT = { FROMFROM = { is_rival = ROOT } }
-			FROMFROM = { any_child  = { character = ROOT } }
+			NOT = {
+				FROMFROM = {
+					is_plot_target_of = ROOT
+				}
+			}
+			NOT = {
+				FROMFROM = {
+					any_known_plotter = {
+						any_plot_backer = {
+							character = ROOT
+						}
+					}
+				}
+			}
+			NOT = {
+				FROMFROM = {
+					is_rival = ROOT
+				}
+			}
+			FROMFROM = {
+				any_child = {
+					character = ROOT
+				}
+			}
 		}
-		tooltip = { FROMFROM = { add_trait = in_hiding } }
+		tooltip = {
+			FROMFROM = {
+				add_trait = in_hiding
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTB_CM_6004
 		trigger = {
 			OR = {
-				FROM = { is_plot_target_of = ROOT }
-				FROM = { any_known_plotter = { any_plot_backer = { character = ROOT } } }
-				FROM = { spouse = { is_rival = ROOT } }
+				FROM = {
+					is_plot_target_of = ROOT
+				}
+				FROM = {
+					any_known_plotter = {
+						any_plot_backer = {
+							character = ROOT
+						}
+					}
+				}
+				FROM = {
+					spouse = {
+						is_rival = ROOT
+					}
+				}
 			}
 		}
-		tooltip = { FROM = { add_trait = in_hiding } }
+		tooltip = {
+			FROM = {
+				add_trait = in_hiding
+			}
+		}
 	}
 }
 
@@ -199,43 +378,79 @@ character_event = {
 	desc = EVTDESC_CM_6005
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-	
 	is_triggered_only = yes
-	
 	ai = no
-	
+
 	option = {
 		name = EVTOPTA_CM_6005
 		trigger = {
-			NOT = { FROM = { is_plot_target_of = ROOT } }
-			NOT = {	FROM = { any_known_plotter = { any_plot_backer = { character = ROOT }	} }	}
-			NOT = { FROM = { is_rival = ROOT } }
-			FROM = { any_child  = { character = ROOT } }
+			NOT = {
+				FROM = {
+					is_plot_target_of = ROOT
+				}
+			}
+			NOT = {
+				FROM = {
+					any_known_plotter = {
+						any_plot_backer = {
+							character = ROOT
+						}
+					}
+				}
+			}
+			NOT = {
+				FROM = {
+					is_rival = ROOT
+				}
+			}
+			FROM = {
+				any_child = {
+					character = ROOT
+				}
+			}
 		}
-		tooltip = { FROM = { remove_trait = in_hiding } }
+		tooltip = {
+			FROM = {
+				remove_trait = in_hiding
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTB_CM_6005
 		trigger = {
 			OR = {
-				FROM = { is_plot_target_of = ROOT }
-				FROM = { any_known_plotter = { any_plot_backer = { character = ROOT } } }
-				FROM = { is_rival = ROOT }
+				FROM = {
+					is_plot_target_of = ROOT
+				}
+				FROM = {
+					any_known_plotter = {
+						any_plot_backer = {
+							character = ROOT
+						}
+					}
+				}
+				FROM = {
+					is_rival = ROOT
+				}
 			}
 		}
-		tooltip = { FROM = { remove_trait = in_hiding } }
+		tooltip = {
+			FROM = {
+				remove_trait = in_hiding
+			}
+		}
 	}
 }
 
 # To trigger notification events when a player comes out of hiding through event, for example when accepting a feast or tournament invitation
 character_event = {
 	id = CM.6400
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
-	immediate = {                    # Notify player and close family and plotters
+
+	immediate = {
+		# Notify player and close family and plotters
 		any_plotter = {
 			target = ROOT
 			limit = {
@@ -244,68 +459,92 @@ character_event = {
 					has_plot = plot_kill_spouse
 				}
 			}
-			character_event = { id = CM.6001 }
+			character_event = {
+				id = CM.6001
+			}
 		}
 		any_spouse = {
 			limit = {
 				ROOT = {
-					NOT = { is_plot_target_of = PREV }
+					NOT = {
+						is_plot_target_of = PREV
+					}
 				}
 			}
-			character_event = { id = CM.6001 }
+			character_event = {
+				id = CM.6001
+			}
 		}
 		any_child = {
 			limit = {
 				ROOT = {
-					NOT = { is_plot_target_of = PREV }
+					NOT = {
+						is_plot_target_of = PREV
+					}
 				}
 			}
-			character_event = { id = CM.6001 }
+			character_event = {
+				id = CM.6001
+			}
 		}
 		any_lover = {
 			limit = {
 				ROOT = {
-					NOT = { is_plot_target_of = PREV }
+					NOT = {
+						is_plot_target_of = PREV
+					}
 				}
-				NOT = { spouse = { character = ROOT } }
+				NOT = {
+					spouse = {
+						character = ROOT
+					}
+				}
 			}
-			character_event = { id = CM.6001 }
+			character_event = {
+				id = CM.6001
+			}
 		}
 		any_sibling = {
 			limit = {
 				ROOT = {
-					NOT = { is_plot_target_of = PREV }
+					NOT = {
+						is_plot_target_of = PREV
+					}
 				}
 			}
-			character_event = { id = CM.6001 }
+			character_event = {
+				id = CM.6001
+			}
 		}
 		any_rival = {
 			limit = {
 				ROOT = {
-					NOT = { is_plot_target_of = PREV }
+					NOT = {
+						is_plot_target_of = PREV
+					}
 				}
 			}
-			character_event = { id = CM.6001 }
+			character_event = {
+				id = CM.6001
+			}
 		}
 	}
 }
 
-
-###########################################
-# Negative effects of hiding              #
-###########################################
+# Negative effects of hiding
 
 # Goes insane
 character_event = {
 	id = CM.6100
 	desc = EVTDESC_CM_6100
 	picture = GFX_evt_lunatic
-	
 	is_triggered_only = yes
 
 	trigger = {
 		trait = in_hiding
-		NOT = { trait = lunatic }
+		NOT = {
+			trait = lunatic
+		}
 		OR = {
 			trait = stressed
 			trait = depressed
@@ -313,26 +552,42 @@ character_event = {
 		}
 		age = 10
 	}
-	
+
 	option = {
 		name = EVTOPTA_CM_6100
 		add_trait = lunatic
 		hidden_tooltip = {
 			spouse = {
-				character_event = { id = CM.6101 }
+				character_event = {
+					id = CM.6101
+				}
 			}
 			any_child = {
-				character_event = { id = CM.6101 }
+				character_event = {
+					id = CM.6101
+				}
 			}
 			father = {
-				character_event = { id = CM.6101 }
+				character_event = {
+					id = CM.6101
+				}
 			}
 			mother = {
-				character_event = { id = CM.6101 }
+				character_event = {
+					id = CM.6101
+				}
 			}
 			any_lover = {
-				limit = { NOT = { spouse = { character = ROOT } } }
-				character_event = { id = CM.6101 }
+				limit = {
+					NOT = {
+						spouse = {
+							character = ROOT
+						}
+					}
+				}
+				character_event = {
+					id = CM.6101
+				}
 			}
 		}
 	}
@@ -343,15 +598,17 @@ character_event = {
 	id = CM.6101
 	desc = EVTDESC_CM_6101
 	picture = GFX_evt_lunatic
-	
 	is_triggered_only = yes
 
 	option = {
 		name = EVTOPTA_CM_6101
 		trigger = {
-			NOT = { trait = lunatic }
+			NOT = {
+				trait = lunatic
+			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_CM_6101
 		trigger = {
@@ -365,15 +622,16 @@ character_event = {
 	id = CM.6102
 	desc = EVTDESC_CM_6102
 	picture = GFX_evt_shadowy_cabal
-	
 	is_triggered_only = yes
 
 	trigger = {
 		trait = in_hiding
-		NOT = { trait = paranoid }
+		NOT = {
+			trait = paranoid
+		}
 		age = 10
 	}
-	
+
 	option = {
 		name = EVTOPTA_CM_6102
 		add_trait = paranoid
@@ -385,28 +643,35 @@ character_event = {
 	id = CM.6104
 	desc = EVTDESC_CM_6104
 	picture = GFX_evt_recovery
-	
 	is_triggered_only = yes
 
 	trigger = {
 		trait = in_hiding
-		NOT = { trait = celibate }
+		NOT = {
+			trait = celibate
+		}
 		age = 16
 	}
-	
+
 	option = {
 		name = EVTOPTA_CM_6104
 		add_trait = celibate
 		any_spouse = {
 			limit = {
-				NOT = { trait = celibate }
+				NOT = {
+					trait = celibate
+				}
 			}
 			opinion = {
 				who = ROOT
 				modifier = love_scorned
 				years = 2
 			}
-			hidden_tooltip = { character_event = { id = CM.6105 } }
+			hidden_tooltip = {
+				character_event = {
+					id = CM.6105
+				}
+			}
 		}
 		any_spouse = {
 			limit = {
@@ -417,23 +682,41 @@ character_event = {
 				modifier = opinion_relieved
 				years = 2
 			}
-			hidden_tooltip = { character_event = { id = CM.6105 } }
+			hidden_tooltip = {
+				character_event = {
+					id = CM.6105
+				}
+			}
 		}
 		any_lover = {
 			limit = {
-				NOT = { spouse = { character = ROOT } }
-				NOT = { trait = celibate }
+				NOT = {
+					spouse = {
+						character = ROOT
+					}
+				}
+				NOT = {
+					trait = celibate
+				}
 			}
 			opinion = {
 				who = ROOT
 				modifier = love_scorned
 				years = 2
 			}
-			hidden_tooltip = { character_event = { id = CM.6105 } }
+			hidden_tooltip = {
+				character_event = {
+					id = CM.6105
+				}
+			}
 		}
 		any_lover = {
 			limit = {
-				NOT = { spouse = { character = ROOT } }
+				NOT = {
+					spouse = {
+						character = ROOT
+					}
+				}
 				trait = celibate
 			}
 			opinion = {
@@ -441,7 +724,11 @@ character_event = {
 				modifier = opinion_relieved
 				years = 2
 			}
-			hidden_tooltip = { character_event = { id = CM.6105 } }
+			hidden_tooltip = {
+				character_event = {
+					id = CM.6105
+				}
+			}
 		}
 	}
 }
@@ -451,16 +738,19 @@ character_event = {
 	id = CM.6105
 	desc = EVTDESC_CM_6105
 	picture = GFX_evt_recovery
-	
 	is_triggered_only = yes
 
 	option = {
-		name = EVTOPTA_CM_6105  # Argh!
+		name = EVTOPTA_CM_6105 # Argh!
 		trigger = {
-			NOT = { trait = celibate }
+			NOT = {
+				trait = celibate
+			}
 		}
 		tooltip = {
-			FROM = { add_trait = celibate }
+			FROM = {
+				add_trait = celibate
+			}
 			opinion = {
 				who = FROM
 				modifier = love_scorned
@@ -468,13 +758,16 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = EVTOPTB_CM_6105  # Finally she/he leaves me alone!
+		name = EVTOPTB_CM_6105 # Finally she/he leaves me alone!
 		trigger = {
 			trait = celibate
 		}
 		tooltip = {
-			FROM = { add_trait = celibate }
+			FROM = {
+				add_trait = celibate
+			}
 			opinion = {
 				who = FROM
 				modifier = opinion_relieved
@@ -489,22 +782,29 @@ character_event = {
 	id = CM.6106
 	desc = EVTDESC_CM_6106
 	picture = GFX_evt_bishop
-	
 	is_triggered_only = yes
 
 	trigger = {
 		trait = in_hiding
-		NOT = { religion = buddhist }
-		NOT = { trait = zealous }
-		NOT = { trait = brave }
+		NOT = {
+			religion = buddhist
+		}
+		NOT = {
+			trait = zealous
+		}
+		NOT = {
+			trait = brave
+		}
 		OR = {
-			NOT = { trait = cynical }
+			NOT = {
+				trait = cynical
+			}
 			trait = stressed
 			trait = depressed
 		}
 		age = 10
 	}
-	
+
 	option = {
 		name = EVTOPTA_CM_6106
 		add_trait = zealous
@@ -516,15 +816,16 @@ character_event = {
 	id = CM.6108
 	desc = EVTDESC_CM_6108
 	picture = GFX_evt_bad_news
-	
 	is_triggered_only = yes
 
 	trigger = {
 		trait = in_hiding
-		NOT = { trait = depressed }
+		NOT = {
+			trait = depressed
+		}
 		age = 10
 	}
-	
+
 	option = {
 		name = EVTOPTA_CM_6108
 		add_trait = depressed
@@ -536,27 +837,34 @@ character_event = {
 	id = CM.6110
 	desc = EVTDESC_CM_6110
 	picture = GFX_evt_illness
-	
 	is_triggered_only = yes
 
 	trigger = {
 		trait = in_hiding
-		NOT = { trait = pneumonic }
+		NOT = {
+			trait = pneumonic
+		}
 		NOR = {
 			has_character_flag = disease_not_serious
 			has_character_flag = developing_disease
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_CM_6110
 		if = {
-			limit = { trait = ill }
+			limit = {
+				trait = ill
+			}
 			add_trait = pneumonic
-			hidden_tooltip = { remove_trait = ill }
+			hidden_tooltip = {
+				remove_trait = ill
+			}
 		}
 		if = {
-			limit = { is_ill = no }
+			limit = {
+				is_ill = no
+			}
 			if = {
 				limit = {
 					NOT = {
@@ -580,15 +888,15 @@ character_event = {
 	id = CM.6112
 	desc = EVTDESC_CM_6112
 	picture = GFX_evt_pope_feast
-	
 	is_triggered_only = yes
 
 	trigger = {
 		trait = in_hiding
-		NOT = { trait = gluttonous }
+		NOT = {
+			trait = gluttonous
+		}
 		age = 6
 	}
-	
 	weight_multiplier = {
 		days = 1
 		modifier = {
@@ -596,7 +904,7 @@ character_event = {
 			trait = temperate
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_CM_6112
 		add_trait = gluttonous
@@ -608,15 +916,16 @@ character_event = {
 	id = CM.6114
 	desc = EVTDESC_CM_6114
 	picture = GFX_evt_recovery
-	
 	is_triggered_only = yes
 
 	trigger = {
 		trait = in_hiding
-		NOT = { trait = slothful }
+		NOT = {
+			trait = slothful
+		}
 		age = 10
 	}
-	
+
 	option = {
 		name = EVTOPTA_CM_6114
 		add_trait = slothful
@@ -628,15 +937,16 @@ character_event = {
 	id = CM.6116
 	desc = EVTDESC_CM_6116
 	picture = GFX_evt_recovery
-	
 	is_triggered_only = yes
 
 	trigger = {
 		trait = in_hiding
-		NOT = { trait = shy }
+		NOT = {
+			trait = shy
+		}
 		age = 8
 	}
-	
+
 	option = {
 		name = EVTOPTA_CM_6116
 		add_trait = shy
@@ -648,16 +958,19 @@ character_event = {
 	id = CM.6118
 	desc = EVTDESC_CM_6118
 	picture = GFX_evt_recovery
-	
 	is_triggered_only = yes
 
 	trigger = {
 		trait = in_hiding
-		NOT = { trait = craven }
-		NOT = { trait = berserker }
+		NOT = {
+			trait = craven
+		}
+		NOT = {
+			trait = berserker
+		}
 		age = 12
 	}
-	
+
 	option = {
 		name = EVTOPTA_CM_6118
 		add_trait = craven
@@ -669,15 +982,16 @@ character_event = {
 	id = CM.6120
 	desc = EVTDESC_CM_6120
 	picture = GFX_evt_recovery
-	
 	is_triggered_only = yes
 
 	trigger = {
 		trait = in_hiding
-		NOT = { trait = content }
+		NOT = {
+			trait = content
+		}
 		age = 12
 	}
-	
+
 	option = {
 		name = EVTOPTA_CM_6120
 		add_trait = content
@@ -689,17 +1003,17 @@ character_event = {
 	id = CM.6122
 	desc = EVTDESC_CM_6122
 	picture = GFX_evt_brothel
-	
 	lacks_dlc = "Way of Life"
-	
 	is_triggered_only = yes
 
 	trigger = {
 		trait = in_hiding
-		NOT = { lifestyle_traits = 1 }
+		NOT = {
+			lifestyle_traits = 1
+		}
 		age = 14
 	}
-	
+
 	option = {
 		name = EVTOPTA_CM_6122
 		add_trait = hedonist
@@ -711,17 +1025,17 @@ character_event = {
 	id = CM.6124
 	desc = EVTDESC_CM_6124
 	picture = GFX_evt_book_carolingian_script
-	
 	lacks_dlc = "Way of Life"
-	
 	min_age = 10
 	is_triggered_only = yes
 
 	trigger = {
 		trait = in_hiding
-		NOT = { lifestyle_traits = 1 }
+		NOT = {
+			lifestyle_traits = 1
+		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_CM_6124
 		add_trait = scholar
@@ -733,17 +1047,17 @@ character_event = {
 	id = CM.6126
 	desc = EVTDESC_CM_6126
 	picture = GFX_evt_library
-	
 	min_age = 13
 	lacks_dlc = "Way of Life"
-	
 	is_triggered_only = yes
 
 	trigger = {
 		trait = in_hiding
-		NOT = { lifestyle_traits = 1 }
+		NOT = {
+			lifestyle_traits = 1
+		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_CM_6126
 		add_trait = mystic
@@ -755,15 +1069,16 @@ character_event = {
 	id = CM.6128
 	desc = EVTDESC_CM_6128
 	picture = GFX_evt_monk
-	
 	is_triggered_only = yes
 
 	trigger = {
 		trait = in_hiding
-		NOT = { trait = poet }
+		NOT = {
+			trait = poet
+		}
 		age = 13
 	}
-	
+
 	option = {
 		name = EVTOPTA_CM_6128
 		add_trait = poet
@@ -775,7 +1090,6 @@ character_event = {
 	id = CM.6130
 	desc = EVTDESC_CM_6130
 	picture = GFX_evt_lunatic
-	
 	is_triggered_only = yes
 
 	trigger = {
@@ -784,10 +1098,12 @@ character_event = {
 			trait = zealous
 			trait = lunatic
 		}
-		NOT = { trait = possessed }
+		NOT = {
+			trait = possessed
+		}
 		age = 13
 	}
-	
+
 	option = {
 		name = EVTOPTA_CM_6130
 		add_trait = possessed
@@ -799,17 +1115,15 @@ character_event = {
 	id = CM.6132
 	desc = EVTDESC_CM_6132
 	picture = GFX_evt_drunk
-	
 	is_triggered_only = yes
 
-	
-	
 	trigger = {
 		trait = in_hiding
-		NOT = { trait = drunkard }
+		NOT = {
+			trait = drunkard
+		}
 		age = 16
 	}
-	
 	weight_multiplier = {
 		days = 1
 		modifier = {
@@ -828,18 +1142,14 @@ character_event = {
 	}
 }
 
-#################################################################
-# Normal murder attempt broken off when target goes into hiding #
-#################################################################
-
+# Normal murder attempt broken off when target goes into hiding
 character_event = {
 	id = CM.6180
 	desc = EVTDESC_CM_6180
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_CM_6180
 		clr_character_flag = murder_in_motion
@@ -849,18 +1159,14 @@ character_event = {
 	}
 }
 
-#############################################################
-# Clear plotters' murder flags if you die of other causes   #
-#############################################################
+# Clear plotters' murder flags if you die of other causes
 
 # On action: on_death
 character_event = {
 	id = CM.6185
-
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		any_plotter = {
 			OR = {
@@ -869,7 +1175,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		any_plotter = {
 			limit = {
@@ -884,11 +1190,7 @@ character_event = {
 	}
 }
 
-
-
-##########################
-# Suspecting murder plot #
-##########################
+# Suspecting murder plot
 
 # Gets whiff of murder plot against self
 character_event = {
@@ -896,14 +1198,15 @@ character_event = {
 	desc = EVTDESC_CM_6200
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-	
 	only_rulers = yes
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 
 	trigger = {
-		NOT = { has_character_modifier = suspected_murder_plot }
+		NOT = {
+			has_character_modifier = suspected_murder_plot
+		}
 		OR = {
 			trait = paranoid
 			any_unknown_plotter = {
@@ -915,10 +1218,11 @@ character_event = {
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 24
-		modifier = {   # If no real plot is afoot, the paranoia doesn't set in too often
+		modifier = {
+			# If no real plot is afoot, the paranoia doesn't set in too often
 			factor = 10
 			trait = paranoid
 			NOT = {
@@ -935,9 +1239,13 @@ character_event = {
 			any_plotter = {
 				target = ROOT
 				OR = {
-					NOT = { intrigue = 3 }
+					NOT = {
+						intrigue = 3
+					}
 					any_plot_backer = {
-						NOT = { intrigue = 3 }
+						NOT = {
+							intrigue = 3
+						}
 					}
 				}
 			}
@@ -961,13 +1269,17 @@ character_event = {
 				OR = {
 					AND = {
 						is_dumb_trigger = yes
-						NOT = { trait = imbecile }
+						NOT = {
+							trait = imbecile
+						}
 					}
 					any_plot_backer = {
 						AND = {
-						is_dumb_trigger = yes
-						NOT = { trait = imbecile }
-					}
+							is_dumb_trigger = yes
+							NOT = {
+								trait = imbecile
+							}
+						}
 					}
 				}
 			}
@@ -986,34 +1298,34 @@ character_event = {
 		}
 		modifier = {
 			factor = 0.95
-			any_plotter = { 
+			any_plotter = {
 				target = ROOT
-				num_of_plot_backers = 2 
+				num_of_plot_backers = 2
 			}
 		}
 		modifier = {
 			factor = 0.95
-			any_plotter = { 
+			any_plotter = {
 				target = ROOT
-				num_of_plot_backers = 4 
+				num_of_plot_backers = 4
 			}
 		}
 		modifier = {
 			factor = 0.85
-			any_plotter = { 
+			any_plotter = {
 				target = ROOT
 				num_of_plot_backers = 6
 			}
 		}
 		modifier = {
 			factor = 0.85
-			any_plotter = { 
+			any_plotter = {
 				target = ROOT
 				num_of_plot_backers = 8
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_CM_6200
 		add_character_modifier = {
@@ -1027,9 +1339,7 @@ character_event = {
 # Gets whiff of murder plot against child
 character_event = {
 	id = CM.6201
-
 	hide_window = yes
-	
 	only_rulers = yes
 	min_age = 16
 	capable_only = yes
@@ -1037,9 +1347,13 @@ character_event = {
 
 	trigger = {
 		any_child = {
-			NOT = { has_character_modifier = suspected_murder_plot }
+			NOT = {
+				has_character_modifier = suspected_murder_plot
+			}
 			OR = {
-				ROOT = { trait = paranoid }
+				ROOT = {
+					trait = paranoid
+				}
 				any_unknown_plotter = {
 					num_of_plot_backers = 1
 					OR = {
@@ -1050,10 +1364,11 @@ character_event = {
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 24
-		modifier = {   # If no real plot is afoot, the paranoia doesn't set in too often
+		modifier = {
+			# If no real plot is afoot, the paranoia doesn't set in too often
 			factor = 10
 			trait = paranoid
 			NOT = {
@@ -1072,9 +1387,13 @@ character_event = {
 			any_child = {
 				any_plotter = {
 					OR = {
-						NOT = { intrigue = 3 }
+						NOT = {
+							intrigue = 3
+						}
 						any_plot_backer = {
-							NOT = { intrigue = 3 }
+							NOT = {
+								intrigue = 3
+							}
 						}
 					}
 				}
@@ -1100,12 +1419,16 @@ character_event = {
 					OR = {
 						AND = {
 							is_dumb_trigger = yes
-							NOT = { trait = imbecile }
+							NOT = {
+								trait = imbecile
+							}
 						}
 						any_plot_backer = {
 							AND = {
 								is_dumb_trigger = yes
-								NOT = { trait = imbecile }
+								NOT = {
+									trait = imbecile
+								}
 							}
 						}
 					}
@@ -1128,36 +1451,48 @@ character_event = {
 		modifier = {
 			factor = 0.95
 			any_child = {
-				any_plotter = { num_of_plot_backers = 2 }
+				any_plotter = {
+					num_of_plot_backers = 2
+				}
 			}
 		}
 		modifier = {
 			factor = 0.95
 			any_child = {
-				any_plotter = { num_of_plot_backers = 4 }
+				any_plotter = {
+					num_of_plot_backers = 4
+				}
 			}
 		}
 		modifier = {
 			factor = 0.85
 			any_child = {
-				any_plotter = { num_of_plot_backers = 6 }
+				any_plotter = {
+					num_of_plot_backers = 6
+				}
 			}
 		}
 		modifier = {
 			factor = 0.85
 			any_child = {
-				any_plotter = { num_of_plot_backers = 8 }
+				any_plotter = {
+					num_of_plot_backers = 8
+				}
 			}
 		}
 	}
-	
+
 	immediate = {
 		random_child = {
 			limit = {
 				is_alive = yes
-				NOT = { has_character_modifier = suspected_murder_plot }
+				NOT = {
+					has_character_modifier = suspected_murder_plot
+				}
 				OR = {
-					ROOT = { trait = paranoid }
+					ROOT = {
+						trait = paranoid
+					}
 					any_unknown_plotter = {
 						num_of_plot_backers = 1
 						OR = {
@@ -1167,7 +1502,9 @@ character_event = {
 					}
 				}
 			}
-			character_event = { id = CM.6205 }
+			character_event = {
+				id = CM.6205
+			}
 		}
 	}
 }
@@ -1175,9 +1512,7 @@ character_event = {
 # Gets whiff of murder plot against spouse
 character_event = {
 	id = CM.6202
-
 	hide_window = yes
-	
 	only_rulers = yes
 	min_age = 16
 	capable_only = yes
@@ -1186,9 +1521,13 @@ character_event = {
 	trigger = {
 		trait = paranoid
 		any_spouse = {
-			NOT = { has_character_modifier = suspected_murder_plot }
+			NOT = {
+				has_character_modifier = suspected_murder_plot
+			}
 			OR = {
-				ROOT = { trait = paranoid }
+				ROOT = {
+					trait = paranoid
+				}
 				any_unknown_plotter = {
 					num_of_plot_backers = 1
 					OR = {
@@ -1199,10 +1538,11 @@ character_event = {
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 24
-		modifier = {   # If no real plot is afoot, the paranoia doesn't set in too often
+		modifier = {
+			# If no real plot is afoot, the paranoia doesn't set in too often
 			factor = 10
 			trait = paranoid
 			NOT = {
@@ -1221,9 +1561,13 @@ character_event = {
 			any_spouse = {
 				any_plotter = {
 					OR = {
-						NOT = { intrigue = 3 }
+						NOT = {
+							intrigue = 3
+						}
 						any_plot_backer = {
-							NOT = { intrigue = 3 }
+							NOT = {
+								intrigue = 3
+							}
 						}
 					}
 				}
@@ -1249,12 +1593,16 @@ character_event = {
 					OR = {
 						AND = {
 							is_dumb_trigger = yes
-							NOT = { trait = imbecile }
+							NOT = {
+								trait = imbecile
 							}
+						}
 						any_plot_backer = {
 							AND = {
 								is_dumb_trigger = yes
-								NOT = { trait = imbecile }
+								NOT = {
+									trait = imbecile
+								}
 							}
 						}
 					}
@@ -1277,35 +1625,47 @@ character_event = {
 		modifier = {
 			factor = 0.95
 			any_spouse = {
-				any_plotter = { num_of_plot_backers = 2 }
+				any_plotter = {
+					num_of_plot_backers = 2
+				}
 			}
 		}
 		modifier = {
 			factor = 0.95
 			any_spouse = {
-				any_plotter = { num_of_plot_backers = 4 }
+				any_plotter = {
+					num_of_plot_backers = 4
+				}
 			}
 		}
 		modifier = {
 			factor = 0.85
 			any_spouse = {
-				any_plotter = { num_of_plot_backers = 6 }
+				any_plotter = {
+					num_of_plot_backers = 6
+				}
 			}
 		}
 		modifier = {
 			factor = 0.85
 			any_spouse = {
-				any_plotter = { num_of_plot_backers = 8 }
+				any_plotter = {
+					num_of_plot_backers = 8
+				}
 			}
 		}
 	}
-	
+
 	immediate = {
 		random_spouse = {
 			limit = {
-				NOT = { has_character_modifier = suspected_murder_plot }
+				NOT = {
+					has_character_modifier = suspected_murder_plot
+				}
 				OR = {
-					ROOT = { trait = paranoid }
+					ROOT = {
+						trait = paranoid
+					}
 					any_unknown_plotter = {
 						num_of_plot_backers = 1
 						OR = {
@@ -1315,7 +1675,9 @@ character_event = {
 					}
 				}
 			}
-			character_event = { id = CM.6205 }
+			character_event = {
+				id = CM.6205
+			}
 		}
 	}
 }
@@ -1323,13 +1685,15 @@ character_event = {
 # Notify of rumored murder plot against child or spouse
 character_event = {
 	id = CM.6205
-
 	hide_window = yes
-
 	is_triggered_only = yes
-	
+
 	immediate = {
-		FROM = { character_event = { id = CM.6210 } }
+		FROM = {
+			character_event = {
+				id = CM.6210
+			}
+		}
 	}
 }
 
@@ -1338,14 +1702,17 @@ character_event = {
 	desc = EVTDESC_CM_6210
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_CM_6210
 		trigger = {
-			NOT = { is_rival = FROM }
-			opinion = { who = FROM value = -30 }
+			NOT = {
+				is_rival = FROM
+			}
+			opinion = {
+				who = FROM value = -30
+			}
 		}
 		FROM = {
 			add_character_modifier = {
@@ -1355,12 +1722,17 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_CM_6210
 		trigger = {
 			OR = {
 				is_rival = FROM
-				NOT = { opinion = { who = FROM value = -30 } }
+				NOT = {
+					opinion = {
+						who = FROM value = -30
+					}
+				}
 			}
 		}
 		FROM = {
@@ -1373,9 +1745,7 @@ character_event = {
 	}
 }
 
-##############################################
-# Murder attempts on character in hiding...  #
-##############################################
+# Murder attempts on character in hiding...
 
 # Assassin ninja-style
 character_event = {
@@ -1383,12 +1753,11 @@ character_event = {
 	desc = EVTDESC_CM_6300
 	picture = GFX_evt_shadow
 	border = GFX_event_normal_frame_intrigue
-	
 	capable_only = yes
 	prisoner = no
 	min_age = 16
 	is_part_of_plot = yes
-	
+
 	trigger = {
 		OR = {
 			has_plot = plot_kill_character
@@ -1398,15 +1767,18 @@ character_event = {
 		plot_target_char = {
 			is_inaccessible_trigger = yes
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			is_adult = yes
 		}
-		NOT = { has_character_flag = hiding_murder_in_motion }
+		NOT = {
+			has_character_flag = hiding_murder_in_motion
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1000
-		
 		modifier = {
 			factor = 0.7
 			plot_power = 1.5
@@ -1424,22 +1796,31 @@ character_event = {
 			plot_power = 4.0
 		}
 	}
-	
+
 	immediate = {
-		plot_target_char = { save_event_target_as = plot_target }
+		plot_target_char = {
+			save_event_target_as = plot_target
+		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_CM_6300 # Go
 		scaled_wealth = -0.5
 		set_character_flag = hiding_murder_in_motion
 		hidden_tooltip = {
 			any_plot_backer = {
-				character_event = { id = CM.6301 } # Notify backers
+				character_event = {
+					id = CM.6301
+				} # Notify backers
 			}
-			event_target:plot_target = { character_event = { id = CM.6302 days = 30 random = 12 } } # Target - outcome...
+			event_target:plot_target = {
+				character_event = {
+					id = CM.6302 days = 30 random = 12
+				}
+			} # Target - outcome...
 		}
 	}
+
 	option = {
 		name = EVTOPTB_CM_6300 # Go - extra investment
 		scaled_wealth = -1.5
@@ -1447,11 +1828,18 @@ character_event = {
 		set_character_flag = murder_extra_investment
 		hidden_tooltip = {
 			any_plot_backer = {
-				character_event = { id = CM.6301 } # Notify backers
+				character_event = {
+					id = CM.6301
+				} # Notify backers
 			}
-			event_target:plot_target = { character_event = { id = CM.6302 } } # Target - outcome...
+			event_target:plot_target = {
+				character_event = {
+					id = CM.6302
+				}
+			} # Target - outcome...
 		}
 	}
+
 	option = {
 		name = EVTOPTC_CM_6300 # Wait...
 	}
@@ -1463,7 +1851,6 @@ character_event = {
 	desc = EVTDESC_CM_6301
 	picture = GFX_evt_shadow
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
@@ -1474,62 +1861,96 @@ character_event = {
 # Ninja - outcome (target)
 character_event = {
 	id = CM.6302
-
 	hide_window = yes
-	
 	is_triggered_only = yes
 
 	immediate = {
 		if = {
-			limit = { 
-				NOT = { 
+			limit = {
+				NOT = {
 					has_character_flag = murder_extra_investment
 					or = {
-						has_character_modifier = z_foresight_curse_plot 
-						has_character_modifier = z_foresight_blessing_plot
-					}
-				} 
-			}
-			random_list = {
-				10 = { narrative_event = { id = CM.6303 } } # dies - plotter unknown
-				10 = { narrative_event = { id = CM.6305 } } # dies - plotter revealed
-				30 = { narrative_event = { id = CM.6307 } } # lives - plotter unknown
-				60 = { narrative_event = { id = CM.6309 } } # lives - plotter revealed
-			}
-		}
-		if = {
-			limit = { 
-				has_character_flag = murder_extra_investment
-				NOT = {
-					or = { 
 						has_character_modifier = z_foresight_curse_plot
 						has_character_modifier = z_foresight_blessing_plot
 					}
-				} 
+				}
 			}
 			random_list = {
-				15 = { narrative_event = { id = CM.6303 } } # dies - plotter unknown
-				15 = { narrative_event = { id = CM.6305 } } # dies - plotter revealed
-				25 = { narrative_event = { id = CM.6307 } } # lives - plotter unknown
-				55 = { narrative_event = { id = CM.6309 } } # lives - plotter revealed
+				10 = {
+					narrative_event = {
+						id = CM.6303
+					}
+				} # dies - plotter unknown
+				10 = {
+					narrative_event = {
+						id = CM.6305
+					}
+				} # dies - plotter revealed
+				30 = {
+					narrative_event = {
+						id = CM.6307
+					}
+				} # lives - plotter unknown
+				60 = {
+					narrative_event = {
+						id = CM.6309
+					}
+				} # lives - plotter revealed
+			}
+		}
+		if = {
+			limit = {
+				has_character_flag = murder_extra_investment
+				NOT = {
+					or = {
+						has_character_modifier = z_foresight_curse_plot
+						has_character_modifier = z_foresight_blessing_plot
+					}
+				}
+			}
+			random_list = {
+				15 = {
+					narrative_event = {
+						id = CM.6303
+					}
+				} # dies - plotter unknown
+				15 = {
+					narrative_event = {
+						id = CM.6305
+					}
+				} # dies - plotter revealed
+				25 = {
+					narrative_event = {
+						id = CM.6307
+					}
+				} # lives - plotter unknown
+				55 = {
+					narrative_event = {
+						id = CM.6309
+					}
+				} # lives - plotter revealed
 			}
 			clr_character_flag = murder_extra_investment
 		}
-		if = { 
-			limit = { 
+		if = {
+			limit = {
 				has_character_modifier = z_foresight_curse_plot
 			}
-			narrative_event = { id = CM.6303 }
+			narrative_event = {
+				id = CM.6303
+			}
 		}
-		if = { 
-			limit = { 
+		if = {
+			limit = {
 				has_character_modifier = z_foresight_blessing_plot
-				NOT = { 
+				NOT = {
 					has_character_modifier = z_foresight_curse_plot
 				}
 			}
-			narrative_event = { id = CM.6309 }
-		}		
+			narrative_event = {
+				id = CM.6309
+			}
+		}
 	}
 }
 
@@ -1540,50 +1961,59 @@ narrative_event = {
 	desc = EVTDESC_CM_6303
 	picture = GFX_evt_shadow
 	border = GFX_event_narrative_frame_intrigue
-
 	is_triggered_only = yes
 
 	immediate = {
 		if = {
-			limit = { multiplayer = yes }
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
-death = {
+			limit = {
+				multiplayer = yes
+			}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
 				death_reason = death_murder_unknown
 				killer = FROMFROM
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_CM_6303
 		if = {
-			limit = { multiplayer = no	}
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
-death = {
+			limit = {
+				multiplayer = no
+			}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
 				death_reason = death_murder_unknown
 				killer = FROMFROM
 			}
 		}
 		hidden_tooltip = {
 			FROMFROM = {
-				character_event = { id = CM.6304 }
+				character_event = {
+					id = CM.6304
+				}
 				clr_character_flag = hiding_murder_in_motion
 			}
-			FROMFROM = { any_plot_backer = { character_event = { id = CM.6304 }	} }
+			FROMFROM = {
+				any_plot_backer = {
+					character_event = {
+						id = CM.6304
+					}
+				}
+			}
 		}
 	}
 }
@@ -1594,7 +2024,6 @@ character_event = {
 	desc = EVTDESC_CM_6304
 	picture = GFX_evt_death
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
@@ -1609,26 +2038,28 @@ narrative_event = {
 	desc = EVTDESC_CM_6303
 	picture = GFX_evt_death
 	border = GFX_event_narrative_frame_intrigue
-
 	is_triggered_only = yes
 
 	immediate = {
 		if = {
-			limit = { multiplayer = yes	}
-			
+			limit = {
+				multiplayer = yes
+			}
 			save_event_target_as = target_victim
-			FROMFROM = { character_event = { id = 10 } } # Consequences of discovery
+			FROMFROM = {
+				character_event = {
+					id = 10
+				}
+			} # Consequences of discovery
 			clear_event_target = target_victim
-			
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
-death = {
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
 				death_reason = death_murder
 				killer = FROMFROM
 			}
@@ -1638,33 +2069,44 @@ death = {
 	option = {
 		name = EVTOPTA_CM_6303
 		if = {
-			limit = { multiplayer = no	}
-			
+			limit = {
+				multiplayer = no
+			}
 			hidden_tooltip = {
 				save_event_target_as = target_victim
-				FROMFROM = { character_event = { id = 10 } } # Consequences of discovery
+				FROMFROM = {
+					character_event = {
+						id = 10
+					}
+				} # Consequences of discovery
 				clear_event_target = target_victim
 			}
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
-death = {
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
 				death_reason = death_murder
 				killer = FROMFROM
 			}
 		}
-		
 		hidden_tooltip = {
 			FROMFROM = {
-				character_event = { id = CM.6306 }
+				character_event = {
+					id = CM.6306
+				}
 				clr_character_flag = hiding_murder_in_motion
 			}
-			FROMFROM = { any_plot_backer = { character_event = { id = CM.6306 }	} }
+			FROMFROM = {
+				any_plot_backer = {
+					character_event = {
+						id = CM.6306
+					}
+				}
+			}
 		}
 	}
 }
@@ -1675,7 +2117,6 @@ character_event = {
 	desc = EVTDESC_CM_6306
 	picture = GFX_evt_death
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
@@ -1690,17 +2131,24 @@ narrative_event = {
 	desc = EVTDESC_CM_6307
 	picture = GFX_evt_shadow
 	border = GFX_event_narrative_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
 		name = EVTOPTA_CM_6307
 		hidden_tooltip = {
 			FROMFROM = {
-				character_event = { id = CM.6308 }
+				character_event = {
+					id = CM.6308
+				}
 				clr_character_flag = hiding_murder_in_motion
 			}
-			FROMFROM = { any_plot_backer = { character_event = { id = CM.6308 }	} }
+			FROMFROM = {
+				any_plot_backer = {
+					character_event = {
+						id = CM.6308
+					}
+				}
+			}
 		}
 	}
 }
@@ -1711,7 +2159,6 @@ character_event = {
 	desc = EVTDESC_CM_6308
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
@@ -1726,26 +2173,37 @@ narrative_event = {
 	desc = EVTDESC_CM_6307
 	picture = GFX_evt_shadow
 	border = GFX_event_narrative_frame_intrigue
-
 	is_triggered_only = yes
-	
+
 	immediate = {
 		save_event_target_as = target_victim
-		FROMFROM = { character_event = { id = 11 } } # Consequences of discovery
+		FROMFROM = {
+			character_event = {
+				id = 11
+			}
+		} # Consequences of discovery
 		clear_event_target = target_victim
 	}
-	
+
 	option = {
 		name = EVTOPTA_CM_6307
-		
-		FROMFROM = { reveal_plot = yes }
-		
+		FROMFROM = {
+			reveal_plot = yes
+		}
 		hidden_tooltip = {
 			FROMFROM = {
-				character_event = { id = CM.63099 }
+				character_event = {
+					id = CM.63099
+				}
 				clr_character_flag = hiding_murder_in_motion
 			}
-			FROMFROM = { any_plot_backer = { character_event = { id = CM.63099 }	} }
+			FROMFROM = {
+				any_plot_backer = {
+					character_event = {
+						id = CM.63099
+					}
+				}
+			}
 		}
 	}
 }
@@ -1756,7 +2214,6 @@ character_event = {
 	desc = EVTDESC_CM_63099
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
@@ -1770,14 +2227,12 @@ character_event = {
 	desc = EVTDESC_CM_6310
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-	
 	capable_only = yes
 	prisoner = no
 	only_capable = yes
 	min_age = 16
-	
 	is_part_of_plot = yes
-	
+
 	trigger = {
 		OR = {
 			has_plot = plot_kill_character
@@ -1787,15 +2242,18 @@ character_event = {
 		plot_target_char = {
 			is_inaccessible_trigger = yes
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			is_adult = yes
 		}
-		NOT = { has_character_flag = hiding_murder_in_motion }
+		NOT = {
+			has_character_flag = hiding_murder_in_motion
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1000
-		
 		modifier = {
 			factor = 0.7
 			plot_power = 1.5
@@ -1813,22 +2271,31 @@ character_event = {
 			plot_power = 4.0
 		}
 	}
-	
+
 	immediate = {
-		plot_target_char = { save_event_target_as = plot_target }
+		plot_target_char = {
+			save_event_target_as = plot_target
+		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_CM_6310 # Go
 		scaled_wealth = -0.5
 		set_character_flag = hiding_murder_in_motion
 		hidden_tooltip = {
 			any_plot_backer = {
-				character_event = { id = CM.6311 } # Notify backers
+				character_event = {
+					id = CM.6311
+				} # Notify backers
 			}
-			event_target:plot_target = { character_event = { id = CM.6312 days = 30 random = 12 } } # Target - outcome...
+			event_target:plot_target = {
+				character_event = {
+					id = CM.6312 days = 30 random = 12
+				}
+			} # Target - outcome...
 		}
 	}
+
 	option = {
 		name = EVTOPTB_CM_6310 # Go - extra investment
 		scaled_wealth = -1.5
@@ -1836,11 +2303,18 @@ character_event = {
 		set_character_flag = murder_extra_investment
 		hidden_tooltip = {
 			any_plot_backer = {
-				character_event = { id = CM.6311 } # Notify backers
+				character_event = {
+					id = CM.6311
+				} # Notify backers
 			}
-			event_target:plot_target = { character_event = { id = CM.6312 } } # Target - outcome...
+			event_target:plot_target = {
+				character_event = {
+					id = CM.6312
+				}
+			} # Target - outcome...
 		}
 	}
+
 	option = {
 		name = EVTOPTC_CM_6310 # Wait...
 	}
@@ -1852,7 +2326,6 @@ character_event = {
 	desc = EVTDESC_CM_6311
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
@@ -1863,28 +2336,64 @@ character_event = {
 # Poisoned food - outcome (target)
 character_event = {
 	id = CM.6312
-
 	hide_window = yes
-	
 	is_triggered_only = yes
 
 	immediate = {
 		if = {
-			limit = { NOT = { has_character_flag = murder_extra_investment } }
+			limit = {
+				NOT = {
+					has_character_flag = murder_extra_investment
+				}
+			}
 			random_list = {
-				10 = { narrative_event = { id = CM.6313 } } # dies - plotter unknown
-				10 = { narrative_event = { id = CM.6315 } } # dies - plotter revealed
-				30 = { narrative_event = { id = CM.6317 } } # lives - plotter unknown
-				60 = { narrative_event = { id = CM.6319 } } # lives - plotter revealed
+				10 = {
+					narrative_event = {
+						id = CM.6313
+					}
+				} # dies - plotter unknown
+				10 = {
+					narrative_event = {
+						id = CM.6315
+					}
+				} # dies - plotter revealed
+				30 = {
+					narrative_event = {
+						id = CM.6317
+					}
+				} # lives - plotter unknown
+				60 = {
+					narrative_event = {
+						id = CM.6319
+					}
+				} # lives - plotter revealed
 			}
 		}
 		if = {
-			limit = { has_character_flag = murder_extra_investment }
+			limit = {
+				has_character_flag = murder_extra_investment
+			}
 			random_list = {
-				15 = { narrative_event = { id = CM.6313 } } # dies - plotter unknown
-				15 = { narrative_event = { id = CM.6315 } } # dies - plotter revealed
-				25 = { narrative_event = { id = CM.6317 } } # lives - plotter unknown
-				55 = { narrative_event = { id = CM.6319 } } # lives - plotter revealed
+				15 = {
+					narrative_event = {
+						id = CM.6313
+					}
+				} # dies - plotter unknown
+				15 = {
+					narrative_event = {
+						id = CM.6315
+					}
+				} # dies - plotter revealed
+				25 = {
+					narrative_event = {
+						id = CM.6317
+					}
+				} # lives - plotter unknown
+				55 = {
+					narrative_event = {
+						id = CM.6319
+					}
+				} # lives - plotter revealed
 			}
 			clr_character_flag = murder_extra_investment
 		}
@@ -1898,52 +2407,59 @@ narrative_event = {
 	desc = EVTDESC_CM_6313
 	picture = GFX_evt_bad_news
 	border = GFX_event_narrative_frame_intrigue
-
 	is_triggered_only = yes
 
 	immediate = {
 		if = {
-			limit = { multiplayer = yes	}
-			
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
-death = {
+			limit = {
+				multiplayer = yes
+			}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
 				death_reason = death_murder_unknown_poison
 				killer = FROMFROM
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_CM_6313
 		if = {
-			limit = { multiplayer = no	}
-			
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
-death = {
+			limit = {
+				multiplayer = no
+			}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
 				death_reason = death_murder_unknown_poison
 				killer = FROMFROM
 			}
 		}
 		hidden_tooltip = {
 			FROMFROM = {
-				character_event = { id = CM.6314 }
+				character_event = {
+					id = CM.6314
+				}
 				clr_character_flag = hiding_murder_in_motion
 			}
-			FROMFROM = { any_plot_backer = { character_event = { id = CM.6314 }	} }
+			FROMFROM = {
+				any_plot_backer = {
+					character_event = {
+						id = CM.6314
+					}
+				}
+			}
 		}
 	}
 }
@@ -1954,7 +2470,6 @@ character_event = {
 	desc = EVTDESC_CM_6314
 	picture = GFX_evt_death
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
@@ -1969,26 +2484,28 @@ narrative_event = {
 	desc = EVTDESC_CM_6313
 	picture = GFX_evt_bad_news
 	border = GFX_event_narrative_frame_intrigue
-
 	is_triggered_only = yes
 
 	immediate = {
 		if = {
-			limit = { multiplayer = yes	}
-			
+			limit = {
+				multiplayer = yes
+			}
 			save_event_target_as = target_victim
-			FROMFROM = { character_event = { id = 10 } } # Consequences of discovery
+			FROMFROM = {
+				character_event = {
+					id = 10
+				}
+			} # Consequences of discovery
 			clear_event_target = target_victim
-			
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
-death = {
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
 				death_reason = death_murder_poison
 				killer = FROMFROM
 			}
@@ -1998,34 +2515,44 @@ death = {
 	option = {
 		name = EVTOPTA_CM_6313
 		if = {
-			limit = { multiplayer = no	}
-			
+			limit = {
+				multiplayer = no
+			}
 			hidden_tooltip = {
 				save_event_target_as = target_victim
-				FROMFROM = { character_event = { id = 10 } } # Consequences of discovery
+				FROMFROM = {
+					character_event = {
+						id = 10
+					}
+				} # Consequences of discovery
 				clear_event_target = target_victim
 			}
-			
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
-death = {
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
 				death_reason = death_murder_poison
 				killer = FROMFROM
 			}
 		}
-		
 		hidden_tooltip = {
 			FROMFROM = {
-				character_event = { id = CM.6316 }
+				character_event = {
+					id = CM.6316
+				}
 				clr_character_flag = hiding_murder_in_motion
 			}
-			FROMFROM = { any_plot_backer = { character_event = { id = CM.6316 }	} }
+			FROMFROM = {
+				any_plot_backer = {
+					character_event = {
+						id = CM.6316
+					}
+				}
+			}
 		}
 	}
 }
@@ -2036,7 +2563,6 @@ character_event = {
 	desc = EVTDESC_CM_6316
 	picture = GFX_evt_death
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
@@ -2051,17 +2577,24 @@ narrative_event = {
 	desc = EVTDESC_CM_6317
 	picture = GFX_evt_recovery
 	border = GFX_event_narrative_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
 		name = EVTOPTA_CM_6317
 		hidden_tooltip = {
 			FROMFROM = {
-				character_event = { id = CM.6318 }
+				character_event = {
+					id = CM.6318
+				}
 				clr_character_flag = hiding_murder_in_motion
 			}
-			FROMFROM = { any_plot_backer = { character_event = { id = CM.6318 }	} }
+			FROMFROM = {
+				any_plot_backer = {
+					character_event = {
+						id = CM.6318
+					}
+				}
+			}
 		}
 	}
 }
@@ -2072,7 +2605,6 @@ character_event = {
 	desc = EVTDESC_CM_6318
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
@@ -2087,25 +2619,37 @@ narrative_event = {
 	desc = EVTDESC_CM_6317
 	picture = GFX_evt_recovery
 	border = GFX_event_narrative_frame_intrigue
-
 	is_triggered_only = yes
-	
+
 	immediate = {
 		save_event_target_as = target_victim
-		FROMFROM = { character_event = { id = 11 } } # Consequences of discovery
+		FROMFROM = {
+			character_event = {
+				id = 11
+			}
+		} # Consequences of discovery
 		clear_event_target = target_victim
 	}
 
 	option = {
 		name = EVTOPTA_CM_6317
-		FROMFROM = { reveal_plot = yes }
-		
+		FROMFROM = {
+			reveal_plot = yes
+		}
 		hidden_tooltip = {
 			FROMFROM = {
-				character_event = { id = CM.63199 }
+				character_event = {
+					id = CM.63199
+				}
 				clr_character_flag = hiding_murder_in_motion
 			}
-			FROMFROM = { any_plot_backer = { character_event = { id = CM.63199 }	} }
+			FROMFROM = {
+				any_plot_backer = {
+					character_event = {
+						id = CM.63199
+					}
+				}
+			}
 		}
 	}
 }
@@ -2116,7 +2660,6 @@ character_event = {
 	desc = EVTDESC_CM_63199
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
@@ -2133,12 +2676,11 @@ character_event = {
 	desc = EVTDESC_CM_6320
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-	
 	capable_only = yes
 	prisoner = no
 	min_age = 16
 	is_part_of_plot = yes
-	
+
 	trigger = {
 		OR = {
 			has_plot = plot_kill_character
@@ -2148,15 +2690,18 @@ character_event = {
 		plot_target_char = {
 			is_inaccessible_trigger = yes
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			is_adult = yes
 		}
-		NOT = { has_character_flag = hiding_murder_in_motion }
+		NOT = {
+			has_character_flag = hiding_murder_in_motion
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1000
-		
 		modifier = {
 			factor = 0.7
 			plot_power = 1.5
@@ -2174,22 +2719,31 @@ character_event = {
 			plot_power = 4.0
 		}
 	}
-	
+
 	immediate = {
-		plot_target_char = { save_event_target_as = plot_target }
+		plot_target_char = {
+			save_event_target_as = plot_target
+		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_CM_6320 # Go
 		scaled_wealth = -0.5
 		set_character_flag = hiding_murder_in_motion
 		hidden_tooltip = {
 			any_plot_backer = {
-				character_event = { id = CM.6321 } # Notify backers
+				character_event = {
+					id = CM.6321
+				} # Notify backers
 			}
-			event_target:plot_target = { character_event = { id = CM.6322 days = 30 random = 12 } } # Target - outcome...
+			event_target:plot_target = {
+				character_event = {
+					id = CM.6322 days = 30 random = 12
+				}
+			} # Target - outcome...
 		}
 	}
+
 	option = {
 		name = EVTOPTB_CM_6320 # Go - extra investment
 		scaled_wealth = -1.5
@@ -2197,11 +2751,18 @@ character_event = {
 		set_character_flag = murder_extra_investment
 		hidden_tooltip = {
 			any_plot_backer = {
-				character_event = { id = CM.6321 } # Notify backers
+				character_event = {
+					id = CM.6321
+				} # Notify backers
 			}
-			event_target:plot_target = { character_event = { id = CM.6322 } } # Target - outcome...
+			event_target:plot_target = {
+				character_event = {
+					id = CM.6322
+				}
+			} # Target - outcome...
 		}
 	}
+
 	option = {
 		name = EVTOPTC_CM_6320 # Wait...
 	}
@@ -2213,7 +2774,6 @@ character_event = {
 	desc = EVTDESC_CM_6321
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
@@ -2224,28 +2784,64 @@ character_event = {
 # Bribed guard to kill target - outcome (target)
 character_event = {
 	id = CM.6322
-
 	hide_window = yes
-	
 	is_triggered_only = yes
 
 	immediate = {
 		if = {
-			limit = { NOT = { has_character_flag = murder_extra_investment } }
+			limit = {
+				NOT = {
+					has_character_flag = murder_extra_investment
+				}
+			}
 			random_list = {
-				10 = { narrative_event = { id = CM.6323 } } # dies - plotter unknown
-				10 = { narrative_event = { id = CM.6325 } } # dies - plotter revealed
-				30 = { narrative_event = { id = CM.6327 } } # lives - plotter unknown
-				60 = { narrative_event = { id = CM.6329 } } # lives - plotter revealed
+				10 = {
+					narrative_event = {
+						id = CM.6323
+					}
+				} # dies - plotter unknown
+				10 = {
+					narrative_event = {
+						id = CM.6325
+					}
+				} # dies - plotter revealed
+				30 = {
+					narrative_event = {
+						id = CM.6327
+					}
+				} # lives - plotter unknown
+				60 = {
+					narrative_event = {
+						id = CM.6329
+					}
+				} # lives - plotter revealed
 			}
 		}
 		if = {
-			limit = { has_character_flag = murder_extra_investment }
+			limit = {
+				has_character_flag = murder_extra_investment
+			}
 			random_list = {
-				15 = { narrative_event = { id = CM.6323 } } # dies - plotter unknown
-				15 = { narrative_event = { id = CM.6325 } } # dies - plotter revealed
-				25 = { narrative_event = { id = CM.6327 } } # lives - plotter unknown
-				55 = { narrative_event = { id = CM.6329 } } # lives - plotter revealed
+				15 = {
+					narrative_event = {
+						id = CM.6323
+					}
+				} # dies - plotter unknown
+				15 = {
+					narrative_event = {
+						id = CM.6325
+					}
+				} # dies - plotter revealed
+				25 = {
+					narrative_event = {
+						id = CM.6327
+					}
+				} # lives - plotter unknown
+				55 = {
+					narrative_event = {
+						id = CM.6329
+					}
+				} # lives - plotter revealed
 			}
 			clr_character_flag = murder_extra_investment
 		}
@@ -2259,50 +2855,59 @@ narrative_event = {
 	desc = EVTDESC_CM_6323
 	picture = GFX_evt_recieve_letter
 	border = GFX_event_narrative_frame_intrigue
-
 	is_triggered_only = yes
 
 	immediate = {
 		if = {
-			limit = { multiplayer = yes	}
+			limit = {
+				multiplayer = yes
+			}
 			if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
-death = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
 				death_reason = death_murder_unknown
 				killer = FROMFROM
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_CM_6323
 		if = {
-			limit = { multiplayer = no	}
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
-death = {
+			limit = {
+				multiplayer = no
+			}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
 				death_reason = death_murder_unknown
 				killer = FROMFROM
 			}
 		}
 		hidden_tooltip = {
 			FROMFROM = {
-				character_event = { id = CM.6324 }
+				character_event = {
+					id = CM.6324
+				}
 				clr_character_flag = hiding_murder_in_motion
 			}
-			FROMFROM = { any_plot_backer = { character_event = { id = CM.6324 }	} }
+			FROMFROM = {
+				any_plot_backer = {
+					character_event = {
+						id = CM.6324
+					}
+				}
+			}
 		}
 	}
 }
@@ -2313,7 +2918,6 @@ character_event = {
 	desc = EVTDESC_CM_6324
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
@@ -2328,17 +2932,20 @@ narrative_event = {
 	desc = EVTDESC_CM_6323
 	picture = GFX_evt_recieve_letter
 	border = GFX_event_narrative_frame_intrigue
-
 	is_triggered_only = yes
 
 	immediate = {
 		if = {
-			limit = { multiplayer = yes	}
-			
+			limit = {
+				multiplayer = yes
+			}
 			save_event_target_as = target_victim
-			FROMFROM = { character_event = { id = 10 } } # Consequences of discovery
+			FROMFROM = {
+				character_event = {
+					id = 10
+				}
+			} # Consequences of discovery
 			clear_event_target = target_victim
-			
 			death = {
 				death_reason = death_murder
 				killer = FROMFROM
@@ -2349,34 +2956,44 @@ narrative_event = {
 	option = {
 		name = EVTOPTA_CM_6323
 		if = {
-			limit = { multiplayer = no	}
-			
+			limit = {
+				multiplayer = no
+			}
 			hidden_tooltip = {
 				save_event_target_as = target_victim
-				FROMFROM = { character_event = { id = 10 } } # Consequences of discovery
+				FROMFROM = {
+					character_event = {
+						id = 10
+					}
+				} # Consequences of discovery
 				clear_event_target = target_victim
 			}
-			
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
-death = {
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
 				death_reason = death_murder
 				killer = FROMFROM
 			}
 		}
-		
 		hidden_tooltip = {
 			FROMFROM = {
-				character_event = { id = CM.6326 }
+				character_event = {
+					id = CM.6326
+				}
 				clr_character_flag = hiding_murder_in_motion
 			}
-			FROMFROM = { any_plot_backer = { character_event = { id = CM.6326 }	} }
+			FROMFROM = {
+				any_plot_backer = {
+					character_event = {
+						id = CM.6326
+					}
+				}
+			}
 		}
 	}
 }
@@ -2387,7 +3004,6 @@ character_event = {
 	desc = EVTDESC_CM_6326
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
@@ -2402,17 +3018,24 @@ narrative_event = {
 	desc = EVTDESC_CM_6327
 	picture = GFX_evt_recieve_letter
 	border = GFX_event_narrative_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
 		name = EVTOPTA_CM_6327
 		hidden_tooltip = {
 			FROMFROM = {
-				character_event = { id = CM.6328 }
+				character_event = {
+					id = CM.6328
+				}
 				clr_character_flag = hiding_murder_in_motion
 			}
-			FROMFROM = { any_plot_backer = { character_event = { id = CM.6328 }	} }
+			FROMFROM = {
+				any_plot_backer = {
+					character_event = {
+						id = CM.6328
+					}
+				}
+			}
 		}
 	}
 }
@@ -2423,7 +3046,6 @@ character_event = {
 	desc = EVTDESC_CM_6328
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
@@ -2438,25 +3060,37 @@ narrative_event = {
 	desc = EVTDESC_CM_6327
 	picture = GFX_evt_recieve_letter
 	border = GFX_event_narrative_frame_intrigue
-
 	is_triggered_only = yes
-	
+
 	immediate = {
 		save_event_target_as = target_victim
-		FROMFROM = { character_event = { id = 11 } } # Consequences of discovery
+		FROMFROM = {
+			character_event = {
+				id = 11
+			}
+		} # Consequences of discovery
 		clear_event_target = target_victim
 	}
 
 	option = {
 		name = EVTOPTA_CM_6327
-		FROMFROM = { reveal_plot = yes }
-		
+		FROMFROM = {
+			reveal_plot = yes
+		}
 		hidden_tooltip = {
 			FROMFROM = {
-				character_event = { id = CM.63299 }
+				character_event = {
+					id = CM.63299
+				}
 				clr_character_flag = hiding_murder_in_motion
 			}
-			FROMFROM = { any_plot_backer = { character_event = { id = CM.63299 }	} }
+			FROMFROM = {
+				any_plot_backer = {
+					character_event = {
+						id = CM.63299
+					}
+				}
+			}
 		}
 	}
 }
@@ -2467,7 +3101,6 @@ character_event = {
 	desc = EVTDESC_CM_63299
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
@@ -2484,12 +3117,11 @@ character_event = {
 	desc = EVTDESC_CM_6330
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-	
 	capable_only = yes
 	prisoner = no
 	min_age = 16
 	is_part_of_plot = yes
-	
+
 	trigger = {
 		OR = {
 			has_plot = plot_kill_character
@@ -2499,15 +3131,18 @@ character_event = {
 		plot_target_char = {
 			is_inaccessible_trigger = yes
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			is_adult = yes
 		}
-		NOT = { has_character_flag = hiding_murder_in_motion }
+		NOT = {
+			has_character_flag = hiding_murder_in_motion
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1000
-		
 		modifier = {
 			factor = 0.7
 			plot_power = 1.5
@@ -2525,22 +3160,31 @@ character_event = {
 			plot_power = 4.0
 		}
 	}
-	
+
 	immediate = {
-		plot_target_char = { save_event_target_as = plot_target }
+		plot_target_char = {
+			save_event_target_as = plot_target
+		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_CM_6330 # Go
 		scaled_wealth = -0.5
 		set_character_flag = hiding_murder_in_motion
 		hidden_tooltip = {
 			any_plot_backer = {
-				character_event = { id = CM.6331 } # Notify backers
+				character_event = {
+					id = CM.6331
+				} # Notify backers
 			}
-			event_target:plot_target = { character_event = { id = CM.6332 days = 30 random = 12 } } # Target - outcome...
+			event_target:plot_target = {
+				character_event = {
+					id = CM.6332 days = 30 random = 12
+				}
+			} # Target - outcome...
 		}
 	}
+
 	option = {
 		name = EVTOPTB_CM_6330 # Go - extra investment
 		scaled_wealth = -1.5
@@ -2548,11 +3192,18 @@ character_event = {
 		set_character_flag = murder_extra_investment
 		hidden_tooltip = {
 			any_plot_backer = {
-				character_event = { id = CM.6331 } # Notify backers
+				character_event = {
+					id = CM.6331
+				} # Notify backers
 			}
-			event_target:plot_target = { character_event = { id = CM.6332 } } # Target - outcome...
+			event_target:plot_target = {
+				character_event = {
+					id = CM.6332
+				}
+			} # Target - outcome...
 		}
 	}
+
 	option = {
 		name = EVTOPTC_CM_6330 # Wait...
 	}
@@ -2564,7 +3215,6 @@ character_event = {
 	desc = EVTDESC_CM_6331
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
@@ -2575,28 +3225,64 @@ character_event = {
 # Snake charmer - outcome (target)
 character_event = {
 	id = CM.6332
-
 	hide_window = yes
-	
 	is_triggered_only = yes
 
 	immediate = {
 		if = {
-			limit = { NOT = { has_character_flag = murder_extra_investment } }
+			limit = {
+				NOT = {
+					has_character_flag = murder_extra_investment
+				}
+			}
 			random_list = {
-				10 = { narrative_event = { id = CM.6333 } } # dies - plotter unknown
-				10 = { narrative_event = { id = CM.6335 } } # dies - plotter revealed
-				30 = { narrative_event = { id = CM.6337 } } # lives - plotter unknown
-				60 = { narrative_event = { id = CM.6339 } } # lives - plotter revealed
+				10 = {
+					narrative_event = {
+						id = CM.6333
+					}
+				} # dies - plotter unknown
+				10 = {
+					narrative_event = {
+						id = CM.6335
+					}
+				} # dies - plotter revealed
+				30 = {
+					narrative_event = {
+						id = CM.6337
+					}
+				} # lives - plotter unknown
+				60 = {
+					narrative_event = {
+						id = CM.6339
+					}
+				} # lives - plotter revealed
 			}
 		}
 		if = {
-			limit = { has_character_flag = murder_extra_investment }
+			limit = {
+				has_character_flag = murder_extra_investment
+			}
 			random_list = {
-				15 = { narrative_event = { id = CM.6333 } } # dies - plotter unknown
-				15 = { narrative_event = { id = CM.6335 } } # dies - plotter revealed
-				25 = { narrative_event = { id = CM.6337 } } # lives - plotter unknown
-				55 = { narrative_event = { id = CM.6339 } } # lives - plotter revealed
+				15 = {
+					narrative_event = {
+						id = CM.6333
+					}
+				} # dies - plotter unknown
+				15 = {
+					narrative_event = {
+						id = CM.6335
+					}
+				} # dies - plotter revealed
+				25 = {
+					narrative_event = {
+						id = CM.6337
+					}
+				} # lives - plotter unknown
+				55 = {
+					narrative_event = {
+						id = CM.6339
+					}
+				} # lives - plotter revealed
 			}
 			clr_character_flag = murder_extra_investment
 		}
@@ -2610,39 +3296,40 @@ narrative_event = {
 	desc = EVTDESC_CM_6333
 	picture = GFX_evt_shadow
 	border = GFX_event_narrative_frame_intrigue
-
 	is_triggered_only = yes
 
 	immediate = {
 		if = {
-			limit = { multiplayer = yes	}
-					if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+			limit = {
+				multiplayer = yes
+			}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
 			death = {
 				death_reason = death_murder_unknown_snakes
 				killer = FROMFROM
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_CM_6333
 		if = {
-			limit = { multiplayer = no	}
-					if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+			limit = {
+				multiplayer = no
+			}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
 			death = {
 				death_reason = death_murder_unknown_snakes
 				killer = FROMFROM
@@ -2650,10 +3337,18 @@ narrative_event = {
 		}
 		hidden_tooltip = {
 			FROMFROM = {
-				character_event = { id = CM.6334 }
+				character_event = {
+					id = CM.6334
+				}
 				clr_character_flag = hiding_murder_in_motion
 			}
-			FROMFROM = { any_plot_backer = { character_event = { id = CM.6334 }	} }
+			FROMFROM = {
+				any_plot_backer = {
+					character_event = {
+						id = CM.6334
+					}
+				}
+			}
 		}
 	}
 }
@@ -2664,7 +3359,6 @@ character_event = {
 	desc = EVTDESC_CM_6334
 	picture = GFX_evt_death
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
@@ -2679,26 +3373,28 @@ narrative_event = {
 	desc = EVTDESC_CM_6333
 	picture = GFX_evt_shadow
 	border = GFX_event_narrative_frame_intrigue
-
 	is_triggered_only = yes
 
 	immediate = {
 		if = {
-			limit = { multiplayer = yes	}
-			
+			limit = {
+				multiplayer = yes
+			}
 			save_event_target_as = target_victim
-			FROMFROM = { character_event = { id = 10 } } # Consequences of discovery
+			FROMFROM = {
+				character_event = {
+					id = 10
+				}
+			} # Consequences of discovery
 			clear_event_target = target_victim
-			
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
-death = {
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
 				death_reason = death_murder_snakes
 				killer = FROMFROM
 			}
@@ -2708,34 +3404,44 @@ death = {
 	option = {
 		name = EVTOPTA_CM_6333
 		if = {
-			limit = { multiplayer = no	}
-			
+			limit = {
+				multiplayer = no
+			}
 			hidden_tooltip = {
 				save_event_target_as = target_victim
-				FROMFROM = { character_event = { id = 10 } } # Consequences of discovery
+				FROMFROM = {
+					character_event = {
+						id = 10
+					}
+				} # Consequences of discovery
 				clear_event_target = target_victim
 			}
-			
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
-death = {
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
 				death_reason = death_murder_snakes
 				killer = FROMFROM
 			}
 		}
-		
 		hidden_tooltip = {
 			FROMFROM = {
-				character_event = { id = CM.6336 }
+				character_event = {
+					id = CM.6336
+				}
 				clr_character_flag = hiding_murder_in_motion
 			}
-			FROMFROM = { any_plot_backer = { character_event = { id = CM.6336 }	} }
+			FROMFROM = {
+				any_plot_backer = {
+					character_event = {
+						id = CM.6336
+					}
+				}
+			}
 		}
 	}
 }
@@ -2746,7 +3452,6 @@ character_event = {
 	desc = EVTDESC_CM_6336
 	picture = GFX_evt_death
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
@@ -2761,17 +3466,24 @@ narrative_event = {
 	desc = EVTDESC_CM_6337
 	picture = GFX_evt_shadow
 	border = GFX_event_narrative_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
 		name = EVTOPTA_CM_6337
 		hidden_tooltip = {
 			FROMFROM = {
-				character_event = { id = CM.6338 }
+				character_event = {
+					id = CM.6338
+				}
 				clr_character_flag = hiding_murder_in_motion
 			}
-			FROMFROM = { any_plot_backer = { character_event = { id = CM.6338 }	} }
+			FROMFROM = {
+				any_plot_backer = {
+					character_event = {
+						id = CM.6338
+					}
+				}
+			}
 		}
 	}
 }
@@ -2782,7 +3494,6 @@ character_event = {
 	desc = EVTDESC_CM_6338
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
@@ -2797,25 +3508,37 @@ narrative_event = {
 	desc = EVTDESC_CM_6337
 	picture = GFX_evt_shadow
 	border = GFX_event_narrative_frame_intrigue
-
 	is_triggered_only = yes
-	
+
 	immediate = {
 		save_event_target_as = target_victim
-		FROMFROM = { character_event = { id = 11 } } # Consequences of discovery
+		FROMFROM = {
+			character_event = {
+				id = 11
+			}
+		} # Consequences of discovery
 		clear_event_target = target_victim
 	}
 
 	option = {
 		name = EVTOPTA_CM_6337
-		FROMFROM = { reveal_plot = yes }
-		
+		FROMFROM = {
+			reveal_plot = yes
+		}
 		hidden_tooltip = {
 			FROMFROM = {
-				character_event = { id = CM.63399 }
+				character_event = {
+					id = CM.63399
+				}
 				clr_character_flag = hiding_murder_in_motion
 			}
-			FROMFROM = { any_plot_backer = { character_event = { id = CM.63399 }	} }
+			FROMFROM = {
+				any_plot_backer = {
+					character_event = {
+						id = CM.63399
+					}
+				}
+			}
 		}
 	}
 }
@@ -2826,7 +3549,6 @@ character_event = {
 	desc = EVTDESC_CM_63399
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
@@ -2843,12 +3565,11 @@ character_event = {
 	desc = EVTDESC_CM_6340
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-	
 	only_capable = yes
 	prisoner = no
 	min_age = 16
 	is_part_of_plot = yes
-	
+
 	trigger = {
 		OR = {
 			has_plot = plot_kill_character
@@ -2860,12 +3581,13 @@ character_event = {
 			prisoner = no
 			trait = incapable
 		}
-		NOT = { has_character_flag = hiding_murder_in_motion }
+		NOT = {
+			has_character_flag = hiding_murder_in_motion
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 250
-		
 		modifier = {
 			factor = 0.7
 			plot_power = 1.5
@@ -2883,22 +3605,31 @@ character_event = {
 			plot_power = 4.0
 		}
 	}
-	
+
 	immediate = {
-		plot_target_char = { save_event_target_as = plot_target }
+		plot_target_char = {
+			save_event_target_as = plot_target
+		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_CM_6340 # Go
 		scaled_wealth = -0.5
 		set_character_flag = hiding_murder_in_motion
 		hidden_tooltip = {
 			any_plot_backer = {
-				character_event = { id = CM.6341 } # Notify backers
+				character_event = {
+					id = CM.6341
+				} # Notify backers
 			}
-			event_target:plot_target = { character_event = { id = CM.6342 days = 30 random = 12 } } # Target - outcome...
+			event_target:plot_target = {
+				character_event = {
+					id = CM.6342 days = 30 random = 12
+				}
+			} # Target - outcome...
 		}
 	}
+
 	option = {
 		name = EVTOPTB_CM_6340 # Go - extra investment
 		scaled_wealth = -1.5
@@ -2906,11 +3637,18 @@ character_event = {
 		set_character_flag = murder_extra_investment
 		hidden_tooltip = {
 			any_plot_backer = {
-				character_event = { id = CM.6341 } # Notify backers
+				character_event = {
+					id = CM.6341
+				} # Notify backers
 			}
-			event_target:plot_target = { character_event = { id = CM.6342 } } # Target - outcome...
+			event_target:plot_target = {
+				character_event = {
+					id = CM.6342
+				}
+			} # Target - outcome...
 		}
 	}
+
 	option = {
 		name = EVTOPTC_CM_6340 # Wait...
 	}
@@ -2922,7 +3660,6 @@ character_event = {
 	desc = EVTDESC_CM_6341
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
@@ -2933,28 +3670,64 @@ character_event = {
 # Incapable - outcome (target)
 character_event = {
 	id = CM.6342
-
 	hide_window = yes
-	
 	is_triggered_only = yes
 
 	immediate = {
 		if = {
-			limit = { NOT = { has_character_flag = murder_extra_investment } }
+			limit = {
+				NOT = {
+					has_character_flag = murder_extra_investment
+				}
+			}
 			random_list = {
-				10 = { narrative_event = { id = CM.6343 } } # dies - plotter unknown
-				10 = { narrative_event = { id = CM.6345 } } # dies - plotter revealed
-				30 = { narrative_event = { id = CM.6347 } } # lives - plotter unknown
-				60 = { narrative_event = { id = CM.6349 } } # lives - plotter revealed
+				10 = {
+					narrative_event = {
+						id = CM.6343
+					}
+				} # dies - plotter unknown
+				10 = {
+					narrative_event = {
+						id = CM.6345
+					}
+				} # dies - plotter revealed
+				30 = {
+					narrative_event = {
+						id = CM.6347
+					}
+				} # lives - plotter unknown
+				60 = {
+					narrative_event = {
+						id = CM.6349
+					}
+				} # lives - plotter revealed
 			}
 		}
 		if = {
-			limit = { has_character_flag = murder_extra_investment }
+			limit = {
+				has_character_flag = murder_extra_investment
+			}
 			random_list = {
-				15 = { narrative_event = { id = CM.6343 } } # dies - plotter unknown
-				15 = { narrative_event = { id = CM.6345 } } # dies - plotter revealed
-				25 = { narrative_event = { id = CM.6347 } } # lives - plotter unknown
-				55 = { narrative_event = { id = CM.6349 } } # lives - plotter revealed
+				15 = {
+					narrative_event = {
+						id = CM.6343
+					}
+				} # dies - plotter unknown
+				15 = {
+					narrative_event = {
+						id = CM.6345
+					}
+				} # dies - plotter revealed
+				25 = {
+					narrative_event = {
+						id = CM.6347
+					}
+				} # lives - plotter unknown
+				55 = {
+					narrative_event = {
+						id = CM.6349
+					}
+				} # lives - plotter revealed
 			}
 			clr_character_flag = murder_extra_investment
 		}
@@ -2968,50 +3741,59 @@ narrative_event = {
 	desc = EVTDESC_CM_6343
 	picture = GFX_evt_illness
 	border = GFX_event_narrative_frame_intrigue
-
 	is_triggered_only = yes
 
 	immediate = {
 		if = {
-			limit = { multiplayer = yes	}
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
-death = {
+			limit = {
+				multiplayer = yes
+			}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
 				death_reason = death_murder_unknown_strangle
 				killer = FROMFROM
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_CM_6343
 		if = {
-			limit = { multiplayer = no	}
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
-death = {
+			limit = {
+				multiplayer = no
+			}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
 				death_reason = death_murder_unknown_strangle
 				killer = FROMFROM
 			}
 		}
 		hidden_tooltip = {
 			FROMFROM = {
-				character_event = { id = CM.6344 }
+				character_event = {
+					id = CM.6344
+				}
 				clr_character_flag = hiding_murder_in_motion
 			}
-			FROMFROM = { any_plot_backer = { character_event = { id = CM.6344 }	} }
+			FROMFROM = {
+				any_plot_backer = {
+					character_event = {
+						id = CM.6344
+					}
+				}
+			}
 		}
 	}
 }
@@ -3022,7 +3804,6 @@ character_event = {
 	desc = EVTDESC_CM_6344
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
@@ -3037,26 +3818,28 @@ narrative_event = {
 	desc = EVTDESC_CM_6343
 	picture = GFX_evt_illness
 	border = GFX_event_narrative_frame_intrigue
-
 	is_triggered_only = yes
 
 	immediate = {
 		if = {
-			limit = { multiplayer = yes	}
-			
+			limit = {
+				multiplayer = yes
+			}
 			save_event_target_as = target_victim
-			FROMFROM = { character_event = { id = 10 } } # Consequences of discovery
+			FROMFROM = {
+				character_event = {
+					id = 10
+				}
+			} # Consequences of discovery
 			clear_event_target = target_victim
-			
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
-death = {
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
 				death_reason = death_murder_strangle
 				killer = FROMFROM
 			}
@@ -3066,34 +3849,44 @@ death = {
 	option = {
 		name = EVTOPTA_CM_6343
 		if = {
-			limit = { multiplayer = no	}
-			
+			limit = {
+				multiplayer = no
+			}
 			hidden_tooltip = {
 				save_event_target_as = target_victim
-				FROMFROM = { character_event = { id = 10 } } # Consequences of discovery
+				FROMFROM = {
+					character_event = {
+						id = 10
+					}
+				} # Consequences of discovery
 				clear_event_target = target_victim
 			}
-			
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
-death = {
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
 				death_reason = death_murder_strangle
 				killer = FROMFROM
 			}
 		}
-		
 		hidden_tooltip = {
 			FROMFROM = {
-				character_event = { id = CM.6346 }
+				character_event = {
+					id = CM.6346
+				}
 				clr_character_flag = hiding_murder_in_motion
 			}
-			FROMFROM = { any_plot_backer = { character_event = { id = CM.6346 }	} }
+			FROMFROM = {
+				any_plot_backer = {
+					character_event = {
+						id = CM.6346
+					}
+				}
+			}
 		}
 	}
 }
@@ -3104,7 +3897,6 @@ character_event = {
 	desc = EVTDESC_CM_6346
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
@@ -3119,17 +3911,24 @@ narrative_event = {
 	desc = EVTDESC_CM_6347
 	picture = GFX_evt_illness
 	border = GFX_event_narrative_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
 		name = EVTOPTA_CM_6347
 		hidden_tooltip = {
 			FROMFROM = {
-				character_event = { id = CM.6348 }
+				character_event = {
+					id = CM.6348
+				}
 				clr_character_flag = hiding_murder_in_motion
 			}
-			FROMFROM = { any_plot_backer = { character_event = { id = CM.6348 }	} }
+			FROMFROM = {
+				any_plot_backer = {
+					character_event = {
+						id = CM.6348
+					}
+				}
+			}
 		}
 	}
 }
@@ -3140,7 +3939,6 @@ character_event = {
 	desc = EVTDESC_CM_6348
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
@@ -3155,25 +3953,37 @@ narrative_event = {
 	desc = EVTDESC_CM_6347
 	picture = GFX_evt_illness
 	border = GFX_event_narrative_frame_intrigue
-
 	is_triggered_only = yes
-	
+
 	immediate = {
 		save_event_target_as = target_victim
-		FROMFROM = { character_event = { id = 11 } } # Consequences of discovery
+		FROMFROM = {
+			character_event = {
+				id = 11
+			}
+		} # Consequences of discovery
 		clear_event_target = target_victim
 	}
 
 	option = {
 		name = EVTOPTA_CM_6347
-		FROMFROM = { reveal_plot = yes }
-		
+		FROMFROM = {
+			reveal_plot = yes
+		}
 		hidden_tooltip = {
 			FROMFROM = {
-				character_event = { id = CM.63499 }
+				character_event = {
+					id = CM.63499
+				}
 				clr_character_flag = hiding_murder_in_motion
 			}
-			FROMFROM = { any_plot_backer = { character_event = { id = CM.63499 }	} }
+			FROMFROM = {
+				any_plot_backer = {
+					character_event = {
+						id = CM.63499
+					}
+				}
+			}
 		}
 	}
 }
@@ -3184,7 +3994,6 @@ character_event = {
 	desc = EVTDESC_CM_63499
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
@@ -3201,12 +4010,11 @@ character_event = {
 	desc = EVTDESC_CM_6350
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-	
 	capable_only = yes
 	prisoner = no
 	min_age = 16
 	is_part_of_plot = yes
-	
+
 	trigger = {
 		OR = {
 			has_plot = plot_kill_character
@@ -3216,15 +4024,18 @@ character_event = {
 		plot_target_char = {
 			is_inaccessible_trigger = yes
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			is_adult = no
 		}
-		NOT = { has_character_flag = hiding_murder_in_motion }
+		NOT = {
+			has_character_flag = hiding_murder_in_motion
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 250
-		
 		modifier = {
 			factor = 0.7
 			plot_power = 1.5
@@ -3242,22 +4053,31 @@ character_event = {
 			plot_power = 4.0
 		}
 	}
-	
+
 	immediate = {
-		plot_target_char = { save_event_target_as = plot_target }
+		plot_target_char = {
+			save_event_target_as = plot_target
+		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_CM_6350 # Go
 		scaled_wealth = -0.5
 		set_character_flag = hiding_murder_in_motion
 		hidden_tooltip = {
 			any_plot_backer = {
-				character_event = { id = CM.6351 } # Notify backers
+				character_event = {
+					id = CM.6351
+				} # Notify backers
 			}
-			event_target:plot_target = { character_event = { id = CM.6352 days = 30 random = 12 } } # Target - outcome...
+			event_target:plot_target = {
+				character_event = {
+					id = CM.6352 days = 30 random = 12
+				}
+			} # Target - outcome...
 		}
 	}
+
 	option = {
 		name = EVTOPTB_CM_6350 # Go - extra investment
 		scaled_wealth = -1.5
@@ -3265,11 +4085,18 @@ character_event = {
 		set_character_flag = murder_extra_investment
 		hidden_tooltip = {
 			any_plot_backer = {
-				character_event = { id = CM.6351 } # Notify backers
+				character_event = {
+					id = CM.6351
+				} # Notify backers
 			}
-			event_target:plot_target = { character_event = { id = CM.6352 } } # Target - outcome...
+			event_target:plot_target = {
+				character_event = {
+					id = CM.6352
+				}
+			} # Target - outcome...
 		}
 	}
+
 	option = {
 		name = EVTOPTC_CM_6350 # Wait...
 	}
@@ -3281,7 +4108,6 @@ character_event = {
 	desc = EVTDESC_CM_6351
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
@@ -3292,28 +4118,64 @@ character_event = {
 # Child - outcome (target)
 character_event = {
 	id = CM.6352
-
 	hide_window = yes
-	
 	is_triggered_only = yes
 
 	immediate = {
 		if = {
-			limit = { NOT = { has_character_flag = murder_extra_investment } }
+			limit = {
+				NOT = {
+					has_character_flag = murder_extra_investment
+				}
+			}
 			random_list = {
-				10 = { narrative_event = { id = CM.6353 } } # dies - plotter unknown
-				10 = { narrative_event = { id = CM.6355 } } # dies - plotter revealed
-				30 = { narrative_event = { id = CM.6357 } } # lives - plotter unknown
-				60 = { narrative_event = { id = CM.6359 } } # lives - plotter revealed
+				10 = {
+					narrative_event = {
+						id = CM.6353
+					}
+				} # dies - plotter unknown
+				10 = {
+					narrative_event = {
+						id = CM.6355
+					}
+				} # dies - plotter revealed
+				30 = {
+					narrative_event = {
+						id = CM.6357
+					}
+				} # lives - plotter unknown
+				60 = {
+					narrative_event = {
+						id = CM.6359
+					}
+				} # lives - plotter revealed
 			}
 		}
 		if = {
-			limit = { has_character_flag = murder_extra_investment }
+			limit = {
+				has_character_flag = murder_extra_investment
+			}
 			random_list = {
-				15 = { narrative_event = { id = CM.6353 } } # dies - plotter unknown
-				15 = { narrative_event = { id = CM.6355 } } # dies - plotter revealed
-				25 = { narrative_event = { id = CM.6357 } } # lives - plotter unknown
-				55 = { narrative_event = { id = CM.6359 } } # lives - plotter revealed
+				15 = {
+					narrative_event = {
+						id = CM.6353
+					}
+				} # dies - plotter unknown
+				15 = {
+					narrative_event = {
+						id = CM.6355
+					}
+				} # dies - plotter revealed
+				25 = {
+					narrative_event = {
+						id = CM.6357
+					}
+				} # lives - plotter unknown
+				55 = {
+					narrative_event = {
+						id = CM.6359
+					}
+				} # lives - plotter revealed
 			}
 			clr_character_flag = murder_extra_investment
 		}
@@ -3327,50 +4189,59 @@ narrative_event = {
 	desc = EVTDESC_CM_6353
 	picture = GFX_evt_child_play
 	border = GFX_event_narrative_frame_intrigue
-
 	is_triggered_only = yes
 
 	immediate = {
 		if = {
-			limit = { multiplayer = yes	}
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
-death = {
+			limit = {
+				multiplayer = yes
+			}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
 				death_reason = death_murder_unknown_poison
 				killer = FROMFROM
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_CM_6353
 		if = {
-			limit = { multiplayer = no	}
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
-death = {
+			limit = {
+				multiplayer = no
+			}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
 				death_reason = death_murder_unknown_poison
 				killer = FROMFROM
 			}
 		}
 		hidden_tooltip = {
 			FROMFROM = {
-				character_event = { id = CM.6354 }
+				character_event = {
+					id = CM.6354
+				}
 				clr_character_flag = hiding_murder_in_motion
 			}
-			FROMFROM = { any_plot_backer = { character_event = { id = CM.6354 }	} }
+			FROMFROM = {
+				any_plot_backer = {
+					character_event = {
+						id = CM.6354
+					}
+				}
+			}
 		}
 	}
 }
@@ -3381,7 +4252,6 @@ character_event = {
 	desc = EVTDESC_CM_6354
 	picture = GFX_evt_death
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
@@ -3396,26 +4266,28 @@ narrative_event = {
 	desc = EVTDESC_CM_6353
 	picture = GFX_evt_child_play
 	border = GFX_event_narrative_frame_intrigue
-
 	is_triggered_only = yes
 
 	immediate = {
 		if = {
-			limit = { multiplayer = yes	}
-			
+			limit = {
+				multiplayer = yes
+			}
 			save_event_target_as = target_victim
-			FROMFROM = { character_event = { id = 10 } } # Consequences of discovery
+			FROMFROM = {
+				character_event = {
+					id = 10
+				}
+			} # Consequences of discovery
 			clear_event_target = target_victim
-		
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
-		death = {
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
 				death_reason = death_murder_poison
 				killer = FROMFROM
 			}
@@ -3425,34 +4297,44 @@ narrative_event = {
 	option = {
 		name = EVTOPTA_CM_6353
 		if = {
-			limit = { multiplayer = no	}
-			
+			limit = {
+				multiplayer = no
+			}
 			hidden_tooltip = {
 				save_event_target_as = target_victim
-				FROMFROM = { character_event = { id = 10 } } # Consequences of discovery
+				FROMFROM = {
+					character_event = {
+						id = 10
+					}
+				} # Consequences of discovery
 				clear_event_target = target_victim
 			}
-			
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
-death = {
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
 				death_reason = death_murder_poison
 				killer = FROMFROM
 			}
 		}
-		
 		hidden_tooltip = {
 			FROMFROM = {
-				character_event = { id = CM.6356 }
+				character_event = {
+					id = CM.6356
+				}
 				clr_character_flag = hiding_murder_in_motion
 			}
-			FROMFROM = { any_plot_backer = { character_event = { id = CM.6356 }	} }
+			FROMFROM = {
+				any_plot_backer = {
+					character_event = {
+						id = CM.6356
+					}
+				}
+			}
 		}
 	}
 }
@@ -3463,7 +4345,6 @@ character_event = {
 	desc = EVTDESC_CM_6356
 	picture = GFX_evt_death
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
@@ -3478,17 +4359,24 @@ narrative_event = {
 	desc = EVTDESC_CM_6357
 	picture = GFX_evt_child_play
 	border = GFX_event_narrative_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
 		name = EVTOPTA_CM_6357
 		hidden_tooltip = {
 			FROMFROM = {
-				character_event = { id = CM.6358 }
+				character_event = {
+					id = CM.6358
+				}
 				clr_character_flag = hiding_murder_in_motion
 			}
-			FROMFROM = { any_plot_backer = { character_event = { id = CM.6358 }	} }
+			FROMFROM = {
+				any_plot_backer = {
+					character_event = {
+						id = CM.6358
+					}
+				}
+			}
 		}
 	}
 }
@@ -3499,7 +4387,6 @@ character_event = {
 	desc = EVTDESC_CM_6358
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {
@@ -3514,25 +4401,37 @@ narrative_event = {
 	desc = EVTDESC_CM_6357
 	picture = GFX_evt_child_play
 	border = GFX_event_narrative_frame_intrigue
-
 	is_triggered_only = yes
-	
+
 	immediate = {
 		save_event_target_as = target_victim
-		FROMFROM = { character_event = { id = 11 } } # Consequences of discovery
+		FROMFROM = {
+			character_event = {
+				id = 11
+			}
+		} # Consequences of discovery
 		clear_event_target = target_victim
 	}
 
 	option = {
 		name = EVTOPTA_CM_6357
-		FROMFROM = { reveal_plot = yes }
-		
+		FROMFROM = {
+			reveal_plot = yes
+		}
 		hidden_tooltip = {
 			FROMFROM = {
-				character_event = { id = CM.63599 }
+				character_event = {
+					id = CM.63599
+				}
 				clr_character_flag = hiding_murder_in_motion
 			}
-			FROMFROM = { any_plot_backer = { character_event = { id = CM.63599 }	} }
+			FROMFROM = {
+				any_plot_backer = {
+					character_event = {
+						id = CM.63599
+					}
+				}
+			}
 		}
 	}
 }
@@ -3543,7 +4442,6 @@ character_event = {
 	desc = EVTDESC_CM_63599
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-
 	is_triggered_only = yes
 
 	option = {

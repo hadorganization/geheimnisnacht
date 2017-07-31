@@ -1,12 +1,10 @@
-################################################
-#
-# Events for Pope vs Free Investiture
-#
-# ID 67000 - 67999 are reserved
-#
-##################################################
-# Written by Johan Andersson
 
+
+# Events for Pope vs Free Investiture
+
+# ID 67000 - 67999 are reserved
+
+# Written by Johan Andersson
 
 # The Pope singles out a Kingdom with Free Investiture (unless he has already targetted one)
 character_event = {
@@ -14,7 +12,6 @@ character_event = {
 	desc = EVTDESC67000
 	picture = GFX_evt_icon
 	border = GFX_event_normal_frame_religion
-	
 	only_playable = yes
 	religion_group = old_world_group
 	min_age = 16
@@ -22,27 +19,33 @@ character_event = {
 	prisoner = no
 	only_capable = yes
 	war = no
-	
+
 	trigger = {
 		religion = sigmarite
 		controls_religion = yes
 		religion_authority = 0.35
-		NOT = {	has_character_flag = pope_currently_demanding	}
+		NOT = {
+			has_character_flag = pope_currently_demanding
+		}
 		any_independent_ruler = {
 			religion = ROOT
 			rightful_religious_head = ROOT
-			NOT = {	has_character_flag = pope_wants_our_law_changed }
-			NOT = {	has_character_flag = pope_respects_our_law }
+			NOT = {
+				has_character_flag = pope_wants_our_law_changed
+			}
+			NOT = {
+				has_character_flag = pope_respects_our_law
+			}
 			primary_title = {
 				OR = {
 					tier = KING
 					tier = EMPEROR
 				}
-				has_law = investiture_law_1 
+				has_law = investiture_law_1
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 50
 		modifier = {
@@ -53,22 +56,30 @@ character_event = {
 
 	option = {
 		name = EVTOPTA67000
-		ai_chance = {	factor = 100 }
+		ai_chance = {
+			factor = 100
+		}
 		random_independent_ruler = {
 			limit = {
 				religion = ROOT
 				rightful_religious_head = ROOT
-				NOT = {	has_character_flag = pope_wants_our_law_changed }
-				NOT = {	has_character_flag = pope_respects_our_law }
+				NOT = {
+					has_character_flag = pope_wants_our_law_changed
+				}
+				NOT = {
+					has_character_flag = pope_respects_our_law
+				}
 				primary_title = {
 					OR = {
 						tier = KING
 						tier = EMPEROR
 					}
-					has_law = investiture_law_1 
+					has_law = investiture_law_1
 				}
 			}
-			character_event = { id = 67001 days = 14 tooltip = EVTTOOLTIP67001 }
+			character_event = {
+				id = 67001 days = 14 tooltip = EVTTOOLTIP67001
+			}
 			set_character_flag = pope_wants_our_law_changed
 		}
 		set_character_flag = pope_currently_demanding
@@ -76,10 +87,11 @@ character_event = {
 
 	option = {
 		name = EVTOPTB67000
-		ai_chance = { factor = 0 }
+		ai_chance = {
+			factor = 0
+		}
 	}
 }
-
 
 # King/Emperor gets the papal emissary asking them to change laws!
 character_event = {
@@ -87,12 +99,10 @@ character_event = {
 	desc = EVTDESC67001
 	picture = GFX_evt_pope
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA67001 # Fold to demand
-		
 		ai_chance = {
 			factor = 1
 			modifier = {
@@ -104,9 +114,9 @@ character_event = {
 				trait = zealous
 			}
 		}
-		
-		FROM = { clr_character_flag = pope_currently_demanding }
-		
+		FROM = {
+			clr_character_flag = pope_currently_demanding
+		}
 		primary_title = {
 			revoke_law = investiture_law_1
 			add_law_w_cooldown = investiture_law_0
@@ -116,9 +126,7 @@ character_event = {
 			modifier = ruler_bowed_to_pope
 			years = 10
 		}
-		
 		clr_character_flag = pope_wants_our_law_changed
-		
 		FROM = {
 			opinion = {
 				modifier = pope_invest_approve
@@ -126,12 +134,15 @@ character_event = {
 				years = 4
 			}
 		}
-		
 		hidden_tooltip = {
-			FROM = { character_event = { id = 67002 } }
+			FROM = {
+				character_event = {
+					id = 67002
+				}
+			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTB67001 # Refuse
 		ai_chance = {
@@ -154,9 +165,7 @@ character_event = {
 			modifier = ruler_defied_pope
 			years = 10
 		}
-		
 		set_character_flag = pope_we_refuse_law_changed
-		
 		FROM = {
 			opinion = {
 				modifier = pope_invest_dislike
@@ -164,18 +173,20 @@ character_event = {
 				years = 5
 			}
 		}
-		
 		hidden_tooltip = {
-			FROM = {  character_event = { id = 67003 } }
-		}			
+			FROM = {
+				character_event = {
+					id = 67003
+				}
+			}
+		}
 	}
-	
+
 	option = {
 		name = EVTOPTC67001 # Give gold to Pope
 		trigger = {
 			wealth = 200
 		}
-		
 		ai_chance = {
 			factor = 1
 			modifier = {
@@ -187,16 +198,21 @@ character_event = {
 				trait = zealous
 			}
 		}
-		
 		wealth = -200
-		FROM = { clr_character_flag = pope_currently_demanding }
+		FROM = {
+			clr_character_flag = pope_currently_demanding
+		}
 		set_character_flag = pope_respects_our_law
 		clr_character_flag = pope_wants_our_law_changed
 		hidden_tooltip = {
-			FROM = { character_event = { id = 67004  } }
-		}		
+			FROM = {
+				character_event = {
+					id = 67004
+				}
+			}
+		}
 	}
-	
+
 	option = {
 		name = EVTOPTD67001 # Impress with Learning
 		tooltip_info = learning
@@ -207,40 +223,45 @@ character_event = {
 			factor = 5
 		}
 		piety = 1
-		FROM = { clr_character_flag = pope_currently_demanding }
+		FROM = {
+			clr_character_flag = pope_currently_demanding
+		}
 		set_character_flag = pope_respects_our_law
 		clr_character_flag = pope_wants_our_law_changed
 		hidden_tooltip = {
-			FROM = {  character_event = { id = 67005 } }
-		}	
+			FROM = {
+				character_event = {
+					id = 67005
+				}
+			}
+		}
 	}
 }
 
-#king accepts
+# king accepts
 character_event = {
 	id = 67002
 	desc = EVTDESC67002
 	picture = GFX_evt_emissary
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA67002
 		prestige = 5
 	}
 }
 
-#king refuses us
+# king refuses us
 character_event = {
 	id = 67003
 	desc = EVTDESC67003
 	picture = GFX_evt_emissary
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
-	option = { # Do nothing
+
+	option = {
+		# Do nothing
 		name = EVTOPTA67003
 		ai_chance = {
 			factor = 1
@@ -270,7 +291,9 @@ character_event = {
 			who = FROM
 		}
 	}
-	option = { # Excommunicate the fool!
+
+	option = {
+		# Excommunicate the fool!
 		name = EVTOPTA67022
 		ai_chance = {
 			factor = 1
@@ -315,35 +338,37 @@ character_event = {
 			}
 		}
 		hidden_tooltip = {
-			FROM = { character_event = { id = 38022 days = 10 } }
+			FROM = {
+				character_event = {
+					id = 38022 days = 10
+				}
+			}
 		}
 	}
 }
 
-#king bribes us"
+# king bribes us"
 character_event = {
 	id = 67004
 	desc = EVTDESC67004
 	picture = GFX_evt_emissary
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA67004"
 		wealth = 200
 	}
 }
 
-#king outwits us.
+# king outwits us.
 character_event = {
 	id = 67005
 	desc = EVTDESC67005
 	picture = GFX_evt_emissary
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA67005
 		piety = -5
@@ -356,7 +381,6 @@ character_event = {
 	desc = EVTDESC67010
 	picture = GFX_evt_bishop
 	border = GFX_event_normal_frame_religion
-
 	only_playable = yes
 	religion_group = old_world_group
 	min_age = 16
@@ -364,9 +388,8 @@ character_event = {
 	prisoner = no
 	only_capable = yes
 	war = no
-	
 	has_character_flag = pope_currently_demanding
-	
+
 	trigger = {
 		religion = sigmarite
 		controls_religion = yes
@@ -380,15 +403,17 @@ character_event = {
 					tier = KING
 					tier = EMPEROR
 				}
-				has_law = investiture_law_1 
+				has_law = investiture_law_1
 			}
 			any_realm_lord = {
 				is_theocracy = yes
-				NOT = { has_character_flag = pope_bribing }
+				NOT = {
+					has_character_flag = pope_bribing
+				}
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 50
 		modifier = {
@@ -399,7 +424,9 @@ character_event = {
 
 	option = {
 		name = EVTOPTA67010
-		ai_chance = { factor = 100 }
+		ai_chance = {
+			factor = 100
+		}
 		random_independent_ruler = {
 			limit = {
 				religion = ROOT
@@ -410,24 +437,29 @@ character_event = {
 						tier = KING
 						tier = EMPEROR
 					}
-					has_law = investiture_law_1 
+					has_law = investiture_law_1
 				}
 			}
 			random_realm_lord = {
 				limit = {
 					is_theocracy = yes
-	    			NOT = { has_character_flag = pope_bribing }				
+	 				NOT = {
+						has_character_flag = pope_bribing
+					}
 				}
 				set_character_flag = pope_bribing
-			
-				character_event = { id = 67011 days = 14 tooltip = EVTTOOLTIP67011 }
+				character_event = {
+					id = 67011 days = 14 tooltip = EVTTOOLTIP67011
+				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTB67010
-		ai_chance = { factor = 0 }
+		ai_chance = {
+			factor = 0
+		}
 		random_independent_ruler = {
 			limit = {
 				religion = ROOT
@@ -438,7 +470,6 @@ character_event = {
 		}
 		clr_character_flag = pope_currently_demanding
 	}
-
 }
 
 # The Bishop receives the Papal emissary
@@ -447,9 +478,8 @@ character_event = {
 	desc = EVTDESC67011
 	picture = GFX_evt_pope
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA67011
 		wealth = 20
@@ -462,50 +492,62 @@ character_event = {
 			factor = 10
 			modifier = {
 				factor = 0.1
-				opinion = { who = top_liege value = 75 }
+				opinion = {
+					who = top_liege value = 75
+				}
 			}
 		}
 		random = {
 			chance = 33
 			top_liege = {
-				character_event = { id = 67012 days = 14 tooltip = EVTTOOLTIP67012 }
+				character_event = {
+					id = 67012 days = 14 tooltip = EVTTOOLTIP67012
+				}
 			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB67011
 		ai_chance = {
 			factor = 1
 			modifier = {
 				factor = 1.5
-				opinion = { who = top_liege value = 20 }
+				opinion = {
+					who = top_liege value = 20
+				}
 			}
 			modifier = {
 				factor = 2
-				opinion = { who = top_liege value = 40 }
+				opinion = {
+					who = top_liege value = 40
+				}
 			}
 			modifier = {
 				factor = 4
-				opinion = { who = top_liege value =  60 }
+				opinion = {
+					who = top_liege value = 60
+				}
 			}
 			modifier = {
 				factor = 100
-				opinion = { who = top_liege value =  90 }
+				opinion = {
+					who = top_liege value = 90
+				}
 			}
 		}
 		prestige = 1
 	}
 }
 
-#King knows of bishop getting bribed
+# King knows of bishop getting bribed
 character_event = {
 	id = 67012
 	desc = EVTDESC67012
 	picture = GFX_evt_pope
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA67012
 		opinion = {
@@ -522,16 +564,15 @@ character_event = {
 	desc = EVTDESC67020
 	picture = GFX_evt_pope
 	border = GFX_event_normal_frame_religion
-
 	only_rulers = yes
 	religion_group = old_world_group
 	min_age = 16
 	only_men = yes
 	prisoner = no
 	only_capable = yes
-	war = no	
+	war = no
 	has_character_flag = pope_currently_demanding
-	
+
 	trigger = {
 		religion = sigmarite
 		controls_religion = yes
@@ -540,65 +581,78 @@ character_event = {
 			rightful_religious_head = ROOT
 			has_character_flag = pope_we_refuse_law_changed
 			primary_title = {
-				OR = { tier = KING tier = EMPEROR }
-				has_law = investiture_law_1 
+				OR = {
+					tier = KING tier = EMPEROR
+				}
+				has_law = investiture_law_1
 			}
 			any_realm_lord = {
-				OR = { tier = KING tier = DUKE    }
-				NOT = { has_character_flag = pope_vassal_approached }
+				OR = {
+					tier = KING tier = DUKE
+				}
+				NOT = {
+					has_character_flag = pope_vassal_approached
+				}
 				religion = ROOT
 				relative_power_to_liege = 0.05
 			}
 		}
 	}
-	
-	
+
 	mean_time_to_happen = {
 		months = 50
 		modifier = {
 			factor = 0.5
 			trait = ambitious
 		}
-	}	
+	}
+
 	option = {
 		name = EVTOPTA67020
-		ai_chance = { factor = 100 }
+		ai_chance = {
+			factor = 100
+		}
 		random_independent_ruler = {
 			limit = {
 				religion = ROOT
 				rightful_religious_head = ROOT
 				has_character_flag = pope_we_refuse_law_changed
 				primary_title = {
-					OR = { tier = KING tier = EMPEROR }
-					has_law = investiture_law_1 
+					OR = {
+						tier = KING tier = EMPEROR
+					}
+					has_law = investiture_law_1
 				}
 			}
 			random_realm_lord = {
 				limit = {
-					OR = { tier = KING tier = DUKE }
-					NOT = { has_character_flag = pope_vassal_approached }
+					OR = {
+						tier = KING tier = DUKE
+					}
+					NOT = {
+						has_character_flag = pope_vassal_approached
+					}
 					religion = ROOT
 					relative_power_to_liege = 0.05
-				}	
-			
-				set_character_flag = pope_vassal_approached 
-				character_event = { id = 67021 days = 14 tooltip = EVTTOOLTIP67021 }
+				}
+				set_character_flag = pope_vassal_approached
+				character_event = {
+					id = 67021 days = 14 tooltip = EVTTOOLTIP67021
+				}
 			}
 		}
 		clr_character_flag = pope_currently_demanding
 	}
 }
 
-
-#- The vassal receives the claim
+# - The vassal receives the claim
 character_event = {
 	id = 67021
 	desc = EVTDESC67021
 	picture = GFX_evt_pope
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA67021"
 		opinion = {
@@ -610,37 +664,56 @@ character_event = {
 			factor = 10
 			modifier = {
 				factor = 0.1
-				opinion = { who = top_liege value = 75 }
+				opinion = {
+					who = top_liege value = 75
+				}
 			}
 		}
 		piety = 10
-		top_liege = { primary_title = { add_pressed_claim = ROOT  }}
+		top_liege = {
+			primary_title = {
+				add_pressed_claim = ROOT
+			}
+		}
 		random = {
 			chance = 33
 			top_liege = {
-				character_event = { id = 67022 days = 14 tooltip = EVTTOOLTIP67022 }
+				character_event = {
+					id = 67022 days = 14 tooltip = EVTTOOLTIP67022
+				}
 			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB67021
 		ai_chance = {
 			factor = 1
 			modifier = {
 				factor = 0
-				NOT = { opinion = { who = top_liege value = 50 } }
+				NOT = {
+					opinion = {
+						who = top_liege value = 50
+					}
+				}
 			}
 			modifier = {
 				factor = 2
-				opinion = { who = top_liege value = 55 }
+				opinion = {
+					who = top_liege value = 55
+				}
 			}
 			modifier = {
 				factor = 4
-				opinion = { who = top_liege value =  60 }
+				opinion = {
+					who = top_liege value = 60
+				}
 			}
 			modifier = {
 				factor = 100
-				opinion = { who = top_liege value =  80 }
+				opinion = {
+					who = top_liege value = 80
+				}
 			}
 		}
 		piety = -20
@@ -657,9 +730,8 @@ character_event = {
 	desc = EVTDESC67022
 	picture = GFX_evt_emissary
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA67022
 		prestige = -5

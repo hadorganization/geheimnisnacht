@@ -1,12 +1,10 @@
-#########################################
-#										#
-# RIP Hospital Events					#
-# ID RIP.4500-RIP.4699					#
-#										#
-#########################################
-#
-# Written by Emil Tisander
 
+
+# RIP Hospital Events
+
+# ID RIP.4500-RIP.4699
+
+# Written by Emil Tisander
 namespace = RIP
 
 # Learned Pilgrim - Assists at hospital
@@ -15,14 +13,12 @@ character_event = {
 	desc = EVTDESC_RIP_4501
 	picture = GFX_evt_court_physician
 	border = GFX_event_normal_frame_religion
-	
 	min_age = 16
 	capable_only = yes
 	only_playable = yes
 	prisoner = no
 	war = no
 	has_dlc = "Reapers"
-
 	is_triggered_only = yes
 
 	trigger = {
@@ -41,11 +37,13 @@ character_event = {
 			}
 			any_courtier_or_vassal = {
 				has_minor_title = title_court_physician
-				NOT = { learning = 13 }
+				NOT = {
+					learning = 13
+				}
 			}
 		}
 	}
-	
+
 	immediate = {
 		any_courtier_or_vassal = {
 			limit = {
@@ -95,14 +93,14 @@ character_event = {
 			remove_trait = seducer
 			remove_trait = seductress
 			remove_trait = mystic
-			random_list = { # Random chance to add Physician
+			random_list = {
+				# Random chance to add Physician
 				40 = {
 					remove_trait = theologian
 					add_trait = physician
 					change_learning = 2
 				}
 				60 = {
-					
 				}
 			}
 			if = {
@@ -125,8 +123,9 @@ character_event = {
 			save_event_target_as = pilgrim_physician
 		}
 	}
-	
-	option = { # Appoint the pilgrim to be your Physician
+
+	option = {
+		# Appoint the pilgrim to be your Physician
 		name = EVTOPTA_RIP_4501
 		event_target:previous_physician = {
 			remove_title = title_court_physician
@@ -135,7 +134,9 @@ character_event = {
 			give_minor_title = title_court_physician
 		}
 	}
-	option = { # Ignore the pilgrim
+
+	option = {
+		# Ignore the pilgrim
 		name = {
 			text = EVTOPTB_RIP_4501_A
 			trigger = {
@@ -155,12 +156,12 @@ character_event = {
 		hidden_tooltip = {
 			event_target:pilgrim_physician = {
 				if = {
-				 limit = {
-					is_invincible_trigger = yes
+					limit = {
+						is_invincible_trigger = yes
+					}
+					antideath_effect = yes
+					break = yes
 				}
-				antideath_effect = yes
-				break = yes 
-			}
 				death = {
 					death_reason = death_missing
 				}
@@ -174,22 +175,20 @@ character_event = {
 	id = RIP.4504
 	desc = EVTDESC_RIP_4504
 	picture = GFX_evt_plague_spreading
-	
 	min_age = 16
 	capable_only = yes
 	only_playable = yes
 	prisoner = no
 	has_dlc = "Reapers"
 	war = no
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		any_demesne_province = {
 			hospital_level = 1
 		}
 	}
-	
+
 	immediate = {
 		random_demesne_province = {
 			limit = {
@@ -198,7 +197,7 @@ character_event = {
 			save_event_target_as = hospital_location
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_RIP_4504
 		scaled_wealth = -0.5
@@ -209,13 +208,17 @@ character_event = {
 			text = increase_prosperity_custom_tooltip
 			hidden_tooltip = {
 				event_target:hospital_location = {
-					change_variable = { which = prosperity_value value = 6 }
+					change_variable = {
+						which = prosperity_value value = 6
+					}
 				}
 			}
 		}
-		character_event = { id = RIP.4505 }
+		character_event = {
+			id = RIP.4505
+		}
 	}
-	
+
 	option = {
 		name = EVTOPTB_RIP_4504
 	}
@@ -226,39 +229,45 @@ character_event = {
 	id = RIP.4505
 	desc = EVTDESC_RIP_4505
 	picture = GFX_evt_culture_change
-	
 	min_age = 16
 	capable_only = yes
 	only_playable = yes
 	prisoner = no
-	
 	is_triggered_only = yes
-	
-	option = { # Speak of your greatness
+
+	option = {
+		# Speak of your greatness
 		name = EVTOPTA_RIP_4505
-		
 		prestige = 100
 		if = {
 			limit = {
-				NOT = { trait = proud }
-				NOT = { trait = humble }
+				NOT = {
+					trait = proud
+				}
+				NOT = {
+					trait = humble
+				}
 			}
 			random = {
 				chance = 50
 				add_trait = proud
 				hidden_tooltip = {
-					character_event = { id = 38261 } # Notify
+					character_event = {
+						id = 38261
+					} # Notify
 				}
 			}
 		}
 	}
-	
-	option = { # Speak of God
+
+	option = {
+		# Speak of God
 		trigger = {
-			NOT = { trait = cynical }
+			NOT = {
+				trait = cynical
+			}
 		}
 		name = EVTOPTB_RIP_4505
-		
 		piety = 50
 		add_character_modifier = {
 			name = religious_appreciate
@@ -266,19 +275,24 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = { trait = zealous }
+				NOT = {
+					trait = zealous
+				}
 			}
 			random = {
 				chance = 50
 				add_trait = zealous
 				hidden_tooltip = {
-					character_event = { id = 38269 } # Notify
+					character_event = {
+						id = 38269
+					} # Notify
 				}
 			}
 		}
 	}
-	
-	option = { # Speak of the realm
+
+	option = {
+		# Speak of the realm
 		name = EVTOPTC_RIP_4505
 		add_character_modifier = {
 			name = wol_respected_ruler
@@ -286,36 +300,48 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = { trait = gregarious }
-				NOT = { trait = shy }
+				NOT = {
+					trait = gregarious
+				}
+				NOT = {
+					trait = shy
+				}
 			}
 			random = {
 				chance = 50
 				add_trait = gregarious
 				hidden_tooltip = {
-					character_event = { id = 38265 } # Notify
+					character_event = {
+						id = 38265
+					} # Notify
 				}
 			}
 		}
 	}
-	
-	option = { # Speak of the people
+
+	option = {
+		# Speak of the people
 		name = EVTOPTD_RIP_4505
-		
 		add_character_modifier = {
 			name = gave_funny_speech
 			months = 36
 		}
 		if = {
 			limit = {
-				NOT = { trait = proud }
-				NOT = { trait = humble }
+				NOT = {
+					trait = proud
+				}
+				NOT = {
+					trait = humble
+				}
 			}
 			random = {
 				chance = 50
 				add_trait = humble
 				hidden_tooltip = {
-					character_event = { id = 38260 } # Notify
+					character_event = {
+						id = 38260
+					} # Notify
 				}
 			}
 		}
@@ -328,7 +354,6 @@ character_event = {
 	desc = EVTDESC_RIP_4512
 	picture = GFX_evt_bloody_tools
 	border = GFX_event_normal_frame_religion
-	
 	religion_group = old_world_group
 	min_age = 16
 	capable_only = yes
@@ -336,9 +361,8 @@ character_event = {
 	prisoner = no
 	has_dlc = "Reapers"
 	war = no
-
 	is_triggered_only = yes
-	
+
 	trigger = {
 		higher_tier_than = BARON
 		any_demesne_province = {
@@ -349,10 +373,12 @@ character_event = {
 		}
 		rightful_religious_head_scope = {
 			always = yes
-			NOT = { character = ROOT }
+			NOT = {
+				character = ROOT
+			}
 		}
 	}
-	
+
 	immediate = {
 		random_demesne_province = {
 			limit = {
@@ -367,8 +393,9 @@ character_event = {
 			save_event_target_as = religious_head_fee
 		}
 	}
-	
-	option = { # Accept demand
+
+	option = {
+		# Accept demand
 		name = EVTOPTA_RIP_4512
 		transfer_scaled_wealth = {
 			to = event_target:religious_head_fee
@@ -382,10 +409,8 @@ character_event = {
 				months = 60
 			}
 		}
-		
 		ai_chance = {
 			factor = 50
-			
 			modifier = {
 				factor = 2
 				trait = zealous
@@ -400,11 +425,15 @@ character_event = {
 			}
 			modifier = {
 				factor = 0
-				NOT = { scaled_wealth = 1 }
+				NOT = {
+					scaled_wealth = 1
+				}
 			}
 		}
 	}
-	option = { # Refuse demand
+
+	option = {
+		# Refuse demand
 		name = EVTOPTB_RIP_4512
 		event_target:religious_head_fee = {
 			opinion = {
@@ -413,10 +442,8 @@ character_event = {
 				months = 60
 			}
 		}
-		
 		ai_chance = {
 			factor = 50
-			
 			modifier = {
 				factor = 2
 				trait = cynical
@@ -435,14 +462,12 @@ character_event = {
 	desc = EVTDESC_RIP_4514
 	picture = GFX_evt_plague_spreading
 	border = GFX_event_normal_frame_religion
-	
 	min_age = 16
 	capable_only = yes
 	only_playable = yes
 	prisoner = no
 	has_dlc = "Reapers"
 	war = no
-
 	is_triggered_only = yes
 
 	trigger = {
@@ -452,7 +477,7 @@ character_event = {
 			hospital_has_building = leper_colony_1
 		}
 	}
-	
+
 	immediate = {
 		random_demesne_province = {
 			limit = {
@@ -474,7 +499,9 @@ character_event = {
 			save_event_target_as = homeless_leper
 		}
 	}
-	option = { # Offer a place to stay
+
+	option = {
+		# Offer a place to stay
 		name = EVTOPTA_RIP_4514
 		piety = 300
 		event_target:homeless_leper = {
@@ -484,39 +511,37 @@ character_event = {
 				months = 60
 			}
 		}
-		
 		ai_chance = {
 			factor = 20
-			
 			modifier = {
 				factor = 3
 				trait = kind
 			}
 		}
 	}
-	option = { # Send the leper away
+
+	option = {
+		# Send the leper away
 		name = EVTOPTB_RIP_4514
 		custom_tooltip = {
 			text = EVTOPTB_RIP_4514_tooltip
 			hidden_tooltip = {
 				event_target:homeless_leper = {
 					if = {
-				 limit = {
-					is_invincible_trigger = yes
-				}
-				antideath_effect = yes
-				break = yes 
-			}
+						limit = {
+							is_invincible_trigger = yes
+						}
+						antideath_effect = yes
+						break = yes
+					}
 					death = {
 						death_reason = death_missing
 					}
 				}
 			}
 		}
-		
 		ai_chance = {
 			factor = 80
-			
 			modifier = {
 				factor = 2
 				trait = paranoid
@@ -539,29 +564,35 @@ character_event = {
 	desc = EVTDESC_RIP_4520
 	picture = GFX_evt_end_of_days
 	border = GFX_event_normal_frame_religion
-	
 	only_playable = yes
 	has_dlc = "Reapers"
 	war = no
-
 	is_triggered_only = yes
 
 	trigger = {
 		higher_tier_than = BARON
 		any_demesne_province = {
-			owner = { character = ROOT }
-			NOT = { has_province_modifier = damaged_hospital }
+			owner = {
+				character = ROOT
+			}
+			NOT = {
+				has_province_modifier = damaged_hospital
+			}
 			hospital_level = 1
 			hospital_has_building = soup_kitchen_1
 		}
 	}
-	
+
 	immediate = {
 		random_demesne_province = {
 			limit = {
 				AND = {
-					owner = { character = ROOT }
-					NOT = { has_province_modifier = damaged_hospital }
+					owner = {
+						character = ROOT
+					}
+					NOT = {
+						has_province_modifier = damaged_hospital
+					}
 					hospital_level = 1
 					hospital_has_building = soup_kitchen_1
 				}
@@ -569,28 +600,35 @@ character_event = {
 			save_event_target_as = kitchen_hospital
 		}
 	}
-	
-	option = { # Pay for the repairs
+
+	option = {
+		# Pay for the repairs
 		name = EVTOPTA_RIP_4520
 		scaled_wealth = -0.20
 		if = {
 			limit = {
-				NOT = { trait = cruel }
-				NOT = { trait = envious }
-				NOT = { trait = kind }
+				NOT = {
+					trait = cruel
+				}
+				NOT = {
+					trait = envious
+				}
+				NOT = {
+					trait = kind
+				}
 			}
 			random = {
 				chance = 25
 				add_trait = kind
 				hidden_tooltip = {
-					character_event = { id = 38268 }
+					character_event = {
+						id = 38268
+					}
 				}
 			}
 		}
-		
 		ai_chance = {
 			factor = 30
-			
 			modifier = {
 				factor = 2
 				trait = kind
@@ -601,11 +639,15 @@ character_event = {
 			}
 			modifier = {
 				factor = 0
-				NOT = { scaled_wealth = 0.20 }
+				NOT = {
+					scaled_wealth = 0.20
+				}
 			}
 		}
 	}
-	option = { # Pay for the repairs and send additional food
+
+	option = {
+		# Pay for the repairs and send additional food
 		trigger = {
 			trait = charitable
 		}
@@ -613,21 +655,23 @@ character_event = {
 		name = EVTOPTB_RIP_4520
 		scaled_wealth = -0.50
 		piety = 100
-		
 		ai_chance = {
 			factor = 20
-			
 			modifier = {
 				factor = 5
 				trait = charitable
 			}
 			modifier = {
 				factor = 0
-				NOT = { scaled_wealth = 0.50 }
+				NOT = {
+					scaled_wealth = 0.50
+				}
 			}
 		}
 	}
-	option = { # Pay minimum costs
+
+	option = {
+		# Pay minimum costs
 		trigger = {
 			trait = greedy
 		}
@@ -635,17 +679,17 @@ character_event = {
 		name = EVTOPTC_RIP_4520
 		scaled_wealth = -0.10
 		piety = -20
-		
 		ai_chance = {
 			factor = 20
-			
 			modifier = {
 				factor = 4
 				trait = greedy
 			}
 		}
 	}
-	option = { # Let it be destroyed
+
+	option = {
+		# Let it be destroyed
 		name = EVTOPTD_RIP_4520
 		event_target:kitchen_hospital = {
 			add_province_modifier = {
@@ -653,10 +697,8 @@ character_event = {
 				duration = 1825
 			}
 		}
-		
 		ai_chance = {
 			factor = 20
-			
 			modifier = {
 				factor = 2
 				OR = {
@@ -677,16 +719,14 @@ character_event = {
 	id = RIP.4530
 	desc = EVTDESC_RIP_4530
 	picture = GFX_evt_court_physician
-	
 	min_age = 16
 	capable_only = yes
 	only_playable = yes
 	prisoner = no
 	has_dlc = "Reapers"
 	war = no
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		any_demesne_province = {
 			hospital_level = 1
@@ -698,11 +738,13 @@ character_event = {
 		}
 		any_courtier_or_vassal = {
 			has_minor_title = title_court_physician
-			NOT = { has_character_flag = spent_time_at_hospital }
+			NOT = {
+				has_character_flag = spent_time_at_hospital
+			}
 			ai = yes
 		}
 	}
-	
+
 	immediate = {
 		random_demesne_province = {
 			limit = {
@@ -723,19 +765,23 @@ character_event = {
 			save_event_target_as = learning_physician
 		}
 	}
-	
-	option = { # Accept
+
+	option = {
+		# Accept
 		name = EVTOPTA_RIP_4530
 		scaled_wealth = -0.05
 		hidden_tooltip = {
 			event_target:learning_physician = {
 				set_character_flag = spent_time_at_hospital
-				character_event = { id = RIP.4531 days = 30 random = 30 }
+				character_event = {
+					id = RIP.4531 days = 30 random = 30
+				}
 			}
 		}
 	}
-	
-	option = { # Refuse
+
+	option = {
+		# Refuse
 		name = EVTOPTB_RIP_4530
 	}
 }
@@ -743,14 +789,13 @@ character_event = {
 # Court physician seek learning - Ping event
 character_event = {
 	id = RIP.4531
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		random_list = {
-			40 = { # Good outcome
+			40 = {
+				# Good outcome
 				modifier = {
 					factor = 2
 					trait = diligent
@@ -775,25 +820,34 @@ character_event = {
 						trait = shrewd
 					}
 				}
-				
 				if = {
 					limit = {
 						trait = physician
 					}
 					change_learning = 2
-					FROM = { set_character_flag = physician_got_learning }
+					FROM = {
+						set_character_flag = physician_got_learning
+					}
 				}
 				if = {
 					limit = {
-						NOT = { trait = physician }
+						NOT = {
+							trait = physician
+						}
 					}
 					add_trait = physician
-					FROM = { set_character_flag = physician_got_trait }
+					FROM = {
+						set_character_flag = physician_got_trait
+					}
 				}
-				
-				FROM = { character_event = { id = RIP.4532 } }
+				FROM = {
+					character_event = {
+						id = RIP.4532
+					}
+				}
 			}
-			40 = { # Ok outcome
+			40 = {
+				# Ok outcome
 				modifier = {
 					factor = 2
 					trait = diligent
@@ -806,12 +860,15 @@ character_event = {
 					factor = 2
 					trait = content
 				}
-				
 				change_learning = 1
-				
-				FROM = { character_event = { id = RIP.4533 } }
+				FROM = {
+					character_event = {
+						id = RIP.4533
+					}
+				}
 			}
-			20 = { # Bad outcome
+			20 = {
+				# Bad outcome
 				modifier = {
 					factor = 3
 					trait = slothful
@@ -820,8 +877,11 @@ character_event = {
 					factor = 2
 					trait = shy
 				}
-				
-				FROM = { character_event = { id = RIP.4534 } }
+				FROM = {
+					character_event = {
+						id = RIP.4534
+					}
+				}
 			}
 		}
 	}
@@ -832,22 +892,21 @@ character_event = {
 	id = RIP.4532
 	desc = EVTDESC_RIP_4532
 	picture = GFX_evt_court_physician
-	
 	is_triggered_only = yes
-	
 	only_playable = yes
 	only_capable = yes
 	prisoner = no
-	
+
 	option = {
 		name = EXCELLENT
-		
 		if = {
 			limit = {
 				has_character_flag = physician_got_learning
 			}
 			tooltip = {
-				FROM = { change_learning = 2 }
+				FROM = {
+					change_learning = 2
+				}
 			}
 		}
 		if = {
@@ -855,7 +914,9 @@ character_event = {
 				has_character_flag = physician_got_trait
 			}
 			tooltip = {
-				FROM = { add_trait = physician }
+				FROM = {
+					add_trait = physician
+				}
 			}
 		}
 		hidden_tooltip = {
@@ -870,18 +931,17 @@ character_event = {
 	id = RIP.4533
 	desc = EVTDESC_RIP_4533
 	picture = GFX_evt_court_physician
-	
 	is_triggered_only = yes
-	
 	only_playable = yes
 	only_capable = yes
 	prisoner = no
-	
+
 	option = {
 		name = EXCELLENT
-		
 		tooltip = {
-			FROM = { change_learning = 1 }
+			FROM = {
+				change_learning = 1
+			}
 		}
 	}
 }
@@ -891,13 +951,11 @@ character_event = {
 	id = RIP.4534
 	desc = EVTDESC_RIP_4534
 	picture = GFX_evt_court_physician
-	
 	is_triggered_only = yes
-	
 	only_playable = yes
 	only_capable = yes
 	prisoner = no
-	
+
 	option = {
 		name = I_SEE
 	}

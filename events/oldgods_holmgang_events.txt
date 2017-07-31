@@ -1,63 +1,69 @@
-###################################
-#
-# THE OLD GODS 
+
+
+# THE OLD GODS
+
 # - Holmgång Events
-#
-###################################
 
 # Written by Henrik Eklund
-
 namespace = TOG
 
 # Liege Hates You (Invisible)
 character_event = {
 	id = TOG.5015
 	hide_window = yes
-	
 	min_age = 16
 	max_age = 50
 	only_men = yes
 	capable_only = yes
 	prisoner = no
 	religion = norscan_gods
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
 		religion = norscan_gods
-		NOT = { 
+		NOT = {
 			has_character_flag = holmgang_target
 			has_character_flag = holmgang_challenger
-			trait = incapable 
+			trait = incapable
 			trait = wounded
 			is_maimed_trigger = yes
 			is_ill = yes
 		}
 		liege = {
 			age = 16
-			NOT = { age = 50 }
+			NOT = {
+				age = 50
+			}
 			is_alive = yes
 			is_female = no
 			prisoner = no
-			NOT = { 
-				trait = incapable 
+			NOT = {
+				trait = incapable
 				trait = wounded
 				is_maimed_trigger = yes
 				is_ill = yes
 			}
-			NOT = { character = ROOT }
-			NOT = { opinion = { who = ROOT value =  -40 } }
-			NOT = { 
+			NOT = {
+				character = ROOT
+			}
+			NOT = {
+				opinion = {
+					who = ROOT value = -40
+				}
+			}
+			NOT = {
 				has_character_flag = holmgang_target
 				has_character_flag = holmgang_challenger
 			}
 			religion = norscan_gods
-			NOT = { is_inaccessible_trigger = yes }
+			NOT = {
+				is_inaccessible_trigger = yes
+			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 180
-		
 		modifier = {
 			factor = 0.5
 			trait = wroth
@@ -92,7 +98,9 @@ character_event = {
 		}
 		modifier = {
 			factor = 2.0
-			NOT = { combat_rating = 1 }
+			NOT = {
+				combat_rating = 1
+			}
 		}
 		modifier = {
 			factor = 2.0
@@ -111,39 +119,48 @@ character_event = {
 			has_focus = focus_war
 		}
 	}
-	
+
 	immediate = {
 		liege = {
 			set_character_flag = holmgang_challenger
 			set_character_flag = do_not_disturb
-			hidden_tooltip = { character_event = { id = TOG.5999 days = 50 } } # Safety catch flag clearing
-			character_event = { id = TOG.5000 }
+			hidden_tooltip = {
+				character_event = {
+					id = TOG.5999 days = 50
+				}
+			} # Safety catch flag clearing
+			character_event = {
+				id = TOG.5000
+			}
 		}
 		set_character_flag = holmgang_target
 		set_character_flag = do_not_disturb
-		hidden_tooltip = { character_event = { id = TOG.5999 days = 50 } } # Safety catch flag clearing
-	}			
+		hidden_tooltip = {
+			character_event = {
+				id = TOG.5999 days = 50
+			}
+		} # Safety catch flag clearing
+	}
 }
 
 # Fellow Vassal Hates You (Invisible)
 character_event = {
 	id = TOG.5016
 	hide_window = yes
-	
 	min_age = 16
 	max_age = 50
 	only_men = yes
 	capable_only = yes
 	prisoner = no
 	religion = norscan_gods
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
 		religion = norscan_gods
-		NOT = { 
+		NOT = {
 			has_character_flag = holmgang_target
 			has_character_flag = holmgang_challenger
-			trait = incapable 
+			trait = incapable
 			trait = wounded
 			is_maimed_trigger = yes
 			is_ill = yes
@@ -155,30 +172,37 @@ character_event = {
 				is_alive = yes
 				is_female = no
 				prisoner = no
-				NOT = { 
-					trait = incapable 
+				NOT = {
+					trait = incapable
 					trait = wounded
 					is_maimed_trigger = yes
 					is_ill = yes
 				}
-				NOT = { 
+				NOT = {
 					character = ROOT
-					liege = { character = ROOT }
+					liege = {
+						character = ROOT
+					}
 				}
-				NOT = { opinion = { who = ROOT value =  -40 } }
-				NOT = { 
+				NOT = {
+					opinion = {
+						who = ROOT value = -40
+					}
+				}
+				NOT = {
 					has_character_flag = holmgang_target
 					has_character_flag = holmgang_challenger
 				}
 				religion = norscan_gods
-				NOT = { is_inaccessible_trigger = yes }
+				NOT = {
+					is_inaccessible_trigger = yes
+				}
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 180
-		
 		modifier = {
 			factor = 0.5
 			trait = wroth
@@ -213,7 +237,9 @@ character_event = {
 		}
 		modifier = {
 			factor = 2.0
-			NOT = { combat_rating = 1 }
+			NOT = {
+				combat_rating = 1
+			}
 		}
 		modifier = {
 			factor = 2.0
@@ -232,7 +258,7 @@ character_event = {
 			has_focus = focus_war
 		}
 	}
-	
+
 	immediate = {
 		liege = {
 			random_vassal = {
@@ -242,55 +268,72 @@ character_event = {
 					is_alive = yes
 					is_female = no
 					prisoner = no
-					NOT = { 
-						trait = incapable 
+					NOT = {
+						trait = incapable
 						trait = wounded
 						is_maimed_trigger = yes
 						is_ill = yes
 					}
-					NOT = { 
+					NOT = {
 						character = ROOT
-						liege = { character = ROOT }
+						liege = {
+							character = ROOT
+						}
 					}
-					NOT = { opinion = { who = ROOT value =  -40 } }
-					NOT = { 
+					NOT = {
+						opinion = {
+							who = ROOT value = -40
+						}
+					}
+					NOT = {
 						has_character_flag = holmgang_target
 						has_character_flag = holmgang_challenger
 					}
 					religion = norscan_gods
-					NOT = { is_inaccessible_trigger = yes }
+					NOT = {
+						is_inaccessible_trigger = yes
+					}
 				}
 				set_character_flag = holmgang_challenger
 				set_character_flag = do_not_disturb
-				hidden_tooltip = { character_event = { id = TOG.5999 days = 50 } } # Safety catch flag clearing
-				character_event = { id = TOG.5000 }
+				hidden_tooltip = {
+					character_event = {
+						id = TOG.5999 days = 50
+					}
+				} # Safety catch flag clearing
+				character_event = {
+					id = TOG.5000
+				}
 			}
 		}
 		set_character_flag = holmgang_target
 		set_character_flag = do_not_disturb
-		hidden_tooltip = { character_event = { id = TOG.5999 days = 50 } } # Safety catch flag clearing
-	}				
+		hidden_tooltip = {
+			character_event = {
+				id = TOG.5999 days = 50
+			}
+		} # Safety catch flag clearing
+	}
 }
 
 # Your Vassal Hates You (Invisible)
 character_event = {
 	id = TOG.5017
 	hide_window = yes
-	
 	min_age = 16
 	max_age = 50
 	only_men = yes
 	capable_only = yes
 	prisoner = no
 	religion = norscan_gods
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
 		religion = norscan_gods
-		NOT = { 
+		NOT = {
 			has_character_flag = holmgang_target
 			has_character_flag = holmgang_challenger
-			trait = incapable 
+			trait = incapable
 			trait = wounded
 			is_maimed_trigger = yes
 			is_ill = yes
@@ -301,26 +344,33 @@ character_event = {
 			is_alive = yes
 			is_female = no
 			prisoner = no
-			NOT = { 
-				trait = incapable 
+			NOT = {
+				trait = incapable
 				trait = wounded
 				is_maimed_trigger = yes
 				is_ill = yes
 			}
-			NOT = { character = ROOT }
-			NOT = { opinion = { who = ROOT value =  -40 } }
-			NOT = { 
+			NOT = {
+				character = ROOT
+			}
+			NOT = {
+				opinion = {
+					who = ROOT value = -40
+				}
+			}
+			NOT = {
 				has_character_flag = holmgang_target
 				has_character_flag = holmgang_challenger
 			}
 			religion = norscan_gods
-			NOT = { is_inaccessible_trigger = yes }
+			NOT = {
+				is_inaccessible_trigger = yes
+			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 180
-		
 		modifier = {
 			factor = 0.5
 			trait = wroth
@@ -355,7 +405,9 @@ character_event = {
 		}
 		modifier = {
 			factor = 2.0
-			NOT = { combat_rating = 1 }
+			NOT = {
+				combat_rating = 1
+			}
 		}
 		modifier = {
 			factor = 2.0
@@ -374,7 +426,7 @@ character_event = {
 			has_focus = focus_war
 		}
 	}
-	
+
 	immediate = {
 		random_vassal = {
 			limit = {
@@ -383,30 +435,48 @@ character_event = {
 				is_alive = yes
 				is_female = no
 				prisoner = no
-				NOT = { 
-					trait = incapable 
+				NOT = {
+					trait = incapable
 					trait = wounded
 					is_maimed_trigger = yes
 					is_ill = yes
 				}
-				NOT = { character = ROOT }
-				NOT = { opinion = { who = ROOT value =  -40 } }
-				NOT = { 
+				NOT = {
+					character = ROOT
+				}
+				NOT = {
+					opinion = {
+						who = ROOT value = -40
+					}
+				}
+				NOT = {
 					has_character_flag = holmgang_target
 					has_character_flag = holmgang_challenger
 				}
 				religion = norscan_gods
-				NOT = { is_inaccessible_trigger = yes }
+				NOT = {
+					is_inaccessible_trigger = yes
+				}
 			}
 			set_character_flag = holmgang_challenger
 			set_character_flag = do_not_disturb
-			hidden_tooltip = { character_event = { id = TOG.5999 days = 50 } } # Safety catch flag clearing
-			character_event = { id = TOG.5000 }
+			hidden_tooltip = {
+				character_event = {
+					id = TOG.5999 days = 50
+				}
+			} # Safety catch flag clearing
+			character_event = {
+				id = TOG.5000
+			}
 		}
 		set_character_flag = holmgang_target
 		set_character_flag = do_not_disturb
-		hidden_tooltip = { character_event = { id = TOG.5999 days = 50 } } # Safety catch flag clearing
-	}	
+		hidden_tooltip = {
+			character_event = {
+				id = TOG.5999 days = 50
+			}
+		} # Safety catch flag clearing
+	}
 }
 
 # The challenge is issued
@@ -415,9 +485,8 @@ character_event = {
 	desc = EVTDESC_TOG_5000
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_5000
 		ai_chance = {
@@ -444,9 +513,12 @@ character_event = {
 			}
 		}
 		FROM = {
-			character_event = { id = TOG.5001 days = 2 tooltip = EVTTOOLTIP_TOG_5000 }
+			character_event = {
+				id = TOG.5001 days = 2 tooltip = EVTTOOLTIP_TOG_5000
+			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_TOG_5000
 		ai_chance = {
@@ -468,7 +540,9 @@ character_event = {
 				trait = patient
 			}
 		}
-		custom_tooltip = { text = no_holmgang }
+		custom_tooltip = {
+			text = no_holmgang
+		}
 		clr_character_flag = holmgang_challenger
 		clr_character_flag = do_not_disturb
 		FROM = {
@@ -484,9 +558,8 @@ character_event = {
 	desc = EVTDESC_TOG_5001
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_5001
 		ai_chance = {
@@ -513,9 +586,12 @@ character_event = {
 			}
 		}
 		FROM = {
-			character_event = { id = TOG.5002 days = 2 tooltip = EVTTOOLTIP_TOG_5002 }
+			character_event = {
+				id = TOG.5002 days = 2 tooltip = EVTTOOLTIP_TOG_5002
+			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_TOG_5001
 		ai_chance = {
@@ -538,28 +614,38 @@ character_event = {
 			}
 		}
 		FROM = {
-			character_event = { id = TOG.5003 days = 2 tooltip = EVTTOOLTIP_TOG_5003 }
+			character_event = {
+				id = TOG.5003 days = 2 tooltip = EVTTOOLTIP_TOG_5003
+			}
 		}
 		prestige = -100
 		if = {
-			limit = { trait = brave }
+			limit = {
+				trait = brave
+			}
 			random = {
 				chance = 33
 				remove_trait = brave
 			}
 		}
 		if = {
-			limit = { 
-				NOT = { trait = brave }
-				NOT = { trait = craven }
-				NOT = { trait = berserker }
+			limit = {
+				NOT = {
+					trait = brave
+				}
+				NOT = {
+					trait = craven
+				}
+				NOT = {
+					trait = berserker
+				}
 			}
 			random = {
 				chance = 33
 				add_trait = craven
 				hidden_tooltip = {
 					character_event = {
-						id = 38257 #Notify Craven
+						id = 38257 # Notify Craven
 					}
 				}
 			}
@@ -573,247 +659,572 @@ character_event = {
 	desc = EVTDESC_TOG_5002
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_5002
-		custom_tooltip = { text = holmgang_prepare }
+		custom_tooltip = {
+			text = holmgang_prepare
+		}
 		hidden_tooltip = {
-			character_event = { id = TOG.5018 days = 7}
-			FROM = { character_event = { id = TOG.5004 days = 7} }
+			character_event = {
+				id = TOG.5018 days = 7
+			}
+			FROM = {
+				character_event = {
+					id = TOG.5004 days = 7
+				}
+			}
 			if = {
 				limit = {
-					combat_rating_diff = { who = FROM value = 5 }
+					combat_rating_diff = {
+						who = FROM value = 5
+					}
 				}
 				random_list = {
-					60 = { character_event = { id = TOG.5007 days = 10} }
-					60 = { character_event = { id = TOG.5008 days = 10} }
-					50 = { character_event = { id = TOG.5006 days = 10} }
-					50 = { character_event = { id = TOG.5005 days = 10} }
-					30 = { character_event = { id = TOG.5010 days = 10} }
-					20 = { character_event = { id = TOG.5012 days = 10} }
-					20 = { character_event = { id = TOG.5013 days = 10} }
-					15 = { character_event = { id = TOG.5014 days = 10} }
+					60 = {
+						character_event = {
+							id = TOG.5007 days = 10
+						}
+					}
+					60 = {
+						character_event = {
+							id = TOG.5008 days = 10
+						}
+					}
+					50 = {
+						character_event = {
+							id = TOG.5006 days = 10
+						}
+					}
+					50 = {
+						character_event = {
+							id = TOG.5005 days = 10
+						}
+					}
+					30 = {
+						character_event = {
+							id = TOG.5010 days = 10
+						}
+					}
 					20 = {
-						modifier = {
-							factor = 0
-							NOT = { trait = craven }
-						}
-						character_event = { id = TOG.5011 days = 10 }
-					}
-					50 = {
-						modifier = {
-							factor = 0
-							NOT = { FROM = { trait = craven } }
-						}
-						character_event = { id = TOG.5009 days = 10 }
-					}
-				}
-			}
-			if = {
-				limit = {
-					combat_rating_diff = { who = FROM value = 3 }
-					NOT = {
-						combat_rating_diff = { who = FROM value = 5 }
-					}
-				}
-				random_list = {
-					50 = { character_event = { id = TOG.5007 days = 10} }
-					50 = { character_event = { id = TOG.5008 days = 10} }
-					40 = { character_event = { id = TOG.5006 days = 10} }
-					40 = { character_event = { id = TOG.5005 days = 10} }
-					30 = { character_event = { id = TOG.5010 days = 10} }
-					25 = { character_event = { id = TOG.5012 days = 10} }
-					25 = { character_event = { id = TOG.5013 days = 10} }
-					20 = { character_event = { id = TOG.5014 days = 10} }
-					25 = {
-						modifier = {
-							factor = 0
-							NOT = { trait = craven }
-						}
-						character_event = { id = TOG.5011 days = 10 }
-					}
-					40 = {
-						modifier = {
-							factor = 0
-							NOT = { FROM = { trait = craven } }
-						}
-						character_event = { id = TOG.5009 days = 10 }
-					}
-				}
-			}
-			if = {
-				limit = {
-					combat_rating_diff = { who = FROM value = 1 }
-					NOT = {
-						combat_rating_diff = { who = FROM value = 3 }
-					}
-				}
-				random_list = {
-					40 = { character_event = { id = TOG.5007 days = 10} }
-					40 = { character_event = { id = TOG.5008 days = 10} }
-					35 = { character_event = { id = TOG.5006 days = 10} }
-					35 = { character_event = { id = TOG.5005 days = 10} }
-					30 = { character_event = { id = TOG.5010 days = 10} }
-					30 = { character_event = { id = TOG.5012 days = 10} }
-					30 = { character_event = { id = TOG.5013 days = 10} }
-					25 = { character_event = { id = TOG.5014 days = 10} }
-					30 = {
-						modifier = {
-							factor = 0
-							NOT = { trait = craven }
-						}
-						character_event = { id = TOG.5011 days = 10 }
-					}
-					35 = {
-						modifier = {
-							factor = 0
-							NOT = { FROM = { trait = craven } }
-						}
-						character_event = { id = TOG.5009 days = 10 }
-					}
-				}
-			}
-			if = {
-				limit = {
-					NOT = {
-						combat_rating_diff = { who = FROM value = 1 }
-						FROM = {
-							combat_rating_diff = { who = ROOT value = 1 }
+						character_event = {
+							id = TOG.5012 days = 10
 						}
 					}
-				}
-				random_list = {
-					40 = { character_event = { id = TOG.5007 days = 10} }
-					40 = { character_event = { id = TOG.5008 days = 10} }
-					40 = { character_event = { id = TOG.5006 days = 10} }
-					40 = { character_event = { id = TOG.5005 days = 10} }
-					60 = { character_event = { id = TOG.5010 days = 10} }
-					40 = { character_event = { id = TOG.5012 days = 10} }
-					40 = { character_event = { id = TOG.5013 days = 10} }
-					40 = { character_event = { id = TOG.5014 days = 10} }
-					40 = {
-						modifier = {
-							factor = 0
-							NOT = { trait = craven }
-						}
-						character_event = { id = TOG.5011 days = 10 }
-					}
-					40 = {
-						modifier = {
-							factor = 0
-							NOT = { FROM = { trait = craven } }
-						}
-						character_event = { id = TOG.5009 days = 10 }
-					}
-				}
-			}
-			if = {
-				limit = {
-					FROM = {
-						combat_rating_diff = { who = ROOT value = 1 }
-					}
-					NOT = {
-						FROM = {
-							combat_rating_diff = { who = ROOT value = 3 }
+					20 = {
+						character_event = {
+							id = TOG.5013 days = 10
 						}
 					}
-				}
-				random_list = {
-					25 = { character_event = { id = TOG.5007 days = 10} }
-					25 = { character_event = { id = TOG.5008 days = 10} }
-					30 = { character_event = { id = TOG.5006 days = 10} }
-					30 = { character_event = { id = TOG.5005 days = 10} }
-					30 = { character_event = { id = TOG.5010 days = 10} }
-					35 = { character_event = { id = TOG.5012 days = 10} }
-					35 = { character_event = { id = TOG.5013 days = 10} }
-					40 = { character_event = { id = TOG.5014 days = 10} }
-					35 = {
-						modifier = {
-							factor = 0
-							NOT = { trait = craven }
+					15 = {
+						character_event = {
+							id = TOG.5014 days = 10
 						}
-						character_event = { id = TOG.5011 days = 10 }
-					}
-					30 = {
-						modifier = {
-							factor = 0
-							NOT = { FROM = { trait = craven } }
-						}
-						character_event = { id = TOG.5009 days = 10 }
-					}
-				}
-			}
-			if = {
-				limit = {
-					FROM = {
-						combat_rating_diff = { who = ROOT value = 3 }
-					}
-					NOT = {
-						FROM = {
-							combat_rating_diff = { who = ROOT value = 5 }
-						}
-					}
-				}
-				random_list = {
-					20 = { character_event = { id = TOG.5007 days = 10} }
-					20 = { character_event = { id = TOG.5008 days = 10} }
-					25 = { character_event = { id = TOG.5006 days = 10} }
-					25 = { character_event = { id = TOG.5005 days = 10} }
-					30 = { character_event = { id = TOG.5010 days = 10} }
-					40 = { character_event = { id = TOG.5012 days = 10} }
-					40 = { character_event = { id = TOG.5013 days = 10} }
-					50 = { character_event = { id = TOG.5014 days = 10} }
-					40 = {
-						modifier = {
-							factor = 0
-							NOT = { trait = craven }
-						}
-						character_event = { id = TOG.5011 days = 10 }
-					}
-					25 = {
-						modifier = {
-							factor = 0
-							NOT = { FROM = { trait = craven } }
-						}
-						character_event = { id = TOG.5009 days = 10 }
-					}
-				}
-			}
-			if = {
-				limit = {
-					FROM = {
-						combat_rating_diff = { who = ROOT value = 5 }
-					}
-				}
-				random_list = {
-					15 = { character_event = { id = TOG.5007 days = 10} }
-					15 = { character_event = { id = TOG.5008 days = 10} }
-					20 = { character_event = { id = TOG.5006 days = 10} }
-					20 = { character_event = { id = TOG.5005 days = 10} }
-					30 = { character_event = { id = TOG.5010 days = 10} }
-					50 = { character_event = { id = TOG.5012 days = 10} }
-					50 = { character_event = { id = TOG.5013 days = 10} }
-					60 = { character_event = { id = TOG.5014 days = 10} }
-					50 = {
-						modifier = {
-							factor = 0
-							NOT = { trait = craven }
-						}
-						character_event = { id = TOG.5011 days = 10 }
 					}
 					20 = {
 						modifier = {
 							factor = 0
-							NOT = { FROM = { trait = craven } }
+							NOT = {
+								trait = craven
+							}
 						}
-						character_event = { id = TOG.5009 days = 10 }
+						character_event = {
+							id = TOG.5011 days = 10
+						}
+					}
+					50 = {
+						modifier = {
+							factor = 0
+							NOT = {
+								FROM = {
+									trait = craven
+								}
+							}
+						}
+						character_event = {
+							id = TOG.5009 days = 10
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					combat_rating_diff = {
+						who = FROM value = 3
+					}
+					NOT = {
+						combat_rating_diff = {
+							who = FROM value = 5
+						}
+					}
+				}
+				random_list = {
+					50 = {
+						character_event = {
+							id = TOG.5007 days = 10
+						}
+					}
+					50 = {
+						character_event = {
+							id = TOG.5008 days = 10
+						}
+					}
+					40 = {
+						character_event = {
+							id = TOG.5006 days = 10
+						}
+					}
+					40 = {
+						character_event = {
+							id = TOG.5005 days = 10
+						}
+					}
+					30 = {
+						character_event = {
+							id = TOG.5010 days = 10
+						}
+					}
+					25 = {
+						character_event = {
+							id = TOG.5012 days = 10
+						}
+					}
+					25 = {
+						character_event = {
+							id = TOG.5013 days = 10
+						}
+					}
+					20 = {
+						character_event = {
+							id = TOG.5014 days = 10
+						}
+					}
+					25 = {
+						modifier = {
+							factor = 0
+							NOT = {
+								trait = craven
+							}
+						}
+						character_event = {
+							id = TOG.5011 days = 10
+						}
+					}
+					40 = {
+						modifier = {
+							factor = 0
+							NOT = {
+								FROM = {
+									trait = craven
+								}
+							}
+						}
+						character_event = {
+							id = TOG.5009 days = 10
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					combat_rating_diff = {
+						who = FROM value = 1
+					}
+					NOT = {
+						combat_rating_diff = {
+							who = FROM value = 3
+						}
+					}
+				}
+				random_list = {
+					40 = {
+						character_event = {
+							id = TOG.5007 days = 10
+						}
+					}
+					40 = {
+						character_event = {
+							id = TOG.5008 days = 10
+						}
+					}
+					35 = {
+						character_event = {
+							id = TOG.5006 days = 10
+						}
+					}
+					35 = {
+						character_event = {
+							id = TOG.5005 days = 10
+						}
+					}
+					30 = {
+						character_event = {
+							id = TOG.5010 days = 10
+						}
+					}
+					30 = {
+						character_event = {
+							id = TOG.5012 days = 10
+						}
+					}
+					30 = {
+						character_event = {
+							id = TOG.5013 days = 10
+						}
+					}
+					25 = {
+						character_event = {
+							id = TOG.5014 days = 10
+						}
+					}
+					30 = {
+						modifier = {
+							factor = 0
+							NOT = {
+								trait = craven
+							}
+						}
+						character_event = {
+							id = TOG.5011 days = 10
+						}
+					}
+					35 = {
+						modifier = {
+							factor = 0
+							NOT = {
+								FROM = {
+									trait = craven
+								}
+							}
+						}
+						character_event = {
+							id = TOG.5009 days = 10
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						combat_rating_diff = {
+							who = FROM value = 1
+						}
+						FROM = {
+							combat_rating_diff = {
+								who = ROOT value = 1
+							}
+						}
+					}
+				}
+				random_list = {
+					40 = {
+						character_event = {
+							id = TOG.5007 days = 10
+						}
+					}
+					40 = {
+						character_event = {
+							id = TOG.5008 days = 10
+						}
+					}
+					40 = {
+						character_event = {
+							id = TOG.5006 days = 10
+						}
+					}
+					40 = {
+						character_event = {
+							id = TOG.5005 days = 10
+						}
+					}
+					60 = {
+						character_event = {
+							id = TOG.5010 days = 10
+						}
+					}
+					40 = {
+						character_event = {
+							id = TOG.5012 days = 10
+						}
+					}
+					40 = {
+						character_event = {
+							id = TOG.5013 days = 10
+						}
+					}
+					40 = {
+						character_event = {
+							id = TOG.5014 days = 10
+						}
+					}
+					40 = {
+						modifier = {
+							factor = 0
+							NOT = {
+								trait = craven
+							}
+						}
+						character_event = {
+							id = TOG.5011 days = 10
+						}
+					}
+					40 = {
+						modifier = {
+							factor = 0
+							NOT = {
+								FROM = {
+									trait = craven
+								}
+							}
+						}
+						character_event = {
+							id = TOG.5009 days = 10
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					FROM = {
+						combat_rating_diff = {
+							who = ROOT value = 1
+						}
+					}
+					NOT = {
+						FROM = {
+							combat_rating_diff = {
+								who = ROOT value = 3
+							}
+						}
+					}
+				}
+				random_list = {
+					25 = {
+						character_event = {
+							id = TOG.5007 days = 10
+						}
+					}
+					25 = {
+						character_event = {
+							id = TOG.5008 days = 10
+						}
+					}
+					30 = {
+						character_event = {
+							id = TOG.5006 days = 10
+						}
+					}
+					30 = {
+						character_event = {
+							id = TOG.5005 days = 10
+						}
+					}
+					30 = {
+						character_event = {
+							id = TOG.5010 days = 10
+						}
+					}
+					35 = {
+						character_event = {
+							id = TOG.5012 days = 10
+						}
+					}
+					35 = {
+						character_event = {
+							id = TOG.5013 days = 10
+						}
+					}
+					40 = {
+						character_event = {
+							id = TOG.5014 days = 10
+						}
+					}
+					35 = {
+						modifier = {
+							factor = 0
+							NOT = {
+								trait = craven
+							}
+						}
+						character_event = {
+							id = TOG.5011 days = 10
+						}
+					}
+					30 = {
+						modifier = {
+							factor = 0
+							NOT = {
+								FROM = {
+									trait = craven
+								}
+							}
+						}
+						character_event = {
+							id = TOG.5009 days = 10
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					FROM = {
+						combat_rating_diff = {
+							who = ROOT value = 3
+						}
+					}
+					NOT = {
+						FROM = {
+							combat_rating_diff = {
+								who = ROOT value = 5
+							}
+						}
+					}
+				}
+				random_list = {
+					20 = {
+						character_event = {
+							id = TOG.5007 days = 10
+						}
+					}
+					20 = {
+						character_event = {
+							id = TOG.5008 days = 10
+						}
+					}
+					25 = {
+						character_event = {
+							id = TOG.5006 days = 10
+						}
+					}
+					25 = {
+						character_event = {
+							id = TOG.5005 days = 10
+						}
+					}
+					30 = {
+						character_event = {
+							id = TOG.5010 days = 10
+						}
+					}
+					40 = {
+						character_event = {
+							id = TOG.5012 days = 10
+						}
+					}
+					40 = {
+						character_event = {
+							id = TOG.5013 days = 10
+						}
+					}
+					50 = {
+						character_event = {
+							id = TOG.5014 days = 10
+						}
+					}
+					40 = {
+						modifier = {
+							factor = 0
+							NOT = {
+								trait = craven
+							}
+						}
+						character_event = {
+							id = TOG.5011 days = 10
+						}
+					}
+					25 = {
+						modifier = {
+							factor = 0
+							NOT = {
+								FROM = {
+									trait = craven
+								}
+							}
+						}
+						character_event = {
+							id = TOG.5009 days = 10
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					FROM = {
+						combat_rating_diff = {
+							who = ROOT value = 5
+						}
+					}
+				}
+				random_list = {
+					15 = {
+						character_event = {
+							id = TOG.5007 days = 10
+						}
+					}
+					15 = {
+						character_event = {
+							id = TOG.5008 days = 10
+						}
+					}
+					20 = {
+						character_event = {
+							id = TOG.5006 days = 10
+						}
+					}
+					20 = {
+						character_event = {
+							id = TOG.5005 days = 10
+						}
+					}
+					30 = {
+						character_event = {
+							id = TOG.5010 days = 10
+						}
+					}
+					50 = {
+						character_event = {
+							id = TOG.5012 days = 10
+						}
+					}
+					50 = {
+						character_event = {
+							id = TOG.5013 days = 10
+						}
+					}
+					60 = {
+						character_event = {
+							id = TOG.5014 days = 10
+						}
+					}
+					50 = {
+						modifier = {
+							factor = 0
+							NOT = {
+								trait = craven
+							}
+						}
+						character_event = {
+							id = TOG.5011 days = 10
+						}
+					}
+					20 = {
+						modifier = {
+							factor = 0
+							NOT = {
+								FROM = {
+									trait = craven
+								}
+							}
+						}
+						character_event = {
+							id = TOG.5009 days = 10
+						}
 					}
 				}
 			}
 		}
-	}       
+	}
 }
 
 # Challenge refused
@@ -822,9 +1233,8 @@ character_event = {
 	desc = EVTDESC_TOG_5003
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_5003
 		clr_character_flag = holmgang_challenger
@@ -848,79 +1258,116 @@ character_event = {
 	desc = EVTDESC_TOG_5004
 	picture = GFX_evt_melee
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_5004
 		if = {
 			limit = {
-				combat_rating_diff = { who = FROM value = 5 }
-			}
-			custom_tooltip = { text = holmgang_chances_great }
-		}
-		if = {
-			limit = {
-				combat_rating_diff = { who = FROM value = 3 }
-				NOT = {
-					combat_rating_diff = { who = FROM value = 5 }
+				combat_rating_diff = {
+					who = FROM value = 5
 				}
 			}
-			custom_tooltip = { text = holmgang_chances_very_good }
-		}
-		if = {
-			limit = {
-				combat_rating_diff = { who = FROM value = 1 }
-				NOT = {
-					combat_rating_diff = { who = FROM value = 3 }
-				}
+			custom_tooltip = {
+				text = holmgang_chances_great
 			}
-			custom_tooltip = { text = holmgang_chances_good }
 		}
 		if = {
 			limit = {
+				combat_rating_diff = {
+					who = FROM value = 3
+				}
 				NOT = {
-					combat_rating_diff = { who = FROM value = 1 }
-					FROM = {
-						combat_rating_diff = { who = ROOT value = 1 }
+					combat_rating_diff = {
+						who = FROM value = 5
 					}
 				}
 			}
-			custom_tooltip = { text = holmgang_chances_even }
+			custom_tooltip = {
+				text = holmgang_chances_very_good
+			}
+		}
+		if = {
+			limit = {
+				combat_rating_diff = {
+					who = FROM value = 1
+				}
+				NOT = {
+					combat_rating_diff = {
+						who = FROM value = 3
+					}
+				}
+			}
+			custom_tooltip = {
+				text = holmgang_chances_good
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					combat_rating_diff = {
+						who = FROM value = 1
+					}
+					FROM = {
+						combat_rating_diff = {
+							who = ROOT value = 1
+						}
+					}
+				}
+			}
+			custom_tooltip = {
+				text = holmgang_chances_even
+			}
 		}
 		if = {
 			limit = {
 				FROM = {
-					combat_rating_diff = { who = ROOT value = 1 }
+					combat_rating_diff = {
+						who = ROOT value = 1
+					}
 				}
 				NOT = {
 					FROM = {
-						combat_rating_diff = { who = ROOT value = 3 }
+						combat_rating_diff = {
+							who = ROOT value = 3
+						}
 					}
 				}
 			}
-			custom_tooltip = { text = holmgang_chances_poor }
+			custom_tooltip = {
+				text = holmgang_chances_poor
+			}
 		}
 		if = {
 			limit = {
 				FROM = {
-					combat_rating_diff = { who = ROOT value = 3 }
+					combat_rating_diff = {
+						who = ROOT value = 3
+					}
 				}
 				NOT = {
 					FROM = {
-						combat_rating_diff = { who = ROOT value = 5 }
+						combat_rating_diff = {
+							who = ROOT value = 5
+						}
 					}
 				}
 			}
-			custom_tooltip = { text = holmgang_chances_very_poor }
+			custom_tooltip = {
+				text = holmgang_chances_very_poor
+			}
 		}
 		if = {
 			limit = {
 				FROM = {
-					combat_rating_diff = { who = ROOT value = 5 }
+					combat_rating_diff = {
+						who = ROOT value = 5
+					}
 				}
 			}
-			custom_tooltip = { text = holmgang_chances_terrible }
+			custom_tooltip = {
+				text = holmgang_chances_terrible
+			}
 		}
 	}
 }
@@ -931,81 +1378,117 @@ character_event = {
 	desc = EVTDESC_TOG_5018
 	picture = GFX_evt_melee
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
 	hide_from = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_5004
 		if = {
 			limit = {
-				combat_rating_diff = { who = FROMFROM value = 5 }
-			}
-			custom_tooltip = { text = holmgang_chances_great }
-		}
-		if = {
-			limit = {
-				combat_rating_diff = { who = FROMFROM value = 3 }
-				NOT = {
-					combat_rating_diff = { who = FROMFROM value = 5 }
+				combat_rating_diff = {
+					who = FROMFROM value = 5
 				}
 			}
-			custom_tooltip = { text = holmgang_chances_very_good }
-		}
-		if = {
-			limit = {
-				combat_rating_diff = { who = FROMFROM value = 1 }
-				NOT = {
-					combat_rating_diff = { who = FROMFROM value = 3 }
-				}
+			custom_tooltip = {
+				text = holmgang_chances_great
 			}
-			custom_tooltip = { text = holmgang_chances_good }
 		}
 		if = {
 			limit = {
+				combat_rating_diff = {
+					who = FROMFROM value = 3
+				}
 				NOT = {
-					combat_rating_diff = { who = FROMFROM value = 1 }
-					FROMFROM = {
-						combat_rating_diff = { who = ROOT value = 1 }
+					combat_rating_diff = {
+						who = FROMFROM value = 5
 					}
 				}
 			}
-			custom_tooltip = { text = holmgang_chances_even }
+			custom_tooltip = {
+				text = holmgang_chances_very_good
+			}
+		}
+		if = {
+			limit = {
+				combat_rating_diff = {
+					who = FROMFROM value = 1
+				}
+				NOT = {
+					combat_rating_diff = {
+						who = FROMFROM value = 3
+					}
+				}
+			}
+			custom_tooltip = {
+				text = holmgang_chances_good
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					combat_rating_diff = {
+						who = FROMFROM value = 1
+					}
+					FROMFROM = {
+						combat_rating_diff = {
+							who = ROOT value = 1
+						}
+					}
+				}
+			}
+			custom_tooltip = {
+				text = holmgang_chances_even
+			}
 		}
 		if = {
 			limit = {
 				FROMFROM = {
-					combat_rating_diff = { who = ROOT value = 1 }
+					combat_rating_diff = {
+						who = ROOT value = 1
+					}
 				}
 				NOT = {
 					FROMFROM = {
-						combat_rating_diff = { who = ROOT value = 3 }
+						combat_rating_diff = {
+							who = ROOT value = 3
+						}
 					}
 				}
 			}
-			custom_tooltip = { text = holmgang_chances_poor }
+			custom_tooltip = {
+				text = holmgang_chances_poor
+			}
 		}
 		if = {
 			limit = {
 				FROMFROM = {
-					combat_rating_diff = { who = ROOT value = 3 }
+					combat_rating_diff = {
+						who = ROOT value = 3
+					}
 				}
 				NOT = {
 					FROMFROM = {
-						combat_rating_diff = { who = ROOT value = 5 }
+						combat_rating_diff = {
+							who = ROOT value = 5
+						}
 					}
 				}
 			}
-			custom_tooltip = { text = holmgang_chances_very_poor }
+			custom_tooltip = {
+				text = holmgang_chances_very_poor
+			}
 		}
 		if = {
 			limit = {
 				FROMFROM = {
-					combat_rating_diff = { who = ROOT value = 5 }
+					combat_rating_diff = {
+						who = ROOT value = 5
+					}
 				}
 			}
-			custom_tooltip = { text = holmgang_chances_terrible }
+			custom_tooltip = {
+				text = holmgang_chances_terrible
+			}
 		}
 	}
 }
@@ -1016,18 +1499,24 @@ character_event = {
 	desc = EVTDESC_TOG_5005
 	picture = GFX_evt_melee
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
 	hide_from = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_5005
 		hidden_tooltip = {
 			FROMFROM = {
 				random_list = {
-					50 = { character_event = { id = TOG.5027 } }
-					50 = { character_event = { id = TOG.5028 } }
+					50 = {
+						character_event = {
+							id = TOG.5027
+						}
+					}
+					50 = {
+						character_event = {
+							id = TOG.5028
+						}
+					}
 				}
 			}
 		}
@@ -1039,13 +1528,17 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = { trait = scarred }
+				NOT = {
+					trait = scarred
+				}
 			}
-		add_trait = scarred
+			add_trait = scarred
 		}
 		prestige = 200
 		tooltip = {
-			FROMFROM = { prestige = -200 }
+			FROMFROM = {
+				prestige = -200
+			}
 		}
 	}
 }
@@ -1056,16 +1549,16 @@ character_event = {
 	desc = EVTDESC_TOG_5006
 	picture = GFX_evt_melee
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
 	hide_from = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_5005
 		hidden_tooltip = {
 			FROMFROM = {
-				character_event = { id = TOG.5029 }
+				character_event = {
+					id = TOG.5029
+				}
 			}
 		}
 		clr_character_flag = holmgang_challenger
@@ -1078,14 +1571,13 @@ character_event = {
 		add_trait = scarred
 		tooltip = {
 			FROMFROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+				if = {
+					limit = {
+						is_invincible_trigger = yes
+					}
+					antideath_effect = yes
+					break = yes
+				}
 				death = {
 					death_reason = death_duel
 					killer = ROOT
@@ -1101,18 +1593,24 @@ character_event = {
 	desc = EVTDESC_TOG_5007
 	picture = GFX_evt_melee
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
 	hide_from = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_5005
 		hidden_tooltip = {
 			FROMFROM = {
 				random_list = {
-					50 = { character_event = { id = TOG.5027 } }
-					50 = { character_event = { id = TOG.5028 } }
+					50 = {
+						character_event = {
+							id = TOG.5027
+						}
+					}
+					50 = {
+						character_event = {
+							id = TOG.5028
+						}
+					}
 				}
 			}
 		}
@@ -1124,7 +1622,9 @@ character_event = {
 		}
 		prestige = 200
 		tooltip = {
-			FROMFROM = { prestige = -200 }
+			FROMFROM = {
+				prestige = -200
+			}
 		}
 	}
 }
@@ -1135,16 +1635,16 @@ character_event = {
 	desc = EVTDESC_TOG_5008
 	picture = GFX_evt_melee
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
 	hide_from = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_5005
 		hidden_tooltip = {
 			FROMFROM = {
-				character_event = { id = TOG.5029 }
+				character_event = {
+					id = TOG.5029
+				}
 			}
 		}
 		clr_character_flag = holmgang_challenger
@@ -1156,14 +1656,13 @@ character_event = {
 		prestige = 200
 		tooltip = {
 			FROMFROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+				if = {
+					limit = {
+						is_invincible_trigger = yes
+					}
+					antideath_effect = yes
+					break = yes
+				}
 				death = {
 					death_reason = death_duel
 					killer = ROOT
@@ -1179,16 +1678,16 @@ character_event = {
 	desc = EVTDESC_TOG_5009
 	picture = GFX_evt_melee
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
 	hide_from = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_5005
 		hidden_tooltip = {
 			FROMFROM = {
-				character_event = { id = TOG.5026 }
+				character_event = {
+					id = TOG.5026
+				}
 			}
 		}
 		clr_character_flag = holmgang_challenger
@@ -1199,7 +1698,9 @@ character_event = {
 		}
 		prestige = 200
 		tooltip = {
-			FROMFROM = { prestige = -400 }
+			FROMFROM = {
+				prestige = -400
+			}
 		}
 	}
 }
@@ -1210,16 +1711,16 @@ character_event = {
 	desc = EVTDESC_TOG_5010
 	picture = GFX_evt_melee
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
 	hide_from = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_5010
 		hidden_tooltip = {
 			FROMFROM = {
-				character_event = { id = TOG.5025 }
+				character_event = {
+					id = TOG.5025
+				}
 			}
 		}
 		clr_character_flag = holmgang_challenger
@@ -1231,8 +1732,8 @@ character_event = {
 		prestige = 50
 		add_trait = wounded
 		tooltip = {
-			FROMFROM = { 
-				prestige = 50 
+			FROMFROM = {
+				prestige = 50
 				add_trait = wounded
 				opinion = {
 					modifier = opinion_mutual_respect
@@ -1253,16 +1754,16 @@ character_event = {
 	desc = EVTDESC_TOG_5011
 	picture = GFX_evt_bloody_man
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
 	hide_from = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_5011
 		hidden_tooltip = {
 			FROMFROM = {
-				character_event = { id = TOG.5024 }
+				character_event = {
+					id = TOG.5024
+				}
 			}
 		}
 		clr_character_flag = holmgang_challenger
@@ -1272,7 +1773,9 @@ character_event = {
 			clr_character_flag = do_not_disturb
 		}
 		tooltip = {
-			FROMFROM = { prestige = 200 }
+			FROMFROM = {
+				prestige = 200
+			}
 		}
 		prestige = -400
 	}
@@ -1284,18 +1787,24 @@ character_event = {
 	desc = EVTDESC_TOG_5012
 	picture = GFX_evt_bloody_man
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
 	hide_from = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_5012
 		hidden_tooltip = {
 			FROMFROM = {
 				random_list = {
-					50 = { character_event = { id = TOG.5020 } }
-					50 = { character_event = { id = TOG.5022 } }
+					50 = {
+						character_event = {
+							id = TOG.5020
+						}
+					}
+					50 = {
+						character_event = {
+							id = TOG.5022
+						}
+					}
 				}
 			}
 		}
@@ -1306,7 +1815,9 @@ character_event = {
 			clr_character_flag = do_not_disturb
 		}
 		tooltip = {
-			FROMFROM = { prestige = 200 }
+			FROMFROM = {
+				prestige = 200
+			}
 		}
 		prestige = -200
 		add_trait = wounded
@@ -1319,18 +1830,24 @@ character_event = {
 	desc = EVTDESC_TOG_5013
 	picture = GFX_evt_bloody_man
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
 	hide_from = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_5012
 		hidden_tooltip = {
 			FROMFROM = {
 				random_list = {
-					50 = { character_event = { id = TOG.5020 } }
-					50 = { character_event = { id = TOG.5022 } }
+					50 = {
+						character_event = {
+							id = TOG.5020
+						}
+					}
+					50 = {
+						character_event = {
+							id = TOG.5022
+						}
+					}
 				}
 			}
 		}
@@ -1341,7 +1858,9 @@ character_event = {
 			clr_character_flag = do_not_disturb
 		}
 		tooltip = {
-			FROMFROM = { prestige = 200 }
+			FROMFROM = {
+				prestige = 200
+			}
 		}
 		prestige = -200
 		add_maimed_trait_effect = yes
@@ -1354,18 +1873,24 @@ character_event = {
 	desc = EVTDESC_TOG_5014
 	picture = GFX_evt_bloody_man
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
 	hide_from = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_5014
 		hidden_tooltip = {
 			FROMFROM = {
 				random_list = {
-					50 = { character_event = { id = TOG.5021 } }
-					50 = { character_event = { id = TOG.5023 } }
+					50 = {
+						character_event = {
+							id = TOG.5021
+						}
+					}
+					50 = {
+						character_event = {
+							id = TOG.5023
+						}
+					}
 				}
 			}
 		}
@@ -1376,13 +1901,12 @@ character_event = {
 			clr_character_flag = do_not_disturb
 		}
 		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
+			limit = {
+				is_invincible_trigger = yes
+			}
 			antideath_effect = yes
-			break = yes 
-}
+			break = yes
+		}
 		death = {
 			death_reason = death_duel
 			killer = FROMFROM
@@ -1396,15 +1920,16 @@ character_event = {
 	desc = EVTDESC_TOG_5020
 	picture = GFX_evt_melee
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_5005
 		add_trait = scarred
 		prestige = 200
 		tooltip = {
-			FROM = { prestige = -200 }
+			FROM = {
+				prestige = -200
+			}
 		}
 	}
 }
@@ -1415,23 +1940,21 @@ character_event = {
 	desc = EVTDESC_TOG_5021
 	picture = GFX_evt_melee
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_5005
 		add_trait = scarred
 		prestige = 200
 		tooltip = {
 			FROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+				if = {
+					limit = {
+						is_invincible_trigger = yes
+					}
+					antideath_effect = yes
+					break = yes
+				}
 				death = {
 					death_reason = death_duel
 					killer = ROOT
@@ -1447,14 +1970,15 @@ character_event = {
 	desc = EVTDESC_TOG_5022
 	picture = GFX_evt_melee
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_5005
 		prestige = 200
 		tooltip = {
-			FROM = { prestige = -200 }
+			FROM = {
+				prestige = -200
+			}
 		}
 	}
 }
@@ -1465,22 +1989,20 @@ character_event = {
 	desc = EVTDESC_TOG_5023
 	picture = GFX_evt_melee
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_5005
 		prestige = 200
 		tooltip = {
 			FROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+				if = {
+					limit = {
+						is_invincible_trigger = yes
+					}
+					antideath_effect = yes
+					break = yes
+				}
 				death = {
 					death_reason = death_duel
 					killer = ROOT
@@ -1496,14 +2018,15 @@ character_event = {
 	desc = EVTDESC_TOG_5024
 	picture = GFX_evt_melee
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_5005
 		prestige = 200
 		tooltip = {
-			FROM = { prestige = -400 }
+			FROM = {
+				prestige = -400
+			}
 		}
 	}
 }
@@ -1514,14 +2037,13 @@ character_event = {
 	desc = EVTDESC_TOG_5010
 	picture = GFX_evt_melee
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_5010
 		prestige = 50
 		tooltip = {
-			FROM = { 
+			FROM = {
 				prestige = 50
 				opinion = {
 					modifier = opinion_mutual_respect
@@ -1542,13 +2064,14 @@ character_event = {
 	desc = EVTDESC_TOG_5026
 	picture = GFX_evt_bloody_man
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_5011
 		tooltip = {
-			FROM = { prestige = 200 }
+			FROM = {
+				prestige = 200
+			}
 		}
 		prestige = -400
 	}
@@ -1560,13 +2083,14 @@ character_event = {
 	desc = EVTDESC_TOG_5027
 	picture = GFX_evt_bloody_man
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_5012
 		tooltip = {
-			FROM = { prestige = 200 }
+			FROM = {
+				prestige = 200
+			}
 		}
 		prestige = -200
 		add_trait = wounded
@@ -1579,13 +2103,14 @@ character_event = {
 	desc = EVTDESC_TOG_5028
 	picture = GFX_evt_bloody_man
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_5012
 		tooltip = {
-			FROM = { prestige = 200 }
+			FROM = {
+				prestige = 200
+			}
 		}
 		prestige = -200
 		add_maimed_trait_effect = yes
@@ -1598,19 +2123,17 @@ character_event = {
 	desc = EVTDESC_TOG_5029
 	picture = GFX_evt_bloody_man
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_5014
 		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
+			limit = {
+				is_invincible_trigger = yes
+			}
 			antideath_effect = yes
-			break = yes 
-}
+			break = yes
+		}
 		death = {
 			death_reason = death_duel
 			killer = FROM
@@ -1618,22 +2141,17 @@ character_event = {
 	}
 }
 
-###########################################
-# Flag management                         #
-###########################################
+# Flag management
 
 # Safety catch - clears character flags and modifiers
 character_event = {
 	id = TOG.5999
-
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		clr_character_flag = do_not_disturb
 		clr_character_flag = holmgang_challenger
 		clr_character_flag = holmgang_target
 	}
 }
-

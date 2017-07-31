@@ -1,47 +1,45 @@
-###########################################
-#
-# Heresy Events - Sons of Abraham
-#
-# ID SoA 4000-4999 is reserved
-#
-###########################################
-# Written by Henrik Fåhraeus
-###########################################
 
+
+# Heresy Events - Sons of Abraham
+
+# ID SoA 4000-4999 is reserved
+
+# Written by Henrik Fåhraeus
 namespace = SoA
 
-###################################################
 # Heresy Appears in Province
-###################################################
+
 # RETOOLED INTO FANATICS
-###################################################
+
 # Heresy Appears in Province
 province_event = {
 	id = SoA.4000
 	desc = EVTDESC39000
 	picture = GFX_evt_heretic
 	border = GFX_event_normal_frame_religion
-	
+
 	trigger = {
 		# has_dlc = "Sons of Abraham"
-		
 		OR = {
 			religion_group = old_world_group
 			religion_group = ormazd_gods_group
 		}
-		#These will get Shallyan uprisings instead
-		NOR = { 
-			religion = grail 
-			religion = false_grail 
+		# These will get Shallyan uprisings instead
+		NOR = {
+			religion = grail
+			religion = false_grail
 		}
 		num_of_settlements = 1
 		any_province_holding = {
-			NOT = { holding_type = nomad }
+			NOT = {
+				holding_type = nomad
+			}
 		}
-		
-		NOT = { religion_authority = 0.9 }
+		NOT = {
+			religion_authority = 0.9
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 9600 # 800 years
 		modifier = {
@@ -61,30 +59,37 @@ province_event = {
 			religion_authority = 0.9
 		}
 		# modifier = {
-			# factor = 3.0
-			# OR = {
-				# province_id = 333 # Rome
-				# province_id = 497 # Thrace
-				# province_id = 719 # Mecca
-			# }
+		# factor = 3.0
+		# OR = {
+		# province_id = 333 # Rome
+		# province_id = 497 # Thrace
+		# province_id = 719 # Mecca
+		# }
 		# }
 		modifier = {
 			factor = 0.5
-			NOT = { religion_authority = 0.2 }
+			NOT = {
+				religion_authority = 0.2
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { religion_authority = 0.3 }
+			NOT = {
+				religion_authority = 0.3
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { religion_authority = 0.4 }
+			NOT = {
+				religion_authority = 0.4
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { religion_authority = 0.5 }
+			NOT = {
+				religion_authority = 0.5
+			}
 		}
-		
 		modifier = {
 			factor = 0.5
 			any_neighbor_province = {
@@ -101,20 +106,17 @@ province_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
-		
 		# # Two years of much higher revolt risk
 		# add_province_modifier = {
-			# name = religious_unrest
-			# duration = 730
+		# name = religious_unrest
+		# duration = 730
 		# }
-		
 		add_province_modifier = {
-				name = fanatic_uprising # Ten years of even higher revolt risk
-				duration = 1825
+			name = fanatic_uprising # Ten years of even higher revolt risk
+			duration = 1825
 		}
-		
 		# One heretic province in the realm is the epicentre of the heresy
 		if = {
 			limit = {
@@ -137,12 +139,16 @@ province_event = {
 		# Notify the lieges
 		owner = {
 			any_liege = {
-				character_event = { id = 39400 }
+				character_event = {
+					id = 39400
+				}
 			}
 		}
 		owner = {
 			if = {
-				limit = { ai = no }
+				limit = {
+					ai = no
+				}
 				chronicle = {
 					entry = CHRONICLE_HERESY_SPREAD
 					picture = GFX_evt_heretic
@@ -152,7 +158,9 @@ province_event = {
 		owner = {
 			any_liege = {
 				if = {
-					limit = { ai = no }
+					limit = {
+						ai = no
+					}
 					chronicle = {
 						entry = CHRONICLE_HERESY_SPREAD
 						picture = GFX_evt_heretic
@@ -161,49 +169,48 @@ province_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA39000 # The owner is of the parent religion
 		# trigger = { owner = { is_parent_religion = ROOT } }
-		
-		owner = { piety = -10 }
+		owner = {
+			piety = -10
+		}
 	}
 }
 
-######################################################################################################
 # Fanatic province worries parent religion Head
-######################################################################################################
 
 # SoA.4100 - Heretic province worries parent religion Head (hidden province event)
-#	Immediate: SoA 4101 (head)
 
+# 	Immediate: SoA 4101 (head)
 province_event = {
 	id = SoA.4100
 	hide_window = yes
-	
+
 	trigger = {
 		# has_dlc = "Sons of Abraham"
-		
 		OR = {
 			has_province_modifier = heretic_stronghold
 			has_province_modifier = fanatic_uprising
 		}
-		
 		owner = {
 			top_liege = {
 				is_parent_religion = ROOT
 			}
 		}
-		
 		parent_religion_head = {
 			character = yes # There is a head of the parent religion
 			wealth = 100
 		}
-		
-		NOT = { has_province_modifier = theological_dialogue }
-		NOT = { has_province_modifier = active_inquisition }
+		NOT = {
+			has_province_modifier = theological_dialogue
+		}
+		NOT = {
+			has_province_modifier = active_inquisition
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 		modifier = {
@@ -213,29 +220,34 @@ province_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		parent_religion_head = {
-			character_event = { id = SoA.4101 }
+			character_event = {
+				id = SoA.4101
+			}
 		}
 	}
 }
 
 # SoA.4101 - Heretic province worries parent religion Head
-#	- A: Send in the Inquisition! Costs 100 gold. SoA 4110.
-#	- B: Dispatch Legate to Ruler: (top liege) SoA 4120.
-#	- C: Open Dialogue. (High learning) Costs 50 gold. SoA 4130.
-#	- D: Do nothing
 
+# 	- A: Send in the Inquisition! Costs 100 gold. SoA 4110.
+
+# 	- B: Dispatch Legate to Ruler: (top liege) SoA 4120.
+
+# 	- C: Open Dialogue. (High learning) Costs 50 gold. SoA 4130.
+
+# 	- D: Do nothing
 character_event = {
 	id = SoA.4101
 	desc = EVTDESC_SOA_4101
 	picture = GFX_evt_heretic
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
-	option = { # Send in the Inquisition!
+
+	option = {
+		# Send in the Inquisition!
 		name = EVTOPTA_SOA_4101
 		ai_chance = {
 			factor = 200
@@ -248,21 +260,24 @@ character_event = {
 				trait = zealous
 			}
 		}
-		
 		wealth = -100
-		
 		FROM = {
-			province_event = { id = SoA.4110 tooltip = EVTTOOLTIP_SOA_4110 }
+			province_event = {
+				id = SoA.4110 tooltip = EVTTOOLTIP_SOA_4110
+			}
 		}
 	}
-	
-	option = { # Dispatch Legate to Ruler
+
+	option = {
+		# Dispatch Legate to Ruler
 		name = EVTOPTB_SOA_4101
 		trigger = {
 			NOT = {
 				FROM = {
 					owner = {
-						top_liege = { character = ROOT }
+						top_liege = {
+							character = ROOT
+						}
 					}
 				}
 			}
@@ -270,35 +285,37 @@ character_event = {
 		ai_chance = {
 			factor = 100
 		}
-		
 		FROM = {
 			owner = {
 				top_liege = {
-					character_event = { id = SoA.4120 days = 2 tooltip = EVTTOOLTIP_SOA_4120 }
+					character_event = {
+						id = SoA.4120 days = 2 tooltip = EVTTOOLTIP_SOA_4120
+					}
 				}
 			}
 		}
 	}
-	
-	option = { # Open Dialogue
+
+	option = {
+		# Open Dialogue
 		name = EVTOPTC_SOA_4101
 		tooltip_info = learning
 		trigger = {
 			learning = 7
 		}
-		
 		ai_chance = {
 			factor = 1000
 		}
-		
 		wealth = -50
-		
 		FROM = {
-			province_event = { id = SoA.4130 tooltip = EVTTOOLTIP_SOA_4130 }
+			province_event = {
+				id = SoA.4130 tooltip = EVTTOOLTIP_SOA_4130
+			}
 		}
 	}
-	
-	option = { # Do nothing
+
+	option = {
+		# Do nothing
 		name = EVTOPTD_SOA_4101
 		ai_chance = {
 			factor = 1
@@ -312,9 +329,8 @@ province_event = {
 	desc = EVTDESC_SOA_4110
 	picture = GFX_evt_bishop
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		add_province_modifier = {
 			name = active_inquisition
@@ -333,7 +349,7 @@ province_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_SOA_4110
 	}
@@ -345,16 +361,15 @@ province_event = {
 	desc = EVTDESC_SOA_4111
 	picture = GFX_evt_burning_house
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		OR = {
 			has_province_modifier = heretic_stronghold
 			has_province_modifier = fanatic_uprising
 		}
 	}
-	
+
 	immediate = {
 		remove_province_modifier = active_inquisition
 		FROMFROM = {
@@ -367,21 +382,20 @@ province_event = {
 			days = 365
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_SOA_4111
 	}
 }
 
-# SoA.4112 - Notification: Inquisition fails! Loss of authority. 
+# SoA.4112 - Notification: Inquisition fails! Loss of authority.
 character_event = {
 	id = SoA.4112
 	desc = EVTDESC_SOA_4112
 	picture = GFX_evt_burning_house
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_4112
 		religion_authority = {
@@ -396,29 +410,27 @@ province_event = {
 	desc = EVTDESC_SOA_4113
 	picture = GFX_evt_bishop
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		OR = {
 			has_province_modifier = heretic_stronghold
 			has_province_modifier = fanatic_uprising
 		}
 	}
-	
+
 	immediate = {
 		religion = FROMFROM
 		remove_province_modifier = active_inquisition
 		remove_province_modifier = religious_unrest
 		remove_province_modifier = heretic_stronghold
-	
 		FROMFROM = {
 			character_event = {
 				id = SoA.4114
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_SOA_4113
 	}
@@ -430,9 +442,8 @@ character_event = {
 	desc = EVTDESC_SOA_4114
 	picture = GFX_evt_bishop
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-			
+
 	option = {
 		name = EVTOPTA_SOA_4114
 		religion_authority = {
@@ -447,24 +458,23 @@ character_event = {
 	desc = EVTDESC_SOA_4120
 	picture = GFX_evt_pope
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		add_character_modifier = {
 			name = promised_to_clear_out_heresy
-#			hidden = yes
+			# 			hidden = yes
 			duration = 3650
 		}
 		FROMFROM = {
 			add_province_modifier = {
 				name = promised_to_clear_out_heresy
-#				hidden = yes
+				# 				hidden = yes
 				duration = 3650
 			}
 		}
 	}
-			
+
 	option = {
 		name = EVTOPTA_SOA_4120
 	}
@@ -476,11 +486,9 @@ province_event = {
 	desc = OK
 	picture = GFX_evt_bishop
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_dlc = "Sons of Abraham"
 		has_province_modifier = promised_to_clear_out_heresy
@@ -491,7 +499,7 @@ province_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		remove_province_modifier = promised_to_clear_out_heresy
 		religion_head = {
@@ -508,9 +516,8 @@ character_event = {
 	desc = EVTDESC_SOA_4122
 	picture = GFX_evt_bishop
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROM = {
 			owner = {
@@ -524,16 +531,17 @@ character_event = {
 			}
 		}
 	}
-			
-	option = { # Reward the ruler with money
+
+	option = {
+		# Reward the ruler with money
 		name = EVTOPTA_SOA_4122
 		trigger = {
 			wealth = 100
 		}
-		ai_chance = { factor = 10 }
-		
+		ai_chance = {
+			factor = 10
+		}
 		wealth = -100
-		
 		FROM = {
 			owner = {
 				top_liege = {
@@ -544,10 +552,13 @@ character_event = {
 			}
 		}
 	}
-	
-	option = { # Reward the ruler with piety
+
+	option = {
+		# Reward the ruler with piety
 		name = EVTOPTB_SOA_4122
-		ai_chance = { factor = 10 }
+		ai_chance = {
+			factor = 10
+		}
 		FROM = {
 			owner = {
 				top_liege = {
@@ -558,8 +569,9 @@ character_event = {
 			}
 		}
 	}
-	
-	option = { # Lift the excommunication
+
+	option = {
+		# Lift the excommunication
 		name = EVTOPTC_SOA_4122
 		trigger = {
 			FROM = {
@@ -570,7 +582,9 @@ character_event = {
 				}
 			}
 		}
-		ai_chance = { factor = 1000 }
+		ai_chance = {
+			factor = 1000
+		}
 		FROM = {
 			owner = {
 				top_liege = {
@@ -589,9 +603,8 @@ character_event = {
 	desc = EVTDESC_SOA_4123
 	picture = GFX_evt_bishop
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_4123
 		wealth = 100
@@ -609,9 +622,8 @@ character_event = {
 	desc = EVTDESC_SOA_4124
 	picture = GFX_evt_bishop
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_4123
 		piety = 200
@@ -629,14 +641,11 @@ character_event = {
 	desc = EVTDESC_SOA_4125
 	picture = GFX_evt_bishop
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_4123
-		
 		excommunicate = no
-		
 		opinion = {
 			who = FROM
 			modifier = opinion_grateful
@@ -651,9 +660,8 @@ province_event = {
 	desc = EVTDESC_SOA_4130
 	picture = GFX_evt_bishop
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		add_province_modifier = {
 			name = theological_dialogue
@@ -672,7 +680,7 @@ province_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_SOA_4130
 	}
@@ -684,16 +692,15 @@ province_event = {
 	desc = EVTDESC_SOA_4131
 	picture = GFX_evt_heretic
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		OR = {
 			has_province_modifier = heretic_stronghold
 			has_province_modifier = fanatic_uprising
 		}
 	}
-	
+
 	immediate = {
 		remove_province_modifier = theological_dialogue
 		FROMFROM = {
@@ -702,21 +709,20 @@ province_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_SOA_4131
 	}
 }
 
-# SoA.4132 - Notification: Dialogue fails! Loss of authority. 
+# SoA.4132 - Notification: Dialogue fails! Loss of authority.
 character_event = {
 	id = SoA.4132
 	desc = EVTDESC_SOA_4132
 	picture = GFX_evt_heretic
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-			
+
 	option = {
 		name = EVTOPTA_SOA_4132
 		religion_authority = {
@@ -731,29 +737,27 @@ province_event = {
 	desc = EVTDESC_SOA_4133
 	picture = GFX_evt_bishop
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		OR = {
 			has_province_modifier = heretic_stronghold
 			has_province_modifier = fanatic_uprising
 		}
 	}
-	
+
 	immediate = {
 		remove_province_modifier = fanatic_uprising
 		remove_province_modifier = theological_dialogue
 		remove_province_modifier = religious_unrest
 		remove_province_modifier = heretic_stronghold
-	
 		FROMFROM = {
 			character_event = {
 				id = SoA.4134
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_SOA_4133
 	}
@@ -765,9 +769,8 @@ character_event = {
 	desc = EVTDESC_SOA_4134
 	picture = GFX_evt_bishop
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-			
+
 	option = {
 		name = EVTOPTA_SOA_4134
 		religion_authority = {
@@ -784,42 +787,50 @@ narrative_event = {
 	picture = GFX_evt_bishop
 	border = GFX_event_narrative_frame_religion
 	hide_from = yes
-	
 	major = yes
-	
 	is_triggered_only = yes
-			
+
 	option = {
 		name = EVTOPTA_SOA_4200
 		trigger = {
 			religion = FROM
 		}
 		if = {
-			limit = { ai = no }
+			limit = {
+				ai = no
+			}
 			chronicle = {
 				entry = CHRONICLE_HERESY_TAKEOVER_PLAYER_IS_NEW
 				portrait = [Root.GetID]
 			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_SOA_4200
 		trigger = {
 			religion = FROMFROM
 		}
 		if = {
-			limit = { ai = no }
+			limit = {
+				ai = no
+			}
 			chronicle = {
 				entry = CHRONICLE_HERESY_TAKEOVER_PLAYER_IS_OLD
 				portrait = [Root.GetID]
 			}
 		}
 	}
+
 	option = {
 		name = EVTOPTC_SOA_4200
 		trigger = {
-			NOT = { religion = FROM }
-			NOT = { religion = FROMFROM }
+			NOT = {
+				religion = FROM
+			}
+			NOT = {
+				religion = FROMFROM
+			}
 		}
 	}
 }

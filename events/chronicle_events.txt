@@ -1,21 +1,17 @@
-###########################################
-#                                         #
-# Special Chronicle Events                #
-#                                         #
-# ID CM.10000-CM.11999                    #
-#                                         #
-###########################################
+
+
+# Special Chronicle Events
+
+# ID CM.10000-CM.11999
 
 namespace = CM
 
 # When chronicle is begun (On Action on_chronicle_start)
 character_event = {
 	id = CM.10000
-
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	hide_window = yes
-	
+
 	immediate = {
 		chronicle = {
 			entry = CHRONICLE_START
@@ -27,11 +23,9 @@ character_event = {
 # When chronicle is transferred to new character (On Action on_chronicle_owner_change)
 character_event = {
 	id = CM.10001
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	hide_window = yes
-	
+
 	immediate = {
 		if = {
 			limit = {
@@ -64,7 +58,9 @@ character_event = {
 				FROM = {
 					is_dying = yes
 					culture = ROOT
-					NOT = { religion = ROOT }
+					NOT = {
+						religion = ROOT
+					}
 				}
 			}
 			chronicle = {
@@ -77,7 +73,9 @@ character_event = {
 			limit = {
 				FROM = {
 					is_dying = yes
-					NOT = { culture = ROOT }
+					NOT = {
+						culture = ROOT
+					}
 					religion = ROOT
 				}
 			}
@@ -91,8 +89,12 @@ character_event = {
 			limit = {
 				FROM = {
 					is_dying = yes
-					NOT = { culture = ROOT }
-					NOT = { religion = ROOT }
+					NOT = {
+						culture = ROOT
+					}
+					NOT = {
+						religion = ROOT
+					}
 				}
 			}
 			chronicle = {
@@ -104,46 +106,54 @@ character_event = {
 	}
 }
 
-#############################
-# Various chronicle events  #
-#############################
+# Various chronicle events
 
 # From on action on_death - check who died and create appropriate chronicle entries
 character_event = {
 	id = CM.10010
-	
 	hide_window = yes
-
 	is_triggered_only = yes
-	
+
 	trigger = {
 		any_player = {
 			OR = {
-				liege = { character = ROOT }
-				any_spouse = { character = ROOT }
+				liege = {
+					character = ROOT
+				}
+				any_spouse = {
+					character = ROOT
+				}
 				is_child_of = ROOT
 				current_heir = {
 					character = ROOT
 				}
 				AND = {
 					religion = ROOT
-					ROOT = { controls_religion = yes }
+					ROOT = {
+						controls_religion = yes
+					}
 				}
 			}
 		}
 	}
-	
+
 	immediate = {
 		any_vassal = {
 			limit = {
 				ai = no
 				NOT = {
 					OR = {
-						father = { character = ROOT }
-						mother = { character = ROOT }
+						father = {
+							character = ROOT
+						}
+						mother = {
+							character = ROOT
+						}
 					}
 				}
-				NOT = { is_primary_heir = ROOT } # Any vassal except primary heir which is handled in chronicle owner transfer event CM.10001
+				NOT = {
+					is_primary_heir = ROOT
+				} # Any vassal except primary heir which is handled in chronicle owner transfer event CM.10001
 			}
 			chronicle = {
 				entry = CHRONICLE_DEATH_OF_LIEGE
@@ -153,7 +163,9 @@ character_event = {
 		any_spouse = {
 			limit = {
 				ai = no
-				NOT = { is_primary_heir = ROOT } # Not used for primary heir which is handled in chronicle owner transfer event CM.10001
+				NOT = {
+					is_primary_heir = ROOT
+				} # Not used for primary heir which is handled in chronicle owner transfer event CM.10001
 			}
 			chronicle = {
 				entry = CHRONICLE_DEATH_OF_SPOUSE
@@ -164,7 +176,9 @@ character_event = {
 			limit = {
 				ai = no
 				ROOT = {
-					NOT = { is_primary_heir = PREV } # Sent to any child except primary heir which is handled in chronicle owner transfer event CM.10001
+					NOT = {
+						is_primary_heir = PREV
+					} # Sent to any child except primary heir which is handled in chronicle owner transfer event CM.10001
 				}
 			}
 			chronicle = {
@@ -177,7 +191,9 @@ character_event = {
 				current_heir = {
 					character = ROOT
 				}
-				NOT = { is_primary_heir = ROOT } # Not used for primary heir which is handled in chronicle owner transfer event CM.10001
+				NOT = {
+					is_primary_heir = ROOT
+				} # Not used for primary heir which is handled in chronicle owner transfer event CM.10001
 			}
 			chronicle = {
 				entry = CHRONICLE_DEATH_OF_HEIR
@@ -189,12 +205,20 @@ character_event = {
 				religion_head = {
 					character = ROOT
 				}
-				NOT = { is_primary_heir = ROOT } # Not used for primary heir which is handled in chronicle owner transfer event CM.10001
+				NOT = {
+					is_primary_heir = ROOT
+				} # Not used for primary heir which is handled in chronicle owner transfer event CM.10001
 				NOT = {
 					OR = {
-						father = { character = ROOT }
-						mother = { character = ROOT }
-						spouse = { character = ROOT }
+						father = {
+							character = ROOT
+						}
+						mother = {
+							character = ROOT
+						}
+						spouse = {
+							character = ROOT
+						}
 					}
 				}
 			}
@@ -209,49 +233,61 @@ character_event = {
 # From on action on_birth - check who was born and create appropriate chronicle entries
 character_event = {
 	id = CM.10011
-	
 	hide_window = yes
-
 	is_triggered_only = yes
 
 	trigger = {
 		OR = {
-			father = { ai = no }
-			mother = { ai = no }
+			father = {
+				ai = no
+			}
+			mother = {
+				ai = no
+			}
 		}
 	}
-	
+
 	immediate = {
-		character_event = { id = CM.19011 days = 2 } # Delay to allow for naming of child.
+		character_event = {
+			id = CM.19011 days = 2
+		} # Delay to allow for naming of child.
 	}
 }
 
 character_event = {
 	id = CM.19011
-	
 	hide_window = yes
-
 	is_triggered_only = yes
-	
+
 	trigger = {
 		OR = {
-			father = { ai = no }
-			mother = { ai = no }
+			father = {
+				ai = no
+			}
+			mother = {
+				ai = no
+			}
 		}
 	}
-	
+
 	immediate = {
 		father = {
 			if = {
 				limit = {
 					ai = no
 					OR = {
-						NOT = { num_of_children = 2 }
+						NOT = {
+							num_of_children = 2
+						}
 						AND = {
-							FROM = { is_female = no }
+							FROM = {
+								is_female = no
+							}
 							NOT = {
 								any_child = {
-									NOT = { character = FROM }
+									NOT = {
+										character = FROM
+									}
 									is_female = no
 								}
 							}
@@ -269,12 +305,18 @@ character_event = {
 				limit = {
 					ai = no
 					OR = {
-						NOT = { num_of_children = 2 }
+						NOT = {
+							num_of_children = 2
+						}
 						AND = {
-							FROM = { is_female = no }
+							FROM = {
+								is_female = no
+							}
 							NOT = {
 								any_child = {
-									NOT = { character = FROM }
+									NOT = {
+										character = FROM
+									}
 									is_female = no
 								}
 							}
@@ -293,22 +335,24 @@ character_event = {
 # War
 character_event = {
 	id = CM.10012
-	
 	hide_window = yes
-
 	is_triggered_only = yes
-	
+
 	trigger = {
 		OR = {
 			ai = no
-			FROM = { ai = no }
+			FROM = {
+				ai = no
+			}
 		}
 	}
-	
+
 	immediate = {
 		FROM = {
 			if = {
-				limit = { ai = no }
+				limit = {
+					ai = no
+				}
 				chronicle = {
 					entry = CHRONICLE_WAR_DECLARED_ATTACKER
 					portrait = [Prev.GetID]
@@ -316,7 +360,9 @@ character_event = {
 			}
 		}
 		if = {
-			limit = { ai = no }
+			limit = {
+				ai = no
+			}
 			chronicle = {
 				entry = CHRONICLE_WAR_DECLARED_DEFENDER
 				portrait = [From.GetID]
@@ -328,13 +374,10 @@ character_event = {
 # Joined ally in war
 character_event = {
 	id = CM.10013
-	
 	hide_window = yes
-
 	is_triggered_only = yes
-	
 	ai = no
-	
+
 	immediate = {
 		chronicle = {
 			entry = CHRONICLE_JOINED_ALLY_IN_WAR
@@ -346,15 +389,15 @@ character_event = {
 # Answered call to arms
 character_event = {
 	id = CM.10014
-	
 	hide_window = yes
-
 	is_triggered_only = yes
-	
+
 	trigger = {
-		FROM = { ai = no }
+		FROM = {
+			ai = no
+		}
 	}
-	
+
 	immediate = {
 		FROM = {
 			chronicle = {
@@ -366,17 +409,19 @@ character_event = {
 }
 
 # On crusade creation
-	# Called from 'on_crusade_creation'
-	# new_character is the targetted enemy
-	# ROOT is the religious head
-	# FROM is the attacked kingdom title
+
+# Called from 'on_crusade_creation'
+
+# new_character is the targetted enemy
+
+# ROOT is the religious head
+
+# FROM is the attacked kingdom title
 character_event = {
 	id = CM.10015
-	
 	hide_window = yes
-
 	is_triggered_only = yes
-	
+
 	immediate = {
 		any_player = {
 			limit = {
@@ -400,7 +445,9 @@ character_event = {
 		}
 		ROOT = {
 			if = {
-				limit = { ai = no }
+				limit = {
+					ai = no
+				}
 				chronicle = {
 					entry = CHRONICLE_FRIENDLY_CRUSADE_STARTED
 					portrait = [Root.GetID]
@@ -411,21 +458,24 @@ character_event = {
 }
 
 # On crusade success
-	# ROOT is the target title
-	# new_character is the Enemy
-	# FROM is the taker
+
+# ROOT is the target title
+
+# new_character is the Enemy
+
+# FROM is the taker
 character_event = {
 	id = CM.10016
-	
 	hide_window = yes
-
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = {
 				FROM = {
-					religion_head = { is_alive = yes }
+					religion_head = {
+						is_alive = yes
+					}
 				}
 			}
 			any_player = {
@@ -436,7 +486,9 @@ character_event = {
 							religion = PREV
 						}
 					}
-					NOT = { character = FROM }
+					NOT = {
+						character = FROM
+					}
 				}
 				chronicle = {
 					entry = CHRONICLE_CRUSADE_WON
@@ -445,7 +497,9 @@ character_event = {
 			}
 			FROM = {
 				if = {
-					limit = { ai = no }
+					limit = {
+						ai = no
+					}
 					chronicle = {
 						entry = CHRONICLE_CRUSADE_WON_AND_I_GOT_THE_TITLE
 						portrait = [From.GetID]
@@ -457,7 +511,9 @@ character_event = {
 			limit = {
 				NOT = {
 					FROM = {
-						religion_head = { is_alive = yes } # Crusade ended inconclusively as the religious head no longer exist
+						religion_head = {
+							is_alive = yes
+						} # Crusade ended inconclusively as the religious head no longer exist
 					}
 				}
 			}
@@ -479,16 +535,17 @@ character_event = {
 }
 
 # On crusade failure
-	# ROOT is the target title
-	# new_character is the Enemy
-	# FROM is the Pope/Caliph
+
+# ROOT is the target title
+
+# new_character is the Enemy
+
+# FROM is the Pope/Caliph
 character_event = {
 	id = CM.10017
-	
 	hide_window = yes
-
 	is_triggered_only = yes
-	
+
 	immediate = {
 		any_player = {
 			limit = {
@@ -510,31 +567,33 @@ character_event = {
 # Aztec first contact
 character_event = {
 	id = CM.10018
-	
 	hide_window = yes
-
 	is_triggered_only = yes
-	
+
 	immediate = {
 		any_player = {
 			limit = {
 				capital_scope = {
-					NOT = { region = world_india }
-					NOT = { region = world_africa_east }
+					NOT = {
+						region = world_india
+					}
+					NOT = {
+						region = world_africa_east
+					}
 				}
 			}
-			character_event = { id = CM.10019 }
+			character_event = {
+				id = CM.10019
+			}
 		}
 	}
 }
 
 character_event = {
 	id = CM.10019
-	
 	hide_window = yes
-
 	is_triggered_only = yes
-	
+
 	immediate = {
 		chronicle = {
 			entry = CHRONICLE_AZTECS_FIRST_CONTACT
@@ -546,11 +605,9 @@ character_event = {
 # Aztec Invasion
 character_event = {
 	id = CM.10020
-	
 	hide_window = yes
-
 	is_triggered_only = yes
-	
+
 	immediate = {
 		chronicle = {
 			entry = CHRONICLE_AZTEC_INVASION
@@ -560,26 +617,27 @@ character_event = {
 }
 
 # Creates new higher level title
-	# On create title - ROOT is the creating character, FROM is the title
+
+# On create title - ROOT is the creating character, FROM is the title
 character_event = {
 	id = CM.10021
-	
 	hide_window = yes
-
 	is_triggered_only = yes
-	
+
 	trigger = {
 		ROOT = {
 			ai = no
 			any_demesne_title = {
-				NOT = { title = FROM }
+				NOT = {
+					title = FROM
+				}
 				FROM = {
 					higher_tier_than = PREV
 				}
 			}
 		}
 	}
-	
+
 	immediate = {
 		chronicle = {
 			entry = CHRONICLE_CREATED_TITLE
@@ -589,19 +647,20 @@ character_event = {
 }
 
 # Usurps new higher level title
-	# On usurp title ROOT is the character, FROM is the title, FROMFROM is the old holder
+
+# On usurp title ROOT is the character, FROM is the title, FROMFROM is the old holder
 character_event = {
 	id = CM.10022
-	
 	hide_window = yes
-
 	is_triggered_only = yes
-	
+
 	trigger = {
 		ai = no
 		ROOT = {
 			any_demesne_title = {
-				NOT = { title = FROM }
+				NOT = {
+					title = FROM
+				}
 				FROM = {
 					higher_tier_than = PREV
 				}
@@ -620,9 +679,7 @@ character_event = {
 # Marriage
 character_event = {
 	id = CM.10023
-	
 	hide_window = yes
-
 	is_triggered_only = yes
 
 	trigger = {
@@ -635,7 +692,9 @@ character_event = {
 		if = {
 			limit = {
 				new_character = {
-					mother_even_if_dead = { always = yes }
+					mother_even_if_dead = {
+						always = yes
+					}
 					OR = {
 						father_even_if_dead = {
 							PREV = {
@@ -644,108 +703,139 @@ character_event = {
 								}
 							}
 						}
-						NOT = { father_even_if_dead = { always = yes } }
+						NOT = {
+							father_even_if_dead = {
+								always = yes
+							}
+						}
 					}
 				}
 			}
 			FROM = {
 				chronicle = {
-				entry = CHRONICLE_MARRIED_MOTHER_IMPORTANT
-				portrait = [New.GetID]
+					entry = CHRONICLE_MARRIED_MOTHER_IMPORTANT
+					portrait = [New.GetID]
 				}
 			}
 		}
 		if = {
 			limit = {
 				new_character = {
-					father_even_if_dead = { always = yes }
+					father_even_if_dead = {
+						always = yes
+					}
 					OR = {
 						father_even_if_dead = {
 							PREV = {
 								mother_even_if_dead = {
-									NOT = { higher_tier_than = PREVPREV }
+									NOT = {
+										higher_tier_than = PREVPREV
+									}
 								}
 							}
 						}
-						NOT = { mother_even_if_dead = { always = yes } }
+						NOT = {
+							mother_even_if_dead = {
+								always = yes
+							}
+						}
 					}
 				}
 			}
 			FROM = {
 				chronicle = {
-				entry = CHRONICLE_MARRIED_FATHER_IMPORTANT
-				portrait = [New.GetID]
+					entry = CHRONICLE_MARRIED_FATHER_IMPORTANT
+					portrait = [New.GetID]
 				}
 			}
 		}
 		if = {
 			limit = {
 				new_character = {
-					NOT = { father_even_if_dead = { always = yes } }
-					NOT = { mother_even_if_dead = { always = yes } }
+					NOT = {
+						father_even_if_dead = {
+							always = yes
+						}
+					}
+					NOT = {
+						mother_even_if_dead = {
+							always = yes
+						}
+					}
 				}
 			}
 			FROM = {
 				chronicle = {
-				entry = CHRONICLE_MARRIED_NO_PARENT
-				portrait = [New.GetID]
+					entry = CHRONICLE_MARRIED_NO_PARENT
+					portrait = [New.GetID]
 				}
 			}
 		}
 	}
 }
 
-
 # From on action on_became_imprisoned - check who was imprisoned and create appropriate chronicle entries
 character_event = {
 	id = CM.10024
-	
 	hide_window = yes
-
 	is_triggered_only = yes
-	
+
 	trigger = {
 		any_player = {
 			OR = {
 				character = ROOT
-				liege = { character = ROOT }
-				any_spouse = { character = ROOT }
+				liege = {
+					character = ROOT
+				}
+				any_spouse = {
+					character = ROOT
+				}
 				is_child_of = ROOT
 				current_heir = {
 					character = ROOT
 				}
 				AND = {
 					religion = ROOT
-					ROOT = { controls_religion = yes }
+					ROOT = {
+						controls_religion = yes
+					}
 				}
 			}
 		}
 	}
-	
+
 	immediate = {
 		if = {
-			limit = { ai = no }
+			limit = {
+				ai = no
+			}
 			chronicle = {
 				entry = CHRONICLE_PLAYER_IMPRISONED
 				portrait = [Root.GetID]
 			}
 		}
 		any_vassal = {
-			limit = { ai = no }
+			limit = {
+				ai = no
+			}
 			chronicle = {
 				entry = CHRONICLE_LIEGE_IMPRISONED
 				portrait = [Root.GetID]
 			}
 		}
 		any_spouse = {
-			limit = { ai = no }
+			limit = {
+				ai = no
+			}
 			chronicle = {
 				entry = CHRONICLE_SPOUSE_IMPRISONED
 				portrait = [Root.GetID]
 			}
 		}
 		any_child = {
-			limit = { ai = no }
+			limit = {
+				ai = no
+			}
 			chronicle = {
 				entry = CHRONICLE_PARENT_IMPRISONED
 				portrait = [Root.GetID]
@@ -779,53 +869,65 @@ character_event = {
 # From on action on_released_from_prison - check who was released and create appropriate chronicle entries
 character_event = {
 	id = CM.10025
-	
 	hide_window = yes
-
 	is_triggered_only = yes
-	
+
 	trigger = {
 		any_player = {
 			OR = {
 				character = ROOT
-				liege = { character = ROOT }
-				any_spouse = { character = ROOT }
+				liege = {
+					character = ROOT
+				}
+				any_spouse = {
+					character = ROOT
+				}
 				is_child_of = ROOT
 				current_heir = {
 					character = ROOT
 				}
 				AND = {
 					religion = ROOT
-					ROOT = { controls_religion = yes }
+					ROOT = {
+						controls_religion = yes
+					}
 				}
 			}
 		}
 	}
-	
+
 	immediate = {
 		if = {
-			limit = { ai = no }
+			limit = {
+				ai = no
+			}
 			chronicle = {
 				entry = CHRONICLE_PLAYER_RELEASED
 				portrait = [Root.GetID]
 			}
 		}
 		any_vassal = {
-			limit = { ai = no }
+			limit = {
+				ai = no
+			}
 			chronicle = {
 				entry = CHRONICLE_LIEGE_RELEASED
 				portrait = [Root.GetID]
 			}
 		}
 		any_spouse = {
-			limit = { ai = no }
+			limit = {
+				ai = no
+			}
 			chronicle = {
 				entry = CHRONICLE_SPOUSE_RELEASED
 				portrait = [Root.GetID]
 			}
 		}
 		any_child = {
-			limit = { ai = no }
+			limit = {
+				ai = no
+			}
 			chronicle = {
 				entry = CHRONICLE_PARENT_RELEASED
 				portrait = [Root.GetID]
@@ -859,22 +961,26 @@ character_event = {
 # When a character converts to a new religion - On action: on_character_convert_religion
 character_event = {
 	id = CM.10026
-	
 	hide_window = yes
-
 	is_triggered_only = yes
-	
+
 	trigger = {
 		OR = {
 			ai = no
-			any_vassal = { ai = no }
-			liege = { ai = no }
+			any_vassal = {
+				ai = no
+			}
+			liege = {
+				ai = no
+			}
 		}
 	}
-	
+
 	immediate = {
 		if = {
-			limit = { ai = no }
+			limit = {
+				ai = no
+			}
 			chronicle = {
 				entry = CHRONICLE_PLAYER_CONVERTED_RELIGION
 				portrait = [Root.GetID]
@@ -882,10 +988,14 @@ character_event = {
 		}
 		if = {
 			limit = {
-				any_vassal = { ai = no }
+				any_vassal = {
+					ai = no
+				}
 			}
 			any_vassal = {
-				limit = { ai = no }
+				limit = {
+					ai = no
+				}
 				chronicle = {
 					entry = CHRONICLE_LIEGE_CONVERTED_RELIGION
 					portrait = [Root.GetID]
@@ -894,16 +1004,30 @@ character_event = {
 		}
 		if = {
 			limit = {
-				liege = { ai = no }
+				liege = {
+					ai = no
+				}
 				independent = no
 				OR = {
 					AND = {
-						liege = { primary_title = { tier = KING } }
-						primary_title = { higher_tier_than = COUNT }
+						liege = {
+							primary_title = {
+								tier = KING
+							}
+						}
+						primary_title = {
+							higher_tier_than = COUNT
+						}
 					}
 					AND = {
-						liege = { primary_title = { tier = EMPEROR } }
-						primary_title = { higher_tier_than = DUKE }
+						liege = {
+							primary_title = {
+								tier = EMPEROR
+							}
+						}
+						primary_title = {
+							higher_tier_than = DUKE
+						}
 					}
 				}
 			}
@@ -920,13 +1044,10 @@ character_event = {
 # When a character converts to a new culture - On action: on_character_convert_culture
 character_event = {
 	id = CM.10027
-	
 	hide_window = yes
-
 	is_triggered_only = yes
-	
 	ai = no
-	
+
 	immediate = {
 		chronicle = {
 			entry = CHRONICLE_PLAYER_CONVERTED_CULTURE
@@ -938,13 +1059,10 @@ character_event = {
 # When a character acquires a nickname - On action: on_acquire_nickname
 character_event = {
 	id = CM.10028
-	
 	hide_window = yes
-
 	is_triggered_only = yes
-	
 	ai = no
-	
+
 	immediate = {
 		chronicle = {
 			entry = CHRONICLE_PLAYER_ACQUIRED_NICKNAME
@@ -956,13 +1074,10 @@ character_event = {
 # Won battle - On action: on_battle_won
 character_event = {
 	id = CM.10029
-	
 	hide_window = yes
-
 	is_triggered_only = yes
-	
 	ai = no
-	
+
 	immediate = {
 		chronicle = {
 			entry = CHRONICLE_WON_BATTLE_FOUGHT
@@ -974,13 +1089,10 @@ character_event = {
 # Lost battle - On action: on_battle_lost
 character_event = {
 	id = CM.10030
-	
 	hide_window = yes
-
 	is_triggered_only = yes
-	
 	ai = no
-	
+
 	immediate = {
 		chronicle = {
 			entry = CHRONICLE_LOST_BATTLE_FOUGHT
@@ -992,17 +1104,17 @@ character_event = {
 # Won battle but didn't participate myself
 character_event = {
 	id = CM.10031
-	
 	hide_window = yes
-
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = {
 				top_liege = {
 					ai = no
-					NOT = { at_location = ROOT }
+					NOT = {
+						at_location = ROOT
+					}
 					war_with = FROM
 				}
 			}
@@ -1019,19 +1131,18 @@ character_event = {
 # Lost battle but didn't participate myself
 character_event = {
 	id = CM.10032
-	
 	hide_window = yes
-
 	is_triggered_only = yes
-	
 	ai = yes
-	
+
 	immediate = {
 		if = {
 			limit = {
 				top_liege = {
 					ai = no
-					NOT = { at_location = ROOT }
+					NOT = {
+						at_location = ROOT
+					}
 					war_with = FROM
 				}
 			}
@@ -1048,13 +1159,10 @@ character_event = {
 # Personally captured major settlement
 character_event = {
 	id = CM.10033
-	
 	hide_window = yes
-
 	is_triggered_only = yes
-	
 	ai = no
-	
+
 	immediate = {
 		chronicle = {
 			entry = CHRONICLE_CAPTURED_MAJOR_SETTLEMENT_MYSELF
@@ -1066,34 +1174,53 @@ character_event = {
 # My forces captured major settlement
 character_event = {
 	id = CM.10034
-	
 	hide_window = yes
-
 	is_triggered_only = yes
-	
 	ai = yes
-	
+
 	trigger = {
 		OR = {
-			FROM = { title = b_roma }
-			FROM = { title = b_constantinople }
-			FROM = { title = b_bagdad }
-			FROM = { title = b_indraprastha }
-			FROM = { title = b_jerusalem }
-			FROM = { title = b_mecca }
-			FROM = { title = b_alexandria }
-			FROM = { title = b_cordoba }
+			FROM = {
+				title = b_roma
+			}
+			FROM = {
+				title = b_constantinople
+			}
+			FROM = {
+				title = b_bagdad
+			}
+			FROM = {
+				title = b_indraprastha
+			}
+			FROM = {
+				title = b_jerusalem
+			}
+			FROM = {
+				title = b_mecca
+			}
+			FROM = {
+				title = b_alexandria
+			}
+			FROM = {
+				title = b_cordoba
+			}
 			AND = {
 				year = 900
-				FROM = { title = b_venezia }
+				FROM = {
+					title = b_venezia
+				}
 			}
 			AND = {
 				year = 1164
-				FROM = { title = b_koln }
+				FROM = {
+					title = b_koln
+				}
 			}
 			AND = {
 				year = 1200
-				FROM = { title = b_paris }
+				FROM = {
+					title = b_paris
+				}
 			}
 		}
 	}
@@ -1103,7 +1230,9 @@ character_event = {
 			limit = {
 				top_liege = {
 					ai = no
-					NOT = { at_location = ROOT }
+					NOT = {
+						at_location = ROOT
+					}
 				}
 			}
 			top_liege = {
@@ -1119,34 +1248,53 @@ character_event = {
 # Enemy forces captured major settlement
 character_event = {
 	id = CM.10035
-	
 	hide_window = yes
-
 	is_triggered_only = yes
-	
 	ai = yes
-	
+
 	trigger = {
 		OR = {
-			FROM = { title = b_roma }
-			FROM = { title = b_constantinople }
-			FROM = { title = b_bagdad }
-			FROM = { title = b_indraprastha }
-			FROM = { title = b_jerusalem }
-			FROM = { title = b_mecca }
-			FROM = { title = b_alexandria }
-			FROM = { title = b_cordoba }
+			FROM = {
+				title = b_roma
+			}
+			FROM = {
+				title = b_constantinople
+			}
+			FROM = {
+				title = b_bagdad
+			}
+			FROM = {
+				title = b_indraprastha
+			}
+			FROM = {
+				title = b_jerusalem
+			}
+			FROM = {
+				title = b_mecca
+			}
+			FROM = {
+				title = b_alexandria
+			}
+			FROM = {
+				title = b_cordoba
+			}
 			AND = {
 				year = 900
-				FROM = { title = b_venezia }
+				FROM = {
+					title = b_venezia
+				}
 			}
 			AND = {
 				year = 1164
-				FROM = { title = b_koln }
+				FROM = {
+					title = b_koln
+				}
 			}
 			AND = {
 				year = 1200
-				FROM = { title = b_paris }
+				FROM = {
+					title = b_paris
+				}
 			}
 		}
 	}
@@ -1176,17 +1324,17 @@ character_event = {
 	}
 }
 
-# Marriage of primary heir  - ROOT is employer. FROM is employers "employee". new_character is the other spouse.
+# Marriage of primary heir - ROOT is employer. FROM is employers "employee". new_character is the other spouse.
 character_event = {
 	id = CM.10036
-	
 	hide_window = yes
-
 	is_triggered_only = yes
 
 	trigger = {
 		any_player = {
-			FROM = { is_primary_heir = PREV }
+			FROM = {
+				is_primary_heir = PREV
+			}
 		}
 	}
 
@@ -1194,7 +1342,9 @@ character_event = {
 		if = {
 			limit = {
 				new_character = {
-					mother_even_if_dead = { always = yes }
+					mother_even_if_dead = {
+						always = yes
+					}
 					OR = {
 						father_even_if_dead = {
 							PREV = {
@@ -1203,13 +1353,19 @@ character_event = {
 								}
 							}
 						}
-						NOT = { father_even_if_dead = { always = yes } }
+						NOT = {
+							father_even_if_dead = {
+								always = yes
+							}
+						}
 					}
 				}
 			}
 			any_player = {
 				limit = {
-					FROM = { is_primary_heir = PREV }
+					FROM = {
+						is_primary_heir = PREV
+					}
 				}
 				chronicle = {
 					entry = CHRONICLE_MARRIED_MOTHER_IMPORTANT
@@ -1220,22 +1376,32 @@ character_event = {
 		if = {
 			limit = {
 				new_character = {
-					father_even_if_dead = { always = yes }
+					father_even_if_dead = {
+						always = yes
+					}
 					OR = {
 						father_even_if_dead = {
 							PREV = {
 								mother_even_if_dead = {
-									NOT = { higher_tier_than = PREVPREV }
+									NOT = {
+										higher_tier_than = PREVPREV
+									}
 								}
 							}
 						}
-						NOT = { mother_even_if_dead = { always = yes } }
+						NOT = {
+							mother_even_if_dead = {
+								always = yes
+							}
+						}
 					}
 				}
 			}
 			any_player = {
 				limit = {
-					FROM = { is_primary_heir = PREV }
+					FROM = {
+						is_primary_heir = PREV
+					}
 				}
 				chronicle = {
 					entry = CHRONICLE_MARRIED_FATHER_IMPORTANT
@@ -1246,13 +1412,23 @@ character_event = {
 		if = {
 			limit = {
 				new_character = {
-					NOT = { father_even_if_dead = { always = yes } }
-					NOT = { mother_even_if_dead = { always = yes } }
+					NOT = {
+						father_even_if_dead = {
+							always = yes
+						}
+					}
+					NOT = {
+						mother_even_if_dead = {
+							always = yes
+						}
+					}
 				}
 			}
 			any_player = {
 				limit = {
-					FROM = { is_primary_heir = PREV }
+					FROM = {
+						is_primary_heir = PREV
+					}
 				}
 				chronicle = {
 					entry = CHRONICLE_MARRIED_NO_PARENT
@@ -1266,16 +1442,14 @@ character_event = {
 # Divorce
 character_event = {
 	id = CM.10037
-	
 	hide_window = yes
-
 	is_triggered_only = yes
 
 	trigger = {
 		OR = {
 			ai = no
-			FROM = { 
-				ai = no 
+			FROM = {
+				ai = no
 			}
 		}
 	}
@@ -1285,7 +1459,7 @@ character_event = {
 		if = {
 			limit = {
 				new_character = {
-					always = yes 
+					always = yes
 				}
 			}
 			if = {
@@ -1310,7 +1484,7 @@ character_event = {
 			}
 			break = yes
 		}
-		 # Chronicle entries without a religious head
+		# Chronicle entries without a religious head
 		if = {
 			limit = {
 				ai = no
@@ -1337,22 +1511,24 @@ character_event = {
 # Peace, attacker won
 character_event = {
 	id = CM.10038
-	
 	hide_window = yes
-
 	is_triggered_only = yes
-	
+
 	trigger = {
 		OR = {
 			ai = no
-			FROM = { ai = no }
+			FROM = {
+				ai = no
+			}
 		}
 	}
-	
+
 	immediate = {
 		FROM = {
 			if = {
-				limit = { ai = no }
+				limit = {
+					ai = no
+				}
 				chronicle = {
 					entry = CHRONICLE_WAR_WON
 					portrait = [Prev.GetID]
@@ -1360,7 +1536,9 @@ character_event = {
 			}
 		}
 		if = {
-			limit = { ai = no }
+			limit = {
+				ai = no
+			}
 			chronicle = {
 				entry = CHRONICLE_WAR_WON
 				portrait = [From.GetID]
@@ -1369,12 +1547,10 @@ character_event = {
 	}
 }
 
-# Inherit major title   - # ROOT is the character, FROM is the title, FROMFROM is the old holder
+# Inherit major title - # ROOT is the character, FROM is the title, FROMFROM is the old holder
 character_event = {
 	id = CM.10039
-	
 	hide_window = yes
-
 	is_triggered_only = yes
 
 	trigger = {
@@ -1384,7 +1560,9 @@ character_event = {
 	immediate = {
 		if = {
 			limit = {
-				NOT = { higher_tier_than = FROM }
+				NOT = {
+					higher_tier_than = FROM
+				}
 			}
 			chronicle = {
 				entry = CHRONICLE_INHERIT_MAJOR_TITLE
@@ -1397,22 +1575,24 @@ character_event = {
 # Peace, whitepeace
 character_event = {
 	id = CM.10040
-	
 	hide_window = yes
-
 	is_triggered_only = yes
-	
+
 	trigger = {
 		OR = {
 			ai = no
-			FROM = { ai = no }
+			FROM = {
+				ai = no
+			}
 		}
 	}
-	
+
 	immediate = {
 		FROM = {
 			if = {
-				limit = { ai = no }
+				limit = {
+					ai = no
+				}
 				chronicle = {
 					entry = CHRONICLE_WAR_WHITEPEACE
 					portrait = [Prev.GetID]
@@ -1420,7 +1600,9 @@ character_event = {
 			}
 		}
 		if = {
-			limit = { ai = no }
+			limit = {
+				ai = no
+			}
 			chronicle = {
 				entry = CHRONICLE_WAR_WHITEPEACE
 				portrait = [From.GetID]
@@ -1432,22 +1614,24 @@ character_event = {
 # Peace, defender won
 character_event = {
 	id = CM.10041
-	
 	hide_window = yes
-
 	is_triggered_only = yes
-	
+
 	trigger = {
 		OR = {
 			ai = no
-			FROM = { ai = no }
+			FROM = {
+				ai = no
+			}
 		}
 	}
-	
+
 	immediate = {
 		FROM = {
 			if = {
-				limit = { ai = no }
+				limit = {
+					ai = no
+				}
 				chronicle = {
 					entry = CHRONICLE_WAR_LOST
 					portrait = [Prev.GetID]
@@ -1455,7 +1639,9 @@ character_event = {
 			}
 		}
 		if = {
-			limit = { ai = no }
+			limit = {
+				ai = no
+			}
 			chronicle = {
 				entry = CHRONICLE_WAR_LOST
 				portrait = [From.GetID]
@@ -1464,34 +1650,27 @@ character_event = {
 	}
 }
 
-
-
-#############################################################################################
-# Random content if chronicle is empty at year end (On Action on_create_chronicle_if_empty) #
-#############################################################################################
+# Random content if chronicle is empty at year end (On Action on_create_chronicle_if_empty)
 
 # Dragon Sighted
 character_event = {
 	id = CM.10500
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	hide_window = yes
-	
+
 	immediate = {
 		random_realm_province = {
-			province_event = { id = CM.10501 }
+			province_event = {
+				id = CM.10501
+			}
 		}
 	}
 }
-
 province_event = {
 	id = CM.10501
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROM = {
 			chronicle = {
@@ -1505,25 +1684,22 @@ province_event = {
 # Giant sighted
 character_event = {
 	id = CM.10502
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	hide_window = yes
-	
+
 	immediate = {
 		random_realm_province = {
-			province_event = { id = CM.10503 }
+			province_event = {
+				id = CM.10503
+			}
 		}
 	}
 }
-
 province_event = {
 	id = CM.10503
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROM = {
 			chronicle = {
@@ -1537,25 +1713,22 @@ province_event = {
 # Sea serpents sighted
 character_event = {
 	id = CM.10504
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	hide_window = yes
-	
+
 	immediate = {
 		random_realm_province = {
-			province_event = { id = CM.10505 }
+			province_event = {
+				id = CM.10505
+			}
 		}
 	}
 }
-
 province_event = {
 	id = CM.10505
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROM = {
 			chronicle = {
@@ -1569,11 +1742,9 @@ province_event = {
 # Strange shapes seen dancing on the moon
 character_event = {
 	id = CM.10506
-	
 	hide_window = yes
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
+
 	immediate = {
 		chronicle = {
 			entry = CHRONICLE_FILL0004
@@ -1585,25 +1756,22 @@ character_event = {
 # Ten feet tall woman
 character_event = {
 	id = CM.10507
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	hide_window = yes
-	
+
 	immediate = {
 		random_realm_province = {
-			province_event = { id = CM.10508 }
+			province_event = {
+				id = CM.10508
+			}
 		}
 	}
 }
-
 province_event = {
 	id = CM.10508
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROM = {
 			chronicle = {
@@ -1617,25 +1785,22 @@ province_event = {
 # Raining blood
 character_event = {
 	id = CM.10509
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	hide_window = yes
-	
+
 	immediate = {
 		random_realm_province = {
-			province_event = { id = CM.10510 }
+			province_event = {
+				id = CM.10510
+			}
 		}
 	}
 }
-
 province_event = {
 	id = CM.10510
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROM = {
 			chronicle = {
@@ -1649,25 +1814,22 @@ province_event = {
 # Strange plague kills rabbits
 character_event = {
 	id = CM.10511
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	hide_window = yes
-	
+
 	immediate = {
 		random_realm_province = {
-			province_event = { id = CM.10512 }
+			province_event = {
+				id = CM.10512
+			}
 		}
 	}
 }
-
 province_event = {
 	id = CM.10512
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROM = {
 			chronicle = {
@@ -1681,25 +1843,22 @@ province_event = {
 # Earthquake
 character_event = {
 	id = CM.10513
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	hide_window = yes
-	
+
 	immediate = {
 		random_realm_province = {
-			province_event = { id = CM.10514 }
+			province_event = {
+				id = CM.10514
+			}
 		}
 	}
 }
-
 province_event = {
 	id = CM.10514
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROM = {
 			chronicle = {
@@ -1713,25 +1872,22 @@ province_event = {
 # Flood
 character_event = {
 	id = CM.10515
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	hide_window = yes
-	
+
 	immediate = {
 		random_realm_province = {
-			province_event = { id = CM.10516 }
+			province_event = {
+				id = CM.10516
+			}
 		}
 	}
 }
-
 province_event = {
 	id = CM.10516
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROM = {
 			chronicle = {
@@ -1745,25 +1901,22 @@ province_event = {
 # Two suns were seen
 character_event = {
 	id = CM.10517
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	hide_window = yes
-	
+
 	immediate = {
 		random_realm_province = {
-			province_event = { id = CM.10518 }
+			province_event = {
+				id = CM.10518
+			}
 		}
 	}
 }
-
 province_event = {
 	id = CM.10518
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROM = {
 			chronicle = {
@@ -1777,25 +1930,22 @@ province_event = {
 # Goat with three heads was born
 character_event = {
 	id = CM.10519
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	hide_window = yes
-	
+
 	immediate = {
 		random_realm_province = {
-			province_event = { id = CM.10520 }
+			province_event = {
+				id = CM.10520
+			}
 		}
 	}
 }
-
 province_event = {
 	id = CM.10520
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROM = {
 			chronicle = {
@@ -1809,25 +1959,22 @@ province_event = {
 # Bird invasion
 character_event = {
 	id = CM.10521
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	hide_window = yes
-	
+
 	immediate = {
 		random_realm_province = {
-			province_event = { id = CM.10522 }
+			province_event = {
+				id = CM.10522
+			}
 		}
 	}
 }
-
 province_event = {
 	id = CM.10522
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROM = {
 			chronicle = {
@@ -1841,25 +1988,22 @@ province_event = {
 # Many children born in province
 character_event = {
 	id = CM.10523
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	hide_window = yes
-	
+
 	immediate = {
 		random_realm_province = {
-			province_event = { id = CM.10524 }
+			province_event = {
+				id = CM.10524
+			}
 		}
 	}
 }
-
 province_event = {
 	id = CM.10524
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROM = {
 			chronicle = {
@@ -1873,25 +2017,22 @@ province_event = {
 # Province celebrates beloved ruler
 character_event = {
 	id = CM.10525
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	hide_window = yes
-	
+
 	immediate = {
 		random_demesne_province = {
-			province_event = { id = CM.10526 }
+			province_event = {
+				id = CM.10526
+			}
 		}
 	}
 }
-
 province_event = {
 	id = CM.10526
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROM = {
 			chronicle = {
@@ -1905,25 +2046,22 @@ province_event = {
 # A star falls from the sky
 character_event = {
 	id = CM.10527
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	hide_window = yes
-	
+
 	immediate = {
 		random_realm_province = {
-			province_event = { id = CM.10528 }
+			province_event = {
+				id = CM.10528
+			}
 		}
 	}
 }
-
 province_event = {
 	id = CM.10528
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROM = {
 			chronicle = {
@@ -1937,11 +2075,9 @@ province_event = {
 # Bountiful harvest
 character_event = {
 	id = CM.10529
-	
-	is_triggered_only = yes 
-	
+	is_triggered_only = yes
 	hide_window = yes
-	
+
 	immediate = {
 		chronicle = {
 			entry = CHRONICLE_FILL0016
@@ -1949,5 +2085,3 @@ character_event = {
 		}
 	}
 }
-	
-

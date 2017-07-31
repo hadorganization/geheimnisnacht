@@ -1,23 +1,18 @@
-###########################################
-#                                         #
-# ZE Mercenary Events                     #
-# ID ZE.11000 - ZE.11999                  #
-#                                         #
-###########################################
+
+
+# ZE Mercenary Events
+
+# ID ZE.11000 - ZE.11999
 
 # Written by - Markus Olsen
-
 namespace = ZE
 
 character_event = {
 	id = ZE.11000
-
 	hide_window = yes
-
 	is_married = no
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		NOT = {
 			has_character_flag = mercenary_pondered_marriage
@@ -33,8 +28,7 @@ character_event = {
 					can_marry = yes
 					is_adult = yes
 					ai = yes
-
-					NOR = { 
+					NOR = {
 						trait = ugly
 						is_dumb_trigger = yes
 						trait = dwarf
@@ -57,8 +51,7 @@ character_event = {
 						can_marry = yes
 						is_adult = yes
 						ai = yes
-
-						NOR = { 
+						NOR = {
 							trait = ugly
 							is_dumb_trigger = yes
 							trait = dwarf
@@ -69,24 +62,24 @@ character_event = {
 					save_event_target_as = chosen_child
 				}
 				save_event_target_as = target_liege
-				character_event = { id = ZE.11001 } 
+				character_event = {
+					id = ZE.11001
+				}
 			}
 		}
 	}
 }
-
 
 character_event = {
 	id = ZE.11001
 	picture = GFX_evt_viking_battle_oldgods
 	border = GFX_event_normal_frame_diplomacy
 	desc = EVTDESC_ZE_11001
-	
 	is_triggered_only = yes
 
 	option = {
 		name = EVTOPTA_ZE_11001
-		ai_chance = { 
+		ai_chance = {
 			factor = 30
 		}
 		FROM = {
@@ -98,12 +91,14 @@ character_event = {
 		}
 		event_target:chosen_child = {
 			if = {
-				limit = { is_female = yes
+				limit = {
+					is_female = yes
 				}
 				add_spouse = FROM
 			}
 			if = {
-				limit = { is_female = no
+				limit = {
+					is_female = no
 				}
 				add_spouse_matrilineal = FROM
 			}
@@ -112,7 +107,7 @@ character_event = {
 
 	option = {
 		name = EVTOPTB_ZE_11001
-		ai_chance = { 
+		ai_chance = {
 			factor = 70
 		}
 		FROM = {
@@ -122,8 +117,8 @@ character_event = {
 				years = 3
 			}
 		}
-		hidden_tooltip = { 
-			FROM = { 
+		hidden_tooltip = {
+			FROM = {
 				increase_mercenary_ambition_level_effect = yes
 			}
 		}
@@ -132,11 +127,9 @@ character_event = {
 
 character_event = {
 	id = ZE.11010
-
 	hide_window = yes
-
 	is_triggered_only = yes
-	
+
 	trigger = {
 		mercenary = yes
 		primary_title = {
@@ -156,7 +149,9 @@ character_event = {
 		primary_title = {
 			band_creator = {
 				save_event_target_as = target_liege
-				character_event = { id = ZE.11011 } 
+				character_event = {
+					id = ZE.11011
+				}
 			}
 		}
 	}
@@ -167,7 +162,6 @@ character_event = {
 	picture = GFX_evt_large_army
 	border = GFX_event_normal_frame_diplomacy
 	desc = EVTDESC_ZE_11011
-	
 	is_triggered_only = yes
 
 	option = {
@@ -192,7 +186,7 @@ character_event = {
 
 	option = {
 		name = EVTOPTB_ZE_11011
-		ai_chance = { 
+		ai_chance = {
 			factor = 70
 			modifier = {
 				factor = 0.5
@@ -211,20 +205,17 @@ character_event = {
 			}
 		}
 		hidden_tooltip = {
-			FROM = { 
+			FROM = {
 				increase_mercenary_ambition_level_effect = yes
 			}
 		}
 	}
 }
 
-
-#Merc captains reaction to band being dissolved
+# Merc captains reaction to band being dissolved
 character_event = {
 	id = ZE.11020
-
 	hide_window = yes
-
 	is_triggered_only = yes
 
 	immediate = {
@@ -243,24 +234,26 @@ character_event = {
 				}
 				primary_title = {
 					band_creator = {
-						character_event = { id = ZE.11021}
+						character_event = {
+							id = ZE.11021
+						}
 					}
 				}
 			}
 			80 = {
-				character_event = { id = ZE.11030 } #Flag clearing event for old merc captain
+				character_event = {
+					id = ZE.11030
+				} # Flag clearing event for old merc captain
 			}
 		}
 	}
 }
-
 
 character_event = {
 	id = ZE.11021
 	picture = GFX_evt_large_army
 	border = GFX_event_normal_frame_diplomacy
 	desc = EVTDESC_ZE_11021
-	
 	is_triggered_only = yes
 
 	option = {
@@ -303,22 +296,25 @@ character_event = {
 				}
 			}
 			FROM = {
-				character_event = { id = ZE.11030} #Flag clearing event for old merc captain
+				character_event = {
+					id = ZE.11030
+				} # Flag clearing event for old merc captain
 			}
 		}
 	}
 }
+
 # flag clearing event for merc captains, the destroyer of worlds
 character_event = {
 	id = ZE.11030
-
 	hide_window = yes
-
 	is_triggered_only = yes
 
 	immediate = {
 		primary_title = {
-			activate_title = { title = THIS status = no }
+			activate_title = {
+				title = THIS status = no
+			}
 			destroy_landed_title = THIS
 		}
 		clear_wealth = yes
@@ -339,9 +335,7 @@ character_event = {
 # Replacing merc captain, old captains response
 character_event = {
 	id = ZE.11040
-
 	hide_window = yes
-
 	is_triggered_only = yes
 
 	trigger = {
@@ -349,7 +343,7 @@ character_event = {
 			religion_group = FROM
 		}
 	}
-	
+
 	immediate = {
 		save_event_target_as = old_captain
 		FROM = {
@@ -360,7 +354,9 @@ character_event = {
 		}
 		random_list = {
 			100 = {
-				character_event = { id = ZE.11050} #Replacing the old captain without hassle
+				character_event = {
+					id = ZE.11050
+				} # Replacing the old captain without hassle
 			}
 		}
 	}
@@ -368,9 +364,7 @@ character_event = {
 
 character_event = {
 	id = ZE.11050
-
 	hide_window = yes
-
 	is_triggered_only = yes
 
 	immediate = {

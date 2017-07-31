@@ -1,29 +1,28 @@
-######################################
-#
-# Polygamy Events
-#
-# Event ID 89000 - 89249 reserved
-#
-######################################
 
-### Wives fall in love with each other
+
+# Polygamy Events
+
+# Event ID 89000 - 89249 reserved
+
+# Wives fall in love with each other
 character_event = {
 	id = 89000
 	desc = "EVTDESC89000"
 	picture = GFX_evt_lovers
-	
 	min_age = 16
 	only_capable = yes
 	prisoner = no
 	only_women = yes
 	religion_group = ormazd_gods_group
 	is_married = yes
-	
+
 	trigger = {
 		trait = homosexual
 		spouse = {
 			any_spouse = {
-				NOT = { character = ROOT }
+				NOT = {
+					character = ROOT
+				}
 				trait = homosexual
 				is_alive = yes
 				at_location = ROOT
@@ -34,11 +33,11 @@ character_event = {
 			has_character_flag = louise
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 3
 	}
-		
+
 	option = {
 		name = "EVTOPTA89000"
 		set_character_flag = thelma
@@ -46,31 +45,37 @@ character_event = {
 			any_spouse = {
 				limit = {
 					trait = homosexual
-					NOT = { character = ROOT }
+					NOT = {
+						character = ROOT
+					}
 				}
 				set_character_flag = louise
 				add_lover = ROOT
 			}
 			hidden_tooltip = {
-				character_event = { id = 89001 days = 14 }
+				character_event = {
+					id = 89001 days = 14
+				}
 			}
 		}
 	}
 }
-					
+
 # Husband finds out
 character_event = {
 	id = 89001
 	desc = "EVTDESC89001"
 	picture = GFX_evt_lovers
-	
 	is_triggered_only = yes
-	
-	option = { # Accept it.
+
+	option = {
+		# Accept it.
 		name = "EVTOPTA89001"
 		decadence = 2
 		any_spouse = {
-			limit = { has_character_flag = thelma }
+			limit = {
+				has_character_flag = thelma
+			}
 			opinion = {
 				modifier = opinion_grateful
 				who = ROOT
@@ -78,7 +83,9 @@ character_event = {
 			}
 		}
 		any_spouse = {
-			limit = { has_character_flag = louise }
+			limit = {
+				has_character_flag = louise
+			}
 			opinion = {
 				modifier = opinion_grateful
 				who = ROOT
@@ -86,22 +93,36 @@ character_event = {
 			}
 		}
 	}
-	option = { # Order them to stop.
+
+	option = {
+		# Order them to stop.
 		name = "EVTOPTB89001"
 		hidden_tooltip = {
-			character_event = { id = 89002 days = 30 }
+			character_event = {
+				id = 89002 days = 30
+			}
 		}
 		piety = 20
 	}
-	option = { # Execute them
+
+	option = {
+		# Execute them
 		name = "EVTOPTC89001"
 		any_spouse = {
-			limit = { has_character_flag = thelma }
-			death = { death_reason = death_execution killer = ROOT }
+			limit = {
+				has_character_flag = thelma
+			}
+			death = {
+				death_reason = death_execution killer = ROOT
+			}
 		}
 		any_spouse = {
-			limit = { has_character_flag = louise }
-			death = { death_reason = death_execution killer = ROOT }
+			limit = {
+				has_character_flag = louise
+			}
+			death = {
+				death_reason = death_execution killer = ROOT
+			}
 		}
 	}
 }
@@ -111,12 +132,13 @@ character_event = {
 	id = 89002
 	desc = "EVTDESC89002"
 	picture = GFX_evt_bad_news
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA89002"
-		character_event = { id = 89003 tooltip = "EVTTOOLTIP89003" }
+		character_event = {
+			id = 89003 tooltip = "EVTTOOLTIP89003"
+		}
 	}
 }
 
@@ -125,45 +147,53 @@ character_event = {
 	id = 89003
 	desc = "EVTDESC89003"
 	picture = GFX_evt_moors
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA89003"
 		any_spouse = {
-			limit = { has_character_flag = thelma }
-			death = { death_reason = death_suicide_fall }
+			limit = {
+				has_character_flag = thelma
+			}
+			death = {
+				death_reason = death_suicide_fall
+			}
 		}
 		any_spouse = {
-			limit = { has_character_flag = louise }
-			death = { death_reason = death_suicide_fall }
+			limit = {
+				has_character_flag = louise
+			}
+			death = {
+				death_reason = death_suicide_fall
+			}
 		}
 	}
 }
 
-### Secondary Wife schemes to become First Wife
+# Secondary Wife schemes to become First Wife
 
 # Secondary Wife thinks she should be First Wife
 character_event = {
 	id = 89005
 	desc = "EVTDESC89005"
 	picture = GFX_evt_quarrel
-	
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_women = yes
 	religion_group = ormazd_gods_group
 	is_married = yes
-	
+
 	trigger = {
 		is_pregnant = no
-		NOT = { is_inaccessible_trigger = yes }
+		NOT = {
+			is_inaccessible_trigger = yes
+		}
 		is_main_spouse = no
 	}
-	
+
 	mean_time_to_happen = {
-	months = 420
+		months = 420
 		modifier = {
 			factor = 0.25
 			trait = envious
@@ -189,10 +219,11 @@ character_event = {
 			trait = content
 		}
 	}
-	
-	option = { # Kill First Wife!
+
+	option = {
+		# Kill First Wife!
 		name = "EVTOPTA89005"
-		#tooltip_info = 
+		# tooltip_info =
 		trigger = {
 			OR = {
 				trait = cruel
@@ -201,43 +232,63 @@ character_event = {
 			}
 		}
 		set_character_flag = plotting_second_wife
-		ai_chance = { factor = 40 }
+		ai_chance = {
+			factor = 40
+		}
 		random_list = {
 			50 = {
 				spouse = {
 					random_spouse = {
-						limit = { is_main_spouse = yes }
+						limit = {
+							is_main_spouse = yes
+						}
 						death = {
 							death_reason = death_murder_poison
 							killer = ROOT
 						}
 					}
-					character_event = { id = 89006 days = 4 tooltip = "EVTTOOLTIP89007" }
+					character_event = {
+						id = 89006 days = 4 tooltip = "EVTTOOLTIP89007"
+					}
 				}
 			}
 			50 = {
 				spouse = {
 					random_spouse = {
-						limit = { is_main_spouse = yes }
-						character_event = { id = 89007 days = 4 tooltip = "EVTTOOLTIP89007" }
+						limit = {
+							is_main_spouse = yes
+						}
+						character_event = {
+							id = 89007 days = 4 tooltip = "EVTTOOLTIP89007"
+						}
 					}
 				}
 			}
 		}
 	}
-	option = { # Woo husband
+
+	option = {
+		# Woo husband
 		name = "EVTOPTB89005"
 		set_character_flag = plotting_second_wife
-		ai_chance = { factor = 40 }
+		ai_chance = {
+			factor = 40
+		}
 		spouse = {
-			character_event = { id = 89010 days = 4 tooltip = "EVTTOOLTIP89010" }
+			character_event = {
+				id = 89010 days = 4 tooltip = "EVTTOOLTIP89010"
+			}
 		}
 	}
-	option = { # Do nothing
+
+	option = {
+		# Do nothing
 		name = "EVTOPTC89005"
-		ai_chance = { factor = 20 }
+		ai_chance = {
+			factor = 20
+		}
 		random_list = {
-			50 = { 
+			50 = {
 				if = {
 					limit = {
 						NOT = {
@@ -261,24 +312,32 @@ character_event = {
 	id = 89006
 	desc = "EVTDESC89006"
 	picture = GFX_evt_death
-	
 	is_triggered_only = yes
-	
-	option = { # Accept it
+
+	option = {
+		# Accept it
 		name = "EVTOPTA89006"
 	}
-	option = { # Send killer to prison
+
+	option = {
+		# Send killer to prison
 		name = "EVTOPTB89006"
 		random_spouse = {
-			limit = { has_character_flag = plotting_second_wife }
+			limit = {
+				has_character_flag = plotting_second_wife
+			}
 			imprison = yes
 			clr_character_flag = plotting_second_wife
 		}
 	}
-	option = { # Have killer executed
+
+	option = {
+		# Have killer executed
 		name = "EVTOPTC89006"
 		random_spouse = {
-			limit = { has_character_flag = plotting_second_wife }
+			limit = {
+				has_character_flag = plotting_second_wife
+			}
 			death = {
 				death_reason = death_execution_poison
 				killer = ROOT
@@ -293,13 +352,14 @@ character_event = {
 	id = 89007
 	desc = "EVTDESC89007"
 	picture = GFX_evt_shadow
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA89007"
 		spouse = {
-			character_event = { id = 89008 days = 4 tooltip = "EVTTOOLTIP89008" }
+			character_event = {
+				id = 89008 days = 4 tooltip = "EVTTOOLTIP89008"
+			}
 		}
 	}
 }
@@ -309,13 +369,15 @@ character_event = {
 	id = 89008
 	desc = "EVTDESC89008"
 	picture = GFX_evt_shadow
-	
 	is_triggered_only = yes
-	
-	option = { # Execute wife
+
+	option = {
+		# Execute wife
 		name = "EVTOPTA89008"
 		random_spouse = {
-			limit = { has_character_flag = plotting_second_wife }
+			limit = {
+				has_character_flag = plotting_second_wife
+			}
 			death = {
 				death_reason = death_execution
 				killer = ROOT
@@ -323,20 +385,30 @@ character_event = {
 			clr_character_flag = plotting_second_wife
 		}
 	}
-	option = { # Imprison wife
-		name = "EVTOPTB89008" 
+
+	option = {
+		# Imprison wife
+		name = "EVTOPTB89008"
 		random_spouse = {
-			limit = { has_character_flag = plotting_second_wife }
+			limit = {
+				has_character_flag = plotting_second_wife
+			}
 			imprison = yes
 			clr_character_flag = plotting_second_wife
 		}
 	}
-	option = { # Tell wife to fight own battles
+
+	option = {
+		# Tell wife to fight own battles
 		name = "EVTOPTC89008"
 		random_spouse = {
-			limit = { is_main_spouse = yes }
+			limit = {
+				is_main_spouse = yes
+			}
 			hidden_tooltip = {
-				character_event = { id = 89009 days = 4 }
+				character_event = {
+					id = 89009 days = 4
+				}
 			}
 			opinion = {
 				who = ROOT
@@ -352,9 +424,8 @@ character_event = {
 	id = 89009
 	desc = "EVTDESC89009"
 	picture = GFX_evt_quarrel
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA89009"
 	}
@@ -365,20 +436,23 @@ character_event = {
 	id = 89010
 	desc = "EVTDESC89010"
 	picture = GFX_evt_quarrel
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA89010"
 		random_spouse = {
-			limit = { is_main_spouse = yes }
+			limit = {
+				is_main_spouse = yes
+			}
 			opinion = {
 				who = ROOT
 				modifier = opinion_very_disappointed
 				years = 4
 			}
 			hidden_tooltip = {
-				character_event = { id = 89011 days = 16 }
+				character_event = {
+					id = 89011 days = 16
+				}
 			}
 		}
 		FROM = {
@@ -390,6 +464,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTB89010"
 		FROM = {
@@ -407,24 +482,29 @@ character_event = {
 	id = 89011
 	desc = "EVTDESC89011"
 	picture = GFX_evt_quarrel
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA89011"
-		ai_chance = { factor = 30 }
+		ai_chance = {
+			factor = 30
+		}
 		random_list = {
 			30 = {
 				spouse = {
 					random_spouse = {
-						limit = { is_main_spouse = yes }
+						limit = {
+							is_main_spouse = yes
+						}
 						death = {
 							death_reason = death_murder_poison
 							killer = ROOT
 						}
 					}
 					hidden_tooltip = {
-						character_event = { id = 89012 }
+						character_event = {
+							id = 89012
+						}
 					}
 				}
 			}
@@ -432,9 +512,12 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTB89011"
-		ai_chance = { factor = 70 }
+		ai_chance = {
+			factor = 70
+		}
 	}
 }
 
@@ -443,17 +526,20 @@ character_event = {
 	id = 89012
 	desc = "EVTDESC89012"
 	picture = GFX_evt_death
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA89012"
 		decadence = 5
 	}
+
 	option = {
 		name = "EVTOPTB89012"
-		FROM = { imprison = yes }
+		FROM = {
+			imprison = yes
+		}
 	}
+
 	option = {
 		name = "EVTOPTC89012"
 		FROM = {
@@ -465,37 +551,54 @@ character_event = {
 	}
 }
 
-### First Wife thinks her son should get a county if he is not heir
+# First Wife thinks her son should get a county if he is not heir
 character_event = {
 	id = 89015
 	desc = "EVTDESC89015"
 	picture = GFX_evt_quarrel
-	
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	religion_group = ormazd_gods_group
 	only_women = yes
 	is_married = yes
-	
+
 	trigger = {
 		num_of_children = 1
 		is_pregnant = no
 		is_main_spouse = yes
-		spouse = { demesne_size = 5 }
-		spouse = { religion_group = ormazd_gods_group }
-		NOT = { has_character_flag = envious_mother }
+		spouse = {
+			demesne_size = 5
+		}
+		spouse = {
+			religion_group = ormazd_gods_group
+		}
+		NOT = {
+			has_character_flag = envious_mother
+		}
 		any_child = {
 			is_female = no
 			is_primary_heir = no
 			is_alive = yes
 			age = 14
-			father = { any_spouse = { character = ROOT } }
+			father = {
+				any_spouse = {
+					character = ROOT
+				}
+			}
 		}
-		NOT = { any_child = { is_primary_heir = yes } }
-		NOT = { any_child = { has_character_flag = first_wife_son } }
+		NOT = {
+			any_child = {
+				is_primary_heir = yes
+			}
+		}
+		NOT = {
+			any_child = {
+				has_character_flag = first_wife_son
+			}
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 320
 		modifier = {
@@ -515,25 +618,37 @@ character_event = {
 			trait = content
 		}
 	}
-		
-	
-	option = { # Speak to husband
+
+	option = {
+		# Speak to husband
 		name = "EVTOPTA89015"
-		ai_chance = { factor = 100 }
+		ai_chance = {
+			factor = 100
+		}
 		set_character_flag = envious_mother
 		random_child = {
-			limit = { 
+			limit = {
 				is_female = no
 				age = 14
 				is_primary_heir = no
-				father = { any_spouse = { character = ROOT } }
+				father = {
+					any_spouse = {
+						character = ROOT
+					}
+				}
 			}
 			set_character_flag = first_wife_son
-			character_event = { id = 89016 days = 2 tooltip = "EVTTOOLTIP89016" }
+			character_event = {
+				id = 89016 days = 2 tooltip = "EVTTOOLTIP89016"
+			}
 		}
 	}
-	option = { # Do nothing
-		ai_chance = { factor = 0 }
+
+	option = {
+		# Do nothing
+		ai_chance = {
+			factor = 0
+		}
 		name = "EVTOPTB89015"
 	}
 }
@@ -543,12 +658,15 @@ character_event = {
 	id = 89016
 	desc = "EVTDESC89016"
 	picture = GFX_evt_quarrel
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA89016"
-		father = { character_event = { id = 89017 days = 2 tooltip = "EVTTOOLTIP89017" } }
+		father = {
+			character_event = {
+				id = 89017 days = 2 tooltip = "EVTTOOLTIP89017"
+			}
+		}
 	}
 }
 
@@ -557,27 +675,41 @@ character_event = {
 	id = 89017
 	desc = "EVTDESC89017"
 	picture = GFX_evt_quarrel
-	
 	is_triggered_only = yes
-	
-	option = { # Grant county
+
+	option = {
+		# Grant county
 		name = "EVTOPTA89017"
 		random_demesne_title = {
 			limit = {
-				NOT = {	tier = duke }
-				NOT = {	tier = king }
-				NOT = {	tier = emperor }
-				NOT = {	location = { is_capital = yes }	}
+				NOT = {
+					tier = duke
+				}
+				NOT = {
+					tier = king
+				}
+				NOT = {
+					tier = emperor
+				}
+				NOT = {
+					location = {
+						is_capital = yes
+					}
+				}
 			}
 			ROOT = {
 				any_child = {
-					limit = { has_character_flag = first_wife_son }
+					limit = {
+						has_character_flag = first_wife_son
+					}
 					grant_title = PREVPREV
 				}
 			}
 		}
 	}
-	option = { # Say no
+
+	option = {
+		# Say no
 		name = "EVTOPTB89017"
 		FROM = {
 			mother = {
@@ -590,8 +722,12 @@ character_event = {
 		}
 		hidden_tooltip = {
 			any_child = {
-				limit = { has_character_flag = first_wife_son }
-				character_event = { id = 89018 days = 2 }
+				limit = {
+					has_character_flag = first_wife_son
+				}
+				character_event = {
+					id = 89018 days = 2
+				}
 			}
 		}
 	}
@@ -602,9 +738,8 @@ character_event = {
 	id = 89018
 	desc = "EVTDESC89018"
 	picture = GFX_evt_quarrel
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA89018"
 		FROM = {
@@ -616,14 +751,12 @@ character_event = {
 		}
 	}
 }
-		
 
-### Secondary Wife plots to kill heir
+# Secondary Wife plots to kill heir
 character_event = {
 	id = 89020
 	desc = "EVTDESC89020"
 	picture = GFX_evt_quarrel
-	
 	min_age = 16
 	capable_only = yes
 	prisoner = no
@@ -634,15 +767,23 @@ character_event = {
 	trigger = {
 		num_of_children = 1
 		is_pregnant = no
-		NOT = { is_inaccessible_trigger = yes }
+		NOT = {
+			is_inaccessible_trigger = yes
+		}
 		spouse = {
 			is_ruler = yes
-			any_child = { 
+			any_child = {
 				is_primary_heir = yes
 				ai = yes
 				is_alive = yes
-				NOT = { age = 16 }
-				mother = { NOT = { character = ROOT } }
+				NOT = {
+					age = 16
+				}
+				mother = {
+					NOT = {
+						character = ROOT
+					}
+				}
 				at_location = ROOT
 			}
 		}
@@ -653,11 +794,13 @@ character_event = {
 			is_pretender = yes
 		}
 		NOT = {
-			any_child = { is_primary_heir = yes	}
+			any_child = {
+				is_primary_heir = yes
+			}
 			has_character_flag = murdering_wife
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 420
 		modifier = {
@@ -677,24 +820,35 @@ character_event = {
 			trait = content
 		}
 	}
-	
-	option = { # Murder heir
+
+	option = {
+		# Murder heir
 		name = "EVTOPTA89020"
-		ai_chance = { factor = 100 }
+		ai_chance = {
+			factor = 100
+		}
 		set_character_flag = murdering_wife
 		random_list = {
 			35 = {
 				spouse = {
 					any_child = {
-						limit = { is_primary_heir = yes }
-						character_event = { id = 89023 days = 4 tooltip = "EVTTOOLTIP89023" }
+						limit = {
+							is_primary_heir = yes
+						}
+						character_event = {
+							id = 89023 days = 4 tooltip = "EVTTOOLTIP89023"
+						}
 					}
 					hidden_tooltip = {
 						random_list = {
 							50 = {
-								character_event = { id = 89024 tooltip = "EVTTOOLTIP89024" }
+								character_event = {
+									id = 89024 tooltip = "EVTTOOLTIP89024"
+								}
 								any_child = {
-									limit = { is_primary_heir = yes }
+									limit = {
+										is_primary_heir = yes
+									}
 									death = {
 										death_reason = death_murder_unknown_poison
 										killer = ROOT
@@ -702,9 +856,13 @@ character_event = {
 								}
 							}
 							50 = {
-								character_event = { id = 89025 tooltip = "EVTTOOLTIP89025" }
+								character_event = {
+									id = 89025 tooltip = "EVTTOOLTIP89025"
+								}
 								any_child = {
-									limit = { is_primary_heir = yes }
+									limit = {
+										is_primary_heir = yes
+									}
 									death = {
 										death_reason = death_murder_unknown_poison
 										killer = ROOT
@@ -718,18 +876,28 @@ character_event = {
 			65 = {
 				spouse = {
 					any_child = {
-						limit = { is_primary_heir = yes }
-						character_event = { id = 89021 days = 4 tooltip = "EVTTOOLTIP89021" }
+						limit = {
+							is_primary_heir = yes
+						}
+						character_event = {
+							id = 89021 days = 4 tooltip = "EVTTOOLTIP89021"
+						}
 					}
 					hidden_tooltip = {
-						character_event = { id = 89022 tooltip = "EVTTOOLTIP89022" }
+						character_event = {
+							id = 89022 tooltip = "EVTTOOLTIP89022"
+						}
 					}
 				}
 			}
 		}
 	}
-	option = { # Do nothing
-		ai_chance = { factor = 0 }
+
+	option = {
+		# Do nothing
+		ai_chance = {
+			factor = 0
+		}
 		name = "EVTOPTB89020"
 	}
 }
@@ -739,9 +907,8 @@ character_event = {
 	id = 89021
 	desc = "EVTDESC89021"
 	picture = GFX_evt_quarrel
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA89021"
 	}
@@ -752,19 +919,29 @@ character_event = {
 	id = 89022
 	desc = "EVTDESC89022"
 	picture = GFX_evt_quarrel
-	
 	is_triggered_only = yes
-	
-	option = { # Kill wife
+
+	option = {
+		# Kill wife
 		name = "EVTOPTA89022"
-		FROM = { death = { death_reason = death_execution killer = ROOT } }
+		FROM = {
+			death = {
+				death_reason = death_execution killer = ROOT
+			}
+		}
 	}
-	option = { # Imprison wife
+
+	option = {
+		# Imprison wife
 		name = "EVTOPTB89022"
-		FROM = { imprison = yes }
+		FROM = {
+			imprison = yes
+		}
 		hidden_tooltip = {
 			any_child = {
-				limit = { is_primary_heir = yes }
+				limit = {
+					is_primary_heir = yes
+				}
 				opinion = {
 					who = FROM
 					modifier = attempted_murder
@@ -780,10 +957,14 @@ character_event = {
 			}
 		}
 	}
-	option = { # Do nothing
+
+	option = {
+		# Do nothing
 		name = "EVTOPTC89022"
 		any_child = {
-			limit = { is_primary_heir = yes }
+			limit = {
+				is_primary_heir = yes
+			}
 			opinion = {
 				who = ROOT
 				modifier = opinion_very_disappointed
@@ -799,7 +980,9 @@ character_event = {
 		}
 		hidden_tooltip = {
 			any_child = {
-				limit = { is_primary_heir = yes }
+				limit = {
+					is_primary_heir = yes
+				}
 				opinion = {
 					who = FROM
 					modifier = attempted_murder
@@ -822,9 +1005,8 @@ character_event = {
 	id = 89023
 	desc = "EVTDESC89023"
 	picture = GFX_evt_quarrel
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA89023"
 	}
@@ -835,11 +1017,9 @@ character_event = {
 	id = 89024
 	desc = "EVTDESC89024"
 	picture = GFX_evt_quarrel
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA89024"
 	}
@@ -850,20 +1030,30 @@ character_event = {
 	id = 89025
 	desc = "EVTDESC89025"
 	picture = GFX_evt_quarrel
-	
 	is_triggered_only = yes
-	
-	option = { # Kill wife
+
+	option = {
+		# Kill wife
 		name = "EVTOPTA89025"
-		FROM = { death = { death_reason = death_execution killer = ROOT } }
+		FROM = {
+			death = {
+				death_reason = death_execution killer = ROOT
+			}
+		}
 	}
-	option = { # Imprison wife
+
+	option = {
+		# Imprison wife
 		name = "EVTOPTB89025"
-		FROM = { imprison = yes }
+		FROM = {
+			imprison = yes
+		}
 		hidden_tooltip = {
 			any_spouse = {
 				limit = {
-					NOT = { character = FROM }
+					NOT = {
+						character = FROM
+					}
 				}
 				opinion = {
 					who = FROM
@@ -873,11 +1063,15 @@ character_event = {
 			}
 		}
 	}
-	option = { # Do nothing
+
+	option = {
+		# Do nothing
 		name = "EVTOPTC89025"
 		any_spouse = {
 			limit = {
-				NOT = { character = FROM }
+				NOT = {
+					character = FROM
+				}
 			}
 			opinion = {
 				who = ROOT
@@ -893,23 +1087,24 @@ character_event = {
 	}
 }
 
-### Evil wife plots to kill sons that aren't hers
+# Evil wife plots to kill sons that aren't hers
 character_event = {
 	id = 89030
 	desc = "EVTDESC89030"
 	picture = GFX_evt_quarrel
-	
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	religion_group = ormazd_gods_group
 	only_women = yes
 	is_married = yes
-	
+
 	trigger = {
 		num_of_children = 1
 		is_pregnant = no
-		NOT = { is_inaccessible_trigger = yes }
+		NOT = {
+			is_inaccessible_trigger = yes
+		}
 		any_child = {
 			is_female = no
 			is_alive = yes
@@ -919,15 +1114,23 @@ character_event = {
 				ai = yes
 				is_alive = yes
 				is_female = no
-				NOT = { age = 16 }
-				mother = { NOT = { character = ROOT } }
+				NOT = {
+					age = 16
+				}
+				mother = {
+					NOT = {
+						character = ROOT
+					}
+				}
 				is_primary_heir = no
 				at_location = ROOT
 			}
 		}
-		NOT = { trait = kind }
+		NOT = {
+			trait = kind
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 820
 		modifier = {
@@ -959,38 +1162,61 @@ character_event = {
 			trait = content
 		}
 	}
-	
-	option = { # Murder son
+
+	option = {
+		# Murder son
 		name = "EVTOPTA89020"
-		ai_chance = { factor = 100 }
+		ai_chance = {
+			factor = 100
+		}
 		random_list = {
 			50 = {
 				spouse = {
 					random_child = {
 						limit = {
-							NOT = { age = 16 }
+							NOT = {
+								age = 16
+							}
 							is_female = no
-							mother = { NOT = { character = ROOT } }
+							mother = {
+								NOT = {
+									character = ROOT
+								}
+							}
 							is_primary_heir = no
 							is_alive = yes
 						}
 						set_character_flag = victim_son
-						character_event = { id = 89033 days = 4 tooltip = "EVTTOOLTIP89023" }
+						character_event = {
+							id = 89033 days = 4 tooltip = "EVTTOOLTIP89023"
+						}
 					}
 					hidden_tooltip = {
 						random_list = {
 							50 = {
-								character_event = { id = 89034 }
+								character_event = {
+									id = 89034
+								}
 								any_child = {
-									limit = { has_character_flag = victim_son }
-									death = { death_reason = death_murder_unknown_poison killer = ROOT }
+									limit = {
+										has_character_flag = victim_son
+									}
+									death = {
+										death_reason = death_murder_unknown_poison killer = ROOT
+									}
 								}
 							}
 							50 = {
-								character_event = { id = 89035 }
+								character_event = {
+									id = 89035
+								}
 								any_child = {
-									limit = { has_character_flag = victim_son }
-									death = { death_reason = death_murder_poison killer = ROOT }
+									limit = {
+										has_character_flag = victim_son
+									}
+									death = {
+										death_reason = death_murder_poison killer = ROOT
+									}
 								}
 							}
 						}
@@ -1001,23 +1227,37 @@ character_event = {
 				spouse = {
 					random_child = {
 						limit = {
-							NOT = { age = 16 }
+							NOT = {
+								age = 16
+							}
 							is_female = no
-							mother = { NOT = { character = ROOT } }
+							mother = {
+								NOT = {
+									character = ROOT
+								}
+							}
 							is_primary_heir = no
 							is_alive = yes
 						}
-						character_event = { id = 89031 days = 4 tooltip = "EVTTOOLTIP89021" }
+						character_event = {
+							id = 89031 days = 4 tooltip = "EVTTOOLTIP89021"
+						}
 					}
 					hidden_tooltip = {
-						character_event = { id = 89032 }
+						character_event = {
+							id = 89032
+						}
 					}
 				}
 			}
 		}
 	}
-	option = { # Do nothing
-		ai_chance = { factor = 0 }
+
+	option = {
+		# Do nothing
+		ai_chance = {
+			factor = 0
+		}
 		name = "EVTOPTB89020"
 	}
 }
@@ -1027,9 +1267,8 @@ character_event = {
 	id = 89031
 	desc = "EVTDESC89021"
 	picture = GFX_evt_quarrel
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA89021"
 		clr_character_flag = victim_son
@@ -1041,19 +1280,29 @@ character_event = {
 	id = 89032
 	desc = "EVTDESC89032"
 	picture = GFX_evt_quarrel
-	
 	is_triggered_only = yes
-	
-	option = { # Kill wife
+
+	option = {
+		# Kill wife
 		name = "EVTOPTA89022"
-		FROM = { death = { death_reason = death_execution killer = ROOT } }
+		FROM = {
+			death = {
+				death_reason = death_execution killer = ROOT
+			}
+		}
 	}
-	option = { # Imprison wife
+
+	option = {
+		# Imprison wife
 		name = "EVTOPTB89022"
-		FROM = { imprison = yes }
+		FROM = {
+			imprison = yes
+		}
 		hidden_tooltip = {
 			any_child = {
-				limit = { has_character_flag = victim_son }
+				limit = {
+					has_character_flag = victim_son
+				}
 				opinion = {
 					who = FROM
 					modifier = attempted_murder
@@ -1069,10 +1318,14 @@ character_event = {
 			}
 		}
 	}
-	option = { # Do nothing
+
+	option = {
+		# Do nothing
 		name = "EVTOPTC89022"
 		any_child = {
-			limit = { has_character_flag = victim_son }
+			limit = {
+				has_character_flag = victim_son
+			}
 			opinion = {
 				who = ROOT
 				modifier = opinion_very_disappointed
@@ -1088,7 +1341,9 @@ character_event = {
 		}
 		hidden_tooltip = {
 			any_child = {
-				limit = { has_character_flag = victim_son }
+				limit = {
+					has_character_flag = victim_son
+				}
 				opinion = {
 					who = FROM
 					modifier = attempted_murder
@@ -1111,9 +1366,8 @@ character_event = {
 	id = 89033
 	desc = "EVTDESC89023"
 	picture = GFX_evt_quarrel
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA89023"
 		clr_character_flag = victim_son
@@ -1125,11 +1379,9 @@ character_event = {
 	id = 89034
 	desc = "EVTDESC89034"
 	picture = GFX_evt_quarrel
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA89024"
 	}
@@ -1140,20 +1392,30 @@ character_event = {
 	id = 89035
 	desc = "EVTDESC89035"
 	picture = GFX_evt_quarrel
-	
 	is_triggered_only = yes
-	
-	option = { # Kill wife
+
+	option = {
+		# Kill wife
 		name = "EVTOPTA89025"
-		FROM = { death = { death_reason = death_execution killer = ROOT } }
+		FROM = {
+			death = {
+				death_reason = death_execution killer = ROOT
+			}
+		}
 	}
-	option = { # Imprison wife
+
+	option = {
+		# Imprison wife
 		name = "EVTOPTB89025"
-		FROM = { imprison = yes }
+		FROM = {
+			imprison = yes
+		}
 		hidden_tooltip = {
 			any_spouse = {
 				limit = {
-					NOT = { character = FROM }
+					NOT = {
+						character = FROM
+					}
 				}
 				opinion = {
 					who = FROM
@@ -1163,11 +1425,15 @@ character_event = {
 			}
 		}
 	}
-	option = { # Do nothing
+
+	option = {
+		# Do nothing
 		name = "EVTOPTC89025"
 		any_spouse = {
 			limit = {
-				NOT = { character = FROM }
+				NOT = {
+					character = FROM
+				}
 			}
 			opinion = {
 				who = ROOT

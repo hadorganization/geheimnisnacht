@@ -1,13 +1,11 @@
-###################################
-#
-# THE SONS OF ABRAHAM 
-# - Jewish Events
-#
-###################################
 
+
+# THE SONS OF ABRAHAM
+
+# - Jewish Events
 namespace = SoA
 
-### Jewish Passover
+# Jewish Passover
 
 # Invitation Sent
 character_event = {
@@ -15,11 +13,9 @@ character_event = {
 	desc = EVTDESC_SoA_500
 	picture = GFX_evt_synagogue
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
 	hide_from = yes
-	
+
 	option = {
 		name = EVTOPTA_SoA_500
 		any_vassal = {
@@ -28,13 +24,27 @@ character_event = {
 				age = 16
 				prisoner = no
 				war = no
-				NOT = { trait = incapable }
+				NOT = {
+					trait = incapable
+				}
 			}
-			character_event = { id = SoA.501 days = 2 tooltip = EVTTOOLTIP_SoA_501 }
+			character_event = {
+				id = SoA.501 days = 2 tooltip = EVTTOOLTIP_SoA_501
+			}
 		}
-		custom_tooltip = { text = passover_invitations_sent }
-		hidden_tooltip = { character_event = { id = SoA.503 days = 10 } }
-		hidden_tooltip = { character_event = { id = SoA.504 days = 12 } }
+		custom_tooltip = {
+			text = passover_invitations_sent
+		}
+		hidden_tooltip = {
+			character_event = {
+				id = SoA.503 days = 10
+			}
+		}
+		hidden_tooltip = {
+			character_event = {
+				id = SoA.504 days = 12
+			}
+		}
 	}
 }
 
@@ -44,26 +54,44 @@ character_event = {
 	desc = EVTDESC_SoA_501
 	picture = GFX_evt_synagogue
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
 
-	trigger = { NOT = { is_inaccessible_trigger = yes } }
-	
+	trigger = {
+		NOT = {
+			is_inaccessible_trigger = yes
+		}
+	}
+
 	option = {
 		name = EVTOPTA_SoA_501
 		ai_chance = {
 			factor = 80
 			modifier = {
 				factor = 0
-				NOT = {	opinion = { who = ROOT value = -20 } }
+				NOT = {
+					opinion = {
+						who = ROOT value = -20
+					}
+				}
 			}
 		}
-		custom_tooltip = { text = passover_accepted }
+		custom_tooltip = {
+			text = passover_accepted
+		}
 		set_character_flag = attending_passover
 		set_character_flag = do_not_disturb
-		hidden_tooltip = { character_event = { id = SoA.503 days = 8 } }
-		hidden_tooltip = { character_event = { id = SoA.599 days = 20 } } # Safety catch flag clearing
+		hidden_tooltip = {
+			character_event = {
+				id = SoA.503 days = 8
+			}
+		}
+		hidden_tooltip = {
+			character_event = {
+				id = SoA.599 days = 20
+			}
+		} # Safety catch flag clearing
 	}
+
 	option = {
 		name = EVTOPTB_SoA_501
 		ai_chance = {
@@ -75,9 +103,15 @@ character_event = {
 				who = ROOT
 			}
 		}
-		custom_tooltip = { text = passover_declined }
+		custom_tooltip = {
+			text = passover_declined
+		}
 		hidden_tooltip = {
-			FROM = { character_event = { id = SoA.502 } }
+			FROM = {
+				character_event = {
+					id = SoA.502
+				}
+			}
 		}
 	}
 }
@@ -88,9 +122,8 @@ character_event = {
 	desc = EVTDESC_SoA_502
 	picture = GFX_evt_synagogue
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SoA_502
 		opinion = {
@@ -106,11 +139,9 @@ character_event = {
 	desc = EVTDESC_SoA_503
 	picture = GFX_evt_synagogue
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SoA_503
 	}
@@ -122,15 +153,15 @@ character_event = {
 	desc = EVTDESC_SoA_504
 	picture = GFX_evt_synagogue
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SoA_504
 		any_vassal = {
-			limit = { has_character_flag = attending_passover }
+			limit = {
+				has_character_flag = attending_passover
+			}
 			opinion = {
 				modifier = opinion_passover
 				who = ROOT
@@ -138,8 +169,12 @@ character_event = {
 		}
 		hidden_tooltip = {
 			any_vassal = {
-				limit = { has_character_flag = attending_passover }
-				character_event = { id = SoA.505 }
+				limit = {
+					has_character_flag = attending_passover
+				}
+				character_event = {
+					id = SoA.505
+				}
 			}
 		}
 		add_character_modifier = {
@@ -160,9 +195,8 @@ character_event = {
 	desc = EVTDESC_SoA_505
 	picture = GFX_evt_synagogue
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SoA_504
 		clr_character_flag = attending_passover
@@ -170,22 +204,17 @@ character_event = {
 	}
 }
 
-###########################################
-# Flag management                         #
-###########################################
+# Flag management
 
 # Safety catch - clears character flags and modifiers
 character_event = {
 	id = SoA.599
-
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		clr_character_flag = do_not_disturb
 		clr_character_flag = holding_passover
 		clr_character_flag = attending_passover
 	}
 }
-

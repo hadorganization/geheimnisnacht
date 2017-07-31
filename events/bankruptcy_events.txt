@@ -1,95 +1,150 @@
-#############################################
-#
+
+
 # Bankruptcy events
-#
+
 # Event ID 38000-38099 is reserved
-#
-#############################################
 
 # Ruler is in the red. Go to the moneylenders.
-#character_event = {
-#	id = 38000
-#	desc = EVTDESC38000
-#	picture = GFX_evt_council
-#	
-#	only_playable = yes
-#	
-#	trigger = {
-#		NOT = { wealth = -50 }
-#		NOT = { has_character_flag = loan_taken }
-#		OR = {
-#			NOT = { has_character_flag = loan_refused }
-#			had_character_flag = { flag = loan_refused days = 365 }
-#		}
-#	}
-#
-#	# Patch 2.00: disabled
-#	is_triggered_only = yes	
-#	mean_time_to_happen = {
-#		months = 1
-#	}
-#	
-#	option = {
-#		name = EVTOPTA38000 # Go to the moneylenders - Favorable terms
-#		tooltip_info = stewardship
-#		trigger = {
-#			stewardship = 8
-#		}
-#		wealth = 200
-#		character_event = { id = 38001 days = 1825 tooltip = EVTTOOLTIP38001 }
-#		set_character_flag = loan_taken
-#		clr_character_flag = loan_refused
-#	}
-#	option = {
-#		name = EVTOPTB38000 # Go to the moneylenders - Unfavorable terms
-#		trigger = {
-#			NOT = { stewardship = 8 }
-#		}
-#		wealth = 200
-#		character_event = { id = 38002 days = 1825 tooltip = EVTTOOLTIP38002 }
-#		set_character_flag = loan_taken
-#		clr_character_flag = loan_refused
-#	}
-#	option = {
-#		name = EVTOPTC38000 # Do not go to the moneylenders
-#		set_character_flag = loan_refused
-#	}
-#}
+
+# character_event = {
+
+# 	id = 38000
+
+# 	desc = EVTDESC38000
+
+# 	picture = GFX_evt_council
+
+# 	only_playable = yes
+
+# 	trigger = {
+
+# 		NOT = { wealth = -50 }
+
+# 		NOT = { has_character_flag = loan_taken }
+
+# 		OR = {
+
+# 			NOT = { has_character_flag = loan_refused }
+
+# 			had_character_flag = { flag = loan_refused days = 365 }
+
+# 		}
+
+# 	}
+
+# 	# Patch 2.00: disabled
+
+# 	is_triggered_only = yes
+
+# 	mean_time_to_happen = {
+
+# 		months = 1
+
+# 	}
+
+# 	option = {
+
+# 		name = EVTOPTA38000 # Go to the moneylenders - Favorable terms
+
+# 		tooltip_info = stewardship
+
+# 		trigger = {
+
+# 			stewardship = 8
+
+# 		}
+
+# 		wealth = 200
+
+# 		character_event = { id = 38001 days = 1825 tooltip = EVTTOOLTIP38001 }
+
+# 		set_character_flag = loan_taken
+
+# 		clr_character_flag = loan_refused
+
+# 	}
+
+# 	option = {
+
+# 		name = EVTOPTB38000 # Go to the moneylenders - Unfavorable terms
+
+# 		trigger = {
+
+# 			NOT = { stewardship = 8 }
+
+# 		}
+
+# 		wealth = 200
+
+# 		character_event = { id = 38002 days = 1825 tooltip = EVTTOOLTIP38002 }
+
+# 		set_character_flag = loan_taken
+
+# 		clr_character_flag = loan_refused
+
+# 	}
+
+# 	option = {
+
+# 		name = EVTOPTC38000 # Do not go to the moneylenders
+
+# 		set_character_flag = loan_refused
+
+# 	}
+
+# }
 
 # Follow-up to favorable loan terms
-#character_event = {
-#	id = 38001
-#	desc = EVTDESC38001
-#	picture = GFX_evt_council
-#	
-#	is_triggered_only = yes
-#	
-#	option = {
-#		name = EVTOPTA38001 # Return the money
-#		trigger = {
-#			wealth = 250
-#		}
-#		wealth = -250
-#		clr_character_flag = loan_taken
-#	}
-#	option = {
-#		name = EVTOPTB38001 # Cannot afford it
-#		trigger = {
-#			NOT = { wealth = 250 }
-#		}
-#		character_event = { id = 38002 days = 365 tooltip = EVTTOOLTIP38002B }
-#	}
-#	
-#}
+
+# character_event = {
+
+# 	id = 38001
+
+# 	desc = EVTDESC38001
+
+# 	picture = GFX_evt_council
+
+# 	is_triggered_only = yes
+
+# 	option = {
+
+# 		name = EVTOPTA38001 # Return the money
+
+# 		trigger = {
+
+# 			wealth = 250
+
+# 		}
+
+# 		wealth = -250
+
+# 		clr_character_flag = loan_taken
+
+# 	}
+
+# 	option = {
+
+# 		name = EVTOPTB38001 # Cannot afford it
+
+# 		trigger = {
+
+# 			NOT = { wealth = 250 }
+
+# 		}
+
+# 		character_event = { id = 38002 days = 365 tooltip = EVTTOOLTIP38002B }
+
+# 	}
+
+# }
 
 # Follow-up to unfavorable loan terms
 character_event = {
 	id = 38002
 	desc = EVTDESC38002
 	picture = GFX_evt_council
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA38002 # Return the money
 		trigger = {
@@ -98,17 +153,23 @@ character_event = {
 		wealth = -300
 		clr_character_flag = loan_taken
 	}
+
 	option = {
 		name = EVTOPTB38002 # Cannot afford it
 		trigger = {
-			NOT = { wealth = 300 }
+			NOT = {
+				wealth = 300
+			}
 		}
 		prestige = -25
-		character_event = { id = 38002 days = 365 tooltip = EVTTOOLTIP38002B }
+		character_event = {
+			id = 38002 days = 365 tooltip = EVTTOOLTIP38002B
+		}
 	}
-	option = { 
+
+	option = {
 		name = EVTOPTC38002 # Get rid of them!
-		#tooltip_info = 
+		# tooltip_info =
 		trigger = {
 			OR = {
 				trait = wroth
@@ -126,24 +187,29 @@ character_event = {
 	}
 }
 
-#Ruler in red, lean on vassals
+# Ruler in red, lean on vassals
 character_event = {
 	id = 38010
 	desc = EVTDESC38010
 	picture = GFX_evt_council
-	
 	only_playable = yes
 	prisoner = no
-	
+
 	trigger = {
-		NOT = { wealth = -50 }
+		NOT = {
+			wealth = -50
+		}
 		any_vassal = {
 			wealth = 10
-			NOT = { has_character_flag = took_extra_tax }
-			opinion = { who = ROOT value =  0 }
+			NOT = {
+				has_character_flag = took_extra_tax
+			}
+			opinion = {
+				who = ROOT value = 0
+			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 60
 		modifier = {
@@ -151,14 +217,18 @@ character_event = {
 			has_character_flag = loan_taken
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA38010 # Ask one vassal for large
 		trigger = {
 			any_vassal = {
 				wealth = 200
-				NOT = { has_character_flag = took_extra_tax }
-				opinion = { who = ROOT value =  0 }
+				NOT = {
+					has_character_flag = took_extra_tax
+				}
+				opinion = {
+					who = ROOT value = 0
+				}
 			}
 		}
 		ai_chance = {
@@ -167,7 +237,9 @@ character_event = {
 		random_vassal = {
 			limit = {
 				wealth = 200
-				NOT = { has_character_flag = took_extra_tax }
+				NOT = {
+					has_character_flag = took_extra_tax
+				}
 			}
 			opinion = {
 				modifier = got_money_request
@@ -175,20 +247,26 @@ character_event = {
 				years = 2
 			}
 			set_character_flag = large_payment_from_vassal
-			character_event = { id = 38011 days = 1 tooltip = EVTTOOLTIP38013 }
+			character_event = {
+				id = 38011 days = 1 tooltip = EVTTOOLTIP38013
+			}
 			set_character_flag = took_extra_tax
 		}
 	}
+
 	option = {
 		name = EVTOPTC38010 # ask all vassals for medium
 		trigger = {
 			any_vassal = {
 				wealth = 50
-				NOT = { has_character_flag = took_extra_tax }
-				opinion = { who = ROOT value =  0 }
+				NOT = {
+					has_character_flag = took_extra_tax
+				}
+				opinion = {
+					who = ROOT value = 0
+				}
 			}
 		}
-
 		ai_chance = {
 			factor = 1
 			modifier = {
@@ -199,7 +277,9 @@ character_event = {
 		random_vassal = {
 			limit = {
 				wealth = 25
-				NOT = { has_character_flag = took_extra_tax }
+				NOT = {
+					has_character_flag = took_extra_tax
+				}
 			}
 			opinion = {
 				modifier = got_money_request
@@ -207,17 +287,24 @@ character_event = {
 				years = 2
 			}
 			set_character_flag = medium_payment_from_vassal
-			character_event = { id = 38011 days = 1 tooltip = EVTTOOLTIP38012 }
+			character_event = {
+				id = 38011 days = 1 tooltip = EVTTOOLTIP38012
+			}
 			set_character_flag = took_extra_tax
 		}
 	}
+
 	option = {
 		name = EVTOPTB38010 # ask all vassal for small
 		trigger = {
 			any_vassal = {
 				wealth = 10
-				NOT = { has_character_flag = took_extra_tax }
-				opinion = { who = ROOT value =  0 }
+				NOT = {
+					has_character_flag = took_extra_tax
+				}
+				opinion = {
+					who = ROOT value = 0
+				}
 			}
 		}
 		ai_chance = {
@@ -225,27 +312,29 @@ character_event = {
 		}
 		random_vassal = {
 			limit = {
-				NOT = { has_character_flag = took_extra_tax }
+				NOT = {
+					has_character_flag = took_extra_tax
+				}
 			}
-			
 			opinion = {
 				modifier = got_money_request
 				who = ROOT
 				years = 2
 			}
-			character_event = { id = 38011 days = 1 tooltip = EVTTOOLTIP38011 }
+			character_event = {
+				id = 38011 days = 1 tooltip = EVTTOOLTIP38011
+			}
 			set_character_flag = small_payment_from_vassal
 			set_character_flag = took_extra_tax
 		}
 	}
 }
 
-#Request
+# Request
 character_event = {
 	id = 38011
 	desc = EVTDESC38011
 	picture = GFX_evt_council
-	
 	is_triggered_only = yes
 
 	option = {
@@ -261,19 +350,29 @@ character_event = {
 			factor = 5
 			modifier = {
 				factor = 1.5
-				opinion = { who = from value =  25 }
+				opinion = {
+					who = from value = 25
+				}
 			}
 			modifier = {
 				factor = 2
-				opinion = { who = from value =  50 }
+				opinion = {
+					who = from value = 50
+				}
 			}
 			modifier = {
 				factor = 3
-				opinion = { who = from value =  75 }
+				opinion = {
+					who = from value = 75
+				}
 			}
 			modifier = {
 				factor = 0
-				NOT = { opinion = { who = from value =  0 } }
+				NOT = {
+					opinion = {
+						who = from value = 0
+					}
+				}
 			}
 		}
 		custom_tooltip = {
@@ -281,30 +380,44 @@ character_event = {
 			hidden_tooltip = {
 				add_favor = FROM
 				wealth = -250
-				FROM = { character_event = { id = 38016 days = 1 } }
+				FROM = {
+					character_event = {
+						id = 38016 days = 1
+					}
+				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = ACCEPT
 		ai_chance = {
 			factor = 1
 			modifier = {
 				factor = 1.5
-				opinion = { who = from value =  25 }
+				opinion = {
+					who = from value = 25
+				}
 			}
 			modifier = {
 				factor = 2
-				opinion = { who = from value =  50 }
+				opinion = {
+					who = from value = 50
+				}
 			}
 			modifier = {
 				factor = 3
-				opinion = { who = from value =  75 }
+				opinion = {
+					who = from value = 75
+				}
 			}
 			modifier = {
 				factor = 0
-				NOT = { opinion = { who = from value =  0 } }
+				NOT = {
+					opinion = {
+						who = from value = 0
+					}
+				}
 			}
 		}
 		if = {
@@ -326,77 +439,94 @@ character_event = {
 			wealth = -10
 		}
 		hidden_tooltip = {
-			FROM = { character_event = { id = 38015 days = 1 } }
+			FROM = {
+				character_event = {
+					id = 38015 days = 1
+				}
+			}
 		}
 	}
+
 	option = {
 		name = DECLINE
 		ai_chance = {
 			factor = 1
 			modifier = {
 				factor = 2
-				NOT = { opinion = { who = from value =  10 } }
+				NOT = {
+					opinion = {
+						who = from value = 10
+					}
+				}
 			}
 			modifier = {
 				factor = 0
-				opinion = { who = from value =  90 }
+				opinion = {
+					who = from value = 90
+				}
 			}
 		}
 		clr_character_flag = small_payment_from_vassal
 		clr_character_flag = medium_payment_from_vassal
 		clr_character_flag = large_payment_from_vassal
-		
 		reverse_opinion = {
 			modifier = refused_money_request
 			who = FROM
 			years = 5
-		}		
+		}
 		hidden_tooltip = {
-			FROM = { character_event = { id = 38014 days = 1 } }
+			FROM = {
+				character_event = {
+					id = 38014 days = 1
+				}
+			}
 		}
 	}
 }
 
-
-#Refusal to pay
+# Refusal to pay
 character_event = {
 	id = 38014
 	desc = EVTDESC38014
 	picture = GFX_evt_council
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = OK
 		prestige = -1
 	}
 }
 
-#Payment accepted
+# Payment accepted
 character_event = {
 	id = 38015
 	desc = EVTDESC38015
 	picture = GFX_evt_council
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = OK
 		if = {
 			limit = {
-				FROM = { has_character_flag = large_payment_from_vassal }
+				FROM = {
+					has_character_flag = large_payment_from_vassal
+				}
 			}
 			wealth = 250
 		}
 		if = {
 			limit = {
-				FROM = { has_character_flag = medium_payment_from_vassal }
+				FROM = {
+					has_character_flag = medium_payment_from_vassal
+				}
 			}
 			wealth = 50
 		}
 		if = {
 			limit = {
-				FROM = { has_character_flag = small_payment_from_vassal }
+				FROM = {
+					has_character_flag = small_payment_from_vassal
+				}
 			}
 			wealth = 10
 		}
@@ -407,17 +537,15 @@ character_event = {
 		}
 		prestige = 1
 	}
-	
 }
 
-#Payment accepted, for favor
+# Payment accepted, for favor
 character_event = {
 	id = 38016
 	desc = EVTDESC38016
 	picture = GFX_evt_council
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = OK
 		custom_tooltip = {
@@ -430,32 +558,36 @@ character_event = {
 			clr_character_flag = large_payment_from_vassal
 		}
 	}
-	
 }
 
-#Ruler is in the red. Seize Church Properties
+# Ruler is in the red. Seize Church Properties
 character_event = {
 	id = 38020
 	desc = EVTDESC38020
 	picture = GFX_evt_pope_feast
-	
 	only_playable = yes
 	religion_group = old_world_group
 	prisoner = no
-	
+
 	trigger = {
-		NOT = { wealth = -50 }
-		NOT = { has_character_flag = stolen_church_properties }
-		NOT = { trait = zealous }
+		NOT = {
+			wealth = -50
+		}
+		NOT = {
+			has_character_flag = stolen_church_properties
+		}
+		NOT = {
+			trait = zealous
+		}
 		any_vassal = {
 			is_theocracy = yes
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 48
 	}
-	
+
 	option = {
 		name = EVTOPTA38020 # There are fat bishop, seize them !
 		trigger = {
@@ -471,7 +603,9 @@ character_event = {
 			factor = 1
 			modifier = {
 				factor = 0
-				NOT = { trait = cynical }
+				NOT = {
+					trait = cynical
+				}
 			}
 		}
 		random_vassal = {
@@ -482,14 +616,16 @@ character_event = {
 					num_of_buildings = 1
 				}
 			}
-			
-			character_event = { id = 38021 days = 1 tooltip = EVTTOOLTIP38021 }
+			character_event = {
+				id = 38021 days = 1 tooltip = EVTTOOLTIP38021
+			}
 			imprison = yes
 		}
 		wealth = 300
 		add_trait = cruel
 		set_character_flag = stolen_church_properties
 	}
+
 	option = {
 		name = EVTOPTB38020 # Time are harsh, force them to share the costs !
 		wealth = 100
@@ -499,11 +635,14 @@ character_event = {
 				limit = {
 					is_theocracy = yes
 				}
-				character_event = { id = 38021 days = 1 tooltip = EVTTOOLTIP38021 }
+				character_event = {
+					id = 38021 days = 1 tooltip = EVTTOOLTIP38021
+				}
 			}
 		}
 		set_character_flag = stolen_church_properties
 	}
+
 	option = {
 		name = EVTOPTC38020 # Compromise with them to find money !
 		wealth = 50
@@ -511,11 +650,16 @@ character_event = {
 		prestige = -50
 		set_character_flag = stolen_church_properties
 	}
+
 	option = {
 		name = EVTOPTD38020 # Never ! I will save my Christian soul !
 		piety = 50
 		if = {
-			limit = { 	NOT = { trait = zealous } }
+			limit = {
+ 				NOT = {
+					trait = zealous
+				}
+			}
 			change_stewardship = -1
 			add_trait = zealous
 		}
@@ -523,31 +667,34 @@ character_event = {
 	}
 }
 
-#If a building is specified, then that one is exempt
+# If a building is specified, then that one is exempt
 character_event = {
 	id = 38021
 	desc = EVTDESC38021
 	picture = GFX_evt_lunatic
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		random_demesne_title = {
 			limit = {
 				tier = baron
 			}
-			destroy_random_building = yes	
+			destroy_random_building = yes
 		}
 		wealth = -100
 	}
-	
+
 	option = {
 		name = EVTOPTA38021 # They are cursed in the eyes of God!
 		ai_chance = {
 			factor = 1
 			modifier = {
 				factor = 10
-				NOT = { opinion = { who = from value =  50 } }
+				NOT = {
+					opinion = {
+						who = from value = 50
+					}
+				}
 			}
 			modifier = {
 				factor = 10
@@ -558,8 +705,13 @@ character_event = {
 				prisoner = yes
 			}
 		}
-		FROM = { character_event = { id = 38022 days = 63 tooltip = EVTTOOLTIP38022 } }
+		FROM = {
+			character_event = {
+				id = 38022 days = 63 tooltip = EVTTOOLTIP38022
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTB38021 # Jesus said to forgive them for their sins.
 		ai_chance = {
@@ -575,7 +727,7 @@ character_event = {
 			modifier = {
 				factor = 0
 				prisoner = yes
-			}			
+			}
 		}
 		opinion = {
 			modifier = grudge_from_sin
@@ -585,122 +737,120 @@ character_event = {
 	}
 }
 
-#We have been judged in the eyes of God
+# We have been judged in the eyes of God
 character_event = {
 	id = 38022
 	desc = EVTDESC38022
 	picture = GFX_evt_bad_news
-	
 	is_triggered_only = yes
-	
+
 	option = {
-		name = EVTOPTA38022 
+		name = EVTOPTA38022
 		add_trait = excommunicated
 		piety = -50
 	}
 }
-	
-#On-Action: Mercs go on a rampage
+
+# On-Action: Mercs go on a rampage
 letter_event = {
 	id = 38050
 	desc = EVTDESC38050
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		ai = no
 	}
-	
+
 	option = {
 		name = EVTOPTA38050
 	}
 }
 
-#On-Action: Mercs leave in disgust
+# On-Action: Mercs leave in disgust
 letter_event = {
 	id = 38051
 	desc = EVTDESC38051
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		ai = no
 	}
-	
+
 	option = {
 		name = EVTOPTA38051
 	}
 }
 
-#On-Action: Mercs switch side FROM you
+# On-Action: Mercs switch side FROM you
 letter_event = {
 	id = 38052
 	desc = EVTDESC38052
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		ai = no
 	}
-	
+
 	option = {
 		name = EVTOPTA38052
 	}
 }
 
-#On-Action: Mercs switch side TO you
+# On-Action: Mercs switch side TO you
 letter_event = {
 	id = 38053
 	desc = EVTDESC38053
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		ai = no
 	}
-	
+
 	option = {
 		name = EVTOPTA38053
 	}
 }
 
-#On-Action: Holy Order leaves your service
+# On-Action: Holy Order leaves your service
 letter_event = {
 	id = 38054
 	desc = EVTDESC38054
 	border = GFX_event_letter_frame_war
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		ai = no
 	}
-	
+
 	option = {
 		name = EVTOPTA38054
 	}
 }
-
 
 # Offer to buy a title from indebted liege
 character_event = {
 	id = 38060
 	desc = EVTDESC38060
 	picture = GFX_evt_council
-	
 	only_playable = yes
 	prisoner = no
 	only_capable = yes
 	min_age = 16
-	
+
 	trigger = {
 		independent = no
-		NOT = { has_character_flag = offered_to_buy_liege_titles }
-		liege = {
-			NOT = { character = ROOT }
+		NOT = {
+			has_character_flag = offered_to_buy_liege_titles
 		}
 		liege = {
-			NOT = { wealth = -50 }
+			NOT = {
+				character = ROOT
+			}
+		}
+		liege = {
+			NOT = {
+				wealth = -50
+			}
 			any_demesne_title = {
 				has_de_jure_pretension = ROOT
 				can_be_given_away = yes
@@ -710,14 +860,14 @@ character_event = {
 						tier = count
 						location = {
 							is_capital = yes
-						}						
+						}
 					}
 				}
 			}
 		}
 		wealth = 250
 	}
-	
+
 	immediate = {
 		liege = {
 			random_demesne_title = {
@@ -739,25 +889,40 @@ character_event = {
 		}
 		set_character_flag = offered_to_buy_liege_titles
 	}
-	
+
 	mean_time_to_happen = {
 		months = 60
-		
 		modifier = {
 			factor = 0.75
-			liege = { NOT = { wealth = -75 } }
+			liege = {
+				NOT = {
+					wealth = -75
+				}
+			}
 		}
 		modifier = {
 			factor = 0.75
-			liege = { NOT = { wealth = -100 } }
+			liege = {
+				NOT = {
+					wealth = -100
+				}
+			}
 		}
 		modifier = {
 			factor = 0.75
-			liege = { NOT = { wealth = -125 } }
+			liege = {
+				NOT = {
+					wealth = -125
+				}
+			}
 		}
 		modifier = {
 			factor = 0.75
-			liege = { NOT = { wealth = -150 } }
+			liege = {
+				NOT = {
+					wealth = -150
+				}
+			}
 		}
 		modifier = {
 			factor = 0.75
@@ -776,17 +941,25 @@ character_event = {
 			wealth = 350
 		}
 	}
-	
+
 	option = {
 		trigger = {
 			has_dlc = "Zeus"
 			NOT = {
-				liege = { owes_favor_to = ROOT }
+				liege = {
+					owes_favor_to = ROOT
+				}
 			}
 		}
 		name = EVTOPTC38060
-		ai_chance = { factor = 100 }
-		liege = { character_event = { id = 38062 days = 1 tooltip = EVTTOOLTIP38061 } }
+		ai_chance = {
+			factor = 100
+		}
+		liege = {
+			character_event = {
+				id = 38062 days = 1 tooltip = EVTTOOLTIP38061
+			}
+		}
 		liege = {
 			tooltip = {
 				event_target:title_for_sale = {
@@ -799,11 +972,17 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA38060
-		ai_chance = { factor = 100 }
-		liege = { character_event = { id = 38061 days = 1 tooltip = EVTTOOLTIP38061 } }
+		ai_chance = {
+			factor = 100
+		}
+		liege = {
+			character_event = {
+				id = 38061 days = 1 tooltip = EVTTOOLTIP38061
+			}
+		}
 		liege = {
 			tooltip = {
 				event_target:title_for_sale = {
@@ -815,9 +994,12 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB38060
-		ai_chance = { factor = 0 }
+		ai_chance = {
+			factor = 0
+		}
 	}
 }
 
@@ -826,12 +1008,13 @@ character_event = {
 	id = 38061
 	desc = EVTDESC38061
 	picture = GFX_evt_council
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA38061
-		ai_chance = { factor = 100 }
+		ai_chance = {
+			factor = 100
+		}
 		wealth = 200
 		event_target:title_for_sale = {
 			grant_title = FROM
@@ -840,9 +1023,12 @@ character_event = {
 			wealth = -200
 		}
 	}
+
 	option = {
 		name = EVTOPTB38061
-		ai_chance = { factor = 0 }
+		ai_chance = {
+			factor = 0
+		}
 	}
 }
 
@@ -851,12 +1037,13 @@ character_event = {
 	id = 38062
 	desc = EVTDESC38062
 	picture = GFX_evt_council
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA38062
-		ai_chance = { factor = 100 }
+		ai_chance = {
+			factor = 100
+		}
 		wealth = 300
 		event_target:title_for_sale = {
 			grant_title = FROM
@@ -866,8 +1053,11 @@ character_event = {
 			add_favor = ROOT
 		}
 	}
+
 	option = {
 		name = EVTOPTB38062
-		ai_chance = { factor = 0 }
+		ai_chance = {
+			factor = 0
+		}
 	}
 }

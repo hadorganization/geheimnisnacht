@@ -1,36 +1,25 @@
-#############################################
-#############################################
-#                                         	#
-# ZE Adolescence Events					  	#
-# ID ZE.13000-ZE.13999                    	#
-#                                         	#
-#############################################
-#############################################
+
+
+# ZE Adolescence Events
+
+# ID ZE.13000-ZE.13999
 
 # Written by Tobias Bodlund and Joel Hansson
-
 namespace = ZE
 
+# Trait maturing events
 
-#############################################
-#											#
-# Trait maturing events						#
-# ZE.13000-ZE.13599							#
-#											#
-#############################################
+# ZE.13000-ZE.13599
 
 # These traits are checked on random adolescence pulse, and also non-randomly on day of adulthood
 
 # Bi-yearly adolescence pulse - select which event chain to get
 character_event = {
 	id = ZE.13999
-
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	trigger = {
 		is_adult = no
 		age = 12
@@ -55,113 +44,156 @@ character_event = {
 			10 = {
 				modifier = {
 					factor = 0
-					NOT = { trait = haughty }
+					NOT = {
+						trait = haughty
+					}
 				}
-				character_event = { id = ZE.13000 days = 10 random = 90 }
+				character_event = {
+					id = ZE.13000 days = 10 random = 90
+				}
 			}
 			10 = {
 				modifier = {
 					factor = 0
-					NOT = { trait = affectionate }
+					NOT = {
+						trait = affectionate
+					}
 				}
-				character_event = { id = ZE.13010 days = 10 random = 90 }
+				character_event = {
+					id = ZE.13010 days = 10 random = 90
+				}
 			}
 			10 = {
 				modifier = {
 					factor = 0
-					NOT = { trait = timid }
+					NOT = {
+						trait = timid
+					}
 				}
-				character_event = { id = ZE.13020 days = 10 random = 90 }
+				character_event = {
+					id = ZE.13020 days = 10 random = 90
+				}
 			}
 			10 = {
 				modifier = {
 					factor = 0
-					NOT = { trait = rowdy }
+					NOT = {
+						trait = rowdy
+					}
 				}
-				character_event = { id = ZE.13030 days = 10 random = 90 }
+				character_event = {
+					id = ZE.13030 days = 10 random = 90
+				}
 			}
 			10 = {
 				modifier = {
 					factor = 0
-					NOT = { trait = willful }
+					NOT = {
+						trait = willful
+					}
 				}
-				character_event = { id = ZE.13040 days = 10 random = 90 }
+				character_event = {
+					id = ZE.13040 days = 10 random = 90
+				}
 			}
 			10 = {
 				modifier = {
 					factor = 0
-					NOT = { trait = brooding }
+					NOT = {
+						trait = brooding
+					}
 				}
-				character_event = { id = ZE.13050 days = 10 random = 90 }
+				character_event = {
+					id = ZE.13050 days = 10 random = 90
+				}
 			}
 			10 = {
 				modifier = {
 					factor = 0
-					NOT = { trait = indolent }
+					NOT = {
+						trait = indolent
+					}
 				}
-				character_event = { id = ZE.13060 days = 10 random = 90 }
+				character_event = {
+					id = ZE.13060 days = 10 random = 90
+				}
 			}
 			10 = {
 				modifier = {
 					factor = 0
-					NOT = { trait = playful }
+					NOT = {
+						trait = playful
+					}
 				}
-				character_event = { id = ZE.13070 days = 10 random = 90 }
+				character_event = {
+					id = ZE.13070 days = 10 random = 90
+				}
 			}
 			10 = {
 				modifier = {
 					factor = 0
-					NOT = { trait = conscientious }
+					NOT = {
+						trait = conscientious
+					}
 				}
-				character_event = { id = ZE.13080 days = 10 random = 90 }
+				character_event = {
+					id = ZE.13080 days = 10 random = 90
+				}
 			}
 			10 = {
 				modifier = {
 					factor = 0
-					NOT = { trait = fussy }
+					NOT = {
+						trait = fussy
+					}
 				}
-				character_event = { id = ZE.13090 days = 10 random = 90 }
+				character_event = {
+					id = ZE.13090 days = 10 random = 90
+				}
 			}
 			10 = {
 				modifier = {
 					factor = 0
-					NOT = { trait = curious }
+					NOT = {
+						trait = curious
+					}
 				}
-				character_event = { id = ZE.13100 days = 10 random = 90 }
+				character_event = {
+					id = ZE.13100 days = 10 random = 90
+				}
 			}
 			10 = {
 				modifier = {
 					factor = 0
-					NOT = { trait = idolizer }
+					NOT = {
+						trait = idolizer
+					}
 				}
-				character_event = { id = ZE.13110 days = 10 random = 90 }
+				character_event = {
+					id = ZE.13110 days = 10 random = 90
+				}
 			}
 		}
 	}
 }
 
-
-#############################################
-# Haughty									#
-#############################################
+# Haughty
 
 # Haughty turns into Proud, Arbitrary or Cruel
 character_event = {
 	id = ZE.13000
-
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	trigger = {
 		trait = haughty
 	}
-	
+
 	immediate = {
 		set_character_flag = was_haughty
-		random_list = {  # Select outcome
+		random_list = {
+			# Select outcome
 			10 = {
 				set_character_flag = haughty_to_proud
 				modifier = {
@@ -216,44 +248,57 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = { trait = ambitious }
-				educator = { trait = ambitious }
+				NOT = {
+					trait = ambitious
+				}
+				educator = {
+					trait = ambitious
+				}
 				prisoner = no
 			}
-			educator = { character_event = { id = ZE.13002 } }  # Let educator decide on intervention
+			educator = {
+				character_event = {
+					id = ZE.13002
+				}
+			} # Let educator decide on intervention
 			break = yes
 		}
-		character_event = { id = ZE.13001 } # Go direct to trait change
+		character_event = {
+			id = ZE.13001
+		} # Go direct to trait change
 	}
 }
 
 character_event = {
 	id = ZE.13001
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13001
 		trigger = {
-			FROM = { has_character_flag = haughty_to_proud }
-		} 
+			FROM = {
+				has_character_flag = haughty_to_proud
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13001
 		trigger = {
-			FROM = { has_character_flag = haughty_to_arbitrary }
-		} 
+			FROM = {
+				has_character_flag = haughty_to_arbitrary
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13001
 		trigger = {
-			FROM = { has_character_flag = haughty_to_cruel }
+			FROM = {
+				has_character_flag = haughty_to_cruel
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13001
 		trigger = {
@@ -263,6 +308,7 @@ character_event = {
 		add_trait = proud
 		clr_character_flag = haughty_to_proud
 	}
+
 	option = {
 		name = EVTOPTB_ZE_13001
 		trigger = {
@@ -272,6 +318,7 @@ character_event = {
 		add_trait = arbitrary
 		clr_character_flag = haughty_to_arbitrary
 	}
+
 	option = {
 		name = EVTOPTC_ZE_13001
 		trigger = {
@@ -283,56 +330,97 @@ character_event = {
 	}
 }
 
-
 # Ambitious educator may make child Ambitious instead
 character_event = {
 	id = ZE.13002
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13002
 		trigger = {
-			FROM = { has_character_flag = haughty_to_proud }
-		} 
+			FROM = {
+				has_character_flag = haughty_to_proud
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13002
 		trigger = {
-			FROM = { has_character_flag = haughty_to_arbitrary }
-		} 
+			FROM = {
+				has_character_flag = haughty_to_arbitrary
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13002
 		trigger = {
-			FROM = { has_character_flag = haughty_to_cruel }
+			FROM = {
+				has_character_flag = haughty_to_cruel
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13002 # The child will be like me
 		FROM = {
-			custom_tooltip = { text = haughty_may_become_ambitious }
+			custom_tooltip = {
+				text = haughty_may_become_ambitious
+			}
 		}
-		hidden_tooltip = { FROM = { character_event = { id = ZE.13004 } } }
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = ZE.13004
+				}
+			}
+		}
 	}
+
 	option = {
-		name = EVTOPTB_ZE_13002  # Do not intervene
-		hidden_tooltip = { FROM = { character_event = { id = ZE.13001 } } } # Go to normal trait change
+		name = EVTOPTB_ZE_13002 # Do not intervene
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = ZE.13001
+				}
+			}
+		} # Go to normal trait change
 		if = {
-			limit = { FROM = { has_character_flag = haughty_to_proud } }
-			tooltip = { FROM = { remove_trait = haughty add_trait = proud } }
+			limit = {
+				FROM = {
+					has_character_flag = haughty_to_proud
+				}
+			}
+			tooltip = {
+				FROM = {
+					remove_trait = haughty add_trait = proud
+				}
+			}
 		}
 		if = {
-			limit = { FROM = { has_character_flag = haughty_to_arbitrary } }
-			tooltip = { FROM = { remove_trait = haughty add_trait = arbitrary } }
+			limit = {
+				FROM = {
+					has_character_flag = haughty_to_arbitrary
+				}
+			}
+			tooltip = {
+				FROM = {
+					remove_trait = haughty add_trait = arbitrary
+				}
+			}
 		}
 		if = {
-			limit = { FROM = { has_character_flag = haughty_to_cruel } }
-			tooltip = { FROM = { remove_trait = haughty add_trait = cruel } }
+			limit = {
+				FROM = {
+					has_character_flag = haughty_to_cruel
+				}
+			}
+			tooltip = {
+				FROM = {
+					remove_trait = haughty add_trait = cruel
+				}
+			}
 		}
 	}
 }
@@ -341,30 +429,33 @@ character_event = {
 character_event = {
 	id = ZE.13004
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13004
 		trigger = {
-			FROM = { has_character_flag = haughty_to_proud }
-		} 
+			FROM = {
+				has_character_flag = haughty_to_proud
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13004
 		trigger = {
-			FROM = { has_character_flag = haughty_to_arbitrary }
-		} 
+			FROM = {
+				has_character_flag = haughty_to_arbitrary
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13004
 		trigger = {
-			FROM = { has_character_flag = haughty_to_cruel }
+			FROM = {
+				has_character_flag = haughty_to_cruel
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13004
 		remove_trait = haughty
@@ -374,11 +465,16 @@ character_event = {
 		clr_character_flag = haughty_to_cruel
 		if = {
 			limit = {
-				educator = { ai = no }
+				educator = {
+					ai = no
+				}
 			}
-			educator = { set_character_flag = achievement_follow_me }
+			educator = {
+				set_character_flag = achievement_follow_me
+			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_ZE_13004
 		trigger = {
@@ -388,6 +484,7 @@ character_event = {
 		add_trait = proud
 		clr_character_flag = haughty_to_proud
 	}
+
 	option = {
 		name = EVTOPTC_ZE_13004
 		trigger = {
@@ -397,6 +494,7 @@ character_event = {
 		add_trait = arbitrary
 		clr_character_flag = haughty_to_arbitrary
 	}
+
 	option = {
 		name = EVTOPTD_ZE_13004
 		trigger = {
@@ -408,28 +506,21 @@ character_event = {
 	}
 }
 
-
-
-#############################################
-# Affectionate								#
-#############################################
-
+# Affectionate
 character_event = {
 	id = ZE.13010
-
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	trigger = {
 		trait = affectionate
 	}
-	
+
 	immediate = {
 		set_character_flag = was_affectionate
-		random_list = {  # Select outcome
+		random_list = {
+			# Select outcome
 			10 = {
 				set_character_flag = affectionate_to_kind
 				modifier = {
@@ -486,44 +577,57 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = { trait = charitable }
-				educator = { trait = charitable }
+				NOT = {
+					trait = charitable
+				}
+				educator = {
+					trait = charitable
+				}
 				prisoner = no
 			}
-			educator = { character_event = { id = ZE.13012 } }  # Let educator decide on intervention
+			educator = {
+				character_event = {
+					id = ZE.13012
+				}
+			} # Let educator decide on intervention
 			break = yes
 		}
-		character_event = { id = ZE.13011 } # Go direct to trait change
+		character_event = {
+			id = ZE.13011
+		} # Go direct to trait change
 	}
 }
 
 character_event = {
 	id = ZE.13011
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13011
 		trigger = {
-			FROM = { has_character_flag = affectionate_to_kind }
-		} 
+			FROM = {
+				has_character_flag = affectionate_to_kind
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13011
 		trigger = {
-			FROM = { has_character_flag = affectionate_to_content }
-		} 
+			FROM = {
+				has_character_flag = affectionate_to_content
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13011
 		trigger = {
-			FROM = { has_character_flag = affectionate_to_trusting }
+			FROM = {
+				has_character_flag = affectionate_to_trusting
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13011
 		trigger = {
@@ -533,6 +637,7 @@ character_event = {
 		add_trait = kind
 		clr_character_flag = affectionate_to_kind
 	}
+
 	option = {
 		name = EVTOPTB_ZE_13011
 		trigger = {
@@ -542,6 +647,7 @@ character_event = {
 		add_trait = content
 		clr_character_flag = affectionate_to_content
 	}
+
 	option = {
 		name = EVTOPTC_ZE_13011
 		trigger = {
@@ -553,56 +659,97 @@ character_event = {
 	}
 }
 
-
 # Charitable educator may make child Charitable instead
 character_event = {
 	id = ZE.13012
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13012
 		trigger = {
-			FROM = { has_character_flag = affectionate_to_kind }
-		} 
+			FROM = {
+				has_character_flag = affectionate_to_kind
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13012
 		trigger = {
-			FROM = { has_character_flag = affectionate_to_content }
-		} 
+			FROM = {
+				has_character_flag = affectionate_to_content
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13012
 		trigger = {
-			FROM = { has_character_flag = affectionate_to_trusting }
+			FROM = {
+				has_character_flag = affectionate_to_trusting
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13012 # The child will be like me
 		FROM = {
-			custom_tooltip = { text = affectionate_may_become_charitable }
+			custom_tooltip = {
+				text = affectionate_may_become_charitable
+			}
 		}
-		hidden_tooltip = { FROM = { character_event = { id = ZE.13014 } } }
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = ZE.13014
+				}
+			}
+		}
 	}
+
 	option = {
-		name = EVTOPTB_ZE_13012  # Do not intervene
-		hidden_tooltip = { FROM = { character_event = { id = ZE.13011 } } } # Go to normal trait change
+		name = EVTOPTB_ZE_13012 # Do not intervene
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = ZE.13011
+				}
+			}
+		} # Go to normal trait change
 		if = {
-			limit = { FROM = { has_character_flag = affectionate_to_kind } }
-			tooltip = { FROM = { remove_trait = affectionate add_trait = kind } }
+			limit = {
+				FROM = {
+					has_character_flag = affectionate_to_kind
+				}
+			}
+			tooltip = {
+				FROM = {
+					remove_trait = affectionate add_trait = kind
+				}
+			}
 		}
 		if = {
-			limit = { FROM = { has_character_flag = affectionate_to_content } }
-			tooltip = { FROM = { remove_trait = affectionate add_trait = content } }
+			limit = {
+				FROM = {
+					has_character_flag = affectionate_to_content
+				}
+			}
+			tooltip = {
+				FROM = {
+					remove_trait = affectionate add_trait = content
+				}
+			}
 		}
 		if = {
-			limit = { FROM = { has_character_flag = affectionate_to_trusting } }
-			tooltip = { FROM = { remove_trait = affectionate add_trait = trusting } }
+			limit = {
+				FROM = {
+					has_character_flag = affectionate_to_trusting
+				}
+			}
+			tooltip = {
+				FROM = {
+					remove_trait = affectionate add_trait = trusting
+				}
+			}
 		}
 	}
 }
@@ -611,30 +758,33 @@ character_event = {
 character_event = {
 	id = ZE.13014
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13014
 		trigger = {
-			FROM = { has_character_flag = affectionate_to_kind }
-		} 
+			FROM = {
+				has_character_flag = affectionate_to_kind
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13014
 		trigger = {
-			FROM = { has_character_flag = affectionate_to_content }
-		} 
+			FROM = {
+				has_character_flag = affectionate_to_content
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13014
 		trigger = {
-			FROM = { has_character_flag = affectionate_to_trusting }
+			FROM = {
+				has_character_flag = affectionate_to_trusting
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13014
 		remove_trait = affectionate
@@ -644,11 +794,16 @@ character_event = {
 		clr_character_flag = affectionate_to_trusting
 		if = {
 			limit = {
-				educator = { ai = no }
+				educator = {
+					ai = no
+				}
 			}
-			educator = { set_character_flag = achievement_follow_me }
+			educator = {
+				set_character_flag = achievement_follow_me
+			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_ZE_13014
 		trigger = {
@@ -658,6 +813,7 @@ character_event = {
 		add_trait = kind
 		clr_character_flag = affectionate_to_kind
 	}
+
 	option = {
 		name = EVTOPTC_ZE_13014
 		trigger = {
@@ -667,6 +823,7 @@ character_event = {
 		add_trait = content
 		clr_character_flag = affectionate_to_content
 	}
+
 	option = {
 		name = EVTOPTD_ZE_13014
 		trigger = {
@@ -678,27 +835,21 @@ character_event = {
 	}
 }
 
-
-#############################################
-# Timid										#
-#############################################
-
+# Timid
 character_event = {
 	id = ZE.13020
-
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	trigger = {
 		trait = timid
 	}
-	
+
 	immediate = {
 		set_character_flag = was_timid
-		random_list = {  # Select outcome
+		random_list = {
+			# Select outcome
 			10 = {
 				set_character_flag = timid_to_humble
 				modifier = {
@@ -753,44 +904,57 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = { trait = content }
-				educator = { trait = content }
+				NOT = {
+					trait = content
+				}
+				educator = {
+					trait = content
+				}
 				prisoner = no
 			}
-			educator = { character_event = { id = ZE.13022 } }  # Let educator decide on intervention
+			educator = {
+				character_event = {
+					id = ZE.13022
+				}
+			} # Let educator decide on intervention
 			break = yes
 		}
-		character_event = { id = ZE.13021 } # Go direct to trait change
+		character_event = {
+			id = ZE.13021
+		} # Go direct to trait change
 	}
 }
 
 character_event = {
 	id = ZE.13021
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13021
 		trigger = {
-			FROM = { has_character_flag = timid_to_humble }
-		} 
+			FROM = {
+				has_character_flag = timid_to_humble
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13021
 		trigger = {
-			FROM = { has_character_flag = timid_to_shy }
-		} 
+			FROM = {
+				has_character_flag = timid_to_shy
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13021
 		trigger = {
-			FROM = { has_character_flag = timid_to_craven }
+			FROM = {
+				has_character_flag = timid_to_craven
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13021
 		trigger = {
@@ -800,6 +964,7 @@ character_event = {
 		add_trait = humble
 		clr_character_flag = timid_to_humble
 	}
+
 	option = {
 		name = EVTOPTB_ZE_13021
 		trigger = {
@@ -809,6 +974,7 @@ character_event = {
 		add_trait = shy
 		clr_character_flag = timid_to_shy
 	}
+
 	option = {
 		name = EVTOPTC_ZE_13021
 		trigger = {
@@ -820,56 +986,97 @@ character_event = {
 	}
 }
 
-
 # Content educator may make child Content instead
 character_event = {
 	id = ZE.13022
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13022
 		trigger = {
-			FROM = { has_character_flag = timid_to_humble }
-		} 
+			FROM = {
+				has_character_flag = timid_to_humble
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13022
 		trigger = {
-			FROM = { has_character_flag = timid_to_shy }
-		} 
+			FROM = {
+				has_character_flag = timid_to_shy
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13022
 		trigger = {
-			FROM = { has_character_flag = timid_to_craven }
+			FROM = {
+				has_character_flag = timid_to_craven
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13022 # The child will be like me
 		FROM = {
-			custom_tooltip = { text = timid_may_become_content }
+			custom_tooltip = {
+				text = timid_may_become_content
+			}
 		}
-		hidden_tooltip = { FROM = { character_event = { id = ZE.13024 } } }
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = ZE.13024
+				}
+			}
+		}
 	}
+
 	option = {
-		name = EVTOPTB_ZE_13022  # Do not intervene
-		hidden_tooltip = { FROM = { character_event = { id = ZE.13021 } } } # Go to normal trait change
+		name = EVTOPTB_ZE_13022 # Do not intervene
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = ZE.13021
+				}
+			}
+		} # Go to normal trait change
 		if = {
-			limit = { FROM = { has_character_flag = timid_to_humble } }
-			tooltip = { FROM = { remove_trait = timid add_trait = humble } }
+			limit = {
+				FROM = {
+					has_character_flag = timid_to_humble
+				}
+			}
+			tooltip = {
+				FROM = {
+					remove_trait = timid add_trait = humble
+				}
+			}
 		}
 		if = {
-			limit = { FROM = { has_character_flag = timid_to_shy } }
-			tooltip = { FROM = { remove_trait = timid add_trait = shy } }
+			limit = {
+				FROM = {
+					has_character_flag = timid_to_shy
+				}
+			}
+			tooltip = {
+				FROM = {
+					remove_trait = timid add_trait = shy
+				}
+			}
 		}
 		if = {
-			limit = { FROM = { has_character_flag = timid_to_craven } }
-			tooltip = { FROM = { remove_trait = timid add_trait = craven } }
+			limit = {
+				FROM = {
+					has_character_flag = timid_to_craven
+				}
+			}
+			tooltip = {
+				FROM = {
+					remove_trait = timid add_trait = craven
+				}
+			}
 		}
 	}
 }
@@ -878,30 +1085,33 @@ character_event = {
 character_event = {
 	id = ZE.13024
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13024
 		trigger = {
-			FROM = { has_character_flag = timid_to_humble }
-		} 
+			FROM = {
+				has_character_flag = timid_to_humble
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13024
 		trigger = {
-			FROM = { has_character_flag = timid_to_shy }
-		} 
+			FROM = {
+				has_character_flag = timid_to_shy
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13024
 		trigger = {
-			FROM = { has_character_flag = timid_to_craven }
+			FROM = {
+				has_character_flag = timid_to_craven
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13024
 		remove_trait = timid
@@ -911,11 +1121,16 @@ character_event = {
 		clr_character_flag = timid_to_craven
 		if = {
 			limit = {
-				educator = { ai = no }
+				educator = {
+					ai = no
+				}
 			}
-			educator = { set_character_flag = achievement_follow_me }
+			educator = {
+				set_character_flag = achievement_follow_me
+			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_ZE_13024
 		trigger = {
@@ -925,6 +1140,7 @@ character_event = {
 		add_trait = humble
 		clr_character_flag = timid_to_humble
 	}
+
 	option = {
 		name = EVTOPTC_ZE_13024
 		trigger = {
@@ -934,6 +1150,7 @@ character_event = {
 		add_trait = shy
 		clr_character_flag = timid_to_shy
 	}
+
 	option = {
 		name = EVTOPTD_ZE_13024
 		trigger = {
@@ -945,28 +1162,21 @@ character_event = {
 	}
 }
 
-
-
-#############################################
-# Rowdy										#
-#############################################
-
+# Rowdy
 character_event = {
 	id = ZE.13030
-
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	trigger = {
 		trait = rowdy
 	}
-	
+
 	immediate = {
 		set_character_flag = was_rowdy
-		random_list = {  # Select outcome
+		random_list = {
+			# Select outcome
 			10 = {
 				set_character_flag = rowdy_to_strong
 				modifier = {
@@ -1022,44 +1232,57 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = { trait = brave }
-				educator = { trait = brave }
+				NOT = {
+					trait = brave
+				}
+				educator = {
+					trait = brave
+				}
 				prisoner = no
 			}
-			educator = { character_event = { id = ZE.13032 } }  # Let educator decide on intervention
+			educator = {
+				character_event = {
+					id = ZE.13032
+				}
+			} # Let educator decide on intervention
 			break = yes
 		}
-		character_event = { id = ZE.13031 } # Go direct to trait change
+		character_event = {
+			id = ZE.13031
+		} # Go direct to trait change
 	}
 }
 
 character_event = {
 	id = ZE.13031
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13031
 		trigger = {
-			FROM = { has_character_flag = rowdy_to_strong }
-		} 
+			FROM = {
+				has_character_flag = rowdy_to_strong
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13031
 		trigger = {
-			FROM = { has_character_flag = rowdy_to_honest }
-		} 
+			FROM = {
+				has_character_flag = rowdy_to_honest
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13031
 		trigger = {
-			FROM = { has_character_flag = rowdy_to_imbecile }
+			FROM = {
+				has_character_flag = rowdy_to_imbecile
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	immediate = {
 		if = {
 			limit = {
@@ -1092,7 +1315,7 @@ character_event = {
 			set_character_flag = rowdy_normal_to_slow
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_ZE_13031
 		trigger = {
@@ -1102,6 +1325,7 @@ character_event = {
 		add_trait = robust
 		clr_character_flag = rowdy_to_strong
 	}
+
 	option = {
 		name = EVTOPTB_ZE_13031
 		trigger = {
@@ -1111,6 +1335,7 @@ character_event = {
 		add_trait = honest
 		clr_character_flag = rowdy_to_honest
 	}
+
 	option = {
 		name = EVTOPTC_ZE_13031
 		trigger = {
@@ -1118,26 +1343,34 @@ character_event = {
 		}
 		clr_character_flag = rowdy_to_imbecile
 		if = {
-			limit = { has_character_flag = rowdy_genius_to_quick }
+			limit = {
+				has_character_flag = rowdy_genius_to_quick
+			}
 			remove_trait = rowdy
 			remove_trait = genius
 			add_trait = quick
 			clr_character_flag = rowdy_genius_to_quick
 		}
 		if = {
-			limit = { has_character_flag = rowdy_quick_to_normal }
+			limit = {
+				has_character_flag = rowdy_quick_to_normal
+			}
 			remove_trait = rowdy
 			remove_trait = quick
 			clr_character_flag = rowdy_quick_to_normal
 		}
 		if = {
-			limit = { has_character_flag = rowdy_normal_to_slow }
+			limit = {
+				has_character_flag = rowdy_normal_to_slow
+			}
 			remove_trait = rowdy
 			add_trait = dull
 			clr_character_flag = rowdy_normal_to_slow
 		}
 		if = {
-			limit = { has_character_flag = rowdy_slow_to_imbecile }
+			limit = {
+				has_character_flag = rowdy_slow_to_imbecile
+			}
 			remove_trait = rowdy
 			add_trait = dull
 			clr_character_flag = rowdy_slow_to_imbecile
@@ -1145,52 +1378,85 @@ character_event = {
 	}
 }
 
-
 # Brave educator may make child Brave instead
 character_event = {
 	id = ZE.13032
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13032
 		trigger = {
-			FROM = { has_character_flag = rowdy_to_strong }
-		} 
+			FROM = {
+				has_character_flag = rowdy_to_strong
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13032
 		trigger = {
-			FROM = { has_character_flag = rowdy_to_honest }
-		} 
+			FROM = {
+				has_character_flag = rowdy_to_honest
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13032
 		trigger = {
-			FROM = { has_character_flag = rowdy_to_imbecile }
+			FROM = {
+				has_character_flag = rowdy_to_imbecile
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13032 # The child will be like me
 		FROM = {
-			custom_tooltip = { text = rowdy_may_become_brave }
+			custom_tooltip = {
+				text = rowdy_may_become_brave
+			}
 		}
-		hidden_tooltip = { FROM = { character_event = { id = ZE.13034 } } }
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = ZE.13034
+				}
+			}
+		}
 	}
+
 	option = {
-		name = EVTOPTB_ZE_13032  # Do not intervene
-		hidden_tooltip = { FROM = { character_event = { id = ZE.13031 } } } # Go to normal trait change
+		name = EVTOPTB_ZE_13032 # Do not intervene
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = ZE.13031
+				}
+			}
+		} # Go to normal trait change
 		if = {
-			limit = { FROM = { has_character_flag = rowdy_to_strong } }
-			tooltip = { FROM = { remove_trait = rowdy add_trait = robust } }
+			limit = {
+				FROM = {
+					has_character_flag = rowdy_to_strong
+				}
+			}
+			tooltip = {
+				FROM = {
+					remove_trait = rowdy add_trait = robust
+				}
+			}
 		}
 		if = {
-			limit = { FROM = { has_character_flag = rowdy_to_honest } }
-			tooltip = { FROM = { remove_trait = rowdy add_trait = honest } }
+			limit = {
+				FROM = {
+					has_character_flag = rowdy_to_honest
+				}
+			}
+			tooltip = {
+				FROM = {
+					remove_trait = rowdy add_trait = honest
+				}
+			}
 		}
 		if = {
 			limit = {
@@ -1240,9 +1506,15 @@ character_event = {
 			limit = {
 				FROM = {
 					has_character_flag = rowdy_to_imbecile
-					NOT = { trait = genius }
-					NOT = { trait = quick }
-					NOT = { trait = slow }
+					NOT = {
+						trait = genius
+					}
+					NOT = {
+						trait = quick
+					}
+					NOT = {
+						trait = slow
+					}
 				}
 			}
 			tooltip = {
@@ -1259,28 +1531,31 @@ character_event = {
 character_event = {
 	id = ZE.13034
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13034
 		trigger = {
-			FROM = { has_character_flag = rowdy_to_strong }
-		} 
+			FROM = {
+				has_character_flag = rowdy_to_strong
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13034
 		trigger = {
-			FROM = { has_character_flag = rowdy_to_honest }
-		} 
+			FROM = {
+				has_character_flag = rowdy_to_honest
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13034
 		trigger = {
-			FROM = { has_character_flag = rowdy_to_imbecile }
+			FROM = {
+				has_character_flag = rowdy_to_imbecile
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
 
 	immediate = {
@@ -1315,7 +1590,7 @@ character_event = {
 			set_character_flag = rowdy_normal_to_slow
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_ZE_13034
 		remove_trait = rowdy
@@ -1325,11 +1600,16 @@ character_event = {
 		clr_character_flag = rowdy_to_imbecile
 		if = {
 			limit = {
-				educator = { ai = no }
+				educator = {
+					ai = no
+				}
 			}
-			educator = { set_character_flag = achievement_follow_me }
+			educator = {
+				set_character_flag = achievement_follow_me
+			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_ZE_13034
 		trigger = {
@@ -1339,6 +1619,7 @@ character_event = {
 		add_trait = robust
 		clr_character_flag = rowdy_to_strong
 	}
+
 	option = {
 		name = EVTOPTC_ZE_13034
 		trigger = {
@@ -1348,6 +1629,7 @@ character_event = {
 		add_trait = honest
 		clr_character_flag = rowdy_to_honest
 	}
+
 	option = {
 		name = EVTOPTD_ZE_13034
 		trigger = {
@@ -1355,26 +1637,34 @@ character_event = {
 		}
 		clr_character_flag = rowdy_to_imbecile
 		if = {
-			limit = { has_character_flag = rowdy_genius_to_quick }
+			limit = {
+				has_character_flag = rowdy_genius_to_quick
+			}
 			remove_trait = rowdy
 			remove_trait = genius
 			add_trait = quick
 			clr_character_flag = rowdy_genius_to_quick
 		}
 		if = {
-			limit = { has_character_flag = rowdy_quick_to_normal }
+			limit = {
+				has_character_flag = rowdy_quick_to_normal
+			}
 			remove_trait = rowdy
 			remove_trait = quick
 			clr_character_flag = rowdy_quick_to_normal
 		}
 		if = {
-			limit = { has_character_flag = rowdy_normal_to_slow }
+			limit = {
+				has_character_flag = rowdy_normal_to_slow
+			}
 			remove_trait = rowdy
 			add_trait = dull
 			clr_character_flag = rowdy_normal_to_slow
 		}
 		if = {
-			limit = { has_character_flag = rowdy_slow_to_imbecile }
+			limit = {
+				has_character_flag = rowdy_slow_to_imbecile
+			}
 			remove_trait = rowdy
 			add_trait = dull
 			clr_character_flag = rowdy_slow_to_imbecile
@@ -1382,27 +1672,23 @@ character_event = {
 	}
 }
 
-#############################################
-# Willful									#
-#############################################
+# Willful
 
 # willful turns into ambitious, brave or stubborn
 character_event = {
 	id = ZE.13040
-
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	trigger = {
 		trait = willful
 	}
-	
+
 	immediate = {
 		set_character_flag = was_willful
-		random_list = {  # Select outcome
+		random_list = {
+			# Select outcome
 			10 = {
 				set_character_flag = willful_to_ambitious
 				modifier = {
@@ -1451,44 +1737,57 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = { trait = proud }
-				educator = { trait = proud }
+				NOT = {
+					trait = proud
+				}
+				educator = {
+					trait = proud
+				}
 				prisoner = no
 			}
-			educator = { character_event = { id = ZE.13042 } }  # Let educator decide on intervention
+			educator = {
+				character_event = {
+					id = ZE.13042
+				}
+			} # Let educator decide on intervention
 			break = yes
 		}
-		character_event = { id = ZE.13041 } # Go direct to trait change
+		character_event = {
+			id = ZE.13041
+		} # Go direct to trait change
 	}
 }
 
 character_event = {
 	id = ZE.13041
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13041
 		trigger = {
-			FROM = { has_character_flag = willful_to_ambitious }
-		} 
+			FROM = {
+				has_character_flag = willful_to_ambitious
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13041
 		trigger = {
-			FROM = { has_character_flag = willful_to_brave }
-		} 
+			FROM = {
+				has_character_flag = willful_to_brave
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13041
 		trigger = {
-			FROM = { has_character_flag = willful_to_stubborn }
+			FROM = {
+				has_character_flag = willful_to_stubborn
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13041
 		trigger = {
@@ -1498,6 +1797,7 @@ character_event = {
 		add_trait = ambitious
 		clr_character_flag = willful_to_ambitious
 	}
+
 	option = {
 		name = EVTOPTB_ZE_13041
 		trigger = {
@@ -1507,6 +1807,7 @@ character_event = {
 		add_trait = brave
 		clr_character_flag = willful_to_brave
 	}
+
 	option = {
 		name = EVTOPTC_ZE_13041
 		trigger = {
@@ -1518,56 +1819,97 @@ character_event = {
 	}
 }
 
-
 # Proud educator may make child Proud instead
 character_event = {
 	id = ZE.13042
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13042
 		trigger = {
-			FROM = { has_character_flag = willful_to_ambitious }
-		} 
+			FROM = {
+				has_character_flag = willful_to_ambitious
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13042
 		trigger = {
-			FROM = { has_character_flag = willful_to_brave }
-		} 
+			FROM = {
+				has_character_flag = willful_to_brave
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13042
 		trigger = {
-			FROM = { has_character_flag = willful_to_stubborn }
+			FROM = {
+				has_character_flag = willful_to_stubborn
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13042 # The child will be like me
 		FROM = {
-			custom_tooltip = { text = willful_may_become_proud }
+			custom_tooltip = {
+				text = willful_may_become_proud
+			}
 		}
-		hidden_tooltip = { FROM = { character_event = { id = ZE.13044 } } }
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = ZE.13044
+				}
+			}
+		}
 	}
+
 	option = {
-		name = EVTOPTB_ZE_13042  # Do not intervene
-		hidden_tooltip = { FROM = { character_event = { id = ZE.13041 } } } # Go to normal trait change
+		name = EVTOPTB_ZE_13042 # Do not intervene
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = ZE.13041
+				}
+			}
+		} # Go to normal trait change
 		if = {
-			limit = { FROM = { has_character_flag = willful_to_ambitious } }
-			tooltip = { FROM = { remove_trait = willful add_trait = ambitious } }
+			limit = {
+				FROM = {
+					has_character_flag = willful_to_ambitious
+				}
+			}
+			tooltip = {
+				FROM = {
+					remove_trait = willful add_trait = ambitious
+				}
+			}
 		}
 		if = {
-			limit = { FROM = { has_character_flag = willful_to_brave } }
-			tooltip = { FROM = { remove_trait = willful add_trait = brave } }
+			limit = {
+				FROM = {
+					has_character_flag = willful_to_brave
+				}
+			}
+			tooltip = {
+				FROM = {
+					remove_trait = willful add_trait = brave
+				}
+			}
 		}
 		if = {
-			limit = { FROM = { has_character_flag = willful_to_stubborn } }
-			tooltip = { FROM = { remove_trait = willful add_trait = stubborn } }
+			limit = {
+				FROM = {
+					has_character_flag = willful_to_stubborn
+				}
+			}
+			tooltip = {
+				FROM = {
+					remove_trait = willful add_trait = stubborn
+				}
+			}
 		}
 	}
 }
@@ -1576,30 +1918,33 @@ character_event = {
 character_event = {
 	id = ZE.13044
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13044
 		trigger = {
-			FROM = { has_character_flag = willful_to_ambitious }
-		} 
+			FROM = {
+				has_character_flag = willful_to_ambitious
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13044
 		trigger = {
-			FROM = { has_character_flag = willful_to_brave }
-		} 
+			FROM = {
+				has_character_flag = willful_to_brave
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13044
 		trigger = {
-			FROM = { has_character_flag = willful_to_stubborn }
+			FROM = {
+				has_character_flag = willful_to_stubborn
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13044
 		remove_trait = willful
@@ -1609,11 +1954,16 @@ character_event = {
 		clr_character_flag = willful_to_stubborn
 		if = {
 			limit = {
-				educator = { ai = no }
+				educator = {
+					ai = no
+				}
 			}
-			educator = { set_character_flag = achievement_follow_me }
+			educator = {
+				set_character_flag = achievement_follow_me
+			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_ZE_13044
 		trigger = {
@@ -1623,6 +1973,7 @@ character_event = {
 		add_trait = ambitious
 		clr_character_flag = willful_to_ambitious
 	}
+
 	option = {
 		name = EVTOPTC_ZE_13044
 		trigger = {
@@ -1632,6 +1983,7 @@ character_event = {
 		add_trait = brave
 		clr_character_flag = willful_to_brave
 	}
+
 	option = {
 		name = EVTOPTD_ZE_13044
 		trigger = {
@@ -1643,28 +1995,23 @@ character_event = {
 	}
 }
 
-
-#############################################
-# Brooding									#
-#############################################
+# Brooding
 
 # brooding turns into just, wroth or envious
 character_event = {
 	id = ZE.13050
-
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	trigger = {
 		trait = brooding
 	}
-	
+
 	immediate = {
 		set_character_flag = was_brooding
-		random_list = {  # Select outcome
+		random_list = {
+			# Select outcome
 			10 = {
 				set_character_flag = brooding_to_just
 				modifier = {
@@ -1719,44 +2066,57 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = { trait = temperate }
-				educator = { trait = temperate }
+				NOT = {
+					trait = temperate
+				}
+				educator = {
+					trait = temperate
+				}
 				prisoner = no
 			}
-			educator = { character_event = { id = ZE.13052 } }  # Let educator decide on intervention
+			educator = {
+				character_event = {
+					id = ZE.13052
+				}
+			} # Let educator decide on intervention
 			break = yes
 		}
-		character_event = { id = ZE.13051 } # Go direct to trait change
+		character_event = {
+			id = ZE.13051
+		} # Go direct to trait change
 	}
 }
 
 character_event = {
 	id = ZE.13051
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13051
 		trigger = {
-			FROM = { has_character_flag = brooding_to_just }
-		} 
+			FROM = {
+				has_character_flag = brooding_to_just
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13051
 		trigger = {
-			FROM = { has_character_flag = brooding_to_wroth }
-		} 
+			FROM = {
+				has_character_flag = brooding_to_wroth
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13051
 		trigger = {
-			FROM = { has_character_flag = brooding_to_envious }
+			FROM = {
+				has_character_flag = brooding_to_envious
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13051
 		trigger = {
@@ -1766,6 +2126,7 @@ character_event = {
 		add_trait = just
 		clr_character_flag = brooding_to_just
 	}
+
 	option = {
 		name = EVTOPTB_ZE_13051
 		trigger = {
@@ -1775,6 +2136,7 @@ character_event = {
 		add_trait = wroth
 		clr_character_flag = brooding_to_wroth
 	}
+
 	option = {
 		name = EVTOPTC_ZE_13051
 		trigger = {
@@ -1786,56 +2148,97 @@ character_event = {
 	}
 }
 
-
 # temperate educator may make child temperate instead
 character_event = {
 	id = ZE.13052
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13052
 		trigger = {
-			FROM = { has_character_flag = brooding_to_just }
-		} 
+			FROM = {
+				has_character_flag = brooding_to_just
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13052
 		trigger = {
-			FROM = { has_character_flag = brooding_to_wroth }
-		} 
+			FROM = {
+				has_character_flag = brooding_to_wroth
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13052
 		trigger = {
-			FROM = { has_character_flag = brooding_to_envious }
+			FROM = {
+				has_character_flag = brooding_to_envious
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13052 # The child will be like me
 		FROM = {
-			custom_tooltip = { text = brooding_may_become_temperate }
+			custom_tooltip = {
+				text = brooding_may_become_temperate
+			}
 		}
-		hidden_tooltip = { FROM = { character_event = { id = ZE.13054 } } }
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = ZE.13054
+				}
+			}
+		}
 	}
+
 	option = {
-		name = EVTOPTB_ZE_13052  # Do not intervene
-		hidden_tooltip = { FROM = { character_event = { id = ZE.13051 } } } # Go to normal trait change
+		name = EVTOPTB_ZE_13052 # Do not intervene
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = ZE.13051
+				}
+			}
+		} # Go to normal trait change
 		if = {
-			limit = { FROM = { has_character_flag = brooding_to_just } }
-			tooltip = { FROM = { remove_trait = brooding add_trait = just } }
+			limit = {
+				FROM = {
+					has_character_flag = brooding_to_just
+				}
+			}
+			tooltip = {
+				FROM = {
+					remove_trait = brooding add_trait = just
+				}
+			}
 		}
 		if = {
-			limit = { FROM = { has_character_flag = brooding_to_wroth } }
-			tooltip = { FROM = { remove_trait = brooding add_trait = wroth } }
+			limit = {
+				FROM = {
+					has_character_flag = brooding_to_wroth
+				}
+			}
+			tooltip = {
+				FROM = {
+					remove_trait = brooding add_trait = wroth
+				}
+			}
 		}
 		if = {
-			limit = { FROM = { has_character_flag = brooding_to_envious } }
-			tooltip = { FROM = { remove_trait = brooding add_trait = envious } }
+			limit = {
+				FROM = {
+					has_character_flag = brooding_to_envious
+				}
+			}
+			tooltip = {
+				FROM = {
+					remove_trait = brooding add_trait = envious
+				}
+			}
 		}
 	}
 }
@@ -1844,30 +2247,33 @@ character_event = {
 character_event = {
 	id = ZE.13054
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13054
 		trigger = {
-			FROM = { has_character_flag = brooding_to_just }
-		} 
+			FROM = {
+				has_character_flag = brooding_to_just
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13054
 		trigger = {
-			FROM = { has_character_flag = brooding_to_wroth }
-		} 
+			FROM = {
+				has_character_flag = brooding_to_wroth
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13054
 		trigger = {
-			FROM = { has_character_flag = brooding_to_envious }
+			FROM = {
+				has_character_flag = brooding_to_envious
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13054
 		remove_trait = brooding
@@ -1877,11 +2283,16 @@ character_event = {
 		clr_character_flag = brooding_to_envious
 		if = {
 			limit = {
-				educator = { ai = no }
+				educator = {
+					ai = no
+				}
 			}
-			educator = { set_character_flag = achievement_follow_me }
+			educator = {
+				set_character_flag = achievement_follow_me
+			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_ZE_13054
 		trigger = {
@@ -1891,6 +2302,7 @@ character_event = {
 		add_trait = just
 		clr_character_flag = brooding_to_just
 	}
+
 	option = {
 		name = EVTOPTC_ZE_13054
 		trigger = {
@@ -1900,6 +2312,7 @@ character_event = {
 		add_trait = wroth
 		clr_character_flag = brooding_to_wroth
 	}
+
 	option = {
 		name = EVTOPTD_ZE_13054
 		trigger = {
@@ -1911,27 +2324,23 @@ character_event = {
 	}
 }
 
-#############################################
-# Indolent									#
-#############################################
+# Indolent
 
 # indolent turns into charitable, slothful or gluttonous
 character_event = {
 	id = ZE.13060
-
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	trigger = {
 		trait = indolent
 	}
-	
+
 	immediate = {
 		set_character_flag = was_indolent
-		random_list = {  # Select outcome
+		random_list = {
+			# Select outcome
 			10 = {
 				set_character_flag = indolent_to_charitable
 				modifier = {
@@ -1986,44 +2395,57 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = { trait = gregarious }
-				educator = { trait = gregarious }
+				NOT = {
+					trait = gregarious
+				}
+				educator = {
+					trait = gregarious
+				}
 				prisoner = no
 			}
-			educator = { character_event = { id = ZE.13062 } }  # Let educator decide on intervention
+			educator = {
+				character_event = {
+					id = ZE.13062
+				}
+			} # Let educator decide on intervention
 			break = yes
 		}
-		character_event = { id = ZE.13061 } # Go direct to trait change
+		character_event = {
+			id = ZE.13061
+		} # Go direct to trait change
 	}
 }
 
 character_event = {
 	id = ZE.13061
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13061
 		trigger = {
-			FROM = { has_character_flag = indolent_to_charitable }
-		} 
+			FROM = {
+				has_character_flag = indolent_to_charitable
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13061
 		trigger = {
-			FROM = { has_character_flag = indolent_to_slothful }
-		} 
+			FROM = {
+				has_character_flag = indolent_to_slothful
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13061
 		trigger = {
-			FROM = { has_character_flag = indolent_to_gluttonous }
+			FROM = {
+				has_character_flag = indolent_to_gluttonous
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13061
 		trigger = {
@@ -2033,6 +2455,7 @@ character_event = {
 		add_trait = charitable
 		clr_character_flag = indolent_to_charitable
 	}
+
 	option = {
 		name = EVTOPTB_ZE_13061
 		trigger = {
@@ -2042,6 +2465,7 @@ character_event = {
 		add_trait = slothful
 		clr_character_flag = indolent_to_slothful
 	}
+
 	option = {
 		name = EVTOPTC_ZE_13061
 		trigger = {
@@ -2053,56 +2477,97 @@ character_event = {
 	}
 }
 
-
 # gregarious educator may make child gregarious instead
 character_event = {
 	id = ZE.13062
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13062
 		trigger = {
-			FROM = { has_character_flag = indolent_to_charitable }
-		} 
+			FROM = {
+				has_character_flag = indolent_to_charitable
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13062
 		trigger = {
-			FROM = { has_character_flag = indolent_to_slothful }
-		} 
+			FROM = {
+				has_character_flag = indolent_to_slothful
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13062
 		trigger = {
-			FROM = { has_character_flag = indolent_to_gluttonous }
+			FROM = {
+				has_character_flag = indolent_to_gluttonous
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13062 # The child will be like me
 		FROM = {
-			custom_tooltip = { text = indolent_may_become_gregarious }
+			custom_tooltip = {
+				text = indolent_may_become_gregarious
+			}
 		}
-		hidden_tooltip = { FROM = { character_event = { id = ZE.13064 } } }
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = ZE.13064
+				}
+			}
+		}
 	}
+
 	option = {
-		name = EVTOPTB_ZE_13062  # Do not intervene
-		hidden_tooltip = { FROM = { character_event = { id = ZE.13061 } } } # Go to normal trait change
+		name = EVTOPTB_ZE_13062 # Do not intervene
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = ZE.13061
+				}
+			}
+		} # Go to normal trait change
 		if = {
-			limit = { FROM = { has_character_flag = indolent_to_charitable } }
-			tooltip = { FROM = { remove_trait = indolent add_trait = charitable } }
+			limit = {
+				FROM = {
+					has_character_flag = indolent_to_charitable
+				}
+			}
+			tooltip = {
+				FROM = {
+					remove_trait = indolent add_trait = charitable
+				}
+			}
 		}
 		if = {
-			limit = { FROM = { has_character_flag = indolent_to_slothful } }
-			tooltip = { FROM = { remove_trait = indolent add_trait = slothful } }
+			limit = {
+				FROM = {
+					has_character_flag = indolent_to_slothful
+				}
+			}
+			tooltip = {
+				FROM = {
+					remove_trait = indolent add_trait = slothful
+				}
+			}
 		}
 		if = {
-			limit = { FROM = { has_character_flag = indolent_to_gluttonous } }
-			tooltip = { FROM = { remove_trait = indolent add_trait = gluttonous } }
+			limit = {
+				FROM = {
+					has_character_flag = indolent_to_gluttonous
+				}
+			}
+			tooltip = {
+				FROM = {
+					remove_trait = indolent add_trait = gluttonous
+				}
+			}
 		}
 	}
 }
@@ -2111,30 +2576,33 @@ character_event = {
 character_event = {
 	id = ZE.13064
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13064
 		trigger = {
-			FROM = { has_character_flag = indolent_to_charitable }
-		} 
+			FROM = {
+				has_character_flag = indolent_to_charitable
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13064
 		trigger = {
-			FROM = { has_character_flag = indolent_to_slothful }
-		} 
+			FROM = {
+				has_character_flag = indolent_to_slothful
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13064
 		trigger = {
-			FROM = { has_character_flag = indolent_to_gluttonous }
+			FROM = {
+				has_character_flag = indolent_to_gluttonous
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13064
 		remove_trait = indolent
@@ -2144,11 +2612,16 @@ character_event = {
 		clr_character_flag = indolent_to_gluttonous
 		if = {
 			limit = {
-				educator = { ai = no }
+				educator = {
+					ai = no
+				}
 			}
-			educator = { set_character_flag = achievement_follow_me }
+			educator = {
+				set_character_flag = achievement_follow_me
+			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_ZE_13064
 		trigger = {
@@ -2158,6 +2631,7 @@ character_event = {
 		add_trait = charitable
 		clr_character_flag = indolent_to_charitable
 	}
+
 	option = {
 		name = EVTOPTC_ZE_13064
 		trigger = {
@@ -2167,6 +2641,7 @@ character_event = {
 		add_trait = slothful
 		clr_character_flag = indolent_to_slothful
 	}
+
 	option = {
 		name = EVTOPTD_ZE_13064
 		trigger = {
@@ -2178,28 +2653,23 @@ character_event = {
 	}
 }
 
-#############################################
-# Playful									#
-#############################################
-
+# Playful
 
 # playful turns into gregarious, deceitful or lunatic
 character_event = {
 	id = ZE.13070
-
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	trigger = {
 		trait = playful
 	}
-	
+
 	immediate = {
 		set_character_flag = was_playful
-		random_list = {  # Select outcome
+		random_list = {
+			# Select outcome
 			15 = {
 				set_character_flag = playful_to_gregarious
 				modifier = {
@@ -2223,7 +2693,7 @@ character_event = {
 				}
 			}
 			1 = {
-				set_character_flag = playful_to_lunatic  # This should be RARE but affected by modifiers/traumas
+				set_character_flag = playful_to_lunatic # This should be RARE but affected by modifiers/traumas
 				modifier = {
 					factor = 0
 					trait = lunatic
@@ -2247,44 +2717,57 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = { trait = cruel }
-				educator = { trait = cruel }
+				NOT = {
+					trait = cruel
+				}
+				educator = {
+					trait = cruel
+				}
 				prisoner = no
 			}
-			educator = { character_event = { id = ZE.13072 } }  # Let educator decide on intervention
+			educator = {
+				character_event = {
+					id = ZE.13072
+				}
+			} # Let educator decide on intervention
 			break = yes
 		}
-		character_event = { id = ZE.13071 } # Go direct to trait change
+		character_event = {
+			id = ZE.13071
+		} # Go direct to trait change
 	}
 }
 
 character_event = {
 	id = ZE.13071
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13071
 		trigger = {
-			FROM = { has_character_flag = playful_to_gregarious }
-		} 
+			FROM = {
+				has_character_flag = playful_to_gregarious
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13071
 		trigger = {
-			FROM = { has_character_flag = playful_to_deceitful }
-		} 
+			FROM = {
+				has_character_flag = playful_to_deceitful
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13071
 		trigger = {
-			FROM = { has_character_flag = playful_to_lunatic }
+			FROM = {
+				has_character_flag = playful_to_lunatic
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13071
 		trigger = {
@@ -2294,6 +2777,7 @@ character_event = {
 		add_trait = gregarious
 		clr_character_flag = playful_to_gregarious
 	}
+
 	option = {
 		name = EVTOPTB_ZE_13071
 		trigger = {
@@ -2303,6 +2787,7 @@ character_event = {
 		add_trait = deceitful
 		clr_character_flag = playful_to_deceitful
 	}
+
 	option = {
 		name = EVTOPTC_ZE_13071
 		trigger = {
@@ -2314,56 +2799,97 @@ character_event = {
 	}
 }
 
-
 # cruel educator may make child cruel instead
 character_event = {
 	id = ZE.13072
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13072
 		trigger = {
-			FROM = { has_character_flag = playful_to_gregarious }
-		} 
+			FROM = {
+				has_character_flag = playful_to_gregarious
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13072
 		trigger = {
-			FROM = { has_character_flag = playful_to_deceitful }
-		} 
+			FROM = {
+				has_character_flag = playful_to_deceitful
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13072
 		trigger = {
-			FROM = { has_character_flag = playful_to_lunatic }
+			FROM = {
+				has_character_flag = playful_to_lunatic
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13072 # The child will be like me
 		FROM = {
-			custom_tooltip = { text = playful_may_become_cruel }
+			custom_tooltip = {
+				text = playful_may_become_cruel
+			}
 		}
-		hidden_tooltip = { FROM = { character_event = { id = ZE.13074 } } }
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = ZE.13074
+				}
+			}
+		}
 	}
+
 	option = {
-		name = EVTOPTB_ZE_13072  # Do not intervene
-		hidden_tooltip = { FROM = { character_event = { id = ZE.13071 } } } # Go to normal trait change
+		name = EVTOPTB_ZE_13072 # Do not intervene
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = ZE.13071
+				}
+			}
+		} # Go to normal trait change
 		if = {
-			limit = { FROM = { has_character_flag = playful_to_gregarious } }
-			tooltip = { FROM = { remove_trait = playful add_trait = gregarious } }
+			limit = {
+				FROM = {
+					has_character_flag = playful_to_gregarious
+				}
+			}
+			tooltip = {
+				FROM = {
+					remove_trait = playful add_trait = gregarious
+				}
+			}
 		}
 		if = {
-			limit = { FROM = { has_character_flag = playful_to_deceitful } }
-			tooltip = { FROM = { remove_trait = playful add_trait = deceitful } }
+			limit = {
+				FROM = {
+					has_character_flag = playful_to_deceitful
+				}
+			}
+			tooltip = {
+				FROM = {
+					remove_trait = playful add_trait = deceitful
+				}
+			}
 		}
 		if = {
-			limit = { FROM = { has_character_flag = playful_to_lunatic } }
-			tooltip = { FROM = { remove_trait = playful add_trait = lunatic } }
+			limit = {
+				FROM = {
+					has_character_flag = playful_to_lunatic
+				}
+			}
+			tooltip = {
+				FROM = {
+					remove_trait = playful add_trait = lunatic
+				}
+			}
 		}
 	}
 }
@@ -2372,30 +2898,33 @@ character_event = {
 character_event = {
 	id = ZE.13074
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13074
 		trigger = {
-			FROM = { has_character_flag = playful_to_gregarious }
-		} 
+			FROM = {
+				has_character_flag = playful_to_gregarious
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13074
 		trigger = {
-			FROM = { has_character_flag = playful_to_deceitful }
-		} 
+			FROM = {
+				has_character_flag = playful_to_deceitful
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13074
 		trigger = {
-			FROM = { has_character_flag = playful_to_lunatic }
+			FROM = {
+				has_character_flag = playful_to_lunatic
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13074
 		remove_trait = playful
@@ -2405,11 +2934,16 @@ character_event = {
 		clr_character_flag = playful_to_lunatic
 		if = {
 			limit = {
-				educator = { ai = no }
+				educator = {
+					ai = no
+				}
 			}
-			educator = { set_character_flag = achievement_follow_me }
+			educator = {
+				set_character_flag = achievement_follow_me
+			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_ZE_13074
 		trigger = {
@@ -2419,6 +2953,7 @@ character_event = {
 		add_trait = gregarious
 		clr_character_flag = playful_to_gregarious
 	}
+
 	option = {
 		name = EVTOPTC_ZE_13074
 		trigger = {
@@ -2428,6 +2963,7 @@ character_event = {
 		add_trait = deceitful
 		clr_character_flag = playful_to_deceitful
 	}
+
 	option = {
 		name = EVTOPTD_ZE_13074
 		trigger = {
@@ -2439,28 +2975,23 @@ character_event = {
 	}
 }
 
-
-#############################################
-# Conscientious								#
-#############################################
+# Conscientious
 
 # conscientious turns into diligent or temperate, chance of additionally getting Stressed
 character_event = {
 	id = ZE.13080
-
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	trigger = {
 		trait = conscientious
 	}
-	
+
 	immediate = {
 		set_character_flag = was_conscientious
-		random_list = {  # Select outcome
+		random_list = {
+			# Select outcome
 			10 = {
 				set_character_flag = conscientious_to_diligent
 				modifier = {
@@ -2501,38 +3032,49 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = { trait = just }
-				educator = { trait = just }
+				NOT = {
+					trait = just
+				}
+				educator = {
+					trait = just
+				}
 				prisoner = no
 			}
-			educator = { character_event = { id = ZE.13082 } }  # Let educator decide on intervention
+			educator = {
+				character_event = {
+					id = ZE.13082
+				}
+			} # Let educator decide on intervention
 			break = yes
 		}
-		character_event = { id = ZE.13081 } # Go direct to trait change
+		character_event = {
+			id = ZE.13081
+		} # Go direct to trait change
 	}
 }
 
 character_event = {
 	id = ZE.13081
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13081
 		trigger = {
-			FROM = { has_character_flag = conscientious_to_diligent }
-		} 
+			FROM = {
+				has_character_flag = conscientious_to_diligent
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13081
 		trigger = {
-			FROM = { has_character_flag = conscientious_to_temperate }
-		} 
+			FROM = {
+				has_character_flag = conscientious_to_temperate
+			}
+		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13081
 		trigger = {
@@ -2542,20 +3084,23 @@ character_event = {
 		add_trait = diligent
 		if = {
 			limit = {
-				NOT = { trait = stressed }
+				NOT = {
+					trait = stressed
+				}
 			}
 			random = {
 				chance = 20
 				add_trait = stressed
 				hidden_tooltip = {
 					character_event = {
-						id = 38282 #Notify Stressed
+						id = 38282 # Notify Stressed
 					}
 				}
 			}
 		}
 		clr_character_flag = conscientious_to_diligent
 	}
+
 	option = {
 		name = EVTOPTB_ZE_13081
 		trigger = {
@@ -2565,14 +3110,16 @@ character_event = {
 		add_trait = temperate
 		if = {
 			limit = {
-				NOT = { trait = stressed }
+				NOT = {
+					trait = stressed
+				}
 			}
 			random = {
 				chance = 20
 				add_trait = stressed
 				hidden_tooltip = {
 					character_event = {
-						id = 38282 #Notify Stressed
+						id = 38282 # Notify Stressed
 					}
 				}
 			}
@@ -2581,46 +3128,77 @@ character_event = {
 	}
 }
 
-
 # just educator may make child just instead
 character_event = {
 	id = ZE.13082
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13082
 		trigger = {
-			FROM = { has_character_flag = conscientious_to_diligent }
-		} 
+			FROM = {
+				has_character_flag = conscientious_to_diligent
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13082
 		trigger = {
-			FROM = { has_character_flag = conscientious_to_temperate }
-		} 
+			FROM = {
+				has_character_flag = conscientious_to_temperate
+			}
+		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13082 # The child will be like me
 		FROM = {
-			custom_tooltip = { text = conscientious_may_become_just }
+			custom_tooltip = {
+				text = conscientious_may_become_just
+			}
 		}
-		hidden_tooltip = { FROM = { character_event = { id = ZE.13084 } } }
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = ZE.13084
+				}
+			}
+		}
 	}
+
 	option = {
-		name = EVTOPTB_ZE_13082  # Do not intervene
-		hidden_tooltip = { FROM = { character_event = { id = ZE.13081 } } } # Go to normal trait change
+		name = EVTOPTB_ZE_13082 # Do not intervene
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = ZE.13081
+				}
+			}
+		} # Go to normal trait change
 		if = {
-			limit = { FROM = { has_character_flag = conscientious_to_diligent } }
-			tooltip = { FROM = { remove_trait = conscientious add_trait = diligent } }
+			limit = {
+				FROM = {
+					has_character_flag = conscientious_to_diligent
+				}
+			}
+			tooltip = {
+				FROM = {
+					remove_trait = conscientious add_trait = diligent
+				}
+			}
 		}
 		if = {
-			limit = { FROM = { has_character_flag = conscientious_to_temperate } }
-			tooltip = { FROM = { remove_trait = conscientious add_trait = temperate } }
+			limit = {
+				FROM = {
+					has_character_flag = conscientious_to_temperate
+				}
+			}
+			tooltip = {
+				FROM = {
+					remove_trait = conscientious add_trait = temperate
+				}
+			}
 		}
 	}
 }
@@ -2629,24 +3207,25 @@ character_event = {
 character_event = {
 	id = ZE.13084
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13084
 		trigger = {
-			FROM = { has_character_flag = conscientious_to_diligent }
-		} 
+			FROM = {
+				has_character_flag = conscientious_to_diligent
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13084
 		trigger = {
-			FROM = { has_character_flag = conscientious_to_temperate }
-		} 
+			FROM = {
+				has_character_flag = conscientious_to_temperate
+			}
+		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13084
 		remove_trait = conscientious
@@ -2655,11 +3234,16 @@ character_event = {
 		clr_character_flag = conscientious_to_temperate
 		if = {
 			limit = {
-				educator = { ai = no }
+				educator = {
+					ai = no
+				}
 			}
-			educator = { set_character_flag = achievement_follow_me }
+			educator = {
+				set_character_flag = achievement_follow_me
+			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_ZE_13084
 		trigger = {
@@ -2669,6 +3253,7 @@ character_event = {
 		add_trait = diligent
 		clr_character_flag = conscientious_to_diligent
 	}
+
 	option = {
 		name = EVTOPTC_ZE_13084
 		trigger = {
@@ -2680,29 +3265,23 @@ character_event = {
 	}
 }
 
-
-
-#############################################
-# Fussy										#
-#############################################
+# Fussy
 
 # fussy turns into patient, greedy or paranoid
 character_event = {
 	id = ZE.13090
-
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	trigger = {
 		trait = fussy
 	}
-	
+
 	immediate = {
 		set_character_flag = was_fussy
-		random_list = {  # Select outcome
+		random_list = {
+			# Select outcome
 			10 = {
 				set_character_flag = fussy_to_patient
 				modifier = {
@@ -2757,44 +3336,57 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = { trait = diligent }
-				educator = { trait = diligent }
+				NOT = {
+					trait = diligent
+				}
+				educator = {
+					trait = diligent
+				}
 				prisoner = no
 			}
-			educator = { character_event = { id = ZE.13092 } }  # Let educator decide on intervention
+			educator = {
+				character_event = {
+					id = ZE.13092
+				}
+			} # Let educator decide on intervention
 			break = yes
 		}
-		character_event = { id = ZE.13091 } # Go direct to trait change
+		character_event = {
+			id = ZE.13091
+		} # Go direct to trait change
 	}
 }
 
 character_event = {
 	id = ZE.13091
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13091
 		trigger = {
-			FROM = { has_character_flag = fussy_to_patient }
-		} 
+			FROM = {
+				has_character_flag = fussy_to_patient
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13091
 		trigger = {
-			FROM = { has_character_flag = fussy_to_greedy }
-		} 
+			FROM = {
+				has_character_flag = fussy_to_greedy
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13091
 		trigger = {
-			FROM = { has_character_flag = fussy_to_paranoid }
+			FROM = {
+				has_character_flag = fussy_to_paranoid
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13091
 		trigger = {
@@ -2804,6 +3396,7 @@ character_event = {
 		add_trait = patient
 		clr_character_flag = fussy_to_patient
 	}
+
 	option = {
 		name = EVTOPTB_ZE_13091
 		trigger = {
@@ -2813,6 +3406,7 @@ character_event = {
 		add_trait = greedy
 		clr_character_flag = fussy_to_greedy
 	}
+
 	option = {
 		name = EVTOPTC_ZE_13091
 		trigger = {
@@ -2824,47 +3418,68 @@ character_event = {
 	}
 }
 
-
 # diligent educator may make child diligent instead
 character_event = {
 	id = ZE.13092
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13092
 		trigger = {
-			FROM = { has_character_flag = fussy_to_patient }
-		} 
+			FROM = {
+				has_character_flag = fussy_to_patient
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13092
 		trigger = {
-			FROM = { has_character_flag = fussy_to_greedy }
-		} 
+			FROM = {
+				has_character_flag = fussy_to_greedy
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13092
 		trigger = {
-			FROM = { has_character_flag = fussy_to_paranoid }
+			FROM = {
+				has_character_flag = fussy_to_paranoid
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13092 # The child will be like me
 		FROM = {
-			custom_tooltip = { text = fussy_may_become_diligent }
+			custom_tooltip = {
+				text = fussy_may_become_diligent
+			}
 		}
-		hidden_tooltip = { FROM = { character_event = { id = ZE.13094 } } }
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = ZE.13094
+				}
+			}
+		}
 	}
+
 	option = {
-		name = EVTOPTB_ZE_13092  # Do not intervene
-		hidden_tooltip = { FROM = { character_event = { id = ZE.13091 } } } # Go to normal trait change
+		name = EVTOPTB_ZE_13092 # Do not intervene
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = ZE.13091
+				}
+			}
+		} # Go to normal trait change
 		if = {
-			limit = { FROM = { has_character_flag = fussy_to_patient } }
+			limit = {
+				FROM = {
+					has_character_flag = fussy_to_patient
+				}
+			}
 			tooltip = {
 				FROM = {
 					remove_trait = fussy
@@ -2873,12 +3488,28 @@ character_event = {
 			}
 		}
 		if = {
-			limit = { FROM = { has_character_flag = fussy_to_greedy } }
-			tooltip = { FROM = { remove_trait = fussy add_trait = greedy } }
+			limit = {
+				FROM = {
+					has_character_flag = fussy_to_greedy
+				}
+			}
+			tooltip = {
+				FROM = {
+					remove_trait = fussy add_trait = greedy
+				}
+			}
 		}
 		if = {
-			limit = { FROM = { has_character_flag = fussy_to_paranoid } }
-			tooltip = { FROM = { remove_trait = fussy add_trait = paranoid } }
+			limit = {
+				FROM = {
+					has_character_flag = fussy_to_paranoid
+				}
+			}
+			tooltip = {
+				FROM = {
+					remove_trait = fussy add_trait = paranoid
+				}
+			}
 		}
 	}
 }
@@ -2887,30 +3518,33 @@ character_event = {
 character_event = {
 	id = ZE.13094
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13094
 		trigger = {
-			FROM = { has_character_flag = fussy_to_patient }
-		} 
+			FROM = {
+				has_character_flag = fussy_to_patient
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13094
 		trigger = {
-			FROM = { has_character_flag = fussy_to_greedy }
-		} 
+			FROM = {
+				has_character_flag = fussy_to_greedy
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13094
 		trigger = {
-			FROM = { has_character_flag = fussy_to_paranoid }
+			FROM = {
+				has_character_flag = fussy_to_paranoid
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13094
 		remove_trait = fussy
@@ -2920,11 +3554,16 @@ character_event = {
 		clr_character_flag = fussy_to_paranoid
 		if = {
 			limit = {
-				educator = { ai = no }
+				educator = {
+					ai = no
+				}
 			}
-			educator = { set_character_flag = achievement_follow_me }
+			educator = {
+				set_character_flag = achievement_follow_me
+			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_ZE_13094
 		trigger = {
@@ -2934,6 +3573,7 @@ character_event = {
 		add_trait = patient
 		clr_character_flag = fussy_to_patient
 	}
+
 	option = {
 		name = EVTOPTC_ZE_13094
 		trigger = {
@@ -2943,6 +3583,7 @@ character_event = {
 		add_trait = greedy
 		clr_character_flag = fussy_to_greedy
 	}
+
 	option = {
 		name = EVTOPTD_ZE_13094
 		trigger = {
@@ -2954,27 +3595,21 @@ character_event = {
 	}
 }
 
-
-#############################################
-# Curious									#
-#############################################
-
+# Curious
 character_event = {
 	id = ZE.13100
-
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	trigger = {
 		trait = curious
 	}
-	
+
 	immediate = {
 		set_character_flag = was_curious
-		random_list = {  # Select outcome
+		random_list = {
+			# Select outcome
 			10 = {
 				set_character_flag = curious_to_cynical
 				modifier = {
@@ -2990,10 +3625,26 @@ character_event = {
 					factor = 0
 					OR = {
 						NOR = {
-							educator = { NOT = { religion_group = ROOT } }
-							location = { NOT = { religion_group = ROOT } }
-							any_friend = { NOT = { religion_group = ROOT } }
-							any_sibling = { NOT = { religion_group = ROOT } }
+							educator = {
+								NOT = {
+									religion_group = ROOT
+								}
+							}
+							location = {
+								NOT = {
+									religion_group = ROOT
+								}
+							}
+							any_friend = {
+								NOT = {
+									religion_group = ROOT
+								}
+							}
+							any_sibling = {
+								NOT = {
+									religion_group = ROOT
+								}
+							}
 						}
 						trait = cynical
 						trait = sympathy_old_world_group
@@ -3003,7 +3654,7 @@ character_event = {
 						trait = sympathy_cytharai_group
 						trait = sympathy_dwarf_gods_group
 						trait = sympathy_halfling_gods_group
-						trait = sympathy_oriental_gods_group	
+						trait = sympathy_oriental_gods_group
 					}
 				}
 				set_character_flag = curious_sympathy_religion
@@ -3020,10 +3671,11 @@ character_event = {
 				set_character_flag = child_became_smarter
 			}
 		}
-		
 		# If sympathy for religion, choose which one...
 		if = {
-			limit = { has_character_flag = curious_sympathy_religion }
+			limit = {
+				has_character_flag = curious_sympathy_religion
+			}
 			random_list = {
 				10 = {
 					set_character_flag = add_sympathy_old_world_group
@@ -3034,10 +3686,18 @@ character_event = {
 					modifier = {
 						factor = 0
 						NOR = {
-							educator = { religion_group = old_world_group }
-							location = { religion_group = old_world_group } 
-							any_friend = { religion_group = old_world_group }
-							any_sibling = { religion_group = old_world_group } 
+							educator = {
+								religion_group = old_world_group
+							}
+							location = {
+								religion_group = old_world_group
+							}
+							any_friend = {
+								religion_group = old_world_group
+							}
+							any_sibling = {
+								religion_group = old_world_group
+							}
 						}
 					}
 				}
@@ -3050,10 +3710,18 @@ character_event = {
 					modifier = {
 						factor = 0
 						NOR = {
-							educator = { religion_group = ormazd_gods_group }
-							location = { religion_group = ormazd_gods_group } 
-							any_friend = { religion_group = ormazd_gods_group }
-							any_sibling = { religion_group = ormazd_gods_group }
+							educator = {
+								religion_group = ormazd_gods_group
+							}
+							location = {
+								religion_group = ormazd_gods_group
+							}
+							any_friend = {
+								religion_group = ormazd_gods_group
+							}
+							any_sibling = {
+								religion_group = ormazd_gods_group
+							}
 						}
 					}
 				}
@@ -3066,10 +3734,18 @@ character_event = {
 					modifier = {
 						factor = 0
 						NOR = {
-							educator = { religion_group = old_gods_group }
-							location = { religion_group = old_gods_group } 
-							any_friend = { religion_group = old_gods_group } 
-							any_sibling = { religion_group = old_gods_group } 
+							educator = {
+								religion_group = old_gods_group
+							}
+							location = {
+								religion_group = old_gods_group
+							}
+							any_friend = {
+								religion_group = old_gods_group
+							}
+							any_sibling = {
+								religion_group = old_gods_group
+							}
 						}
 					}
 				}
@@ -3082,10 +3758,18 @@ character_event = {
 					modifier = {
 						factor = 0
 						NOR = {
-							educator = { religion_group = cadai_group }
-							location = { religion_group = cadai_group }
-							any_friend = { religion_group = cadai_group }
-							any_sibling = { religion_group = cadai_group }
+							educator = {
+								religion_group = cadai_group
+							}
+							location = {
+								religion_group = cadai_group
+							}
+							any_friend = {
+								religion_group = cadai_group
+							}
+							any_sibling = {
+								religion_group = cadai_group
+							}
 						}
 					}
 				}
@@ -3098,10 +3782,18 @@ character_event = {
 					modifier = {
 						factor = 0
 						NOR = {
-							educator = { religion_group = dwarf_gods_group }
-							location = { religion_group = dwarf_gods_group }
-							any_friend = { religion_group = dwarf_gods_group }
-							any_sibling = { religion_group = dwarf_gods_group }
+							educator = {
+								religion_group = dwarf_gods_group
+							}
+							location = {
+								religion_group = dwarf_gods_group
+							}
+							any_friend = {
+								religion_group = dwarf_gods_group
+							}
+							any_sibling = {
+								religion_group = dwarf_gods_group
+							}
 						}
 					}
 				}
@@ -3114,10 +3806,18 @@ character_event = {
 					modifier = {
 						factor = 0
 						NOR = {
-							educator = { religion_group = cytharai_group }
-							location = { religion_group = cytharai_group }
-							any_friend = { religion_group = cytharai_group }
-							any_sibling = { religion_group = cytharai_group }
+							educator = {
+								religion_group = cytharai_group
+							}
+							location = {
+								religion_group = cytharai_group
+							}
+							any_friend = {
+								religion_group = cytharai_group
+							}
+							any_sibling = {
+								religion_group = cytharai_group
+							}
 						}
 					}
 				}
@@ -3130,32 +3830,47 @@ character_event = {
 					modifier = {
 						factor = 0
 						NOR = {
-							educator = { religion_group = halfling_gods_group }
-							location = { religion_group = halfling_gods_group }
-							any_friend = { religion_group = halfling_gods_group }
-							any_sibling = { religion_group = halfling_gods_group }
+							educator = {
+								religion_group = halfling_gods_group
+							}
+							location = {
+								religion_group = halfling_gods_group
+							}
+							any_friend = {
+								religion_group = halfling_gods_group
+							}
+							any_sibling = {
+								religion_group = halfling_gods_group
+							}
 						}
 					}
 				}
 				10 = {
-						set_character_flag = add_sympathy_oriental_gods_group
-						modifier = {
-							factor = 0
-							religion_group = oriental_gods_group
-						}
-						modifier = {
-							factor = 0
-							NOR = {
-								educator = { religion_group = oriental_gods_group }
-								location = { religion_group = oriental_gods_group }
-								any_friend = { religion_group = oriental_gods_group }
-								any_sibling = { religion_group = oriental_gods_group }
+					set_character_flag = add_sympathy_oriental_gods_group
+					modifier = {
+						factor = 0
+						religion_group = oriental_gods_group
+					}
+					modifier = {
+						factor = 0
+						NOR = {
+							educator = {
+								religion_group = oriental_gods_group
+							}
+							location = {
+								religion_group = oriental_gods_group
+							}
+							any_friend = {
+								religion_group = oriental_gods_group
+							}
+							any_sibling = {
+								religion_group = oriental_gods_group
 							}
 						}
+					}
 				}
 			}
 		}
-
 		if = {
 			limit = {
 				AND = {
@@ -3165,10 +3880,26 @@ character_event = {
 					}
 					OR = {
 						NOR = {
-							educator = { NOT = { religion_group = ROOT } }
-							location = { NOT = { religion_group = ROOT } }
-							any_friend = { NOT = { religion_group = ROOT } }
-							any_sibling = { NOT = { religion_group = ROOT } }
+							educator = {
+								NOT = {
+									religion_group = ROOT
+								}
+							}
+							location = {
+								NOT = {
+									religion_group = ROOT
+								}
+							}
+							any_friend = {
+								NOT = {
+									religion_group = ROOT
+								}
+							}
+							any_sibling = {
+								NOT = {
+									religion_group = ROOT
+								}
+							}
 						}
 						trait = cynical
 						trait = sympathy_old_world_group
@@ -3178,7 +3909,7 @@ character_event = {
 						trait = sympathy_cytharai_group
 						trait = sympathy_dwarf_gods_group
 						trait = sympathy_halfling_gods_group
-						trait = sympathy_oriental_gods_group	
+						trait = sympathy_oriental_gods_group
 					}
 					OR = {
 						trait = shrewd
@@ -3190,47 +3921,59 @@ character_event = {
 			remove_trait = curious
 			break = yes
 		}
-		
 		if = {
 			limit = {
-				NOT = { trait = patient }
-				educator = { trait = patient }
+				NOT = {
+					trait = patient
+				}
+				educator = {
+					trait = patient
+				}
 				prisoner = no
 			}
-			educator = { character_event = { id = ZE.13102 } }  # Let educator decide on intervention
+			educator = {
+				character_event = {
+					id = ZE.13102
+				}
+			} # Let educator decide on intervention
 			break = yes
 		}
-		character_event = { id = ZE.13101 } # Go direct to trait change
+		character_event = {
+			id = ZE.13101
+		} # Go direct to trait change
 	}
 }
 
 character_event = {
 	id = ZE.13101
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13101
 		trigger = {
-			FROM = { has_character_flag = curious_to_cynical }
-		} 
+			FROM = {
+				has_character_flag = curious_to_cynical
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13101
 		trigger = {
-			FROM = { has_character_flag = curious_sympathy_religion }
-		} 
+			FROM = {
+				has_character_flag = curious_sympathy_religion
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13101
 		trigger = {
-			FROM = { has_character_flag = curious_to_genius }
+			FROM = {
+				has_character_flag = curious_to_genius
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	immediate = {
 		if = {
 			limit = {
@@ -3257,7 +4000,7 @@ character_event = {
 			break = yes
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_ZE_13101
 		trigger = {
@@ -3267,49 +4010,63 @@ character_event = {
 		add_trait = cynical
 		clr_character_flag = curious_to_cynical
 	}
+
 	option = {
 		name = EVTOPTB_ZE_13101
 		trigger = {
 			has_character_flag = curious_sympathy_religion
 		}
 		if = {
-			limit = { has_character_flag = add_sympathy_christendom }
+			limit = {
+				has_character_flag = add_sympathy_christendom
+			}
 			remove_trait = curious
 			add_trait = sympathy_christendom
 			clr_character_flag = add_sympathy_christendom
 		}
 		if = {
-			limit = { has_character_flag = add_sympathy_islam }
+			limit = {
+				has_character_flag = add_sympathy_islam
+			}
 			remove_trait = curious
 			add_trait = sympathy_islam
 			clr_character_flag = add_sympathy_islam
 		}
 		if = {
-			limit = { has_character_flag = add_sympathy_pagans }
+			limit = {
+				has_character_flag = add_sympathy_pagans
+			}
 			remove_trait = curious
 			add_trait = sympathy_pagans
 			clr_character_flag = add_sympathy_pagans
 		}
 		if = {
-			limit = { has_character_flag = add_sympathy_zoroastrianism }
+			limit = {
+				has_character_flag = add_sympathy_zoroastrianism
+			}
 			remove_trait = curious
 			add_trait = sympathy_zoroastrianism
 			clr_character_flag = add_sympathy_zoroastrianism
 		}
 		if = {
-			limit = { has_character_flag = add_sympathy_judaism }
+			limit = {
+				has_character_flag = add_sympathy_judaism
+			}
 			remove_trait = curious
 			add_trait = sympathy_judaism
 			clr_character_flag = add_sympathy_judaism
 		}
 		if = {
-			limit = { has_character_flag = add_sympathy_indian }
+			limit = {
+				has_character_flag = add_sympathy_indian
+			}
 			remove_trait = curious
 			add_trait = sympathy_indian
 			clr_character_flag = add_sympathy_indian
 		}
 		clr_character_flag = curious_sympathy_religion
 	}
+
 	option = {
 		name = EVTOPTC_ZE_13101
 		trigger = {
@@ -3317,20 +4074,24 @@ character_event = {
 		}
 		clr_character_flag = curious_to_genius
 		if = {
-			limit = { has_character_flag = curious_imbecile_to_slow }
+			limit = {
+				has_character_flag = curious_imbecile_to_slow
+			}
 			remove_trait = curious
 			remove_trait = imbecile
 			add_trait = slow
 			clr_character_flag = curious_imbecile_to_slow
 		}
 		if = {
-			limit = { has_character_flag = curious_slow_to_normal }
+			limit = {
+				has_character_flag = curious_slow_to_normal
+			}
 			remove_trait = curious
 			remove_trait = slow
 			clr_character_flag = curious_slow_to_normal
 		}
 		if = {
-			limit = { 
+			limit = {
 				NOR = {
 					has_character_flag = curious_imbecile_to_slow
 					has_character_flag = curious_slow_to_normal
@@ -3343,59 +4104,88 @@ character_event = {
 	}
 }
 
-
 # patient educator may make child patient instead
 character_event = {
 	id = ZE.13102
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13102
 		trigger = {
-			FROM = { has_character_flag = curious_to_cynical }
-		} 
+			FROM = {
+				has_character_flag = curious_to_cynical
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13102
 		trigger = {
-			FROM = { has_character_flag = curious_sympathy_religion }
-		} 
+			FROM = {
+				has_character_flag = curious_sympathy_religion
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13102
 		trigger = {
-			FROM = { has_character_flag = curious_to_genius }
+			FROM = {
+				has_character_flag = curious_to_genius
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13102 # The child will be like me
 		FROM = {
-			custom_tooltip = { text = curious_may_become_patient }
+			custom_tooltip = {
+				text = curious_may_become_patient
+			}
 		}
-		hidden_tooltip = { FROM = { character_event = { id = ZE.13104 } } }
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = ZE.13104
+				}
+			}
+		}
 	}
+
 	option = {
 		name = {
-			text = EVTOPTB_ZE_13102  # Do not intervene
+			text = EVTOPTB_ZE_13102 # Do not intervene
 			trigger = {
-				FROM = { is_female = no }
+				FROM = {
+					is_female = no
+				}
 			}
 		}
 		name = {
-			text = EVTOPTC_ZE_13102  # Do not intervene
+			text = EVTOPTC_ZE_13102 # Do not intervene
 			trigger = {
-				FROM = { is_female = yes }
+				FROM = {
+					is_female = yes
+				}
 			}
 		}
-		hidden_tooltip = { FROM = { character_event = { id = ZE.13101 } } } # Go to normal trait change
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = ZE.13101
+				}
+			}
+		} # Go to normal trait change
 		if = {
-			limit = { FROM = { has_character_flag = curious_to_cynical } }
-			tooltip = { FROM = { remove_trait = curious add_trait = cynical } }
+			limit = {
+				FROM = {
+					has_character_flag = curious_to_cynical
+				}
+			}
+			tooltip = {
+				FROM = {
+					remove_trait = curious add_trait = cynical
+				}
+			}
 		}
 		if = {
 			limit = {
@@ -3403,7 +4193,11 @@ character_event = {
 					has_character_flag = add_sympathy_christendom
 				}
 			}
-			tooltip = { FROM = { remove_trait = curious add_trait = sympathy_christendom } }
+			tooltip = {
+				FROM = {
+					remove_trait = curious add_trait = sympathy_christendom
+				}
+			}
 		}
 		if = {
 			limit = {
@@ -3411,7 +4205,11 @@ character_event = {
 					has_character_flag = add_sympathy_islam
 				}
 			}
-			tooltip = { FROM = { remove_trait = curious add_trait = sympathy_islam } }
+			tooltip = {
+				FROM = {
+					remove_trait = curious add_trait = sympathy_islam
+				}
+			}
 		}
 		if = {
 			limit = {
@@ -3419,7 +4217,11 @@ character_event = {
 					has_character_flag = add_sympathy_pagans
 				}
 			}
-			tooltip = { FROM = { remove_trait = curious add_trait = sympathy_pagans } }
+			tooltip = {
+				FROM = {
+					remove_trait = curious add_trait = sympathy_pagans
+				}
+			}
 		}
 		if = {
 			limit = {
@@ -3427,7 +4229,11 @@ character_event = {
 					has_character_flag = add_sympathy_zoroastrianism
 				}
 			}
-			tooltip = { FROM = { remove_trait = curious add_trait = sympathy_zoroastrianism } }
+			tooltip = {
+				FROM = {
+					remove_trait = curious add_trait = sympathy_zoroastrianism
+				}
+			}
 		}
 		if = {
 			limit = {
@@ -3435,7 +4241,11 @@ character_event = {
 					has_character_flag = add_sympathy_judaism
 				}
 			}
-			tooltip = { FROM = { remove_trait = curious add_trait = sympathy_judaism } }
+			tooltip = {
+				FROM = {
+					remove_trait = curious add_trait = sympathy_judaism
+				}
+			}
 		}
 		if = {
 			limit = {
@@ -3443,7 +4253,11 @@ character_event = {
 					has_character_flag = add_sympathy_indian
 				}
 			}
-			tooltip = { FROM = { remove_trait = curious add_trait = sympathy_indian } }
+			tooltip = {
+				FROM = {
+					remove_trait = curious add_trait = sympathy_indian
+				}
+			}
 		}
 		if = {
 			limit = {
@@ -3495,10 +4309,18 @@ character_event = {
 			limit = {
 				FROM = {
 					has_character_flag = curious_to_genius
-					NOT = { trait = quick }
-					NOT = { trait = slow }
-					NOT = { trait = imbecile }
-					NOT = { trait = genius }
+					NOT = {
+						trait = quick
+					}
+					NOT = {
+						trait = slow
+					}
+					NOT = {
+						trait = imbecile
+					}
+					NOT = {
+						trait = genius
+					}
 				}
 			}
 			tooltip = {
@@ -3515,30 +4337,33 @@ character_event = {
 character_event = {
 	id = ZE.13104
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13104
 		trigger = {
-			FROM = { has_character_flag = curious_to_cynical }
-		} 
+			FROM = {
+				has_character_flag = curious_to_cynical
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13104
 		trigger = {
-			FROM = { has_character_flag = curious_sympathy_religion }
-		} 
+			FROM = {
+				has_character_flag = curious_sympathy_religion
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13104
 		trigger = {
-			FROM = { has_character_flag = curious_to_genius }
+			FROM = {
+				has_character_flag = curious_to_genius
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	immediate = {
 		if = {
 			limit = {
@@ -3565,7 +4390,7 @@ character_event = {
 			break = yes
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_ZE_13104
 		remove_trait = curious
@@ -3575,11 +4400,16 @@ character_event = {
 		clr_character_flag = curious_to_genius
 		if = {
 			limit = {
-				educator = { ai = no }
+				educator = {
+					ai = no
+				}
 			}
-			educator = { set_character_flag = achievement_follow_me }
+			educator = {
+				set_character_flag = achievement_follow_me
+			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_ZE_13104
 		trigger = {
@@ -3589,6 +4419,7 @@ character_event = {
 		add_trait = cynical
 		clr_character_flag = curious_to_cynical
 	}
+
 	option = {
 		name = EVTOPTC_ZE_13104
 		trigger = {
@@ -3596,37 +4427,50 @@ character_event = {
 		}
 		remove_trait = curious
 		if = {
-			limit = { has_character_flag = add_sympathy_christendom }
+			limit = {
+				has_character_flag = add_sympathy_christendom
+			}
 			add_trait = sympathy_christendom
 			clr_character_flag = add_sympathy_christendom
 		}
 		if = {
-			limit = { has_character_flag = add_sympathy_islam }
+			limit = {
+				has_character_flag = add_sympathy_islam
+			}
 			add_trait = sympathy_islam
 			clr_character_flag = add_sympathy_islam
 		}
 		if = {
-			limit = { has_character_flag = add_sympathy_pagans }
+			limit = {
+				has_character_flag = add_sympathy_pagans
+			}
 			add_trait = sympathy_pagans
 			clr_character_flag = add_sympathy_pagans
 		}
 		if = {
-			limit = { has_character_flag = add_sympathy_zoroastrianism }
+			limit = {
+				has_character_flag = add_sympathy_zoroastrianism
+			}
 			add_trait = sympathy_zoroastrianism
 			clr_character_flag = add_sympathy_zoroastrianism
 		}
 		if = {
-			limit = { has_character_flag = add_sympathy_judaism }
+			limit = {
+				has_character_flag = add_sympathy_judaism
+			}
 			add_trait = sympathy_judaism
 			clr_character_flag = add_sympathy_judaism
 		}
 		if = {
-			limit = { has_character_flag = add_sympathy_indian }
+			limit = {
+				has_character_flag = add_sympathy_indian
+			}
 			add_trait = sympathy_indian
 			clr_character_flag = add_sympathy_indian
 		}
 		clr_character_flag = curious_sympathy_religion
 	}
+
 	option = {
 		name = EVTOPTD_ZE_13104
 		trigger = {
@@ -3634,20 +4478,26 @@ character_event = {
 		}
 		clr_character_flag = curious_to_genius
 		if = {
-			limit = { has_character_flag = curious_imbecile_to_slow }
+			limit = {
+				has_character_flag = curious_imbecile_to_slow
+			}
 			remove_trait = curious
 			remove_trait = imbecile
 			add_trait = slow
 			clr_character_flag = curious_imbecile_to_slow
 		}
 		if = {
-			limit = { has_character_flag = curious_slow_to_normal }
+			limit = {
+				has_character_flag = curious_slow_to_normal
+			}
 			remove_trait = curious
 			remove_trait = slow
 			clr_character_flag = curious_slow_to_normal
 		}
 		if = {
-			limit = { has_character_flag = curious_normal_to_shrewd }
+			limit = {
+				has_character_flag = curious_normal_to_shrewd
+			}
 			remove_trait = curious
 			add_trait = shrewd
 			clr_character_flag = curious_normal_to_shrewd
@@ -3655,28 +4505,23 @@ character_event = {
 	}
 }
 
-
-#############################################
-# Idolizer									#
-#############################################
+# Idolizer
 
 # idolizer turns into zealous, erudite or weak
 character_event = {
 	id = ZE.13110
-
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	trigger = {
 		trait = idolizer
 	}
-	
+
 	immediate = {
 		set_character_flag = was_idolizer
-		random_list = {  # Select outcome
+		random_list = {
+			# Select outcome
 			10 = {
 				set_character_flag = idolizer_to_zealous
 				modifier = {
@@ -3735,47 +4580,59 @@ character_event = {
 			remove_trait = idolizer
 			break = yes
 		}
-		
 		if = {
 			limit = {
-				NOT = { trait = kind }
-				educator = { trait = kind }
+				NOT = {
+					trait = kind
+				}
+				educator = {
+					trait = kind
+				}
 				prisoner = no
 			}
-			educator = { character_event = { id = ZE.13112 } }  # Let educator decide on intervention
+			educator = {
+				character_event = {
+					id = ZE.13112
+				}
+			} # Let educator decide on intervention
 			break = yes
 		}
-		character_event = { id = ZE.13111 } # Go direct to trait change
+		character_event = {
+			id = ZE.13111
+		} # Go direct to trait change
 	}
 }
 
 character_event = {
 	id = ZE.13111
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13111
 		trigger = {
-			FROM = { has_character_flag = idolizer_to_zealous }
-		} 
+			FROM = {
+				has_character_flag = idolizer_to_zealous
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13111
 		trigger = {
-			FROM = { has_character_flag = idolizer_to_erudite }
-		} 
+			FROM = {
+				has_character_flag = idolizer_to_erudite
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13111
 		trigger = {
-			FROM = { has_character_flag = idolizer_to_weak }
+			FROM = {
+				has_character_flag = idolizer_to_weak
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13111
 		trigger = {
@@ -3785,6 +4642,7 @@ character_event = {
 		add_trait = zealous
 		clr_character_flag = idolizer_to_zealous
 	}
+
 	option = {
 		name = EVTOPTB_ZE_13111
 		trigger = {
@@ -3794,6 +4652,7 @@ character_event = {
 		add_trait = erudite
 		clr_character_flag = idolizer_to_erudite
 	}
+
 	option = {
 		name = EVTOPTC_ZE_13111
 		trigger = {
@@ -3805,56 +4664,97 @@ character_event = {
 	}
 }
 
-
 # kind educator may make child kind instead
 character_event = {
 	id = ZE.13112
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13112
 		trigger = {
-			FROM = { has_character_flag = idolizer_to_zealous }
-		} 
+			FROM = {
+				has_character_flag = idolizer_to_zealous
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13112
 		trigger = {
-			FROM = { has_character_flag = idolizer_to_erudite }
-		} 
+			FROM = {
+				has_character_flag = idolizer_to_erudite
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13112
 		trigger = {
-			FROM = { has_character_flag = idolizer_to_weak }
+			FROM = {
+				has_character_flag = idolizer_to_weak
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13112 # The child will be like me
 		FROM = {
-			custom_tooltip = { text = idolizer_may_become_kind }
+			custom_tooltip = {
+				text = idolizer_may_become_kind
+			}
 		}
-		hidden_tooltip = { FROM = { character_event = { id = ZE.13114 } } }
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = ZE.13114
+				}
+			}
+		}
 	}
+
 	option = {
-		name = EVTOPTB_ZE_13112  # Do not intervene
-		hidden_tooltip = { FROM = { character_event = { id = ZE.13111 } } } # Go to normal trait change
+		name = EVTOPTB_ZE_13112 # Do not intervene
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = ZE.13111
+				}
+			}
+		} # Go to normal trait change
 		if = {
-			limit = { FROM = { has_character_flag = idolizer_to_zealous } }
-			tooltip = { FROM = { remove_trait = idolizer add_trait = zealous } }
+			limit = {
+				FROM = {
+					has_character_flag = idolizer_to_zealous
+				}
+			}
+			tooltip = {
+				FROM = {
+					remove_trait = idolizer add_trait = zealous
+				}
+			}
 		}
 		if = {
-			limit = { FROM = { has_character_flag = idolizer_to_erudite } }
-			tooltip = { FROM = { remove_trait = idolizer add_trait = erudite } }
+			limit = {
+				FROM = {
+					has_character_flag = idolizer_to_erudite
+				}
+			}
+			tooltip = {
+				FROM = {
+					remove_trait = idolizer add_trait = erudite
+				}
+			}
 		}
 		if = {
-			limit = { FROM = { has_character_flag = idolizer_to_weak } }
-			tooltip = { FROM = { remove_trait = idolizer add_trait = feeble } }
+			limit = {
+				FROM = {
+					has_character_flag = idolizer_to_weak
+				}
+			}
+			tooltip = {
+				FROM = {
+					remove_trait = idolizer add_trait = feeble
+				}
+			}
 		}
 	}
 }
@@ -3863,30 +4763,33 @@ character_event = {
 character_event = {
 	id = ZE.13114
 	picture = GFX_evt_courtiers_talking
-
 	desc = {
 		text = EVTDESCA_ZE_13114
 		trigger = {
-			FROM = { has_character_flag = idolizer_to_zealous }
-		} 
+			FROM = {
+				has_character_flag = idolizer_to_zealous
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCB_ZE_13114
 		trigger = {
-			FROM = { has_character_flag = idolizer_to_erudite }
-		} 
+			FROM = {
+				has_character_flag = idolizer_to_erudite
+			}
+		}
 	}
 	desc = {
 		text = EVTDESCC_ZE_13114
 		trigger = {
-			FROM = { has_character_flag = idolizer_to_weak }
+			FROM = {
+				has_character_flag = idolizer_to_weak
+			}
 		}
 	}
-
 	is_triggered_only = yes
-	
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_13114
 		remove_trait = idolizer
@@ -3896,11 +4799,16 @@ character_event = {
 		clr_character_flag = idolizer_to_weak
 		if = {
 			limit = {
-				educator = { ai = no }
+				educator = {
+					ai = no
+				}
 			}
-			educator = { set_character_flag = achievement_follow_me }
+			educator = {
+				set_character_flag = achievement_follow_me
+			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_ZE_13004
 		trigger = {
@@ -3910,6 +4818,7 @@ character_event = {
 		add_trait = zealous
 		clr_character_flag = idolizer_to_zealous
 	}
+
 	option = {
 		name = EVTOPTC_ZE_13004
 		trigger = {
@@ -3919,6 +4828,7 @@ character_event = {
 		add_trait = erudite
 		clr_character_flag = idolizer_to_erudite
 	}
+
 	option = {
 		name = EVTOPTD_ZE_13004
 		trigger = {
@@ -3930,38 +4840,35 @@ character_event = {
 	}
 }
 
+# Adolescent love events
 
-#############################################
-#											#
-# Adolescent love events					#
-# ZE.13600-ZE.13950							#
-#											#
-#############################################
-
+# ZE.13600-ZE.13950
 
 # Start/event selection
 character_event = {
 	id = ZE.13997
-
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	capable_only = yes
 	prisoner = no
-	
+
 	trigger = {
 		age = 14
-		NOT = { is_inaccessible_trigger = yes }
+		NOT = {
+			is_inaccessible_trigger = yes
+		}
 		is_ill = no
 	}
-	
+
 	immediate = {
 		random_list = {
-			70 = { # No events
+			70 = {
+				# No events
 			}
 			15 = {
-				character_event = { id = ZE.13610 days = 30 random = 120 } # Romance at court
+				character_event = {
+					id = ZE.13610 days = 30 random = 120
+				} # Romance at court
 			}
 			15 = {
 				modifier = {
@@ -3970,7 +4877,7 @@ character_event = {
 						educator = {
 							any_courtier = {
 								age = 16
-								NOR = { 
+								NOR = {
 									age = 35
 									same_sex = ROOT
 									trait = incapable
@@ -3985,17 +4892,18 @@ character_event = {
 						}
 					}
 				}
-				character_event = { id = ZE.13700 days = 30 random = 120 } # Romantic dreams of older courtier...
+				character_event = {
+					id = ZE.13700 days = 30 random = 120
+				} # Romantic dreams of older courtier...
 			}
 		}
 	}
 }
 
-
-
-# ID ZE.13700-ZE.13799 
+# ID ZE.13700-ZE.13799
 
 # Written by Markus Olsén
+
 # Confused teenager events
 
 # Waking up from a very interesting dream, what was it about?
@@ -4003,16 +4911,15 @@ character_event = {
 	id = ZE.13700
 	picture = GFX_evt_recovery
 	desc = EVTDESCA_ZE_13700
-
 	is_triggered_only = yes
 	capable_only = yes
 
 	trigger = {
 		has_dlc = "Zeus"
 		educator = {
-			any_courtier = {	
+			any_courtier = {
 				age = 16
-				NOR = { 
+				NOR = {
 					age = 35
 					same_sex = ROOT
 					trait = incapable
@@ -4032,7 +4939,7 @@ character_event = {
 			random_courtier = {
 				limit = {
 					age = 16
-					NOR = { 
+					NOR = {
 						age = 35
 						same_sex = ROOT
 						trait = incapable
@@ -4055,7 +4962,9 @@ character_event = {
 			factor = 20
 		}
 		hidden_tooltip = {
-			character_event = { id = ZE.13701 }
+			character_event = {
+				id = ZE.13701
+			}
 		}
 	}
 
@@ -4065,19 +4974,20 @@ character_event = {
 			factor = 78
 		}
 		hidden_tooltip = {
-			character_event = { id = ZE.13702 }
+			character_event = {
+				id = ZE.13702
+			}
 		}
 	}
-
-	#option = {
-	#	name = EVTOPTC_ZE_13700	# Celibate version
-	#	ai_chance = {
-	#		factor = 2
-	#	}
-	#	hidden_tooltip = {
-	#		character_event = { id = ZE.13703 }
-	#	}
-	#}
+	# option = {
+	# 	name = EVTOPTC_ZE_13700	# Celibate version
+	# 	ai_chance = {
+	# 		factor = 2
+	# 	}
+	# 	hidden_tooltip = {
+	# 		character_event = { id = ZE.13703 }
+	# 	}
+	# }
 
 	option = {
 		name = EVTOPTD_ZE_13700	# Don't know don't care
@@ -4091,7 +5001,6 @@ character_event = {
 	id = ZE.13701
 	picture = GFX_evt_stone_church
 	desc = EVTDESCA_ZE_13701
-
 	is_triggered_only = yes
 
 	option = {
@@ -4101,45 +5010,55 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = { trait = homosexual }
+				NOT = {
+					trait = homosexual
+				}
 			}
 			add_trait = homosexual
 		}
 	}
 
 	option = {
-		name = EVTOPTB_ZE_13701	# Homosexual + chaste
+		name = EVTOPTB_ZE_13701	# Homosexual chaste
 		ai_chance = {
 			factor = 30
 		}
 		if = {
 			limit = {
-				NOT = { trait = homosexual }
+				NOT = {
+					trait = homosexual
+				}
 			}
 			add_trait = homosexual
 		}
 		if = {
 			limit = {
-				NOT = { trait = chaste }
+				NOT = {
+					trait = chaste
+				}
 			}
 			add_trait = chaste
 		}
 	}
 
 	option = {
-		name = EVTOPTC_ZE_13701	# Homosexual + lustful
+		name = EVTOPTC_ZE_13701	# Homosexual lustful
 		ai_chance = {
 			factor = 10
 		}
 		if = {
 			limit = {
-				NOT = { trait = homosexual }
+				NOT = {
+					trait = homosexual
+				}
 			}
 			add_trait = homosexual
 		}
 		if = {
 			limit = {
-				NOT = { trait = lustful }
+				NOT = {
+					trait = lustful
+				}
 			}
 			add_trait = lustful
 		}
@@ -4158,7 +5077,6 @@ character_event = {
 	id = ZE.13702
 	picture = GFX_evt_lovers
 	desc = EVTDESCA_ZE_13702
-
 	is_triggered_only = yes
 
 	option = {
@@ -4173,12 +5091,16 @@ character_event = {
 		}
 		event_target:lustful_target = {
 			hidden_tooltip = {
-				character_event = { id = ZE.13704 days = 2 }
+				character_event = {
+					id = ZE.13704 days = 2
+				}
 			}
 		}
 		if = {
 			limit = {
-				NOT = { trait = chaste }
+				NOT = {
+					trait = chaste
+				}
 			}
 			add_trait = chaste
 		}
@@ -4191,48 +5113,70 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = { trait = lustful }
+				NOT = {
+					trait = lustful
+				}
 			}
 			add_trait = lustful
 		}
 	}
 }
 
-#character_event = {
-#	id = ZE.13703
-#	picture = GFX_evt_child_reading
-#	desc = EVTDESCA_ZE_13703
-#
-#	is_triggered_only = yes
-#
-#	option = {
-#		name = EVTOPTA_ZE_13703	# Celibate
-#		ai_chance = {
-#			factor = 100
-#		}
-#		piety = 30
-#		if = {
-#			limit = {
-#				NOT = { trait = celibate }
-#			}
-#			add_trait = celibate
-#		}
-#	}
-#
-#	option = {
-#		name = EVTOPTB_ZE_13703	# Wait and see
-#		ai_chance = {
-#			factor = 0
-#		}
-#	}
-#}
+# character_event = {
+
+# 	id = ZE.13703
+
+# 	picture = GFX_evt_child_reading
+
+# 	desc = EVTDESCA_ZE_13703
+
+# 	is_triggered_only = yes
+
+# 	option = {
+
+# 		name = EVTOPTA_ZE_13703	# Celibate
+
+# 		ai_chance = {
+
+# 			factor = 100
+
+# 		}
+
+# 		piety = 30
+
+# 		if = {
+
+# 			limit = {
+
+# 				NOT = { trait = celibate }
+
+# 			}
+
+# 			add_trait = celibate
+
+# 		}
+
+# 	}
+
+# 	option = {
+
+# 		name = EVTOPTB_ZE_13703	# Wait and see
+
+# 		ai_chance = {
+
+# 			factor = 0
+
+# 		}
+
+# 	}
+
+# }
 
 # Courtier informed child has a crush on him/her
 character_event = {
 	id = ZE.13704
 	picture = GFX_evt_courtiers_talking
 	desc = EVTDESCA_ZE_13704
-
 	is_triggered_only = yes
 
 	option = {
@@ -4246,45 +5190,36 @@ character_event = {
 	}
 }
 
-
-#############################################
-# Flag clearing								#
-#############################################
+# Flag clearing
 
 # Clear adolescence trait event chain flags on adulthood
 character_event = {
 	id = ZE.13998
-
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		clr_character_flag = child_became_less_smart
 		clr_character_flag = child_became_smarter
 	}
 }
 
-#############################################
-#											#
-# Romantic endeavors						#
-# ZE.13600-ZE.13699							#
-#											#
-#############################################
+# Romantic endeavors
+
+# ZE.13600-ZE.13699
 
 character_event = {
 	id = ZE.13610
 	desc = EVTDESC_ZE_13610
 	picture = GFX_evt_noble_in_castle
 	border = GFX_event_normal_frame_diplomacy
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
-		
 	}
-	
-	option = { # Farrier's apprentice 
+
+	option = {
+		# Farrier's apprentice
 		name = EVTOPTA_ZE_13610
 		trigger = {
 			is_female = yes
@@ -4293,10 +5228,13 @@ character_event = {
 			factor = 46
 		}
 		set_character_flag = ZE_13610_farrier
-		character_event = { id = ZE.13611 days = 30 }
+		character_event = {
+			id = ZE.13611 days = 30
+		}
 	}
-	
-	option = { # Carpenter's daughter male
+
+	option = {
+		# Carpenter's daughter male
 		name = EVTOPTA_ZE_13610_MALE
 		trigger = {
 			is_female = no
@@ -4305,10 +5243,13 @@ character_event = {
 			factor = 46
 		}
 		set_character_flag = ZE_13610_carpenter_male
-		character_event = { id = ZE.13611 days = 30 }
+		character_event = {
+			id = ZE.13611 days = 30
+		}
 	}
-	
-	option = { # Carpenter's daughter
+
+	option = {
+		# Carpenter's daughter
 		name = EVTOPTB_ZE_13610
 		trigger = {
 			is_female = yes
@@ -4318,10 +5259,13 @@ character_event = {
 		}
 		add_trait = homosexual
 		set_character_flag = ZE_13610_carpenter
-		character_event = { id = ZE.13611 days = 30 }
+		character_event = {
+			id = ZE.13611 days = 30
+		}
 	}
-	
-	option = { # Farrier's apprentice Male
+
+	option = {
+		# Farrier's apprentice Male
 		name = EVTOPTB_ZE_13610_MALE
 		trigger = {
 			is_female = no
@@ -4331,10 +5275,13 @@ character_event = {
 		}
 		add_trait = homosexual
 		set_character_flag = ZE_13610_farrier_male
-		character_event = { id = ZE.13611 days = 30 }
+		character_event = {
+			id = ZE.13611 days = 30
+		}
 	}
-	
-	option = { # I don't have time for this 
+
+	option = {
+		# I don't have time for this
 		name = EVTOPTC_ZE_13610
 		ai_chance = {
 			factor = 30
@@ -4364,14 +5311,13 @@ character_event = {
 	}
 	picture = GFX_evt_lovers
 	border = GFX_event_normal_frame_diplomacy
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
-		
 	}
-	
-	option = { # Chaste 
+
+	option = {
+		# Chaste
 		name = EVTOPTA_ZE_13611_CARP
 		add_trait = chaste
 		trigger = {
@@ -4380,9 +5326,13 @@ character_event = {
 				has_character_flag = ZE_13610_carpenter_male
 			}
 		}
-		
-		hidden_tooltip = { character_event = { id = ZE.13612 } } # Clear flags
+		hidden_tooltip = {
+			character_event = {
+				id = ZE.13612
+			}
+		} # Clear flags
 	}
+
 	option = {
 		name = EVTOPTA_ZE_13611_FERR
 		add_trait = chaste
@@ -4392,10 +5342,15 @@ character_event = {
 				has_character_flag = ZE_13610_ferrier_male
 			}
 		}
-		
-		hidden_tooltip = { character_event = { id = ZE.13612 } } # Clear flags
+		hidden_tooltip = {
+			character_event = {
+				id = ZE.13612
+			}
+		} # Clear flags
 	}
-	option = { # No special outcome 
+
+	option = {
+		# No special outcome
 		name = EVTOPTB_ZE_13611_CARP
 		trigger = {
 			OR = {
@@ -4403,9 +5358,13 @@ character_event = {
 				has_character_flag = ZE_13610_carpenter_male
 			}
 		}
-		
-		hidden_tooltip = { character_event = { id = ZE.13612 } } # Clear flags
+		hidden_tooltip = {
+			character_event = {
+				id = ZE.13612
+			}
+		} # Clear flags
 	}
+
 	option = {
 		name = EVTOPTB_ZE_13611_FERR
 		trigger = {
@@ -4414,10 +5373,15 @@ character_event = {
 				has_character_flag = ZE_13610_ferrier_male
 			}
 		}
-		
-		hidden_tooltip = { character_event = { id = ZE.13612 } } # Clear flags
+		hidden_tooltip = {
+			character_event = {
+				id = ZE.13612
+			}
+		} # Clear flags
 	}
-	option = { # Lustful 
+
+	option = {
+		# Lustful
 		name = EVTOPTC_ZE_13611_CARP
 		add_trait = lustful
 		trigger = {
@@ -4426,10 +5390,15 @@ character_event = {
 				has_character_flag = ZE_13610_carpenter_male
 			}
 		}
-		
-		hidden_tooltip = { character_event = { id = ZE.13612 } } # Clear flags
+		hidden_tooltip = {
+			character_event = {
+				id = ZE.13612
+			}
+		} # Clear flags
 	}
-	option = { # Lustful 
+
+	option = {
+		# Lustful
 		name = EVTOPTC_ZE_13611_FERR
 		add_trait = lustful
 		trigger = {
@@ -4438,18 +5407,19 @@ character_event = {
 				has_character_flag = ZE_13610_ferrier_male
 			}
 		}
-		
-		hidden_tooltip = { character_event = { id = ZE.13612 } } # Clear flags
+		hidden_tooltip = {
+			character_event = {
+				id = ZE.13612
+			}
+		} # Clear flags
 	}
 }
 
 character_event = {
 	id = ZE.13612
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		clr_character_flag = ZE_13610_carpenter
 		clr_character_flag = ZE_13610_carpenter_male
@@ -4458,13 +5428,10 @@ character_event = {
 	}
 }
 
-#####################################################################
-# Influence events 													#
-#####################################################################
+# Influence events
 character_event = {
 	id = ZE.13615
 	hide_window = yes
-
 	is_triggered_only = yes
 
 	trigger = {
@@ -4475,14 +5442,17 @@ character_event = {
 			has_character_modifier = the_oubliette
 		}
 		age = 14
-		NOT = { age = 16 }
+		NOT = {
+			age = 16
+		}
 		educator = {
 			always = yes
 		}
 	}
 
 	immediate = {
-		if = { #If we have more than 2 high skills
+		if = {
+			# If we have more than 2 high skills
 			limit = {
 				educator = {
 					OR = {
@@ -4530,26 +5500,42 @@ character_event = {
 					OR = {
 						AND = {
 							ROOT = {
-								NOT = { trait = ambitious }
+								NOT = {
+									trait = ambitious
+								}
 							}
-							NOT = { is_rival = ROOT }
+							NOT = {
+								is_rival = ROOT
+							}
 						}
 						AND = {
 							ROOT = {
-								NOT = { trait = diligent }
+								NOT = {
+									trait = diligent
+								}
 							}
-							NOT = { trait = stressed }
+							NOT = {
+								trait = stressed
+							}
 						}
 						AND = {
 							ROOT = {
-								NOT = { trait = patient }
+								NOT = {
+									trait = patient
+								}
 							}
-							NOT = { has_character_modifier = out_of_patience }
+							NOT = {
+								has_character_modifier = out_of_patience
+							}
 						}
 					}
 				}
 			}
-			educator = { character_event = { id = ZE.13625 days = 30 random = 20 } }
+			educator = {
+				character_event = {
+					id = ZE.13625 days = 30 random = 20
+				}
+			}
 			break = yes
 		}
 		random_list = {
@@ -4562,7 +5548,9 @@ character_event = {
 							OR = {
 								AND = {
 									ROOT = {
-										NOT = { trait = honest }
+										NOT = {
+											trait = honest
+										}
 									}
 									NOT = {
 										trait = trusting
@@ -4570,15 +5558,23 @@ character_event = {
 								}
 								AND = {
 									ROOT = {
-										NOT = { trait = gregarious }
+										NOT = {
+											trait = gregarious
+										}
 									}
-									NOT = { has_character_modifier = chattermouth }
+									NOT = {
+										has_character_modifier = chattermouth
+									}
 								}
 							}
 						}
 					}
 				}
-				educator = { character_event = { id = ZE.13620 days = 30 random = 20 } }
+				educator = {
+					character_event = {
+						id = ZE.13620 days = 30 random = 20
+					}
+				}
 			}
 			20 = {
 				modifier = {
@@ -4589,7 +5585,9 @@ character_event = {
 							OR = {
 								AND = {
 									ROOT = {
-										NOT = { trait = brave }
+										NOT = {
+											trait = brave
+										}
 									}
 									NOT = {
 										trait = stressed
@@ -4597,7 +5595,9 @@ character_event = {
 								}
 								AND = {
 									ROOT = {
-										NOT = { trait = wroth }
+										NOT = {
+											trait = wroth
+										}
 									}
 									NOT = {
 										trait = cruel
@@ -4607,7 +5607,11 @@ character_event = {
 						}
 					}
 				}
-				educator = { character_event = { id = ZE.13621 days = 30 random = 20 } }
+				educator = {
+					character_event = {
+						id = ZE.13621 days = 30 random = 20
+					}
+				}
 			}
 			20 = {
 				modifier = {
@@ -4618,20 +5622,28 @@ character_event = {
 							OR = {
 								AND = {
 									ROOT = {
-										NOT = { trait = just }
+										NOT = {
+											trait = just
+										}
 									}
 									NOT = {
 										holds_favor_on = ROOT
 									}
 								}
 								ROOT = {
-									NOT = { trait = temperate }
+									NOT = {
+										trait = temperate
+									}
 								}
 							}
 						}
 					}
 				}
-				educator = { character_event = { id = ZE.13622 days = 30 random = 20 } }
+				educator = {
+					character_event = {
+						id = ZE.13622 days = 30 random = 20
+					}
+				}
 			}
 			20 = {
 				modifier = {
@@ -4642,7 +5654,9 @@ character_event = {
 							OR = {
 								AND = {
 									ROOT = {
-										NOT = { trait = deceitful }
+										NOT = {
+											trait = deceitful
+										}
 									}
 									NOT = {
 										trait = paranoid
@@ -4650,15 +5664,23 @@ character_event = {
 								}
 								AND = {
 									ROOT = {
-										NOT = { trait = cynical }
+										NOT = {
+											trait = cynical
+										}
 									}
-									NOT = { has_character_modifier = impious_teachings }
+									NOT = {
+										has_character_modifier = impious_teachings
+									}
 								}
 							}
 						}
 					}
 				}
-				educator = { character_event = { id = ZE.13623 days = 30 random = 20 } }
+				educator = {
+					character_event = {
+						id = ZE.13623 days = 30 random = 20
+					}
+				}
 			}
 			20 = {
 				modifier = {
@@ -4669,33 +5691,39 @@ character_event = {
 							OR = {
 								AND = {
 									ROOT = {
-										NOT = { trait = erudite }
+										NOT = {
+											trait = erudite
+										}
 									}
 									NOT = {
 										trait = stubborn
 									}
 								}
 								ROOT = {
-									NOT = { trait = chaste }
+									NOT = {
+										trait = chaste
+									}
 								}
 							}
 						}
 					}
 				}
-				educator = { character_event = { id = ZE.13624 days = 30 random = 20 } }
+				educator = {
+					character_event = {
+						id = ZE.13624 days = 30 random = 20
+					}
+				}
 			}
 		}
 	}
 }
 
-
-#Educator has high diplomacy
+# Educator has high diplomacy
 character_event = {
 	id = ZE.13620
 	desc = EVTDESC_ZE_13620
 	picture = GFX_evt_monk
 	border = GFX_event_normal_frame_diplomacy
-	
 	is_triggered_only = yes
 
 	trigger = {
@@ -4703,7 +5731,9 @@ character_event = {
 		OR = {
 			AND = {
 				FROM = {
-					NOT = { trait = honest }
+					NOT = {
+						trait = honest
+					}
 				}
 				NOT = {
 					trait = trusting
@@ -4711,9 +5741,13 @@ character_event = {
 			}
 			AND = {
 				FROM = {
-					NOT = { trait = gregarious }
+					NOT = {
+						trait = gregarious
+					}
 				}
-				NOT = { has_character_modifier = chattermouth }
+				NOT = {
+					has_character_modifier = chattermouth
+				}
 			}
 		}
 	}
@@ -4721,21 +5755,32 @@ character_event = {
 	option = {
 		ai_chance = {
 			factor = 1
-
 			modifier = {
 				factor = 30
-				current_heir = { character = FROM }
+				current_heir = {
+					character = FROM
+				}
 			}
 			modifier = {
 				factor = 15
-				NOT = { current_heir = { character = FROM } }
-				any_child = { character = FROM }
+				NOT = {
+					current_heir = {
+						character = FROM
+					}
+				}
+				any_child = {
+					character = FROM
+				}
 			}
 			modifier = {
 				factor = 5
 				NOR = {
-					current_heir = { character = FROM }
-					any_child = { character = FROM }
+					current_heir = {
+						character = FROM
+					}
+					any_child = {
+						character = FROM
+					}
 				}
 				OR = {
 					trait = kind
@@ -4752,7 +5797,9 @@ character_event = {
 		name = EVTOPTA_ZE_13620
 		trigger = {
 			FROM = {
-				NOT = { trait = honest }
+				NOT = {
+					trait = honest
+				}
 			}
 			NOT = {
 				trait = trusting
@@ -4760,7 +5807,9 @@ character_event = {
 		}
 		FROM = {
 			if = {
-				limit = { trait = deceitful }
+				limit = {
+					trait = deceitful
+				}
 				remove_trait = deceitful
 			}
 			add_trait = honest
@@ -4770,7 +5819,9 @@ character_event = {
 			years = 5
 		}
 		if = {
-			limit = { trait = deceitful }
+			limit = {
+				trait = deceitful
+			}
 			reverse_opinion = {
 				who = FROM
 				modifier = opinion_hypocrite
@@ -4782,15 +5833,22 @@ character_event = {
 	option = {
 		ai_chance = {
 			factor = 1
-
 			modifier = {
 				factor = 15
-				current_heir = { character = FROM }
+				current_heir = {
+					character = FROM
+				}
 			}
 			modifier = {
 				factor = 30
-				NOT = { current_heir = { character = FROM } }
-				any_child = { character = FROM }
+				NOT = {
+					current_heir = {
+						character = FROM
+					}
+				}
+				any_child = {
+					character = FROM
+				}
 			}
 			modifier = {
 				factor = 10
@@ -4809,13 +5867,19 @@ character_event = {
 		name = EVTOPTB_ZE_13620
 		trigger = {
 			FROM = {
-				NOT = { trait = gregarious }
+				NOT = {
+					trait = gregarious
+				}
 			}
-			NOT = { has_character_modifier = chattermouth }
+			NOT = {
+				has_character_modifier = chattermouth
+			}
 		}
 		FROM = {
 			if = {
-				limit = { trait = shy }
+				limit = {
+					trait = shy
+				}
 				remove_trait = shy
 			}
 			add_trait = gregarious
@@ -4825,7 +5889,9 @@ character_event = {
 			years = 5
 		}
 		if = {
-			limit = { trait = shy }
+			limit = {
+				trait = shy
+			}
 			reverse_opinion = {
 				who = FROM
 				modifier = opinion_hypocrite
@@ -4842,13 +5908,12 @@ character_event = {
 	}
 }
 
-#Educator has high martial
+# Educator has high martial
 character_event = {
 	id = ZE.13621
 	desc = EVTDESC_ZE_13621
 	picture = GFX_evt_melee
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
 
 	trigger = {
@@ -4856,7 +5921,9 @@ character_event = {
 		OR = {
 			AND = {
 				FROM = {
-					NOT = { trait = brave }
+					NOT = {
+						trait = brave
+					}
 				}
 				NOT = {
 					trait = stressed
@@ -4864,7 +5931,9 @@ character_event = {
 			}
 			AND = {
 				FROM = {
-					NOT = { trait = wroth }
+					NOT = {
+						trait = wroth
+					}
 				}
 				NOT = {
 					trait = cruel
@@ -4876,21 +5945,32 @@ character_event = {
 	option = {
 		ai_chance = {
 			factor = 1
-
 			modifier = {
 				factor = 30
-				current_heir = { character = FROM }
+				current_heir = {
+					character = FROM
+				}
 			}
 			modifier = {
 				factor = 15
-				NOT = { current_heir = { character = FROM } }
-				any_child = { character = FROM }
+				NOT = {
+					current_heir = {
+						character = FROM
+					}
+				}
+				any_child = {
+					character = FROM
+				}
 			}
 			modifier = {
 				factor = 5
 				NOR = {
-					current_heir = { character = FROM }
-					any_child = { character = FROM }
+					current_heir = {
+						character = FROM
+					}
+					any_child = {
+						character = FROM
+					}
 				}
 				OR = {
 					trait = kind
@@ -4907,7 +5987,9 @@ character_event = {
 		name = EVTOPTA_ZE_13621
 		trigger = {
 			FROM = {
-				NOT = { trait = brave }
+				NOT = {
+					trait = brave
+				}
 			}
 			NOT = {
 				trait = stressed
@@ -4915,14 +5997,18 @@ character_event = {
 		}
 		FROM = {
 			if = {
-				limit = { trait = craven }
+				limit = {
+					trait = craven
+				}
 				remove_trait = craven
 			}
 			add_trait = brave
 		}
 		add_trait = stressed
 		if = {
-			limit = { trait = craven }
+			limit = {
+				trait = craven
+			}
 			reverse_opinion = {
 				who = FROM
 				modifier = opinion_hypocrite
@@ -4934,7 +6020,6 @@ character_event = {
 	option = {
 		ai_chance = {
 			factor = 1
-
 			modifier = {
 				factor = 20
 				trait = wroth
@@ -4944,7 +6029,9 @@ character_event = {
 		name = EVTOPTB_ZE_13621
 		trigger = {
 			FROM = {
-				NOT = { trait = wroth }
+				NOT = {
+					trait = wroth
+				}
 			}
 			NOT = {
 				trait = cruel
@@ -4952,13 +6039,17 @@ character_event = {
 		}
 		FROM = {
 			if = {
-				limit = { trait = patient }
+				limit = {
+					trait = patient
+				}
 				remove_trait = patient
 			}
 			add_trait = wroth
 		}
 		if = {
-			limit = { trait = patient }
+			limit = {
+				trait = patient
+			}
 			reverse_opinion = {
 				who = FROM
 				modifier = opinion_hypocrite
@@ -4966,7 +6057,9 @@ character_event = {
 			}
 		}
 		if = {
-			limit = { trait = kind }
+			limit = {
+				trait = kind
+			}
 			remove_trait = kind
 			break = yes
 		}
@@ -4981,13 +6074,12 @@ character_event = {
 	}
 }
 
-#Educator has high stewardship
+# Educator has high stewardship
 character_event = {
 	id = ZE.13622
 	desc = EVTDESC_ZE_13622
 	picture = GFX_evt_relaxed_ruler
 	border = GFX_event_normal_frame_economy
-	
 	is_triggered_only = yes
 
 	trigger = {
@@ -4995,14 +6087,18 @@ character_event = {
 		OR = {
 			AND = {
 				FROM = {
-					NOT = { trait = just }
+					NOT = {
+						trait = just
+					}
 				}
 				NOT = {
 					holds_favor_on = FROM
 				}
 			}
 			FROM = {
-				NOT = { trait = temperate }
+				NOT = {
+					trait = temperate
+				}
 			}
 		}
 	}
@@ -5010,21 +6106,32 @@ character_event = {
 	option = {
 		ai_chance = {
 			factor = 1
-
 			modifier = {
 				factor = 30
-				current_heir = { character = FROM }
+				current_heir = {
+					character = FROM
+				}
 			}
 			modifier = {
 				factor = 15
-				NOT = { current_heir = { character = FROM } }
-				any_child = { character = FROM }
+				NOT = {
+					current_heir = {
+						character = FROM
+					}
+				}
+				any_child = {
+					character = FROM
+				}
 			}
 			modifier = {
 				factor = 5
 				NOR = {
-					current_heir = { character = FROM }
-					any_child = { character = FROM }
+					current_heir = {
+						character = FROM
+					}
+					any_child = {
+						character = FROM
+					}
 				}
 				OR = {
 					trait = kind
@@ -5041,7 +6148,9 @@ character_event = {
 		name = EVTOPTA_ZE_13622
 		trigger = {
 			FROM = {
-				NOT = { trait = just }
+				NOT = {
+					trait = just
+				}
 			}
 			NOT = {
 				holds_favor_on = FROM
@@ -5049,14 +6158,18 @@ character_event = {
 		}
 		FROM = {
 			if = {
-				limit = { trait = arbitrary }
+				limit = {
+					trait = arbitrary
+				}
 				remove_trait = arbitrary
 			}
 			add_trait = just
 		}
 		reverse_add_favor = FROM
 		if = {
-			limit = { trait = arbitrary }
+			limit = {
+				trait = arbitrary
+			}
 			reverse_opinion = {
 				who = FROM
 				modifier = opinion_hypocrite
@@ -5068,21 +6181,32 @@ character_event = {
 	option = {
 		ai_chance = {
 			factor = 1
-
 			modifier = {
 				factor = 15
-				current_heir = { character = FROM }
+				current_heir = {
+					character = FROM
+				}
 			}
 			modifier = {
 				factor = 30
-				NOT = { current_heir = { character = FROM } }
-				any_child = { character = FROM }
+				NOT = {
+					current_heir = {
+						character = FROM
+					}
+				}
+				any_child = {
+					character = FROM
+				}
 			}
 			modifier = {
 				factor = 5
 				NOR = {
-					current_heir = { character = FROM }
-					any_child = { character = FROM }
+					current_heir = {
+						character = FROM
+					}
+					any_child = {
+						character = FROM
+					}
 				}
 				OR = {
 					trait = kind
@@ -5099,18 +6223,24 @@ character_event = {
 		name = EVTOPTB_ZE_13622
 		trigger = {
 			FROM = {
-				NOT = { trait = temperate }
+				NOT = {
+					trait = temperate
+				}
 			}
 		}
 		FROM = {
 			if = {
-				limit = { trait = gluttonous }
+				limit = {
+					trait = gluttonous
+				}
 				remove_trait = gluttonous
 			}
 			add_trait = temperate
 		}
 		if = {
-			limit = { trait = gluttonous }
+			limit = {
+				trait = gluttonous
+			}
 			reverse_opinion = {
 				who = FROM
 				modifier = opinion_hypocrite
@@ -5132,14 +6262,12 @@ character_event = {
 	}
 }
 
-
-#Educator has high intrigue
+# Educator has high intrigue
 character_event = {
 	id = ZE.13623
 	desc = EVTDESC_ZE_13623
 	picture = GFX_evt_whispers
 	border = GFX_event_normal_frame_intrigue
-	
 	is_triggered_only = yes
 
 	trigger = {
@@ -5147,7 +6275,9 @@ character_event = {
 		OR = {
 			AND = {
 				FROM = {
-					NOT = { trait = deceitful }
+					NOT = {
+						trait = deceitful
+					}
 				}
 				NOT = {
 					trait = paranoid
@@ -5155,9 +6285,13 @@ character_event = {
 			}
 			AND = {
 				FROM = {
-					NOT = { trait = cynical }
+					NOT = {
+						trait = cynical
+					}
 				}
-				NOT = { has_character_modifier = impious_teachings }
+				NOT = {
+					has_character_modifier = impious_teachings
+				}
 			}
 		}
 	}
@@ -5165,21 +6299,32 @@ character_event = {
 	option = {
 		ai_chance = {
 			factor = 1
-
 			modifier = {
 				factor = 30
-				current_heir = { character = FROM }
+				current_heir = {
+					character = FROM
+				}
 			}
 			modifier = {
 				factor = 15
-				NOT = { current_heir = { character = FROM } }
-				any_child = { character = FROM }
+				NOT = {
+					current_heir = {
+						character = FROM
+					}
+				}
+				any_child = {
+					character = FROM
+				}
 			}
 			modifier = {
 				factor = 5
 				NOR = {
-					current_heir = { character = FROM }
-					any_child = { character = FROM }
+					current_heir = {
+						character = FROM
+					}
+					any_child = {
+						character = FROM
+					}
 				}
 				OR = {
 					trait = kind
@@ -5196,7 +6341,9 @@ character_event = {
 		name = EVTOPTA_ZE_13623
 		trigger = {
 			FROM = {
-				NOT = { trait = deceitful }
+				NOT = {
+					trait = deceitful
+				}
 			}
 			NOT = {
 				trait = paranoid
@@ -5204,13 +6351,17 @@ character_event = {
 		}
 		FROM = {
 			if = {
-				limit = { trait = honest }
+				limit = {
+					trait = honest
+				}
 				remove_trait = honest
 			}
 			add_trait = deceitful
 		}
 		if = {
-			limit = { trait = honest }
+			limit = {
+				trait = honest
+			}
 			reverse_opinion = {
 				who = FROM
 				modifier = opinion_hypocrite
@@ -5218,7 +6369,9 @@ character_event = {
 			}
 		}
 		if = {
-			limit = { trait = trusting }
+			limit = {
+				trait = trusting
+			}
 			remove_trait = trusting
 			break = yes
 		}
@@ -5228,21 +6381,32 @@ character_event = {
 	option = {
 		ai_chance = {
 			factor = 1
-
 			modifier = {
 				factor = 15
-				current_heir = { character = FROM }
+				current_heir = {
+					character = FROM
+				}
 			}
 			modifier = {
 				factor = 30
-				NOT = { current_heir = { character = FROM } }
-				any_child = { character = FROM }
+				NOT = {
+					current_heir = {
+						character = FROM
+					}
+				}
+				any_child = {
+					character = FROM
+				}
 			}
 			modifier = {
 				factor = 5
 				NOR = {
-					current_heir = { character = FROM }
-					any_child = { character = FROM }
+					current_heir = {
+						character = FROM
+					}
+					any_child = {
+						character = FROM
+					}
 				}
 				OR = {
 					trait = kind
@@ -5259,19 +6423,27 @@ character_event = {
 		name = EVTOPTB_ZE_13623
 		trigger = {
 			FROM = {
-				NOT = { trait = cynical }
+				NOT = {
+					trait = cynical
+				}
 			}
-			NOT = { has_character_modifier = impious_teachings }
+			NOT = {
+				has_character_modifier = impious_teachings
+			}
 		}
 		FROM = {
 			if = {
-				limit = { trait = zealous }
+				limit = {
+					trait = zealous
+				}
 				remove_trait = zealous
 			}
 			add_trait = cynical
 		}
 		if = {
-			limit = { trait = zealous }
+			limit = {
+				trait = zealous
+			}
 			reverse_opinion = {
 				who = FROM
 				modifier = opinion_hypocrite
@@ -5292,13 +6464,12 @@ character_event = {
 	}
 }
 
-#Educator has high learning
+# Educator has high learning
 character_event = {
 	id = ZE.13624
 	desc = EVTDESC_ZE_13624
 	picture = GFX_evt_library
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
 
 	trigger = {
@@ -5306,14 +6477,18 @@ character_event = {
 		OR = {
 			AND = {
 				FROM = {
-					NOT = { trait = erudite }
+					NOT = {
+						trait = erudite
+					}
 				}
 				NOT = {
 					trait = stubborn
 				}
 			}
 			FROM = {
-				NOT = { trait = chaste }
+				NOT = {
+					trait = chaste
+				}
 			}
 		}
 	}
@@ -5321,21 +6496,32 @@ character_event = {
 	option = {
 		ai_chance = {
 			factor = 1
-
 			modifier = {
 				factor = 30
-				current_heir = { character = FROM }
+				current_heir = {
+					character = FROM
+				}
 			}
 			modifier = {
 				factor = 15
-				NOT = { current_heir = { character = FROM } }
-				any_child = { character = FROM }
+				NOT = {
+					current_heir = {
+						character = FROM
+					}
+				}
+				any_child = {
+					character = FROM
+				}
 			}
 			modifier = {
 				factor = 5
 				NOR = {
-					current_heir = { character = FROM }
-					any_child = { character = FROM }
+					current_heir = {
+						character = FROM
+					}
+					any_child = {
+						character = FROM
+					}
 				}
 				OR = {
 					trait = kind
@@ -5352,7 +6538,9 @@ character_event = {
 		name = EVTOPTA_ZE_13624
 		trigger = {
 			FROM = {
-				NOT = { trait = erudite }
+				NOT = {
+					trait = erudite
+				}
 			}
 			NOT = {
 				trait = stubborn
@@ -5367,21 +6555,32 @@ character_event = {
 	option = {
 		ai_chance = {
 			factor = 1
-
 			modifier = {
 				factor = 15
-				current_heir = { character = FROM }
+				current_heir = {
+					character = FROM
+				}
 			}
 			modifier = {
 				factor = 30
-				NOT = { current_heir = { character = FROM } }
-				any_child = { character = FROM }
+				NOT = {
+					current_heir = {
+						character = FROM
+					}
+				}
+				any_child = {
+					character = FROM
+				}
 			}
 			modifier = {
 				factor = 5
 				NOR = {
-					current_heir = { character = FROM }
-					any_child = { character = FROM }
+					current_heir = {
+						character = FROM
+					}
+					any_child = {
+						character = FROM
+					}
 				}
 				OR = {
 					trait = kind
@@ -5398,18 +6597,24 @@ character_event = {
 		name = EVTOPTB_ZE_13624
 		trigger = {
 			FROM = {
-				NOT = { trait = chaste }
+				NOT = {
+					trait = chaste
+				}
 			}
 		}
 		FROM = {
 			if = {
-				limit = { trait = lustful }
+				limit = {
+					trait = lustful
+				}
 				remove_trait = lustful
 			}
 			add_trait = chaste
 		}
 		if = {
-			limit = { trait = lustful }
+			limit = {
+				trait = lustful
+			}
 			reverse_opinion = {
 				who = FROM
 				modifier = opinion_hypocrite
@@ -5431,13 +6636,12 @@ character_event = {
 	}
 }
 
-#Educator has more than one high skill
-character_event = { 
+# Educator has more than one high skill
+character_event = {
 	id = ZE.13625
 	desc = EVTDESC_ZE_13625
 	picture = GFX_evt_noble_in_castle
 	border = GFX_event_normal_frame_diplomacy
-	
 	is_triggered_only = yes
 
 	trigger = {
@@ -5486,43 +6690,67 @@ character_event = {
 		OR = {
 			AND = {
 				FROM = {
-					NOT = { trait = ambitious }
+					NOT = {
+						trait = ambitious
+					}
 				}
-				NOT = { is_rival = FROM }
+				NOT = {
+					is_rival = FROM
+				}
 			}
 			AND = {
 				FROM = {
-					NOT = { trait = diligent }
+					NOT = {
+						trait = diligent
+					}
 				}
-				NOT = { trait = stressed }
+				NOT = {
+					trait = stressed
+				}
 			}
 			AND = {
 				FROM = {
-					NOT = { trait = patient }
+					NOT = {
+						trait = patient
+					}
 				}
-				NOT = { has_character_modifier = out_of_patience }
+				NOT = {
+					has_character_modifier = out_of_patience
+				}
 			}
 		}
 	}
 
-	option = { # Give ambitious
+	option = {
+		# Give ambitious
 		ai_chance = {
 			factor = 1
-
 			modifier = {
 				factor = 30
-				current_heir = { character = FROM }
+				current_heir = {
+					character = FROM
+				}
 			}
 			modifier = {
 				factor = 15
-				NOT = { current_heir = { character = FROM } }
-				any_child = { character = FROM }
+				NOT = {
+					current_heir = {
+						character = FROM
+					}
+				}
+				any_child = {
+					character = FROM
+				}
 			}
 			modifier = {
 				factor = 5
 				NOR = {
-					current_heir = { character = FROM }
-					any_child = { character = FROM }
+					current_heir = {
+						character = FROM
+					}
+					any_child = {
+						character = FROM
+					}
 				}
 				OR = {
 					trait = kind
@@ -5538,7 +6766,9 @@ character_event = {
 		name = EVTOPTA_ZE_13625
 		trigger = {
 			FROM = {
-				NOT = { trait = ambitious }
+				NOT = {
+					trait = ambitious
+				}
 			}
 			NOT = {
 				is_rival = FROM
@@ -5546,14 +6776,18 @@ character_event = {
 		}
 		FROM = {
 			if = {
-				limit = { trait = content }
+				limit = {
+					trait = content
+				}
 				remove_trait = content
 			}
 			add_trait = ambitious
 			add_rival = ROOT
 		}
 		if = {
-			limit = { trait = content }
+			limit = {
+				trait = content
+			}
 			reverse_opinion = {
 				who = FROM
 				modifier = opinion_hypocrite
@@ -5562,24 +6796,36 @@ character_event = {
 		}
 	}
 
-	option = { # Give diligent
+	option = {
+		# Give diligent
 		ai_chance = {
 			factor = 1
-
 			modifier = {
 				factor = 20
-				current_heir = { character = FROM }
+				current_heir = {
+					character = FROM
+				}
 			}
 			modifier = {
 				factor = 20
-				NOT = { current_heir = { character = FROM } }
-				any_child = { character = FROM }
+				NOT = {
+					current_heir = {
+						character = FROM
+					}
+				}
+				any_child = {
+					character = FROM
+				}
 			}
 			modifier = {
 				factor = 5
 				NOR = {
-					current_heir = { character = FROM }
-					any_child = { character = FROM }
+					current_heir = {
+						character = FROM
+					}
+					any_child = {
+						character = FROM
+					}
 				}
 				OR = {
 					trait = kind
@@ -5595,20 +6841,28 @@ character_event = {
 		name = EVTOPTB_ZE_13625
 		trigger = {
 			FROM = {
-				NOT = { trait = diligent }
+				NOT = {
+					trait = diligent
+				}
 			}
-			NOT = { trait = stressed }
+			NOT = {
+				trait = stressed
+			}
 		}
 		FROM = {
 			if = {
-				limit = { trait = slothful }
+				limit = {
+					trait = slothful
+				}
 				remove_trait = slothful
 			}
 			add_trait = diligent
 		}
 		add_trait = stressed
 		if = {
-			limit = { trait = slothful }
+			limit = {
+				trait = slothful
+			}
 			reverse_opinion = {
 				who = FROM
 				modifier = opinion_hypocrite
@@ -5617,24 +6871,36 @@ character_event = {
 		}
 	}
 
-	option = { # Give patient
+	option = {
+		# Give patient
 		ai_chance = {
 			factor = 1
-
 			modifier = {
 				factor = 15
-				current_heir = { character = FROM }
+				current_heir = {
+					character = FROM
+				}
 			}
 			modifier = {
 				factor = 30
-				NOT = { current_heir = { character = FROM } }
-				any_child = { character = FROM }
+				NOT = {
+					current_heir = {
+						character = FROM
+					}
+				}
+				any_child = {
+					character = FROM
+				}
 			}
 			modifier = {
 				factor = 5
 				NOR = {
-					current_heir = { character = FROM }
-					any_child = { character = FROM }
+					current_heir = {
+						character = FROM
+					}
+					any_child = {
+						character = FROM
+					}
 				}
 				OR = {
 					trait = kind
@@ -5650,13 +6916,19 @@ character_event = {
 		name = EVTOPTC_ZE_13625
 		trigger = {
 			FROM = {
-				NOT = { trait = patient }
+				NOT = {
+					trait = patient
+				}
 			}
-			NOT = { has_character_modifier = out_of_patience }
+			NOT = {
+				has_character_modifier = out_of_patience
+			}
 		}
 		FROM = {
 			if = {
-				limit = { trait = wroth }
+				limit = {
+					trait = wroth
+				}
 				remove_trait = wroth
 			}
 			add_trait = patient
@@ -5666,7 +6938,9 @@ character_event = {
 			years = 5
 		}
 		if = {
-			limit = { trait = wroth }
+			limit = {
+				trait = wroth
+			}
 			reverse_opinion = {
 				who = FROM
 				modifier = opinion_hypocrite

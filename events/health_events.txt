@@ -1,31 +1,31 @@
-###################################
-#
+
+
 # Health Events
-#
+
 # Id 6000-6499 is reserved
-# 
+
 # Vanilla core events with warhammer modifications
-# typical warhammer diseases are in sperate file 
-#
-###################################
-#
+
+# typical warhammer diseases are in sperate file
+
 # Written by Sara Wendel-Örtqvist
+
 # and Chris King
+
 # and Henrik Eklund
-#
-#  modified by Pietrko
-#
-#Syphilitic
+
+# modified by Pietrko
+
+# Syphilitic
 character_event = {
 	id = 6000
 	desc = EVTDESC6000
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
 	min_age = 16
 	capable_only = yes
 	lacks_dlc = "Reapers"
-	
+
 	trigger = {
 		is_disease_immune_race = no
 		NOT = {
@@ -34,40 +34,47 @@ character_event = {
 		NOT = {
 			trait = celibate
 		}
-	OR = { NOT = { trait = infirm }
-		trait = plaguelord
-		religion = nurgle
-		society_member_of = cult_of_nurgle 
+		OR = {
+			NOT = {
+				trait = infirm
+			}
+			trait = plaguelord
+			religion = nurgle
+			society_member_of = cult_of_nurgle
+
 		}
 		OR = {
-			NOT = { trait = chaste }
-			spouse = { 
+			NOT = {
+				trait = chaste
+			}
+			spouse = {
 				is_alive = yes
 				is_abroad = no
-				trait = syphilitic 
+				trait = syphilitic
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 20000
-		
 		modifier = {
 			factor = 0.1
-			spouse = { 
-				trait = syphilitic 
+			spouse = {
+				trait = syphilitic
 			}
 		}
 		modifier = {
 			factor = 0.5
 			in_command = yes
-		}      
-	modifier = {
-		factor = 0.025
-	OR = { religion = nurgle
-		society_member_of = cult_of_nurgle 
-		trait = plaguelord }
-	}        
+		}
+		modifier = {
+			factor = 0.025
+			OR = {
+				religion = nurgle
+				society_member_of = cult_of_nurgle
+				trait = plaguelord
+			}
+		}
 		modifier = {
 			factor = 0.5
 			trait = lustful
@@ -76,13 +83,12 @@ character_event = {
 			factor = 0.6
 			trait = hedonist
 		}
-		
 		modifier = {
 			factor = 5.0
 			trait = chaste
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA6000
 		add_trait = syphilitic
@@ -91,29 +97,33 @@ character_event = {
 	}
 }
 
-#Remove Syphilitic
+# Remove Syphilitic
 character_event = {
 	id = 6001
 	desc = EVTDESC6001
 	picture = GFX_evt_recovery
 	border = GFX_event_normal_frame_religion
-	
 	min_age = 16
 	is_sick = yes
 	only_capable = yes
 	lacks_dlc = "Reapers"
-	
+
 	trigger = {
 		health = 6
 		trait = syphilitic
-	NOT = { religion = nurgle }
-	NOT = { trait = plaguelord }
-	NOT = { society_member_of = cult_of_nurgle }
+		NOT = {
+			religion = nurgle
+		}
+		NOT = {
+			trait = plaguelord
+		}
+		NOT = {
+			society_member_of = cult_of_nurgle
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 25000
-		
 		modifier = {
 			factor = 0.5
 			health = 8
@@ -123,42 +133,44 @@ character_event = {
 			health = 9
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA6001
 		remove_trait = syphilitic
 	}
 }
 
-#Leper
+# Leper
 character_event = {
 	id = 6010
 	desc = EVTDESC6010
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
 	min_age = 10
 	only_capable = yes
-	
+
 	trigger = {
 		is_disease_immune_race = no
 		NOT = {
 			trait = leper
 		}
-	OR = { NOT = { health = 5 }
-		religion = nurgle
-		trait = plaguelord
-		society_member_of = cult_of_nurgle 
+		OR = {
+			NOT = {
+				health = 5
+			}
+			religion = nurgle
+			trait = plaguelord
+			society_member_of = cult_of_nurgle
+
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 25000
-		
 		modifier = {
 			factor = 0.5
-			NOT = { 
-				health = 4 
+			NOT = {
+				health = 4
 			}
 		}
 		modifier = {
@@ -189,80 +201,96 @@ character_event = {
 		}
 		modifier = {
 			factor = 0.025
-			OR = { 
+			OR = {
 				religion = nurgle
 				trait = plaguelord
-				society_member_of = cult_of_nurgle  }
+				society_member_of = cult_of_nurgle
 			}
-		
+		}
 	}
-	
+
 	option = {
 		name = EVTOPTA6010
 		add_trait = leper
-			if = {
-				limit = {
-					has_dlc = "Reapers"
-				}
-				set_character_flag = new_leper_character
-				host = {
-					random_courtier_or_vassal = {
-						limit = {
-							liege = { character = PREVPREV }
-							has_minor_title = title_court_physician
+		if = {
+			limit = {
+				has_dlc = "Reapers"
+			}
+			set_character_flag = new_leper_character
+			host = {
+				random_courtier_or_vassal = {
+					limit = {
+						liege = {
+							character = PREVPREV
 						}
-						character_event = { id = RIP.11031 days = 1 }
+						has_minor_title = title_court_physician
 					}
-				}
-				character_event = { id = RIP.11063 days = 20 }
-			}
-			
-			hidden_tooltip = {
-				random_list ={
-					100 = {
-						character_event = { id = RIP.5041 days = 365 random = 50 }
-					}
-					75 = {
-						character_event = { id = RIP.5041 days = 1500 random = 300 }
-					}
-					30 = {
-						character_event = { id = RIP.5041 days = 3000 random = 600 }
+					character_event = {
+						id = RIP.11031 days = 1
 					}
 				}
 			}
+			character_event = {
+				id = RIP.11063 days = 20
+			}
+		}
+		hidden_tooltip = {
+			random_list = {
+				100 = {
+					character_event = {
+						id = RIP.5041 days = 365 random = 50
+					}
+				}
+				75 = {
+					character_event = {
+						id = RIP.5041 days = 1500 random = 300
+					}
+				}
+				30 = {
+					character_event = {
+						id = RIP.5041 days = 3000 random = 600
+					}
+				}
+			}
+		}
 	}
 }
 
-#Remove Leper
+# Remove Leper
 character_event = {
 	id = 6011
 	desc = EVTDESC6011
 	picture = GFX_evt_recovery
 	border = GFX_event_normal_frame_religion
-	
 	min_age = 16
 	is_sick = yes
 	only_capable = yes
-	
+
 	trigger = {
 		health = 4
 		treasury = 25
 		trait = leper
-		NOT = { religion = nurgle }
-		NOT = { trait = plaguelord }
-		NOT = { society_member_of = cult_of_nurgle }
+		NOT = {
+			religion = nurgle
+		}
+		NOT = {
+			trait = plaguelord
+		}
+		NOT = {
+			society_member_of = cult_of_nurgle
+		}
 		# NOT = {
-			# has_game_rule = {
-				# name = supernatural_events
-				# value = off
-			# }
+		# has_game_rule = {
+		# name = supernatural_events
+		# value = off
+		# }
 		# }
 	}
-	
+
 	mean_time_to_happen = {
 		months = 25000
 	}
-	
+
 	option = {
 		name = EVTOPTA6011
 		remove_trait = leper
@@ -275,14 +303,19 @@ character_event = {
 	id = 6020
 	picture = GFX_evt_lunatic
 	border = GFX_event_normal_frame_religion
-	
 	desc = {
 		text = EVTDESC6020
 		trigger = {
 			is_ill = no
-			NOT = { trait = paranoid }
-			NOT = { trait = zealous }
-			NOT = { trait = incapable }
+			NOT = {
+				trait = paranoid
+			}
+			NOT = {
+				trait = zealous
+			}
+			NOT = {
+				trait = incapable
+			}
 			prisoner = no
 		}
 	}
@@ -290,52 +323,64 @@ character_event = {
 		text = EVTDESC6020_PARA
 		trigger = {
 			trait = paranoid
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 		}
 	}
 	desc = {
 		text = EVTDESC6020_FEVER
 		trigger = {
 			is_ill = yes
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 		}
 	}
 	desc = {
 		text = EVTDESC6020_ZEAL
 		trigger = {
 			trait = zealous
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 		}
 	}
 	desc = {
 		text = EVTDESC6020_PRISON
 		trigger = {
 			prisoner = yes
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 		}
 	}
 	desc = {
 		text = EVTDESC6020_COMA
-		trigger = { trait = incapable }
+		trigger = {
+			trait = incapable
+		}
 	}
-	
 	min_age = 10
-	
+
 	trigger = {
 		NOT = {
 			trait = lunatic
 		}
 		OR = {
-			#Senile/comatose due to old age do not gain lunatic, immortals get a pass though
-			NOT = { age = 65 }
+			# Senile/comatose due to old age do not gain lunatic, immortals get a pass though
+			NOT = {
+				age = 65
+			}
 			immortal = yes
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 48000 # once in 4000 years on average
-		
 		modifier = {
 			factor = 0.003 # 12 years on average
 			OR = {
@@ -358,8 +403,12 @@ character_event = {
 		modifier = {
 			factor = 0.1
 			prisoner = yes
-			NOT = { has_character_modifier = the_oubliette }
-			NOT = { has_character_modifier = house_arrest }
+			NOT = {
+				has_character_modifier = the_oubliette
+			}
+			NOT = {
+				has_character_modifier = house_arrest
+			}
 		}
 		modifier = {
 			factor = 0.2 # 800 years on average
@@ -419,15 +468,21 @@ character_event = {
 			trait = drunkard
 		}
 	}
-	
+
 	option = {
 		name = {
 			text = EVTOPTA6020
 			trigger = {
 				is_ill = no
-				NOT = { trait = paranoid }
-				NOT = { trait = zealous }
-				NOT = { trait = incapable }
+				NOT = {
+					trait = paranoid
+				}
+				NOT = {
+					trait = zealous
+				}
+				NOT = {
+					trait = incapable
+				}
 				prisoner = no
 			}
 		}
@@ -435,66 +490,87 @@ character_event = {
 			text = EVTOPTA6020_PARA
 			trigger = {
 				trait = paranoid
-				NOT = { trait = incapable }
+				NOT = {
+					trait = incapable
+				}
 			}
 		}
 		name = {
 			text = EVTOPTA6020_FEVER
 			trigger = {
 				is_ill = yes
-				NOT = { trait = incapable }
+				NOT = {
+					trait = incapable
+				}
 			}
 		}
 		name = {
 			text = EVTOPTA6020_ZEAL
 			trigger = {
 				trait = zealous
-				NOT = { trait = incapable }
+				NOT = {
+					trait = incapable
+				}
 			}
 		}
 		name = {
 			text = EVTOPTA6020_PRISON
 			trigger = {
 				prisoner = yes
-				NOT = { trait = incapable }
+				NOT = {
+					trait = incapable
+				}
 			}
 		}
 		name = {
 			text = EVTOPTA6020_COMA
-			trigger = { trait = incapable }
+			trigger = {
+				trait = incapable
+			}
 		}
-		
-		hidden_tooltip = { character_event = { id = mutation.1005 }
-		change_variable = { which = "lunatic_counter" value = 3 } } #lunacy
-		
+		hidden_tooltip = {
+			character_event = {
+				id = mutation.1005
+			}
+			change_variable = {
+				which = "lunatic_counter" value = 3
+			}
+		} # lunacy
 		if = {
-			limit = { trait = depressed }
+			limit = {
+				trait = depressed
+			}
 			remove_trait = depressed
 		}
 		if = {
-			limit = { trait = stressed }
+			limit = {
+				trait = stressed
+			}
 			remove_trait = stressed
 		}
 		if = {
-			limit = { trait = incapable }
+			limit = {
+				trait = incapable
+			}
 			remove_trait = incapable
 		}
 	}
 }
 
-### Remove Lunatic ###
+# Remove Lunatic
 character_event = {
 	id = 6021
 	desc = EVTDESC6021
 	picture = GFX_evt_recovery
 	border = GFX_event_normal_frame_religion
-	
 	min_age = 16
 	only_capable = yes
-	
+
 	trigger = {
 		health = 4
-	check_variable = { which = "lunatic_counter" value = 7 }
+		check_variable = {
+			which = "lunatic_counter" value = 7
+		}
 		NOT = {
 			OR = {
 				trait = syphilitic
@@ -503,7 +579,7 @@ character_event = {
 		}
 		is_vampire_trigger = no
 	}
-	
+
 	mean_time_to_happen = {
 		months = 12000
 		modifier = {
@@ -511,176 +587,247 @@ character_event = {
 			health = 6
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA6021
-	hidden_tooltip = { 
-			change_variable = { which = "lunatic_counter" value = -5 } } #lunacy
-	if = { limit = { NOT = { check_variable = { which = "lunatic_counter" value = 20 } } }
-		remove_trait = lunatic_3 } 
-	if = { limit = { NOT = { check_variable = { which = "lunatic_counter" value = 10 } } }
-		remove_trait = lunatic_3
-		remove_trait = lunatic_2 }  
-	if = { limit = { NOT = { check_variable = { which = "lunatic_counter" value = 5 } } }
-		remove_trait = lunatic_3
-		remove_trait = lunatic_2
-		remove_trait = lunatic_1 }
+		hidden_tooltip = {
+			change_variable = {
+				which = "lunatic_counter" value = -5
+			}
+		} # lunacy
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = "lunatic_counter" value = 20
+					}
+				}
+			}
+			remove_trait = lunatic_3
+		}
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = "lunatic_counter" value = 10
+					}
+				}
+			}
+			remove_trait = lunatic_3
+			remove_trait = lunatic_2
+		}
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = "lunatic_counter" value = 5
+					}
+				}
+			}
+			remove_trait = lunatic_3
+			remove_trait = lunatic_2
+			remove_trait = lunatic_1
+		}
 	}
 }
 
-### Possessed ###
+# Possessed
 character_event = {
 	id = 6030
 	picture = GFX_evt_lunatic
 	border = GFX_event_normal_frame_religion
-	
 	desc = {
 		text = EVTDESC6030
-		trigger = { NOT = { religion_group = ormazd_gods_group } }
+		trigger = {
+			NOT = {
+				religion_group = ormazd_gods_group
+			}
+		}
 	}
 	desc = {
 		text = EVTDESC6030_MUS
-		trigger = { religion_group = ormazd_gods_group }
+		trigger = {
+			religion_group = ormazd_gods_group
+		}
 	}
-	
 	min_age = 10
 	only_capable = yes
-	
-	trigger = {
-		NOT = { religion_group = chaos_gods_group } # no random possession in this case
-		NOT = { trait = possessed }
-		NOT = { check_variable =  { which = "possession_counter" value = 1 } }
-		NOT = { location = { region = world_ulthuan } }
-		is_incorruptible_trigger = no
 
+	trigger = {
+		NOT = {
+			religion_group = chaos_gods_group
+		} # no random possession in this case
+		NOT = {
+			trait = possessed
+		}
+		NOT = {
+			check_variable = {
+				which = "possession_counter" value = 1
+			}
+		}
+		NOT = {
+			location = {
+				region = world_ulthuan
+			}
+		}
+		is_incorruptible_trigger = no
 	}
-	
+
 	mean_time_to_happen = {
 		months = 15000
 		modifier = {
 			factor = 0.75
-		check_variable = { which = "lunatic_counter" value = 25 }
+			check_variable = {
+				which = "lunatic_counter" value = 25
+			}
 		}
 		modifier = {
 			factor = 0.75
-		check_variable = { which = "lunatic_counter" value = 30 }
+			check_variable = {
+				which = "lunatic_counter" value = 30
+			}
 		}
 		modifier = {
 			factor = 0.75
-		check_variable = { which = "lunatic_counter" value = 35 }
+			check_variable = {
+				which = "lunatic_counter" value = 35
+			}
 		}
 		modifier = {
 			factor = 0.75
-		check_variable = { which = "lunatic_counter" value = 40 }
+			check_variable = {
+				which = "lunatic_counter" value = 40
+			}
 		}
 		modifier = {
 			factor = 0.5
-		check_variable = { which = "lunatic_counter" value = 50 }
+			check_variable = {
+				which = "lunatic_counter" value = 50
+			}
 		}
 		modifier = {
 			factor = 0.25
-		check_variable = { which = "lunatic_counter" value = 60 }
+			check_variable = {
+				which = "lunatic_counter" value = 60
+			}
 		}
 		modifier = {
 			factor = 0.25
-		check_variable = { which = "lunatic_counter" value = 70 }
+			check_variable = {
+				which = "lunatic_counter" value = 70
+			}
 		}
 		modifier = {
 			factor = 0.25
-		check_variable = { which = "lunatic_counter" value = 80 }
+			check_variable = {
+				which = "lunatic_counter" value = 80
+			}
 		}
 		modifier = {
 			factor = 0.25
-		check_variable = { which = "lunatic_counter" value = 90 }
+			check_variable = {
+				which = "lunatic_counter" value = 90
+			}
 		}
-		
 		modifier = {
 			factor = 0.9
 			NOT = {
 				prestige = 20
-			} 
+			}
 		}
-		
 		modifier = {
 			factor = 0.9
 			NOT = {
 				piety = 10
 			}
 		}
-		
 		modifier = {
 			factor = 0.9
 			trait = zealous
 		}
 		modifier = {
 			factor = 10
-		   trait = creature_elf
+			trait = creature_elf
 		}
 		modifier = {
 			factor = 10
-		   trait = malekith
+			trait = malekith
 		}
 		modifier = {
 			factor = 5
-		   trait = phoenix_king
+			trait = phoenix_king
 		}
 		modifier = {
 			factor = 10
-		   trait = everqueen
+			trait = everqueen
 		}
 		modifier = {
 			factor = 2
-		   trait = everqueen_heir
+			trait = everqueen_heir
 		}
 		modifier = {
 			factor = 10
-		   trait = avatar_kurnous
+			trait = avatar_kurnous
 		}
 		modifier = {
 			factor = 10
-		   trait = avatar_isha
+			trait = avatar_isha
 		}
 		modifier = {
 			factor = 2
-		   trait = asur_mage
+			trait = asur_mage
 		}
 		modifier = {
 			factor = 2
-		   trait = druchi_mage
+			trait = druchi_mage
 		}
 		modifier = {
 			factor = 2
-		   trait = druchi_sorceress
+			trait = druchi_sorceress
 		}
 		modifier = {
 			factor = 2
-		   trait = asrai_spellsinger 
+			trait = asrai_spellsinger
 		}
 		modifier = {
 			factor = 0.7
-			OR = { has_global_flag = doom_medium
-				has_global_flag = doom_high }
+			OR = {
+				has_global_flag = doom_medium
+				has_global_flag = doom_high
+			}
 		}
 		modifier = {
 			factor = 0.25
 			OR = {
 				has_character_flag = magic_potential_flag_3
 				has_character_flag = magic_potential_flag_4
-		trait = magic_potential_3
-		trait = magic_potential_4
-				}
+				trait = magic_potential_3
+				trait = magic_potential_4
+			}
 		}
 		modifier = {
 			factor = 0.4
-			location = { has_province_modifier = ravaged_by_chaos }
+			location = {
+				has_province_modifier = ravaged_by_chaos
+			}
 		}
 		modifier = {
 			factor = 0.75
-			location = { empire = { title = e_chaos_wastes } }
+			location = {
+				empire = {
+					title = e_chaos_wastes
+				}
+			}
 		}
 		modifier = {
 			factor = 1.95
-		  NOT = { location = { empire = { title = e_chaos_wastes } } }
+			NOT = {
+				location = {
+					empire = {
+						title = e_chaos_wastes
+					}
+				}
+			}
 		}
 		modifier = {
 			factor = 0.5
@@ -693,105 +840,203 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA6030
-		trigger = { NOT = { religion_group = ormazd_gods_group } }
+		trigger = {
+			NOT = {
+				religion_group = ormazd_gods_group
+			}
+		}
 		add_trait = possessed
 	}
+
 	option = {
 		name = EVTOPTA6030_MUS
-		trigger = { religion_group = ormazd_gods_group }
+		trigger = {
+			religion_group = ormazd_gods_group
+		}
 		add_trait = possessed
-		hidden_tooltip = { if = { limit = { NOT = { has_character_flag = recessive_mage } 
-						NOT = { has_character_flag = magic_potential_flag_1 }
-						NOT = { has_character_flag = magic_potential_flag_2 }
-						NOT = { has_character_flag = magic_potential_flag_3 }
-						NOT = { has_character_flag = magic_potential_flag_4 }
-						NOT = { trait = magic_potential_1 }
-						NOT = { trait = magic_potential_2 }
-						NOT = { trait = magic_potential_3 }
-						NOT = { trait = magic_potential_4 } } 
-				set_variable = { which = "possession_counter" value = 5 }
-					} 
-				if = { limit = { has_character_flag = recessive_mage } 
-				set_variable = { which = "possession_counter" value = 7 }
-					} 
-				if = { limit = { OR = { has_character_flag = magic_potential_flag_1 
-							trait = magic_potential_1 } } 
-				set_variable = { which = "possession_counter" value = 8 }
-					} 
-				if = { limit = { OR = { has_character_flag = magic_potential_flag_2 
-							trait = magic_potential_2 } } 
-				set_variable = { which = "possession_counter" value = 12 }
-					} 
-				if = { limit = { OR = { has_character_flag = magic_potential_flag_3 
-							trait = magic_potential_3 } } 
-				set_variable = { which = "possession_counter" value = 16 }
-					} 
-				if = { limit = { OR = { has_character_flag = magic_potential_flag_4 
-							trait = magic_potential_4 } } 
-				set_variable = { which = "possession_counter" value = 22 }
-					} 
-				if = { limit = { trait = lunatic_1 } 
-				change_variable = { which = "possession_counter" value = 5 }
-					} 
-				if = { limit = { trait = lunatic_2 } 
-				change_variable = { which = "possession_counter" value = 10 }
-					} 
-				if = { limit = { trait = lunatic_3 } 
-				change_variable = { which = "possession_counter" value = 15 }
-					} 
-			character_event = { id = schaos.61 days = 5 random = 9 }
+		hidden_tooltip = {
+			if = {
+				limit = {
+					NOT = {
+						has_character_flag = recessive_mage
+					}
+					NOT = {
+						has_character_flag = magic_potential_flag_1
+					}
+					NOT = {
+						has_character_flag = magic_potential_flag_2
+					}
+					NOT = {
+						has_character_flag = magic_potential_flag_3
+					}
+					NOT = {
+						has_character_flag = magic_potential_flag_4
+					}
+					NOT = {
+						trait = magic_potential_1
+					}
+					NOT = {
+						trait = magic_potential_2
+					}
+					NOT = {
+						trait = magic_potential_3
+					}
+					NOT = {
+						trait = magic_potential_4
+					}
+				}
+				set_variable = {
+					which = "possession_counter" value = 5
+				}
 			}
+			if = {
+				limit = {
+					has_character_flag = recessive_mage
+				}
+				set_variable = {
+					which = "possession_counter" value = 7
+				}
+
+			}
+			if = {
+				limit = {
+					OR = {
+						has_character_flag = magic_potential_flag_1
+						trait = magic_potential_1
+					}
+				}
+				set_variable = {
+					which = "possession_counter" value = 8
+				}
+
+			}
+			if = {
+				limit = {
+					OR = {
+						has_character_flag = magic_potential_flag_2
+						trait = magic_potential_2
+					}
+				}
+				set_variable = {
+					which = "possession_counter" value = 12
+				}
+
+			}
+			if = {
+				limit = {
+					OR = {
+						has_character_flag = magic_potential_flag_3
+						trait = magic_potential_3
+					}
+				}
+				set_variable = {
+					which = "possession_counter" value = 16
+				}
+
+			}
+			if = {
+				limit = {
+					OR = {
+						has_character_flag = magic_potential_flag_4
+						trait = magic_potential_4
+					}
+				}
+				set_variable = {
+					which = "possession_counter" value = 22
+				}
+
+			}
+			if = {
+				limit = {
+					trait = lunatic_1
+				}
+				change_variable = {
+					which = "possession_counter" value = 5
+				}
+
+			}
+			if = {
+				limit = {
+					trait = lunatic_2
+				}
+				change_variable = {
+					which = "possession_counter" value = 10
+				}
+
+			}
+			if = {
+				limit = {
+					trait = lunatic_3
+				}
+				change_variable = {
+					which = "possession_counter" value = 15
+				}
+
+			}
+			character_event = {
+				id = schaos.61 days = 5 random = 9
+			}
+
+		}
 	}
 }
 
-### Remove Possessed ###
+# Remove Possessed
 character_event = {
 	id = 6031
 	picture = GFX_evt_recovery
 	border = GFX_event_normal_frame_religion
-	
 	desc = {
 		text = EVTDESC6031
-		trigger = { religion_group = old_world_group }
+		trigger = {
+			religion_group = old_world_group
+		}
 	}
 	desc = {
 		text = EVTDESC6031_MUS
-		trigger = { religion_group = ormazd_gods_group }
+		trigger = {
+			religion_group = ormazd_gods_group
+		}
 	}
 	desc = {
 		text = EVTDESC6031_ALL
 		trigger = {
-			NOT = { religion_group = ormazd_gods_group }
-			NOT = { religion_group = old_world_group }
+			NOT = {
+				religion_group = ormazd_gods_group
+			}
+			NOT = {
+				religion_group = old_world_group
+			}
 		}
 	}
-	
 	min_age = 10
 	only_capable = yes
-	
+
 	trigger = {
 		health = 4
 		trait = possessed
-		NOT = { check_variable = { which = "possession_counter" value = 1 } }
+		NOT = {
+			check_variable = {
+				which = "possession_counter" value = 1
+			}
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 15000
-		
 		modifier = {
 			factor = 0.9
 			prestige = 20
 		}
-		
 		modifier = {
 			factor = 0.9
 			piety = 10
 		}
 	}
-	
+
 	immediate = {
 		remove_character_modifier = voice_of_satan
 		remove_character_modifier = voice_of_jesus
@@ -805,88 +1050,94 @@ character_event = {
 		clr_character_flag = possessed_by_slaaneshi
 		clr_character_flag = possessed_by_tzeentchian
 	}
-	
+
 	option = {
 		name = EVTOPTA6031
-		trigger = { religion_group = old_world_group }
+		trigger = {
+			religion_group = old_world_group
+		}
 		remove_trait = possessed
 	}
-	
+
 	option = {
 		name = EVTOPTA6031_ALL
-		trigger = { NOT = { religion_group = old_world_group } }
+		trigger = {
+			NOT = {
+				religion_group = old_world_group
+			}
+		}
 		remove_trait = possessed
 	}
 }
 
-#Stressed
+# Stressed
 character_event = {
 	id = 6040
 	desc = EVTDESC6040
 	picture = GFX_evt_bad_news
 	border = GFX_event_normal_frame_religion
-	
 	min_age = 16
 	only_capable = yes
-	
+
 	trigger = {
 		OR = {
 			is_ruler = yes
 			is_councillor = yes
 			has_minor_title = title_regent
 		}
-		NOT = { trait = stressed }
-		NOT = { trait = infirm }
+		NOT = {
+			trait = stressed
+		}
+		NOT = {
+			trait = infirm
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 2000
-		
 		modifier = {
 			factor = 0.75
 			trait = diligent
 		}
-		
 		modifier = {
 			factor = 0.8
 			in_command = yes
 		}
-		
 		modifier = {
 			factor = 10.0
 			trait = slothful
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA6040
 		add_trait = stressed
 	}
 }
 
-#Remove Stressed
+# Remove Stressed
 character_event = {
 	id = 6041
 	desc = EVTDESC6041
 	picture = GFX_evt_recovery
 	border = GFX_event_normal_frame_religion
-	
 	min_age = 16
 	only_capable = yes
-	
+
 	trigger = {
 		trait = stressed
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
-		
 		modifier = {
 			factor = 0.005
 			is_ruler = no
 			is_councillor = no
 			in_command = no
-			NOT = { has_minor_title = title_regent }
+			NOT = {
+				has_minor_title = title_regent
+			}
 		}
 		modifier = {
 			factor = 0.75
@@ -902,58 +1153,73 @@ character_event = {
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { has_minor_title = title_regent }
+			NOT = {
+				has_minor_title = title_regent
+			}
 		}
 		modifier = {
 			factor = 0.5
-		   trait = addict
+			trait = addict
 		}
 		modifier = {
 			factor = 0.05
-		   NOT = { trait = khorne_demon
-		trait = nurgle_demon
-		trait = slaanesh_demon
-		trait = tzeentch_demon
-		trait = hashut_kdaai }
+			NOT = {
+				trait = khorne_demon
+				trait = nurgle_demon
+				trait = slaanesh_demon
+				trait = tzeentch_demon
+				trait = hashut_kdaai
+			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA6041
 		remove_trait = stressed
 	}
 }
 
-#Depressed
+# Depressed
 character_event = {
 	id = 6050
 	desc = EVTDESC6050
 	picture = GFX_evt_bad_news
 	border = GFX_event_normal_frame_religion
-	
 	min_age = 10
 	only_capable = yes
-	
+
 	trigger = {
-		NOT = { trait = depressed }
-		NOT = { trait = zealous }
-		NOT = { trait = content }
+		NOT = {
+			trait = depressed
+		}
+		NOT = {
+			trait = zealous
+		}
+		NOT = {
+			trait = content
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 12000
-		
 		modifier = {
 			factor = 0.5
-			NOT = { age = 20 }
-			mother_even_if_dead = { is_alive = no } 
+			NOT = {
+				age = 20
+			}
+			mother_even_if_dead = {
+				is_alive = no
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 20 }
-			father_even_if_dead = { is_alive = no } 
+			NOT = {
+				age = 20
+			}
+			father_even_if_dead = {
+				is_alive = no
+			}
 		}
-		
 		modifier = {
 			factor = 0.5
 			trait = cynical
@@ -987,30 +1253,28 @@ character_event = {
 			trait = diligent
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA6050
 		add_trait = depressed
 	}
 }
 
-#Remove Depressed
+# Remove Depressed
 character_event = {
 	id = 6051
 	desc = EVTDESC6051
 	picture = GFX_evt_recovery
 	border = GFX_event_normal_frame_religion
-	
 	min_age = 10
 	only_capable = yes
-	
+
 	trigger = {
 		trait = depressed
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
-		
 		modifier = {
 			factor = 0.1
 			trait = content
@@ -1052,22 +1316,21 @@ character_event = {
 			in_command = yes
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA6051
 		remove_trait = depressed
 	}
 }
 
-#Ill
+# Ill
 character_event = {
 	id = 6060
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
 	desc = EVTDESC6060
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA6060
 		add_trait = ill
@@ -1076,17 +1339,15 @@ character_event = {
 	}
 }
 
-#Meta ill
+# Meta ill
 character_event = {
 	id = 6063
-
 	hide_window = yes
-	
+
 	trigger = {
 		health = 3.0
 		is_ill = no
 		is_disease_immune_race = no
-
 		NOT = {
 			has_game_rule = {
 				name = non_epidemic_diseases
@@ -1094,10 +1355,9 @@ character_event = {
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 360
-		
 		modifier = {
 			factor = 0.5
 			trait = depressed
@@ -1138,10 +1398,10 @@ character_event = {
 		}
 		modifier = {
 			factor = 0.05
-			OR = { 
+			OR = {
 				religion = nurgle
 				trait = plaguelord
-				society_member_of = cult_of_nurgle 
+				society_member_of = cult_of_nurgle
 			}
 		}
 		modifier = {
@@ -1174,7 +1434,9 @@ character_event = {
 					has_dlc = "Reapers"
 				}
 			}
-			character_event = { id = 6060 }
+			character_event = {
+				id = 6060
+			}
 		}
 		if = {
 			limit = {
@@ -1185,26 +1447,30 @@ character_event = {
 	}
 }
 
-#Remove Ill
+# Remove Ill
 character_event = {
 	id = 6061
 	desc = EVTDESC6061
 	picture = GFX_evt_recovery
 	border = GFX_event_normal_frame_religion
-	
 	is_sick = yes
-	
+
 	trigger = {
 		base_health = 3
 		trait = ill
-	NOT = { religion = nurgle }
-	NOT = { trait = plaguelord }
-	NOT = { society_member_of = cult_of_nurgle }
+		NOT = {
+			religion = nurgle
+		}
+		NOT = {
+			trait = plaguelord
+		}
+		NOT = {
+			society_member_of = cult_of_nurgle
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 12
-		
 		modifier = {
 			factor = 2.0
 			trait = depressed
@@ -1226,31 +1492,29 @@ character_event = {
 			base_health = 7
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA6061
 		remove_trait = ill
 	}
 }
 
-#Remove Sickly
+# Remove Sickly
 character_event = {
 	id = 6062
 	desc = EVTDESC6062
 	picture = GFX_evt_child_play
 	border = GFX_event_normal_frame_religion
-	
 	max_age = 7
 	is_sick = yes
-	
+
 	trigger = {
 		trait = sickly
 		age = 2
 	}
-	
+
 	mean_time_to_happen = {
 		months = 12
-		
 		modifier = {
 			factor = 0.5
 			age = 3
@@ -1264,23 +1528,22 @@ character_event = {
 			age = 5
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA6062
 		remove_trait = sickly
 	}
 }
 
-#Pneumonic
+# Pneumonic
 character_event = {
 	id = 6070
 	desc = EVTDESC6070
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
 	is_sick = yes
 	lacks_dlc = "Reapers"
-	
+
 	trigger = {
 		is_disease_immune_race = no
 		OR = {
@@ -1288,18 +1551,24 @@ character_event = {
 			trait = has_measles
 			trait = pneumonic
 		}
-		NOT = { trait = pneumonic }
+		NOT = {
+			trait = pneumonic
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 240
 		modifier = {
 			factor = 0.5
-			NOT = { base_health = 5 }
+			NOT = {
+				base_health = 5
+			}
 		}
 		modifier = {
 			factor = 0.5
-			NOT = { base_health = 4 }
+			NOT = {
+				base_health = 4
+			}
 		}
 		modifier = {
 			factor = 0.75
@@ -1323,18 +1592,22 @@ character_event = {
 		}
 		modifier = {
 			factor = 0.25
-			NOT = { month = 2 }		#jan and feb
+			NOT = {
+				month = 2
+			}		# jan and feb
 			in_command = yes
 		}
-	modifier = {
-		factor = 0.1
-	OR = { religion = nurgle
-		trait = plaguelord
-		society_member_of = cult_of_nurgle 
+		modifier = {
+			factor = 0.1
+			OR = {
+				religion = nurgle
+				trait = plaguelord
+				society_member_of = cult_of_nurgle
+
+			}
 		}
-	}   
 	}
-	
+
 	option = {
 		name = EVTOPTA6070
 		add_trait = pneumonic
@@ -1343,33 +1616,42 @@ character_event = {
 	}
 }
 
-#Remove Pneumonic
+# Remove Pneumonic
 character_event = {
 	id = 6071
 	desc = EVTDESC6071
 	picture = GFX_evt_recovery
 	border = GFX_event_normal_frame_religion
-	
 	is_sick = yes
 	lacks_dlc = "Reapers"
-	
+
 	trigger = {
 		base_health = 4
 		trait = pneumonic
-	NOT = { religion = nurgle }
-	NOT = { trait = plaguelord }
-	NOT = { society_member_of = cult_of_nurgle }
+		NOT = {
+			religion = nurgle
+		}
+		NOT = {
+			trait = plaguelord
+		}
+		NOT = {
+			society_member_of = cult_of_nurgle
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 4
 		modifier = {
 			factor = 2.0
-			NOT = { base_health = 5 }
+			NOT = {
+				base_health = 5
+			}
 		}
 		modifier = {
 			factor = 2.0
-			NOT = { base_health = 4 }
+			NOT = {
+				base_health = 4
+			}
 		}
 		modifier = {
 			factor = 1.5
@@ -1392,24 +1674,23 @@ character_event = {
 			base_health = 8
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA6071
 		remove_trait = pneumonic
 	}
 }
 
-#Wounded
+# Wounded
 character_event = {
 	id = 6080
 	desc = EVTDESC6080
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	
+
 	trigger = {
 		OR = {
 			trait = hunter
@@ -1419,71 +1700,66 @@ character_event = {
 		NOR = {
 			trait = wounded
 			is_maimed_trigger = yes
-		}		
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 10000
-		
 		modifier = {
 			factor = 0.9
 			trait = brave
 		}
-		
 		modifier = {
 			factor = 0.8
 			in_command = yes
 		}
-		
 		modifier = {
 			factor = 0.7
 			is_ruler = yes
 		}
-		
 		modifier = {
 			factor = 0.6
 			trait = misguided_warrior
 		}
-		
 		modifier = {
 			factor = 1.1
 			trait = paranoid
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA6080
 		add_trait = wounded
 	}
 }
 
-#Remove Wounded
+# Remove Wounded
 character_event = {
 	id = 6081
 	desc = EVTDESC6081
 	picture = GFX_evt_recovery
 	border = GFX_event_normal_frame_religion
-	
+
 	trigger = {
 		base_health = 4
 		trait = wounded
-		NOT = { trait = infection }
+		NOT = {
+			trait = infection
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 24
-		
 		modifier = {
 			factor = 0.5
 			base_health = 5.1
 		}
-		
 		modifier = {
 			factor = 0.4
 			base_health = 6
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA6081
 		remove_trait = wounded
@@ -1491,41 +1767,43 @@ character_event = {
 	}
 }
 
-
-#illness from wound..
+# illness from wound..
 character_event = {
 	id = 6082
 	desc = EVTDESC6082
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
+
 	trigger = {
 		is_disease_immune_race = no
 		trait = wounded
-	OR = { NOT = { base_health = 8 }
-		religion = nurgle
-		trait = plaguelord
-		society_member_of = cult_of_nurgle 
+		OR = {
+			NOT = {
+				base_health = 8
+			}
+			religion = nurgle
+			trait = plaguelord
+			society_member_of = cult_of_nurgle
+
 		}
 		is_ill = no
 	}
-	
+
 	mean_time_to_happen = {
 		months = 240
-		
 		modifier = {
 			factor = 0.9
 			in_command = yes
 		}
-		
 		modifier = {
 			factor = 0.8
 			trait = leper
 		}
-		
 		modifier = {
 			factor = 0.8
-			NOT = { base_health = 6 }
+			NOT = {
+				base_health = 6
+			}
 		}
 		modifier = {
 			factor = 0.8
@@ -1535,15 +1813,17 @@ character_event = {
 			factor = 0.8
 			age = 70
 		}
-	modifier = {
-		factor = 0.25
-	OR = { religion = nurgle
-		trait = plaguelord
-		society_member_of = cult_of_nurgle 
+		modifier = {
+			factor = 0.25
+			OR = {
+				religion = nurgle
+				trait = plaguelord
+				society_member_of = cult_of_nurgle
+
+			}
 		}
-	}   
 	}
-	
+
 	option = {
 		name = EVTOPTA6082
 		if = {
@@ -1562,39 +1842,44 @@ character_event = {
 			}
 			add_trait = infection
 			hidden_tooltip = {
-				character_event = { id = RIP.11001 days = 365 random = 1095 }
+				character_event = {
+					id = RIP.11001 days = 365 random = 1095
+				}
 			}
 		}
 	}
 }
 
-
-#Infirm
+# Infirm
 character_event = {
 	id = 6100
 	desc = EVTDESC6100
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
 	min_age = 45
 	only_capable = yes
-	
+
 	trigger = {
-		NOT = { culture_group = daemonic_group }
-		NOT = { trait = infirm }
+		NOT = {
+			culture_group = daemonic_group
+		}
+		NOT = {
+			trait = infirm
+		}
 		immortal = no
-		NOT = { trait = incapable }
+		NOT = {
+			trait = incapable
+		}
 		is_disease_immune_race = no
 		NOR = {
-			trait = creature_elf 
+			trait = creature_elf
 			trait = creature_dwarf
 			trait = creature_chaos_dwarf
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
-		
 		modifier = {
 			factor = 0.8
 			age = 60
@@ -1621,11 +1906,15 @@ character_event = {
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { base_health = 5.0 }
+			NOT = {
+				base_health = 5.0
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { base_health = 4.0 }
+			NOT = {
+				base_health = 4.0
+			}
 		}
 		modifier = {
 			factor = 2.0
@@ -1640,51 +1929,69 @@ character_event = {
 			trait = grail_knight
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA6100
 		add_trait = infirm
 	}
 }
 
-#Incapable
+# Incapable
 character_event = {
 	id = 6110
 	desc = EVTDESC6110
 	picture = GFX_evt_recovery
 	border = GFX_event_normal_frame_religion
-	
+
 	trigger = {
 		OR = {
 			trait = infirm
 			trait = inbred
 		}
-
-		NOT = { trait = grail_knight }
-		NOT = { trait = incapable }
+		NOT = {
+			trait = grail_knight
+		}
+		NOT = {
+			trait = incapable
+		}
 		immortal = no
-	NOT = { trait = grail_knight }
-		NOT = { trait = creature_elf }
-		NOT = { trait = creature_dwarf }
-		NOT = { trait = creature_chaos_dwarf }
+		NOT = {
+			trait = grail_knight
+		}
+		NOT = {
+			trait = creature_elf
+		}
+		NOT = {
+			trait = creature_dwarf
+		}
+		NOT = {
+			trait = creature_chaos_dwarf
+		}
 		is_disease_immune_race = no
-		NOT = { trait = council_warlord }
+		NOT = {
+			trait = council_warlord
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 120
-		
 		modifier = {
 			factor = 0.5
-			NOT = { health = 3.0 }
+			NOT = {
+				health = 3.0
+			}
 		}
 		modifier = {
 			factor = 0.5
-			NOT = { base_health = 5.0 }
+			NOT = {
+				base_health = 5.0
+			}
 		}
 		modifier = {
 			factor = 2.0
-			NOT = { trait = infirm }
+			NOT = {
+				trait = infirm
+			}
 		}
 		modifier = {
 			factor = 2.0
@@ -1695,7 +2002,7 @@ character_event = {
 			base_health = 6.0
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA6110
 		add_trait = incapable
@@ -1703,23 +2010,21 @@ character_event = {
 	}
 }
 
-#Recovery from Tuberculosis
+# Recovery from Tuberculosis
 character_event = {
 	id = 6111
 	desc = EVTDESC6111
 	picture = GFX_evt_recovery
 	border = GFX_event_normal_frame_religion
-	
 	is_sick = yes
 	lacks_dlc = "Reapers"
-	
+
 	trigger = {
 		trait = has_tuberculosis
 	}
-	
+
 	mean_time_to_happen = {
 		months = 24
-		
 		modifier = {
 			factor = 0.75
 			base_health = 5.1
@@ -1734,23 +2039,33 @@ character_event = {
 		}
 		modifier = {
 			factor = 1.5
-			NOT = { base_health = 5.0 }
+			NOT = {
+				base_health = 5.0
+			}
 		}
 		modifier = {
 			factor = 2.0
-			NOT = { base_health = 4.1 }
+			NOT = {
+				base_health = 4.1
+			}
 		}
 		modifier = {
 			factor = 0.66
-			NOT = { age = 20 }
+			NOT = {
+				age = 20
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 30 }
+			NOT = {
+				age = 30
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 40 }
+			NOT = {
+				age = 40
+			}
 		}
 		modifier = {
 			factor = 2.0
@@ -1773,30 +2088,28 @@ character_event = {
 			trait = incapable
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA6111
 		remove_trait = has_tuberculosis
 	}
 }
 
-#Recovery from Typhoid Fever
+# Recovery from Typhoid Fever
 character_event = {
 	id = 6112
 	desc = EVTDESC6112
 	picture = GFX_evt_recovery
 	border = GFX_event_normal_frame_religion
-	
 	is_sick = yes
 	lacks_dlc = "Reapers"
-	
+
 	trigger = {
 		trait = has_typhoid_fever
 	}
-	
+
 	mean_time_to_happen = {
 		months = 4
-		
 		modifier = {
 			factor = 0.75
 			base_health = 5.1
@@ -1811,23 +2124,33 @@ character_event = {
 		}
 		modifier = {
 			factor = 1.5
-			NOT = { base_health = 5.0 }
+			NOT = {
+				base_health = 5.0
+			}
 		}
 		modifier = {
 			factor = 2.0
-			NOT = { base_health = 4.1 }
+			NOT = {
+				base_health = 4.1
+			}
 		}
 		modifier = {
 			factor = 0.66
-			NOT = { age = 20 }
+			NOT = {
+				age = 20
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 30 }
+			NOT = {
+				age = 30
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 40 }
+			NOT = {
+				age = 40
+			}
 		}
 		modifier = {
 			factor = 2.0
@@ -1850,30 +2173,28 @@ character_event = {
 			trait = incapable
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA6112
 		remove_trait = has_typhoid_fever
 	}
 }
 
-#Recovery from Typhus
+# Recovery from Typhus
 character_event = {
 	id = 6113
 	desc = EVTDESC6113
 	picture = GFX_evt_recovery
 	border = GFX_event_normal_frame_religion
-	
 	is_sick = yes
 	lacks_dlc = "Reapers"
-	
+
 	trigger = {
 		trait = has_typhus
 	}
-	
+
 	mean_time_to_happen = {
 		months = 12
-		
 		modifier = {
 			factor = 0.75
 			base_health = 5.1
@@ -1888,23 +2209,33 @@ character_event = {
 		}
 		modifier = {
 			factor = 1.5
-			NOT = { base_health = 5.0 }
+			NOT = {
+				base_health = 5.0
+			}
 		}
 		modifier = {
 			factor = 2.0
-			NOT = { base_health = 4.1 }
+			NOT = {
+				base_health = 4.1
+			}
 		}
 		modifier = {
 			factor = 0.66
-			NOT = { age = 20 }
+			NOT = {
+				age = 20
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 30 }
+			NOT = {
+				age = 30
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 40 }
+			NOT = {
+				age = 40
+			}
 		}
 		modifier = {
 			factor = 2.0
@@ -1927,27 +2258,26 @@ character_event = {
 			trait = incapable
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA6113
 		remove_trait = has_typhus
 	}
 }
 
-#Recovery from the PLAGUE!
+# Recovery from the PLAGUE!
 character_event = {
 	id = 6114
 	desc = EVTDESC6114
 	picture = GFX_evt_plague_doctor
 	border = GFX_event_normal_frame_religion
-	
 	is_sick = yes
 	lacks_dlc = "Reapers"
-	
+
 	trigger = {
 		trait = has_bubonic_plague
 	}
-	
+
 	mean_time_to_happen = {
 		months = 3
 		modifier = {
@@ -1964,23 +2294,33 @@ character_event = {
 		}
 		modifier = {
 			factor = 1.5
-			NOT = { base_health = 5.0 }
+			NOT = {
+				base_health = 5.0
+			}
 		}
 		modifier = {
 			factor = 2.0
-			NOT = { base_health = 4.1 }
+			NOT = {
+				base_health = 4.1
+			}
 		}
 		modifier = {
 			factor = 0.66
-			NOT = { age = 20 }
+			NOT = {
+				age = 20
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 30 }
+			NOT = {
+				age = 30
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 40 }
+			NOT = {
+				age = 40
+			}
 		}
 		modifier = {
 			factor = 2.0
@@ -2003,30 +2343,28 @@ character_event = {
 			trait = incapable
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA6114
 		remove_trait = has_bubonic_plague
 	}
 }
 
-#Recovery from Measles
+# Recovery from Measles
 character_event = {
 	id = 6115
 	desc = EVTDESC6115
 	picture = GFX_evt_recovery
 	border = GFX_event_normal_frame_religion
-	
 	is_sick = yes
 	lacks_dlc = "Reapers"
-	
+
 	trigger = {
 		trait = has_measles
 	}
-	 
+
 	mean_time_to_happen = {
 		months = 5
-		
 		modifier = {
 			factor = 0.75
 			base_health = 5.1
@@ -2041,23 +2379,33 @@ character_event = {
 		}
 		modifier = {
 			factor = 1.5
-			NOT = { base_health = 5.0 }
+			NOT = {
+				base_health = 5.0
+			}
 		}
 		modifier = {
 			factor = 2.0
-			NOT = { base_health = 4.1 }
+			NOT = {
+				base_health = 4.1
+			}
 		}
 		modifier = {
 			factor = 0.66
-			NOT = { age = 20 }
+			NOT = {
+				age = 20
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 30 }
+			NOT = {
+				age = 30
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 40 }
+			NOT = {
+				age = 40
+			}
 		}
 		modifier = {
 			factor = 2.0
@@ -2080,30 +2428,28 @@ character_event = {
 			trait = incapable
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA6115
 		remove_trait = has_measles
 	}
 }
 
-#Recovery from Smallpox
+# Recovery from Smallpox
 character_event = {
 	id = 6116
 	desc = EVTDESC6116
 	picture = GFX_evt_recovery
 	border = GFX_event_normal_frame_religion
-	
 	is_sick = yes
 	lacks_dlc = "Reapers"
-	
+
 	trigger = {
 		trait = has_small_pox
 	}
-	
+
 	mean_time_to_happen = {
 		months = 5
-		
 		modifier = {
 			factor = 0.75
 			base_health = 5.1
@@ -2118,23 +2464,33 @@ character_event = {
 		}
 		modifier = {
 			factor = 1.5
-			NOT = { base_health = 5.0 }
+			NOT = {
+				base_health = 5.0
+			}
 		}
 		modifier = {
 			factor = 2.0
-			NOT = { base_health = 4.1 }
+			NOT = {
+				base_health = 4.1
+			}
 		}
 		modifier = {
 			factor = 0.66
-			NOT = { age = 20 }
+			NOT = {
+				age = 20
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 30 }
+			NOT = {
+				age = 30
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 40 }
+			NOT = {
+				age = 40
+			}
 		}
 		modifier = {
 			factor = 2.0
@@ -2157,82 +2513,102 @@ character_event = {
 			trait = incapable
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA6116
 		remove_trait = has_small_pox
 	}
 }
-### Lunacy Events
-#
+
+# Lunacy Events
+
 # Lunacy Events should stay there are good enough
+
 # TODO: maybe add some stuff here
+
 # FIXME: remember to fix religions
-#
+
 # Ruler Implements New Law
 character_event = {
 	id = 6300
 	desc = EVTDESC6300
 	picture = GFX_evt_lunatic
 	border = GFX_event_normal_frame_religion
-	
 	min_age = 16
 	prisoner = no
 	only_playable = yes
 	only_independent = yes
-	
+
 	trigger = {
 		OR = {
 			trait = lunatic_1
 			trait = lunatic_2
 			trait = lunatic_3
 		}
-		
 	}
-	
+
 	mean_time_to_happen = {
 		months = 420
 	}
-	
+
 	option = {
 		name = EVTOPTA6300
 		tooltip_info = lunatic_3
-		narrative_event = { id = 6305 tooltip = EVTTOOLTIP6305 }
+		narrative_event = {
+			id = 6305 tooltip = EVTTOOLTIP6305
+		}
 		hidden_tooltip = {
 			any_vassal = {
-				narrative_event = { id = 6301 }
+				narrative_event = {
+					id = 6301
+				}
 			}
-		}	
+		}
 	}
+
 	option = {
 		name = EVTOPTB6300
 		tooltip_info = lunatic_3
-		narrative_event = { id = 6306 tooltip = EVTTOOLTIP6306 }
+		narrative_event = {
+			id = 6306 tooltip = EVTTOOLTIP6306
+		}
 		hidden_tooltip = {
 			any_vassal = {
-				narrative_event = { id = 6302 }
+				narrative_event = {
+					id = 6302
+				}
 			}
-		}	
+		}
 	}
+
 	option = {
 		name = EVTOPTC6300
 		tooltip_info = lunatic_3
-		narrative_event = { id = 6307 tooltip = EVTTOOLTIP6307 }
+		narrative_event = {
+			id = 6307 tooltip = EVTTOOLTIP6307
+		}
 		hidden_tooltip = {
 			any_vassal = {
-				narrative_event = { id = 6303 }
+				narrative_event = {
+					id = 6303
+				}
 			}
-		}	
+		}
 	}
+
 	option = {
 		name = EVTOPTD6300
 		tooltip_info = lunatic_3
-		narrative_event = { id = 6308 tooltip = EVTTOOLTIP6308 }
+		narrative_event = {
+			id = 6308 tooltip = EVTTOOLTIP6308
+		}
 		hidden_tooltip = {
 			any_vassal = {
-				narrative_event = { id = 6304 }
+				narrative_event = {
+					id = 6304
+				}
 			}
-		}	
+		}
 	}
 }
 
@@ -2242,12 +2618,13 @@ narrative_event = {
 	title = EVTNAME6301
 	desc = EVTDESC6301
 	picture = GFX_evt_recieve_letter
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA6301
-		custom_tooltip = { text = ignore_law }
+		custom_tooltip = {
+			text = ignore_law
+		}
 	}
 }
 
@@ -2257,12 +2634,13 @@ narrative_event = {
 	title = EVTNAME6302
 	desc = EVTDESC6302
 	picture = GFX_evt_recieve_letter
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA6302
-		custom_tooltip = { text = ignore_law }
+		custom_tooltip = {
+			text = ignore_law
+		}
 	}
 }
 
@@ -2272,12 +2650,13 @@ narrative_event = {
 	title = EVTNAME6303
 	desc = EVTDESC6303
 	picture = GFX_evt_recieve_letter
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA6303
-		custom_tooltip = { text = ignore_law }
+		custom_tooltip = {
+			text = ignore_law
+		}
 	}
 }
 
@@ -2287,12 +2666,13 @@ narrative_event = {
 	title = EVTNAME6304
 	desc = EVTDESC6304
 	picture = GFX_evt_recieve_letter
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA6304
-		custom_tooltip = { text = ignore_law }
+		custom_tooltip = {
+			text = ignore_law
+		}
 	}
 }
 
@@ -2302,13 +2682,11 @@ narrative_event = {
 	title = EVTNAME6301
 	desc = EVTDESC6305
 	picture = GFX_evt_courier
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
-		name = EVTOPTA6305 
+		name = EVTOPTA6305
 		custom_tooltip = {
 			text = ALL_VASSALS_INSANE_LAW
 			hidden_tooltip = {
@@ -2323,18 +2701,15 @@ narrative_event = {
 	}
 }
 
-
 # Pants Law (Liege)
 narrative_event = {
 	id = 6306
 	title = EVTNAME6302
 	desc = EVTDESC6306
 	picture = GFX_evt_courier
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA6305
 		custom_tooltip = {
@@ -2357,11 +2732,9 @@ narrative_event = {
 	title = EVTNAME6303
 	desc = EVTDESC6307
 	picture = GFX_evt_courier
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA6305
 		custom_tooltip = {
@@ -2384,11 +2757,9 @@ narrative_event = {
 	title = EVTNAME6304
 	desc = EVTDESC6308
 	picture = GFX_evt_courier
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA6305
 		custom_tooltip = {
@@ -2405,7 +2776,7 @@ narrative_event = {
 	}
 }
 
-### Random Madness
+# Random Madness
 
 # Gopher Maid
 character_event = {
@@ -2413,11 +2784,10 @@ character_event = {
 	desc = EVTDESC6315
 	picture = GFX_evt_lunatic
 	border = GFX_event_normal_frame_religion
-	
 	ai = no
 	min_age = 16
 	prisoner = no
-	
+
 	trigger = {
 		OR = {
 			trait = lunatic_1
@@ -2425,11 +2795,11 @@ character_event = {
 			trait = lunatic_3
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 420
 	}
-	
+
 	option = {
 		name = EVTOPTA6315
 		tooltip_info = lunatic_3
@@ -2443,11 +2813,10 @@ character_event = {
 	desc = EVTDESC6316
 	picture = GFX_evt_lunatic
 	border = GFX_event_normal_frame_religion
-	
 	ai = no
 	min_age = 16
 	prisoner = no
-	
+
 	trigger = {
 		OR = {
 			trait = lunatic_1
@@ -2455,11 +2824,11 @@ character_event = {
 			trait = lunatic_3
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 420
 	}
-	
+
 	option = {
 		name = EVTOPTA6316
 		tooltip_info = lunatic_3
@@ -2467,25 +2836,24 @@ character_event = {
 	}
 }
 
-### Horse Chancellor
+# Horse Chancellor
 character_event = {
 	id = 6317
 	desc = EVTDESC6317
 	picture = GFX_evt_courier
 	border = GFX_event_normal_frame_religion
-	
 	min_age = 16
 	prisoner = no
 	only_capable = yes
 	only_playable = yes
 	lacks_dlc = "Zeus"
-	
+
 	trigger = {
 		# NOT = {
-			# has_game_rule = {
-				# name = supernatural_events
-				# value = off
-			# }
+		# has_game_rule = {
+		# name = supernatural_events
+		# value = off
+		# }
 		# }
 		OR = {
 			trait = lunatic_1
@@ -2496,11 +2864,11 @@ character_event = {
 			has_job_title = job_chancellor
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 420
 	}
-	
+
 	option = {
 		name = EVTOPTA6317
 		tooltip_info = lunatic_3
@@ -2511,7 +2879,9 @@ character_event = {
 				years = 5
 			}
 			hidden_tooltip = {
-				character_event = { id = 6318 }
+				character_event = {
+					id = 6318
+				}
 			}
 			remove_title = job_chancellor
 		}
@@ -2524,17 +2894,18 @@ character_event = {
 	desc = EVTDESC6318
 	picture = GFX_evt_courier
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA6318
 		prestige = -20
-		custom_tooltip = { text = horse_chancellor }
+		custom_tooltip = {
+			text = horse_chancellor
+		}
 	}
 }
 
-### Lunatic Pagan series (TODO: do some stuff to fit it to warhammer world)
+# Lunatic Pagan series (TODO: do some stuff to fit it to warhammer world)
 
 # Rats in the walls
 character_event = {
@@ -2542,53 +2913,70 @@ character_event = {
 	desc = EVTDESC6350
 	picture = GFX_evt_recovery
 	border = GFX_event_normal_frame_religion
-	
 	ai = no
 	min_age = 16
 	prisoner = no
 	only_playable = yes
-	
+
 	trigger = {
 		# NOT = {
-			# has_game_rule = {
-				# name = supernatural_events
-				# value = off
-			# }
+		# has_game_rule = {
+		# name = supernatural_events
+		# value = off
+		# }
 		# }
 		OR = {
 			religion_group = old_gods_group
 			religion = ulrican
 			religion = taalite
 			religion = old_faith
-
 		}
-		NOT = { has_character_flag = the_old_ones_are_waking }
-		NOT = { is_inaccessible_trigger = yes }
+		NOT = {
+			has_character_flag = the_old_ones_are_waking
+		}
+		NOT = {
+			is_inaccessible_trigger = yes
+		}
 	}
-	
+
 	immediate = {
 		set_character_flag = the_old_ones_are_waking
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1000
 		modifier = {
 			factor = 100
-			NOT = { trait = lunatic_3 }
+			NOT = {
+				trait = lunatic_3
+			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA6350
-	hidden_tooltip = { character_event = { id = mutation.1005 }
-			change_variable = { which = "lunatic_counter" value = 5 } } #lunacy
-		character_event = { id = 6354 days = 14 tooltip = EVTTOOLTIP6354 }
+		hidden_tooltip = {
+			character_event = {
+				id = mutation.1005
+			}
+			change_variable = {
+				which = "lunatic_counter" value = 5
+			}
+		} # lunacy
+		character_event = {
+			id = 6354 days = 14 tooltip = EVTTOOLTIP6354
+		}
 	}
+
 	option = {
 		name = EVTOPTB6350
 		trigger = {
-			NOT = { trait = lunatic_3 }
-			NOT = { trait = lunatic_2 }
+			NOT = {
+				trait = lunatic_3
+			}
+			NOT = {
+				trait = lunatic_2
+			}
 		}
 	}
 }
@@ -2599,12 +2987,11 @@ character_event = {
 	desc = EVTDESC6351
 	picture = GFX_evt_garden
 	border = GFX_event_normal_frame_religion
-	
 	ai = no
 	min_age = 16
 	prisoner = no
 	only_playable = yes
-	
+
 	trigger = {
 		NOT = {
 			has_game_rule = {
@@ -2618,35 +3005,54 @@ character_event = {
 			religion = taalite
 			religion = old_faith
 		}
-		NOT = { has_character_flag = the_old_ones_are_waking }
-		NOT = { is_inaccessible_trigger = yes }
+		NOT = {
+			has_character_flag = the_old_ones_are_waking
+		}
+		NOT = {
+			is_inaccessible_trigger = yes
+		}
 	}
-	
+
 	immediate = {
 		set_character_flag = the_old_ones_are_waking
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1000
 		modifier = {
 			factor = 100
-			NOT = { trait = lunatic_3 }
+			NOT = {
+				trait = lunatic_3
+			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA6351
-	hidden_tooltip = { character_event = { id = mutation.1005 }
-			change_variable = { which = "lunatic_counter" value = 5 } } #lunacy
-		character_event = { id = 6354 days = 14 tooltip = EVTTOOLTIP6354 }
+		hidden_tooltip = {
+			character_event = {
+				id = mutation.1005
+			}
+			change_variable = {
+				which = "lunatic_counter" value = 5
+			}
+		} # lunacy
+		character_event = {
+			id = 6354 days = 14 tooltip = EVTTOOLTIP6354
+		}
 	}
+
 	option = {
 		name = EVTOPTB6351
 		trigger = {
-			NOT = { trait = lunatic_3 }
-			NOT = { trait = lunatic_2 }
+			NOT = {
+				trait = lunatic_3
+			}
+			NOT = {
+				trait = lunatic_2
+			}
 		}
-	}	
+	}
 }
 
 # Tomb raiding
@@ -2655,18 +3061,17 @@ character_event = {
 	desc = EVTDESC6352
 	picture = GFX_evt_death
 	border = GFX_event_normal_frame_religion
-	
 	ai = no
 	min_age = 16
 	prisoner = no
 	only_playable = yes
-	
+
 	trigger = {
 		# NOT = {
-			# has_game_rule = {
-				# name = supernatural_events
-				# value = off
-			# }
+		# has_game_rule = {
+		# name = supernatural_events
+		# value = off
+		# }
 		# }
 		OR = {
 			religion_group = old_gods_group
@@ -2674,35 +3079,54 @@ character_event = {
 			religion = taalite
 			religion = old_faith
 		}
-		NOT = { has_character_flag = the_old_ones_are_waking }
-		NOT = { is_inaccessible_trigger = yes }
+		NOT = {
+			has_character_flag = the_old_ones_are_waking
+		}
+		NOT = {
+			is_inaccessible_trigger = yes
+		}
 	}
-	
+
 	immediate = {
 		set_character_flag = the_old_ones_are_waking
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1000
 		modifier = {
 			factor = 100
-			NOT = { trait = lunatic_3 }
+			NOT = {
+				trait = lunatic_3
+			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA6352
-	hidden_tooltip = { character_event = { id = mutation.1005 }
-			change_variable = { which = "lunatic_counter" value = 5 } } #lunacy
-		character_event = { id = 6354 days = 14 tooltip = EVTTOOLTIP6354 }
+		hidden_tooltip = {
+			character_event = {
+				id = mutation.1005
+			}
+			change_variable = {
+				which = "lunatic_counter" value = 5
+			}
+		} # lunacy
+		character_event = {
+			id = 6354 days = 14 tooltip = EVTTOOLTIP6354
+		}
 	}
+
 	option = {
 		name = EVTOPTB6352
 		trigger = {
-			NOT = { trait = lunatic_3 }
-			NOT = { trait = lunatic_2 }
+			NOT = {
+				trait = lunatic_3
+			}
+			NOT = {
+				trait = lunatic_2
+			}
 		}
-	}	
+	}
 }
 
 # A law against the killing of cats
@@ -2711,55 +3135,72 @@ character_event = {
 	desc = EVTDESC6353
 	picture = GFX_evt_burning_house
 	border = GFX_event_normal_frame_religion
-	
 	ai = no
 	min_age = 16
 	prisoner = no
 	only_playable = yes
-	
+
 	trigger = {
 		# NOT = {
-			# has_game_rule = {
-				# name = supernatural_events
-				# value = off
-			# }
+		# has_game_rule = {
+		# name = supernatural_events
+		# value = off
+		# }
 		# }
 		OR = {
 			religion_group = old_gods_group
 			religion = ulrican
 			religion = taalite
 			religion = old_faith
-			
 		}
-		NOT = { has_character_flag = the_old_ones_are_waking }
-		NOT = { is_inaccessible_trigger = yes }
+		NOT = {
+			has_character_flag = the_old_ones_are_waking
+		}
+		NOT = {
+			is_inaccessible_trigger = yes
+		}
 	}
-	
+
 	immediate = {
 		set_character_flag = the_old_ones_are_waking
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1000
 		modifier = {
 			factor = 100
-			NOT = { trait = lunatic_3 }
+			NOT = {
+				trait = lunatic_3
+			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA6353
-	hidden_tooltip = { character_event = { id = mutation.1005 }
-			change_variable = { which = "lunatic_counter" value = 5 } } #lunacy
-		character_event = { id = 6354 days = 14 tooltip = EVTTOOLTIP6354 }
+		hidden_tooltip = {
+			character_event = {
+				id = mutation.1005
+			}
+			change_variable = {
+				which = "lunatic_counter" value = 5
+			}
+		} # lunacy
+		character_event = {
+			id = 6354 days = 14 tooltip = EVTTOOLTIP6354
+		}
 	}
+
 	option = {
 		name = EVTOPTB6353
 		trigger = {
-			NOT = { trait = lunatic_3 }
-			NOT = { trait = lunatic_2 }
+			NOT = {
+				trait = lunatic_3
+			}
+			NOT = {
+				trait = lunatic_2
+			}
 		}
-	}	
+	}
 }
 
 # Visiting a quaint village
@@ -2768,13 +3209,14 @@ character_event = {
 	desc = EVTDESC6354
 	picture = GFX_evt_shadowy_cabal
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA6354
-		character_event = { id = 6355 days = 7 tooltip = EVTTOOLTIP6355 }
+		character_event = {
+			id = 6355 days = 7 tooltip = EVTTOOLTIP6355
+		}
 	}
 }
 
@@ -2784,14 +3226,15 @@ character_event = {
 	desc = EVTDESC6355
 	picture = GFX_evt_shadowy_cabal
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA6355
 		change_learning = 1
-		character_event = { id = 6356 days = 1 tooltip = EVTTOOLTIP6356 }
+		character_event = {
+			id = 6356 days = 1 tooltip = EVTTOOLTIP6356
+		}
 	}
 }
 
@@ -2801,26 +3244,29 @@ character_event = {
 	desc = EVTDESC6356
 	picture = GFX_evt_shadowy_cabal
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA6356
 		piety = 100
 		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
+			limit = {
+				is_invincible_trigger = yes
+			}
 			antideath_effect = yes
-			break = yes 
-}
-death = { death_reason = death_sacrificed }
+			break = yes
+		}
+		death = {
+			death_reason = death_sacrificed
+		}
 	}
+
 	option = {
 		name = EVTOPTB6356
-		character_event = { id = 6357 days = 1 tooltip = EVTTOOLTIP6357 }
+		character_event = {
+			id = 6357 days = 1 tooltip = EVTTOOLTIP6357
+		}
 	}
 }
 
@@ -2830,13 +3276,14 @@ character_event = {
 	desc = EVTDESC6357
 	picture = GFX_evt_kraken
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA6357
-		character_event = { id = 6358 days = 1 tooltip = EVTTOOLTIP6358 }
+		character_event = {
+			id = 6358 days = 1 tooltip = EVTTOOLTIP6358
+		}
 	}
 }
 
@@ -2846,37 +3293,44 @@ character_event = {
 	desc = EVTDESC6358
 	picture = GFX_evt_recovery
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA6358
 		prestige = 100
 		if = {
-			limit = { lifestyle_traits = 1 }
+			limit = {
+				lifestyle_traits = 1
+			}
 			change_learning = 1
-		}		
+		}
 		if = {
 			limit = {
-				NOT = { lifestyle_traits = 1 }
-				NOT = { has_dlc = "Way of Life" }
+				NOT = {
+					lifestyle_traits = 1
+				}
+				NOT = {
+					has_dlc = "Way of Life"
+				}
 			}
 			add_trait = scholar
 		}
 	}
+
 	option = {
 		name = EVTOPTB6358
-		add_character_modifier = { name = "killed_an_old_one" duration = -1 }
-	}	
+		add_character_modifier = {
+			name = "killed_an_old_one" duration = -1
+		}
+	}
 }
 
-#Lover's pox adding and notification
+# Lover's pox adding and notification
 character_event = {
 	id = 6359
 	picture = GFX_evt_recovery
 	border = GFX_event_normal_frame_religion
-
 	desc = {
 		text = EVTDESC_WOL_40_NC
 		trigger = {
@@ -2894,13 +3348,16 @@ character_event = {
 		picture = GFX_evt_bad_news
 	}
 	desc = {
-		trigger = { NOT = { has_DLC = "Sons of Abraham" } }
+		trigger = {
+			NOT = {
+				has_DLC = "Sons of Abraham"
+			}
+		}
 		text = EVTDESC_WOL_40_NC
 		picture = GFX_evt_recovery
 	}
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		is_disease_immune_race = no
 		NOR = {
@@ -2908,7 +3365,7 @@ character_event = {
 			has_character_modifier = minor_disease_herpes
 		}
 	}
-	
+
 	option = {
 		name = CURSES
 		add_trait = lovers_pox

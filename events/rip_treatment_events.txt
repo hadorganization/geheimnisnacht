@@ -1,83 +1,109 @@
-###########################################
-#                                         #
-# RIP Treatment Events           		  #
-# ID RIP.11000-RIP.11050                  #
-#                                         #
-###########################################
+
+
+# RIP Treatment Events
+
+# ID RIP.11000-RIP.11050
 
 # Written by Markus Olsén
-# Additional writing by Mathilda Bjarnehed & Milla Isaksson
 
+# Additional writing by Mathilda Bjarnehed & Milla Isaksson
 namespace = RIP
 
-#Severely wounded removed
+# Severely wounded removed
 character_event = {
 	id = RIP.11000
 	picture = GFX_evt_garden
 	border = GFX_event_normal_frame_religion
-
 	hide_from = yes
 
 	trigger = {
 		trait = severely_injured
 	}
-
 	desc = {
 		picture = GFX_evt_recovery
 		text = EVTDESCA_RIP_11000
-		trigger = { NOT = { has_character_flag = pending_infection } }
+		trigger = {
+			NOT = {
+				has_character_flag = pending_infection
+			}
+		}
 	}
-
 	desc = {
 		picture = GFX_evt_bloody_tools
 		text = EVTDESCB_RIP_11000
-		trigger = { has_character_flag = pending_infection }
+		trigger = {
+			has_character_flag = pending_infection
+		}
 	}
-	
 	is_triggered_only = yes
 
 	option = {
 		name = EVTOPTA_RIP_11000
-		trigger = { NOT = { has_character_flag = pending_infection } }
+		trigger = {
+			NOT = {
+				has_character_flag = pending_infection
+			}
+		}
 		remove_trait = severely_injured
 		if = {
-			limit = { NOT = { trait = scarred } }
+			limit = {
+				NOT = {
+					trait = scarred
+				}
+			}
 			add_trait = scarred
 		}
 	}
 
 	option = {
 		name = EVTOPTB_RIP_11000
-		trigger = { has_character_flag = pending_infection }
+		trigger = {
+			has_character_flag = pending_infection
+		}
 		remove_trait = severely_injured
 		add_trait = infection
 		if = {
-			limit = { NOT = { trait = scarred } }
+			limit = {
+				NOT = {
+					trait = scarred
+				}
+			}
 			add_trait = scarred
 		}
 		hidden_tooltip = {
 			clr_character_flag = pending_infection
-			character_event = { id = RIP.11001 days = 365 random = 1095 }
+			character_event = {
+				id = RIP.11001 days = 365 random = 1095
+			}
 		}
 	}
 }
 
-#####################################################
-#Symptoms and Diseases removed after given time		#
-#####################################################
+# Symptoms and Diseases removed after given time
 
-#RIP.11001 Removing infection
-#RIP.11002 Removing cough
-#RIP.11003 Removing fever
-#RIP.11004 Removing diarrhea
-#RIP.11005 Removing vomiting
-#RIP.11006 Removing chest pain
-#RIP.11007 Removing cramps
-#RIP.11008 Removing rash
-#RIP.11009 Removing headache
-#RIP.11010 Removing abdominal pain
-#RIP.11011 Removing fatigue
-#RIP.11012 Removing malaise
+# RIP.11001 Removing infection
+
+# RIP.11002 Removing cough
+
+# RIP.11003 Removing fever
+
+# RIP.11004 Removing diarrhea
+
+# RIP.11005 Removing vomiting
+
+# RIP.11006 Removing chest pain
+
+# RIP.11007 Removing cramps
+
+# RIP.11008 Removing rash
+
+# RIP.11009 Removing headache
+
+# RIP.11010 Removing abdominal pain
+
+# RIP.11011 Removing fatigue
+
+# RIP.11012 Removing malaise
 
 # Removing infection
 character_event = {
@@ -85,7 +111,6 @@ character_event = {
 	picture = GFX_evt_recovery
 	desc = EVTDESC_RIP_11001
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
 
 	option = {
@@ -93,8 +118,12 @@ character_event = {
 		remove_trait = infection
 		hidden_tooltip = {
 			if = {
-				limit = { trait = wounded }
-				character_event = { id = 6081 days = 14 random = 30 } # wound should heal soon after
+				limit = {
+					trait = wounded
+				}
+				character_event = {
+					id = 6081 days = 14 random = 30
+				} # wound should heal soon after
 			}
 		}
 	}
@@ -106,7 +135,6 @@ character_event = {
 	picture = GFX_evt_recovery
 	desc = EVTDESC_RIP_11002
 	border = GFX_event_normal_frame_religion
-
 	is_triggered_only = yes
 
 	trigger = {
@@ -132,7 +160,6 @@ character_event = {
 	picture = GFX_evt_recovery
 	desc = EVTDESC_RIP_11003
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
 
 	trigger = {
@@ -158,7 +185,6 @@ character_event = {
 	picture = GFX_evt_recovery
 	desc = EVTDESC_RIP_11004
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
 
 	trigger = {
@@ -184,7 +210,6 @@ character_event = {
 	picture = GFX_evt_recovery
 	desc = EVTDESC_RIP_11005
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
 
 	trigger = {
@@ -210,7 +235,6 @@ character_event = {
 	picture = GFX_evt_recovery
 	desc = EVTDESC_RIP_11006
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
 
 	trigger = {
@@ -236,7 +260,6 @@ character_event = {
 	picture = GFX_evt_recovery
 	desc = EVTDESC_RIP_11007
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
 
 	trigger = {
@@ -262,7 +285,6 @@ character_event = {
 	picture = GFX_evt_recovery
 	desc = EVTDESC_RIP_11008
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
 
 	trigger = {
@@ -288,7 +310,6 @@ character_event = {
 	picture = GFX_evt_recovery
 	desc = EVTDESC_RIP_11009
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
 
 	trigger = {
@@ -314,7 +335,6 @@ character_event = {
 	picture = GFX_evt_recovery
 	desc = EVTDESC_RIP_11010
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
 
 	trigger = {
@@ -340,7 +360,6 @@ character_event = {
 	picture = GFX_evt_recovery
 	desc = EVTDESC_RIP_11011
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
 
 	trigger = {
@@ -366,7 +385,6 @@ character_event = {
 	picture = GFX_evt_recovery
 	desc = EVTDESC_RIP_11012
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
 
 	trigger = {
@@ -386,15 +404,19 @@ character_event = {
 	}
 }
 
-######################
-# Diseases			 #
-######################
-#RIP.11015 Removing flu
-#RIP.11016 Removing dysentery
-#RIP.11017 Removing gout
-#RIP.11018 Removing food_poisoning
-#RIP.11019 Removing rabies
-#RIP.11020 Removing cancer
+# Diseases
+
+# RIP.11015 Removing flu
+
+# RIP.11016 Removing dysentery
+
+# RIP.11017 Removing gout
+
+# RIP.11018 Removing food_poisoning
+
+# RIP.11019 Removing rabies
+
+# RIP.11020 Removing cancer
 
 # Removing flu
 character_event = {
@@ -402,11 +424,10 @@ character_event = {
 	picture = GFX_evt_recovery
 	desc = EVTDESC_RIP_11015
 	border = GFX_event_normal_frame_religion
-	
 	is_sick = yes
 
-	trigger = { 
-		trait = flu 
+	trigger = {
+		trait = flu
 		NOR = {
 			religion = nurgle
 			trait = plaguelord
@@ -415,11 +436,15 @@ character_event = {
 			society_member_of = cult_of_nurgle3
 		}
 		OR = {
-			had_character_flag = { flag = manifest_flu days = 30 } 
-			NOT = { has_character_flag = manifest_flu }
+			had_character_flag = {
+				flag = manifest_flu days = 30
+			}
+			NOT = {
+				has_character_flag = manifest_flu
+			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 6
 		modifier = {
@@ -436,23 +461,33 @@ character_event = {
 		}
 		modifier = {
 			factor = 1.5
-			NOT = { base_health = 5.0 }
+			NOT = {
+				base_health = 5.0
+			}
 		}
 		modifier = {
 			factor = 2.0
-			NOT = { base_health = 4.1 }
+			NOT = {
+				base_health = 4.1
+			}
 		}
 		modifier = {
 			factor = 0.66
-			NOT = { age = 20 }
+			NOT = {
+				age = 20
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 30 }
+			NOT = {
+				age = 30
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 40 }
+			NOT = {
+				age = 40
+			}
 		}
 		modifier = {
 			factor = 2.0
@@ -469,7 +504,6 @@ character_event = {
 			age = 100
 			trait = grail_knight
 		}
-		
 		modifier = {
 			factor = 2
 			age = 150
@@ -478,19 +512,17 @@ character_event = {
 				trait = creature_chaos_dwarf
 			}
 		}
-		
 		modifier = {
 			factor = 2
 			age = 500
 			trait = creature_elf
 		}
-		
 		modifier = {
 			factor = 2
 			age = 2000
 			OR = {
 				trait = immortal
-				trait = elixir_of_eternal_youth 	
+				is_immortal_trigger = yes
 			}
 		}
 		modifier = {
@@ -527,11 +559,10 @@ character_event = {
 	picture = GFX_evt_recovery
 	desc = EVTDESC_RIP_11016
 	border = GFX_event_normal_frame_religion
-	
 	is_sick = yes
 
-	trigger = { 
-		trait = dysentery 
+	trigger = {
+		trait = dysentery
 		NOR = {
 			religion = nurgle
 			trait = plaguelord
@@ -540,11 +571,15 @@ character_event = {
 			society_member_of = cult_of_nurgle3
 		}
 		OR = {
-			had_character_flag = { flag = manifest_dysentery days = 30 } 
-			NOT = { has_character_flag = manifest_dysentery }
+			had_character_flag = {
+				flag = manifest_dysentery days = 30
+			}
+			NOT = {
+				has_character_flag = manifest_dysentery
+			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 6
 		modifier = {
@@ -561,23 +596,33 @@ character_event = {
 		}
 		modifier = {
 			factor = 1.5
-			NOT = { base_health = 5.0 }
+			NOT = {
+				base_health = 5.0
+			}
 		}
 		modifier = {
 			factor = 2.0
-			NOT = { base_health = 4.1 }
+			NOT = {
+				base_health = 4.1
+			}
 		}
 		modifier = {
 			factor = 0.66
-			NOT = { age = 20 }
+			NOT = {
+				age = 20
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 30 }
+			NOT = {
+				age = 30
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 40 }
+			NOT = {
+				age = 40
+			}
 		}
 		modifier = {
 			factor = 2.0
@@ -594,7 +639,6 @@ character_event = {
 			age = 100
 			trait = grail_knight
 		}
-		
 		modifier = {
 			factor = 2
 			age = 150
@@ -603,19 +647,17 @@ character_event = {
 				trait = creature_chaos_dwarf
 			}
 		}
-		
 		modifier = {
 			factor = 2
 			age = 500
 			trait = creature_elf
 		}
-		
 		modifier = {
 			factor = 2
 			age = 2000
 			OR = {
 				trait = immortal
-				trait = elixir_of_eternal_youth 	
+				is_immortal_trigger = yes
 			}
 		}
 		modifier = {
@@ -652,11 +694,10 @@ character_event = {
 	picture = GFX_evt_recovery
 	desc = EVTDESC_RIP_11017
 	border = GFX_event_normal_frame_religion
-	
 	is_sick = yes
 
-	trigger = { 
-		trait = gout 
+	trigger = {
+		trait = gout
 		health = 6
 		NOR = {
 			religion = nurgle
@@ -666,14 +707,17 @@ character_event = {
 			society_member_of = cult_of_nurgle3
 		}
 		OR = {
-			had_character_flag = { flag = manifest_gout days = 2000 }
-			NOT = { has_character_flag = manifest_gout }
+			had_character_flag = {
+				flag = manifest_gout days = 2000
+			}
+			NOT = {
+				has_character_flag = manifest_gout
+			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
-		
 		modifier = {
 			factor = 0.5
 			health = 7
@@ -704,10 +748,9 @@ character_event = {
 	picture = GFX_evt_recovery
 	desc = EVTDESC_RIP_11018
 	border = GFX_event_normal_frame_religion
-	
 	is_sick = yes
 
-	trigger = { 
+	trigger = {
 		trait = food_poisoning
 		NOR = {
 			religion = nurgle
@@ -717,21 +760,24 @@ character_event = {
 			society_member_of = cult_of_nurgle3
 		}
 		OR = {
-			had_character_flag = { flag = manifest_food_poisoning days = 30 } 
-			NOT = { has_character_flag = manifest_food_poisoning }
+			had_character_flag = {
+				flag = manifest_food_poisoning days = 30
+			}
+			NOT = {
+				has_character_flag = manifest_food_poisoning
+			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		days = 90
-		
 		modifier = {
 			factor = 2
 			trait = gluttonous
 		}
 		modifier = {
 			factor = 2
-			trait = hedonist 
+			trait = hedonist
 		}
 	}
 
@@ -755,11 +801,10 @@ character_event = {
 	picture = GFX_evt_recovery
 	desc = EVTDESC_RIP_11019
 	border = GFX_event_normal_frame_religion
-	
 	is_sick = yes
 
-	trigger = { 
-		trait = rabies 
+	trigger = {
+		trait = rabies
 		NOR = {
 			religion = nurgle
 			trait = plaguelord
@@ -768,14 +813,17 @@ character_event = {
 			society_member_of = cult_of_nurgle3
 		}
 		OR = {
-			had_character_flag = { flag = manifest_rabies days = 2000 } 
-			NOT = { has_character_flag = manifest_rabies }
+			had_character_flag = {
+				flag = manifest_rabies days = 2000
+			}
+			NOT = {
+				has_character_flag = manifest_rabies
+			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
-		months = 25000 #good luck!
-		
+		months = 25000 # good luck!
 		modifier = {
 			factor = 0.5
 			health = 8
@@ -790,7 +838,6 @@ character_event = {
 		name = EVTOPTA_RIP_11001
 		remove_trait = rabies
 		clear_disease_level_effect = yes
-
 		clr_character_flag = developing_illness
 		clr_character_flag = got_rabies
 		clr_character_flag = manifest_rabies
@@ -807,11 +854,10 @@ character_event = {
 	picture = GFX_evt_recovery
 	desc = EVTDESC_RIP_11020
 	border = GFX_event_normal_frame_religion
-	
 	is_sick = yes
 
-	trigger = { 
-		trait = cancer 
+	trigger = {
+		trait = cancer
 		NOR = {
 			religion = nurgle
 			trait = plaguelord
@@ -820,14 +866,17 @@ character_event = {
 			society_member_of = cult_of_nurgle3
 		}
 		OR = {
-			had_character_flag = { flag = manifest_cancer days = 2000 }
-			NOT = { has_character_flag = manifest_cancer }
+			had_character_flag = {
+				flag = manifest_cancer days = 2000
+			}
+			NOT = {
+				has_character_flag = manifest_cancer
+			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 2400
-		
 		modifier = {
 			factor = 0.5
 			health = 7
@@ -852,19 +901,19 @@ character_event = {
 	}
 }
 
-#OLD DISEASES
+# OLD DISEASES
+
 # Removing pneumonia
 character_event = {
 	id = RIP.11021
 	picture = GFX_evt_recovery
 	desc = EVTDESC_RIP_11021
 	border = GFX_event_normal_frame_religion
-	
 	is_sick = yes
 
-	trigger = { 
+	trigger = {
 		base_health = 4
-		trait = pneumonic 
+		trait = pneumonic
 		has_dlc = "Reapers"
 		NOR = {
 			religion = nurgle
@@ -874,20 +923,28 @@ character_event = {
 			society_member_of = cult_of_nurgle3
 		}
 		OR = {
-			had_character_flag = { flag = manifest_pneumonia days = 30 }
-			NOT = { has_character_flag = manifest_pneumonia }
+			had_character_flag = {
+				flag = manifest_pneumonia days = 30
+			}
+			NOT = {
+				has_character_flag = manifest_pneumonia
+			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 4
 		modifier = {
 			factor = 2.0
-			NOT = { base_health = 5 }
+			NOT = {
+				base_health = 5
+			}
 		}
 		modifier = {
 			factor = 2.0
-			NOT = { base_health = 4 }
+			NOT = {
+				base_health = 4
+			}
 		}
 		modifier = {
 			factor = 1.5
@@ -924,17 +981,17 @@ character_event = {
 		}
 	}
 }
+
 # Removing Great Pox
 character_event = {
 	id = RIP.11022
 	picture = GFX_evt_recovery
 	desc = EVTDESC_RIP_11022
 	border = GFX_event_normal_frame_religion
-	
 	is_sick = yes
 
-	trigger = { 
-		trait = syphilitic 
+	trigger = {
+		trait = syphilitic
 		health = 6
 		has_dlc = "Reapers"
 		NOR = {
@@ -945,14 +1002,17 @@ character_event = {
 			society_member_of = cult_of_nurgle3
 		}
 		OR = {
-			had_character_flag = { flag = manifest_syphilis days = 2000 }
-			NOT = { has_character_flag = manifest_syphilis }
+			had_character_flag = {
+				flag = manifest_syphilis days = 2000
+			}
+			NOT = {
+				has_character_flag = manifest_syphilis
+			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 25000
-		
 		modifier = {
 			factor = 0.5
 			health = 8
@@ -979,26 +1039,40 @@ character_event = {
 }
 
 # Removing leprosy
-#character_event = {
-#	id = RIP.11023
-#	picture = GFX_evt_recovery
-#	desc = EVTDESC_RIP_11023
-#	border = GFX_event_normal_frame_religion
-#	
-#	is_sick = yes
-#
-#	trigger = { 
-#		trait = leper 
-#		has_dlc = "Reapers"
-#	}
-#
-#	option = {
-#		name = EVTOPTA_RIP_11001
-#		remove_trait = leper
-#		clr_character_flag = developing_illness
-#		clr_character_flag = got_leprosy 
-#	}
-#}
+
+# character_event = {
+
+# 	id = RIP.11023
+
+# 	picture = GFX_evt_recovery
+
+# 	desc = EVTDESC_RIP_11023
+
+# 	border = GFX_event_normal_frame_religion
+
+# 	is_sick = yes
+
+# 	trigger = {
+
+# 		trait = leper
+
+# 		has_dlc = "Reapers"
+
+# 	}
+
+# 	option = {
+
+# 		name = EVTOPTA_RIP_11001
+
+# 		remove_trait = leper
+
+# 		clr_character_flag = developing_illness
+
+# 		clr_character_flag = got_leprosy
+
+# 	}
+
+# }
 
 # Removing tuberculosis
 character_event = {
@@ -1006,11 +1080,10 @@ character_event = {
 	picture = GFX_evt_recovery
 	desc = EVTDESC_RIP_11024
 	border = GFX_event_normal_frame_religion
-	
 	is_sick = yes
 
-	trigger = { 
-		trait = has_tuberculosis 
+	trigger = {
+		trait = has_tuberculosis
 		has_dlc = "Reapers"
 		NOR = {
 			religion = nurgle
@@ -1020,14 +1093,17 @@ character_event = {
 			society_member_of = cult_of_nurgle3
 		}
 		OR = {
-			had_character_flag = { flag = manifest_tuberculosis days = 60 }
-			NOT = { has_character_flag = manifest_tuberculosis }
+			had_character_flag = {
+				flag = manifest_tuberculosis days = 60
+			}
+			NOT = {
+				has_character_flag = manifest_tuberculosis
+			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 24
-		
 		modifier = {
 			factor = 0.75
 			base_health = 5.1
@@ -1042,23 +1118,33 @@ character_event = {
 		}
 		modifier = {
 			factor = 1.5
-			NOT = { base_health = 5.0 }
+			NOT = {
+				base_health = 5.0
+			}
 		}
 		modifier = {
 			factor = 2.0
-			NOT = { base_health = 4.1 }
+			NOT = {
+				base_health = 4.1
+			}
 		}
 		modifier = {
 			factor = 0.66
-			NOT = { age = 20 }
+			NOT = {
+				age = 20
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 30 }
+			NOT = {
+				age = 30
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 40 }
+			NOT = {
+				age = 40
+			}
 		}
 		modifier = {
 			factor = 2.0
@@ -1075,7 +1161,6 @@ character_event = {
 			age = 100
 			trait = grail_knight
 		}
-		
 		modifier = {
 			factor = 2
 			age = 150
@@ -1084,19 +1169,17 @@ character_event = {
 				trait = creature_chaos_dwarf
 			}
 		}
-		
 		modifier = {
 			factor = 2
 			age = 500
 			trait = creature_elf
 		}
-		
 		modifier = {
 			factor = 2
 			age = 2000
 			OR = {
 				trait = immortal
-				trait = elixir_of_eternal_youth 	
+				is_immortal_trigger = yes
 			}
 		}
 		modifier = {
@@ -1127,17 +1210,17 @@ character_event = {
 		}
 	}
 }
+
 # Removing typhoid fever
 character_event = {
 	id = RIP.11025
 	picture = GFX_evt_recovery
 	desc = EVTDESC_RIP_11025
 	border = GFX_event_normal_frame_religion
-	
 	is_sick = yes
 
-	trigger = { 
-		trait = has_typhoid_fever 
+	trigger = {
+		trait = has_typhoid_fever
 		has_dlc = "Reapers"
 		NOR = {
 			religion = nurgle
@@ -1147,14 +1230,17 @@ character_event = {
 			society_member_of = cult_of_nurgle3
 		}
 		OR = {
-			had_character_flag = { flag = manifest_typhoid_fever days = 30 }
-			NOT = { has_character_flag = manifest_typhoid_fever }
+			had_character_flag = {
+				flag = manifest_typhoid_fever days = 30
+			}
+			NOT = {
+				has_character_flag = manifest_typhoid_fever
+			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 4
-		
 		modifier = {
 			factor = 0.75
 			base_health = 5.1
@@ -1169,23 +1255,33 @@ character_event = {
 		}
 		modifier = {
 			factor = 1.5
-			NOT = { base_health = 5.0 }
+			NOT = {
+				base_health = 5.0
+			}
 		}
 		modifier = {
 			factor = 2.0
-			NOT = { base_health = 4.1 }
+			NOT = {
+				base_health = 4.1
+			}
 		}
 		modifier = {
 			factor = 0.66
-			NOT = { age = 20 }
+			NOT = {
+				age = 20
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 30 }
+			NOT = {
+				age = 30
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 40 }
+			NOT = {
+				age = 40
+			}
 		}
 		modifier = {
 			factor = 2.0
@@ -1202,7 +1298,6 @@ character_event = {
 			age = 100
 			trait = grail_knight
 		}
-		
 		modifier = {
 			factor = 2
 			age = 150
@@ -1211,19 +1306,17 @@ character_event = {
 				trait = creature_chaos_dwarf
 			}
 		}
-		
 		modifier = {
 			factor = 2
 			age = 500
 			trait = creature_elf
 		}
-		
 		modifier = {
 			factor = 2
 			age = 2000
 			OR = {
 				trait = immortal
-				trait = elixir_of_eternal_youth 	
+				is_immortal_trigger = yes
 			}
 		}
 		modifier = {
@@ -1254,16 +1347,16 @@ character_event = {
 		}
 	}
 }
+
 # Removing typhus
 character_event = {
 	id = RIP.11026
 	picture = GFX_evt_recovery
 	desc = EVTDESC_RIP_11026
 	border = GFX_event_normal_frame_religion
-	
 	is_sick = yes
 
-	trigger = { 
+	trigger = {
 		trait = has_typhus
 		has_dlc = "Reapers"
 		NOR = {
@@ -1274,14 +1367,17 @@ character_event = {
 			society_member_of = cult_of_nurgle3
 		}
 		OR = {
-			had_character_flag = { flag = manifest_typhus days = 60 }
-			NOT = { has_character_flag = manifest_typhus }
+			had_character_flag = {
+				flag = manifest_typhus days = 60
+			}
+			NOT = {
+				has_character_flag = manifest_typhus
+			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 12
-		
 		modifier = {
 			factor = 0.75
 			base_health = 5.1
@@ -1296,23 +1392,33 @@ character_event = {
 		}
 		modifier = {
 			factor = 1.5
-			NOT = { base_health = 5.0 }
+			NOT = {
+				base_health = 5.0
+			}
 		}
 		modifier = {
 			factor = 2.0
-			NOT = { base_health = 4.1 }
+			NOT = {
+				base_health = 4.1
+			}
 		}
 		modifier = {
 			factor = 0.66
-			NOT = { age = 20 }
+			NOT = {
+				age = 20
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 30 }
+			NOT = {
+				age = 30
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 40 }
+			NOT = {
+				age = 40
+			}
 		}
 		modifier = {
 			factor = 2.0
@@ -1329,7 +1435,6 @@ character_event = {
 			age = 100
 			trait = grail_knight
 		}
-		
 		modifier = {
 			factor = 2
 			age = 150
@@ -1338,19 +1443,17 @@ character_event = {
 				trait = creature_chaos_dwarf
 			}
 		}
-		
 		modifier = {
 			factor = 2
 			age = 500
 			trait = creature_elf
 		}
-		
 		modifier = {
 			factor = 2
 			age = 2000
 			OR = {
 				trait = immortal
-				trait = elixir_of_eternal_youth 	
+				is_immortal_trigger = yes
 			}
 		}
 		modifier = {
@@ -1381,16 +1484,16 @@ character_event = {
 		}
 	}
 }
+
 # Removing bubonic plague
 character_event = {
 	id = RIP.11027
 	picture = GFX_evt_recovery
 	desc = EVTDESC_RIP_11027
 	border = GFX_event_normal_frame_religion
-	
 	is_sick = yes
 
-	trigger = { 
+	trigger = {
 		trait = has_bubonic_plague
 		has_dlc = "Reapers"
 		NOR = {
@@ -1401,11 +1504,15 @@ character_event = {
 			society_member_of = cult_of_nurgle3
 		}
 		OR = {
-			had_character_flag = { flag = manifest_bubonic_plague days = 30 }
-			NOT = { has_character_flag = manifest_bubonic_plague }
+			had_character_flag = {
+				flag = manifest_bubonic_plague days = 30
+			}
+			NOT = {
+				has_character_flag = manifest_bubonic_plague
+			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 3
 		modifier = {
@@ -1422,23 +1529,33 @@ character_event = {
 		}
 		modifier = {
 			factor = 1.5
-			NOT = { base_health = 5.0 }
+			NOT = {
+				base_health = 5.0
+			}
 		}
 		modifier = {
 			factor = 2.0
-			NOT = { base_health = 4.1 }
+			NOT = {
+				base_health = 4.1
+			}
 		}
 		modifier = {
 			factor = 0.66
-			NOT = { age = 20 }
+			NOT = {
+				age = 20
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 30 }
+			NOT = {
+				age = 30
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 40 }
+			NOT = {
+				age = 40
+			}
 		}
 		modifier = {
 			factor = 2.0
@@ -1455,7 +1572,6 @@ character_event = {
 			age = 100
 			trait = grail_knight
 		}
-		
 		modifier = {
 			factor = 2
 			age = 150
@@ -1464,19 +1580,17 @@ character_event = {
 				trait = creature_chaos_dwarf
 			}
 		}
-		
 		modifier = {
 			factor = 2
 			age = 500
 			trait = creature_elf
 		}
-		
 		modifier = {
 			factor = 2
 			age = 2000
 			OR = {
 				trait = immortal
-				trait = elixir_of_eternal_youth 	
+				is_immortal_trigger = yes
 			}
 		}
 		modifier = {
@@ -1513,17 +1627,17 @@ character_event = {
 		}
 	}
 }
+
 # Removing measles
 character_event = {
 	id = RIP.11028
 	picture = GFX_evt_recovery
 	desc = EVTDESC_RIP_11028
 	border = GFX_event_normal_frame_religion
-	
 	is_sick = yes
 
-	trigger = { 
-		trait = has_measles 
+	trigger = {
+		trait = has_measles
 		has_dlc = "Reapers"
 		NOR = {
 			religion = nurgle
@@ -1533,14 +1647,17 @@ character_event = {
 			society_member_of = cult_of_nurgle3
 		}
 		OR = {
-			had_character_flag = { flag = manifest_measles days = 30 }
-			NOT = { has_character_flag = manifest_measles }
+			had_character_flag = {
+				flag = manifest_measles days = 30
+			}
+			NOT = {
+				has_character_flag = manifest_measles
+			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 5
-		
 		modifier = {
 			factor = 0.75
 			base_health = 5.1
@@ -1555,23 +1672,33 @@ character_event = {
 		}
 		modifier = {
 			factor = 1.5
-			NOT = { base_health = 5.0 }
+			NOT = {
+				base_health = 5.0
+			}
 		}
 		modifier = {
 			factor = 2.0
-			NOT = { base_health = 4.1 }
+			NOT = {
+				base_health = 4.1
+			}
 		}
 		modifier = {
 			factor = 0.66
-			NOT = { age = 20 }
+			NOT = {
+				age = 20
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 30 }
+			NOT = {
+				age = 30
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 40 }
+			NOT = {
+				age = 40
+			}
 		}
 		modifier = {
 			factor = 2.0
@@ -1588,7 +1715,6 @@ character_event = {
 			age = 100
 			trait = grail_knight
 		}
-		
 		modifier = {
 			factor = 2
 			age = 150
@@ -1597,19 +1723,17 @@ character_event = {
 				trait = creature_chaos_dwarf
 			}
 		}
-		
 		modifier = {
 			factor = 2
 			age = 500
 			trait = creature_elf
 		}
-		
 		modifier = {
 			factor = 2
 			age = 2000
 			OR = {
 				trait = immortal
-				trait = elixir_of_eternal_youth 	
+				is_immortal_trigger = yes
 			}
 		}
 		modifier = {
@@ -1640,17 +1764,17 @@ character_event = {
 		}
 	}
 }
+
 # Removing smallpox
 character_event = {
 	id = RIP.11029
 	picture = GFX_evt_recovery
 	desc = EVTDESC_RIP_11029
 	border = GFX_event_normal_frame_religion
-	
 	is_sick = yes
 
-	trigger = { 
-		trait = has_small_pox 
+	trigger = {
+		trait = has_small_pox
 		has_dlc = "Reapers"
 		NOR = {
 			religion = nurgle
@@ -1660,14 +1784,17 @@ character_event = {
 			society_member_of = cult_of_nurgle3
 		}
 		OR = {
-			had_character_flag = { flag = manifest_small_pox days = 30 }
-			NOT = { has_character_flag = manifest_small_pox }
+			had_character_flag = {
+				flag = manifest_small_pox days = 30
+			}
+			NOT = {
+				has_character_flag = manifest_small_pox
+			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 5
-		
 		modifier = {
 			factor = 0.75
 			base_health = 5.1
@@ -1682,23 +1809,33 @@ character_event = {
 		}
 		modifier = {
 			factor = 1.5
-			NOT = { base_health = 5.0 }
+			NOT = {
+				base_health = 5.0
+			}
 		}
 		modifier = {
 			factor = 2.0
-			NOT = { base_health = 4.1 }
+			NOT = {
+				base_health = 4.1
+			}
 		}
 		modifier = {
 			factor = 0.66
-			NOT = { age = 20 }
+			NOT = {
+				age = 20
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 30 }
+			NOT = {
+				age = 30
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 40 }
+			NOT = {
+				age = 40
+			}
 		}
 		modifier = {
 			factor = 2.0
@@ -1715,7 +1852,6 @@ character_event = {
 			age = 100
 			trait = grail_knight
 		}
-		
 		modifier = {
 			factor = 2
 			age = 150
@@ -1724,19 +1860,17 @@ character_event = {
 				trait = creature_chaos_dwarf
 			}
 		}
-		
 		modifier = {
 			factor = 2
 			age = 500
 			trait = creature_elf
 		}
-		
 		modifier = {
 			factor = 2
 			age = 2000
 			OR = {
 				trait = immortal
-				trait = elixir_of_eternal_youth 	
+				is_immortal_trigger = yes
 			}
 		}
 		modifier = {
@@ -1767,13 +1901,13 @@ character_event = {
 		}
 	}
 }
+
 # Removing Aztec disease (Syphilis)
 character_event = {
 	id = RIP.11030
 	picture = GFX_evt_recovery
 	desc = EVTDESC_RIP_11030
 	border = GFX_event_normal_frame_religion
-	
 	is_sick = yes
 
 	trigger = {
@@ -1788,14 +1922,17 @@ character_event = {
 			society_member_of = cult_of_nurgle3
 		}
 		OR = {
-			had_character_flag = { flag = manifest_aztec_disease days = 2000 }
-			NOT = { has_character_flag = manifest_aztec_disease }
+			had_character_flag = {
+				flag = manifest_aztec_disease days = 2000
+			}
+			NOT = {
+				has_character_flag = manifest_aztec_disease
+			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 25000
-		
 		modifier = {
 			factor = 0.5
 			health = 8
@@ -1821,17 +1958,14 @@ character_event = {
 	}
 }
 
-
-######################################################################################
 # Diagnosis events
-######################################################################################
+
 # RIP.11021
 
 # Ping doctor
 character_event = {
 	id = RIP.11031
 	hide_window = yes
-	
 	is_triggered_only = yes
 
 	trigger = {
@@ -1844,15 +1978,19 @@ character_event = {
 					has_character_flag = new_leper_character
 				}
 				AND = {
-					NOR = { 
+					NOR = {
 						has_character_modifier = symptom_treatment_1
 						has_character_modifier = symptom_treatment_2
 						has_character_modifier = symptom_treatment_3
 						has_character_modifier = symptom_treatment_4
 					}
 					OR = {
-						NOT = { has_character_flag = being_treated }
-						had_character_flag = { flag = being_treated days = 20 }
+						NOT = {
+							has_character_flag = being_treated
+						}
+						had_character_flag = {
+							flag = being_treated days = 20
+						}
 					}
 					OR = {
 						trait = cough
@@ -1876,20 +2014,32 @@ character_event = {
 		if = {
 			limit = {
 				FROM = {
-					NOT = { has_character_flag = seclusion_treatment_approved }
+					NOT = {
+						has_character_flag = seclusion_treatment_approved
+					}
 					has_character_modifier = in_seclusion
 					has_epidemic_disease_trigger = yes
-					host = { NOT = { character = PREV } }
+					host = {
+						NOT = {
+							character = PREV
+						}
+					}
 				}
 			}
 			save_event_target_as = court_physician
 			FROM = {
 				save_event_target_as = epidemic_victim
 			}
-			liege = { character_event = { id = RIP.12014 } }
+			liege = {
+				character_event = {
+					id = RIP.12014
+				}
+			}
 			break = yes
 		}
-		FROM = { set_character_flag = being_treated }
+		FROM = {
+			set_character_flag = being_treated
+		}
 		if = {
 			limit = {
 				FROM = {
@@ -1909,7 +2059,9 @@ character_event = {
 				}
 			}
 			FROM = {
-				character_event = { id = RIP.11045 days = 1 random = 2 }
+				character_event = {
+					id = RIP.11045 days = 1 random = 2
+				}
 			}
 			break = yes
 		}
@@ -1921,7 +2073,9 @@ character_event = {
 				}
 			}
 			FROM = {
-				character_event = { id = RIP.11062 days = 2 random = 4 }
+				character_event = {
+					id = RIP.11062 days = 2 random = 4
+				}
 			}
 			break = yes
 		}
@@ -1932,7 +2086,9 @@ character_event = {
 				}
 			}
 			FROM = {
-				character_event = { id = RIP.11035 days = 2 random = 4 }
+				character_event = {
+					id = RIP.11035 days = 2 random = 4
+				}
 			}
 		}
 	}
@@ -1941,13 +2097,14 @@ character_event = {
 character_event = {
 	id = RIP.11032
 	hide_window = yes
-	
 	is_triggered_only = yes
-
 	# We target the court physician and send event back
+
 	immediate = {
-		event_target:court_physician = { 
-			character_event = { id = RIP.11031 }
+		event_target:court_physician = {
+			character_event = {
+				id = RIP.11031
+			}
 		}
 	}
 }
@@ -1957,42 +2114,42 @@ character_event = {
 	picture = GFX_evt_court_physician
 	desc = EVTDESC_RIP_11035
 	border = GFX_event_normal_frame_religion
-
 	is_triggered_only = yes
-	
+
 	trigger = {
 		character_disease_trigger = yes
 	}
-	
+
 	immediate = {
 		remove_character_modifier = symptom_treatment_1
 		remove_character_modifier = symptom_treatment_2
 		remove_character_modifier = symptom_treatment_3
 		remove_character_modifier = symptom_treatment_4
 	}
-
 	# Experimental treatment from great doctor
+
 	option = {
 		name = EVTOPTA_RIP_11035
 		custom_tooltip = {
-			text = EVTOPTA_RIP_11035_TOOLTIP # Explain experimental treatment 
+			text = EVTOPTA_RIP_11035_TOOLTIP # Explain experimental treatment
 		}
-		
 		trigger = {
 			is_adult = yes
 			OR = {
-				FROM = { learning = 18 }
-				FROM = { physician_good_trigger = yes }
+				FROM = {
+					learning = 18
+				}
+				FROM = {
+					physician_good_trigger = yes
+				}
 			}
-			NOR = { 
-				trait = craven 
-				trait = brave 
+			NOR = {
+				trait = craven
+				trait = brave
 			}
 		}
-
 		ai_chance = {
 			factor = 15
-			
 			modifier = {
 				factor = 0
 				health = 2.5
@@ -2006,16 +2163,20 @@ character_event = {
 				factor = 10
 				is_unimportant_trigger = yes
 				OR = {
-					FROM = { physician_bad_trigger = yes }
 					FROM = {
-						NOT = { learning = 10 }
+						physician_bad_trigger = yes
+					}
+					FROM = {
+						NOT = {
+							learning = 10
+						}
 					}
 				}
 			}
 			modifier = {
 				factor = 1.5
 				trait = wroth
-			}			
+			}
 			modifier = {
 				factor = 1.5
 				trait = arbitrary
@@ -2037,11 +2198,9 @@ character_event = {
 				trait = humble
 			}
 		}
-		
-
 		hidden_tooltip = {
 			random_list = {
-				#Good  experimental treatment
+				# Good experimental treatment
 				40 = {
 					modifier = {
 						factor = 1.2
@@ -2074,13 +2233,17 @@ character_event = {
 					modifier = {
 						factor = 0.8
 						FROM = {
-							NOT = { learning = 15 }
+							NOT = {
+								learning = 15
+							}
 						}
 					}
 					modifier = {
 						factor = 0.8
 						FROM = {
-							NOT = { learning = 10 }
+							NOT = {
+								learning = 10
+							}
 						}
 					}
 					modifier = {
@@ -2089,59 +2252,88 @@ character_event = {
 					}
 					modifier = {
 						factor = 0.6
-						FROM = { physician_bad_trigger = yes }
-					}
-					modifier = {
-						factor = 1.2
-						FROM = { physician_good_trigger = yes }
-					}
-					modifier = {
-						factor = 1.2
 						FROM = {
-							opinion = { who = ROOT value = 0 }
+							physician_bad_trigger = yes
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							opinion = { who = ROOT value = 25 }
+							physician_good_trigger = yes
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							opinion = { who = ROOT value = 50 }
+							opinion = {
+								who = ROOT value = 0
+							}
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							opinion = { who = ROOT value = 75 }
+							opinion = {
+								who = ROOT value = 25
+							}
 						}
 					}
-
+					modifier = {
+						factor = 1.2
+						FROM = {
+							opinion = {
+								who = ROOT value = 50
+							}
+						}
+					}
+					modifier = {
+						factor = 1.2
+						FROM = {
+							opinion = {
+								who = ROOT value = 75
+							}
+						}
+					}
 					random_list = {
-						#Regular treatment
-						80 = { set_character_flag = good_treatment_outcome }
-						#Drastic treatment
+						# Regular treatment
+						80 = {
+							set_character_flag = good_treatment_outcome
+						}
+						# Drastic treatment
 						20 = {
 							modifier = {
 								factor = 4
 								OR = {
-									FROM = { NOT = { learning = 15 } }
-									FROM = { trait = wroth }
-									FROM = { trait = arbitrary }
-									FROM = { trait = brave }
-									FROM = { trait = ambitious }
-									FROM = { learning = 25 }
-									FROM = { physician_good_trigger = yes }
+									FROM = {
+										NOT = {
+											learning = 15
+										}
+									}
+									FROM = {
+										trait = wroth
+									}
+									FROM = {
+										trait = arbitrary
+									}
+									FROM = {
+										trait = brave
+									}
+									FROM = {
+										trait = ambitious
+									}
+									FROM = {
+										learning = 25
+									}
+									FROM = {
+										physician_good_trigger = yes
+									}
 								}
 							}
 							set_character_flag = amazing_treatment_outcome
 						}
 					}
 				}
-				#Bad experimental treatment
+				# Bad experimental treatment
 				60 = {
 					modifier = {
 						factor = 0.8
@@ -2168,13 +2360,17 @@ character_event = {
 					modifier = {
 						factor = 1.2
 						FROM = {
-							NOT = { learning = 15 }
+							NOT = {
+								learning = 15
+							}
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							NOT = { learning = 10 }
+							NOT = {
+								learning = 10
+							}
 						}
 					}
 					modifier = {
@@ -2183,52 +2379,89 @@ character_event = {
 					}
 					modifier = {
 						factor = 1.4
-						FROM = { physician_bad_trigger = yes }
-					}
-					modifier = {
-						factor = 1.2
 						FROM = {
-							NOT = { opinion = { who = ROOT value = 0 } }
+							physician_bad_trigger = yes
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							NOT = { opinion = { who = ROOT value = -25 } }
+							NOT = {
+								opinion = {
+									who = ROOT value = 0
+								}
+							}
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							NOT = { opinion = { who = ROOT value = -50 } }
+							NOT = {
+								opinion = {
+									who = ROOT value = -25
+								}
+							}
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							NOT = { opinion = { who = ROOT value = -75 } }
+							NOT = {
+								opinion = {
+									who = ROOT value = -50
+								}
+							}
+						}
+					}
+					modifier = {
+						factor = 1.2
+						FROM = {
+							NOT = {
+								opinion = {
+									who = ROOT value = -75
+								}
+							}
 						}
 					}
 					modifier = {
 						factor = 0.8
-						FROM = { physician_good_trigger = yes }
+						FROM = {
+							physician_good_trigger = yes
+						}
 					}
-
 					random_list = {
-						#Regular treatment
-						80 = { set_character_flag = bad_treatment_outcome }
-						#Drastic treatment
+						# Regular treatment
+						80 = {
+							set_character_flag = bad_treatment_outcome
+						}
+						# Drastic treatment
 						20 = {
 							modifier = {
 								factor = 4
 								OR = {
-									FROM = { NOT = { learning = 15 } }
-									FROM = { trait = wroth }
-									FROM = { trait = arbitrary }
-									FROM = { trait = brave }
-									FROM = { trait = ambitious }
-									FROM = { learning = 25 }
-									FROM = { physician_good_trigger = yes }
+									FROM = {
+										NOT = {
+											learning = 15
+										}
+									}
+									FROM = {
+										trait = wroth
+									}
+									FROM = {
+										trait = arbitrary
+									}
+									FROM = {
+										trait = brave
+									}
+									FROM = {
+										trait = ambitious
+									}
+									FROM = {
+										learning = 25
+									}
+									FROM = {
+										physician_good_trigger = yes
+									}
 								}
 							}
 							set_character_flag = terrible_treatment_outcome
@@ -2236,35 +2469,36 @@ character_event = {
 					}
 				}
 			}
-
-			character_event = { id = RIP.11040 days = 3 }
+			character_event = {
+				id = RIP.11040 days = 3
+			}
 		}
 	}
-
 	# experimental treatment when BRAVE
+
 	option = {
 		trigger = {
 			trait = brave
 			is_adult = yes
 		}
-		
 		name = EVTOPTF_RIP_11035
 		custom_tooltip = {
-			text = EVTOPTF_RIP_11035_TOOLTIP #explain experimental treatment when BRAVE
+			text = EVTOPTF_RIP_11035_TOOLTIP # explain experimental treatment when BRAVE
 		}
 		tooltip_info = brave
-		
-		
 		ai_chance = {
 			factor = 50
-			
 			modifier = {
 				factor = 10
 				is_unimportant_trigger = yes
 				OR = {
-					FROM = { physician_bad_trigger = yes }
 					FROM = {
-						NOT = { learning = 10 }
+						physician_bad_trigger = yes
+					}
+					FROM = {
+						NOT = {
+							learning = 10
+						}
 					}
 				}
 			}
@@ -2302,11 +2536,9 @@ character_event = {
 				trait = humble
 			}
 		}
-		
-
 		hidden_tooltip = {
 			random_list = {
-				#Good "normal" experimental treatment
+				# Good "normal" experimental treatment
 				40 = {
 					modifier = {
 						factor = 1.2
@@ -2339,13 +2571,17 @@ character_event = {
 					modifier = {
 						factor = 0.8
 						FROM = {
-							NOT = { learning = 15 }
+							NOT = {
+								learning = 15
+							}
 						}
 					}
 					modifier = {
 						factor = 0.8
 						FROM = {
-							NOT = { learning = 10 }
+							NOT = {
+								learning = 10
+							}
 						}
 					}
 					modifier = {
@@ -2354,57 +2590,86 @@ character_event = {
 					}
 					modifier = {
 						factor = 0.6
-						FROM = { physician_bad_trigger = yes }
-					}
-					modifier = {
-						factor = 1.2
-						FROM = { physician_good_trigger = yes }
-					}
-					modifier = {
-						factor = 1.2
 						FROM = {
-							opinion = { who = ROOT value = 0 }
+							physician_bad_trigger = yes
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							opinion = { who = ROOT value = 25 }
+							physician_good_trigger = yes
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							opinion = { who = ROOT value = 50 }
+							opinion = {
+								who = ROOT value = 0
+							}
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							opinion = { who = ROOT value = 75 }
+							opinion = {
+								who = ROOT value = 25
+							}
 						}
 					}
-
+					modifier = {
+						factor = 1.2
+						FROM = {
+							opinion = {
+								who = ROOT value = 50
+							}
+						}
+					}
+					modifier = {
+						factor = 1.2
+						FROM = {
+							opinion = {
+								who = ROOT value = 75
+							}
+						}
+					}
 					random_list = {
-						80 = { set_character_flag = good_treatment_outcome }
+						80 = {
+							set_character_flag = good_treatment_outcome
+						}
 						20 = {
 							modifier = {
 								factor = 4
 								OR = {
-									FROM = { NOT = { learning = 15 } }
-									FROM = { trait = wroth }
-									FROM = { trait = arbitrary }
-									FROM = { trait = brave }
-									FROM = { trait = ambitious }
-									FROM = { learning = 25 }
-									FROM = { physician_good_trigger = yes }
+									FROM = {
+										NOT = {
+											learning = 15
+										}
+									}
+									FROM = {
+										trait = wroth
+									}
+									FROM = {
+										trait = arbitrary
+									}
+									FROM = {
+										trait = brave
+									}
+									FROM = {
+										trait = ambitious
+									}
+									FROM = {
+										learning = 25
+									}
+									FROM = {
+										physician_good_trigger = yes
+									}
 								}
 							}
 							set_character_flag = amazing_treatment_outcome
 						}
 					}
 				}
-				#Bad "normal" experimental treatment 
+				# Bad "normal" experimental treatment
 				60 = {
 					modifier = {
 						factor = 0.8
@@ -2431,13 +2696,17 @@ character_event = {
 					modifier = {
 						factor = 1.2
 						FROM = {
-							NOT = { learning = 15 }
+							NOT = {
+								learning = 15
+							}
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							NOT = { learning = 10 }
+							NOT = {
+								learning = 10
+							}
 						}
 					}
 					modifier = {
@@ -2446,50 +2715,87 @@ character_event = {
 					}
 					modifier = {
 						factor = 1.4
-						FROM = { physician_bad_trigger = yes }
-					}
-					modifier = {
-						factor = 1.2
 						FROM = {
-							NOT = { opinion = { who = ROOT value = 0 } }
+							physician_bad_trigger = yes
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							NOT = { opinion = { who = ROOT value = -25 } }
+							NOT = {
+								opinion = {
+									who = ROOT value = 0
+								}
+							}
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							NOT = { opinion = { who = ROOT value = -50 } }
+							NOT = {
+								opinion = {
+									who = ROOT value = -25
+								}
+							}
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							NOT = { opinion = { who = ROOT value = -75 } }
+							NOT = {
+								opinion = {
+									who = ROOT value = -50
+								}
+							}
+						}
+					}
+					modifier = {
+						factor = 1.2
+						FROM = {
+							NOT = {
+								opinion = {
+									who = ROOT value = -75
+								}
+							}
 						}
 					}
 					modifier = {
 						factor = 0.8
-						FROM = { physician_good_trigger = yes }
+						FROM = {
+							physician_good_trigger = yes
+						}
 					}
-
 					random_list = {
-						80 = { set_character_flag = bad_treatment_outcome }
+						80 = {
+							set_character_flag = bad_treatment_outcome
+						}
 						20 = {
 							modifier = {
 								factor = 4
 								OR = {
-									FROM = { NOT = { learning = 15 } }
-									FROM = { trait = wroth }
-									FROM = { trait = arbitrary }
-									FROM = { trait = brave }
-									FROM = { trait = ambitious }
-									FROM = { learning = 25 }
-									FROM = { physician_good_trigger = yes }
+									FROM = {
+										NOT = {
+											learning = 15
+										}
+									}
+									FROM = {
+										trait = wroth
+									}
+									FROM = {
+										trait = arbitrary
+									}
+									FROM = {
+										trait = brave
+									}
+									FROM = {
+										trait = ambitious
+									}
+									FROM = {
+										learning = 25
+									}
+									FROM = {
+										physician_good_trigger = yes
+									}
 								}
 							}
 							set_character_flag = terrible_treatment_outcome
@@ -2497,69 +2803,66 @@ character_event = {
 					}
 				}
 			}
-
-			character_event = { id = RIP.11040 days = 3 }
+			character_event = {
+				id = RIP.11040 days = 3
+			}
 		}
 	}
-
 	# Mystic treatment
+
 	option = {
 		name = EVTOPTE_RIP_11035
 		custom_tooltip = {
-			text = EVTOPTE_RIP_11035_TOOLTIP #explain mystic treatment
+			text = EVTOPTE_RIP_11035_TOOLTIP # explain mystic treatment
 		}
-		
 		ai_chance = {
 			factor = 50
-			
 			modifier = {
 				factor = 3
 				trait = mystic
 			}
-			
 			modifier = {
 				factor = 2
 				trait = trusting
 			}
-			
 			modifier = {
 				factor = 2
 				is_smart_trigger = yes
 			}
-			
 			modifier = {
 				factor = 3.0
 				trait = zealous
 				trait = mystic
 			}
-			
 			modifier = {
 				factor = 0.25
 				trait = zealous
-				NOT = { trait = mystic }
+				NOT = {
+					trait = mystic
+				}
 			}
-			
 			modifier = {
 				factor = 0.5
 				trait = humble
-				NOT = { trait = mystic }
+				NOT = {
+					trait = mystic
+				}
 			}
 		}
-		
 		trigger = {
-			FROM = { trait = mystic }
+			FROM = {
+				trait = mystic
+			}
 			is_adult = yes
 			# NOT = {
-				# has_game_rule = {
-					# name = supernatural_events
-					# value = off
-				# }
+			# has_game_rule = {
+			# name = supernatural_events
+			# value = off
+			# }
 			# }
 		}
-
 		hidden_tooltip = {
 			random_list = {
-
 				40 = {
 					modifier = {
 						factor = 1.2
@@ -2592,13 +2895,17 @@ character_event = {
 					modifier = {
 						factor = 0.8
 						FROM = {
-							NOT = { learning = 15 }
+							NOT = {
+								learning = 15
+							}
 						}
 					}
 					modifier = {
 						factor = 0.8
 						FROM = {
-							NOT = { learning = 10 }
+							NOT = {
+								learning = 10
+							}
 						}
 					}
 					modifier = {
@@ -2607,37 +2914,47 @@ character_event = {
 					}
 					modifier = {
 						factor = 1.2
-						FROM = { physician_good_trigger = yes }
-					}
-					modifier = {
-						factor = 1.2
 						FROM = {
-							opinion = { who = ROOT value = 0 }
+							physician_good_trigger = yes
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							opinion = { who = ROOT value = 25 }
+							opinion = {
+								who = ROOT value = 0
+							}
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							opinion = { who = ROOT value = 50 }
+							opinion = {
+								who = ROOT value = 25
+							}
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							opinion = { who = ROOT value = 75 }
+							opinion = {
+								who = ROOT value = 50
+							}
+						}
+					}
+					modifier = {
+						factor = 1.2
+						FROM = {
+							opinion = {
+								who = ROOT value = 75
+							}
 						}
 					}
 					random_list = {
-						60 = { 
+						60 = {
 							set_character_flag = MYSTIC_AMAZING_OUTCOME
 						}
-						40 = { 
+						40 = {
 							set_character_flag = MYSTIC_DECENT_OUTCOME
 						}
 					}
@@ -2668,13 +2985,17 @@ character_event = {
 					modifier = {
 						factor = 1.2
 						FROM = {
-							NOT = { learning = 15 }
+							NOT = {
+								learning = 15
+							}
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							NOT = { learning = 10 }
+							NOT = {
+								learning = 10
+							}
 						}
 					}
 					modifier = {
@@ -2683,72 +3004,87 @@ character_event = {
 					}
 					modifier = {
 						factor = 1.2
-						FROM = { physician_bad_trigger = yes }
-					}
-					modifier = {
-						factor = 1.2
 						FROM = {
-							NOT = { opinion = { who = ROOT value = 0 } }
+							physician_bad_trigger = yes
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							NOT = { opinion = { who = ROOT value = -25 } }
+							NOT = {
+								opinion = {
+									who = ROOT value = 0
+								}
+							}
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							NOT = { opinion = { who = ROOT value = -50 } }
+							NOT = {
+								opinion = {
+									who = ROOT value = -25
+								}
+							}
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							NOT = { opinion = { who = ROOT value = -75 } }
+							NOT = {
+								opinion = {
+									who = ROOT value = -50
+								}
+							}
+						}
+					}
+					modifier = {
+						factor = 1.2
+						FROM = {
+							NOT = {
+								opinion = {
+									who = ROOT value = -75
+								}
+							}
 						}
 					}
 					random_list = {
-						50 = { 
+						50 = {
 							set_character_flag = MYSTIC_POOR_OUTCOME
 						}
-						50 = { 
+						50 = {
 							set_character_flag = MYSTIC_TERRIBLE_OUTCOME
 						}
 					}
 				}
 			}
-			character_event = { id = RIP.11047 days = 3 }
+			character_event = {
+				id = RIP.11047 days = 3
+			}
 		}
 	}
-
 	# Regular treatment
+
 	option = {
 		name = EVTOPTB_RIP_11035
 		custom_tooltip = {
 			text = EVTOPTB_RIP_11035_TOOLTIP # Explain regular treatment
 		}
-		
 		ai_chance = {
 			factor = 50
-			
 			modifier = {
 				factor = 2
 				trait = temperate
 			}
-			
 			modifier = {
 				factor = 2.0
 				trait = cynical
 			}
-			
 			modifier = {
 				factor = 0.5
 				trait = zealous
 			}
 		}
-		
 		hidden_tooltip = {
 			random_list = {
 				60 = {
@@ -2789,7 +3125,9 @@ character_event = {
 					modifier = {
 						factor = 0.8
 						FROM = {
-							NOT = { learning = 10 }
+							NOT = {
+								learning = 10
+							}
 						}
 					}
 					modifier = {
@@ -2798,30 +3136,40 @@ character_event = {
 					}
 					modifier = {
 						factor = 1.2
-						FROM = { physician_good_trigger = yes }
-					}
-					modifier = {
-						factor = 1.2
 						FROM = {
-							opinion = { who = ROOT value = 0 }
+							physician_good_trigger = yes
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							opinion = { who = ROOT value = 25 }
+							opinion = {
+								who = ROOT value = 0
+							}
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							opinion = { who = ROOT value = 50 }
+							opinion = {
+								who = ROOT value = 25
+							}
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							opinion = { who = ROOT value = 75 }
+							opinion = {
+								who = ROOT value = 50
+							}
+						}
+					}
+					modifier = {
+						factor = 1.2
+						FROM = {
+							opinion = {
+								who = ROOT value = 75
+							}
 						}
 					}
 					set_character_flag = good_treatment_outcome
@@ -2858,7 +3206,9 @@ character_event = {
 					modifier = {
 						factor = 1.2
 						FROM = {
-							NOT = { learning = 10 }
+							NOT = {
+								learning = 10
+							}
 						}
 					}
 					modifier = {
@@ -2867,78 +3217,94 @@ character_event = {
 					}
 					modifier = {
 						factor = 1.2
-						FROM = { physician_bad_trigger = yes }
-					}
-					modifier = {
-						factor = 1.2
 						FROM = {
-							NOT = { opinion = { who = ROOT value = 0 } }
+							physician_bad_trigger = yes
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							NOT = { opinion = { who = ROOT value = -25 } }
+							NOT = {
+								opinion = {
+									who = ROOT value = 0
+								}
+							}
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							NOT = { opinion = { who = ROOT value = -50 } }
+							NOT = {
+								opinion = {
+									who = ROOT value = -25
+								}
+							}
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							NOT = { opinion = { who = ROOT value = -75 } }
+							NOT = {
+								opinion = {
+									who = ROOT value = -50
+								}
+							}
+						}
+					}
+					modifier = {
+						factor = 1.2
+						FROM = {
+							NOT = {
+								opinion = {
+									who = ROOT value = -75
+								}
+							}
 						}
 					}
 					set_character_flag = bad_treatment_outcome
 				}
 			}
-			character_event = { id = RIP.11041 days = 3 }
+			character_event = {
+				id = RIP.11041 days = 3
+			}
 		}
 	}
 	# Very cautious treatment
+
 	option = {
 		name = EVTOPTC_RIP_11035
 		custom_tooltip = {
 			text = EVTOPTC_RIP_11035_TOOLTIP # Explain cautious treatment
 		}
-		
 		ai_chance = {
 			factor = 25
-			
 			modifier = {
 				factor = 5
 				trait = paranoid
 			}
-			
 			modifier = {
 				factor = 3
 				trait = craven
 			}
-			
 			modifier = {
 				factor = 2.0
 				trait = humble
 			}
-			
 			modifier = {
 				factor = 0.5
 				trait = trusting
 			}
 		}
-		
 		trigger = {
 			OR = {
 				is_adult = no
 				trait = craven
 				trait = paranoid
 			}
-			NOT = { trait = brave }
+			NOT = {
+				trait = brave
+			}
 		}
-
 		hidden_tooltip = {
 			random_list = {
 				80 = {
@@ -2975,35 +3341,47 @@ character_event = {
 					modifier = {
 						factor = 0.8
 						FROM = {
-							NOT = { learning = 10 }
-						}
-					}
-					modifier = {
-						factor = 1.2
-						FROM = { physician_good_trigger = yes }
-					}
-					modifier = {
-						factor = 1.2
-						FROM = {
-							opinion = { who = ROOT value = 0 }
+							NOT = {
+								learning = 10
+							}
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							opinion = { who = ROOT value = 25 }
+							physician_good_trigger = yes
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							opinion = { who = ROOT value = 50 }
+							opinion = {
+								who = ROOT value = 0
+							}
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							opinion = { who = ROOT value = 75 }
+							opinion = {
+								who = ROOT value = 25
+							}
+						}
+					}
+					modifier = {
+						factor = 1.2
+						FROM = {
+							opinion = {
+								who = ROOT value = 50
+							}
+						}
+					}
+					modifier = {
+						factor = 1.2
+						FROM = {
+							opinion = {
+								who = ROOT value = 75
+							}
 						}
 					}
 					set_character_flag = good_treatment_outcome
@@ -3036,52 +3414,72 @@ character_event = {
 					modifier = {
 						factor = 1.2
 						FROM = {
-							NOT = { learning = 10 }
-						}
-					}
-					modifier = {
-						factor = 1.2
-						FROM = { physician_bad_trigger = yes }
-					}
-					modifier = {
-						factor = 1.2
-						FROM = {
-							NOT = { opinion = { who = ROOT value = 0 } }
+							NOT = {
+								learning = 10
+							}
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							NOT = { opinion = { who = ROOT value = -25 } }
+							physician_bad_trigger = yes
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							NOT = { opinion = { who = ROOT value = -50 } }
+							NOT = {
+								opinion = {
+									who = ROOT value = 0
+								}
+							}
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							NOT = { opinion = { who = ROOT value = -75 } }
+							NOT = {
+								opinion = {
+									who = ROOT value = -25
+								}
+							}
+						}
+					}
+					modifier = {
+						factor = 1.2
+						FROM = {
+							NOT = {
+								opinion = {
+									who = ROOT value = -50
+								}
+							}
+						}
+					}
+					modifier = {
+						factor = 1.2
+						FROM = {
+							NOT = {
+								opinion = {
+									who = ROOT value = -75
+								}
+							}
 						}
 					}
 					set_character_flag = bad_treatment_outcome
 				}
 			}
-			character_event = { id = RIP.11042 days = 3 }
+			character_event = {
+				id = RIP.11042 days = 3
+			}
 		}
 	}
-
 	# Do nothing
+
 	option = {
 		name = EVTOPTD_RIP_11035
-		
 		ai_chance = {
 			factor = 0
 		}
-		
 		custom_tooltip = {
 			text = EVTOPTD_RIP_11035_TOOLTIP # Explain you'd rather be left alone
 			if = {
@@ -3093,7 +3491,7 @@ character_event = {
 			}
 			if = {
 				limit = {
-					NOR = { 
+					NOR = {
 						trait = craven
 						trait = brave
 						trait = berserker
@@ -3112,12 +3510,11 @@ character_event = {
 	}
 }
 
-#Experimental treatment outcome
+# Experimental treatment outcome
 character_event = {
 	id = RIP.11040
 	picture = GFX_evt_doctor_crazy_treatment
 	border = GFX_event_normal_frame_religion
-
 	desc = {
 		text = EVTDESC_RIP_11040_1
 		trigger = {
@@ -3190,15 +3587,12 @@ character_event = {
 			has_character_flag = EVTDESC_RIP_11040_14_FLAG
 		}
 	}
-
 	desc = {
 		text = EVTDESC_RIP_11040_15
 		trigger = {
 			has_character_flag = EVTDESC_RIP_11040_15_FLAG
 		}
 	}
-
-
 	is_triggered_only = yes
 
 	immediate = {
@@ -3210,19 +3604,31 @@ character_event = {
 				}
 			}
 			random_list = {
-				10 = { set_character_flag = EVTDESC_RIP_11040_1_FLAG }
-				10 = { set_character_flag = EVTDESC_RIP_11040_2_FLAG }
-				10 = { set_character_flag = EVTDESC_RIP_11040_3_FLAG }
-				10 = { 
+				10 = {
+					set_character_flag = EVTDESC_RIP_11040_1_FLAG
+				}
+				10 = {
+					set_character_flag = EVTDESC_RIP_11040_2_FLAG
+				}
+				10 = {
+					set_character_flag = EVTDESC_RIP_11040_3_FLAG
+				}
+				10 = {
 					modifier = {
 						factor = 0
 						trait = one_legged
 					}
-					set_character_flag = EVTDESC_RIP_11040_5_FLAG 
+					set_character_flag = EVTDESC_RIP_11040_5_FLAG
 				}
-				10 = { set_character_flag = EVTDESC_RIP_11040_6_FLAG }
-				10 = { set_character_flag = EVTDESC_RIP_11040_8_FLAG }
-				10 = { set_character_flag = EVTDESC_RIP_11040_9_FLAG }
+				10 = {
+					set_character_flag = EVTDESC_RIP_11040_6_FLAG
+				}
+				10 = {
+					set_character_flag = EVTDESC_RIP_11040_8_FLAG
+				}
+				10 = {
+					set_character_flag = EVTDESC_RIP_11040_9_FLAG
+				}
 			}
 		}
 		if = {
@@ -3233,7 +3639,7 @@ character_event = {
 				}
 			}
 			random_list = {
-				10 = { 
+				10 = {
 					modifier = {
 						factor = 0
 						OR = {
@@ -3241,9 +3647,9 @@ character_event = {
 							trait = one_eyed
 						}
 					}
-					set_character_flag = EVTDESC_RIP_11040_10_FLAG 
+					set_character_flag = EVTDESC_RIP_11040_10_FLAG
 				}
-				10 = { 
+				10 = {
 					modifier = {
 						factor = 0
 						OR = {
@@ -3251,51 +3657,52 @@ character_event = {
 							trait = eunuch
 						}
 					}
-					set_character_flag = EVTDESC_RIP_11040_11_FLAG 
+					set_character_flag = EVTDESC_RIP_11040_11_FLAG
 				}
-				10 = { 
+				10 = {
 					modifier = {
 						factor = 0
-						OR = { 
+						OR = {
 							trait = lunatic_1
 							trait = lunatic_2
 							trait = lunatic_3
 						}
 					}
-					set_character_flag = EVTDESC_RIP_11040_12_FLAG 
+					set_character_flag = EVTDESC_RIP_11040_12_FLAG
 				}
-				10 = { 
+				10 = {
 					modifier = {
 						factor = 0
 						trait = disfigured
 					}
-					set_character_flag = EVTDESC_RIP_11040_13_FLAG 
+					set_character_flag = EVTDESC_RIP_11040_13_FLAG
 				}
-				10 = { 
+				10 = {
 					modifier = {
 						factor = 0
 						trait = one_handed
 					}
-					set_character_flag = EVTDESC_RIP_11040_14_FLAG 
+					set_character_flag = EVTDESC_RIP_11040_14_FLAG
 				}
-				10 = { 
+				10 = {
 					modifier = {
 						factor = 0
 						trait = one_legged
 					}
-					set_character_flag = EVTDESC_RIP_11040_15_FLAG 
+					set_character_flag = EVTDESC_RIP_11040_15_FLAG
 				}
 			}
 		}
 	}
 
-	option = { #Good outcome
+	option = {
+		# Good outcome
 		name = EVTOPTA_RIP_11040
 		trigger = {
 			has_character_flag = good_treatment_outcome
 		}
 		if = {
-			limit = { 
+			limit = {
 				NOR = {
 					trait = cancer
 					trait = gout
@@ -3305,10 +3712,10 @@ character_event = {
 			add_character_modifier = {
 				name = successful_treatment_3
 				duration = 730
-			}	
+			}
 		}
 		if = {
-			limit = { 
+			limit = {
 				OR = {
 					trait = cancer
 					trait = gout
@@ -3318,17 +3725,20 @@ character_event = {
 			add_character_modifier = {
 				name = successful_treatment_3
 				duration = 1825
-			}	
+			}
 		}
-
 		if = {
 			limit = {
 				host = {
-					NOT = { character = ROOT }
+					NOT = {
+						character = ROOT
+					}
 					OR = {
 						AND = {
 							is_married = yes
-							any_spouse = { character = ROOT }
+							any_spouse = {
+								character = ROOT
+							}
 						}
 						is_child_of = ROOT
 						is_father = ROOT
@@ -3338,8 +3748,10 @@ character_event = {
 					}
 				}
 			}
-			host = { 
-				character_event = { id = RIP.11061 }
+			host = {
+				character_event = {
+					id = RIP.11061
+				}
 				if = {
 					limit = {
 						is_ruler = no
@@ -3351,12 +3763,13 @@ character_event = {
 					}
 					random = {
 						chance = 10
-						character_event = { id = RIP.11065 } 
+						character_event = {
+							id = RIP.11065
+						}
 					}
 				}
 			}
 		}
-
 		clr_character_flag = good_treatment_outcome
 		clr_character_flag = being_treated
 		set_character_flag = recent_treatment
@@ -3369,7 +3782,8 @@ character_event = {
 		clr_character_flag = EVTDESC_RIP_11040_9_FLAG
 	}
 
-	option = { #Bad outcome
+	option = {
+		# Bad outcome
 		name = EVTOPTB_RIP_11040
 		trigger = {
 			has_character_flag = bad_treatment_outcome
@@ -3378,15 +3792,18 @@ character_event = {
 			name = failed_treatment_2
 			duration = 365
 		}
-
 		if = {
 			limit = {
 				host = {
-					NOT = { character = ROOT }
+					NOT = {
+						character = ROOT
+					}
 					OR = {
 						AND = {
 							is_married = yes
-							any_spouse = { character = ROOT }
+							any_spouse = {
+								character = ROOT
+							}
 						}
 						is_child_of = ROOT
 						is_father = ROOT
@@ -3397,16 +3814,19 @@ character_event = {
 				}
 			}
 			if = {
-				limit = { 
+				limit = {
 					is_ruler = no
 					FROMFROM = {
 						ai = yes
 					}
 				}
-				host = { character_event = { id = RIP.11060 } }
+				host = {
+					character_event = {
+						id = RIP.11060
+					}
+				}
 			}
 		}
-		
 		clr_character_flag = bad_treatment_outcome
 		clr_character_flag = being_treated
 		set_character_flag = recent_treatment
@@ -3419,37 +3839,105 @@ character_event = {
 		clr_character_flag = EVTDESC_RIP_11040_9_FLAG
 	}
 
-	option = { #Amazing outcome
+	option = {
+		# Amazing outcome
 		name = EVTOPTC_RIP_11040
-		trigger = { has_character_flag = amazing_treatment_outcome }
-
-		custom_tooltip = { text = CURED_RIP_TOOLTIP }
-
+		trigger = {
+			has_character_flag = amazing_treatment_outcome
+		}
+		custom_tooltip = {
+			text = CURED_RIP_TOOLTIP
+		}
 		hidden_tooltip = {
-			if = { limit = { trait = flu } remove_trait = flu }
-			if = { limit = { trait = dysentery } remove_trait = dysentery }
-			if = { limit = { trait = gout }	remove_trait = gout }
-			if = { limit = { trait = food_poisoning } remove_trait = food_poisoning }
-			if = { limit = { trait = rabies } remove_trait = rabies }
-			if = { limit = { trait = cancer } remove_trait = cancer }
-			if = { limit = { trait = pneumonic } remove_trait = pneumonic }
-			if = { limit = { trait = syphilitic } remove_trait = syphilitic set_character_flag = immune_syphilis }       
-			if = { limit = { trait = has_tuberculosis } remove_trait = has_tuberculosis set_character_flag = immune_tuberculosis }
-			if = { limit = { trait = has_typhoid_fever } remove_trait = has_typhoid_fever set_character_flag = immune_typhoid_fever}
-			if = { limit = { trait = has_typhus } remove_trait = has_typhus set_character_flag = immune_typhus}
-			if = { limit = { trait = has_bubonic_plague ai = yes } remove_trait = has_bubonic_plague set_character_flag = immune_bubonic_plague}
-			if = { limit = { trait = has_bubonic_plague ai = no } remove_trait = has_bubonic_plague set_character_flag = immune_bubonic_plague set_character_flag = achievement_i_got_better}
-			if = { limit = { trait = has_measles } remove_trait = has_measles set_character_flag = immune_measles}
-			if = { limit = { trait = has_small_pox } remove_trait = has_small_pox set_character_flag = immune_smallpox }
-			if = { limit = { trait = has_aztec_disease } remove_trait = has_aztec_disease set_character_flag = immune_aztec_disease }
+			if = {
+				limit = {
+					trait = flu
+				} remove_trait = flu
+			}
+			if = {
+				limit = {
+					trait = dysentery
+				} remove_trait = dysentery
+			}
+			if = {
+				limit = {
+					trait = gout
+				}	remove_trait = gout
+			}
+			if = {
+				limit = {
+					trait = food_poisoning
+				} remove_trait = food_poisoning
+			}
+			if = {
+				limit = {
+					trait = rabies
+				} remove_trait = rabies
+			}
+			if = {
+				limit = {
+					trait = cancer
+				} remove_trait = cancer
+			}
+			if = {
+				limit = {
+					trait = pneumonic
+				} remove_trait = pneumonic
+			}
+			if = {
+				limit = {
+					trait = syphilitic
+				} remove_trait = syphilitic set_character_flag = immune_syphilis
+			}
+			if = {
+				limit = {
+					trait = has_tuberculosis
+				} remove_trait = has_tuberculosis set_character_flag = immune_tuberculosis
+			}
+			if = {
+				limit = {
+					trait = has_typhoid_fever
+				} remove_trait = has_typhoid_fever set_character_flag = immune_typhoid_fever
+			}
+			if = {
+				limit = {
+					trait = has_typhus
+				} remove_trait = has_typhus set_character_flag = immune_typhus
+			}
+			if = {
+				limit = {
+					trait = has_bubonic_plague ai = yes
+				} remove_trait = has_bubonic_plague set_character_flag = immune_bubonic_plague
+			}
+			if = {
+				limit = {
+					trait = has_bubonic_plague ai = no
+				} remove_trait = has_bubonic_plague set_character_flag = immune_bubonic_plague set_character_flag = achievement_i_got_better
+			}
+			if = {
+				limit = {
+					trait = has_measles
+				} remove_trait = has_measles set_character_flag = immune_measles
+			}
+			if = {
+				limit = {
+					trait = has_small_pox
+				} remove_trait = has_small_pox set_character_flag = immune_smallpox
+			}
+			if = {
+				limit = {
+					trait = has_aztec_disease
+				} remove_trait = has_aztec_disease set_character_flag = immune_aztec_disease
+			}
 			remove_treatment_modifiers_effect = yes
 			clear_disease_level_effect = yes
 			remove_disease_flags_effect = yes
 			set_character_flag = seen_the_light_of_modern_medicine
 		}
-		
 		if = {
-			limit = { has_character_flag = EVTDESC_RIP_11040_10_FLAG }
+			limit = {
+				has_character_flag = EVTDESC_RIP_11040_10_FLAG
+			}
 			add_trait = one_eyed
 			add_trait = severely_injured
 			hidden_tooltip = {
@@ -3457,16 +3945,24 @@ character_event = {
 			}
 		}
 		if = {
-			limit = { has_character_flag = EVTDESC_RIP_11040_11_FLAG }
+			limit = {
+				has_character_flag = EVTDESC_RIP_11040_11_FLAG
+			}
 			add_trait = eunuch
 		}
 		if = {
-			limit = { has_character_flag = EVTDESC_RIP_11040_12_FLAG }
+			limit = {
+				has_character_flag = EVTDESC_RIP_11040_12_FLAG
+			}
 			add_trait = lunatic_1
-			set_variable = { which = "lunatic_counter" value = 6 } 
+			set_variable = {
+				which = "lunatic_counter" value = 6
+			}
 		}
 		if = {
-			limit = { has_character_flag = EVTDESC_RIP_11040_13_FLAG }
+			limit = {
+				has_character_flag = EVTDESC_RIP_11040_13_FLAG
+			}
 			add_trait = disfigured
 			add_trait = severely_injured
 			hidden_tooltip = {
@@ -3474,7 +3970,9 @@ character_event = {
 			}
 		}
 		if = {
-			limit = { has_character_flag = EVTDESC_RIP_11040_14_FLAG }
+			limit = {
+				has_character_flag = EVTDESC_RIP_11040_14_FLAG
+			}
 			add_trait = one_handed
 			add_trait = severely_injured
 			hidden_tooltip = {
@@ -3482,22 +3980,27 @@ character_event = {
 			}
 		}
 		if = {
-			limit = { has_character_flag = EVTDESC_RIP_11040_15_FLAG }
+			limit = {
+				has_character_flag = EVTDESC_RIP_11040_15_FLAG
+			}
 			add_trait = one_legged
 			add_trait = severely_injured
 			hidden_tooltip = {
 				resolve_severely_injured_effect = yes
 			}
 		}
-
 		if = {
 			limit = {
 				host = {
-					NOT = { character = ROOT }
+					NOT = {
+						character = ROOT
+					}
 					OR = {
 						AND = {
 							is_married = yes
-							any_spouse = { character = ROOT }
+							any_spouse = {
+								character = ROOT
+							}
 						}
 						is_child_of = ROOT
 						is_father = ROOT
@@ -3507,8 +4010,10 @@ character_event = {
 					}
 				}
 			}
-			host = { 
-				character_event = { id = RIP.11061 }
+			host = {
+				character_event = {
+					id = RIP.11061
+				}
 				if = {
 					limit = {
 						FROMFROM = {
@@ -3519,12 +4024,13 @@ character_event = {
 					}
 					random = {
 						chance = 10
-						character_event = { id = RIP.11065 } 
+						character_event = {
+							id = RIP.11065
+						}
 					}
 				}
 			}
 		}
-
 		clr_character_flag = amazing_treatment_outcome
 		clr_character_flag = being_treated
 		set_character_flag = recent_treatment
@@ -3536,12 +4042,16 @@ character_event = {
 		clr_character_flag = EVTDESC_RIP_11040_15_FLAG
 	}
 
-	option = { #Terrible outcome
+	option = {
+		# Terrible outcome
 		name = EVTOPTD_RIP_11040
-		trigger = { has_character_flag = terrible_treatment_outcome }
-
+		trigger = {
+			has_character_flag = terrible_treatment_outcome
+		}
 		if = {
-			limit = { has_character_flag = EVTDESC_RIP_11040_10_FLAG }
+			limit = {
+				has_character_flag = EVTDESC_RIP_11040_10_FLAG
+			}
 			add_trait = one_eyed
 			add_trait = severely_injured
 			hidden_tooltip = {
@@ -3549,21 +4059,31 @@ character_event = {
 			}
 		}
 		if = {
-			limit = { has_character_flag = EVTDESC_RIP_11040_11_FLAG }
+			limit = {
+				has_character_flag = EVTDESC_RIP_11040_11_FLAG
+			}
 			add_trait = eunuch
 		}
 		if = {
-			limit = { has_character_flag = EVTDESC_RIP_11040_12_FLAG }
+			limit = {
+				has_character_flag = EVTDESC_RIP_11040_12_FLAG
+			}
 			add_trait = lunatic_1
-					set_variable = { which = "lunatic_counter" value = 6 } 
+			set_variable = {
+				which = "lunatic_counter" value = 6
+			}
 		}
 		if = {
-			limit = { has_character_flag = EVTDESC_RIP_11040_13_FLAG }
+			limit = {
+				has_character_flag = EVTDESC_RIP_11040_13_FLAG
+			}
 			add_trait = disfigured
 			add_trait = severely_injured
 		}
 		if = {
-			limit = { has_character_flag = EVTDESC_RIP_11040_14_FLAG }
+			limit = {
+				has_character_flag = EVTDESC_RIP_11040_14_FLAG
+			}
 			add_trait = one_handed
 			add_trait = severely_injured
 			hidden_tooltip = {
@@ -3571,22 +4091,27 @@ character_event = {
 			}
 		}
 		if = {
-			limit = { has_character_flag = EVTDESC_RIP_11040_15_FLAG }
+			limit = {
+				has_character_flag = EVTDESC_RIP_11040_15_FLAG
+			}
 			add_trait = one_legged
 			add_trait = severely_injured
 			hidden_tooltip = {
 				resolve_severely_injured_effect = yes
 			}
 		}
-
 		if = {
 			limit = {
 				host = {
-					NOT = { character = ROOT }
+					NOT = {
+						character = ROOT
+					}
 					OR = {
 						AND = {
 							is_married = yes
-							any_spouse = { character = ROOT }
+							any_spouse = {
+								character = ROOT
+							}
 						}
 						is_child_of = ROOT
 						is_father = ROOT
@@ -3597,15 +4122,18 @@ character_event = {
 				}
 			}
 			if = {
-				limit = { 
+				limit = {
 					FROMFROM = {
 						ai = yes
 					}
 				}
-				host = { character_event = { id = RIP.11060 } }
+				host = {
+					character_event = {
+						id = RIP.11060
+					}
+				}
 			}
 		}
-
 		clr_character_flag = terrible_treatment_outcome
 		clr_character_flag = being_treated
 		set_character_flag = recent_treatment
@@ -3615,7 +4143,6 @@ character_event = {
 		clr_character_flag = EVTDESC_RIP_11040_13_FLAG
 		clr_character_flag = EVTDESC_RIP_11040_14_FLAG
 		clr_character_flag = EVTDESC_RIP_11040_15_FLAG
-
 		ROOT = {
 			opinion = {
 				modifier = opinion_traitor
@@ -3625,12 +4152,11 @@ character_event = {
 	}
 }
 
-#Normal treatment outcome
+# Normal treatment outcome
 character_event = {
 	id = RIP.11041
 	picture = GFX_evt_recovery
 	border = GFX_event_normal_frame_religion
-	
 	desc = {
 		text = EVTDESC_RIP_11041_1
 		trigger = {
@@ -3697,50 +4223,66 @@ character_event = {
 			has_character_flag = EVTDESC_RIP_11041_13_FLAG
 		}
 	}
-
 	is_triggered_only = yes
 
 	immediate = {
 		random_list = {
-			10 = { 
+			10 = {
 				modifier = {
 					factor = 0
 					is_adult = no
 				}
 				set_character_flag = EVTDESC_RIP_11041_1_FLAG
 			}
-			10 = { 
+			10 = {
 				modifier = {
 					factor = 0
 					is_adult = no
 				}
-				set_character_flag = EVTDESC_RIP_11041_2_FLAG 
+				set_character_flag = EVTDESC_RIP_11041_2_FLAG
 			}
-			10 = { set_character_flag = EVTDESC_RIP_11041_3_FLAG }
-			10 = { set_character_flag = EVTDESC_RIP_11041_4_FLAG }
-			10 = { set_character_flag = EVTDESC_RIP_11041_5_FLAG }
-			10 = { 
+			10 = {
+				set_character_flag = EVTDESC_RIP_11041_3_FLAG
+			}
+			10 = {
+				set_character_flag = EVTDESC_RIP_11041_4_FLAG
+			}
+			10 = {
+				set_character_flag = EVTDESC_RIP_11041_5_FLAG
+			}
+			10 = {
 				modifier = {
 					factor = 0
 					is_adult = no
 				}
 				set_character_flag = EVTDESC_RIP_11041_6_FLAG
 			}
-			10 = { set_character_flag = EVTDESC_RIP_11041_7_FLAG }
-			10 = { set_character_flag = EVTDESC_RIP_11041_8_FLAG }
-			10 = { set_character_flag = EVTDESC_RIP_11041_10_FLAG }
-			10 = { set_character_flag = EVTDESC_RIP_11041_11_FLAG }
-			10 = { set_character_flag = EVTDESC_RIP_11041_13_FLAG }
+			10 = {
+				set_character_flag = EVTDESC_RIP_11041_7_FLAG
+			}
+			10 = {
+				set_character_flag = EVTDESC_RIP_11041_8_FLAG
+			}
+			10 = {
+				set_character_flag = EVTDESC_RIP_11041_10_FLAG
+			}
+			10 = {
+				set_character_flag = EVTDESC_RIP_11041_11_FLAG
+			}
+			10 = {
+				set_character_flag = EVTDESC_RIP_11041_13_FLAG
+			}
 		}
-	} 
+	}
 
-	option = { #good outcome
+	option = {
+		# good outcome
 		name = EVTOPTA_RIP_11041
 		trigger = {
 			has_character_flag = good_treatment_outcome
 		}
 		if = {
-			limit = { 
+			limit = {
 				NOR = {
 					trait = cancer
 					trait = gout
@@ -3750,10 +4292,10 @@ character_event = {
 			add_character_modifier = {
 				name = successful_treatment_2
 				duration = 730
-			}	
+			}
 		}
 		if = {
-			limit = { 
+			limit = {
 				OR = {
 					trait = cancer
 					trait = gout
@@ -3763,17 +4305,20 @@ character_event = {
 			add_character_modifier = {
 				name = successful_treatment_2
 				duration = 1825
-			}	
+			}
 		}
-
 		if = {
 			limit = {
 				host = {
-					NOT = { character = ROOT }
+					NOT = {
+						character = ROOT
+					}
 					OR = {
 						AND = {
 							is_married = yes
-							any_spouse = { character = ROOT }
+							any_spouse = {
+								character = ROOT
+							}
 						}
 						is_child_of = ROOT
 						is_father = ROOT
@@ -3783,8 +4328,10 @@ character_event = {
 					}
 				}
 			}
-			host = { 
-				character_event = { id = RIP.11061 }
+			host = {
+				character_event = {
+					id = RIP.11061
+				}
 				if = {
 					limit = {
 						FROMFROM = {
@@ -3795,12 +4342,13 @@ character_event = {
 					}
 					random = {
 						chance = 10
-						character_event = { id = RIP.11065 } 
+						character_event = {
+							id = RIP.11065
+						}
 					}
 				}
 			}
 		}
-
 		clr_character_flag = good_treatment_outcome
 		clr_character_flag = being_treated
 		set_character_flag = recent_treatment
@@ -3817,7 +4365,8 @@ character_event = {
 		clr_character_flag = EVTDESC_RIP_11041_13_FLAG
 	}
 
-	option = { #bad outcome
+	option = {
+		# bad outcome
 		name = EVTOPTB_RIP_11041
 		trigger = {
 			has_character_flag = bad_treatment_outcome
@@ -3826,15 +4375,18 @@ character_event = {
 			name = failed_treatment_1
 			duration = 365
 		}
-
 		if = {
 			limit = {
 				host = {
-					NOT = { character = ROOT }
+					NOT = {
+						character = ROOT
+					}
 					OR = {
 						AND = {
 							is_married = yes
-							any_spouse = { character = ROOT }
+							any_spouse = {
+								character = ROOT
+							}
 						}
 						is_child_of = ROOT
 						is_father = ROOT
@@ -3845,15 +4397,18 @@ character_event = {
 				}
 			}
 			if = {
-				limit = { 
+				limit = {
 					FROMFROM = {
 						ai = yes
 					}
 				}
-				host = { character_event = { id = RIP.11060 } }
+				host = {
+					character_event = {
+						id = RIP.11060
+					}
+				}
 			}
 		}
-
 		clr_character_flag = bad_treatment_outcome
 		clr_character_flag = being_treated
 		set_character_flag = recent_treatment
@@ -3871,12 +4426,11 @@ character_event = {
 	}
 }
 
-#Cautious treatment outcome
+# Cautious treatment outcome
 character_event = {
 	id = RIP.11042
 	picture = GFX_evt_recovery
 	border = GFX_event_normal_frame_religion
-
 	desc = {
 		text = EVTDESC_RIP_11042_1
 		trigger = {
@@ -3937,31 +4491,51 @@ character_event = {
 			has_character_flag = EVTDESC_RIP_11042_10_FLAG
 		}
 	}
-
 	is_triggered_only = yes
 
 	immediate = {
 		random_list = {
-			10 = { set_character_flag = EVTDESC_RIP_11042_1_FLAG }
-			10 = { set_character_flag = EVTDESC_RIP_11042_2_FLAG }
-			10 = { set_character_flag = EVTDESC_RIP_11042_3_FLAG }
-			10 = { set_character_flag = EVTDESC_RIP_11042_4_FLAG }
-			10 = { set_character_flag = EVTDESC_RIP_11042_5_FLAG }
-			10 = { set_character_flag = EVTDESC_RIP_11042_6_FLAG }
-			10 = { set_character_flag = EVTDESC_RIP_11042_7_FLAG }
-			10 = { set_character_flag = EVTDESC_RIP_11042_8_FLAG }
-			10 = { set_character_flag = EVTDESC_RIP_11042_9_FLAG }
-			10 = { set_character_flag = EVTDESC_RIP_11042_10_FLAG }
+			10 = {
+				set_character_flag = EVTDESC_RIP_11042_1_FLAG
+			}
+			10 = {
+				set_character_flag = EVTDESC_RIP_11042_2_FLAG
+			}
+			10 = {
+				set_character_flag = EVTDESC_RIP_11042_3_FLAG
+			}
+			10 = {
+				set_character_flag = EVTDESC_RIP_11042_4_FLAG
+			}
+			10 = {
+				set_character_flag = EVTDESC_RIP_11042_5_FLAG
+			}
+			10 = {
+				set_character_flag = EVTDESC_RIP_11042_6_FLAG
+			}
+			10 = {
+				set_character_flag = EVTDESC_RIP_11042_7_FLAG
+			}
+			10 = {
+				set_character_flag = EVTDESC_RIP_11042_8_FLAG
+			}
+			10 = {
+				set_character_flag = EVTDESC_RIP_11042_9_FLAG
+			}
+			10 = {
+				set_character_flag = EVTDESC_RIP_11042_10_FLAG
+			}
 		}
-	} 
+	}
 
-	option = { #ok outcome
+	option = {
+		# ok outcome
 		name = EVTOPTA_RIP_11042
 		trigger = {
 			has_character_flag = good_treatment_outcome
 		}
 		if = {
-			limit = { 
+			limit = {
 				NOR = {
 					trait = cancer
 					trait = gout
@@ -3971,10 +4545,10 @@ character_event = {
 			add_character_modifier = {
 				name = successful_treatment_1
 				duration = 730
-			}	
+			}
 		}
 		if = {
-			limit = { 
+			limit = {
 				OR = {
 					trait = cancer
 					trait = gout
@@ -3984,7 +4558,7 @@ character_event = {
 			add_character_modifier = {
 				name = successful_treatment_1
 				duration = 1825
-			}	
+			}
 		}
 		clr_character_flag = good_treatment_outcome
 		clr_character_flag = being_treated
@@ -4001,7 +4575,8 @@ character_event = {
 		clr_character_flag = EVTDESC_RIP_11042_10_FLAG
 	}
 
-	option = { #nothing happens
+	option = {
+		# nothing happens
 		name = EVTOPTB_RIP_11042
 		trigger = {
 			has_character_flag = bad_treatment_outcome
@@ -4021,12 +4596,11 @@ character_event = {
 	}
 }
 
-#Mystic treatment outcome
+# Mystic treatment outcome
 character_event = {
 	id = RIP.11047
 	picture = GFX_evt_recovery
 	border = GFX_event_normal_frame_religion
-
 	desc = {
 		text = EVTDESC_RIP_11047_1
 		trigger = {
@@ -4099,100 +4673,99 @@ character_event = {
 			has_character_flag = EVTDESC_RIP_11047_12_FLAG
 		}
 	}
-
 	is_triggered_only = yes
 
 	immediate = {
-
 		random_list = {
-
-			10 = { # Mirrors and candles
-				modifier ={
+			10 = {
+				# Mirrors and candles
+				modifier = {
 					factor = 0
 					has_character_flag = MYSTIC_TERRIBLE_OUTCOME
 				}
-				set_character_flag = EVTDESC_RIP_11047_1_FLAG 
+				set_character_flag = EVTDESC_RIP_11047_1_FLAG
 			}
-			
-			10 = { # Sacrificed animals, rubbed in ashes
-				modifier ={
+			10 = {
+				# Sacrificed animals, rubbed in ashes
+				modifier = {
 					factor = 0
 					AND = {
 						trait = paranoid
 						trait = possessed
 					}
 				}
-				set_character_flag = EVTDESC_RIP_11047_2_FLAG 
-			} 
-
-			10 = { # Conjuring, burnt fingers
+				set_character_flag = EVTDESC_RIP_11047_2_FLAG
+			}
+			10 = {
+				# Conjuring, burnt fingers
 				modifier = {
 					factor = 0
 					trait = one_handed
-					
 				}
-				set_character_flag = EVTDESC_RIP_11047_3_FLAG 
+				set_character_flag = EVTDESC_RIP_11047_3_FLAG
 			}
-			
-			10 = { # Improv greatest poem
+			10 = {
+				# Improv greatest poem
 				modifier = {
 					factor = 0
 					trait = poet
 				}
-				set_character_flag = EVTDESC_RIP_11047_4_FLAG 
+				set_character_flag = EVTDESC_RIP_11047_4_FLAG
 			}
-			
-			10 = { # Bloodbath
+			10 = {
+				# Bloodbath
 				modifier = {
 					factor = 0
 					trait = cruel
 				}
-				set_character_flag = EVTDESC_RIP_11047_5_FLAG 
+				set_character_flag = EVTDESC_RIP_11047_5_FLAG
 			}
-			
-			5 = { # "special brew"
+			5 = {
+				# "special brew"
 				modifier = {
 					factor = 0
 					trait = drunkard
-				} 
-				set_character_flag = EVTDESC_RIP_11047_6_FLAG 
+				}
+				set_character_flag = EVTDESC_RIP_11047_6_FLAG
 			}
-
-			10 = { # walk on fire
+			10 = {
+				# walk on fire
 				modifier = {
 					factor = 0
 					trait = brave
 				}
-				set_character_flag = EVTDESC_RIP_11047_7_FLAG 
+				set_character_flag = EVTDESC_RIP_11047_7_FLAG
 			}
-
-			10 = {  # physician tries to drown you
+			10 = {
+				# physician tries to drown you
 				modifier = {
 					factor = 0
-					FROM = { 
-						NOR = { 
+					FROM = {
+						NOR = {
 							trait = zealous
 							trait = cruel
 						}
 					}
 				}
-				set_character_flag = EVTDESC_RIP_11047_8_FLAG 
+				set_character_flag = EVTDESC_RIP_11047_8_FLAG
 			}
-			
-			5 = {  # physician sacrifices your child
-			modifier = {
+			5 = {
+				# physician sacrifices your child
+				modifier = {
 					factor = 0
 					NOR = {
 						NOT = {
 							any_courtier = {
 								is_child_of = ROOT
 								is_ill = no
-								NOT = { trait = inbred }
+								NOT = {
+									trait = inbred
+								}
 								is_abroad = no
 							}
-					}
-						FROM = { 
-							NOR = { 
+						}
+						FROM = {
+							NOR = {
 								trait = zealous
 								trait = cruel
 								trait = arbitrary
@@ -4201,11 +4774,11 @@ character_event = {
 						}
 					}
 				}
-				set_character_flag = EVTDESC_RIP_11047_9_FLAG 
+				set_character_flag = EVTDESC_RIP_11047_9_FLAG
 			}
-			
-			10 = { # am I the beast?
-				modifier ={
+			10 = {
+				# am I the beast?
+				modifier = {
 					factor = 0
 					OR = {
 						trait = possessed
@@ -4214,11 +4787,14 @@ character_event = {
 						trait = lunatic_3
 					}
 				}
-				set_character_flag = EVTDESC_RIP_11047_10_FLAG 
+				set_character_flag = EVTDESC_RIP_11047_10_FLAG
 			}
-
-			10 = { set_character_flag = EVTDESC_RIP_11047_11_FLAG } # the rat will carry your burdens
-			10 = { set_character_flag = EVTDESC_RIP_11047_12_FLAG } # physician suicide
+			10 = {
+				set_character_flag = EVTDESC_RIP_11047_11_FLAG
+			} # the rat will carry your burdens
+			10 = {
+				set_character_flag = EVTDESC_RIP_11047_12_FLAG
+			} # physician suicide
 		}
 	}
 
@@ -4226,64 +4802,136 @@ character_event = {
 		set_character_flag = recent_treatment
 		name = {
 			text = EVTOPTB_RIP_11047
-			trigger = { has_character_flag = EVTDESC_RIP_11047_8_FLAG }
+			trigger = {
+				has_character_flag = EVTDESC_RIP_11047_8_FLAG
+			}
 		}
 		name = {
 			text = EVTOPTC_RIP_11047
-			trigger = { has_character_flag = EVTDESC_RIP_11047_9_FLAG }
+			trigger = {
+				has_character_flag = EVTDESC_RIP_11047_9_FLAG
+			}
 		}
 		name = {
 			text = EVTOPTD_RIP_11047
-			trigger = { has_character_flag = EVTDESC_RIP_11047_12_FLAG }
+			trigger = {
+				has_character_flag = EVTDESC_RIP_11047_12_FLAG
+			}
 		}
 		name = {
 			text = EVTOPTE_RIP_11047
-			trigger = { has_character_flag = EVTDESC_RIP_11047_3_FLAG }
+			trigger = {
+				has_character_flag = EVTDESC_RIP_11047_3_FLAG
+			}
 		}
 		name = {
 			text = EVTOPTA_RIP_11047
-			trigger = { 
-				NOR = { 
+			trigger = {
+				NOR = {
 					has_character_flag = EVTDESC_RIP_11047_8_FLAG
 					has_character_flag = EVTDESC_RIP_11047_9_FLAG
 					has_character_flag = EVTDESC_RIP_11047_12_FLAG
 					has_character_flag = EVTDESC_RIP_11047_3_FLAG
-				} 
+				}
 			}
 		}
-		
 		if = {
-			limit = { has_character_flag = MYSTIC_AMAZING_OUTCOME }
-				
-			#Chance to remove the disease!
-			custom_tooltip = { text = CURED_RIP_TOOLTIP }
-
+			limit = {
+				has_character_flag = MYSTIC_AMAZING_OUTCOME
+			}
+			# Chance to remove the disease!
+			custom_tooltip = {
+				text = CURED_RIP_TOOLTIP
+			}
 			hidden_tooltip = {
-				if = { limit = { trait = flu } remove_trait = flu }
-				if = { limit = { trait = dysentery } remove_trait = dysentery }
-				if = { limit = { trait = gout }	remove_trait = gout }
-				if = { limit = { trait = food_poisoning } remove_trait = food_poisoning }
-				if = { limit = { trait = rabies } remove_trait = rabies }
-				if = { limit = { trait = cancer } remove_trait = cancer }
-				if = { limit = { trait = pneumonic } remove_trait = pneumonic }
-				if = { limit = { trait = syphilitic } remove_trait = syphilitic set_character_flag = immune_syphilis }       
-				if = { limit = { trait = has_tuberculosis } remove_trait = has_tuberculosis set_character_flag = immune_tuberculosis }
-				if = { limit = { trait = has_typhoid_fever } remove_trait = has_typhoid_fever set_character_flag = immune_typhoid_fever}
-				if = { limit = { trait = has_typhus } remove_trait = has_typhus set_character_flag = immune_typhus}
-				if = { limit = { trait = has_bubonic_plague ai = no } remove_trait = has_bubonic_plague set_character_flag = immune_bubonic_plague set_character_flag = achievement_i_got_better }
-				if = { limit = { trait = has_bubonic_plague ai = yes } remove_trait = has_bubonic_plague set_character_flag = immune_bubonic_plague }
-				if = { limit = { trait = has_measles } remove_trait = has_measles set_character_flag = immune_measles}
-				if = { limit = { trait = has_small_pox } remove_trait = has_small_pox set_character_flag = immune_smallpox }
-				if = { limit = { trait = has_aztec_disease } remove_trait = has_aztec_disease set_character_flag = immune_aztec_disease }
+				if = {
+					limit = {
+						trait = flu
+					} remove_trait = flu
+				}
+				if = {
+					limit = {
+						trait = dysentery
+					} remove_trait = dysentery
+				}
+				if = {
+					limit = {
+						trait = gout
+					}	remove_trait = gout
+				}
+				if = {
+					limit = {
+						trait = food_poisoning
+					} remove_trait = food_poisoning
+				}
+				if = {
+					limit = {
+						trait = rabies
+					} remove_trait = rabies
+				}
+				if = {
+					limit = {
+						trait = cancer
+					} remove_trait = cancer
+				}
+				if = {
+					limit = {
+						trait = pneumonic
+					} remove_trait = pneumonic
+				}
+				if = {
+					limit = {
+						trait = syphilitic
+					} remove_trait = syphilitic set_character_flag = immune_syphilis
+				}
+				if = {
+					limit = {
+						trait = has_tuberculosis
+					} remove_trait = has_tuberculosis set_character_flag = immune_tuberculosis
+				}
+				if = {
+					limit = {
+						trait = has_typhoid_fever
+					} remove_trait = has_typhoid_fever set_character_flag = immune_typhoid_fever
+				}
+				if = {
+					limit = {
+						trait = has_typhus
+					} remove_trait = has_typhus set_character_flag = immune_typhus
+				}
+				if = {
+					limit = {
+						trait = has_bubonic_plague ai = no
+					} remove_trait = has_bubonic_plague set_character_flag = immune_bubonic_plague set_character_flag = achievement_i_got_better
+				}
+				if = {
+					limit = {
+						trait = has_bubonic_plague ai = yes
+					} remove_trait = has_bubonic_plague set_character_flag = immune_bubonic_plague
+				}
+				if = {
+					limit = {
+						trait = has_measles
+					} remove_trait = has_measles set_character_flag = immune_measles
+				}
+				if = {
+					limit = {
+						trait = has_small_pox
+					} remove_trait = has_small_pox set_character_flag = immune_smallpox
+				}
+				if = {
+					limit = {
+						trait = has_aztec_disease
+					} remove_trait = has_aztec_disease set_character_flag = immune_aztec_disease
+				}
 				remove_treatment_modifiers_effect = yes
 				clear_disease_level_effect = yes
 				remove_disease_flags_effect = yes
 				set_character_flag = seen_the_light_of_modern_medicine
 			}
 		}
-
 		if = {
-			limit = { 
+			limit = {
 				has_character_flag = MYSTIC_DECENT_OUTCOME
 				NOR = {
 					trait = cancer
@@ -4294,10 +4942,10 @@ character_event = {
 			add_character_modifier = {
 				name = mystic_treatment_decent
 				duration = 730
-			}	
+			}
 		}
 		if = {
-			limit = { 
+			limit = {
 				has_character_flag = MYSTIC_DECENT_OUTCOME
 				OR = {
 					trait = cancer
@@ -4308,10 +4956,10 @@ character_event = {
 			add_character_modifier = {
 				name = mystic_treatment_decent
 				duration = 1825
-			}	
+			}
 		}
 		if = {
-			limit = { 
+			limit = {
 				has_character_flag = MYSTIC_POOR_OUTCOME
 				NOR = {
 					trait = cancer
@@ -4325,7 +4973,7 @@ character_event = {
 			}
 		}
 		if = {
-			limit = { 
+			limit = {
 				has_character_flag = MYSTIC_POOR_OUTCOME
 				OR = {
 					trait = cancer
@@ -4347,47 +4995,70 @@ character_event = {
 					trait = syphilitic
 				}
 			}
-			custom_tooltip = { text = RIP_11047_TERRIBLE_TOOLTIP }
+			custom_tooltip = {
+				text = RIP_11047_TERRIBLE_TOOLTIP
+			}
 			add_character_modifier = {
-					name = mystic_treatment_terrible
-					duration = 365
-				}
+				name = mystic_treatment_terrible
+				duration = 365
+			}
 			hidden_tooltip = {
 				random = {
 					chance = 10
 					if = {
-						limit = { NOT = { trait = possessed } }
-						character_event = { id = 38315 }
+						limit = {
+							NOT = {
+								trait = possessed
+							}
+						}
+						character_event = {
+							id = 38315
+						}
 					}
 				}
 				random = {
 					chance = 10
 					if = {
-						limit = { NOR = { 
-							trait = lunatic_1
-							trait = lunatic_2
-							trait = lunatic_3
-						} }
-						character_event = { id = 38304 }
+						limit = {
+							NOR = {
+								trait = lunatic_1
+								trait = lunatic_2
+								trait = lunatic_3
+							}
+						}
+						character_event = {
+							id = 38304
+						}
 					}
 				}
 				random = {
 					chance = 10
 					if = {
-						limit = { NOT = { trait = depressed } }
-						character_event = { id = 38288 }
+						limit = {
+							NOT = {
+								trait = depressed
+							}
+						}
+						character_event = {
+							id = 38288
+						}
 					}
 				}
 				random = {
 					chance = 25
 					if = {
-						limit = { NOT = { trait = stressed } }
-						character_event = { id = 38282 }
+						limit = {
+							NOT = {
+								trait = stressed
+							}
+						}
+						character_event = {
+							id = 38282
+						}
 					}
 				}
 			}
 		}
-		
 		if = {
 			limit = {
 				has_character_flag = MYSTIC_TERRIBLE_OUTCOME
@@ -4397,346 +5068,458 @@ character_event = {
 					trait = syphilitic
 				}
 			}
-			custom_tooltip = { text = RIP_11047_TERRIBLE_TOOLTIP }
+			custom_tooltip = {
+				text = RIP_11047_TERRIBLE_TOOLTIP
+			}
 			add_character_modifier = {
-					name = mystic_treatment_terrible
-					duration = 1825
-				}
+				name = mystic_treatment_terrible
+				duration = 1825
+			}
 			hidden_tooltip = {
 				random = {
 					chance = 10
 					if = {
-						limit = { NOT = { trait = possessed } }
-						character_event = { id = 38315 }
+						limit = {
+							NOT = {
+								trait = possessed
+							}
+						}
+						character_event = {
+							id = 38315
+						}
 					}
 				}
 				random = {
 					chance = 10
 					if = {
-						limit = { NOR = { 
-							trait = lunatic_1
-							trait = lunatic_2
-							trait = lunatic_3
-						} }
-						character_event = { id = 38304 }
+						limit = {
+							NOR = {
+								trait = lunatic_1
+								trait = lunatic_2
+								trait = lunatic_3
+							}
+						}
+						character_event = {
+							id = 38304
+						}
 					}
 				}
 				random = {
 					chance = 10
 					if = {
-						limit = { NOT = { trait = depressed } }
-						character_event = { id = 38288 }
+						limit = {
+							NOT = {
+								trait = depressed
+							}
+						}
+						character_event = {
+							id = 38288
+						}
 					}
 				}
 				random = {
 					chance = 25
 					if = {
-						limit = { NOT = { trait = stressed } }
-						character_event = { id = 38282 }
+						limit = {
+							NOT = {
+								trait = stressed
+							}
+						}
+						character_event = {
+							id = 38282
+						}
 					}
 				}
 			}
 		}
-		
-		#Specific effects from the chosen event desc
+		# Specific effects from the chosen event desc
 		if = {
-			limit = { has_character_flag = EVTDESC_RIP_11047_1_FLAG }
-			
-			trigger_switch = {
-				on_trigger = trait
-				paranoid = { add_trait = trusting }
-				trusting = { add_trait = paranoid }
+			limit = {
+				has_character_flag = EVTDESC_RIP_11047_1_FLAG
 			}
 			trigger_switch = {
 				on_trigger = trait
-				ambitious = { add_trait = content }
-				content = { add_trait = ambitious }
+				paranoid = {
+					add_trait = trusting
+				}
+				trusting = {
+					add_trait = paranoid
+				}
 			}
 			trigger_switch = {
 				on_trigger = trait
-				humble = { add_trait = proud }
-				proud = { add_trait = humble }
+				ambitious = {
+					add_trait = content
+				}
+				content = {
+					add_trait = ambitious
+				}
 			}
 			trigger_switch = {
 				on_trigger = trait
-				shy = { add_trait = gregarious }
-				gregarious = { add_trait = shy }
+				humble = {
+					add_trait = proud
+				}
+				proud = {
+					add_trait = humble
+				}
 			}
 			trigger_switch = {
 				on_trigger = trait
-				temperate = { add_trait = gluttonous }
-				gluttonous = { add_trait = temperate }
+				shy = {
+					add_trait = gregarious
+				}
+				gregarious = {
+					add_trait = shy
+				}
 			}
 			trigger_switch = {
 				on_trigger = trait
-				charitable = { add_trait = greedy }
-				greedy = { add_trait = charitable }
+				temperate = {
+					add_trait = gluttonous
+				}
+				gluttonous = {
+					add_trait = temperate
+				}
 			}
 			trigger_switch = {
 				on_trigger = trait
-				diligent = { add_trait = slothful }
-				slothful = { add_trait = diligent }
+				charitable = {
+					add_trait = greedy
+				}
+				greedy = {
+					add_trait = charitable
+				}
 			}
 			trigger_switch = {
 				on_trigger = trait
-				envious = { add_trait = kind }
-				kind = { add_trait = envious }
+				diligent = {
+					add_trait = slothful
+				}
+				slothful = {
+					add_trait = diligent
+				}
+			}
+			trigger_switch = {
+				on_trigger = trait
+				envious = {
+					add_trait = kind
+				}
+				kind = {
+					add_trait = envious
+				}
 			}
 		}
-
 		if = {
-			limit = { has_character_flag = EVTDESC_RIP_11047_2_FLAG }
-			if = {
-				limit = { NOT = { trait = paranoid } }
-					add_trait = paranoid
+			limit = {
+				has_character_flag = EVTDESC_RIP_11047_2_FLAG
 			}
-			
+			if = {
+				limit = {
+					NOT = {
+						trait = paranoid
+					}
+				}
+				add_trait = paranoid
+			}
 			random = {
-				chance =  25
+				chance = 25
 				if = {
-					limit = { NOT = { trait = possessed } }
+					limit = {
+						NOT = {
+							trait = possessed
+						}
+					}
 					add_trait = possessed
 				}
 			}
 		}
-		
 		if = {
-			limit = { has_character_flag = EVTDESC_RIP_11047_3_FLAG }
-			if = {
-				limit = { NOT = { trait = one_handed } }
-					add_trait = one_handed
+			limit = {
+				has_character_flag = EVTDESC_RIP_11047_3_FLAG
 			}
 			if = {
-				limit = { 
-					NOR = { 
+				limit = {
+					NOT = {
+						trait = one_handed
+					}
+				}
+				add_trait = one_handed
+			}
+			if = {
+				limit = {
+					NOR = {
 						trait = wroth
 						trait = patient
-					} 
+					}
 				}
 				add_trait = wroth
 			}
 			if = {
-				limit = { trait = patient }
-					remove_trait = patient
+				limit = {
+					trait = patient
+				}
+				remove_trait = patient
 			}
 		}
-		
 		if = {
-			limit = { has_character_flag = EVTDESC_RIP_11047_4_FLAG }
+			limit = {
+				has_character_flag = EVTDESC_RIP_11047_4_FLAG
+			}
 			add_trait = poet
 		}
 		if = {
-			limit = { has_character_flag = EVTDESC_RIP_11047_5_FLAG }
+			limit = {
+				has_character_flag = EVTDESC_RIP_11047_5_FLAG
+			}
 			add_trait = cruel
 		}
 		if = {
-			limit = { has_character_flag = EVTDESC_RIP_11047_6_FLAG }
+			limit = {
+				has_character_flag = EVTDESC_RIP_11047_6_FLAG
+			}
 			add_trait = drunkard
 		}
-
 		if = {
-			limit = { has_character_flag = EVTDESC_RIP_11047_7_FLAG }
+			limit = {
+				has_character_flag = EVTDESC_RIP_11047_7_FLAG
+			}
 			add_trait = brave
 			if = {
-				limit = { NOT = { trait = zealous } }
-					add_trait = zealous
+				limit = {
+					NOT = {
+						trait = zealous
+					}
+				}
+				add_trait = zealous
 			}
 		}
-
 		if = {
-			limit = { has_character_flag = EVTDESC_RIP_11047_8_FLAG }
+			limit = {
+				has_character_flag = EVTDESC_RIP_11047_8_FLAG
+			}
 			# DROWNING
 			opinion = {
 				who = FROMFROM
 				modifier = opinion_traitor
 			}
 			if = {
-				limit = { NOT = { trait = paranoid } }
-					add_trait = paranoid
+				limit = {
+					NOT = {
+						trait = paranoid
+					}
+				}
+				add_trait = paranoid
 			}
-
 		}
-
 		if = {
-			limit = { has_character_flag = EVTDESC_RIP_11047_9_FLAG }
-
+			limit = {
+				has_character_flag = EVTDESC_RIP_11047_9_FLAG
+			}
 			opinion = {
 				who = FROMFROM
 				modifier = opinion_traitor
 			}
-
 			random_courtier = {
-				limit = {		
+				limit = {
 					is_child_of = ROOT
 					is_ill = no
-					NOT = { trait = inbred }
+					NOT = {
+						trait = inbred
+					}
 					is_abroad = no
 				}
 				if = {
-				 limit = {
-					is_invincible_trigger = yes
+					limit = {
+						is_invincible_trigger = yes
+					}
+					antideath_effect = yes
+					break = yes
 				}
-				antideath_effect = yes
-				break = yes 
-			}
 				death = {
 					death_reason = death_murder_unknown
 					killer = FROMFROM
 				}
 			}
 		}
-
 		if = {
-			limit = { has_character_flag = EVTDESC_RIP_11047_10_FLAG }
-			if = {
-				limit = { NOT = { trait = possessed } }
-					add_trait = possessed
+			limit = {
+				has_character_flag = EVTDESC_RIP_11047_10_FLAG
 			}
-			
+			if = {
+				limit = {
+					NOT = {
+						trait = possessed
+					}
+				}
+				add_trait = possessed
+			}
 			random = {
-				chance =  25
+				chance = 25
 				if = {
-					limit = { NOR = { 
+					limit = {
+						NOR = {
 							trait = lunatic_1
 							trait = lunatic_2
 							trait = lunatic_3
-						} }
+						}
+					}
 					add_trait = lunatic_1
-					set_variable = { which = "lunatic_counter" value = 6 } 
+					set_variable = {
+						which = "lunatic_counter" value = 6
+					}
 				}
 			}
 		}
 		if = {
-			limit = { has_character_flag = EVTDESC_RIP_11047_11_FLAG }
-
+			limit = {
+				has_character_flag = EVTDESC_RIP_11047_11_FLAG
+			}
 			if = {
 				limit = {
-					NOR = { 
+					NOR = {
 						trait = content
-						trait = ambitious 
-					} 
+						trait = ambitious
+					}
 				}
 				add_trait = content
 			}
 			if = {
-				limit = { trait = ambitious }
+				limit = {
+					trait = ambitious
+				}
 				remove_trait = ambitious
 			}
-
 			if = {
-				limit = { 
-					NOR = { 
+				limit = {
+					NOR = {
 						trait = kind
-						trait = envious 
-					} 
+						trait = envious
+					}
 				}
 				add_trait = kind
 			}
 			if = {
-				limit = { trait = envious }
+				limit = {
+					trait = envious
+				}
 				remove_trait = envious
 			}
-
 			if = {
-				limit = { 
-					NOR = { 
+				limit = {
+					NOR = {
 						trait = honest
 						trait = deceitful
-					} 
+					}
 				}
 				add_trait = honest
 			}
 			if = {
-				limit = { trait = deceitful }
+				limit = {
+					trait = deceitful
+				}
 				remove_trait = deceitful
 			}
 			if = {
-				limit = { 
-					NOR = { 
+				limit = {
+					NOR = {
 						trait = patient
 						trait = wroth
-					} 
+					}
 				}
 				add_trait = patient
 			}
 			if = {
-				limit = { trait = wroth }
+				limit = {
+					trait = wroth
+				}
 				remove_trait = wroth
 			}
 			if = {
-				limit = { 
-					NOR = { 
+				limit = {
+					NOR = {
 						trait = humble
 						trait = proud
-					} 
+					}
 				}
 				add_trait = humble
 			}
 			if = {
-				limit = { trait = proud }
+				limit = {
+					trait = proud
+				}
 				remove_trait = proud
 			}
 			if = {
-				limit = { 
-					NOR = { 
+				limit = {
+					NOR = {
 						trait = charitable
 						trait = greedy
-					} 
+					}
 				}
 				add_trait = charitable
 			}
 			if = {
-				limit = { trait = greedy }
+				limit = {
+					trait = greedy
+				}
 				remove_trait = greedy
 			}
 			if = {
-				limit = { 
-					NOR = { 
+				limit = {
+					NOR = {
 						trait = temperate
 						trait = gluttonous
-					} 
+					}
 				}
 				add_trait = temperate
 			}
 			if = {
-				limit = { trait = gluttonous }
+				limit = {
+					trait = gluttonous
+				}
 				remove_trait = gluttonous
 			}
-
 		}
 		if = {
-			limit = { has_character_flag = EVTDESC_RIP_11047_12_FLAG }
-			
+			limit = {
+				has_character_flag = EVTDESC_RIP_11047_12_FLAG
+			}
 			FROMFROM = {
 				if = {
-				 limit = {
-					is_invincible_trigger = yes
+					limit = {
+						is_invincible_trigger = yes
+					}
+					antideath_effect = yes
+					break = yes
 				}
-				antideath_effect = yes
-				break = yes 
+				death = {
+					death_reason = death_suicide
+				}
 			}
-				death = { death_reason = death_suicide }
-			}
-			
 			if = {
-				limit = { trait = humble }
+				limit = {
+					trait = humble
+				}
 				add_trait = humble
 			}
-
 			random = {
-				chance =  25
+				chance = 25
 				if = {
-					limit = { NOR = { 
+					limit = {
+						NOR = {
 							trait = lunatic_1
 							trait = lunatic_2
 							trait = lunatic_3
-						} }
+						}
+					}
 					add_trait = lunatic_1
-					set_variable = { which = "lunatic_counter" value = 6 } 
+					set_variable = {
+						which = "lunatic_counter" value = 6
+					}
 				}
 			}
 		}
-
 		clr_character_flag = MYSTIC_AMAZING_OUTCOME
 		clr_character_flag = MYSTIC_DECENT_OUTCOME
 		clr_character_flag = MYSTIC_POOR_OUTCOME
@@ -4759,13 +5542,11 @@ character_event = {
 	}
 }
 
-
-#Symptom treatment
+# Symptom treatment
 character_event = {
 	id = RIP.11045
 	picture = GFX_evt_recovery
 	border = GFX_event_normal_frame_religion
-
 	desc = {
 		text = EVTDESC_RIP_11045_has_tuberculosis
 		trigger = {
@@ -4796,7 +5577,6 @@ character_event = {
 			has_character_flag = EVTDESC_RIP_11045_has_tuberculosis_flag_uncertain
 		}
 	}
-
 	desc = {
 		text = EVTDESC_RIP_11045_has_typhoid_fever
 		trigger = {
@@ -4827,7 +5607,6 @@ character_event = {
 			has_character_flag = EVTDESC_RIP_11045_has_typhoid_fever_flag_uncertain
 		}
 	}
-
 	desc = {
 		text = EVTDESC_RIP_11045_has_typhus
 		trigger = {
@@ -4858,7 +5637,6 @@ character_event = {
 			has_character_flag = EVTDESC_RIP_11045_has_typhus_flag_uncertain
 		}
 	}
-
 	desc = {
 		text = EVTDESC_RIP_11045_has_bubonic_plague
 		trigger = {
@@ -4889,7 +5667,6 @@ character_event = {
 			has_character_flag = EVTDESC_RIP_11045_has_bubonic_plague_flag_uncertain
 		}
 	}
-
 	desc = {
 		text = EVTDESC_RIP_11045_has_measles
 		trigger = {
@@ -4920,7 +5697,6 @@ character_event = {
 			has_character_flag = EVTDESC_RIP_11045_has_measles_flag_uncertain
 		}
 	}
-
 	desc = {
 		text = EVTDESC_RIP_11045_has_small_pox
 		trigger = {
@@ -4951,7 +5727,6 @@ character_event = {
 			has_character_flag = EVTDESC_RIP_11045_has_small_pox_flag_uncertain
 		}
 	}
-
 	desc = {
 		text = EVTDESC_RIP_11045_has_aztec_disease
 		trigger = {
@@ -4982,7 +5757,6 @@ character_event = {
 			has_character_flag = EVTDESC_RIP_11045_has_aztec_disease_flag_uncertain
 		}
 	}
-
 	desc = {
 		text = EVTDESC_RIP_11045_flu
 		trigger = {
@@ -5013,7 +5787,6 @@ character_event = {
 			has_character_flag = EVTDESC_RIP_11045_has_flu_flag_uncertain
 		}
 	}
-
 	desc = {
 		text = EVTDESC_RIP_11045_dysentery
 		trigger = {
@@ -5044,7 +5817,6 @@ character_event = {
 			has_character_flag = EVTDESC_RIP_11045_has_dysentery_flag_uncertain
 		}
 	}
-
 	desc = {
 		text = EVTDESC_RIP_11045_gout
 		trigger = {
@@ -5075,7 +5847,6 @@ character_event = {
 			has_character_flag = EVTDESC_RIP_11045_has_gout_flag_uncertain
 		}
 	}
-
 	desc = {
 		text = EVTDESC_RIP_11045_food_poisoning
 		trigger = {
@@ -5106,7 +5877,6 @@ character_event = {
 			has_character_flag = EVTDESC_RIP_11045_has_food_poisoning_flag_uncertain
 		}
 	}
-
 	desc = {
 		text = EVTDESC_RIP_11045_rabies
 		trigger = {
@@ -5137,7 +5907,6 @@ character_event = {
 			has_character_flag = EVTDESC_RIP_11045_has_rabies_flag_uncertain
 		}
 	}
-
 	desc = {
 		text = EVTDESC_RIP_11045_cancer
 		trigger = {
@@ -5168,7 +5937,6 @@ character_event = {
 			has_character_flag = EVTDESC_RIP_11045_has_cancer_flag_uncertain
 		}
 	}
-
 	desc = {
 		text = EVTDESC_RIP_11045_pneumonia
 		trigger = {
@@ -5199,7 +5967,6 @@ character_event = {
 			has_character_flag = EVTDESC_RIP_11045_has_pneumonia_flag_uncertain
 		}
 	}
-
 	desc = {
 		text = EVTDESC_RIP_11045_syphilitic
 		trigger = {
@@ -5230,7 +5997,6 @@ character_event = {
 			has_character_flag = EVTDESC_RIP_11045_has_syphilis_flag_uncertain
 		}
 	}
-
 	desc = {
 		text = EVTDESC_RIP_11045_not_serious
 		trigger = {
@@ -5261,12 +6027,11 @@ character_event = {
 			has_character_flag = EVTDESC_RIP_11045_not_serious_flag_uncertain
 		}
 	}
-
 	is_triggered_only = yes
-	
+
 	trigger = {
 		OR = {
-			##Symptoms
+			# Symptoms
 			trait = cough
 			trait = fever
 			trait = diarrhea
@@ -5340,13 +6105,17 @@ character_event = {
 				modifier = {
 					factor = 0.8
 					FROM = {
-						NOT = { learning = 15 }
+						NOT = {
+							learning = 15
+						}
 					}
 				}
 				modifier = {
 					factor = 0.8
 					FROM = {
-						NOT = { learning = 10 }
+						NOT = {
+							learning = 10
+						}
 					}
 				}
 				set_character_flag = correct_diagnosis
@@ -5373,25 +6142,41 @@ character_event = {
 				modifier = {
 					factor = 1.2
 					FROM = {
-						NOT = { opinion = { who = ROOT value = 0 } }
+						NOT = {
+							opinion = {
+								who = ROOT value = 0
+							}
+						}
 					}
 				}
 				modifier = {
 					factor = 1.2
 					FROM = {
-						NOT = { opinion = { who = ROOT value = -25 } }
+						NOT = {
+							opinion = {
+								who = ROOT value = -25
+							}
+						}
 					}
 				}
 				modifier = {
 					factor = 1.2
 					FROM = {
-						NOT = { opinion = { who = ROOT value = -50 } }
+						NOT = {
+							opinion = {
+								who = ROOT value = -50
+							}
+						}
 					}
 				}
 				modifier = {
 					factor = 1.2
 					FROM = {
-						NOT = { opinion = { who = ROOT value = -75 } }
+						NOT = {
+							opinion = {
+								who = ROOT value = -75
+							}
+						}
 					}
 				}
 				modifier = {
@@ -5415,49 +6200,54 @@ character_event = {
 				modifier = {
 					factor = 1.2
 					FROM = {
-						NOT = { learning = 15 }
+						NOT = {
+							learning = 15
+						}
 					}
 				}
 				modifier = {
 					factor = 1.2
 					FROM = {
-						NOT = { learning = 10 }
+						NOT = {
+							learning = 10
+						}
 					}
 				}
 				set_character_flag = faulty_diagnosis
 			}
 		}
-
-		#Now we check to see what disease the character has
+		# Now we check to see what disease the character has
 		random_list = {
 			10 = {
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = correct_diagnosis
-						NOT = { has_character_flag = got_tuberculosis }
+						NOT = {
+							has_character_flag = got_tuberculosis
+						}
 					}
 				}
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = faulty_diagnosis
 						has_character_flag = got_tuberculosis
 					}
 				}
-				
 				if = {
-					limit = {	#horse
+					limit = {
+						# horse
 						FROM = {
 							culture = horse
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_tuberculosis_flag_horse
 					break = yes
 				}
 				if = {
 					limit = {
-						has_character_flag = correct_diagnosis #Really good doctors know for sure
+						has_character_flag = correct_diagnosis # Really good doctors know for sure
 						FROM = {
 							OR = {
 								learning = 25
@@ -5466,12 +6256,13 @@ character_event = {
 									learning = 20
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_tuberculosis_flag_certain
 					break = yes
 				}
-				if = {	#Good doctors are pretty sure
+				if = {
+					# Good doctors are pretty sure
 					limit = {
 						FROM = {
 							OR = {
@@ -5481,59 +6272,66 @@ character_event = {
 									learning = 15
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_tuberculosis_flag_sure
 					break = yes
 				}
 				if = {
-					limit = { # awful doctors are uncertain 
+					limit = {
+						# awful doctors are uncertain
 						FROM = {
 							OR = {
 								AND = {
-									NOT = { learning = 10 }	
+									NOT = {
+										learning = 10
+									}
 									physician_bad_trigger = no
 								}
 								AND = {
-									NOT = { learning = 15 }	
+									NOT = {
+										learning = 15
+									}
 									physician_bad_trigger = yes
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_tuberculosis_flag_uncertain
 					break = yes
 				}
-				
-				set_character_flag = EVTDESC_RIP_11045_has_tuberculosis_flag #otherwise, doctors are fairly sure
+				set_character_flag = EVTDESC_RIP_11045_has_tuberculosis_flag # otherwise, doctors are fairly sure
 			}
 			10 = {
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = correct_diagnosis
-						NOT = { has_character_flag = got_typhoid_fever }
+						NOT = {
+							has_character_flag = got_typhoid_fever
+						}
 					}
 				}
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = faulty_diagnosis
 						has_character_flag = got_typhoid_fever
 					}
 				}
 				if = {
-					limit = {	#horse
+					limit = {
+						# horse
 						FROM = {
 							culture = horse
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_typhoid_fever_flag_horse
 					break = yes
 				}
 				if = {
 					limit = {
-						has_character_flag = correct_diagnosis #Really good doctors know for sure
+						has_character_flag = correct_diagnosis # Really good doctors know for sure
 						FROM = {
 							OR = {
 								learning = 25
@@ -5542,12 +6340,13 @@ character_event = {
 									learning = 20
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_typhoid_fever_flag_certain
 					break = yes
 				}
-				if = {	#Good doctors are pretty sure
+				if = {
+					# Good doctors are pretty sure
 					limit = {
 						FROM = {
 							OR = {
@@ -5557,60 +6356,66 @@ character_event = {
 									learning = 15
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_typhoid_fever_flag_sure
 					break = yes
 				}
 				if = {
-					limit = { # awful doctors are uncertain 
+					limit = {
+						# awful doctors are uncertain
 						FROM = {
 							OR = {
 								AND = {
-									NOT = { learning = 10 }	
+									NOT = {
+										learning = 10
+									}
 									physician_bad_trigger = no
 								}
 								AND = {
-									NOT = { learning = 15 }	
+									NOT = {
+										learning = 15
+									}
 									physician_bad_trigger = yes
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_typhoid_fever_flag_uncertain
 					break = yes
 				}
-				
 				set_character_flag = EVTDESC_RIP_11045_has_typhoid_fever_flag
 			}
 			10 = {
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = correct_diagnosis
-						NOT = { has_character_flag = got_typhus }
+						NOT = {
+							has_character_flag = got_typhus
+						}
 					}
 				}
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = faulty_diagnosis
 						has_character_flag = got_typhus
 					}
 				}
-				
 				if = {
-					limit = {	#horse
+					limit = {
+						# horse
 						FROM = {
 							culture = horse
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_typhus_flag_horse
 					break = yes
 				}
 				if = {
 					limit = {
-						has_character_flag = correct_diagnosis #Really good doctors know for sure
+						has_character_flag = correct_diagnosis # Really good doctors know for sure
 						FROM = {
 							OR = {
 								learning = 25
@@ -5619,12 +6424,13 @@ character_event = {
 									learning = 20
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_typhus_flag_certain
 					break = yes
 				}
-				if = {	#Good doctors are pretty sure
+				if = {
+					# Good doctors are pretty sure
 					limit = {
 						FROM = {
 							OR = {
@@ -5634,60 +6440,66 @@ character_event = {
 									learning = 15
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_typhus_flag_sure
 					break = yes
 				}
 				if = {
-					limit = { # awful doctors are uncertain 
+					limit = {
+						# awful doctors are uncertain
 						FROM = {
 							OR = {
 								AND = {
-									NOT = { learning = 10 }	
+									NOT = {
+										learning = 10
+									}
 									physician_bad_trigger = no
 								}
 								AND = {
-									NOT = { learning = 15 }	
+									NOT = {
+										learning = 15
+									}
 									physician_bad_trigger = yes
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_typhus_flag_uncertain
 					break = yes
 				}
-				
 				set_character_flag = EVTDESC_RIP_11045_has_typhus_flag
 			}
 			10 = {
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = correct_diagnosis
-						NOT = { has_character_flag = got_bubonic_plague }
+						NOT = {
+							has_character_flag = got_bubonic_plague
+						}
 					}
 				}
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = faulty_diagnosis
 						has_character_flag = got_bubonic_plague
 					}
 				}
-				
 				if = {
-					limit = {	#horse
+					limit = {
+						# horse
 						FROM = {
 							culture = horse
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_bubonic_plague_flag_horse
 					break = yes
 				}
 				if = {
 					limit = {
-						has_character_flag = correct_diagnosis #Really good doctors know for sure
+						has_character_flag = correct_diagnosis # Really good doctors know for sure
 						FROM = {
 							OR = {
 								learning = 25
@@ -5696,12 +6508,13 @@ character_event = {
 									learning = 20
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_bubonic_plague_flag_certain
 					break = yes
 				}
-				if = {	#Good doctors are pretty sure
+				if = {
+					# Good doctors are pretty sure
 					limit = {
 						FROM = {
 							OR = {
@@ -5711,60 +6524,66 @@ character_event = {
 									learning = 15
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_bubonic_plague_flag_sure
 					break = yes
 				}
 				if = {
-					limit = { # awful doctors are uncertain 
+					limit = {
+						# awful doctors are uncertain
 						FROM = {
 							OR = {
 								AND = {
-									NOT = { learning = 10 }	
+									NOT = {
+										learning = 10
+									}
 									physician_bad_trigger = no
 								}
 								AND = {
-									NOT = { learning = 15 }	
+									NOT = {
+										learning = 15
+									}
 									physician_bad_trigger = yes
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_bubonic_plague_flag_uncertain
 					break = yes
 				}
-				
 				set_character_flag = EVTDESC_RIP_11045_has_bubonic_plague_flag
 			}
 			10 = {
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = correct_diagnosis
-						NOT = { has_character_flag = got_measles }
+						NOT = {
+							has_character_flag = got_measles
+						}
 					}
 				}
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = faulty_diagnosis
 						has_character_flag = got_measles
 					}
 				}
-				
 				if = {
-					limit = {	#horse
+					limit = {
+						# horse
 						FROM = {
 							culture = horse
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_measles_flag_horse
 					break = yes
 				}
 				if = {
 					limit = {
-						has_character_flag = correct_diagnosis #Really good doctors know for sure
+						has_character_flag = correct_diagnosis # Really good doctors know for sure
 						FROM = {
 							OR = {
 								learning = 25
@@ -5773,12 +6592,13 @@ character_event = {
 									learning = 20
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_measles_flag_certain
 					break = yes
 				}
-				if = {	#Good doctors are pretty sure
+				if = {
+					# Good doctors are pretty sure
 					limit = {
 						FROM = {
 							OR = {
@@ -5788,60 +6608,66 @@ character_event = {
 									learning = 15
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_measles_flag_sure
 					break = yes
 				}
 				if = {
-					limit = { # awful doctors are uncertain 
+					limit = {
+						# awful doctors are uncertain
 						FROM = {
 							OR = {
 								AND = {
-									NOT = { learning = 10 }	
+									NOT = {
+										learning = 10
+									}
 									physician_bad_trigger = no
 								}
 								AND = {
-									NOT = { learning = 15 }	
+									NOT = {
+										learning = 15
+									}
 									physician_bad_trigger = yes
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_measles_flag_uncertain
 					break = yes
 				}
-				
 				set_character_flag = EVTDESC_RIP_11045_has_measles_flag
 			}
 			10 = {
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = correct_diagnosis
-						NOT = { has_character_flag = got_smallpox }
+						NOT = {
+							has_character_flag = got_smallpox
+						}
 					}
 				}
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = faulty_diagnosis
 						has_character_flag = got_smallpox
 					}
 				}
-				
 				if = {
-					limit = {	#horse
+					limit = {
+						# horse
 						FROM = {
 							culture = horse
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_smallpox_flag_horse
 					break = yes
 				}
 				if = {
 					limit = {
-						has_character_flag = correct_diagnosis #Really good doctors know for sure
+						has_character_flag = correct_diagnosis # Really good doctors know for sure
 						FROM = {
 							OR = {
 								learning = 25
@@ -5850,12 +6676,13 @@ character_event = {
 									learning = 20
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_small_pox_flag_certain
 					break = yes
 				}
-				if = {	#Good doctors are pretty sure
+				if = {
+					# Good doctors are pretty sure
 					limit = {
 						FROM = {
 							OR = {
@@ -5865,50 +6692,55 @@ character_event = {
 									learning = 15
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_small_pox_flag_sure
 					break = yes
 				}
 				if = {
-					limit = { # awful doctors are uncertain 
+					limit = {
+						# awful doctors are uncertain
 						FROM = {
 							OR = {
 								AND = {
-									NOT = { learning = 10 }	
+									NOT = {
+										learning = 10
+									}
 									physician_bad_trigger = no
 								}
 								AND = {
-									NOT = { learning = 15 }	
+									NOT = {
+										learning = 15
+									}
 									physician_bad_trigger = yes
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_small_pox_flag_uncertain
 					break = yes
 				}
-				
 				set_character_flag = EVTDESC_RIP_11045_has_small_pox_flag
 			}
 			10 = {
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = correct_diagnosis
-						NOT = { has_character_flag = got_aztec_disease }
+						NOT = {
+							has_character_flag = got_aztec_disease
+						}
 					}
 				}
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = faulty_diagnosis
 						has_character_flag = got_aztec_disease
 					}
 				}
-
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = faulty_diagnosis
 						NOR = {
@@ -5917,19 +6749,19 @@ character_event = {
 						}
 					}
 				}
-				
 				if = {
-					limit = {	#horse
+					limit = {
+						# horse
 						FROM = {
 							culture = horse
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_aztec_disease_flag_horse
 					break = yes
 				}
 				if = {
 					limit = {
-						has_character_flag = correct_diagnosis #Really good doctors know for sure
+						has_character_flag = correct_diagnosis # Really good doctors know for sure
 						FROM = {
 							OR = {
 								learning = 25
@@ -5938,12 +6770,13 @@ character_event = {
 									learning = 20
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_aztec_disease_flag_certain
 					break = yes
 				}
-				if = {	#Good doctors are pretty sure
+				if = {
+					# Good doctors are pretty sure
 					limit = {
 						FROM = {
 							OR = {
@@ -5953,60 +6786,66 @@ character_event = {
 									learning = 15
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_aztec_disease_flag_sure
 					break = yes
 				}
 				if = {
-					limit = { # awful doctors are uncertain 
+					limit = {
+						# awful doctors are uncertain
 						FROM = {
 							OR = {
 								AND = {
-									NOT = { learning = 10 }	
+									NOT = {
+										learning = 10
+									}
 									physician_bad_trigger = no
 								}
 								AND = {
-									NOT = { learning = 15 }	
+									NOT = {
+										learning = 15
+									}
 									physician_bad_trigger = yes
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_aztec_disease_flag_uncertain
 					break = yes
 				}
-				
 				set_character_flag = EVTDESC_RIP_11045_has_aztec_disease_flag
 			}
 			10 = {
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = correct_diagnosis
-						NOT = { has_character_flag = got_flu }
+						NOT = {
+							has_character_flag = got_flu
+						}
 					}
 				}
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = faulty_diagnosis
 						has_character_flag = got_flu
 					}
 				}
-				
 				if = {
-					limit = {	#horse
+					limit = {
+						# horse
 						FROM = {
 							culture = horse
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_flu_flag_horse
 					break = yes
 				}
 				if = {
 					limit = {
-						has_character_flag = correct_diagnosis #Really good doctors know for sure
+						has_character_flag = correct_diagnosis # Really good doctors know for sure
 						FROM = {
 							OR = {
 								learning = 25
@@ -6015,12 +6854,13 @@ character_event = {
 									learning = 20
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_flu_flag_certain
 					break = yes
 				}
-				if = {	#Good doctors are pretty sure
+				if = {
+					# Good doctors are pretty sure
 					limit = {
 						FROM = {
 							OR = {
@@ -6030,60 +6870,66 @@ character_event = {
 									learning = 15
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_flu_flag_sure
 					break = yes
 				}
 				if = {
-					limit = { # awful doctors are uncertain 
+					limit = {
+						# awful doctors are uncertain
 						FROM = {
 							OR = {
 								AND = {
-									NOT = { learning = 10 }	
+									NOT = {
+										learning = 10
+									}
 									physician_bad_trigger = no
 								}
 								AND = {
-									NOT = { learning = 15 }	
+									NOT = {
+										learning = 15
+									}
 									physician_bad_trigger = yes
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_flu_flag_uncertain
 					break = yes
 				}
-				
 				set_character_flag = EVTDESC_RIP_11045_has_flu_flag
 			}
 			10 = {
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = correct_diagnosis
-						NOT = { has_character_flag = got_dysentery }
+						NOT = {
+							has_character_flag = got_dysentery
+						}
 					}
 				}
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = faulty_diagnosis
 						has_character_flag = got_dysentery
 					}
 				}
-				
 				if = {
-					limit = {	#horse
+					limit = {
+						# horse
 						FROM = {
 							culture = horse
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_dysentery_flag_horse
 					break = yes
 				}
 				if = {
 					limit = {
-						has_character_flag = correct_diagnosis #Really good doctors know for sure
+						has_character_flag = correct_diagnosis # Really good doctors know for sure
 						FROM = {
 							OR = {
 								learning = 25
@@ -6092,12 +6938,13 @@ character_event = {
 									learning = 20
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_dysentery_flag_certain
 					break = yes
 				}
-				if = {	#Good doctors are pretty sure
+				if = {
+					# Good doctors are pretty sure
 					limit = {
 						FROM = {
 							OR = {
@@ -6107,60 +6954,66 @@ character_event = {
 									learning = 15
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_dysentery_flag_sure
 					break = yes
 				}
 				if = {
-					limit = { # awful doctors are uncertain 
+					limit = {
+						# awful doctors are uncertain
 						FROM = {
 							OR = {
 								AND = {
-									NOT = { learning = 10 }	
+									NOT = {
+										learning = 10
+									}
 									physician_bad_trigger = no
 								}
 								AND = {
-									NOT = { learning = 15 }	
+									NOT = {
+										learning = 15
+									}
 									physician_bad_trigger = yes
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_dysentery_flag_uncertain
 					break = yes
 				}
-				
 				set_character_flag = EVTDESC_RIP_11045_has_dysentery_flag
 			}
 			10 = {
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = correct_diagnosis
-						NOT = { has_character_flag = got_gout }
+						NOT = {
+							has_character_flag = got_gout
+						}
 					}
 				}
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = faulty_diagnosis
 						has_character_flag = got_gout
 					}
 				}
-				
 				if = {
-					limit = {	#horse
+					limit = {
+						# horse
 						FROM = {
 							culture = horse
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_gout_flag_horse
 					break = yes
 				}
 				if = {
 					limit = {
-						has_character_flag = correct_diagnosis #Really good doctors know for sure
+						has_character_flag = correct_diagnosis # Really good doctors know for sure
 						FROM = {
 							OR = {
 								learning = 25
@@ -6169,12 +7022,13 @@ character_event = {
 									learning = 20
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_gout_flag_certain
 					break = yes
 				}
-				if = {	#Good doctors are pretty sure
+				if = {
+					# Good doctors are pretty sure
 					limit = {
 						FROM = {
 							OR = {
@@ -6184,60 +7038,66 @@ character_event = {
 									learning = 15
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_gout_flag_sure
 					break = yes
 				}
 				if = {
-					limit = { # awful doctors are uncertain 
+					limit = {
+						# awful doctors are uncertain
 						FROM = {
 							OR = {
 								AND = {
-									NOT = { learning = 10 }	
+									NOT = {
+										learning = 10
+									}
 									physician_bad_trigger = no
 								}
 								AND = {
-									NOT = { learning = 15 }	
+									NOT = {
+										learning = 15
+									}
 									physician_bad_trigger = yes
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_gout_flag_uncertain
 					break = yes
 				}
-				
 				set_character_flag = EVTDESC_RIP_11045_has_gout_flag
 			}
 			10 = {
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = correct_diagnosis
-						NOT = { has_character_flag = got_food_poisoning }
+						NOT = {
+							has_character_flag = got_food_poisoning
+						}
 					}
 				}
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = faulty_diagnosis
 						has_character_flag = got_food_poisoning
 					}
 				}
-				
 				if = {
-					limit = {	#horse
+					limit = {
+						# horse
 						FROM = {
 							culture = horse
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_food_poisoning_flag_horse
 					break = yes
 				}
 				if = {
 					limit = {
-						has_character_flag = correct_diagnosis #Really good doctors know for sure
+						has_character_flag = correct_diagnosis # Really good doctors know for sure
 						FROM = {
 							OR = {
 								learning = 25
@@ -6246,12 +7106,13 @@ character_event = {
 									learning = 20
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_food_poisoning_flag_certain
 					break = yes
 				}
-				if = {	#Good doctors are pretty sure
+				if = {
+					# Good doctors are pretty sure
 					limit = {
 						FROM = {
 							OR = {
@@ -6261,60 +7122,66 @@ character_event = {
 									learning = 15
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_food_poisoning_flag_sure
 					break = yes
 				}
 				if = {
-					limit = { # awful doctors are uncertain 
+					limit = {
+						# awful doctors are uncertain
 						FROM = {
 							OR = {
 								AND = {
-									NOT = { learning = 10 }	
+									NOT = {
+										learning = 10
+									}
 									physician_bad_trigger = no
 								}
 								AND = {
-									NOT = { learning = 15 }	
+									NOT = {
+										learning = 15
+									}
 									physician_bad_trigger = yes
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_food_poisoning_flag_uncertain
 					break = yes
 				}
-				
 				set_character_flag = EVTDESC_RIP_11045_has_food_poisoning_flag
 			}
 			10 = {
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = correct_diagnosis
-						NOT = { has_character_flag = got_rabies }
+						NOT = {
+							has_character_flag = got_rabies
+						}
 					}
 				}
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = faulty_diagnosis
 						has_character_flag = got_rabies
 					}
 				}
-				
 				if = {
-					limit = {	#horse
+					limit = {
+						# horse
 						FROM = {
 							culture = horse
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_rabies_flag_horse
 					break = yes
 				}
 				if = {
 					limit = {
-						has_character_flag = correct_diagnosis #Really good doctors know for sure
+						has_character_flag = correct_diagnosis # Really good doctors know for sure
 						FROM = {
 							OR = {
 								learning = 25
@@ -6323,12 +7190,13 @@ character_event = {
 									learning = 20
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_rabies_flag_certain
 					break = yes
 				}
-				if = {	#Good doctors are pretty sure
+				if = {
+					# Good doctors are pretty sure
 					limit = {
 						FROM = {
 							OR = {
@@ -6338,60 +7206,66 @@ character_event = {
 									learning = 15
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_rabies_flag_sure
 					break = yes
 				}
 				if = {
-					limit = { # awful doctors are uncertain 
+					limit = {
+						# awful doctors are uncertain
 						FROM = {
 							OR = {
 								AND = {
-									NOT = { learning = 10 }	
+									NOT = {
+										learning = 10
+									}
 									physician_bad_trigger = no
 								}
 								AND = {
-									NOT = { learning = 15 }	
+									NOT = {
+										learning = 15
+									}
 									physician_bad_trigger = yes
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_rabies_flag_uncertain
 					break = yes
 				}
-				
 				set_character_flag = EVTDESC_RIP_11045_has_rabies_flag
 			}
 			10 = {
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = correct_diagnosis
-						NOT = { has_character_flag = got_cancer }
+						NOT = {
+							has_character_flag = got_cancer
+						}
 					}
 				}
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = faulty_diagnosis
 						has_character_flag = got_cancer
 					}
 				}
-				
 				if = {
-					limit = {	#horse
+					limit = {
+						# horse
 						FROM = {
 							culture = horse
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_cancer_flag_horse
 					break = yes
 				}
 				if = {
 					limit = {
-						has_character_flag = correct_diagnosis #Really good doctors know for sure
+						has_character_flag = correct_diagnosis # Really good doctors know for sure
 						FROM = {
 							OR = {
 								learning = 25
@@ -6400,12 +7274,13 @@ character_event = {
 									learning = 20
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_cancer_flag_certain
 					break = yes
 				}
-				if = {	#Good doctors are pretty sure
+				if = {
+					# Good doctors are pretty sure
 					limit = {
 						FROM = {
 							OR = {
@@ -6415,60 +7290,66 @@ character_event = {
 									learning = 15
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_cancer_flag_sure
 					break = yes
 				}
 				if = {
-					limit = { # awful doctors are uncertain 
+					limit = {
+						# awful doctors are uncertain
 						FROM = {
 							OR = {
 								AND = {
-									NOT = { learning = 10 }	
+									NOT = {
+										learning = 10
+									}
 									physician_bad_trigger = no
 								}
 								AND = {
-									NOT = { learning = 15 }	
+									NOT = {
+										learning = 15
+									}
 									physician_bad_trigger = yes
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_cancer_flag_uncertain
 					break = yes
 				}
-				
 				set_character_flag = EVTDESC_RIP_11045_has_cancer_flag
 			}
 			10 = {
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = correct_diagnosis
-						NOT = { has_character_flag = got_pneumonia }
+						NOT = {
+							has_character_flag = got_pneumonia
+						}
 					}
 				}
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = faulty_diagnosis
 						has_character_flag = got_pneumonia
 					}
 				}
-				
 				if = {
-					limit = {	#horse
+					limit = {
+						# horse
 						FROM = {
 							culture = horse
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_pneumonia_flag_horse
 					break = yes
 				}
 				if = {
 					limit = {
-						has_character_flag = correct_diagnosis #Really good doctors know for sure
+						has_character_flag = correct_diagnosis # Really good doctors know for sure
 						FROM = {
 							OR = {
 								learning = 25
@@ -6477,12 +7358,13 @@ character_event = {
 									learning = 20
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_pneumonia_flag_certain
 					break = yes
 				}
-				if = {	#Good doctors are pretty sure
+				if = {
+					# Good doctors are pretty sure
 					limit = {
 						FROM = {
 							OR = {
@@ -6492,60 +7374,66 @@ character_event = {
 									learning = 15
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_pneumonia_flag_sure
 					break = yes
 				}
 				if = {
-					limit = { # awful doctors are uncertain 
+					limit = {
+						# awful doctors are uncertain
 						FROM = {
 							OR = {
 								AND = {
-									NOT = { learning = 10 }	
+									NOT = {
+										learning = 10
+									}
 									physician_bad_trigger = no
 								}
 								AND = {
-									NOT = { learning = 15 }	
+									NOT = {
+										learning = 15
+									}
 									physician_bad_trigger = yes
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_pneumonia_flag_uncertain
 					break = yes
 				}
-				
 				set_character_flag = EVTDESC_RIP_11045_has_pneumonia_flag
 			}
 			10 = {
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = correct_diagnosis
-						NOT = { has_character_flag = got_syphilis }
+						NOT = {
+							has_character_flag = got_syphilis
+						}
 					}
 				}
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = faulty_diagnosis
 						has_character_flag = got_syphilis
 					}
 				}
-				
 				if = {
-					limit = {	#horse
+					limit = {
+						# horse
 						FROM = {
 							culture = horse
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_syphilis_flag_horse
 					break = yes
 				}
 				if = {
 					limit = {
-						has_character_flag = correct_diagnosis #Really good doctors know for sure
+						has_character_flag = correct_diagnosis # Really good doctors know for sure
 						FROM = {
 							OR = {
 								learning = 25
@@ -6554,12 +7442,13 @@ character_event = {
 									learning = 20
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_syphilis_flag_certain
 					break = yes
 				}
-				if = {	#Good doctors are pretty sure
+				if = {
+					# Good doctors are pretty sure
 					limit = {
 						FROM = {
 							OR = {
@@ -6569,60 +7458,66 @@ character_event = {
 									learning = 15
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_syphilis_flag_sure
 					break = yes
 				}
 				if = {
-					limit = { # awful doctors are uncertain 
+					limit = {
+						# awful doctors are uncertain
 						FROM = {
 							OR = {
 								AND = {
-									NOT = { learning = 10 }	
+									NOT = {
+										learning = 10
+									}
 									physician_bad_trigger = no
 								}
 								AND = {
-									NOT = { learning = 15 }	
+									NOT = {
+										learning = 15
+									}
 									physician_bad_trigger = yes
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_has_syphilis_flag_uncertain
 					break = yes
 				}
-				
 				set_character_flag = EVTDESC_RIP_11045_has_syphilis_flag
 			}
 			10 = {
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = correct_diagnosis
-						NOT = { has_character_flag = disease_not_serious }
+						NOT = {
+							has_character_flag = disease_not_serious
+						}
 					}
 				}
 				modifier = {
-					factor  = 0
+					factor = 0
 					AND = {
 						has_character_flag = faulty_diagnosis
 						has_character_flag = disease_not_serious
 					}
 				}
-				
 				if = {
-					limit = {	#horse
+					limit = {
+						# horse
 						FROM = {
 							culture = horse
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_not_serious_flag_horse
 					break = yes
 				}
 				if = {
 					limit = {
-						has_character_flag = correct_diagnosis #Really good doctors know for sure
+						has_character_flag = correct_diagnosis # Really good doctors know for sure
 						FROM = {
 							OR = {
 								learning = 25
@@ -6631,12 +7526,13 @@ character_event = {
 									learning = 20
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_not_serious_flag_certain
 					break = yes
 				}
-				if = {	#Good doctors are pretty sure
+				if = {
+					# Good doctors are pretty sure
 					limit = {
 						FROM = {
 							OR = {
@@ -6646,40 +7542,43 @@ character_event = {
 									learning = 15
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_not_serious_flag_sure
 					break = yes
 				}
 				if = {
-					limit = { # awful doctors are uncertain 
+					limit = {
+						# awful doctors are uncertain
 						FROM = {
 							OR = {
 								AND = {
-									NOT = { learning = 10 }	
+									NOT = {
+										learning = 10
+									}
 									physician_bad_trigger = no
 								}
 								AND = {
-									NOT = { learning = 15 }	
+									NOT = {
+										learning = 15
+									}
 									physician_bad_trigger = yes
 								}
 							}
-						}	
+						}
 					}
 					set_character_flag = EVTDESC_RIP_11045_not_serious_flag_uncertain
 					break = yes
 				}
-				
 				set_character_flag = EVTDESC_RIP_11045_not_serious_flag
 			}
 		}
 	}
 
-
 	option = {
 		name = EVTOPTA_RIP_11045
 		custom_tooltip = {
-			text = EVTOPTA_RIP_11045_TOOLTIP #symptom treatment notification
+			text = EVTOPTA_RIP_11045_TOOLTIP # symptom treatment notification
 		}
 		hidden_tooltip = {
 			random_list = {
@@ -6715,13 +7614,17 @@ character_event = {
 					modifier = {
 						factor = 0.8
 						FROM = {
-							NOT = { learning = 15 }
+							NOT = {
+								learning = 15
+							}
 						}
 					}
 					modifier = {
 						factor = 0.8
 						FROM = {
-							NOT = { learning = 10 }
+							NOT = {
+								learning = 10
+							}
 						}
 					}
 					modifier = {
@@ -6760,13 +7663,17 @@ character_event = {
 					modifier = {
 						factor = 1.2
 						FROM = {
-							NOT = { learning = 15 }
+							NOT = {
+								learning = 15
+							}
 						}
 					}
 					modifier = {
 						factor = 1.2
 						FROM = {
-							NOT = { learning = 10 }
+							NOT = {
+								learning = 10
+							}
 						}
 					}
 					modifier = {
@@ -6780,8 +7687,8 @@ character_event = {
 					set_character_flag = bad_treatment_outcome
 				}
 			}
-			
-			if = {	#If good treatment, check for quality
+			if = {
+				# If good treatment, check for quality
 				limit = {
 					has_character_flag = good_treatment_outcome
 				}
@@ -6808,13 +7715,17 @@ character_event = {
 						modifier = {
 							factor = 0.8
 							FROM = {
-								NOT = { learning = 15 }
+								NOT = {
+									learning = 15
+								}
 							}
 						}
 						modifier = {
 							factor = 0.8
 							FROM = {
-								NOT = { learning = 10 }
+								NOT = {
+									learning = 10
+								}
 							}
 						}
 						set_character_flag = best_symptom_treatment
@@ -6841,13 +7752,17 @@ character_event = {
 						modifier = {
 							factor = 0.8
 							FROM = {
-								NOT = { learning = 15 }
+								NOT = {
+									learning = 15
+								}
 							}
 						}
 						modifier = {
 							factor = 0.8
 							FROM = {
-								NOT = { learning = 10 }
+								NOT = {
+									learning = 10
+								}
 							}
 						}
 						set_character_flag = good_symptom_treatment
@@ -6877,22 +7792,27 @@ character_event = {
 						modifier = {
 							factor = 1.5
 							FROM = {
-								NOT = { learning = 15 }
+								NOT = {
+									learning = 15
+								}
 							}
 						}
 						modifier = {
 							factor = 1.5
 							FROM = {
-								NOT = { learning = 10 }
+								NOT = {
+									learning = 10
+								}
 							}
 						}
 						set_character_flag = poor_symptom_treatment
 					}
 				}
 			}
-			
-			character_event = { id = RIP.11046 days = 3 }
-			#Clear all flags
+			character_event = {
+				id = RIP.11046 days = 3
+			}
+			# Clear all flags
 			clr_character_flag = faulty_diagnosis
 			clr_character_flag = correct_diagnosis
 			clr_character_flag = EVTDESC_RIP_11045_has_tuberculosis_flag
@@ -6979,12 +7899,11 @@ character_event = {
 	}
 }
 
-#Symptom treatment outcome
+# Symptom treatment outcome
 character_event = {
 	id = RIP.11046
 	picture = GFX_evt_recovery
 	border = GFX_event_normal_frame_religion
-
 	desc = {
 		text = EVTDESC_RIP_11046_COUGH_1
 		picture = GFX_evt_recovery
@@ -7363,349 +8282,445 @@ character_event = {
 			has_character_flag = EVTDESC_RIP_11046_HORSE_5_FLAG
 		}
 	}
-
 	is_triggered_only = yes
 
 	immediate = {
-
 		random_list = {
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = cough }
+					factor = 0
+					NOT = {
+						trait = cough
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_COUGH_1_FLAG
 			}
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = cough }
+					factor = 0
+					NOT = {
+						trait = cough
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_COUGH_2_FLAG
 			}
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = cough }
+					factor = 0
+					NOT = {
+						trait = cough
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_COUGH_3_FLAG
 			}
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = fever }
+					factor = 0
+					NOT = {
+						trait = fever
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_FEVER_1_FLAG
 			}
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = fever }
+					factor = 0
+					NOT = {
+						trait = fever
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_FEVER_2_FLAG
 			}
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = fever }
+					factor = 0
+					NOT = {
+						trait = fever
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_FEVER_3_FLAG
 			}
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = diarrhea }
+					factor = 0
+					NOT = {
+						trait = diarrhea
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_DIARRHEA_1_FLAG
 			}
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = diarrhea }
+					factor = 0
+					NOT = {
+						trait = diarrhea
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_DIARRHEA_2_FLAG
 			}
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = diarrhea }
+					factor = 0
+					NOT = {
+						trait = diarrhea
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_DIARRHEA_3_FLAG
 			}
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = vomiting }
+					factor = 0
+					NOT = {
+						trait = vomiting
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_VOMITING_1_FLAG
 			}
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = vomiting }
+					factor = 0
+					NOT = {
+						trait = vomiting
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_VOMITING_2_FLAG
 			}
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = vomiting }
+					factor = 0
+					NOT = {
+						trait = vomiting
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_VOMITING_3_FLAG
 			}
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = headache }
+					factor = 0
+					NOT = {
+						trait = headache
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_HEADACHE_1_FLAG
 			}
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = headache }
+					factor = 0
+					NOT = {
+						trait = headache
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_HEADACHE_2_FLAG
 			}
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = headache }
+					factor = 0
+					NOT = {
+						trait = headache
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_HEADACHE_3_FLAG
 			}
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = chest_pain }
+					factor = 0
+					NOT = {
+						trait = chest_pain
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_CHESTPAIN_1_FLAG
 			}
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = chest_pain }
+					factor = 0
+					NOT = {
+						trait = chest_pain
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_CHESTPAIN_2_FLAG
 			}
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = chest_pain }
+					factor = 0
+					NOT = {
+						trait = chest_pain
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_CHESTPAIN_3_FLAG
 			}
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = cramps }
+					factor = 0
+					NOT = {
+						trait = cramps
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_CRAMPS_1_FLAG
 			}
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = cramps }
+					factor = 0
+					NOT = {
+						trait = cramps
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_CRAMPS_2_FLAG
 			}
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = cramps }
+					factor = 0
+					NOT = {
+						trait = cramps
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_CRAMPS_3_FLAG
 			}
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = rash }
+					factor = 0
+					NOT = {
+						trait = rash
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_RASH_1_FLAG
 			}
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = rash }
+					factor = 0
+					NOT = {
+						trait = rash
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_RASH_2_FLAG
 			}
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = rash }
+					factor = 0
+					NOT = {
+						trait = rash
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_RASH_3_FLAG
 			}
-		
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = abdominal_pain }
+					factor = 0
+					NOT = {
+						trait = abdominal_pain
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_ABDOMINALPAIN_1_FLAG
 			}
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = abdominal_pain }
+					factor = 0
+					NOT = {
+						trait = abdominal_pain
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_ABDOMINALPAIN_2_FLAG
 			}
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = abdominal_pain }
+					factor = 0
+					NOT = {
+						trait = abdominal_pain
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_ABDOMINALPAIN_3_FLAG
 			}
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = malaise }
+					factor = 0
+					NOT = {
+						trait = malaise
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_MALAISE_1_FLAG
 			}
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = malaise }
+					factor = 0
+					NOT = {
+						trait = malaise
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_MALAISE_2_FLAG
 			}
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = malaise }
+					factor = 0
+					NOT = {
+						trait = malaise
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_MALAISE_3_FLAG
 			}
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = fatigue }
+					factor = 0
+					NOT = {
+						trait = fatigue
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_FATIGUE_1_FLAG
 			}
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = fatigue }
+					factor = 0
+					NOT = {
+						trait = fatigue
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_FATIGUE_2_FLAG
 			}
 			10 = {
 				modifier = {
-					factor = 0 
-					NOT = { trait = fatigue }
+					factor = 0
+					NOT = {
+						trait = fatigue
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_FATIGUE_3_FLAG
 			}
-			5 = { set_character_flag = EVTDESC_RIP_11046_GENERAL_1_FLAG }
-			5 = { set_character_flag = EVTDESC_RIP_11046_GENERAL_2_FLAG }
-			5 = { set_character_flag = EVTDESC_RIP_11046_GENERAL_3_FLAG }
-			5 = { set_character_flag = EVTDESC_RIP_11046_GENERAL_4_FLAG }
-			5 = { set_character_flag = EVTDESC_RIP_11046_GENERAL_5_FLAG }
-			5 = { set_character_flag = EVTDESC_RIP_11046_GENERAL_6_FLAG }
-			5 = { set_character_flag = EVTDESC_RIP_11046_GENERAL_7_FLAG }
-			5 = { set_character_flag = EVTDESC_RIP_11046_GENERAL_8_FLAG }
-			5 = { set_character_flag = EVTDESC_RIP_11046_GENERAL_9_FLAG }
-			5 = { set_character_flag = EVTDESC_RIP_11046_GENERAL_10_FLAG }
-			5 = { set_character_flag = EVTDESC_RIP_11046_GENERAL_11_FLAG }
-			5 = { set_character_flag = EVTDESC_RIP_11046_GENERAL_12_FLAG }
-			5 = { set_character_flag = EVTDESC_RIP_11046_GENERAL_13_FLAG }
-			5 = { set_character_flag = EVTDESC_RIP_11046_GENERAL_14_FLAG }
-			5 = { set_character_flag = EVTDESC_RIP_11046_GENERAL_15_FLAG }
-			5 = { set_character_flag = EVTDESC_RIP_11046_GENERAL_16_FLAG }
-			1 = { 
+			5 = {
+				set_character_flag = EVTDESC_RIP_11046_GENERAL_1_FLAG
+			}
+			5 = {
+				set_character_flag = EVTDESC_RIP_11046_GENERAL_2_FLAG
+			}
+			5 = {
+				set_character_flag = EVTDESC_RIP_11046_GENERAL_3_FLAG
+			}
+			5 = {
+				set_character_flag = EVTDESC_RIP_11046_GENERAL_4_FLAG
+			}
+			5 = {
+				set_character_flag = EVTDESC_RIP_11046_GENERAL_5_FLAG
+			}
+			5 = {
+				set_character_flag = EVTDESC_RIP_11046_GENERAL_6_FLAG
+			}
+			5 = {
+				set_character_flag = EVTDESC_RIP_11046_GENERAL_7_FLAG
+			}
+			5 = {
+				set_character_flag = EVTDESC_RIP_11046_GENERAL_8_FLAG
+			}
+			5 = {
+				set_character_flag = EVTDESC_RIP_11046_GENERAL_9_FLAG
+			}
+			5 = {
+				set_character_flag = EVTDESC_RIP_11046_GENERAL_10_FLAG
+			}
+			5 = {
+				set_character_flag = EVTDESC_RIP_11046_GENERAL_11_FLAG
+			}
+			5 = {
+				set_character_flag = EVTDESC_RIP_11046_GENERAL_12_FLAG
+			}
+			5 = {
+				set_character_flag = EVTDESC_RIP_11046_GENERAL_13_FLAG
+			}
+			5 = {
+				set_character_flag = EVTDESC_RIP_11046_GENERAL_14_FLAG
+			}
+			5 = {
+				set_character_flag = EVTDESC_RIP_11046_GENERAL_15_FLAG
+			}
+			5 = {
+				set_character_flag = EVTDESC_RIP_11046_GENERAL_16_FLAG
+			}
+			1 = {
 				modifier = {
-					factor = 0 
-					NOT = { 
+					factor = 0
+					NOT = {
 						FROMFROM = {
 							culture = horse
 						}
 					}
 				}
 				modifier = {
-					factor = 1000 
-						FROMFROM = {
-							culture = horse
-						}
+					factor = 1000
+					FROMFROM = {
+						culture = horse
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_HORSE_1_FLAG
 			}
-			1 = { 
+			1 = {
 				modifier = {
-					factor = 0 
-					NOT = { 
+					factor = 0
+					NOT = {
 						FROMFROM = {
 							culture = horse
 						}
 					}
 				}
 				modifier = {
-					factor = 1000 
-						FROMFROM = {
-							culture = horse
-						}
+					factor = 1000
+					FROMFROM = {
+						culture = horse
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_HORSE_2_FLAG
 			}
-			1 = { 
+			1 = {
 				modifier = {
-					factor = 0 
-					NOT = { 
+					factor = 0
+					NOT = {
 						FROMFROM = {
 							culture = horse
 						}
 					}
 				}
 				modifier = {
-					factor = 1000 
-						FROMFROM = {
-							culture = horse
-						}
+					factor = 1000
+					FROMFROM = {
+						culture = horse
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_HORSE_3_FLAG
 			}
-			1 = { 
+			1 = {
 				modifier = {
-					factor = 0 
-					NOT = { 
+					factor = 0
+					NOT = {
 						FROMFROM = {
 							culture = horse
 						}
 					}
 				}
 				modifier = {
-					factor = 1000 
-						FROMFROM = {
-							culture = horse
-						}
+					factor = 1000
+					FROMFROM = {
+						culture = horse
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_HORSE_4_FLAG
 			}
-			1 = { 
+			1 = {
 				modifier = {
-					factor = 0 
-					NOT = { 
+					factor = 0
+					NOT = {
 						FROMFROM = {
 							culture = horse
 						}
 					}
 				}
 				modifier = {
-					factor = 1000 
-						FROMFROM = {
-							culture = horse
-						}
+					factor = 1000
+					FROMFROM = {
+						culture = horse
+					}
 				}
 				set_character_flag = EVTDESC_RIP_11046_HORSE_5_FLAG
 			}
 		}
 	}
 
-	option = { # Ok outcome
+	option = {
+		# Ok outcome
 		name = EVTOPTA_RIP_11046
 		trigger = {
 			has_character_flag = good_treatment_outcome
@@ -7885,7 +8900,8 @@ character_event = {
 		clr_character_flag = EVTDESC_RIP_11046_HORSE_5_FLAG
 	}
 
-	option = { #nothing happens
+	option = {
+		# nothing happens
 		name = EVTOPTB_RIP_11046
 		trigger = {
 			has_character_flag = bad_treatment_outcome
@@ -7950,13 +8966,12 @@ character_event = {
 	}
 }
 
-#Physician hurt your close of kin
+# Physician hurt your close of kin
 character_event = {
 	id = RIP.11060
 	picture = GFX_evt_bloody_tools
 	desc = EVTDESC_RIP_11060
 	border = GFX_event_normal_frame_religion
-
 	is_triggered_only = yes
 
 	trigger = {
@@ -7969,7 +8984,7 @@ character_event = {
 			}
 		}
 		NOT = {
-			has_character_modifier = relative_treatment_reaction_timer 
+			has_character_modifier = relative_treatment_reaction_timer
 		}
 		FROMFROMFROM = {
 			NOT = {
@@ -7978,15 +8993,15 @@ character_event = {
 		}
 	}
 
-	immediate = { 
+	immediate = {
 		add_character_modifier = {
 			modifier = relative_treatment_reaction_timer
 			days = 30
 			hidden = yes
 		}
 	}
-	
 	# throw them in prison
+
 	option = {
 		trigger = {
 			NOT = {
@@ -8008,8 +9023,8 @@ character_event = {
 			}
 		}
 	}
-
 	# have their head
+
 	option = {
 		tooltip_info = wroth
 		trigger = {
@@ -8021,11 +9036,11 @@ character_event = {
 		name = EVTOPTA_RIP_11060
 		FROMFROMFROM = {
 			if = {
-				 limit = {
+				limit = {
 					is_invincible_trigger = yes
 				}
 				antideath_effect = yes
-				break = yes 
+				break = yes
 			}
 			death = {
 				death_reason = death_execution_beheading
@@ -8040,8 +9055,8 @@ character_event = {
 			}
 		}
 	}
-
 	# formal complaint
+
 	option = {
 		ai_chance = {
 			factor = 60
@@ -8062,8 +9077,8 @@ character_event = {
 			}
 		}
 	}
-
 	# do nothing
+
 	option = {
 		ai_chance = {
 			factor = 35
@@ -8083,13 +9098,12 @@ character_event = {
 	}
 }
 
-#Physician cured your close kin
+# Physician cured your close kin
 character_event = {
 	id = RIP.11061
 	picture = GFX_evt_recovery
 	desc = EVTDESC_RIP_11061
 	border = GFX_event_normal_frame_religion
-
 	is_triggered_only = yes
 
 	trigger = {
@@ -8101,18 +9115,20 @@ character_event = {
 				random = 75 # 25% chance
 			}
 		}
-		NOT = { has_character_modifier = relative_treatment_reaction_timer }
+		NOT = {
+			has_character_modifier = relative_treatment_reaction_timer
+		}
 	}
 
 	immediate = {
-		add_character_modifier = { 
-			modifier = relative_treatment_reaction_timer 
+		add_character_modifier = {
+			modifier = relative_treatment_reaction_timer
 			days = 30
 			hidden = yes
 		}
 	}
-	
-	#Praise them to the court
+	# Praise them to the court
+
 	option = {
 		tooltip_info = gregarious
 		trigger = {
@@ -8122,18 +9138,15 @@ character_event = {
 			factor = 100
 		}
 		name = EVTOPTC_RIP_11061
-		
 		reverse_opinion = {
 			who = FROMFROMFROM
 			modifier = opinion_was_praised
 			years = 5
 		}
-		
 		random = {
 			chance = 20
 			add_friend = FROMFROMFROM
 		}
-		
 		any_courtier = {
 			limit = {
 				age = 16
@@ -8152,8 +9165,8 @@ character_event = {
 			}
 		}
 	}
+	# Commend them
 
-	#Commend them
 	option = {
 		ai_chance = {
 			factor = 20
@@ -8174,8 +9187,8 @@ character_event = {
 			value = 0.02
 		}
 	}
+	# It's their job
 
-	#It's their job
 	option = {
 		ai_chance = {
 			factor = 80
@@ -8189,13 +9202,12 @@ character_event = {
 	}
 }
 
-#Physician tells you you have leprosy
+# Physician tells you you have leprosy
 character_event = {
 	id = RIP.11062
-	picture = GFX_evt_court_physician 
+	picture = GFX_evt_court_physician
 	desc = RIP.11062.d
 	border = GFX_event_normal_frame_religion
-
 	is_triggered_only = yes
 
 	option = {
@@ -8204,14 +9216,12 @@ character_event = {
 	}
 }
 
-#Leprosy cleanup
+# Leprosy cleanup
 character_event = {
 	id = RIP.11063
-	
 	hide_window = yes
-
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_character_flag = new_leper_character
 	}
@@ -8223,14 +9233,12 @@ character_event = {
 	}
 }
 
-#babies born in seclusion gain seclusion
+# babies born in seclusion gain seclusion
 character_event = {
 	id = RIP.11064
-	
 	hide_window = yes
-
 	is_triggered_only = yes
-	
+
 	trigger = {
 		host = {
 			has_character_modifier = in_seclusion
@@ -8249,15 +9257,14 @@ character_event = {
 # Court Physician becomes renowned
 character_event = {
 	id = RIP.11065
-	picture = GFX_evt_court_physician 
+	picture = GFX_evt_court_physician
 	desc = RIP.110625.d
 	border = GFX_event_normal_frame_religion
-
 	is_triggered_only = yes
 	hide_from = yes
-	
+
 	immediate = {
-		FROMFROMFROM = { 
+		FROMFROMFROM = {
 			save_event_target_as = physician_portrait
 			add_trait = physician
 		}
@@ -8265,21 +9272,26 @@ character_event = {
 
 	option = {
 		name = EXCELLENT
-		FROMFROMFROM = { 
+		FROMFROMFROM = {
 			save_event_target_as = physician_portrait
-			#add_trait = physician
-		}		
+			# add_trait = physician
+		}
 	}
 }
 
-#Court physician ping event for sickly child
+# Court physician ping event for sickly child
 character_event = {
 	id = RIP.11066
 	hide_window = yes
-
 	is_triggered_only = yes
 
-	option = { event_target:infant_guardian = { character_event = { id = RIP.11067 } } }
+	option = {
+		event_target:infant_guardian = {
+			character_event = {
+				id = RIP.11067
+			}
+		}
+	}
 }
 
 character_event = {
@@ -8287,62 +9299,74 @@ character_event = {
 	picture = GFX_evt_birth
 	desc = EVTDSC_RIP_11067
 	border = GFX_event_normal_frame_religion
-
 	is_triggered_only = yes
-	
+
 	trigger = {
-		event_target:sickly_infant = { 
-			is_alive = yes 
+		event_target:sickly_infant = {
+			is_alive = yes
 		}
 	}
+	# Treat them!
 
-	#Treat them!
 	option = {
 		name = EVTOPTA_RIP_11067
-		custom_tooltip = { text = EVTOPTA_RIP_11067_TOOLTIP }
-
-		hidden_tooltip = { FROM = { character_event = { id = RIP.11068 days = 20 } } }
+		custom_tooltip = {
+			text = EVTOPTA_RIP_11067_TOOLTIP
+		}
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = RIP.11068 days = 20
+				}
+			}
+		}
 		event_target:sickly_infant = {
 			show_portrait = yes
 		}
-
 		ai_chance = {
 			factor = 10
-
 			modifier = {
 				factor = 5
 				trait = kind
 			}
 			modifier = {
 				factor = 10
-				current_heir = { character = event_target:sickly_infant }
+				current_heir = {
+					character = event_target:sickly_infant
+				}
 			}
 		}
 	}
+	# Don't do anything
 
-	#Don't do anything
 	option = {
 		name = EVTOPTB_RIP_11067
-		custom_tooltip = { text = EVTOPTB_RIP_11067_TOOLTIP } 
-		
+		custom_tooltip = {
+			text = EVTOPTB_RIP_11067_TOOLTIP
+		}
 		hidden_tooltip = {
 			random = {
 				chance = 20
 				modifier = {
 					factor = 4
-					event_target:sickly_infant = { is_unimportant_trigger = yes }
+					event_target:sickly_infant = {
+						is_unimportant_trigger = yes
+					}
 				}
-
-				event_target:sickly_infant = { character_event = { id = RIP.11072 days = 30 random = 100 } } #Child dies
+				event_target:sickly_infant = {
+					character_event = {
+						id = RIP.11072 days = 30 random = 100
+					}
+				} # Child dies
 			}
 		}
-
 		ai_chance = {
 			factor = 1
-
 			modifier = {
 				factor = 50
-				event_target:sickly_infant = { is_unimportant_trigger = yes }
+				event_target:sickly_infant = {
+					is_unimportant_trigger = yes
+				}
 			}
 			modifier = {
 				factor = 20
@@ -8354,26 +9378,33 @@ character_event = {
 			modifier = {
 				factor = 20
 				OR = {
-					liege = { is_tribal = yes }
-					liege = { is_nomadic = yes }
+					liege = {
+						is_tribal = yes
+					}
+					liege = {
+						is_nomadic = yes
+					}
 				}
 			}
 		}
 	}
 }
 
-#Court physician ping event for outcome of treatment for sickly child
+# Court physician ping event for outcome of treatment for sickly child
 character_event = {
 	id = RIP.11068
 	hide_window = yes
-
 	is_triggered_only = yes
 
-	trigger = { event_target:sickly_infant = { trait = sickly } }
+	trigger = {
+		event_target:sickly_infant = {
+			trait = sickly
+		}
+	}
 
-	option = { 
+	option = {
 		random_list = {
-			#Perfect treatment
+			# Perfect treatment
 			15 = {
 				modifier = {
 					factor = 1.5
@@ -8397,15 +9428,23 @@ character_event = {
 				}
 				modifier = {
 					factor = 0.8
-					NOT = { learning = 15 }
+					NOT = {
+						learning = 15
+					}
 				}
 				modifier = {
 					factor = 0.8
-					NOT = { learning = 10 }
+					NOT = {
+						learning = 10
+					}
 				}
-				FROM = { character_event = { id = RIP.11069 } }
+				FROM = {
+					character_event = {
+						id = RIP.11069
+					}
+				}
 			}
-			#A bit of a treatment
+			# A bit of a treatment
 			35 = {
 				modifier = {
 					factor = 1.2
@@ -8421,15 +9460,23 @@ character_event = {
 				}
 				modifier = {
 					factor = 0.8
-					NOT = { learning = 15 }
+					NOT = {
+						learning = 15
+					}
 				}
 				modifier = {
 					factor = 0.8
-					NOT = { learning = 10 }
+					NOT = {
+						learning = 10
+					}
 				}
-				FROM = { character_event = { id = RIP.11070 } }
+				FROM = {
+					character_event = {
+						id = RIP.11070
+					}
+				}
 			}
-			#Bad treatment
+			# Bad treatment
 			50 = {
 				modifier = {
 					factor = 1.5
@@ -8453,47 +9500,53 @@ character_event = {
 				}
 				modifier = {
 					factor = 1.2
-					NOT = { learning = 15 }
+					NOT = {
+						learning = 15
+					}
 				}
 				modifier = {
 					factor = 1.2
-					NOT = { learning = 10 }
+					NOT = {
+						learning = 10
+					}
 				}
-				FROM = { character_event = { id = RIP.11071 } }
+				FROM = {
+					character_event = {
+						id = RIP.11071
+					}
+				}
 			}
 		}
 	}
 }
 
-#Sickly is removed
+# Sickly is removed
 character_event = {
 	id = RIP.11069
 	picture = GFX_evt_birth
 	desc = EVTDSC_RIP_11069
 	border = GFX_event_normal_frame_religion
-
 	is_triggered_only = yes
 
 	option = {
 		name = EVTOPTA_RIP_11069
-
-		event_target:sickly_infant = { remove_trait = sickly }
+		event_target:sickly_infant = {
+			remove_trait = sickly
+		}
 	}
 }
 
-#Nice little treatment
+# Nice little treatment
 character_event = {
 	id = RIP.11070
 	picture = GFX_evt_birth
 	desc = EVTDSC_RIP_11070
 	border = GFX_event_normal_frame_religion
-
 	is_triggered_only = yes
 
 	option = {
 		name = EVTOPTA_RIP_11070
-
-		event_target:sickly_infant = { 
+		event_target:sickly_infant = {
 			add_character_modifier = {
 				name = successful_treatment
 				years = 3
@@ -8502,45 +9555,57 @@ character_event = {
 	}
 }
 
-#Nothing happens
+# Nothing happens
 character_event = {
 	id = RIP.11071
 	picture = GFX_evt_birth
 	desc = EVTDSC_RIP_11071
 	border = GFX_event_normal_frame_religion
-
 	is_triggered_only = yes
 
 	option = {
 		name = EVTOPTA_RIP_11071
-		custom_tooltip = { text = EVTOPTA_RIP_11071_TOOLTIP }
+		custom_tooltip = {
+			text = EVTOPTA_RIP_11071_TOOLTIP
+		}
 	}
 }
 
-#Child dies ping event
+# Child dies ping event
 character_event = {
 	id = RIP.11072
 	hide_window = yes
-
 	is_triggered_only = yes
 
-	option = { event_target:infant_guardian = { character_event = { id = RIP.11073 } } }
+	option = {
+		event_target:infant_guardian = {
+			character_event = {
+				id = RIP.11073
+			}
+		}
+	}
 }
 
-#Child dies
+# Child dies
 character_event = {
 	id = RIP.11073
 	picture = GFX_evt_birth
 	desc = EVTDSC_RIP_11073
 	border = GFX_event_normal_frame_religion
-
 	is_triggered_only = yes
 
-	trigger = { FROM = { trait = sickly } }
+	trigger = {
+		FROM = {
+			trait = sickly
+		}
+	}
 
 	option = {
 		name = EVTOPTA_RIP_11073
-
-		FROM = { death = { death_reason = death_trait } }
+		FROM = {
+			death = {
+				death_reason = death_trait
+			}
+		}
 	}
 }

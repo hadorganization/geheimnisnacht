@@ -1,19 +1,21 @@
-###FOR THE LADY AND THE KING! 
+
+# FOR THE LADY AND THE KING!
 namespace = DR_bretonnia
-##The landless son of a Bretonnian noble decides to set out as a Knight Errant ( First step to become a true Knight of the Realm )
-#Son has quested a few years
+
+# The landless son of a Bretonnian noble decides to set out as a Knight Errant ( First step to become a true Knight of the Realm )
+
+# Son has quested a few years
 character_event = {
 	id = DR_bretonnia.1
 	hide_window = yes
-	
 	is_triggered_only = yes
 	culture_group = bretonnian_group
-	
+
 	immediate = {
 		set_character_flag = serving_knighterrant
 		clr_character_flag = wants_knighterrant
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -23,7 +25,6 @@ character_event = {
 character_event = {
 	id = DR_bretonnia.2
 	hide_window = yes
-	
 	ai = yes
 	min_age = 16
 	max_age = 40
@@ -31,7 +32,7 @@ character_event = {
 	prisoner = no
 	only_men = yes
 	culture_group = bretonnian_group
-	
+
 	trigger = {
 		is_landed = no
 		in_command = no
@@ -40,7 +41,7 @@ character_event = {
 			religion = grail
 			religion = false_grail
 		}
-		NOT = { 
+		NOT = {
 			OR = {
 				trait = on_errantry_quest
 				trait = bretonnian_knight
@@ -60,46 +61,76 @@ character_event = {
 				religion = grail
 				religion = false_grail
 			}
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			ROOT = {
-				host = { character = PREVPREV }
+				host = {
+					character = PREVPREV
+				}
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 120
-		modifier = { 
+		modifier = {
 			factor = 0.25
 			OR = {
-				trait = misguided_warrior 
-				trait = tough_soldier 
-				trait = skilled_tactician 
-				trait = brilliant_strategist 
+				trait = misguided_warrior
+				trait = tough_soldier
+				trait = skilled_tactician
+				trait = brilliant_strategist
 			}
 		}
-		modifier = { factor = 0.5 trait = ambitious }
-		modifier = { factor = 2 trait = content }
-		modifier = { factor = 0.75 trait = quick }
-		modifier = { factor = 1.5 trait = slow }
-		modifier = { factor = 0.5 trait = genius }
-		modifier = { factor = 2 trait = imbecile }
-		modifier = { factor = 0.5 trait = brave }
-		modifier = { factor = 2 trait = craven }
-		modifier = { factor = 0.75 trait = diligent }
-		modifier = { factor = 1.5 trait = slothful }
-		modifier = { factor = 0.75 is_strong_trigger = yes }
-		modifier = { factor = 1.5 trait = weak }
+		modifier = {
+			factor = 0.5 trait = ambitious
+		}
+		modifier = {
+			factor = 2 trait = content
+		}
+		modifier = {
+			factor = 0.75 trait = quick
+		}
+		modifier = {
+			factor = 1.5 trait = slow
+		}
+		modifier = {
+			factor = 0.5 trait = genius
+		}
+		modifier = {
+			factor = 2 trait = imbecile
+		}
+		modifier = {
+			factor = 0.5 trait = brave
+		}
+		modifier = {
+			factor = 2 trait = craven
+		}
+		modifier = {
+			factor = 0.75 trait = diligent
+		}
+		modifier = {
+			factor = 1.5 trait = slothful
+		}
+		modifier = {
+			factor = 0.75 is_strong_trigger = yes
+		}
+		modifier = {
+			factor = 1.5 trait = weak
+		}
 		# modifier = { factor = 1.5 is_primary_heir = yes }
 	}
-	
+
 	immediate = {
-		liege = { 
-			character_event = { id = DR_bretonnia.3 } 
+		liege = {
+			character_event = {
+				id = DR_bretonnia.3
+			}
 		}
 		set_character_flag = wants_knighterrant
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -111,12 +142,10 @@ character_event = {
 	desc = DR_bretonnia_son_wants_knight_errant
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = DR_bretonnia_son_wants_knight_errant_deny
-		
 		FROM = {
 			opinion = {
 				modifier = opinion_very_disappointed
@@ -129,12 +158,17 @@ character_event = {
 		prestige = -50
 		piety = -100
 	}
+
 	option = {
 		name = DR_bretonnia_son_wants_knight_errant_accept
 		hidden_tooltip = {
-			FROM = { 
-				character_event = { id = DR_bretonnia.1 days = 1230 }
-				character_event = { id = DR_bretonnia.27 days = 2 }
+			FROM = {
+				character_event = {
+					id = DR_bretonnia.1 days = 1230
+				}
+				character_event = {
+					id = DR_bretonnia.27 days = 2
+				}
 			}
 		}
 		prestige = 100
@@ -146,16 +180,19 @@ character_event = {
 	id = DR_bretonnia.4
 	hide_window = yes
 	has_character_flag = serving_knighterrant
-	
+
 	trigger = {
-		NOT = { trait = bretonnian_knight }
+		NOT = {
+			trait = bretonnian_knight
+		}
 		has_character_flag = serving_knighterrant
-		NOT = { trait = scarred }
+		NOT = {
+			trait = scarred
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 160
-		
 		modifier = {
 			factor = 0.75
 			trait = brave
@@ -165,12 +202,16 @@ character_event = {
 			trait = craven
 		}
 	}
-	
+
 	immediate = {
-		father = { character_event = { id = DR_bretonnia.5 } }
+		father = {
+			character_event = {
+				id = DR_bretonnia.5
+			}
+		}
 		clr_character_flag = serving_knighterrant
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -179,71 +220,94 @@ character_event = {
 # Son returns scarred but seasoned (Father)
 character_event = {
 	id = DR_bretonnia.5
-	desc =DR_bretonnia_son_returns_experienced_knight_errant
+	desc = DR_bretonnia_son_returns_experienced_knight_errant
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
 	has_character_flag = serving_knighterrant
-	
+
 	option = {
 		name = DR_bretonnia_son_returns_experienced_knight_errant_opt
 		FROM = {
-			
 			add_trait = scarred
 			add_trait = bretonnian_knight
-			hidden_tooltip = { give_minor_title = title_sir_bretonnian }
+			hidden_tooltip = {
+				give_minor_title = title_sir_bretonnian
+			}
 			remove_trait = on_errantry_quest
 		}
 		random_list = {
-			50 = { FROM = { change_martial = 1 } }
-			25 = { FROM = { change_martial = 2 } }
-			25 = { FROM = { change_martial = 3 } }
+			50 = {
+				FROM = {
+					change_martial = 1
+				}
+			}
+			25 = {
+				FROM = {
+					change_martial = 2
+				}
+			}
+			25 = {
+				FROM = {
+					change_martial = 3
+				}
+			}
 		}
 	}
 }
 
-#Child returns a drunkard ( Child )
+# Child returns a drunkard ( Child )
 character_event = {
-	id =  DR_bretonnia.6
-	
+	id = DR_bretonnia.6
 	hide_window = yes
 	culture_group = bretonnian_group
-	
+
 	trigger = {
 		has_character_flag = serving_knighterrant
-		NOT = { trait = drunkard }
+		NOT = {
+			trait = drunkard
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 160
-		modifier = { factor = 0.75 trait = gluttonous }
-		modifier = { factor = 1.25 trait = temperate }
+		modifier = {
+			factor = 0.75 trait = gluttonous
+		}
+		modifier = {
+			factor = 1.25 trait = temperate
+		}
 	}
-	
+
 	immediate = {
-		father = { character_event = { id =  DR_bretonnia.7 } }
+		father = {
+			character_event = {
+				id = DR_bretonnia.7
+			}
+		}
 		clr_character_flag = serving_knighterrant
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-#Child returns a drunkard ( Father )
+
+# Child returns a drunkard ( Father )
 character_event = {
-	id =  DR_bretonnia.7
+	id = DR_bretonnia.7
 	desc = DR_bretonnia_son_returns_drunk_knight_errant
 	picture = GFX_evt_feast
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = DR_bretonnia_son_returns_drunk_knight_errant_opt
 		FROM = {
 			add_trait = drunkard
 			add_trait = bretonnian_knight
-			hidden_tooltip = { give_minor_title = title_sir_bretonnian }
+			hidden_tooltip = {
+				give_minor_title = title_sir_bretonnian
+			}
 			remove_trait = on_errantry_quest
 		}
 	}
@@ -254,35 +318,49 @@ character_event = {
 	id = DR_bretonnia.8
 	hide_window = yes
 	has_character_flag = serving_knighterrant
-	
+
 	trigger = {
-		NOT = { trait = bretonnian_knight }
+		NOT = {
+			trait = bretonnian_knight
+		}
 		has_character_flag = serving_knighterrant
 		NOT = {
 			trait = wounded
 			trait = blinded
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 250
 	}
-	
+
 	immediate = {
 		add_trait = blinded
-		
 		if = {
-			limit = { has_character_flag = motherscourt }
-			mother = { character_event = { id = DR_bretonnia.9 } }
+			limit = {
+				has_character_flag = motherscourt
+			}
+			mother = {
+				character_event = {
+					id = DR_bretonnia.9
+				}
+			}
 		}
 		if = {
-			limit = { NOT = { has_character_flag = motherscourt } }
-			father = { character_event = { id = DR_bretonnia.9 } }
+			limit = {
+				NOT = {
+					has_character_flag = motherscourt
+				}
+			}
+			father = {
+				character_event = {
+					id = DR_bretonnia.9
+				}
+			}
 		}
 		clr_character_flag = serving_knighterrant
-		
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -294,17 +372,19 @@ character_event = {
 	desc = DR_bretonnia_son_returns_wounded_knight_errant
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = DR_bretonnia_son_returns_wounded_knight_errant_opt
 		FROM = {
-			
-			tooltip = { add_trait = blinded }
+			tooltip = {
+				add_trait = blinded
+			}
 			add_trait = wounded
 			add_trait = bretonnian_knight
-			hidden_tooltip = { give_minor_title = title_sir_bretonnian }
+			hidden_tooltip = {
+				give_minor_title = title_sir_bretonnian
+			}
 			remove_trait = on_errantry_quest
 		}
 	}
@@ -315,16 +395,19 @@ character_event = {
 	id = DR_bretonnia.10
 	hide_window = yes
 	has_character_flag = serving_knighterrant
-	
+
 	trigger = {
-		NOT = { trait = bretonnian_knight }
+		NOT = {
+			trait = bretonnian_knight
+		}
 		has_character_flag = serving_knighterrant
-		NOT = { trait = brilliant_strategist }
+		NOT = {
+			trait = brilliant_strategist
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 160
-		
 		modifier = {
 			factor = 0.75
 			trait = duelist
@@ -350,21 +433,33 @@ character_event = {
 			trait = imbecile
 		}
 	}
-	
+
 	immediate = {
 		if = {
-			limit = { has_character_flag = motherscourt }
-			mother = { character_event = { id = DR_bretonnia.11 } }
+			limit = {
+				has_character_flag = motherscourt
+			}
+			mother = {
+				character_event = {
+					id = DR_bretonnia.11
+				}
+			}
 		}
 		if = {
-			limit = { NOT = { has_character_flag = motherscourt } }
-			father = { character_event = { id = DR_bretonnia.11 } }
+			limit = {
+				NOT = {
+					has_character_flag = motherscourt
+				}
+			}
+			father = {
+				character_event = {
+					id = DR_bretonnia.11
+				}
+			}
 		}
 		clr_character_flag = serving_knighterrant
-		
-
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -376,33 +471,41 @@ character_event = {
 	desc = DR_bretonnia_son_returns_better_knight_errant
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = DR_bretonnia_son_returns_better_knight_errant_opt
 		if = {
-			limit = { trait = skilled_tactician }
+			limit = {
+				trait = skilled_tactician
+			}
 			remove_trait = skilled_tactician
 			add_trait = brilliant_strategist
 		}
 		if = {
-			limit = { trait = tough_soldier }
+			limit = {
+				trait = tough_soldier
+			}
 			remove_trait = tough_soldier
 			add_trait = skilled_tactician
 		}
 		if = {
-			limit = { trait = misguided_warrior }
+			limit = {
+				trait = misguided_warrior
+			}
 			remove_trait = misguided_warrior
 			add_trait = tough_soldier
 		}
 		FROM = {
 			add_trait = bretonnian_knight
-			hidden_tooltip = { give_minor_title = title_sir_bretonnian }
+			hidden_tooltip = {
+				give_minor_title = title_sir_bretonnian
+			}
 			remove_trait = on_errantry_quest
-			
 		}
-		FROM = { change_martial = 2 }
+		FROM = {
+			change_martial = 2
+		}
 	}
 }
 
@@ -411,19 +514,28 @@ character_event = {
 	id = DR_bretonnia.12
 	hide_window = yes
 	has_character_flag = serving_knighterrant
-	
+
 	trigger = {
-		NOT = { trait = bretonnian_knight }
+		NOT = {
+			trait = bretonnian_knight
+		}
 		has_character_flag = serving_knighterrant
-		NOT = { trait = depressed }
-		NOT = { trait = stressed }
-		NOT = { trait = impaler }
-		NOT = { trait = cruel }
+		NOT = {
+			trait = depressed
+		}
+		NOT = {
+			trait = stressed
+		}
+		NOT = {
+			trait = impaler
+		}
+		NOT = {
+			trait = cruel
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 180
-		
 		modifier = {
 			factor = 0.75
 			trait = kind
@@ -437,21 +549,33 @@ character_event = {
 			trait = just
 		}
 	}
-	
-	immediate = {
 
+	immediate = {
 		if = {
-			limit = { has_character_flag = motherscourt }
-			mother = { character_event = { id = DR_bretonnia.13 } }
+			limit = {
+				has_character_flag = motherscourt
+			}
+			mother = {
+				character_event = {
+					id = DR_bretonnia.13
+				}
+			}
 		}
 		if = {
-			limit = { NOT = { has_character_flag = motherscourt } }
-			father = { character_event = { id = DR_bretonnia.13 } }
+			limit = {
+				NOT = {
+					has_character_flag = motherscourt
+				}
+			}
+			father = {
+				character_event = {
+					id = DR_bretonnia.13
+				}
+			}
 		}
 		clr_character_flag = serving_knighterrant
-		
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -463,18 +587,23 @@ character_event = {
 	desc = DR_bretonnia_son_returns_depressed_knight_errant
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = DR_bretonnia_son_returns_depressed_knight_errant_opt
 		FROM = {
 			random_list = {
-				50 = { add_trait = stressed }
-				50 = { add_trait = depressed }
+				50 = {
+					add_trait = stressed
+				}
+				50 = {
+					add_trait = depressed
+				}
 			}
 			add_trait = bretonnian_knight
-			hidden_tooltip = { give_minor_title = title_sir_bretonnian }
+			hidden_tooltip = {
+				give_minor_title = title_sir_bretonnian
+			}
 			remove_trait = on_errantry_quest
 		}
 	}
@@ -485,27 +614,32 @@ character_event = {
 	id = DR_bretonnia.14
 	hide_window = yes
 	has_character_flag = serving_knighterrant
-	
+
 	trigger = {
-		NOT = { trait = bretonnian_knight }
+		NOT = {
+			trait = bretonnian_knight
+		}
 		has_character_flag = serving_knighterrant
 		is_married = no
 	}
-	
+
 	mean_time_to_happen = {
 		months = 180
-		
 		modifier = {
 			factor = 0.75
 			trait = lustful
 		}
 	}
-	
+
 	immediate = {
-		father = { character_event = { id = DR_bretonnia.15 } }
+		father = {
+			character_event = {
+				id = DR_bretonnia.15
+			}
+		}
 		clr_character_flag = serving_knighterrant
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -517,9 +651,8 @@ character_event = {
 	desc = DR_bretonnia_son_returns_lowborn_wife_knight_errant
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = DR_bretonnia_son_returns_lowborn_wife_knight_errant_opt
 		create_character = {
@@ -535,83 +668,132 @@ character_event = {
 		new_character = {
 			add_spouse = FROM
 		}
-		FROM = { 
+		FROM = {
 			add_trait = bretonnian_knight
-			hidden_tooltip = { give_minor_title = title_sir_bretonnian }
+			hidden_tooltip = {
+				give_minor_title = title_sir_bretonnian
+			}
 			remove_trait = on_errantry_quest
-			
 		}
 	}
 }
 
 # # Son returns home as a Berserker (Son)
+
 # character_event = {
-	# id = DR_bretonnia.16
-	# hide_window = yes
-	
-	# trigger = {
-		# NOT = { trait = bretonnian_knight }
-		# has_character_flag = serving_knighterrant
-		# father = {	NOT = { trait = berserker } }
-		# mother = { NOT = { trait = berserker } }
-		# NOT = { trait = berserker }
-		# NOT = { trait = craven }
-		# #is_heretic = no				Why?
-	# }
-	
-	# mean_time_to_happen = {
-		# months = 200
-		
-		# modifier = {
-			# factor = 1.5
-			# trait = absent_minded
-		# }
-		# modifier = {
-			# factor = 1.5
-			# trait = just
-		# }
-		# modifier = {
-			# factor = 0.75
-			# trait = wroth
-		# }
-		# modifier = {
-			# factor = 0.75
-			# trait = cruel
-		# }
-		# modifier = {
-			# factor = 0.75
-			# trait = impaler
-		# }
-	# }
-	
-	# immediate = {
-		# father = { character_event = { id = DR_bretonnia.17 } }
-		# clr_character_flag = serving_knighterrant
-	# }
-	
-	# option = {
-		# name = OK
-	# }
+
+# id = DR_bretonnia.16
+
+# hide_window = yes
+
+# trigger = {
+
+# NOT = { trait = bretonnian_knight }
+
+# has_character_flag = serving_knighterrant
+
+# father = {	NOT = { trait = berserker } }
+
+# mother = { NOT = { trait = berserker } }
+
+# NOT = { trait = berserker }
+
+# NOT = { trait = craven }
+
+# # is_heretic = no				Why?
+
+# }
+
+# mean_time_to_happen = {
+
+# months = 200
+
+# modifier = {
+
+# factor = 1.5
+
+# trait = absent_minded
+
+# }
+
+# modifier = {
+
+# factor = 1.5
+
+# trait = just
+
+# }
+
+# modifier = {
+
+# factor = 0.75
+
+# trait = wroth
+
+# }
+
+# modifier = {
+
+# factor = 0.75
+
+# trait = cruel
+
+# }
+
+# modifier = {
+
+# factor = 0.75
+
+# trait = impaler
+
+# }
+
+# }
+
+# immediate = {
+
+# father = { character_event = { id = DR_bretonnia.17 } }
+
+# clr_character_flag = serving_knighterrant
+
+# }
+
+# option = {
+
+# name = OK
+
+# }
+
 # }
 
 # # Son returns home as a Berserker (Father)
+
 # character_event = {
-	# id = DR_bretonnia.17
-	# desc = DR_bretonnia_son_returns_berseker_knight_errant
-	# picture = GFX_evt_viking_throneroom_oldgods
-	# border = GFX_event_normal_frame_war
-	
-	# is_triggered_only = yes
-	
-	# option = {
-		# name = DR_bretonnia_son_returns_berseker_knight_errant_opt
-		# FROM = {
-			
-			
-			# add_trait = bretonnian_knight
-			# remove_trait = on_errantry_quest
-		# }
-	# }
+
+# id = DR_bretonnia.17
+
+# desc = DR_bretonnia_son_returns_berseker_knight_errant
+
+# picture = GFX_evt_viking_throneroom_oldgods
+
+# border = GFX_event_normal_frame_war
+
+# is_triggered_only = yes
+
+# option = {
+
+# name = DR_bretonnia_son_returns_berseker_knight_errant_opt
+
+# FROM = {
+
+# add_trait = bretonnian_knight
+
+# remove_trait = on_errantry_quest
+
+# }
+
+# }
+
 # }
 
 # Son returns home very ambitious (Son)
@@ -619,16 +801,19 @@ character_event = {
 	id = DR_bretonnia.18
 	hide_window = yes
 	has_character_flag = serving_knighterrant
-	
+
 	trigger = {
-		NOT = { trait = bretonnian_knight }
+		NOT = {
+			trait = bretonnian_knight
+		}
 		has_character_flag = serving_knighterrant
-		NOT = { trait = ambitious }
+		NOT = {
+			trait = ambitious
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 120
-		
 		modifier = {
 			factor = 0.75
 			trait = hedonist
@@ -654,13 +839,16 @@ character_event = {
 			trait = imbecile
 		}
 	}
-	
+
 	immediate = {
-		father = { character_event = { id = DR_bretonnia.19 } }
+		father = {
+			character_event = {
+				id = DR_bretonnia.19
+			}
+		}
 		clr_character_flag = serving_knighterrant
-		
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -672,19 +860,21 @@ character_event = {
 	desc = DR_bretonnia_son_returns_ambitious_knight_errant
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = DR_bretonnia_son_returns_ambitious_knight_errant_opt
 		FROM = {
-			
 			add_trait = ambitious
 			add_trait = bretonnian_knight
-			hidden_tooltip = { give_minor_title = title_sir_bretonnian }
+			hidden_tooltip = {
+				give_minor_title = title_sir_bretonnian
+			}
 			remove_trait = on_errantry_quest
 		}
-		FROM = { change_martial = 1 }
+		FROM = {
+			change_martial = 1
+		}
 	}
 }
 
@@ -693,15 +883,16 @@ character_event = {
 	id = DR_bretonnia.20
 	hide_window = yes
 	has_character_flag = serving_knighterrant
-	
+
 	trigger = {
-		NOT = { trait = bretonnian_knight }
+		NOT = {
+			trait = bretonnian_knight
+		}
 		has_character_flag = serving_knighterrant
 	}
-	
+
 	mean_time_to_happen = {
 		months = 200
-		
 		modifier = {
 			factor = 0.75
 			trait = brave
@@ -741,7 +932,7 @@ character_event = {
 		modifier = {
 			factor = 0.75
 			trait = has_measles
-		}		
+		}
 		modifier = {
 			factor = 0.75
 			trait = has_small_pox
@@ -759,13 +950,16 @@ character_event = {
 			trait = incapable
 		}
 	}
-	
+
 	immediate = {
-		father = { character_event = { id = DR_bretonnia.21 } }
+		father = {
+			character_event = {
+				id = DR_bretonnia.21
+			}
+		}
 		clr_character_flag = serving_knighterrant
-		
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -774,25 +968,24 @@ character_event = {
 # Son dies in a battle (Father)
 character_event = {
 	id = DR_bretonnia.21
-	desc =DR_bretonnia_son_dies_battle_knight_errant
+	desc = DR_bretonnia_son_dies_battle_knight_errant
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = DR_bretonnia_son_dies_battle_knight_errant_opt
-		FROM = { 
-			
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
-			death = { death_reason = death_battle } 
+		FROM = {
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
+				death_reason = death_battle
+			}
 		}
 	}
 }
@@ -802,15 +995,16 @@ character_event = {
 	id = DR_bretonnia.22
 	hide_window = yes
 	has_character_flag = serving_knighterrant
-	
-	trigger = {		
-		NOT = { trait = bretonnian_knight }
+
+	trigger = {
+		NOT = {
+			trait = bretonnian_knight
+		}
 		has_character_flag = serving_knighterrant
 	}
-	
+
 	mean_time_to_happen = {
 		months = 160
-		
 		modifier = {
 			factor = 0.75
 			trait = greedy
@@ -824,13 +1018,16 @@ character_event = {
 			stewardship = 15
 		}
 	}
-	
+
 	immediate = {
-		father = { character_event = { id = DR_bretonnia.23 } }
+		father = {
+			character_event = {
+				id = DR_bretonnia.23
+			}
+		}
 		clr_character_flag = serving_knighterrant
-		
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -842,21 +1039,23 @@ character_event = {
 	desc = DR_bretonnia_son_returns_with_gold_knight_errant
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = DR_bretonnia_son_returns_with_gold_knight_errant_opt
 		FROM = {
-			
 			add_trait = bretonnian_knight
-			hidden_tooltip = { give_minor_title = title_sir_bretonnian }
+			hidden_tooltip = {
+				give_minor_title = title_sir_bretonnian
+			}
 			remove_trait = on_errantry_quest
 			wealth = 100
 		}
 		random = {
 			chance = 50
-			FROM = { change_martial = 1 }
+			FROM = {
+				change_martial = 1
+			}
 		}
 		wealth = 50
 	}
@@ -868,30 +1067,34 @@ character_event = {
 	desc = DR_bretonnia_son_return_knight_errant
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_war
-	
 	min_age = 16
 	ai = no
 
 	trigger = {
-		NOT = { trait = bretonnian_knight }
+		NOT = {
+			trait = bretonnian_knight
+		}
 		OR = {
 			has_character_flag = wants_knighterrant
 			has_character_flag = serving_knighterrant
 		}
-		father_even_if_dead = { is_alive = no }
+		father_even_if_dead = {
+			is_alive = no
+		}
 	}
-	
+
 	immediate = {
 		clr_character_flag = wants_knighterrant
 		clr_character_flag = serving_knighterrant
-		
 	}
-	
+
 	option = {
 		name = DR_bretonnia_son_return_knight_errant_opt
 		add_trait = bretonnian_knight
-		hidden_tooltip = { give_minor_title = title_sir_bretonnian }
-			remove_trait = on_errantry_quest
+		hidden_tooltip = {
+			give_minor_title = title_sir_bretonnian
+		}
+		remove_trait = on_errantry_quest
 		prestige = 200
 		wealth = 200
 	}
@@ -901,28 +1104,32 @@ character_event = {
 character_event = {
 	id = DR_bretonnia.25
 	hide_window = yes
-	
 	min_age = 16
 	ai = yes
-	
+
 	trigger = {
-		NOT = { trait = bretonnian_knight }
+		NOT = {
+			trait = bretonnian_knight
+		}
 		OR = {
 			has_character_flag = wants_knighterrant
 			has_character_flag = serving_knighterrant
 		}
-		father_even_if_dead = { is_alive = no }		
+		father_even_if_dead = {
+			is_alive = no
+		}
 	}
-	
+
 	immediate = {
 		add_trait = bretonnian_knight
-		hidden_tooltip = { give_minor_title = title_sir_bretonnian }
+		hidden_tooltip = {
+			give_minor_title = title_sir_bretonnian
+		}
 		remove_trait = on_errantry_quest
 		clr_character_flag = wants_knighterrant
 		clr_character_flag = serving_knighterrant
-		
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -934,40 +1141,43 @@ character_event = {
 	desc = DR_bretonnia_son_return_knight_errant
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_war
-	
+
 	trigger = {
-		NOT = { trait = bretonnian_knight }
+		NOT = {
+			trait = bretonnian_knight
+		}
 		OR = {
 			has_character_flag = wants_knighterrant
 			has_character_flag = serving_knighterrant
 		}
 		is_landed = yes
 	}
-	
+
 	immediate = {
 		clr_character_flag = wants_knighterrant
 		clr_character_flag = serving_knighterrant
-		
 	}
-	
+
 	option = {
 		name = DR_bretonnia_son_return_knight_errant_opt
 		add_trait = bretonnian_knight
-		hidden_tooltip = { give_minor_title = title_sir_bretonnian }
+		hidden_tooltip = {
+			give_minor_title = title_sir_bretonnian
+		}
 		remove_trait = on_errantry_quest
 		prestige = 200
 		wealth = 100
-	}	
+	}
 }
 
 # Errantry Tour about to begin
 narrative_event = {
 	id = DR_bretonnia.27
 	hide_window = yes
-	
 	is_triggered_only = yes
 
-	option = { # Training starts
+	option = {
+		# Training starts
 		name = EVTOPTAancrel.0185
 		add_trait = on_errantry_quest
 		clr_character_flag = wants_knighterrant
@@ -975,51 +1185,59 @@ narrative_event = {
 	}
 }
 
-#Character proves he is worthy of being a Knight of the Realm through victory in battle
+# Character proves he is worthy of being a Knight of the Realm through victory in battle
 character_event = {
 	id = DR_bretonnia.28
-	desc = "DR_bretonnia_become_knight_battle" #Battlefield Promotion
+	desc = "DR_bretonnia_become_knight_battle" # Battlefield Promotion
 	picture = "GFX_battle_promotion"
-	
 	is_triggered_only = yes
-	only_men = yes #Might re-evaluate this on the future
+	only_men = yes # Might re-evaluate this on the future
 	capable_only = yes
 	culture_group = bretonnian_group
-	
+
 	trigger = {
 		martial = 6
 		has_epidemic = no
 		is_ill = no
-		NOT = {	health_traits = 1 }
+		NOT = {
+			health_traits = 1
+		}
 		trait = creature_human
 		culture_group = bretonnian_group
 		OR = {
 			religion = grail
 			religion = false_grail
 		}
-		NOR = { religion_group = chaos_gods_group
-			religion_group = necromantic_group }
-		NOT = {trait = weak}
-		NOT = {trait = bretonnian_knight }
-		NOT = {trait = grail_knight}
+		NOR = {
+			religion_group = chaos_gods_group
+			religion_group = necromantic_group
+		}
+		NOT = {
+			trait = weak
+		}
+		NOT = {
+			trait = bretonnian_knight
+		}
+		NOT = {
+			trait = grail_knight
+		}
 		NOT = {
 			OR = {
 				is_feudal = no
-				top_liege = { is_feudal = no }
+				top_liege = {
+					is_feudal = no
+				}
 				trait = peasant_leader
 			}
 		}
 	}
-
 	weight_multiplier = {
 		days = 1
-		
-		###good modifiers###
+		# good modifiers
 		modifier = {
 			factor = 10
 			is_strong_trigger = yes
 		}
-		
 		modifier = {
 			factor = 2.5
 			OR = {
@@ -1031,12 +1249,10 @@ character_event = {
 				trait = duelist
 			}
 		}
-		
 		modifier = {
 			factor = 2
 			trait = brave
-		}		
-		
+		}
 		modifier = {
 			factor = 1.5
 			OR = {
@@ -1046,7 +1262,6 @@ character_event = {
 				trait = brilliant_strategist
 			}
 		}
-		
 		modifier = {
 			factor = 1.2
 			OR = {
@@ -1055,18 +1270,16 @@ character_event = {
 				trait = diligent
 			}
 		}
-		
-		###bad modifiers###	
+		# bad modifiers#
 		modifier = {
 			factor = 0.25
-			NOT = { 
+			NOT = {
 				OR = {
 					religion = grail
 					religion = false_grail
 				}
 			}
 		}
-		
 		modifier = {
 			factor = 0.25
 			OR = {
@@ -1074,7 +1287,6 @@ character_event = {
 				trait = hunchback
 			}
 		}
-		
 		modifier = {
 			factor = 0.5
 			OR = {
@@ -1082,7 +1294,6 @@ character_event = {
 				trait = craven
 			}
 		}
-		
 		modifier = {
 			factor = 0.4
 			OR = {
@@ -1096,9 +1307,9 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
-		name = "EVTOPTADR_bretonnia_become_knight" #Accept - Normal
+		name = "EVTOPTADR_bretonnia_become_knight" # Accept - Normal
 		ai_chance = {
 			factor = 1.2
 			modifier = {
@@ -1112,73 +1323,85 @@ character_event = {
 		}
 		prestige = 50
 		if = {
-			limit = { 
+			limit = {
 				OR = {
 					religion = grail
 					religion = false_grail
 				}
 			}
 			piety = 100
-		}	
+		}
 		add_trait = bretonnian_knight
-		hidden_tooltip = { give_minor_title = title_sir_bretonnian }
-		any_liege = { 
-			limit = {	
+		hidden_tooltip = {
+			give_minor_title = title_sir_bretonnian
+		}
+		any_liege = {
+			limit = {
 				at_location = ROOT
 				in_command = yes
 				trait = bretonnian_knight
 				prisoner = no
-				NOT = { trait = incapable }
-				opinion = { who = ROOT value = 0 }
-			}	
-			tooltip = { }
+				NOT = {
+					trait = incapable
+				}
+				opinion = {
+					who = ROOT value = 0
+				}
+			}
+			tooltip = {
+			}
 		}
 	}
-	
-	
 }
-#Character proves he is worthy of being a Knight of the Realm through successful siege
+
+# Character proves he is worthy of being a Knight of the Realm through successful siege
 character_event = {
 	id = DR_bretonnia.29
-	desc = "DR_bretonnia_become_knight_siege" #Battlefield Promotion (siege)
+	desc = "DR_bretonnia_become_knight_siege" # Battlefield Promotion (siege)
 	picture = "GFX_battle_promotion"
-	
 	is_triggered_only = yes
 	only_men = yes
 	capable_only = yes
 	culture_group = bretonnian_group
-	
+
 	trigger = {
 		martial = 6
 		has_epidemic = no
 		is_ill = no
-		NOT = {	health_traits = 1 }
-			culture_group = bretonnian_group
+		NOT = {
+			health_traits = 1
+		}
+		culture_group = bretonnian_group
 		OR = {
 			religion = grail
 			religion = false_grail
 		}
-		NOT = {trait = weak}
-		NOT = {trait = bretonnian_knight}
-		NOT = {trait = grail_knight}
+		NOT = {
+			trait = weak
+		}
+		NOT = {
+			trait = bretonnian_knight
+		}
+		NOT = {
+			trait = grail_knight
+		}
 		NOT = {
 			OR = {
 				is_feudal = no
-				top_liege = { is_feudal = no }
+				top_liege = {
+					is_feudal = no
+				}
 				trait = peasant_leader
 			}
 		}
 	}
-
 	weight_multiplier = {
 		days = 1
-		
-		###good modifiers###
+		# good modifiers
 		modifier = {
 			factor = 10
 			is_strong_trigger = yes
 		}
-		
 		modifier = {
 			factor = 2.5
 			OR = {
@@ -1190,12 +1413,10 @@ character_event = {
 				trait = duelist
 			}
 		}
-		
 		modifier = {
 			factor = 2
 			trait = brave
-		}		
-		
+		}
 		modifier = {
 			factor = 1.5
 			OR = {
@@ -1205,7 +1426,6 @@ character_event = {
 				trait = brilliant_strategist
 			}
 		}
-		
 		modifier = {
 			factor = 1.2
 			OR = {
@@ -1214,18 +1434,16 @@ character_event = {
 				trait = diligent
 			}
 		}
-		
-		###bad modifiers###	
+		# bad modifiers#
 		modifier = {
 			factor = 0.25
-			NOT = { 
+			NOT = {
 				OR = {
 					religion = grail
 					religion = false_grail
 				}
 			}
 		}
-		
 		modifier = {
 			factor = 0.25
 			OR = {
@@ -1233,7 +1451,6 @@ character_event = {
 				trait = hunchback
 			}
 		}
-		
 		modifier = {
 			factor = 0.5
 			OR = {
@@ -1241,7 +1458,6 @@ character_event = {
 				trait = craven
 			}
 		}
-		
 		modifier = {
 			factor = 0.4
 			OR = {
@@ -1257,7 +1473,7 @@ character_event = {
 	}
 
 	option = {
-		name = "EVTOPTADR_bretonnia_become_knight" #Accept - Normal
+		name = "EVTOPTADR_bretonnia_become_knight" # Accept - Normal
 		ai_chance = {
 			factor = 1.2
 			modifier = {
@@ -1271,114 +1487,158 @@ character_event = {
 		}
 		prestige = 50
 		if = {
-			limit = { 
+			limit = {
 				OR = {
 					religion = grail
 					religion = false_grail
 				}
 			}
 			piety = 100
-		}	
+		}
 		add_trait = bretonnian_knight
-		hidden_tooltip = { give_minor_title = title_sir_bretonnian }
-		any_liege = { 
-			limit = {	
+		hidden_tooltip = {
+			give_minor_title = title_sir_bretonnian
+		}
+		any_liege = {
+			limit = {
 				at_location = ROOT
 				in_command = yes
 				trait = bretonnian_knight
 				prisoner = no
-				NOT = { trait = incapable }
-				opinion = { who = ROOT value = 0 }
-			}	
-			tooltip = { }
+				NOT = {
+					trait = incapable
+				}
+				opinion = {
+					who = ROOT value = 0
+				}
+			}
+			tooltip = {
+			}
 		}
-	}	
+	}
 }
 
-#Bret Virtue Stuff
+# Bret Virtue Stuff
 character_event = {
 	id = DR_bretonnia.1000
-	desc = "DR_bretonnia_become_knight_siege" #Battlefield Promotion (siege)
+	desc = "DR_bretonnia_become_knight_siege" # Battlefield Promotion (siege)
 	picture = "GFX_battle_promotion"
 	hide_window = yes
-	
 	religion = grail
 	only_rulers = yes
-		
+
 	trigger = {
 		OR = {
-			NOT = { piety = 0 }
+			NOT = {
+				piety = 0
+			}
 			AND = {
 				piety = 100
-				NOT = { piety = 200 }
+				NOT = {
+					piety = 200
+				}
 			}
 			AND = {
 				piety = 200
-				NOT = { piety = 300 }
+				NOT = {
+					piety = 300
+				}
 			}
 			AND = {
 				piety = 400
-				NOT = { piety = 500 }
+				NOT = {
+					piety = 500
+				}
 			}
 			AND = {
 				piety = 500
-				NOT = { piety = 600 }
+				NOT = {
+					piety = 600
+				}
 			}
 			AND = {
 				piety = 600
-				NOT = { piety = 700 }
+				NOT = {
+					piety = 700
+				}
 			}
 			AND = {
 				piety = 700
-				NOT = { piety = 800 }
+				NOT = {
+					piety = 800
+				}
 			}
 			AND = {
 				piety = 800
-				NOT = { piety = 900 }
+				NOT = {
+					piety = 900
+				}
 			}
 			AND = {
 				piety = 900
-				NOT = { piety = 1000 }
+				NOT = {
+					piety = 1000
+				}
 			}
 			AND = {
 				piety = 1000
-				NOT = { piety = 1100 }
+				NOT = {
+					piety = 1100
+				}
 			}
 			AND = {
 				piety = 1100
-				NOT = { piety = 1200 }
+				NOT = {
+					piety = 1200
+				}
 			}
 			AND = {
 				piety = 1200
-				NOT = { piety = 1300 }
+				NOT = {
+					piety = 1300
+				}
 			}
 			AND = {
 				piety = 1300
-				NOT = { piety = 1400 }
+				NOT = {
+					piety = 1400
+				}
 			}
 			AND = {
 				piety = 1400
-				NOT = { piety = 1500 }
+				NOT = {
+					piety = 1500
+				}
 			}
 			AND = {
 				piety = 1500
-				NOT = { piety = 1600 }
+				NOT = {
+					piety = 1600
+				}
 			}
 			AND = {
 				piety = 1600
-				NOT = { piety = 1700 }
+				NOT = {
+					piety = 1700
+				}
 			}
 			AND = {
 				piety = 1700
-				NOT = { piety = 1800 }
+				NOT = {
+					piety = 1800
+				}
 			}
 			AND = {
 				piety = 1800
-				NOT = { piety = 1900 }
+				NOT = {
+					piety = 1900
+				}
 			}
 			AND = {
 				piety = 1900
-				NOT = { piety = 2000 }
+				NOT = {
+					piety = 2000
+				}
 			}
 			piety = 2000
 		}
@@ -1391,604 +1651,646 @@ character_event = {
 	option = {
 		name = OK
 		if = {
-			limit = { NOT = { piety = 0 } }	
+			limit = {
+				NOT = {
+					piety = 0
+				}
+			}
 			add_character_modifier = {
 				name = negative_bretonnian_virtue
 				duration = -1
 			}
-			remove_character_modifier =	bretonnian_virtue_1
-			remove_character_modifier =	bretonnian_virtue_2
-			remove_character_modifier =	bretonnian_virtue_3
-			remove_character_modifier =	bretonnian_virtue_4
-			remove_character_modifier =	bretonnian_virtue_5
-			remove_character_modifier =	bretonnian_virtue_6
-			remove_character_modifier =	bretonnian_virtue_7
-			remove_character_modifier =	bretonnian_virtue_8
-			remove_character_modifier =	bretonnian_virtue_9
-			remove_character_modifier =	bretonnian_virtue_10
-			remove_character_modifier =	bretonnian_virtue_11
-			remove_character_modifier =	bretonnian_virtue_12
-			remove_character_modifier =	bretonnian_virtue_13
-			remove_character_modifier =	bretonnian_virtue_14
-			remove_character_modifier =	bretonnian_virtue_15
-			remove_character_modifier =	bretonnian_virtue_16
-			remove_character_modifier =	bretonnian_virtue_17
-			remove_character_modifier =	bretonnian_virtue_18
-			remove_character_modifier =	bretonnian_virtue_19
-			remove_character_modifier =	bretonnian_virtue_20
+			remove_character_modifier = 	bretonnian_virtue_1
+			remove_character_modifier = 	bretonnian_virtue_2
+			remove_character_modifier = 	bretonnian_virtue_3
+			remove_character_modifier = 	bretonnian_virtue_4
+			remove_character_modifier = 	bretonnian_virtue_5
+			remove_character_modifier = 	bretonnian_virtue_6
+			remove_character_modifier = 	bretonnian_virtue_7
+			remove_character_modifier = 	bretonnian_virtue_8
+			remove_character_modifier = 	bretonnian_virtue_9
+			remove_character_modifier = 	bretonnian_virtue_10
+			remove_character_modifier = 	bretonnian_virtue_11
+			remove_character_modifier = 	bretonnian_virtue_12
+			remove_character_modifier = 	bretonnian_virtue_13
+			remove_character_modifier = 	bretonnian_virtue_14
+			remove_character_modifier = 	bretonnian_virtue_15
+			remove_character_modifier = 	bretonnian_virtue_16
+			remove_character_modifier = 	bretonnian_virtue_17
+			remove_character_modifier = 	bretonnian_virtue_18
+			remove_character_modifier = 	bretonnian_virtue_19
+			remove_character_modifier = 	bretonnian_virtue_20
 		}
 		if = {
-			limit = { 
+			limit = {
 				piety = 100
-				NOT = { piety = 200 }
+				NOT = {
+					piety = 200
+				}
 			}
 			add_character_modifier = {
 				name = bretonnian_virtue_1
 				duration = -1
 			}
 			remove_character_modifier = negative_bretonnian_virtue
-			remove_character_modifier =	bretonnian_virtue_2
-			remove_character_modifier =	bretonnian_virtue_3
-			remove_character_modifier =	bretonnian_virtue_4
-			remove_character_modifier =	bretonnian_virtue_5
-			remove_character_modifier =	bretonnian_virtue_6
-			remove_character_modifier =	bretonnian_virtue_7
-			remove_character_modifier =	bretonnian_virtue_8
-			remove_character_modifier =	bretonnian_virtue_9
-			remove_character_modifier =	bretonnian_virtue_10
-			remove_character_modifier =	bretonnian_virtue_11
-			remove_character_modifier =	bretonnian_virtue_12
-			remove_character_modifier =	bretonnian_virtue_13
-			remove_character_modifier =	bretonnian_virtue_14
-			remove_character_modifier =	bretonnian_virtue_15
-			remove_character_modifier =	bretonnian_virtue_16
-			remove_character_modifier =	bretonnian_virtue_17
-			remove_character_modifier =	bretonnian_virtue_18
-			remove_character_modifier =	bretonnian_virtue_19
-			remove_character_modifier =	bretonnian_virtue_20
+			remove_character_modifier = 	bretonnian_virtue_2
+			remove_character_modifier = 	bretonnian_virtue_3
+			remove_character_modifier = 	bretonnian_virtue_4
+			remove_character_modifier = 	bretonnian_virtue_5
+			remove_character_modifier = 	bretonnian_virtue_6
+			remove_character_modifier = 	bretonnian_virtue_7
+			remove_character_modifier = 	bretonnian_virtue_8
+			remove_character_modifier = 	bretonnian_virtue_9
+			remove_character_modifier = 	bretonnian_virtue_10
+			remove_character_modifier = 	bretonnian_virtue_11
+			remove_character_modifier = 	bretonnian_virtue_12
+			remove_character_modifier = 	bretonnian_virtue_13
+			remove_character_modifier = 	bretonnian_virtue_14
+			remove_character_modifier = 	bretonnian_virtue_15
+			remove_character_modifier = 	bretonnian_virtue_16
+			remove_character_modifier = 	bretonnian_virtue_17
+			remove_character_modifier = 	bretonnian_virtue_18
+			remove_character_modifier = 	bretonnian_virtue_19
+			remove_character_modifier = 	bretonnian_virtue_20
 		}
 		if = {
-			limit = { 
+			limit = {
 				piety = 200
-				NOT = { piety = 300 }
+				NOT = {
+					piety = 300
+				}
 			}
 			add_character_modifier = {
 				name = bretonnian_virtue_2
 				duration = -1
 			}
 			remove_character_modifier = negative_bretonnian_virtue
-			remove_character_modifier =	bretonnian_virtue_1
-			remove_character_modifier =	bretonnian_virtue_3
-			remove_character_modifier =	bretonnian_virtue_4
-			remove_character_modifier =	bretonnian_virtue_5
-			remove_character_modifier =	bretonnian_virtue_6
-			remove_character_modifier =	bretonnian_virtue_7
-			remove_character_modifier =	bretonnian_virtue_8
-			remove_character_modifier =	bretonnian_virtue_9
-			remove_character_modifier =	bretonnian_virtue_10
-			remove_character_modifier =	bretonnian_virtue_11
-			remove_character_modifier =	bretonnian_virtue_12
-			remove_character_modifier =	bretonnian_virtue_13
-			remove_character_modifier =	bretonnian_virtue_14
-			remove_character_modifier =	bretonnian_virtue_15
-			remove_character_modifier =	bretonnian_virtue_16
-			remove_character_modifier =	bretonnian_virtue_17
-			remove_character_modifier =	bretonnian_virtue_18
-			remove_character_modifier =	bretonnian_virtue_19
-			remove_character_modifier =	bretonnian_virtue_20
+			remove_character_modifier = 	bretonnian_virtue_1
+			remove_character_modifier = 	bretonnian_virtue_3
+			remove_character_modifier = 	bretonnian_virtue_4
+			remove_character_modifier = 	bretonnian_virtue_5
+			remove_character_modifier = 	bretonnian_virtue_6
+			remove_character_modifier = 	bretonnian_virtue_7
+			remove_character_modifier = 	bretonnian_virtue_8
+			remove_character_modifier = 	bretonnian_virtue_9
+			remove_character_modifier = 	bretonnian_virtue_10
+			remove_character_modifier = 	bretonnian_virtue_11
+			remove_character_modifier = 	bretonnian_virtue_12
+			remove_character_modifier = 	bretonnian_virtue_13
+			remove_character_modifier = 	bretonnian_virtue_14
+			remove_character_modifier = 	bretonnian_virtue_15
+			remove_character_modifier = 	bretonnian_virtue_16
+			remove_character_modifier = 	bretonnian_virtue_17
+			remove_character_modifier = 	bretonnian_virtue_18
+			remove_character_modifier = 	bretonnian_virtue_19
+			remove_character_modifier = 	bretonnian_virtue_20
 		}
 		if = {
-			limit = { 
+			limit = {
 				piety = 300
-				NOT = { piety = 400 }
+				NOT = {
+					piety = 400
+				}
 			}
 			add_character_modifier = {
 				name = bretonnian_virtue_3
 				duration = -1
 			}
 			remove_character_modifier = negative_bretonnian_virtue
-			remove_character_modifier =	bretonnian_virtue_1
-			remove_character_modifier =	bretonnian_virtue_2
-			remove_character_modifier =	bretonnian_virtue_4
-			remove_character_modifier =	bretonnian_virtue_5
-			remove_character_modifier =	bretonnian_virtue_6
-			remove_character_modifier =	bretonnian_virtue_7
-			remove_character_modifier =	bretonnian_virtue_8
-			remove_character_modifier =	bretonnian_virtue_9
-			remove_character_modifier =	bretonnian_virtue_10
-			remove_character_modifier =	bretonnian_virtue_11
-			remove_character_modifier =	bretonnian_virtue_12
-			remove_character_modifier =	bretonnian_virtue_13
-			remove_character_modifier =	bretonnian_virtue_14
-			remove_character_modifier =	bretonnian_virtue_15
-			remove_character_modifier =	bretonnian_virtue_16
-			remove_character_modifier =	bretonnian_virtue_17
-			remove_character_modifier =	bretonnian_virtue_18
-			remove_character_modifier =	bretonnian_virtue_19
-			remove_character_modifier =	bretonnian_virtue_20
+			remove_character_modifier = 	bretonnian_virtue_1
+			remove_character_modifier = 	bretonnian_virtue_2
+			remove_character_modifier = 	bretonnian_virtue_4
+			remove_character_modifier = 	bretonnian_virtue_5
+			remove_character_modifier = 	bretonnian_virtue_6
+			remove_character_modifier = 	bretonnian_virtue_7
+			remove_character_modifier = 	bretonnian_virtue_8
+			remove_character_modifier = 	bretonnian_virtue_9
+			remove_character_modifier = 	bretonnian_virtue_10
+			remove_character_modifier = 	bretonnian_virtue_11
+			remove_character_modifier = 	bretonnian_virtue_12
+			remove_character_modifier = 	bretonnian_virtue_13
+			remove_character_modifier = 	bretonnian_virtue_14
+			remove_character_modifier = 	bretonnian_virtue_15
+			remove_character_modifier = 	bretonnian_virtue_16
+			remove_character_modifier = 	bretonnian_virtue_17
+			remove_character_modifier = 	bretonnian_virtue_18
+			remove_character_modifier = 	bretonnian_virtue_19
+			remove_character_modifier = 	bretonnian_virtue_20
 		}
 		if = {
-			limit = { 
+			limit = {
 				piety = 400
-				NOT = { piety = 500 }
+				NOT = {
+					piety = 500
+				}
 			}
 			add_character_modifier = {
 				name = bretonnian_virtue_4
 				duration = -1
 			}
 			remove_character_modifier = negative_bretonnian_virtue
-			remove_character_modifier =	bretonnian_virtue_1
-			remove_character_modifier =	bretonnian_virtue_2
-			remove_character_modifier =	bretonnian_virtue_3
-			remove_character_modifier =	bretonnian_virtue_5
-			remove_character_modifier =	bretonnian_virtue_6
-			remove_character_modifier =	bretonnian_virtue_7
-			remove_character_modifier =	bretonnian_virtue_8
-			remove_character_modifier =	bretonnian_virtue_9
-			remove_character_modifier =	bretonnian_virtue_10
-			remove_character_modifier =	bretonnian_virtue_11
-			remove_character_modifier =	bretonnian_virtue_12
-			remove_character_modifier =	bretonnian_virtue_13
-			remove_character_modifier =	bretonnian_virtue_14
-			remove_character_modifier =	bretonnian_virtue_15
-			remove_character_modifier =	bretonnian_virtue_16
-			remove_character_modifier =	bretonnian_virtue_17
-			remove_character_modifier =	bretonnian_virtue_18
-			remove_character_modifier =	bretonnian_virtue_19
-			remove_character_modifier =	bretonnian_virtue_20
+			remove_character_modifier = 	bretonnian_virtue_1
+			remove_character_modifier = 	bretonnian_virtue_2
+			remove_character_modifier = 	bretonnian_virtue_3
+			remove_character_modifier = 	bretonnian_virtue_5
+			remove_character_modifier = 	bretonnian_virtue_6
+			remove_character_modifier = 	bretonnian_virtue_7
+			remove_character_modifier = 	bretonnian_virtue_8
+			remove_character_modifier = 	bretonnian_virtue_9
+			remove_character_modifier = 	bretonnian_virtue_10
+			remove_character_modifier = 	bretonnian_virtue_11
+			remove_character_modifier = 	bretonnian_virtue_12
+			remove_character_modifier = 	bretonnian_virtue_13
+			remove_character_modifier = 	bretonnian_virtue_14
+			remove_character_modifier = 	bretonnian_virtue_15
+			remove_character_modifier = 	bretonnian_virtue_16
+			remove_character_modifier = 	bretonnian_virtue_17
+			remove_character_modifier = 	bretonnian_virtue_18
+			remove_character_modifier = 	bretonnian_virtue_19
+			remove_character_modifier = 	bretonnian_virtue_20
 		}
 		if = {
-			limit = { 
+			limit = {
 				piety = 500
-				NOT = { piety = 600 }
+				NOT = {
+					piety = 600
+				}
 			}
 			add_character_modifier = {
 				name = bretonnian_virtue_5
 				duration = -1
 			}
 			remove_character_modifier = negative_bretonnian_virtue
-			remove_character_modifier =	bretonnian_virtue_1
-			remove_character_modifier =	bretonnian_virtue_2
-			remove_character_modifier =	bretonnian_virtue_3
-			remove_character_modifier =	bretonnian_virtue_4
-			remove_character_modifier =	bretonnian_virtue_6
-			remove_character_modifier =	bretonnian_virtue_7
-			remove_character_modifier =	bretonnian_virtue_8
-			remove_character_modifier =	bretonnian_virtue_9
-			remove_character_modifier =	bretonnian_virtue_10
-			remove_character_modifier =	bretonnian_virtue_11
-			remove_character_modifier =	bretonnian_virtue_12
-			remove_character_modifier =	bretonnian_virtue_13
-			remove_character_modifier =	bretonnian_virtue_14
-			remove_character_modifier =	bretonnian_virtue_15
-			remove_character_modifier =	bretonnian_virtue_16
-			remove_character_modifier =	bretonnian_virtue_17
-			remove_character_modifier =	bretonnian_virtue_18
-			remove_character_modifier =	bretonnian_virtue_19
-			remove_character_modifier =	bretonnian_virtue_20
+			remove_character_modifier = 	bretonnian_virtue_1
+			remove_character_modifier = 	bretonnian_virtue_2
+			remove_character_modifier = 	bretonnian_virtue_3
+			remove_character_modifier = 	bretonnian_virtue_4
+			remove_character_modifier = 	bretonnian_virtue_6
+			remove_character_modifier = 	bretonnian_virtue_7
+			remove_character_modifier = 	bretonnian_virtue_8
+			remove_character_modifier = 	bretonnian_virtue_9
+			remove_character_modifier = 	bretonnian_virtue_10
+			remove_character_modifier = 	bretonnian_virtue_11
+			remove_character_modifier = 	bretonnian_virtue_12
+			remove_character_modifier = 	bretonnian_virtue_13
+			remove_character_modifier = 	bretonnian_virtue_14
+			remove_character_modifier = 	bretonnian_virtue_15
+			remove_character_modifier = 	bretonnian_virtue_16
+			remove_character_modifier = 	bretonnian_virtue_17
+			remove_character_modifier = 	bretonnian_virtue_18
+			remove_character_modifier = 	bretonnian_virtue_19
+			remove_character_modifier = 	bretonnian_virtue_20
 		}
 		if = {
-			limit = { 
+			limit = {
 				piety = 600
-				NOT = { piety = 700 }
+				NOT = {
+					piety = 700
+				}
 			}
 			add_character_modifier = {
 				name = bretonnian_virtue_6
 				duration = -1
 			}
 			remove_character_modifier = negative_bretonnian_virtue
-			remove_character_modifier =	bretonnian_virtue_1
-			remove_character_modifier =	bretonnian_virtue_2
-			remove_character_modifier =	bretonnian_virtue_3
-			remove_character_modifier =	bretonnian_virtue_4
-			remove_character_modifier =	bretonnian_virtue_5
-			remove_character_modifier =	bretonnian_virtue_7
-			remove_character_modifier =	bretonnian_virtue_8
-			remove_character_modifier =	bretonnian_virtue_9
-			remove_character_modifier =	bretonnian_virtue_10
-			remove_character_modifier =	bretonnian_virtue_11
-			remove_character_modifier =	bretonnian_virtue_12
-			remove_character_modifier =	bretonnian_virtue_13
-			remove_character_modifier =	bretonnian_virtue_14
-			remove_character_modifier =	bretonnian_virtue_15
-			remove_character_modifier =	bretonnian_virtue_16
-			remove_character_modifier =	bretonnian_virtue_17
-			remove_character_modifier =	bretonnian_virtue_18
-			remove_character_modifier =	bretonnian_virtue_19
-			remove_character_modifier =	bretonnian_virtue_20
+			remove_character_modifier = 	bretonnian_virtue_1
+			remove_character_modifier = 	bretonnian_virtue_2
+			remove_character_modifier = 	bretonnian_virtue_3
+			remove_character_modifier = 	bretonnian_virtue_4
+			remove_character_modifier = 	bretonnian_virtue_5
+			remove_character_modifier = 	bretonnian_virtue_7
+			remove_character_modifier = 	bretonnian_virtue_8
+			remove_character_modifier = 	bretonnian_virtue_9
+			remove_character_modifier = 	bretonnian_virtue_10
+			remove_character_modifier = 	bretonnian_virtue_11
+			remove_character_modifier = 	bretonnian_virtue_12
+			remove_character_modifier = 	bretonnian_virtue_13
+			remove_character_modifier = 	bretonnian_virtue_14
+			remove_character_modifier = 	bretonnian_virtue_15
+			remove_character_modifier = 	bretonnian_virtue_16
+			remove_character_modifier = 	bretonnian_virtue_17
+			remove_character_modifier = 	bretonnian_virtue_18
+			remove_character_modifier = 	bretonnian_virtue_19
+			remove_character_modifier = 	bretonnian_virtue_20
 		}
 		if = {
-			limit = { 
+			limit = {
 				piety = 700
-				NOT = { piety = 800 }
+				NOT = {
+					piety = 800
+				}
 			}
 			add_character_modifier = {
 				name = bretonnian_virtue_7
 				duration = -1
 			}
 			remove_character_modifier = negative_bretonnian_virtue
-			remove_character_modifier =	bretonnian_virtue_1
-			remove_character_modifier =	bretonnian_virtue_2
-			remove_character_modifier =	bretonnian_virtue_3
-			remove_character_modifier =	bretonnian_virtue_4
-			remove_character_modifier =	bretonnian_virtue_5
-			remove_character_modifier =	bretonnian_virtue_6
-			remove_character_modifier =	bretonnian_virtue_8
-			remove_character_modifier =	bretonnian_virtue_9
-			remove_character_modifier =	bretonnian_virtue_10
-			remove_character_modifier =	bretonnian_virtue_11
-			remove_character_modifier =	bretonnian_virtue_12
-			remove_character_modifier =	bretonnian_virtue_13
-			remove_character_modifier =	bretonnian_virtue_14
-			remove_character_modifier =	bretonnian_virtue_15
-			remove_character_modifier =	bretonnian_virtue_16
-			remove_character_modifier =	bretonnian_virtue_17
-			remove_character_modifier =	bretonnian_virtue_18
-			remove_character_modifier =	bretonnian_virtue_19
-			remove_character_modifier =	bretonnian_virtue_20
+			remove_character_modifier = 	bretonnian_virtue_1
+			remove_character_modifier = 	bretonnian_virtue_2
+			remove_character_modifier = 	bretonnian_virtue_3
+			remove_character_modifier = 	bretonnian_virtue_4
+			remove_character_modifier = 	bretonnian_virtue_5
+			remove_character_modifier = 	bretonnian_virtue_6
+			remove_character_modifier = 	bretonnian_virtue_8
+			remove_character_modifier = 	bretonnian_virtue_9
+			remove_character_modifier = 	bretonnian_virtue_10
+			remove_character_modifier = 	bretonnian_virtue_11
+			remove_character_modifier = 	bretonnian_virtue_12
+			remove_character_modifier = 	bretonnian_virtue_13
+			remove_character_modifier = 	bretonnian_virtue_14
+			remove_character_modifier = 	bretonnian_virtue_15
+			remove_character_modifier = 	bretonnian_virtue_16
+			remove_character_modifier = 	bretonnian_virtue_17
+			remove_character_modifier = 	bretonnian_virtue_18
+			remove_character_modifier = 	bretonnian_virtue_19
+			remove_character_modifier = 	bretonnian_virtue_20
 		}
 		if = {
-			limit = { 
+			limit = {
 				piety = 800
-				NOT = { piety = 900 }
+				NOT = {
+					piety = 900
+				}
 			}
 			add_character_modifier = {
 				name = bretonnian_virtue_8
 				duration = -1
 			}
 			remove_character_modifier = negative_bretonnian_virtue
-			remove_character_modifier =	bretonnian_virtue_1
-			remove_character_modifier =	bretonnian_virtue_2
-			remove_character_modifier =	bretonnian_virtue_3
-			remove_character_modifier =	bretonnian_virtue_4
-			remove_character_modifier =	bretonnian_virtue_5
-			remove_character_modifier =	bretonnian_virtue_6
-			remove_character_modifier =	bretonnian_virtue_7
-			remove_character_modifier =	bretonnian_virtue_9
-			remove_character_modifier =	bretonnian_virtue_10
-			remove_character_modifier =	bretonnian_virtue_11
-			remove_character_modifier =	bretonnian_virtue_12
-			remove_character_modifier =	bretonnian_virtue_13
-			remove_character_modifier =	bretonnian_virtue_14
-			remove_character_modifier =	bretonnian_virtue_15
-			remove_character_modifier =	bretonnian_virtue_16
-			remove_character_modifier =	bretonnian_virtue_17
-			remove_character_modifier =	bretonnian_virtue_18
-			remove_character_modifier =	bretonnian_virtue_19
-			remove_character_modifier =	bretonnian_virtue_20
+			remove_character_modifier = 	bretonnian_virtue_1
+			remove_character_modifier = 	bretonnian_virtue_2
+			remove_character_modifier = 	bretonnian_virtue_3
+			remove_character_modifier = 	bretonnian_virtue_4
+			remove_character_modifier = 	bretonnian_virtue_5
+			remove_character_modifier = 	bretonnian_virtue_6
+			remove_character_modifier = 	bretonnian_virtue_7
+			remove_character_modifier = 	bretonnian_virtue_9
+			remove_character_modifier = 	bretonnian_virtue_10
+			remove_character_modifier = 	bretonnian_virtue_11
+			remove_character_modifier = 	bretonnian_virtue_12
+			remove_character_modifier = 	bretonnian_virtue_13
+			remove_character_modifier = 	bretonnian_virtue_14
+			remove_character_modifier = 	bretonnian_virtue_15
+			remove_character_modifier = 	bretonnian_virtue_16
+			remove_character_modifier = 	bretonnian_virtue_17
+			remove_character_modifier = 	bretonnian_virtue_18
+			remove_character_modifier = 	bretonnian_virtue_19
+			remove_character_modifier = 	bretonnian_virtue_20
 		}
 		if = {
-			limit = { 
+			limit = {
 				piety = 900
-				NOT = { piety = 1000 }
+				NOT = {
+					piety = 1000
+				}
 			}
 			add_character_modifier = {
 				name = bretonnian_virtue_9
 				duration = -1
 			}
 			remove_character_modifier = negative_bretonnian_virtue
-			remove_character_modifier =	bretonnian_virtue_1
-			remove_character_modifier =	bretonnian_virtue_2
-			remove_character_modifier =	bretonnian_virtue_3
-			remove_character_modifier =	bretonnian_virtue_4
-			remove_character_modifier =	bretonnian_virtue_5
-			remove_character_modifier =	bretonnian_virtue_6
-			remove_character_modifier =	bretonnian_virtue_7
-			remove_character_modifier =	bretonnian_virtue_8
-			remove_character_modifier =	bretonnian_virtue_10
-			remove_character_modifier =	bretonnian_virtue_11
-			remove_character_modifier =	bretonnian_virtue_12
-			remove_character_modifier =	bretonnian_virtue_13
-			remove_character_modifier =	bretonnian_virtue_14
-			remove_character_modifier =	bretonnian_virtue_15
-			remove_character_modifier =	bretonnian_virtue_16
-			remove_character_modifier =	bretonnian_virtue_17
-			remove_character_modifier =	bretonnian_virtue_18
-			remove_character_modifier =	bretonnian_virtue_19
-			remove_character_modifier =	bretonnian_virtue_20
+			remove_character_modifier = 	bretonnian_virtue_1
+			remove_character_modifier = 	bretonnian_virtue_2
+			remove_character_modifier = 	bretonnian_virtue_3
+			remove_character_modifier = 	bretonnian_virtue_4
+			remove_character_modifier = 	bretonnian_virtue_5
+			remove_character_modifier = 	bretonnian_virtue_6
+			remove_character_modifier = 	bretonnian_virtue_7
+			remove_character_modifier = 	bretonnian_virtue_8
+			remove_character_modifier = 	bretonnian_virtue_10
+			remove_character_modifier = 	bretonnian_virtue_11
+			remove_character_modifier = 	bretonnian_virtue_12
+			remove_character_modifier = 	bretonnian_virtue_13
+			remove_character_modifier = 	bretonnian_virtue_14
+			remove_character_modifier = 	bretonnian_virtue_15
+			remove_character_modifier = 	bretonnian_virtue_16
+			remove_character_modifier = 	bretonnian_virtue_17
+			remove_character_modifier = 	bretonnian_virtue_18
+			remove_character_modifier = 	bretonnian_virtue_19
+			remove_character_modifier = 	bretonnian_virtue_20
 		}
 		if = {
-			limit = { 
+			limit = {
 				piety = 1000
-				NOT = { piety = 1100 }
+				NOT = {
+					piety = 1100
+				}
 			}
 			add_character_modifier = {
 				name = bretonnian_virtue_10
 				duration = -1
 			}
 			remove_character_modifier = negative_bretonnian_virtue
-			remove_character_modifier =	bretonnian_virtue_1
-			remove_character_modifier =	bretonnian_virtue_2
-			remove_character_modifier =	bretonnian_virtue_3
-			remove_character_modifier =	bretonnian_virtue_4
-			remove_character_modifier =	bretonnian_virtue_5
-			remove_character_modifier =	bretonnian_virtue_6
-			remove_character_modifier =	bretonnian_virtue_7
-			remove_character_modifier =	bretonnian_virtue_8
-			remove_character_modifier =	bretonnian_virtue_9
-			remove_character_modifier =	bretonnian_virtue_11
-			remove_character_modifier =	bretonnian_virtue_12
-			remove_character_modifier =	bretonnian_virtue_13
-			remove_character_modifier =	bretonnian_virtue_14
-			remove_character_modifier =	bretonnian_virtue_15
-			remove_character_modifier =	bretonnian_virtue_16
-			remove_character_modifier =	bretonnian_virtue_17
-			remove_character_modifier =	bretonnian_virtue_18
-			remove_character_modifier =	bretonnian_virtue_19
-			remove_character_modifier =	bretonnian_virtue_20
+			remove_character_modifier = 	bretonnian_virtue_1
+			remove_character_modifier = 	bretonnian_virtue_2
+			remove_character_modifier = 	bretonnian_virtue_3
+			remove_character_modifier = 	bretonnian_virtue_4
+			remove_character_modifier = 	bretonnian_virtue_5
+			remove_character_modifier = 	bretonnian_virtue_6
+			remove_character_modifier = 	bretonnian_virtue_7
+			remove_character_modifier = 	bretonnian_virtue_8
+			remove_character_modifier = 	bretonnian_virtue_9
+			remove_character_modifier = 	bretonnian_virtue_11
+			remove_character_modifier = 	bretonnian_virtue_12
+			remove_character_modifier = 	bretonnian_virtue_13
+			remove_character_modifier = 	bretonnian_virtue_14
+			remove_character_modifier = 	bretonnian_virtue_15
+			remove_character_modifier = 	bretonnian_virtue_16
+			remove_character_modifier = 	bretonnian_virtue_17
+			remove_character_modifier = 	bretonnian_virtue_18
+			remove_character_modifier = 	bretonnian_virtue_19
+			remove_character_modifier = 	bretonnian_virtue_20
 		}
 		if = {
-			limit = { 
+			limit = {
 				piety = 1100
-				NOT = { piety = 1200 }
+				NOT = {
+					piety = 1200
+				}
 			}
 			add_character_modifier = {
 				name = bretonnian_virtue_11
 				duration = -1
 			}
 			remove_character_modifier = negative_bretonnian_virtue
-			remove_character_modifier =	bretonnian_virtue_1
-			remove_character_modifier =	bretonnian_virtue_2
-			remove_character_modifier =	bretonnian_virtue_3
-			remove_character_modifier =	bretonnian_virtue_4
-			remove_character_modifier =	bretonnian_virtue_5
-			remove_character_modifier =	bretonnian_virtue_6
-			remove_character_modifier =	bretonnian_virtue_7
-			remove_character_modifier =	bretonnian_virtue_8
-			remove_character_modifier =	bretonnian_virtue_9
-			remove_character_modifier =	bretonnian_virtue_10
-			remove_character_modifier =	bretonnian_virtue_12
-			remove_character_modifier =	bretonnian_virtue_13
-			remove_character_modifier =	bretonnian_virtue_14
-			remove_character_modifier =	bretonnian_virtue_15
-			remove_character_modifier =	bretonnian_virtue_16
-			remove_character_modifier =	bretonnian_virtue_17
-			remove_character_modifier =	bretonnian_virtue_18
-			remove_character_modifier =	bretonnian_virtue_19
-			remove_character_modifier =	bretonnian_virtue_20
+			remove_character_modifier = 	bretonnian_virtue_1
+			remove_character_modifier = 	bretonnian_virtue_2
+			remove_character_modifier = 	bretonnian_virtue_3
+			remove_character_modifier = 	bretonnian_virtue_4
+			remove_character_modifier = 	bretonnian_virtue_5
+			remove_character_modifier = 	bretonnian_virtue_6
+			remove_character_modifier = 	bretonnian_virtue_7
+			remove_character_modifier = 	bretonnian_virtue_8
+			remove_character_modifier = 	bretonnian_virtue_9
+			remove_character_modifier = 	bretonnian_virtue_10
+			remove_character_modifier = 	bretonnian_virtue_12
+			remove_character_modifier = 	bretonnian_virtue_13
+			remove_character_modifier = 	bretonnian_virtue_14
+			remove_character_modifier = 	bretonnian_virtue_15
+			remove_character_modifier = 	bretonnian_virtue_16
+			remove_character_modifier = 	bretonnian_virtue_17
+			remove_character_modifier = 	bretonnian_virtue_18
+			remove_character_modifier = 	bretonnian_virtue_19
+			remove_character_modifier = 	bretonnian_virtue_20
 		}
 		if = {
-			limit = { 
+			limit = {
 				piety = 1200
-				NOT = { piety = 1300 }
+				NOT = {
+					piety = 1300
+				}
 			}
 			add_character_modifier = {
 				name = bretonnian_virtue_12
 				duration = -1
 			}
 			remove_character_modifier = negative_bretonnian_virtue
-			remove_character_modifier =	bretonnian_virtue_1
-			remove_character_modifier =	bretonnian_virtue_2
-			remove_character_modifier =	bretonnian_virtue_3
-			remove_character_modifier =	bretonnian_virtue_4
-			remove_character_modifier =	bretonnian_virtue_5
-			remove_character_modifier =	bretonnian_virtue_6
-			remove_character_modifier =	bretonnian_virtue_7
-			remove_character_modifier =	bretonnian_virtue_8
-			remove_character_modifier =	bretonnian_virtue_9
-			remove_character_modifier =	bretonnian_virtue_10
-			remove_character_modifier =	bretonnian_virtue_11
-			remove_character_modifier =	bretonnian_virtue_13
-			remove_character_modifier =	bretonnian_virtue_14
-			remove_character_modifier =	bretonnian_virtue_15
-			remove_character_modifier =	bretonnian_virtue_16
-			remove_character_modifier =	bretonnian_virtue_17
-			remove_character_modifier =	bretonnian_virtue_18
-			remove_character_modifier =	bretonnian_virtue_19
-			remove_character_modifier =	bretonnian_virtue_20
+			remove_character_modifier = 	bretonnian_virtue_1
+			remove_character_modifier = 	bretonnian_virtue_2
+			remove_character_modifier = 	bretonnian_virtue_3
+			remove_character_modifier = 	bretonnian_virtue_4
+			remove_character_modifier = 	bretonnian_virtue_5
+			remove_character_modifier = 	bretonnian_virtue_6
+			remove_character_modifier = 	bretonnian_virtue_7
+			remove_character_modifier = 	bretonnian_virtue_8
+			remove_character_modifier = 	bretonnian_virtue_9
+			remove_character_modifier = 	bretonnian_virtue_10
+			remove_character_modifier = 	bretonnian_virtue_11
+			remove_character_modifier = 	bretonnian_virtue_13
+			remove_character_modifier = 	bretonnian_virtue_14
+			remove_character_modifier = 	bretonnian_virtue_15
+			remove_character_modifier = 	bretonnian_virtue_16
+			remove_character_modifier = 	bretonnian_virtue_17
+			remove_character_modifier = 	bretonnian_virtue_18
+			remove_character_modifier = 	bretonnian_virtue_19
+			remove_character_modifier = 	bretonnian_virtue_20
 		}
 		if = {
-			limit = { 
+			limit = {
 				piety = 1300
-				NOT = { piety = 1400 }
+				NOT = {
+					piety = 1400
+				}
 			}
 			add_character_modifier = {
 				name = bretonnian_virtue_13
 				duration = -1
 			}
 			remove_character_modifier = negative_bretonnian_virtue
-			remove_character_modifier =	bretonnian_virtue_1
-			remove_character_modifier =	bretonnian_virtue_2
-			remove_character_modifier =	bretonnian_virtue_3
-			remove_character_modifier =	bretonnian_virtue_4
-			remove_character_modifier =	bretonnian_virtue_5
-			remove_character_modifier =	bretonnian_virtue_6
-			remove_character_modifier =	bretonnian_virtue_7
-			remove_character_modifier =	bretonnian_virtue_8
-			remove_character_modifier =	bretonnian_virtue_9
-			remove_character_modifier =	bretonnian_virtue_10
-			remove_character_modifier =	bretonnian_virtue_11
-			remove_character_modifier =	bretonnian_virtue_12
-			remove_character_modifier =	bretonnian_virtue_14
-			remove_character_modifier =	bretonnian_virtue_15
-			remove_character_modifier =	bretonnian_virtue_16
-			remove_character_modifier =	bretonnian_virtue_17
-			remove_character_modifier =	bretonnian_virtue_18
-			remove_character_modifier =	bretonnian_virtue_19
-			remove_character_modifier =	bretonnian_virtue_20
+			remove_character_modifier = 	bretonnian_virtue_1
+			remove_character_modifier = 	bretonnian_virtue_2
+			remove_character_modifier = 	bretonnian_virtue_3
+			remove_character_modifier = 	bretonnian_virtue_4
+			remove_character_modifier = 	bretonnian_virtue_5
+			remove_character_modifier = 	bretonnian_virtue_6
+			remove_character_modifier = 	bretonnian_virtue_7
+			remove_character_modifier = 	bretonnian_virtue_8
+			remove_character_modifier = 	bretonnian_virtue_9
+			remove_character_modifier = 	bretonnian_virtue_10
+			remove_character_modifier = 	bretonnian_virtue_11
+			remove_character_modifier = 	bretonnian_virtue_12
+			remove_character_modifier = 	bretonnian_virtue_14
+			remove_character_modifier = 	bretonnian_virtue_15
+			remove_character_modifier = 	bretonnian_virtue_16
+			remove_character_modifier = 	bretonnian_virtue_17
+			remove_character_modifier = 	bretonnian_virtue_18
+			remove_character_modifier = 	bretonnian_virtue_19
+			remove_character_modifier = 	bretonnian_virtue_20
 		}
 		if = {
-			limit = { 
+			limit = {
 				piety = 1400
-				NOT = { piety = 1500 }
+				NOT = {
+					piety = 1500
+				}
 			}
 			add_character_modifier = {
 				name = bretonnian_virtue_14
 				duration = -1
 			}
 			remove_character_modifier = negative_bretonnian_virtue
-			remove_character_modifier =	bretonnian_virtue_1
-			remove_character_modifier =	bretonnian_virtue_2
-			remove_character_modifier =	bretonnian_virtue_3
-			remove_character_modifier =	bretonnian_virtue_4
-			remove_character_modifier =	bretonnian_virtue_5
-			remove_character_modifier =	bretonnian_virtue_6
-			remove_character_modifier =	bretonnian_virtue_7
-			remove_character_modifier =	bretonnian_virtue_8
-			remove_character_modifier =	bretonnian_virtue_9
-			remove_character_modifier =	bretonnian_virtue_10
-			remove_character_modifier =	bretonnian_virtue_11
-			remove_character_modifier =	bretonnian_virtue_12
-			remove_character_modifier =	bretonnian_virtue_13
-			remove_character_modifier =	bretonnian_virtue_15
-			remove_character_modifier =	bretonnian_virtue_16
-			remove_character_modifier =	bretonnian_virtue_17
-			remove_character_modifier =	bretonnian_virtue_18
-			remove_character_modifier =	bretonnian_virtue_19
-			remove_character_modifier =	bretonnian_virtue_20
+			remove_character_modifier = 	bretonnian_virtue_1
+			remove_character_modifier = 	bretonnian_virtue_2
+			remove_character_modifier = 	bretonnian_virtue_3
+			remove_character_modifier = 	bretonnian_virtue_4
+			remove_character_modifier = 	bretonnian_virtue_5
+			remove_character_modifier = 	bretonnian_virtue_6
+			remove_character_modifier = 	bretonnian_virtue_7
+			remove_character_modifier = 	bretonnian_virtue_8
+			remove_character_modifier = 	bretonnian_virtue_9
+			remove_character_modifier = 	bretonnian_virtue_10
+			remove_character_modifier = 	bretonnian_virtue_11
+			remove_character_modifier = 	bretonnian_virtue_12
+			remove_character_modifier = 	bretonnian_virtue_13
+			remove_character_modifier = 	bretonnian_virtue_15
+			remove_character_modifier = 	bretonnian_virtue_16
+			remove_character_modifier = 	bretonnian_virtue_17
+			remove_character_modifier = 	bretonnian_virtue_18
+			remove_character_modifier = 	bretonnian_virtue_19
+			remove_character_modifier = 	bretonnian_virtue_20
 		}
 		if = {
-			limit = { 
+			limit = {
 				piety = 1500
-				NOT = { piety = 1600 }
+				NOT = {
+					piety = 1600
+				}
 			}
 			add_character_modifier = {
 				name = bretonnian_virtue_15
 				duration = -1
 			}
 			remove_character_modifier = negative_bretonnian_virtue
-			remove_character_modifier =	bretonnian_virtue_1
-			remove_character_modifier =	bretonnian_virtue_2
-			remove_character_modifier =	bretonnian_virtue_3
-			remove_character_modifier =	bretonnian_virtue_4
-			remove_character_modifier =	bretonnian_virtue_5
-			remove_character_modifier =	bretonnian_virtue_6
-			remove_character_modifier =	bretonnian_virtue_7
-			remove_character_modifier =	bretonnian_virtue_8
-			remove_character_modifier =	bretonnian_virtue_9
-			remove_character_modifier =	bretonnian_virtue_10
-			remove_character_modifier =	bretonnian_virtue_11
-			remove_character_modifier =	bretonnian_virtue_12
-			remove_character_modifier =	bretonnian_virtue_13
-			remove_character_modifier =	bretonnian_virtue_14
-			remove_character_modifier =	bretonnian_virtue_16
-			remove_character_modifier =	bretonnian_virtue_17
-			remove_character_modifier =	bretonnian_virtue_18
-			remove_character_modifier =	bretonnian_virtue_19
-			remove_character_modifier =	bretonnian_virtue_20
+			remove_character_modifier = 	bretonnian_virtue_1
+			remove_character_modifier = 	bretonnian_virtue_2
+			remove_character_modifier = 	bretonnian_virtue_3
+			remove_character_modifier = 	bretonnian_virtue_4
+			remove_character_modifier = 	bretonnian_virtue_5
+			remove_character_modifier = 	bretonnian_virtue_6
+			remove_character_modifier = 	bretonnian_virtue_7
+			remove_character_modifier = 	bretonnian_virtue_8
+			remove_character_modifier = 	bretonnian_virtue_9
+			remove_character_modifier = 	bretonnian_virtue_10
+			remove_character_modifier = 	bretonnian_virtue_11
+			remove_character_modifier = 	bretonnian_virtue_12
+			remove_character_modifier = 	bretonnian_virtue_13
+			remove_character_modifier = 	bretonnian_virtue_14
+			remove_character_modifier = 	bretonnian_virtue_16
+			remove_character_modifier = 	bretonnian_virtue_17
+			remove_character_modifier = 	bretonnian_virtue_18
+			remove_character_modifier = 	bretonnian_virtue_19
+			remove_character_modifier = 	bretonnian_virtue_20
 		}
 		if = {
-			limit = { 
+			limit = {
 				piety = 1600
-				NOT = { piety = 1700 }
+				NOT = {
+					piety = 1700
+				}
 			}
 			add_character_modifier = {
 				name = bretonnian_virtue_16
 				duration = -1
 			}
 			remove_character_modifier = negative_bretonnian_virtue
-			remove_character_modifier =	bretonnian_virtue_1
-			remove_character_modifier =	bretonnian_virtue_2
-			remove_character_modifier =	bretonnian_virtue_3
-			remove_character_modifier =	bretonnian_virtue_4
-			remove_character_modifier =	bretonnian_virtue_5
-			remove_character_modifier =	bretonnian_virtue_6
-			remove_character_modifier =	bretonnian_virtue_7
-			remove_character_modifier =	bretonnian_virtue_8
-			remove_character_modifier =	bretonnian_virtue_9
-			remove_character_modifier =	bretonnian_virtue_10
-			remove_character_modifier =	bretonnian_virtue_11
-			remove_character_modifier =	bretonnian_virtue_12
-			remove_character_modifier =	bretonnian_virtue_13
-			remove_character_modifier =	bretonnian_virtue_14
-			remove_character_modifier =	bretonnian_virtue_15
-			remove_character_modifier =	bretonnian_virtue_17
-			remove_character_modifier =	bretonnian_virtue_18
-			remove_character_modifier =	bretonnian_virtue_19
-			remove_character_modifier =	bretonnian_virtue_20
+			remove_character_modifier = 	bretonnian_virtue_1
+			remove_character_modifier = 	bretonnian_virtue_2
+			remove_character_modifier = 	bretonnian_virtue_3
+			remove_character_modifier = 	bretonnian_virtue_4
+			remove_character_modifier = 	bretonnian_virtue_5
+			remove_character_modifier = 	bretonnian_virtue_6
+			remove_character_modifier = 	bretonnian_virtue_7
+			remove_character_modifier = 	bretonnian_virtue_8
+			remove_character_modifier = 	bretonnian_virtue_9
+			remove_character_modifier = 	bretonnian_virtue_10
+			remove_character_modifier = 	bretonnian_virtue_11
+			remove_character_modifier = 	bretonnian_virtue_12
+			remove_character_modifier = 	bretonnian_virtue_13
+			remove_character_modifier = 	bretonnian_virtue_14
+			remove_character_modifier = 	bretonnian_virtue_15
+			remove_character_modifier = 	bretonnian_virtue_17
+			remove_character_modifier = 	bretonnian_virtue_18
+			remove_character_modifier = 	bretonnian_virtue_19
+			remove_character_modifier = 	bretonnian_virtue_20
 		}
 		if = {
-			limit = { 
+			limit = {
 				piety = 1700
-				NOT = { piety = 1800 }
+				NOT = {
+					piety = 1800
+				}
 			}
 			add_character_modifier = {
 				name = bretonnian_virtue_17
 				duration = -1
 			}
 			remove_character_modifier = negative_bretonnian_virtue
-			remove_character_modifier =	bretonnian_virtue_1
-			remove_character_modifier =	bretonnian_virtue_2
-			remove_character_modifier =	bretonnian_virtue_3
-			remove_character_modifier =	bretonnian_virtue_4
-			remove_character_modifier =	bretonnian_virtue_5
-			remove_character_modifier =	bretonnian_virtue_6
-			remove_character_modifier =	bretonnian_virtue_7
-			remove_character_modifier =	bretonnian_virtue_8
-			remove_character_modifier =	bretonnian_virtue_9
-			remove_character_modifier =	bretonnian_virtue_10
-			remove_character_modifier =	bretonnian_virtue_11
-			remove_character_modifier =	bretonnian_virtue_12
-			remove_character_modifier =	bretonnian_virtue_13
-			remove_character_modifier =	bretonnian_virtue_14
-			remove_character_modifier =	bretonnian_virtue_15
-			remove_character_modifier =	bretonnian_virtue_16
-			remove_character_modifier =	bretonnian_virtue_18
-			remove_character_modifier =	bretonnian_virtue_19
-			remove_character_modifier =	bretonnian_virtue_20
+			remove_character_modifier = 	bretonnian_virtue_1
+			remove_character_modifier = 	bretonnian_virtue_2
+			remove_character_modifier = 	bretonnian_virtue_3
+			remove_character_modifier = 	bretonnian_virtue_4
+			remove_character_modifier = 	bretonnian_virtue_5
+			remove_character_modifier = 	bretonnian_virtue_6
+			remove_character_modifier = 	bretonnian_virtue_7
+			remove_character_modifier = 	bretonnian_virtue_8
+			remove_character_modifier = 	bretonnian_virtue_9
+			remove_character_modifier = 	bretonnian_virtue_10
+			remove_character_modifier = 	bretonnian_virtue_11
+			remove_character_modifier = 	bretonnian_virtue_12
+			remove_character_modifier = 	bretonnian_virtue_13
+			remove_character_modifier = 	bretonnian_virtue_14
+			remove_character_modifier = 	bretonnian_virtue_15
+			remove_character_modifier = 	bretonnian_virtue_16
+			remove_character_modifier = 	bretonnian_virtue_18
+			remove_character_modifier = 	bretonnian_virtue_19
+			remove_character_modifier = 	bretonnian_virtue_20
 		}
 		if = {
-			limit = { 
+			limit = {
 				piety = 1800
-				NOT = { piety = 1900 }
+				NOT = {
+					piety = 1900
+				}
 			}
 			add_character_modifier = {
 				name = bretonnian_virtue_18
 				duration = -1
 			}
 			remove_character_modifier = negative_bretonnian_virtue
-			remove_character_modifier =	bretonnian_virtue_1
-			remove_character_modifier =	bretonnian_virtue_2
-			remove_character_modifier =	bretonnian_virtue_3
-			remove_character_modifier =	bretonnian_virtue_4
-			remove_character_modifier =	bretonnian_virtue_5
-			remove_character_modifier =	bretonnian_virtue_6
-			remove_character_modifier =	bretonnian_virtue_7
-			remove_character_modifier =	bretonnian_virtue_8
-			remove_character_modifier =	bretonnian_virtue_9
-			remove_character_modifier =	bretonnian_virtue_10
-			remove_character_modifier =	bretonnian_virtue_11
-			remove_character_modifier =	bretonnian_virtue_12
-			remove_character_modifier =	bretonnian_virtue_13
-			remove_character_modifier =	bretonnian_virtue_14
-			remove_character_modifier =	bretonnian_virtue_15
-			remove_character_modifier =	bretonnian_virtue_16
-			remove_character_modifier =	bretonnian_virtue_17
-			remove_character_modifier =	bretonnian_virtue_19
-			remove_character_modifier =	bretonnian_virtue_20
+			remove_character_modifier = 	bretonnian_virtue_1
+			remove_character_modifier = 	bretonnian_virtue_2
+			remove_character_modifier = 	bretonnian_virtue_3
+			remove_character_modifier = 	bretonnian_virtue_4
+			remove_character_modifier = 	bretonnian_virtue_5
+			remove_character_modifier = 	bretonnian_virtue_6
+			remove_character_modifier = 	bretonnian_virtue_7
+			remove_character_modifier = 	bretonnian_virtue_8
+			remove_character_modifier = 	bretonnian_virtue_9
+			remove_character_modifier = 	bretonnian_virtue_10
+			remove_character_modifier = 	bretonnian_virtue_11
+			remove_character_modifier = 	bretonnian_virtue_12
+			remove_character_modifier = 	bretonnian_virtue_13
+			remove_character_modifier = 	bretonnian_virtue_14
+			remove_character_modifier = 	bretonnian_virtue_15
+			remove_character_modifier = 	bretonnian_virtue_16
+			remove_character_modifier = 	bretonnian_virtue_17
+			remove_character_modifier = 	bretonnian_virtue_19
+			remove_character_modifier = 	bretonnian_virtue_20
 		}
 		if = {
-			limit = { 
+			limit = {
 				piety = 1900
-				NOT = { piety = 2000 }
+				NOT = {
+					piety = 2000
+				}
 			}
 			add_character_modifier = {
 				name = bretonnian_virtue_19
 				duration = -1
 			}
 			remove_character_modifier = negative_bretonnian_virtue
-			remove_character_modifier =	bretonnian_virtue_1
-			remove_character_modifier =	bretonnian_virtue_2
-			remove_character_modifier =	bretonnian_virtue_3
-			remove_character_modifier =	bretonnian_virtue_4
-			remove_character_modifier =	bretonnian_virtue_5
-			remove_character_modifier =	bretonnian_virtue_6
-			remove_character_modifier =	bretonnian_virtue_7
-			remove_character_modifier =	bretonnian_virtue_8
-			remove_character_modifier =	bretonnian_virtue_9
-			remove_character_modifier =	bretonnian_virtue_10
-			remove_character_modifier =	bretonnian_virtue_11
-			remove_character_modifier =	bretonnian_virtue_12
-			remove_character_modifier =	bretonnian_virtue_13
-			remove_character_modifier =	bretonnian_virtue_14
-			remove_character_modifier =	bretonnian_virtue_15
-			remove_character_modifier =	bretonnian_virtue_16
-			remove_character_modifier =	bretonnian_virtue_17
-			remove_character_modifier =	bretonnian_virtue_18
-			remove_character_modifier =	bretonnian_virtue_20
+			remove_character_modifier = 	bretonnian_virtue_1
+			remove_character_modifier = 	bretonnian_virtue_2
+			remove_character_modifier = 	bretonnian_virtue_3
+			remove_character_modifier = 	bretonnian_virtue_4
+			remove_character_modifier = 	bretonnian_virtue_5
+			remove_character_modifier = 	bretonnian_virtue_6
+			remove_character_modifier = 	bretonnian_virtue_7
+			remove_character_modifier = 	bretonnian_virtue_8
+			remove_character_modifier = 	bretonnian_virtue_9
+			remove_character_modifier = 	bretonnian_virtue_10
+			remove_character_modifier = 	bretonnian_virtue_11
+			remove_character_modifier = 	bretonnian_virtue_12
+			remove_character_modifier = 	bretonnian_virtue_13
+			remove_character_modifier = 	bretonnian_virtue_14
+			remove_character_modifier = 	bretonnian_virtue_15
+			remove_character_modifier = 	bretonnian_virtue_16
+			remove_character_modifier = 	bretonnian_virtue_17
+			remove_character_modifier = 	bretonnian_virtue_18
+			remove_character_modifier = 	bretonnian_virtue_20
 		}
 		if = {
-			limit = { 
+			limit = {
 				piety = 2000
 			}
 			add_character_modifier = {
@@ -1996,28 +2298,25 @@ character_event = {
 				duration = -1
 			}
 			remove_character_modifier = negative_bretonnian_virtue
-			remove_character_modifier =	bretonnian_virtue_1
-			remove_character_modifier =	bretonnian_virtue_2
-			remove_character_modifier =	bretonnian_virtue_3
-			remove_character_modifier =	bretonnian_virtue_4
-			remove_character_modifier =	bretonnian_virtue_5
-			remove_character_modifier =	bretonnian_virtue_6
-			remove_character_modifier =	bretonnian_virtue_7
-			remove_character_modifier =	bretonnian_virtue_8
-			remove_character_modifier =	bretonnian_virtue_9
-			remove_character_modifier =	bretonnian_virtue_10
-			remove_character_modifier =	bretonnian_virtue_11
-			remove_character_modifier =	bretonnian_virtue_12
-			remove_character_modifier =	bretonnian_virtue_13
-			remove_character_modifier =	bretonnian_virtue_14
-			remove_character_modifier =	bretonnian_virtue_15
-			remove_character_modifier =	bretonnian_virtue_16
-			remove_character_modifier =	bretonnian_virtue_17
-			remove_character_modifier =	bretonnian_virtue_18
-			remove_character_modifier =	bretonnian_virtue_19
+			remove_character_modifier = 	bretonnian_virtue_1
+			remove_character_modifier = 	bretonnian_virtue_2
+			remove_character_modifier = 	bretonnian_virtue_3
+			remove_character_modifier = 	bretonnian_virtue_4
+			remove_character_modifier = 	bretonnian_virtue_5
+			remove_character_modifier = 	bretonnian_virtue_6
+			remove_character_modifier = 	bretonnian_virtue_7
+			remove_character_modifier = 	bretonnian_virtue_8
+			remove_character_modifier = 	bretonnian_virtue_9
+			remove_character_modifier = 	bretonnian_virtue_10
+			remove_character_modifier = 	bretonnian_virtue_11
+			remove_character_modifier = 	bretonnian_virtue_12
+			remove_character_modifier = 	bretonnian_virtue_13
+			remove_character_modifier = 	bretonnian_virtue_14
+			remove_character_modifier = 	bretonnian_virtue_15
+			remove_character_modifier = 	bretonnian_virtue_16
+			remove_character_modifier = 	bretonnian_virtue_17
+			remove_character_modifier = 	bretonnian_virtue_18
+			remove_character_modifier = 	bretonnian_virtue_19
 		}
 	}
-	
-
 }
-

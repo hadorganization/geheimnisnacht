@@ -1,12 +1,10 @@
-###################################
-#
-# THE OLD GODS 
+
+
+# THE OLD GODS
+
 # - Blot Events
-#
-###################################
 
 # Written by Henrik Eklund
-
 namespace = TOG
 
 # You summon your vassals to a Blot
@@ -15,39 +13,57 @@ character_event = {
 	desc = EVTDESC_TOG_600
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
 	hide_from = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_600
 		any_vassal = {
 			limit = {
 				religion = norscan_gods
-				NOT = { is_inaccessible_trigger = yes }
+				NOT = {
+					is_inaccessible_trigger = yes
+				}
 				age = 16
 				prisoner = no
 				war = no
-				NOT = { trait = incapable }
+				NOT = {
+					trait = incapable
+				}
 			}
-			character_event = { id = TOG.601 tooltip = EVTTOOLTIP_TOG_601 }
-			hidden_tooltip = { character_event = { id = TOG.605 days = 10 } }
+			character_event = {
+				id = TOG.601 tooltip = EVTTOOLTIP_TOG_601
+			}
+			hidden_tooltip = {
+				character_event = {
+					id = TOG.605 days = 10
+				}
+			}
 		}
 		any_vassal = {
 			limit = {
 				NOT = {
 					religion = norscan_gods
 				}
-				NOT = { is_inaccessible_trigger = yes }
+				NOT = {
+					is_inaccessible_trigger = yes
+				}
 				age = 16
 				prisoner = no
 				war = no
-				NOT = { trait = incapable }
+				NOT = {
+					trait = incapable
+				}
 			}
-			character_event = { id = TOG.602 tooltip = EVTTOOLTIP_TOG_602 }
+			character_event = {
+				id = TOG.602 tooltip = EVTTOOLTIP_TOG_602
+			}
 		}
-		hidden_tooltip = { character_event = { id = TOG.604 days = 10 } }
+		hidden_tooltip = {
+			character_event = {
+				id = TOG.604 days = 10
+			}
+		}
 	}
 }
 
@@ -57,17 +73,23 @@ character_event = {
 	desc = EVTDESC_TOG_601
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
 
-	trigger =  { NOT = { is_inaccessible_trigger = yes } }
-	
+	trigger = {
+		NOT = {
+			is_inaccessible_trigger = yes
+		}
+	}
+
 	option = {
 		name = EVTOPTA_TOG_601
 		set_character_flag = attending_blot
 		set_character_flag = do_not_disturb
-		
-		hidden_tooltip = { character_event = { id = TOG.699 days = 50 } } # Safety catch flag clearing
+		hidden_tooltip = {
+			character_event = {
+				id = TOG.699 days = 50
+			}
+		} # Safety catch flag clearing
 	}
 }
 
@@ -77,25 +99,30 @@ character_event = {
 	desc = EVTDESC_TOG_602
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
 	hide_from = yes
-	
-	option = { # Pay
+
+	option = {
+		# Pay
 		name = EVTOPTA_TOG_602
 		trigger = {
 			wealth = 5
 		}
 		FROM = {
-			character_event = { id = TOG.603 tooltip = EVTTOOLTIP_TOG_603 }
+			character_event = {
+				id = TOG.603 tooltip = EVTTOOLTIP_TOG_603
+			}
 		}
 		wealth = -5
 	}
-	option = { # Don't pay
+
+	option = {
+		# Don't pay
 		name = EVTOPTB_TOG_602
 		FROM = {
-			character_event = { id = TOG.636 tooltip = EVTTOOLTIP_TOG_636 }
+			character_event = {
+				id = TOG.636 tooltip = EVTTOOLTIP_TOG_636
+			}
 		}
 		tooltip = {
 			FROM = {
@@ -104,7 +131,9 @@ character_event = {
 					who = ROOT
 				}
 				any_vassal = {
-					limit = { has_character_flag = attending_blot }
+					limit = {
+						has_character_flag = attending_blot
+					}
 					opinion = {
 						modifier = opinion_refused_blot
 						who = ROOT
@@ -121,9 +150,8 @@ character_event = {
 	desc = EVTDESC_TOG_603
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_603
 		wealth = 20
@@ -136,9 +164,8 @@ character_event = {
 	desc = EVTDESC_TOG_636
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_636
 	}
@@ -150,47 +177,59 @@ character_event = {
 	desc = EVTDESC_TOG_604
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
 	hide_from = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_604
 		hidden_tooltip = {
 			if = {
-				limit = { 
+				limit = {
 					any_courtier = {
 						prisoner = yes
-						host = { character = ROOT }
+						host = {
+							character = ROOT
+						}
 						age = 16
 					}
 				}
 				random_courtier = {
-					limit = { 
-						prisoner = yes 
-						host = { character = ROOT }
+					limit = {
+						prisoner = yes
+						host = {
+							character = ROOT
+						}
 						age = 16
 					}
-					character_event = { id = TOG.606 days = 5 }
+					character_event = {
+						id = TOG.606 days = 5
+					}
 				}
 			}
 			if = {
-				limit = { 
+				limit = {
 					NOT = {
 						any_courtier = {
 							prisoner = yes
-							host = { character = ROOT }
+							host = {
+								character = ROOT
+							}
 							age = 16
 						}
 					}
 				}
-				character_event = { id = TOG.634 days = 5 }
+				character_event = {
+					id = TOG.634 days = 5
+				}
 			}
 		}
-		custom_tooltip = { text = blot_begins }
+		custom_tooltip = {
+			text = blot_begins
+		}
 		if = {
-			limit = { ai = no }
+			limit = {
+				ai = no
+			}
 			chronicle = {
 				entry = CHRONICLE_HELD_BLOT
 				picture = GFX_evt_viking_throneroom_oldgods
@@ -205,11 +244,9 @@ character_event = {
 	desc = EVTDESC_TOG_605
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
 	hide_from = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_604
 	}
@@ -221,21 +258,31 @@ character_event = {
 	desc = EVTDESC_TOG_606
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_606
 		hidden_tooltip = {
 			if = {
-				limit = { # Generic
+				limit = {
+					# Generic
 					NOT = {
 						sibling = FROM
-						father = { character = FROM }
-						mother = { character = FROM }
-						any_spouse = { character = FROM }
-						any_child = { character = FROM }
-						any_dynasty_member = { character = FROM}
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+						any_spouse = {
+							character = FROM
+						}
+						any_child = {
+							character = FROM
+						}
+						any_dynasty_member = {
+							character = FROM
+						}
 						religion_group = old_world_group
 						religion_group = chaos_gods_group
 						AND = {
@@ -245,130 +292,275 @@ character_event = {
 					}
 				}
 				random_list = {
-					25 = { FROM = { character_event = { id = TOG.610 } } }
-					25 = { FROM = { character_event = { id = TOG.680 } } }
-					25 = { FROM = { character_event = { id = TOG.681 } } }
-					25 = { FROM = { character_event = { id = TOG.682 } } }
+					25 = {
+						FROM = {
+							character_event = {
+								id = TOG.610
+							}
+						}
+					}
+					25 = {
+						FROM = {
+							character_event = {
+								id = TOG.680
+							}
+						}
+					}
+					25 = {
+						FROM = {
+							character_event = {
+								id = TOG.681
+							}
+						}
+					}
+					25 = {
+						FROM = {
+							character_event = {
+								id = TOG.682
+							}
+						}
+					}
 				}
 			}
 			if = {
-				limit = { # Old World pantheon
+				limit = {
+					# Old World pantheon
 					religion_group = old_world_group
 					NOT = {
 						sibling = FROM
-						father = { character = FROM }
-						mother = { character = FROM }
-						any_spouse = { character = FROM }
-						any_child = { character = FROM }
-						any_dynasty_member = { character = FROM}
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+						any_spouse = {
+							character = FROM
+						}
+						any_child = {
+							character = FROM
+						}
+						any_dynasty_member = {
+							character = FROM
+						}
 					}
 				}
-				FROM = { character_event = { id = TOG.611 } }
+				FROM = {
+					character_event = {
+						id = TOG.611
+					}
+				}
 			}
 			if = {
-				limit = { # Dark Gods
+				limit = {
+					# Dark Gods
 					religion_group = chaos_gods_group
 					NOT = {
 						sibling = FROM
-						father = { character = FROM }
-						mother = { character = FROM }
-						any_spouse = { character = FROM }
-						any_child = { character = FROM }
-						any_dynasty_member = { character = FROM}
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+						any_spouse = {
+							character = FROM
+						}
+						any_child = {
+							character = FROM
+						}
+						any_dynasty_member = {
+							character = FROM
+						}
 					}
 				}
-				FROM = { character_event = { id = TOG.612 } }
+				FROM = {
+					character_event = {
+						id = TOG.612
+					}
+				}
 			}
 			if = {
-				limit = { # Brother
+				limit = {
+					# Brother
 					sibling = FROM
 					is_female = no
 				}
-				FROM = { character_event = { id = TOG.613 } }
+				FROM = {
+					character_event = {
+						id = TOG.613
+					}
+				}
 			}
 			if = {
-				limit = { # Sister
+				limit = {
+					# Sister
 					sibling = FROM
 					is_female = yes
 				}
-				FROM = { character_event = { id = TOG.614 } }
-			}
-			if = {
-				limit = { # Father
-					any_child = { character = FROM }
-					is_female = no
+				FROM = {
+					character_event = {
+						id = TOG.614
+					}
 				}
-				FROM = { character_event = { id = TOG.615 } }
 			}
 			if = {
-				limit = { # Mother
-					any_child = { character = FROM }
-					is_female = yes
-				}
-				FROM = { character_event = { id = TOG.616 } }
-			}
-			if = {
-				limit = { # Son
-					OR = {
-						father = { character = FROM }
-						mother = { character = FROM }
+				limit = {
+					# Father
+					any_child = {
+						character = FROM
 					}
 					is_female = no
 				}
-				FROM = { character_event = { id = TOG.617 } }
+				FROM = {
+					character_event = {
+						id = TOG.615
+					}
+				}
 			}
 			if = {
-				limit = { # Daughter
-					OR = {
-						father = { character = FROM }
-						mother = { character = FROM }
+				limit = {
+					# Mother
+					any_child = {
+						character = FROM
 					}
 					is_female = yes
 				}
-				FROM = { character_event = { id = TOG.618 } }
-			}
-			if = {
-				limit = { # Kin
-					any_dynasty_member = { character = FROM}
-					NOT = {
-						sibling = FROM
-						father = { character = FROM }
-						mother = { character = FROM }
-						any_spouse = { character = FROM }
-						any_child = { character = FROM }
+				FROM = {
+					character_event = {
+						id = TOG.616
 					}
 				}
-				FROM = { character_event = { id = TOG.619 } }
 			}
 			if = {
-				limit = { # Spouse
-					any_spouse = { character = FROM }
-					NOT = {
-						sibling = FROM
-						father = { character = FROM }
-						mother = { character = FROM }
-						any_child = { character = FROM }
-						any_dynasty_member = { character = FROM}
+				limit = {
+					# Son
+					OR = {
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+					}
+					is_female = no
+				}
+				FROM = {
+					character_event = {
+						id = TOG.617
 					}
 				}
-				FROM = { character_event = { id = TOG.620 } }
 			}
 			if = {
-				limit = { # Lizardman
+				limit = {
+					# Daughter
+					OR = {
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+					}
+					is_female = yes
+				}
+				FROM = {
+					character_event = {
+						id = TOG.618
+					}
+				}
+			}
+			if = {
+				limit = {
+					# Kin
+					any_dynasty_member = {
+						character = FROM
+					}
+					NOT = {
+						sibling = FROM
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+						any_spouse = {
+							character = FROM
+						}
+						any_child = {
+							character = FROM
+						}
+					}
+				}
+				FROM = {
+					character_event = {
+						id = TOG.619
+					}
+				}
+			}
+			if = {
+				limit = {
+					# Spouse
+					any_spouse = {
+						character = FROM
+					}
+					NOT = {
+						sibling = FROM
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+						any_child = {
+							character = FROM
+						}
+						any_dynasty_member = {
+							character = FROM
+						}
+					}
+				}
+				FROM = {
+					character_event = {
+						id = TOG.620
+					}
+				}
+			}
+			if = {
+				limit = {
+					# Lizardman
 					religion = old_ones
 					culture_group = lizardman_group
 					NOT = {
 						sibling = FROM
-						father = { character = FROM }
-						mother = { character = FROM }
-						any_spouse = { character = FROM }
-						any_child = { character = FROM }
-						any_dynasty_member = { character = FROM}
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+						any_spouse = {
+							character = FROM
+						}
+						any_child = {
+							character = FROM
+						}
+						any_dynasty_member = {
+							character = FROM
+						}
 					}
 				}
-				FROM = { character_event = { id = TOG.621 } }
+				FROM = {
+					character_event = {
+						id = TOG.621
+					}
+				}
 			}
-			FROM = { character_event = { id = TOG.645 } }
+			FROM = {
+				character_event = {
+					id = TOG.645
+				}
+			}
 		}
 	}
 }
@@ -379,21 +571,31 @@ character_event = {
 	desc = EVTDESC_TOG_606
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_606
 		hidden_tooltip = {
 			if = {
-				limit = { # Generic
+				limit = {
+					# Generic
 					NOT = {
 						sibling = FROM
-						father = { character = FROM }
-						mother = { character = FROM }
-						any_spouse = { character = FROM }
-						any_child = { character = FROM }
-						any_dynasty_member = { character = FROM}
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+						any_spouse = {
+							character = FROM
+						}
+						any_child = {
+							character = FROM
+						}
+						any_dynasty_member = {
+							character = FROM
+						}
 						religion_group = old_world_group
 						religion_group = chaos_gods_group
 						AND = {
@@ -403,130 +605,275 @@ character_event = {
 					}
 				}
 				random_list = {
-					25 = { FROM = { character_event = { id = TOG.610 } } }
-					25 = { FROM = { character_event = { id = TOG.680 } } }
-					25 = { FROM = { character_event = { id = TOG.681 } } }
-					25 = { FROM = { character_event = { id = TOG.682 } } }
+					25 = {
+						FROM = {
+							character_event = {
+								id = TOG.610
+							}
+						}
+					}
+					25 = {
+						FROM = {
+							character_event = {
+								id = TOG.680
+							}
+						}
+					}
+					25 = {
+						FROM = {
+							character_event = {
+								id = TOG.681
+							}
+						}
+					}
+					25 = {
+						FROM = {
+							character_event = {
+								id = TOG.682
+							}
+						}
+					}
 				}
 			}
 			if = {
-				limit = { # Old World pantheon
+				limit = {
+					# Old World pantheon
 					religion_group = old_world_group
 					NOT = {
 						sibling = FROM
-						father = { character = FROM }
-						mother = { character = FROM }
-						any_spouse = { character = FROM }
-						any_child = { character = FROM }
-						any_dynasty_member = { character = FROM}
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+						any_spouse = {
+							character = FROM
+						}
+						any_child = {
+							character = FROM
+						}
+						any_dynasty_member = {
+							character = FROM
+						}
 					}
 				}
-				FROM = { character_event = { id = TOG.611 } }
+				FROM = {
+					character_event = {
+						id = TOG.611
+					}
+				}
 			}
 			if = {
-				limit = { # Dark Gods
+				limit = {
+					# Dark Gods
 					religion_group = chaos_gods_group
 					NOT = {
 						sibling = FROM
-						father = { character = FROM }
-						mother = { character = FROM }
-						any_spouse = { character = FROM }
-						any_child = { character = FROM }
-						any_dynasty_member = { character = FROM}
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+						any_spouse = {
+							character = FROM
+						}
+						any_child = {
+							character = FROM
+						}
+						any_dynasty_member = {
+							character = FROM
+						}
 					}
 				}
-				FROM = { character_event = { id = TOG.612 } }
+				FROM = {
+					character_event = {
+						id = TOG.612
+					}
+				}
 			}
 			if = {
-				limit = { # Brother
+				limit = {
+					# Brother
 					sibling = FROM
 					is_female = no
 				}
-				FROM = { character_event = { id = TOG.613 } }
+				FROM = {
+					character_event = {
+						id = TOG.613
+					}
+				}
 			}
 			if = {
-				limit = { # Sister
+				limit = {
+					# Sister
 					sibling = FROM
 					is_female = yes
 				}
-				FROM = { character_event = { id = TOG.614 } }
-			}
-			if = {
-				limit = { # Father
-					any_child = { character = FROM }
-					is_female = no
+				FROM = {
+					character_event = {
+						id = TOG.614
+					}
 				}
-				FROM = { character_event = { id = TOG.615 } }
 			}
 			if = {
-				limit = { # Mother
-					any_child = { character = FROM }
-					is_female = yes
-				}
-				FROM = { character_event = { id = TOG.616 } }
-			}
-			if = {
-				limit = { # Son
-					OR = {
-						father = { character = FROM }
-						mother = { character = FROM }
+				limit = {
+					# Father
+					any_child = {
+						character = FROM
 					}
 					is_female = no
 				}
-				FROM = { character_event = { id = TOG.617 } }
+				FROM = {
+					character_event = {
+						id = TOG.615
+					}
+				}
 			}
 			if = {
-				limit = { # Daughter
-					OR = {
-						father = { character = FROM }
-						mother = { character = FROM }
+				limit = {
+					# Mother
+					any_child = {
+						character = FROM
 					}
 					is_female = yes
 				}
-				FROM = { character_event = { id = TOG.618 } }
-			}
-			if = {
-				limit = { # Kin
-					any_dynasty_member = { character = FROM}
-					NOT = {
-						sibling = FROM
-						father = { character = FROM }
-						mother = { character = FROM }
-						any_spouse = { character = FROM }
-						any_child = { character = FROM }
+				FROM = {
+					character_event = {
+						id = TOG.616
 					}
 				}
-				FROM = { character_event = { id = TOG.619 } }
 			}
 			if = {
-				limit = { # Spouse
-					any_spouse = { character = FROM }
-					NOT = {
-						sibling = FROM
-						father = { character = FROM }
-						mother = { character = FROM }
-						any_child = { character = FROM }
-						any_dynasty_member = { character = FROM}
+				limit = {
+					# Son
+					OR = {
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+					}
+					is_female = no
+				}
+				FROM = {
+					character_event = {
+						id = TOG.617
 					}
 				}
-				FROM = { character_event = { id = TOG.620 } }
 			}
 			if = {
-				limit = { # Lizardman
+				limit = {
+					# Daughter
+					OR = {
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+					}
+					is_female = yes
+				}
+				FROM = {
+					character_event = {
+						id = TOG.618
+					}
+				}
+			}
+			if = {
+				limit = {
+					# Kin
+					any_dynasty_member = {
+						character = FROM
+					}
+					NOT = {
+						sibling = FROM
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+						any_spouse = {
+							character = FROM
+						}
+						any_child = {
+							character = FROM
+						}
+					}
+				}
+				FROM = {
+					character_event = {
+						id = TOG.619
+					}
+				}
+			}
+			if = {
+				limit = {
+					# Spouse
+					any_spouse = {
+						character = FROM
+					}
+					NOT = {
+						sibling = FROM
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+						any_child = {
+							character = FROM
+						}
+						any_dynasty_member = {
+							character = FROM
+						}
+					}
+				}
+				FROM = {
+					character_event = {
+						id = TOG.620
+					}
+				}
+			}
+			if = {
+				limit = {
+					# Lizardman
 					religion = old_ones
 					culture_group = lizardman_group
 					NOT = {
 						sibling = FROM
-						father = { character = FROM }
-						mother = { character = FROM }
-						any_spouse = { character = FROM }
-						any_child = { character = FROM }
-						any_dynasty_member = { character = FROM}
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+						any_spouse = {
+							character = FROM
+						}
+						any_child = {
+							character = FROM
+						}
+						any_dynasty_member = {
+							character = FROM
+						}
 					}
 				}
-				FROM = { character_event = { id = TOG.621 } }
+				FROM = {
+					character_event = {
+						id = TOG.621
+					}
+				}
 			}
-			FROM = { character_event = { id = TOG.646 } }
+			FROM = {
+				character_event = {
+					id = TOG.646
+				}
+			}
 		}
 	}
 }
@@ -537,21 +884,31 @@ character_event = {
 	desc = EVTDESC_TOG_606
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_606
 		hidden_tooltip = {
 			if = {
-				limit = { # Generic
+				limit = {
+					# Generic
 					NOT = {
 						sibling = FROM
-						father = { character = FROM }
-						mother = { character = FROM }
-						any_spouse = { character = FROM }
-						any_child = { character = FROM }
-						any_dynasty_member = { character = FROM}
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+						any_spouse = {
+							character = FROM
+						}
+						any_child = {
+							character = FROM
+						}
+						any_dynasty_member = {
+							character = FROM
+						}
 						religion_group = old_world_group
 						religion_group = chaos_gods_group
 						AND = {
@@ -561,130 +918,275 @@ character_event = {
 					}
 				}
 				random_list = {
-					25 = { FROM = { character_event = { id = TOG.610 } } }
-					25 = { FROM = { character_event = { id = TOG.680 } } }
-					25 = { FROM = { character_event = { id = TOG.681 } } }
-					25 = { FROM = { character_event = { id = TOG.682 } } }
+					25 = {
+						FROM = {
+							character_event = {
+								id = TOG.610
+							}
+						}
+					}
+					25 = {
+						FROM = {
+							character_event = {
+								id = TOG.680
+							}
+						}
+					}
+					25 = {
+						FROM = {
+							character_event = {
+								id = TOG.681
+							}
+						}
+					}
+					25 = {
+						FROM = {
+							character_event = {
+								id = TOG.682
+							}
+						}
+					}
 				}
 			}
 			if = {
-				limit = { # Old World pantheon
+				limit = {
+					# Old World pantheon
 					religion_group = old_world_group
 					NOT = {
 						sibling = FROM
-						father = { character = FROM }
-						mother = { character = FROM }
-						any_spouse = { character = FROM }
-						any_child = { character = FROM }
-						any_dynasty_member = { character = FROM}
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+						any_spouse = {
+							character = FROM
+						}
+						any_child = {
+							character = FROM
+						}
+						any_dynasty_member = {
+							character = FROM
+						}
 					}
 				}
-				FROM = { character_event = { id = TOG.611 } }
+				FROM = {
+					character_event = {
+						id = TOG.611
+					}
+				}
 			}
 			if = {
-				limit = { # Dark Gods
+				limit = {
+					# Dark Gods
 					religion_group = chaos_gods_group
 					NOT = {
 						sibling = FROM
-						father = { character = FROM }
-						mother = { character = FROM }
-						any_spouse = { character = FROM }
-						any_child = { character = FROM }
-						any_dynasty_member = { character = FROM}
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+						any_spouse = {
+							character = FROM
+						}
+						any_child = {
+							character = FROM
+						}
+						any_dynasty_member = {
+							character = FROM
+						}
 					}
 				}
-				FROM = { character_event = { id = TOG.612 } }
+				FROM = {
+					character_event = {
+						id = TOG.612
+					}
+				}
 			}
 			if = {
-				limit = { # Brother
+				limit = {
+					# Brother
 					sibling = FROM
 					is_female = no
 				}
-				FROM = { character_event = { id = TOG.613 } }
+				FROM = {
+					character_event = {
+						id = TOG.613
+					}
+				}
 			}
 			if = {
-				limit = { # Sister
+				limit = {
+					# Sister
 					sibling = FROM
 					is_female = yes
 				}
-				FROM = { character_event = { id = TOG.614 } }
-			}
-			if = {
-				limit = { # Father
-					any_child = { character = FROM }
-					is_female = no
+				FROM = {
+					character_event = {
+						id = TOG.614
+					}
 				}
-				FROM = { character_event = { id = TOG.615 } }
 			}
 			if = {
-				limit = { # Mother
-					any_child = { character = FROM }
-					is_female = yes
-				}
-				FROM = { character_event = { id = TOG.616 } }
-			}
-			if = {
-				limit = { # Son
-					OR = {
-						father = { character = FROM }
-						mother = { character = FROM }
+				limit = {
+					# Father
+					any_child = {
+						character = FROM
 					}
 					is_female = no
 				}
-				FROM = { character_event = { id = TOG.617 } }
+				FROM = {
+					character_event = {
+						id = TOG.615
+					}
+				}
 			}
 			if = {
-				limit = { # Daughter
-					OR = {
-						father = { character = FROM }
-						mother = { character = FROM }
+				limit = {
+					# Mother
+					any_child = {
+						character = FROM
 					}
 					is_female = yes
 				}
-				FROM = { character_event = { id = TOG.618 } }
-			}
-			if = {
-				limit = { # Kin
-					any_dynasty_member = { character = FROM}
-					NOT = {
-						sibling = FROM
-						father = { character = FROM }
-						mother = { character = FROM }
-						any_spouse = { character = FROM }
-						any_child = { character = FROM }
+				FROM = {
+					character_event = {
+						id = TOG.616
 					}
 				}
-				FROM = { character_event = { id = TOG.619 } }
 			}
 			if = {
-				limit = { # Spouse
-					any_spouse = { character = FROM }
-					NOT = {
-						sibling = FROM
-						father = { character = FROM }
-						mother = { character = FROM }
-						any_child = { character = FROM }
-						any_dynasty_member = { character = FROM}
+				limit = {
+					# Son
+					OR = {
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+					}
+					is_female = no
+				}
+				FROM = {
+					character_event = {
+						id = TOG.617
 					}
 				}
-				FROM = { character_event = { id = TOG.620 } }
 			}
 			if = {
-				limit = { # Lizardman
+				limit = {
+					# Daughter
+					OR = {
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+					}
+					is_female = yes
+				}
+				FROM = {
+					character_event = {
+						id = TOG.618
+					}
+				}
+			}
+			if = {
+				limit = {
+					# Kin
+					any_dynasty_member = {
+						character = FROM
+					}
+					NOT = {
+						sibling = FROM
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+						any_spouse = {
+							character = FROM
+						}
+						any_child = {
+							character = FROM
+						}
+					}
+				}
+				FROM = {
+					character_event = {
+						id = TOG.619
+					}
+				}
+			}
+			if = {
+				limit = {
+					# Spouse
+					any_spouse = {
+						character = FROM
+					}
+					NOT = {
+						sibling = FROM
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+						any_child = {
+							character = FROM
+						}
+						any_dynasty_member = {
+							character = FROM
+						}
+					}
+				}
+				FROM = {
+					character_event = {
+						id = TOG.620
+					}
+				}
+			}
+			if = {
+				limit = {
+					# Lizardman
 					religion = old_ones
 					culture_group = lizardman_group
 					NOT = {
 						sibling = FROM
-						father = { character = FROM }
-						mother = { character = FROM }
-						any_spouse = { character = FROM }
-						any_child = { character = FROM }
-						any_dynasty_member = { character = FROM}
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+						any_spouse = {
+							character = FROM
+						}
+						any_child = {
+							character = FROM
+						}
+						any_dynasty_member = {
+							character = FROM
+						}
 					}
 				}
-				FROM = { character_event = { id = TOG.621 } }
+				FROM = {
+					character_event = {
+						id = TOG.621
+					}
+				}
 			}
-			FROM = { character_event = { id = TOG.647 } }
+			FROM = {
+				character_event = {
+					id = TOG.647
+				}
+			}
 		}
 	}
 }
@@ -695,21 +1197,31 @@ character_event = {
 	desc = EVTDESC_TOG_606
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_606
 		hidden_tooltip = {
 			if = {
-				limit = { # Generic
+				limit = {
+					# Generic
 					NOT = {
 						sibling = FROM
-						father = { character = FROM }
-						mother = { character = FROM }
-						any_spouse = { character = FROM }
-						any_child = { character = FROM }
-						any_dynasty_member = { character = FROM}
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+						any_spouse = {
+							character = FROM
+						}
+						any_child = {
+							character = FROM
+						}
+						any_dynasty_member = {
+							character = FROM
+						}
 						religion_group = old_world_group
 						religion_group = chaos_gods_group
 						AND = {
@@ -719,130 +1231,275 @@ character_event = {
 					}
 				}
 				random_list = {
-					25 = { FROM = { character_event = { id = TOG.610 } } }
-					25 = { FROM = { character_event = { id = TOG.680 } } }
-					25 = { FROM = { character_event = { id = TOG.681 } } }
-					25 = { FROM = { character_event = { id = TOG.682 } } }
+					25 = {
+						FROM = {
+							character_event = {
+								id = TOG.610
+							}
+						}
+					}
+					25 = {
+						FROM = {
+							character_event = {
+								id = TOG.680
+							}
+						}
+					}
+					25 = {
+						FROM = {
+							character_event = {
+								id = TOG.681
+							}
+						}
+					}
+					25 = {
+						FROM = {
+							character_event = {
+								id = TOG.682
+							}
+						}
+					}
 				}
 			}
 			if = {
-				limit = { # Old World pantheon
+				limit = {
+					# Old World pantheon
 					religion_group = old_world_group
 					NOT = {
 						sibling = FROM
-						father = { character = FROM }
-						mother = { character = FROM }
-						any_spouse = { character = FROM }
-						any_child = { character = FROM }
-						any_dynasty_member = { character = FROM}
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+						any_spouse = {
+							character = FROM
+						}
+						any_child = {
+							character = FROM
+						}
+						any_dynasty_member = {
+							character = FROM
+						}
 					}
 				}
-				FROM = { character_event = { id = TOG.611 } }
+				FROM = {
+					character_event = {
+						id = TOG.611
+					}
+				}
 			}
 			if = {
-				limit = { # Dark Gods
+				limit = {
+					# Dark Gods
 					religion_group = chaos_gods_group
 					NOT = {
 						sibling = FROM
-						father = { character = FROM }
-						mother = { character = FROM }
-						any_spouse = { character = FROM }
-						any_child = { character = FROM }
-						any_dynasty_member = { character = FROM}
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+						any_spouse = {
+							character = FROM
+						}
+						any_child = {
+							character = FROM
+						}
+						any_dynasty_member = {
+							character = FROM
+						}
 					}
 				}
-				FROM = { character_event = { id = TOG.612 } }
+				FROM = {
+					character_event = {
+						id = TOG.612
+					}
+				}
 			}
 			if = {
-				limit = { # Brother
+				limit = {
+					# Brother
 					sibling = FROM
 					is_female = no
 				}
-				FROM = { character_event = { id = TOG.613 } }
+				FROM = {
+					character_event = {
+						id = TOG.613
+					}
+				}
 			}
 			if = {
-				limit = { # Sister
+				limit = {
+					# Sister
 					sibling = FROM
 					is_female = yes
 				}
-				FROM = { character_event = { id = TOG.614 } }
-			}
-			if = {
-				limit = { # Father
-					any_child = { character = FROM }
-					is_female = no
+				FROM = {
+					character_event = {
+						id = TOG.614
+					}
 				}
-				FROM = { character_event = { id = TOG.615 } }
 			}
 			if = {
-				limit = { # Mother
-					any_child = { character = FROM }
-					is_female = yes
-				}
-				FROM = { character_event = { id = TOG.616 } }
-			}
-			if = {
-				limit = { # Son
-					OR = {
-						father = { character = FROM }
-						mother = { character = FROM }
+				limit = {
+					# Father
+					any_child = {
+						character = FROM
 					}
 					is_female = no
 				}
-				FROM = { character_event = { id = TOG.617 } }
+				FROM = {
+					character_event = {
+						id = TOG.615
+					}
+				}
 			}
 			if = {
-				limit = { # Daughter
-					OR = {
-						father = { character = FROM }
-						mother = { character = FROM }
+				limit = {
+					# Mother
+					any_child = {
+						character = FROM
 					}
 					is_female = yes
 				}
-				FROM = { character_event = { id = TOG.618 } }
-			}
-			if = {
-				limit = { # Kin
-					any_dynasty_member = { character = FROM}
-					NOT = {
-						sibling = FROM
-						father = { character = FROM }
-						mother = { character = FROM }
-						any_spouse = { character = FROM }
-						any_child = { character = FROM }
+				FROM = {
+					character_event = {
+						id = TOG.616
 					}
 				}
-				FROM = { character_event = { id = TOG.619 } }
 			}
 			if = {
-				limit = { # Spouse
-					any_spouse = { character = FROM }
-					NOT = {
-						sibling = FROM
-						father = { character = FROM }
-						mother = { character = FROM }
-						any_child = { character = FROM }
-						any_dynasty_member = { character = FROM}
+				limit = {
+					# Son
+					OR = {
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+					}
+					is_female = no
+				}
+				FROM = {
+					character_event = {
+						id = TOG.617
 					}
 				}
-				FROM = { character_event = { id = TOG.620 } }
 			}
 			if = {
-				limit = { # Lizardman
+				limit = {
+					# Daughter
+					OR = {
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+					}
+					is_female = yes
+				}
+				FROM = {
+					character_event = {
+						id = TOG.618
+					}
+				}
+			}
+			if = {
+				limit = {
+					# Kin
+					any_dynasty_member = {
+						character = FROM
+					}
+					NOT = {
+						sibling = FROM
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+						any_spouse = {
+							character = FROM
+						}
+						any_child = {
+							character = FROM
+						}
+					}
+				}
+				FROM = {
+					character_event = {
+						id = TOG.619
+					}
+				}
+			}
+			if = {
+				limit = {
+					# Spouse
+					any_spouse = {
+						character = FROM
+					}
+					NOT = {
+						sibling = FROM
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+						any_child = {
+							character = FROM
+						}
+						any_dynasty_member = {
+							character = FROM
+						}
+					}
+				}
+				FROM = {
+					character_event = {
+						id = TOG.620
+					}
+				}
+			}
+			if = {
+				limit = {
+					# Lizardman
 					religion = old_ones
 					culture_group = lizardman_group
 					NOT = {
 						sibling = FROM
-						father = { character = FROM }
-						mother = { character = FROM }
-						any_spouse = { character = FROM }
-						any_child = { character = FROM }
-						any_dynasty_member = { character = FROM}
+						father = {
+							character = FROM
+						}
+						mother = {
+							character = FROM
+						}
+						any_spouse = {
+							character = FROM
+						}
+						any_child = {
+							character = FROM
+						}
+						any_dynasty_member = {
+							character = FROM
+						}
 					}
 				}
-				FROM = { character_event = { id = TOG.621 } }
+				FROM = {
+					character_event = {
+						id = TOG.621
+					}
+				}
 			}
-			FROM = { character_event = { id = TOG.640 days = 5 } }
+			FROM = {
+				character_event = {
+					id = TOG.640 days = 5
+				}
+			}
 		}
 	}
 }
@@ -853,19 +1510,18 @@ character_event = {
 	desc = EVTDESC_TOG_610
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_610
 		FROM = {
 			if = {
-			 limit = {
-				is_invincible_trigger = yes
-			 }
+				limit = {
+					is_invincible_trigger = yes
 
+				}
 				antideath_effect = yes
-				break = yes 
+				break = yes
 			}
 			death = {
 				death_reason = death_sacrificed_norse
@@ -874,19 +1530,23 @@ character_event = {
 		}
 		hidden_tooltip = {
 			any_vassal = {
-				limit = { has_character_flag = attending_blot }
-				character_event = { id = TOG.622 }
+				limit = {
+					has_character_flag = attending_blot
+				}
+				character_event = {
+					id = TOG.622
+				}
 			}
 			# if = {
-				# limit = {
-					# FROM = { 
-						# controls_religion = yes
-						# NOT = { religion = norse_pagan_reformed }
-					# }
-					# ai = no
-					# NOT = { has_character_flag = achievement_holy_smoke }
-				# }
-				# set_character_flag = achievement_holy_smoke
+			# limit = {
+			# FROM = {
+			# controls_religion = yes
+			# NOT = { religion = norse_pagan_reformed }
+			# }
+			# ai = no
+			# NOT = { has_character_flag = achievement_holy_smoke }
+			# }
+			# set_character_flag = achievement_holy_smoke
 			# }
 		}
 		if = {
@@ -897,16 +1557,27 @@ character_event = {
 			}
 			prestige = 250
 			piety = 100
-			religion_authority = { modifier = sacrificed_head_good years = 20 }
-			FROM = { religion_authority = { modifier = sacrificed_head_bad years = 20 } }
+			religion_authority = {
+				modifier = sacrificed_head_good years = 20
+			}
+			FROM = {
+				religion_authority = {
+					modifier = sacrificed_head_bad years = 20
+				}
+			}
 			break = yes
 		}
 		prestige = 25
 		piety = 15
 	}
+
 	option = {
 		name = EVTOPTB_TOG_610
-		FROM = { character_event = { id = TOG.637 tooltip = EVTTOOLTIP_TOG_637 } }
+		FROM = {
+			character_event = {
+				id = TOG.637 tooltip = EVTTOOLTIP_TOG_637
+			}
+		}
 		piety = -25
 	}
 }
@@ -917,23 +1588,23 @@ character_event = {
 	desc = EVTDESC_TOG_611
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		trigger = {
-			FROM = { controls_religion = no }
+			FROM = {
+				controls_religion = no
+			}
 		}
 		name = EVTOPTA_TOG_611
 		FROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
 			death = {
 				death_reason = death_sacrificed_norse
 				killer = ROOT
@@ -941,20 +1612,29 @@ character_event = {
 		}
 		hidden_tooltip = {
 			any_vassal = {
-				limit = { has_character_flag = attending_blot }
-				character_event = { id = TOG.623 }
+				limit = {
+					has_character_flag = attending_blot
+				}
+				character_event = {
+					id = TOG.623
+				}
 			}
 		}
 		prestige = 50
 		piety = 25
 	}
+
 	option = {
 		trigger = {
-			FROM = { controls_religion = yes }
+			FROM = {
+				controls_religion = yes
+			}
 		}
 		name = EVTOPTA_TOG_611_Pope
 		FROM = {
-			religion_authority = { modifier = sacrificed_head_bad years = 20 }
+			religion_authority = {
+				modifier = sacrificed_head_bad years = 20
+			}
 			death = {
 				death_reason = death_sacrificed_norse
 				killer = ROOT
@@ -962,25 +1642,40 @@ character_event = {
 		}
 		hidden_tooltip = {
 			any_vassal = {
-				limit = { has_character_flag = attending_blot }
-				character_event = { id = TOG.623 }
+				limit = {
+					has_character_flag = attending_blot
+				}
+				character_event = {
+					id = TOG.623
+				}
 			}
 			if = {
 				limit = {
-					FROM = { controls_religion = yes }
+					FROM = {
+						controls_religion = yes
+					}
 					ai = no
-					NOT = { has_character_flag = achievement_holy_smoke }
+					NOT = {
+						has_character_flag = achievement_holy_smoke
+					}
 				}
 				set_character_flag = achievement_holy_smoke
 			}
 		}
 		prestige = 250
 		piety = 100
-		religion_authority = { modifier = sacrificed_head_good years = 20 }
+		religion_authority = {
+			modifier = sacrificed_head_good years = 20
+		}
 	}
+
 	option = {
 		name = EVTOPTB_TOG_611
-		FROM = { character_event = { id = TOG.637 tooltip = EVTTOOLTIP_TOG_637 } }
+		FROM = {
+			character_event = {
+				id = TOG.637 tooltip = EVTTOOLTIP_TOG_637
+			}
+		}
 		piety = -50
 	}
 }
@@ -991,20 +1686,18 @@ character_event = {
 	desc = EVTDESC_TOG_612
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_612
 		FROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
 			death = {
 				death_reason = death_sacrificed_norse
 				killer = ROOT
@@ -1012,14 +1705,22 @@ character_event = {
 		}
 		hidden_tooltip = {
 			any_vassal = {
-				limit = { has_character_flag = attending_blot }
-				character_event = { id = TOG.624 }
+				limit = {
+					has_character_flag = attending_blot
+				}
+				character_event = {
+					id = TOG.624
+				}
 			}
 			if = {
 				limit = {
-					FROM = { controls_religion = yes }
+					FROM = {
+						controls_religion = yes
+					}
 					ai = no
-					NOT = { has_character_flag = achievement_holy_smoke }
+					NOT = {
+						has_character_flag = achievement_holy_smoke
+					}
 				}
 				set_character_flag = achievement_holy_smoke
 			}
@@ -1027,9 +1728,14 @@ character_event = {
 		prestige = 50
 		piety = 25
 	}
+
 	option = {
 		name = EVTOPTB_TOG_612
-		FROM = { character_event = { id = TOG.637 tooltip = EVTTOOLTIP_TOG_637 } }
+		FROM = {
+			character_event = {
+				id = TOG.637 tooltip = EVTTOOLTIP_TOG_637
+			}
+		}
 		piety = -50
 	}
 }
@@ -1040,20 +1746,18 @@ character_event = {
 	desc = EVTDESC_TOG_613
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_613
 		FROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
 			death = {
 				death_reason = death_sacrificed_norse
 				killer = ROOT
@@ -1061,18 +1765,29 @@ character_event = {
 		}
 		add_trait = kinslayer
 		hidden_tooltip = {
-			character_event = { id = 38287 } #Notify Kinslayer
+			character_event = {
+				id = 38287
+			} # Notify Kinslayer
 			any_vassal = {
-				limit = { has_character_flag = attending_blot }
-				character_event = { id = TOG.625 }
+				limit = {
+					has_character_flag = attending_blot
+				}
+				character_event = {
+					id = TOG.625
+				}
 			}
 		}
 		prestige = 25
 		piety = 15
 	}
+
 	option = {
 		name = EVTOPTB_TOG_613
-		FROM = { character_event = { id = TOG.637 tooltip = EVTTOOLTIP_TOG_637 } }
+		FROM = {
+			character_event = {
+				id = TOG.637 tooltip = EVTTOOLTIP_TOG_637
+			}
+		}
 		piety = -25
 	}
 }
@@ -1083,20 +1798,18 @@ character_event = {
 	desc = EVTDESC_TOG_614
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_614
 		FROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
 			death = {
 				death_reason = death_sacrificed_norse
 				killer = ROOT
@@ -1104,18 +1817,29 @@ character_event = {
 		}
 		add_trait = kinslayer
 		hidden_tooltip = {
-			character_event = { id = 38287 } #Notify Kinslayer
+			character_event = {
+				id = 38287
+			} # Notify Kinslayer
 			any_vassal = {
-				limit = { has_character_flag = attending_blot }
-				character_event = { id = TOG.626 }
+				limit = {
+					has_character_flag = attending_blot
+				}
+				character_event = {
+					id = TOG.626
+				}
 			}
 		}
 		prestige = 25
 		piety = 15
 	}
+
 	option = {
 		name = EVTOPTB_TOG_614
-		FROM = { character_event = { id = TOG.637 tooltip = EVTTOOLTIP_TOG_637 } }
+		FROM = {
+			character_event = {
+				id = TOG.637 tooltip = EVTTOOLTIP_TOG_637
+			}
+		}
 		piety = -25
 	}
 }
@@ -1126,20 +1850,18 @@ character_event = {
 	desc = EVTDESC_TOG_615
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_615
 		FROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
 			death = {
 				death_reason = death_sacrificed_norse
 				killer = ROOT
@@ -1147,18 +1869,29 @@ character_event = {
 		}
 		add_trait = kinslayer
 		hidden_tooltip = {
-			character_event = { id = 38287 } #Notify Kinslayer
+			character_event = {
+				id = 38287
+			} # Notify Kinslayer
 			any_vassal = {
-				limit = { has_character_flag = attending_blot }
-				character_event = { id = TOG.627 }
+				limit = {
+					has_character_flag = attending_blot
+				}
+				character_event = {
+					id = TOG.627
+				}
 			}
 		}
 		prestige = 25
 		piety = 15
 	}
+
 	option = {
 		name = EVTOPTB_TOG_615
-		FROM = { character_event = { id = TOG.637 tooltip = EVTTOOLTIP_TOG_637 } }
+		FROM = {
+			character_event = {
+				id = TOG.637 tooltip = EVTTOOLTIP_TOG_637
+			}
+		}
 		piety = -25
 	}
 }
@@ -1169,20 +1902,18 @@ character_event = {
 	desc = EVTDESC_TOG_616
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_616
 		FROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
 			death = {
 				death_reason = death_sacrificed_norse
 				killer = ROOT
@@ -1190,18 +1921,29 @@ character_event = {
 		}
 		add_trait = kinslayer
 		hidden_tooltip = {
-			character_event = { id = 38287 } #Notify Kinslayer
+			character_event = {
+				id = 38287
+			} # Notify Kinslayer
 			any_vassal = {
-				limit = { has_character_flag = attending_blot }
-				character_event = { id = TOG.628 }
+				limit = {
+					has_character_flag = attending_blot
+				}
+				character_event = {
+					id = TOG.628
+				}
 			}
 		}
 		prestige = 25
 		piety = 15
 	}
+
 	option = {
 		name = EVTOPTB_TOG_616
-		FROM = { character_event = { id = TOG.637 tooltip = EVTTOOLTIP_TOG_637 } }
+		FROM = {
+			character_event = {
+				id = TOG.637 tooltip = EVTTOOLTIP_TOG_637
+			}
+		}
 		piety = -25
 	}
 }
@@ -1212,20 +1954,18 @@ character_event = {
 	desc = EVTDESC_TOG_617
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_617
 		FROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
 			death = {
 				death_reason = death_sacrificed_norse
 				killer = ROOT
@@ -1233,18 +1973,29 @@ character_event = {
 		}
 		add_trait = kinslayer
 		hidden_tooltip = {
-			character_event = { id = 38287 } #Notify Kinslayer
+			character_event = {
+				id = 38287
+			} # Notify Kinslayer
 			any_vassal = {
-				limit = { has_character_flag = attending_blot }
-				character_event = { id = TOG.629 }
+				limit = {
+					has_character_flag = attending_blot
+				}
+				character_event = {
+					id = TOG.629
+				}
 			}
 		}
 		prestige = 25
 		piety = 15
 	}
+
 	option = {
 		name = EVTOPTB_TOG_617
-		FROM = { character_event = { id = TOG.637 tooltip = EVTTOOLTIP_TOG_637 } }
+		FROM = {
+			character_event = {
+				id = TOG.637 tooltip = EVTTOOLTIP_TOG_637
+			}
+		}
 		piety = -25
 	}
 }
@@ -1255,20 +2006,18 @@ character_event = {
 	desc = EVTDESC_TOG_618
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_618
 		FROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
 			death = {
 				death_reason = death_sacrificed_norse
 				killer = ROOT
@@ -1276,18 +2025,29 @@ character_event = {
 		}
 		add_trait = kinslayer
 		hidden_tooltip = {
-			character_event = { id = 38287 } #Notify Kinslayer
+			character_event = {
+				id = 38287
+			} # Notify Kinslayer
 			any_vassal = {
-				limit = { has_character_flag = attending_blot }
-				character_event = { id = TOG.630 }
+				limit = {
+					has_character_flag = attending_blot
+				}
+				character_event = {
+					id = TOG.630
+				}
 			}
 		}
 		prestige = 25
 		piety = 15
 	}
+
 	option = {
 		name = EVTOPTB_TOG_618
-		FROM = { character_event = { id = TOG.637 tooltip = EVTTOOLTIP_TOG_637 } }
+		FROM = {
+			character_event = {
+				id = TOG.637 tooltip = EVTTOOLTIP_TOG_637
+			}
+		}
 		piety = -25
 	}
 }
@@ -1298,20 +2058,18 @@ character_event = {
 	desc = EVTDESC_TOG_619
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_619
 		FROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
 			death = {
 				death_reason = death_sacrificed_norse
 				killer = ROOT
@@ -1319,16 +2077,25 @@ character_event = {
 		}
 		hidden_tooltip = {
 			any_vassal = {
-				limit = { has_character_flag = attending_blot }
-				character_event = { id = TOG.631 }
+				limit = {
+					has_character_flag = attending_blot
+				}
+				character_event = {
+					id = TOG.631
+				}
 			}
 		}
 		prestige = 25
 		piety = 15
 	}
+
 	option = {
 		name = EVTOPTB_TOG_619
-		FROM = { character_event = { id = TOG.637 tooltip = EVTTOOLTIP_TOG_637 } }
+		FROM = {
+			character_event = {
+				id = TOG.637 tooltip = EVTTOOLTIP_TOG_637
+			}
+		}
 		piety = -25
 	}
 }
@@ -1339,20 +2106,18 @@ character_event = {
 	desc = EVTDESC_TOG_620
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_620
 		FROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
 			death = {
 				death_reason = death_sacrificed_norse
 				killer = ROOT
@@ -1360,16 +2125,25 @@ character_event = {
 		}
 		hidden_tooltip = {
 			any_vassal = {
-				limit = { has_character_flag = attending_blot }
-				character_event = { id = TOG.632 }
+				limit = {
+					has_character_flag = attending_blot
+				}
+				character_event = {
+					id = TOG.632
+				}
 			}
 		}
 		prestige = 25
 		piety = 15
 	}
+
 	option = {
 		name = EVTOPTB_TOG_620
-		FROM = { character_event = { id = TOG.637 tooltip = EVTTOOLTIP_TOG_637 } }
+		FROM = {
+			character_event = {
+				id = TOG.637 tooltip = EVTTOOLTIP_TOG_637
+			}
+		}
 		piety = -25
 	}
 }
@@ -1380,20 +2154,18 @@ character_event = {
 	desc = EVTDESC_TOG_621
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_621
 		FROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
 			death = {
 				death_reason = death_sacrificed_norse
 				killer = ROOT
@@ -1401,14 +2173,22 @@ character_event = {
 		}
 		hidden_tooltip = {
 			any_vassal = {
-				limit = { has_character_flag = attending_blot }
-				character_event = { id = TOG.633 }
+				limit = {
+					has_character_flag = attending_blot
+				}
+				character_event = {
+					id = TOG.633
+				}
 			}
 			if = {
 				limit = {
-					FROM = { controls_religion = yes }
+					FROM = {
+						controls_religion = yes
+					}
 					ai = no
-					NOT = { has_character_flag = achievement_holy_smoke }
+					NOT = {
+						has_character_flag = achievement_holy_smoke
+					}
 				}
 				set_character_flag = achievement_holy_smoke
 			}
@@ -1416,9 +2196,14 @@ character_event = {
 		prestige = 50
 		piety = 25
 	}
+
 	option = {
 		name = EVTOPTB_TOG_621
-		FROM = { character_event = { id = TOG.637 tooltip = EVTTOOLTIP_TOG_637 } }
+		FROM = {
+			character_event = {
+				id = TOG.637 tooltip = EVTTOOLTIP_TOG_637
+			}
+		}
 		piety = -50
 	}
 }
@@ -1429,21 +2214,19 @@ character_event = {
 	desc = EVTDESC_TOG_622
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_622
 		tooltip = {
 			FROMFROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+				if = {
+					limit = {
+						is_invincible_trigger = yes
+					}
+					antideath_effect = yes
+					break = yes
+				}
 				death = {
 					death_reason = death_sacrificed_norse
 					killer = FROM
@@ -1459,21 +2242,19 @@ character_event = {
 	desc = EVTDESC_TOG_623
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_622
 		tooltip = {
 			FROMFROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+				if = {
+					limit = {
+						is_invincible_trigger = yes
+					}
+					antideath_effect = yes
+					break = yes
+				}
 				death = {
 					death_reason = death_sacrificed_norse
 					killer = FROM
@@ -1489,21 +2270,19 @@ character_event = {
 	desc = EVTDESC_TOG_624
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_622
 		tooltip = {
 			FROMFROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+				if = {
+					limit = {
+						is_invincible_trigger = yes
+					}
+					antideath_effect = yes
+					break = yes
+				}
 				death = {
 					death_reason = death_sacrificed_norse
 					killer = FROM
@@ -1519,21 +2298,19 @@ character_event = {
 	desc = EVTDESC_TOG_625
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_622
 		tooltip = {
 			FROMFROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+				if = {
+					limit = {
+						is_invincible_trigger = yes
+					}
+					antideath_effect = yes
+					break = yes
+				}
 				death = {
 					death_reason = death_sacrificed_norse
 					killer = FROM
@@ -1549,21 +2326,19 @@ character_event = {
 	desc = EVTDESC_TOG_626
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_622
 		tooltip = {
 			FROMFROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+				if = {
+					limit = {
+						is_invincible_trigger = yes
+					}
+					antideath_effect = yes
+					break = yes
+				}
 				death = {
 					death_reason = death_sacrificed_norse
 					killer = FROM
@@ -1579,21 +2354,19 @@ character_event = {
 	desc = EVTDESC_TOG_627
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_622
 		tooltip = {
 			FROMFROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+				if = {
+					limit = {
+						is_invincible_trigger = yes
+					}
+					antideath_effect = yes
+					break = yes
+				}
 				death = {
 					death_reason = death_sacrificed_norse
 					killer = FROM
@@ -1609,21 +2382,19 @@ character_event = {
 	desc = EVTDESC_TOG_628
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_622
 		tooltip = {
 			FROMFROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+				if = {
+					limit = {
+						is_invincible_trigger = yes
+					}
+					antideath_effect = yes
+					break = yes
+				}
 				death = {
 					death_reason = death_sacrificed_norse
 					killer = FROM
@@ -1639,21 +2410,19 @@ character_event = {
 	desc = EVTDESC_TOG_629
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_622
 		tooltip = {
 			FROMFROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+				if = {
+					limit = {
+						is_invincible_trigger = yes
+					}
+					antideath_effect = yes
+					break = yes
+				}
 				death = {
 					death_reason = death_sacrificed_norse
 					killer = FROM
@@ -1669,21 +2438,19 @@ character_event = {
 	desc = EVTDESC_TOG_630
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_622
 		tooltip = {
 			FROMFROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+				if = {
+					limit = {
+						is_invincible_trigger = yes
+					}
+					antideath_effect = yes
+					break = yes
+				}
 				death = {
 					death_reason = death_sacrificed_norse
 					killer = FROM
@@ -1699,21 +2466,19 @@ character_event = {
 	desc = EVTDESC_TOG_631
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_622
 		tooltip = {
 			FROMFROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+				if = {
+					limit = {
+						is_invincible_trigger = yes
+					}
+					antideath_effect = yes
+					break = yes
+				}
 				death = {
 					death_reason = death_sacrificed_norse
 					killer = FROM
@@ -1729,21 +2494,19 @@ character_event = {
 	desc = EVTDESC_TOG_632
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_622
 		tooltip = {
 			FROMFROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+				if = {
+					limit = {
+						is_invincible_trigger = yes
+					}
+					antideath_effect = yes
+					break = yes
+				}
 				death = {
 					death_reason = death_sacrificed_norse
 					killer = FROM
@@ -1759,21 +2522,19 @@ character_event = {
 	desc = EVTDESC_TOG_633
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_622
 		tooltip = {
 			FROMFROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+				if = {
+					limit = {
+						is_invincible_trigger = yes
+					}
+					antideath_effect = yes
+					break = yes
+				}
 				death = {
 					death_reason = death_sacrificed_norse
 					killer = FROM
@@ -1789,19 +2550,23 @@ character_event = {
 	desc = EVTDESC_TOG_634
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
 	hide_from = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_634
 		hidden_tooltip = {
 			any_vassal = {
-				limit = { has_character_flag = attending_blot }
-				character_event = { id = TOG.635 }
+				limit = {
+					has_character_flag = attending_blot
+				}
+				character_event = {
+					id = TOG.635
+				}
 			}
-			character_event = { id = TOG.640 days = 5 }
+			character_event = {
+				id = TOG.640 days = 5
+			}
 		}
 		wealth = -50
 		prestige = 50
@@ -1815,9 +2580,8 @@ character_event = {
 	desc = EVTDESC_TOG_635
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_635
 	}
@@ -1829,9 +2593,8 @@ character_event = {
 	desc = EVTDESC_TOG_637
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_637
 		opinion = {
@@ -1846,44 +2609,71 @@ character_event = {
 character_event = {
 	id = TOG.645
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
-			limit = { 
+			limit = {
 				any_courtier = {
 					prisoner = yes
-					host = { character = ROOT }
+					host = {
+						character = ROOT
+					}
 					age = 16
-					NOT = { character = FROM }
-					NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_spared_at_blot } }
+					NOT = {
+						character = FROM
+					}
+					NOT = {
+						has_opinion_modifier = {
+							who = ROOT modifier = opinion_spared_at_blot
+						}
+					}
 				}
 			}
 			random_courtier = {
-				limit = { 
-					prisoner = yes 
-					host = { character = ROOT }
+				limit = {
+					prisoner = yes
+					host = {
+						character = ROOT
+					}
 					age = 16
-					NOT = { character = FROM }
-					NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_spared_at_blot } }
+					NOT = {
+						character = FROM
+					}
+					NOT = {
+						has_opinion_modifier = {
+							who = ROOT modifier = opinion_spared_at_blot
+						}
+					}
 				}
-				character_event = { id = TOG.607 days = 5 }
+				character_event = {
+					id = TOG.607 days = 5
+				}
 			}
 		}
 		if = {
 			limit = {
-				NOT = { 
+				NOT = {
 					any_courtier = {
 						prisoner = yes
-						host = { character = ROOT }
+						host = {
+							character = ROOT
+						}
 						age = 16
-						NOT = { character = FROM }
-						NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_spared_at_blot } }
+						NOT = {
+							character = FROM
+						}
+						NOT = {
+							has_opinion_modifier = {
+								who = ROOT modifier = opinion_spared_at_blot
+							}
+						}
 					}
 				}
 			}
-			character_event = { id = TOG.640 days = 5 }
+			character_event = {
+				id = TOG.640 days = 5
+			}
 		}
 	}
 }
@@ -1892,44 +2682,71 @@ character_event = {
 character_event = {
 	id = TOG.646
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
-			limit = { 
+			limit = {
 				any_courtier = {
 					prisoner = yes
-					host = { character = ROOT }
+					host = {
+						character = ROOT
+					}
 					age = 16
-					NOT = { character = FROM }
-					NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_spared_at_blot } }
+					NOT = {
+						character = FROM
+					}
+					NOT = {
+						has_opinion_modifier = {
+							who = ROOT modifier = opinion_spared_at_blot
+						}
+					}
 				}
 			}
 			random_courtier = {
-				limit = { 
-					prisoner = yes 
-					host = { character = ROOT }
+				limit = {
+					prisoner = yes
+					host = {
+						character = ROOT
+					}
 					age = 16
-					NOT = { character = FROM }
-					NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_spared_at_blot } }
+					NOT = {
+						character = FROM
+					}
+					NOT = {
+						has_opinion_modifier = {
+							who = ROOT modifier = opinion_spared_at_blot
+						}
+					}
 				}
-				character_event = { id = TOG.608 days = 5 }
+				character_event = {
+					id = TOG.608 days = 5
+				}
 			}
 		}
 		if = {
 			limit = {
-				NOT = { 
+				NOT = {
 					any_courtier = {
 						prisoner = yes
-						host = { character = ROOT }
+						host = {
+							character = ROOT
+						}
 						age = 16
-						NOT = { character = FROM }
-						NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_spared_at_blot } }
+						NOT = {
+							character = FROM
+						}
+						NOT = {
+							has_opinion_modifier = {
+								who = ROOT modifier = opinion_spared_at_blot
+							}
+						}
 					}
 				}
 			}
-			character_event = { id = TOG.640 days = 5 }
+			character_event = {
+				id = TOG.640 days = 5
+			}
 		}
 	}
 }
@@ -1938,44 +2755,71 @@ character_event = {
 character_event = {
 	id = TOG.647
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
-			limit = { 
+			limit = {
 				any_courtier = {
 					prisoner = yes
-					host = { character = ROOT }
+					host = {
+						character = ROOT
+					}
 					age = 16
-					NOT = { character = FROM }
-					NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_spared_at_blot } }
+					NOT = {
+						character = FROM
+					}
+					NOT = {
+						has_opinion_modifier = {
+							who = ROOT modifier = opinion_spared_at_blot
+						}
+					}
 				}
 			}
 			random_courtier = {
-				limit = { 
-					prisoner = yes 
-					host = { character = ROOT }
+				limit = {
+					prisoner = yes
+					host = {
+						character = ROOT
+					}
 					age = 16
-					NOT = { character = FROM }
-					NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_spared_at_blot } }
+					NOT = {
+						character = FROM
+					}
+					NOT = {
+						has_opinion_modifier = {
+							who = ROOT modifier = opinion_spared_at_blot
+						}
+					}
 				}
-				character_event = { id = TOG.609 days = 5 }
+				character_event = {
+					id = TOG.609 days = 5
+				}
 			}
 		}
 		if = {
 			limit = {
-				NOT = { 
+				NOT = {
 					any_courtier = {
 						prisoner = yes
-						host = { character = ROOT }
+						host = {
+							character = ROOT
+						}
 						age = 16
-						NOT = { character = FROM }
-						NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_spared_at_blot } }
+						NOT = {
+							character = FROM
+						}
+						NOT = {
+							has_opinion_modifier = {
+								who = ROOT modifier = opinion_spared_at_blot
+							}
+						}
 					}
 				}
 			}
-			character_event = { id = TOG.640 days = 5 }
+			character_event = {
+				id = TOG.640 days = 5
+			}
 		}
 	}
 }
@@ -1986,69 +2830,187 @@ character_event = {
 	desc = EVTDESC_TOG_640
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
 	hide_from = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_640
 		hidden_tooltip = {
 			any_vassal = {
-				limit = { has_character_flag = attending_blot }
-				character_event = { id = TOG.641 }
+				limit = {
+					has_character_flag = attending_blot
+				}
+				character_event = {
+					id = TOG.641
+				}
 			}
-			character_event = { id = TOG.642 days = 25 }
-			random_list = {
-				10 = { character_event = { id = TOG.683 days = 3 } }
-				10 = { character_event = { id = TOG.684 days = 3 } }
-				10 = { character_event = { id = TOG.685 days = 3 } }
-				10 = { character_event = { id = TOG.686 days = 3 } }
-				10 = { character_event = { id = TOG.687 days = 3 } }
-				10 = { character_event = { id = TOG.688 days = 3 } }
-				10 = { character_event = { id = TOG.689 days = 3 } }
+			character_event = {
+				id = TOG.642 days = 25
 			}
 			random_list = {
-				10 = { character_event = { id = TOG.683 days = 8 } }
-				10 = { character_event = { id = TOG.684 days = 8 } }
-				10 = { character_event = { id = TOG.685 days = 8 } }
-				10 = { character_event = { id = TOG.686 days = 8 } }
-				10 = { character_event = { id = TOG.687 days = 8 } }
-				10 = { character_event = { id = TOG.688 days = 8 } }
-				10 = { character_event = { id = TOG.689 days = 8 } }
+				10 = {
+					character_event = {
+						id = TOG.683 days = 3
+					}
+				}
+				10 = {
+					character_event = {
+						id = TOG.684 days = 3
+					}
+				}
+				10 = {
+					character_event = {
+						id = TOG.685 days = 3
+					}
+				}
+				10 = {
+					character_event = {
+						id = TOG.686 days = 3
+					}
+				}
+				10 = {
+					character_event = {
+						id = TOG.687 days = 3
+					}
+				}
+				10 = {
+					character_event = {
+						id = TOG.688 days = 3
+					}
+				}
+				10 = {
+					character_event = {
+						id = TOG.689 days = 3
+					}
+				}
 			}
 			random_list = {
-				10 = { character_event = { id = TOG.683 days = 13 } }
-				10 = { character_event = { id = TOG.684 days = 13 } }
-				10 = { character_event = { id = TOG.685 days = 13 } }
-				10 = { character_event = { id = TOG.686 days = 13 } }
-				10 = { character_event = { id = TOG.687 days = 13 } }
-				10 = { character_event = { id = TOG.688 days = 13 } }
-				10 = { character_event = { id = TOG.689 days = 13 } }
+				10 = {
+					character_event = {
+						id = TOG.683 days = 8
+					}
+				}
+				10 = {
+					character_event = {
+						id = TOG.684 days = 8
+					}
+				}
+				10 = {
+					character_event = {
+						id = TOG.685 days = 8
+					}
+				}
+				10 = {
+					character_event = {
+						id = TOG.686 days = 8
+					}
+				}
+				10 = {
+					character_event = {
+						id = TOG.687 days = 8
+					}
+				}
+				10 = {
+					character_event = {
+						id = TOG.688 days = 8
+					}
+				}
+				10 = {
+					character_event = {
+						id = TOG.689 days = 8
+					}
+				}
 			}
 			random_list = {
-				10 = { character_event = { id = TOG.683 days = 18 } }
-				10 = { character_event = { id = TOG.684 days = 18 } }
-				10 = { character_event = { id = TOG.685 days = 18 } }
-				10 = { character_event = { id = TOG.686 days = 18 } }
-				10 = { character_event = { id = TOG.687 days = 18 } }
-				10 = { character_event = { id = TOG.688 days = 18 } }
-				10 = { character_event = { id = TOG.689 days = 18 } }
+				10 = {
+					character_event = {
+						id = TOG.683 days = 13
+					}
+				}
+				10 = {
+					character_event = {
+						id = TOG.684 days = 13
+					}
+				}
+				10 = {
+					character_event = {
+						id = TOG.685 days = 13
+					}
+				}
+				10 = {
+					character_event = {
+						id = TOG.686 days = 13
+					}
+				}
+				10 = {
+					character_event = {
+						id = TOG.687 days = 13
+					}
+				}
+				10 = {
+					character_event = {
+						id = TOG.688 days = 13
+					}
+				}
+				10 = {
+					character_event = {
+						id = TOG.689 days = 13
+					}
+				}
+			}
+			random_list = {
+				10 = {
+					character_event = {
+						id = TOG.683 days = 18
+					}
+				}
+				10 = {
+					character_event = {
+						id = TOG.684 days = 18
+					}
+				}
+				10 = {
+					character_event = {
+						id = TOG.685 days = 18
+					}
+				}
+				10 = {
+					character_event = {
+						id = TOG.686 days = 18
+					}
+				}
+				10 = {
+					character_event = {
+						id = TOG.687 days = 18
+					}
+				}
+				10 = {
+					character_event = {
+						id = TOG.688 days = 18
+					}
+				}
+				10 = {
+					character_event = {
+						id = TOG.689 days = 18
+					}
+				}
 			}
 		}
 		set_character_flag = blot_feast
-		
 		hidden_tooltip = {
 			any_vassal = {
-				limit = { has_character_flag = attending_blot }
+				limit = {
+					has_character_flag = attending_blot
+				}
 				opinion = {
 					modifier = opinion_held_blot
 					who = ROOT
 				}
 			}
 		}
-		
-		custom_tooltip = { text = feast_begins }
+		custom_tooltip = {
+			text = feast_begins
+		}
 	}
 }
 
@@ -2058,13 +3020,14 @@ character_event = {
 	desc = EVTDESC_TOG_640
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_641
 		set_character_flag = blot_feast_vassal
-		custom_tooltip = { text = feast_begins }
+		custom_tooltip = {
+			text = feast_begins
+		}
 	}
 }
 
@@ -2074,17 +3037,19 @@ character_event = {
 	desc = EVTDESC_TOG_642
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
 	hide_from = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_642
 		hidden_tooltip = {
 			any_vassal = {
-				limit = { has_character_flag = attending_blot }
-				character_event = { id = TOG.643 }
+				limit = {
+					has_character_flag = attending_blot
+				}
+				character_event = {
+					id = TOG.643
+				}
 			}
 		}
 		add_character_modifier = {
@@ -2113,9 +3078,8 @@ character_event = {
 	desc = EVTDESC_TOG_643
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_642
 		clr_character_flag = attending_blot
@@ -2130,7 +3094,7 @@ character_event = {
 	}
 }
 
-### Feast Events
+# Feast Events
 
 # Drunkard (Guest)
 character_event = {
@@ -2140,47 +3104,50 @@ character_event = {
 	border = GFX_event_normal_frame_religion
 	hide_from = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
 		has_character_flag = blot_feast_vassal
-		NOT = { has_character_flag = feast_drunkard }
-		liege = { 
+		NOT = {
+			has_character_flag = feast_drunkard
+		}
+		liege = {
 			has_character_flag = blot_feast
-			NOT = { has_character_flag = feast_drunkard }
+			NOT = {
+				has_character_flag = feast_drunkard
+			}
 		}
 		trait = drunkard
 	}
-	
-#	mean_time_to_happen = {
-#		days = 60
-#		
-#		modifier = {
-#			factor = 1.1
-#			liege = { num_of_vassals = 10 }
-#		}
-#		modifier = {
-#			factor = 1.2
-#			liege = { num_of_vassals = 20 }
-#		}
-#		modifier = {
-#			factor = 1.3
-#			liege = { num_of_vassals = 30 }
-#		}
-#		modifier = {
-#			factor = 1.4
-#			liege = { num_of_vassals = 40 }
-#		}
-#		modifier = {
-#			factor = 1.5
-#			liege = { num_of_vassals = 50 }
-#		}
-#		modifier = {
-#			factor = 3
-#			liege = { num_of_vassals = 100 }
-#		}
-#	}
-	
+	# 	mean_time_to_happen = {
+	# 		days = 60
+	#
+	# 		modifier = {
+	# 			factor = 1.1
+	# 			liege = { num_of_vassals = 10 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 1.2
+	# 			liege = { num_of_vassals = 20 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 1.3
+	# 			liege = { num_of_vassals = 30 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 1.4
+	# 			liege = { num_of_vassals = 40 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 1.5
+	# 			liege = { num_of_vassals = 50 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 3
+	# 			liege = { num_of_vassals = 100 }
+	# 		}
+	# 	}
+
 	option = {
 		name = EVTOPTA_TOG_650
 		tooltip_info = drunkard
@@ -2188,27 +3155,39 @@ character_event = {
 		hidden_tooltip = {
 			liege = {
 				set_character_flag = feast_drunkard
-				character_event = { id = TOG.651 }
+				character_event = {
+					id = TOG.651
+				}
 				any_vassal = {
 					limit = {
 						has_character_flag = blot_feast_vassal
-						NOT = { character = ROOT }
+						NOT = {
+							character = ROOT
+						}
 					}
-					character_event = { id = TOG.651 }
+					character_event = {
+						id = TOG.651
+					}
 				}
 			}
 		}
 		tooltip = {
 			liege = {
 				if = {
-					limit = { NOT = { trait = drunkard } }
+					limit = {
+						NOT = {
+							trait = drunkard
+						}
+					}
 					opinion = {
 						modifier = opinion_feast_scandal
 						who = ROOT
 					}
 				}
 				if = {
-					limit = { trait = drunkard }
+					limit = {
+						trait = drunkard
+					}
 					opinion = {
 						modifier = opinion_drinking_buddy
 						who = ROOT
@@ -2217,8 +3196,12 @@ character_event = {
 				any_vassal = {
 					limit = {
 						has_character_flag = blot_feast_vassal
-						NOT = { character = ROOT }
-						NOT = { trait = drunkard }
+						NOT = {
+							character = ROOT
+						}
+						NOT = {
+							trait = drunkard
+						}
 					}
 					opinion = {
 						modifier = opinion_feast_scandal
@@ -2228,7 +3211,9 @@ character_event = {
 				any_vassal = {
 					limit = {
 						has_character_flag = blot_feast_vassal
-						NOT = { character = ROOT }
+						NOT = {
+							character = ROOT
+						}
 						trait = drunkard
 					}
 					opinion = {
@@ -2247,23 +3232,25 @@ character_event = {
 	desc = EVTDESC_TOG_651
 	picture = GFX_evt_drunk
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_651
-		trigger = { 
-			NOT = { trait = drunkard } 
+		trigger = {
+			NOT = {
+				trait = drunkard
+			}
 		}
 		opinion = {
 			modifier = opinion_feast_scandal
 			who = FROM
 		}
 	}
+
 	option = {
 		name = EVTOPTB_TOG_651
 		tooltip_info = drunkard
-		trigger = { 
+		trigger = {
 			trait = drunkard
 		}
 		opinion = {
@@ -2278,51 +3265,56 @@ character_event = {
 	id = TOG.652
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
 		has_character_flag = blot_feast_vassal
 		liege = {
 			has_character_flag = blot_feast
-			NOT = { has_character_flag = feast_gluttonous }
+			NOT = {
+				has_character_flag = feast_gluttonous
+			}
 			any_vassal = {
 				has_character_flag = blot_feast_vassal
-				NOT = { has_character_flag = feast_gluttonous }
+				NOT = {
+					has_character_flag = feast_gluttonous
+				}
 				trait = gluttonous
-				NOT = { character = ROOT }
+				NOT = {
+					character = ROOT
+				}
 			}
 		}
 	}
-	
-#	mean_time_to_happen = {
-#		days = 60
-#		
-#		modifier = {
-#			factor = 1.1
-#			liege = { num_of_vassals = 10 }
-#		}
-#		modifier = {
-#			factor = 1.2
-#			liege = { num_of_vassals = 20 }
-#		}
-#		modifier = {
-#			factor = 1.3
-#			liege = { num_of_vassals = 30 }
-#		}
-#		modifier = {
-#			factor = 1.4
-#			liege = { num_of_vassals = 40 }
-#		}
-#		modifier = {
-#			factor = 1.5
-#			liege = { num_of_vassals = 50 }
-#		}
-#		modifier = {
-#			factor = 3
-#			liege = { num_of_vassals = 100 }
-#		}
-#	}
-	
+	# 	mean_time_to_happen = {
+	# 		days = 60
+	#
+	# 		modifier = {
+	# 			factor = 1.1
+	# 			liege = { num_of_vassals = 10 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 1.2
+	# 			liege = { num_of_vassals = 20 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 1.3
+	# 			liege = { num_of_vassals = 30 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 1.4
+	# 			liege = { num_of_vassals = 40 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 1.5
+	# 			liege = { num_of_vassals = 50 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 3
+	# 			liege = { num_of_vassals = 100 }
+	# 		}
+	# 	}
+
 	immediate = {
 		liege = {
 			set_character_flag = feast_gluttonous
@@ -2330,9 +3322,13 @@ character_event = {
 				limit = {
 					has_character_flag = blot_feast_vassal
 					trait = gluttonous
-					NOT = { character = ROOT }
+					NOT = {
+						character = ROOT
+					}
 				}
-				character_event = { id = TOG.653 }
+				character_event = {
+					id = TOG.653
+				}
 				set_character_flag = feast_gluttonous
 			}
 		}
@@ -2345,27 +3341,32 @@ character_event = {
 	desc = EVTDESC_TOG_653
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_653
 		tooltip_info = gluttonous
 		FROM = {
-			character_event = { id = TOG.654 tooltip = EVTTOOLTIP_TOG_654 }
-		}	
+			character_event = {
+				id = TOG.654 tooltip = EVTTOOLTIP_TOG_654
+			}
+		}
 		hidden_tooltip = {
 			liege = {
-				character_event = { id = TOG.655 }
+				character_event = {
+					id = TOG.655
+				}
 				any_vassal = {
 					limit = {
 						has_character_flag = blot_feast_vassal
-						NOT = { 
-							character = ROOT 
+						NOT = {
+							character = ROOT
 							character = FROM
 						}
 					}
-					character_event = { id = TOG.655 }
+					character_event = {
+						id = TOG.655
+					}
 				}
 			}
 		}
@@ -2384,8 +3385,8 @@ character_event = {
 				any_vassal = {
 					limit = {
 						has_character_flag = blot_feast_vassal
-						NOT = { 
-							character = ROOT 
+						NOT = {
+							character = ROOT
 							character = FROM
 						}
 					}
@@ -2405,9 +3406,8 @@ character_event = {
 	desc = EVTDESC_TOG_654
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_654
 		opinion = {
@@ -2423,9 +3423,8 @@ character_event = {
 	desc = EVTDESC_TOG_655
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_655
 		opinion = {
@@ -2442,53 +3441,55 @@ character_event = {
 	picture = GFX_evt_lunatic
 	border = GFX_event_normal_frame_religion
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
 		has_character_flag = blot_feast_vassal
-		NOT = { has_character_flag = feast_lunatic }
-		liege = { 
+		NOT = {
+			has_character_flag = feast_lunatic
+		}
+		liege = {
 			has_character_flag = blot_feast
-			NOT = { has_character_flag = feast_lunatic }
+			NOT = {
+				has_character_flag = feast_lunatic
+			}
 		}
 		OR = {
 			trait = lunatic_1
 			trait = lunatic_2
 			trait = lunatic_3
-		} 
+		}
 	}
-	
-#	mean_time_to_happen = {
-#		days = 60
-#		
-#		modifier = {
-#			factor = 1.1
-#			liege = { num_of_vassals = 10 }
-#		}
-#		modifier = {
-#			factor = 1.2
-#			liege = { num_of_vassals = 20 }
-#		}
-#		modifier = {
-#			factor = 1.3
-#			liege = { num_of_vassals = 30 }
-#		}
-#		modifier = {
-#			factor = 1.4
-#			liege = { num_of_vassals = 40 }
-#		}
-#		modifier = {
-#			factor = 1.5
-#			liege = { num_of_vassals = 50 }
-#		}
-#		modifier = {
-#			factor = 3
-#			liege = { num_of_vassals = 100 }
-#		}
-#	}
-	
+	# 	mean_time_to_happen = {
+	# 		days = 60
+	#
+	# 		modifier = {
+	# 			factor = 1.1
+	# 			liege = { num_of_vassals = 10 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 1.2
+	# 			liege = { num_of_vassals = 20 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 1.3
+	# 			liege = { num_of_vassals = 30 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 1.4
+	# 			liege = { num_of_vassals = 40 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 1.5
+	# 			liege = { num_of_vassals = 50 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 3
+	# 			liege = { num_of_vassals = 100 }
+	# 		}
+	# 	}
+
 	option = {
 		name = EVTOPTA_TOG_656
 		tooltip_info = lunatic
@@ -2496,25 +3497,31 @@ character_event = {
 		hidden_tooltip = {
 			liege = {
 				set_character_flag = feast_lunatic
-				character_event = { id = TOG.657 }
+				character_event = {
+					id = TOG.657
+				}
 				any_vassal = {
 					limit = {
 						has_character_flag = blot_feast_vassal
-						NOT = { character = ROOT }
+						NOT = {
+							character = ROOT
+						}
 					}
-					character_event = { id = TOG.657 }
+					character_event = {
+						id = TOG.657
+					}
 				}
 			}
 		}
 		tooltip = {
 			liege = {
 				if = {
-					limit = { 
+					limit = {
 						NOR = {
 							trait = lunatic_1
 							trait = lunatic_2
 							trait = lunatic_3
-						} 
+						}
 					}
 					opinion = {
 						modifier = opinion_feast_scandal
@@ -2522,13 +3529,13 @@ character_event = {
 					}
 				}
 				if = {
-					limit = { 
+					limit = {
 						OR = {
 							trait = lunatic_1
 							trait = lunatic_2
 							trait = lunatic_3
-						} 
-					}		
+						}
+					}
 					opinion = {
 						modifier = opinion_feast_friend
 						who = ROOT
@@ -2537,12 +3544,14 @@ character_event = {
 				any_vassal = {
 					limit = {
 						has_character_flag = blot_feast_vassal
-						NOT = { character = ROOT }
+						NOT = {
+							character = ROOT
+						}
 						NOR = {
 							trait = lunatic_1
 							trait = lunatic_2
 							trait = lunatic_3
-						} 
+						}
 					}
 					opinion = {
 						modifier = opinion_feast_scandal
@@ -2552,12 +3561,14 @@ character_event = {
 				any_vassal = {
 					limit = {
 						has_character_flag = blot_feast_vassal
-						NOT = { character = ROOT }
+						NOT = {
+							character = ROOT
+						}
 						OR = {
 							trait = lunatic_1
 							trait = lunatic_2
 							trait = lunatic_3
-						} 
+						}
 					}
 					opinion = {
 						modifier = opinion_feast_friend
@@ -2565,7 +3576,7 @@ character_event = {
 					}
 				}
 			}
-		}	
+		}
 	}
 }
 
@@ -2575,9 +3586,8 @@ character_event = {
 	desc = EVTDESC_TOG_657
 	picture = GFX_evt_lunatic
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_657
 		trigger = {
@@ -2585,13 +3595,14 @@ character_event = {
 				trait = lunatic_1
 				trait = lunatic_2
 				trait = lunatic_3
-			} 
+			}
 		}
 		opinion = {
 			modifier = opinion_feast_scandal
 			who = ROOT
 		}
 	}
+
 	option = {
 		name = EVTOPTB_TOG_657
 		tooltip_info = lunatic
@@ -2600,7 +3611,7 @@ character_event = {
 				trait = lunatic_1
 				trait = lunatic_2
 				trait = lunatic_3
-			} 
+			}
 		}
 		opinion = {
 			modifier = opinion_feast_friend
@@ -2617,48 +3628,51 @@ character_event = {
 	border = GFX_event_normal_frame_religion
 	hide_from = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
 		has_character_flag = blot_feast_vassal
-		NOT = { has_character_flag = feast_lustful }
-		liege = { 
+		NOT = {
+			has_character_flag = feast_lustful
+		}
+		liege = {
 			has_character_flag = blot_feast
-			NOT = { has_character_flag = feast_lustful }
+			NOT = {
+				has_character_flag = feast_lustful
+			}
 		}
 		trait = lustful
 		is_female = no
 	}
-	
-#	mean_time_to_happen = {
-#		days = 60
-#		
-#		modifier = {
-#			factor = 1.1
-#			liege = { num_of_vassals = 10 }
-#		}
-#		modifier = {
-#			factor = 1.2
-#			liege = { num_of_vassals = 20 }
-#		}
-#		modifier = {
-#			factor = 1.3
-#			liege = { num_of_vassals = 30 }
-#		}
-#		modifier = {
-#			factor = 1.4
-#			liege = { num_of_vassals = 40 }
-#		}
-#		modifier = {
-#			factor = 1.5
-#			liege = { num_of_vassals = 50 }
-#		}
-#		modifier = {
-#			factor = 3
-#			liege = { num_of_vassals = 100 }
-#		}
-#	}
-	
+	# 	mean_time_to_happen = {
+	# 		days = 60
+	#
+	# 		modifier = {
+	# 			factor = 1.1
+	# 			liege = { num_of_vassals = 10 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 1.2
+	# 			liege = { num_of_vassals = 20 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 1.3
+	# 			liege = { num_of_vassals = 30 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 1.4
+	# 			liege = { num_of_vassals = 40 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 1.5
+	# 			liege = { num_of_vassals = 50 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 3
+	# 			liege = { num_of_vassals = 100 }
+	# 		}
+	# 	}
+
 	option = {
 		name = EVTOPTA_TOG_658
 		tooltip_info = lustful
@@ -2669,27 +3683,39 @@ character_event = {
 		hidden_tooltip = {
 			liege = {
 				set_character_flag = feast_lustful
-				character_event = { id = TOG.659 }
+				character_event = {
+					id = TOG.659
+				}
 				any_vassal = {
 					limit = {
 						has_character_flag = blot_feast_vassal
-						NOT = { character = ROOT }
+						NOT = {
+							character = ROOT
+						}
 					}
-					character_event = { id = TOG.659 }
+					character_event = {
+						id = TOG.659
+					}
 				}
 			}
 		}
 		tooltip = {
 			liege = {
 				if = {
-					limit = { NOT = { trait = lustful } }
+					limit = {
+						NOT = {
+							trait = lustful
+						}
+					}
 					opinion = {
 						modifier = opinion_feast_scandal
 						who = ROOT
 					}
 				}
 				if = {
-					limit = { trait = lustful }
+					limit = {
+						trait = lustful
+					}
 					opinion = {
 						modifier = opinion_lustful_buddy
 						who = ROOT
@@ -2698,8 +3724,12 @@ character_event = {
 				any_vassal = {
 					limit = {
 						has_character_flag = blot_feast_vassal
-						NOT = { character = ROOT }
-						NOT = { trait = lustful }
+						NOT = {
+							character = ROOT
+						}
+						NOT = {
+							trait = lustful
+						}
 					}
 					opinion = {
 						modifier = opinion_feast_scandal
@@ -2709,7 +3739,9 @@ character_event = {
 				any_vassal = {
 					limit = {
 						has_character_flag = blot_feast_vassal
-						NOT = { character = ROOT }
+						NOT = {
+							character = ROOT
+						}
 						trait = lustful
 					}
 					opinion = {
@@ -2718,8 +3750,9 @@ character_event = {
 					}
 				}
 			}
-		}	
+		}
 	}
+
 	option = {
 		name = EVTOPTB_TOG_658
 		tooltip_info = lustful
@@ -2730,27 +3763,39 @@ character_event = {
 		hidden_tooltip = {
 			liege = {
 				set_character_flag = feast_lustful
-				character_event = { id = TOG.659 }
+				character_event = {
+					id = TOG.659
+				}
 				any_vassal = {
 					limit = {
 						has_character_flag = blot_feast_vassal
-						NOT = { character = ROOT }
+						NOT = {
+							character = ROOT
+						}
 					}
-					character_event = { id = TOG.659 }
+					character_event = {
+						id = TOG.659
+					}
 				}
 			}
 		}
 		tooltip = {
 			liege = {
 				if = {
-					limit = { NOT = { trait = lustful } }
+					limit = {
+						NOT = {
+							trait = lustful
+						}
+					}
 					opinion = {
 						modifier = opinion_feast_scandal
 						who = ROOT
 					}
 				}
 				if = {
-					limit = { trait = lustful }
+					limit = {
+						trait = lustful
+					}
 					opinion = {
 						modifier = opinion_lustful_buddy
 						who = ROOT
@@ -2759,8 +3804,12 @@ character_event = {
 				any_vassal = {
 					limit = {
 						has_character_flag = blot_feast_vassal
-						NOT = { character = ROOT }
-						NOT = { trait = lustful }
+						NOT = {
+							character = ROOT
+						}
+						NOT = {
+							trait = lustful
+						}
 					}
 					opinion = {
 						modifier = opinion_feast_scandal
@@ -2770,7 +3819,9 @@ character_event = {
 				any_vassal = {
 					limit = {
 						has_character_flag = blot_feast_vassal
-						NOT = { character = ROOT }
+						NOT = {
+							character = ROOT
+						}
 						trait = lustful
 					}
 					opinion = {
@@ -2786,7 +3837,7 @@ character_event = {
 					years = 1
 				}
 			}
-		}	
+		}
 	}
 }
 
@@ -2796,36 +3847,49 @@ character_event = {
 	desc = EVTDESC_TOG_659
 	picture = GFX_evt_brothel
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_659
 		trigger = {
-			NOT = { trait = lustful }
-			NOT = { any_spouse = { character = FROM } }
+			NOT = {
+				trait = lustful
+			}
+			NOT = {
+				any_spouse = {
+					character = FROM
+				}
+			}
 		}
 		opinion = {
 			modifier = opinion_feast_scandal
 			who = FROM
 		}
 	}
+
 	option = {
 		name = EVTOPTB_TOG_659
 		tooltip_info = lustful
 		trigger = {
 			trait = lustful
-			NOT = { any_spouse = { character = FROM } }
+			NOT = {
+				any_spouse = {
+					character = FROM
+				}
+			}
 		}
 		opinion = {
 			modifier = opinion_lustful_buddy
 			who = FROM
 		}
 	}
+
 	option = {
 		name = EVTOPTC_TOG_659
 		trigger = {
-			any_spouse = { character = FROM }
+			any_spouse = {
+				character = FROM
+			}
 		}
 		opinion = {
 			modifier = opinion_mad_as_hell
@@ -2840,61 +3904,74 @@ character_event = {
 	id = TOG.660
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
 		has_character_flag = blot_feast_vassal
-		NOT = { has_character_flag = feast_friendship }
-		liege = { 
+		NOT = {
+			has_character_flag = feast_friendship
+		}
+		liege = {
 			has_character_flag = blot_feast
 			any_vassal = {
 				has_character_flag = blot_feast_vassal
-				NOT = { has_character_flag = feast_friendship }
-				NOT = { character = ROOT }
-				opinion = { who = ROOT value =  20 }
-			}		
+				NOT = {
+					has_character_flag = feast_friendship
+				}
+				NOT = {
+					character = ROOT
+				}
+				opinion = {
+					who = ROOT value = 20
+				}
+			}
 		}
 	}
-	
-#	mean_time_to_happen = {
-#		days = 60
-#		
-#		modifier = {
-#			factor = 1.1
-#			liege = { num_of_vassals = 10 }
-#		}
-#		modifier = {
-#			factor = 1.2
-#			liege = { num_of_vassals = 20 }
-#		}
-#		modifier = {
-#			factor = 1.3
-#			liege = { num_of_vassals = 30 }
-#		}
-#		modifier = {
-#			factor = 1.4
-#			liege = { num_of_vassals = 40 }
-#		}
-#		modifier = {
-#			factor = 1.5
-#			liege = { num_of_vassals = 50 }
-#		}
-#		modifier = {
-#			factor = 3
-#			liege = { num_of_vassals = 100 }
-#		}
-#	}
-	
+	# 	mean_time_to_happen = {
+	# 		days = 60
+	#
+	# 		modifier = {
+	# 			factor = 1.1
+	# 			liege = { num_of_vassals = 10 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 1.2
+	# 			liege = { num_of_vassals = 20 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 1.3
+	# 			liege = { num_of_vassals = 30 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 1.4
+	# 			liege = { num_of_vassals = 40 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 1.5
+	# 			liege = { num_of_vassals = 50 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 3
+	# 			liege = { num_of_vassals = 100 }
+	# 		}
+	# 	}
+
 	immediate = {
 		set_character_flag = feast_friendship
-		liege = { 
+		liege = {
 			random_vassal = {
 				limit = {
 					has_character_flag = blot_feast_vassal
-					NOT = { character = ROOT }
-					opinion = { who = ROOT value =  20 }
+					NOT = {
+						character = ROOT
+					}
+					opinion = {
+						who = ROOT value = 20
+					}
 				}
-				character_event = { id = TOG.661 }
+				character_event = {
+					id = TOG.661
+				}
 				set_character_flag = feast_friendship
 				opinion = {
 					modifier = opinion_feast_friend
@@ -2904,7 +3981,7 @@ character_event = {
 					modifier = opinion_feast_friend
 					who = ROOT
 				}
-			}		
+			}
 		}
 	}
 }
@@ -2915,14 +3992,15 @@ character_event = {
 	desc = EVTDESC_TOG_661
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_661
 		hidden_tooltip = {
 			FROM = {
-				character_event = { id = TOG.662 }
+				character_event = {
+					id = TOG.662
+				}
 			}
 		}
 		tooltip = {
@@ -2946,9 +4024,8 @@ character_event = {
 	desc = EVTDESC_TOG_661
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_661
 		tooltip = {
@@ -2971,75 +4048,92 @@ character_event = {
 	id = TOG.663
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
 		has_character_flag = blot_feast_vassal
-		NOT = { has_character_flag = feast_homosexual }
+		NOT = {
+			has_character_flag = feast_homosexual
+		}
 		trait = homosexual
 		is_female = no
 		has_lover = no
-		liege = { 
-			NOT = { has_character_flag = feast_homosexual }
+		liege = {
+			NOT = {
+				has_character_flag = feast_homosexual
+			}
 			has_character_flag = blot_feast
 			any_vassal = {
 				has_character_flag = blot_feast_vassal
-				NOT = { has_character_flag = feast_homosexual }
-				NOT = { character = ROOT }
-				opinion = { who = ROOT value =  0 }
+				NOT = {
+					has_character_flag = feast_homosexual
+				}
+				NOT = {
+					character = ROOT
+				}
+				opinion = {
+					who = ROOT value = 0
+				}
 				trait = homosexual
 				is_female = no
 				has_lover = no
-			}		
+			}
 		}
 	}
-	
-#	mean_time_to_happen = {
-#		days = 40
-#		
-#		modifier = {
-#			factor = 1.1
-#			liege = { num_of_vassals = 10 }
-#		}
-#		modifier = {
-#			factor = 1.2
-#			liege = { num_of_vassals = 20 }
-#		}
-#		modifier = {
-#			factor = 1.3
-#			liege = { num_of_vassals = 30 }
-#		}
-#		modifier = {
-#			factor = 1.4
-#			liege = { num_of_vassals = 40 }
-#		}
-#		modifier = {
-#			factor = 1.5
-#			liege = { num_of_vassals = 50 }
-#		}
-#		modifier = {
-#			factor = 3
-#			liege = { num_of_vassals = 100 }
-#		}
-#	}
-	
+	# 	mean_time_to_happen = {
+	# 		days = 40
+	#
+	# 		modifier = {
+	# 			factor = 1.1
+	# 			liege = { num_of_vassals = 10 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 1.2
+	# 			liege = { num_of_vassals = 20 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 1.3
+	# 			liege = { num_of_vassals = 30 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 1.4
+	# 			liege = { num_of_vassals = 40 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 1.5
+	# 			liege = { num_of_vassals = 50 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 3
+	# 			liege = { num_of_vassals = 100 }
+	# 		}
+	# 	}
+
 	immediate = {
 		set_character_flag = feast_homosexual
-		liege = { 
+		liege = {
 			set_character_flag = feast_homosexual
 			random_vassal = {
 				limit = {
 					has_character_flag = blot_feast_vassal
-					NOT = { has_character_flag = feast_homosexual }
-					NOT = { character = ROOT }
-					opinion = { who = ROOT value =  0 }
+					NOT = {
+						has_character_flag = feast_homosexual
+					}
+					NOT = {
+						character = ROOT
+					}
+					opinion = {
+						who = ROOT value = 0
+					}
 					trait = homosexual
 					is_female = no
 				}
-				character_event = { id = TOG.664 }
+				character_event = {
+					id = TOG.664
+				}
 				add_lover = ROOT
 				set_character_flag = feast_homosexual
-			}		
+			}
 		}
 	}
 }
@@ -3050,18 +4144,21 @@ character_event = {
 	desc = EVTDESC_TOG_664
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_664
 		tooltip_info = homosexual
 		hidden_tooltip = {
 			FROM = {
-				character_event = { id = TOG.665 }
+				character_event = {
+					id = TOG.665
+				}
 			}
 			liege = {
-				character_event = { id = TOG.670 }
+				character_event = {
+					id = TOG.670
+				}
 				any_vassal = {
 					limit = {
 						has_character_flag = blot_feast_vassal
@@ -3070,14 +4167,18 @@ character_event = {
 							character = FROM
 						}
 					}
-					character_event = { id = TOG.670 }
+					character_event = {
+						id = TOG.670
+					}
 				}
 			}
 		}
 		tooltip = {
 			random = {
 				chance = 50
-				character_event = { id = TOG.669 tooltip = EVTTOOLTIP_TOG_669 }
+				character_event = {
+					id = TOG.669 tooltip = EVTTOOLTIP_TOG_669
+				}
 			}
 			add_lover = FROM
 		}
@@ -3090,18 +4191,21 @@ character_event = {
 	desc = EVTDESC_TOG_664
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_664
 		tooltip_info = homosexual
 		random = {
 			chance = 50
-			character_event = { id = TOG.669 tooltip = EVTTOOLTIP_TOG_669 }
+			character_event = {
+				id = TOG.669 tooltip = EVTTOOLTIP_TOG_669
+			}
 			hidden_tooltip = {
 				FROM = {
-					character_event = { id = TOG.669 }
+					character_event = {
+						id = TOG.669
+					}
 				}
 			}
 		}
@@ -3116,75 +4220,92 @@ character_event = {
 	id = TOG.666
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
 		has_character_flag = blot_feast_vassal
-		NOT = { has_character_flag = feast_homosexual }
+		NOT = {
+			has_character_flag = feast_homosexual
+		}
 		trait = homosexual
 		is_female = yes
 		has_lover = no
-		liege = { 
-			NOT = { has_character_flag = feast_homosexual }
+		liege = {
+			NOT = {
+				has_character_flag = feast_homosexual
+			}
 			has_character_flag = blot_feast
 			any_vassal = {
 				has_character_flag = blot_feast_vassal
-				NOT = { has_character_flag = feast_homosexual }
-				NOT = { character = ROOT }
-				opinion = { who = ROOT value =  0 }
+				NOT = {
+					has_character_flag = feast_homosexual
+				}
+				NOT = {
+					character = ROOT
+				}
+				opinion = {
+					who = ROOT value = 0
+				}
 				trait = homosexual
 				is_female = yes
 				has_lover = no
-			}		
+			}
 		}
 	}
-	
-#	mean_time_to_happen = {
-#		days = 40
-#		
-#		modifier = {
-#			factor = 1.1
-#			liege = { num_of_vassals = 10 }
-#		}
-#		modifier = {
-#			factor = 1.2
-#			liege = { num_of_vassals = 20 }
-#		}
-#		modifier = {
-#			factor = 1.3
-#			liege = { num_of_vassals = 30 }
-#		}
-#		modifier = {
-#			factor = 1.4
-#			liege = { num_of_vassals = 40 }
-#		}
-#		modifier = {
-#			factor = 1.5
-#			liege = { num_of_vassals = 50 }
-#		}
-#		modifier = {
-#			factor = 3
-#			liege = { num_of_vassals = 100 }
-#		}
-#	}
-	
+	# 	mean_time_to_happen = {
+	# 		days = 40
+	#
+	# 		modifier = {
+	# 			factor = 1.1
+	# 			liege = { num_of_vassals = 10 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 1.2
+	# 			liege = { num_of_vassals = 20 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 1.3
+	# 			liege = { num_of_vassals = 30 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 1.4
+	# 			liege = { num_of_vassals = 40 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 1.5
+	# 			liege = { num_of_vassals = 50 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 3
+	# 			liege = { num_of_vassals = 100 }
+	# 		}
+	# 	}
+
 	immediate = {
 		set_character_flag = feast_homosexual
-		liege = { 
+		liege = {
 			set_character_flag = feast_homosexual
 			random_vassal = {
 				limit = {
 					has_character_flag = blot_feast_vassal
-					NOT = { has_character_flag = feast_homosexual }
-					NOT = { character = ROOT }
-					opinion = { who = ROOT value =  0 }
+					NOT = {
+						has_character_flag = feast_homosexual
+					}
+					NOT = {
+						character = ROOT
+					}
+					opinion = {
+						who = ROOT value = 0
+					}
 					trait = homosexual
 					is_female = yes
 				}
-				character_event = { id = TOG.667 }
+				character_event = {
+					id = TOG.667
+				}
 				set_character_flag = feast_homosexual
 				add_lover = FROM
-			}		
+			}
 		}
 	}
 }
@@ -3195,18 +4316,21 @@ character_event = {
 	desc = EVTDESC_TOG_664
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_664
 		tooltip_info = homosexual
 		hidden_tooltip = {
 			FROM = {
-				character_event = { id = TOG.668 }
+				character_event = {
+					id = TOG.668
+				}
 			}
 			liege = {
-				character_event = { id = TOG.670 }
+				character_event = {
+					id = TOG.670
+				}
 				any_vassal = {
 					limit = {
 						has_character_flag = blot_feast_vassal
@@ -3215,14 +4339,18 @@ character_event = {
 							character = FROM
 						}
 					}
-					character_event = { id = TOG.670 }
+					character_event = {
+						id = TOG.670
+					}
 				}
-			}			
+			}
 		}
 		tooltip = {
 			random = {
 				chance = 50
-				character_event = { id = TOG.669 tooltip = EVTTOOLTIP_TOG_669 }
+				character_event = {
+					id = TOG.669 tooltip = EVTTOOLTIP_TOG_669
+				}
 			}
 			add_lover = FROM
 		}
@@ -3235,18 +4363,21 @@ character_event = {
 	desc = EVTDESC_TOG_664
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_664
 		tooltip_info = homosexual
 		random = {
 			chance = 50
-			character_event = { id = TOG.669 tooltip = EVTTOOLTIP_TOG_669 }
+			character_event = {
+				id = TOG.669 tooltip = EVTTOOLTIP_TOG_669
+			}
 			hidden_tooltip = {
 				FROM = {
-					character_event = { id = TOG.669 }
+					character_event = {
+						id = TOG.669
+					}
 				}
 			}
 		}
@@ -3262,22 +4393,27 @@ character_event = {
 	desc = EVTDESC_TOG_669
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_669
 		tooltip = {
 			liege = {
 				if = {
-					limit = { NOT = { trait = homosexual } }
+					limit = {
+						NOT = {
+							trait = homosexual
+						}
+					}
 					opinion = {
 						modifier = opinion_feast_scandal
 						who = ROOT
 					}
 				}
 				if = {
-					limit = { trait = homosexual }
+					limit = {
+						trait = homosexual
+					}
 					opinion = {
 						modifier = opinion_homosexual_sympathy
 						who = ROOT
@@ -3286,8 +4422,12 @@ character_event = {
 				any_vassal = {
 					limit = {
 						has_character_flag = blot_feast_vassal
-						NOT = { character = ROOT }
-						NOT = { trait = homosexual }
+						NOT = {
+							character = ROOT
+						}
+						NOT = {
+							trait = homosexual
+						}
 					}
 					opinion = {
 						modifier = opinion_feast_scandal
@@ -3297,7 +4437,9 @@ character_event = {
 				any_vassal = {
 					limit = {
 						has_character_flag = blot_feast_vassal
-						NOT = { character = ROOT }
+						NOT = {
+							character = ROOT
+						}
 						trait = homosexual
 					}
 					opinion = {
@@ -3306,7 +4448,7 @@ character_event = {
 					}
 				}
 			}
-		}	
+		}
 	}
 }
 
@@ -3316,13 +4458,14 @@ character_event = {
 	desc = EVTDESC_TOG_670
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_670
 		trigger = {
-			NOT = { trait = homosexual }
+			NOT = {
+				trait = homosexual
+			}
 		}
 		opinion = {
 			modifier = opinion_feast_scandal
@@ -3333,6 +4476,7 @@ character_event = {
 			who = FROMFROM
 		}
 	}
+
 	option = {
 		name = EVTOPTB_TOG_670
 		tooltip_info = homosexual
@@ -3356,20 +4500,18 @@ character_event = {
 	desc = EVTDESC_TOG_680
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_610
 		FROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
 			death = {
 				death_reason = death_sacrificed_norse
 				killer = ROOT
@@ -3377,39 +4519,58 @@ character_event = {
 		}
 		hidden_tooltip = {
 			any_vassal = {
-				limit = { has_character_flag = attending_blot }
-				character_event = { id = TOG.622 }
+				limit = {
+					has_character_flag = attending_blot
+				}
+				character_event = {
+					id = TOG.622
+				}
 			}
 			if = {
 				limit = {
-					FROM = { 
+					FROM = {
 						controls_religion = yes
-						NOT = { religion = norse_pagan_reformed }
+						NOT = {
+							religion = norse_pagan_reformed
+						}
 					}
 					ai = no
-					NOT = { has_character_flag = achievement_holy_smoke }
+					NOT = {
+						has_character_flag = achievement_holy_smoke
+					}
 				}
 				set_character_flag = achievement_holy_smoke
 			}
 		}
 		if = {
 			limit = {
-				FROM = { 
+				FROM = {
 					controls_religion = yes
 				}
 			}
 			prestige = 250
 			piety = 100
-			religion_authority = { modifier = sacrificed_head_good years = 20 }
-			FROM = { religion_authority = { modifier = sacrificed_head_bad years = 20 } }
+			religion_authority = {
+				modifier = sacrificed_head_good years = 20
+			}
+			FROM = {
+				religion_authority = {
+					modifier = sacrificed_head_bad years = 20
+				}
+			}
 			break = yes
 		}
 		prestige = 25
 		piety = 15
 	}
+
 	option = {
 		name = EVTOPTB_TOG_610
-		FROM = { character_event = { id = TOG.637 tooltip = EVTTOOLTIP_TOG_637 } }
+		FROM = {
+			character_event = {
+				id = TOG.637 tooltip = EVTTOOLTIP_TOG_637
+			}
+		}
 		piety = -25
 	}
 }
@@ -3420,20 +4581,18 @@ character_event = {
 	desc = EVTDESC_TOG_681
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_610
 		FROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
 			death = {
 				death_reason = death_sacrificed_norse
 				killer = ROOT
@@ -3441,39 +4600,58 @@ character_event = {
 		}
 		hidden_tooltip = {
 			any_vassal = {
-				limit = { has_character_flag = attending_blot }
-				character_event = { id = TOG.622 }
+				limit = {
+					has_character_flag = attending_blot
+				}
+				character_event = {
+					id = TOG.622
+				}
 			}
 			if = {
 				limit = {
-					FROM = { 
+					FROM = {
 						controls_religion = yes
-						NOT = { religion = norse_pagan_reformed }
+						NOT = {
+							religion = norse_pagan_reformed
+						}
 					}
 					ai = no
-					NOT = { has_character_flag = achievement_holy_smoke }
+					NOT = {
+						has_character_flag = achievement_holy_smoke
+					}
 				}
 				set_character_flag = achievement_holy_smoke
 			}
 		}
 		if = {
 			limit = {
-				FROM = { 
+				FROM = {
 					controls_religion = yes
 				}
 			}
 			prestige = 250
 			piety = 100
-			religion_authority = { modifier = sacrificed_head_good years = 20 }
-			FROM = { religion_authority = { modifier = sacrificed_head_bad years = 20 } }
+			religion_authority = {
+				modifier = sacrificed_head_good years = 20
+			}
+			FROM = {
+				religion_authority = {
+					modifier = sacrificed_head_bad years = 20
+				}
+			}
 			break = yes
 		}
 		prestige = 25
 		piety = 15
 	}
+
 	option = {
 		name = EVTOPTB_TOG_610
-		FROM = { character_event = { id = TOG.637 tooltip = EVTTOOLTIP_TOG_637 } }
+		FROM = {
+			character_event = {
+				id = TOG.637 tooltip = EVTTOOLTIP_TOG_637
+			}
+		}
 		piety = -25
 	}
 }
@@ -3484,20 +4662,18 @@ character_event = {
 	desc = EVTDESC_TOG_682
 	picture = GFX_evt_midwinter_blot_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_610
 		FROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
 			death = {
 				death_reason = death_sacrificed_norse
 				killer = ROOT
@@ -3505,123 +4681,151 @@ character_event = {
 		}
 		hidden_tooltip = {
 			any_vassal = {
-				limit = { has_character_flag = attending_blot }
-				character_event = { id = TOG.622 }
+				limit = {
+					has_character_flag = attending_blot
+				}
+				character_event = {
+					id = TOG.622
+				}
 			}
 			if = {
 				limit = {
-					FROM = { 
+					FROM = {
 						controls_religion = yes
 					}
 					ai = no
-					NOT = { has_character_flag = achievement_holy_smoke }
+					NOT = {
+						has_character_flag = achievement_holy_smoke
+					}
 				}
 				set_character_flag = achievement_holy_smoke
 			}
 		}
 		if = {
 			limit = {
-				FROM = { 
+				FROM = {
 					controls_religion = yes
 				}
 			}
 			prestige = 250
 			piety = 100
-			religion_authority = { modifier = sacrificed_head_good years = 20 }
-			FROM = { religion_authority = { modifier = sacrificed_head_bad years = 20 } }
+			religion_authority = {
+				modifier = sacrificed_head_good years = 20
+			}
+			FROM = {
+				religion_authority = {
+					modifier = sacrificed_head_bad years = 20
+				}
+			}
 			break = yes
 		}
 		prestige = 25
 		piety = 15
 	}
+
 	option = {
 		name = EVTOPTB_TOG_610
-		FROM = { character_event = { id = TOG.637 tooltip = EVTTOOLTIP_TOG_637 } }
+		FROM = {
+			character_event = {
+				id = TOG.637 tooltip = EVTTOOLTIP_TOG_637
+			}
+		}
 		piety = -25
 	}
 }
 
-### Feast event bounces
-character_event = { #feast_drunkard
+# Feast event bounces
+character_event = {
+	# feast_drunkard
 	id = TOG.683
-	
 	is_triggered_only = yes
-	
 	hide_window = yes
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
 		has_character_flag = blot_feast
-		NOT = { has_character_flag = feast_drunkard }
+		NOT = {
+			has_character_flag = feast_drunkard
+		}
 		any_vassal = {
 			has_character_flag = blot_feast_vassal
-			NOT = { has_character_flag = feast_drunkard }
+			NOT = {
+				has_character_flag = feast_drunkard
+			}
 			trait = drunkard
 		}
 	}
-	
+
 	immediate = {
 		random_vassal = {
 			limit = {
 				has_character_flag = blot_feast_vassal
 				trait = drunkard
 			}
-			character_event = { id = TOG.650 }
+			character_event = {
+				id = TOG.650
+			}
 		}
 	}
 }
 
 character_event = {
-	id = TOG.684 #feast_gluttonous
-	
+	id = TOG.684 # feast_gluttonous
 	is_triggered_only = yes
-	
 	hide_window = yes
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
 		has_character_flag = blot_feast
-		NOT = { has_character_flag = feast_gluttonous }
+		NOT = {
+			has_character_flag = feast_gluttonous
+		}
 		any_vassal = {
 			has_character_flag = blot_feast_vassal
-			NOT = { has_character_flag = feast_gluttonous }
+			NOT = {
+				has_character_flag = feast_gluttonous
+			}
 			trait = gluttonous
 		}
 	}
-	
+
 	immediate = {
 		random_vassal = {
 			limit = {
 				has_character_flag = blot_feast_vassal
 				trait = gluttonous
 			}
-			character_event = { id = TOG.652 }
+			character_event = {
+				id = TOG.652
+			}
 		}
 	}
 }
 
 character_event = {
-	id = TOG.685 #feast_lunatic
-	
+	id = TOG.685 # feast_lunatic
 	is_triggered_only = yes
-	
 	hide_window = yes
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
 		has_character_flag = blot_feast
-		NOT = { has_character_flag = feast_lunatic }
+		NOT = {
+			has_character_flag = feast_lunatic
+		}
 		any_vassal = {
 			has_character_flag = blot_feast_vassal
-			NOT = { has_character_flag = feast_lunatic }
+			NOT = {
+				has_character_flag = feast_lunatic
+			}
 			OR = {
 				trait = lunatic_1
 				trait = lunatic_2
 				trait = lunatic_3
-			} 
+			}
 		}
 	}
-	
+
 	immediate = {
 		random_vassal = {
 			limit = {
@@ -3630,32 +4834,36 @@ character_event = {
 					trait = lunatic_1
 					trait = lunatic_2
 					trait = lunatic_3
-				} 
+				}
 			}
-			character_event = { id = TOG.656 }
+			character_event = {
+				id = TOG.656
+			}
 		}
 	}
 }
 
 character_event = {
-	id = TOG.686 #feast_lustful
-	
+	id = TOG.686 # feast_lustful
 	is_triggered_only = yes
-	
 	hide_window = yes
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
 		has_character_flag = blot_feast
-		NOT = { has_character_flag = feast_lustful }
-		any_vassal = { 
+		NOT = {
+			has_character_flag = feast_lustful
+		}
+		any_vassal = {
 			has_character_flag = blot_feast_vassal
-			NOT = { has_character_flag = feast_lustful }
+			NOT = {
+				has_character_flag = feast_lustful
+			}
 			trait = lustful
 			is_female = no
 		}
 	}
-	
+
 	immediate = {
 		random_vassal = {
 			limit = {
@@ -3663,180 +4871,232 @@ character_event = {
 				trait = lustful
 				is_female = no
 			}
-			character_event = { id = TOG.658 }
+			character_event = {
+				id = TOG.658
+			}
 		}
 	}
 }
 
 character_event = {
-	id = TOG.687 #feast_friendship
-	
+	id = TOG.687 # feast_friendship
 	is_triggered_only = yes
-	
 	hide_window = yes
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
 		has_character_flag = blot_feast
-		NOT = { has_character_flag = feast_friendship }
+		NOT = {
+			has_character_flag = feast_friendship
+		}
 		has_character_flag = blot_feast_vassal
 		any_vassal = {
 			has_character_flag = blot_feast_vassal
-			NOT = { has_character_flag = feast_friendship }
-			liege = { 
+			NOT = {
+				has_character_flag = feast_friendship
+			}
+			liege = {
 				any_vassal = {
 					has_character_flag = blot_feast_vassal
-					NOT = { has_character_flag = feast_friendship }
-					NOT = { character = PREVPREV }
-					opinion = { who = PREVPREV value =  20 }
-				}		
+					NOT = {
+						has_character_flag = feast_friendship
+					}
+					NOT = {
+						character = PREVPREV
+					}
+					opinion = {
+						who = PREVPREV value = 20
+					}
+				}
 			}
 		}
 	}
-	
+
 	immediate = {
 		random_vassal = {
 			limit = {
 				has_character_flag = blot_feast_vassal
-				NOT = { has_character_flag = feast_friendship }
-				liege = { 
+				NOT = {
+					has_character_flag = feast_friendship
+				}
+				liege = {
 					any_vassal = {
 						has_character_flag = blot_feast_vassal
-						NOT = { has_character_flag = feast_friendship }
-						NOT = { character = PREVPREV }
-						opinion = { who = PREVPREV value =  20 }
-					}		
+						NOT = {
+							has_character_flag = feast_friendship
+						}
+						NOT = {
+							character = PREVPREV
+						}
+						opinion = {
+							who = PREVPREV value = 20
+						}
+					}
 				}
 			}
-			character_event = { id = TOG.660 }
+			character_event = {
+				id = TOG.660
+			}
 		}
 	}
 }
 
 character_event = {
-	id = TOG.688 #male_homosexual
-	
+	id = TOG.688 # male_homosexual
 	is_triggered_only = yes
-	
 	hide_window = yes
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
-		NOT = { has_character_flag = feast_homosexual }
+		NOT = {
+			has_character_flag = feast_homosexual
+		}
 		has_character_flag = blot_feast
-		any_vassal = { 
+		any_vassal = {
 			has_character_flag = blot_feast_vassal
-			NOT = { has_character_flag = feast_homosexual }
+			NOT = {
+				has_character_flag = feast_homosexual
+			}
 			trait = homosexual
 			is_female = no
 			has_lover = no
-			liege = { 
+			liege = {
 				any_vassal = {
 					has_character_flag = blot_feast_vassal
-					NOT = { has_character_flag = feast_homosexual }
-					NOT = { character = PREVPREV }
-					opinion = { who = PREVPREV value =  0 }
+					NOT = {
+						has_character_flag = feast_homosexual
+					}
+					NOT = {
+						character = PREVPREV
+					}
+					opinion = {
+						who = PREVPREV value = 0
+					}
 					trait = homosexual
 					is_female = no
 					has_lover = no
-				}		
+				}
 			}
 		}
 	}
-	
+
 	immediate = {
 		random_vassal = {
 			limit = {
 				has_character_flag = blot_feast_vassal
-				NOT = { has_character_flag = feast_homosexual }
+				NOT = {
+					has_character_flag = feast_homosexual
+				}
 				trait = homosexual
 				is_female = no
 				has_lover = no
-				liege = { 
+				liege = {
 					any_vassal = {
 						has_character_flag = blot_feast_vassal
-						NOT = { has_character_flag = feast_homosexual }
-						NOT = { character = PREVPREV }
-						opinion = { who = PREVPREV value =  0 }
+						NOT = {
+							has_character_flag = feast_homosexual
+						}
+						NOT = {
+							character = PREVPREV
+						}
+						opinion = {
+							who = PREVPREV value = 0
+						}
 						trait = homosexual
 						is_female = no
 						has_lover = no
-					}		
+					}
 				}
 			}
-			character_event = { id = TOG.663 }
+			character_event = {
+				id = TOG.663
+			}
 		}
 	}
 }
 
 character_event = {
-	id = TOG.689 #female_homosexual
-	
+	id = TOG.689 # female_homosexual
 	is_triggered_only = yes
-	
 	hide_window = yes
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
-		NOT = { has_character_flag = feast_homosexual }
+		NOT = {
+			has_character_flag = feast_homosexual
+		}
 		has_character_flag = blot_feast
-		any_vassal = { 
+		any_vassal = {
 			has_character_flag = blot_feast_vassal
-			NOT = { has_character_flag = feast_homosexual }
+			NOT = {
+				has_character_flag = feast_homosexual
+			}
 			trait = homosexual
 			is_female = yes
 			has_lover = no
-			liege = { 
+			liege = {
 				any_vassal = {
 					has_character_flag = blot_feast_vassal
-					NOT = { has_character_flag = feast_homosexual }
-					NOT = { character = PREVPREV }
-					opinion = { who = PREVPREV value =  0 }
+					NOT = {
+						has_character_flag = feast_homosexual
+					}
+					NOT = {
+						character = PREVPREV
+					}
+					opinion = {
+						who = PREVPREV value = 0
+					}
 					trait = homosexual
 					is_female = yes
 					has_lover = no
-				}		
+				}
 			}
 		}
 	}
-	
+
 	immediate = {
 		random_vassal = {
 			limit = {
 				has_character_flag = blot_feast_vassal
-				NOT = { has_character_flag = feast_homosexual }
+				NOT = {
+					has_character_flag = feast_homosexual
+				}
 				trait = homosexual
 				is_female = yes
 				has_lover = no
-				liege = { 
+				liege = {
 					any_vassal = {
 						has_character_flag = blot_feast_vassal
-						NOT = { has_character_flag = feast_homosexual }
-						NOT = { character = PREVPREV }
-						opinion = { who = PREVPREV value =  0 }
+						NOT = {
+							has_character_flag = feast_homosexual
+						}
+						NOT = {
+							character = PREVPREV
+						}
+						opinion = {
+							who = PREVPREV value = 0
+						}
 						trait = homosexual
 						is_female = yes
 						has_lover = no
-					}		
+					}
 				}
 			}
-			character_event = { id = TOG.666 }
+			character_event = {
+				id = TOG.666
+			}
 		}
 	}
 }
 
-###########################################
-# Flag management                         #
-###########################################
+# Flag management
 
 # Safety catch - clears character flags and modifiers
 character_event = {
 	id = TOG.699
-
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		clr_character_flag = holding_blot
 		clr_character_flag = blot_feast
@@ -3851,6 +5111,3 @@ character_event = {
 		clr_character_flag = do_not_disturb
 	}
 }
-
-
-

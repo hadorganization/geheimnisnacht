@@ -1,32 +1,25 @@
-###########################################
-#                                         #
-# ZE Alliance Events 2	                  #
-# ID ZE.9000-ZE.9999                      #
-#                                         #
-###########################################
+
+
+# ZE Alliance Events 2
+
+# ID ZE.9000-ZE.9999
 
 # Written by Tobias Bodlund
-
 namespace = ZE
 
-###########################################
-# Ally in war fails to contribute         #
-###########################################
-
+# Ally in war fails to contribute
 character_event = {
 	id = ZE.9000
 	desc = EVTDESC_ZE_9000
 	picture = GFX_evt_large_army
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
 	only_playable = yes
 	only_capable = yes
 	prisoner = no
 	has_dlc = "Zeus"
 	war = yes
-	
+
 	trigger = {
 		OR = {
 			is_primary_war_attacker = yes
@@ -64,14 +57,14 @@ character_event = {
 			ROOT = {
 				any_war = {
 					days_since_last_hostile_action = {
-						who = PREVPREV     # The character whose activity is being checked
-						days = 1460    # Number of days since last battle participation or offensive siege (4 years)
+						who = PREVPREV # The character whose activity is being checked
+						days = 1460 # Number of days since last battle participation or offensive siege (4 years)
 					}
 				}
 			}
 		}
 	}
-	
+
 	immediate = {
 		random_allied_character = {
 			limit = {
@@ -119,8 +112,8 @@ character_event = {
 				ROOT = {
 					any_war = {
 						days_since_last_hostile_action = {
-							who = PREVPREV     # The character whose activity is being checked
-							days = 1460    # Number of days since last battle participation or offensive siege (4 years)
+							who = PREVPREV # The character whose activity is being checked
+							days = 1460 # Number of days since last battle participation or offensive siege (4 years)
 						}
 					}
 				}
@@ -128,20 +121,29 @@ character_event = {
 			save_event_target_as = ally_not_active_in_war
 		}
 	}
-	
+
 	option = {
-		name = EVTOPTA_ZE_9000  # Send angry letter and break alliance
+		name = EVTOPTA_ZE_9000 # Send angry letter and break alliance
 		event_target:ally_not_active_in_war = {
 			reverse_opinion = {
 				who = ROOT
 				modifier = ally_inactive_in_war
 				years = 5
 			}
-			ROOT = { break_alliance = PREV }
-			custom_tooltip = { text = ze_9000_letter_sent }
-			hidden_tooltip = { letter_event = { id = ZE.9001 } }
+			ROOT = {
+				break_alliance = PREV
+			}
+			custom_tooltip = {
+				text = ze_9000_letter_sent
+			}
+			hidden_tooltip = {
+				letter_event = {
+					id = ZE.9001
+				}
+			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_ZE_9000	# Forgive and forget
 		event_target:ally_not_active_in_war = {
@@ -159,18 +161,17 @@ letter_event = {
 	id = ZE.9001
 	desc = EVTDESC_ZE_9001
 	border = GFX_event_letter_frame_war
-
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_9001
-		tooltip = { break_alliance = FROM }
+		tooltip = {
+			break_alliance = FROM
+		}
 	}
 }
 
-###########################################
-# Pirates!						          #
-###########################################
+# Pirates!
 
 # Pirates operate on seas - rumors say other realm's ruler is behind it
 character_event = {
@@ -178,15 +179,13 @@ character_event = {
 	desc = EVTDESC_ZE_9100
 	picture = GFX_evt_large_army
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
 	only_independent = yes
 	only_capable = yes
 	prisoner = no
 	war = no
 	has_dlc = "Zeus"
-	
+
 	trigger = {
 		is_tributary = no
 		any_realm_province = {
@@ -230,7 +229,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		random_independent_ruler = {
 			limit = {
@@ -270,14 +269,16 @@ character_event = {
 			save_event_target_as = pirate_alliance_friction_ally
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_ZE_9100	# Send letter with suspicion
 		custom_tooltip = {
 			text = EVTOPTA_ZE_9100_TOOLTIP
 			hidden_tooltip = {
 				event_target:pirate_alliance_friction_ally = {
-					letter_event = { id = ZE.9101 }
+					letter_event = {
+						id = ZE.9101
+					}
 				}
 				any_realm_province = {
 					limit = {
@@ -293,17 +294,14 @@ character_event = {
 	}
 }
 
-
 # Ally receives first letter
 letter_event = {
 	id = ZE.9101
 	desc = EVTDESC_ZE_9101
 	border = GFX_event_letter_frame_diplomacy
-
 	is_triggered_only = yes
-
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_9101 # Answer cordially
 		ai_chance = {
@@ -314,9 +312,18 @@ letter_event = {
 			}
 		}
 		prestige = -50
-		hidden_tooltip = { FROM = { letter_event = { id = ZE.9110 days = 20 } } }
-		custom_tooltip = { text = ze_9101_cordial }
+		hidden_tooltip = {
+			FROM = {
+				letter_event = {
+					id = ZE.9110 days = 20
+				}
+			}
+		}
+		custom_tooltip = {
+			text = ze_9101_cordial
+		}
 	}
+
 	option = {
 		name = EVTOPTB_ZE_9101 # Answer with countersuspicion
 		ai_chance = {
@@ -327,8 +334,16 @@ letter_event = {
 			}
 		}
 		prestige = 50
-		hidden_tooltip = { FROM = { letter_event = { id = ZE.9120 days = 20 } } }
-		custom_tooltip = { text = ze_9101_angry}
+		hidden_tooltip = {
+			FROM = {
+				letter_event = {
+					id = ZE.9120 days = 20
+				}
+			}
+		}
+		custom_tooltip = {
+			text = ze_9101_angry
+		}
 	}
 }
 
@@ -337,11 +352,9 @@ letter_event = {
 	id = ZE.9110
 	desc = EVTDESC_ZE_9110
 	border = GFX_event_letter_frame_diplomacy
-
 	is_triggered_only = yes
-
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_9110 # Accept
 		ai_chance = {
@@ -353,6 +366,7 @@ letter_event = {
 		}
 		prestige = -50
 	}
+
 	option = {
 		name = EVTOPTB_ZE_9110 # They are playing dumb. Break pact
 		ai_chance = {
@@ -362,13 +376,23 @@ letter_event = {
 				trait = paranoid
 			}
 		}
-		custom_tooltip = { text = ze_9121_break_pact }
-		hidden_tooltip = { FROM = { letter_event = { id = ZE.9111 } } }
+		custom_tooltip = {
+			text = ze_9121_break_pact
+		}
+		hidden_tooltip = {
+			FROM = {
+				letter_event = {
+					id = ZE.9111
+				}
+			}
+		}
 		if = {
 			limit = {
 				is_allied_with = FROM
 			}
-			tooltip = { break_alliance = FROM }
+			tooltip = {
+				break_alliance = FROM
+			}
 		}
 		if = {
 			limit = {
@@ -390,9 +414,8 @@ letter_event = {
 	id = ZE.9111
 	desc = EVTDESC_ZE_9111
 	border = GFX_event_letter_frame_diplomacy
-
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_9111 # Accept
 		prestige = -50
@@ -420,11 +443,9 @@ letter_event = {
 	id = ZE.9120
 	desc = EVTDESC_ZE_9120
 	border = GFX_event_letter_frame_diplomacy
-
 	is_triggered_only = yes
-
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_9120 # Try to repair it
 		ai_chance = {
@@ -435,9 +456,18 @@ letter_event = {
 			}
 		}
 		prestige = -50
-		custom_tooltip = { text = ze_9120_soothing }
-		hidden_tooltip = { FROM = { letter_event = { id = ZE.9121 days = 20 } } }
+		custom_tooltip = {
+			text = ze_9120_soothing
+		}
+		hidden_tooltip = {
+			FROM = {
+				letter_event = {
+					id = ZE.9121 days = 20
+				}
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTB_ZE_9120 # Answer with counter-countersuspicion
 		ai_chance = {
@@ -448,8 +478,16 @@ letter_event = {
 			}
 		}
 		prestige = 50
-		custom_tooltip = { text = ze_9101_angry }
-		hidden_tooltip = { FROM = { letter_event = { id = ZE.9130 days = 20 } } }
+		custom_tooltip = {
+			text = ze_9101_angry
+		}
+		hidden_tooltip = {
+			FROM = {
+				letter_event = {
+					id = ZE.9130 days = 20
+				}
+			}
+		}
 	}
 }
 
@@ -458,11 +496,9 @@ letter_event = {
 	id = ZE.9121
 	desc = EVTDESC_ZE_9121
 	border = GFX_event_letter_frame_diplomacy
-
 	is_triggered_only = yes
-
 	only_capable = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_9121 # Accept
 		ai_chance = {
@@ -473,9 +509,18 @@ letter_event = {
 			}
 		}
 		prestige = -50
-		custom_tooltip = { text = ze_9121_accept_apology }
-		hidden_tooltip = { FROM = { letter_event = { id = ZE.9122 } } }
+		custom_tooltip = {
+			text = ze_9121_accept_apology
+		}
+		hidden_tooltip = {
+			FROM = {
+				letter_event = {
+					id = ZE.9122
+				}
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTB_ZE_9121 # Pact broken
 		ai_chance = {
@@ -486,13 +531,23 @@ letter_event = {
 			}
 		}
 		prestige = 50
-		custom_tooltip = { text = ze_9121_break_pact }
-		hidden_tooltip = { FROM = { letter_event = { id = ZE.9123 } } }
+		custom_tooltip = {
+			text = ze_9121_break_pact
+		}
+		hidden_tooltip = {
+			FROM = {
+				letter_event = {
+					id = ZE.9123
+				}
+			}
+		}
 		if = {
 			limit = {
 				is_allied_with = FROM
 			}
-			tooltip = { break_alliance = FROM }
+			tooltip = {
+				break_alliance = FROM
+			}
 		}
 		if = {
 			limit = {
@@ -514,9 +569,8 @@ letter_event = {
 	id = ZE.9122
 	desc = EVTDESC_ZE_9122
 	border = GFX_event_letter_frame_diplomacy
-
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_9122
 		prestige = 50
@@ -528,9 +582,8 @@ letter_event = {
 	id = ZE.9123
 	desc = EVTDESC_ZE_9123
 	border = GFX_event_letter_frame_diplomacy
-
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_9123
 		prestige = -50
@@ -558,9 +611,7 @@ letter_event = {
 	id = ZE.9130
 	desc = EVTDESC_ZE_9130
 	border = GFX_event_letter_frame_diplomacy
-
 	is_triggered_only = yes
-	
 	only_capable = yes
 
 	option = {
@@ -573,9 +624,18 @@ letter_event = {
 			}
 		}
 		prestige = -50
-		custom_tooltip = { text = ze_9130_apology }
-		hidden_tooltip = { FROM = { letter_event = { id = ZE.9131 } } }
+		custom_tooltip = {
+			text = ze_9130_apology
+		}
+		hidden_tooltip = {
+			FROM = {
+				letter_event = {
+					id = ZE.9131
+				}
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTB_ZE_9130 # Pact broken
 		ai_chance = {
@@ -586,13 +646,23 @@ letter_event = {
 			}
 		}
 		prestige = 50
-		custom_tooltip = { text = ze_9121_break_pact }
-		hidden_tooltip = { FROM = { letter_event = { id = ZE.9132 } } }
+		custom_tooltip = {
+			text = ze_9121_break_pact
+		}
+		hidden_tooltip = {
+			FROM = {
+				letter_event = {
+					id = ZE.9132
+				}
+			}
+		}
 		if = {
 			limit = {
 				is_allied_with = FROM
 			}
-			tooltip = { break_alliance = FROM }
+			tooltip = {
+				break_alliance = FROM
+			}
 		}
 		if = {
 			limit = {
@@ -614,9 +684,8 @@ letter_event = {
 	id = ZE.9131
 	desc = EVTDESC_ZE_9131
 	border = GFX_event_letter_frame_diplomacy
-
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_ZE_9131
 		prestige = 50
@@ -628,9 +697,8 @@ letter_event = {
 	id = ZE.9132
 	desc = EVTDESC_ZE_9132
 	border = GFX_event_letter_frame_diplomacy
-
 	is_triggered_only = yes
-	
+
 	option = {
 		name = GOOD_RIDDANCE
 		prestige = -50
@@ -652,4 +720,3 @@ letter_event = {
 		}
 	}
 }
-

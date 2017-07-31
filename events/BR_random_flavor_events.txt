@@ -1,17 +1,16 @@
-#HUMAN RANDOM FLAVOR EVENTS#
 
+# HUMAN RANDOM FLAVOR EVENTS
 namespace = humanflavor
 
-## A courtier wins a victory against enemies##
+# A courtier wins a victory against enemies
 character_event = {
 	id = humanflavor.0
 	title = A_COURTIER_WINS_A_VICTORY		# A courtier wins a victory
 	desc = EVTDESCHUMANFLAVOR.0				# While on a border patrol, a courtier won a great victory against when cornered by a dozen enemies.He slew half of them, and the rest fled.The court is hailing him as a great warrior!
 	picture = "GFX_evt_crusaders"
 	min_age = 16
-
 	is_triggered_only = yes
-	
+
 	trigger = {
 		religion_group = old_world_group
 		is_ruler = yes
@@ -27,17 +26,17 @@ character_event = {
 
 	option = {
 		name = WE_SHALL_HONOR_HIM# We shall honor him!
-			random_courtier = {
-				limit = {
-					AND = {
-						martial = 12
-						trait = brave
-						is_female = no
-						age = 16
-					}
+		random_courtier = {
+			limit = {
+				AND = {
+					martial = 12
+					trait = brave
+					is_female = no
+					age = 16
 				}
-				prestige = 50
 			}
+			prestige = 50
+		}
 	}
 
 	option = {
@@ -61,17 +60,15 @@ character_event = {
 			prestige = 5
 		}
 	}
-
 }
 
-##A courtier flees from enemies##
+# A courtier flees from enemies
 character_event = {
 	id = humanflavor.1
 	title = A_COURTIER_DISGRACES_HIMSELF# A courtier disgraces himself
 	desc = EVTDESCHUMANFLAVOR.1# While on a border patrol, a courtier was ambushed, but fled and left his men to die!His name is in disgrace.
 	picture = "GFX_evt_crusaders"
 	min_age = 16
-
 	is_triggered_only = yes
 
 	trigger = {
@@ -88,7 +85,6 @@ character_event = {
 			}
 		}
 	}
-
 
 	option = {
 		name = THAT_WAS_ILLDONE# That was ill - done.
@@ -147,22 +143,20 @@ character_event = {
 	}
 }
 
-##A cabal troubles a province##
+# A cabal troubles a province
 character_event = {
 	id = humanflavor.3
 	title = CABAL# Cabal
 	desc = EVTDESCHUMANFLAVOR.3
 	picture = "GFX_evt_shadowy_cabal"
 	min_age = 16
-
 	is_triggered_only = yes
-	
+
 	trigger = {
 		religion_group = old_world_group
 		higher_tier_than = BARON
 		age = 16
 	}
-
 
 	option = {
 		name = EVTOPTHUMANFLAVOR.3.a	# We must send for a Witch Hunter.
@@ -206,5 +200,4 @@ character_event = {
 		}
 		increase_visibility_minor_effect = yes
 	}
-
 }

@@ -1,14 +1,11 @@
-###########################################
-#                                         #
-# Horse Lords nomad horse events		  #
-# ID HL.6000-6499                         #
-#                                         #
-###########################################
+
+
+# Horse Lords nomad horse events
+
+# ID HL.6000-6499
 
 # Written by Tobias Bodlund
-
 namespace = HL
-
 
 # Select and name horse
 long_character_event = {
@@ -16,9 +13,8 @@ long_character_event = {
 	desc = EVTDESC_HL_6000
 	picture = GFX_evt_horse_friend
 	border = GFX_event_long_frame_war
-
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_HL_6000 # Dragon
 		add_character_modifier = {
@@ -27,6 +23,7 @@ long_character_event = {
 		}
 		set_character_flag = nomad_warhorse_name_dragon
 	}
+
 	option = {
 		name = EVTOPTB_HL_6000 # Sky
 		add_character_modifier = {
@@ -35,6 +32,7 @@ long_character_event = {
 		}
 		set_character_flag = nomad_warhorse_name_sky
 	}
+
 	option = {
 		name = EVTOPTC_HL_6000 # Arrow
 		add_character_modifier = {
@@ -43,6 +41,7 @@ long_character_event = {
 		}
 		set_character_flag = nomad_warhorse_name_arrow
 	}
+
 	option = {
 		name = EVTOPTD_HL_6000 # Lightning
 		add_character_modifier = {
@@ -59,27 +58,30 @@ character_event = {
 	desc = EVTDESC_HL_6010
 	picture = GFX_evt_child_sword_altaic
 	border = GFX_event_normal_frame_diplomacy
-
 	is_triggered_only = yes
-	
+
 	trigger = {
 		is_nomadic = yes
 		any_ward = {
 			age = 7
-			NOT = {	age = 8 }
+			NOT = {
+				age = 8
+			}
 		}
 	}
-	
+
 	immediate = {
 		random_ward = {
 			limit = {
 				age = 7
-				NOT = {	age = 8 }
+				NOT = {
+					age = 8
+				}
 			}
 			save_event_target_as = ward_cant_ride
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_HL_6010 # Teach them myself
 		event_target:ward_cant_ride = {
@@ -90,6 +92,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_HL_6010 # Let the brat flounder, I don't have the time
 		event_target:ward_cant_ride = {
@@ -105,47 +108,66 @@ narrative_event = {
 	desc = EVTDESC_HL_6020
 	picture = GFX_evt_horse_friend
 	border = GFX_event_narrative_frame_diplomacy
-
 	is_triggered_only = yes
-	
 	capable_only = yes
 	is_married = yes
-	
+
 	trigger = {
 		is_nomadic = yes
-		has_character_modifier = nomad_warhorse 
-		NOT = { has_character_flag = do_not_disturb }
-		NOT = { is_inaccessible_trigger = yes }
+		has_character_modifier = nomad_warhorse
+		NOT = {
+			has_character_flag = do_not_disturb
+		}
+		NOT = {
+			is_inaccessible_trigger = yes
+		}
 		any_spouse = {
 			ai = yes
 			at_location = ROOT
-			NOT = { trait = incapable }
-			NOT = { has_character_flag = do_not_disturb }
+			NOT = {
+				trait = incapable
+			}
+			NOT = {
+				has_character_flag = do_not_disturb
+			}
 		}
 	}
-	
+
 	immediate = {
 		random_spouse = {
 			limit = {
 				ai = yes
 				at_location = ROOT
-				NOT = { trait = incapable }
-				NOT = { has_character_flag = do_not_disturb }
+				NOT = {
+					trait = incapable
+				}
+				NOT = {
+					has_character_flag = do_not_disturb
+				}
 			}
 			save_event_target_as = spouse_danger_nomad_river_crossing
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_HL_6020 # Save spouse
 		remove_character_modifier = nomad_warhorse
 		hidden_tooltip = {
 			random_list = {
-				10 = { character_event = { id = HL.6021 } } # Grateful
-				10 = { character_event = { id = HL.6022 } } # Angry
+				10 = {
+					character_event = {
+						id = HL.6021
+					}
+				} # Grateful
+				10 = {
+					character_event = {
+						id = HL.6022
+					}
+				} # Angry
 			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_HL_6020 # Save horse
 		trigger = {
@@ -153,16 +175,18 @@ narrative_event = {
 		}
 		event_target:spouse_danger_nomad_river_crossing = {
 			if = {
-		limit = {
-			is_invincible_trigger = yes
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
+				death_reason = death_accident_drowning
+			}
 		}
+	}
 
-		antideath_effect = yes
-		break = yes 
-	}
-			death = { death_reason = death_accident_drowning }
-		}
-	}
 	option = {
 		name = EVTOPTC_HL_6020 # Save horse
 		trigger = {
@@ -170,48 +194,53 @@ narrative_event = {
 		}
 		event_target:spouse_danger_nomad_river_crossing = {
 			if = {
-		limit = {
-			is_invincible_trigger = yes
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
+				death_reason = death_accident_drowning
+			}
 		}
+	}
 
-		antideath_effect = yes
-		break = yes 
-	}
-			death = { death_reason = death_accident_drowning }
-		}
-	}
 	option = {
 		name = EVTOPTD_HL_6020 # Save horse
 		trigger = {
 			has_character_flag = nomad_warhorse_name_arrow
 		}
 		event_target:spouse_danger_nomad_river_crossing = {
-if = {
-		limit = {
-			is_invincible_trigger = yes
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
+				death_reason = death_accident_drowning
+			}
 		}
+	}
 
-		antideath_effect = yes
-		break = yes 
-	}
-			death = { death_reason = death_accident_drowning }
-		}
-	}
 	option = {
 		name = EVTOPTE_HL_6020 # Save horse
 		trigger = {
 			has_character_flag = nomad_warhorse_name_lightning
 		}
 		event_target:spouse_danger_nomad_river_crossing = {
-if = {
-		limit = {
-			is_invincible_trigger = yes
-		}
-
-		antideath_effect = yes
-		break = yes 
-	}
-			death = { death_reason = death_accident_drowning }
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
+				death_reason = death_accident_drowning
+			}
 		}
 	}
 }
@@ -222,14 +251,15 @@ character_event = {
 	desc = EVTDESC_HL_6021
 	picture = GFX_evt_nomad_camp
 	border = GFX_event_normal_frame_diplomacy
-
 	is_triggered_only = yes
-	
+
 	option = {
-		name = EVTOPTA_HL_6021  # Great
+		name = EVTOPTA_HL_6021 # Great
 		if = {
 			limit = {
-				event_target:spouse_danger_nomad_river_crossing = { is_lover = ROOT }
+				event_target:spouse_danger_nomad_river_crossing = {
+					is_lover = ROOT
+				}
 			}
 			event_target:spouse_danger_nomad_river_crossing = {
 				opinion = {
@@ -241,15 +271,24 @@ character_event = {
 		}
 		if = {
 			limit = {
-				event_target:spouse_danger_nomad_river_crossing = { NOT = { is_lover = ROOT } }
+				event_target:spouse_danger_nomad_river_crossing = {
+					NOT = {
+						is_lover = ROOT
+					}
+				}
 			}
-			event_target:spouse_danger_nomad_river_crossing = { add_lover = ROOT }
+			event_target:spouse_danger_nomad_river_crossing = {
+				add_lover = ROOT
+			}
 		}
-		hidden_tooltip = { 
+		hidden_tooltip = {
 			set_character_flag = nomad_warhorse_ignore_grief
-			character_event = { id = HL.6999 } # Horse clean-up
+			character_event = {
+				id = HL.6999
+			} # Horse clean-up
 		}
 	}
+
 	option = {
 		name = EVTOPTB_HL_6021				# But did I do the right thing...?
 		trigger = {
@@ -269,11 +308,14 @@ character_event = {
 				years = 5
 			}
 		}
-		hidden_tooltip = { 
+		hidden_tooltip = {
 			set_character_flag = nomad_warhorse_ignore_grief
-			character_event = { id = HL.6999 } # Horse clean-up
+			character_event = {
+				id = HL.6999
+			} # Horse clean-up
 		}
 	}
+
 	option = {
 		name = EVTOPTC_HL_6021				# But did I do the right thing...?
 		trigger = {
@@ -293,11 +335,14 @@ character_event = {
 				years = 5
 			}
 		}
-		hidden_tooltip = { 
+		hidden_tooltip = {
 			set_character_flag = nomad_warhorse_ignore_grief
-			character_event = { id = HL.6999 } # Horse clean-up
+			character_event = {
+				id = HL.6999
+			} # Horse clean-up
 		}
 	}
+
 	option = {
 		name = EVTOPTD_HL_6021				# But did I do the right thing...?
 		trigger = {
@@ -317,11 +362,14 @@ character_event = {
 				years = 5
 			}
 		}
-		hidden_tooltip = { 
+		hidden_tooltip = {
 			set_character_flag = nomad_warhorse_ignore_grief
-			character_event = { id = HL.6999 } # Horse clean-up
+			character_event = {
+				id = HL.6999
+			} # Horse clean-up
 		}
 	}
+
 	option = {
 		name = EVTOPTE_HL_6021				# But did I do the right thing...?
 		trigger = {
@@ -341,22 +389,23 @@ character_event = {
 				years = 5
 			}
 		}
-		hidden_tooltip = { 
+		hidden_tooltip = {
 			set_character_flag = nomad_warhorse_ignore_grief
-			character_event = { id = HL.6999 } # Horse clean-up
+			character_event = {
+				id = HL.6999
+			} # Horse clean-up
 		}
 	}
 }
-	
+
 # River crossing - saved spouse but spouse is angry - why didn't you save the horse?
 character_event = {
 	id = HL.6022
 	desc = EVTDESC_HL_6022
 	picture = GFX_evt_horse_friend
 	border = GFX_event_normal_frame_diplomacy
-
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_HL_6022									# I, too, now question my decision
 		event_target:spouse_danger_nomad_river_crossing = {
@@ -368,36 +417,34 @@ character_event = {
 		}
 	}
 }
-	
+
 # A loyal retinue warrior's family have lost their horses to sickness, will you help them?
 character_event = {
 	id = HL.6030
 	desc = EVTDESC_HL_6030
 	picture = GFX_evt_nomad_camp
 	border = GFX_event_normal_frame_diplomacy
-
 	is_triggered_only = yes
 	capable_only = yes
-	
+
 	trigger = {
 		is_nomadic = yes
-		NOT = { has_character_flag = do_not_disturb }
-		NOT = { is_inaccessible_trigger = yes }
+		NOT = {
+			has_character_flag = do_not_disturb
+		}
+		NOT = {
+			is_inaccessible_trigger = yes
+		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_HL_6030 # Give them horses from my personal herd
 		wealth = -12
 		prestige = 30
 	}
+
 	option = {
 		name = EVTOPTB_HL_6030 # Don't help
 		prestige = -10
 	}
 }
-
-
-	
-	
-	
-	

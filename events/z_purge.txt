@@ -1,29 +1,35 @@
 namespace = z_purge
 
-#First for the goodies, purging the baddies
+# First for the goodies, purging the baddies
 character_event = {
 	id = z_purge.0
-	desc = purgedesc #There are hostile creatures in your realm, they must be purged and the threat removed. It's time to send in the troops...	
+	desc = purgedesc # There are hostile creatures in your realm, they must be purged and the threat removed. It's time to send in the troops...
 	hide_window = yes
-	is_triggered_only = yes #annual pulse
-	
-	
+	is_triggered_only = yes # annual pulse
+
 	option = {
-		name = purge0A #Yes, send them at once!
+		name = purge0A # Yes, send them at once!
 		set_character_flag = purge_in_progress
-		ROOT = { character_event = { id = z_purge.1 days = 3650 } }
-		ROOT = { character_event = { id = z_purge.2 days = 3690 } }
+		ROOT = {
+			character_event = {
+				id = z_purge.1 days = 3650
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = z_purge.2 days = 3690
+			}
+		}
 	}
-	
 }
-	
+
 character_event = {
 	id = z_purge.1
-	desc = purge1desc #Your land has been purged of enemies, and now the time will come to settle the new wilderness with your people.
-	picture = GFX_abandoned_lands	
+	desc = purge1desc # Your land has been purged of enemies, and now the time will come to settle the new wilderness with your people.
+	picture = GFX_abandoned_lands
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	option = {
 		name = OK
 		event_target:purge_prov = {
@@ -33,37 +39,31 @@ character_event = {
 			}
 		}
 	}
-	
 }
-	
-#hidden event to clear the purge flag after 10 years so the ruler can purge again
+
+# hidden event to clear the purge flag after 10 years so the ruler can purge again
 character_event = {
 	id = z_purge.2
 	desc = purgedesc
 	picture = GFX_abandoned_lands
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = OK
 		clr_character_flag = purge_in_progress
 	}
-	
 }
-
-
 narrative_event = {
 	id = 164900
 	title = z_lizardman.100
 	desc = z_lizardman.100_desc
 	picture = GFX_evt_battle
 	border = GFX_event_normal_frame_war
-
 	min_age = 16
 	capable_only = yes
 	prisoner = no
-	
+
 	trigger = {
 		has_job_action = action_ritual_of_the_gods
 		liege = {
@@ -77,32 +77,38 @@ narrative_event = {
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 240
-		
 		modifier = {
 			factor = 3.0
 			liege = {
 				tier = count
 			}
 		}
-		
 		modifier = {
 			factor = 1.25
-			NOT = { learning = 2 }
+			NOT = {
+				learning = 2
+			}
 		}
 		modifier = {
 			factor = 1.25
-			NOT = { learning = 3 }
+			NOT = {
+				learning = 3
+			}
 		}
 		modifier = {
 			factor = 1.25
-			NOT = { learning = 4 }
+			NOT = {
+				learning = 4
+			}
 		}
 		modifier = {
 			factor = 1.25
-			NOT = { learning = 5 }
+			NOT = {
+				learning = 5
+			}
 		}
 		modifier = {
 			factor = 0.75
@@ -171,17 +177,21 @@ narrative_event = {
 		modifier = {
 			factor = 0.75
 			learning = 25
-		}																								
+		}
 	}
-	
+
 	option = {
 		name = z_lizardman.100a
-		location = { 
+		location = {
 			save_event_target_as = savedloc
 		}
 		piety = 25
-		hidden_tooltip  = {
-			liege = { character_event = { id = 164901 } }
+		hidden_tooltip = {
+			liege = {
+				character_event = {
+					id = 164901
+				}
+			}
 		}
 	}
 }
@@ -192,12 +202,11 @@ narrative_event = {
 	desc = z_lizardman.101_desc
 	picture = GFX_evt_battle
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
-	immediate = {		
+
+	immediate = {
 	}
-	
+
 	option = {
 		name = z_lizardman.101a
 		opinion = {
@@ -207,10 +216,12 @@ narrative_event = {
 		}
 		spawn_unit = {
 			owner = ROOT
-			province = event_target:savedloc 
-			home = event_target:savedloc 
+			province = event_target:savedloc
+			home = event_target:savedloc
 			troops = {
-				war_elephants = { 100 100 }
+				war_elephants = {
+					100 100
+				}
 			}
 			attrition = 0.0
 			reinforces = yes
@@ -218,6 +229,7 @@ narrative_event = {
 			maintenance_multiplier = 0.0
 		}
 	}
+
 	option = {
 		name = z_lizardman.101b
 		opinion = {
@@ -225,12 +237,15 @@ narrative_event = {
 			modifier = opinion_grateful
 			months = 60
 		}
-		event_target:savedloc = { 
-			any_province_character = { 
-				add_character_modifier = { name = z_tepoc_blessing  duration = 500 hidden = yes stacking = yes }
+		event_target:savedloc = {
+			any_province_character = {
+				add_character_modifier = {
+					name = z_tepoc_blessing duration = 500 hidden = yes stacking = yes
+				}
 			}
 		}
-	}	
+	}
+
 	option = {
 		name = z_lizardman.101c
 		opinion = {
@@ -238,10 +253,13 @@ narrative_event = {
 			modifier = opinion_grateful
 			months = 60
 		}
-		event_target:savedloc = { 
-			  add_province_modifier = { name = z_quetzl_blessing duration = 500 stacking = yes }
+		event_target:savedloc = {
+			add_province_modifier = {
+				name = z_quetzl_blessing duration = 500 stacking = yes
+			}
 		}
-	}	
+	}
+
 	option = {
 		name = z_lizardman.101d
 		opinion = {
@@ -250,22 +268,18 @@ narrative_event = {
 			months = 60
 		}
 		decadence = -5
-	}			
+	}
 }
-
-
-
 narrative_event = {
 	id = 164902
 	title = z_lizardman.100
 	desc = z_lizardman.100_desc
 	picture = GFX_evt_battle
 	border = GFX_event_normal_frame_war
-
 	min_age = 16
 	capable_only = yes
 	prisoner = no
-	
+
 	trigger = {
 		has_job_action = action_ritual_of_the_gods
 		liege = {
@@ -279,32 +293,38 @@ narrative_event = {
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 480
-		
 		modifier = {
 			factor = 3.0
 			liege = {
 				tier = count
 			}
 		}
-		
 		modifier = {
 			factor = 1.25
-			NOT = { learning = 2 }
+			NOT = {
+				learning = 2
+			}
 		}
 		modifier = {
 			factor = 1.25
-			NOT = { learning = 3 }
+			NOT = {
+				learning = 3
+			}
 		}
 		modifier = {
 			factor = 1.25
-			NOT = { learning = 4 }
+			NOT = {
+				learning = 4
+			}
 		}
 		modifier = {
 			factor = 1.25
-			NOT = { learning = 5 }
+			NOT = {
+				learning = 5
+			}
 		}
 		modifier = {
 			factor = 0.75
@@ -373,17 +393,21 @@ narrative_event = {
 		modifier = {
 			factor = 0.75
 			learning = 25
-		}																								
+		}
 	}
-	
+
 	option = {
 		name = z_lizardman.100a
-		location = { 
+		location = {
 			save_event_target_as = savedloc
 		}
 		piety = 25
-		hidden_tooltip  = {
-			liege = { character_event = { id = 164902 } }
+		hidden_tooltip = {
+			liege = {
+				character_event = {
+					id = 164902
+				}
+			}
 		}
 	}
 }
@@ -394,12 +418,11 @@ narrative_event = {
 	desc = z_lizardman.101_desc
 	picture = GFX_evt_battle
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
-	immediate = {		
+
+	immediate = {
 	}
-	
+
 	option = {
 		name = z_lizardman.102a
 		opinion = {
@@ -409,10 +432,12 @@ narrative_event = {
 		}
 		spawn_unit = {
 			owner = ROOT
-			province = event_target:savedloc 
-			home = event_target:savedloc 
+			province = event_target:savedloc
+			home = event_target:savedloc
 			troops = {
-				war_elephants = { 100 100 }
+				war_elephants = {
+					100 100
+				}
 			}
 			attrition = 0.0
 			reinforces = yes
@@ -420,6 +445,7 @@ narrative_event = {
 			maintenance_multiplier = 0.0
 		}
 	}
+
 	option = {
 		name = z_lizardman.102b
 		opinion = {
@@ -427,12 +453,15 @@ narrative_event = {
 			modifier = opinion_grateful
 			months = 60
 		}
-		event_target:savedloc = { 
-			any_province_character = { 
-				add_character_modifier = { name = z_tepoc_blessing  duration = 500 hidden = yes stacking = yes }
+		event_target:savedloc = {
+			any_province_character = {
+				add_character_modifier = {
+					name = z_tepoc_blessing duration = 500 hidden = yes stacking = yes
+				}
 			}
 		}
-	}	
+	}
+
 	option = {
 		name = z_lizardman.102c
 		opinion = {
@@ -440,10 +469,13 @@ narrative_event = {
 			modifier = opinion_grateful
 			months = 60
 		}
-		event_target:savedloc = { 
-			  add_province_modifier = { name = z_quetzl_blessing duration = 500 stacking = yes }
+		event_target:savedloc = {
+			add_province_modifier = {
+				name = z_quetzl_blessing duration = 500 stacking = yes
+			}
 		}
-	}	
+	}
+
 	option = {
 		name = z_lizardman.102d
 		opinion = {
@@ -452,7 +484,5 @@ narrative_event = {
 			months = 60
 		}
 		decadence = -5
-	}			
+	}
 }
-
-

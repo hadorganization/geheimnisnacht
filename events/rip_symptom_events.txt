@@ -1,48 +1,52 @@
-#############################################
-#											#
-# RIP Symptom and Disease events			#
-# ID RIP.5000 - RIP.5100					#
-#											#
-#############################################
+
+
+# RIP Symptom and Disease events
+
+# ID RIP.5000 - RIP.5100
 
 namespace = RIP
 
-#Disease is set when first symptom is gained
-character_event = { #Cough can lead to pneumonia tuberculosis measles flu cancer
+# Disease is set when first symptom is gained
+character_event = {
+	# Cough can lead to pneumonia tuberculosis measles flu cancer
 	id = RIP.5000
 	desc = EVTDESCRIP.5000
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		is_disease_immune_race = no
 	}
-	
+
 	option = {
 		name = ALAS
 		add_trait = cough
-		
 		hidden_tooltip = {
 			host = {
-				random_courtier_or_vassal = { #Markus doing
+				random_courtier_or_vassal = {
+					# Markus doing
 					limit = {
-						liege = { character = PREVPREV }
+						liege = {
+							character = PREVPREV
+						}
 						has_minor_title = title_court_physician
 					}
-					character_event = { id = RIP.11031 days = 1 }
+					character_event = {
+						id = RIP.11031 days = 1
+					}
 				}
 			}
 			random_list = {
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_pneumonia }
+								NOT = {
+									has_character_flag = got_pneumonia
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
@@ -51,13 +55,14 @@ character_event = { #Cough can lead to pneumonia tuberculosis measles flu cancer
 					modifier = {
 						factor = 0.5
 						age = 6
-						NOT = { age = 45 }
+						NOT = {
+							age = 45
+						}
 					}
 					modifier = {
 						factor = 0.5
 						health = 5
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -65,35 +70,38 @@ character_event = { #Cough can lead to pneumonia tuberculosis measles flu cancer
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_pneumonia 
-					set_character_flag = developing_illness
+						set_character_flag = got_pneumonia
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_pneumonia 
+							has_character_flag = got_pneumonia
 						}
-					character_event = { id = RIP.5011 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5011 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_tuberculosis }
+								NOT = {
+									has_character_flag = got_tuberculosis
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.01	#rare when not an epidemic 			
+						factor = 0.01	# rare when not an epidemic
 					}
 					modifier = {
 						factor = 0
 						has_character_flag = immune_tuberculosis
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -101,35 +109,38 @@ character_event = { #Cough can lead to pneumonia tuberculosis measles flu cancer
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_tuberculosis 
-					set_character_flag = developing_illness
+						set_character_flag = got_tuberculosis
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_tuberculosis 
+							has_character_flag = got_tuberculosis
 						}
-					character_event = { id = RIP.5015 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5015 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_measles }
+								NOT = {
+									has_character_flag = got_measles
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.01	#rare when not an epidemic 			
+						factor = 0.01	# rare when not an epidemic
 					}
 					modifier = {
 						factor = 0
 						has_character_flag = immune_measles
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -137,28 +148,31 @@ character_event = { #Cough can lead to pneumonia tuberculosis measles flu cancer
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_measles 
-					set_character_flag = developing_illness
+						set_character_flag = got_measles
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_measles 
+							has_character_flag = got_measles
 						}
-					character_event = { id = RIP.5018 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5018 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_flu }
+								NOT = {
+									has_character_flag = got_flu
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -166,40 +180,47 @@ character_event = { #Cough can lead to pneumonia tuberculosis measles flu cancer
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_flu 
-					set_character_flag = developing_illness
+						set_character_flag = got_flu
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_flu 
+							has_character_flag = got_flu
 						}
-					character_event = { id = RIP.5020 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5020 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_cancer }
+								NOT = {
+									has_character_flag = got_cancer
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.15	
-						NOT = { age = 16 }
+						factor = 0.15
+						NOT = {
+							age = 16
+						}
 					}
 					modifier = {
-						factor = 0.25	
-						NOT = { age = 45 }
+						factor = 0.25
+						NOT = {
+							age = 45
+						}
 					}
 					modifier = {
 						factor = 2
 						age = 45
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -207,22 +228,23 @@ character_event = { #Cough can lead to pneumonia tuberculosis measles flu cancer
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_cancer 
-					set_character_flag = developing_illness
+						set_character_flag = got_cancer
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_cancer 
+							has_character_flag = got_cancer
 						}
-					character_event = { id = RIP.5025 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5025 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
-							has_character_flag = developing_illness
+						factor = 0
+						has_character_flag = developing_illness
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -233,53 +255,64 @@ character_event = { #Cough can lead to pneumonia tuberculosis measles flu cancer
 						set_character_flag = disease_not_serious
 						random_list = {
 							100 = {
-								character_event = { id = RIP.11002 days = 10 random = 30 }
+								character_event = {
+									id = RIP.11002 days = 10 random = 30
+								}
 							}
 							100 = {
-								character_event = { id = RIP.11002 days = 90 random = 30 }
+								character_event = {
+									id = RIP.11002 days = 90 random = 30
+								}
 							}
 							100 = {
-								character_event = { id = RIP.11002 days = 700 random = 100 }
+								character_event = {
+									id = RIP.11002 days = 700 random = 100
+								}
 							}
 						}
-					} 
+					}
 				}
 			}
 		}
 	}
 }
 
-character_event = { #Fever can lead to pneumonia syphilis tuberculosis typhoid_fever typhus bubonic_plague measles smallpox/aztec_disease flu dysentery gout food_poisoning rabies
+character_event = {
+	# Fever can lead to pneumonia syphilis tuberculosis typhoid_fever typhus bubonic_plague measles smallpox/aztec_disease flu dysentery gout food_poisoning rabies
 	id = RIP.5001
 	desc = EVTDESCRIP.5001
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = ALAS
 		add_trait = fever
-		
 		hidden_tooltip = {
 			host = {
-				random_courtier_or_vassal = { #Markus doing
+				random_courtier_or_vassal = {
+					# Markus doing
 					limit = {
-						liege = { character = PREVPREV }
+						liege = {
+							character = PREVPREV
+						}
 						has_minor_title = title_court_physician
 					}
-					character_event = { id = RIP.11031 days = 1 }
+					character_event = {
+						id = RIP.11031 days = 1
+					}
 				}
 			}
 			random_list = {
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_pneumonia }
+								NOT = {
+									has_character_flag = got_pneumonia
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
@@ -288,13 +321,14 @@ character_event = { #Fever can lead to pneumonia syphilis tuberculosis typhoid_f
 					modifier = {
 						factor = 0.5
 						age = 6
-						NOT = { age = 45 }
+						NOT = {
+							age = 45
+						}
 					}
 					modifier = {
 						factor = 0.5
 						health = 5
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -302,22 +336,26 @@ character_event = { #Fever can lead to pneumonia syphilis tuberculosis typhoid_f
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_pneumonia 
-					set_character_flag = developing_illness
+						set_character_flag = got_pneumonia
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_pneumonia 
+							has_character_flag = got_pneumonia
 						}
-					character_event = { id = RIP.5011 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5011 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_syphilis }
+								NOT = {
+									has_character_flag = got_syphilis
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
@@ -326,16 +364,16 @@ character_event = { #Fever can lead to pneumonia syphilis tuberculosis typhoid_f
 					modifier = {
 						factor = 0
 						OR = {
-							NOT = { age = 16 }
-							trait = celibate  
+							NOT = {
+								age = 16
+							}
+							trait = celibate
 						}
 					}
-					
 					modifier = {
-						factor = 0.01	
+						factor = 0.01
 						trait = chaste
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -343,35 +381,38 @@ character_event = { #Fever can lead to pneumonia syphilis tuberculosis typhoid_f
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_syphilis
-					set_character_flag = developing_illness
+						set_character_flag = got_syphilis
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_syphilis 
+							has_character_flag = got_syphilis
 						}
-					character_event = { id = RIP.5014 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5014 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_tuberculosis }
+								NOT = {
+									has_character_flag = got_tuberculosis
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.01	#rare when not an epidemic 			
+						factor = 0.01	# rare when not an epidemic
 					}
 					modifier = {
 						factor = 0
 						has_character_flag = immune_tuberculosis
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -379,35 +420,38 @@ character_event = { #Fever can lead to pneumonia syphilis tuberculosis typhoid_f
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_tuberculosis 
-					set_character_flag = developing_illness
+						set_character_flag = got_tuberculosis
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_tuberculosis 
+							has_character_flag = got_tuberculosis
 						}
-					character_event = { id = RIP.5015 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5015 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_typhoid_fever }
+								NOT = {
+									has_character_flag = got_typhoid_fever
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.01	#rare when not an epidemic 			
+						factor = 0.01	# rare when not an epidemic
 					}
 					modifier = {
 						factor = 0
 						has_character_flag = immune_typhoid_fever
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -415,35 +459,38 @@ character_event = { #Fever can lead to pneumonia syphilis tuberculosis typhoid_f
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_typhoid_fever
-					set_character_flag = developing_illness
+						set_character_flag = got_typhoid_fever
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_typhoid_fever 
+							has_character_flag = got_typhoid_fever
 						}
-					character_event = { id = RIP.5016 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5016 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_typhus }
+								NOT = {
+									has_character_flag = got_typhus
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.01	#rare when not an epidemic 			
+						factor = 0.01	# rare when not an epidemic
 					}
 					modifier = {
 						factor = 0
 						has_character_flag = immune_typhus
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -451,35 +498,38 @@ character_event = { #Fever can lead to pneumonia syphilis tuberculosis typhoid_f
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_typhus 
-					set_character_flag = developing_illness
+						set_character_flag = got_typhus
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_typhus 
+							has_character_flag = got_typhus
 						}
-					character_event = { id = RIP.5017 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5017 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_bubonic_plague }
+								NOT = {
+									has_character_flag = got_bubonic_plague
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.01	#rare when not an epidemic 			
+						factor = 0.01	# rare when not an epidemic
 					}
 					modifier = {
 						factor = 0
 						has_character_flag = immune_bubonic_plague
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -487,35 +537,38 @@ character_event = { #Fever can lead to pneumonia syphilis tuberculosis typhoid_f
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_bubonic_plague 
-					set_character_flag = developing_illness
+						set_character_flag = got_bubonic_plague
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_bubonic_plague 
+							has_character_flag = got_bubonic_plague
 						}
-					character_event = { id = RIP.5012 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5012 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_measles }
+								NOT = {
+									has_character_flag = got_measles
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.01	#rare when not an epidemic 			
+						factor = 0.01	# rare when not an epidemic
 					}
 					modifier = {
 						factor = 0
 						has_character_flag = immune_measles
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -523,35 +576,38 @@ character_event = { #Fever can lead to pneumonia syphilis tuberculosis typhoid_f
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_measles 
-					set_character_flag = developing_illness
+						set_character_flag = got_measles
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_measles 
+							has_character_flag = got_measles
 						}
-					character_event = { id = RIP.5018 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5018 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_smallpox }
+								NOT = {
+									has_character_flag = got_smallpox
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.01	#rare when not an epidemic 			
+						factor = 0.01	# rare when not an epidemic
 					}
 					modifier = {
 						factor = 0
 						has_character_flag = immune_smallpox
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -564,17 +620,21 @@ character_event = { #Fever can lead to pneumonia syphilis tuberculosis typhoid_f
 					}
 					if = {
 						limit = {
-							has_character_flag = got_smallpox 
+							has_character_flag = got_smallpox
 						}
-					character_event = { id = RIP.5019 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5019 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_aztec_disease }
+								NOT = {
+									has_character_flag = got_aztec_disease
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
@@ -587,13 +647,12 @@ character_event = { #Fever can lead to pneumonia syphilis tuberculosis typhoid_f
 						}
 					}
 					modifier = {
-						factor = 0.01	#rare when not an epidemic 			
+						factor = 0.01	# rare when not an epidemic
 					}
 					modifier = {
 						factor = 0
 						has_character_flag = immune_aztec_disease
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -601,57 +660,31 @@ character_event = { #Fever can lead to pneumonia syphilis tuberculosis typhoid_f
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_aztec_disease
-					set_character_flag = developing_illness
-					}
-					if = {
-						limit = {
-							has_character_flag = got_aztec_disease 
-						}
-						character_event = { id = RIP.5019 days = 14 random = 14 }
-					}
-				}
-				100 = {
-					modifier = {
-						factor = 0 
-						OR = {
-							AND = {
-								NOT = { has_character_flag = got_flu }
-								has_character_flag = developing_illness
-							}
-							has_character_flag = disease_not_serious
-						}
-					}
-				
-					if = {
-						limit = {
-							NOR = {
-								has_character_flag = developing_illness
-								has_character_flag = disease_not_serious
-							}
-						}
-						set_character_flag = got_flu 
+						set_character_flag = got_aztec_disease
 						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_flu 
+							has_character_flag = got_aztec_disease
 						}
-						character_event = { id = RIP.5020 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5019 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_dysentery }
+								NOT = {
+									has_character_flag = got_flu
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -659,34 +692,74 @@ character_event = { #Fever can lead to pneumonia syphilis tuberculosis typhoid_f
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_dysentery
-					set_character_flag = developing_illness
+						set_character_flag = got_flu
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_dysentery 
+							has_character_flag = got_flu
 						}
-					character_event = { id = RIP.5021 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5020 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_gout }
+								NOT = {
+									has_character_flag = got_dysentery
+								}
+								has_character_flag = developing_illness
+							}
+							has_character_flag = disease_not_serious
+						}
+					}
+					if = {
+						limit = {
+							NOR = {
+								has_character_flag = developing_illness
+								has_character_flag = disease_not_serious
+							}
+						}
+						set_character_flag = got_dysentery
+						set_character_flag = developing_illness
+					}
+					if = {
+						limit = {
+							has_character_flag = got_dysentery
+						}
+						character_event = {
+							id = RIP.5021 days = 14 random = 14
+						}
+					}
+				}
+				100 = {
+					modifier = {
+						factor = 0
+						OR = {
+							AND = {
+								NOT = {
+									has_character_flag = got_gout
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.25	
-						NOT = { age = 30 }
+						factor = 0.25
+						NOT = {
+							age = 30
+						}
 					}
 					modifier = {
-						factor = 0	
-						NOT = { age = 16 }
+						factor = 0
+						NOT = {
+							age = 16
+						}
 					}
 					modifier = {
 						factor = 2
@@ -694,15 +767,15 @@ character_event = { #Fever can lead to pneumonia syphilis tuberculosis typhoid_f
 					}
 					modifier = {
 						factor = 2
-						trait = gluttonous  
+						trait = gluttonous
 					}
 					modifier = {
 						factor = 2
-						trait = drunkard  
+						trait = drunkard
 					}
 					modifier = {
 						factor = 2
-						trait = hedonist   
+						trait = hedonist
 					}
 					modifier = {
 						factor = 1.5
@@ -710,9 +783,8 @@ character_event = { #Fever can lead to pneumonia syphilis tuberculosis typhoid_f
 					}
 					modifier = {
 						factor = 0.5
-						trait = temperate  
-					}					
-				
+						trait = temperate
+					}
 					if = {
 						limit = {
 							NOR = {
@@ -720,46 +792,56 @@ character_event = { #Fever can lead to pneumonia syphilis tuberculosis typhoid_f
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_gout
-					set_character_flag = developing_illness
+						set_character_flag = got_gout
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_gout 
+							has_character_flag = got_gout
 						}
-					character_event = { id = RIP.5022 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5022 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_food_poisoning }
+								NOT = {
+									has_character_flag = got_food_poisoning
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0	
-						NOT = { age = 4 }
+						factor = 0
+						NOT = {
+							age = 4
+						}
 					}
 					modifier = {
 						factor = 0.1
-						NOT = { age = 6 }
+						NOT = {
+							age = 6
+						}
 					}
 					modifier = {
 						factor = 0.5
-						NOT = { age = 13 }
+						NOT = {
+							age = 13
+						}
 					}
 					modifier = {
 						factor = 1.5
-						trait = gluttonous  
+						trait = gluttonous
 					}
 					modifier = {
 						factor = 1.5
-						trait = hedonist   
+						trait = hedonist
 					}
 					modifier = {
 						factor = 1.5
@@ -767,9 +849,8 @@ character_event = { #Fever can lead to pneumonia syphilis tuberculosis typhoid_f
 					}
 					modifier = {
 						factor = 0.5
-						trait = temperate  
+						trait = temperate
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -777,22 +858,26 @@ character_event = { #Fever can lead to pneumonia syphilis tuberculosis typhoid_f
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_food_poisoning 
-					set_character_flag = developing_illness
+						set_character_flag = got_food_poisoning
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_food_poisoning 
+							has_character_flag = got_food_poisoning
 						}
-					character_event = { id = RIP.5023 days = 6 random = 6 }
+						character_event = {
+							id = RIP.5023 days = 6 random = 6
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_rabies }
+								NOT = {
+									has_character_flag = got_rabies
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
@@ -801,7 +886,6 @@ character_event = { #Fever can lead to pneumonia syphilis tuberculosis typhoid_f
 					modifier = {
 						factor = 0.1	# uncommon
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -809,21 +893,23 @@ character_event = { #Fever can lead to pneumonia syphilis tuberculosis typhoid_f
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_rabies
-					set_character_flag = developing_illness
+						set_character_flag = got_rabies
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_rabies 
+							has_character_flag = got_rabies
 						}
-					character_event = { id = RIP.5024 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5024 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
-							has_character_flag = developing_illness
-					}				
+						factor = 0
+						has_character_flag = developing_illness
+					}
 					if = {
 						limit = {
 							NOR = {
@@ -831,63 +917,69 @@ character_event = { #Fever can lead to pneumonia syphilis tuberculosis typhoid_f
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = disease_not_serious 
-					character_event = { id = RIP.11003 days = 10 random = 30 }
-					} 
+						set_character_flag = disease_not_serious
+						character_event = {
+							id = RIP.11003 days = 10 random = 30
+						}
+					}
 				}
 			}
 		}
 	}
 }
 
-character_event = { # diarrhea can lead to typhoid_fever typhus flu dysentery food_poisoning cancer
+character_event = {
+	# diarrhea can lead to typhoid_fever typhus flu dysentery food_poisoning cancer
 	id = RIP.5002
 	desc = EVTDESCRIP.5002
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		is_disease_immune_race = no
 	}
-	
+
 	option = {
 		name = ALAS
 		add_trait = diarrhea
-		
 		hidden_tooltip = {
 			host = {
-				random_courtier_or_vassal = { #Markus doing
+				random_courtier_or_vassal = {
+					# Markus doing
 					limit = {
-						liege = { character = PREVPREV }
+						liege = {
+							character = PREVPREV
+						}
 						has_minor_title = title_court_physician
 					}
-					character_event = { id = RIP.11031 days = 1 }
+					character_event = {
+						id = RIP.11031 days = 1
+					}
 				}
 			}
 			random_list = {
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_typhoid_fever }
+								NOT = {
+									has_character_flag = got_typhoid_fever
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.01	#rare when not an epidemic 			
+						factor = 0.01	# rare when not an epidemic
 					}
 					modifier = {
 						factor = 0
 						has_character_flag = immune_typhoid_fever
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -895,35 +987,38 @@ character_event = { # diarrhea can lead to typhoid_fever typhus flu dysentery fo
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_typhoid_fever 
-					set_character_flag = developing_illness
+						set_character_flag = got_typhoid_fever
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_typhoid_fever 
+							has_character_flag = got_typhoid_fever
 						}
-					character_event = { id = RIP.5016 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5016 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_typhus }
+								NOT = {
+									has_character_flag = got_typhus
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.01	#rare when not an epidemic 			
+						factor = 0.01	# rare when not an epidemic
 					}
 					modifier = {
 						factor = 0
 						has_character_flag = immune_typhus
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -931,112 +1026,130 @@ character_event = { # diarrhea can lead to typhoid_fever typhus flu dysentery fo
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_typhus
-					set_character_flag = developing_illness
+						set_character_flag = got_typhus
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_typhus 
+							has_character_flag = got_typhus
 						}
-					character_event = { id = RIP.5017 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5017 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_flu }
+								NOT = {
+									has_character_flag = got_flu
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 2	
-						NOT = { age = 13 }
-					}
-					modifier = {
-						factor = 0.5	
-						age = 13 
-					}
-				
-					if = {
-						limit = {
-							NOR = {
-								has_character_flag = developing_illness
-								has_character_flag = disease_not_serious
-							}
+						factor = 2
+						NOT = {
+							age = 13
 						}
-					set_character_flag = got_flu
-					set_character_flag = developing_illness
-					}
-					if = {
-						limit = {
-							has_character_flag = got_flu 
-						}
-					character_event = { id = RIP.5020 days = 14 random = 14 }
-					}
-				}
-				100 = {
-					modifier = {
-						factor = 0 
-						OR = {
-							AND = {
-								NOT = { has_character_flag = got_dysentery }
-								has_character_flag = developing_illness
-							}
-							has_character_flag = disease_not_serious
-						}
-					}
-				
-					if = {
-						limit = {
-							NOR = {
-								has_character_flag = developing_illness
-								has_character_flag = disease_not_serious
-							}
-						}
-					set_character_flag = got_dysentery 
-					set_character_flag = developing_illness
-					}
-					if = {
-						limit = {
-							has_character_flag = got_dysentery 
-						}
-					character_event = { id = RIP.5021 days = 14 random = 14 }
-					}
-				}
-				100 = {
-					modifier = {
-						factor = 0 
-						OR = {
-							AND = {
-								NOT = { has_character_flag = got_food_poisoning }
-								has_character_flag = developing_illness
-							}
-							has_character_flag = disease_not_serious
-						}
-					}
-					modifier = {
-						factor = 0	
-						NOT = { age = 4 }
-					}
-					modifier = {
-						factor = 0.1
-						NOT = { age = 6 }
 					}
 					modifier = {
 						factor = 0.5
-						NOT = { age = 13 }
+						age = 13
+					}
+					if = {
+						limit = {
+							NOR = {
+								has_character_flag = developing_illness
+								has_character_flag = disease_not_serious
+							}
+						}
+						set_character_flag = got_flu
+						set_character_flag = developing_illness
+					}
+					if = {
+						limit = {
+							has_character_flag = got_flu
+						}
+						character_event = {
+							id = RIP.5020 days = 14 random = 14
+						}
+					}
+				}
+				100 = {
+					modifier = {
+						factor = 0
+						OR = {
+							AND = {
+								NOT = {
+									has_character_flag = got_dysentery
+								}
+								has_character_flag = developing_illness
+							}
+							has_character_flag = disease_not_serious
+						}
+					}
+					if = {
+						limit = {
+							NOR = {
+								has_character_flag = developing_illness
+								has_character_flag = disease_not_serious
+							}
+						}
+						set_character_flag = got_dysentery
+						set_character_flag = developing_illness
+					}
+					if = {
+						limit = {
+							has_character_flag = got_dysentery
+						}
+						character_event = {
+							id = RIP.5021 days = 14 random = 14
+						}
+					}
+				}
+				100 = {
+					modifier = {
+						factor = 0
+						OR = {
+							AND = {
+								NOT = {
+									has_character_flag = got_food_poisoning
+								}
+								has_character_flag = developing_illness
+							}
+							has_character_flag = disease_not_serious
+						}
+					}
+					modifier = {
+						factor = 0
+						NOT = {
+							age = 4
+						}
+					}
+					modifier = {
+						factor = 0.1
+						NOT = {
+							age = 6
+						}
+					}
+					modifier = {
+						factor = 0.5
+						NOT = {
+							age = 13
+						}
 					}
 					modifier = {
 						factor = 1.5
-						trait = gluttonous  
+						trait = gluttonous
 					}
 					modifier = {
 						factor = 1.5
-						trait = hedonist   
+						trait = hedonist
 					}
 					modifier = {
 						factor = 1.5
@@ -1044,9 +1157,8 @@ character_event = { # diarrhea can lead to typhoid_fever typhus flu dysentery fo
 					}
 					modifier = {
 						factor = 0.5
-						trait = temperate  
+						trait = temperate
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -1054,47 +1166,53 @@ character_event = { # diarrhea can lead to typhoid_fever typhus flu dysentery fo
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_food_poisoning 
-					set_character_flag = developing_illness
+						set_character_flag = got_food_poisoning
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_food_poisoning 
+							has_character_flag = got_food_poisoning
 						}
-					character_event = { id = RIP.5023 days = 6 random = 6 }
+						character_event = {
+							id = RIP.5023 days = 6 random = 6
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_cancer }
+								NOT = {
+									has_character_flag = got_cancer
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.15	
-						NOT = { age = 16 }
+						factor = 0.15
+						NOT = {
+							age = 16
+						}
 					}
 					modifier = {
-						factor = 0.25	
-						NOT = { age = 45 }
+						factor = 0.25
+						NOT = {
+							age = 45
+						}
 					}
 					modifier = {
 						factor = 2
 						age = 45
 						is_long_lived_character = no
 					}
-					
 					modifier = {
 						factor = 2
 						age = 100
 						trait = grail_knight
 					}
-					
 					modifier = {
 						factor = 2
 						age = 150
@@ -1103,7 +1221,6 @@ character_event = { # diarrhea can lead to typhoid_fever typhus flu dysentery fo
 							trait = creature_chaos_dwarf
 						}
 					}
-					
 					modifier = {
 						factor = 2
 						age = 500
@@ -1114,10 +1231,9 @@ character_event = { # diarrhea can lead to typhoid_fever typhus flu dysentery fo
 						age = 2000
 						OR = {
 							trait = immortal
-							trait = elixir_of_eternal_youth 	
+							is_immortal_trigger = yes
 						}
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -1125,22 +1241,23 @@ character_event = { # diarrhea can lead to typhoid_fever typhus flu dysentery fo
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_cancer 
-					set_character_flag = developing_illness
+						set_character_flag = got_cancer
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_cancer 
+							has_character_flag = got_cancer
 						}
-					character_event = { id = RIP.5025 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5025 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						has_character_flag = developing_illness
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -1148,64 +1265,72 @@ character_event = { # diarrhea can lead to typhoid_fever typhus flu dysentery fo
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = disease_not_serious 
-					character_event = { id = RIP.11004 days = 10 random = 30 }
-					} 
+						set_character_flag = disease_not_serious
+						character_event = {
+							id = RIP.11004 days = 10 random = 30
+						}
+					}
 				}
 			}
 		}
 	}
 }
 
-character_event = { #vomiting can lead to flu Food_Poisoning cancer
+character_event = {
+	# vomiting can lead to flu Food_Poisoning cancer
 	id = RIP.5003
 	desc = EVTDESCRIP.5003
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		is_disease_immune_race = no
 	}
-	
+
 	option = {
 		name = ALAS
 		add_trait = vomiting
-		
 		hidden_tooltip = {
 			host = {
-				random_courtier_or_vassal = { #Markus doing
+				random_courtier_or_vassal = {
+					# Markus doing
 					limit = {
-						liege = { character = PREVPREV }
+						liege = {
+							character = PREVPREV
+						}
 						has_minor_title = title_court_physician
 					}
-					character_event = { id = RIP.11031 days = 1 }
+					character_event = {
+						id = RIP.11031 days = 1
+					}
 				}
 			}
 			random_list = {
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_flu }
+								NOT = {
+									has_character_flag = got_flu
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 2	
-						NOT = { age = 13 }
+						factor = 2
+						NOT = {
+							age = 13
+						}
 					}
 					modifier = {
-						factor = 0.5	
-						age = 13 
+						factor = 0.5
+						age = 13
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -1213,46 +1338,56 @@ character_event = { #vomiting can lead to flu Food_Poisoning cancer
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_flu
-					set_character_flag = developing_illness
+						set_character_flag = got_flu
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_flu 
+							has_character_flag = got_flu
 						}
-					character_event = { id = RIP.5020 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5020 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_food_poisoning }
+								NOT = {
+									has_character_flag = got_food_poisoning
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0	
-						NOT = { age = 4 }
+						factor = 0
+						NOT = {
+							age = 4
+						}
 					}
 					modifier = {
 						factor = 0.1
-						NOT = { age = 6 }
+						NOT = {
+							age = 6
+						}
 					}
 					modifier = {
 						factor = 0.5
-						NOT = { age = 13 }
+						NOT = {
+							age = 13
+						}
 					}
 					modifier = {
 						factor = 1.5
-						trait = gluttonous  
+						trait = gluttonous
 					}
 					modifier = {
 						factor = 1.5
-						trait = hedonist   
+						trait = hedonist
 					}
 					modifier = {
 						factor = 1.5
@@ -1260,9 +1395,8 @@ character_event = { #vomiting can lead to flu Food_Poisoning cancer
 					}
 					modifier = {
 						factor = 0.5
-						trait = temperate  
+						trait = temperate
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -1270,47 +1404,53 @@ character_event = { #vomiting can lead to flu Food_Poisoning cancer
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_food_poisoning 
-					set_character_flag = developing_illness
+						set_character_flag = got_food_poisoning
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_food_poisoning 
+							has_character_flag = got_food_poisoning
 						}
-					character_event = { id = RIP.5023 days = 6 random = 6 }
+						character_event = {
+							id = RIP.5023 days = 6 random = 6
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_cancer }
+								NOT = {
+									has_character_flag = got_cancer
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.15	
-						NOT = { age = 16 }
+						factor = 0.15
+						NOT = {
+							age = 16
+						}
 					}
 					modifier = {
-						factor = 0.25	
-						NOT = { age = 45 }
+						factor = 0.25
+						NOT = {
+							age = 45
+						}
 					}
 					modifier = {
 						factor = 2
 						age = 45
 						is_long_lived_character = no
 					}
-					
 					modifier = {
 						factor = 2
 						age = 100
 						trait = grail_knight
 					}
-					
 					modifier = {
 						factor = 2
 						age = 150
@@ -1319,22 +1459,19 @@ character_event = { #vomiting can lead to flu Food_Poisoning cancer
 							trait = creature_chaos_dwarf
 						}
 					}
-					
 					modifier = {
 						factor = 2
 						age = 500
 						trait = creature_elf
 					}
-					
 					modifier = {
 						factor = 2
 						age = 2000
 						OR = {
 							trait = immortal
-							trait = elixir_of_eternal_youth 	
+							is_immortal_trigger = yes
 						}
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -1342,23 +1479,23 @@ character_event = { #vomiting can lead to flu Food_Poisoning cancer
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_cancer 
-					set_character_flag = developing_illness
+						set_character_flag = got_cancer
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_cancer 
+							has_character_flag = got_cancer
 						}
-					character_event = { id = RIP.5025 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5025 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						has_character_flag = developing_illness
 					}
-					
-				
 					if = {
 						limit = {
 							NOR = {
@@ -1366,50 +1503,57 @@ character_event = { #vomiting can lead to flu Food_Poisoning cancer
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = disease_not_serious 
-					character_event = { id = RIP.11005 days = 10 random = 30 }
-					} 
+						set_character_flag = disease_not_serious
+						character_event = {
+							id = RIP.11005 days = 10 random = 30
+						}
+					}
 				}
 			}
 		}
 	}
 }
 
-character_event = { #headache can lead to syphilis typhus smallpox aztec_disease flu cancer
+character_event = {
+	# headache can lead to syphilis typhus smallpox aztec_disease flu cancer
 	id = RIP.5004
 	desc = EVTDESCRIP.5004
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		is_disease_immune_race = no
 	}
-	
+
 	option = {
 		name = ALAS
 		add_trait = headache
-		
 		hidden_tooltip = {
 			host = {
-				random_courtier_or_vassal = { #Markus doing
+				random_courtier_or_vassal = {
+					# Markus doing
 					limit = {
-						liege = { character = PREVPREV }
+						liege = {
+							character = PREVPREV
+						}
 						has_minor_title = title_court_physician
 					}
-					character_event = { id = RIP.11031 days = 1 }
+					character_event = {
+						id = RIP.11031 days = 1
+					}
 				}
 			}
 			random_list = {
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_syphilis }
+								NOT = {
+									has_character_flag = got_syphilis
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
@@ -1418,22 +1562,23 @@ character_event = { #headache can lead to syphilis typhus smallpox aztec_disease
 					modifier = {
 						factor = 0
 						OR = {
-							NOT = { age = 16 }
-							trait = celibate  
+							NOT = {
+								age = 16
+							}
+							trait = celibate
 						}
 					}
-					
 					modifier = {
-						factor = 0.01	
+						factor = 0.01
 						trait = chaste
 					}
-					
 					modifier = {
 						factor = 0.75
-						NOT = { trait = lustful }
-						is_female = yes 
+						NOT = {
+							trait = lustful
+						}
+						is_female = yes
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -1441,35 +1586,38 @@ character_event = { #headache can lead to syphilis typhus smallpox aztec_disease
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_syphilis 
-					set_character_flag = developing_illness
+						set_character_flag = got_syphilis
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_syphilis 
+							has_character_flag = got_syphilis
 						}
-					character_event = { id = RIP.5014 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5014 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_typhus }
+								NOT = {
+									has_character_flag = got_typhus
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.01	#rare when not an epidemic 			
+						factor = 0.01	# rare when not an epidemic
 					}
 					modifier = {
 						factor = 0
 						has_character_flag = immune_typhus
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -1477,35 +1625,38 @@ character_event = { #headache can lead to syphilis typhus smallpox aztec_disease
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_typhus
-					set_character_flag = developing_illness
+						set_character_flag = got_typhus
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_typhus 
+							has_character_flag = got_typhus
 						}
-					character_event = { id = RIP.5017 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5017 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_smallpox }
+								NOT = {
+									has_character_flag = got_smallpox
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.01	#rare when not an epidemic 			
+						factor = 0.01	# rare when not an epidemic
 					}
 					modifier = {
 						factor = 0
 						has_character_flag = immune_smallpox
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -1513,22 +1664,26 @@ character_event = { #headache can lead to syphilis typhus smallpox aztec_disease
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_smallpox
-					set_character_flag = developing_illness
+						set_character_flag = got_smallpox
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_smallpox 
+							has_character_flag = got_smallpox
 						}
-					character_event = { id = RIP.5019 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5019 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_aztec_disease }
+								NOT = {
+									has_character_flag = got_aztec_disease
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
@@ -1541,13 +1696,12 @@ character_event = { #headache can lead to syphilis typhus smallpox aztec_disease
 						}
 					}
 					modifier = {
-						factor = 0.01	#rare when not an epidemic 			
+						factor = 0.01	# rare when not an epidemic
 					}
 					modifier = {
 						factor = 0
 						has_character_flag = immune_aztec_disease
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -1555,28 +1709,31 @@ character_event = { #headache can lead to syphilis typhus smallpox aztec_disease
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_aztec_disease 
-					set_character_flag = developing_illness
+						set_character_flag = got_aztec_disease
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_aztec_disease 
+							has_character_flag = got_aztec_disease
 						}
-					character_event = { id = RIP.5019 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5019 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_flu }
+								NOT = {
+									has_character_flag = got_flu
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -1584,47 +1741,53 @@ character_event = { #headache can lead to syphilis typhus smallpox aztec_disease
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_flu
-					set_character_flag = developing_illness
+						set_character_flag = got_flu
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_flu 
+							has_character_flag = got_flu
 						}
-					character_event = { id = RIP.5020 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5020 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_cancer }
+								NOT = {
+									has_character_flag = got_cancer
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.15	
-						NOT = { age = 16 }
+						factor = 0.15
+						NOT = {
+							age = 16
+						}
 					}
 					modifier = {
-						factor = 0.25	
-						NOT = { age = 45 }
+						factor = 0.25
+						NOT = {
+							age = 45
+						}
 					}
 					modifier = {
 						factor = 2
 						age = 45
 						is_long_lived_character = no
 					}
-					
 					modifier = {
 						factor = 2
 						age = 100
 						trait = grail_knight
 					}
-					
 					modifier = {
 						factor = 2
 						age = 150
@@ -1633,22 +1796,19 @@ character_event = { #headache can lead to syphilis typhus smallpox aztec_disease
 							trait = creature_chaos_dwarf
 						}
 					}
-					
 					modifier = {
 						factor = 2
 						age = 500
 						trait = creature_elf
 					}
-					
 					modifier = {
 						factor = 2
 						age = 2000
 						OR = {
 							trait = immortal
-							trait = elixir_of_eternal_youth 	
+							is_immortal_trigger = yes
 						}
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -1656,23 +1816,23 @@ character_event = { #headache can lead to syphilis typhus smallpox aztec_disease
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_cancer 
-					set_character_flag = developing_illness
+						set_character_flag = got_cancer
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_cancer 
+							has_character_flag = got_cancer
 						}
-					character_event = { id = RIP.5025 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5025 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
-						
-								has_character_flag = developing_illness
+						factor = 0
+						has_character_flag = developing_illness
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -1680,60 +1840,71 @@ character_event = { #headache can lead to syphilis typhus smallpox aztec_disease
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = disease_not_serious 
-					random_list = {
-						100 = {
-							character_event = { id = RIP.11009 days = 10 random = 30 }
-						}
-						100 = {
-							character_event = { id = RIP.11009 days = 90 random = 45 }
-						}
-						100 = {
-							character_event = { id = RIP.11009 days = 700 random = 100 }
+						set_character_flag = disease_not_serious
+						random_list = {
+							100 = {
+								character_event = {
+									id = RIP.11009 days = 10 random = 30
+								}
+							}
+							100 = {
+								character_event = {
+									id = RIP.11009 days = 90 random = 45
+								}
+							}
+							100 = {
+								character_event = {
+									id = RIP.11009 days = 700 random = 100
+								}
+							}
 						}
 					}
-					} 
 				}
 			}
 		}
 	}
 }
 
-character_event = { #chest_pain can lead to pneumonia tuberculosis cancer
+character_event = {
+	# chest_pain can lead to pneumonia tuberculosis cancer
 	id = RIP.5005
 	desc = EVTDESCRIP.5005
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		is_disease_immune_race = no
 	}
-	
+
 	option = {
 		name = ALAS
 		add_trait = chest_pain
-		
 		hidden_tooltip = {
 			host = {
-				random_courtier_or_vassal = { #Markus doing
+				random_courtier_or_vassal = {
+					# Markus doing
 					limit = {
-						liege = { character = PREVPREV }
+						liege = {
+							character = PREVPREV
+						}
 						has_minor_title = title_court_physician
 					}
-					character_event = { id = RIP.11031 days = 1 }
+					character_event = {
+						id = RIP.11031 days = 1
+					}
 				}
 			}
 			random_list = {
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_pneumonia }
+								NOT = {
+									has_character_flag = got_pneumonia
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
@@ -1742,13 +1913,14 @@ character_event = { #chest_pain can lead to pneumonia tuberculosis cancer
 					modifier = {
 						factor = 0.5
 						age = 6
-						NOT = { age = 45 }
+						NOT = {
+							age = 45
+						}
 					}
 					modifier = {
 						factor = 0.5
 						health = 5
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -1756,35 +1928,38 @@ character_event = { #chest_pain can lead to pneumonia tuberculosis cancer
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_pneumonia 
-					set_character_flag = developing_illness
+						set_character_flag = got_pneumonia
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_pneumonia 
+							has_character_flag = got_pneumonia
 						}
-					character_event = { id = RIP.5011 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5011 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_tuberculosis }
+								NOT = {
+									has_character_flag = got_tuberculosis
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.01	#rare when not an epidemic 			
+						factor = 0.01	# rare when not an epidemic
 					}
 					modifier = {
 						factor = 0
 						has_character_flag = immune_tuberculosis
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -1792,47 +1967,53 @@ character_event = { #chest_pain can lead to pneumonia tuberculosis cancer
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_tuberculosis 
-					set_character_flag = developing_illness
+						set_character_flag = got_tuberculosis
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_tuberculosis 
+							has_character_flag = got_tuberculosis
 						}
-					character_event = { id = RIP.5015 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5015 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_cancer }
+								NOT = {
+									has_character_flag = got_cancer
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.15	
-						NOT = { age = 16 }
+						factor = 0.15
+						NOT = {
+							age = 16
+						}
 					}
 					modifier = {
-						factor = 0.25	
-						NOT = { age = 45 }
+						factor = 0.25
+						NOT = {
+							age = 45
+						}
 					}
 					modifier = {
 						factor = 2
 						age = 45
 						is_long_lived_character = no
 					}
-					
 					modifier = {
 						factor = 2
 						age = 100
 						trait = grail_knight
 					}
-					
 					modifier = {
 						factor = 2
 						age = 150
@@ -1841,22 +2022,19 @@ character_event = { #chest_pain can lead to pneumonia tuberculosis cancer
 							trait = creature_chaos_dwarf
 						}
 					}
-					
 					modifier = {
 						factor = 2
 						age = 500
 						trait = creature_elf
 					}
-					
 					modifier = {
 						factor = 2
 						age = 2000
 						OR = {
 							trait = immortal
-							trait = elixir_of_eternal_youth 	
+							is_immortal_trigger = yes
 						}
 					}
-
 					if = {
 						limit = {
 							NOR = {
@@ -1864,22 +2042,23 @@ character_event = { #chest_pain can lead to pneumonia tuberculosis cancer
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_cancer 
-					set_character_flag = developing_illness
+						set_character_flag = got_cancer
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_cancer 
+							has_character_flag = got_cancer
 						}
-					character_event = { id = RIP.5025 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5025 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						has_character_flag = developing_illness
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -1887,96 +2066,117 @@ character_event = { #chest_pain can lead to pneumonia tuberculosis cancer
 								has_character_flag = disease_not_serious
 							}
 						}
-						random_list = { #chest pains can last a long time
+						random_list = {
+							# chest pains can last a long time
 							100 = {
-								character_event = { id = RIP.11006 days = 1725 random = 200 }
+								character_event = {
+									id = RIP.11006 days = 1725 random = 200
+								}
 							}
 							100 = {
-								character_event = { id = RIP.11006 days = 3650 random = 365 }
+								character_event = {
+									id = RIP.11006 days = 3650 random = 365
+								}
 							}
 							100 = {
 								modifier = {
 									factor = 3
-									age = 50 
+									age = 50
 								}
-								character_event = { id = RIP.11006 days = 7300 random = 3650 }
+								character_event = {
+									id = RIP.11006 days = 7300 random = 3650
+								}
 							}
 							100 = {
 								modifier = {
 									factor = 5
-									NOT = { age = 30 }
+									NOT = {
+										age = 30
+									}
 								}
-								character_event = { id = RIP.11006 days = 30 random = 60 }
-								set_character_flag = disease_not_serious #only protected from other illness if this is a short term effect
+								character_event = {
+									id = RIP.11006 days = 30 random = 60
+								}
+								set_character_flag = disease_not_serious # only protected from other illness if this is a short term effect
 							}
 						}
-					
-					} 
+					}
 				}
 			}
 		}
 	}
 }
 
-character_event = { #cramps can lead to food_poisoning bubonic_plague
+character_event = {
+	# cramps can lead to food_poisoning bubonic_plague
 	id = RIP.5006
 	desc = EVTDESCRIP.5006
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		is_disease_immune_race = no
 	}
-	
+
 	option = {
 		name = ALAS
 		add_trait = cramps
-		
 		hidden_tooltip = {
 			host = {
-				random_courtier_or_vassal = { #Markus doing
+				random_courtier_or_vassal = {
+					# Markus doing
 					limit = {
-						liege = { character = PREVPREV }
+						liege = {
+							character = PREVPREV
+						}
 						has_minor_title = title_court_physician
 					}
-					character_event = { id = RIP.11031 days = 1 }
+					character_event = {
+						id = RIP.11031 days = 1
+					}
 				}
 			}
 			random_list = {
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_food_poisoning }
+								NOT = {
+									has_character_flag = got_food_poisoning
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0	
-						NOT = { age = 4 }
+						factor = 0
+						NOT = {
+							age = 4
+						}
 					}
 					modifier = {
 						factor = 0.1
-						NOT = { age = 6 }
+						NOT = {
+							age = 6
+						}
 					}
 					modifier = {
 						factor = 0.5
-						NOT = { age = 13 }
+						NOT = {
+							age = 13
+						}
 					}
 					modifier = {
 						factor = 1.5
-						trait = gluttonous  
+						trait = gluttonous
 					}
 					modifier = {
 						factor = 1.5
-						trait = hedonist   
+						trait = hedonist
 					}
 					modifier = {
 						factor = 1.5
@@ -1984,9 +2184,8 @@ character_event = { #cramps can lead to food_poisoning bubonic_plague
 					}
 					modifier = {
 						factor = 0.5
-						trait = temperate  
+						trait = temperate
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -1994,35 +2193,38 @@ character_event = { #cramps can lead to food_poisoning bubonic_plague
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_food_poisoning 
-					set_character_flag = developing_illness
+						set_character_flag = got_food_poisoning
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_food_poisoning 
+							has_character_flag = got_food_poisoning
 						}
-					character_event = { id = RIP.5023 days = 6 random = 6 }
+						character_event = {
+							id = RIP.5023 days = 6 random = 6
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_bubonic_plague }
+								NOT = {
+									has_character_flag = got_bubonic_plague
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.01	#rare when not an epidemic 			
+						factor = 0.01	# rare when not an epidemic
 					}
 					modifier = {
 						factor = 0
 						has_character_flag = immune_bubonic_plague
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -2030,22 +2232,23 @@ character_event = { #cramps can lead to food_poisoning bubonic_plague
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_bubonic_plague
-					set_character_flag = developing_illness
+						set_character_flag = got_bubonic_plague
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_bubonic_plague 
+							has_character_flag = got_bubonic_plague
 						}
-					character_event = { id = RIP.5012 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5012 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						has_character_flag = developing_illness
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -2053,50 +2256,57 @@ character_event = { #cramps can lead to food_poisoning bubonic_plague
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = disease_not_serious 
-					character_event = { id = RIP.11007 days = 10 random = 30 }
-					} 
+						set_character_flag = disease_not_serious
+						character_event = {
+							id = RIP.11007 days = 10 random = 30
+						}
+					}
 				}
 			}
 		}
 	}
 }
 
-character_event = { #rash can lead to syphilis typhus measles smallpox/aztec_disease 
+character_event = {
+	# rash can lead to syphilis typhus measles smallpox/aztec_disease
 	id = RIP.5007
 	desc = EVTDESCRIP.5007
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		is_disease_immune_race = no
 	}
-	
+
 	option = {
 		name = ALAS
 		add_trait = rash
-		
 		hidden_tooltip = {
 			host = {
-				random_courtier_or_vassal = { #Markus doing
+				random_courtier_or_vassal = {
+					# Markus doing
 					limit = {
-						liege = { character = PREVPREV }
+						liege = {
+							character = PREVPREV
+						}
 						has_minor_title = title_court_physician
 					}
-					character_event = { id = RIP.11031 days = 1 }
+					character_event = {
+						id = RIP.11031 days = 1
+					}
 				}
 			}
 			random_list = {
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_syphilis }
+								NOT = {
+									has_character_flag = got_syphilis
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
@@ -2105,16 +2315,16 @@ character_event = { #rash can lead to syphilis typhus measles smallpox/aztec_dis
 					modifier = {
 						factor = 0
 						OR = {
-							NOT = { age = 16 }
-							trait = celibate  
+							NOT = {
+								age = 16
+							}
+							trait = celibate
 						}
 					}
-					
 					modifier = {
-						factor = 0.01	
+						factor = 0.01
 						trait = chaste
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -2122,35 +2332,38 @@ character_event = { #rash can lead to syphilis typhus measles smallpox/aztec_dis
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_syphilis 
-					set_character_flag = developing_illness
+						set_character_flag = got_syphilis
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_syphilis 
+							has_character_flag = got_syphilis
 						}
-					character_event = { id = RIP.5014 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5014 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_typhus }
+								NOT = {
+									has_character_flag = got_typhus
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.01	#rare when not an epidemic 			
+						factor = 0.01	# rare when not an epidemic
 					}
 					modifier = {
 						factor = 0
 						has_character_flag = immune_typhus
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -2158,35 +2371,38 @@ character_event = { #rash can lead to syphilis typhus measles smallpox/aztec_dis
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_typhus
-					set_character_flag = developing_illness
+						set_character_flag = got_typhus
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_typhus 
+							has_character_flag = got_typhus
 						}
-					character_event = { id = RIP.5017 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5017 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_measles }
+								NOT = {
+									has_character_flag = got_measles
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.01	#rare when not an epidemic 			
+						factor = 0.01	# rare when not an epidemic
 					}
 					modifier = {
 						factor = 0
 						has_character_flag = immune_measles
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -2194,35 +2410,38 @@ character_event = { #rash can lead to syphilis typhus measles smallpox/aztec_dis
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_measles
-					set_character_flag = developing_illness
+						set_character_flag = got_measles
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_measles 
+							has_character_flag = got_measles
 						}
-					character_event = { id = RIP.5018 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5018 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_smallpox }
+								NOT = {
+									has_character_flag = got_smallpox
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.01	#rare when not an epidemic 			
+						factor = 0.01	# rare when not an epidemic
 					}
 					modifier = {
 						factor = 0
 						has_character_flag = immune_smallpox
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -2230,22 +2449,26 @@ character_event = { #rash can lead to syphilis typhus measles smallpox/aztec_dis
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_smallpox
-					set_character_flag = developing_illness
+						set_character_flag = got_smallpox
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_smallpox 
+							has_character_flag = got_smallpox
 						}
-					character_event = { id = RIP.5019 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5019 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_aztec_disease }
+								NOT = {
+									has_character_flag = got_aztec_disease
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
@@ -2258,13 +2481,12 @@ character_event = { #rash can lead to syphilis typhus measles smallpox/aztec_dis
 						}
 					}
 					modifier = {
-						factor = 0.01	#rare when not an epidemic 			
+						factor = 0.01	# rare when not an epidemic
 					}
 					modifier = {
 						factor = 0
 						has_character_flag = immune_aztec_disease
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -2272,22 +2494,23 @@ character_event = { #rash can lead to syphilis typhus measles smallpox/aztec_dis
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_aztec_disease 
-					set_character_flag = developing_illness
+						set_character_flag = got_aztec_disease
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_aztec_disease 
+							has_character_flag = got_aztec_disease
 						}
-					character_event = { id = RIP.5019 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5019 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						has_character_flag = developing_illness
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -2295,73 +2518,83 @@ character_event = { #rash can lead to syphilis typhus measles smallpox/aztec_dis
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = disease_not_serious 
-					random_list = {
-						100 = {
-						character_event = { id = RIP.11008 days = 10 random = 30 }
-						}
-						100 = {
-						character_event = { id = RIP.11008 days = 90 random = 45 }
-						}
-						100 = {
-						character_event = { id = RIP.11008 days = 365 random = 120 }
+						set_character_flag = disease_not_serious
+						random_list = {
+							100 = {
+								character_event = {
+									id = RIP.11008 days = 10 random = 30
+								}
+							}
+							100 = {
+								character_event = {
+									id = RIP.11008 days = 90 random = 45
+								}
+							}
+							100 = {
+								character_event = {
+									id = RIP.11008 days = 365 random = 120
+								}
+							}
 						}
 					}
-					} 
 				}
 			}
 		}
 	}
 }
 
-character_event = { #abdominal_pain can lead to typhoid_fever typhus flu dysentery cancer
+character_event = {
+	# abdominal_pain can lead to typhoid_fever typhus flu dysentery cancer
 	id = RIP.5008
 	desc = EVTDESCRIP.5008
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		is_disease_immune_race = no
 	}
-	
+
 	option = {
 		name = ALAS
 		add_trait = abdominal_pain
-		
 		hidden_tooltip = {
 			host = {
-				random_courtier_or_vassal = { #Markus doing
+				random_courtier_or_vassal = {
+					# Markus doing
 					limit = {
-						liege = { character = PREVPREV }
+						liege = {
+							character = PREVPREV
+						}
 						has_minor_title = title_court_physician
 					}
-					character_event = { id = RIP.11031 days = 1 }
+					character_event = {
+						id = RIP.11031 days = 1
+					}
 				}
 			}
 			random_list = {
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_typhoid_fever }
+								NOT = {
+									has_character_flag = got_typhoid_fever
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.01	#rare when not an epidemic 			
+						factor = 0.01	# rare when not an epidemic
 					}
 					modifier = {
 						factor = 0
 						has_character_flag = immune_typhoid_fever
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -2369,35 +2602,38 @@ character_event = { #abdominal_pain can lead to typhoid_fever typhus flu dysente
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_typhoid_fever
-					set_character_flag = developing_illness
+						set_character_flag = got_typhoid_fever
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_typhoid_fever 
+							has_character_flag = got_typhoid_fever
 						}
-					character_event = { id = RIP.5016 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5016 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_typhus }
+								NOT = {
+									has_character_flag = got_typhus
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.01	#rare when not an epidemic 			
+						factor = 0.01	# rare when not an epidemic
 					}
 					modifier = {
 						factor = 0
 						has_character_flag = immune_typhus
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -2405,28 +2641,31 @@ character_event = { #abdominal_pain can lead to typhoid_fever typhus flu dysente
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_typhus
-					set_character_flag = developing_illness
+						set_character_flag = got_typhus
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_typhus 
+							has_character_flag = got_typhus
 						}
-					character_event = { id = RIP.5017 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5017 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_flu }
+								NOT = {
+									has_character_flag = got_flu
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -2434,28 +2673,31 @@ character_event = { #abdominal_pain can lead to typhoid_fever typhus flu dysente
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_flu
-					set_character_flag = developing_illness
+						set_character_flag = got_flu
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_flu 
+							has_character_flag = got_flu
 						}
-					character_event = { id = RIP.5020 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5020 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_dysentery }
+								NOT = {
+									has_character_flag = got_dysentery
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -2463,47 +2705,53 @@ character_event = { #abdominal_pain can lead to typhoid_fever typhus flu dysente
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_dysentery
-					set_character_flag = developing_illness
+						set_character_flag = got_dysentery
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_dysentery 
+							has_character_flag = got_dysentery
 						}
-					character_event = { id = RIP.5021 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5021 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_cancer }
+								NOT = {
+									has_character_flag = got_cancer
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.15	
-						NOT = { age = 16 }
+						factor = 0.15
+						NOT = {
+							age = 16
+						}
 					}
 					modifier = {
-						factor = 0.25	
-						NOT = { age = 45 }
+						factor = 0.25
+						NOT = {
+							age = 45
+						}
 					}
 					modifier = {
 						factor = 2
 						age = 45
 						is_long_lived_character = no
 					}
-					
 					modifier = {
 						factor = 2
 						age = 100
 						trait = grail_knight
 					}
-					
 					modifier = {
 						factor = 2
 						age = 150
@@ -2512,22 +2760,19 @@ character_event = { #abdominal_pain can lead to typhoid_fever typhus flu dysente
 							trait = creature_chaos_dwarf
 						}
 					}
-					
 					modifier = {
 						factor = 2
 						age = 500
 						trait = creature_elf
 					}
-					
 					modifier = {
 						factor = 2
 						age = 2000
 						OR = {
 							trait = immortal
-							trait = elixir_of_eternal_youth 	
+							is_immortal_trigger = yes
 						}
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -2535,23 +2780,23 @@ character_event = { #abdominal_pain can lead to typhoid_fever typhus flu dysente
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_cancer 
-					set_character_flag = developing_illness
+						set_character_flag = got_cancer
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_cancer 
+							has_character_flag = got_cancer
 						}
-					character_event = { id = RIP.5025 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5025 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
-							has_character_flag = developing_illness
-
+						factor = 0
+						has_character_flag = developing_illness
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -2559,73 +2804,83 @@ character_event = { #abdominal_pain can lead to typhoid_fever typhus flu dysente
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = disease_not_serious 
-					random_list = {
-						100 = {
-							character_event = { id = RIP.11010 days = 10 random = 30 }
-						}
-						100 = {
-							character_event = { id = RIP.11010 days = 90 random = 45 }
-						}
-						100 = {
-							character_event = { id = RIP.11010 days = 180 random = 60 }
+						set_character_flag = disease_not_serious
+						random_list = {
+							100 = {
+								character_event = {
+									id = RIP.11010 days = 10 random = 30
+								}
+							}
+							100 = {
+								character_event = {
+									id = RIP.11010 days = 90 random = 45
+								}
+							}
+							100 = {
+								character_event = {
+									id = RIP.11010 days = 180 random = 60
+								}
+							}
 						}
 					}
-					} 
 				}
 			}
 		}
 	}
 }
 
-character_event = { #fatigue can lead to tuberculosis typhus flu gout rabies cancer
+character_event = {
+	# fatigue can lead to tuberculosis typhus flu gout rabies cancer
 	id = RIP.5009
 	desc = EVTDESCRIP.5009
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		is_disease_immune_race = no
 	}
-	
+
 	option = {
 		name = ALAS
 		add_trait = fatigue
-		
 		hidden_tooltip = {
 			host = {
-				random_courtier_or_vassal = { #Markus doing
+				random_courtier_or_vassal = {
+					# Markus doing
 					limit = {
-						liege = { character = PREVPREV }
+						liege = {
+							character = PREVPREV
+						}
 						has_minor_title = title_court_physician
 					}
-					character_event = { id = RIP.11031 days = 1 }
+					character_event = {
+						id = RIP.11031 days = 1
+					}
 				}
 			}
 			random_list = {
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_tuberculosis }
+								NOT = {
+									has_character_flag = got_tuberculosis
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.01	#rare when not an epidemic 			
+						factor = 0.01	# rare when not an epidemic
 					}
 					modifier = {
 						factor = 0
 						has_character_flag = immune_tuberculosis
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -2633,35 +2888,38 @@ character_event = { #fatigue can lead to tuberculosis typhus flu gout rabies can
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_tuberculosis
-					set_character_flag = developing_illness
+						set_character_flag = got_tuberculosis
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_tuberculosis 
+							has_character_flag = got_tuberculosis
 						}
-					character_event = { id = RIP.5015 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5015 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_typhus }
+								NOT = {
+									has_character_flag = got_typhus
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.01	#rare when not an epidemic 			
+						factor = 0.01	# rare when not an epidemic
 					}
 					modifier = {
 						factor = 0
 						has_character_flag = immune_typhus
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -2669,28 +2927,31 @@ character_event = { #fatigue can lead to tuberculosis typhus flu gout rabies can
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_typhus
-					set_character_flag = developing_illness
+						set_character_flag = got_typhus
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_typhus 
+							has_character_flag = got_typhus
 						}
-					character_event = { id = RIP.5017 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5017 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_flu }
+								NOT = {
+									has_character_flag = got_flu
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -2698,34 +2959,42 @@ character_event = { #fatigue can lead to tuberculosis typhus flu gout rabies can
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_flu
-					set_character_flag = developing_illness
+						set_character_flag = got_flu
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_flu 
+							has_character_flag = got_flu
 						}
-					character_event = { id = RIP.5020 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5020 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_gout }
+								NOT = {
+									has_character_flag = got_gout
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.25	
-						NOT = { age = 30 }
+						factor = 0.25
+						NOT = {
+							age = 30
+						}
 					}
 					modifier = {
-						factor = 0	
-						NOT = { age = 16 }
+						factor = 0
+						NOT = {
+							age = 16
+						}
 					}
 					modifier = {
 						factor = 2
@@ -2733,15 +3002,15 @@ character_event = { #fatigue can lead to tuberculosis typhus flu gout rabies can
 					}
 					modifier = {
 						factor = 2
-						trait = gluttonous  
+						trait = gluttonous
 					}
 					modifier = {
 						factor = 2
-						trait = drunkard  
+						trait = drunkard
 					}
 					modifier = {
 						factor = 2
-						trait = hedonist   
+						trait = hedonist
 					}
 					modifier = {
 						factor = 1.5
@@ -2749,9 +3018,8 @@ character_event = { #fatigue can lead to tuberculosis typhus flu gout rabies can
 					}
 					modifier = {
 						factor = 0.5
-						trait = temperate  
+						trait = temperate
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -2759,22 +3027,26 @@ character_event = { #fatigue can lead to tuberculosis typhus flu gout rabies can
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_gout
-					set_character_flag = developing_illness
+						set_character_flag = got_gout
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_gout 
+							has_character_flag = got_gout
 						}
-					character_event = { id = RIP.5022 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5022 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_rabies }
+								NOT = {
+									has_character_flag = got_rabies
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
@@ -2783,7 +3055,6 @@ character_event = { #fatigue can lead to tuberculosis typhus flu gout rabies can
 					modifier = {
 						factor = 0.1	# uncommon
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -2791,40 +3062,47 @@ character_event = { #fatigue can lead to tuberculosis typhus flu gout rabies can
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_rabies
-					set_character_flag = developing_illness
+						set_character_flag = got_rabies
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_rabies 
+							has_character_flag = got_rabies
 						}
-					character_event = { id = RIP.5024 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5024 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_cancer }
+								NOT = {
+									has_character_flag = got_cancer
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.15	
-						NOT = { age = 16 }
+						factor = 0.15
+						NOT = {
+							age = 16
+						}
 					}
 					modifier = {
-						factor = 0.25	
-						NOT = { age = 45 }
+						factor = 0.25
+						NOT = {
+							age = 45
+						}
 					}
 					modifier = {
 						factor = 2
 						age = 45
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -2832,22 +3110,23 @@ character_event = { #fatigue can lead to tuberculosis typhus flu gout rabies can
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_cancer 
-					set_character_flag = developing_illness
+						set_character_flag = got_cancer
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_cancer 
+							has_character_flag = got_cancer
 						}
-					character_event = { id = RIP.5025 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5025 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
-							has_character_flag = developing_illness					
+						factor = 0
+						has_character_flag = developing_illness
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -2855,73 +3134,83 @@ character_event = { #fatigue can lead to tuberculosis typhus flu gout rabies can
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = disease_not_serious 
-					random_list = {
-						100 = {
-							character_event = { id = RIP.11011 days = 10 random = 30 }
-						}
-						100 = {
-							character_event = { id = RIP.11011 days = 90 random = 45 }
-						}
-						100 = {
-							character_event = { id = RIP.11011 days = 180 random = 60 }
+						set_character_flag = disease_not_serious
+						random_list = {
+							100 = {
+								character_event = {
+									id = RIP.11011 days = 10 random = 30
+								}
+							}
+							100 = {
+								character_event = {
+									id = RIP.11011 days = 90 random = 45
+								}
+							}
+							100 = {
+								character_event = {
+									id = RIP.11011 days = 180 random = 60
+								}
+							}
 						}
 					}
-					} 
 				}
 			}
 		}
 	}
 }
 
-character_event = { #malaise can lead to typhoid_fever bubonic_plague smallpox/aztec_disease rabies cancer flu
+character_event = {
+	# malaise can lead to typhoid_fever bubonic_plague smallpox/aztec_disease rabies cancer flu
 	id = RIP.5010
 	desc = EVTDESCRIP.5010
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		is_disease_immune_race = no
 	}
-	
+
 	option = {
 		name = ALAS
 		add_trait = malaise
-		
 		hidden_tooltip = {
 			host = {
-				random_courtier_or_vassal = { #Markus doing
+				random_courtier_or_vassal = {
+					# Markus doing
 					limit = {
-						liege = { character = PREVPREV }
+						liege = {
+							character = PREVPREV
+						}
 						has_minor_title = title_court_physician
 					}
-					character_event = { id = RIP.11031 days = 1 }
+					character_event = {
+						id = RIP.11031 days = 1
+					}
 				}
 			}
 			random_list = {
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_typhoid_fever }
+								NOT = {
+									has_character_flag = got_typhoid_fever
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.01	#rare when not an epidemic 			
+						factor = 0.01	# rare when not an epidemic
 					}
 					modifier = {
 						factor = 0
 						has_character_flag = immune_typhoid_fever
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -2929,35 +3218,38 @@ character_event = { #malaise can lead to typhoid_fever bubonic_plague smallpox/a
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_typhoid_fever 
-					set_character_flag = developing_illness
+						set_character_flag = got_typhoid_fever
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_typhoid_fever 
+							has_character_flag = got_typhoid_fever
 						}
-					character_event = { id = RIP.5016 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5016 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_bubonic_plague }
+								NOT = {
+									has_character_flag = got_bubonic_plague
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.01	#rare when not an epidemic 			
+						factor = 0.01	# rare when not an epidemic
 					}
 					modifier = {
 						factor = 0
 						has_character_flag = immune_bubonic_plague
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -2965,35 +3257,38 @@ character_event = { #malaise can lead to typhoid_fever bubonic_plague smallpox/a
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_bubonic_plague
-					set_character_flag = developing_illness
+						set_character_flag = got_bubonic_plague
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_bubonic_plague 
+							has_character_flag = got_bubonic_plague
 						}
-					character_event = { id = RIP.5012 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5012 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_smallpox }
+								NOT = {
+									has_character_flag = got_smallpox
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.01	#rare when not an epidemic 			
+						factor = 0.01	# rare when not an epidemic
 					}
 					modifier = {
 						factor = 0
 						has_character_flag = immune_smallpox
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -3001,22 +3296,26 @@ character_event = { #malaise can lead to typhoid_fever bubonic_plague smallpox/a
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_smallpox
-					set_character_flag = developing_illness
+						set_character_flag = got_smallpox
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_smallpox 
+							has_character_flag = got_smallpox
 						}
-					character_event = { id = RIP.5019 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5019 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_aztec_disease }
+								NOT = {
+									has_character_flag = got_aztec_disease
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
@@ -3029,13 +3328,12 @@ character_event = { #malaise can lead to typhoid_fever bubonic_plague smallpox/a
 						}
 					}
 					modifier = {
-						factor = 0.01	#rare when not an epidemic 			
+						factor = 0.01	# rare when not an epidemic
 					}
 					modifier = {
 						factor = 0
 						has_character_flag = immune_aztec_disease
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -3043,22 +3341,26 @@ character_event = { #malaise can lead to typhoid_fever bubonic_plague smallpox/a
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_aztec_disease 
-					set_character_flag = developing_illness
+						set_character_flag = got_aztec_disease
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_aztec_disease 
+							has_character_flag = got_aztec_disease
 						}
-					character_event = { id = RIP.5019 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5019 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_rabies }
+								NOT = {
+									has_character_flag = got_rabies
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
@@ -3067,7 +3369,6 @@ character_event = { #malaise can lead to typhoid_fever bubonic_plague smallpox/a
 					modifier = {
 						factor = 0.1	# uncommon
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -3075,47 +3376,53 @@ character_event = { #malaise can lead to typhoid_fever bubonic_plague smallpox/a
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_rabies
-					set_character_flag = developing_illness
+						set_character_flag = got_rabies
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_rabies 
+							has_character_flag = got_rabies
 						}
-					character_event = { id = RIP.5024 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5024 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_cancer }
+								NOT = {
+									has_character_flag = got_cancer
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
 					modifier = {
-						factor = 0.25	
-						NOT = { age = 16 }
+						factor = 0.25
+						NOT = {
+							age = 16
+						}
 					}
 					modifier = {
-						factor = 0.25	
-						NOT = { age = 45 }
+						factor = 0.25
+						NOT = {
+							age = 45
+						}
 					}
 					modifier = {
 						factor = 2
 						age = 45
 						is_long_lived_character = no
 					}
-					
 					modifier = {
 						factor = 2
 						age = 100
 						trait = grail_knight
 					}
-					
 					modifier = {
 						factor = 2
 						age = 150
@@ -3124,22 +3431,19 @@ character_event = { #malaise can lead to typhoid_fever bubonic_plague smallpox/a
 							trait = creature_chaos_dwarf
 						}
 					}
-					
 					modifier = {
 						factor = 2
 						age = 500
 						trait = creature_elf
 					}
-					
 					modifier = {
 						factor = 2
 						age = 2000
 						OR = {
 							trait = immortal
-							trait = elixir_of_eternal_youth 	
+							is_immortal_trigger = yes
 						}
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -3147,28 +3451,31 @@ character_event = { #malaise can lead to typhoid_fever bubonic_plague smallpox/a
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_cancer
-					set_character_flag = developing_illness
+						set_character_flag = got_cancer
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
-							has_character_flag = got_cancer 
+							has_character_flag = got_cancer
 						}
-					character_event = { id = RIP.5025 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5025 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						OR = {
 							AND = {
-								NOT = { has_character_flag = got_flu }
+								NOT = {
+									has_character_flag = got_flu
+								}
 								has_character_flag = developing_illness
 							}
 							has_character_flag = disease_not_serious
 						}
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -3176,22 +3483,23 @@ character_event = { #malaise can lead to typhoid_fever bubonic_plague smallpox/a
 								has_character_flag = disease_not_serious
 							}
 						}
-					set_character_flag = got_flu
-					set_character_flag = developing_illness
+						set_character_flag = got_flu
+						set_character_flag = developing_illness
 					}
 					if = {
 						limit = {
 							has_character_flag = got_flu
 						}
-					character_event = { id = RIP.5032 days = 14 random = 14 }
+						character_event = {
+							id = RIP.5032 days = 14 random = 14
+						}
 					}
 				}
 				100 = {
 					modifier = {
-						factor = 0 
+						factor = 0
 						has_character_flag = developing_illness
 					}
-				
 					if = {
 						limit = {
 							NOR = {
@@ -3199,16 +3507,22 @@ character_event = { #malaise can lead to typhoid_fever bubonic_plague smallpox/a
 								has_character_flag = disease_not_serious
 							}
 						}
-						set_character_flag = disease_not_serious 
+						set_character_flag = disease_not_serious
 						random_list = {
 							100 = {
-								character_event = { id = RIP.11012 days = 10 random = 30 }
+								character_event = {
+									id = RIP.11012 days = 10 random = 30
+								}
 							}
 							100 = {
-								character_event = { id = RIP.11012 days = 90 random = 45 }
+								character_event = {
+									id = RIP.11012 days = 90 random = 45
+								}
 							}
 							100 = {
-								character_event = { id = RIP.11012 days = 180 random = 60 }
+								character_event = {
+									id = RIP.11012 days = 180 random = 60
+								}
 							}
 						}
 					}
@@ -3218,18 +3532,18 @@ character_event = { #malaise can lead to typhoid_fever bubonic_plague smallpox/a
 	}
 }
 
-#Diseases develop
-#pneumonia: cough chest_pain fever
-character_event = { 
+# Diseases develop
+
+# pneumonia: cough chest_pain fever
+character_event = {
 	id = RIP.5011
-	
+
 	trigger = {
 		has_character_flag = got_pneumonia
 	}
-	
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		random_list = {
 			100 = {
@@ -3239,7 +3553,7 @@ character_event = {
 					trait = fever
 					trait = chest_pain
 				}
-				add_pneumonia_symptom_effect = yes #Disease effect
+				add_pneumonia_symptom_effect = yes # Disease effect
 			}
 			50 = {
 				modifier = {
@@ -3250,23 +3564,24 @@ character_event = {
 						trait = fever
 					}
 				}
-				character_event = { id = RIP.5026 days = 20 random = 20} #Disease develops
+				character_event = {
+					id = RIP.5026 days = 20 random = 20
+				} # Disease develops
 			}
 		}
 	}
 }
 
-#Syphilis (Great Pox/Aztec disease): rash fever headache
-character_event = { 
+# Syphilis (Great Pox/Aztec disease): rash fever headache
+character_event = {
 	id = RIP.5014
-	
+
 	trigger = {
 		has_character_flag = got_syphilis
 	}
-	
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		random_list = {
 			100 = {
@@ -3276,7 +3591,7 @@ character_event = {
 					trait = fever
 					trait = headache
 				}
-				add_syphilis_symptom_effect = yes #Disease effect
+				add_syphilis_symptom_effect = yes # Disease effect
 			}
 			50 = {
 				modifier = {
@@ -3287,24 +3602,24 @@ character_event = {
 						trait = headache
 					}
 				}
-				character_event = { id = RIP.5027 days = 20 random = 20 } #Disease develops
+				character_event = {
+					id = RIP.5027 days = 20 random = 20
+				} # Disease develops
 			}
 		}
 	}
 }
 
-
-#Tuberculosis: cough chest_pain fever fatigue
-character_event = { 
+# Tuberculosis: cough chest_pain fever fatigue
+character_event = {
 	id = RIP.5015
-	
+
 	trigger = {
 		has_character_flag = got_tuberculosis
 	}
-	
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		random_list = {
 			100 = {
@@ -3312,7 +3627,7 @@ character_event = {
 					factor = 0
 					num_of_symptoms = 3
 				}
-				add_tuberculosis_symptom_effect = yes #Disease effect
+				add_tuberculosis_symptom_effect = yes # Disease effect
 			}
 			50 = {
 				modifier = {
@@ -3324,23 +3639,24 @@ character_event = {
 						trait = fatigue
 					}
 				}
-				character_event = { id = RIP.5028 days = 20 random = 20 } #Disease develops
+				character_event = {
+					id = RIP.5028 days = 20 random = 20
+				} # Disease develops
 			}
 		}
 	}
 }
 
-#Typhoid Fever: malaise fever diarrhea abdominal_pain
-character_event = { 
+# Typhoid Fever: malaise fever diarrhea abdominal_pain
+character_event = {
 	id = RIP.5016
-	
+
 	trigger = {
 		has_character_flag = got_typhoid_fever
 	}
-	
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		random_list = {
 			100 = {
@@ -3348,7 +3664,7 @@ character_event = {
 					factor = 0
 					num_of_symptoms = 3
 				}
-				add_typhoid_symptom_effect = yes #Disease effect
+				add_typhoid_symptom_effect = yes # Disease effect
 			}
 			50 = {
 				modifier = {
@@ -3360,23 +3676,24 @@ character_event = {
 						trait = abdominal_pain
 					}
 				}
-				character_event = { id = RIP.5029 days = 20 random = 20} #Disease develops
+				character_event = {
+					id = RIP.5029 days = 20 random = 20
+				} # Disease develops
 			}
 		}
 	}
 }
 
-#Typhus: fever headache rash fatigue diarrhea abdominal_pain
-character_event = { 
+# Typhus: fever headache rash fatigue diarrhea abdominal_pain
+character_event = {
 	id = RIP.5017
-	
+
 	trigger = {
 		has_character_flag = got_typhus
 	}
-	
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		random_list = {
 			100 = {
@@ -3384,7 +3701,7 @@ character_event = {
 					factor = 0
 					num_of_symptoms = 3
 				}
-				add_typhus_symptom_effect = yes #Disease effect
+				add_typhus_symptom_effect = yes # Disease effect
 			}
 			50 = {
 				modifier = {
@@ -3398,23 +3715,24 @@ character_event = {
 						trait = abdominal_pain
 					}
 				}
-				character_event = { id = RIP.5040 days = 20 random = 20} #Disease develops
+				character_event = {
+					id = RIP.5040 days = 20 random = 20
+				} # Disease develops
 			}
 		}
 	}
 }
 
-#Bubonic Plague: malaise fever cramps
-character_event = { 
+# Bubonic Plague: malaise fever cramps
+character_event = {
 	id = RIP.5012
-	
+
 	trigger = {
 		has_character_flag = got_bubonic_plague
 	}
-	
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		random_list = {
 			100 = {
@@ -3435,23 +3753,24 @@ character_event = {
 						trait = cramps
 					}
 				}
-				character_event = { id = RIP.5013 }
+				character_event = {
+					id = RIP.5013
+				}
 			}
 		}
 	}
 }
 
-#Measles: rash fever cough
-character_event = { 
+# Measles: rash fever cough
+character_event = {
 	id = RIP.5018
-	
+
 	trigger = {
 		has_character_flag = got_measles
 	}
-	
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		random_list = {
 			100 = {
@@ -3461,7 +3780,7 @@ character_event = {
 					trait = fever
 					trait = cough
 				}
-				add_measles_symptom_effect = yes #Disease effect
+				add_measles_symptom_effect = yes # Disease effect
 			}
 			50 = {
 				modifier = {
@@ -3472,23 +3791,24 @@ character_event = {
 						trait = cough
 					}
 				}
-				character_event = { id = RIP.5031 days = 20 random = 20} #Disease develops
+				character_event = {
+					id = RIP.5031 days = 20 random = 20
+				} # Disease develops
 			}
 		}
 	}
 }
 
-#Smallpox: malaise fever headache rash
-character_event = { 
+# Smallpox: malaise fever headache rash
+character_event = {
 	id = RIP.5019
-	
+
 	trigger = {
 		has_character_flag = got_smallpox
 	}
-	
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		random_list = {
 			100 = {
@@ -3496,7 +3816,7 @@ character_event = {
 					factor = 0
 					num_of_symptoms = 3
 				}
-				add_smallpox_symptom_effect = yes #Disease effect
+				add_smallpox_symptom_effect = yes # Disease effect
 			}
 			50 = {
 				modifier = {
@@ -3511,33 +3831,40 @@ character_event = {
 				if = {
 					limit = {
 						has_character_flag = got_smallpox
-						NOT = { has_character_flag = got_aztec_disease }
+						NOT = {
+							has_character_flag = got_aztec_disease
+						}
 					}
-				character_event = { id = RIP.5030 days = 20 random = 20} #Disease develops
+					character_event = {
+						id = RIP.5030 days = 20 random = 20
+					} # Disease develops
 				}
 				if = {
 					limit = {
 						has_character_flag = got_aztec_disease
-						NOT = { has_character_flag = got_smallpox }
+						NOT = {
+							has_character_flag = got_smallpox
+						}
 					}
-				character_event = { id = RIP.5038 days = 20 random = 20} #Disease develops
+					character_event = {
+						id = RIP.5038 days = 20 random = 20
+					} # Disease develops
 				}
 			}
 		}
 	}
 }
 
-#Flu: malaise fever cough fatigue headache diarrhea abdominal_pain 
-character_event = { 
+# Flu: malaise fever cough fatigue headache diarrhea abdominal_pain
+character_event = {
 	id = RIP.5020
-	
+
 	trigger = {
 		has_character_flag = got_flu
 	}
-	
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		random_list = {
 			100 = {
@@ -3545,7 +3872,7 @@ character_event = {
 					factor = 0
 					num_of_symptoms = 3
 				}
-				add_flu_symptom_effect = yes #Disease effect
+				add_flu_symptom_effect = yes # Disease effect
 			}
 			50 = {
 				modifier = {
@@ -3560,23 +3887,24 @@ character_event = {
 						trait = abdominal_pain
 					}
 				}
-				character_event = { id = RIP.5032 days = 20 random = 20} #Disease develops
+				character_event = {
+					id = RIP.5032 days = 20 random = 20
+				} # Disease develops
 			}
 		}
 	}
 }
 
-#Dysentery: diarrhea fever abdominal_pain
-character_event = { 
+# Dysentery: diarrhea fever abdominal_pain
+character_event = {
 	id = RIP.5021
-	
+
 	trigger = {
 		has_character_flag = got_dysentery
 	}
-	
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		random_list = {
 			100 = {
@@ -3586,7 +3914,7 @@ character_event = {
 					trait = fever
 					trait = abdominal_pain
 				}
-				add_dysentery_symptom_effect = yes #Disease effect
+				add_dysentery_symptom_effect = yes # Disease effect
 			}
 			50 = {
 				modifier = {
@@ -3597,23 +3925,24 @@ character_event = {
 						trait = abdominal_pain
 					}
 				}
-				character_event = { id = RIP.5033 days = 20 random = 20} #Disease develops
+				character_event = {
+					id = RIP.5033 days = 20 random = 20
+				} # Disease develops
 			}
 		}
 	}
 }
 
-#Gout: fever fatigue 
-character_event = { 
+# Gout: fever fatigue
+character_event = {
 	id = RIP.5022
-	
+
 	trigger = {
 		has_character_flag = got_gout
 	}
-	
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		random_list = {
 			100 = {
@@ -3622,7 +3951,7 @@ character_event = {
 					trait = fever
 					trait = fatigue
 				}
-				add_gout_symptom_effect = yes #Disease effect
+				add_gout_symptom_effect = yes # Disease effect
 			}
 			50 = {
 				modifier = {
@@ -3632,23 +3961,24 @@ character_event = {
 						trait = fatigue
 					}
 				}
-				character_event = { id = RIP.5034 days = 20 random = 20 } #Disease develops
+				character_event = {
+					id = RIP.5034 days = 20 random = 20
+				} # Disease develops
 			}
 		}
 	}
 }
 
-#food poisoning: vomiting diarrhea cramps fever
-character_event = { 
+# food poisoning: vomiting diarrhea cramps fever
+character_event = {
 	id = RIP.5023
-	
+
 	trigger = {
 		has_character_flag = got_food_poisoning
 	}
-	
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		random_list = {
 			100 = {
@@ -3656,7 +3986,7 @@ character_event = {
 					factor = 0
 					num_of_symptoms = 3
 				}
-				add_food_poisoning_symptom_effect = yes #Disease effect
+				add_food_poisoning_symptom_effect = yes # Disease effect
 			}
 			50 = {
 				modifier = {
@@ -3668,23 +3998,24 @@ character_event = {
 						trait = fever
 					}
 				}
-				character_event = { id = RIP.5035 days = 20 random = 20} #Disease develops
+				character_event = {
+					id = RIP.5035 days = 20 random = 20
+				} # Disease develops
 			}
 		}
 	}
 }
 
-#Rabies: fever malaise fatigue
-character_event = { 
+# Rabies: fever malaise fatigue
+character_event = {
 	id = RIP.5024
-	
+
 	trigger = {
 		has_character_flag = got_rabies
 	}
-	
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		random_list = {
 			100 = {
@@ -3694,7 +4025,7 @@ character_event = {
 					trait = fever
 					trait = fatigue
 				}
-				add_rabies_symptom_effect = yes #Disease effect
+				add_rabies_symptom_effect = yes # Disease effect
 			}
 			50 = {
 				modifier = {
@@ -3705,23 +4036,24 @@ character_event = {
 						trait = fatigue
 					}
 				}
-				character_event = { id = RIP.5036 days = 20 random = 20} #Disease develops
+				character_event = {
+					id = RIP.5036 days = 20 random = 20
+				} # Disease develops
 			}
 		}
 	}
 }
 
-#Cancer: malaise fatigue cough abdominal_pain chest_pain vomiting diarrhea headache
-character_event = { 
+# Cancer: malaise fatigue cough abdominal_pain chest_pain vomiting diarrhea headache
+character_event = {
 	id = RIP.5025
-	
+
 	trigger = {
 		has_character_flag = got_cancer
 	}
-	
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		random_list = {
 			100 = {
@@ -3729,7 +4061,7 @@ character_event = {
 					factor = 0
 					num_of_symptoms = 3
 				}
-				add_cancer_symptom_effect = yes #Disease effect
+				add_cancer_symptom_effect = yes # Disease effect
 			}
 			50 = {
 				modifier = {
@@ -3745,33 +4077,33 @@ character_event = {
 						trait = headache
 					}
 				}
-				character_event = { id = RIP.5037 days = 20 random = 20 } #Disease develops
+				character_event = {
+					id = RIP.5037 days = 20 random = 20
+				} # Disease develops
 			}
 		}
 	}
 }
 
-#Diseases manifest
-#Pneumonia: cough chest pain fever
-character_event = { 
+# Diseases manifest
+
+# Pneumonia: cough chest pain fever
+character_event = {
 	id = RIP.5026
 	desc = EVTDESCRIP.5026
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = ALAS
 		add_trait = pneumonic
-		set_character_flag = manifest_pneumonia 
+		set_character_flag = manifest_pneumonia
 		add_disease_level_effect = yes
 		blessing_removes_disease_effect = yes
 		deaths_gift_removes_disease_effect = yes
 		scrying_omen_fulfilled_by_gaining_disease_effect = yes
-
 		if = {
 			limit = {
 				trait = fever
@@ -3798,67 +4130,77 @@ character_event = {
 				health = -3
 			}
 			host = {
-				random_courtier_or_vassal = { #Markus doing
+				random_courtier_or_vassal = {
+					# Markus doing
 					limit = {
-						liege = { character = PREVPREV }
+						liege = {
+							character = PREVPREV
+						}
 						has_minor_title = title_court_physician
 					}
-					character_event = { id = RIP.11031 days = 1 }
+					character_event = {
+						id = RIP.11031 days = 1
+					}
 				}
 			}
 			father = {
 				if = {
-					limit = { 
-						ai = no 
+					limit = {
+						ai = no
 						is_liege_of = ROOT
 					}
 					set_character_flag = announce_pneumonic
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 			mother = {
 				if = {
-					limit = { 
-						ai = no 
+					limit = {
+						ai = no
 						is_liege_of = ROOT
 					}
 					set_character_flag = announce_pneumonic
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 			spouse = {
 				if = {
-					limit = { ai = no }
+					limit = {
+						ai = no
+					}
 					set_character_flag = announce_pneumonic
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 			clr_character_flag = developing_illness
-			clr_character_flag = got_pneumonia 
+			clr_character_flag = got_pneumonia
 		}
 	}
 }
 
-#Syphilis/Pox: rash fever headache
-character_event = { 
+# Syphilis/Pox: rash fever headache
+character_event = {
 	id = RIP.5027
 	desc = EVTDESCRIP.5027
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = ALAS
 		add_trait = syphilitic
-		set_character_flag = manifest_syphilis 
+		set_character_flag = manifest_syphilis
 		add_disease_level_effect = yes
 		blessing_removes_disease_effect = yes
 		deaths_gift_removes_disease_effect = yes
 		scrying_omen_fulfilled_by_gaining_disease_effect = yes
-
 		if = {
 			limit = {
 				trait = fever
@@ -3885,38 +4227,51 @@ character_event = {
 				health = -3
 			}
 			host = {
-				random_courtier_or_vassal = { #Markus doing
+				random_courtier_or_vassal = {
+					# Markus doing
 					limit = {
-						liege = { character = PREVPREV }
+						liege = {
+							character = PREVPREV
+						}
 						has_minor_title = title_court_physician
 					}
-					character_event = { id = RIP.11031 days = 1 }
+					character_event = {
+						id = RIP.11031 days = 1
+					}
 				}
 			}
 			father = {
 				if = {
-					limit = { 
-						ai = no 
+					limit = {
+						ai = no
 						is_liege_of = ROOT
 					}
 					set_character_flag = announce_syphilis
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 			mother = {
 				if = {
-					limit = { 
-						ai = no 
+					limit = {
+						ai = no
 						is_liege_of = ROOT
 					}
 					set_character_flag = announce_syphilis
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 			spouse = {
 				if = {
-					limit = { ai = no }
-					character_event = { id = RIP.5061 }
+					limit = {
+						ai = no
+					}
+					character_event = {
+						id = RIP.5061
+					}
 				}
 			}
 			any_lover = {
@@ -3924,29 +4279,29 @@ character_event = {
 					ai = no
 					is_liege_of = ROOT
 				}
-				character_event = { id = RIP.5061 }
+				character_event = {
+					id = RIP.5061
+				}
 			}
 			clr_character_flag = developing_illness
-			clr_character_flag = got_syphilis 
+			clr_character_flag = got_syphilis
 		}
 	}
 }
 
-#Tuberculosis: cough chest_pain fever fatigue
-character_event = { 
+# Tuberculosis: cough chest_pain fever fatigue
+character_event = {
 	id = RIP.5028
 	desc = EVTDESCRIP.5028
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = ALAS
 		add_trait = has_tuberculosis
-		set_character_flag = manifest_tuberculosis 
+		set_character_flag = manifest_tuberculosis
 		add_disease_level_effect = yes
 		blessing_removes_disease_effect = yes
 		deaths_gift_removes_disease_effect = yes
@@ -3985,60 +4340,71 @@ character_event = {
 				health = -3
 			}
 			host = {
-				random_courtier_or_vassal = { #Markus doing
+				random_courtier_or_vassal = {
+					# Markus doing
 					limit = {
-						liege = { character = PREVPREV }
+						liege = {
+							character = PREVPREV
+						}
 						has_minor_title = title_court_physician
 					}
-					character_event = { id = RIP.11031 days = 1 }
+					character_event = {
+						id = RIP.11031 days = 1
+					}
 				}
 			}
 			father = {
 				if = {
-					limit = { 
-						ai = no 
+					limit = {
+						ai = no
 						is_liege_of = ROOT
 					}
 					set_character_flag = announce_tuberculosis
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 			mother = {
 				if = {
-					limit = { 
-						ai = no 
+					limit = {
+						ai = no
 						is_liege_of = ROOT
 					}
 					set_character_flag = announce_tuberculosis
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 			spouse = {
 				if = {
-					limit = { ai = no }
+					limit = {
+						ai = no
+					}
 					set_character_flag = announce_tuberculosis
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 		}
 	}
 }
 
-#Typhoid Fever: malaise fever diarrhea abdominal_pain
-character_event = { 
+# Typhoid Fever: malaise fever diarrhea abdominal_pain
+character_event = {
 	id = RIP.5029
 	desc = EVTDESCRIP.5029
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = ALAS
 		add_trait = has_typhoid_fever
-		set_character_flag = manifest_typhoid_fever 
+		set_character_flag = manifest_typhoid_fever
 		add_disease_level_effect = yes
 		blessing_removes_disease_effect = yes
 		deaths_gift_removes_disease_effect = yes
@@ -4077,56 +4443,67 @@ character_event = {
 				health = -3
 			}
 			host = {
-				random_courtier_or_vassal = { #Markus doing
+				random_courtier_or_vassal = {
+					# Markus doing
 					limit = {
-						liege = { character = PREVPREV }
+						liege = {
+							character = PREVPREV
+						}
 						has_minor_title = title_court_physician
 					}
-					character_event = { id = RIP.11031 days = 1 }
+					character_event = {
+						id = RIP.11031 days = 1
+					}
 				}
 			}
 			father = {
 				if = {
-					limit = { 
-						ai = no 
+					limit = {
+						ai = no
 						is_liege_of = ROOT
 					}
 					set_character_flag = announce_typhoid
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 			mother = {
 				if = {
-					limit = { 
-						ai = no 
+					limit = {
+						ai = no
 						is_liege_of = ROOT
 					}
 					set_character_flag = announce_typhoid
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 			spouse = {
 				if = {
-					limit = { ai = no }
+					limit = {
+						ai = no
+					}
 					set_character_flag = announce_typhoid
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 		}
 	}
 }
 
-#typhus: fever headache rash fatigue diarrhea abdominal_pain
-character_event = { 
+# typhus: fever headache rash fatigue diarrhea abdominal_pain
+character_event = {
 	id = RIP.5040
 	desc = EVTDESCRIP.5040
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = ALAS
 		add_trait = has_typhus
@@ -4181,57 +4558,67 @@ character_event = {
 				health = -3
 			}
 			host = {
-				random_courtier_or_vassal = { #Markus doing
+				random_courtier_or_vassal = {
+					# Markus doing
 					limit = {
-						liege = { character = PREVPREV }
+						liege = {
+							character = PREVPREV
+						}
 						has_minor_title = title_court_physician
 					}
-
-					character_event = { id = RIP.11031 days = 1 }
+					character_event = {
+						id = RIP.11031 days = 1
+					}
 				}
 			}
 			father = {
 				if = {
-					limit = { 
-						ai = no 
+					limit = {
+						ai = no
 						is_liege_of = ROOT
 					}
 					set_character_flag = announce_typhus
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 			mother = {
 				if = {
-					limit = { 
-						ai = no 
+					limit = {
+						ai = no
 						is_liege_of = ROOT
 					}
 					set_character_flag = announce_typhus
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 			spouse = {
 				if = {
-					limit = { ai = no }
+					limit = {
+						ai = no
+					}
 					set_character_flag = announce_typhus
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 		}
 	}
 }
 
-#Bubonic plague: fever cramps malaise
-character_event = { 
+# Bubonic plague: fever cramps malaise
+character_event = {
 	id = RIP.5013
 	desc = EVTDESCRIP.5013
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = ALAS
 		add_trait = has_bubonic_plague
@@ -4262,56 +4649,67 @@ character_event = {
 		}
 		hidden_tooltip = {
 			host = {
-				random_courtier_or_vassal = { #Markus doing
+				random_courtier_or_vassal = {
+					# Markus doing
 					limit = {
-						liege = { character = PREVPREV }
+						liege = {
+							character = PREVPREV
+						}
 						has_minor_title = title_court_physician
 					}
-					character_event = { id = RIP.11031 days = 1 }
+					character_event = {
+						id = RIP.11031 days = 1
+					}
 				}
 			}
 			father = {
 				if = {
-					limit = { 
-						ai = no 
+					limit = {
+						ai = no
 						is_liege_of = ROOT
 					}
 					set_character_flag = announce_plague
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 			mother = {
 				if = {
-					limit = { 
-						ai = no 
+					limit = {
+						ai = no
 						is_liege_of = ROOT
 					}
 					set_character_flag = announce_plague
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 			spouse = {
 				if = {
-					limit = { ai = no }
+					limit = {
+						ai = no
+					}
 					set_character_flag = announce_plague
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
-			}	
+			}
 		}
 	}
 }
 
-#Measles: rash fever cough
-character_event = { 
+# Measles: rash fever cough
+character_event = {
 	id = RIP.5031
 	desc = EVTDESCRIP.5031
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = ALAS
 		add_trait = has_measles
@@ -4348,56 +4746,67 @@ character_event = {
 				health = -3
 			}
 			host = {
-				random_courtier_or_vassal = { #Markus doing
+				random_courtier_or_vassal = {
+					# Markus doing
 					limit = {
-						liege = { character = PREVPREV }
+						liege = {
+							character = PREVPREV
+						}
 						has_minor_title = title_court_physician
 					}
-					character_event = { id = RIP.11031 days = 1 }
+					character_event = {
+						id = RIP.11031 days = 1
+					}
 				}
 			}
 			father = {
 				if = {
-					limit = { 
-						ai = no 
+					limit = {
+						ai = no
 						is_liege_of = ROOT
 					}
 					set_character_flag = announce_measles
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 			mother = {
 				if = {
-					limit = { 
-						ai = no 
+					limit = {
+						ai = no
 						is_liege_of = ROOT
 					}
 					set_character_flag = announce_measles
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 			spouse = {
 				if = {
-					limit = { ai = no }
+					limit = {
+						ai = no
+					}
 					set_character_flag = announce_measles
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 		}
 	}
 }
 
-#Smallpox: malaise fever headache rash
-character_event = { 
+# Smallpox: malaise fever headache rash
+character_event = {
 	id = RIP.5030
 	desc = EVTDESCRIP.5030
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = ALAS
 		add_trait = has_small_pox
@@ -4432,7 +4841,7 @@ character_event = {
 			}
 			remove_trait = headache
 		}
-		hidden_tooltip = { 
+		hidden_tooltip = {
 			if = {
 				limit = {
 					is_unimportant_trigger = yes
@@ -4440,56 +4849,67 @@ character_event = {
 				health = -3
 			}
 			host = {
-				random_courtier_or_vassal = { #Markus doing
+				random_courtier_or_vassal = {
+					# Markus doing
 					limit = {
-						liege = { character = PREVPREV }
+						liege = {
+							character = PREVPREV
+						}
 						has_minor_title = title_court_physician
 					}
-					character_event = { id = RIP.11031 days = 1 }
+					character_event = {
+						id = RIP.11031 days = 1
+					}
 				}
 			}
 			father = {
 				if = {
-					limit = { 
-						ai = no 
+					limit = {
+						ai = no
 						is_liege_of = ROOT
 					}
 					set_character_flag = announce_smallpox
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 			mother = {
 				if = {
-					limit = { 
-						ai = no 
+					limit = {
+						ai = no
 						is_liege_of = ROOT
 					}
 					set_character_flag = announce_smallpox
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 			spouse = {
 				if = {
-					limit = { ai = no }
+					limit = {
+						ai = no
+					}
 					set_character_flag = announce_smallpox
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 		}
 	}
 }
 
-#Aztec Disease: malaise fever headache rash
-character_event = { 
+# Aztec Disease: malaise fever headache rash
+character_event = {
 	id = RIP.5038
 	desc = EVTDESCRIP.5038
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = ALAS
 		add_trait = has_aztec_disease
@@ -4532,38 +4952,51 @@ character_event = {
 				health = -3
 			}
 			host = {
-				random_courtier_or_vassal = { #Markus doing
+				random_courtier_or_vassal = {
+					# Markus doing
 					limit = {
-						liege = { character = PREVPREV }
+						liege = {
+							character = PREVPREV
+						}
 						has_minor_title = title_court_physician
 					}
-					character_event = { id = RIP.11031 days = 1 }
+					character_event = {
+						id = RIP.11031 days = 1
+					}
 				}
 			}
 			father = {
 				if = {
-					limit = { 
-						ai = no 
+					limit = {
+						ai = no
 						is_liege_of = ROOT
 					}
 					set_character_flag = announce_syphilis
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 			mother = {
 				if = {
-					limit = { 
-						ai = no 
+					limit = {
+						ai = no
 						is_liege_of = ROOT
 					}
 					set_character_flag = announce_syphilis
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 			spouse = {
 				if = {
-					limit = { ai = no }
-					character_event = { id = RIP.5061 }
+					limit = {
+						ai = no
+					}
+					character_event = {
+						id = RIP.5061
+					}
 				}
 			}
 			any_lover = {
@@ -4571,23 +5004,23 @@ character_event = {
 					ai = no
 					is_liege_of = ROOT
 				}
-				character_event = { id = RIP.5061 }
-			}			
+				character_event = {
+					id = RIP.5061
+				}
+			}
 		}
 	}
 }
 
-#Flu: malaise fever cough fatigue headache diarrhea abdominal_pain vomiting
-character_event = { 
+# Flu: malaise fever cough fatigue headache diarrhea abdominal_pain vomiting
+character_event = {
 	id = RIP.5032
 	desc = EVTDESCRIP.5032
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = ALAS
 		add_trait = flu
@@ -4654,56 +5087,67 @@ character_event = {
 				health = -3
 			}
 			host = {
-				random_courtier_or_vassal = { #Markus doing
+				random_courtier_or_vassal = {
+					# Markus doing
 					limit = {
-						liege = { character = PREVPREV }
+						liege = {
+							character = PREVPREV
+						}
 						has_minor_title = title_court_physician
 					}
-					character_event = { id = RIP.11031 days = 1 }
+					character_event = {
+						id = RIP.11031 days = 1
+					}
 				}
 			}
 			father = {
 				if = {
-					limit = { 
-						ai = no 
+					limit = {
+						ai = no
 						is_liege_of = ROOT
 					}
 					set_character_flag = announce_flu
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 			mother = {
 				if = {
-					limit = { 
-						ai = no 
+					limit = {
+						ai = no
 						is_liege_of = ROOT
 					}
 					set_character_flag = announce_flu
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 			spouse = {
 				if = {
-					limit = { ai = no }
+					limit = {
+						ai = no
+					}
 					set_character_flag = announce_flu
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 		}
 	}
 }
 
-#Dysentery: diarrhea fever abdominal_pain
-character_event = { 
+# Dysentery: diarrhea fever abdominal_pain
+character_event = {
 	id = RIP.5033
 	desc = EVTDESCRIP.5033
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = ALAS
 		add_trait = dysentery
@@ -4740,56 +5184,67 @@ character_event = {
 				health = -3
 			}
 			host = {
-				random_courtier_or_vassal = { #Markus doing
+				random_courtier_or_vassal = {
+					# Markus doing
 					limit = {
-						liege = { character = PREVPREV }
+						liege = {
+							character = PREVPREV
+						}
 						has_minor_title = title_court_physician
 					}
-					character_event = { id = RIP.11031 days = 1 }
+					character_event = {
+						id = RIP.11031 days = 1
+					}
 				}
 			}
 			father = {
 				if = {
-					limit = { 
-						ai = no 
+					limit = {
+						ai = no
 						is_liege_of = ROOT
 					}
 					set_character_flag = announce_dysentery
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 			mother = {
 				if = {
-					limit = { 
-						ai = no 
+					limit = {
+						ai = no
 						is_liege_of = ROOT
 					}
 					set_character_flag = announce_dysentery
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 			spouse = {
 				if = {
-					limit = { ai = no }
+					limit = {
+						ai = no
+					}
 					set_character_flag = announce_dysentery
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 		}
 	}
 }
 
-#Gout: fever fatigue 
-character_event = { 
+# Gout: fever fatigue
+character_event = {
 	id = RIP.5034
 	desc = EVTDESCRIP.5034
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = ALAS
 		add_trait = gout
@@ -4820,56 +5275,67 @@ character_event = {
 				health = -3
 			}
 			host = {
-				random_courtier_or_vassal = { #Markus doing
+				random_courtier_or_vassal = {
+					# Markus doing
 					limit = {
-						liege = { character = PREVPREV }
+						liege = {
+							character = PREVPREV
+						}
 						has_minor_title = title_court_physician
 					}
-					character_event = { id = RIP.11031 days = 1 }
+					character_event = {
+						id = RIP.11031 days = 1
+					}
 				}
 			}
 			father = {
 				if = {
-					limit = { 
-						ai = no 
+					limit = {
+						ai = no
 						is_liege_of = ROOT
 					}
 					set_character_flag = announce_gout
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 			mother = {
 				if = {
-					limit = { 
-						ai = no 
+					limit = {
+						ai = no
 						is_liege_of = ROOT
 					}
 					set_character_flag = announce_gout
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 			spouse = {
 				if = {
-					limit = { ai = no }
+					limit = {
+						ai = no
+					}
 					set_character_flag = announce_gout
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 		}
 	}
 }
 
-#Food Poisoning: vomiting diarrhea cramps fever
-character_event = { 
+# Food Poisoning: vomiting diarrhea cramps fever
+character_event = {
 	id = RIP.5035
 	desc = EVTDESCRIP.5035
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = ALAS
 		add_trait = food_poisoning
@@ -4912,56 +5378,67 @@ character_event = {
 				health = -3
 			}
 			host = {
-				random_courtier_or_vassal = { #Markus doing
+				random_courtier_or_vassal = {
+					# Markus doing
 					limit = {
-						liege = { character = PREVPREV }
+						liege = {
+							character = PREVPREV
+						}
 						has_minor_title = title_court_physician
 					}
-					character_event = { id = RIP.11031 days = 1 }
+					character_event = {
+						id = RIP.11031 days = 1
+					}
 				}
 			}
 			father = {
 				if = {
-					limit = { 
-						ai = no 
+					limit = {
+						ai = no
 						is_liege_of = ROOT
 					}
 					set_character_flag = announce_food_poisoning
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 			mother = {
 				if = {
-					limit = { 
-						ai = no 
+					limit = {
+						ai = no
 						is_liege_of = ROOT
 					}
 					set_character_flag = announce_food_poisoning
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 			spouse = {
 				if = {
-					limit = { ai = no }
+					limit = {
+						ai = no
+					}
 					set_character_flag = announce_food_poisoning
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 		}
 	}
 }
 
-#Rabies: fever malaise fatigue
-character_event = { 
+# Rabies: fever malaise fatigue
+character_event = {
 	id = RIP.5036
 	desc = EVTDESCRIP.5036
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = ALAS
 		add_trait = rabies
@@ -4998,56 +5475,67 @@ character_event = {
 				health = -3
 			}
 			host = {
-				random_courtier_or_vassal = { #Markus doing
+				random_courtier_or_vassal = {
+					# Markus doing
 					limit = {
-						liege = { character = PREVPREV }
+						liege = {
+							character = PREVPREV
+						}
 						has_minor_title = title_court_physician
 					}
-					character_event = { id = RIP.11031 days = 1 }
+					character_event = {
+						id = RIP.11031 days = 1
+					}
 				}
 			}
 			father = {
 				if = {
-					limit = { 
-						ai = no 
+					limit = {
+						ai = no
 						is_liege_of = ROOT
 					}
 					set_character_flag = announce_rabies
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 			mother = {
 				if = {
-					limit = { 
-						ai = no 
+					limit = {
+						ai = no
 						is_liege_of = ROOT
 					}
 					set_character_flag = announce_rabies
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 			spouse = {
 				if = {
-					limit = { ai = no }
+					limit = {
+						ai = no
+					}
 					set_character_flag = announce_rabies
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 		}
 	}
 }
 
-#Cancer: malaise fatigue cough abdominal_pain chest_pain vomiting diarrhea headache
-character_event = { 
+# Cancer: malaise fatigue cough abdominal_pain chest_pain vomiting diarrhea headache
+character_event = {
 	id = RIP.5037
 	desc = EVTDESCRIP.5037
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = ALAS
 		add_trait = cancer
@@ -5114,56 +5602,67 @@ character_event = {
 				health = -3
 			}
 			host = {
-				random_courtier_or_vassal = { #Markus doing
+				random_courtier_or_vassal = {
+					# Markus doing
 					limit = {
-						liege = { character = PREVPREV }
+						liege = {
+							character = PREVPREV
+						}
 						has_minor_title = title_court_physician
 					}
-					character_event = { id = RIP.11031 days = 1 }
+					character_event = {
+						id = RIP.11031 days = 1
+					}
 				}
 			}
 			father = {
 				if = {
-					limit = { 
-						ai = no 
+					limit = {
+						ai = no
 						is_liege_of = ROOT
 					}
 					set_character_flag = announce_cancer
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 			mother = {
 				if = {
-					limit = { 
-						ai = no 
+					limit = {
+						ai = no
 						is_liege_of = ROOT
 					}
 					set_character_flag = announce_cancer
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 			spouse = {
 				if = {
-					limit = { ai = no }
+					limit = {
+						ai = no
+					}
 					set_character_flag = announce_cancer
-					character_event = { id = RIP.5060 }
+					character_event = {
+						id = RIP.5060
+					}
 				}
 			}
 		}
 	}
 }
 
-#Leper becomes disfigured 
+# Leper becomes disfigured
 character_event = {
 	id = RIP.5041
 	picture = GFX_evt_plague_spreading
 	desc = RIP.5041.d
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-
 	is_triggered_only = yes
-	
+
 	trigger = {
 		trait = leper
 		NOT = {
@@ -5173,37 +5672,42 @@ character_event = {
 
 	option = {
 		name = ALAS
-		add_trait = disfigured 
+		add_trait = disfigured
 	}
-	
 }
 
-############################################
 # Scurvy
+
 # Chance of getting scurvy for being at sea
-############################################
+
 # Scurvy - Trigger event
 character_event = {
 	id = RIP.5050
 	hide_window = yes
-
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_dlc = "Reapers"
 		in_command = yes
-		location = { terrain = coastal_desert }
-		NOT = { trait = scurvy }
+		location = {
+			terrain = coastal_desert
+		}
+		NOT = {
+			trait = scurvy
+		}
 		is_disease_immune_race = no
 	}
-	
+
 	option = {
 		random_list = {
-			10 = { # Scurvy
+			10 = {
+				# Scurvy
 				modifier = {
 					factor = 500
 					capital_scope = {
-						location = { has_disease = yes }
+						location = {
+							has_disease = yes
+						}
 					}
 				}
 				modifier = {
@@ -5222,10 +5726,12 @@ character_event = {
 					factor = 4
 					has_character_flag = been_at_sea_3
 				}
-				
-				character_event = { id = RIP.5051 }
+				character_event = {
+					id = RIP.5051
+				}
 			}
-			90 = { # Still healthy
+			90 = {
+				# Still healthy
 				if = {
 					limit = {
 						has_character_flag = been_at_sea_2
@@ -5250,8 +5756,9 @@ character_event = {
 					}
 					set_character_flag = been_at_sea_1
 				}
-				
-				character_event = { id = RIP.5056 days = 100 }
+				character_event = {
+					id = RIP.5056 days = 100
+				}
 			}
 		}
 	}
@@ -5261,11 +5768,8 @@ character_event = {
 character_event = {
 	id = RIP.5051
 	picture = "GFX_evt_merchant_ship_at_sea_republic"
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
 	desc = {
 		trigger = {
 			has_dlc = "The Republic"
@@ -5275,25 +5779,33 @@ character_event = {
 	}
 	desc = {
 		trigger = {
-			NOT = { has_dlc = "The Republic" }
+			NOT = {
+				has_dlc = "The Republic"
+			}
 		}
 		text = EVTDESC_RIP_5051
 		picture = "GFX_evt_kraken"
 	}
-	
+
 	trigger = {
 		has_dlc = "Reapers"
 		in_command = yes
-		location = { terrain = coastal_desert }
-		NOT = { trait = scurvy }
+		location = {
+			terrain = coastal_desert
+		}
+		NOT = {
+			trait = scurvy
+		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_RIP_5051
 		add_trait = scurvy
 		add_disease_level_effect = yes
 		hidden_tooltip = {
-			character_event = { id = RIP.5052 days = 30 }
+			character_event = {
+				id = RIP.5052 days = 30
+			}
 			clr_character_flag = been_at_sea_1
 			clr_character_flag = been_at_sea_2
 			clr_character_flag = been_at_sea_3
@@ -5305,15 +5817,17 @@ character_event = {
 character_event = {
 	id = RIP.5052
 	hide_window = yes
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		trigger = {
 			trait = scurvy
-			NOT = { location = { terrain = coastal_desert } }
+			NOT = {
+				location = {
+					terrain = coastal_desert
+				}
+			}
 		}
 		if = {
 			limit = {
@@ -5326,24 +5840,34 @@ character_event = {
 				limit = {
 					has_minor_title = title_court_physician
 				}
-				character_event = { id = RIP.5053 }
+				character_event = {
+					id = RIP.5053
+				}
 			}
 		}
 		if = {
 			limit = {
-				NOT = { has_character_flag = physician_scurvy_treatment }
+				NOT = {
+					has_character_flag = physician_scurvy_treatment
+				}
 			}
-			character_event = { id = RIP.5055 days = 60 random = 20}
+			character_event = {
+				id = RIP.5055 days = 60 random = 20
+			}
 		}
 		clr_character_flag = physician_scurvy_treatment
 	}
-	
+
 	option = {
 		trigger = {
 			trait = scurvy
-			location = { terrain = coastal_desert }
+			location = {
+				terrain = coastal_desert
+			}
 		}
-		character_event = { id = RIP.5052 days = 60 }
+		character_event = {
+			id = RIP.5052 days = 60
+		}
 	}
 }
 
@@ -5351,11 +5875,14 @@ character_event = {
 character_event = {
 	id = RIP.5053
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
-		FROM = { character_event = { id = RIP.5054 } }
+		FROM = {
+			character_event = {
+				id = RIP.5054
+			}
+		}
 	}
 }
 
@@ -5364,17 +5891,18 @@ character_event = {
 	id = RIP.5054
 	picture = "GFX_evt_doctor_tending_to_sick"
 	desc = EVTDESC_RIP_5054
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		trait = scurvy
 	}
-	
+
 	option = {
 		name = EVTOPTA_RIP_5054
 		hidden_tooltip = {
-			character_event = { id = RIP.5055 days = 30 random = 10 }
+			character_event = {
+				id = RIP.5055 days = 30 random = 10
+			}
 		}
 	}
 }
@@ -5384,13 +5912,12 @@ character_event = {
 	id = RIP.5055
 	picture = "GFX_evt_recovery"
 	desc = EVTDESC_RIP_5055
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		trait = scurvy
 	}
-	
+
 	option = {
 		name = EVTOPTA_RIP_5055
 		remove_trait = scurvy
@@ -5401,106 +5928,146 @@ character_event = {
 # Scurvy - Clear event
 character_event = {
 	id = RIP.5056
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		trigger = {
-			NOT = { location = { terrain = coastal_desert } }
+			NOT = {
+				location = {
+					terrain = coastal_desert
+				}
+			}
 		}
 		clr_character_flag = been_at_sea_1
 		clr_character_flag = been_at_sea_2
 		clr_character_flag = been_at_sea_3
 	}
-	
+
 	option = {
 		trigger = {
-			location = { terrain = coastal_desert }
+			location = {
+				terrain = coastal_desert
+			}
 		}
-		character_event = { id = RIP.5056 days = 60 }
+		character_event = {
+			id = RIP.5056 days = 60
+		}
 	}
 }
 
-#Notification for sick children or spouses
+# Notification for sick children or spouses
 character_event = {
 	id = RIP.5060
 	picture = GFX_evt_doctor_tending_to_sick
 	border = GFX_event_normal_frame_religion
 
 	trigger = {
-		FROM = { character_disease_trigger = yes }
-		OR = {
-			NOT = { has_character_flag = no_relative_illness_notifications }
-			had_character_flag = { flag = no_relative_illness_notifications days = 1825 }
+		FROM = {
+			character_disease_trigger = yes
 		}
-		NOT = { trait = in_hiding }
+		OR = {
+			NOT = {
+				has_character_flag = no_relative_illness_notifications
+			}
+			had_character_flag = {
+				flag = no_relative_illness_notifications days = 1825
+			}
+		}
+		NOT = {
+			trait = in_hiding
+		}
 	}
-
 	is_triggered_only = yes
-
 	desc = {
-		trigger = { has_character_flag = announce_tuberculosis }
+		trigger = {
+			has_character_flag = announce_tuberculosis
+		}
 		text = EVTDSC_RIP_5060_TUBERCULOSIS
 		picture = GFX_evt_bring_out_your_dead
 	}
 	desc = {
-		trigger = { has_character_flag = announce_typhoid }
+		trigger = {
+			has_character_flag = announce_typhoid
+		}
 		text = EVTDSC_RIP_5060_TYPHOID
 		picture = GFX_evt_bring_out_your_dead
 	}
 	desc = {
-		trigger = { has_character_flag = announce_typhus }
+		trigger = {
+			has_character_flag = announce_typhus
+		}
 		text = EVTDSC_RIP_5060_TYPHUS
 		picture = GFX_evt_bring_out_your_dead
 	}
 	desc = {
-		trigger = { has_character_flag = announce_plague }
+		trigger = {
+			has_character_flag = announce_plague
+		}
 		text = EVTDSC_RIP_5060_PLAGUE
 		picture = GFX_evt_plague_spreading
 	}
 	desc = {
-		trigger = { has_character_flag = announce_measles }
+		trigger = {
+			has_character_flag = announce_measles
+		}
 		text = EVTDSC_RIP_5060_MEASLES
 		picture = GFX_evt_bring_out_your_dead
 	}
 	desc = {
-		trigger = { has_character_flag = announce_smallpox }
+		trigger = {
+			has_character_flag = announce_smallpox
+		}
 		text = EVTDSC_RIP_5060_SMALLPOX
 		picture = GFX_evt_bring_out_your_dead
 	}
 	desc = {
-		trigger = { has_character_flag = announce_syphilis }
+		trigger = {
+			has_character_flag = announce_syphilis
+		}
 		text = EVTDSC_RIP_5060_SYPHILITIC
 		picture = GFX_evt_bring_out_your_dead
 	}
 	desc = {
-		trigger = { has_character_flag = announce_flu }
+		trigger = {
+			has_character_flag = announce_flu
+		}
 		text = EVTDSC_RIP_5060_FLU
 	}
 	desc = {
-		trigger = { has_character_flag = announce_dysentery }
+		trigger = {
+			has_character_flag = announce_dysentery
+		}
 		text = EVTDSC_RIP_5060_DYSENTERY
 	}
 	desc = {
-		trigger = { has_character_flag = announce_gout }
+		trigger = {
+			has_character_flag = announce_gout
+		}
 		text = EVTDSC_RIP_5060_GOUT
 	}
 	desc = {
-		trigger = { has_character_flag = announce_food_poisoning }
+		trigger = {
+			has_character_flag = announce_food_poisoning
+		}
 		text = EVTDSC_RIP_5060_FOOD_POISONING
 	}
 	desc = {
-		trigger = { has_character_flag = announce_rabies }
+		trigger = {
+			has_character_flag = announce_rabies
+		}
 		text = EVTDSC_RIP_5060_RABIES
 	}
 	desc = {
-		trigger = { has_character_flag = announce_cancer }
+		trigger = {
+			has_character_flag = announce_cancer
+		}
 		text = EVTDSC_RIP_5060_CANCER
 	}
 	desc = {
-		trigger = { has_character_flag = announce_pneumonic }
+		trigger = {
+			has_character_flag = announce_pneumonic
+		}
 		text = EVTDSC_RIP_5060_PNEUMONIC
 	}
 
@@ -5519,21 +6086,26 @@ character_event = {
 				is_nomadic = yes
 			}
 			OR = {
-				NOT = { has_character_flag = 3_year_physician_cooldown }
-				had_character_flag = { flag = 3_year_physician_cooldown days = 1095 }
+				NOT = {
+					has_character_flag = 3_year_physician_cooldown
+				}
+				had_character_flag = {
+					flag = 3_year_physician_cooldown days = 1095
+				}
 			}
-
 		}
 		name = EVTOPTC_RIP_5060
-		custom_tooltip = { text = employ_court_physician_tooltip }
-
+		custom_tooltip = {
+			text = employ_court_physician_tooltip
+		}
 		hidden_tooltip = {
 			set_character_flag = looking_for_court_physician
-			character_event = { id = RIP.11051 days = 10 random = 30 }
+			character_event = {
+				id = RIP.11051 days = 10 random = 30
+			}
 			clr_character_flag = 3_year_physician_cooldown
 			set_character_flag = 3_year_physician_cooldown
 		}
-
 		clr_character_flag = announce_syphilis
 		clr_character_flag = announce_pneumonic
 		clr_character_flag = announce_tuberculosis
@@ -5561,7 +6133,6 @@ character_event = {
 				}
 			}
 		}
-
 		clr_character_flag = announce_syphilis
 		clr_character_flag = announce_pneumonic
 		clr_character_flag = announce_tuberculosis
@@ -5582,7 +6153,6 @@ character_event = {
 		name = EVTOPTB_RIP_5060
 		clr_character_flag = no_relative_illness_notifications
 		set_character_flag = no_relative_illness_notifications
-
 		clr_character_flag = announce_syphilis
 		clr_character_flag = announce_pneumonic
 		clr_character_flag = announce_tuberculosis
@@ -5597,12 +6167,13 @@ character_event = {
 		clr_character_flag = announce_food_poisoning
 		clr_character_flag = announce_rabies
 		clr_character_flag = announce_cancer
-		
-		custom_tooltip = { text = ignore_ill_relatives_tooltip }
+		custom_tooltip = {
+			text = ignore_ill_relatives_tooltip
+		}
 	}
 }
 
-#Notification for spouse syphilis
+# Notification for spouse syphilis
 character_event = {
 	id = RIP.5061
 	picture = GFX_evt_suspicious_noble
@@ -5627,26 +6198,29 @@ character_event = {
 			}
 		}
 	}
-
 	is_triggered_only = yes
 
 	immediate = {
 		random_courtier_or_vassal = {
-			limit = { 
-				is_lover = FROM 
-				NOT = { character = ROOT }
+			limit = {
+				is_lover = FROM
+				NOT = {
+					character = ROOT
+				}
 			}
 			save_event_target_as = syphilis_lover
 		}
 	}
+	# Punish
 
-	#Punish
-	option = { 
+	option = {
 		trigger = {
-			FROM = { is_landed = no }
+			FROM = {
+				is_landed = no
+			}
 		}
 		name = {
-			trigger = { 
+			trigger = {
 				OR = {
 					trait = has_aztec_disease
 					trait = syphilitic
@@ -5654,9 +6228,8 @@ character_event = {
 			}
 			text = EVTOPTA_RIP_5061_A
 		}
-
 		name = {
-			trigger = { 
+			trigger = {
 				NOR = {
 					trait = has_aztec_disease
 					trait = syphilitic
@@ -5664,54 +6237,67 @@ character_event = {
 			}
 			text = EVTOPTA_RIP_5061_B
 		}
-
 		if = {
-			limit = { event_target:syphilis_lover = { always = yes } }
-			custom_tooltip = { text = EVTOPTA_RIP_5061_TOOLTIP_A }
+			limit = {
+				event_target:syphilis_lover = {
+					always = yes
+				}
+			}
+			custom_tooltip = {
+				text = EVTOPTA_RIP_5061_TOOLTIP_A
+			}
 		}
-
 		if = {
-			limit = { NOT = { event_target:syphilis_lover = { always = yes } } }
-			custom_tooltip = { text = EVTOPTA_RIP_5061_TOOLTIP_B }
+			limit = {
+				NOT = {
+					event_target:syphilis_lover = {
+						always = yes
+					}
+				}
+			}
+			custom_tooltip = {
+				text = EVTOPTA_RIP_5061_TOOLTIP_B
+			}
 		}
-
 		opinion = {
 			who = FROM
 			modifier = opinion_traitor
 			years = 20
 		}
-
 		reverse_opinion = {
 			who = FROM
-			modifier = harsh_punishment 
+			modifier = harsh_punishment
 			years = 20
 		}
-
-		hidden_tooltip = { reverse_imprison = FROM }
-
+		hidden_tooltip = {
+			reverse_imprison = FROM
+		}
 		if = {
-			limit = { event_target:syphilis_lover = { always = yes } }
+			limit = {
+				event_target:syphilis_lover = {
+					always = yes
+				}
+			}
 			opinion = {
 				who = event_target:syphilis_lover
 				modifier = opinion_traitor
 				years = 20
 			}
-
 			reverse_opinion = {
 				who = event_target:syphilis_lover
-				modifier = harsh_punishment 
+				modifier = harsh_punishment
 				years = 20
 			}
 		}
-
-		hidden_tooltip = { reverse_imprison = event_target:syphilis_lover }
-
+		hidden_tooltip = {
+			reverse_imprison = event_target:syphilis_lover
+		}
 	}
+	# Take care
 
-	#Take care
 	option = {
 		name = {
-			trigger = { 
+			trigger = {
 				OR = {
 					trait = has_aztec_disease
 					trait = syphilitic
@@ -5719,9 +6305,8 @@ character_event = {
 			}
 			text = EVTOPTB_RIP_5061_A
 		}
-
 		name = {
-			trigger = { 
+			trigger = {
 				NOR = {
 					trait = has_aztec_disease
 					trait = syphilitic
@@ -5729,18 +6314,25 @@ character_event = {
 			}
 			text = EVTOPTB_RIP_5061_B
 		}
-
-		custom_tooltip = { text = EVTOPTB_RIP_5061_TOOLTIP }
-
+		custom_tooltip = {
+			text = EVTOPTB_RIP_5061_TOOLTIP
+		}
 		if = {
-			limit = { NOT = { trait = kind } }
+			limit = {
+				NOT = {
+					trait = kind
+				}
+			}
 			random = {
 				chance = 30
 				add_trait = kind
-				hidden_tooltip = { character_event = { id = 38268 } }
+				hidden_tooltip = {
+					character_event = {
+						id = 38268
+					}
+				}
 			}
 		}
-
 		random_list = {
 			60 = {
 				modifier = {
@@ -5755,7 +6347,6 @@ character_event = {
 					factor = 1.3
 					learning = 12
 				}
-
 				FROM = {
 					add_character_modifier = {
 						name = good_care
@@ -5774,9 +6365,10 @@ character_event = {
 				}
 				modifier = {
 					factor = 1.3
-					NOT = { learning = 8 }
+					NOT = {
+						learning = 8
+					}
 				}
-
 				FROM = {
 					add_character_modifier = {
 						name = bad_care
@@ -5784,10 +6376,10 @@ character_event = {
 					}
 				}
 			}
-		} 
+		}
 	}
+	# Dissmissive
 
-	#Dissmissive
 	option = {
 		name = EVTOPTC_RIP_5061
 	}

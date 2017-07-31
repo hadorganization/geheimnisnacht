@@ -1,11 +1,10 @@
 namespace = RIP
-
-province_event = { # Dancing Plague Starts
+province_event = {
+	# Dancing Plague Starts
 	id = RIP.4000
 	hide_window = yes
-
 	is_triggered_only = yes
-	
+
 	trigger = {
 		disease = dancing_plague
 	}
@@ -13,64 +12,73 @@ province_event = { # Dancing Plague Starts
 	immediate = {
 		save_event_target_as = dancing_plague_outbreak_location
 		owner = {
-			narrative_event = { id = RIP.4001 }
+			narrative_event = {
+				id = RIP.4001
+			}
 			any_liege = {
 				limit = {
-					NOT = { character = ROOT }
+					NOT = {
+						character = ROOT
+					}
 				}
-				narrative_event = { id = RIP.4001 }
+				narrative_event = {
+					id = RIP.4001
+				}
 			}
 		}
 	}
 }
-
-narrative_event = { # Dancing Plague Notification
+narrative_event = {
+	# Dancing Plague Notification
 	id = RIP.4001
 	title = EVTNAME_RIP_4001
 	picture = GFX_evt_dancing
 	border = GFX_event_narrative_frame_religion
-
 	desc = EVTDESC_RIP_4001
-
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_RIP_4001
 	}
 }
 
-character_event = { # Dancing looks inviting, join in?
+character_event = {
+	# Dancing looks inviting, join in?
 	id = RIP.4002
 	desc = EVTDESC_RIP_4002
 	picture = GFX_evt_dancing
 	border = GFX_event_normal_frame_religion
-
 	is_triggered_only = yes
-	
 
 	option = {
 		name = EVTOPTA_RIP_4002
-		
 		ai_chance = {
 			factor = 1
 		}
-		
-		custom_tooltip = { text = join_in_dance }
+		custom_tooltip = {
+			text = join_in_dance
+		}
 		hidden_tooltip = {
 			if = {
 				limit = {
 					any_courtier_or_vassal = {
-						liege = { character = ROOT }
+						liege = {
+							character = ROOT
+						}
 						has_minor_title = title_court_physician
 					}
 				}
-				character_event = { id = RIP.4003 days = 5 random = 10 } # Court Physician recommends you rest.
+				character_event = {
+					id = RIP.4003 days = 5 random = 10
+				} # Court Physician recommends you rest.
 			}
 			if = {
 				limit = {
 					NOT = {
 						any_courtier_or_vassal = {
-							liege = { character = ROOT }
+							liege = {
+								character = ROOT
+							}
 							has_minor_title = title_court_physician
 						}
 					}
@@ -79,38 +87,46 @@ character_event = { # Dancing looks inviting, join in?
 					limit = {
 						has_character_flag = got_dancing_plague
 					}
-					character_event = { id = RIP.4005 days = 5 random = 10 } # Go out into the streets and get the Dancing Plague!
+					character_event = {
+						id = RIP.4005 days = 5 random = 10
+					} # Go out into the streets and get the Dancing Plague!
 				}
 				if = {
 					limit = {
-						NOT = { has_character_flag = got_dancing_plague }
+						NOT = {
+							has_character_flag = got_dancing_plague
+						}
 						is_landed = yes
 					}
-					character_event = { id = RIP.4004 days = 5 random = 10 } # Go out into the streets and become Dancing Queen!
+					character_event = {
+						id = RIP.4004 days = 5 random = 10
+					} # Go out into the streets and become Dancing Queen!
 				}
-			}	
+			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTB_RIP_4002
-		
 		ai_chance = {
 			factor = 0
 		}
-		
-		custom_tooltip = { text = refuse_to_join_in_dance }
+		custom_tooltip = {
+			text = refuse_to_join_in_dance
+		}
 		hidden_tooltip = {
 			if = {
 				limit = {
 					has_character_flag = got_dancing_plague
 				}
 				random_list = {
-					50 = { # Nothing happens.
+					50 = {
+						# Nothing happens.
 						clr_character_flag = got_dancing_plague
 						set_character_flag = immune_dancing_plague
 					}
-					50 = { # Can't resist dancing!
+					50 = {
+						# Can't resist dancing!
 						modifier = {
 							factor = 2
 							trait = gluttonous
@@ -127,8 +143,9 @@ character_event = { # Dancing looks inviting, join in?
 							factor = 0.5
 							trait = gardener
 						}
-						
-						character_event = { id = RIP.4005 days = 10 random = 10 }
+						character_event = {
+							id = RIP.4005 days = 10 random = 10
+						}
 						set_character_flag = forced_to_dance
 					}
 				}
@@ -137,28 +154,32 @@ character_event = { # Dancing looks inviting, join in?
 	}
 }
 
-character_event = { # Court Physician recommends rest.
+character_event = {
+	# Court Physician recommends rest.
 	id = RIP.4003
 	desc = EVTDESC_RIP_4003
 	picture = GFX_evt_poke_king_in_chest
 	border = GFX_event_normal_frame_religion
-
 	is_triggered_only = yes
-	
+
 	immediate = {
 		random_courtier_or_vassal = {
 			limit = {
-				liege = { character = ROOT }
+				liege = {
+					character = ROOT
+				}
 				has_minor_title = title_court_physician
 			}
 			save_event_target_as = target_physician
 		}
 	}
 
-	option = { # Agree
+	option = {
+		# Agree
 		name = EVTOPTA_RIP_4003
-		custom_tooltip = { text = refuse_to_join_in_dance }
-		
+		custom_tooltip = {
+			text = refuse_to_join_in_dance
+		}
 		event_target:target_physician = {
 			opinion = {
 				modifier = opinion_glad
@@ -166,18 +187,19 @@ character_event = { # Court Physician recommends rest.
 				years = 5
 			}
 		}
-		
 		hidden_tooltip = {
 			if = {
 				limit = {
 					has_character_flag = got_dancing_plague
 				}
 				random_list = {
-					50 = { # Nothing happens.
+					50 = {
+						# Nothing happens.
 						clr_character_flag = got_dancing_plague
 						set_character_flag = immune_dancing_plague
 					}
-					50 = { # No, I must dance!
+					50 = {
+						# No, I must dance!
 						modifier = {
 							factor = 2
 							trait = gluttonous
@@ -194,19 +216,22 @@ character_event = { # Court Physician recommends rest.
 							factor = 0.5
 							trait = gardener
 						}
-						
-						character_event = { id = RIP.4005 days = 5 random = 10 }
+						character_event = {
+							id = RIP.4005 days = 5 random = 10
+						}
 						set_character_flag = forced_to_dance
 					}
 				}
 			}
 		}
 	}
-	
-	option = { # No! I want to dance.
+
+	option = {
+		# No! I want to dance.
 		name = EVTOPTB_RIP_4003
-		custom_tooltip = { text = join_in_dance }
-		
+		custom_tooltip = {
+			text = join_in_dance
+		}
 		event_target:target_physician = {
 			opinion = {
 				modifier = opinion_irritated
@@ -214,50 +239,54 @@ character_event = { # Court Physician recommends rest.
 				years = 5
 			}
 		}
-		
 		hidden_tooltip = {
 			if = {
 				limit = {
 					has_character_flag = got_dancing_plague
 				}
-				character_event = { id = RIP.4005 days = 5 random = 10 } # Go out into the streets and get the Dancing Plague!
+				character_event = {
+					id = RIP.4005 days = 5 random = 10
+				} # Go out into the streets and get the Dancing Plague!
 			}
 			if = {
 				limit = {
-					NOT = { has_character_flag = got_dancing_plague }
+					NOT = {
+						has_character_flag = got_dancing_plague
+					}
 					is_landed = yes
 				}
-				character_event = { id = RIP.4004 days = 5 random = 10 } # Go out into the streets and become Dancing Queen!
+				character_event = {
+					id = RIP.4004 days = 5 random = 10
+				} # Go out into the streets and become Dancing Queen!
 			}
 		}
 	}
-	
 }
 
-character_event = { # Become Dancing Queen!
+character_event = {
+	# Become Dancing Queen!
 	id = RIP.4004
 	desc = EVTDESC_RIP_4004
 	picture = GFX_evt_dancing
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-
 	is_triggered_only = yes
 
 	option = {
 		name = EVTOPTA_RIP_4004
-		
 		prestige = 50
-		
 		if = {
-			limit = { trait = stressed }
+			limit = {
+				trait = stressed
+			}
 			remove_trait = stressed
 		}
 		if = {
-			limit = { trait = depressed }
+			limit = {
+				trait = depressed
+			}
 			remove_trait = depressed
 		}
-		
 		if = {
 			limit = {
 				is_female = yes
@@ -279,18 +308,18 @@ character_event = { # Become Dancing Queen!
 	}
 }
 
-character_event = { # Get Dancing Plague!
+character_event = {
+	# Get Dancing Plague!
 	id = RIP.4005
 	picture = GFX_evt_dancing
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-
 	is_triggered_only = yes
-	
 	desc = {
 		trigger = {
-			NOT = { has_character_flag = forced_to_dance }
+			NOT = {
+				has_character_flag = forced_to_dance
+			}
 		}
 		text = EVTDESCA_RIP_4005
 	}
@@ -303,12 +332,11 @@ character_event = { # Get Dancing Plague!
 
 	option = {
 		name = EVTOPTA_RIP_4005
-		
 		add_trait = dancing_plague
-		
 		hidden_tooltip = {
 			random_list = {
-				45 = { # Recover
+				45 = {
+					# Recover
 					modifier = {
 						factor = 1.5
 						is_strong_trigger = yes
@@ -317,9 +345,12 @@ character_event = { # Get Dancing Plague!
 						factor = 0.5
 						trait = infirm
 					}
-					character_event = { id = RIP.4006 days = 90 random = 20 }
+					character_event = {
+						id = RIP.4006 days = 90 random = 20
+					}
 				}
-				40 = { # It gets worse...
+				40 = {
+					# It gets worse...
 					modifier = {
 						factor = 1.5
 						trait = diligent
@@ -328,9 +359,12 @@ character_event = { # Get Dancing Plague!
 						factor = 50
 						is_unimportant_trigger = yes
 					}
-					character_event = { id = RIP.4007 days = 10 random = 10 }
+					character_event = {
+						id = RIP.4007 days = 10 random = 10
+					}
 				}
-				15 = { # Your leg breaks!
+				15 = {
+					# Your leg breaks!
 					modifier = {
 						factor = 0
 						trait = one_legged
@@ -339,24 +373,25 @@ character_event = { # Get Dancing Plague!
 						factor = 3
 						is_weak_trigger = yes
 					}
-					character_event = { id = RIP.4008 days = 30 random = 10 }
+					character_event = {
+						id = RIP.4008 days = 30 random = 10
+					}
 				}
 			}
 		}
 	}
 }
 
-character_event = { # Recover From the Dancing Plague
+character_event = {
+	# Recover From the Dancing Plague
 	id = RIP.4006
 	desc = EVTDESC_RIP_4006
 	picture = GFX_evt_dancing
 	border = GFX_event_normal_frame_religion
-
 	is_triggered_only = yes
 
 	option = {
 		name = EVTOPTA_RIP_4006
-		
 		remove_trait = dancing_plague
 		if = {
 			limit = {
@@ -364,47 +399,43 @@ character_event = { # Recover From the Dancing Plague
 			}
 			remove_character_modifier = cant_stop_dancing
 		}
-		
 		clr_character_flag = got_dancing_plague
 		set_character_flag = immune_dancing_plague
-		
 	}
 }
 
-character_event = { # Dancing Plague gets worse...
+character_event = {
+	# Dancing Plague gets worse...
 	id = RIP.4007
 	desc = EVTDESC_RIP_4007
 	picture = GFX_evt_dancing
 	border = GFX_event_normal_frame_religion
-
 	is_triggered_only = yes
 
 	option = {
 		name = EVTOPTA_RIP_4007
-		
 		add_character_modifier = {
 			modifier = cant_stop_dancing
 			duration = -1
 		}
-		
 		hidden_tooltip = {
-			character_event = { id = RIP.4006 days = 90 random = 20 }
+			character_event = {
+				id = RIP.4006 days = 90 random = 20
+			}
 		}
-		
 	}
 }
 
-character_event = { # Dance until your leg breaks.
+character_event = {
+	# Dance until your leg breaks.
 	id = RIP.4008
 	desc = EVTDESC_RIP_4008
 	picture = GFX_evt_dancing
 	border = GFX_event_normal_frame_religion
-
 	is_triggered_only = yes
 
 	option = {
 		name = EVTOPTA_RIP_4008
-		
 		remove_trait = dancing_plague
 		if = {
 			limit = {
@@ -412,16 +443,15 @@ character_event = { # Dance until your leg breaks.
 			}
 			remove_character_modifier = cant_stop_dancing
 		}
-		
 		clr_character_flag = got_dancing_plague
 		set_character_flag = immune_dancing_plague
-		
 		add_trait = one_legged
 		add_trait = severely_injured
 		hidden_tooltip = {
-			character_event = { id = RIP.11503 } #Notify one-legged
+			character_event = {
+				id = RIP.11503
+			} # Notify one-legged
 			resolve_severely_injured_effect = yes
 		}
-	
 	}
 }

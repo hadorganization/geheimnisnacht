@@ -1,35 +1,33 @@
-###########################################
-#                                         #
-# Way of Life hunting events              #
-#                                         #
-# ID WoL.5000-WoL.5999                    #
-#                                         #
-###########################################
+
+
+# Way of Life hunting events
+
+# ID WoL.5000-WoL.5999
 
 # Written by Tobias Bodlund
-
 namespace = WoL
 
-###########################################
-# The Legendary White Stag/Bear/Tiger/Lion#
-# ID WoL.5000-WoL.5199                    #
-###########################################
+# The Legendary White Stag/Bear/Tiger/Lion
 
+# ID WoL.5000-WoL.5199
 character_event = {
 	id = WoL.5000
-
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	only_playable = yes
-	
+
 	trigger = {
 		has_focus = focus_hunting
 		in_command = no
-		NOT = { religion = shallyan }
-		NOT = { has_character_flag = do_not_disturb }
-		NOT = { has_character_flag = epic_hunt }
+		NOT = {
+			religion = shallyan
+		}
+		NOT = {
+			has_character_flag = do_not_disturb
+		}
+		NOT = {
+			has_character_flag = epic_hunt
+		}
 	}
 
 	immediate = {
@@ -91,7 +89,9 @@ character_event = {
 			}
 			set_character_flag = white_lion
 		}
-		narrative_event = { id = WoL.5001 }
+		narrative_event = {
+			id = WoL.5001
+		}
 	}
 }
 
@@ -100,82 +100,94 @@ narrative_event = {
 	id = WoL.5001
 	picture = GFX_evt_mysterious_forest
 	border = GFX_event_narrative_frame_war
-
 	is_triggered_only = yes
-	
-	title = { # Stag
+	title = {
+		# Stag
 		trigger = {
 			has_character_flag = white_stag
 		}
 		text = EVTTITLE_WoL_5001_stag
 	}
-	title = { # Bear
+	title = {
+		# Bear
 		trigger = {
 			has_character_flag = white_bear
 		}
 		text = EVTTITLE_WoL_5001_bear
 	}
-	title = { # Tiger
+	title = {
+		# Tiger
 		trigger = {
 			has_character_flag = white_tiger
 		}
 		text = EVTTITLE_WoL_5001_tiger
 	}
-	title = { # Lion
+	title = {
+		# Lion
 		trigger = {
 			has_character_flag = white_lion
 		}
 		text = EVTTITLE_WoL_5001_lion
 	}
-	
-	desc = { # Stag
+	desc = {
+		# Stag
 		trigger = {
 			has_character_flag = white_stag
 		}
 		text = EVTDESC_WoL_5001_stag
 	}
-	desc = { # Bear
+	desc = {
+		# Bear
 		trigger = {
 			has_character_flag = white_bear
 		}
 		text = EVTDESC_WoL_5001_bear
 	}
-	desc = { # Tiger
+	desc = {
+		# Tiger
 		trigger = {
 			has_character_flag = white_tiger
 		}
 		text = EVTDESC_WoL_5001_tiger
 	}
-	desc = { # Lion
+	desc = {
+		# Lion
 		trigger = {
 			has_character_flag = white_lion
 		}
 		text = EVTDESC_WoL_5001_lion
 	}
-		
+
 	option = {
 		name = EVTOPTA_WoL_5001
-		hidden_tooltip = { character_event = { id = WoL.5002 days = 50 random = 150 } } # Investigate
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5002 days = 50 random = 150
+			}
+		} # Investigate
 	}
+
 	option = {
 		name = EVTOPTB_WoL_5001
-		trigger = { NOT = { trait = hunter } }
-		clr_character_flag = epic_hunt            # Not interested
+		trigger = {
+			NOT = {
+				trait = hunter
+			}
+		}
+		clr_character_flag = epic_hunt # Not interested
 	}
 }
 
 # Legendary animal has been sighted... decide whether to go on a hunt or not
 character_event = {
 	id = WoL.5002
-
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
-		has_focus = focus_hunting    # To interrupt events if player changes focus
+		has_focus = focus_hunting # To interrupt events if player changes focus
 	}
-	
+
 	immediate = {
 		if = {
 			limit = {
@@ -186,7 +198,9 @@ character_event = {
 					has_character_flag = do_not_disturb
 				}
 			}
-			repeat_event = { id = WoL.5002 days = 30 } # Fire again with no scope changes
+			repeat_event = {
+				id = WoL.5002 days = 30
+			} # Fire again with no scope changes
 			break = yes
 		}
 		capital_scope = {
@@ -200,22 +214,25 @@ character_event = {
 							}
 						}
 					}
-					province_event = { id = WoL.5003 }
+					province_event = {
+						id = WoL.5003
+					}
 				}
 			}
 		}
 	}
 }
-
 province_event = {
 	id = WoL.5003
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
-		FROM = { character_event = { id = WoL.5004 } }
+		FROM = {
+			character_event = {
+				id = WoL.5004
+			}
+		}
 	}
 }
 
@@ -223,57 +240,64 @@ character_event = {
 	id = WoL.5004
 	picture = GFX_evt_hunt
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
-	desc = { # Stag
+	desc = {
+		# Stag
 		trigger = {
 			has_character_flag = white_stag
 		}
 		text = EVTDESC_WoL_5004_stag
 	}
-	desc = { # Bear
+	desc = {
+		# Bear
 		trigger = {
 			has_character_flag = white_bear
 		}
 		text = EVTDESC_WoL_5004_bear
 	}
-	desc = { # Tiger
+	desc = {
+		# Tiger
 		trigger = {
 			has_character_flag = white_tiger
 		}
 		text = EVTDESC_WoL_5004_tiger
 	}
-	desc = { # Lion
+	desc = {
+		# Lion
 		trigger = {
 			has_character_flag = white_lion
 		}
 		text = EVTDESC_WoL_5004_lion
 	}
-	
+
 	option = {
 		name = EVTOPTA_WoL_5004
-		hidden_tooltip = { character_event = { id = WoL.5010 days = 60 } }  # Set out on hunt!
-		
-		end_inaccessibility_effect = yes #removes in hiding or in_seclusion
-
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5010 days = 60
+			}
+		} # Set out on hunt!
+		end_inaccessibility_effect = yes # removes in hiding or in_seclusion
 		set_character_flag = do_not_disturb
 	}
+
 	option = {
 		name = EVTOPTB_WoL_5004
-		trigger = { NOT = { trait = hunter } }
-		clr_character_flag = epic_hunt               # Not now
+		trigger = {
+			NOT = {
+				trait = hunter
+			}
+		}
+		clr_character_flag = epic_hunt # Not now
 	}
 }
 
 # During normal hunt, gets glimpse of legendary animal
 character_event = {
 	id = WoL.5006
-
 	hide_window = yes
-	
 	only_playable = yes
-	min_age =  16
+	min_age = 16
 	only_men = yes
 	capable_only = yes
 	prisoner = no
@@ -281,11 +305,17 @@ character_event = {
 	trigger = {
 		has_dlc = "Way of Life"
 		has_focus = focus_hunting
-		NOT = { has_character_flag = epic_hunt }
+		NOT = {
+			has_character_flag = epic_hunt
+		}
 		has_character_modifier = holding_grand_hunt
-		NOT = {	health_traits = 1 }
+		NOT = {
+			health_traits = 1
+		}
 		OR = {
-			NOT = { has_character_flag = hunt_event_happened }
+			NOT = {
+				has_character_flag = hunt_event_happened
+			}
 			had_character_flag = {
 				flag = hunt_event_happened
 				days = 3
@@ -294,22 +324,21 @@ character_event = {
 		had_character_flag = {
 			flag = hunt_begin
 			days = 3
-		}		
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		days = 200
-		
 		modifier = {
 			factor = 0.33
-			NOT = { has_character_flag = hunt_event_happened }
-		}	
-		
+			NOT = {
+				has_character_flag = hunt_event_happened
+			}
+		}
 		modifier = {
 			factor = 1.5
 			has_character_flag = hunt_event_happened
 		}
-		
 		modifier = {
 			factor = 1.5
 			trait = content
@@ -396,7 +425,9 @@ character_event = {
 			}
 			set_character_flag = white_lion
 		}
-		narrative_event = { id = WoL.5007 }
+		narrative_event = {
+			id = WoL.5007
+		}
 	}
 }
 
@@ -405,57 +436,62 @@ narrative_event = {
 	id = WoL.5007
 	picture = GFX_evt_mysterious_forest
 	border = GFX_event_narrative_frame_war
-
 	is_triggered_only = yes
-	
-	trigger = {
-		has_focus = focus_hunting    # To interrupt events if player changes focus
-	}
 
-	title = { # Stag
+	trigger = {
+		has_focus = focus_hunting # To interrupt events if player changes focus
+	}
+	title = {
+		# Stag
 		trigger = {
 			has_character_flag = white_stag
 		}
 		text = EVTTITLE_WoL_5001_stag
 	}
-	title = { # Bear
+	title = {
+		# Bear
 		trigger = {
 			has_character_flag = white_bear
 		}
 		text = EVTTITLE_WoL_5001_bear
 	}
-	title = { # Tiger
+	title = {
+		# Tiger
 		trigger = {
 			has_character_flag = white_tiger
 		}
 		text = EVTTITLE_WoL_5001_tiger
 	}
-	title = { # Lion
+	title = {
+		# Lion
 		trigger = {
 			has_character_flag = white_lion
 		}
 		text = EVTTITLE_WoL_5001_lion
 	}
-	
-	desc = { # Stag
+	desc = {
+		# Stag
 		trigger = {
 			has_character_flag = white_stag
 		}
 		text = EVTDESC_WoL_5007_stag
 	}
-	desc = { # Bear
+	desc = {
+		# Bear
 		trigger = {
 			has_character_flag = white_bear
 		}
 		text = EVTDESC_WoL_5007_bear
 	}
-	desc = { # Tiger
+	desc = {
+		# Tiger
 		trigger = {
 			has_character_flag = white_tiger
 		}
 		text = EVTDESC_WoL_5007_tiger
 	}
-	desc = { # Lion
+	desc = {
+		# Lion
 		trigger = {
 			has_character_flag = white_lion
 		}
@@ -522,15 +558,24 @@ narrative_event = {
 			set_character_flag = white_lion
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_WoL_5001
-		hidden_tooltip = { character_event = { id = WoL.5002 days = 50 random = 150 } } # Investigate
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5002 days = 50 random = 150
+			}
+		} # Investigate
 	}
+
 	option = {
 		name = EVTOPTB_WoL_5001
-		trigger = { NOT = { trait = hunter } }
-		clr_character_flag = epic_hunt            # Not interested
+		trigger = {
+			NOT = {
+				trait = hunter
+			}
+		}
+		clr_character_flag = epic_hunt # Not interested
 	}
 }
 
@@ -539,90 +584,113 @@ character_event = {
 	id = WoL.5010
 	picture = GFX_evt_hunt
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
+
 	trigger = {
-		has_focus = focus_hunting    # To interrupt events if player changes focus
+		has_focus = focus_hunting # To interrupt events if player changes focus
 	}
-	
-	desc = { # Stag
+	desc = {
+		# Stag
 		trigger = {
 			has_character_flag = white_stag
 		}
 		text = EVTDESC_WoL_5010_stag
 	}
-	desc = { # Bear
+	desc = {
+		# Bear
 		trigger = {
 			has_character_flag = white_bear
 		}
 		text = EVTDESC_WoL_5010_bear
 	}
-	desc = { # Tiger
+	desc = {
+		# Tiger
 		trigger = {
 			has_character_flag = white_tiger
 		}
 		text = EVTDESC_WoL_5010_tiger
 	}
-	desc = { # Lion
+	desc = {
+		# Lion
 		trigger = {
 			has_character_flag = white_lion
 		}
 		text = EVTDESC_WoL_5010_lion
 	}
-	
+
 	option = {
 		name = EVTOPTA_WoL_5010
 		trigger = {
-			NOT = { has_character_flag = failed_epic_hunt }
+			NOT = {
+				has_character_flag = failed_epic_hunt
+			}
 		}
-		hidden_tooltip = { character_event = { id = WoL.5011 days = 15 random = 20 } }  # Set out on hunt!
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5011 days = 15 random = 20
+			}
+		} # Set out on hunt!
 	}
+
 	option = {
 		name = EVTOPTB_WoL_5010
 		trigger = {
 			has_character_flag = failed_epic_hunt
 		}
-		hidden_tooltip = { character_event = { id = WoL.5011 days = 15 random = 20 } }  # Set out on hunt!
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5011 days = 15 random = 20
+			}
+		} # Set out on hunt!
 	}
 }
 
 # Hunt outcome
 character_event = {
 	id = WoL.5011
-	
 	hide_window = yes
-
 	is_triggered_only = yes
-	
+
 	trigger = {
-		has_focus = focus_hunting    # To interrupt events if player changes focus
+		has_focus = focus_hunting # To interrupt events if player changes focus
 	}
-	
+
 	immediate = {
 		random_list = {
 			1 = {
-				character_event = { id = WoL.5030 }  # Actually finds and kills animal
+				character_event = {
+					id = WoL.5030
+				} # Actually finds and kills animal
 			}
 			10 = {
 				set_character_flag = failed_epic_hunt
-				character_event = { id = WoL.5035 }  # Comes very close to animal and sees its majestic beauty
+				character_event = {
+					id = WoL.5035
+				} # Comes very close to animal and sees its majestic beauty
 			}
 			10 = {
 				set_character_flag = failed_epic_hunt
-				character_event = { id = WoL.5040 }  # Meets other hunter obsessed with same animal, he joins your court, random character
+				character_event = {
+					id = WoL.5040
+				} # Meets other hunter obsessed with same animal, he joins your court, random character
 			}
 			10 = {
 				set_character_flag = failed_epic_hunt
-				character_event = { id = WoL.5045 }  # Gets lost in the wilderness, bad experience
+				character_event = {
+					id = WoL.5045
+				} # Gets lost in the wilderness, bad experience
 			}
 			10 = {
 				set_character_flag = failed_epic_hunt
-				character_event = { id = WoL.5050 }  # Gets lost in the wilderness, good experience
+				character_event = {
+					id = WoL.5050
+				} # Gets lost in the wilderness, good experience
 			}
 			30 = {
 				set_character_flag = failed_epic_hunt
-				character_event = { id = WoL.5055 }  # Uneventful hunt, returns home emptyhanded
+				character_event = {
+					id = WoL.5055
+				} # Uneventful hunt, returns home emptyhanded
 			}
 			10 = {
 				modifier = {
@@ -630,7 +698,9 @@ character_event = {
 					is_no_females_race = yes
 				}
 				set_character_flag = failed_epic_hunt
-				character_event = { id = WoL.5060 }  # Gets lost, finds cottage, meets strange old witch
+				character_event = {
+					id = WoL.5060
+				} # Gets lost, finds cottage, meets strange old witch
 			}
 			10 = {
 				modifier = {
@@ -638,7 +708,9 @@ character_event = {
 					is_no_females_race = yes
 				}
 				set_character_flag = failed_epic_hunt
-				character_event = { id = WoL.5065 }  # Gets lost, finds cottage, meets attractive person of opposite sex...
+				character_event = {
+					id = WoL.5065
+				} # Gets lost, finds cottage, meets attractive person of opposite sex...
 			}
 		}
 	}
@@ -649,39 +721,45 @@ character_event = {
 	id = WoL.5030
 	picture = GFX_evt_mysterious_forest
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
-	desc = { # Stag
+	desc = {
+		# Stag
 		trigger = {
 			has_character_flag = white_stag
 		}
 		text = EVTDESC_WoL_5030_stag
 	}
-	desc = { # Bear
+	desc = {
+		# Bear
 		trigger = {
 			has_character_flag = white_bear
 		}
 		text = EVTDESC_WoL_5030_bear
 	}
-	desc = { # Tiger
+	desc = {
+		# Tiger
 		trigger = {
 			has_character_flag = white_tiger
 		}
 		text = EVTDESC_WoL_5030_tiger
 	}
-	desc = { # Lion
+	desc = {
+		# Lion
 		trigger = {
 			has_character_flag = white_lion
 		}
 		text = EVTDESC_WoL_5030_lion
 	}
-	
+
 	option = {
 		name = EVTOPTA_WoL_5030 # Kill and get hunter trait
 		prestige = 200
 		if = {
-			limit = { NOT = { lifestyle_traits = 1 } }
+			limit = {
+				NOT = {
+					lifestyle_traits = 1
+				}
+			}
 			add_trait = hunter
 		}
 		if = {
@@ -693,23 +771,33 @@ character_event = {
 		clr_character_flag = do_not_disturb
 		clr_character_flag = failed_epic_hunt
 		if = {
-			limit = { has_character_modifier = hunting_white_stag }
+			limit = {
+				has_character_modifier = hunting_white_stag
+			}
 			remove_character_modifier = hunting_white_stag
 		}
 		if = {
-			limit = { has_character_modifier = hunting_white_bear }
+			limit = {
+				has_character_modifier = hunting_white_bear
+			}
 			remove_character_modifier = hunting_white_bear
 		}
 		if = {
-			limit = { has_character_modifier = hunting_white_tiger }
+			limit = {
+				has_character_modifier = hunting_white_tiger
+			}
 			remove_character_modifier = hunting_white_tiger
 		}
 		if = {
-			limit = { has_character_modifier = hunting_white_lion }
+			limit = {
+				has_character_modifier = hunting_white_lion
+			}
 			remove_character_modifier = hunting_white_lion
 		}
 		if = {
-			limit = { has_nickname = no }
+			limit = {
+				has_nickname = no
+			}
 			give_nickname = nick_the_hunter
 		}
 		add_character_modifier = {
@@ -717,29 +805,40 @@ character_event = {
 			duration = -1
 		}
 	}
+
 	option = {
 		name = EVTOPTB_WoL_5030 # Spare the animal's life
 		prestige = 200
 		clr_character_flag = do_not_disturb
 		clr_character_flag = failed_epic_hunt
 		if = {
-			limit = { has_character_modifier = hunting_white_stag }
+			limit = {
+				has_character_modifier = hunting_white_stag
+			}
 			remove_character_modifier = hunting_white_stag
 		}
 		if = {
-			limit = { has_character_modifier = hunting_white_bear }
+			limit = {
+				has_character_modifier = hunting_white_bear
+			}
 			remove_character_modifier = hunting_white_bear
 		}
 		if = {
-			limit = { has_character_modifier = hunting_white_tiger }
+			limit = {
+				has_character_modifier = hunting_white_tiger
+			}
 			remove_character_modifier = hunting_white_tiger
 		}
 		if = {
-			limit = { has_character_modifier = hunting_white_lion }
+			limit = {
+				has_character_modifier = hunting_white_lion
+			}
 			remove_character_modifier = hunting_white_lion
 		}
 		if = {
-			limit = { has_nickname = no }
+			limit = {
+				has_nickname = no
+			}
 			give_nickname = nick_the_hunter
 		}
 		add_character_modifier = {
@@ -754,48 +853,56 @@ character_event = {
 	id = WoL.5035
 	picture = GFX_evt_mysterious_forest
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
-	desc = { # Stag
+	desc = {
+		# Stag
 		trigger = {
 			has_character_flag = white_stag
 		}
 		text = EVTDESC_WoL_5035_stag
 	}
-	desc = { # Bear
+	desc = {
+		# Bear
 		trigger = {
 			has_character_flag = white_bear
 		}
 		text = EVTDESC_WoL_5035_bear
 	}
-	desc = { # Tiger
+	desc = {
+		# Tiger
 		trigger = {
 			has_character_flag = white_tiger
 		}
 		text = EVTDESC_WoL_5035_tiger
 	}
-	desc = { # Lion
+	desc = {
+		# Lion
 		trigger = {
 			has_character_flag = white_lion
 		}
 		text = EVTDESC_WoL_5035_lion
 	}
-	
+
 	option = {
 		name = EVTOPTA_WoL_5035
 		trigger = {
-			NOT = { lifestyle_traits = 1 }
+			NOT = {
+				lifestyle_traits = 1
+			}
 		}
 		add_trait = hunter
 		if = {
-			limit = { has_nickname = no }
+			limit = {
+				has_nickname = no
+			}
 			give_nickname = nick_the_hunter
 		}
 		if = {
 			limit = {
 				has_character_flag = white_stag
-				NOT = { has_character_modifier = hunting_white_stag }
+				NOT = {
+					has_character_modifier = hunting_white_stag
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_stag
@@ -805,7 +912,9 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_bear
-				NOT = { has_character_modifier = hunting_white_bear }
+				NOT = {
+					has_character_modifier = hunting_white_bear
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_bear
@@ -815,7 +924,9 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_tiger
-				NOT = { has_character_modifier = hunting_white_tiger }
+				NOT = {
+					has_character_modifier = hunting_white_tiger
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_tiger
@@ -825,7 +936,9 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_lion
-				NOT = { has_character_modifier = hunting_white_lion }
+				NOT = {
+					has_character_modifier = hunting_white_lion
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_lion
@@ -833,14 +946,21 @@ character_event = {
 			}
 		}
 		clr_character_flag = do_not_disturb
-		hidden_tooltip = { character_event = { id = WoL.5002 days = 365 random = 1000 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5002 days = 365 random = 1000
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTB_WoL_5035
 		if = {
 			limit = {
 				has_character_flag = white_stag
-				NOT = { has_character_modifier = hunting_white_stag }
+				NOT = {
+					has_character_modifier = hunting_white_stag
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_stag
@@ -850,7 +970,9 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_bear
-				NOT = { has_character_modifier = hunting_white_bear }
+				NOT = {
+					has_character_modifier = hunting_white_bear
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_bear
@@ -860,7 +982,9 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_tiger
-				NOT = { has_character_modifier = hunting_white_tiger }
+				NOT = {
+					has_character_modifier = hunting_white_tiger
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_tiger
@@ -870,7 +994,9 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_lion
-				NOT = { has_character_modifier = hunting_white_lion }
+				NOT = {
+					has_character_modifier = hunting_white_lion
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_lion
@@ -878,7 +1004,11 @@ character_event = {
 			}
 		}
 		clr_character_flag = do_not_disturb
-		hidden_tooltip = { character_event = { id = WoL.5002 days = 365 random = 1000 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5002 days = 365 random = 1000
+			}
+		}
 	}
 }
 
@@ -887,13 +1017,11 @@ character_event = {
 	id = WoL.5040
 	picture = GFX_evt_hunt
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
 	desc = EVTDESC_WoL_5040
-	
+
 	option = {
-		name = EVTOPTA_WoL_5040  # Invite him to your court
+		name = EVTOPTA_WoL_5040 # Invite him to your court
 		create_character = {
 			random_traits = yes
 			dynasty = NONE
@@ -908,13 +1036,17 @@ character_event = {
 			}
 		}
 		new_character = {
-			hidden_tooltip = { add_random_education_trait = martial }
+			hidden_tooltip = {
+				add_random_education_trait = martial
+			}
 			give_nickname = nick_the_hunter
 		}
 		if = {
 			limit = {
 				has_character_flag = white_stag
-				NOT = { has_character_modifier = hunting_white_stag }
+				NOT = {
+					has_character_modifier = hunting_white_stag
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_stag
@@ -924,7 +1056,9 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_bear
-				NOT = { has_character_modifier = hunting_white_bear }
+				NOT = {
+					has_character_modifier = hunting_white_bear
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_bear
@@ -934,7 +1068,9 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_tiger
-				NOT = { has_character_modifier = hunting_white_tiger }
+				NOT = {
+					has_character_modifier = hunting_white_tiger
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_tiger
@@ -944,22 +1080,35 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_lion
-				NOT = { has_character_modifier = hunting_white_lion }
+				NOT = {
+					has_character_modifier = hunting_white_lion
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_lion
 				duration = -1
 			}
 		}
-		hidden_tooltip = { character_event = { id = WoL.5062 days = 5 } }
-		hidden_tooltip = { character_event = { id = WoL.5002 days = 365 random = 1000 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5062 days = 5
+			}
+		}
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5002 days = 365 random = 1000
+			}
+		}
 	}
+
 	option = {
-		name = EVTOPTB_WoL_5040  # Leave him be
+		name = EVTOPTB_WoL_5040 # Leave him be
 		if = {
 			limit = {
 				has_character_flag = white_stag
-				NOT = { has_character_modifier = hunting_white_stag }
+				NOT = {
+					has_character_modifier = hunting_white_stag
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_stag
@@ -969,7 +1118,9 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_bear
-				NOT = { has_character_modifier = hunting_white_bear }
+				NOT = {
+					has_character_modifier = hunting_white_bear
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_bear
@@ -979,7 +1130,9 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_tiger
-				NOT = { has_character_modifier = hunting_white_tiger }
+				NOT = {
+					has_character_modifier = hunting_white_tiger
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_tiger
@@ -989,18 +1142,29 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_lion
-				NOT = { has_character_modifier = hunting_white_lion }
+				NOT = {
+					has_character_modifier = hunting_white_lion
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_lion
 				duration = -1
 			}
 		}
-		hidden_tooltip = { character_event = { id = WoL.5062 days = 5 } }
-		hidden_tooltip = { character_event = { id = WoL.5002 days = 365 random = 1000 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5062 days = 5
+			}
+		}
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5002 days = 365 random = 1000
+			}
+		}
 	}
+
 	option = {
-		name = EVTOPTC_WoL_5040  # He's a rival, kill him!
+		name = EVTOPTC_WoL_5040 # He's a rival, kill him!
 		trigger = {
 			OR = {
 				trait = impaler
@@ -1012,21 +1176,33 @@ character_event = {
 			}
 		}
 		if = {
-			limit = { NOT = { trait = cruel } }
+			limit = {
+				NOT = {
+					trait = cruel
+				}
+			}
 			add_trait = cruel
 		}
 		if = {
-			limit = { trait = paranoid }
+			limit = {
+				trait = paranoid
+			}
 			add_trait = envious
 		}
 		if = {
-			limit = { NOT = { trait = paranoid } }
+			limit = {
+				NOT = {
+					trait = paranoid
+				}
+			}
 			add_trait = paranoid
 		}
 		if = {
 			limit = {
 				has_character_flag = white_stag
-				NOT = { has_character_modifier = hunting_white_stag }
+				NOT = {
+					has_character_modifier = hunting_white_stag
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_stag
@@ -1036,7 +1212,9 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_bear
-				NOT = { has_character_modifier = hunting_white_bear }
+				NOT = {
+					has_character_modifier = hunting_white_bear
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_bear
@@ -1046,7 +1224,9 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_tiger
-				NOT = { has_character_modifier = hunting_white_tiger }
+				NOT = {
+					has_character_modifier = hunting_white_tiger
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_tiger
@@ -1056,15 +1236,25 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_lion
-				NOT = { has_character_modifier = hunting_white_lion }
+				NOT = {
+					has_character_modifier = hunting_white_lion
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_lion
 				duration = -1
 			}
 		}
-		hidden_tooltip = { character_event = { id = WoL.5062 days = 5 } }
-		hidden_tooltip = { character_event = { id = WoL.5002 days = 365 random = 1000 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5062 days = 5
+			}
+		}
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5002 days = 365 random = 1000
+			}
+		}
 	}
 }
 
@@ -1074,30 +1264,33 @@ character_event = {
 	desc = EVTDESC_WoL_5045
 	picture = GFX_evt_bandits
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_WoL_5045
 		if = {
-			limit = { is_ill = yes }
-		if = {
 			limit = {
-				NOT = {
+				is_ill = yes
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_dlc = "Reapers"
+					}
+				}
+				add_trait = pneumonic
+			}
+			if = {
+				limit = {
 					has_dlc = "Reapers"
 				}
+				add_trait = infection
+				hidden_tooltip = {
+					character_event = {
+						id = RIP.11001 days = 365 random = 1095
+					}
+				}
 			}
-			add_trait = pneumonic
-		}
-		if = {
-			limit = {
-				has_dlc = "Reapers"
-			}
-		add_trait = infection
-		hidden_tooltip = {
-			character_event = { id = RIP.11001 days = 365 random = 1095 }
-		}
-		}
 		}
 		if = {
 			limit = {
@@ -1108,36 +1301,42 @@ character_event = {
 				add_trait = depressed
 				hidden_tooltip = {
 					character_event = {
-						id = 38288 #Notify Depressed
+						id = 38288 # Notify Depressed
 					}
 				}
 			}
 		}
 		if = {
 			limit = {
-				NOT = { trait = stressed }
+				NOT = {
+					trait = stressed
+				}
 			}
 			random = {
 				chance = 20
 				add_trait = stressed
 				hidden_tooltip = {
 					character_event = {
-						id = 38282 #Notify Stressed
+						id = 38282 # Notify Stressed
 					}
 				}
 			}
 		}
 		if = {
 			limit = {
-				NOT = { trait = patient }
-				NOT = { trait = wroth }
+				NOT = {
+					trait = patient
+				}
+				NOT = {
+					trait = wroth
+				}
 			}
 			random = {
 				chance = 20
 				add_trait = wroth
 				hidden_tooltip = {
 					character_event = {
-						id = 38254 #Notify Wroth
+						id = 38254 # Notify Wroth
 					}
 				}
 			}
@@ -1145,7 +1344,9 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_stag
-				NOT = { has_character_modifier = hunting_white_stag }
+				NOT = {
+					has_character_modifier = hunting_white_stag
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_stag
@@ -1155,7 +1356,9 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_bear
-				NOT = { has_character_modifier = hunting_white_bear }
+				NOT = {
+					has_character_modifier = hunting_white_bear
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_bear
@@ -1165,7 +1368,9 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_tiger
-				NOT = { has_character_modifier = hunting_white_tiger }
+				NOT = {
+					has_character_modifier = hunting_white_tiger
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_tiger
@@ -1175,15 +1380,25 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_lion
-				NOT = { has_character_modifier = hunting_white_lion }
+				NOT = {
+					has_character_modifier = hunting_white_lion
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_lion
 				duration = -1
 			}
 		}
-		hidden_tooltip = { character_event = { id = WoL.5062 days = 5 } }
-		hidden_tooltip = { character_event = { id = WoL.5002 days = 365 random = 1000 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5062 days = 5
+			}
+		}
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5002 days = 365 random = 1000
+			}
+		}
 	}
 }
 
@@ -1192,11 +1407,9 @@ character_event = {
 	id = WoL.5050
 	picture = GFX_evt_fishing
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
 	desc = EVTDESC_WoL_5050
-	
+
 	option = {
 		name = EVTOPTA_WoL_5050
 		if = {
@@ -1216,7 +1429,9 @@ character_event = {
 			}
 		}
 		if = {
-			limit = { is_weak_trigger = yes }
+			limit = {
+				is_weak_trigger = yes
+			}
 			random = {
 				chance = 20
 				remove_trait = weak
@@ -1226,7 +1441,9 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_stag
-				NOT = { has_character_modifier = hunting_white_stag }
+				NOT = {
+					has_character_modifier = hunting_white_stag
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_stag
@@ -1236,7 +1453,9 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_bear
-				NOT = { has_character_modifier = hunting_white_bear }
+				NOT = {
+					has_character_modifier = hunting_white_bear
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_bear
@@ -1246,7 +1465,9 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_tiger
-				NOT = { has_character_modifier = hunting_white_tiger }
+				NOT = {
+					has_character_modifier = hunting_white_tiger
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_tiger
@@ -1256,15 +1477,25 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_lion
-				NOT = { has_character_modifier = hunting_white_lion }
+				NOT = {
+					has_character_modifier = hunting_white_lion
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_lion
 				duration = -1
 			}
 		}
-		hidden_tooltip = { character_event = { id = WoL.5062 days = 5 } }
-		hidden_tooltip = { character_event = { id = WoL.5002 days = 365 random = 1000 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5062 days = 5
+			}
+		}
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5002 days = 365 random = 1000
+			}
+		}
 	}
 }
 
@@ -1273,24 +1504,27 @@ character_event = {
 	id = WoL.5055
 	picture = GFX_evt_bad_news
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
 	desc = EVTDESC_WoL_5055
-	
-	option = { # Blame self
+
+	option = {
+		# Blame self
 		name = EVTOPTA_WoL_5055
 		prestige = -20
 		if = {
 			limit = {
-				NOT = { trait = humble }
+				NOT = {
+					trait = humble
+				}
 			}
 			add_trait = humble
 		}
 		if = {
 			limit = {
 				has_character_flag = white_stag
-				NOT = { has_character_modifier = hunting_white_stag }
+				NOT = {
+					has_character_modifier = hunting_white_stag
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_stag
@@ -1300,7 +1534,9 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_bear
-				NOT = { has_character_modifier = hunting_white_bear }
+				NOT = {
+					has_character_modifier = hunting_white_bear
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_bear
@@ -1310,7 +1546,9 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_tiger
-				NOT = { has_character_modifier = hunting_white_tiger }
+				NOT = {
+					has_character_modifier = hunting_white_tiger
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_tiger
@@ -1320,7 +1558,9 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_lion
-				NOT = { has_character_modifier = hunting_white_lion }
+				NOT = {
+					has_character_modifier = hunting_white_lion
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_lion
@@ -1328,27 +1568,39 @@ character_event = {
 			}
 		}
 		clr_character_flag = do_not_disturb
-		hidden_tooltip = { character_event = { id = WoL.5002 days = 365 random = 1000 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5002 days = 365 random = 1000
+			}
+		}
 	}
-	option = { # Blame servants
+
+	option = {
+		# Blame servants
 		name = EVTOPTB_WoL_5055
 		if = {
 			limit = {
-				NOT = { trait = proud }
+				NOT = {
+					trait = proud
+				}
 				trait = arbitrary
 			}
 			add_trait = proud
 		}
 		if = {
 			limit = {
-				NOT = { trait = arbitrary }
+				NOT = {
+					trait = arbitrary
+				}
 			}
 			add_trait = arbitrary
 		}
 		if = {
 			limit = {
 				has_character_flag = white_stag
-				NOT = { has_character_modifier = hunting_white_stag }
+				NOT = {
+					has_character_modifier = hunting_white_stag
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_stag
@@ -1358,7 +1610,9 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_bear
-				NOT = { has_character_modifier = hunting_white_bear }
+				NOT = {
+					has_character_modifier = hunting_white_bear
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_bear
@@ -1368,7 +1622,9 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_tiger
-				NOT = { has_character_modifier = hunting_white_tiger }
+				NOT = {
+					has_character_modifier = hunting_white_tiger
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_tiger
@@ -1378,7 +1634,9 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_lion
-				NOT = { has_character_modifier = hunting_white_lion }
+				NOT = {
+					has_character_modifier = hunting_white_lion
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_lion
@@ -1386,7 +1644,11 @@ character_event = {
 			}
 		}
 		clr_character_flag = do_not_disturb
-		hidden_tooltip = { character_event = { id = WoL.5002 days = 365 random = 1000 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5002 days = 365 random = 1000
+			}
+		}
 	}
 }
 
@@ -1395,25 +1657,43 @@ character_event = {
 	id = WoL.5060
 	picture = GFX_evt_pagan
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
 	desc = EVTDESC_WoL_5060
-	
-	option = { # Drink potion
+
+	option = {
+		# Drink potion
 		name = EVTOPTA_WoL_5060
 		wealth = -5
-		hidden_tooltip = { character_event = { id = WoL.5061 } }
-		custom_tooltip = { text = potion_unforeseen_effects } # This might have unforeseen effects...
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5061
+			}
+		}
+		custom_tooltip = {
+			text = potion_unforeseen_effects
+		} # This might have unforeseen effects...
 		clr_character_flag = do_not_disturb
-		hidden_tooltip = { character_event = { id = WoL.5002 days = 365 random = 1000 } }
-
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5002 days = 365 random = 1000
+			}
+		}
 	}
-	option = { # Don't drink potion, return home
+
+	option = {
+		# Don't drink potion, return home
 		name = EVTOPTB_WoL_5060
-		hidden_tooltip = { character_event = { id = WoL.5062 days = 3 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5062 days = 3
+			}
+		}
 		clr_character_flag = do_not_disturb
-		hidden_tooltip = { character_event = { id = WoL.5002 days = 365 random = 1000 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5002 days = 365 random = 1000
+			}
+		}
 	}
 }
 
@@ -1422,9 +1702,7 @@ character_event = {
 	id = WoL.5061
 	picture = GFX_evt_pagan
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
 	desc = {
 		trigger = {
 			OR = {
@@ -1444,7 +1722,7 @@ character_event = {
 		}
 		text = EVTDESC_WoL_5061_bad
 	}
-	
+
 	immediate = {
 		random_list = {
 			10 = {
@@ -1464,8 +1742,9 @@ character_event = {
 			}
 		}
 	}
-	
-	option = { # Ill
+
+	option = {
+		# Ill
 		name = EVTOPTA_WoL_5061
 		trigger = {
 			has_character_flag = potion_ill
@@ -1488,67 +1767,105 @@ character_event = {
 				}
 				set_character_flag = disease_not_serious
 				add_trait = diarrhea
-				character_event = { id = RIP.11004 days = 30 random = 90 }
+				character_event = {
+					id = RIP.11004 days = 30 random = 90
+				}
 			}
 		}
 		clr_character_flag = potion_ill
-		hidden_tooltip = { character_event = { id = WoL.5062 days = 3 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5062 days = 3
+			}
+		}
 	}
-	option = { # Stressed
+
+	option = {
+		# Stressed
 		name = EVTOPTA_WoL_5061
 		trigger = {
 			has_character_flag = potion_stressed
 		}
 		if = {
 			limit = {
-				NOT = { trait = stressed }
+				NOT = {
+					trait = stressed
+				}
 			}
 			add_trait = stressed
 		}
 		clr_character_flag = potion_stressed
-		hidden_tooltip = { character_event = { id = WoL.5062 days = 3 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5062 days = 3
+			}
+		}
 	}
-	option = { # Lustful
+
+	option = {
+		# Lustful
 		name = EVTOPTC_WoL_5061
 		trigger = {
 			has_character_flag = potion_lustful
 		}
 		if = {
 			limit = {
-				NOT = { trait = lustful }
+				NOT = {
+					trait = lustful
+				}
 			}
 			add_trait = lustful
 		}
 		clr_character_flag = potion_lustful
-		hidden_tooltip = { character_event = { id = WoL.5062 days = 3 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5062 days = 3
+			}
+		}
 	}
-	option = { # Brave
+
+	option = {
+		# Brave
 		name = EVTOPTC_WoL_5061
 		trigger = {
 			has_character_flag = potion_brave
 		}
 		if = {
 			limit = {
-				NOT = { trait = brave }
+				NOT = {
+					trait = brave
+				}
 			}
 			add_trait = brave
 		}
 		clr_character_flag = potion_brave
-		hidden_tooltip = { character_event = { id = WoL.5062 days = 5 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5062 days = 5
+			}
+		}
 	}
-	option = { # Diligent
+
+	option = {
+		# Diligent
 		name = EVTOPTC_WoL_5061
 		trigger = {
 			has_character_flag = potion_diligent
 		}
 		if = {
 			limit = {
-				NOT = { trait = diligent }
+				NOT = {
+					trait = diligent
+				}
 			}
 			add_trait = diligent
 		}
 		clr_character_flag = potion_diligent
-		hidden_tooltip = { character_event = { id = WoL.5062 days = 5 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5062 days = 5
+			}
+		}
 	}
 }
 
@@ -1558,16 +1875,18 @@ character_event = {
 	desc = EVTDESC_WoL_5062
 	picture = GFX_evt_rider_adventure
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
-	option = { # No catch this time
+
+	option = {
+		# No catch this time
 		name = EVTOPTA_WoL_5062
 		clr_character_flag = do_not_disturb
 		if = {
 			limit = {
 				has_character_flag = white_stag
-				NOT = { has_character_modifier = hunting_white_stag }
+				NOT = {
+					has_character_modifier = hunting_white_stag
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_stag
@@ -1577,7 +1896,9 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_bear
-				NOT = { has_character_modifier = hunting_white_bear }
+				NOT = {
+					has_character_modifier = hunting_white_bear
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_bear
@@ -1587,7 +1908,9 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_tiger
-				NOT = { has_character_modifier = hunting_white_tiger }
+				NOT = {
+					has_character_modifier = hunting_white_tiger
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_tiger
@@ -1597,7 +1920,9 @@ character_event = {
 		if = {
 			limit = {
 				has_character_flag = white_lion
-				NOT = { has_character_modifier = hunting_white_lion }
+				NOT = {
+					has_character_modifier = hunting_white_lion
+				}
 			}
 			add_character_modifier = {
 				name = hunting_white_lion
@@ -1607,15 +1932,12 @@ character_event = {
 	}
 }
 
-
 # Gets lost, finds cottage, meets person of opposite sex, can choose to get busy or not
 character_event = {
 	id = WoL.5065
 	picture = GFX_evt_rider_adventure
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
 	desc = {
 		trigger = {
 			has_character_flag = woods_female_lover
@@ -1628,14 +1950,16 @@ character_event = {
 		}
 		text = EVTDESC_WoL_5065_male_lover
 	}
-	
+
 	immediate = {
 		if = {
 			limit = {
 				OR = {
 					AND = {
 						is_female = no
-						NOT = { trait = homosexual }
+						NOT = {
+							trait = homosexual
+						}
 					}
 					AND = {
 						is_female = yes
@@ -1650,7 +1974,9 @@ character_event = {
 				OR = {
 					AND = {
 						is_female = yes
-						NOT = { trait = homosexual }
+						NOT = {
+							trait = homosexual
+						}
 					}
 					AND = {
 						is_female = no
@@ -1661,41 +1987,72 @@ character_event = {
 			set_character_flag = woods_male_lover
 		}
 	}
-	
-	option = { # Have a romantic time...
+
+	option = {
+		# Have a romantic time...
 		name = EVTOPTA_WoL_5065
 		trigger = {
-			NOT = { trait = celibate }
+			NOT = {
+				trait = celibate
+			}
 		}
 		add_character_modifier = {
 			name = good_times
 			years = 2
 		}
 		if = {
-			limit = { NOT = { trait = lustful } }
+			limit = {
+				NOT = {
+					trait = lustful
+				}
+			}
 			add_trait = lustful
 		}
-		hidden_tooltip = { character_event = { id = WoL.5066 } }
-		hidden_tooltip = { character_event = { id = WoL.5002 days = 365 random = 1000 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5066
+			}
+		}
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5002 days = 365 random = 1000
+			}
+		}
 	}
-	option = { # Get out of there
+
+	option = {
+		# Get out of there
 		name = EVTOPTB_WoL_5065
 		if = {
-			limit = { NOT = { trait = chaste } }
+			limit = {
+				NOT = {
+					trait = chaste
+				}
+			}
 			random = {
 				chance = 20
 				add_trait = chaste
 				hidden_tooltip = {
 					character_event = {
-						id = 38274 #Notify Chaste
+						id = 38274 # Notify Chaste
 					}
 				}
 			}
 		}
-		hidden_tooltip = { character_event = { id = WoL.5062 days = 5 } }
-		hidden_tooltip = { character_event = { id = WoL.5002 days = 365 random = 1000 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5062 days = 5
+			}
+		}
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5002 days = 365 random = 1000
+			}
+		}
 	}
-	option = { # It's a trap! Attack!
+
+	option = {
+		# It's a trap! Attack!
 		name = EVTOPTC_WoL_5065
 		trigger = {
 			OR = {
@@ -1705,20 +2062,36 @@ character_event = {
 				trait = lunatic_2
 			}
 		}
-		custom_tooltip = { text = cottage_person_dies }
+		custom_tooltip = {
+			text = cottage_person_dies
+		}
 		if = {
-			limit = { NOT = { trait = wroth } }
+			limit = {
+				NOT = {
+					trait = wroth
+				}
+			}
 			add_trait = wroth
 		}
 		if = {
 			limit = {
 				trait = wroth
-				NOT = { trait = paranoid }
+				NOT = {
+					trait = paranoid
+				}
 			}
 			add_trait = paranoid
 		}
-		hidden_tooltip = { character_event = { id = WoL.5062 days = 5 } }
-		hidden_tooltip = { character_event = { id = WoL.5002 days = 365 random = 1000 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5062 days = 5
+			}
+		}
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5002 days = 365 random = 1000
+			}
+		}
 	}
 }
 
@@ -1728,19 +2101,27 @@ character_event = {
 	desc = EVTDESC_WoL_5066
 	picture = GFX_evt_lovers
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
-	option = { # It was nice but I've got to go
+
+	option = {
+		# It was nice but I've got to go
 		name = EVTOPTA_WoL_5066
 		clr_character_flag = woods_female_lover
 		clr_character_flag = woods_male_lover
-		hidden_tooltip = { character_event = { id = WoL.5062 days = 5 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5062 days = 5
+			}
+		}
 	}
-	option = { # Bring home lover
+
+	option = {
+		# Bring home lover
 		name = EVTOPTB_WoL_5066
 		if = {
-			limit = { has_character_flag = woods_female_lover }
+			limit = {
+				has_character_flag = woods_female_lover
+			}
 			create_character = {
 				random_traits = no
 				dynasty = NONE
@@ -1758,7 +2139,9 @@ character_event = {
 			}
 		}
 		if = {
-			limit = { has_character_flag = woods_male_lover }
+			limit = {
+				has_character_flag = woods_male_lover
+			}
 			create_character = {
 				random_traits = no
 				dynasty = NONE
@@ -1778,38 +2161,50 @@ character_event = {
 		new_character = {
 			give_nickname = nick_of_the_wilds
 			if = {
-				limit = { ROOT = { trait = homosexual } }
+				limit = {
+					ROOT = {
+						trait = homosexual
+					}
+				}
 				add_trait = homosexual
 			}
 			add_lover = ROOT
 		}
 		clr_character_flag = woods_female_lover
 		clr_character_flag = woods_male_lover
-		hidden_tooltip = { character_event = { id = WoL.5062 days = 5 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5062 days = 5
+			}
+		}
 	}
 }
 
-###########################################
-# Favorite hunting dog                    #
-# ID WoL.5200-WoL.5299                    #
-###########################################
+# Favorite hunting dog
+
+# ID WoL.5200-WoL.5299
 
 # Select giver
 character_event = {
 	id = WoL.5200
-
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	only_playable = yes
-	
+
 	trigger = {
 		has_focus = focus_hunting
-		NOT = { has_character_modifier = pet_hunting_dog }
-		NOT = { has_character_flag = offered_puppy }
-		NOT = { has_character_flag = had_hunting_dog }
-		NOT = { religion = shallyan }
+		NOT = {
+			has_character_modifier = pet_hunting_dog
+		}
+		NOT = {
+			has_character_flag = offered_puppy
+		}
+		NOT = {
+			has_character_flag = had_hunting_dog
+		}
+		NOT = {
+			religion = shallyan
+		}
 	}
 
 	immediate = {
@@ -1817,18 +2212,24 @@ character_event = {
 			limit = {
 				num_of_friends = 1
 				any_friend = {
-					NOT = { trait = incapable }
+					NOT = {
+						trait = incapable
+					}
 					prisoner = no
 					is_adult = yes
 				}
 			}
 			random_friend = {
 				limit = {
-					NOT = { trait = incapable }
+					NOT = {
+						trait = incapable
+					}
 					prisoner = no
 					is_adult = yes
 				}
-				character_event = { id = WoL.5201 }
+				character_event = {
+					id = WoL.5201
+				}
 			}
 			set_character_flag = offered_puppy
 			break = yes
@@ -1837,18 +2238,28 @@ character_event = {
 			limit = {
 				is_married = yes
 				any_spouse = {
-					NOT = { trait = incapable }
+					NOT = {
+						trait = incapable
+					}
 					prisoner = no
-					opinion = { who = ROOT value = 0 }
+					opinion = {
+						who = ROOT value = 0
+					}
 				}
 			}
-			random_spouse = { 
+			random_spouse = {
 				limit = {
-					NOT = { trait = incapable }
+					NOT = {
+						trait = incapable
+					}
 					prisoner = no
-					opinion = { who = ROOT value = 0 }
+					opinion = {
+						who = ROOT value = 0
+					}
 				}
-				character_event = { id = WoL.5201 } 
+				character_event = {
+					id = WoL.5201
+				}
 			}
 			set_character_flag = offered_puppy
 			break = yes
@@ -1857,16 +2268,22 @@ character_event = {
 			limit = {
 				num_of_lovers = 1
 				any_lover = {
-					NOT = { trait = incapable }
+					NOT = {
+						trait = incapable
+					}
 					prisoner = no
 				}
 			}
 			random_lover = {
 				limit = {
-					NOT = { trait = incapable }
+					NOT = {
+						trait = incapable
+					}
 					prisoner = no
 				}
-				character_event = { id = WoL.5201 }
+				character_event = {
+					id = WoL.5201
+				}
 			}
 			set_character_flag = offered_puppy
 			break = yes
@@ -1874,20 +2291,30 @@ character_event = {
 		if = {
 			limit = {
 				any_courtier = {
-					NOT = { trait = incapable }
+					NOT = {
+						trait = incapable
+					}
 					prisoner = no
 					is_adult = yes
-					opinion = { who = ROOT value = 0 }
+					opinion = {
+						who = ROOT value = 0
+					}
 				}
 			}
 			random_courtier = {
 				limit = {
-					NOT = { trait = incapable }
+					NOT = {
+						trait = incapable
+					}
 					prisoner = no
 					is_adult = yes
-					opinion = { who = ROOT value = 0 }
+					opinion = {
+						who = ROOT value = 0
+					}
 				}
-				character_event = { id = WoL.5201 }
+				character_event = {
+					id = WoL.5201
+				}
 			}
 			set_character_flag = offered_puppy
 			break = yes
@@ -1896,16 +2323,22 @@ character_event = {
 			limit = {
 				is_married = yes
 				any_spouse = {
-					NOT = { trait = incapable }
+					NOT = {
+						trait = incapable
+					}
 					prisoner = no
 				}
 			}
 			random_spouse = {
 				limit = {
-					NOT = { trait = incapable }
+					NOT = {
+						trait = incapable
+					}
 					prisoner = no
 				}
-				character_event = { id = WoL.5201 }
+				character_event = {
+					id = WoL.5201
+				}
 			}
 			set_character_flag = offered_puppy
 			break = yes
@@ -1913,18 +2346,24 @@ character_event = {
 		if = {
 			limit = {
 				any_courtier = {
-					NOT = { trait = incapable }
+					NOT = {
+						trait = incapable
+					}
 					prisoner = no
 					is_adult = yes
 				}
 			}
 			random_courtier = {
 				limit = {
-					NOT = { trait = incapable }
+					NOT = {
+						trait = incapable
+					}
 					prisoner = no
 					is_adult = yes
 				}
-				character_event = { id = WoL.5201 }
+				character_event = {
+					id = WoL.5201
+				}
 			}
 			set_character_flag = offered_puppy
 			break = yes
@@ -1935,13 +2374,15 @@ character_event = {
 # Giver of puppy
 character_event = {
 	id = WoL.5201
-
 	hide_window = yes
-	
 	is_triggered_only = yes
 
 	immediate = {
-		FROM = { character_event = { id = WoL.5202 } }
+		FROM = {
+			character_event = {
+				id = WoL.5202
+			}
+		}
 	}
 }
 
@@ -1951,23 +2392,37 @@ character_event = {
 	desc = EVTDESC_WoL_5202
 	picture = GFX_evt_hunting_scene
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
-	option = { # Accept
+
+	option = {
+		# Accept
 		name = EVTOPTA_WoL_5202
-		hidden_tooltip = { character_event = { id = WoL.5203 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5203
+			}
+		}
 		add_character_modifier = {
 			modifier = pet_hunting_dog
 			duration = -1
 		}
-		hidden_tooltip = { character_event = { id = WoL.5290 days = 3500 random = 2000 } } # Dog dies
-		hidden_tooltip = { character_event = { id = 77861 days = 30 random = 100 } } # Cat & dog 
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5290 days = 3500 random = 2000
+			}
+		} # Dog dies
+		hidden_tooltip = {
+			character_event = {
+				id = 77861 days = 30 random = 100
+			}
+		} # Cat & dog
 		clr_character_flag = offered_puppy
 		clr_character_flag = hunting_dog_already_killed
 		set_character_flag = had_hunting_dog
 	}
-	option = { # Send it back
+
+	option = {
+		# Send it back
 		name = EVTOPTB_WoL_5202
 		reverse_opinion = {
 			modifier = opinion_insulted
@@ -1976,7 +2431,9 @@ character_event = {
 		}
 		clr_character_flag = offered_puppy
 	}
-	option = { # Pay someone to discreetly dispose of it
+
+	option = {
+		# Pay someone to discreetly dispose of it
 		name = EVTOPTC_WoL_5202
 		wealth = -10
 		random = {
@@ -1997,249 +2454,269 @@ character_event = {
 	desc = EVTDESC_WoL_5203
 	picture = GFX_evt_hunting_scene
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
+
 	immediate = {
 		random_list = {
-			90 = { set_character_flag = good_dog }  # Decide dog's personality...
-			10 = { set_character_flag = bad_dog }
+			90 = {
+				set_character_flag = good_dog
+			} # Decide dog's personality...
+			10 = {
+				set_character_flag = bad_dog
+			}
 		}
 	}
-	
-	option = { # Faithful
+
+	option = {
+		# Faithful
 		name = EVTOPTA_WoL_5203
 		set_character_flag = dog_name_faithful
-		hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5204 days = 150
+			}
+		}
 	}
-	option = { # Hunter
+
+	option = {
+		# Hunter
 		name = EVTOPTB_WoL_5203
 		set_character_flag = dog_name_hunter
-		hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5204 days = 150
+			}
+		}
 	}
-	option = { # Tricky
+
+	option = {
+		# Tricky
 		name = EVTOPTC_WoL_5203
 		set_character_flag = dog_name_tricky
-		hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5204 days = 150
+			}
+		}
 	}
 	# option = { # Lucifer
-		# name = EVTOPTD_WoL_5203
-		# trigger = {
-			# OR = {
-				# trait = cynical
-				# trait = possessed
-				# is_devil_worshiper_trigger = yes
-			# }
-			# religion_group = christian
-		# }
-		# set_character_flag = dog_name_lucifer
-		# hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
+	# name = EVTOPTD_WoL_5203
+	# trigger = {
+	# OR = {
+	# trait = cynical
+	# trait = possessed
+	# is_devil_worshiper_trigger = yes
+	# }
+	# religion_group = christian
+	# }
+	# set_character_flag = dog_name_lucifer
+	# hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
 	# }
 	# option = { # Shaytan
-		# name = EVTOPTE_WoL_5203
-		# trigger = {
-			# OR = {
-				# trait = cynical
-				# trait = possessed
-				# is_devil_worshiper_trigger = yes
-			# }
-			# religion_group = muslim
-		# }
-		# set_character_flag = dog_name_shaytan
-		# hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
+	# name = EVTOPTE_WoL_5203
+	# trigger = {
+	# OR = {
+	# trait = cynical
+	# trait = possessed
+	# is_devil_worshiper_trigger = yes
+	# }
+	# religion_group = muslim
+	# }
+	# set_character_flag = dog_name_shaytan
+	# hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
 	# }
 	# option = { # Fenrir
-		# name = EVTOPTF_WoL_5203
-		# trigger = {
-			# OR = {
-				# trait = cynical
-				# trait = possessed
-				# is_devil_worshiper_trigger = yes
-			# }
-			# OR = {
-				# religion = norse_pagan
-				# religion = norse_pagan_reformed
-			# }
-		# }
-		# set_character_flag = dog_name_fenrir
-		# hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
+	# name = EVTOPTF_WoL_5203
+	# trigger = {
+	# OR = {
+	# trait = cynical
+	# trait = possessed
+	# is_devil_worshiper_trigger = yes
+	# }
+	# OR = {
+	# religion = norse_pagan
+	# religion = norse_pagan_reformed
+	# }
+	# }
+	# set_character_flag = dog_name_fenrir
+	# hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
 	# }
 	# option = { # Erlik
-		# name = EVTOPTG_WoL_5203
-		# trigger = {
-			# OR = {
-				# trait = cynical
-				# trait = possessed
-				# is_devil_worshiper_trigger = yes
-			# }
-			# OR = {
-				# religion = tengri_pagan
-				# religion = tengri_pagan_reformed
-			# }
-		# }
-		# set_character_flag = dog_name_erlik
-		# hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
+	# name = EVTOPTG_WoL_5203
+	# trigger = {
+	# OR = {
+	# trait = cynical
+	# trait = possessed
+	# is_devil_worshiper_trigger = yes
+	# }
+	# OR = {
+	# religion = tengri_pagan
+	# religion = tengri_pagan_reformed
+	# }
+	# }
+	# set_character_flag = dog_name_erlik
+	# hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
 	# }
 	# option = { # Velnias
-		# name = EVTOPTH_WoL_5203
-		# trigger = {
-			# OR = {
-				# trait = cynical
-				# trait = possessed
-				# is_devil_worshiper_trigger = yes
-			# }
-			# OR = {
-				# religion = baltic_pagan
-				# religion = baltic_pagan_reformed
-			# }
-		# }
-		# set_character_flag = dog_name_velnias
-		# hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
+	# name = EVTOPTH_WoL_5203
+	# trigger = {
+	# OR = {
+	# trait = cynical
+	# trait = possessed
+	# is_devil_worshiper_trigger = yes
+	# }
+	# OR = {
+	# religion = baltic_pagan
+	# religion = baltic_pagan_reformed
+	# }
+	# }
+	# set_character_flag = dog_name_velnias
+	# hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
 	# }
 	# option = { # Tuoni
-		# name = EVTOPTI_WoL_5203
-		# trigger = {
-			# OR = {
-				# trait = cynical
-				# trait = possessed
-				# is_devil_worshiper_trigger = yes
-			# }
-			# OR = {
-				# religion = finnish_pagan
-				# religion = finnish_pagan_reformed
-			# }
-		# }
-		# set_character_flag = dog_name_tuoni
-		# hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
+	# name = EVTOPTI_WoL_5203
+	# trigger = {
+	# OR = {
+	# trait = cynical
+	# trait = possessed
+	# is_devil_worshiper_trigger = yes
+	# }
+	# OR = {
+	# religion = finnish_pagan
+	# religion = finnish_pagan_reformed
+	# }
+	# }
+	# set_character_flag = dog_name_tuoni
+	# hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
 	# }
 	# option = { # Xolotl
-		# name = EVTOPTJ_WoL_5203
-		# trigger = {
-			# OR = {
-				# trait = cynical
-				# trait = possessed
-				# is_devil_worshiper_trigger = yes
-			# }
-			# OR = {
-				# religion = aztec
-				# religion = aztec_reformed
-			# }
-		# }
-		# set_character_flag = dog_name_xolotl
-		# hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
+	# name = EVTOPTJ_WoL_5203
+	# trigger = {
+	# OR = {
+	# trait = cynical
+	# trait = possessed
+	# is_devil_worshiper_trigger = yes
+	# }
+	# OR = {
+	# religion = aztec
+	# religion = aztec_reformed
+	# }
+	# }
+	# set_character_flag = dog_name_xolotl
+	# hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
 	# }
 	# option = { # Veles
-		# name = EVTOPTK_WoL_5203
-		# trigger = {
-			# OR = {
-				# trait = cynical
-				# trait = possessed
-				# is_devil_worshiper_trigger = yes
-			# }
-			# OR = {
-				# religion = slavic_pagan
-				# religion = slavic_pagan_reformed
-			# }
-		# }
-		# set_character_flag = dog_name_veles
-		# hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
+	# name = EVTOPTK_WoL_5203
+	# trigger = {
+	# OR = {
+	# trait = cynical
+	# trait = possessed
+	# is_devil_worshiper_trigger = yes
+	# }
+	# OR = {
+	# religion = slavic_pagan
+	# religion = slavic_pagan_reformed
+	# }
+	# }
+	# set_character_flag = dog_name_veles
+	# hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
 	# }
 	# option = { # Guruhi
-		# name = EVTOPTL_WoL_5203
-		# trigger = {
-			# OR = {
-				# trait = cynical
-				# trait = possessed
-				# is_devil_worshiper_trigger = yes
-			# }
-			# OR = {
-				# religion = west_african_pagan
-				# religion = west_african_pagan_reformed
-			# }
-		# }
-		# set_character_flag = dog_name_guruhi
-		# hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
+	# name = EVTOPTL_WoL_5203
+	# trigger = {
+	# OR = {
+	# trait = cynical
+	# trait = possessed
+	# is_devil_worshiper_trigger = yes
+	# }
+	# OR = {
+	# religion = west_african_pagan
+	# religion = west_african_pagan_reformed
+	# }
+	# }
+	# set_character_flag = dog_name_guruhi
+	# hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
 	# }
 	# option = { # Darkness
-		# name = EVTOPTM_WoL_5203
-		# trigger = {
-			# OR = {
-				# trait = cynical
-				# trait = possessed
-				# is_devil_worshiper_trigger = yes
-			# }
-			# OR = {
-				# religion = zun_pagan
-				# religion = zun_pagan_reformed
-			# }
-		# }
-		# set_character_flag = dog_name_darkness
-		# hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
+	# name = EVTOPTM_WoL_5203
+	# trigger = {
+	# OR = {
+	# trait = cynical
+	# trait = possessed
+	# is_devil_worshiper_trigger = yes
+	# }
+	# OR = {
+	# religion = zun_pagan
+	# religion = zun_pagan_reformed
+	# }
+	# }
+	# set_character_flag = dog_name_darkness
+	# hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
 	# }
 	# option = { # Ahriman
-		# name = EVTOPTN_WoL_5203
-		# trigger = {
-			# OR = {
-				# trait = cynical
-				# trait = possessed
-				# is_devil_worshiper_trigger = yes
-			# }
-			# religion_group = zoroastrian_group
-		# }
-		# set_character_flag = dog_name_ahriman
-		# hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
+	# name = EVTOPTN_WoL_5203
+	# trigger = {
+	# OR = {
+	# trait = cynical
+	# trait = possessed
+	# is_devil_worshiper_trigger = yes
+	# }
+	# religion_group = zoroastrian_group
+	# }
+	# set_character_flag = dog_name_ahriman
+	# hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
 	# }
 	# option = { # Satan
-		# name = EVTOPTO_WoL_5203
-		# trigger = {
-			# OR = {
-				# trait = cynical
-				# trait = possessed
-				# is_devil_worshiper_trigger = yes
-			# }
-			# religion_group = jewish_group
-		# }
-		# set_character_flag = dog_name_satan
-		# hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
+	# name = EVTOPTO_WoL_5203
+	# trigger = {
+	# OR = {
+	# trait = cynical
+	# trait = possessed
+	# is_devil_worshiper_trigger = yes
+	# }
+	# religion_group = jewish_group
+	# }
+	# set_character_flag = dog_name_satan
+	# hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
 	# }
 	# option = { # Vinayaka
-		# name = EVTOPTP_WoL_5203
-		# trigger = {
-			# OR = {
-				# trait = cynical
-				# trait = possessed
-				# is_devil_worshiper_trigger = yes
-			# }
-			# religion = hindu
-		# }
-		# set_character_flag = dog_name_vinayaka
-		# hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
+	# name = EVTOPTP_WoL_5203
+	# trigger = {
+	# OR = {
+	# trait = cynical
+	# trait = possessed
+	# is_devil_worshiper_trigger = yes
+	# }
+	# religion = hindu
+	# }
+	# set_character_flag = dog_name_vinayaka
+	# hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
 	# }
 	# option = { # Mara
-		# name = EVTOPTQ_WoL_5203
-		# trigger = {
-			# OR = {
-				# trait = cynical
-				# trait = possessed
-				# is_devil_worshiper_trigger = yes
-			# }
-			# religion = buddhist
-		# }
-		# set_character_flag = dog_name_mara
-		# hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
+	# name = EVTOPTQ_WoL_5203
+	# trigger = {
+	# OR = {
+	# trait = cynical
+	# trait = possessed
+	# is_devil_worshiper_trigger = yes
+	# }
+	# religion = buddhist
+	# }
+	# set_character_flag = dog_name_mara
+	# hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
 	# }
 	# option = { # Punisher
-		# name = EVTOPTR_WoL_5203
-		# trigger = {
-			# OR = {
-				# trait = cynical
-				# trait = possessed
-				# is_devil_worshiper_trigger = yes
-			# }
-			# religion = jain
-		# }
-		# set_character_flag = dog_name_punisher
-		# hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
+	# name = EVTOPTR_WoL_5203
+	# trigger = {
+	# OR = {
+	# trait = cynical
+	# trait = possessed
+	# is_devil_worshiper_trigger = yes
+	# }
+	# religion = jain
+	# }
+	# set_character_flag = dog_name_punisher
+	# hidden_tooltip = { character_event = { id = WoL.5204 days = 150 } }
 	# }
 }
 
@@ -2248,9 +2725,7 @@ character_event = {
 	id = WoL.5204
 	picture = GFX_evt_hunting_scene
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-
 	desc = {
 		trigger = {
 			has_character_flag = good_dog
@@ -2263,7 +2738,7 @@ character_event = {
 		}
 		text = EVTDESC_WoL_5204_bad
 	}
-	
+
 	option = {
 		name = EVTOPTA_WoL_5204
 		trigger = {
@@ -2271,6 +2746,7 @@ character_event = {
 		}
 		prestige = 10
 	}
+
 	option = {
 		name = EVTOPTB_WoL_5204
 		trigger = {
@@ -2280,8 +2756,7 @@ character_event = {
 	}
 }
 
-
-## Random dog events...
+# Random dog events...
 
 # Dog makes you happier
 character_event = {
@@ -2289,13 +2764,11 @@ character_event = {
 	desc = EVTDESC_WoL_5210
 	picture = GFX_evt_hunting_scene
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
 	only_playable = yes
 	only_capable = yes
 	prisoner = no
-	
+
 	trigger = {
 		has_character_modifier = pet_hunting_dog
 		OR = {
@@ -2303,15 +2776,19 @@ character_event = {
 			trait = depressed
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_WoL_5210
 		if = {
-			limit = { trait = stressed }
+			limit = {
+				trait = stressed
+			}
 			remove_trait = stressed
 		}
 		if = {
-			limit = { trait = depressed }
+			limit = {
+				trait = depressed
+			}
 			remove_trait = depressed
 		}
 	}
@@ -2323,13 +2800,11 @@ character_event = {
 	desc = EVTDESC_WoL_5211
 	picture = GFX_evt_hunting_scene
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-
 	only_playable = yes
 	only_capable = yes
 	prisoner = no
-	
+
 	trigger = {
 		has_character_modifier = pet_hunting_dog
 		has_character_flag = good_dog
@@ -2338,7 +2813,7 @@ character_event = {
 			trait = depressed
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_WoL_5211
 		any_courtier = {
@@ -2353,7 +2828,9 @@ character_event = {
 			}
 		}
 		any_courtier = {
-			limit = { is_adult = no }
+			limit = {
+				is_adult = no
+			}
 			opinion = {
 				modifier = opinion_nice_dog_children
 				who = ROOT
@@ -2369,9 +2846,7 @@ character_event = {
 	desc = EVTDESC_WoL_5220
 	picture = GFX_evt_hunting_scene
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-
 	only_playable = yes
 	only_capable = yes
 	prisoner = no
@@ -2379,19 +2854,30 @@ character_event = {
 	trigger = {
 		has_character_modifier = pet_hunting_dog
 		in_command = no
-		NOT = { has_character_flag = training_dog }
+		NOT = {
+			has_character_flag = training_dog
+		}
 	}
-	
+
 	immediate = {
 		set_character_flag = training_dog
 	}
-	
-	option = { # Train dog
+
+	option = {
+		# Train dog
 		name = EVTOPTA_WoL_5220
-		hidden_tooltip = { character_event = { id = WoL.5221 days = 150 random = 150 } }
-		custom_tooltip = { text = trains_dog }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5221 days = 150 random = 150
+			}
+		}
+		custom_tooltip = {
+			text = trains_dog
+		}
 	}
-	option = { # Nah
+
+	option = {
+		# Nah
 		name = EVTOPTB_WoL_5220
 		prestige = 20
 	}
@@ -2403,14 +2889,14 @@ character_event = {
 	desc = EVTDESC_WoL_5221
 	picture = GFX_evt_hunting_scene
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
 
 	trigger = {
 		has_character_modifier = pet_hunting_dog
 	}
-	
-	option = { # Train dog
+
+	option = {
+		# Train dog
 		name = EVTOPTA_WoL_5221
 		trigger = {
 			has_character_flag = dog_name_faithful
@@ -2425,7 +2911,9 @@ character_event = {
 		if = {
 			limit = {
 				is_weak_trigger = no
-				NOT = { trait = diligent }
+				NOT = {
+					trait = diligent
+				}
 			}
 			add_trait = diligent
 		}
@@ -2437,7 +2925,9 @@ character_event = {
 			remove_trait = feeble
 		}
 	}
-	option = { # Train dog
+
+	option = {
+		# Train dog
 		name = EVTOPTB_WoL_5221
 		trigger = {
 			has_character_flag = dog_name_hunter
@@ -2452,7 +2942,9 @@ character_event = {
 		if = {
 			limit = {
 				is_weak_trigger = no
-				NOT = { trait = diligent }
+				NOT = {
+					trait = diligent
+				}
 			}
 			add_trait = diligent
 		}
@@ -2464,7 +2956,9 @@ character_event = {
 			remove_trait = feeble
 		}
 	}
-	option = { # Train dog
+
+	option = {
+		# Train dog
 		name = EVTOPTC_WoL_5221
 		trigger = {
 			has_character_flag = dog_name_tricky
@@ -2479,7 +2973,9 @@ character_event = {
 		if = {
 			limit = {
 				is_weak_trigger = no
-				NOT = { trait = diligent }
+				NOT = {
+					trait = diligent
+				}
 			}
 			add_trait = diligent
 		}
@@ -2491,7 +2987,9 @@ character_event = {
 			remove_trait = feeble
 		}
 	}
-	option = { # Train dog
+
+	option = {
+		# Train dog
 		name = EVTOPTD_WoL_5221
 		trigger = {
 			has_character_flag = dog_name_lucifer
@@ -2506,7 +3004,9 @@ character_event = {
 		if = {
 			limit = {
 				is_weak_trigger = no
-				NOT = { trait = diligent }
+				NOT = {
+					trait = diligent
+				}
 			}
 			add_trait = diligent
 		}
@@ -2518,7 +3018,9 @@ character_event = {
 			remove_trait = feeble
 		}
 	}
-	option = { # Train dog
+
+	option = {
+		# Train dog
 		name = EVTOPTE_WoL_5221
 		trigger = {
 			has_character_flag = dog_name_shaytan
@@ -2533,7 +3035,9 @@ character_event = {
 		if = {
 			limit = {
 				is_weak_trigger = no
-				NOT = { trait = diligent }
+				NOT = {
+					trait = diligent
+				}
 			}
 			add_trait = diligent
 		}
@@ -2545,7 +3049,9 @@ character_event = {
 			remove_trait = feeble
 		}
 	}
-	option = { # Train dog
+
+	option = {
+		# Train dog
 		name = EVTOPTF_WoL_5221
 		trigger = {
 			has_character_flag = dog_name_fenrir
@@ -2560,7 +3066,9 @@ character_event = {
 		if = {
 			limit = {
 				is_weak_trigger = no
-				NOT = { trait = diligent }
+				NOT = {
+					trait = diligent
+				}
 			}
 			add_trait = diligent
 		}
@@ -2572,7 +3080,9 @@ character_event = {
 			remove_trait = feeble
 		}
 	}
-	option = { # Train dog
+
+	option = {
+		# Train dog
 		name = EVTOPTG_WoL_5221
 		trigger = {
 			has_character_flag = dog_name_erlik
@@ -2587,7 +3097,9 @@ character_event = {
 		if = {
 			limit = {
 				is_weak_trigger = no
-				NOT = { trait = diligent }
+				NOT = {
+					trait = diligent
+				}
 			}
 			add_trait = diligent
 		}
@@ -2599,7 +3111,9 @@ character_event = {
 			remove_trait = feeble
 		}
 	}
-	option = { # Train dog
+
+	option = {
+		# Train dog
 		name = EVTOPTH_WoL_5221
 		trigger = {
 			has_character_flag = dog_name_velnias
@@ -2614,7 +3128,9 @@ character_event = {
 		if = {
 			limit = {
 				is_weak_trigger = no
-				NOT = { trait = diligent }
+				NOT = {
+					trait = diligent
+				}
 			}
 			add_trait = diligent
 		}
@@ -2626,7 +3142,9 @@ character_event = {
 			remove_trait = feeble
 		}
 	}
-	option = { # Train dog
+
+	option = {
+		# Train dog
 		name = EVTOPTI_WoL_5221
 		trigger = {
 			has_character_flag = dog_name_tuoni
@@ -2641,7 +3159,9 @@ character_event = {
 		if = {
 			limit = {
 				is_weak_trigger = no
-				NOT = { trait = diligent }
+				NOT = {
+					trait = diligent
+				}
 			}
 			add_trait = diligent
 		}
@@ -2653,7 +3173,9 @@ character_event = {
 			remove_trait = feeble
 		}
 	}
-	option = { # Train dog
+
+	option = {
+		# Train dog
 		name = EVTOPTJ_WoL_5221
 		trigger = {
 			has_character_flag = dog_name_xolotl
@@ -2668,7 +3190,9 @@ character_event = {
 		if = {
 			limit = {
 				is_weak_trigger = no
-				NOT = { trait = diligent }
+				NOT = {
+					trait = diligent
+				}
 			}
 			add_trait = diligent
 		}
@@ -2680,7 +3204,9 @@ character_event = {
 			remove_trait = feeble
 		}
 	}
-	option = { # Train dog
+
+	option = {
+		# Train dog
 		name = EVTOPTK_WoL_5221
 		trigger = {
 			has_character_flag = dog_name_veles
@@ -2695,7 +3221,9 @@ character_event = {
 		if = {
 			limit = {
 				is_weak_trigger = no
-				NOT = { trait = diligent }
+				NOT = {
+					trait = diligent
+				}
 			}
 			add_trait = diligent
 		}
@@ -2707,7 +3235,9 @@ character_event = {
 			remove_trait = feeble
 		}
 	}
-	option = { # Train dog
+
+	option = {
+		# Train dog
 		name = EVTOPTL_WoL_5221
 		trigger = {
 			has_character_flag = dog_name_guruhi
@@ -2722,7 +3252,9 @@ character_event = {
 		if = {
 			limit = {
 				is_weak_trigger = no
-				NOT = { trait = diligent }
+				NOT = {
+					trait = diligent
+				}
 			}
 			add_trait = diligent
 		}
@@ -2734,7 +3266,9 @@ character_event = {
 			remove_trait = feeble
 		}
 	}
-	option = { # Train dog
+
+	option = {
+		# Train dog
 		name = EVTOPTM_WoL_5221
 		trigger = {
 			has_character_flag = dog_name_darkness
@@ -2749,7 +3283,9 @@ character_event = {
 		if = {
 			limit = {
 				is_weak_trigger = no
-				NOT = { trait = diligent }
+				NOT = {
+					trait = diligent
+				}
 			}
 			add_trait = diligent
 		}
@@ -2761,7 +3297,9 @@ character_event = {
 			remove_trait = feeble
 		}
 	}
-	option = { # Train dog
+
+	option = {
+		# Train dog
 		name = EVTOPTN_WoL_5221
 		trigger = {
 			has_character_flag = dog_name_ahriman
@@ -2776,7 +3314,9 @@ character_event = {
 		if = {
 			limit = {
 				is_weak_trigger = no
-				NOT = { trait = diligent }
+				NOT = {
+					trait = diligent
+				}
 			}
 			add_trait = diligent
 		}
@@ -2788,7 +3328,9 @@ character_event = {
 			remove_trait = feeble
 		}
 	}
-	option = { # Train dog
+
+	option = {
+		# Train dog
 		name = EVTOPTO_WoL_5221
 		trigger = {
 			has_character_flag = dog_name_satan
@@ -2803,7 +3345,9 @@ character_event = {
 		if = {
 			limit = {
 				is_weak_trigger = no
-				NOT = { trait = diligent }
+				NOT = {
+					trait = diligent
+				}
 			}
 			add_trait = diligent
 		}
@@ -2815,7 +3359,9 @@ character_event = {
 			remove_trait = feeble
 		}
 	}
-	option = { # Train dog
+
+	option = {
+		# Train dog
 		name = EVTOPTP_WoL_5221
 		trigger = {
 			has_character_flag = dog_name_vinayaka
@@ -2830,7 +3376,9 @@ character_event = {
 		if = {
 			limit = {
 				is_weak_trigger = no
-				NOT = { trait = diligent }
+				NOT = {
+					trait = diligent
+				}
 			}
 			add_trait = diligent
 		}
@@ -2842,7 +3390,9 @@ character_event = {
 			remove_trait = feeble
 		}
 	}
-	option = { # Train dog
+
+	option = {
+		# Train dog
 		name = EVTOPTQ_WoL_5221
 		trigger = {
 			has_character_flag = dog_name_mara
@@ -2857,7 +3407,9 @@ character_event = {
 		if = {
 			limit = {
 				is_weak_trigger = no
-				NOT = { trait = diligent }
+				NOT = {
+					trait = diligent
+				}
 			}
 			add_trait = diligent
 		}
@@ -2869,7 +3421,9 @@ character_event = {
 			remove_trait = feeble
 		}
 	}
-	option = { # Train dog
+
+	option = {
+		# Train dog
 		name = EVTOPTR_WoL_5221
 		trigger = {
 			has_character_flag = dog_name_punisher
@@ -2884,7 +3438,9 @@ character_event = {
 		if = {
 			limit = {
 				is_weak_trigger = no
-				NOT = { trait = diligent }
+				NOT = {
+					trait = diligent
+				}
 			}
 			add_trait = diligent
 		}
@@ -2904,9 +3460,7 @@ character_event = {
 	desc = EVTDESC_WoL_5230
 	picture = GFX_evt_hunting_scene
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-
 	only_playable = yes
 	only_capable = yes
 	prisoner = no
@@ -2937,9 +3491,7 @@ character_event = {
 	desc = EVTDESC_WoL_5231
 	picture = GFX_evt_hunting_scene
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-
 	only_playable = yes
 	only_capable = yes
 	prisoner = no
@@ -2964,18 +3516,19 @@ character_event = {
 					}
 				}
 				20 = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}		
-death = {
+					if = {
+						limit = {
+							is_invincible_trigger = yes
+						}
+						antideath_effect = yes
+						break = yes
+					}
+					death = {
 						death_reason = death_accident
 					}
-					custom_tooltip = { text = crazymurderdog_tooltip }
+					custom_tooltip = {
+						text = crazymurderdog_tooltip
+					}
 					hidden_tooltip = {
 						any_dynasty_member = {
 							opinion = {
@@ -2989,6 +3542,7 @@ death = {
 			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_WoL_5231
 		trigger = {
@@ -3014,18 +3568,19 @@ death = {
 					}
 				}
 				20 = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}	
-death = {
+					if = {
+						limit = {
+							is_invincible_trigger = yes
+						}
+						antideath_effect = yes
+						break = yes
+					}
+					death = {
 						death_reason = death_accident
 					}
-					custom_tooltip = { text = crazymurderdog_tooltip }
+					custom_tooltip = {
+						text = crazymurderdog_tooltip
+					}
 					hidden_tooltip = {
 						any_dynasty_member = {
 							opinion = {
@@ -3038,11 +3593,11 @@ death = {
 				}
 			}
 		}
-		
 		prestige = 100
-		
-		custom_tooltip = { text = crazymurderdog_court_tooltip }
-		hidden_tooltip = {	
+		custom_tooltip = {
+			text = crazymurderdog_court_tooltip
+		}
+		hidden_tooltip = {
 			any_courtier = {
 				opinion = {
 					modifier = opinion_shocked
@@ -3054,36 +3609,49 @@ death = {
 	}
 }
 
-
 # Dog dies! Decide on funeral
 character_event = {
 	id = WoL.5290
 	desc = EVTDESC_WoL_5290
 	picture = GFX_evt_hunting_scene
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
 
 	trigger = {
 		has_character_modifier = pet_hunting_dog
-		NOT = { has_character_flag = hunting_dog_already_killed }
+		NOT = {
+			has_character_flag = hunting_dog_already_killed
+		}
 	}
 
 	immediate = {
 		remove_character_modifier = pet_best_friends
 	}
-	
-	option = { # Bury him quietly
+
+	option = {
+		# Bury him quietly
 		name = EVTOPTA_WoL_5290
 		remove_character_modifier = pet_hunting_dog
-		hidden_tooltip = { character_event = { id = WoL.5291 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5291
+			}
+		}
 	}
-	option = { # Throw a grand funeral
+
+	option = {
+		# Throw a grand funeral
 		name = EVTOPTB_WoL_5290
 		remove_character_modifier = pet_hunting_dog
-		hidden_tooltip = { character_event = { id = WoL.5291 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5291
+			}
+		}
 	}
-	option = { # Lunatic option - build him a great pyramid - use dogs name
+
+	option = {
+		# Lunatic option - build him a great pyramid - use dogs name
 		name = EVTOPTC_WoL_5290
 		trigger = {
 			ai = no
@@ -3095,15 +3663,22 @@ character_event = {
 		}
 		scaled_wealth = -2
 		capital_scope = {
-			add_province_modifier = { # Powerful but extremely unusual
+			add_province_modifier = {
+				# Powerful but extremely unusual
 				name = pyramid
 				duration = -1
 			}
 		}
 		remove_character_modifier = pet_hunting_dog
-		hidden_tooltip = { character_event = { id = WoL.5291 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5291
+			}
+		}
 	}
-	option = { # Lunatic option - build him a great pyramid - use dogs name
+
+	option = {
+		# Lunatic option - build him a great pyramid - use dogs name
 		name = EVTOPTD_WoL_5290
 		trigger = {
 			ai = no
@@ -3115,15 +3690,22 @@ character_event = {
 		}
 		scaled_wealth = -2
 		capital_scope = {
-			add_province_modifier = { # Powerful but extremely unusual
+			add_province_modifier = {
+				# Powerful but extremely unusual
 				name = pyramid
 				duration = -1
 			}
 		}
 		remove_character_modifier = pet_hunting_dog
-		hidden_tooltip = { character_event = { id = WoL.5291 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5291
+			}
+		}
 	}
-	option = { # Lunatic option - build him a great pyramid - use dogs name
+
+	option = {
+		# Lunatic option - build him a great pyramid - use dogs name
 		name = EVTOPTE_WoL_5290
 		trigger = {
 			ai = no
@@ -3137,15 +3719,22 @@ character_event = {
 		}
 		scaled_wealth = -2
 		capital_scope = {
-			add_province_modifier = { # Powerful but extremely unusual
+			add_province_modifier = {
+				# Powerful but extremely unusual
 				name = pyramid
 				duration = -1
 			}
 		}
 		remove_character_modifier = pet_hunting_dog
-		hidden_tooltip = { character_event = { id = WoL.5291 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5291
+			}
+		}
 	}
-	option = { # Lunatic option - build him a great pyramid - use dogs name
+
+	option = {
+		# Lunatic option - build him a great pyramid - use dogs name
 		name = EVTOPTF_WoL_5290
 		trigger = {
 			ai = no
@@ -3159,15 +3748,22 @@ character_event = {
 		}
 		scaled_wealth = -2
 		capital_scope = {
-			add_province_modifier = { # Powerful but extremely unusual
+			add_province_modifier = {
+				# Powerful but extremely unusual
 				name = pyramid
 				duration = -1
 			}
 		}
 		remove_character_modifier = pet_hunting_dog
-		hidden_tooltip = { character_event = { id = WoL.5291 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5291
+			}
+		}
 	}
-	option = { # Lunatic option - build him a great pyramid - use dogs name
+
+	option = {
+		# Lunatic option - build him a great pyramid - use dogs name
 		name = EVTOPTG_WoL_5290
 		trigger = {
 			ai = no
@@ -3179,15 +3775,22 @@ character_event = {
 		}
 		scaled_wealth = -2
 		capital_scope = {
-			add_province_modifier = { # Powerful but extremely unusual
+			add_province_modifier = {
+				# Powerful but extremely unusual
 				name = pyramid
 				duration = -1
 			}
 		}
 		remove_character_modifier = pet_hunting_dog
-		hidden_tooltip = { character_event = { id = WoL.5291 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5291
+			}
+		}
 	}
-	option = { # Lunatic option - build him a great pyramid - use dogs name
+
+	option = {
+		# Lunatic option - build him a great pyramid - use dogs name
 		name = EVTOPTH_WoL_5290
 		trigger = {
 			ai = no
@@ -3201,15 +3804,22 @@ character_event = {
 		}
 		scaled_wealth = -2
 		capital_scope = {
-			add_province_modifier = { # Powerful but extremely unusual
+			add_province_modifier = {
+				# Powerful but extremely unusual
 				name = pyramid
 				duration = -1
 			}
 		}
 		remove_character_modifier = pet_hunting_dog
-		hidden_tooltip = { character_event = { id = WoL.5291 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5291
+			}
+		}
 	}
-	option = { # Lunatic option - build him a great pyramid - use dogs name
+
+	option = {
+		# Lunatic option - build him a great pyramid - use dogs name
 		name = EVTOPTI_WoL_5290
 		trigger = {
 			ai = no
@@ -3223,15 +3833,22 @@ character_event = {
 		}
 		scaled_wealth = -2
 		capital_scope = {
-			add_province_modifier = { # Powerful but extremely unusual
+			add_province_modifier = {
+				# Powerful but extremely unusual
 				name = pyramid
 				duration = -1
 			}
 		}
 		remove_character_modifier = pet_hunting_dog
-		hidden_tooltip = { character_event = { id = WoL.5291 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5291
+			}
+		}
 	}
-	option = { # Lunatic option - build him a great pyramid - use dogs name
+
+	option = {
+		# Lunatic option - build him a great pyramid - use dogs name
 		name = EVTOPTJ_WoL_5290
 		trigger = {
 			ai = no
@@ -3245,15 +3862,22 @@ character_event = {
 		}
 		scaled_wealth = -2
 		capital_scope = {
-			add_province_modifier = { # Powerful but extremely unusual
+			add_province_modifier = {
+				# Powerful but extremely unusual
 				name = pyramid
 				duration = -1
 			}
 		}
 		remove_character_modifier = pet_hunting_dog
-		hidden_tooltip = { character_event = { id = WoL.5291 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5291
+			}
+		}
 	}
-	option = { # Lunatic option - build him a great pyramid - use dogs name
+
+	option = {
+		# Lunatic option - build him a great pyramid - use dogs name
 		name = EVTOPTK_WoL_5290
 		trigger = {
 			ai = no
@@ -3267,15 +3891,22 @@ character_event = {
 		}
 		scaled_wealth = -2
 		capital_scope = {
-			add_province_modifier = { # Powerful but extremely unusual
+			add_province_modifier = {
+				# Powerful but extremely unusual
 				name = pyramid
 				duration = -1
 			}
 		}
 		remove_character_modifier = pet_hunting_dog
-		hidden_tooltip = { character_event = { id = WoL.5291 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5291
+			}
+		}
 	}
-	option = { # Lunatic option - build him a great pyramid - use dogs name
+
+	option = {
+		# Lunatic option - build him a great pyramid - use dogs name
 		name = EVTOPTL_WoL_5290
 		trigger = {
 			ai = no
@@ -3289,15 +3920,22 @@ character_event = {
 		}
 		scaled_wealth = -2
 		capital_scope = {
-			add_province_modifier = { # Powerful but extremely unusual
+			add_province_modifier = {
+				# Powerful but extremely unusual
 				name = pyramid
 				duration = -1
 			}
 		}
 		remove_character_modifier = pet_hunting_dog
-		hidden_tooltip = { character_event = { id = WoL.5291 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5291
+			}
+		}
 	}
-	option = { # Lunatic option - build him a great pyramid - use dogs name
+
+	option = {
+		# Lunatic option - build him a great pyramid - use dogs name
 		name = EVTOPTM_WoL_5290
 		trigger = {
 			ai = no
@@ -3311,15 +3949,22 @@ character_event = {
 		}
 		scaled_wealth = -2
 		capital_scope = {
-			add_province_modifier = { # Powerful but extremely unusual
+			add_province_modifier = {
+				# Powerful but extremely unusual
 				name = pyramid
 				duration = -1
 			}
 		}
 		remove_character_modifier = pet_hunting_dog
-		hidden_tooltip = { character_event = { id = WoL.5291 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5291
+			}
+		}
 	}
-	option = { # Lunatic option - build him a great pyramid - use dogs name
+
+	option = {
+		# Lunatic option - build him a great pyramid - use dogs name
 		name = EVTOPTN_WoL_5290
 		trigger = {
 			ai = no
@@ -3333,15 +3978,22 @@ character_event = {
 		}
 		scaled_wealth = -2
 		capital_scope = {
-			add_province_modifier = { # Powerful but extremely unusual
+			add_province_modifier = {
+				# Powerful but extremely unusual
 				name = pyramid
 				duration = -1
 			}
 		}
 		remove_character_modifier = pet_hunting_dog
-		hidden_tooltip = { character_event = { id = WoL.5291 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5291
+			}
+		}
 	}
-	option = { # Lunatic option - build him a great pyramid - use dogs name
+
+	option = {
+		# Lunatic option - build him a great pyramid - use dogs name
 		name = EVTOPTO_WoL_5290
 		trigger = {
 			ai = no
@@ -3355,15 +4007,22 @@ character_event = {
 		}
 		scaled_wealth = -2
 		capital_scope = {
-			add_province_modifier = { # Powerful but extremely unusual
+			add_province_modifier = {
+				# Powerful but extremely unusual
 				name = pyramid
 				duration = -1
 			}
 		}
 		remove_character_modifier = pet_hunting_dog
-		hidden_tooltip = { character_event = { id = WoL.5291 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5291
+			}
+		}
 	}
-	option = { # Lunatic option - build him a great pyramid - use dogs name
+
+	option = {
+		# Lunatic option - build him a great pyramid - use dogs name
 		name = EVTOPTP_WoL_5290
 		trigger = {
 			ai = no
@@ -3377,15 +4036,22 @@ character_event = {
 		}
 		scaled_wealth = -2
 		capital_scope = {
-			add_province_modifier = { # Powerful but extremely unusual
+			add_province_modifier = {
+				# Powerful but extremely unusual
 				name = pyramid
 				duration = -1
 			}
 		}
 		remove_character_modifier = pet_hunting_dog
-		hidden_tooltip = { character_event = { id = WoL.5291 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5291
+			}
+		}
 	}
-	option = { # Lunatic option - build him a great pyramid - use dogs name
+
+	option = {
+		# Lunatic option - build him a great pyramid - use dogs name
 		name = EVTOPTQ_WoL_5290
 		trigger = {
 			ai = no
@@ -3399,15 +4065,22 @@ character_event = {
 		}
 		scaled_wealth = -2
 		capital_scope = {
-			add_province_modifier = { # Powerful but extremely unusual
+			add_province_modifier = {
+				# Powerful but extremely unusual
 				name = pyramid
 				duration = -1
 			}
 		}
 		remove_character_modifier = pet_hunting_dog
-		hidden_tooltip = { character_event = { id = WoL.5291 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5291
+			}
+		}
 	}
-	option = { # Lunatic option - build him a great pyramid - use dogs name
+
+	option = {
+		# Lunatic option - build him a great pyramid - use dogs name
 		name = EVTOPTR_WoL_5290
 		trigger = {
 			ai = no
@@ -3421,15 +4094,22 @@ character_event = {
 		}
 		scaled_wealth = -2
 		capital_scope = {
-			add_province_modifier = { # Powerful but extremely unusual
+			add_province_modifier = {
+				# Powerful but extremely unusual
 				name = pyramid
 				duration = -1
 			}
 		}
 		remove_character_modifier = pet_hunting_dog
-		hidden_tooltip = { character_event = { id = WoL.5291 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5291
+			}
+		}
 	}
-	option = { # Lunatic option - build him a great pyramid - use dogs name
+
+	option = {
+		# Lunatic option - build him a great pyramid - use dogs name
 		name = EVTOPTS_WoL_5290
 		trigger = {
 			ai = no
@@ -3443,15 +4123,22 @@ character_event = {
 		}
 		scaled_wealth = -2
 		capital_scope = {
-			add_province_modifier = { # Powerful but extremely unusual
+			add_province_modifier = {
+				# Powerful but extremely unusual
 				name = pyramid
 				duration = -1
 			}
 		}
 		remove_character_modifier = pet_hunting_dog
-		hidden_tooltip = { character_event = { id = WoL.5291 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5291
+			}
+		}
 	}
-	option = { # Lunatic option - build him a great pyramid - use dogs name
+
+	option = {
+		# Lunatic option - build him a great pyramid - use dogs name
 		name = EVTOPTT_WoL_5290
 		trigger = {
 			ai = no
@@ -3465,13 +4152,18 @@ character_event = {
 		}
 		scaled_wealth = -2
 		capital_scope = {
-			add_province_modifier = { # Powerful but extremely unusual
+			add_province_modifier = {
+				# Powerful but extremely unusual
 				name = pyramid
 				duration = -1
 			}
 		}
 		remove_character_modifier = pet_hunting_dog
-		hidden_tooltip = { character_event = { id = WoL.5291 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.5291
+			}
+		}
 	}
 	after = {
 		hidden_effect = {
@@ -3485,7 +4177,9 @@ character_event = {
 				}
 			}
 			set_character_flag = dog_death_omen
-			character_event = { id = MNM.1213 days = 35 random = 30 } # Scrying vision come true
+			character_event = {
+				id = MNM.1213 days = 35 random = 30
+			} # Scrying vision come true
 		}
 	}
 }
@@ -3495,12 +4189,18 @@ character_event = {
 	id = WoL.5291
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		remove_character_modifier = pet_hunting_dog
-		clear_delayed_event = { id = WoL.5290 }
-		clear_delayed_event = { id = WoL.5204 }
-		clear_delayed_event = { id = WoL.5221 }
+		clear_delayed_event = {
+			id = WoL.5290
+		}
+		clear_delayed_event = {
+			id = WoL.5204
+		}
+		clear_delayed_event = {
+			id = WoL.5221
+		}
 		clr_character_flag = dog_name_faithful
 		clr_character_flag = dog_name_hunter
 		clr_character_flag = dog_name_tricky

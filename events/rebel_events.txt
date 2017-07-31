@@ -1,16 +1,13 @@
-###########################################
-#
+
+
 # Rebel Events
-#
+
 # ID 80000-85000 is reserved
-#
-###########################################
 
 # NOTE THAT WITH "THE OLD GODS" DLC, THESE EVENTS ARE ALL IRRELEVANT
 
-###########################################
 # Buildings Destroyed
-###########################################
+
 # 80000
 
 # Rebels Destroy Random Building for Count
@@ -18,12 +15,10 @@ province_event = {
 	id = 80000
 	desc = "EVTDESC80000"
 	picture = "GFX_evt_burning_house"
-	
 	lacks_dlc = "The Old Gods"
 
 	trigger = {
 		num_of_settlements = 1
-		
 		# Rebel occupied
 		NOT = {
 			any_province_lord = {
@@ -32,7 +27,9 @@ province_event = {
 						province_id = ROOT
 					}
 					tier = baron
-					NOT = { controlled_by = e_rebels }
+					NOT = {
+						controlled_by = e_rebels
+					}
 				}
 			}
 		}
@@ -46,11 +43,11 @@ province_event = {
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 24
 	}
-	
+
 	immediate = {
 		hidden_tooltip = {
 			random_province_lord = {
@@ -64,13 +61,17 @@ province_event = {
 					}
 				}
 				set_character_flag = building_is_destroyed
-			}		
+			}
 		}
 	}
-	
+
 	option = {
 		name = "EVTOPTA80000"
-		trigger = { owner = { has_character_flag = building_is_destroyed } }
+		trigger = {
+			owner = {
+				has_character_flag = building_is_destroyed
+			}
+		}
 		owner = {
 			random_demesne_title = {
 				limit = {
@@ -84,9 +85,16 @@ province_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTB80000"
-		trigger = { NOT = { owner = { has_character_flag = building_is_destroyed } } }
+		trigger = {
+			NOT = {
+				owner = {
+					has_character_flag = building_is_destroyed
+				}
+			}
+		}
 		hidden_tooltip = {
 			random_province_lord = {
 				limit = {
@@ -99,7 +107,9 @@ province_event = {
 					}
 					has_character_flag = building_is_destroyed
 				}
-				character_event = { id = 80001 days = 1 }
+				character_event = {
+					id = 80001 days = 1
+				}
 			}
 		}
 	}
@@ -110,9 +120,8 @@ character_event = {
 	id = 80001
 	desc = "EVTDESC80001"
 	picture = "GFX_evt_burning_house"
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA80000"
 		random_demesne_title = {
@@ -128,10 +137,8 @@ character_event = {
 	}
 }
 
-
-###########################################
 # Characters Killed / Maimed / Wounded
-###########################################
+
 # 80005-80052
 
 # Rebels Kill Random Province Lord - Duke or above
@@ -139,15 +146,18 @@ character_event = {
 	id = 80005
 	desc = "EVTDESC80005"
 	picture = "GFX_evt_peasants"
-
 	lacks_dlc = "The Old Gods"
 	only_rulers = yes
 	min_age = 16
 	prisoner = no
-	
+
 	trigger = {
-		NOT = { has_global_flag = possible_province_defection }
-		primary_title = { higher_tier_than = COUNT }
+		NOT = {
+			has_global_flag = possible_province_defection
+		}
+		primary_title = {
+			higher_tier_than = COUNT
+		}
 		in_command = no
 		# Rebel occupied
 		location = {
@@ -158,47 +168,63 @@ character_event = {
 							province_id = PREVPREVPREV
 						}
 						tier = baron
-						NOT = { controlled_by = e_rebels }
+						NOT = {
+							controlled_by = e_rebels
+						}
 					}
 				}
 			}
 		}
-		NOT = { is_inaccessible_trigger = yes }
+		NOT = {
+			is_inaccessible_trigger = yes
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 48
 	}
-	
+
 	immediate = {
 		hidden_tooltip = {
 			random_list = {
-				50 = { set_character_flag = character_killed_by_rebels }
-				25 = { set_character_flag = character_maimed_by_rebels }
-				25 = { set_character_flag = character_wounded_by_rebels }
+				50 = {
+					set_character_flag = character_killed_by_rebels
+				}
+				25 = {
+					set_character_flag = character_maimed_by_rebels
+				}
+				25 = {
+					set_character_flag = character_wounded_by_rebels
+				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = "EVTOPTA80005"
-		trigger = { has_character_flag = character_killed_by_rebels }
+		trigger = {
+			has_character_flag = character_killed_by_rebels
+		}
 		hidden_tooltip = {
 			if = {
-				limit = { independent = no }
-				liege = { character_event = { id = 80050 days = 3 } }
+				limit = {
+					independent = no
+				}
+				liege = {
+					character_event = {
+						id = 80050 days = 3
+					}
+				}
 			}
 		}
 		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
+			limit = {
+				is_invincible_trigger = yes
+			}
 			antideath_effect = yes
-			break = yes 
-}
-		
-death = {
+			break = yes
+		}
+		death = {
 			death_reason = death_rabble
 		}
 		# Clear flags
@@ -206,13 +232,22 @@ death = {
 		clr_character_flag = character_maimed_by_rebels
 		clr_character_flag = character_wounded_by_rebels
 	}
+
 	option = {
 		name = "EVTOPTB80005"
-		trigger = { has_character_flag = character_maimed_by_rebels }
+		trigger = {
+			has_character_flag = character_maimed_by_rebels
+		}
 		hidden_tooltip = {
 			if = {
-				limit = { independent = no }
-				liege = { letter_event = { id = 80051 days = 3 } }
+				limit = {
+					independent = no
+				}
+				liege = {
+					letter_event = {
+						id = 80051 days = 3
+					}
+				}
 			}
 		}
 		add_maimed_trait_effect = yes
@@ -221,13 +256,22 @@ death = {
 		clr_character_flag = character_maimed_by_rebels
 		clr_character_flag = character_wounded_by_rebels
 	}
+
 	option = {
 		name = "EVTOPTC80005"
-		trigger = { has_character_flag = character_wounded_by_rebels }
+		trigger = {
+			has_character_flag = character_wounded_by_rebels
+		}
 		hidden_tooltip = {
 			if = {
-				limit = { independent = no }
-				liege = { letter_event = { id = 80052 days = 3 } }
+				limit = {
+					independent = no
+				}
+				liege = {
+					letter_event = {
+						id = 80052 days = 3
+					}
+				}
 			}
 		}
 		add_trait = wounded
@@ -243,15 +287,18 @@ character_event = {
 	id = 80010
 	desc = "EVTDESC80005"
 	picture = "GFX_evt_peasants"
-
 	lacks_dlc = "The Old Gods"
 	only_rulers = yes
 	min_age = 16
 	prisoner = no
-	
+
 	trigger = {
-		NOT = { has_global_flag = possible_province_defection }
-		primary_title = { tier = COUNT }
+		NOT = {
+			has_global_flag = possible_province_defection
+		}
+		primary_title = {
+			tier = COUNT
+		}
 		in_command = no
 		# Rebel occupied
 		location = {
@@ -262,47 +309,63 @@ character_event = {
 							province_id = PREVPREVPREV
 						}
 						tier = baron
-						NOT = { controlled_by = e_rebels }
+						NOT = {
+							controlled_by = e_rebels
+						}
 					}
 				}
 			}
 		}
-		NOT = { is_inaccessible_trigger = yes }
+		NOT = {
+			is_inaccessible_trigger = yes
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 36
 	}
-	
+
 	immediate = {
 		hidden_tooltip = {
 			random_list = {
-				50 = { set_character_flag = character_killed_by_rebels	}
-				25 = { set_character_flag = character_maimed_by_rebels }
-				25 = { set_character_flag = character_wounded_by_rebels }
+				50 = {
+					set_character_flag = character_killed_by_rebels
+				}
+				25 = {
+					set_character_flag = character_maimed_by_rebels
+				}
+				25 = {
+					set_character_flag = character_wounded_by_rebels
+				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = "EVTOPTA80005"
-		trigger = { has_character_flag = character_killed_by_rebels }
+		trigger = {
+			has_character_flag = character_killed_by_rebels
+		}
 		hidden_tooltip = {
 			if = {
-				limit = { independent = no }
-				liege = { character_event = { id = 80050 days = 3 } }
+				limit = {
+					independent = no
+				}
+				liege = {
+					character_event = {
+						id = 80050 days = 3
+					}
+				}
 			}
 		}
 		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
+			limit = {
+				is_invincible_trigger = yes
+			}
 			antideath_effect = yes
-			break = yes 
-}
-		
-death = {
+			break = yes
+		}
+		death = {
 			death_reason = death_rabble
 		}
 		# Clear flags
@@ -310,13 +373,22 @@ death = {
 		clr_character_flag = character_maimed_by_rebels
 		clr_character_flag = character_wounded_by_rebels
 	}
+
 	option = {
 		name = "EVTOPTB80005"
-		trigger = { has_character_flag = character_maimed_by_rebels }
+		trigger = {
+			has_character_flag = character_maimed_by_rebels
+		}
 		hidden_tooltip = {
 			if = {
-				limit = { independent = no }
-				liege = { letter_event = { id = 80051 days = 3 } }
+				limit = {
+					independent = no
+				}
+				liege = {
+					letter_event = {
+						id = 80051 days = 3
+					}
+				}
 			}
 		}
 		add_maimed_trait_effect = yes
@@ -325,13 +397,22 @@ death = {
 		clr_character_flag = character_maimed_by_rebels
 		clr_character_flag = character_wounded_by_rebels
 	}
+
 	option = {
 		name = "EVTOPTC80005"
-		trigger = { has_character_flag = character_wounded_by_rebels }
+		trigger = {
+			has_character_flag = character_wounded_by_rebels
+		}
 		hidden_tooltip = {
 			if = {
-				limit = { independent = no }
-				liege = { letter_event = { id = 80052 days = 3 } }
+				limit = {
+					independent = no
+				}
+				liege = {
+					letter_event = {
+						id = 80052 days = 3
+					}
+				}
 			}
 		}
 		add_trait = wounded
@@ -347,12 +428,11 @@ character_event = {
 	id = 80015
 	desc = "EVTDESC80005"
 	picture = "GFX_evt_peasants"
-
 	lacks_dlc = "The Old Gods"
 	only_rulers = yes
 	min_age = 16
 	prisoner = no
-	
+
 	trigger = {
 		# Rebel occupied
 		location = {
@@ -365,49 +445,67 @@ character_event = {
 							province_id = PREVPREVPREV
 						}
 						tier = baron
-						NOT = { controlled_by = e_rebels }
+						NOT = {
+							controlled_by = e_rebels
+						}
 					}
 				}
 			}
 		}
-		primary_title = { tier = BARON }
+		primary_title = {
+			tier = BARON
+		}
 		in_command = no
-		NOT = { is_inaccessible_trigger = yes }
+		NOT = {
+			is_inaccessible_trigger = yes
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 24
 	}
-	
+
 	immediate = {
 		hidden_tooltip = {
 			random_list = {
-				50 = { set_character_flag = character_killed_by_rebels }
-				25 = { set_character_flag = character_maimed_by_rebels }
-				25 = { set_character_flag = character_wounded_by_rebels }
+				50 = {
+					set_character_flag = character_killed_by_rebels
+				}
+				25 = {
+					set_character_flag = character_maimed_by_rebels
+				}
+				25 = {
+					set_character_flag = character_wounded_by_rebels
+				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = "EVTOPTA80005"
-		trigger = { has_character_flag = character_killed_by_rebels }
+		trigger = {
+			has_character_flag = character_killed_by_rebels
+		}
 		hidden_tooltip = {
 			if = {
-				limit = { independent = no }
-				liege = { character_event = { id = 80050 days = 3 } }
+				limit = {
+					independent = no
+				}
+				liege = {
+					character_event = {
+						id = 80050 days = 3
+					}
+				}
 			}
 		}
 		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
+			limit = {
+				is_invincible_trigger = yes
+			}
 			antideath_effect = yes
-			break = yes 
-}
-	
-death = {
+			break = yes
+		}
+		death = {
 			death_reason = death_rabble
 		}
 		# Clear flags
@@ -415,13 +513,22 @@ death = {
 		clr_character_flag = character_maimed_by_rebels
 		clr_character_flag = character_wounded_by_rebels
 	}
+
 	option = {
 		name = "EVTOPTB80005"
-		trigger = { has_character_flag = character_maimed_by_rebels }
+		trigger = {
+			has_character_flag = character_maimed_by_rebels
+		}
 		hidden_tooltip = {
 			if = {
-				limit = { independent = no }
-				liege = { letter_event = { id = 80051 days = 3 } }
+				limit = {
+					independent = no
+				}
+				liege = {
+					letter_event = {
+						id = 80051 days = 3
+					}
+				}
 			}
 		}
 		add_maimed_trait_effect = yes
@@ -430,13 +537,22 @@ death = {
 		clr_character_flag = character_maimed_by_rebels
 		clr_character_flag = character_wounded_by_rebels
 	}
+
 	option = {
 		name = "EVTOPTC80005"
-		trigger = { has_character_flag = character_wounded_by_rebels }
+		trigger = {
+			has_character_flag = character_wounded_by_rebels
+		}
 		hidden_tooltip = {
 			if = {
-				limit = { independent = no }
-				liege = { letter_event = { id = 80052 days = 3 } }
+				limit = {
+					independent = no
+				}
+				liege = {
+					letter_event = {
+						id = 80052 days = 3
+					}
+				}
 			}
 		}
 		add_trait = wounded
@@ -452,10 +568,9 @@ character_event = {
 	id = 80020
 	desc = "EVTDESC80005"
 	picture = "GFX_evt_peasants"
-
 	lacks_dlc = "The Old Gods"
 	prisoner = no
-	
+
 	trigger = {
 		is_ruler = no
 		in_command = no
@@ -471,42 +586,56 @@ character_event = {
 							province_id = PREVPREVPREV
 						}
 						tier = BARON
-						NOT = { controlled_by = e_rebels }
+						NOT = {
+							controlled_by = e_rebels
+						}
 					}
 				}
 			}
 		}
-		NOT = { is_inaccessible_trigger = yes }
+		NOT = {
+			is_inaccessible_trigger = yes
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 120
 	}
-	
+
 	immediate = {
 		hidden_tooltip = {
 			random_list = {
-				50 = { set_character_flag = character_killed_by_rebels }
-				25 = { set_character_flag = character_maimed_by_rebels }
-				25 = { set_character_flag = character_wounded_by_rebels }
+				50 = {
+					set_character_flag = character_killed_by_rebels
+				}
+				25 = {
+					set_character_flag = character_maimed_by_rebels
+				}
+				25 = {
+					set_character_flag = character_wounded_by_rebels
+				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = "EVTOPTA80005"
-		trigger = { has_character_flag = character_killed_by_rebels }
-		liege = { character_event = { id = 80050 days = 3 } }
+		trigger = {
+			has_character_flag = character_killed_by_rebels
+		}
+		liege = {
+			character_event = {
+				id = 80050 days = 3
+			}
+		}
 		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
+			limit = {
+				is_invincible_trigger = yes
+			}
 			antideath_effect = yes
-			break = yes 
-}
-		
-death = {
+			break = yes
+		}
+		death = {
 			death_reason = death_rabble
 		}
 		# Clear flags
@@ -514,20 +643,34 @@ death = {
 		clr_character_flag = character_maimed_by_rebels
 		clr_character_flag = character_wounded_by_rebels
 	}
+
 	option = {
 		name = "EVTOPTB80005"
-		trigger = { has_character_flag = character_maimed_by_rebels }
-		liege = { letter_event = { id = 80051 days = 3 } }
+		trigger = {
+			has_character_flag = character_maimed_by_rebels
+		}
+		liege = {
+			letter_event = {
+				id = 80051 days = 3
+			}
+		}
 		add_maimed_trait_effect = yes
 		# Clear flags
 		clr_character_flag = character_killed_by_rebels
 		clr_character_flag = character_maimed_by_rebels
 		clr_character_flag = character_wounded_by_rebels
 	}
+
 	option = {
 		name = "EVTOPTC80005"
-		trigger = { has_character_flag = character_wounded_by_rebels }
-		liege = { letter_event = { id = 80052 days = 3 } }
+		trigger = {
+			has_character_flag = character_wounded_by_rebels
+		}
+		liege = {
+			letter_event = {
+				id = 80052 days = 3
+			}
+		}
 		add_trait = wounded
 		# Clear flags
 		clr_character_flag = character_killed_by_rebels
@@ -541,9 +684,8 @@ character_event = {
 	id = 80050
 	desc = "EVTDESC80050"
 	picture = GFX_evt_death
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA80050"
 	}
@@ -553,9 +695,8 @@ character_event = {
 letter_event = {
 	id = 80051
 	desc = "EVTDESC80051"
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA80051"
 	}
@@ -565,33 +706,29 @@ letter_event = {
 letter_event = {
 	id = 80052
 	desc = "EVTDESC80052"
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA80052"
 	}
 }
 
-
-###########################################
 # Province Defection Events
-###########################################
 
 # Province defects
+
 # Isolated province
 province_event = {
 	id = 80062
 	desc = "EVTDESC80062"
 	picture = GFX_evt_peasants
-	
 	lacks_dlc = "The Old Gods"
-	
-	trigger = {	
-		NOT = { has_global_flag = possible_province_defection }
 
+	trigger = {
+		NOT = {
+			has_global_flag = possible_province_defection
+		}
 		num_of_settlements = 1
-		
 		# Rebel occupied
 		controlled_by = e_rebels
 		NOT = {
@@ -601,11 +738,12 @@ province_event = {
 						province_id = ROOT
 					}
 					tier = baron
-					NOT = { controlled_by = e_rebels }
+					NOT = {
+						controlled_by = e_rebels
+					}
 				}
 			}
 		}
-		
 		# Not for those in an independence war
 		owner = {
 			top_liege = {
@@ -619,11 +757,12 @@ province_event = {
 				AND = {
 					ai = no
 					any_demesne_province = {
-						NOT = { province_id = ROOT }
+						NOT = {
+							province_id = ROOT
+						}
 					}
 				}
 			}
-
 		}
 		# No neighbor province from same realm
 		NOT = {
@@ -646,7 +785,9 @@ province_event = {
 		owner = {
 			top_liege = {
 				any_realm_province = {
-					NOT = { province_id = ROOT }
+					NOT = {
+						province_id = ROOT
+					}
 				}
 			}
 		}
@@ -656,7 +797,7 @@ province_event = {
 			is_land = yes
 		}
 		# Not a coastal province
-		port = no		
+		port = no
 		# Not if part of de jure duchy held by someone in same top realm
 		NOT = {
 			duchy = {
@@ -693,7 +834,7 @@ province_event = {
 			log = "Which is a nomad."
 		}
 	}
-	
+
 	option = {
 		name = "EVTOPTA20172"
 		hidden_tooltip = {
@@ -705,7 +846,9 @@ province_event = {
 			rebel_defection = yes
 		}
 		hidden_tooltip = {
-			province_event = { id = 80058 days = 3 }
+			province_event = {
+				id = 80058 days = 3
+			}
 			clear_revolt = yes
 		}
 	}
@@ -716,32 +859,50 @@ province_event = {
 	id = 80058
 	desc = "EVTDESC80058"
 	picture = GFX_evt_peasants
-	
 	show_from_from = no
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA80058"
 		hidden_tooltip = {
 			owner = {
 				any_independent_ruler = {
 					any_realm_character = {
-						limit = { has_character_flag = defected_from }
+						limit = {
+							has_character_flag = defected_from
+						}
 						# Liege is topliege
 						if = {
 							limit = {
-								liege = { character = PREVPREV }
+								liege = {
+									character = PREVPREV
+								}
 							}
-							liege = { character_event = { id = 80057 days = 3 } }
+							liege = {
+								character_event = {
+									id = 80057 days = 3
+								}
+							}
 						}
 						# Liege is not topliege
 						if = {
 							limit = {
-								liege = { NOT = { character = PREVPREV } }
+								liege = {
+									NOT = {
+										character = PREVPREV
+									}
+								}
 							}
-							liege = { character_event = { id = 80057 days = 3 } }
-							top_liege = { character_event = { id = 80057 days = 3 } }
+							liege = {
+								character_event = {
+									id = 80057 days = 3
+								}
+							}
+							top_liege = {
+								character_event = {
+									id = 80057 days = 3
+								}
+							}
 						}
 						clr_character_flag = defected_from
 					}
@@ -757,11 +918,9 @@ character_event = {
 	id = 80057
 	desc = "EVTDESC80057"
 	picture = GFX_evt_peasants
-	
 	show_from_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA80054"
 	}

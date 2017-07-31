@@ -1,27 +1,32 @@
-##############################
+
+
 # STEWARD
-#
+
 # Job: action_squeeze_peasants
+
 # 	920: The Steward collects a tithe and sends it to his liege
+
 # 	921: The peasants attempt to kill the Steward (Gets away, is wounded, is maimed, is killed)
-#
+
 # Job: action_oversee_construction
+
 # 	923: Good Master Builder
+
 # 	924: Sabotage
-#
+
 # Job: action_settle_tribe
+
 # 	925: Local culture changes
+
 # 	926: Steward wounded
+
 # 	927: Steward maimed
+
 # 	928: Steward killed
-#
-##############################
 
-
-##############################
 # STEWARD
+
 # JOB: action_squeeze_peasants
-##############################
 
 # 920: The Steward collects a tithe and sends it to his liege
 character_event = {
@@ -30,14 +35,15 @@ character_event = {
 	desc = "EVTDESC920"
 	picture = GFX_evt_carriage
 	border = GFX_event_normal_frame_economy
-
 	min_age = 16
 	capable_only = yes
 	prisoner = no
-	
+
 	trigger = {
 		has_job_action = action_squeeze_peasants
-		NOT = { has_character_modifier = in_seclusion }
+		NOT = {
+			has_character_modifier = in_seclusion
+		}
 		location = {
 			county = {
 				is_occupied = no
@@ -49,25 +55,32 @@ character_event = {
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 360
-		
 		modifier = {
 			factor = 1.25
-			NOT = { stewardship = 2 }
+			NOT = {
+				stewardship = 2
+			}
 		}
 		modifier = {
 			factor = 1.25
-			NOT = { stewardship = 3 }
+			NOT = {
+				stewardship = 3
+			}
 		}
 		modifier = {
 			factor = 1.25
-			NOT = { stewardship = 4 }
+			NOT = {
+				stewardship = 4
+			}
 		}
 		modifier = {
 			factor = 1.25
-			NOT = { stewardship = 5 }
+			NOT = {
+				stewardship = 5
+			}
 		}
 		modifier = {
 			factor = 0.75
@@ -86,10 +99,14 @@ character_event = {
 			stewardship = 13
 		}
 	}
-	
+
 	option = {
 		name = "EVTOPTA920"
-		liege = { letter_event = { id = 20200 tooltip = "EVTTOOLTIP20200" } }
+		liege = {
+			letter_event = {
+				id = 20200 tooltip = "EVTTOOLTIP20200"
+			}
+		}
 	}
 }
 
@@ -99,15 +116,13 @@ character_event = {
 	desc = EVTDESC20200
 	picture = GFX_evt_carriage
 	border = GFX_event_normal_frame_economy
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA20200
 		scaled_wealth = 0.5
 	}
 }
-
 
 # 921: The peasants attempt to kill the Steward (Gets away, is wounded, is killed)
 character_event = {
@@ -115,14 +130,15 @@ character_event = {
 	title = "EVTNAME921"
 	desc = "EVTDESC921"
 	picture = GFX_evt_peasants
-
 	min_age = 16
 	capable_only = yes
 	prisoner = no
-	
+
 	trigger = {
 		has_job_action = action_squeeze_peasants
-		NOT = { has_character_modifier = in_seclusion }
+		NOT = {
+			has_character_modifier = in_seclusion
+		}
 		location = {
 			owner = {
 				job_treasurer = {
@@ -131,25 +147,32 @@ character_event = {
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 240
-	
 		modifier = {
 			factor = 0.75
-			NOT = { stewardship = 2 }
+			NOT = {
+				stewardship = 2
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { stewardship = 3 }
+			NOT = {
+				stewardship = 3
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { stewardship = 4 }
+			NOT = {
+				stewardship = 4
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { stewardship = 5 }
+			NOT = {
+				stewardship = 5
+			}
 		}
 		modifier = {
 			factor = 1.25
@@ -182,76 +205,109 @@ character_event = {
 		modifier = {
 			factor = 0.75
 			location = {
-				NOT = { culture = ROOT }
+				NOT = {
+					culture = ROOT
+				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = "EVTOPTA921"
 		trigger = {
-			NOT = { stewardship = 5 }
+			NOT = {
+				stewardship = 5
+			}
 		}
 		random_list = {
-			25 = { character_event = { id = 20210 tooltip = "EVTTOOLTIP20210" } }
+			25 = {
+				character_event = {
+					id = 20210 tooltip = "EVTTOOLTIP20210"
+				}
+			}
 			50 = {
-				character_event = { id = 20211 tooltip = "EVTTOOLTIP20211" }
+				character_event = {
+					id = 20211 tooltip = "EVTTOOLTIP20211"
+				}
 				hidden_tooltip = {
-					liege = { letter_event = { id = 20212 } }
+					liege = {
+						letter_event = {
+							id = 20212
+						}
+					}
 				}
 			}
 			25 = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
-			death = {
+				if = {
+					limit = {
+						is_invincible_trigger = yes
+					}
+					antideath_effect = yes
+					break = yes
+				}
+				death = {
 					death_reason = death_rabble
 				}
 				hidden_tooltip = {
-					liege = { character_event = { id = 20213 } }
+					liege = {
+						character_event = {
+							id = 20213
+						}
+					}
 				}
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTA921"
 		tooltip_info = stewardship
 		trigger = {
 			stewardship = 5
-			NOT = { stewardship = 10 }
+			NOT = {
+				stewardship = 10
+			}
 		}
 		random_list = {
-			35 = { character_event = { id = 20210 tooltip = "EVTTOOLTIP20210" } }
+			35 = {
+				character_event = {
+					id = 20210 tooltip = "EVTTOOLTIP20210"
+				}
+			}
 			50 = {
-				character_event = { id = 20211 tooltip = "EVTTOOLTIP20211" }
+				character_event = {
+					id = 20211 tooltip = "EVTTOOLTIP20211"
+				}
 				hidden_tooltip = {
-					liege = { letter_event = { id = 20212 } }
+					liege = {
+						letter_event = {
+							id = 20212
+						}
+					}
 				}
 			}
 			15 = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
-			
-death = {
+				if = {
+					limit = {
+						is_invincible_trigger = yes
+					}
+					antideath_effect = yes
+					break = yes
+				}
+				death = {
 					death_reason = death_rabble
 				}
 				hidden_tooltip = {
-					liege = { character_event = { id = 20213 } }
+					liege = {
+						character_event = {
+							id = 20213
+						}
+					}
 				}
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTA921"
 		tooltip_info = stewardship
@@ -259,27 +315,40 @@ death = {
 			stewardship = 10
 		}
 		random_list = {
-			50 = { character_event = { id = 20210 tooltip = "EVTTOOLTIP20210" } }
+			50 = {
+				character_event = {
+					id = 20210 tooltip = "EVTTOOLTIP20210"
+				}
+			}
 			40 = {
-				character_event = { id = 20211 tooltip = "EVTTOOLTIP20211" }
+				character_event = {
+					id = 20211 tooltip = "EVTTOOLTIP20211"
+				}
 				hidden_tooltip = {
-					liege = { letter_event = { id = 20212 } }
+					liege = {
+						letter_event = {
+							id = 20212
+						}
+					}
 				}
 			}
 			10 = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}			
+				if = {
+					limit = {
+						is_invincible_trigger = yes
+					}
+					antideath_effect = yes
+					break = yes
+				}
 				death = {
 					death_reason = death_rabble
 				}
 				hidden_tooltip = {
-					liege = { character_event = { id = 20213 } }
+					liege = {
+						character_event = {
+							id = 20213
+						}
+					}
 				}
 			}
 		}
@@ -291,9 +360,8 @@ character_event = {
 	id = 20210
 	desc = "EVTDESC20210"
 	picture = GFX_evt_peasants
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA20210"
 		prestige = -10
@@ -305,13 +373,14 @@ character_event = {
 	id = 20211
 	desc = "EVTDESC20211"
 	picture = GFX_evt_peasants
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA20211
 		add_trait = wounded
-		custom_tooltip = { text = EVTTOOLTIP20212 }
+		custom_tooltip = {
+			text = EVTTOOLTIP20212
+		}
 	}
 }
 
@@ -320,14 +389,12 @@ character_event = {
 	id = 20212
 	desc = EVTDESC20212
 	picture = GFX_evt_carriage
-	
 	is_triggered_only = yes
-	
 	notification = yes
-	
+
 	option = {
 		name = EVTOPTA20212
-#		prestige = -10
+		# 		prestige = -10
 	}
 }
 
@@ -336,14 +403,12 @@ character_event = {
 	id = 20213
 	desc = EVTDESC20213
 	picture = GFX_evt_death
-	
 	is_triggered_only = yes
-	
 	notification = yes
-	
+
 	option = {
 		name = EVTOPTA20213
-#		prestige = -15
+		# 		prestige = -15
 	}
 }
 
@@ -352,42 +417,52 @@ character_event = {
 	id = 20214
 	desc = "EVTDESC20214"
 	picture = GFX_evt_peasants
-
 	min_age = 16
 	capable_only = yes
 	prisoner = no
-	
+
 	trigger = {
 		has_job_action = action_squeeze_peasants
-		NOT = { has_character_modifier = in_seclusion }
+		NOT = {
+			has_character_modifier = in_seclusion
+		}
 		location = {
 			owner = {
 				job_treasurer = {
 					character = ROOT
 				}
 			}
-			NOT = { has_province_modifier = high_taxes }
+			NOT = {
+				has_province_modifier = high_taxes
+			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 240
-	
 		modifier = {
 			factor = 0.75
-			NOT = { stewardship = 2 }
+			NOT = {
+				stewardship = 2
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { stewardship = 3 }
+			NOT = {
+				stewardship = 3
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { stewardship = 4 }
+			NOT = {
+				stewardship = 4
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { stewardship = 5 }
+			NOT = {
+				stewardship = 5
+			}
 		}
 		modifier = {
 			factor = 1.25
@@ -420,13 +495,17 @@ character_event = {
 		modifier = {
 			factor = 0.75
 			location = {
-				NOT = { culture = ROOT }
+				NOT = {
+					culture = ROOT
+				}
 			}
 		}
 		modifier = {
 			factor = 0.75
 			location = {
-				NOT = { religion = ROOT }
+				NOT = {
+					religion = ROOT
+				}
 			}
 		}
 	}
@@ -446,14 +525,22 @@ character_event = {
 				}
 				any_province_lord = {
 					limit = {
-						NOT = { has_character_flag = liege_informed }
+						NOT = {
+							has_character_flag = liege_informed
+						}
 						ai = no
 					}
-					character_event = { id = 20215 days = 1 }
+					character_event = {
+						id = 20215 days = 1
+					}
 				}
 				# Inform liege
 				ROOT = {
-					liege = { letter_event = { id = 20216 } }
+					liege = {
+						letter_event = {
+							id = 20216
+						}
+					}
 					clr_character_flag = liege_informed
 				}
 			}
@@ -466,9 +553,8 @@ character_event = {
 	id = 20215
 	desc = "EVTDESC20215"
 	picture = GFX_evt_peasants
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA20215"
 	}
@@ -479,9 +565,8 @@ letter_event = {
 	id = 20216
 	desc = "EVTDESC20216"
 	border = GFX_event_letter_frame_economy
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA20216"
 		FROM = {
@@ -494,8 +579,12 @@ letter_event = {
 				# Province barons
 				any_province_lord = {
 					limit = {
-						NOT = { character = ROOT }
-						NOT = { character = FROM }
+						NOT = {
+							character = ROOT
+						}
+						NOT = {
+							character = FROM
+						}
 					}
 					opinion = {
 						who = ROOT
@@ -508,11 +597,9 @@ letter_event = {
 	}
 }
 
-
-##############################
 # STEWARD
+
 # JOB: action_oversee_construction
-##############################
 
 # 923: Good Master Builder
 character_event = {
@@ -521,15 +608,18 @@ character_event = {
 	desc = "EVTDESC923"
 	picture = GFX_evt_castle_construction
 	border = GFX_event_normal_frame_economy
-
 	min_age = 16
 	capable_only = yes
 	prisoner = no
-	
+
 	trigger = {
 		has_job_action = action_oversee_construction
-		NOT = { has_character_modifier = in_seclusion }
-		NOT = { has_character_modifier = master_builder }
+		NOT = {
+			has_character_modifier = in_seclusion
+		}
+		NOT = {
+			has_character_modifier = master_builder
+		}
 		location = {
 			owner = {
 				job_treasurer = {
@@ -538,25 +628,32 @@ character_event = {
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 480
-		
 		modifier = {
 			factor = 1.25
-			NOT = { stewardship = 2 }
+			NOT = {
+				stewardship = 2
+			}
 		}
 		modifier = {
 			factor = 1.25
-			NOT = { stewardship = 3 }
+			NOT = {
+				stewardship = 3
+			}
 		}
 		modifier = {
 			factor = 1.25
-			NOT = { stewardship = 4 }
+			NOT = {
+				stewardship = 4
+			}
 		}
 		modifier = {
 			factor = 1.25
-			NOT = { stewardship = 5 }
+			NOT = {
+				stewardship = 5
+			}
 		}
 		modifier = {
 			factor = 0.75
@@ -575,14 +672,18 @@ character_event = {
 			stewardship = 13
 		}
 	}
-	
+
 	option = {
 		name = "EVTOPTA923"
 		add_character_modifier = {
 			name = master_builder
 			duration = -1
 		}
-		liege = { letter_event = { id = 20230 tooltip = "EVTTOOLTIP20230" } }
+		liege = {
+			letter_event = {
+				id = 20230 tooltip = "EVTTOOLTIP20230"
+			}
+		}
 	}
 }
 
@@ -591,9 +692,8 @@ letter_event = {
 	id = 20230
 	desc = "EVTDESC20230"
 	border = GFX_event_letter_frame_economy
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA20230"
 		hidden_tooltip = {
@@ -616,7 +716,9 @@ letter_event = {
 				hidden_tooltip = {
 					FROM = {
 						location = {
-							change_variable = { which = prosperity_value value = 6 }
+							change_variable = {
+								which = prosperity_value value = 6
+							}
 						}
 					}
 				}
@@ -632,43 +734,57 @@ character_event = {
 	desc = "EVTDESC924"
 	picture = GFX_evt_castle_construction
 	border = GFX_event_normal_frame_economy
-	
 	min_age = 16
 	capable_only = yes
 	prisoner = no
-	
+
 	trigger = {
 		has_job_action = action_oversee_construction
-		NOT = { has_character_modifier = in_seclusion }
+		NOT = {
+			has_character_modifier = in_seclusion
+		}
 		location = {
 			any_province_lord = {
 				independent = no
-				NOT = { is_liege_of = ROOT }
+				NOT = {
+					is_liege_of = ROOT
+				}
 				liege = {
-					NOT = { reverse_opinion = { who = ROOT value = -20 } }
+					NOT = {
+						reverse_opinion = {
+							who = ROOT value = -20
+						}
+					}
 				}
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 120
-		
 		modifier = {
 			factor = 0.75
-			NOT = { stewardship = 2 }
+			NOT = {
+				stewardship = 2
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { stewardship = 3 }
+			NOT = {
+				stewardship = 3
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { stewardship = 4 }
+			NOT = {
+				stewardship = 4
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { stewardship = 5 }
+			NOT = {
+				stewardship = 5
+			}
 		}
 		modifier = {
 			factor = 1.25
@@ -687,19 +803,27 @@ character_event = {
 			stewardship = 13
 		}
 	}
-	
+
 	option = {
 		name = "EVTOPTA924"
 		location = {
 			random_province_lord = {
 				limit = {
 					independent = no
-					NOT = { is_liege_of = ROOT }
+					NOT = {
+						is_liege_of = ROOT
+					}
 					liege = {
-						NOT = { reverse_opinion = { who = ROOT value = -20 } }
+						NOT = {
+							reverse_opinion = {
+								who = ROOT value = -20
+							}
+						}
 					}
 				}
-				character_event = { id = 20240 tooltip = "EVTTOOLTIP20240" }
+				character_event = {
+					id = 20240 tooltip = "EVTTOOLTIP20240"
+				}
 			}
 		}
 	}
@@ -711,12 +835,13 @@ character_event = {
 	desc = "EVTDESC20240"
 	picture = GFX_evt_castle_construction
 	border = GFX_event_normal_frame_economy
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA20240"
-		ai_chance = { factor = 100 }
+		ai_chance = {
+			factor = 100
+		}
 		hidden_tooltip = {
 			if = {
 				limit = {
@@ -731,19 +856,26 @@ character_event = {
 				FROM = {
 					liege = {
 						job_spymaster = {
-							character_event = { id = 20243 days = 14 }
+							character_event = {
+								id = 20243 days = 14
+							}
 						}
 					}
 				}
 			}
 		}
 		FROM = {
-			character_event = { id = 20241 days = 4 tooltip = "EVTTOOLTIP20241"	}
+			character_event = {
+				id = 20241 days = 4 tooltip = "EVTTOOLTIP20241"
+			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTB20240"
-		ai_chance = { factor = 0 }
+		ai_chance = {
+			factor = 0
+		}
 		prestige = 5
 	}
 }
@@ -754,12 +886,15 @@ character_event = {
 	desc = "EVTDESC20241"
 	picture = GFX_evt_castle_construction
 	border = GFX_event_normal_frame_economy
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA20241"
-		liege = { letter_event = { id = 20242 tooltip = "EVTTOOLTIP20242" } }
+		liege = {
+			letter_event = {
+				id = 20242 tooltip = "EVTTOOLTIP20242"
+			}
+		}
 	}
 }
 
@@ -768,9 +903,8 @@ letter_event = {
 	id = 20242
 	desc = "EVTDESC20242"
 	border = GFX_event_letter_frame_economy
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA20242"
 		FROM = {
@@ -788,12 +922,15 @@ character_event = {
 	desc = "EVTDESC20243"
 	picture = GFX_evt_castle_construction
 	border = GFX_event_normal_frame_intrigue
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA20243"
-		liege = { letter_event = { id = 20244 tooltip = "EVTTOOLTIP20244" } }
+		liege = {
+			letter_event = {
+				id = 20244 tooltip = "EVTTOOLTIP20244"
+			}
+		}
 	}
 }
 
@@ -802,12 +939,13 @@ letter_event = {
 	id = 20244
 	desc = "EVTDESC20244"
 	border = GFX_event_letter_frame_intrigue
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA20244"
-		ai_chance = { factor = 100 }
+		ai_chance = {
+			factor = 100
+		}
 		FROM = {
 			FROM = {
 				reverse_opinion = {
@@ -818,16 +956,18 @@ letter_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTB20244"
-		ai_chance = { factor = 0 }
+		ai_chance = {
+			factor = 0
+		}
 	}
 }
 
-##############################
 # STEWARD
+
 # JOB: action_settle_tribe
-##############################
 
 # 925: The Steward has settled the tribe
 character_event = {
@@ -836,14 +976,15 @@ character_event = {
 	desc = EVTDESC925
 	picture = GFX_evt_stone_church
 	border = GFX_event_normal_frame_economy
-
 	min_age = 16
 	capable_only = yes
 	prisoner = no
-	
+
 	trigger = {
 		has_job_action = action_settle_tribe
-		NOT = { has_character_modifier = in_seclusion }
+		NOT = {
+			has_character_modifier = in_seclusion
+		}
 		location = {
 			county = {
 				is_occupied = no
@@ -852,14 +993,15 @@ character_event = {
 				job_treasurer = {
 					character = ROOT
 				}
-				NOT = { culture = PREV }
+				NOT = {
+					culture = PREV
+				}
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 600
-		
 		modifier = {
 			factor = 3
 			OR = {
@@ -873,29 +1015,35 @@ character_event = {
 				}
 			}
 		}
-		
 		modifier = {
 			factor = 3.0
 			liege = {
 				tier = count
 			}
 		}
-		
 		modifier = {
 			factor = 1.25
-			NOT = { stewardship = 2 }
+			NOT = {
+				stewardship = 2
+			}
 		}
 		modifier = {
 			factor = 1.25
-			NOT = { stewardship = 3 }
+			NOT = {
+				stewardship = 3
+			}
 		}
 		modifier = {
 			factor = 1.25
-			NOT = { stewardship = 4 }
+			NOT = {
+				stewardship = 4
+			}
 		}
 		modifier = {
 			factor = 1.25
-			NOT = { stewardship = 5 }
+			NOT = {
+				stewardship = 5
+			}
 		}
 		modifier = {
 			factor = 0.75
@@ -918,13 +1066,16 @@ character_event = {
 			stewardship = 13
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA925
-		
 		prestige = 50
-		hidden_tooltip  = {
-			liege = { character_event = { id = 20205 } }
+		hidden_tooltip = {
+			liege = {
+				character_event = {
+					id = 20205
+				}
+			}
 		}
 	}
 }
@@ -935,9 +1086,8 @@ character_event = {
 	desc = EVTDESC20205
 	picture = GFX_evt_stone_church
 	border = GFX_event_normal_frame_economy
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA20205
 		FROM = {
@@ -951,13 +1101,17 @@ character_event = {
 				}
 				if = {
 					limit = {
-						ROOT = { culture_group = skaven_group }
+						ROOT = {
+							culture_group = skaven_group
+						}
 					}
 					religion = ROOT
 				}
 				if = {
 					limit = {
-						ROOT = { culture_group = lizardman_group }
+						ROOT = {
+							culture_group = lizardman_group
+						}
 					}
 					religion = ROOT
 				}
@@ -978,54 +1132,70 @@ character_event = {
 	desc = EVTDESC20206
 	picture = GFX_evt_peasants
 	border = GFX_event_normal_frame_economy
-
 	min_age = 16
 	capable_only = yes
 	prisoner = no
-	
+
 	trigger = {
 		has_job_action = action_settle_tribe
-		NOT = { has_character_modifier = in_seclusion }
+		NOT = {
+			has_character_modifier = in_seclusion
+		}
 		location = {
 			owner = {
 				job_treasurer = {
 					character = ROOT
 				}
-				NOT = { culture = PREV }
+				NOT = {
+					culture = PREV
+				}
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 500
-		
 		modifier = {
 			factor = 0.75
-			NOT = { stewardship = 2 }
+			NOT = {
+				stewardship = 2
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { stewardship = 3 }
+			NOT = {
+				stewardship = 3
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { stewardship = 4 }
+			NOT = {
+				stewardship = 4
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { stewardship = 5 }
+			NOT = {
+				stewardship = 5
+			}
 		}
 		modifier = {
 			factor = 0.75
-			location = { has_province_modifier = depopulated_1 }
+			location = {
+				has_province_modifier = depopulated_1
+			}
 		}
 		modifier = {
 			factor = 0.50
-			location = { has_province_modifier = depopulated_2 }
+			location = {
+				has_province_modifier = depopulated_2
+			}
 		}
 		modifier = {
 			factor = 0.25
-			location = { has_province_modifier = depopulated_3 }
+			location = {
+				has_province_modifier = depopulated_3
+			}
 		}
 		modifier = {
 			factor = 1.25
@@ -1048,12 +1218,16 @@ character_event = {
 			stewardship = 13
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA20206
 		add_trait = wounded
-		hidden_tooltip  = {
-			liege = { character_event = { id = 20207 } }
+		hidden_tooltip = {
+			liege = {
+				character_event = {
+					id = 20207
+				}
+			}
 		}
 	}
 }
@@ -1064,9 +1238,8 @@ character_event = {
 	desc = EVTDESC20207
 	picture = GFX_evt_peasants
 	border = GFX_event_normal_frame_economy
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA20207
 		opinion = {
@@ -1077,10 +1250,9 @@ character_event = {
 	}
 }
 
-##############################
 # STEWARD
+
 # JOB: action_build_legend
-##############################
 
 # 20208: The Steward has managed to raise an eager force of warriors
 character_event = {
@@ -1089,25 +1261,31 @@ character_event = {
 	desc = EVTDESC20208
 	picture = GFX_evt_viking_battle_oldgods
 	border = GFX_event_normal_frame_war
-
 	min_age = 16
 	capable_only = yes
 	prisoner = no
-	
+
 	trigger = {
 		has_job_action = action_build_legend
-		NOT = { has_character_modifier = in_seclusion }
+		NOT = {
+			has_character_modifier = in_seclusion
+		}
 		liege = {
 			is_adult = yes
 			prisoner = no
 			prestige = 10
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			OR = {
-				NOT = { has_character_flag = tribal_build_legend_troops }
-				had_character_flag = { flag = tribal_build_legend_troops days = 1825 }
+				NOT = {
+					has_character_flag = tribal_build_legend_troops
+				}
+				had_character_flag = {
+					flag = tribal_build_legend_troops days = 1825
+				}
 			}
 		}
-		
 		location = {
 			county = {
 				is_occupied = no
@@ -1119,32 +1297,38 @@ character_event = {
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 120
-		
 		modifier = {
 			factor = 3.0
 			liege = {
 				tier = count
 			}
 		}
-		
 		modifier = {
 			factor = 1.25
-			NOT = { stewardship = 2 }
+			NOT = {
+				stewardship = 2
+			}
 		}
 		modifier = {
 			factor = 1.25
-			NOT = { stewardship = 3 }
+			NOT = {
+				stewardship = 3
+			}
 		}
 		modifier = {
 			factor = 1.25
-			NOT = { stewardship = 4 }
+			NOT = {
+				stewardship = 4
+			}
 		}
 		modifier = {
 			factor = 1.25
-			NOT = { stewardship = 5 }
+			NOT = {
+				stewardship = 5
+			}
 		}
 		modifier = {
 			factor = 0.75
@@ -1167,13 +1351,16 @@ character_event = {
 			stewardship = 13
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA20208
-		
 		prestige = 50
-		hidden_tooltip  = {
-			liege = { character_event = { id = 20209 } }
+		hidden_tooltip = {
+			liege = {
+				character_event = {
+					id = 20209
+				}
+			}
 		}
 	}
 }
@@ -1184,9 +1371,8 @@ character_event = {
 	desc = EVTDESC20209
 	picture = GFX_evt_viking_battle_oldgods
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		capital_scope = {
 			ROOT = {
@@ -1194,7 +1380,7 @@ character_event = {
 					province = PREV
 					home = PREV
 					owner = THIS
-					#leader = none
+					# leader = none
 					match_character = THIS
 					match_mult = 0.075
 					match_min = 100
@@ -1208,7 +1394,7 @@ character_event = {
 					province = PREV
 					home = PREV
 					owner = THIS
-					#leader = none
+					# leader = none
 					match_character = THIS
 					match_mult = 0.075
 					match_min = 100
@@ -1222,7 +1408,7 @@ character_event = {
 					province = PREV
 					home = PREV
 					owner = THIS
-					#leader = none
+					# leader = none
 					match_character = THIS
 					match_mult = 0.075
 					match_min = 100
@@ -1234,13 +1420,13 @@ character_event = {
 				}
 			}
 		}
-		
 		clr_character_flag = tribal_build_legend_troops
 		set_character_flag = tribal_build_legend_troops
-		
-		character_event = { id = 20217 days = 365 random = 90 }
+		character_event = {
+			id = 20217 days = 365 random = 90
+		}
 	}
-	
+
 	option = {
 		name = EVTOPTA20209
 		opinion = {
@@ -1257,14 +1443,13 @@ character_event = {
 	desc = EVTDESC20217
 	picture = GFX_evt_viking_battle_oldgods
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
 	war = no
-	
+
 	trigger = {
 		has_earmarked_regiments = tribal_build_legend
 	}
-	
+
 	option = {
 		name = EVTOPTA20217
 		prestige = -50
@@ -1273,10 +1458,9 @@ character_event = {
 	}
 }
 
-##############################
 # STEWARD
+
 # JOB: action_collect_tribute
-##############################
 
 # 20225: The Steward demands extra funds from the ruler
 character_event = {
@@ -1285,14 +1469,15 @@ character_event = {
 	desc = EVTDESC20225
 	picture = GFX_evt_carriage
 	border = GFX_event_normal_frame_economy
-
 	min_age = 16
 	capable_only = yes
 	prisoner = no
-	
+
 	trigger = {
 		has_job_action = action_collect_tribute
-		NOT = { has_character_modifier = in_seclusion }
+		NOT = {
+			has_character_modifier = in_seclusion
+		}
 		liege = {
 			ROOT = {
 				location = {
@@ -1300,8 +1485,12 @@ character_event = {
 						is_occupied = no
 					}
 					any_province_lord = {
-						NOT = { character = ROOT }
-						NOT = { character = PREVPREVPREV }
+						NOT = {
+							character = ROOT
+						}
+						NOT = {
+							character = PREVPREVPREV
+						}
 						OR = {
 							vassal_of = PREVPREVPREV
 							pays_tribute_to = PREVPREVPREV
@@ -1309,31 +1498,40 @@ character_event = {
 						capital_scope = {
 							province = PREVPREV
 						}
-						NOT = { has_character_modifier = hidden_extra_tribute }
+						NOT = {
+							has_character_modifier = hidden_extra_tribute
+						}
 					}
 				}
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 60
-		
 		modifier = {
 			factor = 1.25
-			NOT = { stewardship = 2 }
+			NOT = {
+				stewardship = 2
+			}
 		}
 		modifier = {
 			factor = 1.25
-			NOT = { stewardship = 3 }
+			NOT = {
+				stewardship = 3
+			}
 		}
 		modifier = {
 			factor = 1.25
-			NOT = { stewardship = 4 }
+			NOT = {
+				stewardship = 4
+			}
 		}
 		modifier = {
 			factor = 1.25
-			NOT = { stewardship = 5 }
+			NOT = {
+				stewardship = 5
+			}
 		}
 		modifier = {
 			factor = 0.75
@@ -1356,7 +1554,7 @@ character_event = {
 			stewardship = 13
 		}
 	}
-	
+
 	immediate = {
 		liege = {
 			save_event_target_as = tribute_asker
@@ -1364,7 +1562,9 @@ character_event = {
 				location = {
 					random_province_lord = {
 						limit = {
-							NOT = { character = PREVPREVPREV }
+							NOT = {
+								character = PREVPREVPREV
+							}
 							OR = {
 								vassal_of = PREVPREVPREV
 								pays_tribute_to = PREVPREVPREV
@@ -1372,7 +1572,9 @@ character_event = {
 							capital_scope = {
 								province = PREVPREV
 							}
-							NOT = { has_character_modifier = hidden_extra_tribute }
+							NOT = {
+								has_character_modifier = hidden_extra_tribute
+							}
 						}
 						save_event_target_as = tribute_giver
 					}
@@ -1380,20 +1582,24 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA20225 # Demand more tribute
-		
-		ai_chance = { factor = 100 }
-		
+		ai_chance = {
+			factor = 100
+		}
 		event_target:tribute_giver = {
-			character_event = { id = 20226 days = 3 tooltip = EVTTOOLTIP_20226 }
+			character_event = {
+				id = 20226 days = 3 tooltip = EVTTOOLTIP_20226
+			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTB20225 # I don't dare ask
-		ai_chance = { factor = 0 }
+		ai_chance = {
+			factor = 0
+		}
 	}
 }
 
@@ -1404,9 +1610,8 @@ character_event = {
 	desc = EVTDESC20226
 	picture = GFX_evt_carriage
 	border = GFX_event_normal_frame_economy
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		add_character_modifier = {
 			name = hidden_extra_tribute
@@ -1414,7 +1619,7 @@ character_event = {
 			days = 1825 # 5 years
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA20226 # Accept demand
 		ai_chance = {
@@ -1453,7 +1658,6 @@ character_event = {
 				}
 			}
 		}
-		
 		tooltip = {
 			transfer_scaled_wealth = {
 				to = event_target:tribute_asker
@@ -1461,24 +1665,25 @@ character_event = {
 				value = 1.0 # One year's income
 			}
 		}
-		
 		opinion = {
 			who = event_target:tribute_asker
 			modifier = squeezed_for_extra_tribute
 			years = 10
 		}
-		
 		opinion = {
 			who = FROM
 			modifier = squeezed_for_extra_tribute
 			years = 10
 		}
-		
 		hidden_tooltip = {
-			FROM = { character_event = { id = 20227 } } # Notifications
+			FROM = {
+				character_event = {
+					id = 20227
+				}
+			} # Notifications
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTB20226 # Refuse
 		ai_chance = {
@@ -1515,15 +1720,17 @@ character_event = {
 				}
 			}
 		}
-		
 		opinion = {
 			who = event_target:tribute_asker
 			modifier = squeezed_for_extra_tribute
 			years = 5
 		}
-		
 		hidden_tooltip = {
-			FROM = { character_event = { id = 20229 } } # Notifications
+			FROM = {
+				character_event = {
+					id = 20229
+				}
+			} # Notifications
 		}
 	}
 }
@@ -1535,15 +1742,16 @@ character_event = {
 	desc = EVTDESC20227
 	picture = GFX_evt_carriage
 	border = GFX_event_normal_frame_economy
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		liege = {
-			 character_event = { id = 20228 } # Liege notified
+			character_event = {
+				id = 20228
+			} # Liege notified
 		}
 	}
-	
+
 	option = {
 		name = EXCELLENT
 	}
@@ -1556,18 +1764,15 @@ character_event = {
 	desc = EVTDESC20228
 	picture = GFX_evt_carriage
 	border = GFX_event_normal_frame_economy
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EXCELLENT
-		
 		transfer_scaled_wealth = {
 			from = FROMFROM
 			min = 5
 			value = 1.0 # One year's income
 		}
-		
 		tooltip = {
 			reverse_opinion = {
 				who = FROMFROM
@@ -1585,15 +1790,16 @@ character_event = {
 	desc = EVTDESC20229
 	picture = GFX_evt_emissary
 	border = GFX_event_normal_frame_economy
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		liege = {
-			 character_event = { id = 20231 } # Liege notified
+			character_event = {
+				id = 20231
+			} # Liege notified
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA20229
 	}
@@ -1606,12 +1812,10 @@ character_event = {
 	desc = EVTDESC20231
 	picture = GFX_evt_emissary
 	border = GFX_event_normal_frame_economy
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA20231
-		
 		opinion = {
 			who = FROMFROM
 			modifier = refused_extra_tribute

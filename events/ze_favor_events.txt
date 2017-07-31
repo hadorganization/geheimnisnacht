@@ -1,23 +1,21 @@
-#Written by Markus Olsén
-#These are events specifically made to generate favors
 
-#ZE.8100 - ZE.8199
+# Written by Markus Olsén
 
+# These are events specifically made to generate favors
+
+# ZE.8100 - ZE.8199
 namespace = ZE
 
-#You were too drunk after a council meeting and fell on your face
+# You were too drunk after a council meeting and fell on your face
 character_event = {
 	id = ZE.8100
 	picture = GFX_evt_feast
 	border = GFX_event_normal_frame_diplomacy
 	desc = EVTDESC_ZE_8100
-
 	hide_from = yes
-
 	min_age = 16
 	capable_only = yes
 	prisoner = no
-
 	is_triggered_only = yes
 
 	trigger = {
@@ -35,13 +33,13 @@ character_event = {
 				trait = decadent
 			}
 		}
-		NOR = { 
+		NOR = {
 			trait = temperate
 			is_inaccessible_trigger = yes
 			trait = drunkard
 		}
 		any_vassal = {
-			NOR = { 
+			NOR = {
 				character = ROOT
 				holds_favor_on = ROOT
 				trait = incapable
@@ -52,10 +50,8 @@ character_event = {
 			prisoner = no
 		}
 	}
-
 	weight_multiplier = {
 		days = 1
-		
 		modifier = {
 			factor = 2
 			trait = gluttonous
@@ -69,7 +65,7 @@ character_event = {
 	immediate = {
 		random_vassal = {
 			limit = {
-				NOR = { 
+				NOR = {
 					character = ROOT
 					holds_favor_on = ROOT
 					trait = incapable
@@ -82,59 +78,69 @@ character_event = {
 			save_event_target_as = target_voter
 		}
 	}
+	# call for help
 
-	#call for help
 	option = {
 		name = EVTOPTA_ZE_8100
 		custom_tooltip = {
 			text = EVTOPTA_ZE_8100_TOOLTIP
 			hidden_tooltip = {
 				event_target:target_voter = {
-					character_event = { id = ZE.8101 }
+					character_event = {
+						id = ZE.8101
+					}
 				}
 			}
 		}
 	}
-	#dont embarass yourself
+	# dont embarass yourself
+
 	option = {
 		name = EVTOPTB_ZE_8100
 		random_list = {
-			60 = {}
+			60 = {
+			}
 			30 = {
-				if = { limit = { NOR = { trait = wounded is_maimed_trigger = yes } }
+				if = {
+					limit = {
+						NOR = {
+							trait = wounded is_maimed_trigger = yes
+						}
+					}
 					add_trait = wounded
 					hidden_tooltip = {
 						character_event = {
-							id = 38280 #Notify Wounded
+							id = 38280 # Notify Wounded
 						}
 					}
 				}
 			}
-			10 = { 
+			10 = {
 				if = {
-				 limit = {
-				 is_invincible_trigger = yes
-				 }
+					limit = {
+						is_invincible_trigger = yes
 
-							antideath_effect = yes
-							break = yes 
+					}
+					antideath_effect = yes
+					break = yes
 				}
-				death = { death_reason = death_accident } 
+				death = {
+					death_reason = death_accident
+				}
 			}
 		}
 	}
 }
 
-#Councillor came to see what was wrong
+# Councillor came to see what was wrong
 character_event = {
 	id = ZE.8101
 	picture = GFX_evt_feast
 	border = GFX_event_normal_frame_diplomacy
 	desc = EVTDESC_ZE_8101
-
 	is_triggered_only = yes
+	# Helps wounded
 
-	#Helps wounded
 	option = {
 		name = EVTOPTA_ZE_8101
 		tooltip = {
@@ -144,35 +150,44 @@ character_event = {
 			text = EVTOPTA_ZE_8101_TOOLTIP
 			FROM = {
 				hidden_tooltip = {
-					character_event = { id = ZE.8102 }
+					character_event = {
+						id = ZE.8102
+					}
 				}
 			}
 		}
 	}
-	#Mocks wounded
+	# Mocks wounded
+
 	option = {
 		name = EVTOPTB_ZE_8101
 		FROM = {
-			tooltip = { 
-				if = { limit = { NOT = { trait = drunkard } }
+			tooltip = {
+				if = {
+					limit = {
+						NOT = {
+							trait = drunkard
+						}
+					}
 					add_trait = drunkard
 				}
 				add_rival = ROOT
 			}
 			hidden_tooltip = {
-				character_event = { id = ZE.8103 }
+				character_event = {
+					id = ZE.8103
+				}
 			}
 		}
 	}
 }
 
-#councillor saved you
+# councillor saved you
 character_event = {
 	id = ZE.8102
 	picture = GFX_evt_feast
 	border = GFX_event_normal_frame_diplomacy
 	desc = EVTDESC_ZE_8102
-
 	is_triggered_only = yes
 
 	option = {
@@ -181,42 +196,46 @@ character_event = {
 	}
 }
 
-#councillor left you
+# councillor left you
 character_event = {
 	id = ZE.8103
 	picture = GFX_evt_feast
 	border = GFX_event_normal_frame_diplomacy
 	desc = EVTDESC_ZE_8103
-
 	is_triggered_only = yes
 
 	option = {
 		name = EVTOPTA_ZE_8103
-		if = { limit = { NOT = { trait = drunkard } }
+		if = {
+			limit = {
+				NOT = {
+					trait = drunkard
+				}
+			}
 			add_trait = drunkard
 		}
 		add_rival = FROM
 	}
 }
 
-#intervene in marriage quarrel
+# intervene in marriage quarrel
 character_event = {
 	id = ZE.8110
 	picture = GFX_evt_quarrel
 	border = GFX_event_normal_frame_diplomacy
 	desc = EVTDESC_ZE_8110
-
 	min_age = 16
 	capable_only = yes
 	prisoner = no
-
 	is_triggered_only = yes
 
 	trigger = {
 		has_dlc = "Zeus"
-		NOT = { is_inaccessible_trigger = yes }
+		NOT = {
+			is_inaccessible_trigger = yes
+		}
 		any_vassal = {
-			NOR = { 
+			NOR = {
 				character = ROOT
 				owes_favor_to = ROOT
 				trait = incapable
@@ -228,7 +247,9 @@ character_event = {
 				NOR = {
 					trait = incapable
 					is_inaccessible_trigger = yes
-					opinion = { who = PREV value = 0 }
+					opinion = {
+						who = PREV value = 0
+					}
 					has_lover = yes
 				}
 			}
@@ -238,7 +259,7 @@ character_event = {
 	immediate = {
 		random_vassal = {
 			limit = {
-				NOR = { 
+				NOR = {
 					character = ROOT
 					owes_favor_to = ROOT
 					trait = incapable
@@ -250,7 +271,9 @@ character_event = {
 					NOR = {
 						trait = incapable
 						is_inaccessible_trigger = yes
-						opinion = { who = PREV value = 0 }
+						opinion = {
+							who = PREV value = 0
+						}
 						has_lover = yes
 					}
 				}
@@ -258,46 +281,59 @@ character_event = {
 			save_event_target_as = target_vassal
 		}
 	}
+	# interrupt their quarrel
 
-	#interrupt their quarrel
 	option = {
 		name = EVTOPTA_ZE_8110
-		hidden_tooltip = { 
+		hidden_tooltip = {
 			event_target:target_vassal = {
-				character_event = { id = ZE.8112 }
+				character_event = {
+					id = ZE.8112
+				}
 			}
 		}
 	}
-	#dont mess with others affairs
+	# dont mess with others affairs
+
 	option = {
 		name = EVTOPTB_ZE_8110
 	}
 }
 
-##liege helped out
-#character_event = {
-#	id = ZE.8111
-#	picture = GFX_evt_feast
-#	border = GFX_event_normal_frame_diplomacy
-#	desc = EVTDESC_ZE_8111
-#
-#	is_triggered_only = yes
-#
-#	option = {
-#		name = EVTOPTA_ZE_8111
-#		event_target:target_vassal = {
-#			hidden_tooltip = { character_event = { id = ZE.8112 } }
-#		}
-#	}
-#}
+# liege helped out
 
-#vassal informed of event
+# character_event = {
+
+# 	id = ZE.8111
+
+# 	picture = GFX_evt_feast
+
+# 	border = GFX_event_normal_frame_diplomacy
+
+# 	desc = EVTDESC_ZE_8111
+
+# 	is_triggered_only = yes
+
+# 	option = {
+
+# 		name = EVTOPTA_ZE_8111
+
+# 		event_target:target_vassal = {
+
+# 			hidden_tooltip = { character_event = { id = ZE.8112 } }
+
+# 		}
+
+# 	}
+
+# }
+
+# vassal informed of event
 character_event = {
 	id = ZE.8112
 	picture = GFX_evt_quarrel
 	border = GFX_event_normal_frame_diplomacy
 	desc = EVTDESC_ZE_8112
-
 	is_triggered_only = yes
 
 	option = {
@@ -319,7 +355,13 @@ character_event = {
 				years = 3
 			}
 		}
-		FROM = { hidden_tooltip = { character_event = { id = ZE.8113 } } }
+		FROM = {
+			hidden_tooltip = {
+				character_event = {
+					id = ZE.8113
+				}
+			}
+		}
 	}
 
 	option = {
@@ -333,17 +375,22 @@ character_event = {
 				}
 			}
 		}
-		FROM = { hidden_tooltip = { character_event = { id = ZE.8114 } } }
+		FROM = {
+			hidden_tooltip = {
+				character_event = {
+					id = ZE.8114
+				}
+			}
+		}
 	}
 }
 
-#liege is appreciated
+# liege is appreciated
 character_event = {
 	id = ZE.8113
 	picture = GFX_evt_quarrel
 	border = GFX_event_normal_frame_diplomacy
 	desc = EVTDESC_ZE_8113
-
 	is_triggered_only = yes
 
 	option = {
@@ -357,13 +404,12 @@ character_event = {
 	}
 }
 
-#liege's 'help' was not appreciated
+# liege's 'help' was not appreciated
 character_event = {
 	id = ZE.8114
 	picture = GFX_evt_judged_by_ruler
 	border = GFX_event_normal_frame_diplomacy
 	desc = EVTDESC_ZE_8114
-
 	is_triggered_only = yes
 
 	option = {
@@ -381,130 +427,209 @@ character_event = {
 	picture = GFX_evt_poke_king_in_chest
 	border = GFX_event_normal_frame_intrigue
 	desc = EVTDESC_ZE_8120
-
 	is_triggered_only = yes
 
 	immediate = {
 		reverse_remove_favor = event_target:pardon_target
 		if = {
 			limit = {
-				has_opinion_modifier = { who = event_target:pardon_target modifier = declared_war}
+				has_opinion_modifier = {
+					who = event_target:pardon_target modifier = declared_war
+				}
 			}
-			remove_opinion = { who = event_target:pardon_target modifier = declared_war }
+			remove_opinion = {
+				who = event_target:pardon_target modifier = declared_war
+			}
 		}
 		if = {
 			limit = {
-				has_opinion_modifier = { who = event_target:pardon_target modifier = opinion_dishonorable}
+				has_opinion_modifier = {
+					who = event_target:pardon_target modifier = opinion_dishonorable
+				}
 			}
-			remove_opinion = { who = event_target:pardon_target modifier = opinion_dishonorable }
+			remove_opinion = {
+				who = event_target:pardon_target modifier = opinion_dishonorable
+			}
 		}
 		if = {
 			limit = {
-				has_opinion_modifier = { who = event_target:pardon_target modifier = opinion_traitor}
+				has_opinion_modifier = {
+					who = event_target:pardon_target modifier = opinion_traitor
+				}
 			}
-			remove_opinion = { who = event_target:pardon_target modifier = opinion_traitor }
+			remove_opinion = {
+				who = event_target:pardon_target modifier = opinion_traitor
+			}
 		}
 		if = {
 			limit = {
-				has_opinion_modifier = { who = event_target:pardon_target modifier = opinion_rebel_traitor}
+				has_opinion_modifier = {
+					who = event_target:pardon_target modifier = opinion_rebel_traitor
+				}
 			}
-			remove_opinion = { who = event_target:pardon_target modifier = opinion_rebel_traitor }
+			remove_opinion = {
+				who = event_target:pardon_target modifier = opinion_rebel_traitor
+			}
 		}
 		if = {
 			limit = {
-				has_opinion_modifier = { who = event_target:pardon_target modifier = opinion_regicide_traitor}
+				has_opinion_modifier = {
+					who = event_target:pardon_target modifier = opinion_regicide_traitor
+				}
 			}
-			remove_opinion = { who = event_target:pardon_target modifier = opinion_regicide_traitor }
+			remove_opinion = {
+				who = event_target:pardon_target modifier = opinion_regicide_traitor
+			}
 		}
 		if = {
 			limit = {
-				has_opinion_modifier = { who = event_target:pardon_target modifier = opinion_killed_close_kin}
+				has_opinion_modifier = {
+					who = event_target:pardon_target modifier = opinion_killed_close_kin
+				}
 			}
-			remove_opinion = { who = event_target:pardon_target modifier = opinion_killed_close_kin }
+			remove_opinion = {
+				who = event_target:pardon_target modifier = opinion_killed_close_kin
+			}
 		}
 		if = {
 			limit = {
-				has_opinion_modifier = { who = event_target:pardon_target modifier = opinion_refused_abdicate_title}
+				has_opinion_modifier = {
+					who = event_target:pardon_target modifier = opinion_refused_abdicate_title
+				}
 			}
-			remove_opinion = { who = event_target:pardon_target modifier = opinion_refused_abdicate_title }
+			remove_opinion = {
+				who = event_target:pardon_target modifier = opinion_refused_abdicate_title
+			}
 		}
 		if = {
 			limit = {
-				has_opinion_modifier = { who = event_target:pardon_target modifier = opinion_fatwa_target}
+				has_opinion_modifier = {
+					who = event_target:pardon_target modifier = opinion_fatwa_target
+				}
 			}
-			remove_opinion = { who = event_target:pardon_target modifier = opinion_fatwa_target }
+			remove_opinion = {
+				who = event_target:pardon_target modifier = opinion_fatwa_target
+			}
 		}
 		if = {
 			limit = {
-				has_opinion_modifier = { who = event_target:pardon_target modifier = opinion_refused_order}
+				has_opinion_modifier = {
+					who = event_target:pardon_target modifier = opinion_refused_order
+				}
 			}
-			remove_opinion = { who = event_target:pardon_target modifier = opinion_refused_order }
+			remove_opinion = {
+				who = event_target:pardon_target modifier = opinion_refused_order
+			}
 		}
 		if = {
 			limit = {
-				has_opinion_modifier = { who = event_target:pardon_target modifier = opinion_witch}
+				has_opinion_modifier = {
+					who = event_target:pardon_target modifier = opinion_witch
+				}
 			}
-			remove_opinion = { who = event_target:pardon_target modifier = opinion_witch }
+			remove_opinion = {
+				who = event_target:pardon_target modifier = opinion_witch
+			}
 		}
 		if = {
 			limit = {
-				has_opinion_modifier = { who = event_target:pardon_target modifier = opinion_takfir}
+				has_opinion_modifier = {
+					who = event_target:pardon_target modifier = opinion_takfir
+				}
 			}
-			remove_opinion = { who = event_target:pardon_target modifier = opinion_takfir }
+			remove_opinion = {
+				who = event_target:pardon_target modifier = opinion_takfir
+			}
 		}
 		if = {
 			limit = {
-				has_opinion_modifier = { who = event_target:pardon_target modifier = opinion_unfaithful_wife}
+				has_opinion_modifier = {
+					who = event_target:pardon_target modifier = opinion_unfaithful_wife
+				}
 			}
-			remove_opinion = { who = event_target:pardon_target modifier = opinion_unfaithful_wife }
+			remove_opinion = {
+				who = event_target:pardon_target modifier = opinion_unfaithful_wife
+			}
 		}
 		if = {
 			limit = {
-				has_opinion_modifier = { who = event_target:pardon_target modifier = opinion_cuckolded}
+				has_opinion_modifier = {
+					who = event_target:pardon_target modifier = opinion_cuckolded
+				}
 			}
-			remove_opinion = { who = event_target:pardon_target modifier = opinion_cuckolded }
+			remove_opinion = {
+				who = event_target:pardon_target modifier = opinion_cuckolded
+			}
 		}
 		if = {
 			limit = {
-				has_opinion_modifier = { who = event_target:pardon_target modifier = opinion_charge_heresiarch }
+				has_opinion_modifier = {
+					who = event_target:pardon_target modifier = opinion_charge_heresiarch
+				}
 			}
-			remove_opinion = { who = event_target:pardon_target modifier = opinion_charge_heresiarch }
+			remove_opinion = {
+				who = event_target:pardon_target modifier = opinion_charge_heresiarch
+			}
 		}
 		if = {
 			limit = {
-				has_opinion_modifier = { who = event_target:pardon_target modifier = opinion_charge_infidel }
+				has_opinion_modifier = {
+					who = event_target:pardon_target modifier = opinion_charge_infidel
+				}
 			}
-			remove_opinion = { who = event_target:pardon_target modifier = opinion_charge_infidel }
+			remove_opinion = {
+				who = event_target:pardon_target modifier = opinion_charge_infidel
+			}
 		}
 		if = {
 			limit = {
-				has_opinion_modifier = { who = event_target:pardon_target modifier = opinion_charge_deviant }
+				has_opinion_modifier = {
+					who = event_target:pardon_target modifier = opinion_charge_deviant
+				}
 			}
-			remove_opinion = { who = event_target:pardon_target modifier = opinion_charge_deviant }
+			remove_opinion = {
+				who = event_target:pardon_target modifier = opinion_charge_deviant
+			}
 		}
 		if = {
 			limit = {
-				has_opinion_modifier = { who = event_target:pardon_target modifier = opinion_charge_illegitimate }
+				has_opinion_modifier = {
+					who = event_target:pardon_target modifier = opinion_charge_illegitimate
+				}
 			}
-			remove_opinion = { who = event_target:pardon_target modifier = opinion_charge_illegitimate }
+			remove_opinion = {
+				who = event_target:pardon_target modifier = opinion_charge_illegitimate
+			}
 		}
 		if = {
 			limit = {
-				has_opinion_modifier = { who = event_target:pardon_target modifier = opinion_charge_traitor }
+				has_opinion_modifier = {
+					who = event_target:pardon_target modifier = opinion_charge_traitor
+				}
 			}
-			remove_opinion = { who = event_target:pardon_target modifier = opinion_charge_traitor }
+			remove_opinion = {
+				who = event_target:pardon_target modifier = opinion_charge_traitor
+			}
 		}
 		if = {
 			limit = {
-				has_opinion_modifier = { who = event_target:pardon_target modifier = opinion_charge_slanderer }
+				has_opinion_modifier = {
+					who = event_target:pardon_target modifier = opinion_charge_slanderer
+				}
 			}
-			remove_opinion = { who = event_target:pardon_target modifier = opinion_charge_slanderer }
+			remove_opinion = {
+				who = event_target:pardon_target modifier = opinion_charge_slanderer
+			}
 		}
 		if = {
 			limit = {
-				has_opinion_modifier = { who = event_target:pardon_target modifier = abuse_of_office }
+				has_opinion_modifier = {
+					who = event_target:pardon_target modifier = abuse_of_office
+				}
 			}
-			remove_opinion = { who = event_target:pardon_target modifier = abuse_of_office }
+			remove_opinion = {
+				who = event_target:pardon_target modifier = abuse_of_office
+			}
 		}
 	}
 

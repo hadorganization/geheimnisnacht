@@ -1,41 +1,56 @@
 namespace = DR_engineers_guild
 
-###JOINING###
+# JOINING
 
-#From on_character_ask_to_join_society
+# From on_character_ask_to_join_society
 character_event = {
-    id = DR_engineers_guild.100
+	id = DR_engineers_guild.100
 	hide_window = yes
-    is_triggered_only = yes
-    trigger = {
-    	FROM = { leader = { society_member_of = engineers_guild } }
-    }
-    immediate = {
-    	FROM = { leader = { character_event = { id = DR_engineers_guild.101 } } }
-    }
+	is_triggered_only = yes
+
+	trigger = {
+ 		FROM = {
+			leader = {
+				society_member_of = engineers_guild
+			}
+		}
+	}
+
+	immediate = {
+ 		FROM = {
+			leader = {
+				character_event = {
+					id = DR_engineers_guild.101
+				}
+			}
+		}
+	}
 }
 
-#Ping event
+# Ping event
 character_event = {
-    id = DR_engineers_guild.101
+	id = DR_engineers_guild.101
 	hide_window = yes
-    is_triggered_only = yes
-    immediate = {
-    	FROM = { letter_event = { id = DR_engineers_guild.102 } }
-    }
+	is_triggered_only = yes
+
+	immediate = {
+ 		FROM = {
+			letter_event = {
+				id = DR_engineers_guild.102
+			}
+		}
+	}
 }
 
-#Welcome letter
+# Welcome letter
 letter_event = {
-    id = DR_engineers_guild.102
-    desc = EVTDESC_DR_engineers_guild_102 #
-    border = GFX_event_letter_frame_religion
+	id = DR_engineers_guild.102
+	desc = EVTDESC_DR_engineers_guild_102
+	border = GFX_event_letter_frame_religion
+	is_triggered_only = yes
 
-    is_triggered_only = yes
-
-    option = {
-        name = EVTOPTA_DR_engineers_guild_102
-
+	option = {
+		name = EVTOPTA_DR_engineers_guild_102
 		join_society = engineers_guild
-    }
+	}
 }

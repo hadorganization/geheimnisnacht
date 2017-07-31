@@ -1,10 +1,10 @@
-###########################################
-#                                         #
-# Introduce Heir events				      #
-# by Alexander Oltner                     #
-# ID      	              				  #
-#                                         #
-###########################################
+
+
+# Introduce Heir events
+
+# by Alexander Oltner
+
+# ID
 
 namespace = ZE
 
@@ -13,25 +13,25 @@ character_event = {
 	id = ZE.22900
 	desc = EVTDESC_ZE_22900
 	picture = GFX_evt_son_asking_father
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		event_target:introduced_heir = {
 			is_alive = yes
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_ZE_22900
-		
-		event_target:introduced_heir = { prestige = 5 }
-		
+		event_target:introduced_heir = {
+			prestige = 5
+		}
 		hidden_tooltip = {
-			#Heir is groomed!
-			character_event = { id = ZE.22901 days = 104 }
-		
-			#Vassal offers to teach heir the scripture for a favor
+			# Heir is groomed!
+			character_event = {
+				id = ZE.22901 days = 104
+			}
+			# Vassal offers to teach heir the scripture for a favor
 			if = {
 				limit = {
 					any_vassal = {
@@ -39,7 +39,9 @@ character_event = {
 						religion = ROOT
 						prisoner = no
 						piety = 0
-						NOT = { holds_favor_on = ROOT }
+						NOT = {
+							holds_favor_on = ROOT
+						}
 						NOR = {
 							trait = incapable
 							is_inaccessible_trigger = yes
@@ -53,15 +55,15 @@ character_event = {
 				}
 				random_list = {
 					75 = {
-						character_event = { id = ZE.22902 days = 10 random = 5 }
+						character_event = {
+							id = ZE.22902 days = 10 random = 5
+						}
 					}
 					25 = {
-						
 					}
 				}
 			}
-			
-			#Heir impresses visiting vassal
+			# Heir impresses visiting vassal
 			if = {
 				limit = {
 					any_vassal = {
@@ -97,23 +99,24 @@ character_event = {
 				}
 				random_list = {
 					75 = {
-						character_event = { id = ZE.22903 days = 21 random = 5 }
+						character_event = {
+							id = ZE.22903 days = 21 random = 5
+						}
 					}
 					25 = {
-						
 					}
 				}
 				random_list = {
 					75 = {
-						character_event = { id = ZE.22903 days = 98 random = 5 }
+						character_event = {
+							id = ZE.22903 days = 98 random = 5
+						}
 					}
 					25 = {
-						
 					}
 				}
 			}
-			
-			#Heir accidently insults visiting vassal
+			# Heir accidently insults visiting vassal
 			if = {
 				limit = {
 					any_vassal = {
@@ -149,23 +152,24 @@ character_event = {
 				}
 				random_list = {
 					75 = {
-						character_event = { id = ZE.22904 days = 32 random = 5 }
+						character_event = {
+							id = ZE.22904 days = 32 random = 5
+						}
 					}
 					25 = {
-						
 					}
 				}
 				random_list = {
 					75 = {
-						character_event = { id = ZE.22904 days = 87 random = 5 }
+						character_event = {
+							id = ZE.22904 days = 87 random = 5
+						}
 					}
 					25 = {
-						
 					}
 				}
 			}
-			
-			#Heir befriends vassal child
+			# Heir befriends vassal child
 			if = {
 				limit = {
 					event_target:introduced_heir = {
@@ -187,10 +191,10 @@ character_event = {
 							is_adult = no
 							prisoner = no
 							is_landed = no
-							NOR = { 
-								is_friend = event_target:introduced_heir 
-								is_rival = event_target:introduced_heir 
-								sibling = event_target:introduced_heir 
+							NOR = {
+								is_friend = event_target:introduced_heir
+								is_rival = event_target:introduced_heir
+								sibling = event_target:introduced_heir
 								trait = incapable
 								is_inaccessible_trigger = yes
 							}
@@ -199,15 +203,15 @@ character_event = {
 				}
 				random_list = {
 					75 = {
-						character_event = { id = ZE.22905 days = 32 random = 5 }
+						character_event = {
+							id = ZE.22905 days = 32 random = 5
+						}
 					}
 					25 = {
-						
 					}
 				}
 			}
-			
-			#Heir rivals vassal child
+			# Heir rivals vassal child
 			if = {
 				limit = {
 					event_target:introduced_heir = {
@@ -229,10 +233,10 @@ character_event = {
 							is_adult = no
 							prisoner = no
 							is_landed = no
-							NOR = { 
-								is_friend = event_target:introduced_heir 
-								is_rival = event_target:introduced_heir 
-								sibling = event_target:introduced_heir 
+							NOR = {
+								is_friend = event_target:introduced_heir
+								is_rival = event_target:introduced_heir
+								sibling = event_target:introduced_heir
 								trait = incapable
 								is_inaccessible_trigger = yes
 							}
@@ -241,20 +245,20 @@ character_event = {
 				}
 				random_list = {
 					75 = {
-						character_event = { id = ZE.22906 days = 43 random = 5 }
+						character_event = {
+							id = ZE.22906 days = 43 random = 5
+						}
 					}
 					25 = {
-						
 					}
 				}
 			}
-			
-			#Heir underperforms and becomes depressed
+			# Heir underperforms and becomes depressed
 			if = {
 				limit = {
 					event_target:introduced_heir = {
 						NOR = {
-							trait = depressed 
+							trait = depressed
 							trait = indolent
 							has_character_flag = was_indolent
 						}
@@ -271,15 +275,15 @@ character_event = {
 				}
 				random_list = {
 					10 = {
-						character_event = { id = ZE.22907 days = 54 random = 5 }
+						character_event = {
+							id = ZE.22907 days = 54 random = 5
+						}
 					}
 					90 = {
-						
 					}
 				}
 			}
-			
-			#Vassal offers to teach heir to fight for a favor
+			# Vassal offers to teach heir to fight for a favor
 			if = {
 				limit = {
 					any_vassal = {
@@ -299,15 +303,15 @@ character_event = {
 				}
 				random_list = {
 					75 = {
-						character_event = { id = ZE.22908 days = 65 random = 5 }
+						character_event = {
+							id = ZE.22908 days = 65 random = 5
+						}
 					}
 					25 = {
-						
 					}
 				}
 			}
-			
-			#Heir is infatuated with Vassal's spouse
+			# Heir is infatuated with Vassal's spouse
 			if = {
 				limit = {
 					event_target:introduced_heir = {
@@ -328,7 +332,9 @@ character_event = {
 							prisoner = no
 							age = 20
 							is_landed = no
-							NOT = { age = 45 }
+							NOT = {
+								age = 45
+							}
 							NOR = {
 								trait = incapable
 								is_inaccessible_trigger = yes
@@ -338,16 +344,15 @@ character_event = {
 				}
 				random_list = {
 					50 = {
-						character_event = { id = ZE.22909 days = 76 random = 5 }
+						character_event = {
+							id = ZE.22909 days = 76 random = 5
+						}
 					}
 					50 = {
-						
 					}
 				}
 			}
-			
 		}
-		
 	}
 }
 
@@ -356,23 +361,22 @@ character_event = {
 	id = ZE.22901
 	desc = EVTDESC_ZE_22901
 	picture = GFX_evt_son_asking_father
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
-		event_target:introduced_heir = { is_alive = yes }
+		event_target:introduced_heir = {
+			is_alive = yes
+		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_ZE_22901
-		
-		event_target:introduced_heir = { 
+		event_target:introduced_heir = {
 			add_character_modifier = {
 				modifier = groomed_to_perfection
 				years = 20
 			}
 		}
-		
 	}
 }
 
@@ -381,11 +385,10 @@ character_event = {
 	id = ZE.22902
 	desc = EVTDESC_ZE_22902
 	picture = GFX_evt_church_council
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
-		event_target:introduced_heir = { 
+		event_target:introduced_heir = {
 			is_alive = yes
 		}
 		any_vassal = {
@@ -405,7 +408,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		any_vassal = {
 			limit = {
@@ -427,34 +430,30 @@ character_event = {
 			save_event_target_as = vassal_teacher
 		}
 	}
-	
-	#Accept offer
+	# Accept offer
+
 	option = {
 		name = EVTOPTA_ZE_22902
-		
-		event_target:introduced_heir = { 
+		event_target:introduced_heir = {
 			change_learning = 1
 			piety = 50
 		}
-		event_target:vassal_teacher = { 
-			add_favor = ROOT 
+		event_target:vassal_teacher = {
+			add_favor = ROOT
 		}
 	}
-	
-	#Decline offer
+	# Decline offer
+
 	option = {
 		name = EVTOPTB_ZE_22902
-		
 		piety = -50
-		
-		event_target:vassal_teacher = { 
+		event_target:vassal_teacher = {
 			opinion = {
 				modifier = opinion_disappointed
 				who = ROOT
 				years = 10
 			}
 		}
-
 	}
 }
 
@@ -463,9 +462,8 @@ character_event = {
 	id = ZE.22903
 	desc = EVTDESC_ZE_22903
 	picture = GFX_evt_dancing
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		event_target:introduced_heir = {
 			is_alive = yes
@@ -487,7 +485,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		any_vassal = {
 			limit = {
@@ -509,10 +507,9 @@ character_event = {
 			save_event_target_as = compliment_vassal
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_ZE_22903
-		
 		event_target:compliment_vassal = {
 			opinion = {
 				modifier = opinion_impressed
@@ -520,7 +517,6 @@ character_event = {
 				years = 20
 			}
 		}
-		
 	}
 }
 
@@ -529,9 +525,8 @@ character_event = {
 	id = ZE.22904
 	desc = EVTDESC_ZE_22904
 	picture = GFX_evt_accused
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		event_target:introduced_heir = {
 			is_alive = yes
@@ -553,7 +548,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		any_vassal = {
 			limit = {
@@ -575,10 +570,9 @@ character_event = {
 			save_event_target_as = insult_vassal
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_ZE_22904
-		
 		event_target:insult_vassal = {
 			opinion = {
 				modifier = insulted
@@ -586,7 +580,6 @@ character_event = {
 				years = 20
 			}
 		}
-		
 	}
 }
 
@@ -595,11 +588,12 @@ character_event = {
 	id = ZE.22905
 	desc = EVTDESC_ZE_22905
 	picture = GFX_evt_child_sword
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
-		event_target:introduced_heir = { is_alive = yes }
+		event_target:introduced_heir = {
+			is_alive = yes
+		}
 		any_vassal = {
 			ai = yes
 			prisoner = no
@@ -613,17 +607,17 @@ character_event = {
 				is_adult = no
 				prisoner = no
 				is_landed = no
-				NOR = { 
-					is_friend = event_target:introduced_heir 
-					is_rival = event_target:introduced_heir 
-					sibling = event_target:introduced_heir 
+				NOR = {
+					is_friend = event_target:introduced_heir
+					is_rival = event_target:introduced_heir
+					sibling = event_target:introduced_heir
 					trait = incapable
 					is_inaccessible_trigger = yes
 				}
 			}
 		}
 	}
-	
+
 	immediate = {
 		any_vassal = {
 			limit = {
@@ -641,10 +635,10 @@ character_event = {
 					is_adult = no
 					prisoner = no
 					is_landed = no
-					NOR = { 
-						is_friend = event_target:introduced_heir 
-						is_rival = event_target:introduced_heir 
-						sibling = event_target:introduced_heir 
+					NOR = {
+						is_friend = event_target:introduced_heir
+						is_rival = event_target:introduced_heir
+						sibling = event_target:introduced_heir
 						trait = incapable
 						is_inaccessible_trigger = yes
 					}
@@ -653,14 +647,12 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_ZE_22905
-		
-		event_target:introduced_heir = { 
+		event_target:introduced_heir = {
 			add_friend = event_target:befriended_child
 		}
-		
 	}
 }
 
@@ -669,11 +661,12 @@ character_event = {
 	id = ZE.22906
 	desc = EVTDESC_ZE_22906
 	picture = GFX_evt_child_bully
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
-		event_target:introduced_heir = { is_alive = yes }
+		event_target:introduced_heir = {
+			is_alive = yes
+		}
 		any_vassal = {
 			ai = yes
 			prisoner = no
@@ -687,17 +680,17 @@ character_event = {
 				is_adult = no
 				prisoner = no
 				is_landed = no
-				NOR = { 
-					is_friend = event_target:introduced_heir 
-					is_rival = event_target:introduced_heir 
-					sibling = event_target:introduced_heir 
+				NOR = {
+					is_friend = event_target:introduced_heir
+					is_rival = event_target:introduced_heir
+					sibling = event_target:introduced_heir
 					trait = incapable
 					is_inaccessible_trigger = yes
 				}
 			}
 		}
 	}
-	
+
 	immediate = {
 		any_vassal = {
 			limit = {
@@ -715,10 +708,10 @@ character_event = {
 					is_adult = no
 					prisoner = no
 					is_landed = no
-					NOR = { 
-						is_friend = event_target:introduced_heir 
-						is_rival = event_target:introduced_heir 
-						sibling = event_target:introduced_heir 
+					NOR = {
+						is_friend = event_target:introduced_heir
+						is_rival = event_target:introduced_heir
+						sibling = event_target:introduced_heir
 						trait = incapable
 						is_inaccessible_trigger = yes
 					}
@@ -727,14 +720,12 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_ZE_22906
-		
-		event_target:introduced_heir = { 
+		event_target:introduced_heir = {
 			add_rival = event_target:rival_child
 		}
-		
 	}
 }
 
@@ -743,23 +734,24 @@ character_event = {
 	id = ZE.22907
 	desc = EVTDESC_ZE_22907
 	picture = GFX_evt_bad_news
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
-		event_target:introduced_heir = { is_alive = yes }
+		event_target:introduced_heir = {
+			is_alive = yes
+		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_ZE_22907
-		
 		event_target:introduced_heir = {
 			add_trait = depressed
 			hidden_tooltip = {
-				character_event = {	id = 38314 days = 1000 random = 800 }
+				character_event = {
+					id = 38314 days = 1000 random = 800
+				}
 			}
 		}
-		
 	}
 }
 
@@ -768,11 +760,12 @@ character_event = {
 	id = ZE.22908
 	desc = EVTDESC_ZE_22908
 	picture = GFX_evt_family_feud_republic
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
-		event_target:introduced_heir = { is_alive = yes }
+		event_target:introduced_heir = {
+			is_alive = yes
+		}
 		any_vassal = {
 			ai = yes
 			prisoner = no
@@ -788,7 +781,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		any_vassal = {
 			limit = {
@@ -808,34 +801,30 @@ character_event = {
 			save_event_target_as = vassal_teacher_martial
 		}
 	}
-	
-	#Accept offer
+	# Accept offer
+
 	option = {
 		name = EVTOPTA_ZE_22908
-		
-		event_target:introduced_heir = { 
+		event_target:introduced_heir = {
 			change_martial = 1
 			prestige = 50
 		}
-		event_target:vassal_teacher_martial = { 
-			add_favor = ROOT 
+		event_target:vassal_teacher_martial = {
+			add_favor = ROOT
 		}
 	}
-	
-	#Decline offer
+	# Decline offer
+
 	option = {
 		name = EVTOPTB_ZE_22908
-		
 		prestige = -50
-		
-		event_target:vassal_teacher_martial = { 
+		event_target:vassal_teacher_martial = {
 			opinion = {
 				modifier = opinion_disappointed
 				who = ROOT
 				years = 10
 			}
 		}
-
 	}
 }
 
@@ -844,11 +833,12 @@ character_event = {
 	id = ZE.22909
 	desc = EVTDESC_ZE_22909
 	picture = GFX_evt_princess_byzantine
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
-		event_target:introduced_heir = { is_alive = yes }
+		event_target:introduced_heir = {
+			is_alive = yes
+		}
 		any_vassal = {
 			is_female = no
 			ai = yes
@@ -864,7 +854,9 @@ character_event = {
 				prisoner = no
 				age = 20
 				is_landed = no
-				NOT = { age = 45 }
+				NOT = {
+					age = 45
+				}
 				NOR = {
 					trait = incapable
 					is_inaccessible_trigger = yes
@@ -872,7 +864,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		random_vassal = {
 			limit = {
@@ -890,7 +882,9 @@ character_event = {
 					prisoner = no
 					age = 20
 					is_landed = no
-					NOT = { age = 45 }
+					NOT = {
+						age = 45
+					}
 					NOR = {
 						trait = incapable
 						is_inaccessible_trigger = yes
@@ -905,7 +899,9 @@ character_event = {
 					prisoner = no
 					age = 20
 					is_landed = no
-					NOT = { age = 45 }
+					NOT = {
+						age = 45
+					}
 					NOR = {
 						trait = incapable
 						is_inaccessible_trigger = yes
@@ -915,10 +911,9 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_ZE_22909
-		
 		event_target:introduced_heir = {
 			opinion = {
 				modifier = teenage_infatuation
@@ -926,7 +921,6 @@ character_event = {
 				years = 10
 			}
 		}
-		
 		event_target:husband_target = {
 			opinion = {
 				modifier = opinion_disapprove
@@ -934,6 +928,5 @@ character_event = {
 				years = 10
 			}
 		}
-		
 	}
 }

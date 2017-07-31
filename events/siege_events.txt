@@ -1,19 +1,15 @@
+
 # Siege Events: 62000 - 62299
-
 character_event = {
-
 	id = 62000
 	desc = EVTDESC62000
 	title = EVTNAME62000
-	
 	picture = GFX_evt_siege
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
 	notification = yes
 
-	trigger = { 
+	trigger = {
 		siege = {
 			is_attacker = yes
 			troops = {
@@ -23,16 +19,19 @@ character_event = {
 			}
 		}
 	}
-
 	weight_multiplier = {
 		months = 1
 		modifier = {
 			factor = 0.75
-			NOT = { martial = 2 }
+			NOT = {
+				martial = 2
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { martial = 4 }
+			NOT = {
+				martial = 4
+			}
 		}
 		modifier = {
 			factor = 1.25
@@ -55,12 +54,11 @@ character_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		siege = {
 			troops = -0.05
 		}
-			
 		siege = {
 			enemy = {
 				morale = 0.1
@@ -71,17 +69,23 @@ character_event = {
 							war_with = ROOT
 							NOT = {
 								ROOT = {
-									liege = { has_landed_title = e_rebels }
+									liege = {
+										has_landed_title = e_rebels
+									}
 								}
 							}
 						}
-						character_event = { id = 62030 }
+						character_event = {
+							id = 62030
+						}
 					}
 					if = {
 						limit = {
 							war_with = ROOT
 						}
-						character_event = { id = 62030 }
+						character_event = {
+							id = 62030
+						}
 					}
 				}
 			}
@@ -90,12 +94,10 @@ character_event = {
 
 	option = {
 		name = EVTOPTA62000
-		
 		tooltip = {
 			siege = {
 				troops = -0.05
 			}
-				
 			siege = {
 				enemy = {
 					morale = 0.1
@@ -106,25 +108,25 @@ character_event = {
 	}
 }
 
-character_event = { # Other side gets event
+character_event = {
+	# Other side gets event
 	id = 62030
 	desc = EVTDESC62000
 	title = EVTNAME62000
-	
 	picture = GFX_evt_siege
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
 	notification = yes
-	
+
 	trigger = {
 		ai = no
 	}
-	
+
 	option = {
 		name = EVTOPTA62000
-		custom_tooltip = { text = successful_sally }
+		custom_tooltip = {
+			text = successful_sally
+		}
 	}
 }
 
@@ -134,9 +136,7 @@ character_event = {
 	title = EVTNAME62001
 	picture = GFX_evt_siege
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
 	notification = yes
 
 	trigger = {
@@ -149,15 +149,12 @@ character_event = {
 			}
 		}
 	}
-
 	weight_multiplier = {
 		months = 1
-		
 		modifier = {
 			factor = 2.5
 			trait = wroth
 		}
-		
 		modifier = {
 			factor = 0.75
 			martial = 7
@@ -171,7 +168,9 @@ character_event = {
 			siege = {
 				enemy = {
 					leader = {
-						NOT = { martial = 2 }
+						NOT = {
+							martial = 2
+						}
 					}
 				}
 			}
@@ -181,19 +180,20 @@ character_event = {
 			siege = {
 				enemy = {
 					leader = {
-						NOT = { martial = 4 }
+						NOT = {
+							martial = 4
+						}
 					}
 				}
 			}
 		}
 	}
-	
+
 	immediate = {
 		siege = {
 			morale = 0.1
 			troops = -0.025
 		}
-			
 		siege = {
 			enemy = {
 				troops = -0.05
@@ -203,17 +203,23 @@ character_event = {
 							war_with = ROOT
 							NOT = {
 								ROOT = {
-									liege = { has_landed_title = e_rebels }
+									liege = {
+										has_landed_title = e_rebels
+									}
 								}
 							}
 						}
-						character_event = { id = 62031 }
+						character_event = {
+							id = 62031
+						}
 					}
 					if = {
 						limit = {
 							war_with = ROOT
 						}
-						character_event = { id = 62031 }
+						character_event = {
+							id = 62031
+						}
 					}
 				}
 			}
@@ -227,7 +233,6 @@ character_event = {
 				morale = 0.1
 				troops = -0.025
 			}
-				
 			siege = {
 				enemy = {
 					troops = -0.05
@@ -237,25 +242,25 @@ character_event = {
 	}
 }
 
-character_event = { # Other side gets event
+character_event = {
+	# Other side gets event
 	id = 62031
 	desc = EVTDESC62000
 	title = EVTNAME62001
-	
 	picture = GFX_evt_siege
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
 	notification = yes
-	
+
 	trigger = {
 		ai = no
 	}
-	
+
 	option = {
 		name = EVTOPTA62000
-		custom_tooltip = { text = successful_sally_attacker }
+		custom_tooltip = {
+			text = successful_sally_attacker
+		}
 	}
 }
 
@@ -265,9 +270,7 @@ character_event = {
 	title = EVTNAME62003
 	picture = GFX_evt_siege
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
 	notification = yes
 
 	trigger = {
@@ -280,7 +283,6 @@ character_event = {
 			}
 		}
 	}
-
 	weight_multiplier = {
 		months = 1
 		modifier = {
@@ -289,11 +291,15 @@ character_event = {
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { martial = 7 }
+			NOT = {
+				martial = 7
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { martial = 10 }
+			NOT = {
+				martial = 10
+			}
 		}
 		modifier = {
 			factor = 1.25
@@ -316,12 +322,11 @@ character_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		siege = {
 			troops = -0.025
 		}
-			
 		siege = {
 			enemy = {
 				morale = -0.1
@@ -332,17 +337,23 @@ character_event = {
 							war_with = ROOT
 							NOT = {
 								ROOT = {
-									liege = { has_landed_title = e_rebels }
+									liege = {
+										has_landed_title = e_rebels
+									}
 								}
 							}
 						}
-						character_event = { id = 62033 }
+						character_event = {
+							id = 62033
+						}
 					}
 					if = {
 						limit = {
 							war_with = ROOT
 						}
-						character_event = { id = 62033 }
+						character_event = {
+							id = 62033
+						}
 					}
 				}
 			}
@@ -355,7 +366,6 @@ character_event = {
 			siege = {
 				troops = -0.025
 			}
-				
 			siege = {
 				enemy = {
 					morale = -0.1
@@ -366,25 +376,25 @@ character_event = {
 	}
 }
 
-character_event = { # Other side gets event
+character_event = {
+	# Other side gets event
 	id = 62033
 	desc = EVTDESC62002
 	title = EVTNAME62003
-	
 	picture = GFX_evt_siege
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
 	notification = yes
-	
+
 	trigger = {
 		ai = no
 	}
-	
+
 	option = {
 		name = EVTOPTA62002
-		custom_tooltip = { text = failed_sally }
+		custom_tooltip = {
+			text = failed_sally
+		}
 	}
 }
 
@@ -394,9 +404,7 @@ character_event = {
 	title = EVTNAME62004
 	picture = GFX_evt_siege
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
 	notification = yes
 
 	trigger = {
@@ -409,12 +417,11 @@ character_event = {
 			}
 		}
 	}
-
 	weight_multiplier = {
 		months = 1
 		modifier = {
 			factor = 0.75
-			trait  = cruel
+			trait = cruel
 		}
 		modifier = {
 			factor = 0.75
@@ -426,10 +433,12 @@ character_event = {
 		}
 		modifier = {
 			factor = 1.25
-			NOT = { intrigue = 4 }
+			NOT = {
+				intrigue = 4
+			}
 		}
 	}
-	
+
 	immediate = {
 		siege = {
 			morale = 0.1
@@ -442,17 +451,23 @@ character_event = {
 							war_with = ROOT
 							NOT = {
 								ROOT = {
-									liege = { has_landed_title = e_rebels }
+									liege = {
+										has_landed_title = e_rebels
+									}
 								}
 							}
 						}
-						character_event = { id = 62034 }
+						character_event = {
+							id = 62034
+						}
 					}
 					if = {
 						limit = {
 							war_with = ROOT
 						}
-						character_event = { id = 62034 }
+						character_event = {
+							id = 62034
+						}
 					}
 				}
 			}
@@ -469,25 +484,25 @@ character_event = {
 	}
 }
 
-character_event = { # Other side gets event
+character_event = {
+	# Other side gets event
 	id = 62034
 	desc = EVTDESC62004
 	title = EVTNAME62004
-	
 	picture = GFX_evt_siege
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
 	notification = yes
-	
+
 	trigger = {
 		ai = no
 	}
-	
+
 	option = {
 		name = EVTOPTA62034
-		custom_tooltip = { text = siege_execute }
+		custom_tooltip = {
+			text = siege_execute
+		}
 	}
 }
 
@@ -497,22 +512,19 @@ character_event = {
 	title = EVTNAME62005
 	picture = GFX_evt_siege
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
 	notification = yes
-	
+
 	trigger = {
 		siege = {
 			is_attacker = yes
 		}
 	}
-
 	weight_multiplier = {
 		months = 1
 		modifier = {
 			factor = 0.75
-			trait  = elusive_shadow 
+			trait = elusive_shadow
 		}
 		modifier = {
 			factor = 0.75
@@ -524,10 +536,12 @@ character_event = {
 		}
 		modifier = {
 			factor = 1.25
-			NOT = { intrigue = 4 }
+			NOT = {
+				intrigue = 4
+			}
 		}
 	}
-	
+
 	immediate = {
 		siege = {
 			enemy = {
@@ -538,17 +552,23 @@ character_event = {
 							war_with = ROOT
 							NOT = {
 								ROOT = {
-									liege = { has_landed_title = e_rebels }
+									liege = {
+										has_landed_title = e_rebels
+									}
 								}
 							}
 						}
-						character_event = { id = 62035 }
+						character_event = {
+							id = 62035
+						}
 					}
 					if = {
 						limit = {
 							war_with = ROOT
 						}
-						character_event = { id = 62035 }
+						character_event = {
+							id = 62035
+						}
 					}
 				}
 			}
@@ -567,25 +587,25 @@ character_event = {
 	}
 }
 
-character_event = { # Other side gets event
+character_event = {
+	# Other side gets event
 	id = 62035
 	desc = EVTDESC62005
 	title = EVTNAME62005
-	
 	picture = GFX_evt_siege
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
 	notification = yes
-	
+
 	trigger = {
 		ai = no
 	}
-	
+
 	option = {
 		name = EVTOPTA62005
-		custom_tooltip = { text = siege_treachery }
+		custom_tooltip = {
+			text = siege_treachery
+		}
 	}
 }
 
@@ -595,9 +615,7 @@ character_event = {
 	title = EVTNAME62006
 	picture = GFX_evt_siege
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
 	notification = yes
 
 	trigger = {
@@ -605,16 +623,19 @@ character_event = {
 			is_attacker = yes
 		}
 	}
-
 	weight_multiplier = {
 		months = 1
 		modifier = {
 			factor = 0.75
-			NOT = { martial = 2 }
+			NOT = {
+				martial = 2
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { martial = 4 }
+			NOT = {
+				martial = 4
+			}
 		}
 		modifier = {
 			factor = 1.25
@@ -625,7 +646,7 @@ character_event = {
 			martial = 8
 		}
 	}
-	
+
 	immediate = {
 		siege = {
 			troops = -0.05
@@ -638,17 +659,23 @@ character_event = {
 							war_with = ROOT
 							NOT = {
 								ROOT = {
-									liege = { has_landed_title = e_rebels }
+									liege = {
+										has_landed_title = e_rebels
+									}
 								}
 							}
 						}
-						character_event = { id = 62036 }
+						character_event = {
+							id = 62036
+						}
 					}
 					if = {
 						limit = {
 							war_with = ROOT
 						}
-						character_event = { id = 62036 }
+						character_event = {
+							id = 62036
+						}
 					}
 				}
 			}
@@ -665,25 +692,25 @@ character_event = {
 	}
 }
 
-character_event = { # Other side gets event
+character_event = {
+	# Other side gets event
 	id = 62036
 	desc = EVTDESC62006
 	title = EVTNAME62006
-	
 	picture = GFX_evt_siege
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
 	notification = yes
-	
+
 	trigger = {
 		ai = no
 	}
-	
+
 	option = {
 		name = EVTOPTA62006
-		custom_tooltip = { text = siege_disease }
+		custom_tooltip = {
+			text = siege_disease
+		}
 	}
 }
 
@@ -693,9 +720,7 @@ character_event = {
 	title = EVTNAME62007
 	picture = GFX_evt_siege
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
 	notification = yes
 
 	trigger = {
@@ -703,16 +728,19 @@ character_event = {
 			is_attacker = no
 		}
 	}
-
 	weight_multiplier = {
 		months = 1
 		modifier = {
 			factor = 0.75
-			NOT = { martial = 2 }
+			NOT = {
+				martial = 2
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { martial = 4 }
+			NOT = {
+				martial = 4
+			}
 		}
 		modifier = {
 			factor = 1.25
@@ -723,7 +751,7 @@ character_event = {
 			martial = 8
 		}
 	}
-	
+
 	immediate = {
 		siege = {
 			troops = -0.05
@@ -736,17 +764,23 @@ character_event = {
 							war_with = ROOT
 							NOT = {
 								ROOT = {
-									liege = { has_landed_title = e_rebels }
+									liege = {
+										has_landed_title = e_rebels
+									}
 								}
 							}
 						}
-						character_event = { id = 62037 }
+						character_event = {
+							id = 62037
+						}
 					}
 					if = {
 						limit = {
 							war_with = ROOT
 						}
-						character_event = { id = 62037 }
+						character_event = {
+							id = 62037
+						}
 					}
 				}
 			}
@@ -763,25 +797,25 @@ character_event = {
 	}
 }
 
-character_event = { # Other side gets event
+character_event = {
+	# Other side gets event
 	id = 62037
 	desc = EVTDESC62007
 	title = EVTNAME62007
-	
 	picture = GFX_evt_siege
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
 	notification = yes
-	
+
 	trigger = {
 		ai = no
 	}
-	
+
 	option = {
 		name = EVTOPTA62007
-		custom_tooltip = { text = siege_hunger }
+		custom_tooltip = {
+			text = siege_hunger
+		}
 	}
 }
 
@@ -791,7 +825,6 @@ character_event = {
 	title = EVTNAME62008
 	picture = GFX_evt_siege
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
 
 	trigger = {
@@ -799,9 +832,7 @@ character_event = {
 			is_attacker = no
 		}
 	}
-	
 	notification = yes
-
 	weight_multiplier = {
 		months = 1
 		modifier = {
@@ -814,14 +845,16 @@ character_event = {
 		}
 		modifier = {
 			factor = 1.25
-			NOT = { diplomacy = 2 }
+			NOT = {
+				diplomacy = 2
+			}
 		}
 		modifier = {
 			factor = 1.25
 			trait = naive_appeaser
 		}
 	}
-	
+
 	immediate = {
 		siege = {
 			morale = 0.1
@@ -834,17 +867,23 @@ character_event = {
 							war_with = ROOT
 							NOT = {
 								ROOT = {
-									liege = { has_landed_title = e_rebels }
+									liege = {
+										has_landed_title = e_rebels
+									}
 								}
 							}
 						}
-						character_event = { id = 62038 }
+						character_event = {
+							id = 62038
+						}
 					}
 					if = {
 						limit = {
 							war_with = ROOT
 						}
-						character_event = { id = 62038 }
+						character_event = {
+							id = 62038
+						}
 					}
 				}
 			}
@@ -861,25 +900,25 @@ character_event = {
 	}
 }
 
-character_event = { # Other side gets event
+character_event = {
+	# Other side gets event
 	id = 62038
 	desc = EVTDESC62008
 	title = EVTNAME62008
-	
 	picture = GFX_evt_siege
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
 	notification = yes
-	
+
 	trigger = {
 		ai = no
 	}
-	
+
 	option = {
 		name = EVTOPTA62008
-		custom_tooltip = { text = siege_trader }
+		custom_tooltip = {
+			text = siege_trader
+		}
 	}
 }
 
@@ -889,9 +928,7 @@ character_event = {
 	title = EVTNAME62009
 	picture = GFX_evt_siege
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
 	notification = yes
 
 	trigger = {
@@ -908,16 +945,19 @@ character_event = {
 			}
 		}
 	}
-
 	weight_multiplier = {
 		months = 1
 		modifier = {
 			factor = 0.75
-			NOT = { martial = 2 }
+			NOT = {
+				martial = 2
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { martial = 4 }
+			NOT = {
+				martial = 4
+			}
 		}
 		modifier = {
 			factor = 1.25
@@ -928,7 +968,7 @@ character_event = {
 			martial = 8
 		}
 	}
-	
+
 	immediate = {
 		siege = {
 			troops = -0.01
@@ -941,17 +981,23 @@ character_event = {
 							war_with = ROOT
 							NOT = {
 								ROOT = {
-									liege = { has_landed_title = e_rebels }
+									liege = {
+										has_landed_title = e_rebels
+									}
 								}
 							}
 						}
-						character_event = { id = 62039 }
+						character_event = {
+							id = 62039
+						}
 					}
 					if = {
 						limit = {
 							war_with = ROOT
 						}
-						character_event = { id = 62039 }
+						character_event = {
+							id = 62039
+						}
 					}
 				}
 			}
@@ -968,25 +1014,25 @@ character_event = {
 	}
 }
 
-character_event = { # Other side gets event
+character_event = {
+	# Other side gets event
 	id = 62039
 	desc = EVTDESC62009
 	title = EVTNAME62009
-	
 	picture = GFX_evt_siege
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
 	notification = yes
-	
+
 	trigger = {
 		ai = no
 	}
-	
+
 	option = {
 		name = EVTOPTA62039
-		custom_tooltip = { text = siege_raiders }
+		custom_tooltip = {
+			text = siege_raiders
+		}
 	}
 }
 
@@ -996,9 +1042,8 @@ character_event = {
 	title = EVTNAME62010
 	picture = GFX_evt_siege
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
+
 	trigger = {
 		siege = {
 			is_attacker = yes
@@ -1011,16 +1056,19 @@ character_event = {
 			}
 		}
 	}
-
 	weight_multiplier = {
 		months = 1
 		modifier = {
 			factor = 0.75
-			NOT = { martial = 2 }
+			NOT = {
+				martial = 2
+			}
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { martial = 4 }
+			NOT = {
+				martial = 4
+			}
 		}
 		modifier = {
 			factor = 1.25
@@ -1031,7 +1079,7 @@ character_event = {
 			martial = 8
 		}
 	}
-	
+
 	immediate = {
 		siege = {
 			troops = -0.01
@@ -1044,17 +1092,23 @@ character_event = {
 							war_with = ROOT
 							NOT = {
 								ROOT = {
-									liege = { has_landed_title = e_rebels }
+									liege = {
+										has_landed_title = e_rebels
+									}
 								}
 							}
 						}
-						character_event = { id = 62040 }
+						character_event = {
+							id = 62040
+						}
 					}
 					if = {
 						limit = {
 							war_with = ROOT
 						}
-						character_event = { id = 62040 }
+						character_event = {
+							id = 62040
+						}
 					}
 				}
 			}
@@ -1071,49 +1125,45 @@ character_event = {
 	}
 }
 
-character_event = { # Other side gets event
+character_event = {
+	# Other side gets event
 	id = 62040
 	desc = EVTDESC62040
 	title = EVTNAME62010
-	
 	picture = GFX_evt_siege
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
 	notification = yes
-	
+
 	trigger = {
 		ai = no
 	}
-	
+
 	option = {
 		name = EVTOPTA62010
-		custom_tooltip = { text = siege_raiders }
+		custom_tooltip = {
+			text = siege_raiders
+		}
 	}
 }
-
 narrative_event = {
 	id = 62011
 	desc = EVTDESC62011
 	title = EVTNAME62011
 	picture = GFX_evt_siege
 	border = GFX_event_narrative_frame_war
-
 	is_triggered_only = yes
-	
 	notification = yes
 
-    trigger = {
-        siege = {
-            is_attacker = no
-        }
-        religion_group = old_world_group
-        enemy = {
-            religion_group = chaos_gods_group
-        }
-    }
-
+	trigger = {
+		siege = {
+			is_attacker = no
+		}
+		religion_group = old_world_group
+		enemy = {
+			religion_group = chaos_gods_group
+		}
+	}
 	weight_multiplier = {
 		months = 1
 		modifier = {
@@ -1130,30 +1180,36 @@ narrative_event = {
 		}
 		modifier = {
 			factor = 1.25
-			NOT = { piety = 0 }
+			NOT = {
+				piety = 0
+			}
 		}
 	}
-	
+
 	immediate = {
 		siege = {
 			morale = 1
 		}
 		siege = {
 			enemy = {
-				morale = -0.9			
+				morale = -0.9
 				troops = -0.9
 				leader = {
 					any_liege = {
 						limit = {
 							war_with = ROOT
 						}
-						narrative_event = { id = 62041 }
+						narrative_event = {
+							id = 62041
+						}
 					}
 					if = {
 						limit = {
 							war_with = ROOT
 						}
-						narrative_event = { id = 62041 }
+						narrative_event = {
+							id = 62041
+						}
 					}
 				}
 			}
@@ -1168,45 +1224,41 @@ narrative_event = {
 			}
 			siege = {
 				enemy = {
-					morale = -0.9			
+					morale = -0.9
 					troops = -0.9
 				}
 			}
 		}
 	}
 }
-
-narrative_event = { # Other side gets event
+narrative_event = {
+	# Other side gets event
 	id = 62041
 	desc = EVTDESC62011
 	title = EVTNAME62041
-	
 	picture = GFX_evt_siege
 	border = GFX_event_narrative_frame_war
-
 	is_triggered_only = yes
-	
 	notification = yes
-	
+
 	trigger = {
 		ai = no
 	}
-	
+
 	option = {
 		name = EVTOPTA62041
-		custom_tooltip =  { text = siege_miracle }
+		custom_tooltip = {
+			text = siege_miracle
+		}
 	}
 }
-
 narrative_event = {
 	id = 62012
 	desc = EVTDESC62012
 	title = EVTNAME62011
 	picture = GFX_evt_siege
 	border = GFX_event_narrative_frame_war
-
 	is_triggered_only = yes
-	
 	notification = yes
 
 	trigger = {
@@ -1218,7 +1270,6 @@ narrative_event = {
 			religion_group = muslim
 		}
 	}
-
 	weight_multiplier = {
 		months = 1
 		modifier = {
@@ -1235,30 +1286,36 @@ narrative_event = {
 		}
 		modifier = {
 			factor = 1.25
-			NOT = { piety = 0 }
+			NOT = {
+				piety = 0
+			}
 		}
 	}
-	
+
 	immediate = {
 		siege = {
 			morale = 1
 		}
 		siege = {
 			enemy = {
-				morale = -0.9			
+				morale = -0.9
 				troops = -0.9
 				leader = {
 					any_liege = {
 						limit = {
 							war_with = ROOT
 						}
-						narrative_event = { id = 62042 }
+						narrative_event = {
+							id = 62042
+						}
 					}
 					if = {
 						limit = {
 							war_with = ROOT
 						}
-						narrative_event = { id = 62042 }
+						narrative_event = {
+							id = 62042
+						}
 					}
 				}
 			}
@@ -1273,46 +1330,43 @@ narrative_event = {
 			}
 			siege = {
 				enemy = {
-					morale = -0.9			
+					morale = -0.9
 					troops = -0.9
 				}
 			}
 		}
 	}
 }
-
-narrative_event = { # Other side gets event
+narrative_event = {
+	# Other side gets event
 	id = 62042
 	desc = EVTDESC62012
 	title = EVTNAME62041
-	
 	picture = GFX_evt_siege
 	border = GFX_event_narrative_frame_war
-
 	is_triggered_only = yes
-	
 	notification = yes
-	
+
 	trigger = {
 		ai = no
 	}
-	
+
 	option = {
 		name = EVTOPTA62041
-		custom_tooltip = { text = siege_miracle }
+		custom_tooltip = {
+			text = siege_miracle
+		}
 	}
 }
 
-#Miracle
+# Miracle
 narrative_event = {
 	id = 62013
 	desc = EVTDESC62013
 	title = EVTNAME62011
 	picture = GFX_evt_siege
 	border = GFX_event_narrative_frame_war
-
 	is_triggered_only = yes
-	
 	notification = yes
 
 	trigger = {
@@ -1321,10 +1375,11 @@ narrative_event = {
 		}
 		religion_group = muslim
 		enemy = {
-			NOT = { religion_group = muslim }
+			NOT = {
+				religion_group = muslim
+			}
 		}
 	}
-
 	weight_multiplier = {
 		months = 1
 		modifier = {
@@ -1341,30 +1396,36 @@ narrative_event = {
 		}
 		modifier = {
 			factor = 1.25
-			NOT = { piety = 0 }
+			NOT = {
+				piety = 0
+			}
 		}
 	}
-	
+
 	immediate = {
 		siege = {
 			morale = 1
 		}
 		siege = {
 			enemy = {
-				morale = -0.9			
+				morale = -0.9
 				troops = -0.9
 				leader = {
 					any_liege = {
 						limit = {
 							war_with = ROOT
 						}
-						narrative_event = { id = 62043 }
+						narrative_event = {
+							id = 62043
+						}
 					}
 					if = {
 						limit = {
 							war_with = ROOT
 						}
-						narrative_event = { id = 62043 }
+						narrative_event = {
+							id = 62043
+						}
 					}
 				}
 			}
@@ -1379,63 +1440,66 @@ narrative_event = {
 			}
 			siege = {
 				enemy = {
-					morale = -0.9			
+					morale = -0.9
 					troops = -0.9
 				}
 			}
 		}
 	}
 }
-
-narrative_event = { # Other side gets event
+narrative_event = {
+	# Other side gets event
 	id = 62043
 	desc = EVTDESC62013
 	title = EVTNAME62041
-	
 	picture = GFX_evt_siege
 	border = GFX_event_narrative_frame_war
-
 	is_triggered_only = yes
-	
 	notification = yes
-	
+
 	trigger = {
 		ai = no
 	}
-	
+
 	option = {
 		name = EVTOPTA62041
-		custom_tooltip = { text = siege_miracle }
+		custom_tooltip = {
+			text = siege_miracle
+		}
 	}
 }
 
-#Assault
+# Assault
 character_event = {
 	id = 62014
 	desc = EVTDESC62014
 	title = EVTNAME62014
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-
-	religion_group = old_world_group 
-	
+	religion_group = old_world_group
 	is_triggered_only = yes
-	
 	notification = yes
 
 	trigger = {
 		siege = {
 			is_attacker = yes
 		}
-		NOT = {	trait = craven }
-		NOT = {	trait = cynical	}
+		NOT = {
+			trait = craven
+		}
+		NOT = {
+			trait = cynical
+		}
 		can_be_maimed_trigger = yes
-		NOT = {	trait = wounded	}
+		NOT = {
+			trait = wounded
+		}
 		enemy = {
-			NOT = { religion_group = old_world_group }
-		}		
+			NOT = {
+				religion_group = old_world_group
+			}
+		}
 	}
-
 	weight_multiplier = {
 		months = 1
 		modifier = {
@@ -1447,7 +1511,7 @@ character_event = {
 			trait = brave
 		}
 	}
-	
+
 	immediate = {
 		siege = {
 			enemy = {
@@ -1457,85 +1521,106 @@ character_event = {
 						limit = {
 							war_with = ROOT
 						}
-						character_event = { id = 62044 }
+						character_event = {
+							id = 62044
+						}
 					}
 					if = {
 						limit = {
 							war_with = ROOT
 						}
-						character_event = { id = 62044 }
+						character_event = {
+							id = 62044
+						}
 					}
 				}
 			}
 		}
 		random_list = {
-			80 = {add_trait = crusader }
-			10 = { add_maimed_trait_effect = yes }
-			10 = { add_trait = wounded hidden_tooltip = { character_event = { id = 38280 } } }
+			80 = {
+				add_trait = crusader
+			}
+			10 = {
+				add_maimed_trait_effect = yes
+			}
+			10 = {
+				add_trait = wounded hidden_tooltip = {
+					character_event = {
+						id = 38280
+					}
+				}
+			}
 		}
 	}
 
 	option = {
 		name = EVTOPTA62014
-		
 		tooltip = {
 			siege = {
 				enemy = {
-					morale = -0.1			
+					morale = -0.1
 				}
 			}
 			random_list = {
-				80 = {add_trait = crusader }
-				10 = { add_maimed_trait_effect = yes }
-				10 = { add_trait = wounded hidden_tooltip = { character_event = { id = 38280 } } }
+				80 = {
+					add_trait = crusader
+				}
+				10 = {
+					add_maimed_trait_effect = yes
+				}
+				10 = {
+					add_trait = wounded hidden_tooltip = {
+						character_event = {
+							id = 38280
+						}
+					}
+				}
 			}
 		}
 	}
 }
 
-character_event = { # Other side gets event
+character_event = {
+	# Other side gets event
 	id = 62044
 	desc = EVTDESC62044
 	title = EVTNAME62044
-	
 	picture = GFX_evt_siege
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
 	notification = yes
-	
+
 	trigger = {
 		ai = no
 	}
-	
+
 	option = {
 		name = EVTOPTA62044
-		custom_tooltip = { text = siege_treachery }
+		custom_tooltip = {
+			text = siege_treachery
+		}
 	}
 }
 
-#Ill, pneumonic, leper or syphilitic
+# Ill, pneumonic, leper or syphilitic
 character_event = {
 	id = 62015
 	desc = EVTDESC62015
 	title = EVTNAME62015
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		is_ill = yes
 		NOT = {
 			trait = craven
 		}
 	}
-	
 	weight_multiplier = {
 		days = 1
 	}
-	
+
 	option = {
 		name = EVTOPTA62015
 		siege = {
@@ -1543,20 +1628,24 @@ character_event = {
 		}
 		siege = {
 			enemy = {
-				morale = -0.2			
+				morale = -0.2
 				troops = -0.2
 				leader = {
 					any_liege = {
 						limit = {
 							war_with = ROOT
 						}
-						character_event = { id = 62045 }
+						character_event = {
+							id = 62045
+						}
 					}
 					if = {
 						limit = {
 							war_with = ROOT
 						}
-						character_event = { id = 62045 }
+						character_event = {
+							id = 62045
+						}
 					}
 				}
 			}
@@ -1568,12 +1657,12 @@ character_event = {
 			}
 			40 = {
 				if = {
-				 limit = {
-					is_invincible_trigger = yes
+					limit = {
+						is_invincible_trigger = yes
+					}
+					antideath_effect = yes
+					break = yes
 				}
-				antideath_effect = yes
-				break = yes 
-			}
 				death = {
 					death_reason = death_battle
 					killer = FROM
@@ -1581,6 +1670,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB62015
 		siege = {
@@ -1588,32 +1678,40 @@ character_event = {
 		}
 		siege = {
 			enemy = {
-				morale = -0.05			
+				morale = -0.05
 				troops = -0.05
 				leader = {
 					any_liege = {
 						limit = {
 							war_with = ROOT
 						}
-						character_event = { id = 62046 }
+						character_event = {
+							id = 62046
+						}
 					}
 					if = {
 						limit = {
 							war_with = ROOT
 						}
-						character_event = { id = 62046 }
+						character_event = {
+							id = 62046
+						}
 					}
 				}
 			}
 		}
 		if = {
-			limit = { NOR = { trait = craven trait = berserker } }
+			limit = {
+				NOR = {
+					trait = craven trait = berserker
+				}
+			}
 			random = {
 				chance = 50
 				add_trait = craven
 				hidden_tooltip = {
 					character_event = {
-						id = 38257 #Notify Craven
+						id = 38257 # Notify Craven
 					}
 				}
 			}
@@ -1622,77 +1720,80 @@ character_event = {
 	}
 }
 
-character_event = { # Other side gets event
+character_event = {
+	# Other side gets event
 	id = 62045
 	desc = EVTDESC62045
 	title = EVTNAME62044
-	
 	picture = GFX_evt_siege
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
+
 	trigger = {
 		ai = no
 	}
-	
+
 	option = {
 		name = EVTOPTA62045
-		custom_tooltip = { text = siege_assault }
+		custom_tooltip = {
+			text = siege_assault
+		}
 	}
 }
 
-character_event = { # Other side gets event
+character_event = {
+	# Other side gets event
 	id = 62046
 	desc = EVTDESC62045
 	title = EVTNAME62044
-	
 	picture = GFX_evt_siege
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-	
+
 	trigger = {
 		ai = no
 	}
-	
+
 	option = {
 		name = EVTOPTA62045
-		custom_tooltip = { text = siege_hide }
+		custom_tooltip = {
+			text = siege_hide
+		}
 	}
 }
 
 # Imprisoned by the winner. Fired from 'on_siege_over_loc_chars'.
+
 # Siege winner unit owner in the 'new_character' scope, lost holding title in FROM, local character in ROOT.
 character_event = {
 	id = 62100
 	picture = GFX_evt_siege
-	
 	desc = EVTDESC62100
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		new_character = {
-			NOT = { has_landed_title = e_rebels }
+			NOT = {
+				has_landed_title = e_rebels
+			}
 			rebel = no
 			# NOT = { # Handled by SSI.61
-				# OR = {
-					# has_landed_title = e_mexikha
-					# any_liege = {
-						# has_landed_title = e_mexikha
-					# }
-				# }
+			# OR = {
+			# has_landed_title = e_mexikha
+			# any_liege = {
+			# has_landed_title = e_mexikha
+			# }
+			# }
 			# }
 		}
-		
 		OR = {
 			is_ruler = yes
 			AND = {
 				is_female = yes
-				NOT = { age = 40 }
+				NOT = {
+					age = 40
+				}
 			}
-			
 			host = {
 				OR = {
 					is_close_relative = ROOT
@@ -1712,7 +1813,6 @@ character_event = {
 					}
 				}
 			}
-			
 			AND = {
 				new_character = {
 					ROOT = {
@@ -1723,7 +1823,6 @@ character_event = {
 						}
 					}
 				}
-				
 				host = {
 					top_liege = {
 						is_close_relative = ROOT
@@ -1732,7 +1831,6 @@ character_event = {
 			}
 		}
 	}
-	
 	weight_multiplier = {
 		days = 1
 		modifier = {
@@ -1740,7 +1838,7 @@ character_event = {
 			is_female = yes
 			new_character = {
 				OR = {
-                    religion_group = chaos_gods_group
+					religion_group = chaos_gods_group
 				}
 			}
 		}
@@ -1756,7 +1854,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA62100
 		trigger = {
@@ -1771,7 +1869,9 @@ character_event = {
 		}
 		hidden_tooltip = {
 			new_character = {
-				character_event = { id = 62101 }
+				character_event = {
+					id = 62101
+				}
 			}
 		}
 	}
@@ -1797,13 +1897,10 @@ character_event = {
 	picture = GFX_evt_siege
 	desc = EVTDESC62101
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
 	notification = yes
-	
 	ai = no
-	
+
 	option = {
 		name = EVTOPTA62101
 		tooltip = {

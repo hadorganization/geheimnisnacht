@@ -1,31 +1,28 @@
-################################################
-#
+
+
 # Events for Muslim Honorary Titles Events
-#
+
 # ID 105000 - 105999 is reserved
-#
+
 # The basic events are triggered by on actions
-#
-#################################################
-#
+
 # Written by Sara Wendel-Örtqvist
 
-### CHIEF QADI ###
-	
-### Woman asks Chief Qadi for a divorce ###
+# CHIEF QADI
+
+# Woman asks Chief Qadi for a divorce
 character_event = {
 	id = 105000
 	desc = "EVTDESC105000"
-	picture = GFX_evt_quarrel #Placeholder?
+	picture = GFX_evt_quarrel # Placeholder?
 	border = GFX_event_normal_frame_religion
-	
 	only_women = yes
 	min_age = 16
 	prisoner = no
 	only_capable = yes
 	religion_group = ormazd_gods_group
 	is_married = yes
-	
+
 	trigger = {
 		OR = {
 			religion = ormazd
@@ -43,7 +40,11 @@ character_event = {
 				trait = cruel
 				trait = arbitrary
 				trait = greedy
-				NOT = { reverse_opinion = { who = ROOT value = 0 } }
+				NOT = {
+					reverse_opinion = {
+						who = ROOT value = 0
+					}
+				}
 			}
 			NOT = {
 				has_minor_title = title_chief_qadi
@@ -60,10 +61,9 @@ character_event = {
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 200
-		
 		modifier = {
 			factor = 5
 			trait = content
@@ -85,7 +85,7 @@ character_event = {
 			num_of_children = 6
 		}
 	}
-	
+
 	immediate = {
 		hidden_tooltip = {
 			add_character_modifier = {
@@ -95,7 +95,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = "EVTOPTA105000"
 		ai_chance = {
@@ -151,7 +151,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = "EVTOPTB105000"
 		ai_chance = {
@@ -174,7 +174,7 @@ character_event = {
 				add_trait = depressed
 				hidden_tooltip = {
 					character_event = {
-						id = 38288 #Notify Depressed
+						id = 38288 # Notify Depressed
 					}
 				}
 			}
@@ -182,20 +182,18 @@ character_event = {
 	}
 }
 
-#Court Qadi is asked by the woman to grant her a divorce
+# Court Qadi is asked by the woman to grant her a divorce
 character_event = {
 	id = 105001
 	desc = "EVTDESC105001"
 	picture = GFX_evt_quarrel
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
-		name = "EVTOPTA105001" #Yes
+		name = "EVTOPTA105001" # Yes
 		ai_chance = {
 			factor = 40
-			
 			modifier = {
 				factor = 4
 				trait = just
@@ -219,11 +217,11 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOPTB105001" #No
+		name = "EVTOPTB105001" # No
 		ai_chance = {
 			factor = 60
-			
 			modifier = {
 				factor = 2
 				trait = arbitrary
@@ -240,15 +238,14 @@ character_event = {
 	}
 }
 
-#Woman is granted divorce
+# Woman is granted divorce
 character_event = {
 	id = 105002
 	desc = "EVTDESC105002"
 	picture = GFX_evt_quarrel
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105002"
 		trigger = {
@@ -256,7 +253,6 @@ character_event = {
 		}
 		ai_chance = {
 			factor = 20
-
 			modifier = {
 				factor = 2
 				trait = wroth
@@ -276,7 +272,11 @@ character_event = {
 			modifier = {
 				factor = 2
 				spouse = {
-					NOT = { reverse_opinion = { who = ROOT value = 0 } }
+					NOT = {
+						reverse_opinion = {
+							who = ROOT value = 0
+						}
+					}
 				}
 			}
 		}
@@ -289,14 +289,14 @@ character_event = {
 			duration = -1
 		}
 	}
+
 	option = {
-		name = "EVTOPTB105002"  #Pregnant, must wait until child is born
+		name = "EVTOPTB105002" # Pregnant, must wait until child is born
 		trigger = {
 			is_pregnant = yes
 		}
 		ai_chance = {
 			factor = 20
-			
 			modifier = {
 				factor = 2
 				trait = wroth
@@ -316,7 +316,11 @@ character_event = {
 			modifier = {
 				factor = 2
 				spouse = {
-					NOT = { reverse_opinion = { who = ROOT value = 0 } }
+					NOT = {
+						reverse_opinion = {
+							who = ROOT value = 0
+						}
+					}
 				}
 			}
 		}
@@ -329,8 +333,9 @@ character_event = {
 			duration = -1
 		}
 	}
+
 	option = {
-		name = "EVTOPTC105002" #I have changed my mind
+		name = "EVTOPTC105002" # I have changed my mind
 		ai_chance = {
 			factor = 60
 		}
@@ -351,15 +356,14 @@ character_event = {
 	}
 }
 
-#Woman won't get the Chief Qadi's approval
+# Woman won't get the Chief Qadi's approval
 character_event = {
 	id = 105003
 	desc = "EVTDESC105003"
 	picture = GFX_evt_quarrel
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105003"
 		opinion = {
@@ -378,19 +382,18 @@ character_event = {
 	}
 }
 
-#Woman gets divorced
+# Woman gets divorced
 character_event = {
 	id = 105004
 	desc = "EVTDESC105004"
 	picture = GFX_evt_quarrel
 	border = GFX_event_normal_frame_religion
-	
 	only_women = yes
 	min_age = 16
 	prisoner = no
 	only_capable = yes
 	has_character_flag = qadi_granted_divorce
-	
+
 	trigger = {
 		is_pregnant = no
 		has_character_modifier = iddah_period
@@ -399,11 +402,11 @@ character_event = {
 			days = 30
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		days = 1
 	}
-	
+
 	option = {
 		name = "EVTOPTA105004"
 		remove_character_modifier = iddah_period
@@ -412,6 +415,7 @@ character_event = {
 			remove_spouse = ROOT
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105004"
 		remove_character_modifier = iddah_period
@@ -433,21 +437,21 @@ character_event = {
 	}
 }
 
-#Spouse finds out about divorce
+# Spouse finds out about divorce
 character_event = {
 	id = 105005
 	desc = "EVTDESC105005"
 	picture = GFX_evt_quarrel
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
-		name = "EVTOPTA105005" #if that's what she wants...
+		name = "EVTOPTA105005" # if that's what she wants...
 		prestige = -10
 	}
+
 	option = {
-		name = "EVTOPTB105005" #NO! I won't allow it!
+		name = "EVTOPTB105005" # NO! I won't allow it!
 		spouse = {
 			character_event = {
 				id = 105006
@@ -459,17 +463,16 @@ character_event = {
 	}
 }
 
-#Woman is asked by spouse to reconsider
+# Woman is asked by spouse to reconsider
 character_event = {
 	id = 105006
 	desc = "EVTDESC105006"
 	picture = GFX_evt_quarrel
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
-		name = "EVTOPTA105006" #I want that divorce!
+		name = "EVTOPTA105006" # I want that divorce!
 		FROM = {
 			set_character_flag = wants_divorce
 			character_event = {
@@ -480,8 +483,9 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOPTB105006" #Okay
+		name = "EVTOPTB105006" # Okay
 		remove_character_modifier = iddah_period
 		clr_character_flag = qadi_granted_divorce
 		FROM = {
@@ -501,15 +505,14 @@ character_event = {
 	}
 }
 
-#Spouse: Woman's answer
+# Spouse: Woman's answer
 character_event = {
 	id = 105007
 	desc = "EVTDESC105007"
 	picture = GFX_evt_quarrel
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105007"
 		trigger = {
@@ -522,6 +525,7 @@ character_event = {
 			years = 2
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105007"
 		trigger = {
@@ -538,19 +542,18 @@ character_event = {
 	}
 }
 
-### Suggest a Chief Qadi ###
+# Suggest a Chief Qadi
 character_event = {
 	id = 105010
 	desc = "EVTDESC105010"
 	picture = GFX_evt_emissary
 	border = GFX_event_normal_frame_religion
-	
 	min_age = 16
 	prisoner = no
 	capable_only = yes
 	religion_group = ormazd_gods_group
 	war = no
-	
+
 	trigger = {
 		OR = {
 			religion = ormazd
@@ -655,10 +658,9 @@ character_event = {
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 250
-		
 		modifier = {
 			factor = 0.5
 			trait = diligent
@@ -676,7 +678,7 @@ character_event = {
 			trait = content
 		}
 	}
-	
+
 	immediate = {
 		set_character_flag = qadi_suggester
 		hidden_tooltip = {
@@ -689,9 +691,9 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
-		name = "EVTOPTA105010" #Suggest a courtier
+		name = "EVTOPTA105010" # Suggest a courtier
 		trigger = {
 			liege = {
 				any_courtier = {
@@ -699,8 +701,12 @@ character_event = {
 					is_female = no
 					religion_group = ormazd_gods_group
 					prisoner = no
-					NOT = { character = PREV }
-					NOT = { character = ROOT }
+					NOT = {
+						character = PREV
+					}
+					NOT = {
+						character = ROOT
+					}
 					NOT = {
 						has_minor_title = title_chief_qadi
 					}
@@ -725,8 +731,12 @@ character_event = {
 					religion_group = ormazd_gods_group
 					is_female = no
 					prisoner = no
-					NOT = { character = PREV }
-					NOT = { character = ROOT }
+					NOT = {
+						character = PREV
+					}
+					NOT = {
+						character = ROOT
+					}
 					NOT = {
 						has_minor_title = title_chief_qadi
 					}
@@ -754,8 +764,9 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOPTB105010" #Suggest yourself
+		name = "EVTOPTB105010" # Suggest yourself
 		trigger = {
 			is_female = no
 			NOT = {
@@ -779,8 +790,9 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOPTC105010" #Suggest a vassal
+		name = "EVTOPTC105010" # Suggest a vassal
 		trigger = {
 			liege = {
 				any_vassal = {
@@ -845,22 +857,22 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOPTD105010" #Do nothing
+		name = "EVTOPTD105010" # Do nothing
 	}
 }
 
-#Liege listens to suggestions
+# Liege listens to suggestions
 character_event = {
 	id = 105011
 	desc = "EVTDESC105011"
-	picture = GFX_evt_emissary #Placeholder?
+	picture = GFX_evt_emissary # Placeholder?
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
-		name = "EVTOPTE105011" #OK
+		name = "EVTOPTE105011" # OK
 		ai_chance = {
 			factor = 40
 		}
@@ -868,7 +880,9 @@ character_event = {
 			give_minor_title = title_chief_qadi
 			if = {
 				limit = {
-					FROM = { character = PREV }
+					FROM = {
+						character = PREV
+					}
 				}
 				character_event = {
 					id = 105014
@@ -886,15 +900,17 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOPTF105011" #No
+		name = "EVTOPTF105011" # No
 		ai_chance = {
 			factor = 60
 		}
 		FROM = {
 			if = {
-				limit = { 
-					character = event_target:target_suggested_qadi }
+				limit = {
+					character = event_target:target_suggested_qadi
+				}
 				opinion = {
 					modifier = opinion_disappointed
 					who = ROOT
@@ -918,17 +934,15 @@ character_event = {
 	}
 }
 
-#Vassal/Courtier gets title thanks to ROOT
+# Vassal/Courtier gets title thanks to ROOT
 character_event = {
 	id = 105012
 	desc = "EVTDESC105012"
-	picture = GFX_evt_emissary #Placeholder?
+	picture = GFX_evt_emissary # Placeholder?
 	border = GFX_event_normal_frame_religion
-	
 	show_from_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA105012
 		tooltip = {
@@ -950,17 +964,15 @@ character_event = {
 	}
 }
 
-#ROOT is thanked/dismissed
+# ROOT is thanked/dismissed
 character_event = {
 	id = 105013
 	desc = EVTDESC105013
-	picture = GFX_evt_emissary #Placeholder?
+	picture = GFX_evt_emissary # Placeholder?
 	border = GFX_event_normal_frame_religion
-	
 	show_from_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA105013
 		trigger = {
@@ -977,29 +989,30 @@ character_event = {
 					years = 5
 				}
 			}
-		}		
+		}
 	}
-	
+
 	option = {
 		name = EVTOPTB105013
 		trigger = {
 			event_target:target_suggested_qadi = {
-				NOT = { has_minor_title = title_chief_qadi }
+				NOT = {
+					has_minor_title = title_chief_qadi
+				}
 			}
 		}
 		prestige = -5
 	}
 }
 
-#ROOT gains title/is dismissed
+# ROOT gains title/is dismissed
 character_event = {
 	id = 105014
 	desc = "EVTDESC105014"
-	picture = GFX_evt_emissary #Placeholder?
+	picture = GFX_evt_emissary # Placeholder?
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105014"
 		trigger = {
@@ -1015,10 +1028,13 @@ character_event = {
 			years = 5
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105014"
 		trigger = {
-			NOT = { has_minor_title = title_chief_qadi }
+			NOT = {
+				has_minor_title = title_chief_qadi
+			}
 		}
 		prestige = -5
 		tooltip = {
@@ -1031,19 +1047,18 @@ character_event = {
 	}
 }
 
-### Suggest a new Chief Qadi ###
+# Suggest a new Chief Qadi
 character_event = {
 	id = 105020
 	desc = "EVTDESC105020"
-	picture = GFX_evt_emissary #Placeholder!
+	picture = GFX_evt_emissary # Placeholder!
 	border = GFX_event_normal_frame_religion
-	
 	min_age = 16
 	prisoner = no
 	only_capable = yes
 	religion_group = ormazd_gods_group
 	war = no
-	
+
 	trigger = {
 		OR = {
 			religion = ormazd
@@ -1171,10 +1186,9 @@ character_event = {
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 350
-		
 		modifier = {
 			factor = 0.5
 			trait = diligent
@@ -1192,17 +1206,18 @@ character_event = {
 			trait = content
 		}
 	}
-	
+
 	immediate = {
 		hidden_tooltip = {
-			liege = { 
+			liege = {
 				random_vassal = {
-					limit = { has_minor_title = title_chief_qadi }
+					limit = {
+						has_minor_title = title_chief_qadi
+					}
 					save_event_target_as = bad_qadi
 				}
 			}
 		}
-
 		set_character_flag = new_qadi_suggester
 		hidden_tooltip = {
 			liege = {
@@ -1221,7 +1236,9 @@ character_event = {
 					}
 				}
 				random_vassal = {
-					limit = { has_minor_title = title_chief_qadi }
+					limit = {
+						has_minor_title = title_chief_qadi
+					}
 					save_event_target_as = old_qadi
 					break = yes
 				}
@@ -1233,16 +1250,18 @@ character_event = {
 					}
 				}
 				random_courtier = {
-					limit = { has_minor_title = title_chief_qadi }
+					limit = {
+						has_minor_title = title_chief_qadi
+					}
 					save_event_target_as = old_qadi
 					break = yes
 				}
 			}
 		}
 	}
-	
+
 	option = {
-		name = "EVTOPTA105020" #Suggest a courtier
+		name = "EVTOPTA105020" # Suggest a courtier
 		trigger = {
 			liege = {
 				any_courtier = {
@@ -1313,8 +1332,9 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOPTB105020" #Suggest yourself
+		name = "EVTOPTB105020" # Suggest yourself
 		trigger = {
 			NOT = {
 				has_minor_title = title_chief_qadi
@@ -1337,8 +1357,9 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOPTC105020" #Suggest a vassal
+		name = "EVTOPTC105020" # Suggest a vassal
 		trigger = {
 			liege = {
 				any_vassal = {
@@ -1417,22 +1438,22 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOPTD105020" #Do nothing
+		name = "EVTOPTD105020" # Do nothing
 	}
 }
 
-#Liege listens to suggestions
+# Liege listens to suggestions
 character_event = {
 	id = 105021
 	desc = "EVTDESC105021"
-	picture = GFX_evt_emissary #Placeholder?
+	picture = GFX_evt_emissary # Placeholder?
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
-		name = "EVTOPTC105021" #OK
+		name = "EVTOPTC105021" # OK
 		ai_chance = {
 			factor = 40
 		}
@@ -1440,9 +1461,13 @@ character_event = {
 			remove_title = title_chief_qadi
 			if = {
 				limit = {
-					has_opinion_modifier = { who = ROOT modifier = opinion_chief_qadi }
+					has_opinion_modifier = {
+						who = ROOT modifier = opinion_chief_qadi
+					}
 				}
-				remove_opinion = { who = ROOT modifier = opinion_chief_qadi }
+				remove_opinion = {
+					who = ROOT modifier = opinion_chief_qadi
+				}
 			}
 			character_event = {
 				id = 105025
@@ -1453,7 +1478,11 @@ character_event = {
 		event_target:target_suggested_qadi = {
 			give_minor_title = title_chief_qadi
 			if = {
-				limit = { FROM = { character = PREV } }
+				limit = {
+					FROM = {
+						character = PREV
+					}
+				}
 				character_event = {
 					id = 105024
 					days = 3
@@ -1470,14 +1499,17 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOPTB105021" #No
+		name = "EVTOPTB105021" # No
 		ai_chance = {
 			factor = 60
 		}
 		FROM = {
 			if = {
-				limit = { character = event_target:target_suggested_qadi }
+				limit = {
+					character = event_target:target_suggested_qadi
+				}
 				opinion = {
 					modifier = opinion_disappointed
 					who = ROOT
@@ -1501,17 +1533,15 @@ character_event = {
 	}
 }
 
-#Vassal/Courtier gets title thanks to ROOT
+# Vassal/Courtier gets title thanks to ROOT
 character_event = {
 	id = 105022
 	desc = "EVTDESC105012"
-	picture = GFX_evt_emissary #Placeholder?
+	picture = GFX_evt_emissary # Placeholder?
 	border = GFX_event_normal_frame_religion
-	
 	show_from_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105012"
 		tooltip = {
@@ -1535,17 +1565,15 @@ character_event = {
 	}
 }
 
-#ROOT is thanked/dismissed
+# ROOT is thanked/dismissed
 character_event = {
 	id = 105023
 	desc = "EVTDESC105023"
-	picture = GFX_evt_emissary #Placeholder?
+	picture = GFX_evt_emissary # Placeholder?
 	border = GFX_event_normal_frame_religion
-	
 	show_from_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105023"
 		trigger = {
@@ -1562,28 +1590,30 @@ character_event = {
 					years = 5
 				}
 			}
-		}		
+		}
 	}
+
 	option = {
 		name = "EVTOPTB105023"
 		trigger = {
 			event_target:target_suggested_qadi = {
-				NOT = { has_minor_title = title_chief_qadi }
+				NOT = {
+					has_minor_title = title_chief_qadi
+				}
 			}
 		}
 		prestige = -5
 	}
 }
 
-#ROOT gains title/is dismissed
+# ROOT gains title/is dismissed
 character_event = {
 	id = 105024
 	desc = "EVTDESC105024"
-	picture = GFX_evt_emissary #Placeholder?
+	picture = GFX_evt_emissary # Placeholder?
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105014"
 		trigger = {
@@ -1599,10 +1629,13 @@ character_event = {
 			years = 5
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105014"
 		trigger = {
-			NOT = { has_minor_title = title_chief_qadi }
+			NOT = {
+				has_minor_title = title_chief_qadi
+			}
 		}
 		prestige = -5
 		tooltip = {
@@ -1615,17 +1648,15 @@ character_event = {
 	}
 }
 
-#Former Chief Qadi is fired
+# Former Chief Qadi is fired
 character_event = {
 	id = 105025
 	desc = "EVTDESC105025"
-	picture = GFX_evt_emissary #Placeholder?
+	picture = GFX_evt_emissary # Placeholder?
 	border = GFX_event_normal_frame_religion
-	
 	show_from_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105025"
 		tooltip = {
@@ -1644,19 +1675,18 @@ character_event = {
 	}
 }
 
-### Chief Qadi and the drunkard ###
+# Chief Qadi and the drunkard
 character_event = {
 	id = 105030
 	desc = "EVTDESC105030"
 	picture = GFX_evt_drunk
 	border = GFX_event_normal_frame_religion
-	
 	only_men = yes
 	min_age = 16
 	prisoner = no
 	religion_group = ormazd_gods_group
 	war = no
-	
+
 	trigger = {
 		OR = {
 			religion = ormazd
@@ -1681,15 +1711,13 @@ character_event = {
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 200
-		
 		modifier = {
 			factor = 5
 			trait = drunkard
 		}
-		
 		modifier = {
 			factor = 0.5
 			trait = zealous
@@ -1717,12 +1745,11 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = "EVTOPTA105030"
 		ai_chance = {
 			factor = 25
-			
 			modifier = {
 				factor = 0.5
 				trait = kind
@@ -1759,7 +1786,7 @@ character_event = {
 					add_trait = wounded
 					hidden_tooltip = {
 						character_event = {
-							id = 38280 #Notify Wounded
+							id = 38280 # Notify Wounded
 						}
 					}
 				}
@@ -1772,11 +1799,11 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105030"
 		ai_chance = {
 			factor = 25
-			
 			modifier = {
 				factor = 2
 				trait = kind
@@ -1833,24 +1860,24 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTC105030"
 		ai_chance = {
 			factor = 50
 		}
 		piety = -10
-	}	
+	}
 }
 
-#Drunkard is flogged eighty lashes
+# Drunkard is flogged eighty lashes
 character_event = {
 	id = 105031
 	desc = "EVTDESC105031"
 	picture = GFX_evt_torture
 	border = GFX_event_normal_frame_religion
-
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105031"
 		trigger = {
@@ -1862,6 +1889,7 @@ character_event = {
 			add_trait = wounded
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105031"
 		trigger = {
@@ -1876,8 +1904,9 @@ character_event = {
 		}
 		tooltip = {
 			remove_trait = drunkard
-		}		
+		}
 	}
+
 	option = {
 		name = "EVTOPTC105031"
 		trigger = {
@@ -1888,6 +1917,7 @@ character_event = {
 		}
 		prestige = -5
 	}
+
 	option = {
 		name = "EVTOPTD105031"
 		trigger = {
@@ -1901,19 +1931,18 @@ character_event = {
 		prestige = -5
 		tooltip = {
 			remove_trait = drunkard
-		}		
+		}
 	}
 }
 
-#Drunkard is pardoned
+# Drunkard is pardoned
 character_event = {
 	id = 105032
 	desc = "EVTDESC105032"
 	picture = GFX_evt_emissary
 	border = GFX_event_normal_frame_religion
-
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105032"
 		trigger = {
@@ -1928,6 +1957,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105032"
 		trigger = {
@@ -1949,29 +1979,28 @@ character_event = {
 	}
 }
 
-### Chief Qadi and Zina ###
+# Chief Qadi and Zina
 character_event = {
 	id = 105035
 	desc = EVTDESC105035
 	picture = GFX_evt_lovers
 	border = GFX_event_normal_frame_religion
-	
 	min_age = 16
 	prisoner = no
 	capable_only = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		OR = {
 			religion = ormazd
 			religion = kitabid
 		}
 		has_lover = no
-		liege = { 	
+		liege = {
 			OR = {
 				religion = ormazd
 				religion = kitabid
-			} 
+			}
 		}
 		NOT = {
 			has_character_modifier = ignored_muslim_sins
@@ -1990,11 +2019,15 @@ character_event = {
 			OR = {
 				any_courtier = {
 					has_minor_title = title_chief_qadi
-					NOT = { is_inaccessible_trigger = yes }
+					NOT = {
+						is_inaccessible_trigger = yes
+					}
 				}
 				any_vassal = {
 					has_minor_title = title_chief_qadi
-					NOT = { is_inaccessible_trigger = yes }
+					NOT = {
+						is_inaccessible_trigger = yes
+					}
 				}
 			}
 			any_vassal = {
@@ -2020,14 +2053,15 @@ character_event = {
 						}
 					}
 				}
-				NOT = { is_inaccessible_trigger = yes }
+				NOT = {
+					is_inaccessible_trigger = yes
+				}
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 300
-		
 		modifier = {
 			factor = 2
 			trait = deceitful
@@ -2068,7 +2102,9 @@ character_event = {
 							}
 						}
 					}
-					NOT = { is_inaccessible_trigger = yes }
+					NOT = {
+						is_inaccessible_trigger = yes
+					}
 				}
 				save_event_target_as = unfaithful_vassal
 			}
@@ -2101,7 +2137,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = "EVTOPTA105035"
 		event_target:unfaithful_vassal = {
@@ -2115,6 +2151,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105035"
 		event_target:unfaithful_vassal = {
@@ -2126,6 +2163,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTC105035"
 		add_character_modifier = {
@@ -2135,24 +2173,23 @@ character_event = {
 	}
 }
 
-#Root told Chief Qadi
+# Root told Chief Qadi
 character_event = {
 	id = 105036
 	desc = "EVTDESC105036"
 	picture = GFX_evt_courtiers_talking
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
-		name = "EVTOPTA105036" #Confront
+		name = "EVTOPTA105036" # Confront
 		event_target:unfaithful_vassal = {
 			character_event = {
 				id = 105038
 				days = 2
 				random = 2
 				tooltip = "EVTTOOLTIP105038"
-			}			
+			}
 		}
 		hidden_tooltip = {
 			FROM = {
@@ -2165,8 +2202,9 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOPTB105036" #Ask ROOT to take care of it himself
+		name = "EVTOPTB105036" # Ask ROOT to take care of it himself
 		trigger = {
 			NOT = {
 				has_character_flag = asked_qadi_zina
@@ -2187,8 +2225,9 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOPTC105036" #Ignore the subject
+		name = "EVTOPTC105036" # Ignore the subject
 		FROM = {
 			set_character_flag = qadi_ignored
 			opinion = {
@@ -2206,23 +2245,23 @@ character_event = {
 	}
 }
 
-#Root told suspect
+# Root told suspect
 character_event = {
 	id = 105037
 	desc = "EVTDESC105037"
 	picture = GFX_evt_courtiers_talking
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
-		name = "EVTOPTA105037" #Try to bribe ROOT to keep quiet
+		name = "EVTOPTA105037" # Try to bribe ROOT to keep quiet
 		ai_chance = {
 			factor = 10
-			
 			modifier = {
 				factor = 0.01
-				NOT = { scaled_wealth = 0.5 }
+				NOT = {
+					scaled_wealth = 0.5
+				}
 			}
 			modifier = {
 				factor = 5
@@ -2245,14 +2284,16 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOPTB105037" #Promise to break it up with lover
+		name = "EVTOPTB105037" # Promise to break it up with lover
 		ai_chance = {
 			factor = 10
-			
 			modifier = {
 				factor = 0.01
-				NOT = { scaled_wealth = 0.5 }
+				NOT = {
+					scaled_wealth = 0.5
+				}
 			}
 			modifier = {
 				factor = 5
@@ -2270,7 +2311,7 @@ character_event = {
 		set_character_flag = lost_loving_feeling
 		character_event = {
 			id = 64045
-			tooltip = "EVTTOOLTIP64045" 
+			tooltip = "EVTTOOLTIP64045"
 		}
 		FROM = {
 			set_character_flag = lover_silenced
@@ -2282,8 +2323,9 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOPTC105037" #Refuse to do anything about it
+		name = "EVTOPTC105037" # Refuse to do anything about it
 		FROM = {
 			set_character_flag = ignored_threat
 			character_event = {
@@ -2292,21 +2334,20 @@ character_event = {
 				random = 2
 				tooltip = "EVTTOOLTIPC105040"
 			}
-		}		
+		}
 	}
 }
 
-#Chief Qadi confronts zina
+# Chief Qadi confronts zina
 character_event = {
 	id = 105038
 	desc = "EVTDESC105038"
 	picture = GFX_evt_courtiers_talking
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
-		name = "EVTOPTA105038" #Deny
+		name = "EVTOPTA105038" # Deny
 		random_list = {
 			50 = {
 				FROM = {
@@ -2332,15 +2373,16 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOPTB105038" #Promise to break it up with lover
+		name = "EVTOPTB105038" # Promise to break it up with lover
 		random = {
 			chance = 20
 			set_character_flag = lost_loving_feeling
 			set_character_flag = no_lover_no_cry
 			character_event = {
 				id = 64045
-				tooltip = "EVTTOOLTIP64045" 
+				tooltip = "EVTTOOLTIP64045"
 			}
 		}
 		FROM = {
@@ -2352,8 +2394,9 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOPTC105038" #Don't deny it
+		name = "EVTOPTC105038" # Don't deny it
 		FROM = {
 			character_event = {
 				id = 105043
@@ -2365,15 +2408,14 @@ character_event = {
 	}
 }
 
-#ROOT: Chief Qadi confront/ignores/other
+# ROOT: Chief Qadi confront/ignores/other
 character_event = {
 	id = 105039
 	desc = "EVTDESC105039"
 	picture = GFX_evt_courtiers_talking
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105039"
 		trigger = {
@@ -2394,6 +2436,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105039"
 		trigger = {
@@ -2422,6 +2465,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTC105039"
 		trigger = {
@@ -2445,15 +2489,14 @@ character_event = {
 	}
 }
 
-#Root: accused offered money/promised to break up with lover/refused to do anything
+# Root: accused offered money/promised to break up with lover/refused to do anything
 character_event = {
 	id = 105040
 	desc = "EVTDESC105040"
 	picture = GFX_evt_courtiers_talking
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOTPA105040"
 		trigger = {
@@ -2473,8 +2516,9 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOTPB105040" #Tell Chief Qadi
+		name = "EVTOTPB105040" # Tell Chief Qadi
 		trigger = {
 			has_character_flag = money_silenced
 			NOT = {
@@ -2495,8 +2539,9 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOTPC105040" #Tell Chief Qadi
+		name = "EVTOTPC105040" # Tell Chief Qadi
 		trigger = {
 			has_character_flag = ignored_threat
 			NOT = {
@@ -2517,8 +2562,9 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOTPD105040" #Stop caring
+		name = "EVTOTPD105040" # Stop caring
 		trigger = {
 			has_character_flag = ignored_threat
 			NOT = {
@@ -2531,8 +2577,9 @@ character_event = {
 		clr_character_flag = ignored_threat
 		piety = -5
 	}
+
 	option = {
-		name = "EVTOTPE105040" #Tell Chief Qadi
+		name = "EVTOTPE105040" # Tell Chief Qadi
 		trigger = {
 			has_character_flag = lover_silenced
 			NOT = {
@@ -2552,8 +2599,9 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOTPF105040" #Stop caring
+		name = "EVTOTPF105040" # Stop caring
 		trigger = {
 			has_character_flag = lover_silenced
 			NOT = {
@@ -2568,17 +2616,15 @@ character_event = {
 	}
 }
 
-#Chief Qadi: suspect declared innocence
+# Chief Qadi: suspect declared innocence
 character_event = {
 	id = 105041
 	desc = "EVTDESC105041"
 	picture = GFX_evt_courtiers_talking
 	border = GFX_event_normal_frame_religion
-	
 	show_from_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105041"
 		trigger = {
@@ -2599,6 +2645,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105041"
 		trigger = {
@@ -2606,7 +2653,6 @@ character_event = {
 		}
 		ai_chance = {
 			factor = 50
-			
 			modifier = {
 				factor = 0.05
 				trait = wroth
@@ -2647,6 +2693,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTC105041"
 		trigger = {
@@ -2654,7 +2701,6 @@ character_event = {
 		}
 		ai_chance = {
 			factor = 50
-			
 			modifier = {
 				factor = 2
 				trait = wroth
@@ -2687,7 +2733,7 @@ character_event = {
 				add_trait = wounded
 				hidden_tooltip = {
 					character_event = {
-						id = 38280 #Notify Wounded
+						id = 38280 # Notify Wounded
 					}
 				}
 			}
@@ -2700,15 +2746,14 @@ character_event = {
 	}
 }
 
-#Chief Qadi: accused promised to break it up with lover
+# Chief Qadi: accused promised to break it up with lover
 character_event = {
 	id = 105042
 	desc = "EVTDESC105042"
 	picture = GFX_evt_courtiers_talking
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105042"
 		trigger = {
@@ -2720,7 +2765,6 @@ character_event = {
 		}
 		ai_chance = {
 			factor = 50
-			
 			modifier = {
 				factor = 0.05
 				trait = wroth
@@ -2760,6 +2804,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105042"
 		trigger = {
@@ -2771,7 +2816,6 @@ character_event = {
 		}
 		ai_chance = {
 			factor = 50
-			
 			modifier = {
 				factor = 0.05
 				trait = wroth
@@ -2803,7 +2847,7 @@ character_event = {
 				add_trait = wounded
 				hidden_tooltip = {
 					character_event = {
-						id = 38280 #Notify Wounded
+						id = 38280 # Notify Wounded
 					}
 				}
 			}
@@ -2818,7 +2862,7 @@ character_event = {
 					add_trait = wounded
 					hidden_tooltip = {
 						character_event = {
-							id = 38280 #Notify Wounded
+							id = 38280 # Notify Wounded
 						}
 					}
 				}
@@ -2830,6 +2874,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTC105042"
 		trigger = {
@@ -2853,20 +2898,18 @@ character_event = {
 	}
 }
 
-#Chief Qadi: accused did not deny it
+# Chief Qadi: accused did not deny it
 character_event = {
 	id = 105043
 	desc = "EVTDESC105043"
 	picture = GFX_evt_courtiers_talking
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105043"
 		ai_chance = {
 			factor = 50
-			
 			modifier = {
 				factor = 0.05
 				trait = wroth
@@ -2906,11 +2949,11 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105043"
 		ai_chance = {
 			factor = 50
-			
 			modifier = {
 				factor = 2
 				trait = wroth
@@ -2942,7 +2985,7 @@ character_event = {
 				add_trait = wounded
 				hidden_tooltip = {
 					character_event = {
-						id = 38280 #Notify Wounded
+						id = 38280 # Notify Wounded
 					}
 				}
 			}
@@ -2955,15 +2998,14 @@ character_event = {
 	}
 }
 
-#Accused gets his/her punishment?
+# Accused gets his/her punishment?
 character_event = {
 	id = 105044
 	desc = "EVTDESC105044"
 	picture = GFX_evt_courtiers_talking
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105044"
 		trigger = {
@@ -2981,7 +3023,11 @@ character_event = {
 			chance = 20
 			random_lover = {
 				limit = {
-					NOT = { spouse = { character = ROOT } }
+					NOT = {
+						spouse = {
+							character = ROOT
+						}
+					}
 				}
 				remove_lover = ROOT
 			}
@@ -2999,6 +3045,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105044"
 		trigger = {
@@ -3013,6 +3060,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTC105044"
 		trigger = {
@@ -3028,6 +3076,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTD105044"
 		trigger = {
@@ -3044,7 +3093,11 @@ character_event = {
 			chance = 20
 			random_lover = {
 				limit = {
-					NOT = { spouse = { character = ROOT } }
+					NOT = {
+						spouse = {
+							character = ROOT
+						}
+					}
 				}
 				remove_lover = ROOT
 			}
@@ -3064,21 +3117,20 @@ character_event = {
 	}
 }
 
-### COURT CALLIGRAPHER ###
+# COURT CALLIGRAPHER
 
-#Court Calligrapher is asked to decorate the mosque
+# Court Calligrapher is asked to decorate the mosque
 character_event = {
 	id = 105050
 	desc = "EVTDESC105050"
-	picture = GFX_evt_courtiers_talking #Placeholder?
+	picture = GFX_evt_courtiers_talking # Placeholder?
 	border = GFX_event_normal_frame_religion
-	
 	only_men = yes
 	min_age = 16
 	prisoner = no
 	religion_group = ormazd_gods_group
 	war = no
-	
+
 	trigger = {
 		OR = {
 			religion = ormazd
@@ -3088,7 +3140,9 @@ character_event = {
 		any_demesne_province = {
 			any_province_holding = {
 				holding_type = temple
-				owner = { character = ROOT }
+				owner = {
+					character = ROOT
+				}
 			}
 		}
 		NOT = {
@@ -3106,15 +3160,17 @@ character_event = {
 					religion_group = ormazd_gods_group
 					age = 16
 					NOT = {
-						has_character_modifier= mosque_calligrapher_timer
+						has_character_modifier = mosque_calligrapher_timer
 					}
 					NOT = {
-						reverse_has_opinion_modifier = { 
+						reverse_has_opinion_modifier = {
 							who = ROOT
 							modifier = opinion_disappointed_calligrapher
 						}
 					}
-					NOT = { is_inaccessible_trigger = yes }
+					NOT = {
+						is_inaccessible_trigger = yes
+					}
 				}
 				any_courtier = {
 					in_command = no
@@ -3122,23 +3178,24 @@ character_event = {
 					religion_group = ormazd_gods_group
 					age = 16
 					NOT = {
-						has_character_modifier= mosque_calligrapher_timer
+						has_character_modifier = mosque_calligrapher_timer
 					}
 					NOT = {
-						reverse_has_opinion_modifier = { 
+						reverse_has_opinion_modifier = {
 							who = ROOT
 							modifier = opinion_disappointed_calligrapher
 						}
 					}
-					NOT = { is_inaccessible_trigger = yes }
+					NOT = {
+						is_inaccessible_trigger = yes
+					}
 				}
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 250
-		
 		modifier = {
 			factor = 2
 			trait = paranoid
@@ -3147,7 +3204,6 @@ character_event = {
 			factor = 2
 			trait = cynical
 		}
-		
 		modifier = {
 			factor = 0.5
 			trait = zealous
@@ -3161,7 +3217,7 @@ character_event = {
 			has_minor_title = title_chief_architect
 		}
 	}
-	
+
 	immediate = {
 		hidden_tooltip = {
 			add_character_modifier = {
@@ -3178,7 +3234,9 @@ character_event = {
 					}
 				}
 				random_courtier = {
-					limit = { has_minor_title = title_court_calligrapher }
+					limit = {
+						has_minor_title = title_court_calligrapher
+					}
 					save_event_target_as = court_calligrapher
 				}
 				break = yes
@@ -3190,13 +3248,15 @@ character_event = {
 					}
 				}
 				random_vassal = {
-					limit = { has_minor_title = title_court_calligrapher }
+					limit = {
+						has_minor_title = title_court_calligrapher
+					}
 					save_event_target_as = court_calligrapher
 				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = "EVTOPTA105050"
 		event_target:court_calligrapher = {
@@ -3208,22 +3268,22 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105050"
 	}
 }
 
-#CC is asked
+# CC is asked
 character_event = {
 	id = 105051
 	desc = "EVTDESC105051"
-	picture = GFX_evt_courtiers_talking #Placeholder?
+	picture = GFX_evt_courtiers_talking # Placeholder?
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
-		name = "EVTOPTA105051" #Yes
+		name = "EVTOPTA105051" # Yes
 		if = {
 			limit = {
 				OR = {
@@ -3240,7 +3300,7 @@ character_event = {
 							id = 105052
 							days = 7
 							random = 7
-							tooltip = "EVTTOOLTIPA105052" #Good work
+							tooltip = "EVTTOOLTIPA105052" # Good work
 						}
 					}
 				}
@@ -3251,7 +3311,7 @@ character_event = {
 							id = 105052
 							days = 7
 							random = 7
-							tooltip = "EVTTOOLTIPB105052" #Bad work
+							tooltip = "EVTTOOLTIPB105052" # Bad work
 						}
 					}
 				}
@@ -3259,7 +3319,9 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = { learning = 15 }
+				NOT = {
+					learning = 15
+				}
 				NOT = {
 					trait = poet
 				}
@@ -3275,7 +3337,7 @@ character_event = {
 							id = 105052
 							days = 7
 							random = 7
-							tooltip = "EVTTOOLTIPA105052" #Good work
+							tooltip = "EVTTOOLTIPA105052" # Good work
 						}
 					}
 				}
@@ -3286,15 +3348,16 @@ character_event = {
 							id = 105052
 							days = 7
 							random = 7
-							tooltip = "EVTTOOLTIPB105052" #Bad work
+							tooltip = "EVTTOOLTIPB105052" # Bad work
 						}
 					}
 				}
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOPTB105051" #No
+		name = "EVTOPTB105051" # No
 		FROM = {
 			opinion = {
 				who = ROOT
@@ -3305,23 +3368,22 @@ character_event = {
 				id = 105053
 				days = 7
 				random = 7
-				tooltip = "EVTTOOLTIPB105053" #Disappointed
+				tooltip = "EVTTOOLTIPB105053" # Disappointed
 			}
 		}
 	}
 }
-	
-#ROOT: Court Calligrapher did a good/bad work
+
+# ROOT: Court Calligrapher did a good/bad work
 character_event = {
 	id = 105052
 	desc = "EVTDESC105052"
 	picture = GFX_evt_courtiers_talking
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
-		name = "EVTOPTA105052" #Good work!
+		name = "EVTOPTA105052" # Good work!
 		trigger = {
 			has_character_flag = good_work_calligrapher
 		}
@@ -3354,8 +3416,9 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOPTB105052" #Horrible!
+		name = "EVTOPTB105052" # Horrible!
 		trigger = {
 			has_character_flag = bad_work_calligrapher
 		}
@@ -3388,8 +3451,9 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOPTC105052" #Pretend it's bad
+		name = "EVTOPTC105052" # Pretend it's bad
 		trigger = {
 			has_character_flag = good_work_calligrapher
 		}
@@ -3421,8 +3485,9 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOPTD105052" #Pretend it's good
+		name = "EVTOPTD105052" # Pretend it's good
 		trigger = {
 			has_character_flag = bad_work_calligrapher
 		}
@@ -3456,15 +3521,14 @@ character_event = {
 	}
 }
 
-#ROOT: Calligrapher said no
+# ROOT: Calligrapher said no
 character_event = {
 	id = 105053
 	desc = "EVTDESC105053"
 	picture = GFX_evt_courtiers_talking
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105053"
 		tooltip = {
@@ -3477,15 +3541,14 @@ character_event = {
 	}
 }
 
-#Court Calligrapher: Gets answer from ROOT
+# Court Calligrapher: Gets answer from ROOT
 character_event = {
 	id = 105054
 	desc = "EVTDESC105054"
 	picture = GFX_evt_courtiers_talking
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105054"
 		trigger = {
@@ -3502,6 +3565,7 @@ character_event = {
 			years = 5
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105054"
 		trigger = {
@@ -3518,6 +3582,7 @@ character_event = {
 			years = 5
 		}
 	}
+
 	option = {
 		name = "EVTOPTC105054"
 		trigger = {
@@ -3534,6 +3599,7 @@ character_event = {
 			years = 5
 		}
 	}
+
 	option = {
 		name = "EVTOPTD105054"
 		trigger = {
@@ -3554,17 +3620,15 @@ character_event = {
 	}
 }
 
-#Liege: is satisfied/irritated
+# Liege: is satisfied/irritated
 character_event = {
 	id = 105055
 	desc = "EVTDESC105055"
 	picture = GFX_evt_courtiers_talking
 	border = GFX_event_normal_frame_religion
-	
 	show_from_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105055"
 		trigger = {
@@ -3573,6 +3637,7 @@ character_event = {
 		clr_character_flag = satisfied_work_calligrapher
 		prestige = 5
 	}
+
 	option = {
 		name = "EVTOPTB105055"
 		trigger = {
@@ -3581,6 +3646,7 @@ character_event = {
 		clr_character_flag = no_good_calligrapher
 		prestige = -5
 	}
+
 	option = {
 		name = "EVTOPTC105055"
 		trigger = {
@@ -3589,6 +3655,7 @@ character_event = {
 		clr_character_flag = dissatisfied_calligrapher
 		prestige = -10
 	}
+
 	option = {
 		name = "EVTOPTD105055"
 		trigger = {
@@ -3599,20 +3666,19 @@ character_event = {
 	}
 }
 
-### Court Calligrapher created fine Hilya ###
+# Court Calligrapher created fine Hilya
 character_event = {
 	id = 105060
 	desc = "EVTDESC105060"
 	picture = GFX_evt_courtiers_talking
 	border = GFX_event_normal_frame_religion
-	
 	min_age = 16
 	prisoner = no
 	only_capable = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
-			OR = {
+		OR = {
 			religion = ormazd
 			religion = kitabid
 		}
@@ -3634,12 +3700,13 @@ character_event = {
 			religion_group = ormazd_gods_group
 			piety = 100
 		}
-		NOT = { is_inaccessible_trigger = yes }
+		NOT = {
+			is_inaccessible_trigger = yes
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 500
-		
 		modifier = {
 			factor = 0.5
 			trait = zealous
@@ -3657,7 +3724,7 @@ character_event = {
 			trait = slothful
 		}
 	}
-	
+
 	option = {
 		name = "EVTOPTA105060"
 		trigger = {
@@ -3689,6 +3756,7 @@ character_event = {
 			duration = 730
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105060"
 		add_character_modifier = {
@@ -3710,6 +3778,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTC105060"
 		add_character_modifier = {
@@ -3720,15 +3789,14 @@ character_event = {
 	}
 }
 
-#Caliph/Liege gets Hilya from ROOT
+# Caliph/Liege gets Hilya from ROOT
 character_event = {
 	id = 105061
 	desc = "EVTDESC105061"
 	picture = GFX_evt_emissary
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105061"
 		tooltip = {
@@ -3739,6 +3807,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105061"
 		tooltip = {
@@ -3756,28 +3825,30 @@ character_event = {
 			piety = 10
 		}
 	}
+
 	option = {
 		name = "EVTOPTC105061"
 		ai_chance = {
 			factor = 0
 		}
-		remove_opinion = { who = FROM modifier = opinion_good_work }
+		remove_opinion = {
+			who = FROM modifier = opinion_good_work
+		}
 	}
 }
 
-### Court Calligrapher: Golden Qu'ran ###
+# Court Calligrapher: Golden Qu'ran
 character_event = {
 	id = 105065
 	desc = "EVTDESC105065"
 	picture = GFX_evt_emissary
 	border = GFX_event_normal_frame_religion
-	
 	min_age = 30
 	only_men = yes
 	prisoner = no
 	only_capable = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		OR = {
 			religion = ormazd
@@ -3796,12 +3867,13 @@ character_event = {
 			}
 			religion_group = ormazd_gods_group
 		}
-		NOT = { is_inaccessible_trigger = yes }
+		NOT = {
+			is_inaccessible_trigger = yes
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 500
-		
 		modifier = {
 			factor = 0.5
 			trait = greedy
@@ -3819,7 +3891,7 @@ character_event = {
 			trait = charitable
 		}
 	}
-	
+
 	immediate = {
 		hidden_tooltip = {
 			add_character_modifier = {
@@ -3829,12 +3901,11 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
-		name = "EVTOPTA105065" #Finance the whole book
+		name = "EVTOPTA105065" # Finance the whole book
 		ai_chance = {
 			factor = 30
-			
 			modifier = {
 				factor = 3
 				trait = greedy
@@ -3852,13 +3923,13 @@ character_event = {
 				random = 2
 				tooltip = "EVTTOOLTIPA105066"
 			}
-		}			
+		}
 	}
+
 	option = {
-		name = "EVTOPTB105065" #Finance part of it
+		name = "EVTOPTB105065" # Finance part of it
 		ai_chance = {
 			factor = 30
-			
 			modifier = {
 				factor = 3
 				trait = deceitful
@@ -3878,11 +3949,11 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOPTC105065" #Don't do it
+		name = "EVTOPTC105065" # Don't do it
 		ai_chance = {
 			factor = 30
-			
 			modifier = {
 				factor = 3
 				trait = charitable
@@ -3902,23 +3973,21 @@ character_event = {
 	}
 }
 
-#Liege: Finance Golden Qu'ran?
+# Liege: Finance Golden Qu'ran?
 character_event = {
 	id = 105066
 	desc = "EVTDESC105066"
 	picture = GFX_evt_emissary
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
-		name = "EVTOPTA105066" #Yes
+		name = "EVTOPTA105066" # Yes
 		trigger = {
 			has_character_flag = finance_golden_quran
 		}
 		ai_chance = {
 			factor = 50
-			
 			modifier = {
 				factor = 0.05
 				NOT = {
@@ -3941,15 +4010,15 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOPTB105066" #Yes
+		name = "EVTOPTB105066" # Yes
 		trigger = {
 			has_character_flag = finance_quran
 		}
 		clr_character_flag = finance_quran
 		ai_chance = {
 			factor = 50
-			
 			modifier = {
 				factor = 0.05
 				NOT = {
@@ -3971,8 +4040,9 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOPTC105066" #No
+		name = "EVTOPTC105066" # No
 		clr_character_flag = finance_quran
 		clr_character_flag = finance_golden_quran
 		FROM = {
@@ -3987,15 +4057,14 @@ character_event = {
 	}
 }
 
-#Court Calligrapher: Got the money or not?
+# Court Calligrapher: Got the money or not?
 character_event = {
 	id = 105067
 	desc = "EVTDESC105067"
 	picture = GFX_evt_emissary
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105067"
 		trigger = {
@@ -4034,6 +4103,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105067"
 		trigger = {
@@ -4072,6 +4142,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTC105067"
 		trigger = {
@@ -4081,24 +4152,23 @@ character_event = {
 	}
 }
 
-#Liege: No sign of Golden Qu'ran
+# Liege: No sign of Golden Qu'ran
 character_event = {
 	id = 105068
 	desc = "EVTDESC105068"
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		is_alive = yes
 		FROM = {
 			is_alive = yes
 		}
 	}
-	
+
 	option = {
-		name = "EVTOPTA105068" #Imprison CC
+		name = "EVTOPTA105068" # Imprison CC
 		FROM = {
 			imprison = ROOT
 			remove_title = title_court_calligrapher
@@ -4110,8 +4180,9 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOPTB105068" #Banish CC
+		name = "EVTOPTB105068" # Banish CC
 		FROM = {
 			banish = yes
 			remove_title = title_court_calligrapher
@@ -4123,8 +4194,9 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOPTC105068" #Make him pay
+		name = "EVTOPTC105068" # Make him pay
 		FROM = {
 			clear_wealth = yes
 			remove_title = title_court_calligrapher
@@ -4136,6 +4208,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTD105068"
 		trigger = {
@@ -4147,15 +4220,14 @@ character_event = {
 	}
 }
 
-#CC is imprisoned/banished/robbed of all wealth
+# CC is imprisoned/banished/robbed of all wealth
 character_event = {
 	id = 105069
 	desc = "EVTDESC105069"
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105069"
 		trigger = {
@@ -4167,6 +4239,7 @@ character_event = {
 			imprison = FROM
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105069"
 		trigger = {
@@ -4178,6 +4251,7 @@ character_event = {
 			banish = yes
 		}
 	}
+
 	option = {
 		name = "EVTOPTC105069"
 		trigger = {
@@ -4191,19 +4265,18 @@ character_event = {
 	}
 }
 
-### COURT MUSICIAN ###
+# COURT MUSICIAN
 
-### Court Musician presents a song for the liege/liege's spouse ###
+# Court Musician presents a song for the liege/liege's spouse
 character_event = {
 	id = 105075
 	desc = "EVTDESC105075"
 	picture = GFX_evt_spymaster
-	
 	min_age = 16
 	prisoner = no
 	only_capable = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		in_command = no
 		has_minor_title = title_court_musician
@@ -4224,13 +4297,15 @@ character_event = {
 				tier = emperor
 			}
 		}
-		NOT = { is_inaccessible_trigger = yes }
+		NOT = {
+			is_inaccessible_trigger = yes
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 250
 	}
-	
+
 	immediate = {
 		hidden_tooltip = {
 			add_character_modifier = {
@@ -4241,7 +4316,7 @@ character_event = {
 			save_event_target_as = court_musician
 		}
 	}
-	
+
 	option = {
 		name = "EVTOPTA105075"
 		trigger = {
@@ -4271,6 +4346,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105075"
 		liege = {
@@ -4283,6 +4359,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTC105075"
 		add_character_modifier = {
@@ -4292,14 +4369,13 @@ character_event = {
 	}
 }
 
-#Liege's spouse: CM gave me song
+# Liege's spouse: CM gave me song
 character_event = {
 	id = 105076
 	desc = "EVTDESC105076"
 	picture = GFX_evt_courtiers_talking
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105076"
 		FROM = {
@@ -4317,6 +4393,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105076"
 		spouse = {
@@ -4331,16 +4408,14 @@ character_event = {
 	}
 }
 
-#Liege/spouse: gets the song/spouse got the song
+# Liege/spouse: gets the song/spouse got the song
 character_event = {
 	id = 105077
 	desc = "EVTDESC105077"
 	picture = GFX_evt_emissary
-	
 	show_from_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105077"
 		trigger = {
@@ -4361,8 +4436,9 @@ character_event = {
 				random = 3
 				tooltip = "EVTTOOLTIPB105078"
 			}
-		}		
+		}
 	}
+
 	option = {
 		name = "EVTOPTB105077"
 		trigger = {
@@ -4382,12 +4458,13 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTC105077"
 		trigger = {
-			has_character_flag = musician_song		
+			has_character_flag = musician_song
 		}
-		clr_character_flag = musician_song	
+		clr_character_flag = musician_song
 		opinion = {
 			modifier = opinion_beautiful_song
 			who = FROM
@@ -4405,14 +4482,13 @@ character_event = {
 	}
 }
 
-#Court Musician: Liege's Spouse's reaction
+# Court Musician: Liege's Spouse's reaction
 character_event = {
 	id = 105078
 	desc = "EVTDESC105078"
 	picture = GFX_evt_courtiers_talking
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105078"
 		trigger = {
@@ -4425,6 +4501,7 @@ character_event = {
 			years = 5
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105078"
 		trigger = {
@@ -4445,6 +4522,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTC105078"
 		trigger = {
@@ -4464,19 +4542,18 @@ character_event = {
 	}
 }
 
-### COURT POET ###
+# COURT POET
 
-### Court Poet writes poem ###
+# Court Poet writes poem
 character_event = {
 	id = 105100
 	desc = "EVTDESC105100"
 	picture = GFX_evt_garden
-	
 	min_age = 16
 	prisoner = no
 	only_capable = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		in_command = no
 		has_minor_title = title_court_poet
@@ -4497,13 +4574,15 @@ character_event = {
 				tier = emperor
 			}
 		}
-		NOT = { is_inaccessible_trigger = yes }
+		NOT = {
+			is_inaccessible_trigger = yes
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 250
 	}
-	
+
 	immediate = {
 		hidden_tooltip = {
 			add_character_modifier = {
@@ -4513,7 +4592,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = "EVTOPTA105100"
 		trigger = {
@@ -4543,6 +4622,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105100"
 		liege = {
@@ -4555,6 +4635,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTC105100"
 		add_character_modifier = {
@@ -4564,14 +4645,13 @@ character_event = {
 	}
 }
 
-#Liege's spouse: Court Poet gave me a poem
+# Liege's spouse: Court Poet gave me a poem
 character_event = {
 	id = 105101
 	desc = "EVTDESC105101"
 	picture = GFX_evt_garden
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105101"
 		FROM = {
@@ -4589,6 +4669,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105101"
 		spouse = {
@@ -4603,14 +4684,13 @@ character_event = {
 	}
 }
 
-#Liege/spouse: gets the poem/spouse got the poem
+# Liege/spouse: gets the poem/spouse got the poem
 character_event = {
 	id = 105102
 	desc = "EVTDESC105102"
 	picture = GFX_evt_garden
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105102"
 		trigger = {
@@ -4631,8 +4711,9 @@ character_event = {
 				random = 3
 				tooltip = "EVTTOOLTIPB105103"
 			}
-		}		
+		}
 	}
+
 	option = {
 		name = "EVTOPTB105102"
 		trigger = {
@@ -4652,10 +4733,11 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTC105102"
 		trigger = {
-			has_character_flag = poet_poetry		
+			has_character_flag = poet_poetry
 		}
 		clr_character_flag = poet_poetry
 		opinion = {
@@ -4675,14 +4757,13 @@ character_event = {
 	}
 }
 
-#Court Musician: Liege and liege's Spouse's reaction
+# Court Musician: Liege and liege's Spouse's reaction
 character_event = {
 	id = 105103
 	desc = "EVTDESC105103"
 	picture = GFX_evt_garden
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105103"
 		trigger = {
@@ -4695,6 +4776,7 @@ character_event = {
 			years = 5
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105103"
 		trigger = {
@@ -4715,6 +4797,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTC105103"
 		trigger = {
@@ -4732,6 +4815,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTD105103"
 		trigger = {
@@ -4748,19 +4832,18 @@ character_event = {
 	}
 }
 
-### CUPBEARER ###
+# CUPBEARER
 
-### Cupbearer: Poison Host ###
+# Cupbearer: Poison Host
 character_event = {
 	id = 105150
 	desc = "EVTDESC105150"
 	picture = GFX_evt_courtiers_talking
-	
 	min_age = 16
 	prisoner = no
 	only_capable = yes
 	war = no
-	
+
 	trigger = {
 		in_command = no
 		has_minor_title = title_cupbearer
@@ -4777,14 +4860,19 @@ character_event = {
 			is_liege_of = ROOT
 			in_command = no
 			at_location = ROOT
-			NOT = { reverse_opinion = { who = ROOT value = 0 } }
+			NOT = {
+				reverse_opinion = {
+					who = ROOT value = 0
+				}
+			}
 		}
-		NOT = { is_inaccessible_trigger = yes }
+		NOT = {
+			is_inaccessible_trigger = yes
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 250
-		
 		modifier = {
 			factor = 0.5
 			trait = envious
@@ -4800,9 +4888,9 @@ character_event = {
 		modifier = {
 			factor = 2
 			trait = charitable
-		}			
+		}
 	}
-	
+
 	immediate = {
 		hidden_tooltip = {
 			add_character_modifier = {
@@ -4812,7 +4900,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = "EVTOPTA105150"
 		host = {
@@ -4835,15 +4923,17 @@ character_event = {
 									has_dlc = "Reapers"
 								}
 							}
-						add_trait = ill
+							add_trait = ill
 						}
 						if = {
 							limit = {
 								has_dlc = "Reapers"
 							}
-						set_character_flag = disease_not_serious
-						add_trait = vomiting
-						character_event = { id = RIP.11005 days = 10 random = 30 }
+							set_character_flag = disease_not_serious
+							add_trait = vomiting
+							character_event = {
+								id = RIP.11005 days = 10 random = 30
+							}
 						}
 						hidden_tooltip = {
 							character_event = {
@@ -4871,7 +4961,7 @@ character_event = {
 						add_trait = lunatic
 						hidden_tooltip = {
 							character_event = {
-								id = 38304 #Notify Lunatic
+								id = 38304 # Notify Lunatic
 							}
 							if = {
 								limit = {
@@ -4920,15 +5010,17 @@ character_event = {
 									has_dlc = "Reapers"
 								}
 							}
-						add_trait = ill
+							add_trait = ill
 						}
 						if = {
 							limit = {
 								has_dlc = "Reapers"
 							}
-						set_character_flag = disease_not_serious
-						add_trait = vomiting
-						character_event = { id = RIP.11005 days = 10 random = 30 }
+							set_character_flag = disease_not_serious
+							add_trait = vomiting
+							character_event = {
+								id = RIP.11005 days = 10 random = 30
+							}
 						}
 						hidden_tooltip = {
 							character_event = {
@@ -4956,7 +5048,7 @@ character_event = {
 						add_trait = lunatic
 						hidden_tooltip = {
 							character_event = {
-								id = 38304 #Notify Lunatic
+								id = 38304 # Notify Lunatic
 							}
 							if = {
 								limit = {
@@ -4986,6 +5078,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105150"
 		if = {
@@ -5003,14 +5096,13 @@ character_event = {
 	}
 }
 
-#Host finds out/is poisoned
+# Host finds out/is poisoned
 character_event = {
 	id = 105151
 	desc = "EVTDESC105151"
 	picture = GFX_evt_spymaster
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105151"
 		trigger = {
@@ -5029,6 +5121,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105151"
 		trigger = {
@@ -5047,6 +5140,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTC105151"
 		trigger = {
@@ -5065,6 +5159,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTD105151"
 		trigger = {
@@ -5075,8 +5170,9 @@ character_event = {
 			death = {
 				death_reason = death_execution
 			}
-		}		
+		}
 	}
+
 	option = {
 		name = "EVTOPTE105151"
 		trigger = {
@@ -5087,8 +5183,9 @@ character_event = {
 			death = {
 				death_reason = death_execution
 			}
-		}		
+		}
 	}
+
 	option = {
 		name = "EVTOPTF105151"
 		trigger = {
@@ -5099,18 +5196,17 @@ character_event = {
 			death = {
 				death_reason = death_execution
 			}
-		}		
+		}
 	}
 }
 
-#Cupbearer is imprisoned
+# Cupbearer is imprisoned
 character_event = {
 	id = 105152
 	desc = "EVTDESC105152"
 	picture = GFX_evt_into_the_dungeon
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105152"
 		trigger = {
@@ -5127,6 +5223,7 @@ character_event = {
 			years = 5
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105152"
 		trigger = {
@@ -5143,6 +5240,7 @@ character_event = {
 			years = 5
 		}
 	}
+
 	option = {
 		name = "EVTOPTC105152"
 		trigger = {
@@ -5161,19 +5259,18 @@ character_event = {
 	}
 }
 
-### CHIEF ARCHITECT ###
+# CHIEF ARCHITECT
 
-### Chief Architect: Suggest improvements to castle ###
+# Chief Architect: Suggest improvements to castle
 character_event = {
 	id = 105200
 	desc = "EVTDESC105200"
 	picture = GFX_evt_castle_construction
-	
 	min_age = 16
 	prisoner = no
 	only_capable = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		in_command = no
 		has_minor_title = title_chief_architect
@@ -5192,12 +5289,13 @@ character_event = {
 			}
 			religion_group = ormazd_gods_group
 		}
-		NOT = { is_inaccessible_trigger = yes }
+		NOT = {
+			is_inaccessible_trigger = yes
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 250
-		
 		modifier = {
 			factor = 0.5
 			trait = envious
@@ -5213,9 +5311,9 @@ character_event = {
 		modifier = {
 			factor = 2
 			trait = charitable
-		}			
+		}
 	}
-	
+
 	option = {
 		name = "EVTOPTA105200"
 		hidden_tooltip = {
@@ -5234,6 +5332,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105200"
 		add_character_modifier = {
@@ -5243,16 +5342,15 @@ character_event = {
 	}
 }
 
-#Liege: CA asks if improvements is OK
+# Liege: CA asks if improvements is OK
 character_event = {
 	id = 105201
 	desc = "EVTDESC105201"
 	picture = GFX_evt_castle_construction
-	
 	is_triggered_only = yes
-	
+
 	option = {
-		name = "EVTOPTA105201" #Yes
+		name = "EVTOPTA105201" # Yes
 		transfer_scaled_wealth = {
 			to = FROM
 			value = 0.25
@@ -5272,8 +5370,9 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOPTB105201" #No
+		name = "EVTOPTB105201" # No
 		FROM = {
 			set_character_flag = no_improvement
 			opinion = {
@@ -5291,14 +5390,13 @@ character_event = {
 	}
 }
 
-#Chief Architect: Keep the money or not?/no money
+# Chief Architect: Keep the money or not?/no money
 character_event = {
 	id = 105202
 	desc = "EVTDESC105202"
 	picture = GFX_evt_castle_construction
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105202"
 		trigger = {
@@ -5313,8 +5411,9 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOPTB105202" #Keep it!
+		name = "EVTOPTB105202" # Keep it!
 		trigger = {
 			has_character_flag = all_improvements
 		}
@@ -5350,8 +5449,9 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOPTC105202" #Do something useful with it
+		name = "EVTOPTC105202" # Do something useful with it
 		trigger = {
 			has_character_flag = all_improvements
 		}
@@ -5366,23 +5466,22 @@ character_event = {
 	}
 }
 
-#Liege: No sign of improvements
+# Liege: No sign of improvements
 character_event = {
 	id = 105203
 	desc = "EVTDESC105203"
 	picture = GFX_evt_spymaster
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		is_alive = yes
 		FROM = {
 			is_alive = yes
 		}
 	}
-	
+
 	option = {
-		name = "EVTOPTA105203" #Imprison CA
+		name = "EVTOPTA105203" # Imprison CA
 		FROM = {
 			imprison = ROOT
 			remove_title = title_chief_architect
@@ -5394,8 +5493,9 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOPTB105203" #Banish CA
+		name = "EVTOPTB105203" # Banish CA
 		FROM = {
 			banish = yes
 			remove_title = title_chief_architect
@@ -5407,8 +5507,9 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
-		name = "EVTOPTC105203" #Make him pay
+		name = "EVTOPTC105203" # Make him pay
 		FROM = {
 			clear_wealth = yes
 			remove_title = title_chief_architect
@@ -5420,6 +5521,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTD105203"
 		random_realm_province = {
@@ -5431,14 +5533,13 @@ character_event = {
 	}
 }
 
-#Chief Architect is imprisoned/banished/robbed of all wealth
+# Chief Architect is imprisoned/banished/robbed of all wealth
 character_event = {
 	id = 105204
 	desc = "EVTDESC105204"
 	picture = GFX_evt_spymaster
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105204"
 		trigger = {
@@ -5449,6 +5550,7 @@ character_event = {
 			imprison = FROM
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105204"
 		trigger = {
@@ -5459,6 +5561,7 @@ character_event = {
 			banish = yes
 		}
 	}
+
 	option = {
 		name = "EVTOPTC105204"
 		trigger = {
@@ -5471,18 +5574,17 @@ character_event = {
 	}
 }
 
-### FOOD TASTER ###
+# FOOD TASTER
 
-### Food Taster: Poison host ###
+# Food Taster: Poison host
 character_event = {
 	id = 105250
 	desc = "EVTDESC105250"
 	picture = GFX_evt_courtiers_talking
-	
 	min_age = 16
 	prisoner = no
 	war = no
-	
+
 	trigger = {
 		in_command = no
 		has_minor_title = title_food_taster
@@ -5499,14 +5601,19 @@ character_event = {
 			is_liege_of = ROOT
 			in_command = no
 			at_location = ROOT
-			NOT = { reverse_opinion = { who = ROOT value = 0 } }
+			NOT = {
+				reverse_opinion = {
+					who = ROOT value = 0
+				}
+			}
 		}
-		NOT = { is_inaccessible_trigger = yes }
+		NOT = {
+			is_inaccessible_trigger = yes
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 250
-		
 		modifier = {
 			factor = 0.5
 			trait = cynical
@@ -5530,17 +5637,17 @@ character_event = {
 		modifier = {
 			factor = 2
 			trait = charitable
-		}	
+		}
 		modifier = {
 			factor = 2
 			trait = trusting
-		}	
+		}
 		modifier = {
 			factor = 2
 			trait = zealous
-		}			
+		}
 	}
-	
+
 	immediate = {
 		hidden_tooltip = {
 			add_character_modifier = {
@@ -5550,7 +5657,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = "EVTOPTA105250"
 		host = {
@@ -5573,15 +5680,17 @@ character_event = {
 									has_dlc = "Reapers"
 								}
 							}
-						add_trait = ill
+							add_trait = ill
 						}
 						if = {
 							limit = {
 								has_dlc = "Reapers"
 							}
-						set_character_flag = disease_not_serious
-						add_trait = vomiting
-						character_event = { id = RIP.11005 days = 10 random = 30 }
+							set_character_flag = disease_not_serious
+							add_trait = vomiting
+							character_event = {
+								id = RIP.11005 days = 10 random = 30
+							}
 						}
 						hidden_tooltip = {
 							character_event = {
@@ -5609,7 +5718,7 @@ character_event = {
 						add_trait = lunatic
 						hidden_tooltip = {
 							character_event = {
-								id = 38304 #Notify Lunatic
+								id = 38304 # Notify Lunatic
 							}
 							if = {
 								limit = {
@@ -5658,15 +5767,17 @@ character_event = {
 									has_dlc = "Reapers"
 								}
 							}
-						add_trait = ill
+							add_trait = ill
 						}
 						if = {
 							limit = {
 								has_dlc = "Reapers"
 							}
-						set_character_flag = disease_not_serious
-						add_trait = vomiting
-						character_event = { id = RIP.11005 days = 10 random = 30 }
+							set_character_flag = disease_not_serious
+							add_trait = vomiting
+							character_event = {
+								id = RIP.11005 days = 10 random = 30
+							}
 						}
 						hidden_tooltip = {
 							character_event = {
@@ -5694,7 +5805,7 @@ character_event = {
 						add_trait = lunatic
 						hidden_tooltip = {
 							character_event = {
-								id = 38304 #Notify Lunatic
+								id = 38304 # Notify Lunatic
 							}
 							if = {
 								limit = {
@@ -5724,6 +5835,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105250"
 		if = {
@@ -5741,14 +5853,13 @@ character_event = {
 	}
 }
 
-#Host finds out/is poisoned
+# Host finds out/is poisoned
 character_event = {
 	id = 105251
 	desc = "EVTDESC105251"
 	picture = GFX_evt_spymaster
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105151"
 		trigger = {
@@ -5767,6 +5878,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105151"
 		trigger = {
@@ -5785,6 +5897,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTC105151"
 		trigger = {
@@ -5803,6 +5916,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EVTOPTD105251"
 		trigger = {
@@ -5813,8 +5927,9 @@ character_event = {
 			death = {
 				death_reason = death_execution
 			}
-		}		
+		}
 	}
+
 	option = {
 		name = "EVTOPTE105151"
 		trigger = {
@@ -5825,8 +5940,9 @@ character_event = {
 			death = {
 				death_reason = death_execution
 			}
-		}		
+		}
 	}
+
 	option = {
 		name = "EVTOPTF105151"
 		trigger = {
@@ -5837,18 +5953,17 @@ character_event = {
 			death = {
 				death_reason = death_execution
 			}
-		}		
+		}
 	}
 }
 
-#Cupbearer is imprisoned
+# Cupbearer is imprisoned
 character_event = {
 	id = 105253
 	desc = "EVTDESC105253"
 	picture = GFX_evt_into_the_dungeon
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA105253"
 		trigger = {
@@ -5865,6 +5980,7 @@ character_event = {
 			years = 5
 		}
 	}
+
 	option = {
 		name = "EVTOPTB105253"
 		trigger = {
@@ -5881,6 +5997,7 @@ character_event = {
 			years = 5
 		}
 	}
+
 	option = {
 		name = "EVTOPTC105253"
 		trigger = {

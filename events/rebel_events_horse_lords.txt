@@ -1,29 +1,25 @@
-#########################################################
-#
+
+
 # Rebel Events for the Horse Lords expansion
+
 # ( HL.2000 to HL.2499)
-#
-#########################################################
 
 # Written by Henrik Fåhraeus
-
 namespace = HL
 
 # Minor Clan Rebels rise up (temporary rebel title created, with a leader and a war)
+
 # Triggered from "on_rebel_revolt"
 province_event = {
 	id = HL.2000
 	desc = EVTDESC_HL_2000
 	picture = GFX_evt_steppe_mercenaries
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
 
 	trigger = {
 		has_dlc = "Horse Lords"
-		
 		has_empty_holding = yes # To allow a Clan capital
-		
 		owner = {
 			is_nomadic = yes
 			independent = yes
@@ -31,4047 +27,4053 @@ province_event = {
 			risks_minor_clan_rising = yes
 			in_revolt = no
 			capital_scope = {
-				NOT = { province = ROOT }
+				NOT = {
+					province = ROOT
+				}
 			}
 		}
-		
-		NOT = { # Not if there is already an ongoing Minor Clan revolt
+		NOT = {
+			# Not if there is already an ongoing Minor Clan revolt
 			owner = {
 				top_liege = {
 					war = yes
 					any_war = {
-						defender = { character = PREV }
+						defender = {
+							character = PREV
+						}
 						using_cb = cb_minor_clan_revolt
-#						war_title = ROOT # The county
+						# 						war_title = ROOT # The county
 					}
 				}
 			}
 		}
 	}
-	
+
 	immediate = {
 		add_province_modifier = {
 			name = recent_county_uprising
 			duration = 1825 # One year of -100% revolt risk in this county
 		}
-		
 		owner = {
 			top_liege = {
 				save_event_target_as = province_top_liege
 			}
 		}
-	
-	if = {
+		if = {
 			limit = {
-				religion_group = chaos_gods_group 
-				NOT = { culture_group = beastman_group }
-	        }
-		random_list = {
-		    15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = chi_an 
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 8
-				diplomacy = 9
-			}
-			trait = brave
-			trait = ambitious
-			trait = skilled_tactician
-		            }
-			}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = chi_an 
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = brilliant_strategist
-		            }
-			}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = chi_an 
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 7
-				learning = 10
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = elusive_shadow
-		            }
-			}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = chi_an 
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 8
-				diplomacy = 9
-			}
-			trait = lustful
-			trait = proud
-			trait = grey_eminence
-		            }
-			}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = chi_an 
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = charitable
-			trait = kind
-			trait = nurgles_rot
-			trait = midas_touched
-		            }
-			}
-			
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = chi_an 
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 5
-				diplomacy = 3
-				stewardship = 2
-				learning = 3
-				intrigue = 3
-			}
-			trait = brave
-			trait = ambitious
-			trait = champion_undivided
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = chi_an 
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = champion_khorne
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = chi_an 
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 13
-				learning = 13
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = champion_tzeentch
-			trait = elusive_shadow
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = chi_an 
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 8
-				diplomacy = 9
-			}
-			trait = lustful
-			trait = proud
-			trait = champion_slaanesh
-			trait = grey_eminence
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = chi_an 
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = charitable
-			trait = kind
-			trait = has_nurgles_rot
-			trait = has_tomb_rot
-			trait = pneumonic
-			trait = champion_nurgle
-			trait = midas_touched
-		            }
-				}
-		    
-			
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = kuj 
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				martial = 10
-			}
-			trait = brave
-			trait = ambitious
-			trait = skilled_tactician
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = kuj 
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = brilliant_strategist
-		            }
-				}
-			
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = kuj 
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 7
-				learning = 10
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = elusive_shadow
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = kuj 
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				intrigue = 10
-			}
-			trait = lustful
-			trait = proud
-			trait = grey_eminence
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = kuj 
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = kind
-			trait = charitable
-			trait = has_nurgles_rot
-			trait = midas_touched
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = kuj
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 5
-				diplomacy = 3
-				stewardship = 2
-				learning = 3
-				intrigue = 3
-			}
-			trait = brave
-			trait = ambitious
-			trait = champion_undivided
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = kuj 
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = champion_khorne
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = kuj 
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 13
-				learning = 13
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = champion_tzeentch
-			trait = elusive_shadow
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = kuj
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 8
-				diplomacy = 9
-			}
-			trait = lustful
-			trait = proud
-			trait = champion_slaanesh
-			trait = grey_eminence
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = kuj 
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = charitable
-			trait = kind
-			trait = has_nurgles_rot
-			trait = has_tomb_rot
-			trait = pneumonic
-			trait = champion_nurgle
-			trait = midas_touched
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = man_chu 
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				martial = 10
-			}
-			trait = brave
-			trait = ambitious
-			trait = skilled_tactician
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = man_chu  
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = brilliant_strategist
-		            }
-				}
-			
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = man_chu 
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 7
-				learning = 10
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = elusive_shadow
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = man_chu  
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				intrigue = 10
-			}
-			trait = lustful
-			trait = proud
-			trait = grey_eminence
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = man_chu
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = kind
-			trait = charitable
-			trait = has_nurgles_rot
-			trait = midas_touched
-		            }
-			}
-			
-	    1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = man_chu
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 5
-				diplomacy = 3
-				stewardship = 2
-				learning = 3
-				intrigue = 3
-			}
-			trait = brave
-			trait = ambitious
-			trait = champion_undivided
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = man_chu
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = champion_khorne
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = man_chu
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 13
-				learning = 13
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = champion_tzeentch
-			trait = elusive_shadow
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = man_chu
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 8
-				diplomacy = 9
-			}
-			trait = lustful
-			trait = proud
-			trait = champion_slaanesh
-			trait = grey_eminence
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = man_chu
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = charitable
-			trait = kind
-			trait = has_nurgles_rot
-			trait = has_tomb_rot
-			trait = pneumonic
-			trait = champion_nurgle
-			trait = midas_touched
-		            }
-				}
-		
-		15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = mung
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				martial = 10
-			}
-			trait = brave
-			trait = ambitious
-			trait = skilled_tactician
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = mung 
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = brilliant_strategist
-		            }
-				}
-			
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = mung
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 7
-				learning = 10
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = elusive_shadow
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = mung
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				intrigue = 10
-			}
-			trait = lustful
-			trait = proud
-			trait = grey_eminence
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = mung
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = kind
-			trait = charitable
-			trait = has_nurgles_rot
-			trait = midas_touched
-		            }
-			}
-		
-		1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = mung
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 5
-				diplomacy = 3
-				stewardship = 2
-				learning = 3
-				intrigue = 3
-			}
-			trait = brave
-			trait = ambitious
-			trait = champion_undivided
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = mung
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = champion_khorne
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = mung
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 13
-				learning = 13
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = champion_tzeentch
-			trait = elusive_shadow
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = mung
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 8
-				diplomacy = 9
-			}
-			trait = lustful
-			trait = proud
-			trait = champion_slaanesh
-			trait = grey_eminence
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = mung
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = charitable
-			trait = kind
-			trait = has_nurgles_rot
-			trait = has_tomb_rot
-			trait = pneumonic
-			trait = champion_nurgle
-			trait = midas_touched
-		            }
-				}
-		
-		15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = tong
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				martial = 10
-			}
-			trait = brave
-			trait = ambitious
-			trait = skilled_tactician
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = tong 
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = brilliant_strategist
-		            }
-				}
-			
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = tong
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 7
-				learning = 10
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = elusive_shadow
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = tong
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				intrigue = 10
-			}
-			trait = lustful
-			trait = proud
-			trait = grey_eminence
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = tong
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = kind
-			trait = charitable
-			trait = has_nurgles_rot
-			trait = midas_touched
-		            }
-			}
-		
-		1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = tong
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 5
-				diplomacy = 3
-				stewardship = 2
-				learning = 3
-				intrigue = 3
-			}
-			trait = brave
-			trait = ambitious
-			trait = champion_undivided
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = tong
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = champion_khorne
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = tong
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 13
-				learning = 13
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = champion_tzeentch
-			trait = elusive_shadow
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = tong
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 8
-				diplomacy = 9
-			}
-			trait = lustful
-			trait = proud
-			trait = champion_slaanesh
-			trait = grey_eminence
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = tong
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = charitable
-			trait = kind
-			trait = has_nurgles_rot
-			trait = has_tomb_rot
-			trait = pneumonic
-			trait = champion_nurgle
-			trait = midas_touched
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = tu_ka
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				martial = 10
-			}
-			trait = brave
-			trait = ambitious
-			trait = skilled_tactician
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = tu_ka
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = brilliant_strategist
-		            }
-				}
-			
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = tu_ka
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 7
-				learning = 10
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = elusive_shadow
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = tu_ka
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				intrigue = 10
-			}
-			trait = lustful
-			trait = proud
-			trait = grey_eminence
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = tu_ka
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = kind
-			trait = charitable
-			trait = has_nurgles_rot
-			trait = midas_touched
-		            }
-			}
-				
-		1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = tu_ka
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 5
-				diplomacy = 3
-				stewardship = 2
-				learning = 3
-				intrigue = 3
-			}
-			trait = brave
-			trait = ambitious
-			trait = champion_undivided
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = tu_ka
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = champion_khorne
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = tu_ka
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 13
-				learning = 13
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = champion_tzeentch
-			trait = elusive_shadow
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = tu_ka
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 8
-				diplomacy = 9
-			}
-			trait = lustful
-			trait = proud
-			trait = champion_slaanesh
-			trait = grey_eminence
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = tu_ka
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = charitable
-			trait = kind
-			trait = has_nurgles_rot
-			trait = has_tomb_rot
-			trait = pneumonic
-			trait = champion_nurgle
-			trait = midas_touched
-		            }
-				}
-			
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = wei_tu
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				martial = 10
-			}
-			trait = brave
-			trait = ambitious
-			trait = skilled_tactician
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = wei_tu
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = brilliant_strategist
-		            }
-				}
-			
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = wei_tu
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 7
-				learning = 10
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = elusive_shadow
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = wei_tu
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				intrigue = 10
-			}
-			trait = lustful
-			trait = proud
-			trait = grey_eminence
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = wei_tu
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = kind
-			trait = charitable
-			trait = has_nurgles_rot
-			trait = midas_touched
-		            }
-			}
-		
-		1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = wei_tu
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 5
-				diplomacy = 3
-				stewardship = 2
-				learning = 3
-				intrigue = 3
-			}
-			trait = brave
-			trait = ambitious
-			trait = champion_undivided
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = wei_tu
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = champion_khorne
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = wei_tu
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 13
-				learning = 13
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = champion_tzeentch
-			trait = elusive_shadow
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = wei_tu
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 8
-				diplomacy = 9
-			}
-			trait = lustful
-			trait = proud
-			trait = champion_slaanesh
-			trait = grey_eminence
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = wei_tu
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = charitable
-			trait = kind
-			trait = has_nurgles_rot
-			trait = has_tomb_rot
-			trait = pneumonic
-			trait = champion_nurgle
-			trait = midas_touched
-		            }
-				}
-		
-		15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = wo
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				martial = 10
-			}
-			trait = brave
-			trait = ambitious
-			trait = skilled_tactician
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = wo
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = brilliant_strategist
-		            }
-				}
-			
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = wo
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 7
-				learning = 10
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = elusive_shadow
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = wo
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				intrigue = 10
-			}
-			trait = lustful
-			trait = proud
-			trait = grey_eminence
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = wo
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = kind
-			trait = charitable
-			trait = has_nurgles_rot
-			trait = midas_touched
-		            }
-			}
-			
-		1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = wo
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 5
-				diplomacy = 3
-				stewardship = 2
-				learning = 3
-				intrigue = 3
-			}
-			trait = brave
-			trait = ambitious
-			trait = champion_undivided
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = wo
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = champion_khorne
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = wo
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 13
-				learning = 13
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = champion_tzeentch
-			trait = elusive_shadow
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = wo
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 8
-				diplomacy = 9
-			}
-			trait = lustful
-			trait = proud
-			trait = champion_slaanesh
-			trait = grey_eminence
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = wo
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = charitable
-			trait = kind
-			trait = has_nurgles_rot
-			trait = has_tomb_rot
-			trait = pneumonic
-			trait = champion_nurgle
-			trait = midas_touched
-		            }
+				religion_group = chaos_gods_group
+				NOT = {
+					culture_group = beastman_group
 				}
 
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = yin
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				martial = 10
 			}
-			trait = brave
-			trait = ambitious
-			trait = skilled_tactician
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = yin
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = brilliant_strategist
-		            }
-				}
-			
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = yin
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 7
-				learning = 10
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = elusive_shadow
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = yin
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				intrigue = 10
-			}
-			trait = lustful
-			trait = proud
-			trait = grey_eminence
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = yin
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = kind
-			trait = charitable
-			trait = has_nurgles_rot
-			trait = midas_touched
-		            }
-			}
-			
-		1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = yin
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 5
-				diplomacy = 3
-				stewardship = 2
-				learning = 3
-				intrigue = 3
-			}
-			trait = brave
-			trait = ambitious
-			trait = champion_undivided
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = yin
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = champion_khorne
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = yin
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 13
-				learning = 13
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = champion_tzeentch
-			trait = elusive_shadow
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = yin
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 8
-				diplomacy = 9
-			}
-			trait = lustful
-			trait = proud
-			trait = champion_slaanesh
-			trait = grey_eminence
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = yin
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = charitable
-			trait = kind
-			trait = has_nurgles_rot
-			trait = has_tomb_rot
-			trait = pneumonic
-			trait = champion_nurgle
-			trait = midas_touched
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = aghol
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				martial = 10
-			}
-			trait = brave
-			trait = ambitious
-			trait = skilled_tactician
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = aghol
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = brilliant_strategist
-		            }
-				}
-			
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = aghol
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 7
-				learning = 10
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = elusive_shadow
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = aghol
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				intrigue = 10
-			}
-			trait = lustful
-			trait = proud
-			trait = grey_eminence
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = aghol
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = kind
-			trait = charitable
-			trait = has_nurgles_rot
-			trait = midas_touched
-		            }
-			}
-			
-		1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = aghol
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 5
-				diplomacy = 3
-				stewardship = 2
-				learning = 3
-				intrigue = 3
-			}
-			trait = brave
-			trait = ambitious
-			trait = champion_undivided
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = aghol
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = champion_khorne
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = aghol
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 13
-				learning = 13
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = champion_tzeentch
-			trait = elusive_shadow
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = aghol
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 8
-				diplomacy = 9
-			}
-			trait = lustful
-			trait = proud
-			trait = champion_slaanesh
-			trait = grey_eminence
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = aghol
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = charitable
-			trait = kind
-			trait = has_nurgles_rot
-			trait = has_tomb_rot
-			trait = pneumonic
-			trait = champion_nurgle
-			trait = midas_touched
-		            }
-				}
-		
-		15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = dolgan
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				martial = 10
-			}
-			trait = brave
-			trait = ambitious
-			trait = skilled_tactician
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = dolgan
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = brilliant_strategist
-		            }
-				}
-			
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = dolgan
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 7
-				learning = 10
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = elusive_shadow
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = dolgan
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				intrigue = 10
-			}
-			trait = lustful
-			trait = proud
-			trait = grey_eminence
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = dolgan
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = kind
-			trait = charitable
-			trait = has_nurgles_rot
-			trait = midas_touched
-		            }
-			}
-		
-		1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = dolgan
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 5
-				diplomacy = 3
-				stewardship = 2
-				learning = 3
-				intrigue = 3
-			}
-			trait = brave
-			trait = ambitious
-			trait = champion_undivided
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = dolgan
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = champion_khorne
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = dolgan
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 13
-				learning = 13
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = champion_tzeentch
-			trait = elusive_shadow
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = dolgan
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 8
-				diplomacy = 9
-			}
-			trait = lustful
-			trait = proud
-			trait = champion_slaanesh
-			trait = grey_eminence
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = dolgan
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = charitable
-			trait = kind
-			trait = has_nurgles_rot
-			trait = has_tomb_rot
-			trait = pneumonic
-			trait = champion_nurgle
-			trait = midas_touched
-		            }
-				}
-		
-		15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = gharhar
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				martial = 10
-			}
-			trait = brave
-			trait = ambitious
-			trait = skilled_tactician
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = gharhar
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = brilliant_strategist
-		            }
-				}
-			
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = gharhar
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 7
-				learning = 10
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = elusive_shadow
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = gharhar
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				intrigue = 10
-			}
-			trait = lustful
-			trait = proud
-			trait = grey_eminence
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = gharhar
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = kind
-			trait = charitable
-			trait = has_nurgles_rot
-			trait = midas_touched
-		            }
-			}
-		
-		1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = gharhar
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 5
-				diplomacy = 3
-				stewardship = 2
-				learning = 3
-				intrigue = 3
-			}
-			trait = brave
-			trait = ambitious
-			trait = champion_undivided
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = gharhar
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = champion_khorne
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = gharhar
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 13
-				learning = 13
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = champion_tzeentch
-			trait = elusive_shadow
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = gharhar
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 8
-				diplomacy = 9
-			}
-			trait = lustful
-			trait = proud
-			trait = champion_slaanesh
-			trait = grey_eminence
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = gharhar
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = charitable
-			trait = kind
-			trait = has_nurgles_rot
-			trait = has_tomb_rot
-			trait = pneumonic
-			trait = champion_nurgle
-			trait = midas_touched
-		            }
-				}
-		
-		15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = hastling
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				martial = 10
-			}
-			trait = brave
-			trait = ambitious
-			trait = skilled_tactician
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = hastling
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = brilliant_strategist
-		            }
-				}
-			
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = hastling
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 7
-				learning = 10
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = elusive_shadow
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = hastling
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				intrigue = 10
-			}
-			trait = lustful
-			trait = proud
-			trait = grey_eminence
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = hastling
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = kind
-			trait = charitable
-			trait = has_nurgles_rot
-			trait = midas_touched
-		            }
-			}
-		
-		1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = hastling
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 5
-				diplomacy = 3
-				stewardship = 2
-				learning = 3
-				intrigue = 3
-			}
-			trait = brave
-			trait = ambitious
-			trait = champion_undivided
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = hastling
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = champion_khorne
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = hastling
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 13
-				learning = 13
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = champion_tzeentch
-			trait = elusive_shadow
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = hastling
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 8
-				diplomacy = 9
-			}
-			trait = lustful
-			trait = proud
-			trait = champion_slaanesh
-			trait = grey_eminence
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = hastling
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = charitable
-			trait = kind
-			trait = has_nurgles_rot
-			trait = has_tomb_rot
-			trait = pneumonic
-			trait = champion_nurgle
-			trait = midas_touched
-		            }
-				}
-		
-		15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = khazag
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				martial = 10
-			}
-			trait = brave
-			trait = ambitious
-			trait = skilled_tactician
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = khazag
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = brilliant_strategist
-		            }
-				}
-			
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = khazag
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 7
-				learning = 10
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = elusive_shadow
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = khazag
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				intrigue = 10
-			}
-			trait = lustful
-			trait = proud
-			trait = grey_eminence
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = khazag
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = kind
-			trait = charitable
-			trait = has_nurgles_rot
-			trait = midas_touched
-		            }
-			}
-		
-		1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = khazag
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 5
-				diplomacy = 3
-				stewardship = 2
-				learning = 3
-				intrigue = 3
-			}
-			trait = brave
-			trait = ambitious
-			trait = champion_undivided
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = khazag
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = champion_khorne
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = khazag
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 13
-				learning = 13
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = champion_tzeentch
-			trait = elusive_shadow
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = khazag
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 8
-				diplomacy = 9
-			}
-			trait = lustful
-			trait = proud
-			trait = champion_slaanesh
-			trait = grey_eminence
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = khazag
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = charitable
-			trait = kind
-			trait = has_nurgles_rot
-			trait = has_tomb_rot
-			trait = pneumonic
-			trait = champion_nurgle
-			trait = midas_touched
-		            }
-				}
-		
-		15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = kul
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				martial = 10
-			}
-			trait = brave
-			trait = ambitious
-			trait = skilled_tactician
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = kul
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = brilliant_strategist
-		            }
-				}
-			
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = kul
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 7
-				learning = 10
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = elusive_shadow
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = kul
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				intrigue = 10
-			}
-			trait = lustful
-			trait = proud
-			trait = grey_eminence
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = kul
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = kind
-			trait = charitable
-			trait = has_nurgles_rot
-			trait = midas_touched
-		            }
-			}
-			
-		1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = kul
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 5
-				diplomacy = 3
-				stewardship = 2
-				learning = 3
-				intrigue = 3
-			}
-			trait = brave
-			trait = ambitious
-			trait = champion_undivided
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = kul
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = champion_khorne
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = kul
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 13
-				learning = 13
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = champion_tzeentch
-			trait = elusive_shadow
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = kul
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 8
-				diplomacy = 9
-			}
-			trait = lustful
-			trait = proud
-			trait = champion_slaanesh
-			trait = grey_eminence
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = kul
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = charitable
-			trait = kind
-			trait = has_nurgles_rot
-			trait = has_tomb_rot
-			trait = pneumonic
-			trait = champion_nurgle
-			trait = midas_touched
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = kvellig
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				martial = 10
-			}
-			trait = brave
-			trait = ambitious
-			trait = skilled_tactician
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = kvellig
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = brilliant_strategist
-		            }
-				}
-			
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = kvellig
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 7
-				learning = 10
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = elusive_shadow
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = kvellig
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				intrigue = 10
-			}
-			trait = lustful
-			trait = proud
-			trait = grey_eminence
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = kvellig
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = kind
-			trait = charitable
-			trait = has_nurgles_rot
-			trait = midas_touched
-		            }
-			}
-			
-		1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = kvellig
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 5
-				diplomacy = 3
-				stewardship = 2
-				learning = 3
-				intrigue = 3
-			}
-			trait = brave
-			trait = ambitious
-			trait = champion_undivided
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = kvellig
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = champion_khorne
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = kvellig
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 13
-				learning = 13
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = champion_tzeentch
-			trait = elusive_shadow
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = kvellig
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 8
-				diplomacy = 9
-			}
-			trait = lustful
-			trait = proud
-			trait = champion_slaanesh
-			trait = grey_eminence
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = kvellig
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = lustful
-			trait = proud
-			trait = champion_nurgle
-			trait = grey_eminence
-			}
-			}
-			
-		15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = tahmak
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				martial = 10
-			}
-			trait = brave
-			trait = ambitious
-			trait = skilled_tactician
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = tahmak
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = brilliant_strategist
-		            }
-				}
-			
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = tahmak
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 7
-				learning = 10
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = elusive_shadow
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = tahmak
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				intrigue = 10
-			}
-			trait = lustful
-			trait = proud
-			trait = grey_eminence
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = tahmak
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = kind
-			trait = charitable
-			trait = has_nurgles_rot
-			trait = midas_touched
-		            }
-			}
-			
-		1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = tahmak
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 5
-				diplomacy = 3
-				stewardship = 2
-				learning = 3
-				intrigue = 3
-			}
-			trait = brave
-			trait = ambitious
-			trait = champion_undivided
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = tahmak
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = champion_khorne
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = tahmak
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 13
-				learning = 13
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = champion_tzeentch
-			trait = elusive_shadow
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = tahmak
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 8
-				diplomacy = 9
-			}
-			trait = lustful
-			trait = proud
-			trait = champion_slaanesh
-			trait = grey_eminence
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = tahmak
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = lustful
-			trait = proud
-			trait = champion_nurgle
-			trait = grey_eminence
-			}
-			}
-			
-		15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = tokmar
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				martial = 10
-			}
-			trait = brave
-			trait = ambitious
-			trait = skilled_tactician
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = tokmar
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = brilliant_strategist
-		            }
-				}
-			
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = tokmar
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 7
-				learning = 10
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = elusive_shadow
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = tokmar
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				intrigue = 10
-			}
-			trait = lustful
-			trait = proud
-			trait = grey_eminence
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = tokmar
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = kind
-			trait = charitable
-			trait = has_nurgles_rot
-			trait = midas_touched
-		            }
-			}
-			
-		1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = tokmar
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 5
-				diplomacy = 3
-				stewardship = 2
-				learning = 3
-				intrigue = 3
-			}
-			trait = brave
-			trait = ambitious
-			trait = champion_undivided
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = tokmar
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = champion_khorne
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = tokmar
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 13
-				learning = 13
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = champion_tzeentch
-			trait = elusive_shadow
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = tokmar
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 8
-				diplomacy = 9
-			}
-			trait = lustful
-			trait = proud
-			trait = champion_slaanesh
-			trait = grey_eminence
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = tokmar
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = lustful
-			trait = proud
-			trait = champion_nurgle
-			trait = grey_eminence
-			}
-			}
-			
-		15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = yusak
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				martial = 10
-			}
-			trait = brave
-			trait = ambitious
-			trait = skilled_tactician
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = yusak
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = brilliant_strategist
-		            }
-				}
-			
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = yusak
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 7
-				learning = 10
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = elusive_shadow
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = slaanesh
-			culture = yusak
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				intrigue = 10
-			}
-			trait = lustful
-			trait = proud
-			trait = grey_eminence
-		            }
-				}
-				
-			15 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = nurgle
-			culture = yusak
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				diplomacy = 7
-				stewardship = 10
-			}
-			trait = kind
-			trait = charitable
-			trait = has_nurgles_rot
-			trait = midas_touched
-		            }
-			}
-			
-		1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = chaos
-			culture = yusak
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 5
-				diplomacy = 3
-				stewardship = 2
-				learning = 3
-				intrigue = 3
-			}
-			trait = brave
-			trait = ambitious
-			trait = champion_undivided
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = khorne
-			culture = yusak
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 13
-			}
-			trait = brave
-			trait = wroth
-			trait = champion_khorne
-			trait = brilliant_strategist
-		            }
-				}
-				
-			1 = {
-		    create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = tzeentch
-			culture = yusak
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				intrigue = 13
-				learning = 13
-			}
-			trait = deceitful
-			trait = ambitious
-			trait = champion_tzeentch
-			trait = elusive_shadow
-		            }
-				}
-				
-		1 = {
-		    create_character = {
+			random_list = {
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = chi_an
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 8
+							diplomacy = 9
+						}
+						trait = brave
+						trait = ambitious
+						trait = skilled_tactician
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = chi_an
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = brilliant_strategist
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = chi_an
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 7
+							learning = 10
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = elusive_shadow
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = chi_an
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 8
+							diplomacy = 9
+						}
+						trait = lustful
+						trait = proud
+						trait = grey_eminence
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = chi_an
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = charitable
+						trait = kind
+						trait = nurgles_rot
+						trait = midas_touched
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = chi_an
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 5
+							diplomacy = 3
+							stewardship = 2
+							learning = 3
+							intrigue = 3
+						}
+						trait = brave
+						trait = ambitious
+						trait = champion_undivided
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = chi_an
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = champion_khorne
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = chi_an
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 13
+							learning = 13
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = champion_tzeentch
+						trait = elusive_shadow
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = chi_an
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 8
+							diplomacy = 9
+						}
+						trait = lustful
+						trait = proud
+						trait = champion_slaanesh
+						trait = grey_eminence
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = chi_an
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = charitable
+						trait = kind
+						trait = has_nurgles_rot
+						trait = has_tomb_rot
+						trait = pneumonic
+						trait = champion_nurgle
+						trait = midas_touched
+
+					}
+				}
+
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = kuj
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							martial = 10
+						}
+						trait = brave
+						trait = ambitious
+						trait = skilled_tactician
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = kuj
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = brilliant_strategist
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = kuj
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 7
+							learning = 10
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = elusive_shadow
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = kuj
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							intrigue = 10
+						}
+						trait = lustful
+						trait = proud
+						trait = grey_eminence
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = kuj
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = kind
+						trait = charitable
+						trait = has_nurgles_rot
+						trait = midas_touched
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = kuj
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 5
+							diplomacy = 3
+							stewardship = 2
+							learning = 3
+							intrigue = 3
+						}
+						trait = brave
+						trait = ambitious
+						trait = champion_undivided
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = kuj
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = champion_khorne
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = kuj
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 13
+							learning = 13
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = champion_tzeentch
+						trait = elusive_shadow
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = kuj
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 8
+							diplomacy = 9
+						}
+						trait = lustful
+						trait = proud
+						trait = champion_slaanesh
+						trait = grey_eminence
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = kuj
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = charitable
+						trait = kind
+						trait = has_nurgles_rot
+						trait = has_tomb_rot
+						trait = pneumonic
+						trait = champion_nurgle
+						trait = midas_touched
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = man_chu
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							martial = 10
+						}
+						trait = brave
+						trait = ambitious
+						trait = skilled_tactician
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = man_chu
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = brilliant_strategist
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = man_chu
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 7
+							learning = 10
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = elusive_shadow
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = man_chu
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							intrigue = 10
+						}
+						trait = lustful
+						trait = proud
+						trait = grey_eminence
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = man_chu
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = kind
+						trait = charitable
+						trait = has_nurgles_rot
+						trait = midas_touched
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = man_chu
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 5
+							diplomacy = 3
+							stewardship = 2
+							learning = 3
+							intrigue = 3
+						}
+						trait = brave
+						trait = ambitious
+						trait = champion_undivided
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = man_chu
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = champion_khorne
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = man_chu
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 13
+							learning = 13
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = champion_tzeentch
+						trait = elusive_shadow
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = man_chu
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 8
+							diplomacy = 9
+						}
+						trait = lustful
+						trait = proud
+						trait = champion_slaanesh
+						trait = grey_eminence
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = man_chu
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = charitable
+						trait = kind
+						trait = has_nurgles_rot
+						trait = has_tomb_rot
+						trait = pneumonic
+						trait = champion_nurgle
+						trait = midas_touched
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = mung
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							martial = 10
+						}
+						trait = brave
+						trait = ambitious
+						trait = skilled_tactician
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = mung
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = brilliant_strategist
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = mung
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 7
+							learning = 10
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = elusive_shadow
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = mung
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							intrigue = 10
+						}
+						trait = lustful
+						trait = proud
+						trait = grey_eminence
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = mung
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = kind
+						trait = charitable
+						trait = has_nurgles_rot
+						trait = midas_touched
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = mung
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 5
+							diplomacy = 3
+							stewardship = 2
+							learning = 3
+							intrigue = 3
+						}
+						trait = brave
+						trait = ambitious
+						trait = champion_undivided
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = mung
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = champion_khorne
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = mung
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 13
+							learning = 13
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = champion_tzeentch
+						trait = elusive_shadow
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = mung
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 8
+							diplomacy = 9
+						}
+						trait = lustful
+						trait = proud
+						trait = champion_slaanesh
+						trait = grey_eminence
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = mung
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = charitable
+						trait = kind
+						trait = has_nurgles_rot
+						trait = has_tomb_rot
+						trait = pneumonic
+						trait = champion_nurgle
+						trait = midas_touched
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = tong
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							martial = 10
+						}
+						trait = brave
+						trait = ambitious
+						trait = skilled_tactician
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = tong
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = brilliant_strategist
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = tong
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 7
+							learning = 10
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = elusive_shadow
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = tong
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							intrigue = 10
+						}
+						trait = lustful
+						trait = proud
+						trait = grey_eminence
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = tong
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = kind
+						trait = charitable
+						trait = has_nurgles_rot
+						trait = midas_touched
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = tong
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 5
+							diplomacy = 3
+							stewardship = 2
+							learning = 3
+							intrigue = 3
+						}
+						trait = brave
+						trait = ambitious
+						trait = champion_undivided
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = tong
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = champion_khorne
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = tong
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 13
+							learning = 13
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = champion_tzeentch
+						trait = elusive_shadow
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = tong
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 8
+							diplomacy = 9
+						}
+						trait = lustful
+						trait = proud
+						trait = champion_slaanesh
+						trait = grey_eminence
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = tong
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = charitable
+						trait = kind
+						trait = has_nurgles_rot
+						trait = has_tomb_rot
+						trait = pneumonic
+						trait = champion_nurgle
+						trait = midas_touched
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = tu_ka
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							martial = 10
+						}
+						trait = brave
+						trait = ambitious
+						trait = skilled_tactician
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = tu_ka
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = brilliant_strategist
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = tu_ka
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 7
+							learning = 10
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = elusive_shadow
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = tu_ka
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							intrigue = 10
+						}
+						trait = lustful
+						trait = proud
+						trait = grey_eminence
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = tu_ka
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = kind
+						trait = charitable
+						trait = has_nurgles_rot
+						trait = midas_touched
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = tu_ka
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 5
+							diplomacy = 3
+							stewardship = 2
+							learning = 3
+							intrigue = 3
+						}
+						trait = brave
+						trait = ambitious
+						trait = champion_undivided
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = tu_ka
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = champion_khorne
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = tu_ka
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 13
+							learning = 13
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = champion_tzeentch
+						trait = elusive_shadow
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = tu_ka
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 8
+							diplomacy = 9
+						}
+						trait = lustful
+						trait = proud
+						trait = champion_slaanesh
+						trait = grey_eminence
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = tu_ka
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = charitable
+						trait = kind
+						trait = has_nurgles_rot
+						trait = has_tomb_rot
+						trait = pneumonic
+						trait = champion_nurgle
+						trait = midas_touched
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = wei_tu
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							martial = 10
+						}
+						trait = brave
+						trait = ambitious
+						trait = skilled_tactician
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = wei_tu
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = brilliant_strategist
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = wei_tu
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 7
+							learning = 10
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = elusive_shadow
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = wei_tu
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							intrigue = 10
+						}
+						trait = lustful
+						trait = proud
+						trait = grey_eminence
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = wei_tu
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = kind
+						trait = charitable
+						trait = has_nurgles_rot
+						trait = midas_touched
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = wei_tu
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 5
+							diplomacy = 3
+							stewardship = 2
+							learning = 3
+							intrigue = 3
+						}
+						trait = brave
+						trait = ambitious
+						trait = champion_undivided
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = wei_tu
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = champion_khorne
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = wei_tu
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 13
+							learning = 13
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = champion_tzeentch
+						trait = elusive_shadow
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = wei_tu
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 8
+							diplomacy = 9
+						}
+						trait = lustful
+						trait = proud
+						trait = champion_slaanesh
+						trait = grey_eminence
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = wei_tu
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = charitable
+						trait = kind
+						trait = has_nurgles_rot
+						trait = has_tomb_rot
+						trait = pneumonic
+						trait = champion_nurgle
+						trait = midas_touched
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = wo
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							martial = 10
+						}
+						trait = brave
+						trait = ambitious
+						trait = skilled_tactician
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = wo
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = brilliant_strategist
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = wo
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 7
+							learning = 10
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = elusive_shadow
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = wo
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							intrigue = 10
+						}
+						trait = lustful
+						trait = proud
+						trait = grey_eminence
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = wo
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = kind
+						trait = charitable
+						trait = has_nurgles_rot
+						trait = midas_touched
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = wo
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 5
+							diplomacy = 3
+							stewardship = 2
+							learning = 3
+							intrigue = 3
+						}
+						trait = brave
+						trait = ambitious
+						trait = champion_undivided
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = wo
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = champion_khorne
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = wo
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 13
+							learning = 13
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = champion_tzeentch
+						trait = elusive_shadow
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = wo
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 8
+							diplomacy = 9
+						}
+						trait = lustful
+						trait = proud
+						trait = champion_slaanesh
+						trait = grey_eminence
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = wo
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = charitable
+						trait = kind
+						trait = has_nurgles_rot
+						trait = has_tomb_rot
+						trait = pneumonic
+						trait = champion_nurgle
+						trait = midas_touched
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = yin
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							martial = 10
+						}
+						trait = brave
+						trait = ambitious
+						trait = skilled_tactician
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = yin
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = brilliant_strategist
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = yin
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 7
+							learning = 10
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = elusive_shadow
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = yin
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							intrigue = 10
+						}
+						trait = lustful
+						trait = proud
+						trait = grey_eminence
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = yin
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = kind
+						trait = charitable
+						trait = has_nurgles_rot
+						trait = midas_touched
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = yin
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 5
+							diplomacy = 3
+							stewardship = 2
+							learning = 3
+							intrigue = 3
+						}
+						trait = brave
+						trait = ambitious
+						trait = champion_undivided
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = yin
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = champion_khorne
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = yin
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 13
+							learning = 13
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = champion_tzeentch
+						trait = elusive_shadow
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = yin
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 8
+							diplomacy = 9
+						}
+						trait = lustful
+						trait = proud
+						trait = champion_slaanesh
+						trait = grey_eminence
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = yin
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = charitable
+						trait = kind
+						trait = has_nurgles_rot
+						trait = has_tomb_rot
+						trait = pneumonic
+						trait = champion_nurgle
+						trait = midas_touched
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = aghol
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							martial = 10
+						}
+						trait = brave
+						trait = ambitious
+						trait = skilled_tactician
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = aghol
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = brilliant_strategist
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = aghol
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 7
+							learning = 10
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = elusive_shadow
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = aghol
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							intrigue = 10
+						}
+						trait = lustful
+						trait = proud
+						trait = grey_eminence
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = aghol
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = kind
+						trait = charitable
+						trait = has_nurgles_rot
+						trait = midas_touched
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = aghol
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 5
+							diplomacy = 3
+							stewardship = 2
+							learning = 3
+							intrigue = 3
+						}
+						trait = brave
+						trait = ambitious
+						trait = champion_undivided
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = aghol
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = champion_khorne
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = aghol
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 13
+							learning = 13
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = champion_tzeentch
+						trait = elusive_shadow
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = aghol
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 8
+							diplomacy = 9
+						}
+						trait = lustful
+						trait = proud
+						trait = champion_slaanesh
+						trait = grey_eminence
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = aghol
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = charitable
+						trait = kind
+						trait = has_nurgles_rot
+						trait = has_tomb_rot
+						trait = pneumonic
+						trait = champion_nurgle
+						trait = midas_touched
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = dolgan
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							martial = 10
+						}
+						trait = brave
+						trait = ambitious
+						trait = skilled_tactician
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = dolgan
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = brilliant_strategist
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = dolgan
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 7
+							learning = 10
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = elusive_shadow
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = dolgan
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							intrigue = 10
+						}
+						trait = lustful
+						trait = proud
+						trait = grey_eminence
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = dolgan
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = kind
+						trait = charitable
+						trait = has_nurgles_rot
+						trait = midas_touched
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = dolgan
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 5
+							diplomacy = 3
+							stewardship = 2
+							learning = 3
+							intrigue = 3
+						}
+						trait = brave
+						trait = ambitious
+						trait = champion_undivided
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = dolgan
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = champion_khorne
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = dolgan
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 13
+							learning = 13
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = champion_tzeentch
+						trait = elusive_shadow
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = dolgan
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 8
+							diplomacy = 9
+						}
+						trait = lustful
+						trait = proud
+						trait = champion_slaanesh
+						trait = grey_eminence
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = dolgan
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = charitable
+						trait = kind
+						trait = has_nurgles_rot
+						trait = has_tomb_rot
+						trait = pneumonic
+						trait = champion_nurgle
+						trait = midas_touched
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = gharhar
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							martial = 10
+						}
+						trait = brave
+						trait = ambitious
+						trait = skilled_tactician
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = gharhar
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = brilliant_strategist
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = gharhar
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 7
+							learning = 10
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = elusive_shadow
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = gharhar
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							intrigue = 10
+						}
+						trait = lustful
+						trait = proud
+						trait = grey_eminence
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = gharhar
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = kind
+						trait = charitable
+						trait = has_nurgles_rot
+						trait = midas_touched
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = gharhar
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 5
+							diplomacy = 3
+							stewardship = 2
+							learning = 3
+							intrigue = 3
+						}
+						trait = brave
+						trait = ambitious
+						trait = champion_undivided
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = gharhar
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = champion_khorne
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = gharhar
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 13
+							learning = 13
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = champion_tzeentch
+						trait = elusive_shadow
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = gharhar
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 8
+							diplomacy = 9
+						}
+						trait = lustful
+						trait = proud
+						trait = champion_slaanesh
+						trait = grey_eminence
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = gharhar
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = charitable
+						trait = kind
+						trait = has_nurgles_rot
+						trait = has_tomb_rot
+						trait = pneumonic
+						trait = champion_nurgle
+						trait = midas_touched
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = hastling
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							martial = 10
+						}
+						trait = brave
+						trait = ambitious
+						trait = skilled_tactician
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = hastling
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = brilliant_strategist
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = hastling
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 7
+							learning = 10
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = elusive_shadow
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = hastling
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							intrigue = 10
+						}
+						trait = lustful
+						trait = proud
+						trait = grey_eminence
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = hastling
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = kind
+						trait = charitable
+						trait = has_nurgles_rot
+						trait = midas_touched
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = hastling
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 5
+							diplomacy = 3
+							stewardship = 2
+							learning = 3
+							intrigue = 3
+						}
+						trait = brave
+						trait = ambitious
+						trait = champion_undivided
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = hastling
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = champion_khorne
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = hastling
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 13
+							learning = 13
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = champion_tzeentch
+						trait = elusive_shadow
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = hastling
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 8
+							diplomacy = 9
+						}
+						trait = lustful
+						trait = proud
+						trait = champion_slaanesh
+						trait = grey_eminence
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = hastling
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = charitable
+						trait = kind
+						trait = has_nurgles_rot
+						trait = has_tomb_rot
+						trait = pneumonic
+						trait = champion_nurgle
+						trait = midas_touched
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = khazag
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							martial = 10
+						}
+						trait = brave
+						trait = ambitious
+						trait = skilled_tactician
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = khazag
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = brilliant_strategist
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = khazag
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 7
+							learning = 10
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = elusive_shadow
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = khazag
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							intrigue = 10
+						}
+						trait = lustful
+						trait = proud
+						trait = grey_eminence
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = khazag
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = kind
+						trait = charitable
+						trait = has_nurgles_rot
+						trait = midas_touched
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = khazag
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 5
+							diplomacy = 3
+							stewardship = 2
+							learning = 3
+							intrigue = 3
+						}
+						trait = brave
+						trait = ambitious
+						trait = champion_undivided
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = khazag
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = champion_khorne
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = khazag
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 13
+							learning = 13
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = champion_tzeentch
+						trait = elusive_shadow
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = khazag
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 8
+							diplomacy = 9
+						}
+						trait = lustful
+						trait = proud
+						trait = champion_slaanesh
+						trait = grey_eminence
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = khazag
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = charitable
+						trait = kind
+						trait = has_nurgles_rot
+						trait = has_tomb_rot
+						trait = pneumonic
+						trait = champion_nurgle
+						trait = midas_touched
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = kul
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							martial = 10
+						}
+						trait = brave
+						trait = ambitious
+						trait = skilled_tactician
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = kul
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = brilliant_strategist
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = kul
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 7
+							learning = 10
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = elusive_shadow
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = kul
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							intrigue = 10
+						}
+						trait = lustful
+						trait = proud
+						trait = grey_eminence
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = kul
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = kind
+						trait = charitable
+						trait = has_nurgles_rot
+						trait = midas_touched
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = kul
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 5
+							diplomacy = 3
+							stewardship = 2
+							learning = 3
+							intrigue = 3
+						}
+						trait = brave
+						trait = ambitious
+						trait = champion_undivided
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = kul
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = champion_khorne
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = kul
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 13
+							learning = 13
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = champion_tzeentch
+						trait = elusive_shadow
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = kul
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 8
+							diplomacy = 9
+						}
+						trait = lustful
+						trait = proud
+						trait = champion_slaanesh
+						trait = grey_eminence
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = kul
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = charitable
+						trait = kind
+						trait = has_nurgles_rot
+						trait = has_tomb_rot
+						trait = pneumonic
+						trait = champion_nurgle
+						trait = midas_touched
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = kvellig
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							martial = 10
+						}
+						trait = brave
+						trait = ambitious
+						trait = skilled_tactician
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = kvellig
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = brilliant_strategist
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = kvellig
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 7
+							learning = 10
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = elusive_shadow
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = kvellig
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							intrigue = 10
+						}
+						trait = lustful
+						trait = proud
+						trait = grey_eminence
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = kvellig
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = kind
+						trait = charitable
+						trait = has_nurgles_rot
+						trait = midas_touched
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = kvellig
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 5
+							diplomacy = 3
+							stewardship = 2
+							learning = 3
+							intrigue = 3
+						}
+						trait = brave
+						trait = ambitious
+						trait = champion_undivided
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = kvellig
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = champion_khorne
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = kvellig
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 13
+							learning = 13
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = champion_tzeentch
+						trait = elusive_shadow
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = kvellig
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 8
+							diplomacy = 9
+						}
+						trait = lustful
+						trait = proud
+						trait = champion_slaanesh
+						trait = grey_eminence
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = kvellig
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = lustful
+						trait = proud
+						trait = champion_nurgle
+						trait = grey_eminence
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = tahmak
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							martial = 10
+						}
+						trait = brave
+						trait = ambitious
+						trait = skilled_tactician
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = tahmak
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = brilliant_strategist
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = tahmak
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 7
+							learning = 10
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = elusive_shadow
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = tahmak
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							intrigue = 10
+						}
+						trait = lustful
+						trait = proud
+						trait = grey_eminence
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = tahmak
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = kind
+						trait = charitable
+						trait = has_nurgles_rot
+						trait = midas_touched
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = tahmak
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 5
+							diplomacy = 3
+							stewardship = 2
+							learning = 3
+							intrigue = 3
+						}
+						trait = brave
+						trait = ambitious
+						trait = champion_undivided
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = tahmak
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = champion_khorne
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = tahmak
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 13
+							learning = 13
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = champion_tzeentch
+						trait = elusive_shadow
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = tahmak
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 8
+							diplomacy = 9
+						}
+						trait = lustful
+						trait = proud
+						trait = champion_slaanesh
+						trait = grey_eminence
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = tahmak
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = lustful
+						trait = proud
+						trait = champion_nurgle
+						trait = grey_eminence
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = tokmar
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							martial = 10
+						}
+						trait = brave
+						trait = ambitious
+						trait = skilled_tactician
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = tokmar
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = brilliant_strategist
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = tokmar
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 7
+							learning = 10
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = elusive_shadow
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = tokmar
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							intrigue = 10
+						}
+						trait = lustful
+						trait = proud
+						trait = grey_eminence
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = tokmar
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = kind
+						trait = charitable
+						trait = has_nurgles_rot
+						trait = midas_touched
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = tokmar
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 5
+							diplomacy = 3
+							stewardship = 2
+							learning = 3
+							intrigue = 3
+						}
+						trait = brave
+						trait = ambitious
+						trait = champion_undivided
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = tokmar
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = champion_khorne
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = tokmar
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 13
+							learning = 13
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = champion_tzeentch
+						trait = elusive_shadow
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = tokmar
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 8
+							diplomacy = 9
+						}
+						trait = lustful
+						trait = proud
+						trait = champion_slaanesh
+						trait = grey_eminence
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = tokmar
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = lustful
+						trait = proud
+						trait = champion_nurgle
+						trait = grey_eminence
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = yusak
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							martial = 10
+						}
+						trait = brave
+						trait = ambitious
+						trait = skilled_tactician
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = yusak
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = brilliant_strategist
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = yusak
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 7
+							learning = 10
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = elusive_shadow
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = yusak
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							intrigue = 10
+						}
+						trait = lustful
+						trait = proud
+						trait = grey_eminence
+
+					}
+				}
+				15 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = yusak
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = kind
+						trait = charitable
+						trait = has_nurgles_rot
+						trait = midas_touched
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = chaos
+						culture = yusak
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 5
+							diplomacy = 3
+							stewardship = 2
+							learning = 3
+							intrigue = 3
+						}
+						trait = brave
+						trait = ambitious
+						trait = champion_undivided
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = khorne
+						culture = yusak
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							martial = 13
+						}
+						trait = brave
+						trait = wroth
+						trait = champion_khorne
+						trait = brilliant_strategist
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = tzeentch
+						culture = yusak
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 13
+							learning = 13
+						}
+						trait = deceitful
+						trait = ambitious
+						trait = champion_tzeentch
+						trait = elusive_shadow
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = slaanesh
+						culture = yusak
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							intrigue = 8
+							diplomacy = 9
+						}
+						trait = lustful
+						trait = proud
+						trait = champion_slaanesh
+						trait = grey_eminence
+
+					}
+				}
+				1 = {
+					create_character = {
+						random_traits = yes
+						dynasty = random
+						religion = nurgle
+						culture = yusak
+						female = no
+						age = 20
+						health = 7
+						fertility = 0.7
+						attributes = {
+							diplomacy = 7
+							stewardship = 10
+						}
+						trait = lustful
+						trait = proud
+						trait = champion_nurgle
+						trait = grey_eminence
+					}
+
+				}
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					NOT = {
+						religion_group = chaos_gods_group
+					}
+					culture_group = beastman_group
+
+				}
+			}
+			create_character = {
 				random_traits = yes
 				dynasty = random
-				religion = slaanesh
-				culture = yusak
+				religion = ROOT
+				culture = ROOT
 				female = no
 				age = 20
 				health = 7
 				fertility = 0.7
 				attributes = {
-					intrigue = 8
+					martial = 8
 					diplomacy = 9
 				}
-				trait = lustful
-				trait = proud
-				trait = champion_slaanesh
-				trait = grey_eminence
-		    }
-		}
-				
-		1 = {
-		    create_character = {
-				random_traits = yes
-				dynasty = random
-				religion = nurgle
-				culture = yusak
-				female = no
-				age = 20
-				health = 7
-				fertility = 0.7
-				attributes = {
-					diplomacy = 7
-					stewardship = 10
-				}
-				trait = lustful
-				trait = proud
-				trait = champion_nurgle
-				trait = grey_eminence
+				trait = brave
+				trait = ambitious
+				trait = skilled_tactician
 			}
-	    }
-	}
-	}
-    if = {
-		limit = {
-			 OR = {
-				NOT = { religion_group = chaos_gods_group }
-				culture_group = beastman_group
-			 }
-        }
-        create_character = {
-			random_traits = yes
-			dynasty = random
-			religion = ROOT
-			culture = ROOT
-			female = no
-			age = 20
-			health = 7
-			fertility = 0.7
-			attributes = {
-				martial = 8
-				diplomacy = 9
-			}
-			trait = brave
-			trait = ambitious
-			trait = skilled_tactician
 		}
-	}
 		new_character = {
 			create_title = {
 				tier = KING
@@ -4091,31 +4093,34 @@ province_event = {
 			}
 			if = {
 				limit = {
-					NOT = { culture_group = beastman_group }
+					NOT = {
+						culture_group = beastman_group
+					}
 				}
 				set_government_type = nomadic_government
 			}
-			
 			save_event_target_as = minor_clan_revolt_leader
-			
 			wealth = 500
 			prestige = 500
 			population = 3000
 			manpower = 500
-			
 			random_list = {
 				34 = {
 					spawn_unit = {
 						province = ROOT
 						home = ROOT
 						owner = THIS
-						#leader = THIS
+						# leader = THIS
 						scaled_with_population_of = event_target:province_top_liege
 						for_population = 10000
 						cannot_inherit = yes
 						troops = {
-							light_cavalry = { 200 200 }
-							horse_archers = { 800 800 }
+							light_cavalry = {
+								200 200
+							}
+							horse_archers = {
+								800 800
+							}
 						}
 						attrition = 0.25
 					}
@@ -4142,8 +4147,12 @@ province_event = {
 							for_population = 10000
 							cannot_inherit = yes
 							troops = {
-								light_cavalry = { 200 200 }
-								horse_archers = { 800 800 }
+								light_cavalry = {
+									200 200
+								}
+								horse_archers = {
+									800 800
+								}
 							}
 							attrition = 0.25
 							disband_on_peace = yes
@@ -4172,8 +4181,12 @@ province_event = {
 							for_population = 10000
 							cannot_inherit = yes
 							troops = {
-								light_cavalry = { 200 200 }
-								horse_archers = { 800 800 }
+								light_cavalry = {
+									200 200
+								}
+								horse_archers = {
+									800 800
+								}
 							}
 							attrition = 0.25
 							disband_on_peace = yes
@@ -4185,13 +4198,17 @@ province_event = {
 						province = ROOT
 						home = ROOT
 						owner = THIS
-						#leader = THIS
+						# leader = THIS
 						scaled_with_population_of = event_target:province_top_liege
 						for_population = 10000
 						cannot_inherit = yes
 						troops = {
-							light_cavalry = { 150 150 }
-							horse_archers = { 600 600 }
+							light_cavalry = {
+								150 150
+							}
+							horse_archers = {
+								600 600
+							}
 						}
 						attrition = 0.25
 					}
@@ -4218,8 +4235,12 @@ province_event = {
 							for_population = 10000
 							cannot_inherit = yes
 							troops = {
-								light_cavalry = { 150 150 }
-								horse_archers = { 600 600 }
+								light_cavalry = {
+									150 150
+								}
+								horse_archers = {
+									600 600
+								}
 							}
 							attrition = 0.25
 							disband_on_peace = yes
@@ -4248,8 +4269,12 @@ province_event = {
 							for_population = 10000
 							cannot_inherit = yes
 							troops = {
-								light_cavalry = { 150 150 }
-								horse_archers = { 600 600 }
+								light_cavalry = {
+									150 150
+								}
+								horse_archers = {
+									600 600
+								}
 							}
 							attrition = 0.25
 							disband_on_peace = yes
@@ -4261,13 +4286,17 @@ province_event = {
 						province = ROOT
 						home = ROOT
 						owner = THIS
-						#leader = THIS
+						# leader = THIS
 						scaled_with_population_of = event_target:province_top_liege
 						for_population = 10000
 						cannot_inherit = yes
 						troops = {
-							light_cavalry = { 100 100 }
-							horse_archers = { 400 400 }
+							light_cavalry = {
+								100 100
+							}
+							horse_archers = {
+								400 400
+							}
 						}
 						attrition = 0.25
 					}
@@ -4294,8 +4323,12 @@ province_event = {
 							for_population = 10000
 							cannot_inherit = yes
 							troops = {
-								light_cavalry = { 100 100 }
-								horse_archers = { 400 400 }
+								light_cavalry = {
+									100 100
+								}
+								horse_archers = {
+									400 400
+								}
 							}
 							attrition = 0.25
 							disband_on_peace = yes
@@ -4324,8 +4357,12 @@ province_event = {
 							for_population = 10000
 							cannot_inherit = yes
 							troops = {
-								light_cavalry = { 100 100 }
-								horse_archers = { 400 400 }
+								light_cavalry = {
+									100 100
+								}
+								horse_archers = {
+									400 400
+								}
 							}
 							attrition = 0.25
 							disband_on_peace = yes
@@ -4333,13 +4370,12 @@ province_event = {
 					}
 				}
 			}
-			
 			# DoW on the province top liege
 			ROOT = {
 				owner = {
 					top_liege = {
 						add_population_scaled = -0.1
-#						set_defacto_vassal = PREVPREVPREV
+						# 						set_defacto_vassal = PREVPREVPREV
 						reverse_war = {
 							target = PREVPREVPREV
 							casus_belli = cb_minor_clan_revolt
@@ -4353,16 +4389,16 @@ province_event = {
 				}
 			}
 		}
-		
 		owner = {
-			any_liege = { # Inform the lieges
+			any_liege = {
+				# Inform the lieges
 				character_event = {
 					id = HL.2001
 				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_HL_2000
 	}
@@ -4373,9 +4409,8 @@ character_event = {
 	desc = EVTDESC_HL_2001
 	picture = GFX_evt_steppe_mercenaries
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_HL_2000
 	}
@@ -4386,21 +4421,25 @@ character_event = {
 	id = HL.2005
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		rebel = yes
 		any_war = {
-			attacker = { character = ROOT }
+			attacker = {
+				character = ROOT
+			}
 			using_cb = cb_minor_clan_revolt
 		}
 	}
-	
+
 	immediate = {
 		FROM = {
 			location = {
 				if = {
 					limit = {
-						NOT = { has_province_modifier = peasant_unrest }
+						NOT = {
+							has_province_modifier = peasant_unrest
+						}
 					}
 					add_province_modifier = {
 						name = peasant_unrest
@@ -4413,49 +4452,51 @@ character_event = {
 }
 
 # Peasant Rebels rise up to reinforce an ongoing provincial peasant revolt
+
 # Triggered from "on_rebel_revolt"
 province_event = {
 	id = HL.2010
 	desc = EVTDESC_HL_2010
 	picture = GFX_evt_steppe_mercenaries
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
 
 	trigger = {
 		has_dlc = "Horse Lords"
-		
 		any_province_holding = {
-			NOT = { holding_type = nomad }
+			NOT = {
+				holding_type = nomad
+			}
 		}
-
 		# There is already an ongoing peasant revolt for this province
 		owner = {
 			top_liege = {
 				war = yes
 				any_war = {
-					defender = { character = PREV }
+					defender = {
+						character = PREV
+					}
 					using_cb = cb_minor_clan_revolt
-#					war_title = ROOT # The county
+					# 					war_title = ROOT # The county
 				}
 			}
 		}
 	}
-	
+
 	immediate = {
-	
 		add_province_modifier = {
 			name = recent_county_uprising
 			duration = 1825 # Five years of -100% revolt risk in this county
 		}
-		
 		owner = {
 			top_liege = {
 				any_war = {
 					limit = {
-						defender = { character = PREV }
+						defender = {
+							character = PREV
+						}
 						using_cb = cb_minor_clan_revolt
-#						war_title = ROOT # The county
+						# 						war_title = ROOT # The county
 					}
 					attacker = {
 						random_list = {
@@ -4478,8 +4519,12 @@ province_event = {
 										home = ROOT
 										owner = PREV
 										troops = {
-											light_cavalry = { 200 200 }
-											horse_archers = { 800 800 }
+											light_cavalry = {
+												200 200
+											}
+											horse_archers = {
+												800 800
+											}
 										}
 										attrition = 0.25
 									}
@@ -4502,8 +4547,12 @@ province_event = {
 										home = ROOT
 										owner = PREV
 										troops = {
-											light_cavalry = { 200 200 }
-											horse_archers = { 800 800 }
+											light_cavalry = {
+												200 200
+											}
+											horse_archers = {
+												800 800
+											}
 										}
 										attrition = 0.25
 										disband_on_peace = yes
@@ -4527,8 +4576,12 @@ province_event = {
 										home = ROOT
 										owner = PREV
 										troops = {
-											light_cavalry = { 200 200 }
-											horse_archers = { 800 800 }
+											light_cavalry = {
+												200 200
+											}
+											horse_archers = {
+												800 800
+											}
 										}
 										attrition = 0.25
 										disband_on_peace = yes
@@ -4554,8 +4607,12 @@ province_event = {
 										home = ROOT
 										owner = PREV
 										troops = {
-											light_cavalry = { 150 150 }
-											horse_archers = { 600 600 }
+											light_cavalry = {
+												150 150
+											}
+											horse_archers = {
+												600 600
+											}
 										}
 										attrition = 0.25
 									}
@@ -4578,8 +4635,12 @@ province_event = {
 										home = ROOT
 										owner = PREV
 										troops = {
-											light_cavalry = { 150 150 }
-											horse_archers = { 600 600 }
+											light_cavalry = {
+												150 150
+											}
+											horse_archers = {
+												600 600
+											}
 										}
 										attrition = 0.25
 										disband_on_peace = yes
@@ -4603,8 +4664,12 @@ province_event = {
 										home = ROOT
 										owner = PREV
 										troops = {
-											light_cavalry = { 150 150 }
-											horse_archers = { 600 600 }
+											light_cavalry = {
+												150 150
+											}
+											horse_archers = {
+												600 600
+											}
 										}
 										attrition = 0.25
 										disband_on_peace = yes
@@ -4630,8 +4695,12 @@ province_event = {
 										home = ROOT
 										owner = PREV
 										troops = {
-											light_cavalry = { 100 100 }
-											horse_archers = { 400 400 }
+											light_cavalry = {
+												100 100
+											}
+											horse_archers = {
+												400 400
+											}
 										}
 										attrition = 0.25
 									}
@@ -4654,8 +4723,12 @@ province_event = {
 										home = ROOT
 										owner = PREV
 										troops = {
-											light_cavalry = { 100 100 }
-											horse_archers = { 400 400 }
+											light_cavalry = {
+												100 100
+											}
+											horse_archers = {
+												400 400
+											}
 										}
 										attrition = 0.25
 										disband_on_peace = yes
@@ -4679,8 +4752,12 @@ province_event = {
 										home = ROOT
 										owner = PREV
 										troops = {
-											light_cavalry = { 100 100 }
-											horse_archers = { 400 400 }
+											light_cavalry = {
+												100 100
+											}
+											horse_archers = {
+												400 400
+											}
 										}
 										attrition = 0.25
 										disband_on_peace = yes
@@ -4692,16 +4769,16 @@ province_event = {
 				}
 			}
 		}
-		
 		owner = {
-			any_liege = { # Inform the lieges
+			any_liege = {
+				# Inform the lieges
 				character_event = {
 					id = HL.2011
 				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_HL_2000
 	}
@@ -4712,9 +4789,8 @@ character_event = {
 	desc = EVTDESC_HL_2011
 	picture = GFX_evt_steppe_mercenaries
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_HL_2000
 	}

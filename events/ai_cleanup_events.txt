@@ -1,8 +1,10 @@
 
-#
+
 # by Silfae
 namespace = aicleanup
+
 # may be make gateway for clean events
+
 # on death to pass an amazon barony to a randomly generated female
 
 character_event = {
@@ -71,6 +73,7 @@ character_event = {
 		}
 	}
 }
+
 # New character receives inheritance
 
 character_event = {
@@ -86,7 +89,7 @@ character_event = {
 		}
 	}
 }
-#
+
 # on death to pass Avelorn to the next Everqueen
 
 character_event = {
@@ -113,6 +116,7 @@ character_event = {
 		}
 	}
 }
+
 # Inheritance Everqueen
 
 character_event = {
@@ -137,6 +141,7 @@ character_event = {
 		}
 	}
 }
+
 # Everqueen Trait Lost for on_yearly_pulse on_new_holder
 
 character_event = {
@@ -158,6 +163,7 @@ character_event = {
 		remove_trait = everqueen
 	}
 }
+
 # Phoenix King trait lost for on_yearly_pulse on_new_holder
 
 character_event = {
@@ -178,6 +184,7 @@ character_event = {
 		remove_trait = phoenix_king
 	}
 }
+
 # Gain old age traits for on_yearly_pulse
 
 character_event = {
@@ -240,6 +247,7 @@ character_event = {
 		}
 	}
 }
+
 # ROOT is the demander, FROM is the vassal
 
 character_event = {
@@ -255,6 +263,7 @@ character_event = {
 		}
 	}
 }
+
 # ROOT is the vassal, FROM is the demander
 
 character_event = {
@@ -281,6 +290,7 @@ character_event = {
 		}
 	}
 }
+
 # Spell failed
 
 character_event = {
@@ -296,6 +306,7 @@ character_event = {
 	option = {
 	}
 }
+
 # Remove woodwalking
 
 character_event = {
@@ -307,6 +318,7 @@ character_event = {
 		remove_trait = woodwalking
 	}
 }
+
 # Prisoners grow weak in the dungeon
 
 character_event = {
@@ -434,7 +446,6 @@ character_event = {
 
 	option = {
 		name = EVTOPTAaicleanup012
-
 		trigger = {
 			trait = fat
 		}
@@ -444,7 +455,6 @@ character_event = {
 
 	option = {
 		name = EVTOPTBaicleanup012
-
 		trigger = {
 			NOT = {
 				trait = fat
@@ -453,6 +463,7 @@ character_event = {
 		add_trait = undernourished
 	}
 }
+
 # Dwarf gains old gfx for on_yearly_pulse
 
 character_event = {
@@ -516,6 +527,7 @@ character_event = {
 		}
 	}
 }
+
 # On_birth, dwarf children should not be old already
 
 character_event = {
@@ -557,33 +569,53 @@ character_event = {
 		}
 	}
 }
-# Remove patron if the norscan has changed religion
-# character_event = {
-# id = aicleanup.015
-# hide_window = yes
-# is_triggered_only = yes
 
-# trigger = {
+# # Remove patron if the norscan has changed religion
 
-# NOT = {religion_group = old_gods_group
-}
+# # character_event = {
 
-# OR = {has_character_modifier = patron_tchar
-# has_character_modifier = patron_kharneth
-# has_character_modifier = patron_nurgleth
-# has_character_modifier = patron_shornaal
-# has_character_modifier = patron_ulric
+# # id = aicleanup.015
 
-# has_character_modifier = patron_ursun}
-}
-# immediate = {	remove_character_modifier = patron_tchar
-# remove_character_modifier = patron_kharneth
-# remove_character_modifier = patron_nurgleth
-# remove_character_modifier = patron_shornaal
-# remove_character_modifier = patron_ulric
-# remove_character_modifier = patron_ursun
-}
-}
+# # hide_window = yes
+
+# # is_triggered_only = yes
+
+# # trigger = {
+
+# # NOT = {religion_group = old_gods_group
+
+# }
+
+# # OR = {has_character_modifier = patron_tchar
+
+# # has_character_modifier = patron_kharneth
+
+# # has_character_modifier = patron_nurgleth
+
+# # has_character_modifier = patron_shornaal
+
+# # has_character_modifier = patron_ulric
+
+# # has_character_modifier = patron_ursun}
+
+# }
+
+# # immediate = {	remove_character_modifier = patron_tchar
+
+# # remove_character_modifier = patron_kharneth
+
+# # remove_character_modifier = patron_nurgleth
+
+# # remove_character_modifier = patron_shornaal
+
+# # remove_character_modifier = patron_ulric
+
+# # remove_character_modifier = patron_ursun
+
+# }
+
+# }
+
 # On death of Master, free all pet_consorts and mage_apprentices
 
 character_event = {
@@ -617,162 +649,225 @@ character_event = {
 		}
 	}
 }
-# Made obsolete after a vanilla patch
-# Set all Asur on start to proper government
-# character_event = {
-# 	id = aicleanup.017
-# 	hide_window = yes
-# 	is_triggered_only = yes
-#
 
-# 	trigger = {	is_ruler = yes
-# 			is_feudal = yes
-# 			trait = creature_elf
-# 			culture_group = asur_group
+# # Made obsolete after a vanilla patch
 
-# 			NOT = {government = highborn_government
-}
+# # Set all Asur on start to proper government
 
-# 	}
-#
+# # character_event = {
 
-# 	immediate = {
-set_government_type = highborn_government
+# # 	id = aicleanup.017
 
-# 				any_demesne_title = {refill_holding_levy = yes
-}
+# # 	hide_window = yes
 
-# 				liege = {any_demesne_title = {
-refill_holding_levy = yes
-}
-}
+# # 	is_triggered_only = yes
 
-# 				top_liege = {any_demesne_title = {
-refill_holding_levy = yes
-}
-}
+# # 	trigger = {	is_ruler = yes
 
-# 			}
-}
-# Set all Asrai on start to proper government
-# character_event = {
-# 	id = aicleanup.018
-# 	hide_window = yes
-# 	is_triggered_only = yes
-#
+# # 			is_feudal = yes
 
-# 	trigger = {	is_ruler = yes
-# 			religion = asrai_cadai
+# # 			trait = creature_elf
 
-# 			OR = {trait = creature_elf
-# 				trait = creature_treekin
+# # 			culture_group = asur_group
 
-# 				trait = creature_forestspirit}
+# # 			NOT = {government = highborn_government
 
-# 				capital_scope = {empire = {
-title = e_athel_loren
-}
-}
+# }
 
-# 				NOT = {government = eternal_court_government
-}
+# # 	}
 
-# 	}
-#
+# # 	immediate = {
 
-# 	immediate = {
-set_government_type = eternal_court_government
+# set_government_type = highborn_government
 
-# 				any_demesne_title = {refill_holding_levy = yes
-}
+# # 				any_demesne_title = {refill_holding_levy = yes
 
-# 				liege = {any_demesne_title = {
-refill_holding_levy = yes
-}
-}
+# }
 
-# 				top_liege = {any_demesne_title = {
-refill_holding_levy = yes
-}
-}
+# # 				liege = {any_demesne_title = {
 
-# 		}
-}
-# Set all Beastmen on start to proper government
-# character_event = {
-# 	id = aicleanup.019
-# 	hide_window = yes
-# 	is_triggered_only = yes
-#
+# refill_holding_levy = yes
 
-# 	trigger = {	is_ruler = yes
-# 			trait = creature_beastman
+# }
 
-# 				NOT = {government = beastman_government
-}
+# }
 
-# 				OR = {ai = yes
+# # 				top_liege = {any_demesne_title = {
 
-# 					has_dlc = "Horse Lords"}
+# refill_holding_levy = yes
 
-# 	}
-#
+# }
 
-# 	immediate = {
-set_government_type = beastman_government
+# }
 
-# 				any_demesne_title = {refill_holding_levy = yes
-}
+# # 			}
 
-# 				liege = {any_demesne_title = {
-refill_holding_levy = yes
-}
-}
+# }
 
-# 				top_liege = {any_demesne_title = {
-refill_holding_levy = yes
-}
-}
+# # Set all Asrai on start to proper government
 
-# 		}
-}
-# Set all Greenskins on start to proper government
-# character_event = {
-# 	id = aicleanup.020
-# 	hide_window = yes
-# 	is_triggered_only = yes
-#
+# # character_event = {
 
-# 	trigger = {	is_ruler = yes
+# # 	id = aicleanup.018
 
-# 				OR = {trait = creature_orc
+# # 	hide_window = yes
 
-# 					trait = creature_goblin}
+# # 	is_triggered_only = yes
 
-# 				NOT = {government = greenskin_government
-}
+# # 	trigger = {	is_ruler = yes
 
-# 	}
-#
+# # 			religion = asrai_cadai
 
-# 	immediate = {
-set_government_type = greenskin_government
+# # 			OR = {trait = creature_elf
 
-# 				any_demesne_title = {refill_holding_levy = yes
-}
+# # 				trait = creature_treekin
 
-# 				liege = {any_demesne_title = {
-refill_holding_levy = yes
-}
-}
+# # 				trait = creature_forestspirit}
 
-# 				top_liege = {any_demesne_title = {
-refill_holding_levy = yes
-}
-}
+# # 				capital_scope = {empire = {
 
-# 		}
-}
+# title = e_athel_loren
+
+# }
+
+# }
+
+# # 				NOT = {government = eternal_court_government
+
+# }
+
+# # 	}
+
+# # 	immediate = {
+
+# set_government_type = eternal_court_government
+
+# # 				any_demesne_title = {refill_holding_levy = yes
+
+# }
+
+# # 				liege = {any_demesne_title = {
+
+# refill_holding_levy = yes
+
+# }
+
+# }
+
+# # 				top_liege = {any_demesne_title = {
+
+# refill_holding_levy = yes
+
+# }
+
+# }
+
+# # 		}
+
+# }
+
+# # Set all Beastmen on start to proper government
+
+# # character_event = {
+
+# # 	id = aicleanup.019
+
+# # 	hide_window = yes
+
+# # 	is_triggered_only = yes
+
+# # 	trigger = {	is_ruler = yes
+
+# # 			trait = creature_beastman
+
+# # 				NOT = {government = beastman_government
+
+# }
+
+# # 				OR = {ai = yes
+
+# # 					has_dlc = "Horse Lords"}
+
+# # 	}
+
+# # 	immediate = {
+
+# set_government_type = beastman_government
+
+# # 				any_demesne_title = {refill_holding_levy = yes
+
+# }
+
+# # 				liege = {any_demesne_title = {
+
+# refill_holding_levy = yes
+
+# }
+
+# }
+
+# # 				top_liege = {any_demesne_title = {
+
+# refill_holding_levy = yes
+
+# }
+
+# }
+
+# # 		}
+
+# }
+
+# # Set all Greenskins on start to proper government
+
+# # character_event = {
+
+# # 	id = aicleanup.020
+
+# # 	hide_window = yes
+
+# # 	is_triggered_only = yes
+
+# # 	trigger = {	is_ruler = yes
+
+# # 				OR = {trait = creature_orc
+
+# # 					trait = creature_goblin}
+
+# # 				NOT = {government = greenskin_government
+
+# }
+
+# # 	}
+
+# # 	immediate = {
+
+# set_government_type = greenskin_government
+
+# # 				any_demesne_title = {refill_holding_levy = yes
+
+# }
+
+# # 				liege = {any_demesne_title = {
+
+# refill_holding_levy = yes
+
+# }
+
+# }
+
+# # 				top_liege = {any_demesne_title = {
+
+# refill_holding_levy = yes
+
+# }
+
+# }
+
+# # 		}
+
+# }
+
 # Set all Druchii on start to proper government and give Malekith the widowed trait when not used by a Player
 
 character_event = {
@@ -827,45 +922,63 @@ character_event = {
 		}
 	}
 }
-# character_event = {
-# 	id = aicleanup.022
-# 	hide_window = yes
-# 	is_triggered_only = yes
-#
 
-# 	trigger = {	is_ruler = yes
-# 			is_tribal = no
-# 			is_theocracy = no
-# 			trait = creature_elf
-# 			culture_group = druchi_group
+# # character_event = {
 
-# 				NOT = {trait = malekith
-}
+# # 	id = aicleanup.022
 
-# 				NOT = {government = druchii_government
-}
+# # 	hide_window = yes
 
-# 	}
-#
+# # 	is_triggered_only = yes
 
-# 	immediate = {
-set_government_type = druchii_government
+# # 	trigger = {	is_ruler = yes
 
-# 				any_demesne_title = {refill_holding_levy = yes
-}
+# # 			is_tribal = no
 
-# 				liege = {any_demesne_title = {
-refill_holding_levy = yes
-}
-}
+# # 			is_theocracy = no
 
-# 				top_liege = {any_demesne_title = {
-refill_holding_levy = yes
-}
-}
+# # 			trait = creature_elf
 
-# 		}
-}
+# # 			culture_group = druchi_group
+
+# # 				NOT = {trait = malekith
+
+# }
+
+# # 				NOT = {government = druchii_government
+
+# }
+
+# # 	}
+
+# # 	immediate = {
+
+# set_government_type = druchii_government
+
+# # 				any_demesne_title = {refill_holding_levy = yes
+
+# }
+
+# # 				liege = {any_demesne_title = {
+
+# refill_holding_levy = yes
+
+# }
+
+# }
+
+# # 				top_liege = {any_demesne_title = {
+
+# refill_holding_levy = yes
+
+# }
+
+# }
+
+# # 		}
+
+# }
+
 # Give the proper age traits to dwarves
 
 character_event = {
@@ -952,6 +1065,7 @@ character_event = {
 		}
 	}
 }
+
 # Red Dukedoms breaks on the character's death
 
 character_event = {
@@ -969,6 +1083,7 @@ character_event = {
 		}
 	}
 }
+
 # On birth, Amazonian males should be disinherited
 
 character_event = {
@@ -995,6 +1110,7 @@ character_event = {
 		add_trait = disinherited_amazon
 	}
 }
+
 # On birth, Amazonian females should be legitimized and made amazons
 
 character_event = {
@@ -1035,6 +1151,7 @@ character_event = {
 		}
 	}
 }
+
 # On_death. The Big Witch Doctor is always a mage.
 
 character_event = {
@@ -1127,6 +1244,7 @@ character_event = {
 		}
 	}
 }
+
 # On_death. The holder of the university of Martek is always a scholar.
 
 character_event = {
@@ -1217,6 +1335,7 @@ character_event = {
 		}
 	}
 }
+
 # On Succession event - if holder of Samur's Witch Hunter chapter is not a Witch Hunter, the title disappears.
 
 character_event = {
@@ -1243,6 +1362,7 @@ character_event = {
 		}
 	}
 }
+
 # on_adolescence, elves receive the youngling trait, preventing them from wasting away themselves in lowborn marriages.
 
 character_event = {
@@ -1269,6 +1389,7 @@ character_event = {
 		}
 	}
 }
+
 # At 45, elves lose their youngling traits and can be married off. on_yearly_pulse
 
 character_event = {
@@ -1292,6 +1413,7 @@ character_event = {
 		prestige = 50
 	}
 }
+
 # Cleansing event, on_ten_years
 
 character_event = {

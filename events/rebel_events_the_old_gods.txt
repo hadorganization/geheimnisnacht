@@ -1,24 +1,22 @@
-#########################################################
-#
+
+
 # Rebel Events for The Old Gods DLC
+
 # ( TOG.1000 to TOG.1199)
-#
+
 # NOTE: The Old Gods DLC disables the old rebel system
-#
-#########################################################
 
 # Written by Henrik Fåhraeus
-
 namespace = TOG
 
 # Peasant Rebels rise up (temporary rebel title created, with a leader and a war)
+
 # Triggered from "on_rebel_revolt"
 province_event = {
 	id = TOG.1000
 	desc = EVTDESC_TOG_1000
 	picture = GFX_evt_peasants
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
 
 	trigger = {
@@ -26,16 +24,27 @@ province_event = {
 			has_dlc = "The Old Gods"
 			has_province_flag = force_peasant_revolt
 		}
-		NOT = { culture = nehekharan } #the Undead do not complain
-		NOT = { culture_group = lizardman_group } #Lizardmen built for compliance to Lizardmen
-		#Greenskins have prio
-		NOT = { has_province_modifier = greenskin_population_bad }
-		#Beastmen have prio
-		NOT = { has_province_modifier = beastmen_unrest }
-		NOT = { has_province_modifier = beastman_herdstone }
-		#Lustrian beasts have prio
-		NOT = { has_province_modifier = lustria_oppressive_jungle }
-
+		NOT = {
+			culture = nehekharan
+		} # the Undead do not complain
+		NOT = {
+			culture_group = lizardman_group
+		} # Lizardmen built for compliance to Lizardmen
+		# Greenskins have prio
+		NOT = {
+			has_province_modifier = greenskin_population_bad
+		}
+		# Beastmen have prio
+		NOT = {
+			has_province_modifier = beastmen_unrest
+		}
+		NOT = {
+			has_province_modifier = beastman_herdstone
+		}
+		# Lustrian beasts have prio
+		NOT = {
+			has_province_modifier = lustria_oppressive_jungle
+		}
 		# Will get clan rebels instead
 		NAND = {
 			has_empty_holding = yes
@@ -43,18 +52,21 @@ province_event = {
 				is_nomadic = yes
 			}
 		}
-		
 		any_province_holding = {
-			NOT = { holding_type = nomad }
+			NOT = {
+				holding_type = nomad
+			}
 		}
-		
 		# Heretic revolts have prio
 		OR = {
-			NOT = { has_province_modifier = heretic_stronghold }
-			NOT = { has_province_modifier = fanatic_uprising }
+			NOT = {
+				has_province_modifier = heretic_stronghold
+			}
+			NOT = {
+				has_province_modifier = fanatic_uprising
+			}
 			has_province_flag = force_peasant_revolt
 		}
-		
 		# Religious revolts have prio
 		OR = {
 			owner = {
@@ -64,7 +76,6 @@ province_event = {
 			}
 			has_province_flag = force_peasant_revolt
 		}
-		
 		# Nationalist revolts have prio
 		OR = {
 			owner = {
@@ -75,21 +86,24 @@ province_event = {
 			kingdom = {
 				OR = {
 					has_holder = yes
-					NOT = { culture = ROOT }
+					NOT = {
+						culture = ROOT
+					}
 				}
 			}
 			has_province_flag = force_peasant_revolt
 		}
-		
 		OR = {
 			has_province_flag = force_peasant_revolt
-			NOT = { # Not if there is already an ongoing peasant revolt for this province
+			NOT = {
+				# Not if there is already an ongoing peasant revolt for this province
 				owner = {
 					top_liege = {
 						war = yes
-						
 						any_war = {
-							defender = { character = PREV }
+							defender = {
+								character = PREV
+							}
 							OR = {
 								AND = {
 									using_cb = peasant_revolt
@@ -97,11 +111,15 @@ province_event = {
 								}
 								AND = {
 									using_cb = heretic_revolt
-									attacker = { religion = ROOT }
+									attacker = {
+										religion = ROOT
+									}
 								}
 								AND = {
 									using_cb = religious_revolt
-									attacker = { religion = ROOT }
+									attacker = {
+										religion = ROOT
+									}
 								}
 								AND = {
 									using_cb = liberation_revolt
@@ -120,10 +138,9 @@ province_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		remove_province_modifier = rumors_of_witchcraft
-	
 		create_character = {
 			random_traits = yes
 			dynasty = none
@@ -137,7 +154,6 @@ province_event = {
 			trait = peasant_leader
 			trait = tough_soldier
 		}
-		
 		new_character = {
 			create_title = {
 				tier = DUKE
@@ -148,11 +164,8 @@ province_event = {
 				name = "PEASANT_REVOLT"
 				holder = THIS
 			}
-			
 			wealth = 100
-			
 			spawn_peasant_army_effect = yes
-			
 			if = {
 				limit = {
 					has_game_rule = {
@@ -163,7 +176,6 @@ province_event = {
 				spawn_peasant_army_effect = yes
 				wealth = 150
 			}
-			
 			if = {
 				limit = {
 					has_game_rule = {
@@ -176,7 +188,6 @@ province_event = {
 				spawn_peasant_army_effect = yes
 				wealth = 250
 			}
-			
 			if = {
 				limit = {
 					has_game_rule = {
@@ -191,12 +202,11 @@ province_event = {
 				spawn_peasant_army_effect = yes
 				wealth = 350
 			}
-			
 			# DoW on the province top liege
 			ROOT = {
 				owner = {
 					top_liege = {
-#						set_defacto_vassal = PREVPREVPREV
+						# 						set_defacto_vassal = PREVPREVPREV
 						reverse_war = {
 							target = PREVPREVPREV
 							casus_belli = peasant_revolt
@@ -210,16 +220,16 @@ province_event = {
 				}
 			}
 		}
-		
 		owner = {
-			any_liege = { # Inform the lieges
+			any_liege = {
+				# Inform the lieges
 				character_event = {
 					id = TOG.1001
 				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = "EVTOPTA_TOG_1000"
 	}
@@ -230,9 +240,8 @@ character_event = {
 	desc = EVTDESC_TOG_1001
 	picture = GFX_evt_peasants
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA_TOG_1000"
 	}
@@ -243,21 +252,23 @@ character_event = {
 	id = TOG.1005
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		trait = peasant_leader
 		rebel = yes
-		FROM = { 
+		FROM = {
 			is_capital = yes # The capital holding
 		}
 	}
-	
+
 	immediate = {
 		FROM = {
 			location = {
 				if = {
 					limit = {
-						NOT = { has_province_modifier = peasant_unrest }
+						NOT = {
+							has_province_modifier = peasant_unrest
+						}
 					}
 					add_province_modifier = {
 						name = peasant_unrest
@@ -270,59 +281,69 @@ character_event = {
 }
 
 # Peasant Rebels rise up to reinforce an ongoing provincial peasant revolt
+
 # Triggered from "on_rebel_revolt"
 province_event = {
 	id = TOG.1010
 	desc = EVTDESC_TOG_1010
 	picture = GFX_evt_peasants
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
 
 	trigger = {
 		has_dlc = "The Old Gods"
-		NOT = { culture = nehekharan } #the Undead do not complain
-		NOT = { culture_group = lizardman_group } #Lizardmen built for compliance to Lizardmen
-		NOT = { has_province_modifier = beastmen_unrest }
-		NOT = { has_province_modifier = beastman_herdstone }
-		
-		any_province_holding = {
-			NOT = { holding_type = nomad }
+		NOT = {
+			culture = nehekharan
+		} # the Undead do not complain
+		NOT = {
+			culture_group = lizardman_group
+		} # Lizardmen built for compliance to Lizardmen
+		NOT = {
+			has_province_modifier = beastmen_unrest
 		}
-
-		NOT = { has_province_modifier = lustria_oppressive_jungle }
-
+		NOT = {
+			has_province_modifier = beastman_herdstone
+		}
+		any_province_holding = {
+			NOT = {
+				holding_type = nomad
+			}
+		}
+		NOT = {
+			has_province_modifier = lustria_oppressive_jungle
+		}
 		# There is already an ongoing peasant revolt for this province
 		owner = {
 			top_liege = {
 				war = yes
 				any_war = {
-					defender = { character = PREV }
+					defender = {
+						character = PREV
+					}
 					using_cb = peasant_revolt
 					war_title = ROOT # The county
 				}
 			}
 		}
 	}
-	
+
 	immediate = {
-		
 		add_province_modifier = {
 			name = recent_county_uprising
 			duration = 1825 # Five years of -100% revolt risk in this county
 		}
-		
 		owner = {
 			top_liege = {
 				any_war = {
 					limit = {
-						defender = { character = PREV }
+						defender = {
+							character = PREV
+						}
 						using_cb = peasant_revolt
 						war_title = ROOT # The county
 					}
 					attacker = {
 						spawn_peasant_reinforcements_effect = yes
-						
 						if = {
 							limit = {
 								has_game_rule = {
@@ -332,7 +353,6 @@ province_event = {
 							}
 							spawn_peasant_reinforcements_effect = yes
 						}
-						
 						if = {
 							limit = {
 								has_game_rule = {
@@ -344,7 +364,6 @@ province_event = {
 							spawn_peasant_reinforcements_effect = yes
 							spawn_peasant_reinforcements_effect = yes
 						}
-						
 						if = {
 							limit = {
 								has_game_rule = {
@@ -362,16 +381,16 @@ province_event = {
 				}
 			}
 		}
-		
 		owner = {
-			any_liege = { # Inform the lieges
+			any_liege = {
+				# Inform the lieges
 				character_event = {
 					id = TOG.1011
 				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = "EVTOPTA_TOG_1010"
 	}
@@ -382,49 +401,61 @@ character_event = {
 	desc = EVTDESC_TOG_1011
 	picture = GFX_evt_peasants
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA_TOG_1010"
 	}
 }
 
 # Heretic Rebels rise up (temporary rebel title created, with a leader and a war)
+
 # Triggered from "on_rebel_revolt"
 province_event = {
 	id = TOG.1020
 	desc = EVTDESC_TOG_1020
 	picture = GFX_evt_heretic
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
 
 	trigger = {
 		has_dlc = "The Old Gods"
-		NOT = { culture = nehekharan } #the Undead do not complain
-		NOT = { culture_group = lizardman_group } #Lizardmen built for compliance to Lizardmen
-		NOT = { has_province_modifier = beastmen_unrest }
-		NOT = { has_province_modifier = beastman_herdstone }
-		NOT = { has_province_modifier = greenskin_population_bad }
-		NOT = { has_province_modifier = lustria_oppressive_jungle }
-		
-		
+		NOT = {
+			culture = nehekharan
+		} # the Undead do not complain
+		NOT = {
+			culture_group = lizardman_group
+		} # Lizardmen built for compliance to Lizardmen
+		NOT = {
+			has_province_modifier = beastmen_unrest
+		}
+		NOT = {
+			has_province_modifier = beastman_herdstone
+		}
+		NOT = {
+			has_province_modifier = greenskin_population_bad
+		}
+		NOT = {
+			has_province_modifier = lustria_oppressive_jungle
+		}
 		OR = {
 			has_province_modifier = heretic_stronghold
 			has_province_modifier = fanatic_uprising
 		}
-		
 		any_province_holding = {
-			NOT = { holding_type = nomad }
+			NOT = {
+				holding_type = nomad
+			}
 		}
-		
-		NOT = { # Not if there is already an ongoing revolt
+		NOT = {
+			# Not if there is already an ongoing revolt
 			owner = {
 				top_liege = {
 					war = yes
 					any_war = {
-						defender = { character = PREV }
+						defender = {
+							character = PREV
+						}
 						OR = {
 							AND = {
 								using_cb = peasant_revolt
@@ -432,11 +463,15 @@ province_event = {
 							}
 							AND = {
 								using_cb = heretic_revolt
-								attacker = { religion = ROOT }
+								attacker = {
+									religion = ROOT
+								}
 							}
 							AND = {
 								using_cb = religious_revolt
-								attacker = { religion = ROOT }
+								attacker = {
+									religion = ROOT
+								}
 							}
 						}
 					}
@@ -444,7 +479,7 @@ province_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		create_character = {
 			random_traits = yes
@@ -462,10 +497,8 @@ province_event = {
 			trait = scholar
 			trait = skilled_tactician
 		}
-		
 		new_character = {
 			set_character_flag = heretic_revolter
-			
 			create_title = {
 				tier = DUKE
 				landless = yes
@@ -475,11 +508,8 @@ province_event = {
 				name = "HERETIC_REVOLT"
 				holder = THIS
 			}
-			
 			wealth = 100
-			
 			spawn_heretic_army_effect = yes
-			
 			if = {
 				limit = {
 					has_game_rule = {
@@ -490,7 +520,6 @@ province_event = {
 				spawn_heretic_army_effect = yes
 				wealth = 150
 			}
-			
 			if = {
 				limit = {
 					has_game_rule = {
@@ -503,7 +532,6 @@ province_event = {
 				spawn_heretic_army_effect = yes
 				wealth = 250
 			}
-			
 			if = {
 				limit = {
 					has_game_rule = {
@@ -518,7 +546,6 @@ province_event = {
 				spawn_heretic_army_effect = yes
 				wealth = 350
 			}
-			
 			# DoW on the province top liege
 			ROOT = {
 				owner = {
@@ -535,16 +562,16 @@ province_event = {
 				}
 			}
 		}
-		
 		owner = {
-			any_liege = { # Inform the lieges
+			any_liege = {
+				# Inform the lieges
 				character_event = {
 					id = TOG.1021
 				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = "EVTOPTA_TOG_1020"
 	}
@@ -555,9 +582,8 @@ character_event = {
 	desc = EVTDESC_TOG_1021
 	picture = GFX_evt_heretic
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_1020
 	}
@@ -568,24 +594,26 @@ character_event = {
 	id = TOG.1025
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		trait = heresiarch
 		rebel = yes
-		FROM = { 
+		FROM = {
 			is_capital = yes # The capital holding
 		}
 	}
-	
+
 	immediate = {
 		FROM = {
 			location = {
 				if = {
 					limit = {
-						NOT = { has_province_modifier = religious_unrest }
+						NOT = {
+							has_province_modifier = religious_unrest
+						}
 					}
 					add_province_modifier = {
-						name = fanatic_uprising #
+						name = fanatic_uprising
 						duration = 1825
 					}
 				}
@@ -595,59 +623,64 @@ character_event = {
 }
 
 # Heretic Rebels rise up to reinforce an ongoing heretic uprising
+
 # Triggered from "on_rebel_revolt"
 province_event = {
 	id = TOG.1030
 	desc = EVTDESC_TOG_1030
 	picture = GFX_evt_heretic
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
 
 	trigger = {
 		has_dlc = "The Old Gods"
-		NOT = { culture_group = lizardman_group } #Lizardmen built for compliance to Lizardmen
-		
+		NOT = {
+			culture_group = lizardman_group
+		} # Lizardmen built for compliance to Lizardmen
 		OR = {
 			has_province_modifier = heretic_stronghold
 			has_province_modifier = fanatic_uprising
 		}
-		
-		
 		any_province_holding = {
-			NOT = { holding_type = nomad }
+			NOT = {
+				holding_type = nomad
+			}
 		}
-
 		owner = {
 			top_liege = {
 				war = yes
 				any_war = {
-					defender = { character = PREV }
+					defender = {
+						character = PREV
+					}
 					using_cb = heretic_revolt
-					attacker = { religion = ROOT }
+					attacker = {
+						religion = ROOT
+					}
 				}
 			}
 		}
 	}
-	
+
 	immediate = {
-	
 		add_province_modifier = {
 			name = recent_county_uprising
 			duration = 1825 # Five years of -100% revolt risk in this county
 		}
-	
 		owner = {
 			top_liege = {
 				any_war = {
 					limit = {
-						defender = { character = PREV }
+						defender = {
+							character = PREV
+						}
 						using_cb = heretic_revolt
-						attacker = { religion = ROOT }
+						attacker = {
+							religion = ROOT
+						}
 					}
 					attacker = {
 						spawn_heretic_reinforcements_effect = yes
-						
 						if = {
 							limit = {
 								has_game_rule = {
@@ -657,7 +690,6 @@ province_event = {
 							}
 							spawn_heretic_reinforcements_effect = yes
 						}
-						
 						if = {
 							limit = {
 								has_game_rule = {
@@ -669,7 +701,6 @@ province_event = {
 							spawn_heretic_reinforcements_effect = yes
 							spawn_heretic_reinforcements_effect = yes
 						}
-						
 						if = {
 							limit = {
 								has_game_rule = {
@@ -687,16 +718,16 @@ province_event = {
 				}
 			}
 		}
-		
 		owner = {
-			any_liege = { # Inform the lieges
+			any_liege = {
+				# Inform the lieges
 				character_event = {
 					id = TOG.1031
 				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = "EVTOPTA_TOG_1030"
 	}
@@ -707,84 +738,103 @@ character_event = {
 	desc = EVTDESC_TOG_1031
 	picture = GFX_evt_heretic
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA_TOG_1030"
 	}
 }
 
 # Royalist Nationalist Rebels rise up to create a kingdom (temporary rebel title created, with a leader and a war)
+
 # Triggered from "on_rebel_revolt"
 province_event = {
 	id = TOG.1040
 	desc = EVTDESC_TOG_1040
 	picture = GFX_evt_siege
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
 
 	trigger = {
 		has_dlc = "The Old Gods"
-
 		any_province_holding = {
-			NOT = { holding_type = nomad }
-		}
-		
-		NOT = { culture_group = lizardman_group } #Lizardmen built for compliance to Lizardmen
-		NOT = { culture = nehekharan } #the Undead do not complain
-		NOT = { has_province_modifier = beastmen_unrest }
-		NOT = { has_province_modifier = beastman_herdstone }
-		NOT = { has_province_modifier = lustria_oppressive_jungle }
-		NOT = { has_province_modifier = greenskin_population_bad }
-		
-		owner = {
-			top_liege = {
-				NOT = { culture = ROOT }
+			NOT = {
+				holding_type = nomad
 			}
 		}
-		
+		NOT = {
+			culture_group = lizardman_group
+		} # Lizardmen built for compliance to Lizardmen
+		NOT = {
+			culture = nehekharan
+		} # the Undead do not complain
+		NOT = {
+			has_province_modifier = beastmen_unrest
+		}
+		NOT = {
+			has_province_modifier = beastman_herdstone
+		}
+		NOT = {
+			has_province_modifier = lustria_oppressive_jungle
+		}
+		NOT = {
+			has_province_modifier = greenskin_population_bad
+		}
+		owner = {
+			top_liege = {
+				NOT = {
+					culture = ROOT
+				}
+			}
+		}
 		kingdom = {
 			has_holder = no
 			culture = ROOT
-			
 			# The de jure kingdom must have had an appropriate holder in the past
 			any_previous_holder = {
 				ROOT = {
 					owner = {
 						top_liege = {
-							NOT = { dynasty = PREVPREVPREV }
+							NOT = {
+								dynasty = PREVPREVPREV
+							}
 							OR = {
 								is_nomadic = no
-								NOT = { culture_group = ROOT }
+								NOT = {
+									culture_group = ROOT
+								}
 							}
 						}
 					}
 				}
 			}
 		}
-		
 		# Heretic revolts have prio
-		OR = { 
+		OR = {
 			is_heretic = no
 			owner = {
 				top_liege = {
-					NOT = { is_parent_religion = ROOT }
+					NOT = {
+						is_parent_religion = ROOT
+					}
 				}
 			}
 		}
-		
-		NOT = { # Not if there is already an ongoing revolt
+		NOT = {
+			# Not if there is already an ongoing revolt
 			owner = {
 				top_liege = {
 					war = yes
 					any_war = {
-						defender = { character = PREV }
+						defender = {
+							character = PREV
+						}
 						OR = {
 							AND = {
 								using_cb = heretic_revolt
-								attacker = { religion = ROOT }
+								attacker = {
+									religion = ROOT
+								}
 							}
 							AND = {
 								using_cb = liberation_revolt
@@ -802,7 +852,7 @@ province_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		create_character = {
 			random_traits = yes
@@ -824,10 +874,8 @@ province_event = {
 			trait = brilliant_strategist
 			trait = inspiring_leader
 		}
-		
 		new_character = {
 			set_character_flag = nationalist_rebel
-			
 			create_title = {
 				tier = DUKE
 				landless = yes
@@ -837,27 +885,33 @@ province_event = {
 				name = "NATIONALIST_REVOLT"
 				holder = THIS
 			}
-			
 			wealth = 100
-			
 			spawn_unit = {
 				province = ROOT
 				home = ROOT
 				owner = THIS
-				#leader = THIS
+				# leader = THIS
 				scaled_by_biggest_garrison = 1.75
 				troops = {
-					archers = { 6 6 }
-					light_cavalry = { 3 3 }
-					knights = { 1 1 }
-					light_infantry = { 7 7 }
-					heavy_infantry = { 3 3 }
+					archers = {
+						6 6
+					}
+					light_cavalry = {
+						3 3
+					}
+					knights = {
+						1 1
+					}
+					light_infantry = {
+						7 7
+					}
+					heavy_infantry = {
+						3 3
+					}
 				}
 				attrition = 1.0
 			}
-			
 			spawn_nationalist_army_effect = yes
-			
 			if = {
 				limit = {
 					has_game_rule = {
@@ -868,7 +922,6 @@ province_event = {
 				spawn_nationalist_army_effect = yes
 				wealth = 150
 			}
-			
 			if = {
 				limit = {
 					has_game_rule = {
@@ -881,7 +934,6 @@ province_event = {
 				spawn_nationalist_army_effect = yes
 				wealth = 250
 			}
-			
 			if = {
 				limit = {
 					has_game_rule = {
@@ -896,7 +948,6 @@ province_event = {
 				spawn_nationalist_army_effect = yes
 				wealth = 350
 			}
-			
 			# DoW on the province top liege
 			ROOT = {
 				owner = {
@@ -915,16 +966,16 @@ province_event = {
 				}
 			}
 		}
-		
 		owner = {
-			any_liege = { # Inform the lieges
+			any_liege = {
+				# Inform the lieges
 				character_event = {
 					id = TOG.1041
 				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = "EVTOPTA_TOG_1040"
 	}
@@ -935,9 +986,8 @@ character_event = {
 	desc = EVTDESC_TOG_1041
 	picture = GFX_evt_siege
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_1040
 	}
@@ -948,25 +998,31 @@ character_event = {
 	id = TOG.1045
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		rebel = yes
-		FROM = { 
+		FROM = {
 			is_capital = yes # The capital holding
 		}
 		any_war = {
-			attacker = { character = ROOT }
+			attacker = {
+				character = ROOT
+			}
 			using_cb = liberation_revolt
 		}
 	}
-	
+
 	immediate = {
 		FROM = {
 			location = {
 				if = {
 					limit = {
-						NOT = { culture = ROOT }
-						kingdom = { culture = ROOT }
+						NOT = {
+							culture = ROOT
+						}
+						kingdom = {
+							culture = ROOT
+						}
 					}
 					random = {
 						chance = 20
@@ -976,7 +1032,9 @@ character_event = {
 				if = {
 					limit = {
 						culture = ROOT
-						NOT = { has_province_modifier = cultural_unrest }
+						NOT = {
+							has_province_modifier = cultural_unrest
+						}
 					}
 					add_province_modifier = {
 						name = cultural_unrest
@@ -989,28 +1047,30 @@ character_event = {
 }
 
 # Nationalist Rebels rise up to reinforce an ongoing revolt
+
 # Triggered from "on_rebel_revolt"
 province_event = {
 	id = TOG.1050
 	desc = EVTDESC_TOG_1050
 	picture = GFX_evt_siege
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
 
 	trigger = {
 		has_dlc = "The Old Gods"
-
 		any_province_holding = {
-			NOT = { holding_type = nomad }
+			NOT = {
+				holding_type = nomad
+			}
 		}
-		
 		# There is already an ongoing nationalist revolt for the same kingdom
 		owner = {
 			top_liege = {
 				war = yes
 				any_war = {
-					defender = { character = PREV }
+					defender = {
+						character = PREV
+					}
 					using_cb = liberation_revolt
 					thirdparty_title_scope = {
 						ROOT = {
@@ -1023,7 +1083,7 @@ province_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		add_province_modifier = {
 			name = recent_county_uprising
@@ -1033,7 +1093,9 @@ province_event = {
 			top_liege = {
 				any_war = {
 					limit = {
-						defender = { character = PREV }
+						defender = {
+							character = PREV
+						}
 						using_cb = liberation_revolt
 						thirdparty_title_scope = {
 							ROOT = {
@@ -1045,7 +1107,6 @@ province_event = {
 					}
 					attacker = {
 						spawn_nationalist_reinforcements_effect = yes
-						
 						if = {
 							limit = {
 								has_game_rule = {
@@ -1055,7 +1116,6 @@ province_event = {
 							}
 							spawn_nationalist_reinforcements_effect = yes
 						}
-						
 						if = {
 							limit = {
 								has_game_rule = {
@@ -1067,7 +1127,6 @@ province_event = {
 							spawn_nationalist_reinforcements_effect = yes
 							spawn_nationalist_reinforcements_effect = yes
 						}
-						
 						if = {
 							limit = {
 								has_game_rule = {
@@ -1085,16 +1144,16 @@ province_event = {
 				}
 			}
 		}
-		
 		owner = {
-			any_liege = { # Inform the lieges
+			any_liege = {
+				# Inform the lieges
 				character_event = {
 					id = TOG.1051
 				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = "EVTOPTA_TOG_1000"
 	}
@@ -1105,47 +1164,56 @@ character_event = {
 	desc = EVTDESC_TOG_1051
 	picture = GFX_evt_siege
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_1000
 	}
 }
 
 # Religious Rebels rise up (temporary rebel title created, with a leader and a war)
+
 # Triggered from "on_rebel_revolt"
 province_event = {
 	id = TOG.1060
 	desc = EVTDESC_TOG_1060
 	picture = GFX_evt_heretic
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
 
 	trigger = {
 		has_dlc = "The Old Gods"
-		
-		NOT = { culture_group = lizardman_group } #Lizardmen built for compliance to Lizardmen
-		NOT = { culture = nehekharan } #the Undead do not complain
-		NOT = { has_province_modifier = beastmen_unrest }
-		NOT = { has_province_modifier = beastman_herdstone }
-		NOT = { has_province_modifier = lustria_oppressive_jungle }
-		
-		NOT = { has_province_modifier = greenskin_population_bad }
-		
-		is_heretic = no
-
-		any_province_holding = {
-			NOT = { holding_type = nomad }
+		NOT = {
+			culture_group = lizardman_group
+		} # Lizardmen built for compliance to Lizardmen
+		NOT = {
+			culture = nehekharan
+		} # the Undead do not complain
+		NOT = {
+			has_province_modifier = beastmen_unrest
 		}
-		
-		owner = {
-			top_liege = {
-				NOT = { religion_group = ROOT }
+		NOT = {
+			has_province_modifier = beastman_herdstone
+		}
+		NOT = {
+			has_province_modifier = lustria_oppressive_jungle
+		}
+		NOT = {
+			has_province_modifier = greenskin_population_bad
+		}
+		is_heretic = no
+		any_province_holding = {
+			NOT = {
+				holding_type = nomad
 			}
 		}
-		
+		owner = {
+			top_liege = {
+				NOT = {
+					religion_group = ROOT
+				}
+			}
+		}
 		# Nationalist revolts have prio
 		OR = {
 			owner = {
@@ -1156,17 +1224,21 @@ province_event = {
 			kingdom = {
 				OR = {
 					has_holder = yes
-					NOT = { culture = ROOT }
+					NOT = {
+						culture = ROOT
+					}
 				}
 			}
 		}
-		
-		NOT = { # Not if there is already an ongoing revolt
+		NOT = {
+			# Not if there is already an ongoing revolt
 			owner = {
 				top_liege = {
 					war = yes
 					any_war = {
-						defender = { character = PREV }
+						defender = {
+							character = PREV
+						}
 						OR = {
 							AND = {
 								using_cb = peasant_revolt
@@ -1174,11 +1246,15 @@ province_event = {
 							}
 							AND = {
 								using_cb = heretic_revolt
-								attacker = { religion = ROOT }
+								attacker = {
+									religion = ROOT
+								}
 							}
 							AND = {
 								using_cb = religious_revolt
-								attacker = { religion = ROOT }
+								attacker = {
+									religion = ROOT
+								}
 							}
 						}
 					}
@@ -1186,7 +1262,7 @@ province_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		create_character = {
 			random_traits = yes
@@ -1203,10 +1279,8 @@ province_event = {
 			trait = scholar
 			trait = skilled_tactician
 		}
-		
 		new_character = {
 			set_character_flag = religious_revolter
-			
 			create_title = {
 				tier = DUKE
 				landless = yes
@@ -1216,11 +1290,8 @@ province_event = {
 				name = "HERETIC_REVOLT"
 				holder = THIS
 			}
-			
 			wealth = 100
-			
 			spawn_religious_army_effect = yes
-			
 			if = {
 				limit = {
 					has_game_rule = {
@@ -1231,7 +1302,6 @@ province_event = {
 				spawn_religious_army_effect = yes
 				wealth = 150
 			}
-			
 			if = {
 				limit = {
 					has_game_rule = {
@@ -1244,7 +1314,6 @@ province_event = {
 				spawn_religious_army_effect = yes
 				wealth = 250
 			}
-			
 			if = {
 				limit = {
 					has_game_rule = {
@@ -1259,7 +1328,6 @@ province_event = {
 				spawn_religious_army_effect = yes
 				wealth = 350
 			}
-			
 			# DoW on the province top liege
 			ROOT = {
 				owner = {
@@ -1276,26 +1344,33 @@ province_event = {
 				}
 			}
 		}
-		
 		owner = {
-			any_liege = { # Inform the lieges
+			any_liege = {
+				# Inform the lieges
 				character_event = {
 					id = TOG.1061
 				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_TOG_1060
 		trigger = {
-			owner = { religion_group = ROOT }
+			owner = {
+				religion_group = ROOT
+			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_TOG_1060
 		trigger = {
-			owner = { NOT = { religion_group = ROOT	} }
+			owner = {
+				NOT = {
+					religion_group = ROOT
+				}
+			}
 		}
 	}
 }
@@ -1305,19 +1380,21 @@ character_event = {
 	desc = EVTDESC_TOG_1061
 	picture = GFX_evt_heretic
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_1060
 		trigger = {
 			religion_group = FROM
 		}
 	}
+
 	option = {
 		name = EVTOPTB_TOG_1060
 		trigger = {
-			NOT = { religion_group = FROM	}
+			NOT = {
+				religion_group = FROM
+			}
 		}
 	}
 }
@@ -1327,21 +1404,23 @@ character_event = {
 	id = TOG.1065
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_character_flag = religious_revolter
 		rebel = yes
-		FROM = { 
+		FROM = {
 			is_capital = yes # The capital holding
 		}
 	}
-	
+
 	immediate = {
 		FROM = {
 			location = {
 				if = {
 					limit = {
-						NOT = { religion = ROOT }
+						NOT = {
+							religion = ROOT
+						}
 					}
 					random = {
 						chance = 5
@@ -1350,7 +1429,9 @@ character_event = {
 				}
 				if = {
 					limit = {
-						NOT = { has_province_modifier = religious_unrest }
+						NOT = {
+							has_province_modifier = religious_unrest
+						}
 					}
 					add_province_modifier = {
 						name = religious_unrest
@@ -1363,60 +1444,65 @@ character_event = {
 }
 
 # Religious Rebels rise up to reinforce an ongoing religious uprising
+
 # Triggered from "on_rebel_revolt"
 province_event = {
 	id = TOG.1070
 	desc = EVTDESC_TOG_1070
 	picture = GFX_evt_heretic
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
 
 	trigger = {
 		has_dlc = "The Old Gods"
-		
 		is_heretic = no
-
 		any_province_holding = {
-			NOT = { holding_type = nomad }
-		}
-		
-		owner = {
-			top_liege = {
-				NOT = { religion_group = ROOT }
+			NOT = {
+				holding_type = nomad
 			}
 		}
-		
+		owner = {
+			top_liege = {
+				NOT = {
+					religion_group = ROOT
+				}
+			}
+		}
 		owner = {
 			top_liege = {
 				war = yes
 				any_war = {
-					defender = { character = PREV }
+					defender = {
+						character = PREV
+					}
 					using_cb = religious_revolt
-					attacker = { religion = ROOT }
+					attacker = {
+						religion = ROOT
+					}
 				}
 			}
 		}
 	}
-	
+
 	immediate = {
-	
 		add_province_modifier = {
 			name = recent_county_uprising
 			duration = 1825 # Five years of -100% revolt risk in this county
 		}
-	
 		owner = {
 			top_liege = {
 				any_war = {
 					limit = {
-						defender = { character = PREV }
+						defender = {
+							character = PREV
+						}
 						using_cb = religious_revolt
-						attacker = { religion = ROOT }
+						attacker = {
+							religion = ROOT
+						}
 					}
 					attacker = {
 						spawn_religious_reinforcements_effect = yes
-						
 						if = {
 							limit = {
 								has_game_rule = {
@@ -1426,7 +1512,6 @@ province_event = {
 							}
 							spawn_religious_reinforcements_effect = yes
 						}
-						
 						if = {
 							limit = {
 								has_game_rule = {
@@ -1438,7 +1523,6 @@ province_event = {
 							spawn_religious_reinforcements_effect = yes
 							spawn_religious_reinforcements_effect = yes
 						}
-						
 						if = {
 							limit = {
 								has_game_rule = {
@@ -1456,16 +1540,16 @@ province_event = {
 				}
 			}
 		}
-		
 		owner = {
-			any_liege = { # Inform the lieges
+			any_liege = {
+				# Inform the lieges
 				character_event = {
 					id = TOG.1071
 				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = "EVTOPTA_TOG_1070"
 	}
@@ -1476,39 +1560,44 @@ character_event = {
 	desc = EVTDESC_TOG_1071
 	picture = GFX_evt_heretic
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = "EVTOPTA_TOG_1070"
 	}
 }
 
 # Rebels kill a local character. Fired from 'on_siege_over_loc_chars'.
+
 # Siege winner unit owner in the 'new_character' scope, lost holding title in FROM, local character in ROOT.
 character_event = {
 	id = TOG.1190
 	desc = EVTDESC_TOG_1190
 	picture = GFX_evt_beheading
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		new_character = {
 			rebel = yes
-			
 			OR = {
-				NOT = { religion = ROOT }
+				NOT = {
+					religion = ROOT
+				}
 				AND = {
-					NOT = { has_character_flag = heretic_revolter }
-					NOT = { has_character_flag = religious_revolter }
-					NOT = { has_character_flag = shepherds_crusade_leader }
+					NOT = {
+						has_character_flag = heretic_revolter
+					}
+					NOT = {
+						has_character_flag = religious_revolter
+					}
+					NOT = {
+						has_character_flag = shepherds_crusade_leader
+					}
 				}
 			}
 		}
 	}
-	
 	weight_multiplier = {
 		days = 1
 		modifier = {
@@ -1520,23 +1609,23 @@ character_event = {
 			is_adult = no
 		}
 	}
-	
+
 	immediate = {
-		any_liege = { # Inform the victim's lieges
+		any_liege = {
+			# Inform the victim's lieges
 			character_event = {
 				id = TOG.1191
 			}
 		}
 		new_character = {
 			ROOT = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+				if = {
+					limit = {
+						is_invincible_trigger = yes
+					}
+					antideath_effect = yes
+					break = yes
+				}
 				death = {
 					death_reason = death_rabble
 					killer = PREV
@@ -1544,12 +1633,11 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_TOG_1190
 	}
 }
-
 
 # Lieges informed
 character_event = {
@@ -1557,15 +1645,11 @@ character_event = {
 	picture = GFX_evt_beheading
 	desc = EVTDESC_TOG_1191
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
 	notification = yes
-	
 	ai = no
-	
+
 	option = {
 		name = EVTOPTA_TOG_1191
 	}
 }
-

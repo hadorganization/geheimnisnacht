@@ -1,52 +1,67 @@
-namespace= khornesstr
-#The Lord of Slaughter
+namespace = khornesstr
+
+# The Lord of Slaughter
 character_event = {
 	id = khornesstr.0
-	desc = khornesstr0 #You are weak, Khorne does tolerate weakness, kill till your axe arm is tired and your skin is stained in blood, or suffer the fate of the weak!#
+	desc = khornesstr0 # You are weak, Khorne does tolerate weakness, kill till your axe arm is tired and your skin is stained in blood, or suffer the fate of the weak!
 	picture = GFX_evt_large_army
 	border = GFX_event_normal_frame_war
 	min_age = 16
 	capable_only = yes
-	religion = khorne 
-	
+	religion = khorne
 	is_triggered_only = yes
 
 	trigger = {
 		is_landed = yes
 		religion = khorne
 		trait = brave
-		NOT = { martial = 8 }
-		NOT = { has_character_flag = tested_by_Khorne }
-		NOT = { has_character_flag = failed_Khorne }
-		NOT = { trait = craven }
-		NOT = { trait = in_hiding }
+		NOT = {
+			martial = 8
 		}
+		NOT = {
+			has_character_flag = tested_by_Khorne
+		}
+		NOT = {
+			has_character_flag = failed_Khorne
+		}
+		NOT = {
+			trait = craven
+		}
+		NOT = {
+			trait = in_hiding
+		}
+	}
 
 	option = {
 		name = khornesstr0a # The Gods test me!
 		hidden_tooltip = {
-		character_event = { id = khornesstr.1 days = 3 }
+			character_event = {
+				id = khornesstr.1 days = 3
+			}
 		}
 	}
 }
-	#Fresh Meat#
-	character_event = {
-	id = khornesstr.1
-	title = Weakling #Weakling
-	desc = khornesstr1 # Khorne abhors the weaklings that worship him for his might, prove you can stand tall on your own...#
-	picture = "GFX_evt_daemons"
 
+# Fresh Meat
+character_event = {
+	id = khornesstr.1
+	title = Weakling # Weakling
+	desc = khornesstr1 # Khorne abhors the weaklings that worship him for his might, prove you can stand tall on your own...
+	picture = "GFX_evt_daemons"
 	is_triggered_only = yes
-	trigger = { 
-		NOT = { has_character_flag = duel }
+
+	trigger = {
+		NOT = {
+			has_character_flag = duel
+		}
 	}
 
 	option = {
-	name = khornesstr1a # My life for Khorne!
+		name = khornesstr1a # My life for Khorne!
 		save_event_target_as = duelist_a
 		set_character_flag = duel
 		# THE START
-		#Create the character to fight with
+		# Create the character to fight with
 		create_random_soldier = {
 			random_traits = yes
 			dynasty = none
@@ -54,48 +69,52 @@ character_event = {
 			culture = ROOT
 			female = no
 			age = 16
-			}
-		#scope to character we created and send him duel init event
+		}
+		# scope to character we created and send him duel init event
 		new_character = {
 			change_martial = 1
 			add_trait = brave
 			save_event_target_as = duelist_b
-			character_event = {id = duelengine.1 days = 1}
+			character_event = {
+				id = duelengine.1 days = 1
 			}
+		}
 		# THE END
-			hidden_tooltip = {
-				character_event = { id = khornesstr.2 days = 3 }
+		hidden_tooltip = {
+			character_event = {
+				id = khornesstr.2 days = 3
 			}
 		}
-
-	option = {
-	name = khornesstr1b # No, perhaps now is not the time...
-	add_trait = weak
-	set_character_flag = failed_Khorne
-		}
-
 	}
 
-	#A real challenge#
-	character_event = {
+	option = {
+		name = khornesstr1b # No, perhaps now is not the time...
+		add_trait = weak
+		set_character_flag = failed_Khorne
+	}
+}
+
+# A real challenge
+character_event = {
 	id = khornesstr.2
 	title = SKULLS_FOR_THE_SKULL_THRONE # Skulls for the Skull Throne!
-	desc = khornesstr2 # Khorne sits upon his throne heaped in skulls, a new foe seeks to test you, a sacrifice must be made for the skull throne...#
+	desc = khornesstr2 # Khorne sits upon his throne heaped in skulls, a new foe seeks to test you, a sacrifice must be made for the skull throne...
 	picture = "GFX_evt_daemons"
-
 	is_triggered_only = yes
-	trigger = { 
-		NOT = { has_character_flag = duel }
+
+	trigger = {
+		NOT = {
+			has_character_flag = duel
+		}
 	}
 
-
 	option = {
-	name = khornesstr2a # Khorne demands skulls...
-	set_character_flag = defeated_berserker
-	save_event_target_as = duelist_a
-	set_character_flag = duel
+		name = khornesstr2a # Khorne demands skulls...
+		set_character_flag = defeated_berserker
+		save_event_target_as = duelist_a
+		set_character_flag = duel
 		# THE START
-		#Create the character to fight with
+		# Create the character to fight with
 		create_random_soldier = {
 			random_traits = yes
 			dynasty = none
@@ -104,122 +123,130 @@ character_event = {
 			female = no
 			age = 30
 		}
-		#scope to character we created and send him duel init event
+		# scope to character we created and send him duel init event
 		new_character = {
-		hidden_tooltip = {
-			change_martial = 2
-			add_trait = brave
-			add_trait = wroth
-			add_trait = tall
-			add_trait = strong
-			add_trait = khorne_berserker
-			save_event_target_as = duelist_b
-			character_event = {id = duelengine.1 days = 1}
-		}
+			hidden_tooltip = {
+				change_martial = 2
+				add_trait = brave
+				add_trait = wroth
+				add_trait = tall
+				add_trait = strong
+				add_trait = khorne_berserker
+				save_event_target_as = duelist_b
+				character_event = {
+					id = duelengine.1 days = 1
+				}
+			}
 		}
 		# THE END
-			hidden_tooltip = {
-				character_event = { id = khornesstr.3 days = 3 }
+		hidden_tooltip = {
+			character_event = {
+				id = khornesstr.3 days = 3
 			}
-		add_trait = wroth
 		}
+		add_trait = wroth
+	}
 
 	option = {
-	name = khornesstr2b # I have already proven myself...
-	set_character_flag = tested_by_Khorne
-	add_trait = weak
+		name = khornesstr2b # I have already proven myself...
+		set_character_flag = tested_by_Khorne
+		add_trait = weak
 	}
+}
 
-	}
-
-	#A taste of blood#
-	character_event = {
+# A taste of blood
+character_event = {
 	id = khornesstr.3
 	title = BLOOD_FOR_THE_BLOOD_GOD # Blood for the blood god!
-	desc = khornesstr3 # You have killed a faithful servant of Khorne and now wear his skull as a trophy, but the god of blood still demands more...#
+	desc = khornesstr3 # You have killed a faithful servant of Khorne and now wear his skull as a trophy, but the god of blood still demands more...
 	picture = "GFX_evt_daemons"
-
 	is_triggered_only = yes
-	trigger = { 
-		NOT = { has_character_flag = duel }
+
+	trigger = {
+		NOT = {
+			has_character_flag = duel
+		}
 	}
 
 	option = {
-	name = khornesstr3a # Khorne's Vanguard
-	save_event_target_as = duelist_a
-	set_character_flag = duel
+		name = khornesstr3a # Khorne's Vanguard
+		save_event_target_as = duelist_a
+		set_character_flag = duel
 		# THE START
-		#Create the character to fight with
+		# Create the character to fight with
 		create_random_soldier = {
 			dynasty = none
 			religion = khorne
 			culture = daemon_khorne
 			age = 30
 		}
-		#scope to character we created and send him duel init event
+		# scope to character we created and send him duel init event
 		new_character = {
 			hidden_tooltip = {
-			change_martial = 4
-			add_trait = khorne_bloodletter
-			add_trait = cruel
-			add_trait = brave
-			add_trait = wroth
-			add_trait = tall
-			add_trait = strong
-			save_event_target_as = duelist_b
-			character_event = {id = duelengine.1 days = 1}
-		}
-		}
-		# THE END
-			hidden_tooltip = {
-				character_event = { id = khornesstr.4 days = 3 }
-				change_martial = 2
+				change_martial = 4
+				add_trait = khorne_bloodletter
+				add_trait = cruel
+				add_trait = brave
+				add_trait = wroth
+				add_trait = tall
+				add_trait = strong
+				save_event_target_as = duelist_b
+				character_event = {
+					id = duelengine.1 days = 1
+				}
 			}
 		}
+		# THE END
+		hidden_tooltip = {
+			character_event = {
+				id = khornesstr.4 days = 3
+			}
+			change_martial = 2
+		}
+	}
 
 	option = {
-	name = khornesstr3b # The foe is too strong...
-	set_character_flag = tested_by_Khorne
-	add_trait = weak
+		name = khornesstr3b # The foe is too strong...
+		set_character_flag = tested_by_Khorne
+		add_trait = weak
 	}
-	}
+}
 
-	character_event = {
+character_event = {
 	id = khornesstr.4
 	title = BLOOD_FOR_THE_BLOOD_GOD # Blood for the blood god!
-	desc = khornesstr4 # You have proven that you need no one else to fight your foes, that your strength will carry the weight of Khorne's blood-thirst... #
+	desc = khornesstr4 # You have proven that you need no one else to fight your foes, that your strength will carry the weight of Khorne's blood-thirst...
 	picture = "GFX_evt_khorne"
-
 	is_triggered_only = yes
 
 	option = {
 		name = khornesstr4a # My axe shall feast on my foes!
 		set_character_flag = tested_by_Khorne
 		add_trait = strong
-		}
 	}
+}
 
-##Khorne Berserker Events##
+# Khorne Berserker Events
 namespace = berserker
+
 character_event = {
 	id = berserker.0
 	desc = berserker0
 	picture = GFX_evt_viking_battle_oldgods
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
 
 	trigger = {
-
 		religion = khorne
 		is_alive = yes
-		NOT = { trait = khorne_berserker }
+		NOT = {
+			trait = khorne_berserker
+		}
 		OR = {
 			trait = wroth
 			trait = aggressive_leader
 		}
 	}
-
 	weight_multiplier = {
 		days = 1
 		modifier = {
@@ -300,18 +327,17 @@ character_event = {
 	desc = berserker1
 	picture = GFX_evt_viking_battle_oldgods
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
 
 	trigger = {
 		trait = khorne_berserker
-		NOT = { trait = maimed }
+		NOT = {
+			trait = maimed
+		}
 		is_alive = yes
 	}
-
 	weight_multiplier = {
 		days = 1
-
 		modifier = {
 			factor = 5
 			has_character_modifier = proving_bravery
@@ -356,7 +382,6 @@ character_event = {
 			trait = slow
 			factor = 2.0
 		}
-
 		modifier = {
 			trait = imbecile
 			factor = 3.0
@@ -373,7 +398,6 @@ character_event = {
 			trait = weak
 			factor = 2.5
 		}
-
 		modifier = {
 			factor = 1.25
 			trait = stressed
@@ -468,19 +492,20 @@ character_event = {
 	desc = berserker2
 	picture = GFX_evt_viking_battle_oldgods
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
 
 	trigger = {
 		trait = khorne_berserker
-		NOT = { trait = wounded }
-		NOT = { trait = maimed }
+		NOT = {
+			trait = wounded
+		}
+		NOT = {
+			trait = maimed
+		}
 		is_alive = yes
 	}
-
 	weight_multiplier = {
 		days = 1
-
 		modifier = {
 			factor = 5
 			has_character_modifier = proving_bravery
@@ -525,7 +550,6 @@ character_event = {
 			trait = slow
 			factor = 2.0
 		}
-
 		modifier = {
 			trait = imbecile
 			factor = 3.0
@@ -542,7 +566,6 @@ character_event = {
 			trait = weak
 			factor = 2.5
 		}
-
 		modifier = {
 			factor = 1.25
 			trait = stressed
@@ -637,13 +660,11 @@ character_event = {
 	desc = berserker3
 	picture = GFX_evt_viking_battle_oldgods
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
 
 	trigger = {
 		trait = khorne_berserker
 	}
-
 	weight_multiplier = {
 		days = 1
 		modifier = {
@@ -686,7 +707,6 @@ character_event = {
 			trait = slow
 			factor = 2.0
 		}
-
 		modifier = {
 			trait = imbecile
 			factor = 3.0
@@ -791,25 +811,32 @@ character_event = {
 
 	immediate = {
 		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
+			limit = {
+				is_invincible_trigger = yes
+			}
 			antideath_effect = yes
 			break = yes
-}
+		}
 		death = {
 			death_reason = death_battle
 			killer = FROMFROM
 		}
 		FROMFROM = {
-			character_event = { id = 249 }
+			character_event = {
+				id = 249
+			}
 			set_character_flag = temp_battle_kill_242
 		}
 		FROM = {
 			if = {
-				limit = { NOT = { has_character_flag = temp_battle_kill_242 } }
-				character_event = { id = 249 }
+				limit = {
+					NOT = {
+						has_character_flag = temp_battle_kill_242
+					}
+				}
+				character_event = {
+					id = 249
+				}
 			}
 		}
 		FROMFROM = {
@@ -828,13 +855,11 @@ character_event = {
 	desc = berserker4
 	picture = GFX_evt_viking_battle_oldgods
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
 
 	trigger = {
 		trait = khorne_berserker
 	}
-
 	weight_multiplier = {
 		days = 1
 		modifier = {
@@ -857,7 +882,6 @@ character_event = {
 			trait = slow
 			factor = 0.9
 		}
-
 		modifier = {
 			trait = imbecile
 			factor = 0.2
@@ -1001,17 +1025,20 @@ character_event = {
 	desc = berserker5
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
 
 	option = {
 		name = berserker5A
 		random_list = {
 			60 = {
-				character_event = { id = berserker.6 days = 1 }
+				character_event = {
+					id = berserker.6 days = 1
+				}
 			}
 			40 = {
-				character_event = { id = berserker.7 days = 1 }
+				character_event = {
+					id = berserker.7 days = 1
+				}
 			}
 		}
 	}
@@ -1023,9 +1050,7 @@ character_event = {
 	desc = berserker6
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-
 	hide_from = yes
 
 	option = {
@@ -1046,9 +1071,7 @@ character_event = {
 	desc = berserker7
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
-
 	hide_from = yes
 
 	option = {
@@ -1061,13 +1084,12 @@ character_event = {
 character_event = {
 	id = berserker.8
 	hide_window = yes
-
 	ai = yes
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	religion_group = chaos_gods_group
-	
+
 	trigger = {
 		host = {
 			character = liege
@@ -1075,11 +1097,17 @@ character_event = {
 			trait = khorne_berserker
 			NOT = {
 				trait = incapable
-				opinion = { who = ROOT value = 10 }
+				opinion = {
+					who = ROOT value = 10
+				}
 			}
-			NOT = { trait = in_hiding }
+			NOT = {
+				trait = in_hiding
+			}
 		}
-		NOT = { trait = khorne_berserker }
+		NOT = {
+			trait = khorne_berserker
+		}
 		is_primary_heir = no
 		is_pretender = no
 	}
@@ -1090,7 +1118,9 @@ character_event = {
 
 	immediate = {
 		liege = {
-	character_event = { id = berserker.5 }
+			character_event = {
+				id = berserker.5
+			}
 		}
 	}
 
@@ -1099,40 +1129,48 @@ character_event = {
 	}
 }
 
-#Favored warrior dies (ping)
+# Favored warrior dies (ping)
 character_event = {
 	id = berserker.9
 	hide_window = yes
-
 	is_triggered_only = yes
 
 	trigger = {
-	religion = khorne
-	death_reason = death_battle
+		religion = khorne
+		death_reason = death_battle
 	}
 
 	immediate = {
-	long_character_event = { id = berserker.10 }
+		long_character_event = {
+			id = berserker.10
+		}
 	}
 }
-
 long_character_event = {
 	id = berserker.10
 	title = EVTTITLE_berserker.10
-	desc = { text = EVTDESCA_berserker.10
-		trigger = { is_female  = yes
+	desc = {
+		text = EVTDESCA_berserker.10
+		trigger = {
+			is_female = yes
+
 		}
+
 	}
-	desc = { text = EVTDESCB_berserker.10
-		trigger = { is_female  = no
+	desc = {
+		text = EVTDESCB_berserker.10
+		trigger = {
+			is_female = no
+
 		}
+
 	}
 	picture = "GFX_evt_khorne"
 	border = GFX_event_normal_frame_war
-
 	is_triggered_only = yes
+
 	option = {
 		name = EVTOPTAberserker.10
-	set_character_flag = inkhorneshall
+		set_character_flag = inkhorneshall
 	}
 }

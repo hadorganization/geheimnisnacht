@@ -1,15 +1,12 @@
 namespace = high_magic_lore
 
-
-
-#Drain magic
-
-
+# Drain magic
 character_event = {
-	id = high_magic_lore.101#Drain Magic Power 1"
-	desc = high_magic_lore.101_desc#"Your spell burns through the air, taking from all enemies the ability to cast. "
+	id = high_magic_lore.101# Drain Magic Power 1"
+	desc = high_magic_lore.101_desc# "Your spell burns through the air, taking from all enemies the ability to cast. "
 	is_triggered_only = yes
 	picture = GFX_evt_mage_lore_high_magic
+
 	immediate = {
 		any_character = {
 			limit = {
@@ -35,20 +32,22 @@ character_event = {
 					}
 				}
 				set_character_flag = mdrain
-				add_character_modifier = { modifier = magic_drain_1 duration = 200 }
+				add_character_modifier = {
+					modifier = magic_drain_1 duration = 200
+				}
 			}
-
 			if = {
 				limit = {
 					has_character_modifier = magic_drain_1
 					has_character_modifier = magic_power_1
 				}
-				add_character_modifier = { modifier = magic_cooldown duration = 300 }
-				remove_character_modifier  = magic_drain_1
+				add_character_modifier = {
+					modifier = magic_cooldown duration = 300
+				}
+				remove_character_modifier = magic_drain_1
 			}
-
 			if = {
-				limit ={
+				limit = {
 					not = {
 						has_character_flag = mdrain
 						has_character_modifier = magic_drain_2
@@ -59,17 +58,20 @@ character_event = {
 				}
 				remove_character_modifier = magic_drain_1
 				set_character_flag = mdrain
-				add_character_modifier = { modifier = magic_drain_2 duration = 200 }
+				add_character_modifier = {
+					modifier = magic_drain_2 duration = 200
+				}
 			}
 			if = {
 				limit = {
 					has_character_modifier = magic_drain_2
 					has_character_modifier = magic_power_2
 				}
-				add_character_modifier = { modifier = magic_cooldown duration = 300 }
-				remove_character_modifier  = magic_drain_2
+				add_character_modifier = {
+					modifier = magic_cooldown duration = 300
+				}
+				remove_character_modifier = magic_drain_2
 			}
-
 			if = {
 				limit = {
 					not = {
@@ -80,21 +82,24 @@ character_event = {
 					}
 					has_character_modifier = magic_drain_2
 				}
-				remove_character_modifier  = magic_drain_2
+				remove_character_modifier = magic_drain_2
 				set_character_flag = mdrain
-				add_character_modifier = { modifier = magic_drain_3 duration = 200 }
+				add_character_modifier = {
+					modifier = magic_drain_3 duration = 200
+				}
 			}
 			if = {
 				limit = {
 					has_character_modifier = magic_drain_3
 					has_character_modifier = magic_power_3
 				}
-				add_character_modifier = { modifier = magic_cooldown duration = 300 }
-				remove_character_modifier  = magic_drain_3
+				add_character_modifier = {
+					modifier = magic_cooldown duration = 300
+				}
+				remove_character_modifier = magic_drain_3
 			}
-
 			if = {
-				limit ={
+				limit = {
 					not = {
 						has_character_flag = mdrain
 						has_character_modifier = magic_drain_1
@@ -103,76 +108,95 @@ character_event = {
 					}
 					has_character_modifier = magic_drain_3
 				}
-				remove_character_modifier  = magic_drain_3
+				remove_character_modifier = magic_drain_3
 				set_character_flag = mdrain
-				add_character_modifier = { modifier = magic_drain_4 duration = 200 }
+				add_character_modifier = {
+					modifier = magic_drain_4 duration = 200
+				}
 			}
 			if = {
 				limit = {
 					has_character_modifier = magic_drain_4
 					has_character_modifier = magic_power_4
 				}
-				add_character_modifier = { modifier = magic_cooldown duration = 300 }
+				add_character_modifier = {
+					modifier = magic_cooldown duration = 300
+				}
 				remove_character_modifier = magic_drain_4
 			}
-		clr_character_flag = mdrain
+			clr_character_flag = mdrain
 		}
 	}
 
 	option = {
-		name = high_magic_lore.101a#No
-		character_event = { id = z_spell_menu.99996}
-
+		name = high_magic_lore.101a# No
+		character_event = {
+			id = z_spell_menu.99996
+		}
 	}
 }
 
-
-
 character_event = {
-	id = high_magic_lore.201#Soul Quench 1"
-	desc = high_magic_lore.201#"Your power consumes the life of your chosen target "
+	id = high_magic_lore.201# Soul Quench 1"
+	desc = high_magic_lore.201# "Your power consumes the life of your chosen target "
 	is_triggered_only = yes
 	picture = GFX_evt_mage_lore_high_magic
 
-
 	option = {
-		name = high_magic_lore.201a#No
-		character_event = { id = z_spell_menu.99996}
+		name = high_magic_lore.201a# No
+		character_event = {
+			id = z_spell_menu.99996
+		}
 		event_target:magic_caster = {
-			set_variable = { which = zdmg value = 8 }
-			set_variable = { which = zmoraledmg value = 8 }		
-			change_variable = { which = zdmg which = caster_level_spellpower }
-			change_variable = { which = zmoraledmg which = caster_level_spellpower }			
-			
+			set_variable = {
+				which = zdmg value = 8
+			}
+			set_variable = {
+				which = zmoraledmg value = 8
+			}
+			change_variable = {
+				which = zdmg which = caster_level_spellpower
+			}
+			change_variable = {
+				which = zmoraledmg which = caster_level_spellpower
+			}
 		}
 		any_character = {
 			limit = {
 				war_with = root
 				any_army = {
-					location = { province = event_target:spellloc }
+					location = {
+						province = event_target:spellloc
+					}
 				}
 			}
 			random_army = {
 				limit = {
-					location = { province = event_target:spellloc }
+					location = {
+						province = event_target:spellloc
+					}
 				}
-				leader = { 
+				leader = {
 					magic_points_setup = yes
 					save_event_target_as = spelltarget
 					magic_resist_test = yes
 				}
-				if = { 
-					limit = { 
-						event_target:magic_caster = { 
+				if = {
+					limit = {
+						event_target:magic_caster = {
 							has_character_flag = resisted
 						}
 					}
 					event_target:magic_caster = {
 						clr_character_flag = resisted
-						divide_variable = { which = zdmg value = 2 }
-						divide_variable = { which = zmoraledmg value = 2 }	
+						divide_variable = {
+							which = zdmg value = 2
+						}
+						divide_variable = {
+							which = zmoraledmg value = 2
+						}
 					}
-				}			
+				}
 				magic_dmg_effect = yes
 				morale_dmg_effect = yes
 			}
@@ -193,140 +217,199 @@ character_event = {
 	}
 }
 
-
-
-
 character_event = {
-	id = high_magic_lore.301#Apotheosis 1"
-	desc = high_magic_lore.301_desc#"Your spell restores those close to death or those freshly dead"
+	id = high_magic_lore.301# Apotheosis 1"
+	desc = high_magic_lore.301_desc# "Your spell restores those close to death or those freshly dead"
 	is_triggered_only = yes
 	picture = GFX_evt_mage_lore_high_magic
+
 	immediate = {
 		event_target:magic_caster = {
-			set_variable = { which = zheal value = 9 }
-			set_variable = { which = zmoraleheal value = 9 }					
-			change_variable = { which = zheal which = caster_level_spellpower }
-			change_variable = { which = zmoraleheal which = caster_level_spellpower }			
-
+			set_variable = {
+				which = zheal value = 9
+			}
+			set_variable = {
+				which = zmoraleheal value = 9
+			}
+			change_variable = {
+				which = zheal which = caster_level_spellpower
+			}
+			change_variable = {
+				which = zmoraleheal which = caster_level_spellpower
+			}
 		}
 		random_army = {
 			limit = {
-				location = { province = event_target:spellloc }
+				location = {
+					province = event_target:spellloc
+				}
 			}
 			heal_effect = yes
 			morale_heal_effect = yes
 		}
 	}
+
 	option = {
-		name = high_magic_lore.301a#Cast Another Spell ?
-			character_event = { id = z_spell_menu.99996}
+		name = high_magic_lore.301a# Cast Another Spell ?
+		character_event = {
+			id = z_spell_menu.99996
+		}
 	}
 }
 
-
 character_event = {
-	id = high_magic_lore.401#Soul Quench 1"
-	desc = high_magic_lore.401#"Your power consumes the life of your chosen target "
+	id = high_magic_lore.401# Soul Quench 1"
+	desc = high_magic_lore.401# "Your power consumes the life of your chosen target "
 	is_triggered_only = yes
 	picture = GFX_evt_mage_lore_high_magic
+
 	immediate = {
 		event_target:magic_caster = {
-			random_list = { 
+			random_list = {
 				1 = {
-					change_variable = {which = "fieryconv" value = 5}
+					change_variable = {
+						which = "fieryconv" value = 5
+					}
 				}
 				1 = {
-					change_variable = {which = "fieryconv" value = 6}
+					change_variable = {
+						which = "fieryconv" value = 6
+					}
 				}
 				1 = {
-					change_variable = {which = "fieryconv" value = 7}
+					change_variable = {
+						which = "fieryconv" value = 7
+					}
 				}
 				1 = {
-					change_variable = {which = "fieryconv" value = 8}
+					change_variable = {
+						which = "fieryconv" value = 8
+					}
 				}
 				1 = {
-					change_variable = {which = "fieryconv" value = 9}
+					change_variable = {
+						which = "fieryconv" value = 9
+					}
 				}
 				1 = {
-					change_variable = {which = "fieryconv" value = 10}
+					change_variable = {
+						which = "fieryconv" value = 10
+					}
 				}
 				1 = {
-					change_variable = {which = "fieryconv" value = 11}
+					change_variable = {
+						which = "fieryconv" value = 11
+					}
 				}
 				1 = {
-					change_variable = {which = "fieryconv" value = 12}
+					change_variable = {
+						which = "fieryconv" value = 12
+					}
 				}
 				1 = {
-					change_variable = {which = "fieryconv" value = 13}
+					change_variable = {
+						which = "fieryconv" value = 13
+					}
 				}
 				1 = {
-					change_variable = {which = "fieryconv" value = 14}
+					change_variable = {
+						which = "fieryconv" value = 14
+					}
 				}
 				1 = {
-					change_variable = {which = "fieryconv" value = 15}
+					change_variable = {
+						which = "fieryconv" value = 15
+					}
 				}
 			}
-			change_variable = { which = fieryconv which = caster_level_spellpower }
+			change_variable = {
+				which = fieryconv which = caster_level_spellpower
+			}
 		}
 	}
 
 	option = {
-		name = high_magic_lore.401a#Cast Another Spell ?
-		character_event = { id = z_spell_menu.99996}
-		character_event = { id = high_magic_lore.402 }
+		name = high_magic_lore.401a# Cast Another Spell ?
+		character_event = {
+			id = z_spell_menu.99996
+		}
+		character_event = {
+			id = high_magic_lore.402
+		}
 	}
-
 }
 
-
 character_event = {
-	id = high_magic_lore.402#Firey_convocation event 1"
-	#desc = high_magic_lore.402_desc#"Your power consumes the life of your chosen target "
+	id = high_magic_lore.402# Firey_convocation event 1"
+	# desc = high_magic_lore.402_desc# "Your power consumes the life of your chosen target "
 	is_triggered_only = yes
 	hide_window = yes
-	#picture = GFX_evt_mage_lore_high_magic
+	# picture = GFX_evt_mage_lore_high_magic
+
 	immediate = {
 		if = {
 			limit = {
-				event_target:magic_caster = { check_variable = {which = "fieryconv" value = 0}}
+				event_target:magic_caster = {
+					check_variable = {
+						which = "fieryconv" value = 0
+					}
+				}
 			}
-			event_target:magic_caster = { change_variable = {which = "fieryconv" value = -1}}
-
 			event_target:magic_caster = {
-				set_variable = { which = zdmg value = 2 }
-				set_variable = { which = zmoraledmg value = 2 }		
-				change_variable = { which = zdmg which = caster_level_spellpower }
-				change_variable = { which = zmoraledmg which = caster_level_spellpower }			
-			
+				change_variable = {
+					which = "fieryconv" value = -1
+				}
+			}
+			event_target:magic_caster = {
+				set_variable = {
+					which = zdmg value = 2
+				}
+				set_variable = {
+					which = zmoraledmg value = 2
+				}
+				change_variable = {
+					which = zdmg which = caster_level_spellpower
+				}
+				change_variable = {
+					which = zmoraledmg which = caster_level_spellpower
+				}
 			}
 			any_character = {
 				limit = {
 					war_with = root
 					any_army = {
-						location = { province = event_target:spellloc }
+						location = {
+							province = event_target:spellloc
+						}
 					}
 				}
 				random_army = {
 					limit = {
-						location = { province = event_target:spellloc }
+						location = {
+							province = event_target:spellloc
+						}
 					}
-					leader = { 
+					leader = {
 						magic_points_setup = yes
 						save_event_target_as = spelltarget
 						magic_resist_test = yes
 					}
-					if = { 
-						limit = { 
-							event_target:magic_caster = { 
+					if = {
+						limit = {
+							event_target:magic_caster = {
 								has_character_flag = resisted
 							}
 						}
 						event_target:magic_caster = {
 							clr_character_flag = resisted
-							divide_variable = { which = zdmg value = 2 }
-							divide_variable = { which = zmoraledmg value = 2 }	
+							divide_variable = {
+								which = zdmg value = 2
+							}
+							divide_variable = {
+								which = zmoraledmg value = 2
+							}
 						}
-					}			
+					}
 					magic_dmg_effect = yes
 					morale_dmg_effect = yes
 				}
@@ -342,8 +425,9 @@ character_event = {
 					}
 					siege = {
 						enemy = {
-						magic_dmg_effect = yes
-						morale_dmg_effect = yes						}
+							magic_dmg_effect = yes
+							morale_dmg_effect = yes
+						}
 					}
 					random = {
 						chance = 5
@@ -355,191 +439,208 @@ character_event = {
 					}
 				}
 			}
-			repeat_event = { id = high_magic_lore.402 days = 1}
+			repeat_event = {
+				id = high_magic_lore.402 days = 1
+			}
 		}
 	}
 }
 
-
-
-
-
-#process
-
-
-
-
-
-
-
-
-
-
+# process
 namespace = high_magic_lore_non_battle
 
-
-
-
 character_event = {
-	id = high_magic_lore_non_battle.101#Drain Magic Power 1"
-	desc = high_magic_lore_non_battle.101_desc#"Your spell burns through the air, taking from all enemies the ability to cast. "
+	id = high_magic_lore_non_battle.101# Drain Magic Power 1"
+	desc = high_magic_lore_non_battle.101_desc# "Your spell burns through the air, taking from all enemies the ability to cast. "
 	is_triggered_only = yes
 	picture = GFX_evt_mage_lore_high_magic
+
 	option = {
-		name = high_magic_lore_non_battle.101a#No
+		name = high_magic_lore_non_battle.101a# No
 		magic_physical_healing = yes
 		magic_spiritual_healing = yes
 		magic_disease_healing = yes
 		magic_symptoms_healing = yes
-		character_event = { id = z_spell_menu.99998}
-
+		character_event = {
+			id = z_spell_menu.99998
+		}
 	}
 }
 
-
-
-
-
 character_event = {
-	id = high_magic_lore_non_battle.201#Soul Quench 1"
-	desc = high_magic_lore_non_battle.201#"Your power consumes the life of your chosen target "
+	id = high_magic_lore_non_battle.201# Soul Quench 1"
+	desc = high_magic_lore_non_battle.201# "Your power consumes the life of your chosen target "
 	is_triggered_only = yes
 	picture = GFX_evt_mage_lore_high_magic
 
-
 	option = {
-		name = high_magic_lore_non_battle.201a#No
-		character_event = { id = z_spell_menu.99998}
+		name = high_magic_lore_non_battle.201a# No
+		character_event = {
+			id = z_spell_menu.99998
+		}
 		event_target:spelltarget = {
-			add_character_modifier = { name = z_high_magic_martial_boost duration = 300 stacking = yes}
-			add_character_modifier = { name = z_light_magic_wards_of_light duration = 150 stacking = yes }
+			add_character_modifier = {
+				name = z_high_magic_martial_boost duration = 300 stacking = yes
+			}
+			add_character_modifier = {
+				name = z_light_magic_wards_of_light duration = 150 stacking = yes
+			}
 			any_realm_character = {
 				limit = {
 					has_minor_title = title_commander
 				}
-				add_character_modifier = { name = z_high_magic_martial_boost duration = 300 stacking = yes}
-				add_character_modifier = { name = z_light_magic_wards_of_light duration = 150 stacking = yes }
+				add_character_modifier = {
+					name = z_high_magic_martial_boost duration = 300 stacking = yes
+				}
+				add_character_modifier = {
+					name = z_light_magic_wards_of_light duration = 150 stacking = yes
+				}
 			}
 		}
 	}
 }
 
-
 character_event = {
-	id = high_magic_lore_non_battle.301#Apotheosis 1"
-	desc = high_magic_lore_non_battle.301_desc#"Your spell restores those close to death or those freshly dead"
+	id = high_magic_lore_non_battle.301# Apotheosis 1"
+	desc = high_magic_lore_non_battle.301_desc# "Your spell restores those close to death or those freshly dead"
 	is_triggered_only = yes
 	picture = GFX_evt_mage_lore_high_magic
+
 	immediate = {
 	}
+
 	option = {
-		name = high_magic_lore_non_battle.301a#Cast Another Spell ?
-		character_event = { id = z_spell_menu.99998}
+		name = high_magic_lore_non_battle.301a# Cast Another Spell ?
+		character_event = {
+			id = z_spell_menu.99998
+		}
 		event_target:spelltarget = {
 			any_demesne_province = {
-				add_province_modifier = { name = z_high_magic_morale_buff duration = 150 stacking = yes }
+				add_province_modifier = {
+					name = z_high_magic_morale_buff duration = 150 stacking = yes
+				}
 			}
-		}			
+		}
 	}
 }
 
 character_event = {
-	id = high_magic_lore_non_battle.401#Apotheosis 1"
-	desc = high_magic_lore_non_battle.401_desc#"Your spell restores those close to death or those freshly dead"
+	id = high_magic_lore_non_battle.401# Apotheosis 1"
+	desc = high_magic_lore_non_battle.401_desc# "Your spell restores those close to death or those freshly dead"
 	is_triggered_only = yes
 	picture = GFX_evt_mage_lore_high_magic
+
 	immediate = {
 	}
+
 	option = {
-		name = high_magic_lore_non_battle.401a#Cast Another Spell ?
-		character_event = { id = z_spell_menu.99998}
+		name = high_magic_lore_non_battle.401a# Cast Another Spell ?
+		character_event = {
+			id = z_spell_menu.99998
+		}
 		event_target:spelltarget = {
 			any_demesne_province = {
-				limit = { 
-					NOT = { 
+				limit = {
+					NOT = {
 						has_province_modifier = prosperity_modifier_3
 					}
 				}
 				z_magic_prosperity_increase = yes
-			}			
-		}
-	}	
-}
-
-
-
-character_event = {
-	id = high_magic_lore_non_battle.501#Soul Quench 1"
-	desc = high_magic_lore_non_battle.501#"Your power consumes the life of your chosen target "
-	is_triggered_only = yes
-	picture = GFX_evt_mage_lore_high_magic
-	immediate = {
-	}
-
-	option = {
-		name = high_magic_lore_non_battle.501a#Cast Another Spell ?
-		character_event = { id = z_spell_menu.99998}
-		character_event = { id = high_magic_lore_non_battle.502 }
-		event_target:spelltarget  = {
-			any_realm_province = {
-				add_province_modifier = { name = z_high_magic_shield_of_light duration = 75 stacking = yes }
 			}
 		}
 	}
 }
 
-
 character_event = {
-	id = high_magic_lore_non_battle.502#Firey_convocation event 1"
-	#desc = high_magic_lore_non_battle.402_desc#"Your power consumes the life of your chosen target "
-	is_triggered_only = yes
-	hide_window = yes
-	#picture = GFX_evt_mage_lore_high_magic
-	immediate = {
-	}
-}
-
-
-
-
-
-character_event = {
-	id = high_magic_lore_non_battle.601#Soul Quench 1"
-	desc = high_magic_lore_non_battle.601#"Your power consumes the life of your chosen target "
+	id = high_magic_lore_non_battle.501# Soul Quench 1"
+	desc = high_magic_lore_non_battle.501# "Your power consumes the life of your chosen target "
 	is_triggered_only = yes
 	picture = GFX_evt_mage_lore_high_magic
+
 	immediate = {
 	}
 
 	option = {
-		name = high_magic_lore_non_battle.601a#Cast Another Spell ?
-		character_event = { id = z_spell_menu.99998}
-		character_event = { id = high_magic_lore_non_battle.602 }
-		event_target:spelltarget  = {
-			add_character_modifier = { name = z_light_magic_wards_of_light duration = 150 stacking = yes }
-			add_character_modifier = { name = z_light_magic_wards_of_light duration = 150 stacking = yes }
-			add_character_modifier = { name = z_light_magic_wards_of_light duration = 150 stacking = yes }						
+		name = high_magic_lore_non_battle.501a# Cast Another Spell ?
+		character_event = {
+			id = z_spell_menu.99998
+		}
+		character_event = {
+			id = high_magic_lore_non_battle.502
+		}
+		event_target:spelltarget = {
+			any_realm_province = {
+				add_province_modifier = {
+					name = z_high_magic_shield_of_light duration = 75 stacking = yes
+				}
+			}
+		}
+	}
+}
+
+character_event = {
+	id = high_magic_lore_non_battle.502# Firey_convocation event 1"
+	# desc = high_magic_lore_non_battle.402_desc# "Your power consumes the life of your chosen target "
+	is_triggered_only = yes
+	hide_window = yes
+	# picture = GFX_evt_mage_lore_high_magic
+
+	immediate = {
+	}
+}
+
+character_event = {
+	id = high_magic_lore_non_battle.601# Soul Quench 1"
+	desc = high_magic_lore_non_battle.601# "Your power consumes the life of your chosen target "
+	is_triggered_only = yes
+	picture = GFX_evt_mage_lore_high_magic
+
+	immediate = {
+	}
+
+	option = {
+		name = high_magic_lore_non_battle.601a# Cast Another Spell ?
+		character_event = {
+			id = z_spell_menu.99998
+		}
+		character_event = {
+			id = high_magic_lore_non_battle.602
+		}
+		event_target:spelltarget = {
+			add_character_modifier = {
+				name = z_light_magic_wards_of_light duration = 150 stacking = yes
+			}
+			add_character_modifier = {
+				name = z_light_magic_wards_of_light duration = 150 stacking = yes
+			}
+			add_character_modifier = {
+				name = z_light_magic_wards_of_light duration = 150 stacking = yes
+			}
 			any_realm_character = {
 				limit = {
 					has_minor_title = title_commander
 				}
-				add_character_modifier = { name = z_light_magic_wards_of_light duration = 150 stacking = yes }
-				add_character_modifier = { name = z_light_magic_wards_of_light duration = 150 stacking = yes }
-				add_character_modifier = { name = z_light_magic_wards_of_light duration = 150 stacking = yes }
+				add_character_modifier = {
+					name = z_light_magic_wards_of_light duration = 150 stacking = yes
+				}
+				add_character_modifier = {
+					name = z_light_magic_wards_of_light duration = 150 stacking = yes
+				}
+				add_character_modifier = {
+					name = z_light_magic_wards_of_light duration = 150 stacking = yes
+				}
 			}
 		}
 	}
 }
 
-
 character_event = {
-	id = high_magic_lore_non_battle.602#Firey_convocation event 1"
-	#desc = high_magic_lore_non_battle.402_desc#"Your power consumes the life of your chosen target "
+	id = high_magic_lore_non_battle.602# Firey_convocation event 1"
+	# desc = high_magic_lore_non_battle.402_desc# "Your power consumes the life of your chosen target "
 	is_triggered_only = yes
 	hide_window = yes
-	#picture = GFX_evt_mage_lore_high_magic
+	# picture = GFX_evt_mage_lore_high_magic
+
 	immediate = {
 	}
 }
-
-

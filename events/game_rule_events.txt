@@ -1,7 +1,6 @@
-####################
-# Game Rule Events #
-####################
 
+
+# Game Rule Events
 namespace = GR
 
 # Remove Titles without De Jure land
@@ -9,12 +8,10 @@ character_event = {
 	id = GR.1
 	desc = EVTDESC_GR_1
 	picture = GFX_evt_throne_room
-	
 	is_triggered_only = yes
-	
 	only_playable = yes
 	war = no
-	
+
 	trigger = {
 		is_merchant_republic = no
 		any_demesne_title = {
@@ -25,7 +22,9 @@ character_event = {
 				ROOT = {
 					any_realm_title = {
 						tier = COUNT
-						any_dejure_liege = { title = PREVPREVPREV }
+						any_dejure_liege = {
+							title = PREVPREVPREV
+						}
 					}
 				}
 			}
@@ -35,7 +34,7 @@ character_event = {
 			value = required
 		}
 	}
-	
+
 	immediate = {
 		random_demesne_title = {
 			limit = {
@@ -46,7 +45,9 @@ character_event = {
 					ROOT = {
 						any_realm_title = {
 							tier = COUNT
-							any_dejure_liege = { title = PREVPREVPREV }
+							any_dejure_liege = {
+								title = PREVPREVPREV
+							}
 						}
 					}
 				}
@@ -54,7 +55,7 @@ character_event = {
 			save_event_target_as = title_to_destroy
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_GR_1
 		event_target:title_to_destroy = {
@@ -68,11 +69,9 @@ character_event = {
 character_event = {
 	id = GR.10
 	hide_window = yes
-
 	only_playable = yes
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_dlc = "Horse Lords"
 		independent = yes
@@ -84,13 +83,15 @@ character_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		current_heir = {
-		  save_event_target_as = nomadic_heir
+			save_event_target_as = nomadic_heir
 		}
 		any_vassal = {
-			character_event = { id = GR.11 }
+			character_event = {
+				id = GR.11
+			}
 		}
 	}
 }
@@ -99,12 +100,10 @@ character_event = {
 	id = GR.11
 	desc = EVTDESC_GR_11
 	picture = GFX_evt_horsemanship
-
 	only_playable = yes
 	capable_only = yes
 	prisoner = no
 	min_age = 16
-	
 	is_triggered_only = yes
 
 	trigger = {
@@ -117,7 +116,7 @@ character_event = {
 		in_revolt = no
 		independent = no
 	}
-	
+
 	option = {
 		name = EVTOPTA_GR_11 # Remain a vassal
 		ai_chance = {
@@ -174,9 +173,9 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_GR_11 # Go independent
-		
 		ai_chance = {
 			factor = 50
 			modifier = {
@@ -236,11 +235,13 @@ character_event = {
 				trait = ambitious
 			}
 		}
-		
 		hidden_tooltip = {
-			event_target:nomadic_heir = { character_event = { id = GR.12 days = 1 } }
+			event_target:nomadic_heir = {
+				character_event = {
+					id = GR.12 days = 1
+				}
+			}
 		}
-		
 		if = {
 			limit = {
 				is_nomadic = yes
@@ -252,7 +253,6 @@ character_event = {
 				add_claim = event_target:nomadic_heir
 			}
 		}
-		
 		if = {
 			limit = {
 				is_nomadic = no
@@ -275,22 +275,22 @@ character_event = {
 				}
 			}
 		}
-		
 		liege = {
 			any_vassal = {
 				limit = {
 					in_revolt = yes
 					any_war = {
-						defender = { character = ROOT }
+						defender = {
+							character = ROOT
+						}
 						attacker = {
-							character = THIS			
+							character = THIS
 						}
 					}
 				}
 				set_defacto_liege = THIS
 			}
 		}
-		
 		set_defacto_liege = THIS
 	}
 }
@@ -300,36 +300,37 @@ character_event = {
 	id = GR.12
 	desc = EVTDESC_GR_12
 	picture = GFX_evt_emissary
-
 	is_triggered_only = yes
-	
 	notification = yes
-	
+
 	option = {
 		name = EVTOPTA_GR_12
 	}
-	
 }
 
-#True cognatic for gender quality rule
+# True cognatic for gender quality rule
 character_event = {
 	id = GR.13
 	hide_window = yes
-
 	ai = no
 	only_playable = yes
-
 	is_triggered_only = yes
 
-	trigger = { 
-		has_game_rule = { name = gender value = all } 
+	trigger = {
+		has_game_rule = {
+			name = gender value = all
+		}
 		is_multiplayer_host_character = yes
 		is_save_game = no
 	}
 
 	immediate = {
 		any_title = {
-			limit = { owner = { is_republic = no } }
+			limit = {
+				owner = {
+					is_republic = no
+				}
+			}
 			add_law = {
 				law = true_cognatic_succession
 				cooldown = no
@@ -338,7 +339,3 @@ character_event = {
 		}
 	}
 }
-
-
-
-

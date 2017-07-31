@@ -1,10 +1,8 @@
-###################################
-#
+
+
 # Events for Decadence in Muslim Dynasties
-#
+
 # Id 91000 - 91499 reserved
-#
-###################################
 
 # Written by Henrik Fåhraeus & Henrik Eklund
 
@@ -14,22 +12,23 @@ character_event = {
 	desc = EVTDESC91000
 	picture = GFX_evt_moors
 	border = GFX_event_normal_frame_war
-	
 	only_playable = yes
 	only_independent = yes
-	
+
 	trigger = {
 		uses_decadence = yes
 		decadence = 75
 		higher_tier_than = count
 		NOT = {
 			any_war = {
-				defender = { character = ROOT }
+				defender = {
+					character = ROOT
+				}
 				using_cb = decadence_invasion # Already under tribal invasion
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 360
 		modifier = {
@@ -49,9 +48,10 @@ character_event = {
 			decadence = 95
 		}
 	}
-	
+
 	immediate = {
-		random_potential_tribal_county = { # A county suitable for tribal takeover
+		random_potential_tribal_county = {
+			# A county suitable for tribal takeover
 			location = {
 				create_character = {
 					random_traits = yes
@@ -65,7 +65,6 @@ character_event = {
 					}
 					trait = skilled_tactician
 				}
-				
 				new_character = {
 					create_title = {
 						tier = DUKE
@@ -75,20 +74,30 @@ character_event = {
 						name = "DECADENCE_REVOLT"
 						holder = THIS
 					}
-					
 					if = {
-						limit = { ROOT = { tier = duke } }
+						limit = {
+							ROOT = {
+								tier = duke
+							}
+						}
 						wealth = 500
 					}
 					if = {
-						limit = { ROOT = { tier = king } }
+						limit = {
+							ROOT = {
+								tier = king
+							}
+						}
 						wealth = 1000
 					}
 					if = {
-						limit = { ROOT = { tier = emperor } }
+						limit = {
+							ROOT = {
+								tier = emperor
+							}
+						}
 						wealth = 2000
 					}
-					
 					spawn_unit = {
 						province = PREV
 						home = PREV
@@ -118,7 +127,7 @@ character_event = {
 							province = PREVPREV
 							home = PREVPREV
 							owner = PREV
-							#leader = THIS
+							# leader = THIS
 							match_character = ROOT
 							match_mult = 0.2
 							earmark = decadence_revolters
@@ -126,7 +135,6 @@ character_event = {
 							reinforce_rate_multiplier = 0.25
 						}
 					}
-					
 					create_character = {
 						random_traits = yes
 						dynasty = THIS
@@ -145,7 +153,7 @@ character_event = {
 							province = PREVPREV
 							home = PREVPREV
 							owner = PREV
-							#leader = THIS
+							# leader = THIS
 							match_character = ROOT
 							match_mult = 0.2
 							earmark = decadence_revolters
@@ -153,7 +161,6 @@ character_event = {
 							reinforce_rate_multiplier = 0.25
 						}
 					}
-					
 					create_character = {
 						random_traits = yes
 						dynasty = NONE
@@ -171,7 +178,7 @@ character_event = {
 							province = PREVPREV
 							home = PREVPREV
 							owner = PREV
-							#leader = THIS
+							# leader = THIS
 							match_character = ROOT
 							match_mult = 0.2
 							earmark = decadence_revolters
@@ -196,7 +203,7 @@ character_event = {
 							province = PREVPREV
 							home = PREVPREV
 							owner = PREV
-							#leader = THIS
+							# leader = THIS
 							match_character = ROOT
 							match_mult = 0.2
 							earmark = decadence_revolters
@@ -221,7 +228,7 @@ character_event = {
 							province = PREVPREV
 							home = PREVPREV
 							owner = PREV
-							#leader = THIS
+							# leader = THIS
 							match_character = ROOT
 							match_mult = 0.2
 							earmark = decadence_revolters
@@ -229,53 +236,52 @@ character_event = {
 							reinforce_rate_multiplier = 0.25
 						}
 					}
-					
 					set_character_flag = decadence_invader
 					war = {
 						target = ROOT
 						casus_belli = decadence_invasion
 					}
 					clr_character_flag = decadence_invader
-					
-#					log = "91000: Decadence revolt in [Root.PrimaryTitle.GetName]!"
+					# 					log = "91000: Decadence revolt in [Root.PrimaryTitle.GetName]!"
 				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA91000
 		decadence = -50
 	}
 }
 
-### Decadence Trait-Based Events
+# Decadence Trait-Based Events
 
-### Raises Decadence
+# Raises Decadence
 
 # Drunkard
 character_event = {
 	id = 91200
 	desc = EVTDESC91200
 	picture = GFX_evt_drunk
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = drunkard
-		NOT = { has_character_flag = decadence_drunkard }
+		NOT = {
+			has_character_flag = decadence_drunkard
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91200
 		decadence = 2
@@ -288,24 +294,25 @@ character_event = {
 	id = 91201
 	desc = EVTDESC91201
 	picture = GFX_evt_carriage
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = homosexual
-		NOT = { has_character_flag = decadence_homosexual }
+		NOT = {
+			has_character_flag = decadence_homosexual
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91201
 		decadence = 2
@@ -318,24 +325,25 @@ character_event = {
 	id = 91202
 	desc = EVTDESC91202
 	picture = GFX_evt_lunatic
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = hedonist
-		NOT = { has_character_flag = decadence_hedonist }
+		NOT = {
+			has_character_flag = decadence_hedonist
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91202
 		decadence = 2
@@ -348,24 +356,25 @@ character_event = {
 	id = 91203
 	desc = EVTDESC91203
 	picture = GFX_evt_torture
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = impaler
-		NOT = { has_character_flag = decadence_impaler }
+		NOT = {
+			has_character_flag = decadence_impaler
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91203
 		decadence = 2
@@ -378,25 +387,28 @@ character_event = {
 	id = 91204
 	desc = EVTDESC91204
 	picture = GFX_evt_sultan
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = lustful
-		NOT = { trait = homosexual }
-		NOT = { has_character_flag = decadence_lustful }
+		NOT = {
+			trait = homosexual
+		}
+		NOT = {
+			has_character_flag = decadence_lustful
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91204
 		decadence = 2
@@ -409,24 +421,25 @@ character_event = {
 	id = 91205
 	desc = EVTDESC91205
 	picture = GFX_evt_feast
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = gluttonous
-		NOT = { has_character_flag = decadence_gluttonous }
+		NOT = {
+			has_character_flag = decadence_gluttonous
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91205
 		decadence = 2
@@ -439,24 +452,25 @@ character_event = {
 	id = 91206
 	desc = EVTDESC91206
 	picture = GFX_evt_jugglers
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = greedy
-		NOT = { has_character_flag = decadence_greedy }
+		NOT = {
+			has_character_flag = decadence_greedy
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91206
 		decadence = 2
@@ -469,24 +483,25 @@ character_event = {
 	id = 91207
 	desc = EVTDESC91207
 	picture = GFX_evt_carriage
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = slothful
-		NOT = { has_character_flag = decadence_slothful }
+		NOT = {
+			has_character_flag = decadence_slothful
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91207
 		decadence = 2
@@ -499,24 +514,25 @@ character_event = {
 	id = 91208
 	desc = EVTDESC91208
 	picture = GFX_evt_throne_room
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = envious
-		NOT = { has_character_flag = decadence_envious }
+		NOT = {
+			has_character_flag = decadence_envious
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91208
 		decadence = 2
@@ -529,24 +545,25 @@ character_event = {
 	id = 91209
 	desc = EVTDESC91209
 	picture = GFX_evt_burning_house
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = wroth
-		NOT = { has_character_flag = decadence_wroth }
+		NOT = {
+			has_character_flag = decadence_wroth
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91209
 		decadence = 2
@@ -559,24 +576,25 @@ character_event = {
 	id = 91210
 	desc = EVTDESC91210
 	picture = GFX_evt_market
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = proud
-		NOT = { has_character_flag = decadence_proud }
+		NOT = {
+			has_character_flag = decadence_proud
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91210
 		decadence = 2
@@ -589,24 +607,25 @@ character_event = {
 	id = 91211
 	desc = EVTDESC91211
 	picture = GFX_evt_lunatic
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = deceitful
-		NOT = { has_character_flag = decadence_deceitful }
+		NOT = {
+			has_character_flag = decadence_deceitful
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91211
 		decadence = 2
@@ -619,24 +638,25 @@ character_event = {
 	id = 91212
 	desc = EVTDESC91212
 	picture = GFX_evt_throne_room
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = craven
-		NOT = { has_character_flag = decadence_craven }
+		NOT = {
+			has_character_flag = decadence_craven
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91212
 		decadence = 2
@@ -649,24 +669,25 @@ character_event = {
 	id = 91213
 	desc = EVTDESC91213
 	picture = GFX_evt_child_talking
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = content
-		NOT = { has_character_flag = decadence_content }
+		NOT = {
+			has_character_flag = decadence_content
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91213
 		decadence = 2
@@ -679,24 +700,25 @@ character_event = {
 	id = 91214
 	desc = EVTDESC91214
 	picture = GFX_evt_throne_room
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = arbitrary
-		NOT = { has_character_flag = decadence_arbitrary }
+		NOT = {
+			has_character_flag = decadence_arbitrary
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91214
 		decadence = 2
@@ -709,24 +731,25 @@ character_event = {
 	id = 91215
 	desc = EVTDESC91215
 	picture = GFX_evt_bishop_muslim
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = cynical
-		NOT = { has_character_flag = decadence_cynical }
+		NOT = {
+			has_character_flag = decadence_cynical
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91215
 		decadence = 2
@@ -739,24 +762,25 @@ character_event = {
 	id = 91216
 	desc = EVTDESC91216
 	picture = GFX_evt_carriage
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = paranoid
-		NOT = { has_character_flag = decadence_paranoid }
+		NOT = {
+			has_character_flag = decadence_paranoid
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91216
 		decadence = 2
@@ -769,24 +793,25 @@ character_event = {
 	id = 91217
 	desc = EVTDESC91217
 	picture = GFX_evt_lunatic
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = cruel
-		NOT = { has_character_flag = decadence_cruel }
+		NOT = {
+			has_character_flag = decadence_cruel
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91217
 		decadence = 2
@@ -794,31 +819,32 @@ character_event = {
 	}
 }
 
-### Lowers Decadence
+# Lowers Decadence
 
 # Genius
 character_event = {
 	id = 91218
 	desc = EVTDESC91218
 	picture = GFX_evt_monk_muslim
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		is_smart_trigger = yes
-		NOT = { has_character_flag = decadence_genius }
+		NOT = {
+			has_character_flag = decadence_genius
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91218
 		decadence = -2
@@ -831,24 +857,25 @@ character_event = {
 	id = 91219
 	desc = EVTDESC91219
 	picture = GFX_evt_bishop_muslim
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = celibate
-		NOT = { has_character_flag = decadence_celibate }
+		NOT = {
+			has_character_flag = decadence_celibate
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91219
 		decadence = -2
@@ -861,24 +888,25 @@ character_event = {
 	id = 91220
 	desc = EVTDESC91220
 	picture = GFX_evt_monk_muslim
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = scholar
-		NOT = { has_character_flag = decadence_scholar }
+		NOT = {
+			has_character_flag = decadence_scholar
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91220
 		decadence = -2
@@ -891,24 +919,25 @@ character_event = {
 	id = 91221
 	desc = EVTDESC91221
 	picture = GFX_evt_birth
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = chaste
-		NOT = { has_character_flag = decadence_chaste }
+		NOT = {
+			has_character_flag = decadence_chaste
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91221
 		decadence = -2
@@ -921,24 +950,25 @@ character_event = {
 	id = 91222
 	desc = EVTDESC91222
 	picture = GFX_evt_emissary
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = temperate
-		NOT = { has_character_flag = decadence_temperate }
+		NOT = {
+			has_character_flag = decadence_temperate
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91222
 		decadence = -2
@@ -951,24 +981,25 @@ character_event = {
 	id = 91223
 	desc = EVTDESC91223
 	picture = GFX_evt_burning_house
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = charitable
-		NOT = { has_character_flag = decadence_charitable }
+		NOT = {
+			has_character_flag = decadence_charitable
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91223
 		decadence = -2
@@ -981,24 +1012,25 @@ character_event = {
 	id = 91224
 	desc = EVTDESC91224
 	picture = GFX_evt_monk_muslim
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = diligent
-		NOT = { has_character_flag = decadence_diligent }
+		NOT = {
+			has_character_flag = decadence_diligent
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91224
 		decadence = -2
@@ -1011,24 +1043,25 @@ character_event = {
 	id = 91225
 	desc = EVTDESC91225
 	picture = GFX_evt_emissary
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = kind
-		NOT = { has_character_flag = decadence_kind }
+		NOT = {
+			has_character_flag = decadence_kind
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91225
 		decadence = -2
@@ -1041,24 +1074,25 @@ character_event = {
 	id = 91226
 	desc = EVTDESC91226
 	picture = GFX_evt_throne_room
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = patient
-		NOT = { has_character_flag = decadence_patient }
+		NOT = {
+			has_character_flag = decadence_patient
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91226
 		decadence = -2
@@ -1071,24 +1105,25 @@ character_event = {
 	id = 91227
 	desc = EVTDESC91227
 	picture = GFX_evt_desert
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = humble
-		NOT = { has_character_flag = decadence_humble }
+		NOT = {
+			has_character_flag = decadence_humble
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91227
 		decadence = -2
@@ -1101,24 +1136,25 @@ character_event = {
 	id = 91228
 	desc = EVTDESC91228
 	picture = GFX_evt_emissary
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = honest
-		NOT = { has_character_flag = decadence_honest }
+		NOT = {
+			has_character_flag = decadence_honest
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91228
 		decadence = -2
@@ -1131,24 +1167,25 @@ character_event = {
 	id = 91229
 	desc = EVTDESC91229
 	picture = GFX_evt_moors
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = brave
-		NOT = { has_character_flag = decadence_brave }
+		NOT = {
+			has_character_flag = decadence_brave
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91229
 		decadence = -2
@@ -1161,24 +1198,25 @@ character_event = {
 	id = 91230
 	desc = EVTDESC91230
 	picture = GFX_evt_throne_room
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = ambitious
-		NOT = { has_character_flag = decadence_ambitious }
+		NOT = {
+			has_character_flag = decadence_ambitious
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91230
 		decadence = -2
@@ -1191,24 +1229,25 @@ character_event = {
 	id = 91231
 	desc = EVTDESC91231
 	picture = GFX_evt_bishop_muslim
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = just
-		NOT = { has_character_flag = decadence_just }
+		NOT = {
+			has_character_flag = decadence_just
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91231
 		decadence = -2
@@ -1221,24 +1260,25 @@ character_event = {
 	id = 91232
 	desc = EVTDESC91232
 	picture = GFX_evt_bishop_muslim
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = zealous
-		NOT = { has_character_flag = decadence_zealous }
+		NOT = {
+			has_character_flag = decadence_zealous
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91232
 		decadence = -2
@@ -1251,24 +1291,25 @@ character_event = {
 	id = 91233
 	desc = EVTDESC91233
 	picture = GFX_evt_battle
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = mujahid
-		NOT = { has_character_flag = decadence_mujahid }
+		NOT = {
+			has_character_flag = decadence_mujahid
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91233
 		decadence = -2
@@ -1281,24 +1322,25 @@ character_event = {
 	id = 91234
 	desc = EVTDESC91234
 	picture = GFX_evt_monk_muslim
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = hafiz
-		NOT = { has_character_flag = decadence_hafiz }
+		NOT = {
+			has_character_flag = decadence_hafiz
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91234
 		decadence = -2
@@ -1311,24 +1353,25 @@ character_event = {
 	id = 91235
 	desc = EVTDESC91235
 	picture = GFX_evt_kaaba
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_rulers = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		uses_decadence = yes
 		trait = hajjaj
-		NOT = { has_character_flag = decadence_hajjaj }
+		NOT = {
+			has_character_flag = decadence_hajjaj
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1200
 	}
-	
+
 	option = {
 		name = EVTOPTA91235
 		decadence = -2
@@ -1341,9 +1384,8 @@ character_event = {
 	id = 91240
 	desc = EVTDESC91240
 	picture = GFX_evt_council
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA91240 # Remain loyal
 		ai_chance = {
@@ -1362,7 +1404,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTB91240 # Declare independence
 		ai_chance = {
@@ -1382,27 +1424,35 @@ character_event = {
 			modifier = {
 				factor = 100
 				liege = {
-					NOT = { religion_group = ROOT }
+					NOT = {
+						religion_group = ROOT
+					}
 				}
 			}
 			modifier = {
 				factor = 5
 				liege = {
 					religion_group = ROOT
-					NOT = { religion = ROOT }
+					NOT = {
+						religion = ROOT
+					}
 				}
 			}
 			modifier = {
 				factor = 5
 				liege = {
-					NOT = { culture_group = ROOT }
+					NOT = {
+						culture_group = ROOT
+					}
 				}
 			}
 			modifier = {
 				factor = 2
 				liege = {
 					culture_group = ROOT
-					NOT = { culture = ROOT }
+					NOT = {
+						culture = ROOT
+					}
 				}
 			}
 		}
@@ -1410,15 +1460,12 @@ character_event = {
 			ROOT = {
 				set_defacto_liege = ROOT
 			}
-			
 			opinion = {
-				modifier = opinion_traitor 
+				modifier = opinion_traitor
 				who = ROOT
 				months = 240
 			}
-			
-#			log = "91240: [Root.GetTitledName] declares independence from [This.GetTitledName] after a decadence revolt"
-		
+			# 			log = "91240: [Root.GetTitledName] declares independence from [This.GetTitledName] after a decadence revolt"
 			ROOT = {
 				any_demesne_title = {
 					remove_claim = PREVPREV
@@ -1427,51 +1474,57 @@ character_event = {
 		}
 	}
 }
-
 narrative_event = {
 	id = 91241
 	title = EVTTITLE91241
 	desc = EVTDESC91241
 	picture = GFX_evt_moors
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA91241
 	}
 }
 
 # IMPORTANT EVENT
-# Muslim gains the Decadent Trait
 
+# Muslim gains the Decadent Trait
 character_event = {
 	id = 91300
 	desc = EVTDESC91300
 	picture = GFX_evt_sultan
-	
 	only_men = yes
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		num_of_dynasty_members = 3 # Does not trigger for tiny dynasties
 		uses_decadence = yes
-		NOT = { trait = decadent }
-		NOT = { trait = zealous }
-		NOT = { trait = mujahid }
+		NOT = {
+			trait = decadent
+		}
+		NOT = {
+			trait = zealous
+		}
+		NOT = {
+			trait = mujahid
+		}
 		lower_tier_than = KING
-		NOT = { has_character_modifier = decadent_timer }
+		NOT = {
+			has_character_modifier = decadent_timer
+		}
 		biggest_realm_size_relative = {
-			NOT = { character = PREV }
+			NOT = {
+				character = PREV
+			}
 			realm_size = 5
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 70
-		
 		modifier = {
 			factor = 0.5
 			trait = indulgent_wastrel
@@ -1597,11 +1650,10 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA91300
 		add_trait = decadent
-		
 		hidden_tooltip = {
 			any_dynasty_member = {
 				limit = {
@@ -1617,14 +1669,14 @@ character_event = {
 }
 
 # Muslim ruler tries to convince a dynasty member to lose the 'Decadent' Trait
+
 # Fired from decision "convince_to_straighten_up"
 character_event = {
 	id = 91350
 	desc = EVTDESC91350
 	picture = GFX_evt_council
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA91350 # Refuse
 		ai_chance = {
@@ -1696,9 +1748,11 @@ character_event = {
 				tooltip = EVTTOOLTIP91351
 			}
 		}
-		character_event = {	id = 91371 days = 3650 }
+		character_event = {
+			id = 91371 days = 3650
+		}
 	}
-	
+
 	option = {
 		name = EVTOPTB91350 # Accept
 		ai_chance = {
@@ -1747,9 +1801,8 @@ character_event = {
 	id = 91351
 	desc = EVTDESC91351
 	picture = GFX_evt_feast
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA91351 # Denounce
 		ai_chance = {
@@ -1760,15 +1813,17 @@ character_event = {
 			who = FROM
 			months = 240
 		}
-		
 		hidden_tooltip = {
 			any_dynasty_member = {
 				limit = {
 					is_playable = yes
-					NOT = { trait = decadent }
-					NOT = { character = FROM }
+					NOT = {
+						trait = decadent
+					}
+					NOT = {
+						character = FROM
+					}
 				}
-				
 				character_event = {
 					id = 91369
 					days = 1
@@ -1776,6 +1831,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB91351 # Convince (diplo)
 		ai_chance = {
@@ -1793,6 +1849,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = EVTOPTC91351 # Theological Debate (learning)
 		ai_chance = {
@@ -1810,6 +1867,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = EVTOPTD91351 # Threaten (intrigue)
 		ai_chance = {
@@ -1827,16 +1885,24 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = EVTOPTE91351 # Demand because of favor
-		custom_tooltip = { name = EVTOPTE91351_TOOLTIP }
-		ai_chance = { factor = 30 } 
-
-		trigger = { holds_favor_on = FROM }
-
+		custom_tooltip = {
+			name = EVTOPTE91351_TOOLTIP
+		}
+		ai_chance = {
+			factor = 30
+		}
+		trigger = {
+			holds_favor_on = FROM
+		}
 		remove_favor = FROM
-
-		FROM = { character_event = { id = 91378 days = 5 } }
+		FROM = {
+			character_event = {
+				id = 91378 days = 5
+			}
+		}
 	}
 }
 
@@ -1845,12 +1911,10 @@ character_event = {
 	id = 91352
 	desc = EVTDESC91352
 	picture = GFX_evt_council
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA91352
-		
 		opinion = {
 			modifier = opinion_straightened_up
 			who = FROM
@@ -1864,9 +1928,8 @@ character_event = {
 	id = 91355
 	desc = EVTDESC91355
 	picture = GFX_evt_council
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA91355 # Refuse
 		ai_chance = {
@@ -1881,7 +1944,7 @@ character_event = {
 		}
 		prestige = -100
 	}
-	
+
 	option = {
 		name = EVTOPTB91355 # Accept
 		ai_chance = {
@@ -1902,7 +1965,7 @@ character_event = {
 		remove_trait = decadent
 		clr_character_flag = negotiated_to_drop_decadence
 	}
-	
+
 	option = {
 		name = EVTOPTC91355 # Bribe (diplo)
 		ai_chance = {
@@ -1919,7 +1982,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTD91355 # Engage in theological debate (learning)
 		ai_chance = {
@@ -1936,7 +1999,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTE91355 # Seduce wife (intrigue)
 		ai_chance = {
@@ -1965,9 +2028,8 @@ character_event = {
 	id = 91356
 	desc = EVTDESC91356
 	picture = GFX_evt_jugglers
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA91351 # Denounce
 		opinion = {
@@ -1975,15 +2037,17 @@ character_event = {
 			who = FROM
 			months = 240
 		}
-		
 		hidden_tooltip = {
 			any_dynasty_member = {
 				limit = {
 					is_playable = yes
-					NOT = { trait = decadent }
-					NOT = { character = FROM }
+					NOT = {
+						trait = decadent
+					}
+					NOT = {
+						character = FROM
+					}
 				}
-				
 				character_event = {
 					id = 91369
 					days = 1
@@ -1998,9 +2062,8 @@ character_event = {
 	id = 91357
 	desc = EVTDESC91357
 	picture = GFX_evt_council
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA91352
 		opinion = {
@@ -2016,9 +2079,8 @@ character_event = {
 	id = 91360
 	desc = EVTDESC91360
 	picture = GFX_evt_bishop_muslim
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA91360 # Refuse
 		ai_chance = {
@@ -2033,60 +2095,55 @@ character_event = {
 		}
 		piety = -100
 	}
-	
 	# option = {
-		# name = EVTOPTB91360 # Join the Bektashi Order
-		
-		# trigger = {
-			# is_ruler = no
-			# OR = {
-				# religion = sunni
-				# religion = zikri
-				# religion = yazidi
-			# }
-			# is_heretic = no
-			# d_bektashi = {
-				# has_holder = yes
-			# }
-		# }
-		
-		# ai_chance = {
-			# factor = 5
-			# modifier = {
-				# factor = 0.7
-				# any_spouse = {
-					# reverse_opinion = { who = ROOT value = 100 }
-				# }
-			# }
-		# }
-		
-		# hidden_tooltip = {
-			# FROM = {
-				# character_event = {
-					# id = 91361
-					# days = 3
-				# }
-			# }
-		# }
-		# remove_trait = decadent
-		# clr_character_flag = negotiated_to_drop_decadence
-		# piety = 100
-		
-		# d_bektashi = {
-			# holder_scope = {
-				# ROOT = {
-					# move_character = PREV
-				# }
-			# }
-		# }
-		# any_spouse = {
-			# remove_spouse = ROOT
-			# hidden_tooltip = { character_event = { id = 91377 } }
-		# }
+	# name = EVTOPTB91360 # Join the Bektashi Order
+	# trigger = {
+	# is_ruler = no
+	# OR = {
+	# religion = sunni
+	# religion = zikri
+	# religion = yazidi
 	# }
+	# is_heretic = no
+	# d_bektashi = {
+	# has_holder = yes
+	# }
+	# }
+	# ai_chance = {
+	# factor = 5
+	# modifier = {
+	# factor = 0.7
+	# any_spouse = {
+	# reverse_opinion = { who = ROOT value = 100 }
+	# }
+	# }
+	# }
+	# hidden_tooltip = {
+	# FROM = {
+	# character_event = {
+	# id = 91361
+	# days = 3
+	# }
+	# }
+	# }
+	# remove_trait = decadent
+	# clr_character_flag = negotiated_to_drop_decadence
+	# piety = 100
+	# d_bektashi = {
+	# holder_scope = {
+	# ROOT = {
+	# move_character = PREV
+	# }
+	# }
+	# }
+	# any_spouse = {
+	# remove_spouse = ROOT
+	# hidden_tooltip = { character_event = { id = 91377 } }
+	# }
+	# }
+
 	option = {
 		name = EVTOPTC91360 # Join the Assassins
-		
 		trigger = {
 			is_ruler = no
 			OR = {
@@ -2099,17 +2156,17 @@ character_event = {
 				has_holder = yes
 			}
 		}
-		
 		ai_chance = {
 			factor = 5
 			modifier = {
 				factor = 0.7
 				any_spouse = {
-					reverse_opinion = { who = ROOT value = 100 }
+					reverse_opinion = {
+						who = ROOT value = 100
+					}
 				}
 			}
 		}
-		
 		hidden_tooltip = {
 			FROM = {
 				character_event = {
@@ -2118,11 +2175,9 @@ character_event = {
 				}
 			}
 		}
-		
 		remove_trait = decadent
 		clr_character_flag = negotiated_to_drop_decadence
 		piety = 100
-		
 		d_hashishin = {
 			holder_scope = {
 				ROOT = {
@@ -2132,9 +2187,14 @@ character_event = {
 		}
 		any_spouse = {
 			remove_spouse = ROOT
-			hidden_tooltip = { character_event = { id = 91377 } }
+			hidden_tooltip = {
+				character_event = {
+					id = 91377
+				}
+			}
 		}
 	}
+
 	option = {
 		name = EVTOPTD91360 # Go on Hajj
 		trigger = {
@@ -2145,21 +2205,17 @@ character_event = {
 				}
 			}
 		}
-		
 		ai_chance = {
 			factor = 5
 		}
-		
 		add_character_modifier = {
 			modifier = decadent_timer
 			years = 5
 			hidden = yes
 		}
-		
 		remove_trait = decadent
 		clr_character_flag = negotiated_to_drop_decadence
 		piety = 50
-		
 		hidden_tooltip = {
 			FROM = {
 				character_event = {
@@ -2168,32 +2224,29 @@ character_event = {
 				}
 			}
 		}
-		
 		scaled_wealth = -0.20
 		clr_character_flag = promise_hajj
 		set_character_flag = activated_hajj
 		set_character_flag = do_not_disturb
 		hidden_tooltip = {
-			letter_event = { 
+			letter_event = {
 				id = 86000
 			}
 		}
 	}
+
 	option = {
 		name = EVTOPTE91360 # Donate money to charity
-		
 		ai_chance = {
 			factor = 5
-		}	
+		}
 		add_character_modifier = {
 			modifier = decadent_timer
 			years = 5
 			hidden = yes
 		}
-		
 		remove_trait = decadent
 		clr_character_flag = negotiated_to_drop_decadence
-		
 		hidden_tooltip = {
 			FROM = {
 				character_event = {
@@ -2202,11 +2255,10 @@ character_event = {
 				}
 			}
 		}
-		
 		wealth = -10
 		piety = 20
 	}
-	
+
 	option = {
 		name = EVTOPTC91355 # Bribe (diplo)
 		ai_chance = {
@@ -2223,7 +2275,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTD91355 # Engage in theological debate (learning)
 		ai_chance = {
@@ -2240,10 +2292,12 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		trigger = {
-			FROM = { is_married = yes }
+			FROM = {
+				is_married = yes
+			}
 			intrigue = 12
 		}
 		name = EVTOPTE91355 # Seduce wife (intrigue)
@@ -2262,15 +2316,13 @@ character_event = {
 	}
 }
 
-
 # The decadent character joined a holy order
 character_event = {
 	id = 91361
 	desc = EVTDESC91361
 	picture = GFX_evt_melee
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA91361
 		opinion = {
@@ -2286,9 +2338,8 @@ character_event = {
 	id = 91362
 	desc = EVTDESC91362
 	picture = GFX_evt_kaaba
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA91362
 		opinion = {
@@ -2304,9 +2355,8 @@ character_event = {
 	id = 91363
 	desc = EVTDESC91363
 	picture = GFX_evt_kaaba
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA91363
 		opinion = {
@@ -2322,9 +2372,8 @@ character_event = {
 	id = 91365
 	desc = EVTDESC91365
 	picture = GFX_evt_shadow
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA91365 # Refuse
 		ai_chance = {
@@ -2339,7 +2388,7 @@ character_event = {
 		}
 		prestige = -100
 	}
-	
+
 	option = {
 		name = EVTOPTB91365 # Accept
 		ai_chance = {
@@ -2351,7 +2400,7 @@ character_event = {
 				days = 3
 				tooltip = EVTTOOLTIP91352
 			}
-		}	
+		}
 		add_character_modifier = {
 			modifier = decadent_timer
 			years = 5
@@ -2360,6 +2409,7 @@ character_event = {
 		remove_trait = decadent
 		clr_character_flag = negotiated_to_drop_decadence
 	}
+
 	option = {
 		name = EVTOPTC91365 # Suicide
 		trigger = {
@@ -2385,18 +2435,17 @@ character_event = {
 			}
 		}
 		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
+			limit = {
+				is_invincible_trigger = yes
+			}
 			antideath_effect = yes
-			break = yes 
-}
+			break = yes
+		}
 		death = {
 			death_reason = death_suicide
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTC91355 # Bribe (diplo)
 		ai_chance = {
@@ -2413,7 +2462,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTD91355 # Engage in theological debate (learning)
 		ai_chance = {
@@ -2430,10 +2479,12 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		trigger = {
-			FROM = { is_married = yes }
+			FROM = {
+				is_married = yes
+			}
 			intrigue = 12
 		}
 		name = EVTOPTE91355 # Seduce wife (intrigue)
@@ -2457,9 +2508,8 @@ character_event = {
 	id = 91366
 	desc = EVTDESC91366
 	picture = GFX_evt_jugglers
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA91351 # Denounce
 		opinion = {
@@ -2467,15 +2517,17 @@ character_event = {
 			who = FROM
 			months = 240
 		}
-		
 		hidden_tooltip = {
 			any_dynasty_member = {
 				limit = {
 					is_playable = yes
-					NOT = { trait = decadent }
-					NOT = { character = FROM }
+					NOT = {
+						trait = decadent
+					}
+					NOT = {
+						character = FROM
+					}
 				}
-				
 				character_event = {
 					id = 91369
 					days = 1
@@ -2490,9 +2542,8 @@ character_event = {
 	id = 91367
 	desc = EVTDESC91367
 	picture = GFX_evt_council
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA91352
 		opinion = {
@@ -2508,9 +2559,8 @@ character_event = {
 	id = 91368
 	desc = EVTDESC91368
 	picture = GFX_evt_lunatic
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA91368
 	}
@@ -2521,11 +2571,9 @@ character_event = {
 	id = 91369
 	desc = EVTDESC91369
 	picture = GFX_evt_jugglers
-	
 	notification = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		opinion = {
 			modifier = opinion_takfir
@@ -2533,7 +2581,7 @@ character_event = {
 			months = 240
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA91369
 	}
@@ -2544,11 +2592,9 @@ character_event = {
 	id = 91370
 	desc = EVTDESC91370
 	picture = GFX_evt_jugglers
-	
 	notification = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA91370
 	}
@@ -2557,10 +2603,9 @@ character_event = {
 # Resets flag negotiated_to_drop_decadence
 character_event = {
 	id = 91371
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
+
 	immediate = {
 		clr_character_flag = negotiated_to_drop_decadence
 	}
@@ -2571,15 +2616,13 @@ character_event = {
 	id = 91372
 	desc = EVTDESC91372
 	picture = GFX_evt_emissary
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA91372 # Accept
 		ai_chance = {
 			factor = 4
 		}
-		
 		create_character = {
 			random_traits = no
 			dynasty = NONE
@@ -2596,15 +2639,17 @@ character_event = {
 				martial = 10
 			}
 		}
-		
 		hidden_tooltip = {
 			any_dynasty_member = {
 				limit = {
 					is_playable = yes
-					NOT = { trait = decadent }
-					NOT = { character = ROOT }
+					NOT = {
+						trait = decadent
+					}
+					NOT = {
+						character = ROOT
+					}
 				}
-				
 				character_event = {
 					id = 91369
 					days = 1
@@ -2612,7 +2657,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA91351 # Denounce
 		ai_chance = {
@@ -2623,15 +2668,17 @@ character_event = {
 			who = FROM
 			months = 240
 		}
-		
 		hidden_tooltip = {
 			any_dynasty_member = {
 				limit = {
 					is_playable = yes
-					NOT = { trait = decadent }
-					NOT = { character = ROOT }
+					NOT = {
+						trait = decadent
+					}
+					NOT = {
+						character = ROOT
+					}
 				}
-				
 				character_event = {
 					id = 91369
 					days = 1
@@ -2646,25 +2693,25 @@ character_event = {
 	id = 91373
 	desc = EVTDESC91373
 	picture = GFX_evt_library
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA91373 # Accept
 		ai_chance = {
 			factor = 4
 		}
-		
 		piety = 150
-		
 		hidden_tooltip = {
 			any_dynasty_member = {
 				limit = {
 					is_playable = yes
-					NOT = { trait = decadent }
-					NOT = { character = ROOT }
+					NOT = {
+						trait = decadent
+					}
+					NOT = {
+						character = ROOT
+					}
 				}
-				
 				character_event = {
 					id = 91369
 					days = 1
@@ -2672,7 +2719,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA91351 # Denounce
 		ai_chance = {
@@ -2683,15 +2730,17 @@ character_event = {
 			who = FROM
 			months = 240
 		}
-		
 		hidden_tooltip = {
 			any_dynasty_member = {
 				limit = {
 					is_playable = yes
-					NOT = { trait = decadent }
-					NOT = { character = ROOT }
+					NOT = {
+						trait = decadent
+					}
+					NOT = {
+						character = ROOT
+					}
 				}
-				
 				character_event = {
 					id = 91369
 					days = 1
@@ -2706,12 +2755,13 @@ character_event = {
 	id = 91374
 	desc = EVTDESC91374
 	picture = GFX_evt_lovers
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA91374 # Spouse falls for the decadent character
-		custom_tooltip = { text = EVTTOOLTIP91374A }
+		custom_tooltip = {
+			text = EVTTOOLTIP91374A
+		}
 		ai_chance = {
 			factor = 3
 			modifier = {
@@ -2720,12 +2770,14 @@ character_event = {
 			}
 			modifier = {
 				factor = 2
-				NOT = { opinion = { who = spouse value = 0 } }
+				NOT = {
+					opinion = {
+						who = spouse value = 0
+					}
+				}
 			}
 		}
-		
 		add_lover = FROM
-		
 		spouse = {
 			character_event = {
 				id = 91375 # Ask spouse to let your lover be
@@ -2733,10 +2785,12 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTB91374 # Spouse sees through the decadent character
-		custom_tooltip = { text = EVTTOOLTIP91374B }
+		custom_tooltip = {
+			text = EVTTOOLTIP91374B
+		}
 		ai_chance = {
 			factor = 5
 		}
@@ -2759,28 +2813,29 @@ character_event = {
 	id = 91375
 	desc = EVTDESC91375
 	picture = GFX_evt_quarrel
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA91373 # Accept
 		ai_chance = {
 			factor = 4
-		}	
+		}
 		reverse_opinion = {
 			modifier = opinion_pleased
 			who = spouse
 			months = 240
 		}
-		
 		hidden_tooltip = {
 			any_dynasty_member = {
 				limit = {
 					is_playable = yes
-					NOT = { trait = decadent }
-					NOT = { character = ROOT }
+					NOT = {
+						trait = decadent
+					}
+					NOT = {
+						character = ROOT
+					}
 				}
-				
 				character_event = {
 					id = 91369
 					days = 1
@@ -2788,7 +2843,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA91351 # Denounce
 		ai_chance = {
@@ -2804,15 +2859,17 @@ character_event = {
 			who = FROMFROM
 			months = 240
 		}
-		
 		hidden_tooltip = {
 			any_dynasty_member = {
 				limit = {
 					is_playable = yes
-					NOT = { trait = decadent }
-					NOT = { character = ROOT }
+					NOT = {
+						trait = decadent
+					}
+					NOT = {
+						character = ROOT
+					}
 				}
-				
 				character_event = {
 					id = 91369
 					days = 1
@@ -2827,9 +2884,8 @@ character_event = {
 	id = 91376
 	desc = EVTDESC91376
 	picture = GFX_evt_lovers
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA91351 # Denounce
 		ai_chance = {
@@ -2837,7 +2893,7 @@ character_event = {
 		}
 		reverse_opinion = {
 			modifier = opinion_takfir
-			who = FROMFROM 
+			who = FROMFROM
 			months = 240
 		}
 		reverse_opinion = {
@@ -2845,15 +2901,17 @@ character_event = {
 			who = FROM
 			months = 240
 		}
-		
 		hidden_tooltip = {
 			any_dynasty_member = {
 				limit = {
 					is_playable = yes
-					NOT = { trait = decadent }
-					NOT = { character = ROOT }
+					NOT = {
+						trait = decadent
+					}
+					NOT = {
+						character = ROOT
+					}
 				}
-				
 				character_event = {
 					id = 91369
 					days = 1
@@ -2869,61 +2927,72 @@ character_event = {
 	desc = EVTDESC_91377
 	picture = GFX_evt_melee
 	border = GFX_event_normal_frame_religion
-
 	is_triggered_only = yes
-	
+
 	option = {
 		name = ALAS
 		trigger = {
-			opinion = { who = FROM value = 0 }
+			opinion = {
+				who = FROM value = 0
+			}
 		}
-		tooltip = { remove_spouse = FROM }
+		tooltip = {
+			remove_spouse = FROM
+		}
 	}
+
 	option = {
 		name = GOOD_RIDDANCE
 		trigger = {
-			NOT = { opinion = { who = FROM value = 0 } }
+			NOT = {
+				opinion = {
+					who = FROM value = 0
+				}
+			}
 		}
-		tooltip = { remove_spouse = FROM }
+		tooltip = {
+			remove_spouse = FROM
+		}
 	}
 }
 
-#Decadent character notified that he is forced through favor
+# Decadent character notified that he is forced through favor
 character_event = {
 	id = 91378
 	desc = EVTDESC_91378
 	picture = GFX_evt_council
 	border = GFX_event_normal_frame_religion
-
 	is_triggered_only = yes
 
 	option = {
 		name = EVTOPTA91378
-
 		remove_trait = decadent
-
-		tooltip = { reverse_remove_favor = FROM }
-
-		FROM = { character_event = { id = 91379 days = 5 } }
-
+		tooltip = {
+			reverse_remove_favor = FROM
+		}
+		FROM = {
+			character_event = {
+				id = 91379 days = 5
+			}
+		}
 	}
 }
 
-
-#Confirmation for favor holder that decadent character shaped up
+# Confirmation for favor holder that decadent character shaped up
 character_event = {
 	id = 91379
 	desc = EVTDESC_91379
 	picture = GFX_evt_council
 	border = GFX_event_normal_frame_religion
-
 	is_triggered_only = yes
-
-
 
 	option = {
 		name = EVTOPTA91379
-		tooltip = { FROM = { remove_trait = decadent } }
+		tooltip = {
+			FROM = {
+				remove_trait = decadent
+			}
+		}
 		opinion = {
 			modifier = opinion_straightened_up
 			who = FROM

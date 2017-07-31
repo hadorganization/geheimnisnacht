@@ -1,46 +1,49 @@
-#SoA Holy Order stuff, adapted to Geheimnisnacht
-########################################
+
+# SoA Holy Order stuff, adapted to Geheimnisnacht
+
 # The Knights of the White Wolf
-########################################
 namespace = SoA_HolyOrders
+
 # The Grand Master demands one of your sons due to debt
 character_event = {
 	id = SoA_HolyOrders.1000
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	only_playable = yes
 	religion = ulrican
-	
+
 	trigger = {
 		religion = ulrican
 		is_heretic = no
 		has_character_modifier = borrowed_from_knights_white_wolf
-		NOT = { has_character_flag = sent_son_to_knights_white_wolf }
+		NOT = {
+			has_character_flag = sent_son_to_knights_white_wolf
+		}
 		any_child = {
 			is_female = no
 			is_adult = yes
 			is_ruler = no
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			ROOT = {
-				NOT = { 
-					current_heir = { 
-						character = PREVPREV 
+				NOT = {
+					current_heir = {
+						character = PREVPREV
 					}
 				}
 			}
 		}
 		has_dlc = "Sons of Abraham"
 	}
-	
+
 	mean_time_to_happen = {
 		months = 120
 	}
-	
+
 	immediate = {
 		random_child = {
 			limit = {
@@ -48,11 +51,13 @@ character_event = {
 				is_adult = yes
 				is_ruler = no
 				prisoner = no
-				NOT = { trait = incapable }
+				NOT = {
+					trait = incapable
+				}
 				ROOT = {
-					NOT = { 
-						current_heir = { 
-							character = PREVPREV 
+					NOT = {
+						current_heir = {
+							character = PREVPREV
 						}
 					}
 				}
@@ -62,7 +67,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -73,11 +78,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		d_knights_of_the_white_wolf = {
 			holder_scope = {
@@ -87,7 +90,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -98,11 +101,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			character_event = {
@@ -110,29 +111,24 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 letter_event = {
 	id = SoA_HolyOrders.1003
 	desc = EVTDESC_SOA_1003
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1003 # Agree
 		ai_chance = {
 			factor = 100
 		}
-		
 		set_character_flag = sent_son_to_knights_white_wolf
-		
 		piety = 100
-		
 		d_knights_of_the_white_wolf = {
 			holder_scope = {
 				FROMFROM = {
@@ -142,11 +138,17 @@ letter_event = {
 					}
 					spouse = {
 						remove_spouse = spouse
-						hidden_tooltip = { character_event = { id = SoA_HolyOrders.2862 } }
+						hidden_tooltip = {
+							character_event = {
+								id = SoA_HolyOrders.2862
+							}
+						}
 					}
 					add_trait = celibate
 					if = {
-						limit = { trait = in_hiding }
+						limit = {
+							trait = in_hiding
+						}
 						remove_trait = in_hiding
 						clr_character_flag = do_not_disturb
 						add_character_modifier = {
@@ -154,13 +156,17 @@ letter_event = {
 							duration = 180
 							hidden = yes
 						}
-						hidden_tooltip = { character_event = { id = CM.6400 } } # Notify plotters and family
+						hidden_tooltip = {
+							character_event = {
+								id = CM.6400
+							}
+						} # Notify plotters and family
 					}
 				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1003 # Pay them back
 		wealth = -300
@@ -171,7 +177,7 @@ letter_event = {
 			wealth = 300
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTC_SOA_1003 # Refuse
 		piety = -1000
@@ -184,11 +190,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		wealth = -300
 		FROM = {
@@ -197,7 +201,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -208,9 +212,8 @@ letter_event = {
 	id = SoA_HolyOrders.1011
 	desc = EVTDESC_SOA_1011
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EXCELLENT
 	}
@@ -222,11 +225,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		set_defacto_liege = FROM
 		FROM = {
@@ -235,7 +236,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -246,9 +247,8 @@ letter_event = {
 	id = SoA_HolyOrders.1016
 	desc = EVTDESC_SOA_1016
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EXCELLENT
 	}
@@ -260,42 +260,40 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	only_playable = yes
 	religion = ulrican
-	
+
 	trigger = {
 		religion = ulrican
 		is_heretic = no
-		
 		has_character_modifier = borrowed_from_knights_white_wolf
-		NOT = { has_character_flag = sent_son_to_knights_white_wolf }
-		
+		NOT = {
+			has_character_flag = sent_son_to_knights_white_wolf
+		}
 		any_demesne_province = {
 			has_empty_holding = yes
 		}
-		
 		d_knights_of_the_white_wolf = {
 			holder_scope = {
 				wealth = 300
 			}
 		}
 		has_dlc = "Sons of Abraham"
-		
-		NOT = { has_character_modifier = expelled_d_knights_of_the_white_wolf }
+		NOT = {
+			has_character_modifier = expelled_d_knights_of_the_white_wolf
+		}
 		NOT = {
 			any_liege = {
 				has_character_modifier = expelled_d_knights_of_the_white_wolf
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 60
 	}
-	
+
 	immediate = {
 		random_demesne_province = {
 			limit = {
@@ -306,22 +304,19 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 province_event = {
 	id = SoA_HolyOrders.1021
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		d_knights_of_the_white_wolf = {
 			holder_scope = {
@@ -331,7 +326,7 @@ province_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -342,11 +337,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			character_event = {
@@ -354,36 +347,34 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 letter_event = {
 	id = SoA_HolyOrders.1023
 	desc = EVTDESC_SOA_1023
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1023 # Agree
 		ai_chance = {
 			factor = 100
 		}
-		
 		hidden_tooltip = {
 			remove_character_modifier = borrowed_from_knights_white_wolf
 			remove_character_modifier = expelled_d_knights_of_the_white_wolf
 			FROMFROM = {
-				province_event = { id = SoA_HolyOrders.1024 }
+				province_event = {
+					id = SoA_HolyOrders.1024
+				}
 			}
 		}
-		
 		piety = 100
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1003 # Pay them back
 		wealth = -300
@@ -394,7 +385,7 @@ letter_event = {
 			wealth = 300
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTC_SOA_1003 # Refuse
 		piety = -1000
@@ -407,20 +398,19 @@ province_event = {
 	desc = EVTDESC_SOA_1024
 	picture = GFX_evt_castle_construction
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			wealth = -300
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_SOA_1024
 		build_holding = {
-		   type = castle
-		   holder = FROMFROM
+			type = castle
+			holder = FROMFROM
 		}
 	}
 }
@@ -431,56 +421,56 @@ character_event = {
 	desc = EVTDESC_SOA_1030
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	only_men = yes
 	min_age = 16
 	max_age = 45
 	only_capable = yes
 	prisoner = no
 	religion = ulrican
-	
+
 	trigger = {
 		is_ruler = no
 		religion = ulrican
 		is_heretic = no
-		
 		martial = 5
-		
 		is_title_active = d_knights_of_the_white_wolf
-		
 		OR = {
 			father_even_if_dead = {
-				primary_title = { higher_tier_than = BARON }
+				primary_title = {
+					higher_tier_than = BARON
+				}
 			}
 			mother_even_if_dead = {
-				primary_title = { higher_tier_than = BARON }
+				primary_title = {
+					higher_tier_than = BARON
+				}
 			}
 		}
-		
 		liege = {
 			holy_order = no
 			liege = {
 				holy_order = no
 			}
 		}
-		
 		has_dlc = "Sons of Abraham"
-		
-		NOT = { has_character_modifier = expelled_d_knights_of_the_white_wolf }
+		NOT = {
+			has_character_modifier = expelled_d_knights_of_the_white_wolf
+		}
 		NOT = {
 			any_liege = {
 				has_character_modifier = expelled_d_knights_of_the_white_wolf
 			}
 		}
-		
 		NOT = {
 			any_spouse = {
 				is_pregnant = yes
-				father_of_unborn = { character = ROOT } # Won't happen if spouse is pregnant with non-bastard child
+				father_of_unborn = {
+					character = ROOT
+				} # Won't happen if spouse is pregnant with non-bastard child
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		years = 100
 		modifier = {
@@ -505,7 +495,9 @@ character_event = {
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 25 }
+			NOT = {
+				age = 25
+			}
 		}
 		modifier = {
 			factor = 1.5
@@ -540,11 +532,13 @@ character_event = {
 		modifier = {
 			factor = 2
 			any_spouse = {
-				reverse_opinion = { who = ROOT value = 100 }
+				reverse_opinion = {
+					who = ROOT value = 100
+				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_SOA_1030 # Ask to go
 		ai_chance = {
@@ -556,6 +550,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_SOA_1030 # It's a bad idea
 	}
@@ -567,17 +562,14 @@ character_event = {
 	desc = EVTDESC_SOA_1031
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1031 # Agree
 		ai_chance = {
 			factor = 100
 		}
-		
 		piety = 100
-		
 		FROM = {
 			character_event = {
 				id = SoA_HolyOrders.1032
@@ -585,12 +577,10 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1031 # Refuse
-		
 		piety = -100
-		
 		FROM = {
 			character_event = {
 				id = SoA_HolyOrders.1033
@@ -606,12 +596,10 @@ character_event = {
 	desc = EVTDESC_SOA_1032
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EXCELLENT
-		
 		d_knights_of_the_white_wolf = {
 			holder_scope = {
 				ROOT = {
@@ -621,11 +609,17 @@ character_event = {
 					}
 					spouse = {
 						remove_spouse = spouse
-						hidden_tooltip = { character_event = { id = SoA_HolyOrders.2863 } }
+						hidden_tooltip = {
+							character_event = {
+								id = SoA_HolyOrders.2863
+							}
+						}
 					}
 					add_trait = celibate
 					if = {
-						limit = { trait = in_hiding }
+						limit = {
+							trait = in_hiding
+						}
 						remove_trait = in_hiding
 						clr_character_flag = do_not_disturb
 						add_character_modifier = {
@@ -633,7 +627,11 @@ character_event = {
 							duration = 180
 							hidden = yes
 						}
-						hidden_tooltip = { character_event = { id = CM.6400 } } # Notify plotters and family
+						hidden_tooltip = {
+							character_event = {
+								id = CM.6400
+							}
+						} # Notify plotters and family
 					}
 				}
 			}
@@ -647,12 +645,10 @@ character_event = {
 	desc = EVTDESC_SOA_1033
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1033
-		
 		opinion = {
 			who = FROM
 			modifier = opinion_refused_request_holy_order
@@ -666,16 +662,13 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	only_playable = yes
 	religion = ulrican
-	
+
 	trigger = {
 		religion = ulrican
 		is_heretic = no
-		
 		d_knights_of_the_white_wolf = {
 			holder_scope = {
 				wealth = 300
@@ -687,36 +680,37 @@ character_event = {
 				}
 			}
 		}
-		
 		any_demesne_province = {
 			has_empty_holding = yes
 			# OR = {
-				# region = world_persia
-				# region = world_middle_east
-				# region = world_asia_minor
-				# region = world_africa_north
-				# region = world_europe_south
-				# region = world_europe_west
+			# region = world_persia
+			# region = world_middle_east
+			# region = world_asia_minor
+			# region = world_africa_north
+			# region = world_europe_south
+			# region = world_europe_west
 			# }
 		}
-		
 		has_dlc = "Sons of Abraham"
-		
-		NOT = { has_character_modifier = expelled_d_knights_of_the_white_wolf }
+		NOT = {
+			has_character_modifier = expelled_d_knights_of_the_white_wolf
+		}
 		NOT = {
 			any_liege = {
 				has_character_modifier = expelled_d_knights_of_the_white_wolf
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 240
 		modifier = {
 			factor = 0.5
 			d_knights_of_the_white_wolf = {
 				holder_scope = {
-					NOT = { demesne_size = 1 }
+					NOT = {
+						demesne_size = 1
+					}
 				}
 			}
 		}
@@ -724,7 +718,9 @@ character_event = {
 			factor = 0.5
 			d_knights_of_the_white_wolf = {
 				holder_scope = {
-					NOT = { demesne_size = 2 }
+					NOT = {
+						demesne_size = 2
+					}
 				}
 			}
 		}
@@ -737,18 +733,18 @@ character_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		random_demesne_province = {
 			limit = {
 				has_empty_holding = yes
 				# OR = {
-					# region = world_persia
-					# region = world_middle_east
-					# region = world_asia_minor
-					# region = world_africa_north
-					# region = world_europe_south
-					# region = world_europe_west
+				# region = world_persia
+				# region = world_middle_east
+				# region = world_asia_minor
+				# region = world_africa_north
+				# region = world_europe_south
+				# region = world_europe_west
 				# }
 			}
 			province_event = {
@@ -756,22 +752,19 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 province_event = {
 	id = SoA_HolyOrders.1051
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		d_knights_of_the_white_wolf = {
 			holder_scope = {
@@ -781,7 +774,7 @@ province_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -792,11 +785,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			character_event = {
@@ -804,19 +795,17 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 letter_event = {
 	id = SoA_HolyOrders.1053
 	desc = EVTDESC_SOA_1053
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1023 # Agree
 		ai_chance = {
@@ -826,24 +815,23 @@ letter_event = {
 				has_character_modifier = expelled_d_knights_of_the_white_wolf
 			}
 		}
-		
 		hidden_tooltip = {
 			FROMFROM = {
-				province_event = { id = SoA_HolyOrders.1054 }
+				province_event = {
+					id = SoA_HolyOrders.1054
+				}
 			}
 			remove_character_modifier = expelled_d_knights_of_the_white_wolf
 		}
-		
 		piety = 200
 		wealth = 100
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1031 # Refuse
 		ai_chance = {
 			factor = 20
 		}
-		
 		piety = -100
 	}
 }
@@ -854,24 +842,22 @@ province_event = {
 	desc = EVTDESC_SOA_1054
 	picture = GFX_evt_castle_construction
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			wealth = -300
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_SOA_1024
 		build_holding = {
-		   type = castle
-		   holder = FROMFROM
+			type = castle
+			holder = FROMFROM
 		}
 	}
 }
-
 
 # Ping event when expelling a Christian Holy Order
 character_event = {
@@ -879,11 +865,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		any_title_under = {
 			limit = {
@@ -899,26 +883,23 @@ character_event = {
 			}
 			usurp_title = FROM
 		}
-		
 		if = {
 			limit = {
 				is_liege_or_above = FROM
 			}
 			set_defacto_liege = THIS
 		}
-	
 		FROM = {
 			letter_event = {
 				id = SoA_HolyOrders.1061
 			}
 		}
-		
 		opinion = {
 			who = FROM
 			modifier = opinion_expelled_from_realm
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -929,13 +910,12 @@ letter_event = {
 	id = SoA_HolyOrders.1061
 	desc = EVTDESC_SOA_1061
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		remove_character_modifier = donated_to_holy_order
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1061
 	}
@@ -947,15 +927,17 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		wealth = 300
 		if = {
-			limit = { NOT = { religion_group = ormazd_gods_group } }
+			limit = {
+				NOT = {
+					religion_group = ormazd_gods_group
+				}
+			}
 			FROM = {
 				letter_event = {
 					id = SoA_HolyOrders.1141
@@ -963,11 +945,13 @@ character_event = {
 			}
 		}
 		if = {
-			limit = { religion_group = ormazd_gods_group }
+			limit = {
+				religion_group = ormazd_gods_group
+			}
 			# FROM = {
-				# letter_event = {
-					# id = CM.4399
-				# }
+			# letter_event = {
+			# id = CM.4399
+			# }
 			# }
 		}
 		opinion = {
@@ -975,7 +959,7 @@ character_event = {
 			modifier = opinion_generous_donation
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -986,16 +970,14 @@ letter_event = {
 	id = SoA_HolyOrders.1141
 	desc = EVTDESC_SOA_1141
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EXCELLENT
 	}
 }
-########################################
+
 # The Knights of Sigmar's Blood
-########################################
 
 # The Grand Master demands one of your sons due to debt
 character_event = {
@@ -1003,38 +985,40 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	only_playable = yes
 	religion = sigmarite
-	
+
 	trigger = {
 		religion = sigmarite
 		is_heretic = no
 		has_character_modifier = borrowed_from_knights_sigmars_blood
-		NOT = { has_character_flag = sent_son_to_knights_sigmars_blood }
+		NOT = {
+			has_character_flag = sent_son_to_knights_sigmars_blood
+		}
 		any_child = {
 			is_female = no
 			is_adult = yes
 			is_ruler = no
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			ROOT = {
-				NOT = { 
-					current_heir = { 
-						character = PREVPREV 
+				NOT = {
+					current_heir = {
+						character = PREVPREV
 					}
 				}
 			}
 		}
 		has_dlc = "Sons of Abraham"
 	}
-	
+
 	mean_time_to_happen = {
 		months = 120
 	}
-	
+
 	immediate = {
 		random_child = {
 			limit = {
@@ -1042,11 +1026,13 @@ character_event = {
 				is_adult = yes
 				is_ruler = no
 				prisoner = no
-				NOT = { trait = incapable }
+				NOT = {
+					trait = incapable
+				}
 				ROOT = {
-					NOT = { 
-						current_heir = { 
-							character = PREVPREV 
+					NOT = {
+						current_heir = {
+							character = PREVPREV
 						}
 					}
 				}
@@ -1056,7 +1042,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -1067,11 +1053,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		d_knights_of_sigmars_blood = {
 			holder_scope = {
@@ -1081,7 +1065,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -1092,11 +1076,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			character_event = {
@@ -1104,29 +1086,24 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 letter_event = {
 	id = SoA_HolyOrders.1103
 	desc = EVTDESC_SOA_1003
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1003 # Agree
 		ai_chance = {
 			factor = 100
 		}
-		
 		set_character_flag = sent_son_to_knights_sigmars_blood
-		
 		piety = 100
-		
 		d_knights_of_sigmars_blood = {
 			holder_scope = {
 				FROMFROM = {
@@ -1136,11 +1113,17 @@ letter_event = {
 					}
 					spouse = {
 						remove_spouse = spouse
-						hidden_tooltip = { character_event = { id = SoA_HolyOrders.2862 } }
+						hidden_tooltip = {
+							character_event = {
+								id = SoA_HolyOrders.2862
+							}
+						}
 					}
 					add_trait = celibate
 					if = {
-						limit = { trait = in_hiding }
+						limit = {
+							trait = in_hiding
+						}
 						remove_trait = in_hiding
 						clr_character_flag = do_not_disturb
 						add_character_modifier = {
@@ -1148,13 +1131,17 @@ letter_event = {
 							duration = 180
 							hidden = yes
 						}
-						hidden_tooltip = { character_event = { id = CM.6400 } } # Notify plotters and family
+						hidden_tooltip = {
+							character_event = {
+								id = CM.6400
+							}
+						} # Notify plotters and family
 					}
 				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1003 # Pay them back
 		wealth = -300
@@ -1165,7 +1152,7 @@ letter_event = {
 			wealth = 300
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTC_SOA_1003 # Refuse
 		piety = -1000
@@ -1178,11 +1165,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		wealth = -300
 		FROM = {
@@ -1191,7 +1176,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -1202,9 +1187,8 @@ letter_event = {
 	id = SoA_HolyOrders.1111
 	desc = EVTDESC_SOA_1011
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EXCELLENT
 	}
@@ -1216,11 +1200,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		set_defacto_liege = FROM
 		FROM = {
@@ -1229,7 +1211,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -1240,9 +1222,8 @@ letter_event = {
 	id = SoA_HolyOrders.1116
 	desc = EVTDESC_SOA_1016
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EXCELLENT
 	}
@@ -1254,42 +1235,40 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	only_playable = yes
 	religion = sigmarite
-	
+
 	trigger = {
 		religion = sigmarite
 		is_heretic = no
-		
 		has_character_modifier = borrowed_from_knights_sigmars_blood
-		NOT = { has_character_flag = sent_son_to_knights_sigmars_blood }
-		
+		NOT = {
+			has_character_flag = sent_son_to_knights_sigmars_blood
+		}
 		any_demesne_province = {
 			has_empty_holding = yes
 		}
-		
 		d_knights_of_sigmars_blood = {
 			holder_scope = {
 				wealth = 300
 			}
 		}
 		has_dlc = "Sons of Abraham"
-		
-		NOT = { has_character_modifier = expelled_d_knights_of_sigmars_blood }
+		NOT = {
+			has_character_modifier = expelled_d_knights_of_sigmars_blood
+		}
 		NOT = {
 			any_liege = {
 				has_character_modifier = expelled_d_knights_of_sigmars_blood
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 60
 	}
-	
+
 	immediate = {
 		random_demesne_province = {
 			limit = {
@@ -1300,22 +1279,19 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 province_event = {
 	id = SoA_HolyOrders.1121
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		d_knights_of_sigmars_blood = {
 			holder_scope = {
@@ -1325,7 +1301,7 @@ province_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -1336,11 +1312,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			character_event = {
@@ -1348,36 +1322,34 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 letter_event = {
 	id = SoA_HolyOrders.1123
 	desc = EVTDESC_SOA_1023
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1023 # Agree
 		ai_chance = {
 			factor = 100
 		}
-		
 		hidden_tooltip = {
 			remove_character_modifier = borrowed_from_knights_sigmars_blood
 			remove_character_modifier = expelled_d_knights_of_sigmars_blood
 			FROMFROM = {
-				province_event = { id = SoA_HolyOrders.1124 }
+				province_event = {
+					id = SoA_HolyOrders.1124
+				}
 			}
 		}
-		
 		piety = 100
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1003 # Pay them back
 		wealth = -300
@@ -1388,7 +1360,7 @@ letter_event = {
 			wealth = 300
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTC_SOA_1003 # Refuse
 		piety = -1000
@@ -1401,20 +1373,19 @@ province_event = {
 	desc = EVTDESC_SOA_1024
 	picture = GFX_evt_castle_construction
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			wealth = -300
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_SOA_1024
 		build_holding = {
-		   type = castle
-		   holder = FROMFROM
+			type = castle
+			holder = FROMFROM
 		}
 	}
 }
@@ -1425,56 +1396,56 @@ character_event = {
 	desc = EVTDESC_SOA_1030
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	only_men = yes
 	min_age = 16
 	max_age = 45
 	only_capable = yes
 	prisoner = no
 	religion = sigmarite
-	
+
 	trigger = {
 		is_ruler = no
 		religion = sigmarite
 		is_heretic = no
-		
 		martial = 5
-		
 		is_title_active = d_knights_of_sigmars_blood
-		
 		OR = {
 			father_even_if_dead = {
-				primary_title = { higher_tier_than = BARON }
+				primary_title = {
+					higher_tier_than = BARON
+				}
 			}
 			mother_even_if_dead = {
-				primary_title = { higher_tier_than = BARON }
+				primary_title = {
+					higher_tier_than = BARON
+				}
 			}
 		}
-		
 		liege = {
 			holy_order = no
 			liege = {
 				holy_order = no
 			}
 		}
-		
 		has_dlc = "Sons of Abraham"
-		
-		NOT = { has_character_modifier = expelled_d_knights_of_sigmars_blood }
+		NOT = {
+			has_character_modifier = expelled_d_knights_of_sigmars_blood
+		}
 		NOT = {
 			any_liege = {
 				has_character_modifier = expelled_d_knights_of_sigmars_blood
 			}
 		}
-		
 		NOT = {
 			any_spouse = {
 				is_pregnant = yes
-				father_of_unborn = { character = ROOT } # Won't happen if spouse is pregnant with non-bastard child
+				father_of_unborn = {
+					character = ROOT
+				} # Won't happen if spouse is pregnant with non-bastard child
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		years = 100
 		modifier = {
@@ -1499,7 +1470,9 @@ character_event = {
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 25 }
+			NOT = {
+				age = 25
+			}
 		}
 		modifier = {
 			factor = 1.5
@@ -1534,11 +1507,13 @@ character_event = {
 		modifier = {
 			factor = 2
 			any_spouse = {
-				reverse_opinion = { who = ROOT value = 100 }
+				reverse_opinion = {
+					who = ROOT value = 100
+				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_SOA_1030 # Ask to go
 		ai_chance = {
@@ -1550,6 +1525,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_SOA_1030 # It's a bad idea
 	}
@@ -1561,17 +1537,14 @@ character_event = {
 	desc = EVTDESC_SOA_1031
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1031 # Agree
 		ai_chance = {
 			factor = 100
 		}
-		
 		piety = 100
-		
 		FROM = {
 			character_event = {
 				id = SoA_HolyOrders.1132
@@ -1579,12 +1552,10 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1031 # Refuse
-		
 		piety = -100
-		
 		FROM = {
 			character_event = {
 				id = SoA_HolyOrders.1133
@@ -1600,12 +1571,10 @@ character_event = {
 	desc = EVTDESC_SOA_1032
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EXCELLENT
-		
 		d_knights_of_sigmars_blood = {
 			holder_scope = {
 				ROOT = {
@@ -1615,11 +1584,17 @@ character_event = {
 					}
 					spouse = {
 						remove_spouse = spouse
-						hidden_tooltip = { character_event = { id = SoA_HolyOrders.2863 } }
+						hidden_tooltip = {
+							character_event = {
+								id = SoA_HolyOrders.2863
+							}
+						}
 					}
 					add_trait = celibate
 					if = {
-						limit = { trait = in_hiding }
+						limit = {
+							trait = in_hiding
+						}
 						remove_trait = in_hiding
 						clr_character_flag = do_not_disturb
 						add_character_modifier = {
@@ -1627,7 +1602,11 @@ character_event = {
 							duration = 180
 							hidden = yes
 						}
-						hidden_tooltip = { character_event = { id = CM.6400 } } # Notify plotters and family
+						hidden_tooltip = {
+							character_event = {
+								id = CM.6400
+							}
+						} # Notify plotters and family
 					}
 				}
 			}
@@ -1641,12 +1620,10 @@ character_event = {
 	desc = EVTDESC_SOA_1033
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1033
-		
 		opinion = {
 			who = FROM
 			modifier = opinion_refused_request_holy_order
@@ -1660,16 +1637,13 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	only_playable = yes
 	religion = sigmarite
-	
+
 	trigger = {
 		religion = sigmarite
 		is_heretic = no
-		
 		d_knights_of_sigmars_blood = {
 			holder_scope = {
 				wealth = 300
@@ -1681,36 +1655,37 @@ character_event = {
 				}
 			}
 		}
-		
 		any_demesne_province = {
 			has_empty_holding = yes
 			# OR = {
-				# region = world_persia
-				# region = world_middle_east
-				# region = world_asia_minor
-				# region = world_africa_north
-				# region = world_europe_south
-				# region = world_europe_west
+			# region = world_persia
+			# region = world_middle_east
+			# region = world_asia_minor
+			# region = world_africa_north
+			# region = world_europe_south
+			# region = world_europe_west
 			# }
 		}
-		
 		has_dlc = "Sons of Abraham"
-		
-		NOT = { has_character_modifier = expelled_d_knights_of_sigmars_blood }
+		NOT = {
+			has_character_modifier = expelled_d_knights_of_sigmars_blood
+		}
 		NOT = {
 			any_liege = {
 				has_character_modifier = expelled_d_knights_of_sigmars_blood
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 240
 		modifier = {
 			factor = 0.5
 			d_knights_of_sigmars_blood = {
 				holder_scope = {
-					NOT = { demesne_size = 1 }
+					NOT = {
+						demesne_size = 1
+					}
 				}
 			}
 		}
@@ -1718,7 +1693,9 @@ character_event = {
 			factor = 0.5
 			d_knights_of_sigmars_blood = {
 				holder_scope = {
-					NOT = { demesne_size = 2 }
+					NOT = {
+						demesne_size = 2
+					}
 				}
 			}
 		}
@@ -1731,18 +1708,18 @@ character_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		random_demesne_province = {
 			limit = {
 				has_empty_holding = yes
 				# OR = {
-					# region = world_persia
-					# region = world_middle_east
-					# region = world_asia_minor
-					# region = world_africa_north
-					# region = world_europe_south
-					# region = world_europe_west
+				# region = world_persia
+				# region = world_middle_east
+				# region = world_asia_minor
+				# region = world_africa_north
+				# region = world_europe_south
+				# region = world_europe_west
 				# }
 			}
 			province_event = {
@@ -1750,22 +1727,19 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 province_event = {
 	id = SoA_HolyOrders.1151
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		d_knights_of_sigmars_blood = {
 			holder_scope = {
@@ -1775,7 +1749,7 @@ province_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -1786,11 +1760,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			character_event = {
@@ -1798,19 +1770,17 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 letter_event = {
 	id = SoA_HolyOrders.1153
 	desc = EVTDESC_SOA_1053
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1023 # Agree
 		ai_chance = {
@@ -1820,24 +1790,23 @@ letter_event = {
 				has_character_modifier = expelled_d_knights_of_sigmars_blood
 			}
 		}
-		
 		hidden_tooltip = {
 			FROMFROM = {
-				province_event = { id = SoA_HolyOrders.1154 }
+				province_event = {
+					id = SoA_HolyOrders.1154
+				}
 			}
 			remove_character_modifier = expelled_d_knights_of_sigmars_blood
 		}
-		
 		piety = 200
 		wealth = 100
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1031 # Refuse
 		ai_chance = {
 			factor = 20
 		}
-		
 		piety = -100
 	}
 }
@@ -1848,24 +1817,22 @@ province_event = {
 	desc = EVTDESC_SOA_1054
 	picture = GFX_evt_castle_construction
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			wealth = -300
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_SOA_1024
 		build_holding = {
-		   type = castle
-		   holder = FROMFROM
+			type = castle
+			holder = FROMFROM
 		}
 	}
 }
-
 
 # Ping event when expelling a Christian Holy Order
 character_event = {
@@ -1873,11 +1840,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		any_title_under = {
 			limit = {
@@ -1893,26 +1858,23 @@ character_event = {
 			}
 			usurp_title = FROM
 		}
-		
 		if = {
 			limit = {
 				is_liege_or_above = FROM
 			}
 			set_defacto_liege = THIS
 		}
-	
 		FROM = {
 			letter_event = {
 				id = SoA_HolyOrders.1161
 			}
 		}
-		
 		opinion = {
 			who = FROM
 			modifier = opinion_expelled_from_realm
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -1923,21 +1885,18 @@ letter_event = {
 	id = SoA_HolyOrders.1161
 	desc = EVTDESC_SOA_1061
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		remove_character_modifier = donated_to_holy_order
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1061
 	}
 }
 
-########################################
 # The Knights of the Blazing Sun
-########################################
 
 # The Grand Master demands one of your sons due to debt
 character_event = {
@@ -1945,38 +1904,40 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	only_playable = yes
 	religion = myrmidian
-	
+
 	trigger = {
 		religion = myrmidian
 		is_heretic = no
 		has_character_modifier = borrowed_from_knights_blazing_sun
-		NOT = { has_character_flag = sent_son_to_knights_blazing_sun }
+		NOT = {
+			has_character_flag = sent_son_to_knights_blazing_sun
+		}
 		any_child = {
 			is_female = no
 			is_adult = yes
 			is_ruler = no
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			ROOT = {
-				NOT = { 
-					current_heir = { 
-						character = PREVPREV 
+				NOT = {
+					current_heir = {
+						character = PREVPREV
 					}
 				}
 			}
 		}
 		has_dlc = "Sons of Abraham"
 	}
-	
+
 	mean_time_to_happen = {
 		months = 120
 	}
-	
+
 	immediate = {
 		random_child = {
 			limit = {
@@ -1984,11 +1945,13 @@ character_event = {
 				is_adult = yes
 				is_ruler = no
 				prisoner = no
-				NOT = { trait = incapable }
+				NOT = {
+					trait = incapable
+				}
 				ROOT = {
-					NOT = { 
-						current_heir = { 
-							character = PREVPREV 
+					NOT = {
+						current_heir = {
+							character = PREVPREV
 						}
 					}
 				}
@@ -1998,7 +1961,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -2009,11 +1972,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		d_knights_of_the_blazing_sun = {
 			holder_scope = {
@@ -2023,7 +1984,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -2034,11 +1995,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			character_event = {
@@ -2046,29 +2005,24 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 letter_event = {
 	id = SoA_HolyOrders.1203
 	desc = EVTDESC_SOA_1003
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1003 # Agree
 		ai_chance = {
 			factor = 100
 		}
-		
 		set_character_flag = sent_son_to_knights_blazing_sun
-		
 		piety = 100
-		
 		d_knights_of_the_blazing_sun = {
 			holder_scope = {
 				FROMFROM = {
@@ -2078,11 +2032,17 @@ letter_event = {
 					}
 					spouse = {
 						remove_spouse = spouse
-						hidden_tooltip = { character_event = { id = SoA_HolyOrders.2862 } }
+						hidden_tooltip = {
+							character_event = {
+								id = SoA_HolyOrders.2862
+							}
+						}
 					}
 					add_trait = celibate
 					if = {
-						limit = { trait = in_hiding }
+						limit = {
+							trait = in_hiding
+						}
 						remove_trait = in_hiding
 						clr_character_flag = do_not_disturb
 						add_character_modifier = {
@@ -2090,13 +2050,17 @@ letter_event = {
 							duration = 180
 							hidden = yes
 						}
-						hidden_tooltip = { character_event = { id = CM.6400 } } # Notify plotters and family
+						hidden_tooltip = {
+							character_event = {
+								id = CM.6400
+							}
+						} # Notify plotters and family
 					}
 				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1003 # Pay them back
 		wealth = -300
@@ -2107,7 +2071,7 @@ letter_event = {
 			wealth = 300
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTC_SOA_1003 # Refuse
 		piety = -1000
@@ -2120,11 +2084,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		wealth = -300
 		FROM = {
@@ -2133,7 +2095,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -2144,9 +2106,8 @@ letter_event = {
 	id = SoA_HolyOrders.1211
 	desc = EVTDESC_SOA_1011
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EXCELLENT
 	}
@@ -2158,11 +2119,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		set_defacto_liege = FROM
 		FROM = {
@@ -2171,7 +2130,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -2182,9 +2141,8 @@ letter_event = {
 	id = SoA_HolyOrders.1216
 	desc = EVTDESC_SOA_1016
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EXCELLENT
 	}
@@ -2196,42 +2154,40 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	only_playable = yes
 	religion = myrmidian
-	
+
 	trigger = {
 		religion = myrmidian
 		is_heretic = no
-		
 		has_character_modifier = borrowed_from_knights_blazing_sun
-		NOT = { has_character_flag = sent_son_to_knights_blazing_sun }
-		
+		NOT = {
+			has_character_flag = sent_son_to_knights_blazing_sun
+		}
 		any_demesne_province = {
 			has_empty_holding = yes
 		}
-		
 		d_knights_of_the_blazing_sun = {
 			holder_scope = {
 				wealth = 300
 			}
 		}
 		has_dlc = "Sons of Abraham"
-		
-		NOT = { has_character_modifier = expelled_d_knights_of_the_blazing_sun }
+		NOT = {
+			has_character_modifier = expelled_d_knights_of_the_blazing_sun
+		}
 		NOT = {
 			any_liege = {
 				has_character_modifier = expelled_d_knights_of_the_blazing_sun
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 60
 	}
-	
+
 	immediate = {
 		random_demesne_province = {
 			limit = {
@@ -2242,22 +2198,19 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 province_event = {
 	id = SoA_HolyOrders.1221
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		d_knights_of_the_blazing_sun = {
 			holder_scope = {
@@ -2267,7 +2220,7 @@ province_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -2278,11 +2231,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			character_event = {
@@ -2290,36 +2241,34 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 letter_event = {
 	id = SoA_HolyOrders.1223
 	desc = EVTDESC_SOA_1023
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1023 # Agree
 		ai_chance = {
 			factor = 100
 		}
-		
 		hidden_tooltip = {
 			remove_character_modifier = borrowed_from_knights_blazing_sun
 			remove_character_modifier = expelled_d_knights_of_the_blazing_sun
 			FROMFROM = {
-				province_event = { id = SoA_HolyOrders.1224 }
+				province_event = {
+					id = SoA_HolyOrders.1224
+				}
 			}
 		}
-		
 		piety = 100
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1003 # Pay them back
 		wealth = -300
@@ -2330,7 +2279,7 @@ letter_event = {
 			wealth = 300
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTC_SOA_1003 # Refuse
 		piety = -1000
@@ -2343,20 +2292,19 @@ province_event = {
 	desc = EVTDESC_SOA_1024
 	picture = GFX_evt_castle_construction
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			wealth = -300
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_SOA_1024
 		build_holding = {
-		   type = castle
-		   holder = FROMFROM
+			type = castle
+			holder = FROMFROM
 		}
 	}
 }
@@ -2367,56 +2315,56 @@ character_event = {
 	desc = EVTDESC_SOA_1030
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	only_men = yes
 	min_age = 16
 	max_age = 45
 	only_capable = yes
 	prisoner = no
 	religion = myrmidian
-	
+
 	trigger = {
 		is_ruler = no
 		religion = myrmidian
 		is_heretic = no
-		
 		martial = 5
-		
 		is_title_active = d_knights_of_the_blazing_sun
-		
 		OR = {
 			father_even_if_dead = {
-				primary_title = { higher_tier_than = BARON }
+				primary_title = {
+					higher_tier_than = BARON
+				}
 			}
 			mother_even_if_dead = {
-				primary_title = { higher_tier_than = BARON }
+				primary_title = {
+					higher_tier_than = BARON
+				}
 			}
 		}
-		
 		liege = {
 			holy_order = no
 			liege = {
 				holy_order = no
 			}
 		}
-		
 		has_dlc = "Sons of Abraham"
-		
-		NOT = { has_character_modifier = expelled_d_knights_of_the_blazing_sun }
+		NOT = {
+			has_character_modifier = expelled_d_knights_of_the_blazing_sun
+		}
 		NOT = {
 			any_liege = {
 				has_character_modifier = expelled_d_knights_of_the_blazing_sun
 			}
 		}
-		
 		NOT = {
 			any_spouse = {
 				is_pregnant = yes
-				father_of_unborn = { character = ROOT } # Won't happen if spouse is pregnant with non-bastard child
+				father_of_unborn = {
+					character = ROOT
+				} # Won't happen if spouse is pregnant with non-bastard child
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		years = 100
 		modifier = {
@@ -2441,7 +2389,9 @@ character_event = {
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 25 }
+			NOT = {
+				age = 25
+			}
 		}
 		modifier = {
 			factor = 1.5
@@ -2476,7 +2426,9 @@ character_event = {
 		modifier = {
 			factor = 2
 			any_spouse = {
-				reverse_opinion = { who = ROOT value = 100 }
+				reverse_opinion = {
+					who = ROOT value = 100
+				}
 			}
 		}
 		modifier = {
@@ -2487,7 +2439,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_SOA_1030 # Ask to go
 		ai_chance = {
@@ -2499,6 +2451,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_SOA_1030 # It's a bad idea
 	}
@@ -2510,17 +2463,14 @@ character_event = {
 	desc = EVTDESC_SOA_1031
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1031 # Agree
 		ai_chance = {
 			factor = 100
 		}
-		
 		piety = 100
-		
 		FROM = {
 			character_event = {
 				id = SoA_HolyOrders.1232
@@ -2528,12 +2478,10 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1031 # Refuse
-		
 		piety = -100
-		
 		FROM = {
 			character_event = {
 				id = SoA_HolyOrders.1233
@@ -2549,12 +2497,10 @@ character_event = {
 	desc = EVTDESC_SOA_1032
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EXCELLENT
-		
 		d_knights_of_the_blazing_sun = {
 			holder_scope = {
 				ROOT = {
@@ -2564,11 +2510,17 @@ character_event = {
 					}
 					spouse = {
 						remove_spouse = spouse
-						hidden_tooltip = { character_event = { id = SoA_HolyOrders.2863 } }
+						hidden_tooltip = {
+							character_event = {
+								id = SoA_HolyOrders.2863
+							}
+						}
 					}
 					add_trait = celibate
 					if = {
-						limit = { trait = in_hiding }
+						limit = {
+							trait = in_hiding
+						}
 						remove_trait = in_hiding
 						clr_character_flag = do_not_disturb
 						add_character_modifier = {
@@ -2576,7 +2528,11 @@ character_event = {
 							duration = 180
 							hidden = yes
 						}
-						hidden_tooltip = { character_event = { id = CM.6400 } } # Notify plotters and family
+						hidden_tooltip = {
+							character_event = {
+								id = CM.6400
+							}
+						} # Notify plotters and family
 					}
 				}
 			}
@@ -2590,12 +2546,10 @@ character_event = {
 	desc = EVTDESC_SOA_1033
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1033
-		
 		opinion = {
 			who = FROM
 			modifier = opinion_refused_request_holy_order
@@ -2609,16 +2563,13 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	only_playable = yes
 	religion = myrmidian
-	
+
 	trigger = {
 		religion = myrmidian
 		is_heretic = no
-		
 		d_knights_of_the_blazing_sun = {
 			holder_scope = {
 				wealth = 300
@@ -2630,36 +2581,37 @@ character_event = {
 				}
 			}
 		}
-		
 		any_demesne_province = {
 			has_empty_holding = yes
 			# OR = {
-				# region = world_persia
-				# region = world_middle_east
-				# region = world_asia_minor
-				# region = world_africa_north
-				# region = world_europe_south
-				# region = world_europe_west
+			# region = world_persia
+			# region = world_middle_east
+			# region = world_asia_minor
+			# region = world_africa_north
+			# region = world_europe_south
+			# region = world_europe_west
 			# }
 		}
-		
 		has_dlc = "Sons of Abraham"
-		
-		NOT = { has_character_modifier = expelled_d_knights_of_the_blazing_sun }
+		NOT = {
+			has_character_modifier = expelled_d_knights_of_the_blazing_sun
+		}
 		NOT = {
 			any_liege = {
 				has_character_modifier = expelled_d_knights_of_the_blazing_sun
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 240
 		modifier = {
 			factor = 0.5
 			d_knights_of_the_blazing_sun = {
 				holder_scope = {
-					NOT = { demesne_size = 1 }
+					NOT = {
+						demesne_size = 1
+					}
 				}
 			}
 		}
@@ -2667,7 +2619,9 @@ character_event = {
 			factor = 0.5
 			d_knights_of_the_blazing_sun = {
 				holder_scope = {
-					NOT = { demesne_size = 2 }
+					NOT = {
+						demesne_size = 2
+					}
 				}
 			}
 		}
@@ -2680,18 +2634,18 @@ character_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		random_demesne_province = {
 			limit = {
 				has_empty_holding = yes
 				# OR = {
-					# region = world_persia
-					# region = world_middle_east
-					# region = world_asia_minor
-					# region = world_africa_north
-					# region = world_europe_south
-					# region = world_europe_west
+				# region = world_persia
+				# region = world_middle_east
+				# region = world_asia_minor
+				# region = world_africa_north
+				# region = world_europe_south
+				# region = world_europe_west
 				# }
 			}
 			province_event = {
@@ -2699,22 +2653,19 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 province_event = {
 	id = SoA_HolyOrders.1251
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		d_knights_of_the_blazing_sun = {
 			holder_scope = {
@@ -2724,7 +2675,7 @@ province_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -2735,11 +2686,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			character_event = {
@@ -2747,19 +2696,17 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 letter_event = {
 	id = SoA_HolyOrders.1253
 	desc = EVTDESC_SOA_1053
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1023 # Agree
 		ai_chance = {
@@ -2769,24 +2716,23 @@ letter_event = {
 				has_character_modifier = expelled_d_knights_of_the_blazing_sun
 			}
 		}
-		
 		hidden_tooltip = {
 			FROMFROM = {
-				province_event = { id = SoA_HolyOrders.1254 }
+				province_event = {
+					id = SoA_HolyOrders.1254
+				}
 			}
 			remove_character_modifier = expelled_d_knights_of_the_blazing_sun
 		}
-		
 		piety = 200
 		wealth = 100
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1031 # Refuse
 		ai_chance = {
 			factor = 20
 		}
-		
 		piety = -100
 	}
 }
@@ -2797,24 +2743,22 @@ province_event = {
 	desc = EVTDESC_SOA_1054
 	picture = GFX_evt_castle_construction
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			wealth = -300
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_SOA_1024
 		build_holding = {
-		   type = castle
-		   holder = FROMFROM
+			type = castle
+			holder = FROMFROM
 		}
 	}
 }
-
 
 # Ping event when expelling a Christian Holy Order
 character_event = {
@@ -2822,11 +2766,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		any_title_under = {
 			limit = {
@@ -2842,26 +2784,23 @@ character_event = {
 			}
 			usurp_title = FROM
 		}
-		
 		if = {
 			limit = {
 				is_liege_or_above = FROM
 			}
 			set_defacto_liege = THIS
 		}
-	
 		FROM = {
 			letter_event = {
 				id = SoA_HolyOrders.1261
 			}
 		}
-		
 		opinion = {
 			who = FROM
 			modifier = opinion_expelled_from_realm
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -2872,22 +2811,18 @@ letter_event = {
 	id = SoA_HolyOrders.1261
 	desc = EVTDESC_SOA_1061
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		remove_character_modifier = donated_to_holy_order
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1061
 	}
 }
 
-
-########################################
 # The Knights of the Black Rose
-########################################
 
 # The Grand Master demands one of your sons due to debt
 character_event = {
@@ -2895,38 +2830,40 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	only_playable = yes
 	religion = taalite
-	
+
 	trigger = {
 		religion = taalite
 		is_heretic = no
 		has_character_modifier = borrowed_from_knights_black_rose
-		NOT = { has_character_flag = sent_son_to_knights_black_rose }
+		NOT = {
+			has_character_flag = sent_son_to_knights_black_rose
+		}
 		any_child = {
 			is_female = no
 			is_adult = yes
 			is_ruler = no
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			ROOT = {
-				NOT = { 
-					current_heir = { 
-						character = PREVPREV 
+				NOT = {
+					current_heir = {
+						character = PREVPREV
 					}
 				}
 			}
 		}
 		has_dlc = "Sons of Abraham"
 	}
-	
+
 	mean_time_to_happen = {
 		months = 120
 	}
-	
+
 	immediate = {
 		random_child = {
 			limit = {
@@ -2934,11 +2871,13 @@ character_event = {
 				is_adult = yes
 				is_ruler = no
 				prisoner = no
-				NOT = { trait = incapable }
+				NOT = {
+					trait = incapable
+				}
 				ROOT = {
-					NOT = { 
-						current_heir = { 
-							character = PREVPREV 
+					NOT = {
+						current_heir = {
+							character = PREVPREV
 						}
 					}
 				}
@@ -2948,7 +2887,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -2959,11 +2898,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		d_knights_of_the_black_rose = {
 			holder_scope = {
@@ -2973,7 +2910,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -2984,11 +2921,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			character_event = {
@@ -2996,29 +2931,24 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 letter_event = {
 	id = SoA_HolyOrders.1303
 	desc = EVTDESC_SOA_1003
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1003 # Agree
 		ai_chance = {
 			factor = 100
 		}
-		
 		set_character_flag = sent_son_to_knights_black_rose
-		
 		piety = 100
-		
 		d_knights_of_the_black_rose = {
 			holder_scope = {
 				FROMFROM = {
@@ -3028,11 +2958,17 @@ letter_event = {
 					}
 					spouse = {
 						remove_spouse = spouse
-						hidden_tooltip = { character_event = { id = SoA_HolyOrders.2862 } }
+						hidden_tooltip = {
+							character_event = {
+								id = SoA_HolyOrders.2862
+							}
+						}
 					}
 					add_trait = celibate
 					if = {
-						limit = { trait = in_hiding }
+						limit = {
+							trait = in_hiding
+						}
 						remove_trait = in_hiding
 						clr_character_flag = do_not_disturb
 						add_character_modifier = {
@@ -3040,13 +2976,17 @@ letter_event = {
 							duration = 180
 							hidden = yes
 						}
-						hidden_tooltip = { character_event = { id = CM.6400 } } # Notify plotters and family
+						hidden_tooltip = {
+							character_event = {
+								id = CM.6400
+							}
+						} # Notify plotters and family
 					}
 				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1003 # Pay them back
 		wealth = -300
@@ -3057,7 +2997,7 @@ letter_event = {
 			wealth = 300
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTC_SOA_1003 # Refuse
 		piety = -1000
@@ -3070,11 +3010,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		wealth = -300
 		FROM = {
@@ -3083,7 +3021,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -3094,9 +3032,8 @@ letter_event = {
 	id = SoA_HolyOrders.1311
 	desc = EVTDESC_SOA_1011
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EXCELLENT
 	}
@@ -3108,11 +3045,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		set_defacto_liege = FROM
 		FROM = {
@@ -3121,7 +3056,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -3132,9 +3067,8 @@ letter_event = {
 	id = SoA_HolyOrders.1316
 	desc = EVTDESC_SOA_1016
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EXCELLENT
 	}
@@ -3146,42 +3080,40 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	only_playable = yes
 	religion = taalite
-	
+
 	trigger = {
 		religion = taalite
 		is_heretic = no
-		
 		has_character_modifier = borrowed_from_knights_black_rose
-		NOT = { has_character_flag = sent_son_to_knights_black_rose }
-		
+		NOT = {
+			has_character_flag = sent_son_to_knights_black_rose
+		}
 		any_demesne_province = {
 			has_empty_holding = yes
 		}
-		
 		d_knights_of_the_black_rose = {
 			holder_scope = {
 				wealth = 300
 			}
 		}
 		has_dlc = "Sons of Abraham"
-		
-		NOT = { has_character_modifier = expelled_d_knights_of_the_black_rose }
+		NOT = {
+			has_character_modifier = expelled_d_knights_of_the_black_rose
+		}
 		NOT = {
 			any_liege = {
 				has_character_modifier = expelled_d_knights_of_the_black_rose
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 60
 	}
-	
+
 	immediate = {
 		random_demesne_province = {
 			limit = {
@@ -3192,22 +3124,19 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 province_event = {
 	id = SoA_HolyOrders.1321
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		d_knights_of_the_black_rose = {
 			holder_scope = {
@@ -3217,7 +3146,7 @@ province_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -3228,11 +3157,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			character_event = {
@@ -3240,36 +3167,34 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 letter_event = {
 	id = SoA_HolyOrders.1323
 	desc = EVTDESC_SOA_1023
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1023 # Agree
 		ai_chance = {
 			factor = 100
 		}
-		
 		hidden_tooltip = {
 			remove_character_modifier = borrowed_from_knights_black_rose
 			remove_character_modifier = expelled_d_knights_of_the_black_rose
 			FROMFROM = {
-				province_event = { id = SoA_HolyOrders.1324 }
+				province_event = {
+					id = SoA_HolyOrders.1324
+				}
 			}
 		}
-		
 		piety = 100
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1003 # Pay them back
 		wealth = -300
@@ -3280,7 +3205,7 @@ letter_event = {
 			wealth = 300
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTC_SOA_1003 # Refuse
 		piety = -1000
@@ -3293,20 +3218,19 @@ province_event = {
 	desc = EVTDESC_SOA_1024
 	picture = GFX_evt_castle_construction
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			wealth = -300
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_SOA_1024
 		build_holding = {
-		   type = castle
-		   holder = FROMFROM
+			type = castle
+			holder = FROMFROM
 		}
 	}
 }
@@ -3317,56 +3241,56 @@ character_event = {
 	desc = EVTDESC_SOA_1030
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	only_men = yes
 	min_age = 16
 	max_age = 45
 	only_capable = yes
 	prisoner = no
 	religion = taalite
-	
+
 	trigger = {
 		is_ruler = no
 		religion = taalite
 		is_heretic = no
-		
 		martial = 5
-		
 		is_title_active = d_knights_of_the_black_rose
-		
 		OR = {
 			father_even_if_dead = {
-				primary_title = { higher_tier_than = BARON }
+				primary_title = {
+					higher_tier_than = BARON
+				}
 			}
 			mother_even_if_dead = {
-				primary_title = { higher_tier_than = BARON }
+				primary_title = {
+					higher_tier_than = BARON
+				}
 			}
 		}
-		
 		liege = {
 			holy_order = no
 			liege = {
 				holy_order = no
 			}
 		}
-		
 		has_dlc = "Sons of Abraham"
-		
-		NOT = { has_character_modifier = expelled_d_knights_of_the_black_rose }
+		NOT = {
+			has_character_modifier = expelled_d_knights_of_the_black_rose
+		}
 		NOT = {
 			any_liege = {
 				has_character_modifier = expelled_d_knights_of_the_black_rose
 			}
 		}
-		
 		NOT = {
 			any_spouse = {
 				is_pregnant = yes
-				father_of_unborn = { character = ROOT } # Won't happen if spouse is pregnant with non-bastard child
+				father_of_unborn = {
+					character = ROOT
+				} # Won't happen if spouse is pregnant with non-bastard child
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		years = 100
 		modifier = {
@@ -3391,7 +3315,9 @@ character_event = {
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 25 }
+			NOT = {
+				age = 25
+			}
 		}
 		modifier = {
 			factor = 1.5
@@ -3426,11 +3352,13 @@ character_event = {
 		modifier = {
 			factor = 2
 			any_spouse = {
-				reverse_opinion = { who = ROOT value = 100 }
+				reverse_opinion = {
+					who = ROOT value = 100
+				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_SOA_1030 # Ask to go
 		ai_chance = {
@@ -3442,6 +3370,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_SOA_1030 # It's a bad idea
 	}
@@ -3453,17 +3382,14 @@ character_event = {
 	desc = EVTDESC_SOA_1031
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1031 # Agree
 		ai_chance = {
 			factor = 100
 		}
-		
 		piety = 100
-		
 		FROM = {
 			character_event = {
 				id = SoA_HolyOrders.1332
@@ -3471,12 +3397,10 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1031 # Refuse
-		
 		piety = -100
-		
 		FROM = {
 			character_event = {
 				id = SoA_HolyOrders.1333
@@ -3492,12 +3416,10 @@ character_event = {
 	desc = EVTDESC_SOA_1032
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EXCELLENT
-		
 		d_knights_of_the_black_rose = {
 			holder_scope = {
 				ROOT = {
@@ -3507,11 +3429,17 @@ character_event = {
 					}
 					spouse = {
 						remove_spouse = spouse
-						hidden_tooltip = { character_event = { id = SoA_HolyOrders.2863 } }
+						hidden_tooltip = {
+							character_event = {
+								id = SoA_HolyOrders.2863
+							}
+						}
 					}
 					add_trait = celibate
 					if = {
-						limit = { trait = in_hiding }
+						limit = {
+							trait = in_hiding
+						}
 						remove_trait = in_hiding
 						clr_character_flag = do_not_disturb
 						add_character_modifier = {
@@ -3519,7 +3447,11 @@ character_event = {
 							duration = 180
 							hidden = yes
 						}
-						hidden_tooltip = { character_event = { id = CM.6400 } } # Notify plotters and family
+						hidden_tooltip = {
+							character_event = {
+								id = CM.6400
+							}
+						} # Notify plotters and family
 					}
 				}
 			}
@@ -3533,12 +3465,10 @@ character_event = {
 	desc = EVTDESC_SOA_1033
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1033
-		
 		opinion = {
 			who = FROM
 			modifier = opinion_refused_request_holy_order
@@ -3552,16 +3482,13 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	only_playable = yes
 	religion = taalite
-	
+
 	trigger = {
 		religion = taalite
 		is_heretic = no
-		
 		d_knights_of_the_black_rose = {
 			holder_scope = {
 				wealth = 300
@@ -3573,36 +3500,37 @@ character_event = {
 				}
 			}
 		}
-		
 		any_demesne_province = {
 			has_empty_holding = yes
 			# OR = {
-				# region = world_persia
-				# region = world_middle_east
-				# region = world_asia_minor
-				# region = world_africa_north
-				# region = world_europe_south
-				# region = world_europe_west
+			# region = world_persia
+			# region = world_middle_east
+			# region = world_asia_minor
+			# region = world_africa_north
+			# region = world_europe_south
+			# region = world_europe_west
 			# }
 		}
-		
 		has_dlc = "Sons of Abraham"
-		
-		NOT = { has_character_modifier = expelled_d_knights_of_the_black_rose }
+		NOT = {
+			has_character_modifier = expelled_d_knights_of_the_black_rose
+		}
 		NOT = {
 			any_liege = {
 				has_character_modifier = expelled_d_knights_of_the_black_rose
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 240
 		modifier = {
 			factor = 0.5
 			d_knights_of_the_black_rose = {
 				holder_scope = {
-					NOT = { demesne_size = 1 }
+					NOT = {
+						demesne_size = 1
+					}
 				}
 			}
 		}
@@ -3610,7 +3538,9 @@ character_event = {
 			factor = 0.5
 			d_knights_of_the_black_rose = {
 				holder_scope = {
-					NOT = { demesne_size = 2 }
+					NOT = {
+						demesne_size = 2
+					}
 				}
 			}
 		}
@@ -3623,18 +3553,18 @@ character_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		random_demesne_province = {
 			limit = {
 				has_empty_holding = yes
 				# OR = {
-					# region = world_persia
-					# region = world_middle_east
-					# region = world_asia_minor
-					# region = world_africa_north
-					# region = world_europe_south
-					# region = world_europe_west
+				# region = world_persia
+				# region = world_middle_east
+				# region = world_asia_minor
+				# region = world_africa_north
+				# region = world_europe_south
+				# region = world_europe_west
 				# }
 			}
 			province_event = {
@@ -3642,22 +3572,19 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 province_event = {
 	id = SoA_HolyOrders.1351
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		d_knights_of_the_black_rose = {
 			holder_scope = {
@@ -3667,7 +3594,7 @@ province_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -3678,11 +3605,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			character_event = {
@@ -3690,19 +3615,17 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 letter_event = {
 	id = SoA_HolyOrders.1353
 	desc = EVTDESC_SOA_1053
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1023 # Agree
 		ai_chance = {
@@ -3712,24 +3635,23 @@ letter_event = {
 				has_character_modifier = expelled_d_knights_of_the_black_rose
 			}
 		}
-		
 		hidden_tooltip = {
 			FROMFROM = {
-				province_event = { id = SoA_HolyOrders.1354 }
+				province_event = {
+					id = SoA_HolyOrders.1354
+				}
 			}
 			remove_character_modifier = expelled_d_knights_of_the_black_rose
 		}
-		
 		piety = 200
 		wealth = 100
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1031 # Refuse
 		ai_chance = {
 			factor = 20
 		}
-		
 		piety = -100
 	}
 }
@@ -3740,24 +3662,22 @@ province_event = {
 	desc = EVTDESC_SOA_1054
 	picture = GFX_evt_castle_construction
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			wealth = -300
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_SOA_1024
 		build_holding = {
-		   type = castle
-		   holder = FROMFROM
+			type = castle
+			holder = FROMFROM
 		}
 	}
 }
-
 
 # Ping event when expelling a Christian Holy Order
 character_event = {
@@ -3765,11 +3685,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		any_title_under = {
 			limit = {
@@ -3785,26 +3703,23 @@ character_event = {
 			}
 			usurp_title = FROM
 		}
-		
 		if = {
 			limit = {
 				is_liege_or_above = FROM
 			}
 			set_defacto_liege = THIS
 		}
-	
 		FROM = {
 			letter_event = {
 				id = SoA_HolyOrders.1361
 			}
 		}
-		
 		opinion = {
 			who = FROM
 			modifier = opinion_expelled_from_realm
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -3815,22 +3730,18 @@ letter_event = {
 	id = SoA_HolyOrders.1361
 	desc = EVTDESC_SOA_1061
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		remove_character_modifier = donated_to_holy_order
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1061
 	}
 }
 
-
-########################################
 # The Knights Mariner
-########################################
 
 # The Grand Master demands one of your sons due to debt
 character_event = {
@@ -3838,38 +3749,40 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	only_playable = yes
 	religion = manannite
-	
+
 	trigger = {
 		religion = manannite
 		is_heretic = no
 		has_character_modifier = borrowed_from_knights_mariner
-		NOT = { has_character_flag = sent_son_to_knights_mariner }
+		NOT = {
+			has_character_flag = sent_son_to_knights_mariner
+		}
 		any_child = {
 			is_female = no
 			is_adult = yes
 			is_ruler = no
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			ROOT = {
-				NOT = { 
-					current_heir = { 
-						character = PREVPREV 
+				NOT = {
+					current_heir = {
+						character = PREVPREV
 					}
 				}
 			}
 		}
 		has_dlc = "Sons of Abraham"
 	}
-	
+
 	mean_time_to_happen = {
 		months = 120
 	}
-	
+
 	immediate = {
 		random_child = {
 			limit = {
@@ -3877,11 +3790,13 @@ character_event = {
 				is_adult = yes
 				is_ruler = no
 				prisoner = no
-				NOT = { trait = incapable }
+				NOT = {
+					trait = incapable
+				}
 				ROOT = {
-					NOT = { 
-						current_heir = { 
-							character = PREVPREV 
+					NOT = {
+						current_heir = {
+							character = PREVPREV
 						}
 					}
 				}
@@ -3891,7 +3806,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -3902,11 +3817,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		d_knights_mariner = {
 			holder_scope = {
@@ -3916,7 +3829,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -3927,11 +3840,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			character_event = {
@@ -3939,29 +3850,24 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 letter_event = {
 	id = SoA_HolyOrders.1403
 	desc = EVTDESC_SOA_1003
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1003 # Agree
 		ai_chance = {
 			factor = 100
 		}
-		
 		set_character_flag = sent_son_to_knights_mariner
-		
 		piety = 100
-		
 		d_knights_mariner = {
 			holder_scope = {
 				FROMFROM = {
@@ -3971,11 +3877,17 @@ letter_event = {
 					}
 					spouse = {
 						remove_spouse = spouse
-						hidden_tooltip = { character_event = { id = SoA_HolyOrders.2862 } }
+						hidden_tooltip = {
+							character_event = {
+								id = SoA_HolyOrders.2862
+							}
+						}
 					}
 					add_trait = celibate
 					if = {
-						limit = { trait = in_hiding }
+						limit = {
+							trait = in_hiding
+						}
 						remove_trait = in_hiding
 						clr_character_flag = do_not_disturb
 						add_character_modifier = {
@@ -3983,13 +3895,17 @@ letter_event = {
 							duration = 180
 							hidden = yes
 						}
-						hidden_tooltip = { character_event = { id = CM.6400 } } # Notify plotters and family
+						hidden_tooltip = {
+							character_event = {
+								id = CM.6400
+							}
+						} # Notify plotters and family
 					}
 				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1003 # Pay them back
 		wealth = -300
@@ -4000,7 +3916,7 @@ letter_event = {
 			wealth = 300
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTC_SOA_1003 # Refuse
 		piety = -1000
@@ -4013,11 +3929,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		wealth = -300
 		FROM = {
@@ -4026,7 +3940,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -4037,9 +3951,8 @@ letter_event = {
 	id = SoA_HolyOrders.1411
 	desc = EVTDESC_SOA_1011
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EXCELLENT
 	}
@@ -4051,11 +3964,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		set_defacto_liege = FROM
 		FROM = {
@@ -4064,7 +3975,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -4075,9 +3986,8 @@ letter_event = {
 	id = SoA_HolyOrders.1416
 	desc = EVTDESC_SOA_1016
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EXCELLENT
 	}
@@ -4089,42 +3999,40 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	only_playable = yes
 	religion = manannite
-	
+
 	trigger = {
 		religion = manannite
 		is_heretic = no
-		
 		has_character_modifier = borrowed_from_knights_mariner
-		NOT = { has_character_flag = sent_son_to_knights_mariner }
-		
+		NOT = {
+			has_character_flag = sent_son_to_knights_mariner
+		}
 		any_demesne_province = {
 			has_empty_holding = yes
 		}
-		
 		d_knights_mariner = {
 			holder_scope = {
 				wealth = 300
 			}
 		}
 		has_dlc = "Sons of Abraham"
-		
-		NOT = { has_character_modifier = expelled_d_knights_mariner }
+		NOT = {
+			has_character_modifier = expelled_d_knights_mariner
+		}
 		NOT = {
 			any_liege = {
 				has_character_modifier = expelled_d_knights_mariner
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 60
 	}
-	
+
 	immediate = {
 		random_demesne_province = {
 			limit = {
@@ -4135,22 +4043,19 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 province_event = {
 	id = SoA_HolyOrders.1421
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		d_knights_mariner = {
 			holder_scope = {
@@ -4160,7 +4065,7 @@ province_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -4171,11 +4076,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			character_event = {
@@ -4183,36 +4086,34 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 letter_event = {
 	id = SoA_HolyOrders.1423
 	desc = EVTDESC_SOA_1023
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1023 # Agree
 		ai_chance = {
 			factor = 100
 		}
-		
 		hidden_tooltip = {
 			remove_character_modifier = borrowed_from_knights_mariner
 			remove_character_modifier = expelled_d_knights_mariner
 			FROMFROM = {
-				province_event = { id = SoA_HolyOrders.1424 }
+				province_event = {
+					id = SoA_HolyOrders.1424
+				}
 			}
 		}
-		
 		piety = 100
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1003 # Pay them back
 		wealth = -300
@@ -4223,7 +4124,7 @@ letter_event = {
 			wealth = 300
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTC_SOA_1003 # Refuse
 		piety = -1000
@@ -4236,20 +4137,19 @@ province_event = {
 	desc = EVTDESC_SOA_1024
 	picture = GFX_evt_castle_construction
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			wealth = -300
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_SOA_1024
 		build_holding = {
-		   type = castle
-		   holder = FROMFROM
+			type = castle
+			holder = FROMFROM
 		}
 	}
 }
@@ -4260,56 +4160,56 @@ character_event = {
 	desc = EVTDESC_SOA_1030
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	only_men = yes
 	min_age = 16
 	max_age = 45
 	only_capable = yes
 	prisoner = no
 	religion = manannite
-	
+
 	trigger = {
 		is_ruler = no
 		religion = manannite
 		is_heretic = no
-		
 		martial = 5
-		
 		is_title_active = d_knights_mariner
-		
 		OR = {
 			father_even_if_dead = {
-				primary_title = { higher_tier_than = BARON }
+				primary_title = {
+					higher_tier_than = BARON
+				}
 			}
 			mother_even_if_dead = {
-				primary_title = { higher_tier_than = BARON }
+				primary_title = {
+					higher_tier_than = BARON
+				}
 			}
 		}
-		
 		liege = {
 			holy_order = no
 			liege = {
 				holy_order = no
 			}
 		}
-		
 		has_dlc = "Sons of Abraham"
-		
-		NOT = { has_character_modifier = expelled_d_knights_mariner }
+		NOT = {
+			has_character_modifier = expelled_d_knights_mariner
+		}
 		NOT = {
 			any_liege = {
 				has_character_modifier = expelled_d_knights_mariner
 			}
 		}
-		
 		NOT = {
 			any_spouse = {
 				is_pregnant = yes
-				father_of_unborn = { character = ROOT } # Won't happen if spouse is pregnant with non-bastard child
+				father_of_unborn = {
+					character = ROOT
+				} # Won't happen if spouse is pregnant with non-bastard child
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		years = 100
 		modifier = {
@@ -4334,7 +4234,9 @@ character_event = {
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 25 }
+			NOT = {
+				age = 25
+			}
 		}
 		modifier = {
 			factor = 1.5
@@ -4369,11 +4271,13 @@ character_event = {
 		modifier = {
 			factor = 2
 			any_spouse = {
-				reverse_opinion = { who = ROOT value = 100 }
+				reverse_opinion = {
+					who = ROOT value = 100
+				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_SOA_1030 # Ask to go
 		ai_chance = {
@@ -4385,6 +4289,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_SOA_1030 # It's a bad idea
 	}
@@ -4396,17 +4301,14 @@ character_event = {
 	desc = EVTDESC_SOA_1031
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1031 # Agree
 		ai_chance = {
 			factor = 100
 		}
-		
 		piety = 100
-		
 		FROM = {
 			character_event = {
 				id = SoA_HolyOrders.1432
@@ -4414,12 +4316,10 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1031 # Refuse
-		
 		piety = -100
-		
 		FROM = {
 			character_event = {
 				id = SoA_HolyOrders.1433
@@ -4435,12 +4335,10 @@ character_event = {
 	desc = EVTDESC_SOA_1032
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EXCELLENT
-		
 		d_knights_mariner = {
 			holder_scope = {
 				ROOT = {
@@ -4450,11 +4348,17 @@ character_event = {
 					}
 					spouse = {
 						remove_spouse = spouse
-						hidden_tooltip = { character_event = { id = SoA_HolyOrders.2863 } }
+						hidden_tooltip = {
+							character_event = {
+								id = SoA_HolyOrders.2863
+							}
+						}
 					}
 					add_trait = celibate
 					if = {
-						limit = { trait = in_hiding }
+						limit = {
+							trait = in_hiding
+						}
 						remove_trait = in_hiding
 						clr_character_flag = do_not_disturb
 						add_character_modifier = {
@@ -4462,7 +4366,11 @@ character_event = {
 							duration = 180
 							hidden = yes
 						}
-						hidden_tooltip = { character_event = { id = CM.6400 } } # Notify plotters and family
+						hidden_tooltip = {
+							character_event = {
+								id = CM.6400
+							}
+						} # Notify plotters and family
 					}
 				}
 			}
@@ -4476,12 +4384,10 @@ character_event = {
 	desc = EVTDESC_SOA_1033
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1033
-		
 		opinion = {
 			who = FROM
 			modifier = opinion_refused_request_holy_order
@@ -4495,16 +4401,13 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	only_playable = yes
 	religion = manannite
-	
+
 	trigger = {
 		religion = manannite
 		is_heretic = no
-		
 		d_knights_mariner = {
 			holder_scope = {
 				wealth = 300
@@ -4516,36 +4419,37 @@ character_event = {
 				}
 			}
 		}
-		
 		any_demesne_province = {
 			has_empty_holding = yes
 			# OR = {
-				# region = world_persia
-				# region = world_middle_east
-				# region = world_asia_minor
-				# region = world_africa_north
-				# region = world_europe_south
-				# region = world_europe_west
+			# region = world_persia
+			# region = world_middle_east
+			# region = world_asia_minor
+			# region = world_africa_north
+			# region = world_europe_south
+			# region = world_europe_west
 			# }
 		}
-		
 		has_dlc = "Sons of Abraham"
-		
-		NOT = { has_character_modifier = expelled_d_knights_mariner }
+		NOT = {
+			has_character_modifier = expelled_d_knights_mariner
+		}
 		NOT = {
 			any_liege = {
 				has_character_modifier = expelled_d_knights_mariner
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 240
 		modifier = {
 			factor = 0.5
 			d_knights_mariner = {
 				holder_scope = {
-					NOT = { demesne_size = 1 }
+					NOT = {
+						demesne_size = 1
+					}
 				}
 			}
 		}
@@ -4553,7 +4457,9 @@ character_event = {
 			factor = 0.5
 			d_knights_mariner = {
 				holder_scope = {
-					NOT = { demesne_size = 2 }
+					NOT = {
+						demesne_size = 2
+					}
 				}
 			}
 		}
@@ -4566,18 +4472,18 @@ character_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		random_demesne_province = {
 			limit = {
 				has_empty_holding = yes
 				# OR = {
-					# region = world_persia
-					# region = world_middle_east
-					# region = world_asia_minor
-					# region = world_africa_north
-					# region = world_europe_south
-					# region = world_europe_west
+				# region = world_persia
+				# region = world_middle_east
+				# region = world_asia_minor
+				# region = world_africa_north
+				# region = world_europe_south
+				# region = world_europe_west
 				# }
 			}
 			province_event = {
@@ -4585,22 +4491,19 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 province_event = {
 	id = SoA_HolyOrders.1451
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		d_knights_mariner = {
 			holder_scope = {
@@ -4610,7 +4513,7 @@ province_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -4621,11 +4524,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			character_event = {
@@ -4633,19 +4534,17 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 letter_event = {
 	id = SoA_HolyOrders.1453
 	desc = EVTDESC_SOA_1053
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1023 # Agree
 		ai_chance = {
@@ -4655,24 +4554,23 @@ letter_event = {
 				has_character_modifier = expelled_d_knights_mariner
 			}
 		}
-		
 		hidden_tooltip = {
 			FROMFROM = {
-				province_event = { id = SoA_HolyOrders.1454 }
+				province_event = {
+					id = SoA_HolyOrders.1454
+				}
 			}
 			remove_character_modifier = expelled_d_knights_mariner
 		}
-		
 		piety = 200
 		wealth = 100
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1031 # Refuse
 		ai_chance = {
 			factor = 20
 		}
-		
 		piety = -100
 	}
 }
@@ -4683,24 +4581,22 @@ province_event = {
 	desc = EVTDESC_SOA_1054
 	picture = GFX_evt_castle_construction
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			wealth = -300
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_SOA_1024
 		build_holding = {
-		   type = castle
-		   holder = FROMFROM
+			type = castle
+			holder = FROMFROM
 		}
 	}
 }
-
 
 # Ping event when expelling a Christian Holy Order
 character_event = {
@@ -4708,11 +4604,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		any_title_under = {
 			limit = {
@@ -4728,26 +4622,23 @@ character_event = {
 			}
 			usurp_title = FROM
 		}
-		
 		if = {
 			limit = {
 				is_liege_or_above = FROM
 			}
 			set_defacto_liege = THIS
 		}
-	
 		FROM = {
 			letter_event = {
 				id = SoA_HolyOrders.1461
 			}
 		}
-		
 		opinion = {
 			who = FROM
 			modifier = opinion_expelled_from_realm
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -4758,21 +4649,18 @@ letter_event = {
 	id = SoA_HolyOrders.1461
 	desc = EVTDESC_SOA_1061
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		remove_character_modifier = donated_to_holy_order
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1061
 	}
 }
 
-########################################
 # The Sisters of Sigmar
-########################################
 
 # The Grand Master demands one of your sons due to debt
 character_event = {
@@ -4780,38 +4668,40 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	only_playable = yes
 	religion = sigmarite
-	
+
 	trigger = {
 		religion = sigmarite
 		is_heretic = no
 		has_character_modifier = borrowed_from_sisters_sigmar
-		NOT = { has_character_flag = sent_son_to_sisters_sigmar }
+		NOT = {
+			has_character_flag = sent_son_to_sisters_sigmar
+		}
 		any_child = {
 			is_female = yes
 			is_adult = yes
 			is_ruler = no
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			ROOT = {
-				NOT = { 
-					current_heir = { 
-						character = PREVPREV 
+				NOT = {
+					current_heir = {
+						character = PREVPREV
 					}
 				}
 			}
 		}
 		has_dlc = "Sons of Abraham"
 	}
-	
+
 	mean_time_to_happen = {
 		months = 120
 	}
-	
+
 	immediate = {
 		random_child = {
 			limit = {
@@ -4819,11 +4709,13 @@ character_event = {
 				is_adult = yes
 				is_ruler = no
 				prisoner = no
-				NOT = { trait = incapable }
+				NOT = {
+					trait = incapable
+				}
 				ROOT = {
-					NOT = { 
-						current_heir = { 
-							character = PREVPREV 
+					NOT = {
+						current_heir = {
+							character = PREVPREV
 						}
 					}
 				}
@@ -4833,7 +4725,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -4844,11 +4736,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		d_sisters_of_sigmar = {
 			holder_scope = {
@@ -4858,7 +4748,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -4869,11 +4759,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			character_event = {
@@ -4881,29 +4769,24 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 letter_event = {
 	id = SoA_HolyOrders.1503
 	desc = EVTDESC_SOA_1003
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1003 # Agree
 		ai_chance = {
 			factor = 100
 		}
-		
 		set_character_flag = sent_son_to_sisters_sigmar
-		
 		piety = 100
-		
 		d_sisters_of_sigmar = {
 			holder_scope = {
 				FROMFROM = {
@@ -4913,11 +4796,17 @@ letter_event = {
 					}
 					spouse = {
 						remove_spouse = spouse
-						hidden_tooltip = { character_event = { id = SoA_HolyOrders.2862 } }
+						hidden_tooltip = {
+							character_event = {
+								id = SoA_HolyOrders.2862
+							}
+						}
 					}
 					add_trait = celibate
 					if = {
-						limit = { trait = in_hiding }
+						limit = {
+							trait = in_hiding
+						}
 						remove_trait = in_hiding
 						clr_character_flag = do_not_disturb
 						add_character_modifier = {
@@ -4925,13 +4814,17 @@ letter_event = {
 							duration = 180
 							hidden = yes
 						}
-						hidden_tooltip = { character_event = { id = CM.6400 } } # Notify plotters and family
+						hidden_tooltip = {
+							character_event = {
+								id = CM.6400
+							}
+						} # Notify plotters and family
 					}
 				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1003 # Pay them back
 		wealth = -300
@@ -4942,7 +4835,7 @@ letter_event = {
 			wealth = 300
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTC_SOA_1003 # Refuse
 		piety = -1000
@@ -4955,11 +4848,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		wealth = -300
 		FROM = {
@@ -4968,7 +4859,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -4979,9 +4870,8 @@ letter_event = {
 	id = SoA_HolyOrders.1511
 	desc = EVTDESC_SOA_1011
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EXCELLENT
 	}
@@ -4993,11 +4883,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		set_defacto_liege = FROM
 		FROM = {
@@ -5006,7 +4894,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -5017,9 +4905,8 @@ letter_event = {
 	id = SoA_HolyOrders.1516
 	desc = EVTDESC_SOA_1016
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EXCELLENT
 	}
@@ -5031,42 +4918,40 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	only_playable = yes
 	religion = sigmarite
-	
+
 	trigger = {
 		religion = sigmarite
 		is_heretic = no
-		
 		has_character_modifier = borrowed_from_sisters_sigmar
-		NOT = { has_character_flag = sent_son_to_sisters_sigmar }
-		
+		NOT = {
+			has_character_flag = sent_son_to_sisters_sigmar
+		}
 		any_demesne_province = {
 			has_empty_holding = yes
 		}
-		
 		d_sisters_of_sigmar = {
 			holder_scope = {
 				wealth = 300
 			}
 		}
 		has_dlc = "Sons of Abraham"
-		
-		NOT = { has_character_modifier = expelled_d_sisters_of_sigmar }
+		NOT = {
+			has_character_modifier = expelled_d_sisters_of_sigmar
+		}
 		NOT = {
 			any_liege = {
 				has_character_modifier = expelled_d_sisters_of_sigmar
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 60
 	}
-	
+
 	immediate = {
 		random_demesne_province = {
 			limit = {
@@ -5077,22 +4962,19 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 province_event = {
 	id = SoA_HolyOrders.1521
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		d_sisters_of_sigmar = {
 			holder_scope = {
@@ -5102,7 +4984,7 @@ province_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -5113,11 +4995,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			character_event = {
@@ -5125,36 +5005,34 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 letter_event = {
 	id = SoA_HolyOrders.1523
 	desc = EVTDESC_SOA_1023
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1023 # Agree
 		ai_chance = {
 			factor = 100
 		}
-		
 		hidden_tooltip = {
 			remove_character_modifier = borrowed_from_sisters_sigmar
 			remove_character_modifier = expelled_d_sisters_of_sigmar
 			FROMFROM = {
-				province_event = { id = SoA_HolyOrders.1524 }
+				province_event = {
+					id = SoA_HolyOrders.1524
+				}
 			}
 		}
-		
 		piety = 100
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1003 # Pay them back
 		wealth = -300
@@ -5165,7 +5043,7 @@ letter_event = {
 			wealth = 300
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTC_SOA_1003 # Refuse
 		piety = -1000
@@ -5178,20 +5056,19 @@ province_event = {
 	desc = EVTDESC_SOA_1024
 	picture = GFX_evt_castle_construction
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			wealth = -300
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_SOA_1024
 		build_holding = {
-		   type = castle
-		   holder = FROMFROM
+			type = castle
+			holder = FROMFROM
 		}
 	}
 }
@@ -5202,55 +5079,56 @@ character_event = {
 	desc = EVTDESC_SOA_1030
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	min_age = 16
 	max_age = 45
 	only_capable = yes
 	prisoner = no
 	religion = sigmarite
-	
+
 	trigger = {
 		is_ruler = no
 		religion = sigmarite
 		is_heretic = no
 		is_female = yes
 		martial = 5
-		
 		is_title_active = d_sisters_of_sigmar
-		
 		OR = {
 			father_even_if_dead = {
-				primary_title = { higher_tier_than = BARON }
+				primary_title = {
+					higher_tier_than = BARON
+				}
 			}
 			mother_even_if_dead = {
-				primary_title = { higher_tier_than = BARON }
+				primary_title = {
+					higher_tier_than = BARON
+				}
 			}
 		}
-		
 		liege = {
 			holy_order = no
 			liege = {
 				holy_order = no
 			}
 		}
-		
 		has_dlc = "Sons of Abraham"
-		
-		NOT = { has_character_modifier = expelled_d_sisters_of_sigmar }
+		NOT = {
+			has_character_modifier = expelled_d_sisters_of_sigmar
+		}
 		NOT = {
 			any_liege = {
 				has_character_modifier = expelled_d_sisters_of_sigmar
 			}
 		}
-		
 		NOT = {
 			any_spouse = {
 				is_pregnant = yes
-				father_of_unborn = { character = ROOT } # Won't happen if spouse is pregnant with non-bastard child
+				father_of_unborn = {
+					character = ROOT
+				} # Won't happen if spouse is pregnant with non-bastard child
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		years = 100
 		modifier = {
@@ -5275,7 +5153,9 @@ character_event = {
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 25 }
+			NOT = {
+				age = 25
+			}
 		}
 		modifier = {
 			factor = 1.5
@@ -5310,11 +5190,13 @@ character_event = {
 		modifier = {
 			factor = 2
 			any_spouse = {
-				reverse_opinion = { who = ROOT value = 100 }
+				reverse_opinion = {
+					who = ROOT value = 100
+				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_SOA_1030 # Ask to go
 		ai_chance = {
@@ -5326,6 +5208,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_SOA_1030 # It's a bad idea
 	}
@@ -5337,17 +5220,14 @@ character_event = {
 	desc = EVTDESC_SOA_1031
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1031 # Agree
 		ai_chance = {
 			factor = 100
 		}
-		
 		piety = 100
-		
 		FROM = {
 			character_event = {
 				id = SoA_HolyOrders.1532
@@ -5355,12 +5235,10 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1031 # Refuse
-		
 		piety = -100
-		
 		FROM = {
 			character_event = {
 				id = SoA_HolyOrders.1533
@@ -5376,12 +5254,10 @@ character_event = {
 	desc = EVTDESC_SOA_1032
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EXCELLENT
-		
 		d_sisters_of_sigmar = {
 			holder_scope = {
 				ROOT = {
@@ -5391,11 +5267,17 @@ character_event = {
 					}
 					spouse = {
 						remove_spouse = spouse
-						hidden_tooltip = { character_event = { id = SoA_HolyOrders.2863 } }
+						hidden_tooltip = {
+							character_event = {
+								id = SoA_HolyOrders.2863
+							}
+						}
 					}
 					add_trait = celibate
 					if = {
-						limit = { trait = in_hiding }
+						limit = {
+							trait = in_hiding
+						}
 						remove_trait = in_hiding
 						clr_character_flag = do_not_disturb
 						add_character_modifier = {
@@ -5403,7 +5285,11 @@ character_event = {
 							duration = 180
 							hidden = yes
 						}
-						hidden_tooltip = { character_event = { id = CM.6400 } } # Notify plotters and family
+						hidden_tooltip = {
+							character_event = {
+								id = CM.6400
+							}
+						} # Notify plotters and family
 					}
 				}
 			}
@@ -5417,12 +5303,10 @@ character_event = {
 	desc = EVTDESC_SOA_1033
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1033
-		
 		opinion = {
 			who = FROM
 			modifier = opinion_refused_request_holy_order
@@ -5436,16 +5320,13 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	only_playable = yes
 	religion = sigmarite
-	
+
 	trigger = {
 		religion = sigmarite
 		is_heretic = no
-		
 		d_sisters_of_sigmar = {
 			holder_scope = {
 				wealth = 300
@@ -5457,36 +5338,37 @@ character_event = {
 				}
 			}
 		}
-		
 		any_demesne_province = {
 			has_empty_holding = yes
 			# OR = {
-				# region = world_persia
-				# region = world_middle_east
-				# region = world_asia_minor
-				# region = world_africa_north
-				# region = world_europe_south
-				# region = world_europe_west
+			# region = world_persia
+			# region = world_middle_east
+			# region = world_asia_minor
+			# region = world_africa_north
+			# region = world_europe_south
+			# region = world_europe_west
 			# }
 		}
-		
 		has_dlc = "Sons of Abraham"
-		
-		NOT = { has_character_modifier = expelled_d_sisters_of_sigmar }
+		NOT = {
+			has_character_modifier = expelled_d_sisters_of_sigmar
+		}
 		NOT = {
 			any_liege = {
 				has_character_modifier = expelled_d_sisters_of_sigmar
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 240
 		modifier = {
 			factor = 0.5
 			d_sisters_of_sigmar = {
 				holder_scope = {
-					NOT = { demesne_size = 1 }
+					NOT = {
+						demesne_size = 1
+					}
 				}
 			}
 		}
@@ -5494,7 +5376,9 @@ character_event = {
 			factor = 0.5
 			d_sisters_of_sigmar = {
 				holder_scope = {
-					NOT = { demesne_size = 2 }
+					NOT = {
+						demesne_size = 2
+					}
 				}
 			}
 		}
@@ -5507,18 +5391,18 @@ character_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		random_demesne_province = {
 			limit = {
 				has_empty_holding = yes
 				# OR = {
-					# region = world_persia
-					# region = world_middle_east
-					# region = world_asia_minor
-					# region = world_africa_north
-					# region = world_europe_south
-					# region = world_europe_west
+				# region = world_persia
+				# region = world_middle_east
+				# region = world_asia_minor
+				# region = world_africa_north
+				# region = world_europe_south
+				# region = world_europe_west
 				# }
 			}
 			province_event = {
@@ -5526,22 +5410,19 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 province_event = {
 	id = SoA_HolyOrders.1551
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		d_sisters_of_sigmar = {
 			holder_scope = {
@@ -5551,7 +5432,7 @@ province_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -5562,11 +5443,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			character_event = {
@@ -5574,19 +5453,17 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 letter_event = {
 	id = SoA_HolyOrders.1553
 	desc = EVTDESC_SOA_1053
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1023 # Agree
 		ai_chance = {
@@ -5596,24 +5473,23 @@ letter_event = {
 				has_character_modifier = expelled_d_sisters_of_sigmar
 			}
 		}
-		
 		hidden_tooltip = {
 			FROMFROM = {
-				province_event = { id = SoA_HolyOrders.1554 }
+				province_event = {
+					id = SoA_HolyOrders.1554
+				}
 			}
 			remove_character_modifier = expelled_d_sisters_of_sigmar
 		}
-		
 		piety = 200
 		wealth = 100
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1031 # Refuse
 		ai_chance = {
 			factor = 20
 		}
-		
 		piety = -100
 	}
 }
@@ -5624,24 +5500,22 @@ province_event = {
 	desc = EVTDESC_SOA_1054
 	picture = GFX_evt_castle_construction
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			wealth = -300
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_SOA_1024
 		build_holding = {
-		   type = castle
-		   holder = FROMFROM
+			type = castle
+			holder = FROMFROM
 		}
 	}
 }
-
 
 # Ping event when expelling a Christian Holy Order
 character_event = {
@@ -5649,11 +5523,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		any_title_under = {
 			limit = {
@@ -5669,26 +5541,23 @@ character_event = {
 			}
 			usurp_title = FROM
 		}
-		
 		if = {
 			limit = {
 				is_liege_or_above = FROM
 			}
 			set_defacto_liege = THIS
 		}
-	
 		FROM = {
 			letter_event = {
 				id = SoA_HolyOrders.1561
 			}
 		}
-		
 		opinion = {
 			who = FROM
 			modifier = opinion_expelled_from_realm
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -5699,22 +5568,18 @@ letter_event = {
 	id = SoA_HolyOrders.1561
 	desc = EVTDESC_SOA_1061
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		remove_character_modifier = donated_to_holy_order
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1061
 	}
 }
 
-
-########################################
 # The Order of the Eagle
-########################################
 
 # The Grand Master demands one of your sons due to debt
 character_event = {
@@ -5722,38 +5587,40 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	only_playable = yes
 	religion = myrmidian
-	
+
 	trigger = {
 		religion = myrmidian
 		is_heretic = no
 		has_character_modifier = borrowed_from_order_eagle
-		NOT = { has_character_flag = sent_son_to_order_eagle }
+		NOT = {
+			has_character_flag = sent_son_to_order_eagle
+		}
 		any_child = {
 			is_female = no
 			is_adult = yes
 			is_ruler = no
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			ROOT = {
-				NOT = { 
-					current_heir = { 
-						character = PREVPREV 
+				NOT = {
+					current_heir = {
+						character = PREVPREV
 					}
 				}
 			}
 		}
 		has_dlc = "Sons of Abraham"
 	}
-	
+
 	mean_time_to_happen = {
 		months = 120
 	}
-	
+
 	immediate = {
 		random_child = {
 			limit = {
@@ -5761,11 +5628,13 @@ character_event = {
 				is_adult = yes
 				is_ruler = no
 				prisoner = no
-				NOT = { trait = incapable }
+				NOT = {
+					trait = incapable
+				}
 				ROOT = {
-					NOT = { 
-						current_heir = { 
-							character = PREVPREV 
+					NOT = {
+						current_heir = {
+							character = PREVPREV
 						}
 					}
 				}
@@ -5775,7 +5644,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -5786,11 +5655,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		d_order_of_the_eagle = {
 			holder_scope = {
@@ -5800,7 +5667,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -5811,11 +5678,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			character_event = {
@@ -5823,29 +5688,24 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 letter_event = {
 	id = SoA_HolyOrders.1603
 	desc = EVTDESC_SOA_1003
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1003 # Agree
 		ai_chance = {
 			factor = 100
 		}
-		
 		set_character_flag = sent_son_to_order_eagle
-		
 		piety = 100
-		
 		d_order_of_the_eagle = {
 			holder_scope = {
 				FROMFROM = {
@@ -5855,11 +5715,17 @@ letter_event = {
 					}
 					spouse = {
 						remove_spouse = spouse
-						hidden_tooltip = { character_event = { id = SoA_HolyOrders.2862 } }
+						hidden_tooltip = {
+							character_event = {
+								id = SoA_HolyOrders.2862
+							}
+						}
 					}
 					add_trait = celibate
 					if = {
-						limit = { trait = in_hiding }
+						limit = {
+							trait = in_hiding
+						}
 						remove_trait = in_hiding
 						clr_character_flag = do_not_disturb
 						add_character_modifier = {
@@ -5867,13 +5733,17 @@ letter_event = {
 							duration = 180
 							hidden = yes
 						}
-						hidden_tooltip = { character_event = { id = CM.6400 } } # Notify plotters and family
+						hidden_tooltip = {
+							character_event = {
+								id = CM.6400
+							}
+						} # Notify plotters and family
 					}
 				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1003 # Pay them back
 		wealth = -300
@@ -5884,7 +5754,7 @@ letter_event = {
 			wealth = 300
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTC_SOA_1003 # Refuse
 		piety = -1000
@@ -5897,11 +5767,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		wealth = -300
 		FROM = {
@@ -5910,7 +5778,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -5921,9 +5789,8 @@ letter_event = {
 	id = SoA_HolyOrders.1611
 	desc = EVTDESC_SOA_1011
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EXCELLENT
 	}
@@ -5935,11 +5802,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		set_defacto_liege = FROM
 		FROM = {
@@ -5948,7 +5813,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -5959,9 +5824,8 @@ letter_event = {
 	id = SoA_HolyOrders.1616
 	desc = EVTDESC_SOA_1016
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EXCELLENT
 	}
@@ -5973,42 +5837,40 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	only_playable = yes
 	religion = myrmidian
-	
+
 	trigger = {
 		religion = myrmidian
 		is_heretic = no
-		
 		has_character_modifier = borrowed_from_order_eagle
-		NOT = { has_character_flag = sent_son_to_order_eagle }
-		
+		NOT = {
+			has_character_flag = sent_son_to_order_eagle
+		}
 		any_demesne_province = {
 			has_empty_holding = yes
 		}
-		
 		d_order_of_the_eagle = {
 			holder_scope = {
 				wealth = 300
 			}
 		}
 		has_dlc = "Sons of Abraham"
-		
-		NOT = { has_character_modifier = expelled_d_order_of_the_eagle }
+		NOT = {
+			has_character_modifier = expelled_d_order_of_the_eagle
+		}
 		NOT = {
 			any_liege = {
 				has_character_modifier = expelled_d_order_of_the_eagle
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 60
 	}
-	
+
 	immediate = {
 		random_demesne_province = {
 			limit = {
@@ -6019,22 +5881,19 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 province_event = {
 	id = SoA_HolyOrders.1621
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		d_order_of_the_eagle = {
 			holder_scope = {
@@ -6044,7 +5903,7 @@ province_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -6055,11 +5914,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			character_event = {
@@ -6067,36 +5924,34 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 letter_event = {
 	id = SoA_HolyOrders.1623
 	desc = EVTDESC_SOA_1023
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1023 # Agree
 		ai_chance = {
 			factor = 100
 		}
-		
 		hidden_tooltip = {
 			remove_character_modifier = borrowed_from_order_eagle
 			remove_character_modifier = expelled_d_order_of_the_eagle
 			FROMFROM = {
-				province_event = { id = SoA_HolyOrders.1624 }
+				province_event = {
+					id = SoA_HolyOrders.1624
+				}
 			}
 		}
-		
 		piety = 100
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1003 # Pay them back
 		wealth = -300
@@ -6107,7 +5962,7 @@ letter_event = {
 			wealth = 300
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTC_SOA_1003 # Refuse
 		piety = -1000
@@ -6120,20 +5975,19 @@ province_event = {
 	desc = EVTDESC_SOA_1024
 	picture = GFX_evt_castle_construction
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			wealth = -300
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_SOA_1024
 		build_holding = {
-		   type = castle
-		   holder = FROMFROM
+			type = castle
+			holder = FROMFROM
 		}
 	}
 }
@@ -6144,56 +5998,56 @@ character_event = {
 	desc = EVTDESC_SOA_1030
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	only_men = yes
 	min_age = 16
 	max_age = 45
 	only_capable = yes
 	prisoner = no
 	religion = myrmidian
-	
+
 	trigger = {
 		is_ruler = no
 		religion = myrmidian
 		is_heretic = no
-		
 		martial = 5
-		
 		is_title_active = d_order_of_the_eagle
-		
 		OR = {
 			father_even_if_dead = {
-				primary_title = { higher_tier_than = BARON }
+				primary_title = {
+					higher_tier_than = BARON
+				}
 			}
 			mother_even_if_dead = {
-				primary_title = { higher_tier_than = BARON }
+				primary_title = {
+					higher_tier_than = BARON
+				}
 			}
 		}
-		
 		liege = {
 			holy_order = no
 			liege = {
 				holy_order = no
 			}
 		}
-		
 		has_dlc = "Sons of Abraham"
-		
-		NOT = { has_character_modifier = expelled_d_order_of_the_eagle }
+		NOT = {
+			has_character_modifier = expelled_d_order_of_the_eagle
+		}
 		NOT = {
 			any_liege = {
 				has_character_modifier = expelled_d_order_of_the_eagle
 			}
 		}
-		
 		NOT = {
 			any_spouse = {
 				is_pregnant = yes
-				father_of_unborn = { character = ROOT } # Won't happen if spouse is pregnant with non-bastard child
+				father_of_unborn = {
+					character = ROOT
+				} # Won't happen if spouse is pregnant with non-bastard child
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		years = 100
 		modifier = {
@@ -6218,7 +6072,9 @@ character_event = {
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 25 }
+			NOT = {
+				age = 25
+			}
 		}
 		modifier = {
 			factor = 1.5
@@ -6253,7 +6109,9 @@ character_event = {
 		modifier = {
 			factor = 2
 			any_spouse = {
-				reverse_opinion = { who = ROOT value = 100 }
+				reverse_opinion = {
+					who = ROOT value = 100
+				}
 			}
 		}
 		modifier = {
@@ -6261,7 +6119,7 @@ character_event = {
 			culture_group = imperial_group
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_SOA_1030 # Ask to go
 		ai_chance = {
@@ -6273,6 +6131,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_SOA_1030 # It's a bad idea
 	}
@@ -6284,17 +6143,14 @@ character_event = {
 	desc = EVTDESC_SOA_1031
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1031 # Agree
 		ai_chance = {
 			factor = 100
 		}
-		
 		piety = 100
-		
 		FROM = {
 			character_event = {
 				id = SoA_HolyOrders.1632
@@ -6302,12 +6158,10 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1031 # Refuse
-		
 		piety = -100
-		
 		FROM = {
 			character_event = {
 				id = SoA_HolyOrders.1633
@@ -6323,12 +6177,10 @@ character_event = {
 	desc = EVTDESC_SOA_1032
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EXCELLENT
-		
 		d_order_of_the_eagle = {
 			holder_scope = {
 				ROOT = {
@@ -6338,11 +6190,17 @@ character_event = {
 					}
 					spouse = {
 						remove_spouse = spouse
-						hidden_tooltip = { character_event = { id = SoA_HolyOrders.2863 } }
+						hidden_tooltip = {
+							character_event = {
+								id = SoA_HolyOrders.2863
+							}
+						}
 					}
 					add_trait = celibate
 					if = {
-						limit = { trait = in_hiding }
+						limit = {
+							trait = in_hiding
+						}
 						remove_trait = in_hiding
 						clr_character_flag = do_not_disturb
 						add_character_modifier = {
@@ -6350,7 +6208,11 @@ character_event = {
 							duration = 180
 							hidden = yes
 						}
-						hidden_tooltip = { character_event = { id = CM.6400 } } # Notify plotters and family
+						hidden_tooltip = {
+							character_event = {
+								id = CM.6400
+							}
+						} # Notify plotters and family
 					}
 				}
 			}
@@ -6364,12 +6226,10 @@ character_event = {
 	desc = EVTDESC_SOA_1033
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1033
-		
 		opinion = {
 			who = FROM
 			modifier = opinion_refused_request_holy_order
@@ -6383,16 +6243,13 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	only_playable = yes
 	religion = myrmidian
-	
+
 	trigger = {
 		religion = myrmidian
 		is_heretic = no
-		
 		d_order_of_the_eagle = {
 			holder_scope = {
 				wealth = 300
@@ -6404,36 +6261,37 @@ character_event = {
 				}
 			}
 		}
-		
 		any_demesne_province = {
 			has_empty_holding = yes
 			# OR = {
-				# region = world_persia
-				# region = world_middle_east
-				# region = world_asia_minor
-				# region = world_africa_north
-				# region = world_europe_south
-				# region = world_europe_west
+			# region = world_persia
+			# region = world_middle_east
+			# region = world_asia_minor
+			# region = world_africa_north
+			# region = world_europe_south
+			# region = world_europe_west
 			# }
 		}
-		
 		has_dlc = "Sons of Abraham"
-		
-		NOT = { has_character_modifier = expelled_d_order_of_the_eagle }
+		NOT = {
+			has_character_modifier = expelled_d_order_of_the_eagle
+		}
 		NOT = {
 			any_liege = {
 				has_character_modifier = expelled_d_order_of_the_eagle
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 240
 		modifier = {
 			factor = 0.5
 			d_order_of_the_eagle = {
 				holder_scope = {
-					NOT = { demesne_size = 1 }
+					NOT = {
+						demesne_size = 1
+					}
 				}
 			}
 		}
@@ -6441,7 +6299,9 @@ character_event = {
 			factor = 0.5
 			d_order_of_the_eagle = {
 				holder_scope = {
-					NOT = { demesne_size = 2 }
+					NOT = {
+						demesne_size = 2
+					}
 				}
 			}
 		}
@@ -6454,18 +6314,18 @@ character_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		random_demesne_province = {
 			limit = {
 				has_empty_holding = yes
 				# OR = {
-					# region = world_persia
-					# region = world_middle_east
-					# region = world_asia_minor
-					# region = world_africa_north
-					# region = world_europe_south
-					# region = world_europe_west
+				# region = world_persia
+				# region = world_middle_east
+				# region = world_asia_minor
+				# region = world_africa_north
+				# region = world_europe_south
+				# region = world_europe_west
 				# }
 			}
 			province_event = {
@@ -6473,22 +6333,19 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 province_event = {
 	id = SoA_HolyOrders.1651
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		d_order_of_the_eagle = {
 			holder_scope = {
@@ -6498,7 +6355,7 @@ province_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -6509,11 +6366,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			character_event = {
@@ -6521,19 +6376,17 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 letter_event = {
 	id = SoA_HolyOrders.1653
 	desc = EVTDESC_SOA_1053
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1023 # Agree
 		ai_chance = {
@@ -6543,24 +6396,23 @@ letter_event = {
 				has_character_modifier = expelled_d_order_of_the_eagle
 			}
 		}
-		
 		hidden_tooltip = {
 			FROMFROM = {
-				province_event = { id = SoA_HolyOrders.1654 }
+				province_event = {
+					id = SoA_HolyOrders.1654
+				}
 			}
 			remove_character_modifier = expelled_d_order_of_the_eagle
 		}
-		
 		piety = 200
 		wealth = 100
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1031 # Refuse
 		ai_chance = {
 			factor = 20
 		}
-		
 		piety = -100
 	}
 }
@@ -6571,24 +6423,22 @@ province_event = {
 	desc = EVTDESC_SOA_1054
 	picture = GFX_evt_castle_construction
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			wealth = -300
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_SOA_1024
 		build_holding = {
-		   type = castle
-		   holder = FROMFROM
+			type = castle
+			holder = FROMFROM
 		}
 	}
 }
-
 
 # Ping event when expelling a Christian Holy Order
 character_event = {
@@ -6596,11 +6446,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		any_title_under = {
 			limit = {
@@ -6616,26 +6464,23 @@ character_event = {
 			}
 			usurp_title = FROM
 		}
-		
 		if = {
 			limit = {
 				is_liege_or_above = FROM
 			}
 			set_defacto_liege = THIS
 		}
-	
 		FROM = {
 			letter_event = {
 				id = SoA_HolyOrders.1661
 			}
 		}
-		
 		opinion = {
 			who = FROM
 			modifier = opinion_expelled_from_realm
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -6646,34 +6491,30 @@ letter_event = {
 	id = SoA_HolyOrders.1661
 	desc = EVTDESC_SOA_1061
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		remove_character_modifier = donated_to_holy_order
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1061
 	}
 }
-
 namespace = SoA
-########################################
+
 # The Hashishin
-########################################
+
 # The Grand Master demands one of your sons due to debt
 character_event = {
 	id = SoA.1400
 	desc = OK
 	picture = GFX_evt_moors
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	only_playable = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		OR = {
 			religion = ormazd
@@ -6681,35 +6522,40 @@ character_event = {
 		}
 		is_heretic = no
 		has_character_modifier = borrowed_from_hashishin
-		NOT = { has_character_flag = sent_son_to_assassins }
+		NOT = {
+			has_character_flag = sent_son_to_assassins
+		}
 		any_child = {
 			is_female = no
 			is_adult = yes
 			is_ruler = no
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			ROOT = {
-				NOT = { 
-					current_heir = { 
-						character = PREVPREV 
+				NOT = {
+					current_heir = {
+						character = PREVPREV
 					}
 				}
 			}
 		}
 		has_dlc = "Sons of Abraham"
-		
-		NOT = { has_character_modifier = expelled_d_hashishin }
+		NOT = {
+			has_character_modifier = expelled_d_hashishin
+		}
 		NOT = {
 			any_liege = {
 				has_character_modifier = expelled_d_hashishin
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 120
 	}
-	
+
 	immediate = {
 		random_child = {
 			limit = {
@@ -6717,11 +6563,13 @@ character_event = {
 				is_adult = yes
 				is_ruler = no
 				prisoner = no
-				NOT = { trait = incapable }
+				NOT = {
+					trait = incapable
+				}
 				ROOT = {
-					NOT = { 
-						current_heir = { 
-							character = PREVPREV 
+					NOT = {
+						current_heir = {
+							character = PREVPREV
 						}
 					}
 				}
@@ -6731,7 +6579,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -6742,11 +6590,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_moors
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		d_hashishin = {
 			holder_scope = {
@@ -6756,7 +6602,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -6767,11 +6613,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_moors
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			character_event = {
@@ -6779,29 +6623,24 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 letter_event = {
 	id = SoA.1403
 	desc = EVTDESC_SOA_1203
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1403 # Agree
 		ai_chance = {
 			factor = 100
 		}
-		
 		set_character_flag = sent_son_to_assassins
-		
 		piety = 100
-		
 		d_hashishin = {
 			holder_scope = {
 				FROMFROM = {
@@ -6810,7 +6649,9 @@ letter_event = {
 						clear_wealth = PREV
 					}
 					if = {
-						limit = { trait = in_hiding	}
+						limit = {
+							trait = in_hiding
+						}
 						remove_trait = in_hiding
 						clr_character_flag = do_not_disturb
 						add_character_modifier = {
@@ -6818,13 +6659,17 @@ letter_event = {
 							duration = 180
 							hidden = yes
 						}
-						hidden_tooltip = { character_event = { id = CM.6400 } } # Notify plotters and family
+						hidden_tooltip = {
+							character_event = {
+								id = CM.6400
+							}
+						} # Notify plotters and family
 					}
 				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1003 # Pay them back
 		wealth = -300
@@ -6835,7 +6680,7 @@ letter_event = {
 			wealth = 300
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTC_SOA_1003 # Refuse
 		piety = -1000
@@ -6848,11 +6693,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_moors
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		wealth = -300
 		FROM = {
@@ -6861,7 +6704,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -6872,9 +6715,8 @@ letter_event = {
 	id = SoA.1411
 	desc = EVTDESC_SOA_1411
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EXCELLENT
 	}
@@ -6886,45 +6728,43 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_moors
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	only_playable = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		OR = {
 			religion = ormazd
 			religion = kitabid
 		}
 		is_heretic = no
-		
 		has_character_modifier = borrowed_from_hashishin
-		NOT = { has_character_flag = sent_son_to_assassins }
-		
+		NOT = {
+			has_character_flag = sent_son_to_assassins
+		}
 		any_demesne_province = {
 			has_empty_holding = yes
 		}
-		
 		d_hashishin = {
 			holder_scope = {
 				wealth = 300
 			}
 		}
 		has_dlc = "Sons of Abraham"
-		
-		NOT = { has_character_modifier = expelled_d_hashishin }
+		NOT = {
+			has_character_modifier = expelled_d_hashishin
+		}
 		NOT = {
 			any_liege = {
 				has_character_modifier = expelled_d_hashishin
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 60
 	}
-	
+
 	immediate = {
 		random_demesne_province = {
 			limit = {
@@ -6935,22 +6775,19 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 province_event = {
 	id = SoA.1421
 	desc = OK
 	picture = GFX_evt_moors
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		d_hashishin = {
 			holder_scope = {
@@ -6960,7 +6797,7 @@ province_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -6971,11 +6808,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_moors
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			character_event = {
@@ -6983,35 +6818,33 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 letter_event = {
 	id = SoA.1423
 	desc = EVTDESC_SOA_1223
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1023 # Agree
 		ai_chance = {
 			factor = 100
 		}
-		
 		hidden_tooltip = {
 			remove_character_modifier = borrowed_from_hashishin
 			FROMFROM = {
-				province_event = { id = SoA.1424 }
+				province_event = {
+					id = SoA.1424
+				}
 			}
 		}
-		
 		piety = 100
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1003 # Pay them back
 		wealth = -300
@@ -7022,7 +6855,7 @@ letter_event = {
 			wealth = 300
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTC_SOA_1003 # Refuse
 		piety = -1000
@@ -7035,20 +6868,19 @@ province_event = {
 	desc = EVTDESC_SOA_1424
 	picture = GFX_evt_castle_construction
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			wealth = -300
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_SOA_1024
 		build_holding = {
-		   type = castle
-		   holder = FROMFROM
+			type = castle
+			holder = FROMFROM
 		}
 	}
 }
@@ -7059,60 +6891,59 @@ character_event = {
 	desc = EVTDESC_SOA_1430
 	picture = GFX_evt_moors
 	border = GFX_event_normal_frame_religion
-	
 	only_men = yes
 	min_age = 16
 	max_age = 45
 	only_capable = yes
 	prisoner = no
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		OR = {
 			religion = ormazd
 			religion = kitabid
 		}
 		is_heretic = no
-		
 		is_ruler = no
-		
 		martial = 5
-		
 		is_title_active = d_hashishin
-		
 		OR = {
 			father_even_if_dead = {
-				primary_title = { higher_tier_than = BARON }
+				primary_title = {
+					higher_tier_than = BARON
+				}
 			}
 			mother_even_if_dead = {
-				primary_title = { higher_tier_than = BARON }
+				primary_title = {
+					higher_tier_than = BARON
+				}
 			}
 		}
-		
 		liege = {
 			holy_order = no
 			liege = {
 				holy_order = no
 			}
 		}
-		
 		has_dlc = "Sons of Abraham"
-		
-		NOT = { has_character_modifier = expelled_d_hashishin }
+		NOT = {
+			has_character_modifier = expelled_d_hashishin
+		}
 		NOT = {
 			any_liege = {
 				has_character_modifier = expelled_d_hashishin
 			}
 		}
-
 		NOT = {
 			any_spouse = {
 				is_pregnant = yes
-				father_of_unborn = { character = ROOT } # Won't happen if spouse is pregnant with non-bastard child
+				father_of_unborn = {
+					character = ROOT
+				} # Won't happen if spouse is pregnant with non-bastard child
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		years = 100
 		modifier = {
@@ -7137,7 +6968,9 @@ character_event = {
 		}
 		modifier = {
 			factor = 0.75
-			NOT = { age = 25 }
+			NOT = {
+				age = 25
+			}
 		}
 		modifier = {
 			factor = 1.5
@@ -7172,11 +7005,13 @@ character_event = {
 		modifier = {
 			factor = 2
 			any_spouse = {
-				reverse_opinion = { who = ROOT value = 100 }
+				reverse_opinion = {
+					who = ROOT value = 100
+				}
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_SOA_1030 # Ask to go
 		ai_chance = {
@@ -7188,6 +7023,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_SOA_1030 # It's a bad idea
 	}
@@ -7199,17 +7035,14 @@ character_event = {
 	desc = EVTDESC_SOA_1431
 	picture = GFX_evt_moors
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1031 # Agree
 		ai_chance = {
 			factor = 100
 		}
-		
 		piety = 100
-		
 		FROM = {
 			character_event = {
 				id = SoA.1432
@@ -7217,12 +7050,10 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1031 # Refuse
-		
 		piety = -100
-		
 		FROM = {
 			character_event = {
 				id = SoA.1433
@@ -7238,12 +7069,10 @@ character_event = {
 	desc = EVTDESC_SOA_1432
 	picture = GFX_evt_moors
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EXCELLENT
-		
 		d_hashishin = {
 			holder_scope = {
 				ROOT = {
@@ -7253,10 +7082,16 @@ character_event = {
 					}
 					any_spouse = {
 						remove_spouse = spouse
-						hidden_tooltip = { character_event = { id = SoA.2863 } }
+						hidden_tooltip = {
+							character_event = {
+								id = SoA.2863
+							}
+						}
 					}
 					if = {
-						limit = { trait = in_hiding	}
+						limit = {
+							trait = in_hiding
+						}
 						remove_trait = in_hiding
 						clr_character_flag = do_not_disturb
 						add_character_modifier = {
@@ -7264,7 +7099,11 @@ character_event = {
 							duration = 180
 							hidden = yes
 						}
-						hidden_tooltip = { character_event = { id = CM.6400 } } # Notify plotters and family
+						hidden_tooltip = {
+							character_event = {
+								id = CM.6400
+							}
+						} # Notify plotters and family
 					}
 				}
 			}
@@ -7278,12 +7117,10 @@ character_event = {
 	desc = EVTDESC_SOA_1433
 	picture = GFX_evt_moors
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1033
-		
 		opinion = {
 			who = FROM
 			modifier = opinion_refused_request_holy_order
@@ -7297,19 +7134,16 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_moors
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	only_playable = yes
 	religion_group = ormazd_gods_group
-	
+
 	trigger = {
 		OR = {
 			religion = ormazd
 			religion = kitabid
 		}
 		is_heretic = no
-		
 		d_hashishin = {
 			holder_scope = {
 				wealth = 300
@@ -7321,29 +7155,30 @@ character_event = {
 				}
 			}
 		}
-		
 		any_demesne_province = {
 			has_empty_holding = yes
 			port = yes
 		}
-		
 		has_dlc = "Sons of Abraham"
-		
-		NOT = { has_character_modifier = expelled_d_hashishin }
+		NOT = {
+			has_character_modifier = expelled_d_hashishin
+		}
 		NOT = {
 			any_liege = {
 				has_character_modifier = expelled_d_hashishin
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 240
 		modifier = {
 			factor = 0.5
 			d_hashishin = {
 				holder_scope = {
-					NOT = { demesne_size = 1 }
+					NOT = {
+						demesne_size = 1
+					}
 				}
 			}
 		}
@@ -7351,7 +7186,9 @@ character_event = {
 			factor = 0.5
 			d_hashishin = {
 				holder_scope = {
-					NOT = { demesne_size = 2 }
+					NOT = {
+						demesne_size = 2
+					}
 				}
 			}
 		}
@@ -7364,7 +7201,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		random_demesne_province = {
 			limit = {
@@ -7376,22 +7213,19 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 province_event = {
 	id = SoA.1451
 	desc = OK
 	picture = GFX_evt_moors
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		d_hashishin = {
 			holder_scope = {
@@ -7401,7 +7235,7 @@ province_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
@@ -7412,11 +7246,9 @@ character_event = {
 	desc = OK
 	picture = GFX_evt_moors
 	border = GFX_event_normal_frame_religion
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		FROMFROM = {
 			character_event = {
@@ -7424,19 +7256,17 @@ character_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
-
 letter_event = {
 	id = SoA.1453
 	desc = EVTDESC_SOA_1253 # Reuse this
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_SOA_1023 # Agree
 		ai_chance = {
@@ -7446,117 +7276,102 @@ letter_event = {
 				has_character_modifier = expelled_d_hashishin
 			}
 		}
-		
 		hidden_tooltip = {
 			FROMFROM = {
-				province_event = { id = SoA.1454 }
+				province_event = {
+					id = SoA.1454
+				}
 			}
 			remove_character_modifier = expelled_d_hashishin
 		}
-		
 		piety = 200
 		wealth = 100
 	}
-	
+
 	option = {
 		name = EVTOPTB_SOA_1031 # Refuse
 		ai_chance = {
 			factor = 20
 		}
-		
 		piety = -100
 	}
 }
 
 # Castle has been erected
 province_event = {
-	id = SoA.1454
-	desc = EVTDESC_SOA_1454
-	picture = GFX_evt_moors
-	border = GFX_event_normal_frame_religion
-	
-	is_triggered_only = yes
-	
-	immediate = {
-		FROMFROM = {
-			wealth = -300
-		}
-	}
-	
-	option = {
-		name = EVTOPTA_SOA_1024
-		build_holding = {
-		   type = castle
-		   holder = FROMFROM
-		}
+id = SoA.1454
+desc = EVTDESC_SOA_1454
+picture = GFX_evt_moors
+border = GFX_event_normal_frame_religion
+is_triggered_only = yes
+immediate = {
+	FROMFROM = {
+		wealth = -300
 	}
 }
-
+option = {
+	name = EVTOPTA_SOA_1024
+	build_holding = {
+		type = castle
+		holder = FROMFROM
+	}
+}
+}
 
 # Ping event when expelling a Muslim Holy Order
 character_event = {
-	id = SoA.1460
-	desc = OK
-	picture = GFX_evt_moors
-	border = GFX_event_normal_frame_religion
-	
-	hide_window = yes
-	
-	is_triggered_only = yes
-	
-	immediate = {
-		any_title_under = {
-			limit = {
-				tier = BARON
-				location = {
-					owner = {
-						OR = {
-							character = FROM
-							is_liege_or_above = FROM
-						}
+id = SoA.1460
+desc = OK
+picture = GFX_evt_moors
+border = GFX_event_normal_frame_religion
+hide_window = yes
+is_triggered_only = yes
+immediate = {
+	any_title_under = {
+		limit = {
+			tier = BARON
+			location = {
+				owner = {
+					OR = {
+						character = FROM
+						is_liege_or_above = FROM
 					}
 				}
 			}
-			usurp_title = FROM
 		}
-		
-		if = {
-			limit = {
-				is_liege_or_above = FROM
-			}
-			set_defacto_liege = THIS
+		usurp_title = FROM
+	}
+	if = {
+		limit = {
+			is_liege_or_above = FROM
 		}
-	
-		FROM = {
-			letter_event = {
-				id = SoA.1461
-			}
-		}
-		
-		opinion = {
-			who = FROM
-			modifier = opinion_expelled_from_realm
+		set_defacto_liege = THIS
+	}
+	FROM = {
+		letter_event = {
+			id = SoA.1461
 		}
 	}
-	
-	option = {
-		name = OK
+	opinion = {
+		who = FROM
+		modifier = opinion_expelled_from_realm
 	}
+}
+option = {
+	name = OK
+}
 }
 
 # Notification event when expelling a Muslim Holy Order
 letter_event = {
-	id = SoA.1461
-	desc = EVTDESC_SOA_1461
-	border = GFX_event_letter_frame_religion
-	
-	is_triggered_only = yes
-	
-	immediate = {
-		remove_character_modifier = donated_to_holy_order
-	}
-	
-	option = {
-		name = EVTOPTB_SOA_1061
-	}
+id = SoA.1461
+desc = EVTDESC_SOA_1461
+border = GFX_event_letter_frame_religion
+is_triggered_only = yes
+immediate = {
+	remove_character_modifier = donated_to_holy_order
+}
+option = {
+	name = EVTOPTB_SOA_1061
+}
 }

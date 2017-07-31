@@ -1,205 +1,334 @@
-#
+
+
 # @author Pietrko <p.l.stepnicki@gmail.com>
-# @description  Spells for Hysh lore
+
+# @description Spells for Hysh lore
+
 # @version 0.1.0
+
 # @compatibility 2.2
-#
+
 # id = hysh.xy, x - spellchain id, y - event from spellchain
-#
+
 # battle spells: 1-9
+
 # duel spells: 10-19
+
 # strategic spells: 20-29
-# 
+
 namespace = hysh
 
+# STRATEGIC SPELLS
 
-######################################################
-#
-# STRATEGIC SPELLS 
-#
-######################################################
-#
 # Hysh blessing (metaspell, strategic spell)
 character_event = {
-    id = hysh.1
-    picture = "GFX_evt_spell_hysh2"
-    desc = "EVTDESC_HYSH_1"
-    is_triggered_only = yes
+	id = hysh.1
+	picture = "GFX_evt_spell_hysh2"
+	desc = "EVTDESC_HYSH_1"
+	is_triggered_only = yes
+	# Heal injuries
 
-    # Heal injuries
-    option = {
-        name = "EVTOPT_HYSH_1A"
-        trigger = {
-            location =  {
-                any_province_character = { 
-                    trait = wounded
-                    has_character_flag = hysh_heal_target
-                }
-            }
-        }
-        location =  {
-            random_province_character = {
-                limit = { has_character_flag = hysh_heal_target }
-                clr_character_flag = hysh_heal_target
-                if = { limit = { trait = wounded } remove_trait = wounded }
-            }
-        }
-    }
-    # Heal illness
-    option = {
-        name = "EVTOPT_HYSH_1B"
-        trigger = {
-            OR = { 
-                trait = magic_power_lord 
-                trait = magic_power_archmaster 
-                trait = magic_power_magister }
-            location =  {
-                any_province_character = { 
-                    has_character_flag = hysh_heal_target
-                    trait = ill 
-                    trait = pneumonic
-                    trait = syphilitic
-                    trait = leper
-                    trait = has_typhus
-                    # trait = has_bone_auge
-                    # trait = has_creeping_buboes
-                }
-            }
-        }
-        location =  {
-            random_province_character = {
-                limit = { has_character_flag = hysh_heal_target }
-                clr_character_flag = hysh_heal_target
-                if = { limit = { trait = ill } remove_trait = ill }
-                if = { limit = { trait = pneumonic } remove_trait = pneumonic }
-                if = { limit = { trait = syphilitic } remove_trait = syphilitic }
-                if = { limit = { trait = leper } remove_trait = leper }
-                if = { limit = { trait = has_measles } remove_trait = has_measles }
-                if = { limit = { trait = has_typhus } remove_trait = has_typhus }
-                # if = { limit = { trait = has_bone_auge } remove_trait = has_bone_auge }
-                # if = { limit = { trait = has_rattlelung } remove_trait = has_rattlelung }
-                # if = { limit = { trait = has_creeping_buboes } remove_trait = has_creeping_buboes }
-            }
-        }
-    }
-    # Heal ilness & injuries
-    option = {
-        name = "EVTOPT_HYSH_1C"
-        trigger = { 
-            OR = { trait = magic_power_lord trait = magic_power_archmaster }
-        }
-        location =  {
-            random_province_character = {
-                limit = { has_character_flag = hysh_heal_target }
-                clr_character_flag = hysh_heal_target
-                if = { limit = { trait = ill } remove_trait = ill }
-                if = { limit = { trait = wounded } remove_trait = wounded }
-                if = { limit = { trait = pneumonic } remove_trait = pneumonic }
-                if = { limit = { trait = syphilitic } remove_trait = syphilitic }
-                if = { limit = { trait = leper } remove_trait = leper }
-                if = { limit = { trait = has_measles } remove_trait = has_measles }
-                if = { limit = { trait = has_typhus } remove_trait = has_typhus }
-				if = { limit = { trait = flu } remove_trait = flu }
-				if = { limit = { trait = dysentery } remove_trait = dysentery }
-				if = { limit = { trait = gout } remove_trait = gout }
-				if = { limit = { trait = food_poisoning } remove_trait = food_poisoning }
-				if = { limit = { trait = rabies } remove_trait = rabies }
-				if = { limit = { trait = cancer } remove_trait = cancer }
-				if = { limit = { trait = scurvy } remove_trait = scurvy }
-                # if = { limit = { trait = has_bone_auge } remove_trait = has_bone_auge }
-                # if = { limit = { trait = has_rattlelung } remove_trait = has_rattlelung }
-                # if = { limit = { trait = has_creeping_buboes } remove_trait = has_creeping_buboes }
-            }
-        }
-    }
+	option = {
+		name = "EVTOPT_HYSH_1A"
+		trigger = {
+			location = {
+				any_province_character = {
+					trait = wounded
+					has_character_flag = hysh_heal_target
+				}
+			}
+		}
+		location = {
+			random_province_character = {
+				limit = {
+					has_character_flag = hysh_heal_target
+				}
+				clr_character_flag = hysh_heal_target
+				if = {
+					limit = {
+						trait = wounded
+					} remove_trait = wounded
+				}
+			}
+		}
+	}
+	# Heal illness
+
+	option = {
+		name = "EVTOPT_HYSH_1B"
+		trigger = {
+			OR = {
+				trait = magic_power_lord
+				trait = magic_power_archmaster
+				trait = magic_power_magister
+			}
+			location = {
+				any_province_character = {
+					has_character_flag = hysh_heal_target
+					trait = ill
+					trait = pneumonic
+					trait = syphilitic
+					trait = leper
+					trait = has_typhus
+					# trait = has_bone_auge
+					# trait = has_creeping_buboes
+				}
+			}
+		}
+		location = {
+			random_province_character = {
+				limit = {
+					has_character_flag = hysh_heal_target
+				}
+				clr_character_flag = hysh_heal_target
+				if = {
+					limit = {
+						trait = ill
+					} remove_trait = ill
+				}
+				if = {
+					limit = {
+						trait = pneumonic
+					} remove_trait = pneumonic
+				}
+				if = {
+					limit = {
+						trait = syphilitic
+					} remove_trait = syphilitic
+				}
+				if = {
+					limit = {
+						trait = leper
+					} remove_trait = leper
+				}
+				if = {
+					limit = {
+						trait = has_measles
+					} remove_trait = has_measles
+				}
+				if = {
+					limit = {
+						trait = has_typhus
+					} remove_trait = has_typhus
+				}
+				# if = { limit = { trait = has_bone_auge } remove_trait = has_bone_auge }
+				# if = { limit = { trait = has_rattlelung } remove_trait = has_rattlelung }
+				# if = { limit = { trait = has_creeping_buboes } remove_trait = has_creeping_buboes }
+			}
+		}
+	}
+	# Heal ilness & injuries
+
+	option = {
+		name = "EVTOPT_HYSH_1C"
+		trigger = {
+			OR = {
+				trait = magic_power_lord trait = magic_power_archmaster
+			}
+		}
+		location = {
+			random_province_character = {
+				limit = {
+					has_character_flag = hysh_heal_target
+				}
+				clr_character_flag = hysh_heal_target
+				if = {
+					limit = {
+						trait = ill
+					} remove_trait = ill
+				}
+				if = {
+					limit = {
+						trait = wounded
+					} remove_trait = wounded
+				}
+				if = {
+					limit = {
+						trait = pneumonic
+					} remove_trait = pneumonic
+				}
+				if = {
+					limit = {
+						trait = syphilitic
+					} remove_trait = syphilitic
+				}
+				if = {
+					limit = {
+						trait = leper
+					} remove_trait = leper
+				}
+				if = {
+					limit = {
+						trait = has_measles
+					} remove_trait = has_measles
+				}
+				if = {
+					limit = {
+						trait = has_typhus
+					} remove_trait = has_typhus
+				}
+				if = {
+					limit = {
+						trait = flu
+					} remove_trait = flu
+				}
+				if = {
+					limit = {
+						trait = dysentery
+					} remove_trait = dysentery
+				}
+				if = {
+					limit = {
+						trait = gout
+					} remove_trait = gout
+				}
+				if = {
+					limit = {
+						trait = food_poisoning
+					} remove_trait = food_poisoning
+				}
+				if = {
+					limit = {
+						trait = rabies
+					} remove_trait = rabies
+				}
+				if = {
+					limit = {
+						trait = cancer
+					} remove_trait = cancer
+				}
+				if = {
+					limit = {
+						trait = scurvy
+					} remove_trait = scurvy
+				}
+				# if = { limit = { trait = has_bone_auge } remove_trait = has_bone_auge }
+				# if = { limit = { trait = has_rattlelung } remove_trait = has_rattlelung }
+				# if = { limit = { trait = has_creeping_buboes } remove_trait = has_creeping_buboes }
+			}
+		}
+	}
 }
+
 # Demon Banishing (presonal)
-#
+
 # main effect
 character_event = {
-   id = hysh.2
-   is_triggered_only = yes
-   desc = "EVTDESC_HYSH_2"
-   picture = "GFX_evt_spell_hysh"
-   
-   option = {
-       name = "EVTOPT_HYSH_2A"
-       location =  {
-           random_province_character = {
-               limit = { trait = possessed }
-               if = { limit = { random = 70 } 
-			remove_trait = possessed
-			set_variable = { which = "possession_counter" value = 0 } }
-               if = { limit = { random = 30 }  add_trait = wounded }
-               if = { limit = { random = 15 }  
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
+	id = hysh.2
+	is_triggered_only = yes
+	desc = "EVTDESC_HYSH_2"
+	picture = "GFX_evt_spell_hysh"
 
-			antideath_effect = yes
-			break = yes 
-}
-			
-death = { death_reason = death_trait } }
+	option = {
+		name = "EVTOPT_HYSH_2A"
+		location = {
+			random_province_character = {
+				limit = {
+					trait = possessed
+				}
+				if = {
+					limit = {
+						random = 70
+					}
+					remove_trait = possessed
+					set_variable = {
+						which = "possession_counter" value = 0
+					}
+				}
+				if = {
+					limit = {
+						random = 30
+					} add_trait = wounded
+				}
+				if = {
+					limit = {
+						random = 15
+					}
+					if = {
+						limit = {
+							is_invincible_trigger = yes
 
-               ROOT = { if = { limit = { random = 15 
-					trait = stressed }  add_trait = depressed } }
-               ROOT = { if = { limit = { random = 15 }  add_trait = stressed } }
-               ROOT = { if = { limit = { random = 15 }  add_trait = wounded } }
-           }
-       }
-   }
+						}
+						antideath_effect = yes
+						break = yes
+
+					}
+					death = {
+						death_reason = death_trait
+					}
+				}
+				ROOT = {
+					if = {
+						limit = {
+							random = 15
+							trait = stressed
+						} add_trait = depressed
+					}
+				}
+				ROOT = {
+					if = {
+						limit = {
+							random = 15
+						} add_trait = stressed
+					}
+				}
+				ROOT = {
+					if = {
+						limit = {
+							random = 15
+						} add_trait = wounded
+					}
+				}
+			}
+		}
+	}
 }
-##############################################################
-# 
+
 # Special on_combat_pulse event effect
-#
-##############################################################
+
 # For character
 character_event = {
-    id = hysh.5
-    picture = "GFX_evt_spell_hysh2"
-    border = GFX_event_normal_frame_war
-    desc = "EVTDESC_HYSH_5"
-    
-    is_triggered_only = yes
-    
-    option = {
-        name = OK
-        troops = 0.03
-        morale = 0.05
-    }
+	id = hysh.5
+	picture = "GFX_evt_spell_hysh2"
+	border = GFX_event_normal_frame_war
+	desc = "EVTDESC_HYSH_5"
+	is_triggered_only = yes
+
+	option = {
+		name = OK
+		troops = 0.03
+		morale = 0.05
+	}
 }
-# For Enemy 
+
+# For Enemy
 character_event = {
-    id = hysh.6
-    picture = "GFX_evt_spell_hysh"
-    border = GFX_event_normal_frame_war
-    desc = "EVTDESC_HYSH_5"
-    
-    is_triggered_only = yes
-    
-    option = {
-        name = "EVTOPT_HYSH_5A"
-        # Banish daemons
-        if = { 
-            limit = { has_earmarked_regiments = daemon_legion }
-            troops = -0.07
-        }
-    }
+	id = hysh.6
+	picture = "GFX_evt_spell_hysh"
+	border = GFX_event_normal_frame_war
+	desc = "EVTDESC_HYSH_5"
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPT_HYSH_5A"
+		# Banish daemons
+		if = {
+			limit = {
+				has_earmarked_regiments = daemon_legion
+			}
+			troops = -0.07
+		}
+	}
 }
 
-
-##############################################################
-#
 # Duel Spells:
-# 
+
 # implemented in duelengine.txt
-##############################################################
-#
+
 # Offensive: Burning Gaze
+
 # Defensive: Body of Light
+
 # Buff: Heal
+
 # Speical : Radiant Weapon
-#

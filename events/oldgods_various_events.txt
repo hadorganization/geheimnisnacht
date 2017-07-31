@@ -1,15 +1,13 @@
-###################################
-#
-# THE OLD GODS 
+
+
+# THE OLD GODS
+
 # - Various Events
-#
-###################################
 
 # Written by Henrik Eklund
-
 namespace = TOG
 
-### Berserker Events
+# Berserker Events
 
 # Character becomes a Berserker in battle
 character_event = {
@@ -17,9 +15,8 @@ character_event = {
 	desc = EVTDESC_TOG_3000
 	picture = GFX_evt_viking_battle_oldgods
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
 		OR = {
@@ -27,10 +24,16 @@ character_event = {
 			culture_group = norscan_group
 		}
 		is_alive = yes
-		NOT = { trait = berserker }
-		NOT = { religion = khorne }
+		NOT = {
+			trait = berserker
+		}
+		NOT = {
+			religion = khorne
+		}
 		OR = {
-			NOT = { age = 50 }
+			NOT = {
+				age = 50
+			}
 			immortal = yes
 		}
 		OR = {
@@ -38,7 +41,6 @@ character_event = {
 			trait = aggressive_leader
 		}
 	}
-	
 	weight_multiplier = {
 		days = 1
 		modifier = {
@@ -76,7 +78,7 @@ character_event = {
 		modifier = {
 			is_weak_trigger = yes
 			factor = 0.8
-		}		
+		}
 		modifier = {
 			factor = 0.7
 			trait = stressed
@@ -98,11 +100,13 @@ character_event = {
 			trait = infirm
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_TOG_3000
 		if = {
-			limit = { trait = craven }
+			limit = {
+				trait = craven
+			}
 			remove_trait = craven
 		}
 		add_trait = berserker
@@ -115,20 +119,21 @@ character_event = {
 	desc = EVTDESC_TOG_3001
 	picture = GFX_evt_viking_battle_oldgods
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
 		trait = berserker
-		NOT = { trait = maimed }
-		NOT = { trait = one_legged }
+		NOT = {
+			trait = maimed
+		}
+		NOT = {
+			trait = one_legged
+		}
 		is_alive = yes
 	}
-	
 	weight_multiplier = {
 		days = 1
-		
 		modifier = {
 			factor = 5
 			has_character_modifier = proving_bravery
@@ -160,7 +165,7 @@ character_event = {
 		modifier = {
 			trait = dwarf
 			factor = 1.25
-		}		
+		}
 		modifier = {
 			trait = genius
 			factor = 0.9
@@ -171,7 +176,7 @@ character_event = {
 				trait = shrewd
 			}
 			factor = 0.9
-		}	
+		}
 		modifier = {
 			OR = {
 				trait = slow
@@ -179,7 +184,6 @@ character_event = {
 			}
 			factor = 2.0
 		}
-		
 		modifier = {
 			trait = imbecile
 			factor = 3.0
@@ -195,8 +199,7 @@ character_event = {
 		modifier = {
 			is_weak_trigger = yes
 			factor = 2.5
-		}		
-
+		}
 		modifier = {
 			factor = 1.25
 			trait = stressed
@@ -268,13 +271,13 @@ character_event = {
 		modifier = {
 			factor = 1.1
 			trait = has_measles
-		}		
+		}
 		modifier = {
 			factor = 1.1
 			trait = has_small_pox
-		}		
+		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_TOG_3001
 		if = {
@@ -285,7 +288,9 @@ character_event = {
 			}
 			add_trait = maimed
 			hidden_tooltip = {
-				character_event = { id = 38281 }
+				character_event = {
+					id = 38281
+				}
 			}
 		}
 		if = {
@@ -295,7 +300,9 @@ character_event = {
 			add_trait = one_legged
 			add_trait = severely_injured
 			hidden_tooltip = {
-				character_event = { id = RIP.11503 } #Notify one-legged
+				character_event = {
+					id = RIP.11503
+				} # Notify one-legged
 				resolve_severely_injured_effect = yes
 			}
 		}
@@ -308,20 +315,21 @@ character_event = {
 	desc = EVTDESC_TOG_3002
 	picture = GFX_evt_viking_battle_oldgods
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
 		trait = berserker
-		NOT = { trait = wounded }
-		NOT = { is_maimed_trigger = yes }
+		NOT = {
+			trait = wounded
+		}
+		NOT = {
+			is_maimed_trigger = yes
+		}
 		is_alive = yes
 	}
-	
 	weight_multiplier = {
 		days = 1
-		
 		modifier = {
 			factor = 5
 			has_character_modifier = proving_bravery
@@ -353,7 +361,7 @@ character_event = {
 		modifier = {
 			trait = dwarf
 			factor = 1.25
-		}		
+		}
 		modifier = {
 			trait = genius
 			factor = 0.9
@@ -364,7 +372,7 @@ character_event = {
 				trait = shrewd
 			}
 			factor = 0.9
-		}	
+		}
 		modifier = {
 			OR = {
 				trait = slow
@@ -372,7 +380,6 @@ character_event = {
 			}
 			factor = 2.0
 		}
-		
 		modifier = {
 			trait = imbecile
 			factor = 3.0
@@ -388,8 +395,7 @@ character_event = {
 		modifier = {
 			is_weak_trigger = yes
 			factor = 2.5
-		}		
-		
+		}
 		modifier = {
 			factor = 1.25
 			trait = stressed
@@ -461,13 +467,13 @@ character_event = {
 		modifier = {
 			factor = 1.1
 			trait = has_measles
-		}		
+		}
 		modifier = {
 			factor = 1.1
 			trait = has_small_pox
-		}			
+		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_TOG_3001
 		add_trait = wounded
@@ -480,14 +486,12 @@ character_event = {
 	desc = EVTDESC_TOG_3003
 	picture = GFX_evt_viking_battle_oldgods
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
 		trait = berserker
 	}
-	
 	weight_multiplier = {
 		days = 1
 		modifier = {
@@ -517,7 +521,7 @@ character_event = {
 		modifier = {
 			trait = dwarf
 			factor = 1.25
-		}		
+		}
 		modifier = {
 			trait = genius
 			factor = 0.9
@@ -528,7 +532,7 @@ character_event = {
 				trait = shrewd
 			}
 			factor = 0.9
-		}	
+		}
 		modifier = {
 			OR = {
 				trait = slow
@@ -536,7 +540,6 @@ character_event = {
 			}
 			factor = 2.0
 		}
-		
 		modifier = {
 			trait = imbecile
 			factor = 3.0
@@ -552,7 +555,7 @@ character_event = {
 		modifier = {
 			is_weak_trigger = yes
 			factor = 2.5
-		}		
+		}
 		modifier = {
 			factor = 1.25
 			trait = stressed
@@ -628,36 +631,50 @@ character_event = {
 		modifier = {
 			factor = 1.1
 			trait = has_measles
-		}		
+		}
 		modifier = {
 			factor = 1.1
 			trait = has_small_pox
-		}		
+		}
 	}
-	
+
 	immediate = {
 		liege = {
 			if = {
-				limit = { NOT = { character = ROOT } }
-				character_event = { id = 253 }
+				limit = {
+					NOT = {
+						character = ROOT
+					}
+				}
+				character_event = {
+					id = 253
+				}
 			}
 		}
 		FROMFROM = {
 			if = {
-				limit = { NOT = { is_vassal_or_below = ROOT } }
+				limit = {
+					NOT = {
+						is_vassal_or_below = ROOT
+					}
+				}
 				set_character_flag = temp_battle_kill_242
-				character_event = { id = 249 }
+				character_event = {
+					id = 249
+				}
 			}
 		}
 		FROM = {
 			if = {
-				limit = { 
-					NOR = { 
+				limit = {
+					NOR = {
 						has_character_flag = temp_battle_kill_242
 						is_vassal_or_below = ROOT
 					}
 				}
-				character_event = { id = 249 }
+				character_event = {
+					id = 249
+				}
 			}
 		}
 		FROMFROM = {
@@ -667,8 +684,14 @@ character_event = {
 			limit = {
 				OR = {
 					is_liege_or_above = FROM
-					FROM = { character = ROOT }
-					NOT = { FROM = { always = yes } }
+					FROM = {
+						character = ROOT
+					}
+					NOT = {
+						FROM = {
+							always = yes
+						}
+					}
 				}
 			}
 			if = {
@@ -676,7 +699,7 @@ character_event = {
 					is_invincible_trigger = yes
 				}
 				antideath_effect = yes
-				break = yes 
+				break = yes
 			}
 			death = {
 				death_reason = death_battle
@@ -684,18 +707,18 @@ character_event = {
 			break = yes
 		}
 		if = {
-				limit = {
-					is_invincible_trigger = yes
-				}
-				antideath_effect = yes
-				break = yes 
+			limit = {
+				is_invincible_trigger = yes
 			}
+			antideath_effect = yes
+			break = yes
+		}
 		death = {
 			death_reason = death_battle
 			killer = FROM
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_TOG_3003
 	}
@@ -707,14 +730,12 @@ character_event = {
 	desc = EVTDESC_TOG_3004
 	picture = GFX_evt_viking_battle_oldgods
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
 		trait = berserker
 	}
-	
 	weight_multiplier = {
 		days = 1
 		modifier = {
@@ -735,7 +756,7 @@ character_event = {
 				trait = shrewd
 			}
 			factor = 1.1
-		}	
+		}
 		modifier = {
 			OR = {
 				trait = slow
@@ -743,7 +764,6 @@ character_event = {
 			}
 			factor = 0.9
 		}
-		
 		modifier = {
 			trait = imbecile
 			factor = 0.2
@@ -759,7 +779,7 @@ character_event = {
 		modifier = {
 			is_weak_trigger = yes
 			factor = 0.8
-		}			
+		}
 		modifier = {
 			factor = 0.8
 			trait = stressed
@@ -835,13 +855,13 @@ character_event = {
 		modifier = {
 			factor = 0.5
 			trait = has_measles
-		}		
+		}
 		modifier = {
 			factor = 0.5
 			trait = has_small_pox
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_TOG_3004
 		prestige = 200
@@ -855,17 +875,15 @@ character_event = {
 	desc = EVTDESC_TOG_3005
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
 	min_age = 50
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
 		trait = berserker
 		immortal = no
 	}
-	
+
 	option = {
 		name = EVTOPTA_TOG_3005
 		remove_trait = berserker
@@ -878,17 +896,20 @@ character_event = {
 	desc = EVTDESC_TOG_3006
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_3006
 		random_list = {
 			50 = {
-				character_event = { id = TOG.3007 days = 1 tooltip = EVTTOOLTIP_TOG_3007 }
+				character_event = {
+					id = TOG.3007 days = 1 tooltip = EVTTOOLTIP_TOG_3007
+				}
 			}
 			50 = {
-				character_event = { id = TOG.3008 days = 1 tooltip = EVTTOOLTIP_TOG_3008 }
+				character_event = {
+					id = TOG.3008 days = 1 tooltip = EVTTOOLTIP_TOG_3008
+				}
 			}
 		}
 	}
@@ -900,11 +921,9 @@ character_event = {
 	desc = EVTDESC_TOG_3007
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
 	hide_from = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_3007
 		FROMFROM = {
@@ -923,11 +942,9 @@ character_event = {
 	desc = EVTDESC_TOG_3008
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
 	hide_from = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_3008
 		piety = 20
@@ -938,48 +955,54 @@ character_event = {
 character_event = {
 	id = TOG.3009
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	ai = yes
 	min_age = 16
 	only_men = yes
 	capable_only = yes
 	prisoner = no
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
-		host = { 
+		host = {
 			character = liege
 			prisoner = no
 			trait = berserker
-			NOT = { 
+			NOT = {
 				trait = incapable
-				opinion = { who = ROOT value = 10 }
+				opinion = {
+					who = ROOT value = 10
+				}
 			}
-			NOT = { is_inaccessible_trigger = yes }
+			NOT = {
+				is_inaccessible_trigger = yes
+			}
 		}
-		NOT = { trait = berserker }
+		NOT = {
+			trait = berserker
+		}
 		is_primary_heir = no
 		is_pretender = no
 	}
-	
+
 	mean_time_to_happen = {
 		months = 2080
 	}
-	
+
 	immediate = {
 		liege = {
-			character_event = { id = TOG.3006 }
+			character_event = {
+				id = TOG.3006
+			}
 		}
 	}
-	
+
 	option = {
 		name = OK
 	}
 }
 
-### Sejdr Events
+# Sejdr Events
 
 # Völva Appears
 character_event = {
@@ -987,13 +1010,12 @@ character_event = {
 	desc = EVTDESC_TOG_3200
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	only_playable = yes
 	prisoner = no
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
 		in_command = no
@@ -1004,11 +1026,11 @@ character_event = {
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 2200
-	}	
-	
+	}
+
 	option = {
 		name = EVTOPTA_TOG_3200
 		create_character = {
@@ -1025,23 +1047,43 @@ character_event = {
 			give_minor_title = title_volva
 			add_trait = creature_human
 			add_trait = hedge_wizard
-			random_list = {  
-					30 = { add_trait = magic_potential_1 }
-					60 = { add_trait = magic_potential_2 }
-					}
-			random_list = { 15 = { add_trait = lore_beasts }
-					15 = { add_trait = lore_metal }
-					20 = { add_trait = lore_life }
-					20 = { add_trait = lore_death }
-					20 = { add_trait = lore_fire }
-					10 = { add_trait = lore_shadows }
-					}
+			random_list = {
+				30 = {
+					add_trait = magic_potential_1
+				}
+				60 = {
+					add_trait = magic_potential_2
+				}
+			}
+			random_list = {
+				15 = {
+					add_trait = lore_beasts
+				}
+				15 = {
+					add_trait = lore_metal
+				}
+				20 = {
+					add_trait = lore_life
+				}
+				20 = {
+					add_trait = lore_death
+				}
+				20 = {
+					add_trait = lore_fire
+				}
+				10 = {
+					add_trait = lore_shadows
+				}
+			}
 			z_magic_power_random = yes
 		}
 	}
+
 	option = {
 		name = EVTOPTB_TOG_3200
-		custom_tooltip = { text = away_witch }
+		custom_tooltip = {
+			text = away_witch
+		}
 	}
 }
 
@@ -1051,13 +1093,12 @@ character_event = {
 	desc = EVTDESC_TOG_3201
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	only_playable = yes
 	prisoner = no
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
 		in_command = no
@@ -1068,11 +1109,11 @@ character_event = {
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 2200
-	}	
-	
+	}
+
 	option = {
 		name = EVTOPTA_TOG_3201
 		create_character = {
@@ -1090,23 +1131,43 @@ character_event = {
 			give_minor_title = title_volva
 			add_trait = creature_human
 			add_trait = hedge_wizard
-			random_list = {  
-					30 = { add_trait = magic_potential_1 }
-					60 = { add_trait = magic_potential_2 }
-					}
-			random_list = { 15 = { add_trait = lore_beasts }
-					15 = { add_trait = lore_metal }
-					20 = { add_trait = lore_life }
-					20 = { add_trait = lore_death }
-					20 = { add_trait = lore_fire }
-					10 = { add_trait = lore_shadows }
-					}
+			random_list = {
+				30 = {
+					add_trait = magic_potential_1
+				}
+				60 = {
+					add_trait = magic_potential_2
+				}
+			}
+			random_list = {
+				15 = {
+					add_trait = lore_beasts
+				}
+				15 = {
+					add_trait = lore_metal
+				}
+				20 = {
+					add_trait = lore_life
+				}
+				20 = {
+					add_trait = lore_death
+				}
+				20 = {
+					add_trait = lore_fire
+				}
+				10 = {
+					add_trait = lore_shadows
+				}
+			}
 			z_magic_power_random = yes
 		}
 	}
+
 	option = {
 		name = EVTOPTB_TOG_3201
-		custom_tooltip = { text = no_witch }
+		custom_tooltip = {
+			text = no_witch
+		}
 	}
 }
 
@@ -1116,13 +1177,12 @@ character_event = {
 	desc = EVTDESC_TOG_3202
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	ai = no
 	min_age = 16
 	capable_only = yes
 	only_playable = yes
 	prisoner = no
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
 		in_command = no
@@ -1133,11 +1193,11 @@ character_event = {
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 2200
-	}	
-	
+	}
+
 	option = {
 		name = EVTOPTA_TOG_3202
 		create_character = {
@@ -1155,23 +1215,43 @@ character_event = {
 			give_minor_title = title_volva
 			add_trait = creature_human
 			add_trait = hedge_wizard
-			random_list = {  
-					30 = { add_trait = magic_potential_1 }
-					60 = { add_trait = magic_potential_2 }
-					}
-			random_list = { 15 = { add_trait = lore_beasts }
-					15 = { add_trait = lore_metal }
-					20 = { add_trait = lore_life }
-					20 = { add_trait = lore_death }
-					20 = { add_trait = lore_fire }
-					10 = { add_trait = lore_shadows }
-					}
+			random_list = {
+				30 = {
+					add_trait = magic_potential_1
+				}
+				60 = {
+					add_trait = magic_potential_2
+				}
+			}
+			random_list = {
+				15 = {
+					add_trait = lore_beasts
+				}
+				15 = {
+					add_trait = lore_metal
+				}
+				20 = {
+					add_trait = lore_life
+				}
+				20 = {
+					add_trait = lore_death
+				}
+				20 = {
+					add_trait = lore_fire
+				}
+				10 = {
+					add_trait = lore_shadows
+				}
+			}
 			z_magic_power_random = yes
 		}
 	}
+
 	option = {
 		name = EVTOPTB_TOG_3202
-		custom_tooltip = { text = begone_witch }
+		custom_tooltip = {
+			text = begone_witch
+		}
 	}
 }
 
@@ -1179,46 +1259,51 @@ character_event = {
 character_event = {
 	id = TOG.3203
 	hide_window = yes
-	
 	only_women = yes
 	min_age = 16
 	prisoner = no
 	only_capable = yes
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
 		# NOT = {
-			# has_game_rule = {
-				# name = supernatural_events
-				# value = off
-			# }
+		# has_game_rule = {
+		# name = supernatural_events
+		# value = off
+		# }
 		# }
 		is_pregnant = yes
 		spouse = {
 			# OR = {
-				# ai = no
-				# has_game_rule = {
-					# name = supernatural_events
-					# value = unrestricted
-				# }
+			# ai = no
+			# has_game_rule = {
+			# name = supernatural_events
+			# value = unrestricted
 			# }
-			any_courtier = { 
-				has_minor_title = title_volva 
+			# }
+			any_courtier = {
+				has_minor_title = title_volva
 			}
 		}
-		NOT = { has_character_flag = pregnant_with_demon }
+		NOT = {
+			has_character_flag = pregnant_with_demon
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 550
 	}
-	
+
 	immediate = {
 		set_character_flag = pregnant_with_demon
 		spouse = {
-			random_courtier = { 
-				limit = { has_minor_title = title_volva }
-				character_event = { id = TOG.3204 }
+			random_courtier = {
+				limit = {
+					has_minor_title = title_volva
+				}
+				character_event = {
+					id = TOG.3204
+				}
 			}
 		}
 	}
@@ -1228,12 +1313,13 @@ character_event = {
 character_event = {
 	id = TOG.3204
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		liege = {
-			character_event = { id = TOG.3205 }
+			character_event = {
+				id = TOG.3205
+			}
 		}
 	}
 }
@@ -1244,9 +1330,8 @@ character_event = {
 	desc = EVTDESC_TOG_3205
 	picture = GFX_evt_pregnancy
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_3205
 		FROM = {
@@ -1257,6 +1342,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_TOG_3205
 		FROMFROM = {
@@ -1273,20 +1359,27 @@ character_event = {
 character_event = {
 	id = TOG.3206
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
-		mother = { has_character_flag = pregnant_with_demon }
+		mother = {
+			has_character_flag = pregnant_with_demon
+		}
 	}
-	
+
 	immediate = {
 		random_list = {
-			50 = { set_character_flag = demon_child }
-			50 = { set_character_flag = demon_child_fake }
+			50 = {
+				set_character_flag = demon_child
+			}
+			50 = {
+				set_character_flag = demon_child_fake
+			}
 		}
-		mother = { clr_character_flag = pregnant_with_demon }
+		mother = {
+			clr_character_flag = pregnant_with_demon
+		}
 	}
 }
 
@@ -1294,28 +1387,35 @@ character_event = {
 character_event = {
 	id = TOG.3210
 	hide_window = yes
-	
 	min_age = 4
 	max_age = 16
 	ai = yes
 	has_character_flag = demon_child
-	
+
 	trigger = {
 		OR = {
 			has_dlc = "The Old Gods"
 			has_dlc = "Mystics"
 		}
-		NOT = { has_character_flag = child_strange_1 }
-		father = { is_alive = yes }
+		NOT = {
+			has_character_flag = child_strange_1
+		}
+		father = {
+			is_alive = yes
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 220
 	}
-	
+
 	immediate = {
 		set_character_flag = child_strange_1
-		father = { character_event = { id = TOG.3211 } }
+		father = {
+			character_event = {
+				id = TOG.3211
+			}
+		}
 	}
 }
 
@@ -1325,12 +1425,13 @@ character_event = {
 	desc = EVTDESC_TOG_3211
 	picture = GFX_evt_child_play
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_3211
-		custom_tooltip = { text = child_acts_strange }
+		custom_tooltip = {
+			text = child_acts_strange
+		}
 	}
 }
 
@@ -1338,28 +1439,35 @@ character_event = {
 character_event = {
 	id = TOG.3212
 	hide_window = yes
-	
 	min_age = 4
 	max_age = 16
 	ai = yes
 	has_character_flag = demon_child
-	
+
 	trigger = {
 		OR = {
 			has_dlc = "The Old Gods"
 			has_dlc = "Mystics"
 		}
-		NOT = { has_character_flag = child_strange_2 }
-		father = { is_alive = yes }
+		NOT = {
+			has_character_flag = child_strange_2
+		}
+		father = {
+			is_alive = yes
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 220
 	}
-	
+
 	immediate = {
 		set_character_flag = child_strange_2
-		father = { character_event = { id = TOG.3213 } }
+		father = {
+			character_event = {
+				id = TOG.3213
+			}
+		}
 	}
 }
 
@@ -1369,12 +1477,13 @@ character_event = {
 	desc = EVTDESC_TOG_3213
 	picture = GFX_evt_child_play
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_3213
-		custom_tooltip = { text = child_acts_strange }
+		custom_tooltip = {
+			text = child_acts_strange
+		}
 	}
 }
 
@@ -1382,28 +1491,35 @@ character_event = {
 character_event = {
 	id = TOG.3214
 	hide_window = yes
-	
 	min_age = 4
 	max_age = 16
 	ai = yes
 	has_character_flag = demon_child
-	
+
 	trigger = {
 		OR = {
 			has_dlc = "The Old Gods"
 			has_dlc = "Mystics"
 		}
-		NOT = { has_character_flag = child_strange_3 }
-		father = { is_alive = yes }
+		NOT = {
+			has_character_flag = child_strange_3
+		}
+		father = {
+			is_alive = yes
+		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 220
 	}
-	
+
 	immediate = {
 		set_character_flag = child_strange_3
-		father = { character_event = { id = TOG.3215 } }
+		father = {
+			character_event = {
+				id = TOG.3215
+			}
+		}
 	}
 }
 
@@ -1413,12 +1529,13 @@ character_event = {
 	desc = EVTDESC_TOG_3215
 	picture = GFX_evt_child_play
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_3215
-		custom_tooltip = { text = child_acts_strange }
+		custom_tooltip = {
+			text = child_acts_strange
+		}
 	}
 }
 
@@ -1426,19 +1543,22 @@ character_event = {
 character_event = {
 	id = TOG.3216
 	hide_window = yes
-	
 	min_age = 4
 	max_age = 16
 	ai = yes
 	has_character_flag = demon_child
-	
+
 	trigger = {
 		OR = {
 			has_dlc = "The Old Gods"
 			has_dlc = "Mystics"
 		}
-		NOT = { has_character_flag = child_kills_1 }
-		father = { is_alive = yes }
+		NOT = {
+			has_character_flag = child_kills_1
+		}
+		father = {
+			is_alive = yes
+		}
 		OR = {
 			has_character_flag = child_strange_1
 			has_character_flag = child_strange_2
@@ -1446,11 +1566,11 @@ character_event = {
 		}
 		father = {
 			any_courtier = {
-				NOT = { 
+				NOT = {
 					character = ROOT
-					is_close_relative = ROOT 
+					is_close_relative = ROOT
 				}
-				host = { 
+				host = {
 					character = liege
 					prisoner = no
 				}
@@ -1460,25 +1580,29 @@ character_event = {
 				prisoner = no
 				age = 13
 				in_command = no
-				NOT = { spouse = { character = host } }
+				NOT = {
+					spouse = {
+						character = host
+					}
+				}
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 320
 	}
-	
+
 	immediate = {
 		set_character_flag = child_kills_1
-		father = { 
+		father = {
 			random_courtier = {
 				limit = {
-					NOT = { 
+					NOT = {
 						character = ROOT
-						is_close_relative = ROOT 
+						is_close_relative = ROOT
 					}
-					host = { 
+					host = {
 						character = liege
 						prisoner = no
 					}
@@ -1488,9 +1612,15 @@ character_event = {
 					prisoner = no
 					age = 13
 					in_command = no
-					NOT = { spouse = { character = host } }
+					NOT = {
+						spouse = {
+							character = host
+						}
+					}
 				}
-				character_event = { id = TOG.3217 } 
+				character_event = {
+					id = TOG.3217
+				}
 			}
 		}
 	}
@@ -1500,34 +1630,35 @@ character_event = {
 character_event = {
 	id = TOG.3217
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
-		liege = { character_event = { id = TOG.3218 } }
+		liege = {
+			character_event = {
+				id = TOG.3218
+			}
+		}
 	}
 }
 
-#Child kills Courtier I
+# Child kills Courtier I
 character_event = {
 	id = TOG.3218
 	desc = EVTDESC_TOG_3218
 	picture = GFX_evt_viking_funeral_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_3218
 		FROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
 			death = {
 				death_reason = death_murder_unknown_fall
 				killer = ROOT
@@ -1540,19 +1671,22 @@ character_event = {
 character_event = {
 	id = TOG.3219
 	hide_window = yes
-	
 	min_age = 4
 	max_age = 16
 	ai = yes
 	has_character_flag = demon_child
-	
+
 	trigger = {
 		OR = {
 			has_dlc = "The Old Gods"
 			has_dlc = "Mystics"
 		}
-		NOT = { has_character_flag = child_kills_2 }
-		father = { is_alive = yes }
+		NOT = {
+			has_character_flag = child_kills_2
+		}
+		father = {
+			is_alive = yes
+		}
 		OR = {
 			has_character_flag = child_strange_1
 			has_character_flag = child_strange_2
@@ -1560,11 +1694,11 @@ character_event = {
 		}
 		father = {
 			any_courtier = {
-				NOT = { 
+				NOT = {
 					character = ROOT
-					is_close_relative = ROOT 
+					is_close_relative = ROOT
 				}
-				host = { 
+				host = {
 					character = liege
 					prisoner = no
 				}
@@ -1574,25 +1708,29 @@ character_event = {
 				prisoner = no
 				age = 13
 				in_command = no
-				NOT = { spouse = { character = host } }
+				NOT = {
+					spouse = {
+						character = host
+					}
+				}
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 320
 	}
-	
+
 	immediate = {
 		set_character_flag = child_kills_2
-		father = { 
+		father = {
 			random_courtier = {
 				limit = {
-					NOT = { 
+					NOT = {
 						character = ROOT
-						is_close_relative = ROOT 
+						is_close_relative = ROOT
 					}
-					host = { 
+					host = {
 						character = liege
 						prisoner = no
 					}
@@ -1602,9 +1740,15 @@ character_event = {
 					prisoner = no
 					age = 13
 					in_command = no
-					NOT = { spouse = { character = host } }
+					NOT = {
+						spouse = {
+							character = host
+						}
+					}
 				}
-				character_event = { id = TOG.3220 } 
+				character_event = {
+					id = TOG.3220
+				}
 			}
 		}
 	}
@@ -1614,34 +1758,35 @@ character_event = {
 character_event = {
 	id = TOG.3220
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
-		liege = { character_event = { id = TOG.3221 } }
+		liege = {
+			character_event = {
+				id = TOG.3221
+			}
+		}
 	}
 }
 
-#Child kills Courtier II
+# Child kills Courtier II
 character_event = {
 	id = TOG.3221
 	desc = EVTDESC_TOG_3221
 	picture = GFX_evt_viking_funeral_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_3221
 		FROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
 			death = {
 				death_reason = death_murder_unknown_fall
 				killer = ROOT
@@ -1654,19 +1799,22 @@ character_event = {
 character_event = {
 	id = TOG.3222
 	hide_window = yes
-	
 	min_age = 4
 	max_age = 16
 	ai = yes
 	has_character_flag = demon_child
-	
+
 	trigger = {
 		OR = {
 			has_dlc = "The Old Gods"
 			has_dlc = "Mystics"
 		}
-		NOT = { has_character_flag = child_kills_3 }
-		father = { is_alive = yes }
+		NOT = {
+			has_character_flag = child_kills_3
+		}
+		father = {
+			is_alive = yes
+		}
 		OR = {
 			has_character_flag = child_strange_1
 			has_character_flag = child_strange_2
@@ -1674,11 +1822,11 @@ character_event = {
 		}
 		father = {
 			any_courtier = {
-				NOT = { 
+				NOT = {
 					character = ROOT
-					is_close_relative = ROOT 
+					is_close_relative = ROOT
 				}
-				host = { 
+				host = {
 					character = liege
 					prisoner = no
 				}
@@ -1688,25 +1836,29 @@ character_event = {
 				prisoner = no
 				age = 13
 				in_command = no
-				NOT = { spouse = { character = host } }
+				NOT = {
+					spouse = {
+						character = host
+					}
+				}
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 320
 	}
-	
+
 	immediate = {
 		set_character_flag = child_kills_3
-		father = { 
+		father = {
 			random_courtier = {
 				limit = {
-					NOT = { 
+					NOT = {
 						character = ROOT
-						is_close_relative = ROOT 
+						is_close_relative = ROOT
 					}
-					host = { 
+					host = {
 						character = liege
 						prisoner = no
 					}
@@ -1716,9 +1868,15 @@ character_event = {
 					prisoner = no
 					age = 13
 					in_command = no
-					NOT = { spouse = { character = host } }
+					NOT = {
+						spouse = {
+							character = host
+						}
+					}
 				}
-				character_event = { id = TOG.3223 } 
+				character_event = {
+					id = TOG.3223
+				}
 			}
 		}
 	}
@@ -1728,34 +1886,35 @@ character_event = {
 character_event = {
 	id = TOG.3223
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
-		liege = { character_event = { id = TOG.3224 } }
+		liege = {
+			character_event = {
+				id = TOG.3224
+			}
+		}
 	}
 }
 
-#Child kills Courtier III
+# Child kills Courtier III
 character_event = {
 	id = TOG.3224
 	desc = EVTDESC_TOG_3224
 	picture = GFX_evt_viking_funeral_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_3224
 		FROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
 			death = {
 				death_reason = death_murder_unknown_drowning
 				killer = ROOT
@@ -1768,18 +1927,21 @@ character_event = {
 character_event = {
 	id = TOG.3250
 	hide_window = yes
-	
 	min_age = 4
 	max_age = 16
 	ai = yes
-	
+
 	trigger = {
 		OR = {
 			has_dlc = "The Old Gods"
 			has_dlc = "Mystics"
 		}
-		NOT = { has_character_flag = child_exorcism }
-		father = { is_alive = yes }
+		NOT = {
+			has_character_flag = child_exorcism
+		}
+		father = {
+			is_alive = yes
+		}
 		OR = {
 			has_character_flag = demon_child
 			has_character_flag = demon_child_fake
@@ -1790,17 +1952,21 @@ character_event = {
 			}
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 680
 	}
-	
+
 	immediate = {
 		set_character_flag = child_exorcism
 		father = {
 			random_courtier = {
-				limit = { has_minor_title = title_volva }
-				character_event = { id = TOG.3251 }
+				limit = {
+					has_minor_title = title_volva
+				}
+				character_event = {
+					id = TOG.3251
+				}
 			}
 		}
 	}
@@ -1810,12 +1976,13 @@ character_event = {
 character_event = {
 	id = TOG.3251
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		liege = {
-			character_event = { id = TOG.3252 }
+			character_event = {
+				id = TOG.3252
+			}
 		}
 	}
 }
@@ -1826,16 +1993,20 @@ character_event = {
 	desc = EVTDESC_TOG_3252
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_3252
 		hidden_tooltip = {
-			character_event = { id = TOG.3253 days = 7 }
+			character_event = {
+				id = TOG.3253 days = 7
+			}
 		}
-		custom_tooltip = { text = exorcism_approved }
+		custom_tooltip = {
+			text = exorcism_approved
+		}
 	}
+
 	option = {
 		name = EVTOPTB_TOG_3252
 		FROM = {
@@ -1845,7 +2016,9 @@ character_event = {
 				who = ROOT
 			}
 		}
-		custom_tooltip = { text = exorcism_denied }
+		custom_tooltip = {
+			text = exorcism_denied
+		}
 	}
 }
 
@@ -1855,20 +2028,21 @@ character_event = {
 	desc = EVTDESC_TOG_3253
 	picture = GFX_evt_pagan
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
 	hide_from = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_3253
-		
 		custom_tooltip = {
 			text = exorcism_begins
 			hidden_tooltip = {
 				random_child = {
-					limit = { has_character_flag = child_exorcism }
-					character_event = { id = TOG.3254 days = 3 }
+					limit = {
+						has_character_flag = child_exorcism
+					}
+					character_event = {
+						id = TOG.3254 days = 3
+					}
 				}
 			}
 		}
@@ -1879,14 +2053,17 @@ character_event = {
 character_event = {
 	id = TOG.3254
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		father = {
 			random_courtier = {
-				limit = { has_minor_title = title_volva }
-				character_event = { id = TOG.3255 }
+				limit = {
+					has_minor_title = title_volva
+				}
+				character_event = {
+					id = TOG.3255
+				}
 			}
 		}
 	}
@@ -1896,16 +2073,31 @@ character_event = {
 character_event = {
 	id = TOG.3255
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	immediate = {
 		liege = {
 			random_list = {
-				20 = { character_event = { id = TOG.3256 days = 3 } }
-				20 = { character_event = { id = TOG.3257 days = 3 } }
-				40 = { character_event = { id = TOG.3258 days = 3 } }
-				20 = { character_event = { id = TOG.3259 days = 3 } }
+				20 = {
+					character_event = {
+						id = TOG.3256 days = 3
+					}
+				}
+				20 = {
+					character_event = {
+						id = TOG.3257 days = 3
+					}
+				}
+				40 = {
+					character_event = {
+						id = TOG.3258 days = 3
+					}
+				}
+				20 = {
+					character_event = {
+						id = TOG.3259 days = 3
+					}
+				}
 			}
 		}
 	}
@@ -1917,25 +2109,24 @@ character_event = {
 	desc = EVTDESC_TOG_3256
 	picture = GFX_evt_child_play
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_3256
 		FROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
 			death = {
 				death_reason = death_murder_butchered
 			}
 		}
-		FROMFROM = { # Flags removed, no more events
+		FROMFROM = {
+			# Flags removed, no more events
 			clr_character_flag = demon_child
 			clr_character_flag = demon_child_fake
 			clr_character_flag = child_exorcism
@@ -1949,50 +2140,47 @@ character_event = {
 	desc = EVTDESC_TOG_3257
 	picture = GFX_evt_viking_funeral_oldgods
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_3257
 		FROMFROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
 			death = {
 				death_reason = death_sacrificed_norse
 			}
 		}
 		FROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
 			death = {
 				death_reason = death_execution
 				killer = ROOT
 			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_TOG_3257
 		FROMFROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
 			death = {
 				death_reason = death_sacrificed_norse
 			}
@@ -2001,17 +2189,17 @@ character_event = {
 			banish = yes
 		}
 	}
+
 	option = {
 		name = EVTOPTC_TOG_3257
 		FROMFROM = {
-		if = {
- limit = {
- is_invincible_trigger = yes
- }
-
-			antideath_effect = yes
-			break = yes 
-}
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
 			death = {
 				death_reason = death_sacrificed_norse
 			}
@@ -2025,9 +2213,8 @@ character_event = {
 	desc = EVTDESC_TOG_3258
 	picture = GFX_evt_pagan
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_3258
 		FROMFROM = {
@@ -2049,9 +2236,8 @@ character_event = {
 	desc = EVTDESC_TOG_3259
 	picture = GFX_evt_pagan
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTB_TOG_3257
 		FROMFROM = {
@@ -2068,6 +2254,7 @@ character_event = {
 			banish = yes
 		}
 	}
+
 	option = {
 		name = EVTOPTC_TOG_3257
 		FROMFROM = {
@@ -2087,54 +2274,63 @@ character_event = {
 character_event = {
 	id = TOG.3260
 	hide_window = yes
-	
 	min_age = 16
 	max_age = 17
 	has_character_flag = demon_child
-	
+
 	trigger = {
 		OR = {
 			has_dlc = "The Old Gods"
 			has_dlc = "Mystics"
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		days = 1
 	}
-	
+
 	immediate = {
 		clr_character_flag = demon_child
 		clr_character_flag = demon_child_fake
 		clr_character_flag = child_exorcism
 		random_list = {
-			20 = { religion = khorne }
-			20 = { religion = nurgle }
-			20 = { religion = tzeentch }
-			20 = { religion = slaanesh }
-			20 = { religion = chaos }
+			20 = {
+				religion = khorne
+			}
+			20 = {
+				religion = nurgle
+			}
+			20 = {
+				religion = tzeentch
+			}
+			20 = {
+				religion = slaanesh
+			}
+			20 = {
+				religion = chaos
+			}
 		}
 	}
 }
 
-### Looting Events
+# Looting Events
 
-# +2 Axe
+# 2 Axe
 character_event = {
 	id = TOG.3300
 	desc = EVTDESC_TOG_3300
 	picture = GFX_evt_vikings_arriving_oldgods
 	border = GFX_event_normal_frame_war
-	
 	ai = no
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
-		NOT = { has_artifact = loot_axe }
+		NOT = {
+			has_artifact = loot_axe
+		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_TOG_3300
 		add_artifact = loot_axe
@@ -2142,6 +2338,7 @@ character_event = {
 			set_creation_date = 1.1.1
 		}
 	}
+
 	option = {
 		name = EVTOPTB_TOG_3300
 		prestige = 10
@@ -2154,22 +2351,22 @@ character_event = {
 	desc = EVTDESC_TOG_3301
 	picture = GFX_evt_vikings_arriving_oldgods
 	border = GFX_event_normal_frame_economy
-	
 	ai = no
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
-		NOT = { 
-			has_artifact = strange_chest 
+		NOT = {
+			has_artifact = strange_chest
 			has_character_flag = found_chest
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_TOG_3301
-		custom_tooltip = { text = found_chest }
+		custom_tooltip = {
+			text = found_chest
+		}
 		add_artifact = strange_chest
 		set_character_flag = found_chest
 	}
@@ -2181,27 +2378,41 @@ character_event = {
 	desc = EVTDESC_TOG_3302
 	picture = GFX_evt_vikings_arriving_oldgods
 	border = GFX_event_normal_frame_economy
-	
 	ai = no
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
 		has_artifact = strange_chest
 		has_character_flag = found_chest
 	}
-	
+
 	option = {
 		name = EVTOPTA_TOG_3302
 		custom_tooltip = {
 			text = opens_chest
 			hidden_tooltip = {
 				random_list = {
-					40 = { character_event = { id = TOG.3306 } }
-					40 = { character_event = { id = TOG.3307 } }
-					40 = { character_event = { id = TOG.3308 } }
-					5 = { character_event = { id = TOG.3309 } }
+					40 = {
+						character_event = {
+							id = TOG.3306
+						}
+					}
+					40 = {
+						character_event = {
+							id = TOG.3307
+						}
+					}
+					40 = {
+						character_event = {
+							id = TOG.3308
+						}
+					}
+					5 = {
+						character_event = {
+							id = TOG.3309
+						}
+					}
 				}
 			}
 		}
@@ -2214,32 +2425,46 @@ character_event = {
 	desc = EVTDESC_TOG_3303
 	picture = GFX_evt_vikings_arriving_oldgods
 	border = GFX_event_normal_frame_economy
-	
 	ai = no
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
 		has_artifact = strange_chest
-		NOT = { 
+		NOT = {
 			has_character_flag = found_chest
 			any_dynasty_member = {
 				has_character_flag = found_chest
 			}
 		}
 	}
-	
+
 	option = {
 		name = EVTOPTA_TOG_3303
 		custom_tooltip = {
 			text = opens_chest
 			hidden_tooltip = {
 				random_list = {
-					40 = { character_event = { id = TOG.3306 } }
-					40 = { character_event = { id = TOG.3307 } }
-					40 = { character_event = { id = TOG.3308 } }
-					5 = { character_event = { id = TOG.3309 } }
+					40 = {
+						character_event = {
+							id = TOG.3306
+						}
+					}
+					40 = {
+						character_event = {
+							id = TOG.3307
+						}
+					}
+					40 = {
+						character_event = {
+							id = TOG.3308
+						}
+					}
+					5 = {
+						character_event = {
+							id = TOG.3309
+						}
+					}
 				}
 			}
 		}
@@ -2252,11 +2477,9 @@ character_event = {
 	desc = EVTDESC_TOG_3306
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_economy
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_3306
 		wealth = 200
@@ -2270,14 +2493,14 @@ character_event = {
 	desc = EVTDESC_TOG_3307
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_economy
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_3307
-		custom_tooltip = { text = chest_empty }
+		custom_tooltip = {
+			text = chest_empty
+		}
 		destroy_artifact = strange_chest
 	}
 }
@@ -2288,11 +2511,9 @@ character_event = {
 	desc = EVTDESC_TOG_3308
 	picture = GFX_evt_viking_throneroom_oldgods
 	border = GFX_event_normal_frame_economy
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_TOG_3308
 		wealth = 10
@@ -2306,37 +2527,34 @@ character_event = {
 	desc = EVTDESC_TOG_3309
 	picture = GFX_evt_shadowy_cabal
 	border = GFX_event_normal_frame_economy
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-		
+
 	option = {
 		name = EVTOPTA_TOG_3309
-		custom_tooltip = { text = seraphims }
+		custom_tooltip = {
+			text = seraphims
+		}
 		destroy_artifact = strange_chest
 	}
 }
 
-#Viking Trait Gained
+# Viking Trait Gained
 character_event = {
 	id = TOG.3320
 	desc = EVTDESC_TOG_3320
 	picture = GFX_evt_vikings_arriving_oldgods
 	border = GFX_event_normal_frame_war
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	religion = norscan_gods
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
-		NOR = { 
+		NOR = {
 			trait = viking
 			trait = ravager
 			trait = seaking
@@ -2344,44 +2562,45 @@ character_event = {
 		}
 		religion = norscan_gods
 	}
-	
+
 	option = {
 		name = EVTOPTA_TOG_3320
 		add_trait = viking
 		hidden_tooltip = {
-			set_variable = { which = viking_raids value = 0 }
+			set_variable = {
+				which = viking_raids value = 0
+			}
 		}
 	}
 }
 
-#Ravager 
+# Ravager
 character_event = {
 	id = TOG.3321
 	desc = TOG.3321.d
 	picture = GFX_evt_vikings_arriving_oldgods
 	border = GFX_event_normal_frame_war
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	religion = norscan_gods
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
 		trait = viking
-		NOR = { 
+		NOR = {
 			trait = ravager
 			trait = seaking
 			trait = sea_queen
 		}
 		religion = norscan_gods
-		check_variable = { which = viking_raids value = 50 }
+		check_variable = {
+			which = viking_raids value = 50
+		}
 	}
-	
+
 	option = {
 		name = TOG.3321.a
 		remove_trait = viking
@@ -2389,33 +2608,32 @@ character_event = {
 	}
 }
 
-#Sea King
+# Sea King
 character_event = {
 	id = TOG.3322
 	desc = TOG.3322.d
 	picture = GFX_evt_vikings_arriving_oldgods
 	border = GFX_event_normal_frame_war
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
-	
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	religion = norscan_gods
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
 		trait = ravager
-		NOR = { 
+		NOR = {
 			trait = seaking
 			trait = sea_queen
 		}
 		religion = norscan_gods
-		check_variable = { which = viking_raids value = 100 }
+		check_variable = {
+			which = viking_raids value = 100
+		}
 	}
-	
+
 	option = {
 		name = TOG.3322.a
 		remove_trait = ravager
@@ -2436,16 +2654,13 @@ character_event = {
 
 character_event = {
 	id = TOG.3323
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	religion = norscan_gods
-	
+
 	trigger = {
 		has_dlc = "The Old Gods"
 		OR = {
@@ -2454,22 +2669,22 @@ character_event = {
 		}
 		religion = norscan_gods
 	}
-	
+
 	option = {
 		name = OK
-		change_variable = { which = viking_raids value = 1 }
+		change_variable = {
+			which = viking_raids value = 1
+		}
 	}
 }
-
 
 character_event = {
 	id = TOG.3404
 	desc = TOG.3404.d
 	picture = GFX_evt_vikings_arriving_oldgods
 	border = GFX_event_normal_frame_war
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		NOT = {
 			capital_scope = {
@@ -2477,11 +2692,10 @@ character_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
-		
 	}
-	
+
 	option = {
 		name = EXCELLENT
 		capital_scope = {
@@ -2490,7 +2704,9 @@ character_event = {
 				duration = 1825
 			}
 			hidden_tooltip = {
-				change_variable = { which = prosperity_value value = 12 }
+				change_variable = {
+					which = prosperity_value value = 12
+				}
 			}
 		}
 	}

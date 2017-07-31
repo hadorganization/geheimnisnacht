@@ -1,19 +1,15 @@
-###########################################
-#                                         #
-# Way of Life scholarship events          #
-#                                         #
-# ID WoL.6000-WoL.6999                    #
-#                                         #
-###########################################
+
+
+# Way of Life scholarship events
+
+# ID WoL.6000-WoL.6999
 
 # Written by Tobias Bodlund
-
 namespace = WoL
 
-###########################################
-# Building observatory                    #
-# ID WoL.6000-WoL.6099                    #
-###########################################
+# Building observatory
+
+# ID WoL.6000-WoL.6099
 
 # Confirm building
 character_event = {
@@ -21,12 +17,15 @@ character_event = {
 	desc = EVTDESC_WoL_6000
 	picture = GFX_evt_construction_site
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
 
 	option = {
 		name = EVTOPTA_WoL_6000
-		hidden_tooltip = { character_event = { id = WoL.6010 days = 180 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.6010 days = 180
+			}
+		}
 	}
 }
 
@@ -36,12 +35,15 @@ character_event = {
 	desc = EVTDESC_WoL_6010
 	picture = GFX_evt_comet
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
 
 	option = {
 		name = EVTOPTA_WoL_6010
-		hidden_tooltip = { character_event = { id = WoL.6020 days = 180 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.6020 days = 180
+			}
+		}
 		clr_character_flag = building_observatory
 		set_character_flag = built_observatory
 		if = {
@@ -63,13 +65,14 @@ character_event = {
 	desc = EVTDESC_WoL_6020
 	picture = GFX_evt_comet
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_focus = focus_scholarship
 		prisoner = no
-		NOT = { trait = incapable }
+		NOT = {
+			trait = incapable
+		}
 	}
 
 	option = {
@@ -82,8 +85,13 @@ character_event = {
 			}
 		}
 		prestige = 10
-		hidden_tooltip = { character_event = { id = WoL.6100 days = 180 } } # Heliocentrism - how do the celestial bodies move?
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.6100 days = 180
+			}
+		} # Heliocentrism - how do the celestial bodies move?
 	}
+
 	option = {
 		name = EVTOPTB_WoL_6020
 		ai_chance = {
@@ -110,14 +118,17 @@ character_event = {
 			}
 		}
 		prestige = 5
-		hidden_tooltip = { character_event = { id = WoL.6300 days = 180 } } # Weird - maybe there's someone out there
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.6300 days = 180
+			}
+		} # Weird - maybe there's someone out there
 	}
 }
 
-###########################################
-# Heliocentric studies                    #
-# ID WoL.6100-WoL.6299                    #
-###########################################
+# Heliocentric studies
+
+# ID WoL.6100-WoL.6299
 
 # Starts believing in heliocentrist theory
 character_event = {
@@ -125,13 +136,14 @@ character_event = {
 	desc = EVTDESC_WoL_6100
 	picture = GFX_evt_comet
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
 
 	trigger = {
 		has_focus = focus_scholarship
 		prisoner = no
-		NOT = { trait = incapable }
+		NOT = {
+			trait = incapable
+		}
 	}
 
 	option = {
@@ -146,14 +158,20 @@ character_event = {
 			}
 			if = {
 				limit = {
-					NOT = { trait = zealous }
-					NOT = { trait = cynical }
+					NOT = {
+						trait = zealous
+					}
+					NOT = {
+						trait = cynical
+					}
 				}
 				random = {
 					chance = 50
 					add_trait = cynical
 					hidden_tooltip = {
-						character_event = { id = 38258 } # Notification
+						character_event = {
+							id = 38258
+						} # Notification
 					}
 				}
 			}
@@ -165,22 +183,34 @@ character_event = {
 					chance = 50
 					remove_trait = zealous
 					hidden_tooltip = {
-						character_event = { id = 38310 } # Notification
+						character_event = {
+							id = 38310
+						} # Notification
 					}
 				}
 			}
 		}
 		if = {
-			limit = { NOT = { trait = diligent } }
+			limit = {
+				NOT = {
+					trait = diligent
+				}
+			}
 			random = {
 				chance = 20
 				add_trait = diligent
 				hidden_tooltip = {
-					character_event = { id = 38256 } # Notification
+					character_event = {
+						id = 38256
+					} # Notification
 				}
 			}
 		}
-		hidden_tooltip = { character_event = { id = WoL.6110 days = 180 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.6110 days = 180
+			}
+		}
 	}
 }
 
@@ -190,13 +220,14 @@ character_event = {
 	desc = EVTDESC_WoL_6110
 	picture = GFX_evt_scientist
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
 
 	trigger = {
 		has_focus = focus_scholarship
 		prisoner = no
-		NOT = { trait = incapable }
+		NOT = {
+			trait = incapable
+		}
 	}
 
 	option = {
@@ -205,24 +236,37 @@ character_event = {
 			factor = 1
 			modifier = {
 				factor = 0
-				NOT = { wealth = 30 }
+				NOT = {
+					wealth = 30
+				}
 			}
 		}
 		if = {
-			limit = { has_character_flag = owns_observatory_equipment }
+			limit = {
+				has_character_flag = owns_observatory_equipment
+			}
 			custom_tooltip = {
 				text = CUSTOM_TOOLTIP_OWNS_OBSERVATORY_EQUIPMENT
 			}
 		}
 		if = {
-			limit = { NOT = { has_character_flag = owns_observatory_equipment } }
+			limit = {
+				NOT = {
+					has_character_flag = owns_observatory_equipment
+				}
+			}
 			set_character_flag = owns_observatory_equipment
 			wealth = -30
 		}
-		hidden_tooltip = { character_event = { id = WoL.6120 days = 180 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.6120 days = 180
+			}
+		}
 	}
+
 	option = {
-		name = EVTOPTB_WoL_6110  # Abandon research
+		name = EVTOPTB_WoL_6110 # Abandon research
 		ai_chance = {
 			factor = 1
 		}
@@ -233,15 +277,15 @@ character_event = {
 # Friend or family member worries about dangerous research
 character_event = {
 	id = WoL.6120
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
 
 	trigger = {
 		has_focus = focus_scholarship
 		prisoner = no
-		NOT = { trait = incapable }
+		NOT = {
+			trait = incapable
+		}
 	}
 
 	immediate = {
@@ -254,45 +298,72 @@ character_event = {
 						trait = zealous
 						at_location = ROOT
 						# NOT = { religion = zun_pagan }
-						NOT = { religion = tzeentch }
+						NOT = {
+							religion = tzeentch
+						}
 						# NOT = { religion = buddhist }
 						OR = {
-							mother = { character = ROOT }
-							father = { character = ROOT }
-							any_child = { character = ROOT }
+							mother = {
+								character = ROOT
+							}
+							father = {
+								character = ROOT
+							}
+							any_child = {
+								character = ROOT
+							}
 							AND = {
-								any_sibling = { character = ROOT }
-								NOT = { is_rival = ROOT }
+								any_sibling = {
+									character = ROOT
+								}
+								NOT = {
+									is_rival = ROOT
+								}
 							}
 							is_friend = ROOT
 						}
 					}
 				}
 			}
-			character_event = { id = WoL.6130 days = 180 }
-			break = yes                                         # NOTE
+			character_event = {
+				id = WoL.6130 days = 180
+			}
+			break = yes # NOTE
 		}
-		
 		random_courtier = {
 			limit = {
 				is_adult = yes
 				trait = zealous
 				at_location = ROOT
 				# NOT = { religion = zun_pagan }
-				NOT = { religion = tzeentch }
+				NOT = {
+					religion = tzeentch
+				}
 				# NOT = { religion = buddhist }
 				OR = {
-					mother = { character = ROOT }
-					father = { character = ROOT }
-					any_child = { character = ROOT }
+					mother = {
+						character = ROOT
+					}
+					father = {
+						character = ROOT
+					}
+					any_child = {
+						character = ROOT
+					}
 					AND = {
-						any_sibling = { character = ROOT }
-						NOT = { is_rival = ROOT }
+						any_sibling = {
+							character = ROOT
+						}
+						NOT = {
+							is_rival = ROOT
+						}
 					}
 					is_friend = ROOT
 				}
 			}
-			character_event = { id = WoL.6121 } # Friend or family is worried
+			character_event = {
+				id = WoL.6121
+			} # Friend or family is worried
 		}
 	}
 }
@@ -300,13 +371,15 @@ character_event = {
 # Friend or family bounce event
 character_event = {
 	id = WoL.6121
-
 	hide_window = yes
-	
 	is_triggered_only = yes
 
 	immediate = {
-		FROM = { character_event = { id = WoL.6122 } }
+		FROM = {
+			character_event = {
+				id = WoL.6122
+			}
+		}
 	}
 }
 
@@ -316,25 +389,34 @@ character_event = {
 	desc = EVTDESC_WoL_6122
 	picture = GFX_evt_courtiers_talking
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
 
 	option = {
 		name = EVTOPTA_WoL_6122 # Don't worry
 		if = {
 			limit = {
-				NOT = { trait = stressed }
-				NOT = { trait = brave }
-				NOT = { trait = lunatic_3 }
-				NOT = { trait = lunatic_2 }
-				NOT = { trait = lunatic_1 }
+				NOT = {
+					trait = stressed
+				}
+				NOT = {
+					trait = brave
+				}
+				NOT = {
+					trait = lunatic_3
+				}
+				NOT = {
+					trait = lunatic_2
+				}
+				NOT = {
+					trait = lunatic_1
+				}
 			}
 			random = {
 				chance = 10
 				add_trait = stressed
 				hidden_tooltip = {
 					character_event = {
-						id = 38282 #Notify Stressed
+						id = 38282 # Notify Stressed
 					}
 				}
 			}
@@ -344,28 +426,48 @@ character_event = {
 			who = FROM
 			years = 2
 		}
-		hidden_tooltip = { character_event = { id = WoL.6130 days = 180 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.6130 days = 180
+			}
+		}
 	}
+
 	option = {
-		name = EVTOPTB_WoL_6122  # Get your nose out of my business!
+		name = EVTOPTB_WoL_6122 # Get your nose out of my business!
 		prestige = 30
 		reverse_opinion = {
 			modifier = opinion_angry
 			who = FROM
 			years = 2
 		}
-		hidden_tooltip = { character_event = { id = WoL.6130 days = 180 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.6130 days = 180
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTC_WoL_6122 # Alright, I'll stop it (lies)
 		trigger = {
-			NOT = { trait = honest }
+			NOT = {
+				trait = honest
+			}
 		}
 		if = {
-			limit = { NOT = { trait = deceitful } }
+			limit = {
+				NOT = {
+					trait = deceitful
+				}
+			}
 			add_trait = deceitful
 		}
-		hidden_tooltip = { character_event = { id = WoL.6130 days = 180 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.6130 days = 180
+			}
+		}
 	}
 }
 
@@ -375,21 +477,25 @@ character_event = {
 	desc = EVTDESC_WoL_6130
 	picture = GFX_evt_comet
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
 
 	trigger = {
 		has_focus = focus_scholarship
 		prisoner = no
-		NOT = { trait = incapable }
+		NOT = {
+			trait = incapable
+		}
 	}
 
 	option = {
 		name = EVTOPTA_WoL_6130
 		military_techpoints = 100
-		hidden_tooltip = { character_event = { id = WoL.6140 days = 180 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.6140 days = 180
+			}
+		}
 	}
 }
 
@@ -399,55 +505,75 @@ character_event = {
 	desc = EVTDESC_WoL_6140
 	picture = GFX_evt_scientist
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
 
 	trigger = {
 		has_focus = focus_scholarship
 		prisoner = no
-		NOT = { trait = incapable }
+		NOT = {
+			trait = incapable
+		}
 	}
 
 	option = {
 		name = EVTOPTA_WoL_6140 # Persist!
 		if = {
-			limit = { NOT = { trait = diligent } }
+			limit = {
+				NOT = {
+					trait = diligent
+				}
+			}
 			random = {
 				chance = 30
 				add_trait = diligent
 				hidden_tooltip = {
 					character_event = {
-						id = 38256 #Notify Diligent
+						id = 38256 # Notify Diligent
 					}
 				}
 			}
 		}
 		if = {
-			limit = { NOT = { trait = stressed } }
+			limit = {
+				NOT = {
+					trait = stressed
+				}
+			}
 			random = {
 				chance = 10
 				add_trait = stressed
 				hidden_tooltip = {
 					character_event = {
-						id = 38282 #Notify Stressed
+						id = 38282 # Notify Stressed
 					}
 				}
 			}
 		}
-		hidden_tooltip = { character_event = { id = WoL.6150 days = 180 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.6150 days = 180
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTB_WoL_6140 # Give up on this silly pursuit
 		if = {
 			limit = {
-				NOT = { trait = slothful }
-				NOT = { trait = diligent }
+				NOT = {
+					trait = slothful
+				}
+				NOT = {
+					trait = diligent
+				}
 			}
 			add_trait = slothful
 		}
 		if = {
 			limit = {
-				NOT = { trait = slothful }
+				NOT = {
+					trait = slothful
+				}
 				trait = diligent
 			}
 			remove_trait = diligent
@@ -459,43 +585,55 @@ character_event = {
 # Religious authorities find out
 character_event = {
 	id = WoL.6150
-
 	hide_window = yes
-	
 	is_triggered_only = yes
 
 	trigger = {
 		has_focus = focus_scholarship
 		prisoner = no
-		NOT = { trait = incapable }
+		NOT = {
+			trait = incapable
+		}
 	}
 
 	immediate = {
 		if = {
 			limit = {
-				religion_head = { is_alive = yes }
-				religion_head = { ai = yes }
-				NOT = { religion = tzeentch }
+				religion_head = {
+					is_alive = yes
+				}
+				religion_head = {
+					ai = yes
+				}
+				NOT = {
+					religion = tzeentch
+				}
 			}
 			religion_head = {
-				character_event = { id = WoL.6151 } # Religious head opines
+				character_event = {
+					id = WoL.6151
+				} # Religious head opines
 			}
 			break = yes
 		}
-		character_event = { id = WoL.6160 } # Else skip to next
+		character_event = {
+			id = WoL.6160
+		} # Else skip to next
 	}
 }
 
 # Religious head
 character_event = {
 	id = WoL.6151
-
 	hide_window = yes
-	
 	is_triggered_only = yes
 
 	immediate = {
-		FROM = { letter_event = { id = WoL.6152 } }
+		FROM = {
+			letter_event = {
+				id = WoL.6152
+			}
+		}
 	}
 }
 
@@ -504,7 +642,6 @@ letter_event = {
 	id = WoL.6152
 	desc = EVTDESC_WoL_6152
 	border = GFX_event_letter_frame_religion
-	
 	is_triggered_only = yes
 
 	option = {
@@ -512,7 +649,11 @@ letter_event = {
 		prestige = 50
 		piety = -50
 		if = {
-			limit = { NOT = { trait = brave } }
+			limit = {
+				NOT = {
+					trait = brave
+				}
+			}
 			add_trait = brave
 		}
 		reverse_opinion = {
@@ -524,8 +665,13 @@ letter_event = {
 			name = annoyed_religious
 			years = 2
 		}
-		hidden_tooltip = { character_event = { id = WoL.6160 days = 180 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.6160 days = 180
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTB_WoL_6152 # The best answer is silence
 		piety = -20
@@ -534,8 +680,13 @@ letter_event = {
 			who = FROM
 			years = 5
 		}
-		hidden_tooltip = { character_event = { id = WoL.6160 days = 180 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.6160 days = 180
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTC_WoL_6152 # Stop my heretical research
 		reverse_opinion = {
@@ -557,22 +708,26 @@ character_event = {
 	desc = EVTDESC_WoL_6160
 	picture = GFX_evt_comet
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-	
 	is_triggered_only = yes
 
 	trigger = {
 		has_focus = focus_scholarship
 		prisoner = no
-		NOT = { trait = incapable }
+		NOT = {
+			trait = incapable
+		}
 	}
 
 	option = {
 		name = EVTOPTA_WoL_6160
 		change_learning = 1
 		military_techpoints = 100
-		hidden_tooltip = { character_event = { id = WoL.6170 days = 180 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.6170 days = 180
+			}
+		}
 	}
 }
 
@@ -582,25 +737,32 @@ character_event = {
 	desc = EVTDESC_WoL_6170
 	picture = GFX_evt_scientist
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
 
 	trigger = {
 		has_focus = focus_scholarship
 		prisoner = no
-		NOT = { trait = incapable }
+		NOT = {
+			trait = incapable
+		}
 	}
 
 	option = {
 		name = EVTOPTA_WoL_6170 # Publish findings
 		prestige = 300
 		if = {
-			limit = { NOT = { lifestyle_traits = 1 } }
+			limit = {
+				NOT = {
+					lifestyle_traits = 1
+				}
+			}
 			remove_character_modifier = studying_the_stars
 			add_trait = scholar
 		}
 		if = {
-			limit = { has_nickname = no }
+			limit = {
+				has_nickname = no
+			}
 			random_list = {
 				10 = {
 					give_nickname = nick_the_wise
@@ -615,7 +777,6 @@ character_event = {
 					modifier = {
 						factor = 0
 						religion = tzeentch
-						
 					}
 					give_nickname = nick_priest_hater
 				}
@@ -623,7 +784,9 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = { religion = tzeentch }
+				NOT = {
+					religion = tzeentch
+				}
 			}
 			add_character_modifier = {
 				name = annoyed_religious
@@ -636,7 +799,9 @@ character_event = {
 					is_priest = yes
 					trait = zealous
 				}
-				NOT = { religion = tzeentch }
+				NOT = {
+					religion = tzeentch
+				}
 			}
 			opinion = {
 				modifier = opinion_heretic
@@ -645,14 +810,20 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_WoL_6170 # Keep it secret but continue dedicating myself to knowledge
 		if = {
-			limit = { NOT = { lifestyle_traits = 1 } }
+			limit = {
+				NOT = {
+					lifestyle_traits = 1
+				}
+			}
 			remove_character_modifier = studying_the_stars
 			add_trait = scholar
 		}
 	}
+
 	option = {
 		name = EVTOPTC_WoL_6170 # Very interesting but I'm done with this
 		remove_character_modifier = studying_the_stars
@@ -661,16 +832,23 @@ character_event = {
 			duration = -1
 		}
 	}
+
 	option = {
 		name = EVTOPTD_WoL_6170 # This is heretical - I must burn it!
 		trigger = {
-			NOT = { religion = tzeentch }
+			NOT = {
+				religion = tzeentch
+			}
 		}
 		remove_character_modifier = studying_the_stars
 		if = {
 			limit = {
-				NOT = { trait = zealous }
-				NOT = { trait = cynical }
+				NOT = {
+					trait = zealous
+				}
+				NOT = {
+					trait = cynical
+				}
 			}
 			add_trait = zealous
 		}
@@ -683,11 +861,9 @@ character_event = {
 	}
 }
 
+# Weird studies
 
-###########################################
-# Weird studies                           #
-# ID WoL.6300-WoL.6499                    #
-###########################################
+# ID WoL.6300-WoL.6499
 
 # Starts believing in cosmic "things" out there
 character_event = {
@@ -695,34 +871,47 @@ character_event = {
 	desc = EVTDESC_WoL_6300
 	picture = GFX_evt_comet
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
 
 	trigger = {
 		has_focus = focus_scholarship
 		prisoner = no
-		NOT = { trait = incapable }
+		NOT = {
+			trait = incapable
+		}
 	}
 
 	option = {
 		name = EVTOPTA_WoL_6300
 		if = {
-			limit = { NOT = { trait = paranoid } }
+			limit = {
+				NOT = {
+					trait = paranoid
+				}
+			}
 			add_trait = paranoid
 		}
 		if = {
-			limit = { NOT = { trait = diligent } }
+			limit = {
+				NOT = {
+					trait = diligent
+				}
+			}
 			random = {
 				chance = 30
 				add_trait = diligent
 				hidden_tooltip = {
 					character_event = {
-						id = 38256 #Notify Diligent
+						id = 38256 # Notify Diligent
 					}
 				}
 			}
 		}
-		hidden_tooltip = { character_event = { id = WoL.6310 days = 180 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.6310 days = 180
+			}
+		}
 	}
 }
 
@@ -732,13 +921,14 @@ character_event = {
 	desc = EVTDESC_WoL_6110
 	picture = GFX_evt_ritual_scroll
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
 
 	trigger = {
 		has_focus = focus_scholarship
 		prisoner = no
-		NOT = { trait = incapable }
+		NOT = {
+			trait = incapable
+		}
 	}
 
 	option = {
@@ -747,24 +937,37 @@ character_event = {
 			factor = 1
 			modifier = {
 				factor = 0
-				NOT = { wealth = 30 }
+				NOT = {
+					wealth = 30
+				}
 			}
 		}
 		if = {
-			limit = { has_character_flag = owns_observatory_equipment }
+			limit = {
+				has_character_flag = owns_observatory_equipment
+			}
 			custom_tooltip = {
 				text = CUSTOM_TOOLTIP_OWNS_OBSERVATORY_EQUIPMENT
 			}
 		}
 		if = {
-			limit = { NOT = { has_character_flag = owns_observatory_equipment } }
+			limit = {
+				NOT = {
+					has_character_flag = owns_observatory_equipment
+				}
+			}
 			set_character_flag = owns_observatory_equipment
 			wealth = -30
 		}
-		hidden_tooltip = { character_event = { id = WoL.6320 days = 180 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.6320 days = 180
+			}
+		}
 	}
+
 	option = {
-		name = EVTOPTB_WoL_6110  # Abandon research
+		name = EVTOPTB_WoL_6110 # Abandon research
 		ai_chance = {
 			factor = 1
 		}
@@ -775,15 +978,15 @@ character_event = {
 # Friend or family member worries about dangerous research
 character_event = {
 	id = WoL.6320
-	
 	hide_window = yes
-	
 	is_triggered_only = yes
 
 	trigger = {
 		has_focus = focus_scholarship
 		prisoner = no
-		NOT = { trait = incapable }
+		NOT = {
+			trait = incapable
+		}
 	}
 
 	immediate = {
@@ -795,38 +998,61 @@ character_event = {
 						trait = zealous
 						at_location = ROOT
 						OR = {
-							mother = { character = ROOT }
-							father = { character = ROOT }
-							any_child = { character = ROOT }
+							mother = {
+								character = ROOT
+							}
+							father = {
+								character = ROOT
+							}
+							any_child = {
+								character = ROOT
+							}
 							AND = {
-								any_sibling = { character = ROOT }
-								NOT = { is_rival = ROOT }
+								any_sibling = {
+									character = ROOT
+								}
+								NOT = {
+									is_rival = ROOT
+								}
 							}
 							is_friend = ROOT
 						}
 					}
 				}
 			}
-			character_event = { id = WoL.6329 days = 180 }
-			break = yes                                         # NOTE
+			character_event = {
+				id = WoL.6329 days = 180
+			}
+			break = yes # NOTE
 		}
-		
 		random_courtier = {
 			limit = {
 				trait = zealous
 				at_location = ROOT
 				OR = {
-					mother = { character = ROOT }
-					father = { character = ROOT }
-					any_child = { character = ROOT }
+					mother = {
+						character = ROOT
+					}
+					father = {
+						character = ROOT
+					}
+					any_child = {
+						character = ROOT
+					}
 					AND = {
-						any_sibling = { character = ROOT }
-						NOT = { is_rival = ROOT }
+						any_sibling = {
+							character = ROOT
+						}
+						NOT = {
+							is_rival = ROOT
+						}
 					}
 					is_friend = ROOT
 				}
 			}
-			character_event = { id = WoL.6321 } # Friend or family is worried
+			character_event = {
+				id = WoL.6321
+			} # Friend or family is worried
 		}
 	}
 }
@@ -834,13 +1060,15 @@ character_event = {
 # Friend or family bounce event
 character_event = {
 	id = WoL.6321
-
 	hide_window = yes
-	
 	is_triggered_only = yes
 
 	immediate = {
-		FROM = { character_event = { id = WoL.6322 } }
+		FROM = {
+			character_event = {
+				id = WoL.6322
+			}
+		}
 	}
 }
 
@@ -850,7 +1078,6 @@ character_event = {
 	desc = EVTDESC_WoL_6322
 	picture = GFX_evt_courtiers_talking
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
 
 	option = {
@@ -860,43 +1087,63 @@ character_event = {
 			who = FROM
 			years = 2
 		}
-		hidden_tooltip = { character_event = { id = WoL.6329 days = 180 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.6329 days = 180
+			}
+		}
 	}
+
 	option = {
-		name = EVTOPTB_WoL_6322  # I am communing with other worlds here!
+		name = EVTOPTB_WoL_6322 # I am communing with other worlds here!
 		prestige = 30
 		reverse_opinion = {
 			modifier = opinion_afraid
 			who = FROM
 			years = 2
 		}
-		hidden_tooltip = { character_event = { id = WoL.6329 days = 180 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.6329 days = 180
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTC_WoL_6322 # Alright, I'll stop it (lies)
 		trigger = {
-			NOT = { trait = honest }
+			NOT = {
+				trait = honest
+			}
 		}
 		if = {
-			limit = { NOT = { trait = deceitful } }
+			limit = {
+				NOT = {
+					trait = deceitful
+				}
+			}
 			add_trait = deceitful
 		}
-		hidden_tooltip = { character_event = { id = WoL.6329 days = 180 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.6329 days = 180
+			}
+		}
 	}
 }
 
 # Research needs more info, hears about strange scholar in arab desert, decides to travel there
 character_event = {
 	id = WoL.6329
-
 	hide_window = yes
-
 	is_triggered_only = yes
 
 	trigger = {
 		has_focus = focus_scholarship
 		prisoner = no
-		NOT = { trait = incapable }
+		NOT = {
+			trait = incapable
+		}
 	}
 
 	immediate = {
@@ -908,10 +1155,14 @@ character_event = {
 					has_character_flag = do_not_disturb
 				}
 			}
-			repeat_event = { id = WoL.6329 days = 30 } # Fire again with no scope changes
+			repeat_event = {
+				id = WoL.6329 days = 30
+			} # Fire again with no scope changes
 			break = yes
 		}
-		character_event = { id = WoL.6330 }
+		character_event = {
+			id = WoL.6330
+		}
 	}
 }
 
@@ -920,9 +1171,7 @@ character_event = {
 	desc = EVTDESC_WoL_6330
 	picture = GFX_evt_ritual_scroll
 	border = GFX_event_normal_frame_religion
-	
 	hide_from = yes
-
 	is_triggered_only = yes
 
 	option = {
@@ -931,20 +1180,31 @@ character_event = {
 			factor = 1
 			modifier = {
 				factor = 0
-				NOT = { scaled_wealth = 0.3 }
+				NOT = {
+					scaled_wealth = 0.3
+				}
 			}
 		}
 		scaled_wealth = -0.2
-		hidden_tooltip = { narrative_event = { id = WoL.6331 days = 90 } }
+		hidden_tooltip = {
+			narrative_event = {
+				id = WoL.6331 days = 90
+			}
+		}
 		set_character_flag = do_not_disturb
 	}
+
 	option = {
-		name = EVTOPTB_WoL_6330  # Abandon research, this is too much
+		name = EVTOPTB_WoL_6330 # Abandon research, this is too much
 		ai_chance = {
 			factor = 1
 		}
 		if = {
-			limit = { NOR = { trait = craven trait = berserker } }
+			limit = {
+				NOR = {
+					trait = craven trait = berserker
+				}
+			}
 			add_trait = craven
 		}
 		remove_character_modifier = studying_the_stars
@@ -958,7 +1218,6 @@ narrative_event = {
 	title = EVTTITLE_WoL_6331
 	picture = GFX_evt_lunatic
 	border = GFX_event_narrative_frame_religion
-	
 	is_triggered_only = yes
 
 	option = {
@@ -973,27 +1232,34 @@ narrative_event = {
 			set_creation_date = 1.1.1
 		}
 		clr_character_flag = do_not_disturb
-		hidden_tooltip = { character_event = { id = WoL.6340 days = 180 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.6340 days = 180
+			}
+		}
 	}
+
 	option = {
-		name = EVTOPTB_WoL_6331  # No thanks
+		name = EVTOPTB_WoL_6331 # No thanks
 		ai_chance = {
 			factor = 1
 		}
 		culture_techpoints = 30
 		clr_character_flag = do_not_disturb
-		hidden_tooltip = { character_event = { id = WoL.6340 days = 180 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.6340 days = 180
+			}
+		}
 	}
 }
 
 # Weird death event for owner of Necronomicon (on action on_death)
 character_event = {
 	id = WoL.6335
-
 	hide_window = yes
-	
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_artifact = necronomicon
 	}
@@ -1001,7 +1267,9 @@ character_event = {
 	immediate = {
 		destroy_artifact = necronomicon
 		current_heir = {
-			character_event = { id = WoL.6336 days = 7 }
+			character_event = {
+				id = WoL.6336 days = 7
+			}
 		}
 	}
 }
@@ -1012,9 +1280,8 @@ character_event = {
 	desc = EVTDESC_WoL_6336
 	picture = GFX_evt_ritual_scroll
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EVTOPTA_WoL_6336
 	}
@@ -1026,60 +1293,86 @@ character_event = {
 	desc = EVTDESC_WoL_6340
 	picture = GFX_evt_ritual_scroll
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
 
 	trigger = {
 		has_focus = focus_scholarship
 		prisoner = no
-		NOT = { trait = incapable }
+		NOT = {
+			trait = incapable
+		}
 	}
 
 	option = {
 		name = EVTOPTA_WoL_6340 # Persist!
 		if = {
-			limit = { NOT = { trait = diligent } }
+			limit = {
+				NOT = {
+					trait = diligent
+				}
+			}
 			random = {
 				chance = 30
 				add_trait = diligent
 				hidden_tooltip = {
 					character_event = {
-						id = 38256 #Notify Diligent
+						id = 38256 # Notify Diligent
 					}
 				}
 			}
 		}
 		if = {
-			limit = { NOT = { trait = stressed } }
+			limit = {
+				NOT = {
+					trait = stressed
+				}
+			}
 			random = {
 				chance = 20
 				add_trait = stressed
 				hidden_tooltip = {
 					character_event = {
-						id = 38282 #Notify Stressed
+						id = 38282 # Notify Stressed
 					}
 				}
 			}
 		}
 		if = {
-			limit = { has_artifact = necronomicon }
-			hidden_tooltip = { character_event = { id = WoL.6350 days = 180 } }
+			limit = {
+				has_artifact = necronomicon
+			}
+			hidden_tooltip = {
+				character_event = {
+					id = WoL.6350 days = 180
+				}
+			}
 			break = yes
 		}
-		hidden_tooltip = { character_event = { id = WoL.6360 days = 180 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.6360 days = 180
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTB_WoL_6340 # Give up on this silly pursuit
 		if = {
 			limit = {
-				NOT = { trait = slothful }
-				NOT = { trait = diligent }
+				NOT = {
+					trait = slothful
+				}
+				NOT = {
+					trait = diligent
+				}
 			}
 			add_trait = slothful
 		}
 		if = {
 			limit = {
-				NOT = { trait = slothful }
+				NOT = {
+					trait = slothful
+				}
 				trait = diligent
 			}
 			remove_trait = diligent
@@ -1094,43 +1387,64 @@ character_event = {
 	desc = EVTDESC_WoL_6350
 	picture = GFX_evt_ritual_scroll
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
 
 	trigger = {
 		has_focus = focus_scholarship
 		prisoner = no
-		NOT = { trait = incapable }
+		NOT = {
+			trait = incapable
+		}
 	}
 
 	option = {
 		name = EVTOPTA_WoL_6350 # Leave it on the shelf, it's too scary
 		culture_techpoints = 20
-		hidden_tooltip = { character_event = { id = WoL.6360 days = 180 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.6360 days = 180
+			}
+		}
 	}
+
 	option = {
 		name = EVTOPTB_WoL_6350 # Go deeper
 		culture_techpoints = 200
 		if = {
-			limit = { NOT = { trait = lunatic_3 } }
-			hidden_tooltip = { change_variable = { which = "lunatic_counter" value = 2 } 
-					 character_event = { id = mutation.1005 }
+			limit = {
+				NOT = {
+					trait = lunatic_3
 				}
-		}	
+			}
+			hidden_tooltip = {
+				change_variable = {
+					which = "lunatic_counter" value = 2
+				}
+				character_event = {
+					id = mutation.1005
+				}
+			}
+		}
 		if = {
-			limit = { NOT = { trait = paranoid } }
+			limit = {
+				NOT = {
+					trait = paranoid
+				}
+			}
 			random = {
 				chance = 30
 				add_trait = paranoid
 				hidden_tooltip = {
 					character_event = {
-						id = 38275 #Notify Paranoid
+						id = 38275 # Notify Paranoid
 					}
 				}
 			}
 		}
 		if = {
-			limit = { has_nickname = no }
+			limit = {
+				has_nickname = no
+			}
 			random_list = {
 				10 = {
 					give_nickname = nick_the_scholar
@@ -1147,13 +1461,19 @@ character_event = {
 				10 = {
 					modifier = {
 						factor = 0
-						NOT = { religion_group = old_world_group }
+						NOT = {
+							religion_group = old_world_group
+						}
 					}
 					give_nickname = nick_the_black
 				}
 			}
 		}
-		hidden_tooltip = { character_event = { id = WoL.6360 days = 180 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.6360 days = 180
+			}
+		}
 	}
 }
 
@@ -1163,20 +1483,25 @@ character_event = {
 	desc = EVTDESC_WoL_6360
 	picture = GFX_evt_comet
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
 
 	trigger = {
 		has_focus = focus_scholarship
 		prisoner = no
-		NOT = { trait = incapable }
+		NOT = {
+			trait = incapable
+		}
 	}
 
 	option = {
 		name = EVTOPTA_WoL_6360
 		change_learning = 1
 		culture_techpoints = 100
-		hidden_tooltip = { character_event = { id = WoL.6370 days = 180 } }
+		hidden_tooltip = {
+			character_event = {
+				id = WoL.6370 days = 180
+			}
+		}
 	}
 }
 
@@ -1186,34 +1511,51 @@ character_event = {
 	desc = EVTDESC_WoL_6370
 	picture = GFX_evt_comet
 	border = GFX_event_normal_frame_religion
-	
 	is_triggered_only = yes
 
 	trigger = {
 		has_focus = focus_scholarship
 		prisoner = no
-		NOT = { trait = incapable }
+		NOT = {
+			trait = incapable
+		}
 	}
 
 	option = {
 		name = EVTOPTA_WoL_6370 # Keep it secret but continue dedicating myself to knowledge
 		if = {
-			limit = { NOT = { lifestyle_traits = 1 } }
+			limit = {
+				NOT = {
+					lifestyle_traits = 1
+				}
+			}
 			remove_character_modifier = studying_the_stars
 			add_trait = mystic
 		}
 		if = {
-			limit = { NOT = { has_character_modifier = magic_power_1 }
-				NOT = { has_character_modifier = magic_power_2 }
-				NOT = { has_character_modifier = magic_power_3 }
-				NOT = { has_character_modifier = magic_power_4 }
+			limit = {
+				NOT = {
+					has_character_modifier = magic_power_1
+				}
+				NOT = {
+					has_character_modifier = magic_power_2
+				}
+				NOT = {
+					has_character_modifier = magic_power_3
+				}
+				NOT = {
+					has_character_modifier = magic_power_4
+				}
 				religion = tzeentch
-				learning = 15 }
-				add_trait = lore_tzeentch
-				z_magic_power_sequential_addition = yes
+				learning = 15
+			}
+			add_trait = lore_tzeentch
+			z_magic_power_sequential_addition = yes
 		}
 		if = {
-			limit = { has_nickname = no }
+			limit = {
+				has_nickname = no
+			}
 			random_list = {
 				10 = {
 					give_nickname = nick_the_scholar
@@ -1224,6 +1566,7 @@ character_event = {
 			}
 		}
 	}
+
 	option = {
 		name = EVTOPTB_WoL_6370 # Very interesting but there are other things in life
 		remove_character_modifier = studying_the_stars
@@ -1233,4 +1576,3 @@ character_event = {
 		}
 	}
 }
-

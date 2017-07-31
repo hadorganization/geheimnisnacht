@@ -1,69 +1,90 @@
 namespace = ruin_lore
 
-
-
-
-
 character_event = {
-	id = ruin_lore.101#Drain Magic Power 1"
-	desc = ruin_lore.101_desc#"Your spell burns through the air, taking from all enemies the ability to cast. "
+	id = ruin_lore.101# Drain Magic Power 1"
+	desc = ruin_lore.101_desc# "Your spell burns through the air, taking from all enemies the ability to cast. "
 	is_triggered_only = yes
 	picture = GFX_evt_skaven_caster
 
-
 	option = {
-		name = ruin_lore.101a#No
-		character_event = { id = z_spell_menu.99996}
+		name = ruin_lore.101a# No
+		character_event = {
+			id = z_spell_menu.99996
+		}
 		event_target:magic_caster = {
-			set_variable = { which = zdmg value = 5 }
-			set_variable = { which = zmoraledmg value = 5 }		
-			change_variable = { which = zdmg which = caster_level }
-			change_variable = { which = zmoraledmg which = caster_level }		
+			set_variable = {
+				which = zdmg value = 5
+			}
+			set_variable = {
+				which = zmoraledmg value = 5
+			}
+			change_variable = {
+				which = zdmg which = caster_level
+			}
+			change_variable = {
+				which = zmoraledmg which = caster_level
+			}
 			if = {
 				limit = {
 					trait = grey_seer
 				}
-				change_variable = { which = zdmg value = 3 }
-				change_variable = { which = zmoraledmg value = 3 }		
-
-			}
-			if = { 
-				limit = { 
-					check_variable = { which = "warpcrack" value = 1 }
+				change_variable = {
+					which = zdmg value = 3
 				}
-				change_variable = { which = zdmg value = 3 }
-				change_variable = { which = zmoraledmg value = 3 }				
-			}	
-			
+				change_variable = {
+					which = zmoraledmg value = 3
+				}
+			}
+			if = {
+				limit = {
+					check_variable = {
+						which = "warpcrack" value = 1
+					}
+				}
+				change_variable = {
+					which = zdmg value = 3
+				}
+				change_variable = {
+					which = zmoraledmg value = 3
+				}
+			}
 		}
 		any_character = {
 			limit = {
 				war_with = root
 				any_army = {
-					location = { province = event_target:spellloc }
+					location = {
+						province = event_target:spellloc
+					}
 				}
 			}
 			random_army = {
 				limit = {
-					location = { province = event_target:spellloc }
+					location = {
+						province = event_target:spellloc
+					}
 				}
-				leader = { 
+				leader = {
 					magic_points_setup = yes
 					save_event_target_as = spelltarget
 					magic_resist_test = yes
 				}
-				if = { 
-					limit = { 
-						event_target:magic_caster = { 
+				if = {
+					limit = {
+						event_target:magic_caster = {
 							has_character_flag = resisted
 						}
 					}
 					event_target:magic_caster = {
 						clr_character_flag = resisted
-						divide_variable = { which = zdmg value = 2 }
-						divide_variable = { which = zmoraledmg value = 2 }	
+						divide_variable = {
+							which = zdmg value = 2
+						}
+						divide_variable = {
+							which = zmoraledmg value = 2
+						}
 					}
-				}			
+				}
 				magic_dmg_effect = yes
 				morale_dmg_effect = yes
 			}
@@ -81,8 +102,6 @@ character_event = {
 				}
 			}
 		}
-		
-
 		random = {
 			chance = 15
 			modifier = {
@@ -94,105 +113,139 @@ character_event = {
 			modifier = {
 				factor = 1.1
 				event_target:magic_caster = {
-					check_variable = { which = "warpcrack" value = 2 }
+					check_variable = {
+						which = "warpcrack" value = 2
+					}
 				}
 			}
 			modifier = {
 				factor = 1.1
 				event_target:magic_caster = {
-					check_variable = { which = "warpcrack" value = 3 }
+					check_variable = {
+						which = "warpcrack" value = 3
+					}
 				}
 			}
 			modifier = {
 				factor = 1.1
 				event_target:magic_caster = {
-					check_variable = { which = "warpcrack" value = 4 }
+					check_variable = {
+						which = "warpcrack" value = 4
+					}
 				}
 			}
 			modifier = {
 				factor = 1.1
 				event_target:magic_caster = {
-					check_variable = { which = "warpcrack" value = 5 }
+					check_variable = {
+						which = "warpcrack" value = 5
+					}
 				}
 			}
 			if = {
 				limit = {
 					event_target:magic_caster = {
-						check_variable = { which = "warpcrack" value = 2 }
+						check_variable = {
+							which = "warpcrack" value = 2
+						}
 					}
 				}
 				event_target:magic_caster = {
 					magic_item_proc = yes
 				}
 			}
-				repeat_event = { id = ruin_lore.102 }
+			repeat_event = {
+				id = ruin_lore.102
+			}
 		}
 	}
 }
 
-
-
-
 character_event = {
-	id = ruin_lore.201#Soul Quench 1"
-	desc = ruin_lore.201#"Your power consumes the life of your chosen target "
+	id = ruin_lore.201# Soul Quench 1"
+	desc = ruin_lore.201# "Your power consumes the life of your chosen target "
 	is_triggered_only = yes
 	picture = GFX_evt_skaven_caster
 
-
 	option = {
-		name = ruin_lore.201a#No
-		character_event = { id = z_spell_menu.99996}
+		name = ruin_lore.201a# No
+		character_event = {
+			id = z_spell_menu.99996
+		}
 		event_target:magic_caster = {
-			set_variable = { which = zdmg value = 10 }
-			set_variable = { which = zmoraledmg value = 10 }		
-			change_variable = { which = zdmg which = caster_level }
-			change_variable = { which = zmoraledmg which = caster_level }		
+			set_variable = {
+				which = zdmg value = 10
+			}
+			set_variable = {
+				which = zmoraledmg value = 10
+			}
+			change_variable = {
+				which = zdmg which = caster_level
+			}
+			change_variable = {
+				which = zmoraledmg which = caster_level
+			}
 			if = {
 				limit = {
 					trait = grey_seer
 				}
-				change_variable = { which = zdmg value = 3 }
-				change_variable = { which = zmoraledmg value = 3 }		
-
-			}
-			if = { 
-				limit = { 
-					check_variable = { which = "warpcrack" value = 1 }
+				change_variable = {
+					which = zdmg value = 3
 				}
-				change_variable = { which = zdmg value = 5 }
-				change_variable = { which = zmoraledmg value = 5 }				
-			}	
-			
+				change_variable = {
+					which = zmoraledmg value = 3
+				}
+			}
+			if = {
+				limit = {
+					check_variable = {
+						which = "warpcrack" value = 1
+					}
+				}
+				change_variable = {
+					which = zdmg value = 5
+				}
+				change_variable = {
+					which = zmoraledmg value = 5
+				}
+			}
 		}
 		any_character = {
 			limit = {
 				war_with = root
 				any_army = {
-					location = { province = event_target:spellloc }
+					location = {
+						province = event_target:spellloc
+					}
 				}
 			}
 			random_army = {
 				limit = {
-					location = { province = event_target:spellloc }
+					location = {
+						province = event_target:spellloc
+					}
 				}
-				leader = { 
+				leader = {
 					magic_points_setup = yes
 					save_event_target_as = spelltarget
 					magic_resist_test = yes
 				}
-				if = { 
-					limit = { 
-						event_target:magic_caster = { 
+				if = {
+					limit = {
+						event_target:magic_caster = {
 							has_character_flag = resisted
 						}
 					}
 					event_target:magic_caster = {
 						clr_character_flag = resisted
-						divide_variable = { which = zdmg value = 2 }
-						divide_variable = { which = zmoraledmg value = 2 }	
+						divide_variable = {
+							which = zdmg value = 2
+						}
+						divide_variable = {
+							which = zmoraledmg value = 2
+						}
 					}
-				}			
+				}
 				magic_dmg_effect = yes
 				morale_dmg_effect = yes
 			}
@@ -213,67 +266,91 @@ character_event = {
 	}
 }
 
-
-
 character_event = {
-	id = ruin_lore.301#Apotheosis 1"
-	desc = ruin_lore.301_desc#"Your spell restores those close to death or those freshly dead"
+	id = ruin_lore.301# Apotheosis 1"
+	desc = ruin_lore.301_desc# "Your spell restores those close to death or those freshly dead"
 	is_triggered_only = yes
 	picture = GFX_evt_skaven_caster
 
 	option = {
-		name = ruin_lore.301a#Cast Another Spell ?
-		character_event = { id = z_spell_menu.99996}
+		name = ruin_lore.301a# Cast Another Spell ?
+		character_event = {
+			id = z_spell_menu.99996
+		}
 		event_target:magic_caster = {
-			set_variable = { which = zdmg value = 8 }
-			set_variable = { which = zmoraledmg value = 8 }		
-			change_variable = { which = zdmg which = caster_level }
-			change_variable = { which = zmoraledmg which = caster_level }		
+			set_variable = {
+				which = zdmg value = 8
+			}
+			set_variable = {
+				which = zmoraledmg value = 8
+			}
+			change_variable = {
+				which = zdmg which = caster_level
+			}
+			change_variable = {
+				which = zmoraledmg which = caster_level
+			}
 			if = {
 				limit = {
 					trait = grey_seer
 				}
-				change_variable = { which = zdmg value = 3 }
-				change_variable = { which = zmoraledmg value = 3 }		
-
-			}
-			if = { 
-				limit = { 
-					check_variable = { which = "warpcrack" value = 1 }
+				change_variable = {
+					which = zdmg value = 3
 				}
-				change_variable = { which = zdmg value = 3 }
-				change_variable = { which = zmoraledmg value = 3 }				
-			}	
-			
+				change_variable = {
+					which = zmoraledmg value = 3
+				}
+			}
+			if = {
+				limit = {
+					check_variable = {
+						which = "warpcrack" value = 1
+					}
+				}
+				change_variable = {
+					which = zdmg value = 3
+				}
+				change_variable = {
+					which = zmoraledmg value = 3
+				}
+			}
 		}
 		any_character = {
 			limit = {
 				war_with = root
 				any_army = {
-					location = { province = event_target:spellloc }
+					location = {
+						province = event_target:spellloc
+					}
 				}
 			}
 			random_army = {
 				limit = {
-					location = { province = event_target:spellloc }
+					location = {
+						province = event_target:spellloc
+					}
 				}
-				leader = { 
+				leader = {
 					magic_points_setup = yes
 					save_event_target_as = spelltarget
 					magic_resist_test = yes
 				}
-				if = { 
-					limit = { 
-						event_target:magic_caster = { 
+				if = {
+					limit = {
+						event_target:magic_caster = {
 							has_character_flag = resisted
 						}
 					}
 					event_target:magic_caster = {
 						clr_character_flag = resisted
-						divide_variable = { which = zdmg value = 2 }
-						divide_variable = { which = zmoraledmg value = 2 }	
+						divide_variable = {
+							which = zdmg value = 2
+						}
+						divide_variable = {
+							which = zmoraledmg value = 2
+						}
 					}
-				}			
+				}
 				magic_dmg_effect = yes
 				morale_dmg_effect = yes
 			}
@@ -299,125 +376,158 @@ character_event = {
 	}
 }
 
-
-
 character_event = {
-	id = ruin_lore.401#Soul Quench 1"
-	desc = ruin_lore.401_desc#"Your power consumes the life of your chosen target "
+	id = ruin_lore.401# Soul Quench 1"
+	desc = ruin_lore.401_desc# "Your power consumes the life of your chosen target "
 	is_triggered_only = yes
 	picture = GFX_evt_skaven_caster
+
 	immediate = {
-		character_event = { id = z_spell_menu.99996}
+		character_event = {
+			id = z_spell_menu.99996
+		}
 	}
 
 	option = {
-		name = ruin_lore.401a#Cast Another Spell ?
+		name = ruin_lore.401a# Cast Another Spell ?
 		if = {
 			limit = {
 				event_target:magic_caster = {
-					not = { check_variable = { which = "warpcrack" value = 1 } }
+					not = {
+						check_variable = {
+							which = "warpcrack" value = 1
+						}
+					}
 				}
 			}
 			event_target:magic_caster = {
 				spawn_unit = {
-				  owner = ROOT
-				  province = ROOT
-				  home = ROOT
-				  troops = {
-					war_elephants = { 30 30 }
-				  }
-				  attrition = 0.0
-				  reinforces = yes
-				  disband_on_peace = no
-				  maintenance_multiplier = 0.0
+					owner = ROOT
+					province = ROOT
+					home = ROOT
+					troops = {
+						war_elephants = {
+							30 30
+						}
+
+					}
+					attrition = 0.0
+					reinforces = yes
+					disband_on_peace = no
+					maintenance_multiplier = 0.0
 				}
 			}
 		}
 		if = {
 			limit = {
 				event_target:magic_caster = {
-					check_variable = { which = "warpcrack" value = 1 }
+					check_variable = {
+						which = "warpcrack" value = 1
+					}
 				}
 			}
 			event_target:magic_caster = {
 				spawn_unit = {
-				  owner = ROOT
-				  province = ROOT
-				  home = ROOT
-				  troops = {
-					war_elephants = { 50 50 }
-				  }
-				  attrition = 0.0
-				  reinforces = yes
-				  disband_on_peace = no
-				  maintenance_multiplier = 0.0
+					owner = ROOT
+					province = ROOT
+					home = ROOT
+					troops = {
+						war_elephants = {
+							50 50
+						}
+
+					}
+					attrition = 0.0
+					reinforces = yes
+					disband_on_peace = no
+					maintenance_multiplier = 0.0
 				}
 			}
 		}
 	}
 }
 
-
 character_event = {
-	id = ruin_lore.501#Soul Quench 1"
-	desc = ruin_lore.451#"Your power consumes the life of your chosen target "
+	id = ruin_lore.501# Soul Quench 1"
+	desc = ruin_lore.451# "Your power consumes the life of your chosen target "
 	is_triggered_only = yes
 	picture = GFX_evt_skaven_caster
+
 	immediate = {
-		character_event = { id = z_spell_menu.99996}
+		character_event = {
+			id = z_spell_menu.99996
+		}
 	}
 
 	option = {
-		name = ruin_lore.451a#Cast Another Spell ?
+		name = ruin_lore.451a# Cast Another Spell ?
 		event_target:magic_caster = {
 			spawn_unit = {
-			  owner = ROOT
-			  province = ROOT
-			  home = ROOT
-			  troops = {
-				heavy_infantry = { 300 300 }
-			  }
-			  attrition = 0.0
-			  reinforces = yes
-			  disband_on_peace = no
-			  maintenance_multiplier = 0.0
+				owner = ROOT
+				province = ROOT
+				home = ROOT
+				troops = {
+					heavy_infantry = {
+						300 300
+					}
+
+				}
+				attrition = 0.0
+				reinforces = yes
+				disband_on_peace = no
+				maintenance_multiplier = 0.0
 			}
 		}
 		event_target:magic_caster = {
-			set_variable = { which = zdmg value = 30 }
-			set_variable = { which = zmoraledmg value = 35 }		
-			change_variable = { which = zdmg which = caster_level }
-			change_variable = { which = zmoraledmg which = caster_level }			
-			
+			set_variable = {
+				which = zdmg value = 30
+			}
+			set_variable = {
+				which = zmoraledmg value = 35
+			}
+			change_variable = {
+				which = zdmg which = caster_level
+			}
+			change_variable = {
+				which = zmoraledmg which = caster_level
+			}
 		}
 		any_character = {
 			limit = {
 				war_with = root
 				any_army = {
-					location = { province = event_target:spellloc }
+					location = {
+						province = event_target:spellloc
+					}
 				}
 			}
 			random_army = {
 				limit = {
-					location = { province = event_target:spellloc }
+					location = {
+						province = event_target:spellloc
+					}
 				}
-				leader = { 
+				leader = {
 					magic_points_setup = yes
 					save_event_target_as = spelltarget
 					magic_resist_test = yes
 				}
-				if = { 
-					limit = { 
-						event_target:magic_caster = { 
+				if = {
+					limit = {
+						event_target:magic_caster = {
 							has_character_flag = resisted
 						}
 					}
 					event_target:magic_caster = {
 						clr_character_flag = resisted
-						divide_variable = { which = zdmg value = 2 }
-						divide_variable = { which = zmoraledmg value = 2 }	
+						divide_variable = {
+							which = zdmg value = 2
+						}
+						divide_variable = {
+							which = zmoraledmg value = 2
+						}
 					}
-				}			
+				}
 				magic_dmg_effect = yes
 				morale_dmg_effect = yes
 			}
@@ -436,11 +546,6 @@ character_event = {
 			}
 		}
 	}
-
 }
 
-
-
-#process
-
-
+# process

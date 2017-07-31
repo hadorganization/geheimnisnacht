@@ -1,0 +1,766 @@
+is_disease_immune_race = {
+	OR = {
+		trait = creature_forestspirit
+		trait = creature_treekin
+		trait = creature_slann
+		# think about it
+		AND = {
+			is_demon_trigger = yes
+			NOT = {
+				religion = nurgle
+			}
+		}
+		trait = creature_skink
+		trait = creature_saurus
+		trait = creature_orc
+		trait = creature_goblin
+		trait = creature_snotling
+		is_undead_trigger = yes
+	}
+}
+
+is_long_lived_character = {
+	OR = {
+		trait = creature_elf
+		trait = creature_dwarf
+		trait = creature_chaos_dwarf
+		trait = grail_knight
+		trait = immortal
+		trait = elixir_of_eternal_youth
+	}
+}
+
+is_no_females_race = {
+	OR = {
+		trait = creature_skink
+		trait = creature_saurus
+		trait = creature_orc
+		trait = creature_goblin
+		trait = creature_snotling
+		trait = creature_nehekharan
+		trait = creature_slann
+		trait = creature_skaven
+	}
+}
+
+is_mutated_trigger = {
+	OR = {
+		trait = mutation_minor
+		trait = mutation_major
+		trait = mutation_massive
+		trait = mut_eyes
+		trait = mut_thirdeye
+		trait = mut_spines
+		trait = mut_scales
+		trait = mut_horns
+		trait = mut_spines
+		trait = mut_doublehead
+		trait = mut_beak
+		trait = mut_tongue
+		trait = mut_teeth
+		trait = mut_eyes
+		trait = mut_bigeyes
+	}
+}
+
+#checks if a character is a demon
+is_demon_trigger = {
+	OR = {
+		trait = khorne_demon
+		trait = slaanesh_demon
+		trait = nurgle_demon
+		trait = tzeentch_demon
+		trait = khorne_bloodletter
+		trait = nurgle_plaguebearer
+		trait = slaanesh_daemonette
+		trait = tzeentch_flamer
+		trait = hashut_kdaai
+		# need it?
+		trait = prince_khorne
+		trait = prince_nurgle
+		trait = prince_slaanesh
+		trait = prince_tzeentch
+	}
+}
+
+#For all visible vampires, character scope
+is_visible_vampire_trigger = {
+	OR = {
+		trait = vampire_lahmian_visible
+		trait = vampire_carstein_visible
+		trait = vampire_blood_visible
+		trait = vampire_strigoi_visible
+		trait = vampire_necrarch_visible
+		trait = vampire_jade_visible
+		trait = vampire_mahtmasi_visible
+	}
+}
+
+#For all hidden vampires, not yet used, character scope
+is_hidden_vampire_trigger = {
+	OR = {
+		trait = vampire_lahmian_hidden
+		trait = vampire_carstein_hidden
+		trait = vampire_blood_hidden
+		trait = vampire_strigoi_hidden
+		trait = vampire_necrarch_hidden
+		trait = vampire_jade_hidden
+		trait = vampire_mahtmasi_hidden
+	}
+}
+
+#For all vampires, hidden or not. NOTE: At present time, check for hidden is disabled for performace, to be reactivated when hidden vampires are implemented
+is_vampire_trigger = {
+	OR = {
+		is_visible_vampire_trigger = yes
+		#is_hidden_vampire_trigger = yes
+	}
+}
+
+is_undead_trigger = {
+	OR = {
+		is_vampire_trigger = yes
+		trait = creature_nehekharan
+	}
+}
+
+is_living_human_trigger = {
+	OR = {
+		trait = creature_human
+		trait = creature_amazon
+	}
+	is_vampire_trigger = no
+}
+
+cant_love_trigger = {
+	nor = {
+		culture_group = daemonic_group
+		trait = creature_goblin
+		trait = creature_orc
+		trait = creature_skink
+		trait = creature_skaven
+		culture_group = orc_group
+		culture_group = goblin_group
+		culture_group = lizardman_group
+		trait = pet_consort
+		trait = druchi_witch_elf
+		trait = druchi_assassin
+		trait = skaven_breeder
+	}
+}
+
+is_invincible_trigger = {
+	OR = {
+		has_artifact = carstein_ring		#more entries might be added later on
+		trait = khemri_tomb_king
+		trait = black_arkhan
+		trait = creature_celdragon
+	}
+}
+
+is_immortal_trigger = {
+	OR = {
+		#more entries might be added later on
+		is_undead_trigger = yes
+		trait = immortal
+		trait = elixir_of_eternal_youth
+		trait = creature_orc
+		trait = creature_goblin
+		trait = creature_slann
+		is_demon_trigger = yes
+		trait = hashut_kdaai
+		trait = creature_celdragon
+	}
+}
+
+is_incapacitated_trigger = {
+	OR = {
+		trait = incapable
+		trait = incapacitated
+		trait = studying_magic
+		trait = crafting_magic_item
+		trait = questing
+		trait = blood_questing
+		trait = monster_hunting
+		trait = on_witch_hunt
+		trait = on_dark_elf_raid
+		trait = searching_underground
+		trait = studying_mechanics
+		trait = on_lahmian_mission
+		trait = lizardman_sleepingslann
+		trait = sold_into_slavery
+		trait = on_knight_quest
+		trait = on_grail_quest
+		trait = on_errantry_quest
+		trait = retired_with_harem
+		trait = hard_pregnancy
+		trait = troubled_pregnancy
+		trait = resting
+		trait = staked
+		trait = pregnancy_finishing
+		trait = in_stock
+		trait = pet_consort
+		trait = on_pilgrimage
+		prisoner = yes
+		trait = creature_celdragon
+		trait = hollowed
+	}
+}
+
+is_cultist_trigger = {
+	OR = {
+		society_member_of = cult_of_khorne
+		society_member_of = cult_of_khorne2
+		society_member_of = cult_of_khorne3
+		society_member_of = cult_of_nurgle
+		society_member_of = cult_of_nurgle2
+		society_member_of = cult_of_nurgle3
+		society_member_of = cult_of_slaanesh
+		society_member_of = cult_of_slaanesh2
+		society_member_of = cult_of_slaanesh3
+		society_member_of = cult_of_tzeentch
+		society_member_of = cult_of_tzeentch2
+		society_member_of = cult_of_tzeentch3
+	}
+}
+
+is_incorruptible_trigger = {
+	OR = {
+		is_demon_trigger = yes
+		trait = avatar_kurnous
+		trait = avatar_isha
+		trait = everqueen
+		trait = fay_enchantress
+		trait = malekith
+		trait = creature_forestspirit
+		trait = creature_slann
+		trait = creature_skink
+		trait = creature_saurus
+		trait = creature_orc
+		trait = creature_goblin
+		trait = creature_snotling
+		trait = chosen_khorne
+		trait = chosen_nurgle
+		trait = chosen_slaanesh
+		trait = chosen_tzeentch
+		trait = creature_chaosspawn
+		trait = creature_celdragon
+		has_character_flag = forsaken_flag
+		is_undead_trigger = yes
+	}
+}
+cannot_marry_trigger = {
+	OR = {
+		is_theocracy = yes
+		trait = eunuch
+		trait = monk
+		trait = nun
+		trait = horse
+		trait = witch_hunter
+		trait = khemri_liche_priest
+		trait = khemri_soldier
+		trait = druchi_witch_elf
+		trait = druchi_sorceress
+		trait = creature_amazon
+		trait = creature_treekin
+		trait = creature_chaosspawn
+		trait = creature_monster
+		trait = vampire_necrarch_visible
+		trait = special_char_red_duke
+		trait = everqueen_heir
+		trait = pet_consort
+		trait = widowed
+		# chosen cannot marry good or bad?
+		is_demon_trigger = yes
+		trait = everqueen
+		trait = fay_enchantress
+		trait = creature_forestspirit
+		trait = creature_slann
+		trait = creature_skink
+		trait = creature_saurus
+		trait = creature_orc
+		trait = creature_goblin
+		trait = creature_snotling
+		trait = creature_celdragon
+		trait = mage_apprentice
+		trait = transgender
+		trait = disinherited_amazon
+		trait = in_stock
+		trait = clay_sculptor
+		trait = astromancer
+		trait = skaven_breeder
+		trait = courting
+	}
+}
+
+z_has_magic_power_true = {
+	or = {
+		has_character_modifier = magic_power_4
+		has_character_modifier = magic_power_3
+		has_character_modifier = magic_power_2
+		has_character_modifier = magic_power_1
+		and = {
+			trait = warlock_engineer
+			or = {
+				has_character_modifier = warp_stone
+				has_character_modifier = warp_stone_1
+				has_character_modifier = warp_stone_2
+				has_character_modifier = warp_stone_3
+				has_character_modifier = warp_stone_4
+				has_character_modifier = warp_stone_5
+			}
+		}
+		and = {
+			trait = plaguelord
+			or = {
+				has_character_modifier = warp_stone
+				has_character_modifier = warp_stone_1
+				has_character_modifier = warp_stone_2
+				has_character_modifier = warp_stone_3
+				has_character_modifier = warp_stone_4
+				has_character_modifier = warp_stone_5
+			}
+		}
+	}
+}
+
+z_geomancy_ok = {
+	holder = {
+		culture_group = lizardman_group
+	}
+}
+
+z_geomancy_not = {
+	holder = {
+		not = {
+			culture_group = lizardman_group
+		}
+	}
+}
+
+z_lizard_priest = {
+	OR = {
+		trait = creature_slann
+		trait = skink_priest
+	}
+}
+
+z_magic_non_combat_caster = {
+	or = {
+		trait = lore_high_magic
+		trait = lore_beasts
+		trait = lore_heavens
+		#trait = lore_fire
+		#trait = lore_metal
+		#trait = lore_light
+		#trait = lore_shadows
+		#trait = lore_life
+		#trait = lore_death
+	}
+
+}
+
+z_magic_non_combat_valid_caster = {
+	NOR = {
+		has_character_modifier = magic_cooldown
+		has_character_flag = casting
+	}
+	NOR = {
+		trait = incapable
+		trait = resting
+		trait = incapacitated
+	}
+	or = {
+		trait = lore_high_magic
+		trait = lore_beasts
+		trait = lore_heavens
+		#trait = lore_fire
+		#trait = lore_metal
+		#trait = lore_light
+		#trait = lore_shadows
+		#trait = lore_life
+		#trait = lore_death
+	}
+	z_has_magic_power_true = yes
+
+}
+
+z_combat_magic_caster = {
+	OR = {
+		trait = chaos_dwarf_sorcerer
+		trait = khemri_liche_priest
+		trait = warlock_engineer
+		trait = lore_vermin
+		trait = lore_dark_magic
+		trait = lore_necromancy
+		trait = lore_beasts
+		trait = lore_heavens
+		trait = lore_fire
+		trait = lore_metal
+		trait = lore_light
+		trait = lore_shadows
+		trait = lore_life
+		trait = lore_death
+		trait = lore_high_magic
+		trait = lore_nurgle
+		trait = lore_slaanesh
+		trait = lore_tzeentch
+		trait = lore_ice
+		trait = lore_waaagh
+	}
+
+}
+
+z_combat_magic_valid_caster = {
+	NOR = {
+		has_character_modifier = magic_cooldown
+		has_character_flag = casting
+
+	}
+	NOR = {
+		trait = incapable
+		trait = resting
+		trait = incapacitated
+	}
+	OR = {
+		trait = chaos_dwarf_sorcerer
+		trait = khemri_liche_priest
+		trait = warlock_engineer
+		trait = lore_vermin
+		trait = lore_dark_magic
+		trait = lore_necromancy
+		trait = lore_beasts
+		trait = lore_heavens
+		trait = lore_fire
+		trait = lore_metal
+		trait = lore_light
+		trait = lore_shadows
+		trait = lore_life
+		trait = lore_death
+		trait = lore_high_magic
+		trait = lore_nurgle
+		trait = lore_slaanesh
+		trait = lore_tzeentch
+		trait = lore_ice
+		trait = lore_waaagh
+	}
+	z_has_magic_power_true = yes
+}
+
+z_is_loremaster = {
+	or = {
+		trait = lore_high_magic
+		trait = lore_beasts
+		trait = lore_heavens
+		trait = lore_fire
+		trait = lore_metal
+		trait = lore_light
+		trait = lore_shadows
+		trait = lore_life
+		trait = lore_death
+	}
+}
+
+z_magic_dueling_valid_caster = {
+	NOR = {
+		has_character_modifier = magic_cooldown
+		has_character_flag = casting
+	}
+	NOR = {
+		trait = incapable
+		trait = resting
+		trait = incapacitated
+	}
+	or = {
+		trait = lore_high_magic
+		#trait = lore_beasts
+		#trait = lore_heavens
+		#trait = lore_fire
+		#trait = lore_metal
+		#trait = lore_light
+		#trait = lore_shadows
+		#trait = lore_life
+		#trait = lore_death
+	}
+
+}
+
+z_dueling_caster = {
+	OR = {
+		#trait = chaos_dwarf_sorcerer
+		#trait = khemri_liche_priest
+		#trait = grey_seer
+		#trait = warlock_engineer
+		#trait = plaguelord
+		#trait = lore_dark_magic
+		#trait = lore_necromancy
+		#trait = lore_beasts
+		#trait = lore_heavens
+		#trait = lore_fire
+		#trait = lore_metal
+		#trait = lore_light
+		#trait = lore_shadows
+		#trait = lore_life
+		#trait = lore_death
+		trait = lore_high_magic
+		#trait = lore_nurgle
+		#trait = lore_slaanesh
+		#trait = lore_tzeentch
+		#trait = lore_ice
+		#trait = lore_waaagh
+	}
+
+}
+
+z_valid_channeller = {
+	OR = {
+		trait = chaos_dwarf_sorcerer
+		trait = khemri_liche_priest
+		#trait = warlock_engineer
+		trait = lore_vermin
+		trait = lore_dark_magic
+		trait = lore_necromancy
+		trait = lore_beasts
+		trait = lore_heavens
+		trait = lore_fire
+		trait = lore_metal
+		trait = lore_light
+		trait = lore_shadows
+		trait = lore_life
+		trait = lore_death
+		trait = lore_high_magic
+		trait = lore_nurgle
+		trait = lore_slaanesh
+		trait = lore_tzeentch
+		trait = lore_ice
+		trait = lore_waaagh
+	}
+
+}
+
+z_spell_plot_shield = {
+	OR = {
+		has_character_modifier = z_foresight_blessing_plot
+		has_character_modifier = z_divination_plot_block
+	}
+}
+
+z_spell_plot_success = {
+	has_character_modifier = z_divination_plot_success
+}
+
+z_spell_plot_curse = {
+	has_character_modifier = z_foresight_curse_plot
+}
+
+z_spell_duel_shield = {
+	has_character_modifier = z_foresight_blessing_plot
+}
+
+z_spell_duel_curse = {
+	has_character_modifier = z_foresight_curse_battle
+}
+
+z_plot_fail = {
+	OR = {
+		has_character_modifier = z_foresight_blessing_plot
+		has_character_modifier = z_divination_plot_block
+	}
+
+}
+
+z_plot_succeed = {
+	OR = {
+		AND = {
+			FROMFROM = {
+				has_character_modifier = z_divination_plot_success
+			}
+			NOT = {
+				OR = {
+					has_character_modifier = z_foresight_blessing_plot
+					has_character_modifier = z_divination_plot_block
+				}
+			}
+		}
+		has_character_modifier = z_foresight_curse_plot
+	}
+}
+
+z_has_magic_power_true = {
+	or = {
+		has_character_modifier = magic_power_4
+		has_character_modifier = magic_power_3
+		has_character_modifier = magic_power_2
+		has_character_modifier = magic_power_1
+		and = {
+			trait = warlock_engineer
+			or = {
+				has_character_modifier = warp_stone
+				has_character_modifier = warp_stone_1
+				has_character_modifier = warp_stone_2
+				has_character_modifier = warp_stone_3
+				has_character_modifier = warp_stone_4
+				has_character_modifier = warp_stone_5
+			}
+		}
+	}
+}
+
+z_lore_of_heavens_caster = {
+	OR = {
+		trait = lore_heavens
+		has_artifact = mages_tome_heavens
+	}
+}
+
+z_lore_of_beasts_caster = {
+	OR =  {
+		trait = lore_beasts
+		has_artifact = mages_tome_beasts
+	}
+}
+
+z_lore_of_fire_caster = {
+	OR = {
+		trait = lore_fire
+		has_artifact = mages_tome_fire
+	}
+}
+
+z_lore_of_metal_caster = {
+	OR = {
+		trait = lore_metal
+		has_artifact = mages_tome_metal
+	}
+}
+
+z_lore_of_light_caster = {
+	OR = {
+		trait = lore_light
+		has_artifact = mages_tome_light
+	}
+}
+
+z_lore_of_shadows_caster = {
+	OR = {
+		trait = lore_shadows
+		has_artifact = mages_tome_shadows
+	}
+}
+
+z_lore_of_life_caster = {
+	OR = {
+		trait = lore_life
+		has_artifact = mages_tome_life
+	}
+}
+
+z_lore_of_death_caster = {
+	OR = {
+		trait = lore_death
+		has_artifact = mages_tome_death
+	}
+}
+
+# Basic requirements to found, co-found, or join leagues.
+# Intended to be unseen, used in "potential" rather than "allow".
+league_potential_trigger = {
+	independent = yes
+	in_revolt = no
+	is_landed = yes
+	mercenary = no
+	higher_real_tier_than = BARON
+	trait = creature_human
+	capital_scope = {
+		region =  world_old_world_border_princes
+	}
+}
+
+# Visible requirements for co-founding or joining leagues.
+THIS_can_join_PREV_league_trigger = {
+	# Not checked here: rank requirements (different for initial creation vs later additions)
+	# Not checked here: adjacency requirements (graph traversal for initial creation)
+
+	# Same religion group
+	custom_tooltip = {
+		text = SAME_RELIGION_GROUP  # Less confusing than e.g. "Is Christian"
+		religion_group = PREV
+	}
+
+	trait = creature_human
+	capital_scope = { region =  world_old_world_border_princes }
+
+	is_primary_war_defender = no
+
+	# Ally or potential ally
+	custom_tooltip = {
+		text = ELECTIVE_LEAGUE_ALLY_ETC
+		OR = {
+			is_allied_with = PREV                # Strong ally
+			has_non_aggression_pact_with = PREV  # Potential ally, even if the AI hasn't bothered
+			is_close_relative = PREV             # Potential ally, even if the AI hasn't bothered
+			pays_tribute_to = PREV               # Weak ally
+			is_friend = PREV                     # Weak ally
+		}
+	}
+
+	# We like PREV enough to voluntarily create an alliance
+	opinion = { who = PREV  value = 26 }
+}
+
+religion_allows_feudal_elective_trigger = {
+	custom_tooltip = {
+		text = FEUDAL_ELECTIVE_RELIGION_REQUIREMENT
+		OR = {
+			has_dlc = "Zeus"
+			NOR = {
+				religion_group = indian_group
+				religion_group = muslim
+			}
+		}
+	}
+}
+
+THIS_can_be_elector_of_PREV_trigger = {
+	custom_tooltip = {
+		text = CAN_BE_ELECTOR
+		# Counts are only electors in duchies. Dukes and kings are always electors.
+	    OR = {
+	        higher_real_tier_than = COUNT
+	        PREV = { tier = DUKE }
+	    }
+	}
+}
+
+THIS_and_PREV_same_rank_trigger = {
+	custom_tooltip = {
+		text = SAME_RANK
+		OR = {
+			AND = { tier = COUNT    PREV = { tier = COUNT   } }
+			AND = { tier = DUKE     PREV = { tier = DUKE    } }
+			AND = { tier = KING     PREV = { tier = KING    } }
+			AND = { tier = EMPEROR  PREV = { tier = EMPEROR } }
+		}
+	}
+}
+
+# Checks whether two *independent* realms control adjacent *provinces*.
+THIS_and_FROM_are_adjacent_trigger = {
+
+	# Using "FROM" rather than "PREV" because the latter would require
+	# "PREVPREVPREVPREVPREV" but it's only allowed to chain 4 levels.
+	# Luckily, all users are happy with FROM, so no duplication is necessary.
+
+	custom_tooltip = {
+		text = ADJACENT_REALM
+		any_realm_province = {
+			any_neighbor_province = {
+				owner = {
+					top_liege = {
+						character = FROM
+					}
+				}
+			}
+		}
+	}
+}

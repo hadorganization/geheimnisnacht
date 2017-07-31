@@ -26,7 +26,7 @@ is_long_lived_character = {
 		trait = creature_chaos_dwarf
 		trait = grail_knight
 		trait = immortal
-		trait = elixir_of_eternal_youth
+		has_artifact = elixir_of_eternal_youth
 	}
 }
 
@@ -111,10 +111,11 @@ is_hidden_vampire_trigger = {
 
 #For all vampires, hidden or not. NOTE: At present time, check for hidden is disabled for performace, to be reactivated when hidden vampires are implemented
 is_vampire_trigger = {
-	OR = {
-		is_visible_vampire_trigger = yes
-		#is_hidden_vampire_trigger = yes
-	}
+	is_visible_vampire_trigger = yes
+	# OR = {
+	# 	is_visible_vampire_trigger = yes
+	# 	#is_hidden_vampire_trigger = yes
+	# }
 }
 
 is_undead_trigger = {
@@ -163,7 +164,7 @@ is_immortal_trigger = {
 		#more entries might be added later on
 		is_undead_trigger = yes
 		trait = immortal
-		trait = elixir_of_eternal_youth
+		has_artifact = elixir_of_eternal_youth
 		trait = creature_orc
 		trait = creature_goblin
 		trait = creature_slann
@@ -290,37 +291,6 @@ cannot_marry_trigger = {
 		trait = astromancer
 		trait = skaven_breeder
 		trait = courting
-	}
-}
-
-z_has_magic_power_true = {
-	or = {
-		has_character_modifier = magic_power_4
-		has_character_modifier = magic_power_3
-		has_character_modifier = magic_power_2
-		has_character_modifier = magic_power_1
-		and = {
-			trait = warlock_engineer
-			or = {
-				has_character_modifier = warp_stone
-				has_character_modifier = warp_stone_1
-				has_character_modifier = warp_stone_2
-				has_character_modifier = warp_stone_3
-				has_character_modifier = warp_stone_4
-				has_character_modifier = warp_stone_5
-			}
-		}
-		and = {
-			trait = plaguelord
-			or = {
-				has_character_modifier = warp_stone
-				has_character_modifier = warp_stone_1
-				has_character_modifier = warp_stone_2
-				has_character_modifier = warp_stone_3
-				has_character_modifier = warp_stone_4
-				has_character_modifier = warp_stone_5
-			}
-		}
 	}
 }
 
@@ -471,18 +441,18 @@ z_magic_dueling_valid_caster = {
 		trait = resting
 		trait = incapacitated
 	}
-	or = {
-		trait = lore_high_magic
-		#trait = lore_beasts
-		#trait = lore_heavens
-		#trait = lore_fire
-		#trait = lore_metal
-		#trait = lore_light
-		#trait = lore_shadows
-		#trait = lore_life
-		#trait = lore_death
-	}
-
+	trait = lore_high_magic
+	# or = {
+	# 	trait = lore_high_magic
+	# 	#trait = lore_beasts
+	# 	#trait = lore_heavens
+	# 	#trait = lore_fire
+	# 	#trait = lore_metal
+	# 	#trait = lore_light
+	# 	#trait = lore_shadows
+	# 	#trait = lore_life
+	# 	#trait = lore_death
+	# }
 }
 
 z_dueling_caster = {
@@ -594,6 +564,17 @@ z_has_magic_power_true = {
 		has_character_modifier = magic_power_1
 		and = {
 			trait = warlock_engineer
+			or = {
+				has_character_modifier = warp_stone
+				has_character_modifier = warp_stone_1
+				has_character_modifier = warp_stone_2
+				has_character_modifier = warp_stone_3
+				has_character_modifier = warp_stone_4
+				has_character_modifier = warp_stone_5
+			}
+		}
+		and = {
+			trait = plaguelord
 			or = {
 				has_character_modifier = warp_stone
 				has_character_modifier = warp_stone_1

@@ -81,7 +81,7 @@ character_event = {
 	immediate = {
 		FROM = {
 			any_demesne_title = {
-				rant_title = ROOT
+				grant_title = ROOT
 			}
 		}
 	}
@@ -753,7 +753,7 @@ character_event = {
 #		 }
 #}
 
-#Give the proper age traits to dwarves
+# Give the proper age traits to dwarves
 character_event = {
 	id = aicleanup.023
 	hide_window = yes
@@ -789,9 +789,9 @@ character_event = {
 					trait = dwarf_warrior
 					trait = thunderer
 				}
-				add_trait = thunderer
-				remove_trait = beardling
 			}
+			add_trait = thunderer
+			remove_trait = beardling
 		}
 		if = {
 			limit = {
@@ -1135,12 +1135,13 @@ character_event = {
 	}
 }
 
-#At 45, elves lose their youngling traits and can be married off.
+# At 45, elves lose their youngling traits and can be married off. on_yearly_pulse
 character_event = {
 	id = aicleanup.031
 	hide_window = yes
 	min_age = 45
 	max_age = 60
+	is_triggered_only = yes
 
 	trigger = {
 		trait = creature_elf

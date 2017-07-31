@@ -4,7 +4,7 @@
 #Agreeable
 #has_benevolent_trait_trigger		Has a benevolent trait.
 #is_benevolent_trigger				Has a benevolent trait and not any evil traits.
-#has_pleasant_trait_trigger			Has a pleasant personality trait. 
+#has_pleasant_trait_trigger			Has a pleasant personality trait.
 #has_pleasant_personality_trigger	Has a pleasant personality trait and not any unpleasant personality traits.
 #has_pious_trait_trigger			Has a piety trait.
 #is_pious_trigger					Has a piety trait and not any impious traits.
@@ -13,7 +13,7 @@
 #Disagreeable
 #has_evil_trait_trigger				Has an evil trait.
 #is_evil_trigger					Has an evil trait and not any benevolent traits.
-#has_unpleasant_trait_trigger		Has an unpleasant personality trait. 
+#has_unpleasant_trait_trigger		Has an unpleasant personality trait.
 #has_unpleasant_personality_trigger	Has an  unpleasant personality trait and not any pleasant personality traits.
 #has_impious_trait_trigger			Has an impious trait.
 #is_impious_trigger					Has a impious trait and not any piety traits.
@@ -304,7 +304,7 @@ is_dumb_trigger = {
 	OR = {
 		trait = dull
 		trait = slow
-		trait = imbecile 
+		trait = imbecile
 		trait = dim
 		trait = dumb
 		trait = idiot
@@ -403,9 +403,9 @@ is_maimed_trigger = {
 	OR = {
 		trait = maimed
 		trait = one_eyed
-		trait = one_handed 
-		trait = one_legged 
-		trait = disfigured 
+		trait = one_handed
+		trait = one_legged
+		trait = disfigured
 		trait = mangled
 	}
 }
@@ -766,8 +766,8 @@ can_be_mercenary_leader_potential_trigger = {
 	prisoner = no
 	is_ruler = no
 	is_adult = yes
-	
-	NOR = { 
+
+	NOR = {
 		trait = incapable
 		is_inaccessible_trigger = yes
 		is_ascetic_trigger = yes
@@ -895,24 +895,24 @@ change_council_job_potential_trigger = {
 }
 
 can_be_chancellor_trigger = {
-		liege = { 
-			NOT = { trait = vampire_necrarch_visible } 
-		} 
+		liege = {
+			NOT = { trait = vampire_necrarch_visible }
+		}
 		NOT = { trait = vampire_necrarch_visible }		#Necrarchs are reclusive, they do not get any diplomatic action
 		OR = {
 			AND = {
-				OR = { 
+				OR = {
 					is_female = no
 					trait = horse
-					AND = { 
+					AND = {
 						is_female = yes
-						liege = { religion = amazon } 
+						liege = { religion = amazon }
 					}
-					AND = { 
+					AND = {
 						is_female = yes
-						liege = { religion_group = cadai_group } 
+						liege = { religion_group = cadai_group }
 					}
-					AND = { 
+					AND = {
 						is_female = yes
 						liege = { religion_group = cytharai_group }
 					}
@@ -936,7 +936,7 @@ can_be_chancellor_trigger = {
 							}
 							is_landed = yes
 							# trait = nun
-							
+
 						}
 					}
 					has_law = status_of_women_4
@@ -945,9 +945,9 @@ can_be_chancellor_trigger = {
 			}
 			AND = {
 				is_female = yes
-					liege = { 
+					liege = {
 						primary_title = {
-							OR = { 
+							OR = {
 								has_law = enatic_succession
 								has_law = enatic_cognatic_succession
 								has_law = true_cognatic_succession
@@ -960,62 +960,62 @@ can_be_chancellor_trigger = {
         }
         # warhammer restriction
 		NOT = { trait = creature_slann }
-		OR = { 
+		OR = {
 			is_female = yes
-			NOT = { 
-				liege = { trait = creature_amazon } 
-			} 
-		} 
-        OR = { 
-		   AND = { 
-				NOT = { culture_group = beastman_group }
-				NOT = { 
-					FROM = { culture_group = beastman_group } 
-				} 
+			NOT = {
+				liege = { trait = creature_amazon }
 			}
-		   AND = { 
+		}
+        OR = {
+		   AND = {
+				NOT = { culture_group = beastman_group }
+				NOT = {
+					FROM = { culture_group = beastman_group }
+				}
+			}
+		   AND = {
 				culture_group = beastman_group
-				FROM = { culture_group = beastman_group } 
+				FROM = { culture_group = beastman_group }
 			}
         }
-		OR = { 
-		   AND = { 
-				NOT = { 
-					OR = { 
+		OR = {
+		   AND = {
+				NOT = {
+					OR = {
 						culture_group = orc_group
 						culture_group = goblin_group
 					}
 				}
-				NOT = { 
-						FROM = { 
-							OR = { 
+				NOT = {
+						FROM = {
+							OR = {
 							culture_group = orc_group
 							culture_group = goblin_group
-						} 
+						}
 					}
-				} 
+				}
 			}
-		   AND = { 
-				OR = { 
+		   AND = {
+				OR = {
 					culture_group = orc_group
 					culture_group = goblin_group
 				}
-				FROM = { 
-						OR = { 
+				FROM = {
+						OR = {
 						culture_group = orc_group
 						culture_group = goblin_group
-						} 
+						}
 				}
 			}
 		}
-        OR = { 
+        OR = {
             religion_group = FROM
             AND = {
                 religion_group = old_gods_group
                 FROM = { religion_group = chaos_gods_group }
             }
         }
-                
+
 		prisoner = no
 		NOT = { trait = incapable }
 		NOT = { trait = in_hiding }
@@ -1026,30 +1026,30 @@ can_be_marshal_trigger = {
 		NOT = { trait = creature_skink }
 		OR = {
 			AND = {
-				OR = { 
+				OR = {
 						is_female = no
 						trait = horse # So we can have female glitterhoofs! :D
-						AND = { 
+						AND = {
 							is_female = yes
-							liege = { religion = amazon } 
+							liege = { religion = amazon }
 						}
-						AND = { 
+						AND = {
 							is_female = yes
-							liege = { religion_group = cytharai_group } 
+							liege = { religion_group = cytharai_group }
 						}
-						AND = { 
+						AND = {
 							is_female = yes
-							liege = { religion = asrai_cadai } 
+							liege = { religion = asrai_cadai }
 						}
-						AND = { 
+						AND = {
 							is_female = yes
 							trait = creature_saurus
-							liege = { 
-								OR = { 
-									trait = creature_slann 
-									trait = creature_skink 
-								} 
-							} 
+							liege = {
+								OR = {
+									trait = creature_slann
+									trait = creature_skink
+								}
+							}
 						}
 						AND = {
 							liege = {
@@ -1069,7 +1069,7 @@ can_be_marshal_trigger = {
 									}
 								}
 								is_landed = yes
-								
+
 							}
 						}
 						has_law = status_of_women_4
@@ -1078,9 +1078,9 @@ can_be_marshal_trigger = {
 			}
 			AND = {
 				is_female = yes
-				liege = { 
+				liege = {
 						primary_title = {
-							OR = { 
+							OR = {
 								has_law = enatic_succession
 								has_law = enatic_cognatic_succession
 								has_law = true_cognatic_succession
@@ -1089,71 +1089,71 @@ can_be_marshal_trigger = {
 				}
 				is_adult = yes
 			}
-				AND = { 
+				AND = {
 					age = 14 # No more commander toddlers
-						OR = { 
+						OR = {
 							has_character_modifier = magic_power_1
 							has_character_modifier = magic_power_2
 							has_character_modifier = magic_power_3
-							has_character_modifier = magic_power_4 
-						} 
+							has_character_modifier = magic_power_4
+						}
 				}
 	            has_character_flag = special_marshal
        	}
         # warhammer restriction
 		NOT = { trait = creature_slann }
-		OR = { 
+		OR = {
 			is_female = yes
-			NOT = { 
-				liege = { trait = creature_amazon } 
-			} 
+			NOT = {
+				liege = { trait = creature_amazon }
+			}
 		}
-        OR = { 
-               AND = { 
+        OR = {
+               AND = {
 					NOT = { culture_group = beastman_group }
-                	NOT = { 
-						FROM = { culture_group = beastman_group } 
-					} 
+                	NOT = {
+						FROM = { culture_group = beastman_group }
+					}
 				}
-				AND = { 
+				AND = {
 					culture_group = beastman_group
-					FROM = { culture_group = beastman_group } 
+					FROM = { culture_group = beastman_group }
 				}
         }
-        OR = { 
+        OR = {
             religion_group = FROM
             AND = {
                 religion_group = old_gods_group
                 FROM = { religion_group = chaos_gods_group }
             }
         }
-		OR = { 
-		   AND = { 
-				NOT = { 
-					OR = { 
+		OR = {
+		   AND = {
+				NOT = {
+					OR = {
 						culture_group = orc_group
 						culture_group = goblin_group
 					}
 				}
-				NOT = { 
-						FROM = { 
-							OR = { 
+				NOT = {
+						FROM = {
+							OR = {
 							culture_group = orc_group
 							culture_group = goblin_group
-						} 
+						}
 					}
-				} 
+				}
 			}
-		   AND = { 
-				OR = { 
+		   AND = {
+				OR = {
 					culture_group = orc_group
 					culture_group = goblin_group
 				}
-				FROM = { 
-					OR = { 
+				FROM = {
+					OR = {
 						culture_group = orc_group
 						culture_group = goblin_group
-					} 
+					}
 				}
 			}
 		}
@@ -1165,20 +1165,20 @@ can_be_marshal_trigger = {
 can_be_treasurer_trigger = {
 		OR = {
 			AND = {
-				OR = { 
+				OR = {
 					is_female = no
 					trait = horse # So we can have female glitterhoofs! :D
-					AND = { 
+					AND = {
 						is_female = yes
-						liege = { religion = amazon } 
+						liege = { religion = amazon }
 					}
-					AND = { 
+					AND = {
 						is_female = yes
-						liege = { religion_group = cadai_group } 
+						liege = { religion_group = cadai_group }
 					}
-					AND = { 
+					AND = {
 						is_female = yes
-						liege = { religion_group = cytharai_group } 
+						liege = { religion_group = cytharai_group }
 					}
 					AND = {
 						liege = {
@@ -1200,7 +1200,7 @@ can_be_treasurer_trigger = {
 							}
 							is_landed = yes
 							trait = nun
-							
+
 						}
 					}
 					has_law = status_of_women_4
@@ -1209,9 +1209,9 @@ can_be_treasurer_trigger = {
 			}
 			# AND = {
 				# is_female = yes
-				# liege = { 
+				# liege = {
 					# primary_title = {
-							# OR = { 
+							# OR = {
 								# has_law = enatic_succession
 								# has_law = enatic_cognatic_succession
 								# has_law = true_cognatic_succession
@@ -1224,58 +1224,58 @@ can_be_treasurer_trigger = {
         }
         # warhammer restriction
 		NOT = { trait = creature_slann }
-		OR = { 
+		OR = {
 			is_female = yes
-			NOT = { 
-				liege = { trait = creature_amazon } 
-			} 
-		}
-        OR = { 
-		   AND = { 
-				NOT = { culture_group = beastman_group }
-				NOT = { 
-					FROM = { culture_group = beastman_group } 
-				} 
+			NOT = {
+				liege = { trait = creature_amazon }
 			}
-			AND = { 
+		}
+        OR = {
+		   AND = {
+				NOT = { culture_group = beastman_group }
+				NOT = {
+					FROM = { culture_group = beastman_group }
+				}
+			}
+			AND = {
 				culture_group = beastman_group
-				FROM = { culture_group = beastman_group } 
+				FROM = { culture_group = beastman_group }
 			}
         }
-        OR = { 
+        OR = {
             religion_group = FROM
             AND = {
                 religion_group = old_gods_group
                 FROM = { religion_group = chaos_gods_group }
             }
         }
-		OR = { 
-		   AND = { 
-				NOT = { 
-					OR = { 
+		OR = {
+		   AND = {
+				NOT = {
+					OR = {
 						culture_group = orc_group
 						culture_group = goblin_group
 					}
 				}
-				NOT = { 
-						FROM = { 
-							OR = { 
+				NOT = {
+						FROM = {
+							OR = {
 							culture_group = orc_group
 							culture_group = goblin_group
-						} 
+						}
 					}
-				} 
+				}
 			}
-		   AND = { 
-				OR = { 
+		   AND = {
+				OR = {
 					culture_group = orc_group
 					culture_group = goblin_group
 				}
-				FROM = { 
-					OR = { 
+				FROM = {
+					OR = {
 						culture_group = orc_group
 						culture_group = goblin_group
-					} 
+					}
 				}
 			}
 		}
@@ -1293,58 +1293,58 @@ can_be_spymaster_trigger = {
         }
         # warhammer restriction
 		NOT = { trait = creature_slann }
-		OR = { 
+		OR = {
 			is_female = yes
-			NOT = { 
-				liege = { trait = creature_amazon } 
-			} 
-		} 
-        OR = { 
-		   AND = { 
-				NOT = { culture_group = beastman_group }
-				NOT = { 
-					FROM = { culture_group = beastman_group } 
-				} 
+			NOT = {
+				liege = { trait = creature_amazon }
 			}
-			AND = { 
+		}
+        OR = {
+		   AND = {
+				NOT = { culture_group = beastman_group }
+				NOT = {
+					FROM = { culture_group = beastman_group }
+				}
+			}
+			AND = {
 				culture_group = beastman_group
-				FROM = { culture_group = beastman_group } 
+				FROM = { culture_group = beastman_group }
 			}
         }
-        OR = { 
+        OR = {
             religion_group = FROM
             AND = {
                 religion_group = old_gods_group
                 FROM = { religion_group = chaos_gods_group }
             }
         }
-		OR = { 
-		   AND = { 
-				NOT = { 
-					OR = { 
+		OR = {
+		   AND = {
+				NOT = {
+					OR = {
 						culture_group = orc_group
 						culture_group = goblin_group
 					}
 				}
-				NOT = { 
-						FROM = { 
-							OR = { 
+				NOT = {
+						FROM = {
+							OR = {
 							culture_group = orc_group
 							culture_group = goblin_group
-						} 
+						}
 					}
-				} 
+				}
 			}
-		   AND = { 
-				OR = { 
+		   AND = {
+				OR = {
 					culture_group = orc_group
 					culture_group = goblin_group
 				}
-				FROM = { 
-					OR = { 
+				FROM = {
+					OR = {
 						culture_group = orc_group
 						culture_group = goblin_group
-					} 
+					}
 				}
 			}
 		}
@@ -1354,14 +1354,14 @@ can_be_spymaster_trigger = {
 }
 
 can_be_spiritual_trigger = {
-		liege = { 
-			NOT = { trait = vampire_necrarch_visible } 
-		} 
+		liege = {
+			NOT = { trait = vampire_necrarch_visible }
+		}
 		NOT = { trait = vampire_necrarch_visible }		#Necrarchs are reclusive, they do not get any diplomatic action
 		prisoner = no
-		OR = { 
+		OR = {
 			NOT = { trait = incapable }
-			trait = creature_slann 
+			trait = creature_slann
 		}
 		NOT = { trait = in_hiding }
 		liege = {
@@ -1384,85 +1384,85 @@ can_be_spiritual_trigger = {
 			has_character_flag = special_spiritual
 		}
         # warhammer restriction
-		# OR = { 
+		# OR = {
 			# is_female = yes
-			# NOT = { 
-				#liege = { trait = creature_amazon } 
-			#} 
-		# } 
-	   OR = { 
+			# NOT = {
+				#liege = { trait = creature_amazon }
+			#}
+		# }
+	   OR = {
 			trait = khemri_liche_priest
-			NOT = { 
-				FROM = { trait = creature_nehekharan } 
-			} 
-		}	
-        OR = { 
+			NOT = {
+				FROM = { trait = creature_nehekharan }
+			}
+		}
+        OR = {
             AND = {
-				NOT = { 
-					trait = creature_skink 
+				NOT = {
+					trait = creature_skink
 				}
                 FROM = {
                 	NOR = {
                 		trait = creature_slann
-                		trait = creature_skink 
-                	} 
-                } 
+                		trait = creature_skink
+                	}
+                }
 			}
             AND = {
             	OR = {
             		trait = skink_priest
             		trait = creature_slann
-            	} 
-				
+            	}
+
                 FROM = {
-                	or = { 
+                	or = {
 	                	trait = creature_slann
 	                	trait = creature_skink
                 	}
-                } 
+                }
 			}
-        }		
-        OR = { 
+        }
+        OR = {
 			AND = {
 				NOT = { culture_group = beastman_group }
-				NOT = { 
-					FROM = { culture_group = beastman_group } 
-				} 
+				NOT = {
+					FROM = { culture_group = beastman_group }
+				}
 			}
-			AND = { 
+			AND = {
 				culture_group = beastman_group
-				FROM = { culture_group = beastman_group } 
+				FROM = { culture_group = beastman_group }
 			}
         }
-        OR = { 
+        OR = {
             AND = {
 				NOT = { trait = creature_skaven }
-                NOT = { FROM = { trait = creature_skaven } } 
+                NOT = { FROM = { trait = creature_skaven } }
 			}
-            AND = { 
+            AND = {
 				trait = grey_seer
-                FROM = { trait = creature_skaven } 
+                FROM = { trait = creature_skaven }
 			}
         }
-        OR = { 
+        OR = {
             religion_group = FROM
             AND = {
                 religion_group = old_gods_group
                 FROM = { religion_group = chaos_gods_group }
             }
         }
-		
+
 		OR = {
 			is_theocracy = yes
 			AND = {
 				liege = { is_tribal = yes }
 				is_ruler = no
 			}
-			liege = { 
-				religion = ormazd			
+			liege = {
+				religion = ormazd
 			}
-			liege = { 
-				religion = kitabid			
+			liege = {
+				religion = kitabid
 			}
 			AND = {
 				clan = yes
@@ -1482,7 +1482,7 @@ can_be_spiritual_trigger = {
 				}
 			}
 		}
-		
+
 		OR = {
 			#NOT = { religion_group = muslim }
 			#NOT = { liege = { religion_group = muslim } }
@@ -1495,33 +1495,33 @@ can_be_spiritual_trigger = {
 			trait = mastermind_theologian
 			trait = skink_priest
 		}
-		OR = { 
-		   AND = { 
-				NOT = { 
-					OR = { 
+		OR = {
+		   AND = {
+				NOT = {
+					OR = {
 						culture_group = orc_group
 						culture_group = goblin_group
 					}
 				}
-				NOT = { 
-						FROM = { 
-							OR = { 
+				NOT = {
+						FROM = {
+							OR = {
 							culture_group = orc_group
 							culture_group = goblin_group
-						} 
+						}
 					}
-				} 
+				}
 			}
-		   AND = { 
-				OR = { 
+		   AND = {
+				OR = {
 					culture_group = orc_group
 					culture_group = goblin_group
 				}
-				FROM = { 
-						OR = { 
+				FROM = {
+						OR = {
 							culture_group = orc_group
 							culture_group = goblin_group
-						} 
+						}
 				}
 			}
 		}
@@ -1575,20 +1575,20 @@ can_be_councilmember_emperor_trigger = {
 	NOT = { has_character_modifier = resigned_in_anger }
 	OR = {
 			AND = {
-				OR = { 
+				OR = {
 					is_female = no
 					trait = horse # So we can have female glitterhoofs! :D
-					AND = { 
+					AND = {
 						is_female = yes
-						liege = { religion = amazon } 
+						liege = { religion = amazon }
 					}
-					AND = { 
+					AND = {
 						is_female = yes
-						liege = { religion_group = cadai_group } 
+						liege = { religion_group = cadai_group }
 					}
-					AND = { 
+					AND = {
 						is_female = yes
-						liege = { religion_group = cytharai_group } 
+						liege = { religion_group = cytharai_group }
 					}
 					AND = {
 						liege = {
@@ -1610,7 +1610,7 @@ can_be_councilmember_emperor_trigger = {
 							}
 							is_landed = yes
 							trait = nun
-							
+
 						}
 					}
 					has_law = status_of_women_4
@@ -1619,9 +1619,9 @@ can_be_councilmember_emperor_trigger = {
 			}
 			# AND = {
 				# is_female = yes
-				# liege = { 
+				# liege = {
 					# primary_title = {
-							# OR = { 
+							# OR = {
 								# has_law = enatic_succession
 								# has_law = enatic_cognatic_succession
 								# has_law = true_cognatic_succession
@@ -1647,27 +1647,27 @@ can_be_maimed_trigger = {
 			has_dlc = "Reapers"
 			NOT = {
 				trait = one_eyed
-				trait = one_handed 
-				trait = one_legged 
-				trait = disfigured 
+				trait = one_handed
+				trait = one_legged
+				trait = disfigured
 				trait = mangled
 			}
 		}
 	}
 }
 
-physician_bad_trigger = { 
+physician_bad_trigger = {
 	OR = {
 		has_severe_disability_trigger = yes
 		has_mental_disorder_trigger = yes
 	}
 }
 
-physician_good_trigger = { 
+physician_good_trigger = {
 	OR = {
 		is_learned_trigger = yes
 		religion_group = jewish_group
-	} 
+	}
 }
 
 is_inaccessible_trigger = {
@@ -1798,7 +1798,7 @@ can_be_prophet_of_doom_trigger = {
 	is_married = no
 	trait = zealous
 	is_landed = no
-	
+
 	OR = {
 		trait = ambitious
 		trait = misguided_warrior
@@ -1824,7 +1824,7 @@ death_murder_trigger = {
 		death_murder_unknown_trigger = yes
 		death_murder_known_trigger = yes
 	}
-	
+
 }
 
 death_murder_unknown_trigger = {
@@ -1842,7 +1842,7 @@ death_murder_unknown_trigger = {
 		death_reason = death_murder_unknown_combustion
 		death_reason = death_murder_unknown_crows
 		death_reason = death_murder_unknown_possessed_fall
-	}	
+	}
 }
 
 death_murder_known_trigger = {
@@ -1857,7 +1857,7 @@ death_murder_known_trigger = {
 		death_reason = death_murder_snakes
 		death_reason = death_murder_strangle
 		death_reason = death_murder_hashashin
-	}	
+	}
 }
 
 death_execution_trigger = {
@@ -1897,7 +1897,7 @@ death_execution_trigger = {
 		death_reason = death_execution_boar
 		death_reason = death_execution_eaten
 		death_reason = death_execution_aztec_sacrifice
-	}	
+	}
 }
 
 death_sacrificed_trigger = {
@@ -1905,7 +1905,7 @@ death_sacrificed_trigger = {
 		death_reason = death_sacrificed
 		death_reason = death_sacrificed_norse
 		death_reason = death_sacrificed_ancestors
-	}	
+	}
 }
 
 death_accident_trigger = {
@@ -1932,7 +1932,7 @@ death_suicide_trigger = {
 }
 
 block_general_event_trigger = {
-	OR = {	
+	OR = {
 		trait = incapable
 		is_adult = no
 		prisoner = yes
@@ -1950,18 +1950,18 @@ gender_equality_trigger = {
 		religion = messalian
 		AND = {
 			is_landed = yes
-			primary_title = { 
-				has_law = status_of_women_4 
+			primary_title = {
+				has_law = status_of_women_4
 			}
 		}
 		AND = {
 			is_landed = no
 			liege = { primary_title = { has_law = status_of_women_4 } }
 		}
-		has_game_rule = {
-			name = gender
-			value = all
-		}
+		# has_game_rule = {
+		# 	name = gender
+		# 	value = all
+		# }
 	}
 }
 
@@ -1978,7 +1978,7 @@ has_minor_deity_trigger = {
 		has_character_modifier = follower_of_shango
 		has_character_modifier = follower_of_ukko
 		has_character_modifier = follower_of_akka
-		has_character_modifier = follower_of_taipo_and_mielikki 
+		has_character_modifier = follower_of_taipo_and_mielikki
 		has_character_modifier = follower_of_lempo
 		has_character_modifier = follower_of_dievas
 		has_character_modifier = follower_of_velnias
@@ -2271,7 +2271,7 @@ cousin_of_root_trigger = {
 		mother_even_if_dead = { mother_even_if_dead = { any_child = { any_child = { character = ROOT } } } }
 		mother_even_if_dead = { father_even_if_dead = { any_child = { any_child = { character = ROOT } } } }
 		father_even_if_dead = { father_even_if_dead = { any_child = { any_child = { character = ROOT } } } }
-		father_even_if_dead = { mother_even_if_dead = { any_child = { any_child = { character = ROOT } } } }	
+		father_even_if_dead = { mother_even_if_dead = { any_child = { any_child = { character = ROOT } } } }
 	}
 }
 
@@ -2292,7 +2292,7 @@ sibling_child_of_root_trigger = {
 }
 
 parent_sibling_of_root_trigger = {
-	OR = {	
+	OR = {
 		mother_even_if_dead = { any_child = { any_child = { character = ROOT } } }
 		father_even_if_dead = { any_child = { any_child = { character = ROOT } } }
 	}
@@ -2430,7 +2430,7 @@ is_rich_holding = {
 	}
 }
 is_richer_holding = {
-	
+
 	OR = {
 		calc_true_if = {
 			amount = 2
@@ -2525,7 +2525,7 @@ is_dharmic_monastic_member_trigger = {
 is_monastic_member_trigger = {
 	OR = {
 		society_member_of = cult_of_shallya
-		
+
 		# society_member_of = monastic_order_orthodox
 		# society_member_of = monastic_order_benedictine
 		# society_member_of = monastic_order_dominican
@@ -2692,7 +2692,7 @@ is_openly_of_roots_secret_religion_trigger = {
 	religion = { target = ROOT target_type = secret }
 }
 
-has_sympathy_for_true_religion_of_prev_trigger = { 
+has_sympathy_for_true_religion_of_prev_trigger = {
 	OR = {
 		AND = {
 			trait = sympathy_christendom
@@ -2721,7 +2721,7 @@ has_sympathy_for_true_religion_of_prev_trigger = {
 	}
 }
 
-has_sympathy_for_true_religion_of_root_trigger = { 
+has_sympathy_for_true_religion_of_root_trigger = {
 	OR = {
 		AND = {
 			trait = sympathy_christendom
@@ -3025,7 +3025,7 @@ character_knows_prev_trigger = {
 		same_liege = PREV
 		AND = {
 			is_within_diplo_range = PREV
-			PREV = { independent = yes } 
+			PREV = { independent = yes }
 		}
 	}
 }
@@ -3077,7 +3077,7 @@ has_any_char_old_religion = {
 	    		religion = lollard
 	    	}
 	    }
-	    AND = { 
+	    AND = {
 	    	has_character_flag = character_was_orthodox
 	    	any_character = {
 	    		religion = orthodox
@@ -3131,7 +3131,7 @@ has_any_char_old_religion = {
 	    		religion = messalian
 	    	}
 	    }
-	    AND = { 
+	    AND = {
 	    	has_character_flag = character_was_sunni
 	    	any_character = {
 	    		religion = sunni
@@ -3161,7 +3161,7 @@ has_any_char_old_religion = {
 	    		religion = kharijite
 	    	}
 	    }
-	    AND = { 
+	    AND = {
 	    	has_character_flag = character_was_shiite
 	    	any_character = {
 	    		religion = shiite
@@ -3179,7 +3179,7 @@ has_any_char_old_religion = {
 	    		religion = hurufi
 	    	}
 	    }
-	    AND = { 
+	    AND = {
 	    	has_character_flag = character_was_jewish
 	    	any_character = {
 	    		religion = jewish
@@ -3197,7 +3197,7 @@ has_any_char_old_religion = {
 	    		religion = samaritan
 	    	}
 	    }
-	    AND = { 
+	    AND = {
 	    	has_character_flag = character_was_zoroastrian
 	    	any_character = {
 	    		religion = zoroastrian
@@ -3215,115 +3215,115 @@ has_any_char_old_religion = {
 	    		religion = manichean
 	    	}
 	    }
-	    AND = { 
+	    AND = {
 	    	has_character_flag = character_was_hindu
 	    	any_character = {
 	    		religion = hindu
 	    	}
 	    }
-	    AND = { 
+	    AND = {
 	    	has_character_flag = character_was_buddhist
 	    	any_character = {
 	    		religion = buddhist
 	    	}
 	    }
-	    AND = { 
+	    AND = {
 	    	has_character_flag = character_was_jain
 	    	any_character = {
 	    		religion = jain
 	    	}
 	    }
-	    AND = { 
+	    AND = {
 	    	has_character_flag = character_was_norse_pagan_reformed
 	    	any_character = {
 	    		religion = norse_pagan_reformed
 	    	}
 	    }
-	    AND = { 
+	    AND = {
 	    	has_character_flag = character_was_slavic_pagan_reformed
 	    	any_character = {
 	    		religion = slavic_pagan_reformed
 	    	}
 	    }
-	    AND = { 
+	    AND = {
 	    	has_character_flag = character_was_tengri_pagan_reformed
 	    	any_character = {
 	    		religion = tengri_pagan_reformed
 	    	}
 	    }
-	    AND = { 
+	    AND = {
 	    	has_character_flag = character_was_baltic_pagan_reformed
 	    	any_character = {
 	    		religion = baltic_pagan_reformed
 	    	}
 	    }
-	    AND = { 
+	    AND = {
 	    	has_character_flag = character_was_finnish_pagan_reformed
 	    	any_character = {
 	    		religion = finnish_pagan_reformed
 	    	}
 	    }
-	    AND = { 
+	    AND = {
 	    	has_character_flag = character_was_west_african_pagan_reformed
 	    	any_character = {
 	    		religion = west_african_pagan_reformed
 	    	}
 	    }
-	    AND = { 
+	    AND = {
 	    	has_character_flag = character_was_zun_pagan_reformed
 	    	any_character = {
 	    		religion = zun_pagan_reformed
 	    	}
 	    }
-		AND = { 
+		AND = {
 	    	has_character_flag = character_was_norse_pagan
 	    	any_character = {
 	    		religion = norse_pagan
 	    	}
 	    }
-	    AND = { 
+	    AND = {
 	    	has_character_flag = character_was_slavic_pagan
 	    	any_character = {
 	    		religion = slavic_pagan
 	    	}
 	    }
-	    AND = { 
+	    AND = {
 	    	has_character_flag = character_was_tengri_pagan
 	    	any_character = {
 	    		religion = tengri_pagan
 	    	}
 	    }
-	    AND = { 
+	    AND = {
 	    	has_character_flag = character_was_baltic_pagan
 	    	any_character = {
 	    		religion = baltic_pagan
 	    	}
 	    }
-	    AND = { 
+	    AND = {
 	    	has_character_flag = character_was_finnish_pagan
 	    	any_character = {
 	    		religion = finnish_pagan
 	    	}
 	    }
-	    AND = { 
+	    AND = {
 	    	has_character_flag = character_was_west_african_pagan
 	    	any_character = {
 	    		religion = west_african_pagan
 	    	}
 	    }
-	    AND = { 
+	    AND = {
 	    	has_character_flag = character_was_zun_pagan
 	    	any_character = {
 	    		religion = zun_pagan
 	    	}
 	    }
-		AND = { 
+		AND = {
 	    	has_character_flag = character_was_aztec
 	    	any_character = {
 	    		religion = aztec
 	    	}
 	    }
-		AND = { 
+		AND = {
 	    	has_character_flag = character_was_aztec_reformed
 	    	any_character = {
 	    		religion = aztec_reformed
@@ -3466,7 +3466,7 @@ possibly_romantically_interested_in_ROOT_trigger = {
 ROOT_possibly_romantically_interested_trigger = {
 	NOT = { is_rival = ROOT }
 	root_attraction_trigger = yes
-	OR = { 
+	OR = {
 		reverse_opinion = { who = ROOT value = 45 }
 		reverse_has_opinion_modifier = { who = ROOT modifier = opinion_budding_romance }
 	}
@@ -3944,19 +3944,19 @@ is_born_in_july_trigger = {
 }
 is_born_in_august_trigger = {
 	month_of_birth = 8
-	NOT = { month_of_birth = 9 }	
+	NOT = { month_of_birth = 9 }
 }
 is_born_in_september_trigger = {
 	month_of_birth = 9
-	NOT = { month_of_birth = 10 }	
+	NOT = { month_of_birth = 10 }
 }
 is_born_in_october_trigger = {
 	month_of_birth = 10
-	NOT = { month_of_birth = 11 }	
+	NOT = { month_of_birth = 11 }
 }
 is_born_in_november_trigger = {
 	month_of_birth = 11
-	NOT = { month_of_birth = 12 }	
+	NOT = { month_of_birth = 12 }
 }
 is_born_in_december_trigger = {
 	month_of_birth = 12
@@ -4569,7 +4569,7 @@ selected_ingredient_is_sleep_inducing_trigger = {
 		OR = {
 			artifact_type = ingredient_herb7
 			artifact_type = ingredient_herb3
-			artifact_type = ingredient_herb9			
+			artifact_type = ingredient_herb9
 		}
 	}
 }
@@ -4797,4 +4797,3 @@ religion_openly_aztec_or_reformed_trigger = {
 		}
 	}
 }
-

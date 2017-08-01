@@ -1,0 +1,528 @@
+
+# Lizardmen events. Created by Careful Plum
+namespace = lizardman
+
+# 1-100: Events about spawning new lizardmen
+
+# Spawn a new generation of lizardman - triggered by decade pulse
+
+# DISABLED - There can always be more courtiers, Open Elective does not require dynastic heirs - DISABLED
+
+# character_event = { # Once-a-decade chance to produce more lizardman
+
+# 	id = lizardman.5
+
+# 	desc = lizardman5desc
+
+# 	hide_window = yes # Only show an event if any lizardmen are actually spawned (lizardman.0)
+
+# 	is_triggered_only = yes
+
+# 	only_rulers = yes
+
+# 	trigger = {
+
+# 		culture_group = lizardman_group
+
+# 		is_ruler = yes
+
+# 		primary_title = { higher_tier_than = BARON }
+
+# 		NOT = { has_character_flag = spawnedlizardman }
+
+# 		NOT = {
+
+# 			any_courtier = {
+
+# 				count = 15
+
+# 			}
+
+# 		}
+
+# 	}
+
+# 	option = {
+
+# 		name = OK
+
+# 		if = { # If we spawned lizardmen last time, we won't do it now, but we will do it the next time the event fires (maybe too rare, because the skinks are actually mortal...)
+
+# 			limit = { has_character_flag = spawnedlizardman }
+
+# 			clr_character_flag = spawnedlizardman
+
+# 		}
+
+# 		if = {
+
+# 			limit = { NOT = { has_character_flag = spawnedlizardman } }
+
+# 			random = {
+
+# 				chance = 30
+
+# 				set_character_flag = spawnedlizardman
+
+# 				ROOT = { character_event = { id = lizardman.0 } } # Spawn the spawning pool
+
+# 			}
+
+# 		}
+
+# 	}
+
+# }
+
+# character_event = {
+
+# 	id = lizardman.0 # A new generation of lizardman crawls from the spawn pools
+
+# 	desc = lizardman0desc
+
+# 	only_rulers = yes
+
+# 	trigger = {
+
+# 		culture_group = lizardman_group
+
+# 		is_ruler = yes
+
+# 		primary_title = { higher_tier_than = BARON }
+
+# 	}
+
+# 	is_triggered_only = yes
+
+# 	option = {
+
+# 		name = OK
+
+# 		create_character = {
+
+# 			random_traits = no
+
+# 			name = "Spawn Pool"
+
+# 			female = no
+
+# 			age = 0
+
+# 			dynasty = ROOT
+
+# 			religion = ROOT
+
+# 		}
+
+# 		new_character = {
+
+# 			set_father = ROOT
+
+# 			dynasty = ROOT
+
+# 			character_event = {	id = lizardman.1 }
+
+# 		}
+
+# 	}
+
+# }
+
+# character_event = { # The pool creates the new lizardman
+
+# 	id = lizardman.1
+
+# 	desc = lizardman1desc
+
+# 	is_triggered_only = yes
+
+# 	option = {
+
+# 		name = OK
+
+# 			random = {
+
+# 				chance = 50
+
+# 				create_character = {
+
+# 					random_traits = yes
+
+# 					dynasty = ROOT
+
+# 					religion = ROOT
+
+# 					culture = lizardman
+
+# 					female = no
+
+# 					age = 16
+
+# 					trait = creature_skink
+
+# 				}
+
+# 				new_character = {
+
+# 					set_father = ROOT
+
+# 					dynasty = ROOT
+
+# 					character_event = { id = lizardman.3 }
+
+# 				}
+
+# 			}
+
+# 			random = {
+
+# 				chance = 50
+
+# 				create_character = {
+
+# 					random_traits = yes
+
+# 					dynasty = ROOT
+
+# 					religion = ROOT
+
+# 					culture = lizardman
+
+# 					female = no
+
+# 					age = 16
+
+# 					trait = creature_skink
+
+# 				}
+
+# 				new_character = {
+
+# 					set_father = ROOT
+
+# 					dynasty = ROOT
+
+# 					character_event = { id = lizardman.3 }
+
+# 				}
+
+# 			}
+
+# 			random = {
+
+# 				chance = 50
+
+# 				create_character = {
+
+# 					random_traits = yes
+
+# 					dynasty = ROOT
+
+# 					religion = ROOT
+
+# 					culture = lizardman
+
+# 					female = no
+
+# 					age = 16
+
+# 					trait = creature_skink
+
+# 				}
+
+# 				new_character = {
+
+# 					set_father = ROOT
+
+# 					dynasty = ROOT
+
+# 					character_event = { id = lizardman.3 }
+
+# 				}
+
+# 			}
+
+# 			random = {
+
+# 				chance = 50
+
+# 				create_character = {
+
+# 					random_traits = yes
+
+# 					dynasty = ROOT
+
+# 					religion = ROOT
+
+# 					culture = lizardman
+
+# 					female = no
+
+# 					age = 16
+
+# 					trait = creature_skink
+
+# 				}
+
+# 				new_character = {
+
+# 					set_father = ROOT
+
+# 					dynasty = ROOT
+
+# 					character_event = { id = lizardman.3 }
+
+# 				}
+
+# 			}
+
+# 			random = {
+
+# 				chance = 50
+
+# 				create_character = {
+
+# 					random_traits = yes
+
+# 					dynasty = ROOT
+
+# 					religion = ROOT
+
+# 					culture = lizardman
+
+# 					female = no
+
+# 					age = 16
+
+# 					trait = creature_skink
+
+# 				}
+
+# 				new_character = {
+
+# 					set_father = ROOT
+
+# 					dynasty = ROOT
+
+# 					character_event = { id = lizardman.3 }
+
+# 				}
+
+# 			}
+
+# 			random = {
+
+# 				chance = 50
+
+# 				create_character = {
+
+# 					random_traits = yes
+
+# 					dynasty = ROOT
+
+# 					religion = ROOT
+
+# 					culture = lizardman
+
+# 					female = no
+
+# 					age = 16
+
+# 					trait = creature_skink
+
+# 				}
+
+# 				new_character = {
+
+# 					set_father = ROOT
+
+# 					dynasty = ROOT
+
+# 					character_event = { id = lizardman.3 }
+
+# 				}
+
+# 			}
+
+# 			random = {
+
+# 				chance = 50
+
+# 				create_character = {
+
+# 					random_traits = yes
+
+# 					dynasty = ROOT
+
+# 					religion = ROOT
+
+# 					culture = lizardman
+
+# 					female = no
+
+# 					age = 16
+
+# 					trait = creature_skink
+
+# 				}
+
+# 				new_character = {
+
+# 					set_father = ROOT
+
+# 					dynasty = ROOT
+
+# 					character_event = { id = lizardman.3 }
+
+# 				}
+
+# 			}
+
+# 			random = {
+
+# 				chance = 50
+
+# 				create_character = {
+
+# 					random_traits = yes
+
+# 					dynasty = ROOT
+
+# 					religion = ROOT
+
+# 					culture = lizardman
+
+# 					female = no
+
+# 					age = 16
+
+# 					trait = creature_skink
+
+# 				}
+
+# 				new_character = {
+
+# 					set_father = ROOT
+
+# 					dynasty = ROOT
+
+# 					character_event = { id = lizardman.3 }
+
+# 				}
+
+# 			}
+
+# 			random = {
+
+# 				chance = 50
+
+# 				create_random_soldier = {
+
+# 					random_traits = yes
+
+# 					dynasty = ROOT
+
+# 					religion = ROOT
+
+# 					culture = lizardman
+
+# 					female = no
+
+# 					age = 16
+
+# 					trait = creature_saurus
+
+# 				}
+
+# 				new_character = {
+
+# 					set_father = ROOT
+
+# 					dynasty = ROOT
+
+# 					character_event = { id = lizardman.3 }
+
+# 				}
+
+# 			}
+
+# 			random = {
+
+# 				chance = 50
+
+# 				create_random_soldier = {
+
+# 					random_traits = yes
+
+# 					dynasty = ROOT
+
+# 					religion = ROOT
+
+# 					culture = lizardman
+
+# 					female = no
+
+# 					age = 16
+
+# 					trait = creature_saurus
+
+# 				}
+
+# 				new_character = {
+
+# 					set_father = ROOT
+
+# 					dynasty = ROOT
+
+# 					character_event = { id = lizardman.3 }
+
+# 				}
+
+# 			}
+
+# 			death = { death_reason = death_execution }
+
+# 		recalc_succession = yes
+
+# 	}
+
+# }
+
+# character_event = { # ping the new lizardman
+
+# 	id = lizardman.3
+
+# 	desc = lizardman3desc
+
+# 	is_triggered_only = yes
+
+# 	option = {
+
+# 		name = OK
+
+# 		host = { character_event = { id = lizardman.4 } }
+
+# 	}
+
+# }
+
+# character_event = { # tell the ruler about the new lizardman
+
+# 	id = lizardman.4
+
+# 	desc = lizardman4desc
+
+# 	is_triggered_only = yes
+
+# 	option = {
+
+# 		name = OK
+
+# 		recalc_succession = yes
+
+# 	}
+
+# }
+
+# lizardman.5 is at the top
+

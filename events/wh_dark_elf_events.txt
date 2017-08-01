@@ -8,19 +8,17 @@ character_event = {
 	title = A_COURTIER_WINS_A_VICTORY
 	desc = EVTDESCDARKELF.0 # While on a border patrol, a courtier won a great victory against a hostile force. He cut into their ranks, and a dozens of them to the sword. He is truly blessed by Khaine!
 	picture = "GFX_evt_large_army"
+	only_rulers = yes
 	min_age = 16
+	culture_group = druchi_group
 	is_triggered_only = yes
 
 	trigger = {
-		culture_group = druchi_group
-		is_ruler = yes
 		any_courtier = {
-			AND = {
-				martial = 12
-				trait = brave
-				is_female = no
-				age = 16
-			}
+			martial = 12
+			trait = brave
+			is_female = no
+			age = 16
 		}
 	}
 
@@ -28,12 +26,10 @@ character_event = {
 		name = WE_SHALL_HONOR_HIM
 		random_courtier = {
 			limit = {
-				AND = {
-					martial = 12
-					trait = brave
-					is_female = no
-					age = 16
-				}
+				martial = 12
+				trait = brave
+				is_female = no
+				age = 16
 			}
 			prestige = 100
 		}
@@ -50,12 +46,10 @@ character_event = {
 		}
 		random_courtier = {
 			limit = {
-				AND = {
-					martial = 12
-					trait = brave
-					is_female = no
-					age = 16
-				}
+				martial = 12
+				trait = brave
+				is_female = no
+				age = 16
 			}
 			prestige = 5
 		}
@@ -68,21 +62,21 @@ character_event = {
 	title = A_COURTIER_DISGRACES_HIMSELF
 	desc = EVTDESCDARKELF.1 # While on a border patrol, a courtier's warband was ambushed, but he fled and left his men to die! His name is in disgrace, and he has angered Khaine with his cowardice.
 	picture = "GFX_evt_large_army"
+	only_rulers = yes
 	min_age = 16
+	culture_group = druchi_group
 	is_triggered_only = yes
 
 	trigger = {
-		is_ruler = yes
-		culture_group = druchi_group
 		any_courtier = {
 			OR = {
 				trait = craven
 				trait = misguided_warrior
 				trait = drunkard
 				trait = weak
-				is_female = no
-				age = 16
 			}
+			is_female = no
+			age = 16
 		}
 	}
 
@@ -95,9 +89,9 @@ character_event = {
 					trait = misguided_warrior
 					trait = drunkard
 					trait = weak
-					is_female = no
-					age = 16
 				}
+				is_female = no
+				age = 16
 			}
 			prestige = -100
 			piety = -100
@@ -113,9 +107,9 @@ character_event = {
 					trait = misguided_warrior
 					trait = drunkard
 					trait = weak
-					is_female = no
-					age = 16
 				}
+				is_female = no
+				age = 16
 			}
 			imprison = yes
 			piety = -100
@@ -132,9 +126,9 @@ character_event = {
 					trait = misguided_warrior
 					trait = drunkard
 					trait = weak
-					is_female = no
-					age = 16
 				}
+				is_female = no
+				age = 16
 			}
 			banish = yes
 			piety = -100
@@ -151,12 +145,12 @@ character_event = {
 	title = DANGEROUS_SCHEME
 	desc = EVTDESCDARKELF.2 # Your lord's court is crowded, and it's time to thin the herd. By getting rid of your competitors, your own favor in the eyes of your liege can only increase...
 	picture = "GFX_evt_shadow"
+	only_rulers = no # not sure about it
 	min_age = 16
+	culture_group = druchi_group
 	is_triggered_only = yes
 
 	trigger = {
-		is_ruler = no
-		culture_group = druchi_group
 		intrigue = 13
 	}
 
@@ -168,13 +162,9 @@ character_event = {
 				is_landed = no
 				age = 50
 				is_councillor = no
-				NOT = {
+				nor = {
 					intrigue = 12
-				}
-				NOT = {
 					martial = 12
-				}
-				NOT = {
 					is_friend = ROOT
 				}
 			}
@@ -199,11 +189,11 @@ character_event = {
 	desc = EVTDESCDARKELF.3 # While working on one of your schemes, a rival at court has emerged. You will have to work towards destroying this individual before you yourself are destroyed!
 	picture = "GFX_evt_shadow"
 	min_age = 16
+	culture_group = druchi_group
 	is_triggered_only = yes
 
 	trigger = {
 		is_ruler = no
-		culture_group = druchi_group
 		OR = {
 			intrigue = 10
 			martial = 10
@@ -214,10 +204,8 @@ character_event = {
 		name = I_WILL_PREVAIL
 		random_courtier = {
 			limit = {
-				NOT = {
+				nor = {
 					is_rival = ROOT
-				}
-				NOT = {
 					is_friend = ROOT
 				}
 			}
@@ -312,12 +300,12 @@ character_event = {
 	title = DWARF_SLAVES
 	desc = EVTDESCDARKELF.7 # You are approached by a slave trader: He has a fine stock of 100 dwarf slaves, who could help you with building anything in your demesne that you require.
 	picture = "GFX_evt_into_the_dungeon"
+	only_rulers = yes
 	min_age = 16
+	culture_group = druchi_group
 	is_triggered_only = yes
 
 	trigger = {
-		is_ruler = yes
-		culture_group = druchi_group
 		wealth = 1000
 		any_demesne_province = {
 			NOT = {
@@ -373,21 +361,77 @@ character_event = {
 	}
 }
 
-# maintenance event if character becomes maimed, gets bad trait, or reaches a certain age
+# gateway event for raiding
 character_event = {
-	id = darkelf.9
-	title = RAIDING
-	desc = EVTDESCDARKELF.9 # You have become maimed, and can no longer carry on the raiding life. It is time to return to your home, and let others lead from the front lines while you carefully manage your wealth and power from your court.
-	picture = "GFX_evt_merchant_ship_at_sea_republic"
+	id = darkelf.9999
+	hide_window = yes
+	only_rulers = yes
 	min_age = 16
+	prisoner = no
+	culture_group = druchi_group
+	is_triggered_only = yes
 
 	trigger = {
 		trait = on_dark_elf_raid
-		trait = maimed
 	}
 
-	mean_time_to_happen = {
-		days = 7
+	immediate = {
+		character_event = {
+			id = darkelf.9
+		}
+		character_event = {
+			id = darkelf.10 days = 1
+		}
+		random_list = {
+			10 = {
+				character_event = {
+					id = darkelf.12 days = 2 random = 360
+				}
+			}
+			10 = {
+				character_event = {
+					id = darkelf.15 days = 2 random = 360
+				}
+			}
+			5 = {
+				character_event = {
+					id = darkelf.19 days = 2 random = 360
+				}
+			}
+		}
+	}
+}
+
+# stop raid if character becomes maimed or wounded
+character_event = {
+	id = darkelf.9
+	title = RAIDING
+	desc = {
+		#picture = GFX_evt_battle
+		text = EVTDESCDARKELF.9
+		trigger = {
+			trait = maimed
+		}
+	}
+	desc = {
+		#picture = GFX_evt_battle
+		text = EVTDESCDARKELF.23
+		trigger = {
+			trait = wounded
+		}
+	}
+	picture = "GFX_evt_merchant_ship_at_sea_republic"
+	only_rulers = yes
+	min_age = 16
+	culture_group = druchi_group
+	is_triggered_only = yes
+
+	trigger = {
+		trait = on_dark_elf_raid
+		or = {
+			trait = maimed
+			trait = wounded
+		}
 	}
 
 	option = {
@@ -396,23 +440,23 @@ character_event = {
 	}
 }
 
+# end of raid if have money
 character_event = {
 	id = darkelf.10
 	title = RAIDING
 	desc = EVTDESCDARKELF.10 # You have raided for a long time now and amassed great wealth. Perhaps it is time to stop, before your luck runs out?
 	picture = "GFX_evt_kraken"
+	only_rulers = yes
 	min_age = 16
+	culture_group = druchi_group
+	is_triggered_only = yes
 
 	trigger = {
 		trait = on_dark_elf_raid
 		wealth = 1000
-		NOT = {
+		not = {
 			has_character_flag = darkelf4
 		}
-	}
-
-	mean_time_to_happen = {
-		days = 7
 	}
 
 	option = {
@@ -446,23 +490,20 @@ character_event = {
 }
 
 # now for the actual raiding events
-
 # bretonnian village
 character_event = {
 	id = darkelf.12
 	title = RAIDING
 	desc = EVTDESCDARKELF.12 # Off the coast of Bretonnia one night you spot lights ahead; it seems to be a small village. Do you want to go in and and pillage it?
 	picture = "GFX_evt_merchant_ship_at_sea_republic"
+	only_rulers = yes
+	min_age = 16
+	prisoner = no
+	culture_group = druchi_group
+	is_triggered_only = yes
 
 	trigger = {
-		AND = {
-			trait = on_dark_elf_raid
-			prisoner = no
-		}
-	}
-
-	mean_time_to_happen = {
-		months = 12
+		trait = on_dark_elf_raid
 	}
 
 	option = {
@@ -571,16 +612,14 @@ character_event = {
 	title = RAIDING
 	desc = EVTDESCDARKELF.15 # You come across a merchant convoy of human ships. There are 3 of them, but it looks like they are not warships. Prepare to board them?
 	picture = "GFX_evt_merchant_ship_at_sea_republic"
+	only_rulers = yes
+	min_age = 16
+	prisoner = no
+	culture_group = druchi_group
+	is_triggered_only = yes
 
 	trigger = {
-		AND = {
-			trait = on_dark_elf_raid
-			prisoner = no
-		}
-	}
-
-	mean_time_to_happen = {
-		months = 26
+		trait = on_dark_elf_raid
 	}
 
 	option = {
@@ -716,17 +755,14 @@ character_event = {
 	title = RAIDING
 	desc = EVTDESCDARKELF.19 # Curses! An Eagle Ship from Ulthuan has spotted your sail, and is fast approaching. You can't outrun this warship from your vile cousins, you'll have to hope you can repel their attack...
 	picture = "GFX_evt_merchant_ship_at_sea_republic"
-	religion_group = cytharai_group
+	only_rulers = yes
+	min_age = 16
+	prisoner = no
+	culture_group = druchi_group
+	is_triggered_only = yes
 
 	trigger = {
-		AND = {
-			trait = on_dark_elf_raid
-			prisoner = no
-		}
-	}
-
-	mean_time_to_happen = {
-		months = 21
+		trait = on_dark_elf_raid
 	}
 
 	option = {
@@ -839,49 +875,23 @@ character_event = {
 	}
 }
 
-# now a pick up event to go home when you are wounded
-character_event = {
-	id = darkelf.23
-	title = RAIDING
-	desc = EVTDESCDARKELF.23 # You have become wounded, and can no longer carry on the raiding life. It is time to return to your home and regain your strength.
-	picture = "GFX_evt_merchant_ship_at_sea_republic"
-	min_age = 16
-
-	trigger = {
-		trait = on_dark_elf_raid
-		trait = wounded
-	}
-
-	mean_time_to_happen = {
-		days = 7
-	}
-
-	option = {
-		name = SET_SAIL_FOR_HOME
-		remove_trait = on_dark_elf_raid
-	}
-}
-
-# if malekith loses his claim on k_nagarythe, he gets it back
+# if malekith loses his claim on k_nagarythe, he gets it back on_yearly_pulse
 character_event = {
 	id = darkelf.24
 	title = YOUR_CLAIM
 	desc = EVTDESCDARKELF.24 # Though temporarily defeated, you will never give up your claims to your ancestral homeland.
 	picture = "GFX_evt_large_army"
+	only_rulers = yes
 	min_age = 16
+	culture_group = druchi_group
+	is_triggered_only = yes
 
 	trigger = {
 		trait = malekith
-		NOT = {
+		nor = {
 			has_claim = k_nagarythe
-		}
-		NOT = {
 			has_landed_title = k_nagarythe
 		}
-	}
-
-	mean_time_to_happen = {
-		months = 12
 	}
 
 	option = {

@@ -1,0 +1,770 @@
+namespace = wh_inheritance
+
+# one event to set intelligence, strength and beauty traits
+character_event = {
+	id = wh_inheritance.0
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		not = {
+			has_character_flag = wh_has_event_inheritance.0
+		}
+	}
+
+	immediate = {
+		set_character_flag = wh_has_event_inheritance.0
+		log = "wh_inheritance.0 work fine"
+		# intelligence inheritance
+		set_variable = {
+			which = intelligence_inheritance
+			value = 0
+		}
+		# calc father
+		if = {
+			limit = {
+				father_even_if_dead = {
+					trait = genius
+				}
+				change_variable = {
+					which = intelligence_inheritance
+					value = 2.5
+				}
+			}
+		}
+		if = {
+			limit = {
+				father_even_if_dead = {
+					trait = brilliant
+				}
+				change_variable = {
+					which = intelligence_inheritance
+					value = 2
+				}
+			}
+		}
+		if = {
+			limit = {
+				father_even_if_dead = {
+					trait = quick
+				}
+				change_variable = {
+					which = intelligence_inheritance
+					value = 1.5
+				}
+			}
+		}
+		if = {
+			limit = {
+				father_even_if_dead = {
+					trait = smart
+				}
+				change_variable = {
+					which = intelligence_inheritance
+					value = 1
+				}
+			}
+		}
+		if = {
+			limit = {
+				father_even_if_dead = {
+					trait = bright
+				}
+				change_variable = {
+					which = intelligence_inheritance
+					value = 0.5
+				}
+			}
+		}
+		if = {
+			limit = {
+				father_even_if_dead = {
+					trait = dim
+				}
+				change_variable = {
+					which = intelligence_inheritance
+					value = -1
+				}
+			}
+		}
+		if = {
+			limit = {
+				father_even_if_dead = {
+					trait = dumb
+				}
+				change_variable = {
+					which = intelligence_inheritance
+					value = -2
+				}
+			}
+		}
+		# calc mother, according to the latest studies, the intelligence inherited from mother to a greater extent
+		if = {
+			limit = {
+				mother_even_if_dead = {
+					trait = genius
+				}
+				change_variable = {
+					which = intelligence_inheritance
+					value = 5
+				}
+			}
+		}
+		if = {
+			limit = {
+				mother_even_if_dead = {
+					trait = brilliant
+				}
+				change_variable = {
+					which = intelligence_inheritance
+					value = 4
+				}
+			}
+		}
+		if = {
+			limit = {
+				mother_even_if_dead = {
+					trait = quick
+				}
+				change_variable = {
+					which = intelligence_inheritance
+					value = 3
+				}
+			}
+		}
+		if = {
+			limit = {
+				mother_even_if_dead = {
+					trait = smart
+				}
+				change_variable = {
+					which = intelligence_inheritance
+					value = 2
+				}
+			}
+		}
+		if = {
+			limit = {
+				mother_even_if_dead = {
+					trait = bright
+				}
+				change_variable = {
+					which = intelligence_inheritance
+					value = 1
+				}
+			}
+		}
+		if = {
+			limit = {
+				mother_even_if_dead = {
+					trait = dim
+				}
+				change_variable = {
+					which = intelligence_inheritance
+					value = -2
+				}
+			}
+		}
+		if = {
+			limit = {
+				mother_even_if_dead = {
+					trait = dumb
+				}
+				change_variable = {
+					which = intelligence_inheritance
+					value = -4
+				}
+			}
+		}
+		# add mutation
+		random_list = {
+			20 = {
+				# no mutation
+			}
+			10 = {
+				change_variable = {
+					which = intelligence_inheritance
+					value = 2
+				}
+			}
+			10 = {
+				change_variable = {
+					which = intelligence_inheritance
+					value = 1.5
+				}
+			}
+			10 = {
+				change_variable = {
+					which = intelligence_inheritance
+					value = 1
+				}
+			}
+			10 = {
+				change_variable = {
+					which = intelligence_inheritance
+					value = 0.5
+				}
+			}
+			10 = {
+				change_variable = {
+					which = intelligence_inheritance
+					value = -0.5
+				}
+			}
+			10 = {
+				change_variable = {
+					which = intelligence_inheritance
+					value = -1
+				}
+			}
+			10 = {
+				change_variable = {
+					which = intelligence_inheritance
+					value = -1.5
+				}
+			}
+			10 = {
+				change_variable = {
+					which = intelligence_inheritance
+					value = -2
+				}
+			}
+		}
+		# set trait
+		if = {
+			limit = {
+				check_variable = {
+					which = intelligence_inheritance
+					value >= 6
+				}
+			}
+			add_trait = genius
+		}
+		if = {
+			limit = {
+				check_variable = {
+					which = intelligence_inheritance
+					value < 6
+				}
+				check_variable = {
+					which = intelligence_inheritance
+					value >= 4.5
+				}
+			}
+			add_trait = brilliant
+		}
+		if = {
+			limit = {
+				check_variable = {
+					which = intelligence_inheritance
+					value < 4.5
+				}
+				check_variable = {
+					which = intelligence_inheritance
+					value >= 3
+				}
+			}
+			add_trait = quick
+		}
+		if = {
+			limit = {
+				check_variable = {
+					which = intelligence_inheritance
+					value < 3
+				}
+				check_variable = {
+					which = intelligence_inheritance
+					value >= 1.5
+				}
+			}
+			add_trait = smart
+		}
+		if = {
+			limit = {
+				check_variable = {
+					which = intelligence_inheritance
+					value < 2
+				}
+				check_variable = {
+					which = intelligence_inheritance
+					value > 0.5
+				}
+			}
+			add_trait = bright
+		}
+		# no trait
+		if = {
+			limit = {
+				check_variable = {
+					which = intelligence_inheritance
+					value < -0.5
+				}
+				check_variable = {
+					which = intelligence_inheritance
+					value >= -2
+				}
+			}
+			add_trait = dim
+		}
+		if = {
+			limit = {
+				check_variable = {
+					which = intelligence_inheritance
+					value < -2
+				}
+			}
+			add_trait = dumb
+		}
+		# clean
+		set_variable = {
+			which = intelligence_inheritance
+			value = 0
+		}
+		# strength inheritance
+		set_variable = {
+			which = strength_inheritance
+			value = 0
+		}
+		# calc father
+		if = {
+			limit = {
+				father_even_if_dead = {
+					trait = strong
+				}
+				change_variable = {
+					which = strength_inheritance
+					value = 3
+				}
+			}
+		}
+		if = {
+			limit = {
+				father_even_if_dead = {
+					trait = tough
+				}
+				change_variable = {
+					which = strength_inheritance
+					value = 2
+				}
+			}
+		}
+		if = {
+			limit = {
+				father_even_if_dead = {
+					trait = hardy
+				}
+				change_variable = {
+					which = strength_inheritance
+					value = 1
+				}
+			}
+		}
+		if = {
+			limit = {
+				father_even_if_dead = {
+					trait = soft
+				}
+				change_variable = {
+					which = strength_inheritance
+					value = -1
+				}
+			}
+		}
+		if = {
+			limit = {
+				father_even_if_dead = {
+					trait = fragile
+				}
+				change_variable = {
+					which = strength_inheritance
+					value = -2
+				}
+			}
+		}
+		# calc mother
+		if = {
+			limit = {
+				mother_even_if_dead = {
+					trait = strong
+				}
+				change_variable = {
+					which = strength_inheritance
+					value = 3
+				}
+			}
+		}
+		if = {
+			limit = {
+				mother_even_if_dead = {
+					trait = tough
+				}
+				change_variable = {
+					which = strength_inheritance
+					value = 2
+				}
+			}
+		}
+		if = {
+			limit = {
+				mother_even_if_dead = {
+					trait = hardy
+				}
+				change_variable = {
+					which = strength_inheritance
+					value = 1
+				}
+			}
+		}
+		if = {
+			limit = {
+				mother_even_if_dead = {
+					trait = soft
+				}
+				change_variable = {
+					which = strength_inheritance
+					value = -1
+				}
+			}
+		}
+		if = {
+			limit = {
+				mother_even_if_dead = {
+					trait = fragile
+				}
+				change_variable = {
+					which = strength_inheritance
+					value = -2
+				}
+			}
+		}
+		# add mutation
+		random_list = {
+			20 = {
+				# no mutation
+			}
+			10 = {
+				change_variable = {
+					which = strength_inheritance
+					value = 1.5
+				}
+			}
+			10 = {
+				change_variable = {
+					which = strength_inheritance
+					value = 1
+				}
+			}
+			10 = {
+				change_variable = {
+					which = strength_inheritance
+					value = 0.5
+				}
+			}
+			10 = {
+				change_variable = {
+					which = strength_inheritance
+					value = -0.5
+				}
+			}
+			10 = {
+				change_variable = {
+					which = strength_inheritance
+					value = -1
+				}
+			}
+			10 = {
+				change_variable = {
+					which = strength_inheritance
+					value = -1.5
+				}
+			}
+		}
+		# set trait
+		if = {
+			limit = {
+				check_variable = {
+					which = strength_inheritance
+					value >= 5
+				}
+			}
+			add_trait = strong
+		}
+		if = {
+			limit = {
+				check_variable = {
+					which = strength_inheritance
+					value < 5
+				}
+				check_variable = {
+					which = strength_inheritance
+					value >= 3
+				}
+			}
+			add_trait = tough
+		}
+		if = {
+			limit = {
+				check_variable = {
+					which = strength_inheritance
+					value < 3
+				}
+				check_variable = {
+					which = strength_inheritance
+					value >= 1
+				}
+			}
+			add_trait = hardy
+		}
+		# no trait
+		if = {
+			limit = {
+				check_variable = {
+					which = strength_inheritance
+					value < 0
+				}
+				check_variable = {
+					which = strength_inheritance
+					value >= -2
+				}
+			}
+			add_trait = soft
+		}
+		if = {
+			limit = {
+				check_variable = {
+					which = strength_inheritance
+					value < -2
+				}
+			}
+			add_trait = fragile
+		}
+		# clean
+		set_variable = {
+			which = strength_inheritance
+			value = 0
+		}
+		# beauty inheritance
+		set_variable = {
+			which = beauty_inheritance
+			value = 0
+		}
+		# calc father
+		if = {
+			limit = {
+				father_even_if_dead = {
+					trait = beautiful
+				}
+				change_variable = {
+					which = beauty_inheritance
+					value = 3
+				}
+			}
+		}
+		if = {
+			limit = {
+				father_even_if_dead = {
+					trait = pretty
+				}
+				change_variable = {
+					which = beauty_inheritance
+					value = 2
+				}
+			}
+		}
+		if = {
+			limit = {
+				father_even_if_dead = {
+					trait = fair
+				}
+				change_variable = {
+					which = beauty_inheritance
+					value = 1
+				}
+			}
+		}
+		if = {
+			limit = {
+				father_even_if_dead = {
+					trait = plain
+				}
+				change_variable = {
+					which = beauty_inheritance
+					value = -1
+				}
+			}
+		}
+		if = {
+			limit = {
+				father_even_if_dead = {
+					trait = ugly
+				}
+				change_variable = {
+					which = beauty_inheritance
+					value = -2
+				}
+			}
+		}
+		# calc mother
+		if = {
+			limit = {
+				mother_even_if_dead = {
+					trait = beautiful
+				}
+				change_variable = {
+					which = beauty_inheritance
+					value = 3
+				}
+			}
+		}
+		if = {
+			limit = {
+				mother_even_if_dead = {
+					trait = pretty
+				}
+				change_variable = {
+					which = beauty_inheritance
+					value = 2
+				}
+			}
+		}
+		if = {
+			limit = {
+				mother_even_if_dead = {
+					trait = fair
+				}
+				change_variable = {
+					which = beauty_inheritance
+					value = 1
+				}
+			}
+		}
+		if = {
+			limit = {
+				mother_even_if_dead = {
+					trait = plain
+				}
+				change_variable = {
+					which = beauty_inheritance
+					value = -1
+				}
+			}
+		}
+		if = {
+			limit = {
+				mother_even_if_dead = {
+					trait = ugly
+				}
+				change_variable = {
+					which = beauty_inheritance
+					value = -2
+				}
+			}
+		}
+		# add mutation
+		random_list = {
+			20 = {
+				# no mutation
+			}
+			10 = {
+				change_variable = {
+					which = beauty_inheritance
+					value = 1.5
+				}
+			}
+			10 = {
+				change_variable = {
+					which = beauty_inheritance
+					value = 1
+				}
+			}
+			10 = {
+				change_variable = {
+					which = beauty_inheritance
+					value = 0.5
+				}
+			}
+			10 = {
+				change_variable = {
+					which = beauty_inheritance
+					value = -0.5
+				}
+			}
+			10 = {
+				change_variable = {
+					which = beauty_inheritance
+					value = -1
+				}
+			}
+			10 = {
+				change_variable = {
+					which = beauty_inheritance
+					value = -1.5
+				}
+			}
+		}
+		# set trait
+		if = {
+			limit = {
+				check_variable = {
+					which = beauty_inheritance
+					value >= 5
+				}
+			}
+			add_trait = beautiful
+		}
+		if = {
+			limit = {
+				check_variable = {
+					which = beauty_inheritance
+					value < 5
+				}
+				check_variable = {
+					which = beauty_inheritance
+					value >= 3
+				}
+			}
+			add_trait = pretty
+		}
+		if = {
+			limit = {
+				check_variable = {
+					which = beauty_inheritance
+					value < 3
+				}
+				check_variable = {
+					which = beauty_inheritance
+					value >= 1
+				}
+			}
+			add_trait = fair
+		}
+		# no trait
+		if = {
+			limit = {
+				check_variable = {
+					which = beauty_inheritance
+					value < 0
+				}
+				check_variable = {
+					which = beauty_inheritance
+					value >= -2
+				}
+			}
+			add_trait = plain
+		}
+		if = {
+			limit = {
+				check_variable = {
+					which = beauty_inheritance
+					value < -2
+				}
+			}
+			add_trait = ugly
+		}
+		# clean
+		set_variable = {
+			which = beauty_inheritance
+			value = 0
+		}
+	}
+}

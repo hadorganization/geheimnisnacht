@@ -113,8 +113,7 @@ character_event = {
 			}
 			if = {
 				limit = {
-					is_invincible_
-					trigger = yes
+					is_invincible_trigger = yes
 				}
 				antideath_effect = yes
 				break = yes
@@ -137,8 +136,7 @@ character_event = {
 			}
 			if = {
 				limit = {
-					is_invincible_
-					trigger = yes
+					is_invincible_trigger = yes
 				}
 				antideath_effect = yes
 				break = yes
@@ -219,8 +217,7 @@ character_event = {
 		}
 		if = {
 			limit = {
-				is_invincible_
-				trigger = yes
+				is_invincible_trigger = yes
 			}
 			antideath_effect = yes
 			break = yes
@@ -378,8 +375,7 @@ character_event = {
 				}
 				if = {
 					limit = {
-						is_invincible_
-						trigger = yes
+						is_invincible_trigger = yes
 					}
 					antideath_effect = yes
 					break = yes
@@ -875,8 +871,7 @@ long_character_event = {
 		}
 		if = {
 			limit = {
-				is_invincible_
-				trigger = yes
+				is_invincible_trigger = yes
 			}
 			antideath_effect = yes
 			break = yes
@@ -5437,33 +5432,33 @@ character_event = {
 	}
 }
 
-# The Amazon girl stops hiding
+# # The Amazon girl stops hiding
 
-# character_event = {
+# # character_event = {
 
-# 	id = amazon.15004
+# # 	id = amazon.15004
 
-# 	desc = EVTDESCAsamazonchild15004
+# # 	desc = EVTDESCAsamazonchild15004
 
-# 	picture = GFX_evt_amazon_girl
-trigger = {
-	has_character_flag = antiamazon_trainee
-}
+# # 	picture = GFX_evt_amazon_girl
+# trigger = {
+# 	has_character_flag = antiamazon_trainee
+# }
 
-# 	is_triggered_only = yes
-option = {
-	# 		name = EVTOPTAsamazonchild15004
-	# 		decadence = 1
-	# 		remove_trait = questing
-	# 		character_event = {
-	id = slizardmen.44005
-}
+# # 	is_triggered_only = yes
+# option = {
+# 	# 		name = EVTOPTAsamazonchild15004
+# 	# 		decadence = 1
+# 	# 		remove_trait = questing
+# 	# 		character_event = {
+# 	id = slizardmen.44005
+# }
 
-# 		ai_chance = {
-factor = 1
-}
-}
-}
+# # 		ai_chance = {
+# factor = 1
+# }
+# }
+# }
 
 # Notify Guardian - The Amazon girl allowed to run away
 character_event = {
@@ -6102,137 +6097,138 @@ character_event = {
 	}
 }
 
-# Amazon emerges as strong-dumblong_character_event = {
-id = amazon.17001
-desc = EVTDESCAsamazonchild17001
-picture = "GFX_evt_amazon_pool"
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsamazonchild17001
-	piety = 150
-	decadence = -1
-	if = {
-		limit = {
-			trait = strong
-		}
-		change_martial = 5
-	}
-	if = {
-		limit = {
-			OR = {
-				trait = weak
-				trait = soft
-				trait = fragile
-			}
-		}
-		remove_trait = weak
-		remove_trait = soft
-		remove_trait = fragile
-		add_trait = tough
-	}
-	if = {
-		limit = {
-			OR = {
-				trait = tough
-				trait = hardy
-			}
-		}
-		remove_trait = tough
-		remove_trait = hardy
-		add_trait = strong
-	}
-	if = {
-		limit = {
-			NOR = {
-				trait = weak
-				trait = soft
-				trait = fragile
-				trait = tough
-				trait = hardy
+# Amazon emerges as strong-dumb
+long_character_event = {
+	id = amazon.17001
+	desc = EVTDESCAsamazonchild17001
+	picture = "GFX_evt_amazon_pool"
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsamazonchild17001
+		piety = 150
+		decadence = -1
+		if = {
+			limit = {
 				trait = strong
 			}
+			change_martial = 5
 		}
-		add_trait = strong
-	}
-	if = {
-		limit = {
-			trait = imbecile
-		}
-		change_learning = -5
-	}
-	if = {
-		limit = {
-			OR = {
-				trait = dim
-				trait = dumb
-				trait = slow
-				trait = idiot
+		if = {
+			limit = {
+				OR = {
+					trait = weak
+					trait = soft
+					trait = fragile
+				}
 			}
+			remove_trait = weak
+			remove_trait = soft
+			remove_trait = fragile
+			add_trait = tough
 		}
-		remove_trait = dim
-		remove_trait = dumb
-		remove_trait = slow
-		remove_trait = idiot
-		add_trait = imbecile
-	}
-	if = {
-		limit = {
-			OR = {
-				trait = bright
-				trait = smart
-				trait = quick
+		if = {
+			limit = {
+				OR = {
+					trait = tough
+					trait = hardy
+				}
 			}
+			remove_trait = tough
+			remove_trait = hardy
+			add_trait = strong
 		}
-		remove_trait = tough
-		remove_trait = hardy
-		remove_trait = quick
-		add_trait = dumb
-	}
-	if = {
-		limit = {
-			OR = {
-				trait = brilliant
-				trait = genius
+		if = {
+			limit = {
+				NOR = {
+					trait = weak
+					trait = soft
+					trait = fragile
+					trait = tough
+					trait = hardy
+					trait = strong
+				}
 			}
+			add_trait = strong
 		}
-		remove_trait = brilliant
-		remove_trait = genius
-	}
-	if = {
-		limit = {
-			NOR = {
-				trait = dim
-				trait = dumb
-				trait = slow
-				trait = idiot
+		if = {
+			limit = {
 				trait = imbecile
-				trait = bright
-				trait = smart
-				trait = quick
-				trait = brilliant
-				trait = genius
+			}
+			change_learning = -5
+		}
+		if = {
+			limit = {
+				OR = {
+					trait = dim
+					trait = dumb
+					trait = slow
+					trait = idiot
+				}
+			}
+			remove_trait = dim
+			remove_trait = dumb
+			remove_trait = slow
+			remove_trait = idiot
+			add_trait = imbecile
+		}
+		if = {
+			limit = {
+				OR = {
+					trait = bright
+					trait = smart
+					trait = quick
+				}
+			}
+			remove_trait = tough
+			remove_trait = hardy
+			remove_trait = quick
+			add_trait = dumb
+		}
+		if = {
+			limit = {
+				OR = {
+					trait = brilliant
+					trait = genius
+				}
+			}
+			remove_trait = brilliant
+			remove_trait = genius
+		}
+		if = {
+			limit = {
+				NOR = {
+					trait = dim
+					trait = dumb
+					trait = slow
+					trait = idiot
+					trait = imbecile
+					trait = bright
+					trait = smart
+					trait = quick
+					trait = brilliant
+					trait = genius
+				}
+			}
+			add_trait = slow
+		}
+		hidden_tooltip = {
+			remove_trait = maimed
+			remove_trait = wounded
+			remove_trait = blinded
+			remove_trait = disfigured
+			remove_trait = fat
+			remove_trait = undernourished
+			remove_trait = stressed
+			remove_trait = depressed
+		}
+		hidden_tooltip = {
+			mother = {
+				character_event = {
+					id = amazon.17005
+				}
 			}
 		}
-		add_trait = slow
 	}
-	hidden_tooltip = {
-		remove_trait = maimed
-		remove_trait = wounded
-		remove_trait = blinded
-		remove_trait = disfigured
-		remove_trait = fat
-		remove_trait = undernourished
-		remove_trait = stressed
-		remove_trait = depressed
-	}
-	hidden_tooltip = {
-		mother = {
-			character_event = {
-				id = amazon.17005
-			}
-		}
-	}
-}
 }
 
 # Amazon emerges as pretty-dumblong_character_event = {

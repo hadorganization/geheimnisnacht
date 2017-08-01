@@ -528,20 +528,15 @@ province_event = {
 	# desc = EVTDESCsnehekharan10
 	# picture = GFX_evt_khemri_king
 	hide_window = yes
- 	mean_time_to_happen = {
-		days = 5
-	}
+	
 
 	trigger = {
 		location = {
 			region = world_nehekhara
 		}
 		owner = {
-			NOT = {
-				trait = creature_nehekharan
-			}
+			is_undead_trigger = no
 		}
-
 	}
 
 	immediate = {
@@ -568,9 +563,8 @@ province_event = {
 		}
 		has_province_modifier = nehekharan_curse
 		owner = {
-			trait = creature_nehekharan
+			is_undead_trigger = yes
 		}
-
 	}
 
 	immediate = {
@@ -584,17 +578,13 @@ character_event = {
 	# desc = EVTDESCsnehekharan11
 	# picture = GFX_evt_khemri_king
 	hide_window = yes
+	
  	mean_time_to_happen = {
 		days = 15
 		modifier = {
 			factor = 10
 			is_vampire_trigger = yes
 		}
-		modifier = {
-			factor = 2
-			trait = vampire_jade_visible
-		}
-
 	}
 
 	trigger = {

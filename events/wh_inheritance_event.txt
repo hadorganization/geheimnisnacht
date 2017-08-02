@@ -18,7 +18,7 @@ character_event = {
 		log = "wh_inheritance.0 work fine"
 		# intelligence inheritance
 		set_variable = {
-			which = intelligence_inheritance
+			which = wh_inheritance
 			value = 0
 		}
 		# calc father -6 to 7.5
@@ -28,7 +28,7 @@ character_event = {
 					trait = genius
 				}
 				change_variable = {
-					which = intelligence_inheritance
+					which = wh_inheritance
 					value = 2.5
 				}
 			}
@@ -39,7 +39,7 @@ character_event = {
 					trait = brilliant
 				}
 				change_variable = {
-					which = intelligence_inheritance
+					which = wh_inheritance
 					value = 2
 				}
 			}
@@ -50,7 +50,7 @@ character_event = {
 					trait = quick
 				}
 				change_variable = {
-					which = intelligence_inheritance
+					which = wh_inheritance
 					value = 1.5
 				}
 			}
@@ -61,7 +61,7 @@ character_event = {
 					trait = smart
 				}
 				change_variable = {
-					which = intelligence_inheritance
+					which = wh_inheritance
 					value = 1
 				}
 			}
@@ -72,7 +72,7 @@ character_event = {
 					trait = bright
 				}
 				change_variable = {
-					which = intelligence_inheritance
+					which = wh_inheritance
 					value = 0.5
 				}
 			}
@@ -83,7 +83,7 @@ character_event = {
 					trait = dim
 				}
 				change_variable = {
-					which = intelligence_inheritance
+					which = wh_inheritance
 					value = -1
 				}
 			}
@@ -94,7 +94,7 @@ character_event = {
 					trait = dumb
 				}
 				change_variable = {
-					which = intelligence_inheritance
+					which = wh_inheritance
 					value = -2
 				}
 			}
@@ -106,7 +106,7 @@ character_event = {
 					trait = genius
 				}
 				change_variable = {
-					which = intelligence_inheritance
+					which = wh_inheritance
 					value = 5
 				}
 			}
@@ -117,7 +117,7 @@ character_event = {
 					trait = brilliant
 				}
 				change_variable = {
-					which = intelligence_inheritance
+					which = wh_inheritance
 					value = 4
 				}
 			}
@@ -128,7 +128,7 @@ character_event = {
 					trait = quick
 				}
 				change_variable = {
-					which = intelligence_inheritance
+					which = wh_inheritance
 					value = 3
 				}
 			}
@@ -139,7 +139,7 @@ character_event = {
 					trait = smart
 				}
 				change_variable = {
-					which = intelligence_inheritance
+					which = wh_inheritance
 					value = 2
 				}
 			}
@@ -150,7 +150,7 @@ character_event = {
 					trait = bright
 				}
 				change_variable = {
-					which = intelligence_inheritance
+					which = wh_inheritance
 					value = 1
 				}
 			}
@@ -161,7 +161,7 @@ character_event = {
 					trait = dim
 				}
 				change_variable = {
-					which = intelligence_inheritance
+					which = wh_inheritance
 					value = -2
 				}
 			}
@@ -172,7 +172,7 @@ character_event = {
 					trait = dumb
 				}
 				change_variable = {
-					which = intelligence_inheritance
+					which = wh_inheritance
 					value = -4
 				}
 			}
@@ -184,111 +184,120 @@ character_event = {
 			}
 			10 = {
 				change_variable = {
-					which = intelligence_inheritance
+					which = wh_inheritance
 					value = 2
 				}
 			}
 			10 = {
 				change_variable = {
-					which = intelligence_inheritance
+					which = wh_inheritance
 					value = 1.5
 				}
 			}
 			10 = {
 				change_variable = {
-					which = intelligence_inheritance
+					which = wh_inheritance
 					value = 1
 				}
 			}
 			10 = {
 				change_variable = {
-					which = intelligence_inheritance
+					which = wh_inheritance
 					value = 0.5
 				}
 			}
 			10 = {
 				change_variable = {
-					which = intelligence_inheritance
+					which = wh_inheritance
 					value = -0.5
 				}
 			}
 			10 = {
 				change_variable = {
-					which = intelligence_inheritance
+					which = wh_inheritance
 					value = -1
 				}
 			}
 			10 = {
 				change_variable = {
-					which = intelligence_inheritance
+					which = wh_inheritance
 					value = -1.5
 				}
 			}
 			10 = {
 				change_variable = {
-					which = intelligence_inheritance
+					which = wh_inheritance
 					value = -2
 				}
 			}
 		}
 		# set trait
+		# тут пиздец с проверкой переменных. пока сделаем криво. мб с патчем будет норм сравнение
 		if = {
 			limit = {
 				check_variable = {
-					which = intelligence_inheritance
-					value >= 6
+					which = wh_inheritance
+					value = 6
 				}
 			}
 			add_trait = genius
 		}
 		if = {
 			limit = {
-				check_variable = {
-					which = intelligence_inheritance
-					value < 6
+				not = {
+					check_variable = {
+						which = wh_inheritance
+						value = 6
+					}
 				}
 				check_variable = {
-					which = intelligence_inheritance
-					value >= 4.5
+					which = wh_inheritance
+					value = 4.5
 				}
 			}
 			add_trait = brilliant
 		}
 		if = {
 			limit = {
-				check_variable = {
-					which = intelligence_inheritance
-					value < 4.5
+				not = {
+					check_variable = {
+						which = wh_inheritance
+						value = 4.5
+					}
 				}
 				check_variable = {
-					which = intelligence_inheritance
-					value >= 3
+					which = wh_inheritance
+					value = 3
 				}
 			}
 			add_trait = quick
 		}
 		if = {
 			limit = {
-				check_variable = {
-					which = intelligence_inheritance
-					value < 3
+				not = {
+					check_variable = {
+						which = wh_inheritance
+						value = 3
+					}
 				}
 				check_variable = {
-					which = intelligence_inheritance
-					value >= 1.5
+					which = wh_inheritance
+					value = 1.5
 				}
 			}
 			add_trait = smart
 		}
 		if = {
 			limit = {
-				check_variable = {
-					which = intelligence_inheritance
-					value < 2
+				not = {
+					check_variable = {
+						which = wh_inheritance
+						value = 2
+					}
 				}
 				check_variable = {
-					which = intelligence_inheritance
-					value > 0.5
+					which = wh_inheritance
+					value = 0.5
 				}
 			}
 			add_trait = bright
@@ -296,34 +305,33 @@ character_event = {
 		# no trait
 		if = {
 			limit = {
-				check_variable = {
-					which = intelligence_inheritance
-					value < -2
+				not = {
+					check_variable = {
+						which = wh_inheritance
+						value = -2
+					}
 				}
 				check_variable = {
-					which = intelligence_inheritance
-					value >= -4
+					which = wh_inheritance
+					value = -4
 				}
 			}
 			add_trait = dim
 		}
 		if = {
 			limit = {
-				check_variable = {
-					which = intelligence_inheritance
-					value < -4
+				not = {
+					check_variable = {
+						which = wh_inheritance
+						value = -4
+					}
 				}
 			}
 			add_trait = dumb
 		}
-		# clean
-		set_variable = {
-			which = intelligence_inheritance
-			value = 0
-		}
 		# strength inheritance
 		set_variable = {
-			which = strength_inheritance
+			which = wh_inheritance
 			value = 0
 		}
 		# calc father -4 to 6
@@ -333,7 +341,7 @@ character_event = {
 					trait = strong
 				}
 				change_variable = {
-					which = strength_inheritance
+					which = wh_inheritance
 					value = 3
 				}
 			}
@@ -344,7 +352,7 @@ character_event = {
 					trait = tough
 				}
 				change_variable = {
-					which = strength_inheritance
+					which = wh_inheritance
 					value = 2
 				}
 			}
@@ -355,7 +363,7 @@ character_event = {
 					trait = hardy
 				}
 				change_variable = {
-					which = strength_inheritance
+					which = wh_inheritance
 					value = 1
 				}
 			}
@@ -366,7 +374,7 @@ character_event = {
 					trait = soft
 				}
 				change_variable = {
-					which = strength_inheritance
+					which = wh_inheritance
 					value = -1
 				}
 			}
@@ -377,7 +385,7 @@ character_event = {
 					trait = fragile
 				}
 				change_variable = {
-					which = strength_inheritance
+					which = wh_inheritance
 					value = -2
 				}
 			}
@@ -389,7 +397,7 @@ character_event = {
 					trait = strong
 				}
 				change_variable = {
-					which = strength_inheritance
+					which = wh_inheritance
 					value = 3
 				}
 			}
@@ -400,7 +408,7 @@ character_event = {
 					trait = tough
 				}
 				change_variable = {
-					which = strength_inheritance
+					which = wh_inheritance
 					value = 2
 				}
 			}
@@ -411,7 +419,7 @@ character_event = {
 					trait = hardy
 				}
 				change_variable = {
-					which = strength_inheritance
+					which = wh_inheritance
 					value = 1
 				}
 			}
@@ -422,7 +430,7 @@ character_event = {
 					trait = soft
 				}
 				change_variable = {
-					which = strength_inheritance
+					which = wh_inheritance
 					value = -1
 				}
 			}
@@ -433,7 +441,7 @@ character_event = {
 					trait = fragile
 				}
 				change_variable = {
-					which = strength_inheritance
+					which = wh_inheritance
 					value = -2
 				}
 			}
@@ -445,37 +453,37 @@ character_event = {
 			}
 			10 = {
 				change_variable = {
-					which = strength_inheritance
+					which = wh_inheritance
 					value = 1.5
 				}
 			}
 			10 = {
 				change_variable = {
-					which = strength_inheritance
+					which = wh_inheritance
 					value = 1
 				}
 			}
 			10 = {
 				change_variable = {
-					which = strength_inheritance
+					which = wh_inheritance
 					value = 0.5
 				}
 			}
 			10 = {
 				change_variable = {
-					which = strength_inheritance
+					which = wh_inheritance
 					value = -0.5
 				}
 			}
 			10 = {
 				change_variable = {
-					which = strength_inheritance
+					which = wh_inheritance
 					value = -1
 				}
 			}
 			10 = {
 				change_variable = {
-					which = strength_inheritance
+					which = wh_inheritance
 					value = -1.5
 				}
 			}
@@ -484,34 +492,38 @@ character_event = {
 		if = {
 			limit = {
 				check_variable = {
-					which = strength_inheritance
-					value >= 5
+					which = wh_inheritance
+					value = 5
 				}
 			}
 			add_trait = strong
 		}
 		if = {
 			limit = {
-				check_variable = {
-					which = strength_inheritance
-					value < 5
+				not = {
+					check_variable = {
+						which = wh_inheritance
+						value = 5
+					}
 				}
 				check_variable = {
-					which = strength_inheritance
-					value >= 3
+					which = wh_inheritance
+					value = 3
 				}
 			}
 			add_trait = tough
 		}
 		if = {
 			limit = {
-				check_variable = {
-					which = strength_inheritance
-					value < 3
+				not = {
+					check_variable = {
+						which = wh_inheritance
+						value = 3
+					}
 				}
 				check_variable = {
-					which = strength_inheritance
-					value >= 1
+					which = wh_inheritance
+					value = 1
 				}
 			}
 			add_trait = hardy
@@ -519,34 +531,33 @@ character_event = {
 		# no trait
 		if = {
 			limit = {
-				check_variable = {
-					which = strength_inheritance
-					value < -1
+				not = {
+					check_variable = {
+						which = wh_inheritance
+						value = -1
+					}
 				}
 				check_variable = {
-					which = strength_inheritance
-					value >= -3
+					which = wh_inheritance
+					value = -3
 				}
 			}
 			add_trait = soft
 		}
 		if = {
 			limit = {
-				check_variable = {
-					which = strength_inheritance
-					value < -3
+				not = {
+					check_variable = {
+						which = wh_inheritance
+						value = -3
+					}
 				}
 			}
 			add_trait = fragile
 		}
-		# clean
-		set_variable = {
-			which = strength_inheritance
-			value = 0
-		}
 		# beauty inheritance
 		set_variable = {
-			which = beauty_inheritance
+			which = wh_inheritance
 			value = 0
 		}
 		# calc father -4 to 6
@@ -556,7 +567,7 @@ character_event = {
 					trait = beautiful
 				}
 				change_variable = {
-					which = beauty_inheritance
+					which = wh_inheritance
 					value = 3
 				}
 			}
@@ -567,7 +578,7 @@ character_event = {
 					trait = pretty
 				}
 				change_variable = {
-					which = beauty_inheritance
+					which = wh_inheritance
 					value = 2
 				}
 			}
@@ -578,7 +589,7 @@ character_event = {
 					trait = fair
 				}
 				change_variable = {
-					which = beauty_inheritance
+					which = wh_inheritance
 					value = 1
 				}
 			}
@@ -589,7 +600,7 @@ character_event = {
 					trait = plain
 				}
 				change_variable = {
-					which = beauty_inheritance
+					which = wh_inheritance
 					value = -1
 				}
 			}
@@ -600,7 +611,7 @@ character_event = {
 					trait = ugly
 				}
 				change_variable = {
-					which = beauty_inheritance
+					which = wh_inheritance
 					value = -2
 				}
 			}
@@ -612,7 +623,7 @@ character_event = {
 					trait = beautiful
 				}
 				change_variable = {
-					which = beauty_inheritance
+					which = wh_inheritance
 					value = 3
 				}
 			}
@@ -623,7 +634,7 @@ character_event = {
 					trait = pretty
 				}
 				change_variable = {
-					which = beauty_inheritance
+					which = wh_inheritance
 					value = 2
 				}
 			}
@@ -634,7 +645,7 @@ character_event = {
 					trait = fair
 				}
 				change_variable = {
-					which = beauty_inheritance
+					which = wh_inheritance
 					value = 1
 				}
 			}
@@ -645,7 +656,7 @@ character_event = {
 					trait = plain
 				}
 				change_variable = {
-					which = beauty_inheritance
+					which = wh_inheritance
 					value = -1
 				}
 			}
@@ -656,7 +667,7 @@ character_event = {
 					trait = ugly
 				}
 				change_variable = {
-					which = beauty_inheritance
+					which = wh_inheritance
 					value = -2
 				}
 			}
@@ -668,37 +679,37 @@ character_event = {
 			}
 			10 = {
 				change_variable = {
-					which = beauty_inheritance
+					which = wh_inheritance
 					value = 1.5
 				}
 			}
 			10 = {
 				change_variable = {
-					which = beauty_inheritance
+					which = wh_inheritance
 					value = 1
 				}
 			}
 			10 = {
 				change_variable = {
-					which = beauty_inheritance
+					which = wh_inheritance
 					value = 0.5
 				}
 			}
 			10 = {
 				change_variable = {
-					which = beauty_inheritance
+					which = wh_inheritance
 					value = -0.5
 				}
 			}
 			10 = {
 				change_variable = {
-					which = beauty_inheritance
+					which = wh_inheritance
 					value = -1
 				}
 			}
 			10 = {
 				change_variable = {
-					which = beauty_inheritance
+					which = wh_inheritance
 					value = -1.5
 				}
 			}
@@ -707,34 +718,38 @@ character_event = {
 		if = {
 			limit = {
 				check_variable = {
-					which = beauty_inheritance
-					value >= 5
+					which = wh_inheritance
+					value = 5
 				}
 			}
 			add_trait = beautiful
 		}
 		if = {
 			limit = {
-				check_variable = {
-					which = beauty_inheritance
-					value < 5
+				not = {
+					check_variable = {
+						which = wh_inheritance
+						value = 5
+					}
 				}
 				check_variable = {
-					which = beauty_inheritance
-					value >= 3
+					which = wh_inheritance
+					value = 3
 				}
 			}
 			add_trait = pretty
 		}
 		if = {
 			limit = {
-				check_variable = {
-					which = beauty_inheritance
-					value < 3
+				not = {
+					check_variable = {
+						which = wh_inheritance
+						value = 3
+					}
 				}
 				check_variable = {
-					which = beauty_inheritance
-					value >= 1
+					which = wh_inheritance
+					value = 1
 				}
 			}
 			add_trait = fair
@@ -742,29 +757,33 @@ character_event = {
 		# no trait
 		if = {
 			limit = {
-				check_variable = {
-					which = beauty_inheritance
-					value < -1
+				not = {
+					check_variable = {
+						which = wh_inheritance
+						value = -1
+					}
 				}
 				check_variable = {
-					which = beauty_inheritance
-					value >= -3
+					which = wh_inheritance
+					value = -3
 				}
 			}
 			add_trait = plain
 		}
 		if = {
 			limit = {
-				check_variable = {
-					which = beauty_inheritance
-					value < -3
+				not = {
+					check_variable = {
+						which = wh_inheritance
+						value = -3
+					}
 				}
 			}
 			add_trait = ugly
 		}
 		# clean
 		set_variable = {
-			which = beauty_inheritance
+			which = wh_inheritance
 			value = 0
 		}
 	}

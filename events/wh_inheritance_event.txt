@@ -1078,11 +1078,26 @@ character_event = {
 				}
 				set_character_flag = magic_potential_flag_1
 			}
-		}
-		# clean
-		set_variable = {
-			which = wh_inheritance
-			value = 0
+			if = {
+				limit = {
+					not = {
+						check_variable = {
+							which = wh_inheritance
+							value = 2
+						}
+					}
+					check_variable = {
+						which = wh_inheritance
+						value = 1
+					}
+				}
+				set_character_flag = recessive_mage
+			}
+			# clean
+			set_variable = {
+				which = wh_inheritance
+				value = 0
+			}
 		}
 	}
 }

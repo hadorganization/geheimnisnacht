@@ -4,17 +4,14 @@
 # Ambition decisions
 #
 ###################################
-
 # Written by Markus Olsén
-
 targetted_decisions = {
-	
+
 	request_council_position = {
 		only_playable = yes
 		is_high_prio = yes
 		filter = liege
 		ai_target_filter = liege
-		
 		from_potential = {
 			has_ambition = obj_become_council_member
 		}
@@ -22,20 +19,21 @@ targetted_decisions = {
 			FROM = {
 				prisoner = no
 				prestige = 100
-				NOR = { 
+				NOR = {
 					in_revolt = yes
 					trait = incapable
 					is_inaccessible_trigger = yes
-					liege = { 
+					liege = {
 						OR = {
 							in_revolt = yes
-							has_opinion_modifier = { who = PREV modifier = requested_council_position } 
+							has_opinion_modifier = {
+								who = PREV modifier = requested_council_position
+							}
 						}
 					}
 				}
 			}
 		}
-	
 		effect = {
 			FROM = {
 				prestige = -50
@@ -48,7 +46,9 @@ targetted_decisions = {
 						who = FROM
 						years = 2
 					}
-					character_event = { id = ZE.6001 days = 3 }			
+					character_event = {
+						id = ZE.6001 days = 3
+					}
 				}
 			}
 		}
@@ -63,10 +63,8 @@ targetted_decisions = {
 	ask_for_land = {
 		only_playable = yes
 		is_high_prio = yes
-		
 		filter = liege
 		ai_target_filter = liege
-		
 		from_potential = {
 			is_playable = yes
 			has_ambition = obj_land_for_son
@@ -74,7 +72,7 @@ targetted_decisions = {
 		}
 		allow = {
 			FROM = {
-				NOR = { 
+				NOR = {
 					prisoner = yes
 					in_revolt = yes
 					trait = incapable
@@ -83,7 +81,9 @@ targetted_decisions = {
 						OR = {
 							has_regent = yes
 							in_revolt = yes
-							has_opinion_modifier = { who = PREV modifier = requested_land } 
+							has_opinion_modifier = {
+								who = PREV modifier = requested_land
+							}
 						}
 					}
 				}
@@ -93,8 +93,8 @@ targetted_decisions = {
 					is_landed = no
 					is_adult = yes
 					prisoner = no
-					NOR = { 
-						trait = incapable 
+					NOR = {
+						trait = incapable
 						is_ascetic_trigger = yes
 						trait = eunuch
 					}
@@ -104,7 +104,7 @@ targetted_decisions = {
 				}
 			}
 			any_demesne_title = {
-				tier = COUNT 
+				tier = COUNT
 				can_be_given_away = yes
 				NOT = {
 					location = {
@@ -113,9 +113,10 @@ targetted_decisions = {
 				}
 			}
 		}
-		
 		effect = {
-			FROM = { prestige = -20 }
+			FROM = {
+				prestige = -20
+			}
 			custom_tooltip = {
 				text = ask_for_land_tooltip
 				hidden_tooltip = {
@@ -124,7 +125,9 @@ targetted_decisions = {
 						who = FROM
 						years = 2
 					}
-					character_event = { id = ZE.6012 days = 3 }
+					character_event = {
+						id = ZE.6012 days = 3
+					}
 				}
 			}
 		}
@@ -133,56 +136,48 @@ targetted_decisions = {
 		}
 		ai_will_do = {
 			factor = 0.01
-
 			modifier = {
 				factor = 2
 				FROM = {
 					trait = proud
 				}
 			}
-
 			modifier = {
 				factor = 2
 				FROM = {
 					trait = stubborn
 				}
 			}
-
 			modifier = {
 				factor = 2
 				FROM = {
 					trait = greedy
 				}
 			}
-
 			modifier = {
 				factor = 2
 				FROM = {
 					trait = ambitious
 				}
 			}
-
 			modifier = {
 				factor = 0.5
 				FROM = {
 					trait = content
 				}
 			}
-
 			modifier = {
 				factor = 0.5
 				FROM = {
 					trait = shy
 				}
 			}
-
 			modifier = {
 				factor = 0.5
 				FROM = {
 					trait = craven
 				}
 			}
-
 			modifier = {
 				factor = 0.5
 				FROM = {

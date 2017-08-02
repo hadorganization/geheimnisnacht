@@ -5,49 +5,55 @@
 ###########################################
 # Written by Henrik Fåhraeus
 ###########################################
-
 # Holy Order Decisions are listed for each existing holy order of the right religion
-
 decisions = {
+
 	borrow_money_knights_white_wolf = {
 		potential = {
 			religion = ulrican
 			is_heretic = no
 			is_title_active = d_knights_of_the_white_wolf
-			NOT = { trait = witch_hunter }
-			NOT = { has_character_modifier = borrowed_from_knights_white_wolf }
-			NOT = { has_character_modifier = expelled_d_knights_of_the_white_wolf }
-			NOT = { is_nomadic = yes }
-			
+			NOT = {
+				trait = witch_hunter
+			}
+			NOT = {
+				has_character_modifier = borrowed_from_knights_white_wolf
+			}
+			NOT = {
+				has_character_modifier = expelled_d_knights_of_the_white_wolf
+			}
+			NOT = {
+				is_nomadic = yes
+			}
 			has_dlc = "Sons of Abraham"
-			
 			d_knights_of_the_white_wolf = {
 				holder_scope = {
 					liege = {
-						NOT = { character = ROOT }
+						NOT = {
+							character = ROOT
+						}
 					}
 				}
 			}
 		}
-		
 		allow = {
 			d_knights_of_the_white_wolf = {
 				holder_scope = {
 					wealth = 300
 					ROOT = {
-						NOT = { excommunicated_for = PREV }
+						NOT = {
+							excommunicated_for = PREV
+						}
 					}
 				}
 			}
 		}
-		
 		effect = {
 			add_character_modifier = {
 				name = borrowed_from_knights_white_wolf
 				duration = -1
 				inherit = yes
 			}
-			
 			hidden_tooltip = {
 				d_knights_of_the_white_wolf = {
 					holder_scope = {
@@ -57,14 +63,11 @@ decisions = {
 					}
 				}
 			}
-			
 			wealth = 300
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -76,7 +79,7 @@ decisions = {
 			}
 		}
 	}
-	
+
 	expel_the_knights_white_wolf = {
 		potential = {
 			ai = no
@@ -84,10 +87,13 @@ decisions = {
 			is_heretic = no
 			higher_tier_than = DUKE
 			independent = yes
-			NOT = { trait = witch_hunter }
+			NOT = {
+				trait = witch_hunter
+			}
 			is_title_active = d_knights_of_the_white_wolf
-			NOT = { has_character_modifier = expelled_d_knights_of_the_white_wolf }
-			
+			NOT = {
+				has_character_modifier = expelled_d_knights_of_the_white_wolf
+			}
 			any_realm_province = {
 				any_province_lord = {
 					d_knights_of_the_white_wolf = {
@@ -100,22 +106,17 @@ decisions = {
 					}
 				}
 			}
-			
 			has_dlc = "Sons of Abraham"
 		}
-		
 		allow = {
 			piety = 1000
 		}
-		
 		effect = {
 			piety = -1000
-			
 			religion_authority = {
 				modifier = holy_order_expelled
 				years = 20
 			}
-			
 			hidden_tooltip = {
 				d_knights_of_the_white_wolf = {
 					holder_scope = {
@@ -131,52 +132,51 @@ decisions = {
 				}
 			}
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 0
 		}
 	}
-	
+
 	donate_money_to_knights_white_wolf = {
 		potential = {
 			religion = ulrican
 			is_heretic = no
 			is_title_active = d_knights_of_the_white_wolf
-			
-			NOT = { trait = witch_hunter }
-			NOT = { has_character_modifier = expelled_d_knights_of_the_white_wolf }
-			
-			
+			NOT = {
+				trait = witch_hunter
+			}
+			NOT = {
+				has_character_modifier = expelled_d_knights_of_the_white_wolf
+			}
 			has_dlc = "Sons of Abraham"
-			
 			d_knights_of_the_white_wolf = {
 				holder_scope = {
 					liege = {
-						NOT = { character = ROOT }
+						NOT = {
+							character = ROOT
+						}
 					}
 				}
 			}
 		}
-		
 		allow = {
 			wealth = 300
 		}
-		
 		effect = {
 			if = {
-				limit = { 
-					NOT = { has_character_modifier = donated_to_holy_order }
+				limit = {
+					NOT = {
+						has_character_modifier = donated_to_holy_order
+					}
 				}
 				add_character_modifier = {
 					name = donated_to_holy_order
 					duration = -1
 				}
 			}
-			
 			hidden_tooltip = {
 				d_knights_of_the_white_wolf = {
 					holder_scope = {
@@ -186,24 +186,25 @@ decisions = {
 					}
 				}
 			}
-			
 			wealth = -300
 			piety = 300
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 1
 			modifier = {
 				factor = 0
 				OR = {
 					piety = 1000
-					NOT = { wealth = 1000 }
+					NOT = {
+						wealth = 1000
+					}
 					AND = {
-						NOT = { controls_religion = ulrican }
+						NOT = {
+							controls_religion = ulrican
+						}
 					}
 				}
 			}
@@ -212,45 +213,53 @@ decisions = {
 			}
 		}
 	}
-		borrow_money_knights_sigmars_blood = {
+
+	borrow_money_knights_sigmars_blood = {
 		potential = {
 			religion = sigmarite
 			is_heretic = no
 			is_title_active = d_knights_of_sigmars_blood
-			NOT = { has_character_modifier = borrowed_from_knights_sigmars_blood }
-			NOT = { has_character_modifier = expelled_d_knights_of_sigmars_blood }
-			NOT = { is_nomadic = yes }
-			NOT = { trait = witch_hunter }
-			
+			NOT = {
+				has_character_modifier = borrowed_from_knights_sigmars_blood
+			}
+			NOT = {
+				has_character_modifier = expelled_d_knights_of_sigmars_blood
+			}
+			NOT = {
+				is_nomadic = yes
+			}
+			NOT = {
+				trait = witch_hunter
+			}
 			has_dlc = "Sons of Abraham"
-			
 			d_knights_of_sigmars_blood = {
 				holder_scope = {
 					liege = {
-						NOT = { character = ROOT }
+						NOT = {
+							character = ROOT
+						}
 					}
 				}
 			}
 		}
-		
 		allow = {
 			d_knights_of_sigmars_blood = {
 				holder_scope = {
 					wealth = 300
 					ROOT = {
-						NOT = { excommunicated_for = PREV }
+						NOT = {
+							excommunicated_for = PREV
+						}
 					}
 				}
 			}
 		}
-		
 		effect = {
 			add_character_modifier = {
 				name = borrowed_from_knights_sigmars_blood
 				duration = -1
 				inherit = yes
 			}
-			
 			hidden_tooltip = {
 				d_knights_of_sigmars_blood = {
 					holder_scope = {
@@ -260,14 +269,11 @@ decisions = {
 					}
 				}
 			}
-			
 			wealth = 300
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -279,7 +285,7 @@ decisions = {
 			}
 		}
 	}
-	
+
 	expel_the_knights_sigmars_blood = {
 		potential = {
 			ai = no
@@ -288,9 +294,12 @@ decisions = {
 			higher_tier_than = DUKE
 			independent = yes
 			is_title_active = d_knights_of_sigmars_blood
-			NOT = { has_character_modifier = expelled_d_knights_of_sigmars_blood }
-			NOT = { trait = witch_hunter }
-			
+			NOT = {
+				has_character_modifier = expelled_d_knights_of_sigmars_blood
+			}
+			NOT = {
+				trait = witch_hunter
+			}
 			any_realm_province = {
 				any_province_lord = {
 					d_knights_of_sigmars_blood = {
@@ -303,22 +312,17 @@ decisions = {
 					}
 				}
 			}
-			
 			has_dlc = "Sons of Abraham"
 		}
-		
 		allow = {
 			piety = 1000
 		}
-		
 		effect = {
 			piety = -1000
-			
 			religion_authority = {
 				modifier = holy_order_expelled
 				years = 20
 			}
-			
 			hidden_tooltip = {
 				d_knights_of_sigmars_blood = {
 					holder_scope = {
@@ -334,52 +338,51 @@ decisions = {
 				}
 			}
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 0
 		}
 	}
-	
+
 	donate_money_to_knights_sigmars_blood = {
 		potential = {
 			religion = sigmarite
 			is_heretic = no
 			is_title_active = d_knights_of_sigmars_blood
-			NOT = { trait = witch_hunter }
-			
-			NOT = { has_character_modifier = expelled_d_knights_of_sigmars_blood }
-			
-			
+			NOT = {
+				trait = witch_hunter
+			}
+			NOT = {
+				has_character_modifier = expelled_d_knights_of_sigmars_blood
+			}
 			has_dlc = "Sons of Abraham"
-			
 			d_knights_of_sigmars_blood = {
 				holder_scope = {
 					liege = {
-						NOT = { character = ROOT }
+						NOT = {
+							character = ROOT
+						}
 					}
 				}
 			}
 		}
-		
 		allow = {
 			wealth = 300
 		}
-		
 		effect = {
 			if = {
-				limit = { 
-					NOT = { has_character_modifier = donated_to_holy_order }
+				limit = {
+					NOT = {
+						has_character_modifier = donated_to_holy_order
+					}
 				}
 				add_character_modifier = {
 					name = donated_to_holy_order
 					duration = -1
 				}
 			}
-			
 			hidden_tooltip = {
 				d_knights_of_sigmars_blood = {
 					holder_scope = {
@@ -389,24 +392,25 @@ decisions = {
 					}
 				}
 			}
-			
 			wealth = -300
 			piety = 300
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 1
 			modifier = {
 				factor = 0
 				OR = {
 					piety = 1000
-					NOT = { wealth = 1000 }
+					NOT = {
+						wealth = 1000
+					}
 					AND = {
-						NOT = { controls_religion = sigmarite }
+						NOT = {
+							controls_religion = sigmarite
+						}
 					}
 				}
 			}
@@ -415,45 +419,53 @@ decisions = {
 			}
 		}
 	}
-		borrow_money_knights_blazing_sun = {
+
+	borrow_money_knights_blazing_sun = {
 		potential = {
 			religion = myrmidian
 			is_heretic = no
 			is_title_active = d_knights_of_the_blazing_sun
-			NOT = { trait = witch_hunter }
-			NOT = { has_character_modifier = borrowed_from_knights_blazing_sun }
-			NOT = { has_character_modifier = expelled_d_knights_of_the_blazing_sun }
-			NOT = { is_nomadic = yes }
-			
+			NOT = {
+				trait = witch_hunter
+			}
+			NOT = {
+				has_character_modifier = borrowed_from_knights_blazing_sun
+			}
+			NOT = {
+				has_character_modifier = expelled_d_knights_of_the_blazing_sun
+			}
+			NOT = {
+				is_nomadic = yes
+			}
 			has_dlc = "Sons of Abraham"
-			
 			d_knights_of_the_blazing_sun = {
 				holder_scope = {
 					liege = {
-						NOT = { character = ROOT }
+						NOT = {
+							character = ROOT
+						}
 					}
 				}
 			}
 		}
-		
 		allow = {
 			d_knights_of_the_blazing_sun = {
 				holder_scope = {
 					wealth = 300
 					ROOT = {
-						NOT = { excommunicated_for = PREV }
+						NOT = {
+							excommunicated_for = PREV
+						}
 					}
 				}
 			}
 		}
-		
 		effect = {
 			add_character_modifier = {
 				name = borrowed_from_knights_blazing_sun
 				duration = -1
 				inherit = yes
 			}
-			
 			hidden_tooltip = {
 				d_knights_of_the_blazing_sun = {
 					holder_scope = {
@@ -463,14 +475,11 @@ decisions = {
 					}
 				}
 			}
-			
 			wealth = 300
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -482,7 +491,7 @@ decisions = {
 			}
 		}
 	}
-	
+
 	expel_the_knights_blazing_sun = {
 		potential = {
 			ai = no
@@ -491,9 +500,12 @@ decisions = {
 			higher_tier_than = DUKE
 			independent = yes
 			is_title_active = d_knights_of_the_blazing_sun
-			NOT = { trait = witch_hunter }
-			NOT = { has_character_modifier = expelled_d_knights_of_the_blazing_sun }
-			
+			NOT = {
+				trait = witch_hunter
+			}
+			NOT = {
+				has_character_modifier = expelled_d_knights_of_the_blazing_sun
+			}
 			any_realm_province = {
 				any_province_lord = {
 					d_knights_of_the_blazing_sun = {
@@ -506,22 +518,17 @@ decisions = {
 					}
 				}
 			}
-			
 			has_dlc = "Sons of Abraham"
 		}
-		
 		allow = {
 			piety = 1000
 		}
-		
 		effect = {
 			piety = -1000
-			
 			religion_authority = {
 				modifier = holy_order_expelled
 				years = 20
 			}
-			
 			hidden_tooltip = {
 				d_knights_of_the_blazing_sun = {
 					holder_scope = {
@@ -537,52 +544,51 @@ decisions = {
 				}
 			}
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 0
 		}
 	}
-	
+
 	donate_money_to_knights_blazing_sun = {
 		potential = {
 			religion = myrmidian
 			is_heretic = no
 			is_title_active = d_knights_of_the_blazing_sun
-			NOT = { trait = witch_hunter }
-			
-			NOT = { has_character_modifier = expelled_d_knights_of_the_blazing_sun }
-			
-			
+			NOT = {
+				trait = witch_hunter
+			}
+			NOT = {
+				has_character_modifier = expelled_d_knights_of_the_blazing_sun
+			}
 			has_dlc = "Sons of Abraham"
-			
 			d_knights_of_the_blazing_sun = {
 				holder_scope = {
 					liege = {
-						NOT = { character = ROOT }
+						NOT = {
+							character = ROOT
+						}
 					}
 				}
 			}
 		}
-		
 		allow = {
 			wealth = 300
 		}
-		
 		effect = {
 			if = {
-				limit = { 
-					NOT = { has_character_modifier = donated_to_holy_order }
+				limit = {
+					NOT = {
+						has_character_modifier = donated_to_holy_order
+					}
 				}
 				add_character_modifier = {
 					name = donated_to_holy_order
 					duration = -1
 				}
 			}
-			
 			hidden_tooltip = {
 				d_knights_of_the_blazing_sun = {
 					holder_scope = {
@@ -592,24 +598,25 @@ decisions = {
 					}
 				}
 			}
-			
 			wealth = -300
 			piety = 300
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 1
 			modifier = {
 				factor = 0
 				OR = {
 					piety = 1000
-					NOT = { wealth = 1000 }
+					NOT = {
+						wealth = 1000
+					}
 					AND = {
-						NOT = { controls_religion = myrmidian }
+						NOT = {
+							controls_religion = myrmidian
+						}
 					}
 				}
 			}
@@ -618,45 +625,53 @@ decisions = {
 			}
 		}
 	}
-		borrow_money_knights_black_rose = {
+
+	borrow_money_knights_black_rose = {
 		potential = {
 			religion = taalite
 			is_heretic = no
 			is_title_active = d_knights_of_the_black_rose
-			NOT = { trait = witch_hunter }
-			NOT = { has_character_modifier = borrowed_from_knights_black_rose }
-			NOT = { has_character_modifier = expelled_d_knights_of_the_black_rose }
-			NOT = { is_nomadic = yes }
-			
+			NOT = {
+				trait = witch_hunter
+			}
+			NOT = {
+				has_character_modifier = borrowed_from_knights_black_rose
+			}
+			NOT = {
+				has_character_modifier = expelled_d_knights_of_the_black_rose
+			}
+			NOT = {
+				is_nomadic = yes
+			}
 			has_dlc = "Sons of Abraham"
-			
 			d_knights_of_the_black_rose = {
 				holder_scope = {
 					liege = {
-						NOT = { character = ROOT }
+						NOT = {
+							character = ROOT
+						}
 					}
 				}
 			}
 		}
-		
 		allow = {
 			d_knights_of_the_black_rose = {
 				holder_scope = {
 					wealth = 300
 					ROOT = {
-						NOT = { excommunicated_for = PREV }
+						NOT = {
+							excommunicated_for = PREV
+						}
 					}
 				}
 			}
 		}
-		
 		effect = {
 			add_character_modifier = {
 				name = borrowed_from_knights_black_rose
 				duration = -1
 				inherit = yes
 			}
-			
 			hidden_tooltip = {
 				d_knights_of_the_black_rose = {
 					holder_scope = {
@@ -666,14 +681,11 @@ decisions = {
 					}
 				}
 			}
-			
 			wealth = 300
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -685,7 +697,7 @@ decisions = {
 			}
 		}
 	}
-	
+
 	expel_the_knights_black_rose = {
 		potential = {
 			ai = no
@@ -693,10 +705,13 @@ decisions = {
 			is_heretic = no
 			higher_tier_than = DUKE
 			independent = yes
-			NOT = { trait = witch_hunter }
+			NOT = {
+				trait = witch_hunter
+			}
 			is_title_active = d_knights_of_the_black_rose
-			NOT = { has_character_modifier = expelled_d_knights_of_the_black_rose }
-			
+			NOT = {
+				has_character_modifier = expelled_d_knights_of_the_black_rose
+			}
 			any_realm_province = {
 				any_province_lord = {
 					d_knights_of_the_black_rose = {
@@ -709,22 +724,17 @@ decisions = {
 					}
 				}
 			}
-			
 			has_dlc = "Sons of Abraham"
 		}
-		
 		allow = {
 			piety = 1000
 		}
-		
 		effect = {
 			piety = -1000
-			
 			religion_authority = {
 				modifier = holy_order_expelled
 				years = 20
 			}
-			
 			hidden_tooltip = {
 				d_knights_of_the_black_rose = {
 					holder_scope = {
@@ -740,52 +750,51 @@ decisions = {
 				}
 			}
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 0
 		}
 	}
-	
+
 	donate_money_to_knights_black_rose = {
 		potential = {
 			religion = taalite
 			is_heretic = no
 			is_title_active = d_knights_of_the_black_rose
-			NOT = { trait = witch_hunter }
-			
-			NOT = { has_character_modifier = expelled_d_knights_of_the_black_rose }
-			
-			
+			NOT = {
+				trait = witch_hunter
+			}
+			NOT = {
+				has_character_modifier = expelled_d_knights_of_the_black_rose
+			}
 			has_dlc = "Sons of Abraham"
-			
 			d_knights_of_the_black_rose = {
 				holder_scope = {
 					liege = {
-						NOT = { character = ROOT }
+						NOT = {
+							character = ROOT
+						}
 					}
 				}
 			}
 		}
-		
 		allow = {
 			wealth = 300
 		}
-		
 		effect = {
 			if = {
-				limit = { 
-					NOT = { has_character_modifier = donated_to_holy_order }
+				limit = {
+					NOT = {
+						has_character_modifier = donated_to_holy_order
+					}
 				}
 				add_character_modifier = {
 					name = donated_to_holy_order
 					duration = -1
 				}
 			}
-			
 			hidden_tooltip = {
 				d_knights_of_the_black_rose = {
 					holder_scope = {
@@ -795,24 +804,25 @@ decisions = {
 					}
 				}
 			}
-			
 			wealth = -300
 			piety = 300
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 1
 			modifier = {
 				factor = 0
 				OR = {
 					piety = 1000
-					NOT = { wealth = 1000 }
+					NOT = {
+						wealth = 1000
+					}
 					AND = {
-						NOT = { controls_religion = taalite }
+						NOT = {
+							controls_religion = taalite
+						}
 					}
 				}
 			}
@@ -821,45 +831,53 @@ decisions = {
 			}
 		}
 	}
-		borrow_money_knights_mariner = {
+
+	borrow_money_knights_mariner = {
 		potential = {
 			religion = manannite
 			is_heretic = no
 			is_title_active = d_knights_mariner
-			NOT = { trait = witch_hunter }
-			NOT = { has_character_modifier = borrowed_from_knights_mariner }
-			NOT = { has_character_modifier = expelled_d_knights_mariner }
-			NOT = { is_nomadic = yes }
-			
+			NOT = {
+				trait = witch_hunter
+			}
+			NOT = {
+				has_character_modifier = borrowed_from_knights_mariner
+			}
+			NOT = {
+				has_character_modifier = expelled_d_knights_mariner
+			}
+			NOT = {
+				is_nomadic = yes
+			}
 			has_dlc = "Sons of Abraham"
-			
 			d_knights_mariner = {
 				holder_scope = {
 					liege = {
-						NOT = { character = ROOT }
+						NOT = {
+							character = ROOT
+						}
 					}
 				}
 			}
 		}
-		
 		allow = {
 			d_knights_mariner = {
 				holder_scope = {
 					wealth = 300
 					ROOT = {
-						NOT = { excommunicated_for = PREV }
+						NOT = {
+							excommunicated_for = PREV
+						}
 					}
 				}
 			}
 		}
-		
 		effect = {
 			add_character_modifier = {
 				name = borrowed_from_knights_mariner
 				duration = -1
 				inherit = yes
 			}
-			
 			hidden_tooltip = {
 				d_knights_mariner = {
 					holder_scope = {
@@ -869,14 +887,11 @@ decisions = {
 					}
 				}
 			}
-			
 			wealth = 300
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -888,7 +903,7 @@ decisions = {
 			}
 		}
 	}
-	
+
 	expel_the_knights_mariner = {
 		potential = {
 			ai = no
@@ -897,9 +912,12 @@ decisions = {
 			higher_tier_than = DUKE
 			independent = yes
 			is_title_active = d_knights_mariner
-			NOT = { trait = witch_hunter }
-			NOT = { has_character_modifier = expelled_d_knights_mariner }
-			
+			NOT = {
+				trait = witch_hunter
+			}
+			NOT = {
+				has_character_modifier = expelled_d_knights_mariner
+			}
 			any_realm_province = {
 				any_province_lord = {
 					d_knights_mariner = {
@@ -912,22 +930,17 @@ decisions = {
 					}
 				}
 			}
-			
 			has_dlc = "Sons of Abraham"
 		}
-		
 		allow = {
 			piety = 1000
 		}
-		
 		effect = {
 			piety = -1000
-			
 			religion_authority = {
 				modifier = holy_order_expelled
 				years = 20
 			}
-			
 			hidden_tooltip = {
 				d_knights_mariner = {
 					holder_scope = {
@@ -943,52 +956,51 @@ decisions = {
 				}
 			}
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 0
 		}
 	}
-	
+
 	donate_money_to_knights_mariner = {
 		potential = {
 			religion = manannite
 			is_heretic = no
 			is_title_active = d_knights_mariner
-			NOT = { trait = witch_hunter }
-			
-			NOT = { has_character_modifier = expelled_d_knights_mariner }
-			
-			
+			NOT = {
+				trait = witch_hunter
+			}
+			NOT = {
+				has_character_modifier = expelled_d_knights_mariner
+			}
 			has_dlc = "Sons of Abraham"
-			
 			d_knights_mariner = {
 				holder_scope = {
 					liege = {
-						NOT = { character = ROOT }
+						NOT = {
+							character = ROOT
+						}
 					}
 				}
 			}
 		}
-		
 		allow = {
 			wealth = 300
 		}
-		
 		effect = {
 			if = {
-				limit = { 
-					NOT = { has_character_modifier = donated_to_holy_order }
+				limit = {
+					NOT = {
+						has_character_modifier = donated_to_holy_order
+					}
 				}
 				add_character_modifier = {
 					name = donated_to_holy_order
 					duration = -1
 				}
 			}
-			
 			hidden_tooltip = {
 				d_knights_mariner = {
 					holder_scope = {
@@ -998,24 +1010,25 @@ decisions = {
 					}
 				}
 			}
-			
 			wealth = -300
 			piety = 300
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 1
 			modifier = {
 				factor = 0
 				OR = {
 					piety = 1000
-					NOT = { wealth = 1000 }
+					NOT = {
+						wealth = 1000
+					}
 					AND = {
-						NOT = { controls_religion = manannite }
+						NOT = {
+							controls_religion = manannite
+						}
 					}
 				}
 			}
@@ -1024,45 +1037,53 @@ decisions = {
 			}
 		}
 	}
-		borrow_money_sisters_sigmar = {
+
+	borrow_money_sisters_sigmar = {
 		potential = {
 			religion = sigmarite
 			is_heretic = no
 			is_title_active = d_sisters_of_sigmar
-			NOT = { trait = witch_hunter }
-			NOT = { has_character_modifier = borrowed_from_sisters_sigmar }
-			NOT = { has_character_modifier = expelled_d_sisters_of_sigmar }
-			NOT = { is_nomadic = yes }
-			
+			NOT = {
+				trait = witch_hunter
+			}
+			NOT = {
+				has_character_modifier = borrowed_from_sisters_sigmar
+			}
+			NOT = {
+				has_character_modifier = expelled_d_sisters_of_sigmar
+			}
+			NOT = {
+				is_nomadic = yes
+			}
 			has_dlc = "Sons of Abraham"
-			
 			d_sisters_of_sigmar = {
 				holder_scope = {
 					liege = {
-						NOT = { character = ROOT }
+						NOT = {
+							character = ROOT
+						}
 					}
 				}
 			}
 		}
-		
 		allow = {
 			d_sisters_of_sigmar = {
 				holder_scope = {
 					wealth = 300
 					ROOT = {
-						NOT = { excommunicated_for = PREV }
+						NOT = {
+							excommunicated_for = PREV
+						}
 					}
 				}
 			}
 		}
-		
 		effect = {
 			add_character_modifier = {
 				name = borrowed_from_sisters_sigmar
 				duration = -1
 				inherit = yes
 			}
-			
 			hidden_tooltip = {
 				d_sisters_of_sigmar = {
 					holder_scope = {
@@ -1072,14 +1093,11 @@ decisions = {
 					}
 				}
 			}
-			
 			wealth = 300
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -1091,7 +1109,7 @@ decisions = {
 			}
 		}
 	}
-	
+
 	expel_the_sisters_sigmar = {
 		potential = {
 			ai = no
@@ -1100,9 +1118,12 @@ decisions = {
 			higher_tier_than = DUKE
 			independent = yes
 			is_title_active = d_sisters_of_sigmar
-			NOT = { trait = witch_hunter }
-			NOT = { has_character_modifier = expelled_d_sisters_of_sigmar }
-			
+			NOT = {
+				trait = witch_hunter
+			}
+			NOT = {
+				has_character_modifier = expelled_d_sisters_of_sigmar
+			}
 			any_realm_province = {
 				any_province_lord = {
 					d_sisters_of_sigmar = {
@@ -1115,22 +1136,17 @@ decisions = {
 					}
 				}
 			}
-			
 			has_dlc = "Sons of Abraham"
 		}
-		
 		allow = {
 			piety = 1000
 		}
-		
 		effect = {
 			piety = -1000
-			
 			religion_authority = {
 				modifier = holy_order_expelled
 				years = 20
 			}
-			
 			hidden_tooltip = {
 				d_sisters_of_sigmar = {
 					holder_scope = {
@@ -1146,52 +1162,51 @@ decisions = {
 				}
 			}
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 0
 		}
 	}
-	
+
 	donate_money_to_sisters_sigmar = {
 		potential = {
 			religion = sigmarite
 			is_heretic = no
 			is_title_active = d_sisters_of_sigmar
-			NOT = { trait = witch_hunter }
-			
-			NOT = { has_character_modifier = expelled_d_sisters_of_sigmar }
-			
-			
+			NOT = {
+				trait = witch_hunter
+			}
+			NOT = {
+				has_character_modifier = expelled_d_sisters_of_sigmar
+			}
 			has_dlc = "Sons of Abraham"
-			
 			d_sisters_of_sigmar = {
 				holder_scope = {
 					liege = {
-						NOT = { character = ROOT }
+						NOT = {
+							character = ROOT
+						}
 					}
 				}
 			}
 		}
-		
 		allow = {
 			wealth = 300
 		}
-		
 		effect = {
 			if = {
-				limit = { 
-					NOT = { has_character_modifier = donated_to_holy_order }
+				limit = {
+					NOT = {
+						has_character_modifier = donated_to_holy_order
+					}
 				}
 				add_character_modifier = {
 					name = donated_to_holy_order
 					duration = -1
 				}
 			}
-			
 			hidden_tooltip = {
 				d_sisters_of_sigmar = {
 					holder_scope = {
@@ -1201,24 +1216,25 @@ decisions = {
 					}
 				}
 			}
-			
 			wealth = -300
 			piety = 300
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 1
 			modifier = {
 				factor = 0
 				OR = {
 					piety = 1000
-					NOT = { wealth = 1000 }
+					NOT = {
+						wealth = 1000
+					}
 					AND = {
-						NOT = { controls_religion = sigmarite }
+						NOT = {
+							controls_religion = sigmarite
+						}
 					}
 				}
 			}
@@ -1227,45 +1243,53 @@ decisions = {
 			}
 		}
 	}
-		borrow_money_order_eagle = {
+
+	borrow_money_order_eagle = {
 		potential = {
 			religion = myrmidian
 			is_heretic = no
 			is_title_active = d_order_of_the_eagle
-			NOT = { trait = witch_hunter }
-			NOT = { has_character_modifier = borrowed_from_order_eagle }
-			NOT = { has_character_modifier = expelled_d_order_of_the_eagle }
-			NOT = { is_nomadic = yes }
-			
+			NOT = {
+				trait = witch_hunter
+			}
+			NOT = {
+				has_character_modifier = borrowed_from_order_eagle
+			}
+			NOT = {
+				has_character_modifier = expelled_d_order_of_the_eagle
+			}
+			NOT = {
+				is_nomadic = yes
+			}
 			has_dlc = "Sons of Abraham"
-			
 			d_order_of_the_eagle = {
 				holder_scope = {
 					liege = {
-						NOT = { character = ROOT }
+						NOT = {
+							character = ROOT
+						}
 					}
 				}
 			}
 		}
-		
 		allow = {
 			d_order_of_the_eagle = {
 				holder_scope = {
 					wealth = 300
 					ROOT = {
-						NOT = { excommunicated_for = PREV }
+						NOT = {
+							excommunicated_for = PREV
+						}
 					}
 				}
 			}
 		}
-		
 		effect = {
 			add_character_modifier = {
 				name = borrowed_from_order_eagle
 				duration = -1
 				inherit = yes
 			}
-			
 			hidden_tooltip = {
 				d_order_of_the_eagle = {
 					holder_scope = {
@@ -1275,14 +1299,11 @@ decisions = {
 					}
 				}
 			}
-			
 			wealth = 300
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -1294,7 +1315,7 @@ decisions = {
 			}
 		}
 	}
-	
+
 	expel_the_order_eagle = {
 		potential = {
 			ai = no
@@ -1303,9 +1324,12 @@ decisions = {
 			higher_tier_than = DUKE
 			independent = yes
 			is_title_active = d_order_of_the_eagle
-			NOT = { trait = witch_hunter }
-			NOT = { has_character_modifier = expelled_d_order_of_the_eagle }
-			
+			NOT = {
+				trait = witch_hunter
+			}
+			NOT = {
+				has_character_modifier = expelled_d_order_of_the_eagle
+			}
 			any_realm_province = {
 				any_province_lord = {
 					d_order_of_the_eagle = {
@@ -1318,22 +1342,17 @@ decisions = {
 					}
 				}
 			}
-			
 			has_dlc = "Sons of Abraham"
 		}
-		
 		allow = {
 			piety = 1000
 		}
-		
 		effect = {
 			piety = -1000
-			
 			religion_authority = {
 				modifier = holy_order_expelled
 				years = 20
 			}
-			
 			hidden_tooltip = {
 				d_order_of_the_eagle = {
 					holder_scope = {
@@ -1349,52 +1368,51 @@ decisions = {
 				}
 			}
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 0
 		}
 	}
-	
+
 	donate_money_to_order_eagle = {
 		potential = {
 			religion = myrmidian
 			is_heretic = no
 			is_title_active = d_order_of_the_eagle
-			NOT = { trait = witch_hunter }
-			
-			NOT = { has_character_modifier = expelled_d_order_of_the_eagle }
-			
-			
+			NOT = {
+				trait = witch_hunter
+			}
+			NOT = {
+				has_character_modifier = expelled_d_order_of_the_eagle
+			}
 			has_dlc = "Sons of Abraham"
-			
 			d_order_of_the_eagle = {
 				holder_scope = {
 					liege = {
-						NOT = { character = ROOT }
+						NOT = {
+							character = ROOT
+						}
 					}
 				}
 			}
 		}
-		
 		allow = {
 			wealth = 300
 		}
-		
 		effect = {
 			if = {
-				limit = { 
-					NOT = { has_character_modifier = donated_to_holy_order }
+				limit = {
+					NOT = {
+						has_character_modifier = donated_to_holy_order
+					}
 				}
 				add_character_modifier = {
 					name = donated_to_holy_order
 					duration = -1
 				}
 			}
-			
 			hidden_tooltip = {
 				d_order_of_the_eagle = {
 					holder_scope = {
@@ -1404,24 +1422,25 @@ decisions = {
 					}
 				}
 			}
-			
 			wealth = -300
 			piety = 300
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 1
 			modifier = {
 				factor = 0
 				OR = {
 					piety = 1000
-					NOT = { wealth = 1000 }
+					NOT = {
+						wealth = 1000
+					}
 					AND = {
-						NOT = { controls_religion = myrmidian }
+						NOT = {
+							controls_religion = myrmidian
+						}
 					}
 				}
 			}
@@ -1430,7 +1449,7 @@ decisions = {
 			}
 		}
 	}
-	
+
 	expel_the_assassins = {
 		potential = {
 			ai = no
@@ -1442,8 +1461,9 @@ decisions = {
 			higher_tier_than = DUKE
 			independent = yes
 			is_title_active = d_hashishin
-			NOT = { has_character_modifier = expelled_d_hashishin }
-			
+			NOT = {
+				has_character_modifier = expelled_d_hashishin
+			}
 			any_realm_province = {
 				any_province_lord = {
 					d_hashishin = {
@@ -1456,22 +1476,17 @@ decisions = {
 					}
 				}
 			}
-			
 			has_dlc = "Sons of Abraham"
 		}
-		
 		allow = {
 			piety = 1000
 		}
-		
 		effect = {
 			piety = -1000
-			
 			religion_authority = {
 				modifier = holy_order_expelled
 				years = 20
 			}
-			
 			hidden_tooltip = {
 				d_hashishin = {
 					holder_scope = {
@@ -1480,7 +1495,6 @@ decisions = {
 						}
 					}
 				}
-				
 				add_character_modifier = {
 					name = expelled_d_hashishin
 					duration = -1
@@ -1488,16 +1502,14 @@ decisions = {
 				}
 			}
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 0
 		}
 	}
-	
+
 	borrow_money_assassins = {
 		potential = {
 			OR = {
@@ -1506,21 +1518,26 @@ decisions = {
 			}
 			is_heretic = no
 			is_title_active = d_hashishin
-			NOT = { has_character_modifier = borrowed_from_hashishin }
-			NOT = { has_character_modifier = expelled_d_hashishin }
-			NOT = { is_nomadic = yes }
-			
+			NOT = {
+				has_character_modifier = borrowed_from_hashishin
+			}
+			NOT = {
+				has_character_modifier = expelled_d_hashishin
+			}
+			NOT = {
+				is_nomadic = yes
+			}
 			has_dlc = "Sons of Abraham"
-			
 			d_hashishin = {
 				holder_scope = {
 					liege = {
-						NOT = { character = ROOT }
+						NOT = {
+							character = ROOT
+						}
 					}
 				}
 			}
 		}
-		
 		allow = {
 			d_hashishin = {
 				holder_scope = {
@@ -1528,14 +1545,12 @@ decisions = {
 				}
 			}
 		}
-		
 		effect = {
 			add_character_modifier = {
 				name = borrowed_from_hashishin
 				duration = -1
 				inherit = yes
 			}
-			
 			hidden_tooltip = {
 				d_hashishin = {
 					holder_scope = {
@@ -1545,14 +1560,11 @@ decisions = {
 					}
 				}
 			}
-			
 			wealth = 300
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -1564,7 +1576,7 @@ decisions = {
 			}
 		}
 	}
-	
+
 	donate_money_to_assassins = {
 		potential = {
 			OR = {
@@ -1573,26 +1585,24 @@ decisions = {
 			}
 			is_heretic = no
 			is_title_active = d_hashishin
-			
-			NOT = { has_character_modifier = expelled_d_hashishin }
-			
+			NOT = {
+				has_character_modifier = expelled_d_hashishin
+			}
 			has_dlc = "Sons of Abraham"
-			
 			d_hashishin = {
 				holder_scope = {
 					liege = {
-						NOT = { character = ROOT }
+						NOT = {
+							character = ROOT
+						}
 					}
 				}
 			}
 		}
-		
 		allow = {
 			wealth = 300
 		}
-		
 		effect = {
-			
 			hidden_tooltip = {
 				d_hashishin = {
 					holder_scope = {
@@ -1602,22 +1612,21 @@ decisions = {
 					}
 				}
 			}
-			
 			wealth = -300
 			piety = 300
 		}
-
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 1
 			modifier = {
 				factor = 0
 				OR = {
 					piety = 1000
-					NOT = { wealth = 1000 }
+					NOT = {
+						wealth = 1000
+					}
 				}
 			}
 			modifier = {
@@ -1625,6 +1634,4 @@ decisions = {
 			}
 		}
 	}
-		
 }
-

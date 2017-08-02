@@ -12,8 +12,9 @@ decisions = {
 				religion = ulrican
 				religion = taalite
 			}
-			
-			NOT = { has_global_flag = imperial_churches_unified }
+			NOT = {
+				has_global_flag = imperial_churches_unified
+			}
 		}
 		allow = {
 			piety = 1000
@@ -22,7 +23,9 @@ decisions = {
 			has_landed_title = e_the_empire
 		}
 		effect = {
-			narrative_event = { id = DR_imperial.1 }
+			narrative_event = {
+				id = DR_imperial.1
+			}
 		}
 		ai_will_do = {
 			factor = 1
@@ -34,7 +37,7 @@ decisions = {
 			}
 		}
 	}
-	
+
 	hire_engineer_human = {
 		# is_high_prio = yes
 		only_rulers = yes
@@ -46,10 +49,12 @@ decisions = {
 				AND = {
 					higher_tier_than = BARON
 					demesne_size = 1
-				}	
+				}
 			}
 			trait = creature_human
-			NOT = { religion_group = necromantic_group }
+			NOT = {
+				religion_group = necromantic_group
+			}
 			OR = {
 				culture_group = imperial_group
 				culture_group = tilean_group
@@ -57,25 +62,28 @@ decisions = {
 				culture_group = estalian_group
 				culture_group = kislevite_group
 			}
-			NOR = { 
-				religion = grail 
-				religion = false_grail 
-			}		
-			NOT = { 
-				any_courtier = { 
-					trait = engineer 
-					prisoner = no
-				} 
-				
+			NOR = {
+				religion = grail
+				religion = false_grail
 			}
-			NOT = {	has_character_flag = hiring_engineer }		
+			NOT = {
+				any_courtier = {
+					trait = engineer
+					prisoner = no
+				}
+			}
+			NOT = {
+				has_character_flag = hiring_engineer
+			}
 		}
-		allow = {	
+		allow = {
 			scaled_wealth = 0.2
 		}
 		effect = {
 			scaled_wealth = -0.2
-			letter_event = { id = DR_universities.132 days = 10 }
+			letter_event = {
+				id = DR_universities.132 days = 10
+			}
 			set_character_flag = hiring_engineer
 		}
 		revoke_allowed = {
@@ -85,7 +93,7 @@ decisions = {
 			factor = 1
 		}
 	}
-	
+
 	put_engineer_to_work = {
 		only_rulers = yes
 		potential = {
@@ -93,43 +101,48 @@ decisions = {
 			ai = no
 			#NOT = { tier = BARON }
 			capital_scope = {
-				NOR = { 
-					has_province_modifier = engineer_working_artillery 
+				NOR = {
+					has_province_modifier = engineer_working_artillery
 					has_province_modifier = engineer_working_steam_tank
 				}
-				owner = { character = ROOT }
+				owner = {
+					character = ROOT
+				}
 			}
-			any_courtier = { 
-					trait = engineer 
-					prisoner = no
-			} 
-			NOT = { has_character_flag = flag_ordering_engineer }
+			any_courtier = {
+				trait = engineer
+				prisoner = no
+			}
+			NOT = {
+				has_character_flag = flag_ordering_engineer
+			}
 		}
 		allow = {
 			wealth = 100
 		}
 		effect = {
 			set_character_flag = flag_ordering_engineer
-			character_event = { id = DR_universities.133 }
+			character_event = {
+				id = DR_universities.133
+			}
 		}
 		# ai_will_do = {
-			# factor = 1
-				
-			# modifier = {
-				# factor = 0
-				# has_character_modifier = loan_timer
-				# OR = {
-					# stewardship = 9
-					# trait = temperate
-					# NOT = { 
-						# OR = {
-							# trait = gluttonous 
-							# trait = hedonist
-							# trait = slothful
-						# }	
-					# }	
-				# }	
-			# }
+		# factor = 1
+		# modifier = {
+		# factor = 0
+		# has_character_modifier = loan_timer
+		# OR = {
+		# stewardship = 9
+		# trait = temperate
+		# NOT = {
+		# OR = {
+		# trait = gluttonous
+		# trait = hedonist
+		# trait = slothful
+		# }
+		# }
+		# }
+		# }
 		# }
 	}
 }

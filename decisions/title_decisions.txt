@@ -8,19 +8,17 @@
 #	realm_owned: all titles in the same top realm as the AI
 #	dynasty_owned: all titles owned by members of the same dynasty
 #	all: all titles (Avoid if possible. VERY CPU-HEAVY!)
-#	
-
+#
 title_decisions = {
+
 	abandon_province = {
 		only_playable = yes
 		filter = sub_realm_owned
 		ai_target_filter = sub_realm_owned
-		
 		from_potential = {
 			is_nomadic = yes
 			has_dlc = "Horse Lords"
 		}
-		
 		potential = {
 			tier = COUNT
 			location = {
@@ -29,22 +27,27 @@ title_decisions = {
 				}
 				any_neighbor_province = {
 					owner = {
-						NOT = { same_realm = FROM }
+						NOT = {
+							same_realm = FROM
+						}
 					}
 				}
 			}
 		}
-
 		allow = {
 			location = {
-				NOT = { num_of_settlements = 1 }
+				NOT = {
+					num_of_settlements = 1
+				}
 			}
 			has_siege = no
 			FROM = {
 				war = no
 			}
 			location = {
-				NOT = { has_province_modifier = nomads_exploited_land }
+				NOT = {
+					has_province_modifier = nomads_exploited_land
+				}
 			}
 		}
 		effect = {
@@ -58,8 +61,12 @@ title_decisions = {
 				}
 				hidden_tooltip = {
 					top_liege = {
-						if = { 
-							limit = { NOT = { character = PREV } } 
+						if = {
+							limit = {
+								NOT = {
+									character = PREV
+								}
+							}
 							capital_holding = {
 								add_holding_modifier = {
 									modifier = nomad_population_boom_spillover
@@ -70,7 +77,9 @@ title_decisions = {
 						}
 						any_vassal = {
 							limit = {
-								NOT = { character = PREVPREV }
+								NOT = {
+									character = PREVPREV
+								}
 								clan = yes
 							}
 							capital_holding = {
@@ -114,13 +123,13 @@ title_decisions = {
 			factor = 0
 		}
 	}
-	
-	set_crown_focus = { # High Prio version
+
+	set_crown_focus = {
+		# High Prio version
 		only_playable = yes
 		filter = owned
 		ai_target_filter = owned
 		is_high_prio = yes
-		
 		from_potential = {
 			is_playable = yes
 			has_dlc = "Reapers"
@@ -132,12 +141,12 @@ title_decisions = {
 				}
 			}
 		}
-		
 		potential = {
-			owner = { character = FROM }
+			owner = {
+				character = FROM
+			}
 			tier = count
 		}
-
 		allow = {
 			hidden_tooltip = {
 				OR = {
@@ -153,17 +162,15 @@ title_decisions = {
 					}
 				}
 			}
-
 			location = {
 				capital_holding = {
 					NOR = {
 						has_siege = yes
-						is_occupied = yes 
+						is_occupied = yes
 					}
 				}
 			}
-			
-			FROM = {	
+			FROM = {
 				OR = {
 					AND = {
 						independent = yes
@@ -189,7 +196,6 @@ title_decisions = {
 				}
 			}
 		}
-
 		effect = {
 			FROM = {
 				any_demesne_province = {
@@ -199,23 +205,22 @@ title_decisions = {
 					clr_province_flag = crown_focus_province
 				}
 			}
-			location = { set_province_flag = crown_focus_province }
+			location = {
+				set_province_flag = crown_focus_province
+			}
 		}
-
 		revoke_allowed = {
 			always = no
 		}
-
 		ai_will_do = {
 			factor = 1
 		}
 	}
-	
+
 	move_crown_focus = {
 		only_playable = yes
 		filter = owned
 		ai_target_filter = owned
-		
 		from_potential = {
 			is_playable = yes
 			has_dlc = "Reapers"
@@ -225,13 +230,17 @@ title_decisions = {
 				has_province_flag = crown_focus_province
 			}
 		}
-		
 		potential = {
-			owner = { character = FROM }
+			owner = {
+				character = FROM
+			}
 			tier = count
-			NOT = { location = { has_province_flag = crown_focus_province } }
+			NOT = {
+				location = {
+					has_province_flag = crown_focus_province
+				}
+			}
 		}
-
 		allow = {
 			hidden_tooltip = {
 				OR = {
@@ -247,16 +256,14 @@ title_decisions = {
 					}
 				}
 			}
-
 			location = {
 				capital_holding = {
 					NOR = {
 						has_siege = yes
-						is_occupied = yes 
+						is_occupied = yes
 					}
 				}
 			}
-			
 			FROM = {
 				OR = {
 					AND = {
@@ -283,7 +290,6 @@ title_decisions = {
 				}
 			}
 		}
-
 		effect = {
 			FROM = {
 				any_demesne_province = {
@@ -293,13 +299,13 @@ title_decisions = {
 					clr_province_flag = crown_focus_province
 				}
 			}
-			location = { set_province_flag = crown_focus_province }
+			location = {
+				set_province_flag = crown_focus_province
+			}
 		}
-
 		revoke_allowed = {
 			always = no
 		}
-
 		ai_will_do = {
 			factor = 1
 		}

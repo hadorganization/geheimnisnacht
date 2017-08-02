@@ -1,21 +1,31 @@
 plot_decisions = {
+
 	faction_isolationist_elves_ultimatum = {
 		is_high_prio = yes
-		
 		potential = {
 			leads_faction = faction_isolationist_elves
 			OR = {
-				NOT = { has_character_flag = faction_isolationist_elves_ultimatum_taken }
-				had_character_flag = { flag = faction_isolationist_elves_ultimatum_taken days = 7 }
+				NOT = {
+					has_character_flag = faction_isolationist_elves_ultimatum_taken
+				}
+				had_character_flag = {
+					flag = faction_isolationist_elves_ultimatum_taken days = 7
+				}
 			}
 		}
 		allow = {
 			war = no
-			custom_tooltip = { text = IS_NOT_INCAPACITATED
-					is_incapacitated_trigger = no }
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			liege = {
-				NOT = { war_with = ROOT }
-				NOT = { reverse_has_truce = ROOT }
+				NOT = {
+					war_with = ROOT
+				}
+				NOT = {
+					reverse_has_truce = ROOT
+				}
 			}
 			capital_holding = {
 				controller = {
@@ -25,7 +35,9 @@ plot_decisions = {
 		}
 		effect = {
 			liege = {
-				letter_event = { id = asur.14 days = 3 }
+				letter_event = {
+					id = asur.14 days = 3
+				}
 			}
 			hidden_tooltip = {
 				set_character_flag = faction_isolationist_elves_ultimatum_taken
@@ -34,28 +46,25 @@ plot_decisions = {
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 1
-			
 			modifier = {
 				factor = 0.5 # Slow it down a little
 			}
-			
 			modifier = {
 				factor = 0
-				NOT = { 
-					faction_power = 
+				NOT = {
+					faction_power =
 					{
 						faction = faction_isolationist_elves
 						power = 0.75
 					}
 				}
-			}			
+			}
 			modifier = {
 				factor = 0.1
-				NOT = { 
-					faction_power = 
+				NOT = {
+					faction_power =
 					{
 						faction = faction_isolationist_elves
 						power = 1.0
@@ -64,28 +73,37 @@ plot_decisions = {
 			}
 			modifier = {
 				factor = 0.1
-				NOT = { 
-					faction_power = 
+				NOT = {
+					faction_power =
 					{
 						faction = faction_isolationist_elves
 						power = 1.5
 					}
 				}
-			}			
-			
+			}
 			modifier = {
 				factor = 0
 				liege = {
 					any_war = {
 						OR = {
 							AND = {
-								defender = { character = PREV }
-								NOT = { using_cb = depose_liege }
-								NOT = { using_cb = overthrow_ruler }
-								NOT = { using_cb = overthrow_ruler_no_calls }
+								defender = {
+									character = PREV
+								}
+								NOT = {
+									using_cb = depose_liege
+								}
+								NOT = {
+									using_cb = overthrow_ruler
+								}
+								NOT = {
+									using_cb = overthrow_ruler_no_calls
+								}
 							}
 							AND = {
-								attacker = { character = PREV }
+								attacker = {
+									character = PREV
+								}
 								OR = {
 									using_cb = invasion
 									using_cb = religious
@@ -102,23 +120,33 @@ plot_decisions = {
 			}
 		}
 	}
+
 	faction_interventionist_elves_ultimatum = {
 		is_high_prio = yes
-		
 		potential = {
 			leads_faction = faction_interventionist_elves
 			OR = {
-				NOT = { has_character_flag = faction_interventionist_elves_ultimatum_taken }
-				had_character_flag = { flag = faction_interventionist_elves_ultimatum_taken days = 7 }
+				NOT = {
+					has_character_flag = faction_interventionist_elves_ultimatum_taken
+				}
+				had_character_flag = {
+					flag = faction_interventionist_elves_ultimatum_taken days = 7
+				}
 			}
 		}
 		allow = {
 			war = no
-			custom_tooltip = { text = IS_NOT_INCAPACITATED
-					is_incapacitated_trigger = no }
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			liege = {
-				NOT = { war_with = ROOT }
-				NOT = { reverse_has_truce = ROOT }
+				NOT = {
+					war_with = ROOT
+				}
+				NOT = {
+					reverse_has_truce = ROOT
+				}
 			}
 			capital_holding = {
 				controller = {
@@ -128,7 +156,9 @@ plot_decisions = {
 		}
 		effect = {
 			liege = {
-				letter_event = { id = asur.21 days = 3 }
+				letter_event = {
+					id = asur.21 days = 3
+				}
 			}
 			hidden_tooltip = {
 				set_character_flag = faction_interventionist_elves_ultimatum_taken
@@ -137,28 +167,25 @@ plot_decisions = {
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 1
-			
 			modifier = {
 				factor = 0.5 # Slow it down a bit
 			}
-			
 			modifier = {
 				factor = 0
-				NOT = { 
-					faction_power = 
+				NOT = {
+					faction_power =
 					{
 						faction = faction_interventionist_elves
 						power = 0.75
 					}
 				}
-			}			
+			}
 			modifier = {
 				factor = 0.1
-				NOT = { 
-					faction_power = 
+				NOT = {
+					faction_power =
 					{
 						faction = faction_interventionist_elves
 						power = 1.0
@@ -167,28 +194,37 @@ plot_decisions = {
 			}
 			modifier = {
 				factor = 0.1
-				NOT = { 
-					faction_power = 
+				NOT = {
+					faction_power =
 					{
 						faction = faction_interventionist_elves
 						power = 1.5
 					}
 				}
-			}			
-			
+			}
 			modifier = {
 				factor = 0
 				liege = {
 					any_war = {
 						OR = {
 							AND = {
-								defender = { character = PREV }
-								NOT = { using_cb = depose_liege }
-								NOT = { using_cb = overthrow_ruler }
-								NOT = { using_cb = overthrow_ruler_no_calls }
+								defender = {
+									character = PREV
 								}
+								NOT = {
+									using_cb = depose_liege
+								}
+								NOT = {
+									using_cb = overthrow_ruler
+								}
+								NOT = {
+									using_cb = overthrow_ruler_no_calls
+								}
+							}
 							AND = {
-								attacker = { character = PREV }
+								attacker = {
+									character = PREV
+								}
 								OR = {
 									using_cb = invasion
 									using_cb = religious
@@ -197,14 +233,12 @@ plot_decisions = {
 									using_cb = claim_all
 									using_cb = claim
 									using_cb = other_claim
-									}
 								}
 							}
 						}
 					}
 				}
 			}
+		}
 	}
 }
-
-

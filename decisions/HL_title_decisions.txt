@@ -1,9 +1,9 @@
 title_decisions = {
+
 	raiding_adventurer_buy_title = {
 		only_rulers = yes
 		ai_target_filter = dynasty_owned
 		filter = dynasty_owned
-		
 		from_potential = {
 			is_ruler = yes
 			has_character_flag = raiding_adventurer
@@ -12,8 +12,11 @@ title_decisions = {
 			primary_title = {
 				temporary = yes
 			}
-			NOT = { demesne_size = 1 }
-			NOT = { # Somewhat clunky way of checking that the character does not stand to inherit any titles
+			NOT = {
+				demesne_size = 1
+			}
+			NOT = {
+				# Somewhat clunky way of checking that the character does not stand to inherit any titles
 				any_heir_title = {
 					always = yes
 				}
@@ -22,16 +25,24 @@ title_decisions = {
 		potential = {
 			tier = COUNT
 			can_be_given_away = yes
-			location =  { num_of_settlements = 1 }
+			location =  {
+				num_of_settlements = 1
+			}
 			holder_scope = {
-				NOT = { has_character_modifier = raider_buy_land_timer }
+				NOT = {
+					has_character_modifier = raider_buy_land_timer
+				}
 			}
 		}
 		effect = {
 			save_event_target_as = target_title
-			holder_scope = { save_event_target_as = target_ruler }
+			holder_scope = {
+				save_event_target_as = target_ruler
+			}
 			FROM = {
-				character_event = { id = HL.120 }
+				character_event = {
+					id = HL.120
+				}
 			}
 		}
 		ai_will_do = {

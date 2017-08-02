@@ -1,401 +1,465 @@
 
-
 ##############################
 #CRAFTING DECISIONS###########
 ##############################
 decisions = {
 
-craft_item = {
-	
-	potential = {
-		OR = {
-	    has_character_modifier = magic_power_1
-		has_character_modifier = magic_power_2
-		has_character_modifier = magic_power_3
-		has_character_modifier = magic_power_4
+	craft_item = {
+		potential = {
+			OR = {
+				has_character_modifier = magic_power_1
+				has_character_modifier = magic_power_2
+				has_character_modifier = magic_power_3
+				has_character_modifier = magic_power_4
 			}
-			}
-		
-		allow = {
-		wealth=250
-			custom_tooltip = { text = IS_NOT_INCAPACITATED
-					is_incapacitated_trigger = no }
-		NOT = { trait = crafting_magic_item }
-			}
-		
-		effect = {
-		ROOT = { character_event = { id = crafting.0 } }
 		}
-		
+		allow = {
+			wealth=250
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
+			NOT = {
+				trait = crafting_magic_item
+			}
+		}
+		effect = {
+			ROOT = {
+				character_event = {
+					id = crafting.0
+				}
+			}
+		}
 		ai_will_do = {
 			factor = 0
-		}			
-			}
-			
+		}
+	}
 }
 targetted_decisions = {
 
-gift_sword_1 = {
-	ai_target_filter = spouse
-	from_potential = {
-		ai = no
-		OR = {
-			has_artifact=sword_1
+	gift_sword_1 = {
+		ai_target_filter = spouse
+		from_potential = {
+			ai = no
+			OR = {
+				has_artifact=sword_1
+			}
+		}
+		potential = {
+			age = 5
+			NOT = {
+				character = FROM
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			ROOT = {
+				add_artifact = sword_1
+			}
+			FROM = {
+				destroy_artifact = sword_1
+			}
+		}
+		ai_will_do = {
+			factor = 0
 		}
 	}
-	potential = {
-		age = 5
-		NOT = { character = FROM }
-	}
-	allow = {
-		always = yes
-	}
-	
-	effect = {
-	
-		ROOT = { add_artifact = sword_1}
-		FROM = { destroy_artifact = sword_1 }
-	}
-	
-	ai_will_do = {
-		factor = 0
-	}
-}
 
-gift_sword_2 = {
-	ai_target_filter = spouse
-	from_potential = {
-		ai = no
-		OR = {
-			has_artifact=sword_2
+	gift_sword_2 = {
+		ai_target_filter = spouse
+		from_potential = {
+			ai = no
+			OR = {
+				has_artifact=sword_2
+			}
+		}
+		potential = {
+			age = 5
+			NOT = {
+				character = FROM
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			ROOT = {
+				add_artifact = sword_2
+			}
+			FROM = {
+				destroy_artifact = sword_2
+			}
+		}
+		ai_will_do = {
+			factor = 0
 		}
 	}
-	potential = {
-		age = 5
-		NOT = { character = FROM }
-	}
-	allow = {
-		always = yes
-	}
-	
-	effect = {
-		ROOT = { add_artifact = sword_2}
-		FROM = { destroy_artifact = sword_2 }
-	}
-	
-	ai_will_do = {
-		factor = 0
-	}
-}
 
-gift_sword_3 = {
-	ai_target_filter = spouse
-	from_potential = {
-		ai = no
-		OR = {
-			has_artifact=sword_3
+	gift_sword_3 = {
+		ai_target_filter = spouse
+		from_potential = {
+			ai = no
+			OR = {
+				has_artifact=sword_3
+			}
+		}
+		potential = {
+			age = 5
+			NOT = {
+				character = FROM
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			ROOT = {
+				add_artifact = sword_3
+			}
+			FROM = {
+				destroy_artifact = sword_3
+			}
+		}
+		ai_will_do = {
+			factor = 0
 		}
 	}
-	potential = {
-		age = 5
-		NOT = { character = FROM }
-	}
-	allow = {
-		always = yes
-	}
-	
-	effect = {
-		ROOT = { add_artifact = sword_3}
-		FROM = { destroy_artifact = sword_3 }
-	}
-	
-	ai_will_do = {
-		factor = 0
-	}
-}
 
-gift_sword_4 = {
-	ai_target_filter = spouse
-	from_potential = {
-		ai = no
-		OR = {
-			has_artifact=sword_4
+	gift_sword_4 = {
+		ai_target_filter = spouse
+		from_potential = {
+			ai = no
+			OR = {
+				has_artifact=sword_4
+			}
+		}
+		potential = {
+			age = 5
+			NOT = {
+				character = FROM
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			ROOT = {
+				add_artifact = sword_4
+			}
+			FROM = {
+				destroy_artifact = sword_4
+			}
+		}
+		ai_will_do = {
+			factor = 0
 		}
 	}
-	potential = {
-		age = 5
-		NOT = { character = FROM }
-	}
-	allow = {
-		always = yes
-	}
-	
-	effect = {
-		ROOT = { add_artifact = sword_4}
-		FROM = { destroy_artifact = sword_4 }
-	}
-	
-	ai_will_do = {
-		factor = 0
-	}
-}
 
-gift_sword_5 = {
-	ai_target_filter = spouse
-	from_potential = {
-		ai = no
-		OR = {
-			has_artifact=sword_5
+	gift_sword_5 = {
+		ai_target_filter = spouse
+		from_potential = {
+			ai = no
+			OR = {
+				has_artifact=sword_5
+			}
+		}
+		potential = {
+			age = 5
+			NOT = {
+				character = FROM
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			ROOT = {
+				add_artifact = sword_5
+			}
+			FROM = {
+				destroy_artifact = sword_5
+			}
+		}
+		ai_will_do = {
+			factor = 0
 		}
 	}
-	potential = {
-		age = 5
-		NOT = { character = FROM }
-	}
-	allow = {
-		always = yes
-	}
-	
-	effect = {
-		ROOT = { add_artifact = sword_5}
-		FROM = { destroy_artifact = sword_5 }
-	}
-	
-	ai_will_do = {
-		factor = 0
-	}
-}
 
-gift_ring_of_persuasion = {
-	ai_target_filter = spouse
-	from_potential = {
-		ai = no
-		OR = {
-			has_artifact=ring_of_persuasion
+	gift_ring_of_persuasion = {
+		ai_target_filter = spouse
+		from_potential = {
+			ai = no
+			OR = {
+				has_artifact=ring_of_persuasion
+			}
+		}
+		potential = {
+			age = 5
+			NOT = {
+				character = FROM
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			ROOT = {
+				add_artifact = ring_of_persuasion
+			}
+			FROM = {
+				destroy_artifact = ring_of_persuasion
+			}
+		}
+		ai_will_do = {
+			factor = 0
 		}
 	}
-	potential = {
-		age = 5
-		NOT = { character = FROM }
-	}
-	allow = {
-		always = yes
-	}
-	
-	effect = {
-		ROOT = { add_artifact = ring_of_persuasion}
-		FROM = { destroy_artifact = ring_of_persuasion }
-	}
-	
-	ai_will_do = {
-		factor = 0
-	}
-}
 
-gift_ring_of_invisibility = {
-	ai_target_filter = spouse
-	from_potential = {
-		ai = no
-		OR = {
-			has_artifact=ring_of_invisibility
+	gift_ring_of_invisibility = {
+		ai_target_filter = spouse
+		from_potential = {
+			ai = no
+			OR = {
+				has_artifact=ring_of_invisibility
+			}
+		}
+		potential = {
+			age = 5
+			NOT = {
+				character = FROM
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			ROOT = {
+				add_artifact = ring_of_invisibility
+			}
+			FROM = {
+				destroy_artifact = ring_of_invisibility
+			}
+		}
+		ai_will_do = {
+			factor = 0
 		}
 	}
-	potential = {
-		age = 5
-		NOT = { character = FROM }
-	}
-	allow = {
-		always = yes
-	}
-	
-	effect = {
-		ROOT = { add_artifact = ring_of_invisibility}
-		FROM = { destroy_artifact = ring_of_invisibility }
-	}
-	
-	ai_will_do = {
-		factor = 0
-	}
-}
 
-gift_ring_of_speed = {
-	ai_target_filter = spouse
-	from_potential = {
-		ai = no
-		OR = {
-			has_artifact=ring_of_speed
+	gift_ring_of_speed = {
+		ai_target_filter = spouse
+		from_potential = {
+			ai = no
+			OR = {
+				has_artifact=ring_of_speed
+			}
+		}
+		potential = {
+			age = 5
+			NOT = {
+				character = FROM
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			ROOT = {
+				add_artifact = ring_of_speed
+			}
+			FROM = {
+				destroy_artifact = ring_of_speed
+			}
+		}
+		ai_will_do = {
+			factor = 0
 		}
 	}
-	potential = {
-		age = 5
-		NOT = { character = FROM }
-	}
-	allow = {
-		always = yes
-	}
-	
-	effect = {
-		ROOT = { add_artifact = ring_of_speed}
-		FROM = { destroy_artifact = ring_of_speed }
-	}
-	
-	ai_will_do = {
-		factor = 0
-	}
-}
 
-gift_ring_of_command = {
-	ai_target_filter = spouse
-	from_potential = {
-		ai = no
-		OR = {
-			has_artifact=ring_of_command
+	gift_ring_of_command = {
+		ai_target_filter = spouse
+		from_potential = {
+			ai = no
+			OR = {
+				has_artifact=ring_of_command
+			}
+		}
+		potential = {
+			age = 5
+			NOT = {
+				character = FROM
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			ROOT = {
+				add_artifact = ring_of_command
+			}
+			FROM = {
+				destroy_artifact = ring_of_command
+			}
+		}
+		ai_will_do = {
+			factor = 0
 		}
 	}
-	potential = {
-		age = 5
-		NOT = { character = FROM }
-	}
-	allow = {
-		always = yes
-	}
-	
-	effect = {
-		ROOT = { add_artifact = ring_of_command}
-		FROM = { destroy_artifact = ring_of_command }
-	}
-	
-	ai_will_do = {
-		factor = 0
-	}
-}
 
-gift_amulet_of_protection_1 = {
-	ai_target_filter = spouse
-	from_potential = {
-		ai = no
-		OR = {
-			has_artifact=amulet_of_protection_1
+	gift_amulet_of_protection_1 = {
+		ai_target_filter = spouse
+		from_potential = {
+			ai = no
+			OR = {
+				has_artifact=amulet_of_protection_1
+			}
+		}
+		potential = {
+			age = 5
+			NOT = {
+				character = FROM
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			ROOT = {
+				add_artifact = amulet_of_protection_1
+			}
+			FROM = {
+				destroy_artifact = amulet_of_protection_1
+			}
+		}
+		ai_will_do = {
+			factor = 0
 		}
 	}
-	potential = {
-		age = 5
-		NOT = { character = FROM }
-	}
-	allow = {
-		always = yes
-	}
-	
-	effect = {
-		ROOT = { add_artifact = amulet_of_protection_1}
-		FROM = { destroy_artifact = amulet_of_protection_1 }
-	}
-	
-	ai_will_do = {
-		factor = 0
-	}
-}
 
-gift_amulet_of_protection_3 = {
-	ai_target_filter = spouse
-	from_potential = {
-		ai = no
-		OR = {
-			has_artifact=amulet_of_protection_3
+	gift_amulet_of_protection_3 = {
+		ai_target_filter = spouse
+		from_potential = {
+			ai = no
+			OR = {
+				has_artifact=amulet_of_protection_3
+			}
+		}
+		potential = {
+			age = 5
+			NOT = {
+				character = FROM
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			ROOT = {
+				add_artifact = amulet_of_protection_3
+			}
+			FROM = {
+				destroy_artifact = amulet_of_protection_3
+			}
+		}
+		ai_will_do = {
+			factor = 0
 		}
 	}
-	potential = {
-		age = 5
-		NOT = { character = FROM }
-	}
-	allow = {
-		always = yes
-	}
-	
-	effect = {
-		ROOT = { add_artifact = amulet_of_protection_3}
-		FROM = { destroy_artifact = amulet_of_protection_3 }
-	}
-	
-	ai_will_do = {
-		factor = 0
-	}
-}
 
-gift_amulet_of_protection_5 = {
-	ai_target_filter = spouse
-	from_potential = {
-		ai = no
-		OR = {
-			has_artifact=amulet_of_protection_5
+	gift_amulet_of_protection_5 = {
+		ai_target_filter = spouse
+		from_potential = {
+			ai = no
+			OR = {
+				has_artifact=amulet_of_protection_5
+			}
+		}
+		potential = {
+			age = 5
+			NOT = {
+				character = FROM
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			ROOT = {
+				add_artifact = amulet_of_protection_5
+			}
+			FROM = {
+				destroy_artifact = amulet_of_protection_5
+			}
+		}
+		ai_will_do = {
+			factor = 0
 		}
 	}
-	potential = {
-		age = 5
-		NOT = { character = FROM }
-	}
-	allow = {
-		always = yes
-	}
-	
-	effect = {
-		ROOT = { add_artifact = amulet_of_protection_5}
-		FROM = { destroy_artifact = amulet_of_protection_5 }
-	}
-	
-	ai_will_do = {
-		factor = 0
-	}
-}
 
-gift_abyssal_terror_mount = {
-	ai_target_filter = court
-	from_potential = {
+	gift_abyssal_terror_mount = {
+		ai_target_filter = court
+		from_potential = {
 			has_artifact = abyssal_terror_mount
 			trait = vampire_necrarch_visible
-	}
-	potential = {
-		age = 16
-		trait = creature_human
-	}
-	allow = {
-		age = 5
-		NOT = { character = FROM }
-		trait = creature_human
-		NOR = { trait = abyssal_terror_mount
-			trait = incapable
-			trait = resting
-			trait = incapacitated
-			trait = in_hiding }
-	}
-	
-	effect = {
-		FROM = { destroy_artifact = abyssal_terror_mount }
-		ROOT = { add_artifact = abyssal_terror_mount }
-	}
-	
-	ai_will_do = {
-		factor = 1
-		modifier  = {
+		}
+		potential = {
+			age = 16
+			trait = creature_human
+		}
+		allow = {
+			age = 5
+			NOT = {
+				character = FROM
+			}
+			trait = creature_human
+			NOR = {
+				trait = abyssal_terror_mount
+				trait = incapable
+				trait = resting
+				trait = incapacitated
+				trait = in_hiding
+			}
+		}
+		effect = {
+			FROM = {
+				destroy_artifact = abyssal_terror_mount
+			}
+			ROOT = {
+				add_artifact = abyssal_terror_mount
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier  = {
 				factor = 0.01
 			}
-		modifier  = {
+			modifier  = {
 				factor = 0
-				FROM = { trait = paranoid }
+				FROM = {
+					trait = paranoid
+				}
 			}
-		modifier  = {
+			modifier  = {
 				factor = 0
-				FROM = { trait = greedy }
+				FROM = {
+					trait = greedy
+				}
 			}
-		modifier  = {
+			modifier  = {
 				factor = 0.1
-				FROM = { trait = lunatic_3 }
+				FROM = {
+					trait = lunatic_3
+				}
 			}
-		modifier  = {
+			modifier  = {
 				factor = 0.01
-				FROM = { NOT = { piety = 450 } }
+				FROM = {
+					NOT = {
+						piety = 450
+					}
+				}
 			}
 		}
 	}
-
 }

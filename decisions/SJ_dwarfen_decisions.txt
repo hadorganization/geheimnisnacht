@@ -1,11 +1,11 @@
 decisions = {
 	#Become a mason
+
 	SJ_become_a_mason_decision = {
-	
 		potential = {
 			culture_group = dwarf_group
 			religion_group = dwarf_gods_group
-					is_incapacitated_trigger = no
+			is_incapacitated_trigger = no
 			NOT = {
 				has_character_flag = SJ_have_become_mason
 				trait = slow
@@ -41,16 +41,25 @@ decisions = {
 			custom_tooltip = {
 				text = SJDwarftooltips.tooltip2
 			}
-			hidden_tooltip = { if = { limit = { ai = no 
-								NOT = { has_character_flag = SJ_has_had_mason_info_event } } 
-					narrative_event = { id = SJDwarfevents.4 } } }
+			hidden_tooltip = {
+				if = {
+					limit = {
+						ai = no
+						NOT = {
+							has_character_flag = SJ_has_had_mason_info_event
+						}
+					}
+					narrative_event = {
+						id = SJDwarfevents.4
+					}
+				}
+			}
 		}
 		revoke_allowed = {
 			always = no
 		}
 		ai_will_do = {
 			factor = 1
-			
 			modifier = {
 				factor = 5
 				trait = architect
@@ -98,13 +107,12 @@ decisions = {
 		}
 	}
 	#re-create the hammerer regiments from the golden age
+
 	hammerer_regiments = {
-	
 		is_high_prio = yes
-		
 		potential = {
 			war = no
-					is_incapacitated_trigger = no
+			is_incapacitated_trigger = no
 			trait = creature_dwarf
 			religion_group = dwarf_gods_group
 			culture_group = dwarf_group
@@ -129,7 +137,6 @@ decisions = {
 				has_global_flag = hammerer_regiments_reformed
 			}
 		}
-		
 		allow = {
 			AND = {
 				OR = {
@@ -145,7 +152,6 @@ decisions = {
 			realm_size = 120
 			treasury = 400
 		}
-		
 		effect = {
 			set_global_flag = hammerer_regiments_reformed
 			prestige = 200
@@ -165,11 +171,9 @@ decisions = {
 			}
 			treasury = -400
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 100
 		}

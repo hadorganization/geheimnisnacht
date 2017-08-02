@@ -10,23 +10,22 @@
 #	dynasty: all members of the same dynasty
 #	rivals: your rivals plus any character you have an opinion modifier with 'crime = yes' set (the same set of characters the 'is_foe' trigger evaluates)
 #	all: all living characters (Avoid if possible. VERY CPU-HEAVY!)
-#	
-
+#
 # Written by Henrik "Groogy" Hansson
-
 targetted_decisions = {
 
 	create_mercenary_company = {
 		only_playable = yes
 		filter = home_court
 		ai_target_filter = home_court
-		
 		from_potential = {
 			is_playable = yes
 			has_dlc = "Horse Lords"
 			is_adult = yes
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			OR = {
 				government = nomadic_government
 				has_character_modifier = mercenary_traditions
@@ -37,7 +36,9 @@ targetted_decisions = {
 			mercenary = no
 			dynasty = FROM
 			OR = {
-				father_even_if_dead = { character = FROM }
+				father_even_if_dead = {
+					character = FROM
+				}
 				any_sibling = {
 					character = FROM
 				}
@@ -50,12 +51,18 @@ targetted_decisions = {
 			custom_tooltip = {
 				text = inaccessible_tooltip
 				hidden_tooltip = {
-					NOT = { is_inaccessible_trigger = yes }
+					NOT = {
+						is_inaccessible_trigger = yes
+					}
 				}
 			}
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			dynasty = FROM
-			liege = { character = FROM }
+			liege = {
+				character = FROM
+			}
 			FROM = {
 				OR = {
 					AND = {
@@ -64,7 +71,9 @@ targetted_decisions = {
 						max_manpower = 500
 					}
 					AND = {
-						NOT = { government = nomadic_government }
+						NOT = {
+							government = nomadic_government
+						}
 						demesne_garrison_size = 500
 					}
 				}
@@ -79,7 +88,9 @@ targetted_decisions = {
 		effect = {
 			FROM = {
 				if = {
-					limit = { is_nomadic = yes }
+					limit = {
+						is_nomadic = yes
+					}
 					clan_title = {
 						create_title = {
 							tier = DUKE
@@ -99,7 +110,9 @@ targetted_decisions = {
 					}
 				}
 				if = {
-					limit = { is_nomadic = no }
+					limit = {
+						is_nomadic = no
+					}
 					primary_title = {
 						create_title = {
 							tier = DUKE
@@ -118,15 +131,15 @@ targetted_decisions = {
 						}
 					}
 				}
-				
 				ROOT = {
 					set_defacto_liege = THIS
 				}
 			}
 			set_character_flag = is_mercenary_leader
-
 			add_trait = adventurer
-			add_character_modifier = { modifier = started_mercenary_company months = 30 }
+			add_character_modifier = {
+				modifier = started_mercenary_company months = 30
+			}
 		}
 		revoke_allowed = {
 			always = no
@@ -136,7 +149,6 @@ targetted_decisions = {
 			modifier = {
 				factor = 0.1
 			}
-
 			modifier = {
 				factor = 0
 				OR = {
@@ -174,47 +186,38 @@ targetted_decisions = {
 				factor = 2
 				martial = 10
 			}
-
 			modifier = {
 				factor = 3
 				martial = 14
 			}
-
 			modifier = {
 				factor = 4
 				martial = 18
 			}
-
 			modifier = {
 				factor = 2
 				prestige = 100
 			}
-
 			modifier = {
 				factor = 3
 				prestige = 400
 			}
-
 			modifier = {
 				factor = 4
 				prestige = 1000
 			}
-
 			modifier = {
 				factor = 2
 				trait = misguided_warrior
 			}
-
 			modifier = {
 				factor = 2
 				trait = tough_soldier
 			}
-
 			modifier = {
 				factor = 2
 				trait = skilled_tactician
 			}
-
 			modifier = {
 				factor = 2
 				trait = brilliant_strategist
@@ -226,12 +229,13 @@ targetted_decisions = {
 		only_playable = yes
 		filter = dynasty
 		ai_target_filter = dynasty
-		
 		from_potential = {
 			is_playable = yes
 			is_landed = yes
 			has_dlc = "Horse Lords"
-			NOT = { trait = vampire_blood_visible }
+			NOT = {
+				trait = vampire_blood_visible
+			}
 			OR = {
 				government = nomadic_government
 				has_character_modifier = mercenary_traditions
@@ -239,9 +243,13 @@ targetted_decisions = {
 		}
 		potential = {
 			mercenary = yes
-			NOT = { government = congregation_government }
+			NOT = {
+				government = congregation_government
+			}
 			primary_title = {
-				NOT = { has_title_flag = ze_dyn_merc }
+				NOT = {
+					has_title_flag = ze_dyn_merc
+				}
 				band_creator = {
 					character = FROM
 				}
@@ -251,12 +259,16 @@ targetted_decisions = {
 			OR = {
 				custom_tooltip = {
 					text = is_mercenary_leader_YEAR
-					had_character_flag = { flag = is_mercenary_leader days = 1825 }
+					had_character_flag = {
+						flag = is_mercenary_leader days = 1825
+					}
 				}
 				prisoner = yes
 			}
 			primary_title = {
-				NOT = { has_raised_standing_troops = yes }
+				NOT = {
+					has_raised_standing_troops = yes
+				}
 				band_creator = {
 					character = FROM
 				}
@@ -264,7 +276,9 @@ targetted_decisions = {
 		}
 		effect = {
 			primary_title = {
-				activate_title = { title = THIS status = no }
+				activate_title = {
+					title = THIS status = no
+				}
 				destroy_landed_title = THIS
 			}
 			move_character = FROM
@@ -275,51 +289,47 @@ targetted_decisions = {
 		}
 		ai_will_do = {
 			factor = 1
-			
 			modifier = {
 				factor = 0.01
 			}
-
 			modifier = {
 				factor = 0.5
 				health = 7
 			}
-
 			modifier = {
 				factor = 2
-				NOT = { health = 5 }
+				NOT = {
+					health = 5
+				}
 			}
-
 			modifier = {
 				factor = 4
-				NOT = { health = 4 }
+				NOT = {
+					health = 4
+				}
 			}
-
 			modifier = {
 				factor = 10
-				NOT = { health = 3 }
+				NOT = {
+					health = 3
+				}
 			}
-
 			modifier = {
 				factor = 2
 				age = 30
 			}
-
 			modifier = {
 				factor = 3
 				age = 35
 			}
-
 			modifier = {
 				factor = 4
 				age = 40
 			}
-
 			modifier = {
 				factor = 5
 				age = 45
 			}
-
 			modifier = {
 				factor = 2
 				FROM = {
@@ -332,7 +342,6 @@ targetted_decisions = {
 					age = 55
 				}
 			}
-
 			modifier = {
 				factor = 4
 				FROM = {
@@ -342,8 +351,8 @@ targetted_decisions = {
 		}
 	}
 }
-
 decisions = {
+
 	increase_mercenary_size = {
 		only_playable = yes
 		potential = {
@@ -351,12 +360,18 @@ decisions = {
 			prisoner = no
 			wealth = 25
 			has_dlc = "Horse Lords"
-			NOT = { government = congregation_government }
-			NOT = { trait = vampire_blood_visible }
+			NOT = {
+				government = congregation_government
+			}
+			NOT = {
+				trait = vampire_blood_visible
+			}
 			primary_title = {
 				mercenary = yes
 				adventurer = yes
-				NOT = { has_title_flag = ze_dyn_merc }
+				NOT = {
+					has_title_flag = ze_dyn_merc
+				}
 				band_creator = {
 					OR = {
 						government = nomadic_government
@@ -372,11 +387,14 @@ decisions = {
 			wealth = -25
 			primary_title = {
 				change_title_army_size = 0.05 # Increase of percentage
-	
 				band_creator = {
 					if = {
-						limit = { is_alive = yes }
-						character_event = { id = HL.10700 }
+						limit = {
+							is_alive = yes
+						}
+						character_event = {
+							id = HL.10700
+						}
 					}
 				}
 			}
@@ -386,7 +404,6 @@ decisions = {
 		}
 		ai_will_do = {
 			factor = 1
-
 			modifier = {
 				factor = 0.025
 				primary_title = {
@@ -395,43 +412,37 @@ decisions = {
 					}
 				}
 			}
-
 			modifier = {
 				factor = 0
-				NOT = { trait = ambitious }
+				NOT = {
+					trait = ambitious
+				}
 				trait = greedy
 			}
-
 			modifier = {
 				factor = 2
 				trait = proud
 			}
-			
 			modifier = {
 				factor = 2
 				trait = ambitious
 			}
-
 			modifier = {
 				factor = 2
 				wealth = 200
 			}
-
 			modifier = {
 				factor = 2
 				wealth = 400
 			}
-
 			modifier = {
 				factor = 3
 				wealth = 800
 			}
-
 			modifier = {
 				factor = 4
 				wealth = 1200
 			}
-
 			modifier = {
 				factor = 5
 				wealth = 1600
@@ -445,13 +456,19 @@ decisions = {
 			has_dlc = "Horse Lords"
 			is_ruler = yes
 			has_character_flag = is_mercenary_leader
-			NOT = { trait = witch_hunter }
-			NOT = { trait = vampire_blood_visible }
+			NOT = {
+				trait = witch_hunter
+			}
+			NOT = {
+				trait = vampire_blood_visible
+			}
 			primary_title = {
-				NOT = { has_title_flag = ze_dyn_merc }
+				NOT = {
+					has_title_flag = ze_dyn_merc
+				}
 				mercenary = yes
 				band_creator = {
-					is_alive = yes	
+					is_alive = yes
 					OR = {
 						government = nomadic_government
 						has_character_modifier = mercenary_traditions
@@ -462,28 +479,42 @@ decisions = {
 		allow = {
 			prisoner = no
 			wealth = 25
-			NOT = { trait = chaste }
+			NOT = {
+				trait = chaste
+			}
 		}
 		effect = {
 			wealth = -25
 			prestige = 10
 			primary_title = {
 				random_list = {
-					53 = {}
+					53 = {
+					}
 					40 = {
 						change_title_army_size = 0.02 # Increase of percentage
 					}
-					5 = { ROOT = { add_trait = drunkard } }
-					2 = { 
-						ROOT = { 
-							tooltip = { add_trait = lovers_pox }
-							hidden_tooltip = { character_event = { id = 6359 days = 15 random = 5 } }  #Gives lover's pox
+					5 = {
+						ROOT = {
+							add_trait = drunkard
+						}
+					}
+					2 = {
+						ROOT = {
+							tooltip = {
+								add_trait = lovers_pox
+							}
+							hidden_tooltip = {
+								character_event = {
+									id = 6359 days = 15 random = 5
+								}
+							}  #Gives lover's pox
 						}
 					}
 				}
-
 				band_creator = {
-					character_event = { id = HL.10701 }
+					character_event = {
+						id = HL.10701
+					}
 				}
 			}
 		}
@@ -492,61 +523,49 @@ decisions = {
 		}
 		ai_will_do = {
 			factor = 1
-
 			modifier = {
 				factor = 0.015
 			}
-
 			modifier = {
 				factor = 0
 				trait = greedy
 			}
-
 			modifier = {
 				factor = 2
 				trait = lustful
 			}
-
 			modifier = {
 				factor = 2
 				trait = gluttonous
 			}
-
 			modifier = {
 				factor = 2
 				trait = hedonist
 			}
-
 			modifier = {
 				factor = 2
 				trait = charitable
 			}
-
 			modifier = {
 				factor = 2
 				wealth = 200
 			}
-
 			modifier = {
 				factor = 2
 				wealth = 400
 			}
-
 			modifier = {
 				factor = 3
 				wealth = 800
 			}
-
 			modifier = {
 				factor = 4
 				wealth = 1200
 			}
-
 			modifier = {
 				factor = 5
 				wealth = 1600
 			}
-			
 			modifier = {
 				factor = 0.1
 				primary_title = {

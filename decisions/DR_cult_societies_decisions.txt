@@ -3,39 +3,43 @@
 # Devil worshiper decisions for Monks and Mystics
 #
 ###########################################
-
 settlement_decisions = {
 
 	chaos_cult_desecrate_province_decision = {
 		only_playable = yes
-
 		ai_target_filter = realm_owned
-		
 		# from_potential = {
-			# prisoner = no
-			# NOT = { trait = incapable }
-			# has_dlc = "Mystics"
-			# has_quest = quest_chaos_cult_desecrate_province
-			# NOT = { has_character_flag = desecration_in_progress }
-			# is_devil_worshiper_trigger = yes
+		# prisoner = no
+		# NOT = { trait = incapable }
+		# has_dlc = "Mystics"
+		# has_quest = quest_chaos_cult_desecrate_province
+		# NOT = { has_character_flag = desecration_in_progress }
+		# is_devil_worshiper_trigger = yes
 		# }
-
 		potential = {
-			location = { is_quest_target_of = FROM }
-			FROM = { 
-				NOT = { has_character_flag = desecration_in_progress } 
+			location = {
+				is_quest_target_of = FROM
+			}
+			FROM = {
+				NOT = {
+					has_character_flag = desecration_in_progress
+				}
 				has_quest = quest_chaos_cult_desecrate_province
 				prisoner = no
-				NOT = { trait = incapable }
+				NOT = {
+					trait = incapable
+				}
 				is_devil_worshiper_trigger = yes
 			}
 		}
-
 		allow = {
-			FROM = { has_quest = quest_chaos_cult_desecrate_province }
-			location = { is_quest_target_of = FROM }
+			FROM = {
+				has_quest = quest_chaos_cult_desecrate_province
+			}
+			location = {
+				is_quest_target_of = FROM
+			}
 		}
-
 		effect = {
 			FROM = {
 				increase_visibility_effect = yes
@@ -43,75 +47,77 @@ settlement_decisions = {
 					text = chaos_cult_desecrate_province_decision_tt
 				}
 				set_character_flag = desecration_in_progress
-
 				# ROOT = {
-					# if = {
-						# limit = {
-							# owner = { character = FROM }
-						# }
-						# if = {
-							# limit = {
-								# FROM = { society_member_of = cult_of_khorne }
-							# }
-							# add_province_modifier = { name = beastmen_unrest years = 5 } 
-						# }
-						# if = {
-							# limit = {
-								# FROM = { society_member_of = cult_of_nurgle }
-							# }
-							# add_province_modifier = { name = nurgle_province_disease years = 5 }  
-							# random_list = {
-									# 16 = {
-										# spawn_disease = tuberculosis 
-									# }
-									# 16 = {
-										# spawn_disease = typhoid_fever 
-									# }
-									# 16 = {
-										# spawn_disease = typhus 
-									# }
-									# 16 = {
-										# spawn_disease = measles 
-									# }
-									# 16 = {
-										# spawn_disease = small_pox 
-									# }
-									# 16 = {
-										# spawn_disease = syphilis 
-									# }
-							# }
-						# }
-						# if = {
-							# limit = {
-								# FROM = { society_member_of = cult_of_tzeentch }
-							# }
-							# add_province_modifier = { name = warpdust_traces years = 5 } 
-						# }
-						# if = {
-							# limit = {
-								# FROM = { society_member_of = cult_of_slaanesh }
-							# }
-							# add_province_modifier = { name = slaanesh_hedonism years = 5 } 
-						# }
-						# if = {
-							# limit = {
-								# FROM = { society_member_of = cult_of_undivded }
-							# }
-							# add_holding_modifier = {
-								# name = desecrated_temple
-								# years = 5
-							# }
-						# }
-						
-						# FROM = {
-							# sound_effect = devil_worshippers_desecrate_temple
-							# clr_quest = quest_chaos_cult_desecrate_province
-							# add_society_currency_medium_effect = yes
-							# break = yes
-						# }
-					# }
+				# if = {
+				# limit = {
+				# owner = { character = FROM }
 				# }
-				hidden_effect = { character_event = { id = DR_cults.7112 days = 7 } }
+				# if = {
+				# limit = {
+				# FROM = { society_member_of = cult_of_khorne }
+				# }
+				# add_province_modifier = { name = beastmen_unrest years = 5 }
+				# }
+				# if = {
+				# limit = {
+				# FROM = { society_member_of = cult_of_nurgle }
+				# }
+				# add_province_modifier = { name = nurgle_province_disease years = 5 }
+				# random_list = {
+				# 16 = {
+				# spawn_disease = tuberculosis
+				# }
+				# 16 = {
+				# spawn_disease = typhoid_fever
+				# }
+				# 16 = {
+				# spawn_disease = typhus
+				# }
+				# 16 = {
+				# spawn_disease = measles
+				# }
+				# 16 = {
+				# spawn_disease = small_pox
+				# }
+				# 16 = {
+				# spawn_disease = syphilis
+				# }
+				# }
+				# }
+				# if = {
+				# limit = {
+				# FROM = { society_member_of = cult_of_tzeentch }
+				# }
+				# add_province_modifier = { name = warpdust_traces years = 5 }
+				# }
+				# if = {
+				# limit = {
+				# FROM = { society_member_of = cult_of_slaanesh }
+				# }
+				# add_province_modifier = { name = slaanesh_hedonism years = 5 }
+				# }
+				# if = {
+				# limit = {
+				# FROM = { society_member_of = cult_of_undivded }
+				# }
+				# add_holding_modifier = {
+				# name = desecrated_temple
+				# years = 5
+				# }
+				# }
+				# FROM = {
+				# sound_effect = devil_worshippers_desecrate_temple
+				# clr_quest = quest_chaos_cult_desecrate_province
+				# add_society_currency_medium_effect = yes
+				# break = yes
+				# }
+				# }
+				# }
+				hidden_effect = {
+					character_event = {
+						id = DR_cults.7112 days = 7
+					}
+				}
 			}
 		}
 		revoke_allowed = {
@@ -121,18 +127,14 @@ settlement_decisions = {
 			factor = 0.5
 		}
 	}
-
 }
-
 targeted_decisions = {
-
 	#Shallyans: Lay on Hands
+
 	shallya_healing = {
 		is_in_society = yes
-		
 		filter = self
 		ai_target_filter = self
-		
 		potential = {
 			has_dlc = "Mystics"
 			society_member_of = cult_of_shallya
@@ -142,13 +144,11 @@ targeted_decisions = {
 				has_character_modifier = shallya_healing_recent
 			}
 		}
-		
 		allow = {
 			has_society_currency_medium_trigger = yes
 			custom_tooltip = {
 				text = shallya_healing_tooltip
 				OR = {
-
 					has_disease_trigger = yes
 					has_symptom_trigger = yes
 					has_injury_trigger = yes
@@ -162,7 +162,9 @@ targeted_decisions = {
 			}
 		}
 		effect = {
-			character_event = { id = DR_societies.7118 days = 0 }
+			character_event = {
+				id = DR_societies.7118 days = 0
+			}
 			detract_society_currency_medium_effect = yes
 			set_character_flag = shallya_healing_in_effect
 		}
@@ -181,42 +183,53 @@ targeted_decisions = {
 			}
 		}
 	}
-
 	#Power: Demonic Possession
+
 	chaos_cult_demonic_possession = {
 		is_in_society = yes
-
 		ai_target_filter = sub_realm
-
 		from_potential = {
 			is_devil_worshiper_trigger = yes
 			society_rank > 1
 		}
-
 		potential = {
 			OR = {
-				host = { character = FROM }
-				liege = { character = FROM }
+				host = {
+					character = FROM
+				}
+				liege = {
+					character = FROM
+				}
 			}
-			NOT = { character = FROM }
-			NOT = { trait = avatar_kurnous }
-			NOT = { trait = avatar_isha }
-			NOT = { trait = everqueen }
-			OR = { trait = creature_elf
-			trait = creature_chaos_dwarf
-			trait = creature_dwarf
-			trait = creature_human
-			trait = creature_amazon
-			trait = creature_beastman }
-			is_vampire_trigger = no	
+			NOT = {
+				character = FROM
+			}
+			NOT = {
+				trait = avatar_kurnous
+			}
+			NOT = {
+				trait = avatar_isha
+			}
+			NOT = {
+				trait = everqueen
+			}
+			OR = {
+				trait = creature_elf
+				trait = creature_chaos_dwarf
+				trait = creature_dwarf
+				trait = creature_human
+				trait = creature_amazon
+				trait = creature_beastman
+			}
+			is_vampire_trigger = no
 		}
-
 		allow = {
 			FROM = {
 				prisoner = no
-				NOT = { trait = incapable }
+				NOT = {
+					trait = incapable
+				}
 				has_society_currency_minor_trigger = yes
-
 				custom_tooltip = {
 					text = is_accessible
 					OR = {
@@ -234,25 +247,27 @@ targeted_decisions = {
 				}
 			}
 			ROOT = {
-				NOT = { trait = incapable }
-				prisoner = yes				
-			}	
-		}
-
-		effect = {
-			# ROOT = {
-				# set_character_flag = possessing_courtier
-				# hidden_effect = { 
-					# character_event = { id = DR_cults.7840 days = 3 random = 7 }
-				# }
-			# }
-			FROM = { 
-				detract_society_currency_minor_effect = yes
-				increase_visibility_effect = yes
-				character_event = { id = schaos.17 }
+				NOT = {
+					trait = incapable
+				}
+				prisoner = yes
 			}
 		}
-
+		effect = {
+			# ROOT = {
+			# set_character_flag = possessing_courtier
+			# hidden_effect = {
+			# character_event = { id = DR_cults.7840 days = 3 random = 7 }
+			# }
+			# }
+			FROM = {
+				detract_society_currency_minor_effect = yes
+				increase_visibility_effect = yes
+				character_event = {
+					id = schaos.17
+				}
+			}
+		}
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -276,19 +291,21 @@ targeted_decisions = {
 			}
 		}
 	}
-	
-		#Action: satanist recruit
+	#Action: satanist recruit
+
 	khorne_recruit = {
 		is_in_society = yes
-		
 		filter = all
 		ai_target_filter = realm
-
 		from_potential = {
 			is_adult = yes
 			prisoner = no
-			NOT = { trait = incapable }
-			NOT = { has_character_modifier = recruitment_timer }
+			NOT = {
+				trait = incapable
+			}
+			NOT = {
+				has_character_modifier = recruitment_timer
+			}
 			society_member_of = cult_of_khorne
 			OR = {
 				ai = no
@@ -304,26 +321,33 @@ targeted_decisions = {
 		}
 		potential = {
 			OR = {
-				FROM = { ai = no }
+				FROM = {
+					ai = no
+				}
 				ai = no
 			}
 			is_within_diplo_range = FROM
 			is_adult = yes
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			is_in_society = no
-
-
 			#AI cannot invite other AIs when society is full
 			NAND = {
 				ai = yes
-				FROM = { ai = yes }
-				NOT = { can_join_society = cult_of_khorne }
+				FROM = {
+					ai = yes
+				}
+				NOT = {
+					can_join_society = cult_of_khorne
+				}
 			}
-
 			#Blocks so AI recruits sensible people (who might say no)
 			OR = {
-				FROM = { ai = no }
+				FROM = {
+					ai = no
+				}
 				is_friend = FROM
 				is_lover = FROM
 				is_close_relative = FROM
@@ -338,32 +362,30 @@ targeted_decisions = {
 		allow = {
 			age = 16
 			NOT = {
-					trait = witch_hunter
-				}
-			NOR = {
-				trait = creature_nehekharan 
-				trait = vampire_lahmian_visible 
-				trait = vampire_carstein_visible 
-				trait = vampire_blood_visible 
-				trait = vampire_strigoi_visible 
-				trait = vampire_necrarch_visible 
-				trait = vampire_jade_visible 
-				trait = vampire_mahtmasi_visible 
-				trait = vampire_lahmian_hidden 
-				trait = vampire_carstein_hidden 
-				trait = vampire_blood_hidden 
-				trait = vampire_strigoi_hidden 
-				trait = vampire_necrarch_hidden 
-				trait = vampire_jade_hidden 
-				trait = vampire_mahtmasi_hidden 
+				trait = witch_hunter
 			}
-
+			NOR = {
+				trait = creature_nehekharan
+				trait = vampire_lahmian_visible
+				trait = vampire_carstein_visible
+				trait = vampire_blood_visible
+				trait = vampire_strigoi_visible
+				trait = vampire_necrarch_visible
+				trait = vampire_jade_visible
+				trait = vampire_mahtmasi_visible
+				trait = vampire_lahmian_hidden
+				trait = vampire_carstein_hidden
+				trait = vampire_blood_hidden
+				trait = vampire_strigoi_hidden
+				trait = vampire_necrarch_hidden
+				trait = vampire_jade_hidden
+				trait = vampire_mahtmasi_hidden
+			}
 			OR = {
 				religion_group = old_world_group
 				religion_group = ormazd_gods_group
 				religion_group = oriental_gods_group
 				religion = stromfels
-				
 			}
 			OR = {
 				trait = wroth
@@ -380,10 +402,14 @@ targeted_decisions = {
 			custom_tooltip = {
 				text = satanists_recruit_block_tooltip
 				OR = {
-					NOT = { has_character_flag = khorne_attempted_recruitment }
+					NOT = {
+						has_character_flag = khorne_attempted_recruitment
+					}
 					interested_in_society = cult_of_khorne
 				}
-				NOT = { has_character_flag = being_recruited_by_khorne }
+				NOT = {
+					has_character_flag = being_recruited_by_khorne
+				}
 			}
 			FROM = {
 				is_inaccessible_trigger = no
@@ -396,11 +422,17 @@ targeted_decisions = {
 				save_event_target_as = chaos_cult_recruiter
 			}
 			hidden_effect = {
-				character_event = { id = DR_cults.7001 days = 3 } # recruitment chain
-				character_event = { id = DR_cults.7030 days = 365 } # sends delayed back up, in case recruitment fails somehow
+				character_event = {
+					id = DR_cults.7001 days = 3
+				} # recruitment chain
+				character_event = {
+					id = DR_cults.7030 days = 365
+				} # sends delayed back up, in case recruitment fails somehow
 				FROM = {
 					if = {
-						limit = { ai = yes }
+						limit = {
+							ai = yes
+						}
 						add_character_modifier = {
 							name = recruitment_timer
 							days = 730
@@ -424,19 +456,21 @@ targeted_decisions = {
 			}
 		}
 	}
-
 	#Action: satanist recruit
+
 	nurgle_recruit = {
 		is_in_society = yes
-		
 		filter = all
 		ai_target_filter = realm
-
 		from_potential = {
 			is_adult = yes
 			prisoner = no
-			NOT = { trait = incapable }
-			NOT = { has_character_modifier = recruitment_timer }
+			NOT = {
+				trait = incapable
+			}
+			NOT = {
+				has_character_modifier = recruitment_timer
+			}
 			society_member_of = cult_of_nurgle
 			OR = {
 				ai = no
@@ -452,26 +486,33 @@ targeted_decisions = {
 		}
 		potential = {
 			OR = {
-				FROM = { ai = no }
+				FROM = {
+					ai = no
+				}
 				ai = no
 			}
 			is_within_diplo_range = FROM
 			is_adult = yes
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			is_in_society = no
-
-
 			#AI cannot invite other AIs when society is full
 			NAND = {
 				ai = yes
-				FROM = { ai = yes }
-				NOT = { can_join_society = cult_of_nurgle }
+				FROM = {
+					ai = yes
+				}
+				NOT = {
+					can_join_society = cult_of_nurgle
+				}
 			}
-
 			#Blocks so AI recruits sensible people (who might say no)
 			OR = {
-				FROM = { ai = no }
+				FROM = {
+					ai = no
+				}
 				is_friend = FROM
 				is_lover = FROM
 				is_close_relative = FROM
@@ -486,32 +527,30 @@ targeted_decisions = {
 		allow = {
 			age = 16
 			NOT = {
-					trait = witch_hunter
-				}
-			NOR = {
-				trait = creature_nehekharan 
-				trait = vampire_lahmian_visible 
-				trait = vampire_carstein_visible 
-				trait = vampire_blood_visible 
-				trait = vampire_strigoi_visible 
-				trait = vampire_necrarch_visible 
-				trait = vampire_jade_visible 
-				trait = vampire_mahtmasi_visible 
-				trait = vampire_lahmian_hidden 
-				trait = vampire_carstein_hidden 
-				trait = vampire_blood_hidden 
-				trait = vampire_strigoi_hidden 
-				trait = vampire_necrarch_hidden 
-				trait = vampire_jade_hidden 
-				trait = vampire_mahtmasi_hidden 
+				trait = witch_hunter
 			}
-
+			NOR = {
+				trait = creature_nehekharan
+				trait = vampire_lahmian_visible
+				trait = vampire_carstein_visible
+				trait = vampire_blood_visible
+				trait = vampire_strigoi_visible
+				trait = vampire_necrarch_visible
+				trait = vampire_jade_visible
+				trait = vampire_mahtmasi_visible
+				trait = vampire_lahmian_hidden
+				trait = vampire_carstein_hidden
+				trait = vampire_blood_hidden
+				trait = vampire_strigoi_hidden
+				trait = vampire_necrarch_hidden
+				trait = vampire_jade_hidden
+				trait = vampire_mahtmasi_hidden
+			}
 			OR = {
 				religion_group = old_world_group
 				religion_group = ormazd_gods_group
 				religion_group = oriental_gods_group
 				religion = stromfels
-				
 			}
 			OR = {
 				trait = envious
@@ -529,10 +568,14 @@ targeted_decisions = {
 			custom_tooltip = {
 				text = satanists_recruit_block_tooltip
 				OR = {
-					NOT = { has_character_flag = nurgle_attempted_recruitment }
+					NOT = {
+						has_character_flag = nurgle_attempted_recruitment
+					}
 					interested_in_society = cult_of_nurgle
 				}
-				NOT = { has_character_flag = being_recruited_by_nurgle }
+				NOT = {
+					has_character_flag = being_recruited_by_nurgle
+				}
 			}
 			FROM = {
 				is_inaccessible_trigger = no
@@ -545,11 +588,17 @@ targeted_decisions = {
 				save_event_target_as = chaos_cult_recruiter
 			}
 			hidden_effect = {
-				character_event = { id = DR_cults.7001 days = 3 } # recruitment chain
-				character_event = { id = DR_cults.7030 days = 365 } # sends delayed back up, in case recruitment fails somehow
+				character_event = {
+					id = DR_cults.7001 days = 3
+				} # recruitment chain
+				character_event = {
+					id = DR_cults.7030 days = 365
+				} # sends delayed back up, in case recruitment fails somehow
 				FROM = {
 					if = {
-						limit = { ai = yes }
+						limit = {
+							ai = yes
+						}
 						add_character_modifier = {
 							name = recruitment_timer
 							days = 730
@@ -573,18 +622,20 @@ targeted_decisions = {
 			}
 		}
 	}
-	
+
 	tzeentch_recruit = {
 		is_in_society = yes
-		
 		filter = all
 		ai_target_filter = realm
-
 		from_potential = {
 			is_adult = yes
 			prisoner = no
-			NOT = { trait = incapable }
-			NOT = { has_character_modifier = recruitment_timer }
+			NOT = {
+				trait = incapable
+			}
+			NOT = {
+				has_character_modifier = recruitment_timer
+			}
 			society_member_of = cult_of_tzeentch
 			OR = {
 				ai = no
@@ -600,26 +651,33 @@ targeted_decisions = {
 		}
 		potential = {
 			OR = {
-				FROM = { ai = no }
+				FROM = {
+					ai = no
+				}
 				ai = no
 			}
 			is_within_diplo_range = FROM
 			is_adult = yes
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			is_in_society = no
-
-
 			#AI cannot invite other AIs when society is full
 			NAND = {
 				ai = yes
-				FROM = { ai = yes }
-				NOT = { can_join_society = cult_of_tzeentch }
+				FROM = {
+					ai = yes
+				}
+				NOT = {
+					can_join_society = cult_of_tzeentch
+				}
 			}
-
 			#Blocks so AI recruits sensible people (who might say no)
 			OR = {
-				FROM = { ai = no }
+				FROM = {
+					ai = no
+				}
 				is_friend = FROM
 				is_lover = FROM
 				is_close_relative = FROM
@@ -634,32 +692,30 @@ targeted_decisions = {
 		allow = {
 			age = 16
 			NOT = {
-					trait = witch_hunter
-				}
-			NOR = {
-				trait = creature_nehekharan 
-				trait = vampire_lahmian_visible 
-				trait = vampire_carstein_visible 
-				trait = vampire_blood_visible 
-				trait = vampire_strigoi_visible 
-				trait = vampire_necrarch_visible 
-				trait = vampire_jade_visible 
-				trait = vampire_mahtmasi_visible 
-				trait = vampire_lahmian_hidden 
-				trait = vampire_carstein_hidden 
-				trait = vampire_blood_hidden 
-				trait = vampire_strigoi_hidden 
-				trait = vampire_necrarch_hidden 
-				trait = vampire_jade_hidden 
-				trait = vampire_mahtmasi_hidden 
+				trait = witch_hunter
 			}
-
+			NOR = {
+				trait = creature_nehekharan
+				trait = vampire_lahmian_visible
+				trait = vampire_carstein_visible
+				trait = vampire_blood_visible
+				trait = vampire_strigoi_visible
+				trait = vampire_necrarch_visible
+				trait = vampire_jade_visible
+				trait = vampire_mahtmasi_visible
+				trait = vampire_lahmian_hidden
+				trait = vampire_carstein_hidden
+				trait = vampire_blood_hidden
+				trait = vampire_strigoi_hidden
+				trait = vampire_necrarch_hidden
+				trait = vampire_jade_hidden
+				trait = vampire_mahtmasi_hidden
+			}
 			OR = {
 				religion_group = old_world_group
 				religion_group = ormazd_gods_group
 				religion_group = oriental_gods_group
 				religion = stromfels
-				
 			}
 			OR = {
 				trait = ambitious
@@ -677,10 +733,14 @@ targeted_decisions = {
 			custom_tooltip = {
 				text = satanists_recruit_block_tooltip
 				OR = {
-					NOT = { has_character_flag = tzeentch_attempted_recruitment }
+					NOT = {
+						has_character_flag = tzeentch_attempted_recruitment
+					}
 					interested_in_society = cult_of_tzeentch
 				}
-				NOT = { has_character_flag = being_recruited_by_tzeentch }
+				NOT = {
+					has_character_flag = being_recruited_by_tzeentch
+				}
 			}
 			FROM = {
 				is_inaccessible_trigger = no
@@ -693,11 +753,17 @@ targeted_decisions = {
 				save_event_target_as = chaos_cult_recruiter
 			}
 			hidden_effect = {
-				character_event = { id = DR_cults.7001 days = 3 } # recruitment chain
-				character_event = { id = DR_cults.7030 days = 365 } # sends delayed back up, in case recruitment fails somehow
+				character_event = {
+					id = DR_cults.7001 days = 3
+				} # recruitment chain
+				character_event = {
+					id = DR_cults.7030 days = 365
+				} # sends delayed back up, in case recruitment fails somehow
 				FROM = {
 					if = {
-						limit = { ai = yes }
+						limit = {
+							ai = yes
+						}
 						add_character_modifier = {
 							name = recruitment_timer
 							days = 730
@@ -721,18 +787,20 @@ targeted_decisions = {
 			}
 		}
 	}
-	
+
 	slaanesh_recruit = {
 		is_in_society = yes
-		
 		filter = all
 		ai_target_filter = realm
-
 		from_potential = {
 			is_adult = yes
 			prisoner = no
-			NOT = { trait = incapable }
-			NOT = { has_character_modifier = recruitment_timer }
+			NOT = {
+				trait = incapable
+			}
+			NOT = {
+				has_character_modifier = recruitment_timer
+			}
 			society_member_of = cult_of_slaanesh
 			OR = {
 				ai = no
@@ -748,26 +816,33 @@ targeted_decisions = {
 		}
 		potential = {
 			OR = {
-				FROM = { ai = no }
+				FROM = {
+					ai = no
+				}
 				ai = no
 			}
 			is_within_diplo_range = FROM
 			is_adult = yes
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			is_in_society = no
-
-
 			#AI cannot invite other AIs when society is full
 			NAND = {
 				ai = yes
-				FROM = { ai = yes }
-				NOT = { can_join_society = cult_of_slaanesh }
+				FROM = {
+					ai = yes
+				}
+				NOT = {
+					can_join_society = cult_of_slaanesh
+				}
 			}
-
 			#Blocks so AI recruits sensible people (who might say no)
 			OR = {
-				FROM = { ai = no }
+				FROM = {
+					ai = no
+				}
 				is_friend = FROM
 				is_lover = FROM
 				is_close_relative = FROM
@@ -782,32 +857,30 @@ targeted_decisions = {
 		allow = {
 			age = 16
 			NOT = {
-					trait = witch_hunter
-				}
-			NOR = {
-				trait = creature_nehekharan 
-				trait = vampire_lahmian_visible 
-				trait = vampire_carstein_visible 
-				trait = vampire_blood_visible 
-				trait = vampire_strigoi_visible 
-				trait = vampire_necrarch_visible 
-				trait = vampire_jade_visible 
-				trait = vampire_mahtmasi_visible 
-				trait = vampire_lahmian_hidden 
-				trait = vampire_carstein_hidden 
-				trait = vampire_blood_hidden 
-				trait = vampire_strigoi_hidden 
-				trait = vampire_necrarch_hidden 
-				trait = vampire_jade_hidden 
-				trait = vampire_mahtmasi_hidden 
+				trait = witch_hunter
 			}
-
+			NOR = {
+				trait = creature_nehekharan
+				trait = vampire_lahmian_visible
+				trait = vampire_carstein_visible
+				trait = vampire_blood_visible
+				trait = vampire_strigoi_visible
+				trait = vampire_necrarch_visible
+				trait = vampire_jade_visible
+				trait = vampire_mahtmasi_visible
+				trait = vampire_lahmian_hidden
+				trait = vampire_carstein_hidden
+				trait = vampire_blood_hidden
+				trait = vampire_strigoi_hidden
+				trait = vampire_necrarch_hidden
+				trait = vampire_jade_hidden
+				trait = vampire_mahtmasi_hidden
+			}
 			OR = {
 				religion_group = old_world_group
 				religion_group = ormazd_gods_group
 				religion_group = oriental_gods_group
 				religion = stromfels
-				
 			}
 			OR = {
 				trait = lustful
@@ -826,10 +899,14 @@ targeted_decisions = {
 			custom_tooltip = {
 				text = satanists_recruit_block_tooltip
 				OR = {
-					NOT = { has_character_flag = slaanesh_attempted_recruitment }
+					NOT = {
+						has_character_flag = slaanesh_attempted_recruitment
+					}
 					interested_in_society = cult_of_slaanesh
 				}
-				NOT = { has_character_flag = being_recruited_by_slaanesh }
+				NOT = {
+					has_character_flag = being_recruited_by_slaanesh
+				}
 			}
 			FROM = {
 				is_inaccessible_trigger = no
@@ -842,11 +919,17 @@ targeted_decisions = {
 				save_event_target_as = chaos_cult_recruiter
 			}
 			hidden_effect = {
-				character_event = { id = DR_cults.7001 days = 3 } # recruitment chain
-				character_event = { id = DR_cults.7030 days = 365 } # sends delayed back up, in case recruitment fails somehow
+				character_event = {
+					id = DR_cults.7001 days = 3
+				} # recruitment chain
+				character_event = {
+					id = DR_cults.7030 days = 365
+				} # sends delayed back up, in case recruitment fails somehow
 				FROM = {
 					if = {
-						limit = { ai = yes }
+						limit = {
+							ai = yes
+						}
 						add_character_modifier = {
 							name = recruitment_timer
 							days = 730
@@ -870,18 +953,20 @@ targeted_decisions = {
 			}
 		}
 	}
-	
+
 	undivided_recruit = {
 		is_in_society = yes
-		
 		filter = all
 		ai_target_filter = realm
-
 		from_potential = {
 			is_adult = yes
 			prisoner = no
-			NOT = { trait = incapable }
-			NOT = { has_character_modifier = recruitment_timer }
+			NOT = {
+				trait = incapable
+			}
+			NOT = {
+				has_character_modifier = recruitment_timer
+			}
 			society_member_of = cult_of_undivided
 			OR = {
 				ai = no
@@ -897,26 +982,33 @@ targeted_decisions = {
 		}
 		potential = {
 			OR = {
-				FROM = { ai = no }
+				FROM = {
+					ai = no
+				}
 				ai = no
 			}
 			is_within_diplo_range = FROM
 			is_adult = yes
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			is_in_society = no
-
-
 			#AI cannot invite other AIs when society is full
 			NAND = {
 				ai = yes
-				FROM = { ai = yes }
-				NOT = { can_join_society = cult_of_undivided }
+				FROM = {
+					ai = yes
+				}
+				NOT = {
+					can_join_society = cult_of_undivided
+				}
 			}
-
 			#Blocks so AI recruits sensible people (who might say no)
 			OR = {
-				FROM = { ai = no }
+				FROM = {
+					ai = no
+				}
 				is_friend = FROM
 				is_lover = FROM
 				is_close_relative = FROM
@@ -931,32 +1023,30 @@ targeted_decisions = {
 		allow = {
 			age = 16
 			NOT = {
-					trait = witch_hunter
-				}
-			NOR = {
-				trait = creature_nehekharan 
-				trait = vampire_lahmian_visible 
-				trait = vampire_carstein_visible 
-				trait = vampire_blood_visible 
-				trait = vampire_strigoi_visible 
-				trait = vampire_necrarch_visible 
-				trait = vampire_jade_visible 
-				trait = vampire_mahtmasi_visible 
-				trait = vampire_lahmian_hidden 
-				trait = vampire_carstein_hidden 
-				trait = vampire_blood_hidden 
-				trait = vampire_strigoi_hidden 
-				trait = vampire_necrarch_hidden 
-				trait = vampire_jade_hidden 
-				trait = vampire_mahtmasi_hidden 
+				trait = witch_hunter
 			}
-
+			NOR = {
+				trait = creature_nehekharan
+				trait = vampire_lahmian_visible
+				trait = vampire_carstein_visible
+				trait = vampire_blood_visible
+				trait = vampire_strigoi_visible
+				trait = vampire_necrarch_visible
+				trait = vampire_jade_visible
+				trait = vampire_mahtmasi_visible
+				trait = vampire_lahmian_hidden
+				trait = vampire_carstein_hidden
+				trait = vampire_blood_hidden
+				trait = vampire_strigoi_hidden
+				trait = vampire_necrarch_hidden
+				trait = vampire_jade_hidden
+				trait = vampire_mahtmasi_hidden
+			}
 			OR = {
 				religion_group = old_world_group
 				religion_group = ormazd_gods_group
 				religion_group = oriental_gods_group
 				religion = stromfels
-				
 			}
 			OR = {
 				trait = ambitious
@@ -975,10 +1065,14 @@ targeted_decisions = {
 			custom_tooltip = {
 				text = satanists_recruit_block_tooltip
 				OR = {
-					NOT = { has_character_flag = undivided_attempted_recruitment }
+					NOT = {
+						has_character_flag = undivided_attempted_recruitment
+					}
 					interested_in_society = cult_of_undivided
 				}
-				NOT = { has_character_flag = being_recruited_by_undivided }
+				NOT = {
+					has_character_flag = being_recruited_by_undivided
+				}
 			}
 			FROM = {
 				is_inaccessible_trigger = no
@@ -991,11 +1085,17 @@ targeted_decisions = {
 				save_event_target_as = chaos_cult_recruiter
 			}
 			hidden_effect = {
-				character_event = { id = DR_cults.7001 days = 3 } # recruitment chain
-				character_event = { id = DR_cults.7030 days = 365 } # sends delayed back up, in case recruitment fails somehow
+				character_event = {
+					id = DR_cults.7001 days = 3
+				} # recruitment chain
+				character_event = {
+					id = DR_cults.7030 days = 365
+				} # sends delayed back up, in case recruitment fails somehow
 				FROM = {
 					if = {
-						limit = { ai = yes }
+						limit = {
+							ai = yes
+						}
 						add_character_modifier = {
 							name = recruitment_timer
 							days = 730
@@ -1020,14 +1120,12 @@ targeted_decisions = {
 		}
 	}
 }
-
 title_decisions = {
+
 	chaos_cult_prepare_grounds = {
 		only_playable = yes
-		
 		ai_target_filter = realm_owned
 		filter = realm_owned
-		
 		from_potential = {
 			society_rank > 2
 			OR = {
@@ -1038,7 +1136,6 @@ title_decisions = {
 				society_member_of = cult_of_undivided
 			}
 		}
-		
 		potential = {
 			tier = COUNT
 			holder_scope = {
@@ -1049,52 +1146,94 @@ title_decisions = {
 					FROM = {
 						society_member_of = cult_of_khorne
 					}
-					NOT = { location = { religion = khorne } }
-					NOT = { location = { has_province_modifier = secret_khorne_community } }
+					NOT = {
+						location = {
+							religion = khorne
+						}
+					}
+					NOT = {
+						location = {
+							has_province_modifier = secret_khorne_community
+						}
+					}
 				}
 				AND = {
 					FROM = {
 						society_member_of = cult_of_nurgle
 					}
-					NOT = { location = { religion = nurgle } }
-					NOT = { location = { has_province_modifier = secret_nurgle_community } }
+					NOT = {
+						location = {
+							religion = nurgle
+						}
+					}
+					NOT = {
+						location = {
+							has_province_modifier = secret_nurgle_community
+						}
+					}
 				}
 				AND = {
 					FROM = {
 						society_member_of = cult_of_tzeentch
 					}
-					NOT = { location = { religion = tzeentch } }
-					NOT = { location = { has_province_modifier = secret_tzeentch_community } }
+					NOT = {
+						location = {
+							religion = tzeentch
+						}
+					}
+					NOT = {
+						location = {
+							has_province_modifier = secret_tzeentch_community
+						}
+					}
 				}
 				AND = {
 					FROM = {
 						society_member_of = cult_of_slaanesh
 					}
-					NOT = { location = { religion = slaanesh } }
-					NOT = { location = { has_province_modifier = secret_slaanesh_community } }
+					NOT = {
+						location = {
+							religion = slaanesh
+						}
+					}
+					NOT = {
+						location = {
+							has_province_modifier = secret_slaanesh_community
+						}
+					}
 				}
 				AND = {
 					FROM = {
 						society_member_of = cult_of_undivided
 					}
-					NOT = { location = { religion = undivided } }
-					NOT = { location = { has_province_modifier = secret_undivided_community } }
+					NOT = {
+						location = {
+							religion = undivided
+						}
+					}
+					NOT = {
+						location = {
+							has_province_modifier = secret_undivided_community
+						}
+					}
 				}
 			}
 		}
-		
 		allow = {
 			FROM = {
 				has_society_currency_medium_trigger = yes
 			}
 			custom_tooltip = {
 				text = prepare_grounds_allow_tooltip
-				hidden_trigger = {	
-					FROM = { NOT = { has_character_flag = preparing_grounds_in_@ROOT } }
+				hidden_trigger = {
+					FROM = {
+						NOT = {
+							has_character_flag = preparing_grounds_in_@ROOT
+						}
+					}
 				}
 			}
 		}
-		
 		effect = {
 			location = {
 				save_event_target_as = target_province
@@ -1104,18 +1243,20 @@ title_decisions = {
 					save_event_target_as = original_society
 				}
 				if = {
-					limit = { 
+					limit = {
 						ai = no
 					}
 					detract_society_currency_medium_effect = yes
 				}
 				custom_tooltip = {
 					text = secret_religions_prepare_grounds_effect_tooltip
-					character_event = { id = DR_cults.3850 days = 2 }
+					character_event = {
+						id = DR_cults.3850 days = 2
+					}
 				}
 			}
-			FROM = { 
-				if = { 
+			FROM = {
+				if = {
 					limit = {
 						is_society_grandmaster = yes
 					}
@@ -1123,15 +1264,18 @@ title_decisions = {
 				}
 				if = {
 					limit = {
-						NOT = { is_society_grandmaster = yes }
+						NOT = {
+							is_society_grandmaster = yes
+						}
 					}
 					increase_visibility_effect = yes
 				}
 				set_character_flag = preparing_grounds_in_@ROOT
-				character_event = { id = DR_cults.3849 days = 1200 }
+				character_event = {
+					id = DR_cults.3849 days = 1200
+				}
 			}
 		}
-		
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -1140,12 +1284,10 @@ title_decisions = {
 		}
 	}
 }
-
 society_decisions = {
 
 	chaos_cult_uprising = {
 		is_high_prio = yes
-		
 		potential = {
 			OR = {
 				society_member_of = cult_of_khorne
@@ -1154,37 +1296,34 @@ society_decisions = {
 				society_member_of = cult_of_slaanesh
 				society_member_of = cult_of_undivided
 			}
-
 			society_rank == 4
 		}
-	
 		allow = {
 			has_society_currency_major_trigger = yes
 		}
-		
 		effect = {
 			detract_society_currency_major_effect = yes
 			set_character_flag = cultist_uprising_leader
 			custom_tooltip = {
 				text = openly_adopt_faith_effect_tooltip
 				hidden_effect = {
-					character_event = { id = DR_cults.3811 }
+					character_event = {
+						id = DR_cults.3811
+					}
 					top_liege = {
 						any_realm_character = {
-							
 							# if = {
-								# limit = {
-									# NOT = {
-										# same_society_as = ROOT
-									# }
-									# OR = {
-										# has_prevs_secret_religion_truly_trigger = yes
-										# has_sympathy_for_true_religion_of_prev_trigger = yes
-									# }
-								# }
-								# character_event = { id = DR_cults.3810 } # Allow sympathisers the chance to flip
+							# limit = {
+							# NOT = {
+							# same_society_as = ROOT
 							# }
-							
+							# OR = {
+							# has_prevs_secret_religion_truly_trigger = yes
+							# has_sympathy_for_true_religion_of_prev_trigger = yes
+							# }
+							# }
+							# character_event = { id = DR_cults.3810 } # Allow sympathisers the chance to flip
+							# }
 							if = {
 								limit = {
 									is_ruler = yes
@@ -1196,28 +1335,24 @@ society_decisions = {
 													society_member_of = cult_of_khorne
 												}
 											}
-											
 											AND = {
 												has_province_modifier = secret_nurgle_community
 												ROOT = {
 													society_member_of = cult_of_nurgle
 												}
 											}
-											
 											AND = {
 												has_province_modifier = secret_tzeentch_community
 												ROOT = {
 													society_member_of = cult_of_tzeentch
 												}
 											}
-											
 											AND = {
 												has_province_modifier = secret_slaanesh_community
 												ROOT = {
 													society_member_of = cult_of_slaanesh
 												}
 											}
-											
 											AND = {
 												has_province_modifier = secret_undivided_community
 												ROOT = {
@@ -1227,25 +1362,26 @@ society_decisions = {
 										}
 									}
 								}
-								character_event = { id = DR_cults.3820 } # Flip provinces with local cult modifier
+								character_event = {
+									id = DR_cults.3820
+								} # Flip provinces with local cult modifier
 							}
 						}
 					}
 					flip_secret_religious_community_provinces = yes
 					convert_to_secret_religion = yes
-					
 					top_liege = {
 						any_realm_lord = {
-							character_event = { id = DR_cults.3830 } # Inform lieges unless they're part of the cult flipping, save a flag on previous events.
+							character_event = {
+								id = DR_cults.3830
+							} # Inform lieges unless they're part of the cult flipping, save a flag on previous events.
 						}
-						
 						any_realm_character = {
 							limit = {
 								same_society_as = ROOT
 							}
 							leave_society = yes
 						}
-						
 						any_realm_character = {
 							limit = {
 								has_character_flag = currently_part_of_secret_religion_uncovering
@@ -1253,16 +1389,13 @@ society_decisions = {
 							clr_character_flag = currently_part_of_secret_religion_uncovering
 						}
 					}
-					
 					leave_society = yes
 				}
 			}
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -1271,13 +1404,16 @@ society_decisions = {
 			modifier = {
 				factor = 0
 				any_society_member = {
-					NOT = { character = ROOT }
+					NOT = {
+						character = ROOT
+					}
 					same_realm = ROOT
 					ai = no
 					society_rank > 2
 				}
 			}
-			modifier = { #Don't do it unless you are confident in support
+			modifier = {
+				#Don't do it unless you are confident in support
 				factor = 0
 				NOR = {
 					realm_character_percent = {
@@ -1364,7 +1500,7 @@ society_decisions = {
 						same_society_as = ROOT
 						is_openly_of_prevs_secret_religion_trigger = yes
 					}
-				}				
+				}
 			}
 			modifier = {
 				factor = 1.5
@@ -1374,7 +1510,7 @@ society_decisions = {
 						same_society_as = ROOT
 						is_openly_of_prevs_secret_religion_trigger = yes
 					}
-				}				
+				}
 			}
 			modifier = {
 				factor = 1.5
@@ -1384,7 +1520,7 @@ society_decisions = {
 						same_society_as = ROOT
 						is_openly_of_prevs_secret_religion_trigger = yes
 					}
-				}				
+				}
 			}
 			modifier = {
 				factor = 1.5
@@ -1394,7 +1530,7 @@ society_decisions = {
 						same_society_as = ROOT
 						is_openly_of_prevs_secret_religion_trigger = yes
 					}
-				}				
+				}
 			}
 			modifier = {
 				factor = 1.5
@@ -1404,24 +1540,27 @@ society_decisions = {
 						same_society_as = ROOT
 						is_openly_of_prevs_secret_religion_trigger = yes
 					}
-				}				
+				}
 			}
 		}
 	}
-
 	# Build a Library
+
 	build_library = {
 		only_playable = yes
 		is_high_prio = yes
-		
 		potential = {
 			has_dlc = "Mystics"
 			society_member_of = cult_of_verena
 			has_quest = quest_verena_build_library
 			is_playable = yes
 			block_general_event_trigger = no
-			NOT = { has_character_flag = building_laboratory }
-			NOT = { has_character_flag = built_laboratory }
+			NOT = {
+				has_character_flag = building_laboratory
+			}
+			NOT = {
+				has_character_flag = built_laboratory
+			}
 		}
 		allow = {
 			wealth = 50
@@ -1429,33 +1568,40 @@ society_decisions = {
 		effect = {
 			wealth = -50
 			set_character_flag = building_laboratory
-			custom_tooltip = { text = start_constructing_laboratory_tooltip }
-			hidden_tooltip = { character_event = { id = DR_societies.1100 } }
+			custom_tooltip = {
+				text = start_constructing_laboratory_tooltip
+			}
+			hidden_tooltip = {
+				character_event = {
+					id = DR_societies.1100
+				}
+			}
 		}
 		revoke_allowed = {
 			always = no
 		}
 		ai_will_do = {
 			factor = 1
-			
 			modifier = {
 				factor = 0
-				NOT = { wealth = 75 }
+				NOT = {
+					wealth = 75
+				}
 			}
-			
 			modifier = {
 				factor = 0.1
-				NOT = { age = 30 }
+				NOT = {
+					age = 30
+				}
 			}
 		}
 	}
-	
 	#Write a Theory Paper
+
 	hermetics_write_theory_paper = {
 		potential = {
 			society_member_of = cult_of_verena
 		}
-
 		allow = {
 			prisoner = no
 			custom_tooltip = {
@@ -1466,11 +1612,14 @@ society_decisions = {
 					}
 				}
 			}
-			NOT = { is_inaccessible_trigger = yes }
+			NOT = {
+				is_inaccessible_trigger = yes
+			}
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 		}
-
 		effect = {
 			custom_tooltip = {
 				text = write_theory_paper_decision_effect_tt
@@ -1479,10 +1628,11 @@ society_decisions = {
 					years = 5
 					hidden = yes
 				}
-				character_event = { id = DR_societies.1630 }
+				character_event = {
+					id = DR_societies.1630
+				}
 			}
 		}
-
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -1490,11 +1640,10 @@ society_decisions = {
 			}
 		}
 	}
-	
+
 	hermetic_grand_debate = {
 		only_playable = yes
 		is_high_prio = yes
-		
 		potential = {
 			has_dlc = "Mystics"
 			is_playable = yes
@@ -1502,73 +1651,89 @@ society_decisions = {
 			society_member_of = cult_of_verena
 			society_rank == 4
 		}
-		
 		allow = {
 			wealth = 100
 			prestige = 400
 			prisoner = no
-			NOT = { is_inaccessible_trigger = yes }
+			NOT = {
+				is_inaccessible_trigger = yes
+			}
 			custom_tooltip = {
 				text = is_not_busy_trigger_tooltip
-				hidden_tooltip = { NOT = { has_character_flag = do_not_disturb } }
+				hidden_tooltip = {
+					NOT = {
+						has_character_flag = do_not_disturb
+					}
+				}
 			}
 			custom_tooltip = {
 				text = GRAND_DEBATE_HOLDING_TOOLTIP
 				OR = {
-					NOT = { has_global_flag = holding_grand_debate }
-					had_global_flag = { flag = holding_grand_debate days = 150 }
+					NOT = {
+						has_global_flag = holding_grand_debate
+					}
+					had_global_flag = {
+						flag = holding_grand_debate days = 150
+					}
 				}
 			}
 			custom_tooltip = {
 				text = GRAND_DEBATE_COOLDOWN_TOOLTIP
 				OR = {
-					NOT = { has_global_flag = held_grand_debate }
-					had_global_flag = { flag = held_grand_debate days = 3650 }
+					NOT = {
+						has_global_flag = held_grand_debate
+					}
+					had_global_flag = {
+						flag = held_grand_debate days = 3650
+					}
 				}
 			}
 		}
-		
 		effect = {
-			character_event = { id = DR_societies.1980 tooltip = GRAND_DEBATE_INVITE_TOOLTIP }
+			character_event = {
+				id = DR_societies.1980 tooltip = GRAND_DEBATE_INVITE_TOOLTIP
+			}
 			wealth = -100
 			hidden_tooltip = {
 				clr_character_flag = grand_debate_has_ended
 				set_character_flag = do_not_disturb
 				set_global_flag = holding_grand_debate
-				character_event = { id = DR_societies.1982 days = 300 } # Safety catch flag clearing
+				character_event = {
+					id = DR_societies.1982 days = 300
+				} # Safety catch flag clearing
 			}
 		}
-		
-		revoke_allowed = { always = no }
-		
+		revoke_allowed = {
+			always = no
+		}
 		ai_will_do = {
 			factor = 1
-			
 			modifier = {
 				factor = 0.001 # Slow down
 			}
 		}
 	}
-	
 	#Power: write Magnum Opus
+
 	hermetics_write_magnum_opus = {
 		is_in_society = yes
-		
 		filter = self
 		ai_target_filter = self
-
 		potential = {
 			society_member_of = cult_of_verena
 			society_rank = 4
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 		}
-
 		allow = {
 			FROM = {
 				custom_tooltip = {
 					text = hermetics_wrote_magnum_opus_cd_tooltip
-					NOT = { has_character_flag = wrote_magnum_opus }
+					NOT = {
+						has_character_flag = wrote_magnum_opus
+					}
 				}
 				has_society_currency_minor_trigger = yes
 				custom_tooltip = {
@@ -1579,45 +1744,46 @@ society_decisions = {
 							has_artifact = magnum_opus_theurgy_ritual_2
 							has_artifact = magnum_opus_theurgy_ritual_3
 							has_artifact = magnum_opus_theurgy_ritual_4
-    					}
+						}
     					NOR = {
     						has_artifact = magnum_opus_theurgy_contemplation_1
 							has_artifact = magnum_opus_theurgy_contemplation_2
 							has_artifact = magnum_opus_theurgy_contemplation_3
 							has_artifact = magnum_opus_theurgy_contemplation_4
-    					}
+						}
     					NOR = {
     						has_artifact = magnum_opus_astrology_stars_1
 							has_artifact = magnum_opus_astrology_stars_2
 							has_artifact = magnum_opus_astrology_stars_3
 							has_artifact = magnum_opus_astrology_stars_4
-    					}
+						}
     					NOR = {
     						has_artifact = magnum_opus_astrology_planets_1
 							has_artifact = magnum_opus_astrology_planets_2
 							has_artifact = magnum_opus_astrology_planets_3
 							has_artifact = magnum_opus_astrology_planets_4
-    					}
+						}
     					NOR = {
     						has_artifact = magnum_opus_alchemy_panacea_1
 							has_artifact = magnum_opus_alchemy_panacea_2
 							has_artifact = magnum_opus_alchemy_panacea_3
 							has_artifact = magnum_opus_alchemy_panacea_4
-    					}
+						}
     					NOR = {
     						has_artifact = magnum_opus_alchemy_transmutation_1
 							has_artifact = magnum_opus_alchemy_transmutation_2
 							has_artifact = magnum_opus_alchemy_transmutation_3
 							has_artifact = magnum_opus_alchemy_transmutation_4
-    					}
-    				}
-    			}
+						}
+					}
+				}
 			}
 		}
-
 		effect = {
-			hidden_effect = { 
-				character_event = { id = DR_societies.1610 days = 1 }
+			hidden_effect = {
+				character_event = {
+					id = DR_societies.1610 days = 1
+				}
 				set_character_flag = wrote_magnum_opus
 			}
 			detract_society_currency_major_effect = yes
@@ -1626,6 +1792,4 @@ society_decisions = {
 			always = no
 		}
 	}
-	
-	
 }

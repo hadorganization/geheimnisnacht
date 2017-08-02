@@ -1,128 +1,177 @@
 targetted_decisions = {
+
 	prisoner_torture = {
 		only_playable = yes
 		filter = court
 		ai_target_filter = court
-
 		from_potential = {
 			has_dlc = "Reapers"
 			is_playable = yes
 			is_adult = yes
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 		}
-
 		potential = {
 			prisoner = yes
-			host = { character = FROM }
+			host = {
+				character = FROM
+			}
 			age = 13
 		}
-
 		allow = {
 			prisoner = yes
 		}
-
 		effect = {
 			hidden_tooltip = {
 				if = {
 					limit = {
-						FROM = { 
+						FROM = {
 							has_nickname = no
 							is_adult = yes
-							NOT = { trait = incapable }
+							NOT = {
+								trait = incapable
+							}
 						}
 					}
 					random_list = {
 						5 = {
-							FROM = { give_nickname = nick_the_cruel }
+							FROM = {
+								give_nickname = nick_the_cruel
+							}
 						}
 						5 = {
-							FROM = { give_nickname = nick_the_evil }
+							FROM = {
+								give_nickname = nick_the_evil
+							}
 						}
 						5 = {
-							FROM = { give_nickname = nick_the_tormentor }
+							FROM = {
+								give_nickname = nick_the_tormentor
+							}
 						}
 						5 = {
-							FROM = { give_nickname = nick_the_depraved }
+							FROM = {
+								give_nickname = nick_the_depraved
+							}
 						}
-						100 = {}
+						100 = {
+						}
 					}
 				}
 			}
-			
 			hidden_tooltip = {
 				random_list = {
 					#Normal torture options
-					10 = { 
+					10 = {
 						random_list = {
 							10 = {
 								# Racks
-								FROM = { character_event = { id = RIP.20001 } }
-								character_event = { id = RIP.20002 } 
-								
+								FROM = {
+									character_event = {
+										id = RIP.20001
+									}
+								}
+								character_event = {
+									id = RIP.20002
+								}
 							}
-
 							10 = {
 								# Whipping
-								FROM = { character_event = { id = RIP.20003 } }
-								character_event = { id = RIP.20004 } 
-
+								FROM = {
+									character_event = {
+										id = RIP.20003
+									}
+								}
+								character_event = {
+									id = RIP.20004
+								}
 							}
-
 							10 = {
 								# Rats
-								FROM = { character_event = { id = RIP.20005} }
-								character_event = { id = RIP.20006 } 
+								FROM = {
+									character_event = {
+										id = RIP.20005
+									}
+								}
+								character_event = {
+									id = RIP.20006
+								}
 							}
-							
 							20 = {
 								# Heat exposure
 								modifier = {
 									factor = 0
 									NAND = {
 										month = 3
-										NOT = { month = 9 }
-
+										NOT = {
+											month = 9
+										}
 										OR = {
-											capital_scope = { region = world_africa }
-											capital_scope = { region = world_middle_east }
-											capital_scope = { region = world_persia }
-											capital_scope = { region = world_india_rajastan }
+											capital_scope = {
+												region = world_africa
+											}
+											capital_scope = {
+												region = world_middle_east
+											}
+											capital_scope = {
+												region = world_persia
+											}
+											capital_scope = {
+												region = world_india_rajastan
+											}
 										}
 									}
 								}
-								FROM = { character_event = { id = RIP.20009 } }
-								character_event = { id = RIP.20010 } 
+								FROM = {
+									character_event = {
+										id = RIP.20009
+									}
+								}
+								character_event = {
+									id = RIP.20010
+								}
 							}
 							20 = {
 								# Cold exposure
 								modifier = {
 									factor = 0
 									NAND = {
-										
-										OR = { 
-											month = 11
-											NOT = { month = 2}
-										}
-
 										OR = {
-											capital_scope = { region = world_europe_north }
-											capital_scope = { region = world_steppe_west }
-											capital_scope = { region = world_steppe_east }
+											month = 11
+											NOT = {
+												month = 2
+											}
+										}
+										OR = {
+											capital_scope = {
+												region = world_europe_north
+											}
+											capital_scope = {
+												region = world_steppe_west
+											}
+											capital_scope = {
+												region = world_steppe_east
+											}
 										}
 									}
 								}
-								FROM = { character_event = { id = RIP.20011 } }
-								character_event = { id = RIP.20012 }
+								FROM = {
+									character_event = {
+										id = RIP.20011
+									}
+								}
+								character_event = {
+									id = RIP.20012
+								}
 							}
 						}
 						hidden_tooltip = {
-
 							opinion = {
 								modifier = opinion_tortured_me
 								who = FROM
 							}
-
 							mother = {
 								opinion = {
 									modifier = opinion_tortured_close_kin
@@ -150,8 +199,12 @@ targetted_decisions = {
 							if = {
 								limit = {
 									FROM = {
-										NOT = { dynasty = ROOT }
-										NOT = { sibling = ROOT }
+										NOT = {
+											dynasty = ROOT
+										}
+										NOT = {
+											sibling = ROOT
+										}
 									}
 								}
 								any_sibling = {
@@ -169,30 +222,38 @@ targetted_decisions = {
 							}
 						}
 					}
-
 					20 = {
 						# Lunatic option
 						modifier = {
 							factor = 0
-							NOT = { FROM = { trait = lunatic } }
+							NOT = {
+								FROM = {
+									trait = lunatic
+								}
+							}
 						}
-
-						FROM = { character_event = { id = RIP.20007 } }
-						character_event = { id = RIP.20008 } 
+						FROM = {
+							character_event = {
+								id = RIP.20007
+							}
+						}
+						character_event = {
+							id = RIP.20008
+						}
 					}
-				}	
+				}
 			}
-			
 			tooltip = {
-				add_character_modifier = { name = tortured years = 2 }
+				add_character_modifier = {
+					name = tortured years = 2
+				}
 				opinion = {
 					modifier = opinion_tortured_me
 					who = FROM
 				}
 			}
-
 			if = {
-				limit = { 
+				limit = {
 					has_game_rule = {
 						name = punishment_release_prisoner
 						value = on
@@ -200,12 +261,14 @@ targetted_decisions = {
 				}
 				prisoner = no
 			}
-			
 			FROM = {
 				save_event_target_as = remove_prison_reason_effect_accuser
-				ROOT = { save_event_target_as = remove_prison_reason_effect_accused }
-				hidden_tooltip = { remove_prison_reason_effect = yes }
-
+				ROOT = {
+					save_event_target_as = remove_prison_reason_effect_accused
+				}
+				hidden_tooltip = {
+					remove_prison_reason_effect = yes
+				}
 				if = {
 					limit = {
 						NOR = {
@@ -216,28 +279,43 @@ targetted_decisions = {
 					random = {
 						chance = 25
 						add_trait = cruel
-						hidden_tooltip = { character_event = { id = 38259 } }
+						hidden_tooltip = {
+							character_event = {
+								id = 38259
+							}
+						}
 					}
 				}
-
 				if = {
-					limit = { trait = kind }
-					random = { 
+					limit = {
+						trait = kind
+					}
+					random = {
 						chance = 50
 						remove_trait = kind
 						hidden_tooltip = {
-							character_event = { id = 38307 }
+							character_event = {
+								id = 38307
+							}
 						}
 					}
 					hidden_tooltip = {
 						random_list = {
 							30 = {
 								add_trait = stressed
-								hidden_tooltip = { character_event = { id = 38282 } }
+								hidden_tooltip = {
+									character_event = {
+										id = 38282
+									}
+								}
 							}
 							10 = {
 								add_trait = depressed
-								hidden_tooltip = { character_event = { id = 38288 } }
+								hidden_tooltip = {
+									character_event = {
+										id = 38288
+									}
+								}
 							}
 							60 = {
 								#nothing
@@ -248,20 +326,27 @@ targetted_decisions = {
 				piety = -20
 			}
 		}
-
 		revoke_allowed = {
 			always = no
 		}
-
 		ai_will_do = {
 			factor = 0.01
-			
 			modifier = {
 				factor = 0
 				OR = {
-					reverse_opinion = { who = FROM value = 40 }
-					FROM = { NOT = { piety = 100 } }
-					FROM = { LIEGE = { dynasty = ROOT } }
+					reverse_opinion = {
+						who = FROM value = 40
+					}
+					FROM = {
+						NOT = {
+							piety = 100
+						}
+					}
+					FROM = {
+						LIEGE = {
+							dynasty = ROOT
+						}
+					}
 				}
 			}
 			modifier = {
@@ -310,16 +395,16 @@ targetted_decisions = {
 
 	prisoner_mutilate = {
 		only_playable = yes
-
 		filter = court
 		ai_target_filter = court
-
 		from_potential = {
 			has_dlc = "Reapers"
 			is_playable = yes
 			is_adult = yes
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			AND = {
 				OR = {
 					trait = cruel
@@ -331,15 +416,17 @@ targetted_decisions = {
 						trait = ugly
 					}
 				}
-				NOT = { trait = kind }
+				NOT = {
+					trait = kind
+				}
 			}
 		}
-
 		potential = {
-			host = { character = FROM }
+			host = {
+				character = FROM
+			}
 			prisoner = yes
 			age = 13
-
 			NOT = {
 				AND = {
 					trait = one_legged
@@ -356,45 +443,57 @@ targetted_decisions = {
 				}
 			}
 		}
-
 		allow = {
 			prisoner = yes
 		}
-
 		effect = {
 			hidden_tooltip = {
 				if = {
 					limit = {
-						FROM = { 
+						FROM = {
 							has_nickname = no
 							is_adult = yes
-							NOT = { trait = incapable }
+							NOT = {
+								trait = incapable
+							}
 						}
 					}
 					random_list = {
 						5 = {
-							FROM = { give_nickname = nick_the_evil }
+							FROM = {
+								give_nickname = nick_the_evil
+							}
 						}
 						5 = {
-							FROM = { give_nickname = nick_the_tormentor }
+							FROM = {
+								give_nickname = nick_the_tormentor
+							}
 						}
 						5 = {
-							FROM = { give_nickname = nick_the_butcher }
+							FROM = {
+								give_nickname = nick_the_butcher
+							}
 						}
 						5 = {
-							FROM = { give_nickname = nick_the_mutilator }
+							FROM = {
+								give_nickname = nick_the_mutilator
+							}
 						}
 						5 = {
-							FROM = { give_nickname = nick_the_monster }
+							FROM = {
+								give_nickname = nick_the_monster
+							}
 						}
 						5 = {
-							FROM = { give_nickname = nick_son_of_evilgod }
+							FROM = {
+								give_nickname = nick_son_of_evilgod
+							}
 						}
-						100 = {}
+						100 = {
+						}
 					}
 				}
 			}
-		
 			hidden_tooltip = {
 				random_list = {
 					10 = {
@@ -403,21 +502,30 @@ targetted_decisions = {
 							factor = 0
 							trait = one_legged
 						}
-						FROM = { character_event = { id = RIP.20013 } }
-						character_event = { id = RIP.20014 } 
+						FROM = {
+							character_event = {
+								id = RIP.20013
+							}
+						}
+						character_event = {
+							id = RIP.20014
+						}
 					}
-
 					10 = {
 						# One-handed
 						modifier = {
 							factor = 0
 							trait = one_handed
 						}
-						FROM = { character_event = { id = RIP.20015 } }
-						character_event = { id = RIP.20016 }
-
+						FROM = {
+							character_event = {
+								id = RIP.20015
+							}
+						}
+						character_event = {
+							id = RIP.20016
+						}
 					}
-
 					10 = {
 						# One-eyed
 						modifier = {
@@ -427,38 +535,52 @@ targetted_decisions = {
 								trait = blinded
 							}
 						}
-						FROM = { character_event = { id = RIP.20017 } }
-						character_event = { id = RIP.20018 } 
-
+						FROM = {
+							character_event = {
+								id = RIP.20017
+							}
+						}
+						character_event = {
+							id = RIP.20018
+						}
 					}
-
 					10 = {
 						# Disfigured
 						modifier = {
 							factor = 0
 							trait = disfigured
 						}
-						FROM = { character_event = { id = RIP.20019 } }
-						character_event = { id = RIP.20020 }
-					}	
-
+						FROM = {
+							character_event = {
+								id = RIP.20019
+							}
+						}
+						character_event = {
+							id = RIP.20020
+						}
+					}
 					10 = {
 						# Castrate
 						modifier = {
 							factor = 0
 							OR = {
 								is_female = yes
-								trait = eunuch 
+								trait = eunuch
 							}
 						}
-						FROM = { character_event = { id = RIP.20021 } }
-						character_event = { id = RIP.20022 } 
+						FROM = {
+							character_event = {
+								id = RIP.20021
+							}
+						}
+						character_event = {
+							id = RIP.20022
+						}
 					}
 				}
 			}
-			
 			if = {
-				limit = { 
+				limit = {
 					has_game_rule = {
 						name = punishment_release_prisoner
 						value = on
@@ -466,26 +588,29 @@ targetted_decisions = {
 				}
 				prisoner = no
 			}
-			
 			opinion = {
 				modifier = opinion_mutilated_me
 				who = FROM
 			}
-			
 			FROM = {
 				piety = -50
 				if = {
-					limit = { NOT = { trait = cruel } }
+					limit = {
+						NOT = {
+							trait = cruel
+						}
+					}
 					random = {
 						chance = 25
 						add_trait = cruel
 						hidden_tooltip = {
-							character_event = { id = 38259 }
+							character_event = {
+								id = 38259
+							}
 						}
 					}
 				}
 			}
-			
 			hidden_tooltip = {
 				mother = {
 					opinion = {
@@ -514,8 +639,12 @@ targetted_decisions = {
 				if = {
 					limit = {
 						FROM = {
-							NOT = { dynasty = ROOT }
-							NOT = { sibling = ROOT }
+							NOT = {
+								dynasty = ROOT
+							}
+							NOT = {
+								sibling = ROOT
+							}
 						}
 					}
 					any_sibling = {
@@ -531,31 +660,45 @@ targetted_decisions = {
 						}
 					}
 				}
-				
-				FROM = { save_event_target_as = remove_prison_reason_effect_accuser }
-				ROOT = { save_event_target_as = remove_prison_reason_effect_accused }
-				hidden_tooltip = { remove_prison_reason_effect = yes }
+				FROM = {
+					save_event_target_as = remove_prison_reason_effect_accuser
+				}
+				ROOT = {
+					save_event_target_as = remove_prison_reason_effect_accused
+				}
+				hidden_tooltip = {
+					remove_prison_reason_effect = yes
+				}
 			}
 		}
 		revoke_allowed = {
 			always = no
 		}
-
 		ai_will_do = {
 			factor = 0.4
-			
 			modifier = {
 				factor = 0
 				OR = {
-					reverse_opinion = { who = FROM value = 40 }
-					FROM = { NOT = { piety = 100 } }
-					FROM = { LIEGE = { dynasty = ROOT } }
+					reverse_opinion = {
+						who = FROM value = 40
+					}
+					FROM = {
+						NOT = {
+							piety = 100
+						}
+					}
+					FROM = {
+						LIEGE = {
+							dynasty = ROOT
+						}
+					}
 				}
 			}
 			modifier = {
 				factor = 0.5 # Less likely to do it
-				reverse_opinion = { who = FROM value = 0 }
-
+				reverse_opinion = {
+					who = FROM value = 0
+				}
 			}
 			modifier = {
 				factor = 0
@@ -576,57 +719,68 @@ targetted_decisions = {
 		only_playable = yes
 		filter = court
 		ai_target_filter = court
-
 		from_potential = {
 			has_dlc = "Reapers"
 			is_playable = yes
 			is_adult = yes
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			trait = poet
 		}
-
 		potential = {
-			host = { character = FROM }
+			host = {
+				character = FROM
+			}
 			prisoner = yes
 			age = 13
 		}
-
 		allow = {
 			prisoner = yes
 		}
-
 		effect = {
 			hidden_tooltip = {
-
 				FROM = {
-
 					random_list = {
 						10 = {
 							# Poem 1
-							character_event = { id = RIP.20023 }
-							ROOT = { character_event = { id = RIP.20024 } }
-							
+							character_event = {
+								id = RIP.20023
+							}
+							ROOT = {
+								character_event = {
+									id = RIP.20024
+								}
+							}
 						}
-
 						10 = {
 							# Poem 2
-							character_event = { id = RIP.20025 }
-							ROOT = { character_event = { id = RIP.20026 } }
-
+							character_event = {
+								id = RIP.20025
+							}
+							ROOT = {
+								character_event = {
+									id = RIP.20026
+								}
+							}
 						}
-
 						10 = {
 							# Poem 3
-							character_event = { id = RIP.20027 } 
-							ROOT = { character_event = { id = RIP.20028 } }
+							character_event = {
+								id = RIP.20027
+							}
+							ROOT = {
+								character_event = {
+									id = RIP.20028
+								}
+							}
 						}
 					}
 				}
 			}
-
 			if = {
-				limit = { 
+				limit = {
 					has_game_rule = {
 						name = punishment_release_prisoner
 						value = on
@@ -634,26 +788,30 @@ targetted_decisions = {
 				}
 				prisoner = no
 			}
-
 			opinion = {
 				modifier = opinion_bad_poetry
 				who = FROM
 			}
-
-			FROM = { save_event_target_as = remove_prison_reason_effect_accuser }
-			ROOT = { save_event_target_as = remove_prison_reason_effect_accused }
-			hidden_tooltip = { remove_prison_reason_effect = yes }
+			FROM = {
+				save_event_target_as = remove_prison_reason_effect_accuser
+			}
+			ROOT = {
+				save_event_target_as = remove_prison_reason_effect_accused
+			}
+			hidden_tooltip = {
+				remove_prison_reason_effect = yes
+			}
 		}
 		revoke_allowed = {
 			always = no
 		}
-
 		ai_will_do = {
 			factor = 0.01
-			
 			modifier = {
 				factor = 0
-				reverse_opinion = { who = FROM value = 40 }
+				reverse_opinion = {
+					who = FROM value = 40
+				}
 			}
 			modifier = {
 				factor = 0.2 # Less likely to do it
@@ -671,23 +829,25 @@ targetted_decisions = {
 			}
 		}
 	}
+	#Humiliate
 
-#Humiliate
 	prisoner_humiliation = {
 		only_playable = yes
 		filter = court
 		ai_target_filter = court
-	
 		from_potential = {
 			has_dlc = "Reapers"
 			is_playable = yes
 			is_adult = yes
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 		}
-	
 		potential = {
-			host = { character = FROM }
+			host = {
+				character = FROM
+			}
 			prisoner = yes
 			age = 13
 		}
@@ -700,60 +860,68 @@ targetted_decisions = {
 					random_list = {
 						# Tar 'n' feathers
 						33 = {
-						modifier = {
-							factor = 0
-							ROOT = {
+							modifier = {
+								factor = 0
+								ROOT = {
+									OR = {
+										has_character_modifier = incestuous_adulterer
+										has_character_modifier = incestuous_adulteress
+										has_character_modifier = adulterer
+										has_character_modifier = adulteress
+										has_character_modifier = known_sodomite
+										has_character_modifier = cradle_robber
+										has_character_modifier = adulterous_priest
+									}
+								}
+							}
+							modifier = {
+								factor = 0
 								OR = {
-									has_character_modifier = incestuous_adulterer
-									has_character_modifier = incestuous_adulteress
-									has_character_modifier = adulterer
-									has_character_modifier = adulteress
-									has_character_modifier = known_sodomite
-									has_character_modifier = cradle_robber
-									has_character_modifier = adulterous_priest
+									is_nomadic = yes
+									is_tribal = yes
+								}
+							}
+							character_event = {
+								id = RIP.15001
+							}
+							ROOT = {
+								character_event = {
+									id = RIP.15002
 								}
 							}
 						}
-						modifier = {
-							factor = 0
-							OR = {
-								is_nomadic = yes
-								is_tribal = yes
-							}
-						}
-
-						character_event = { id = RIP.15001}
-						ROOT = { character_event = { id = RIP.15002} }
-						}
-
 						# Tar 'n' feathers NOMAD
 						33 = {
-						modifier = {
-							factor = 0
+							modifier = {
+								factor = 0
+								ROOT = {
+									OR = {
+										has_character_modifier = incestuous_adulterer
+										has_character_modifier = incestuous_adulteress
+										has_character_modifier = adulterer
+										has_character_modifier = adulteress
+										has_character_modifier = known_sodomite
+										has_character_modifier = cradle_robber
+										has_character_modifier = adulterous_priest
+									}
+								}
+							}
+							modifier = {
+								factor = 0
+								NOR = {
+									is_nomadic = yes
+									is_tribal = yes
+								}
+							}
+							character_event = {
+								id = RIP.15007
+							}
 							ROOT = {
-								OR = {
-									has_character_modifier = incestuous_adulterer
-									has_character_modifier = incestuous_adulteress
-									has_character_modifier = adulterer
-									has_character_modifier = adulteress
-									has_character_modifier = known_sodomite
-									has_character_modifier = cradle_robber
-									has_character_modifier = adulterous_priest
+								character_event = {
+									id = RIP.15008
 								}
 							}
 						}
-						modifier = {
-							factor = 0
-							NOR = {
-								is_nomadic = yes
-								is_tribal = yes
-							}
-						}
-
-						character_event = { id = RIP.15007}
-						ROOT = { character_event = { id = RIP.15008} }
-						}
-						
 						# the Stocks
 						33 = {
 							modifier = {
@@ -777,16 +945,21 @@ targetted_decisions = {
 									is_tribal = yes
 								}
 							}
-							character_event = { id = RIP.15003}
-							ROOT = { character_event = { id = RIP.15004} }
+							character_event = {
+								id = RIP.15003
+							}
+							ROOT = {
+								character_event = {
+									id = RIP.15004
+								}
+							}
 						}
-							
 						# walk of shame
 						33 = {
 							modifier = {
 								factor = 0
 								ROOT = {
-									NOT = { 
+									NOT = {
 										OR = {
 											has_character_modifier = incestuous_adulterer
 											has_character_modifier = incestuous_adulteress
@@ -799,15 +972,20 @@ targetted_decisions = {
 									}
 								}
 							}
-							character_event = { id = RIP.15005}
-							ROOT = { character_event = { id = RIP.15006} }
+							character_event = {
+								id = RIP.15005
+							}
+							ROOT = {
+								character_event = {
+									id = RIP.15006
+								}
+							}
 						}
 					}
 				}
 			}
-				
 			if = {
-				limit = { 
+				limit = {
 					has_game_rule = {
 						name = punishment_release_prisoner
 						value = on
@@ -815,12 +993,10 @@ targetted_decisions = {
 				}
 				prisoner = no
 			}
-			
 			add_character_modifier = {
 				name = publicly_humiliated
 				years = 10
 			}
-
 			opinion = {
 				modifier = opinion_humiliated_me
 				who = FROM
@@ -853,8 +1029,12 @@ targetted_decisions = {
 				if = {
 					limit = {
 						FROM = {
-							NOT = { dynasty = ROOT }
-							NOT = { sibling = ROOT }
+							NOT = {
+								dynasty = ROOT
+							}
+							NOT = {
+								sibling = ROOT
+							}
 						}
 					}
 					any_sibling = {
@@ -871,33 +1051,43 @@ targetted_decisions = {
 					}
 				}
 			}
-			FROM = { save_event_target_as = remove_prison_reason_effect_accuser }
-			ROOT = { save_event_target_as = remove_prison_reason_effect_accused }
-			hidden_tooltip = { remove_prison_reason_effect = yes }
+			FROM = {
+				save_event_target_as = remove_prison_reason_effect_accuser
+			}
+			ROOT = {
+				save_event_target_as = remove_prison_reason_effect_accused
+			}
+			hidden_tooltip = {
+				remove_prison_reason_effect = yes
+			}
 		}
 		revoke_allowed = {
 			always = no
 		}
 		ai_will_do = {
 			factor = 0.01
-			
 			modifier = {
 				factor = 0
-				reverse_opinion = { who = FROM value = 40 }
+				reverse_opinion = {
+					who = FROM value = 40
+				}
 			}
 			modifier = {
 				factor = 5
-				FROM = { trait = kind }
+				FROM = {
+					trait = kind
+				}
 			}
 			modifier = {
 				factor = 0
-				FROM = { trait = greedy }
+				FROM = {
+					trait = greedy
+				}
 			}
 			modifier = {
 				factor = 10
 				is_pretender = yes
 				is_rival = ROOT
-				
 				FROM = {
 					OR = {
 						is_pretender = yes
@@ -907,18 +1097,19 @@ targetted_decisions = {
 			}
 		}
 	}
-	
+
 	execute_eat = {
 		only_playable = yes
 		filter = court
 		ai_target_filter = court
-		
 		from_potential = {
 			has_dlc = "Reapers"
 			is_playable = yes
 			is_adult = yes
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			OR = {
 				has_character_modifier = cannibal
 				trait = cannibal_trait
@@ -928,29 +1119,33 @@ targetted_decisions = {
 				trait = lunatic
 			}
 		}
-
 		potential = {
-			host = { character = FROM }
+			host = {
+				character = FROM
+			}
 			prisoner = yes
 			age = 12
 		}
-		
 		ai_will_do = {
 			factor = 1
 		}
-		
 		effect = {
 			hidden_tooltip = {
 				any_dynasty_member = {
 					limit = {
 						is_close_relative = ROOT
-						NOT = { character = FROM }
+						NOT = {
+							character = FROM
+						}
 					}
-					character_event = { id = RIP.11511 days = 1 }
+					character_event = {
+						id = RIP.11511 days = 1
+					}
 				}
 				FROM = {
 					random_list = {
-						50 = { # Nothing happens
+						50 = {
+							# Nothing happens
 							modifier = {
 								factor = 0
 								OR = {
@@ -961,12 +1156,17 @@ targetted_decisions = {
 										ROOT = {
 											controls_religion = yes
 										}
-										FROM = { NOT = { religion_group = ROOT } }
+										FROM = {
+											NOT = {
+												religion_group = ROOT
+											}
+										}
 									}
 								}
 							}
 						}
-						40 = { # Get sick
+						40 = {
+							# Get sick
 							modifier = {
 								factor = 0
 								OR = {
@@ -979,12 +1179,17 @@ targetted_decisions = {
 										ROOT = {
 											controls_religion = yes
 										}
-										FROM = { NOT = { religion_group = ROOT } }
+										FROM = {
+											NOT = {
+												religion_group = ROOT
+											}
+										}
 									}
 								}
 							}
 							random_list = {
-								50 = { # Food Poisoning
+								50 = {
+									# Food Poisoning
 									if = {
 										limit = {
 											NOR = {
@@ -996,10 +1201,13 @@ targetted_decisions = {
 										}
 										set_character_flag = got_food_poisoning
 										set_character_flag = developing_illness
-										character_event = { id = RIP.5023 days = 5 }
+										character_event = {
+											id = RIP.5023 days = 5
+										}
 									}
 								}
-								25 = { # Diarrhea - Not Serious
+								25 = {
+									# Diarrhea - Not Serious
 									if = {
 										limit = {
 											NOR = {
@@ -1010,11 +1218,16 @@ targetted_decisions = {
 											}
 										}
 										set_character_flag = disease_not_serious
-										character_event = { id = RIP.5002 days = 5 }
-										character_event = { id = RIP.11004 days = 10 random = 50 }
+										character_event = {
+											id = RIP.5002 days = 5
+										}
+										character_event = {
+											id = RIP.11004 days = 10 random = 50
+										}
 									}
 								}
-								25 = { # Vomiting - Not Serious
+								25 = {
+									# Vomiting - Not Serious
 									if = {
 										limit = {
 											NOR = {
@@ -1025,13 +1238,18 @@ targetted_decisions = {
 											}
 										}
 										set_character_flag = disease_not_serious
-										character_event = { id = RIP.5003 days = 5 }
-										character_event = { id = RIP.11005 days = 10 random = 50 }
+										character_event = {
+											id = RIP.5003 days = 5
+										}
+										character_event = {
+											id = RIP.11005 days = 10 random = 50
+										}
 									}
 								}
 							}
 						}
-						10 = { # Gain power!
+						10 = {
+							# Gain power!
 							modifier = {
 								factor = 0
 								has_game_rule = {
@@ -1039,7 +1257,9 @@ targetted_decisions = {
 									value = off
 								}
 							}
-							character_event = { id = RIP.11510 }
+							character_event = {
+								id = RIP.11510
+							}
 						}
 					}
 					if = {
@@ -1047,31 +1267,35 @@ targetted_decisions = {
 							has_nickname = no
 						}
 						random_list = {
-							20 = { # Get nickname The Cannibal
+							20 = {
+								# Get nickname The Cannibal
 								give_nickname = nick_the_cannibal
 							}
-							15 = { # Get nickname The Dragon
+							15 = {
+								# Get nickname The Dragon
 								give_nickname = nick_the_dragon
 							}
-							15 = { # Get nickname The Abomination
+							15 = {
+								# Get nickname The Abomination
 								give_nickname = nick_the_abomination
 							}
-							10 = { # Get nickname The Monster
+							10 = {
+								# Get nickname The Monster
 								give_nickname = nick_the_monster
 							}
-							40 = { } # No nickname
+							40 = {
+							} # No nickname
 						}
 					}
 				}
 			}
 			if = {
-			limit = {
-				is_invincible_trigger = yes
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
 			}
-
-			antideath_effect = yes
-			break = yes 
-		}
 			death = {
 				death_reason = death_execution_eaten
 				killer = FROM
@@ -1079,13 +1303,17 @@ targetted_decisions = {
 			FROM = {
 				if = {
 					limit = {
-						NOT = { trait = lunatic_1 }
+						NOT = {
+							trait = lunatic_1
+						}
 					}
 					add_trait = lunatic_1
 				}
 				if = {
 					limit = {
-						NOT = { has_character_modifier = crazy_cannibal }
+						NOT = {
+							has_character_modifier = crazy_cannibal
+						}
 					}
 					add_character_modifier = {
 						name = crazy_cannibal
@@ -1095,7 +1323,9 @@ targetted_decisions = {
 				if = {
 					limit = {
 						dynasty = ROOT
-						NOT = { trait = kinslayer }
+						NOT = {
+							trait = kinslayer
+						}
 					}
 					add_trait = kinslayer
 				}

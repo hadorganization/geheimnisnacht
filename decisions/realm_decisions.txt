@@ -1,20 +1,23 @@
 decisions = {
 
-		hold_a_epic_tournament  = {
-	
+	hold_a_epic_tournament  = {
 		is_high_prio = yes
-		
 		potential = {
 			is_ruler = yes
 			demesne_size = 1
-			higher_tier_than = BARON	
-			religion = grail					
+			higher_tier_than = BARON
+			religion = grail
 			is_theocracy = no
-			NOT = { has_character_flag = no_kingship }
-			NOT = { has_character_flag = inherit_war }				
-			NOT = { has_character_flag = danys_eastern_quest }			
+			NOT = {
+				has_character_flag = no_kingship
+			}
+			NOT = {
+				has_character_flag = inherit_war
+			}
+			NOT = {
+				has_character_flag = danys_eastern_quest
+			}
 		}
-		
 		allow = {
 			war = no
 			NOT = {
@@ -23,19 +26,30 @@ decisions = {
 				}
 			}
 			prisoner = no
-			NOT = { trait = in_hiding }
-			is_adult = yes	
-			treasury = 75				
-			NOT = { trait = incapable }
+			NOT = {
+				trait = in_hiding
+			}
+			is_adult = yes
+			treasury = 75
+			NOT = {
+				trait = incapable
+			}
 			custom_tooltip = {
 				text = hold_a_epic_tournamentREALMTOURNEY
-				hidden_tooltip = { 
+				hidden_tooltip = {
 					#Cannot hold tourney if....
-					NOT = { any_liege = { has_character_modifier = holding_epic_tournament } } #Any liege is holding one
-					NOT = {  #Any grand tournaments are in progress		
+					NOT = {
+						any_liege = {
+							has_character_modifier = holding_epic_tournament
+						}
+					} #Any liege is holding one
+					NOT = {
+						#Any grand tournaments are in progress
 						top_liege = {
 							any_realm_lord = {
-								NOT = { tier = BARON }
+								NOT = {
+									tier = BARON
+								}
 								has_character_modifier = holding_epic_tournament
 								OR = {
 									has_character_flag = grand_tourny
@@ -44,112 +58,131 @@ decisions = {
 							}
 						}
 					}
-					NOT = { #Any duke within same kingdom is holding a regional one
-						any_liege = { 
+					NOT = {
+						#Any duke within same kingdom is holding a regional one
+						any_liege = {
 							tier = KING
 							any_vassal = {
-								NOT = { tier = BARON }
+								NOT = {
+									tier = BARON
+								}
 								has_character_modifier = holding_epic_tournament
 								has_character_flag = normal_tourny
 							}
 						}
-					}				
-					OR = { #If sworn directly to emperor and any duke who is also sworn directly is a regional holding one
+					}
+					OR = {
+						#If sworn directly to emperor and any duke who is also sworn directly is a regional holding one
 						higher_tier_than = DUKE
-						any_liege = { tier = KING }
+						any_liege = {
+							tier = KING
+						}
 						NOT = {
 							any_liege = {
 								tier = EMPEROR
 								any_vassal = {
-									NOT = { tier = BARON }
+									NOT = {
+										tier = BARON
+									}
 									has_character_modifier = holding_epic_tournament
 									has_character_flag = normal_tourny
-								}	
+								}
 							}
-						}	
+						}
 					}
 					# OR = { #Holder is count tier and another nearby count is holding one
-						# NOT = { tier = COUNT }
-						# NOT = {
-							# any_demesne_province = {
-								# OR = {
-									# any_neighbor_province = {
-										# OR = {
-											# any_province_lord = {
-												# tier = COUNT
-												# has_character_modifier = holding_epic_tournament
-											# }
-											# duchy = {
-												# holder_scope = {
-													# tier = DUKE
-													# any_vassal = {
-														# tier = COUNT
-														# has_character_modifier = holding_epic_tournament
-													# }	
-												# }
-											# }
-										# }	
-									# }
-									# duchy = {
-										# holder_scope = {
-											# tier = DUKE
-											# any_vassal = {
-												# tier = COUNT
-												# has_character_modifier = holding_epic_tournament
-											# }	
-										# }
-									# }
-								# }	
-							# }	
-						# }
-					# }	
+					# NOT = { tier = COUNT }
+					# NOT = {
+					# any_demesne_province = {
+					# OR = {
+					# any_neighbor_province = {
+					# OR = {
+					# any_province_lord = {
+					# tier = COUNT
+					# has_character_modifier = holding_epic_tournament
+					# }
+					# duchy = {
+					# holder_scope = {
+					# tier = DUKE
+					# any_vassal = {
+					# tier = COUNT
+					# has_character_modifier = holding_epic_tournament
+					# }
+					# }
+					# }
+					# }
+					# }
+					# duchy = {
+					# holder_scope = {
+					# tier = DUKE
+					# any_vassal = {
+					# tier = COUNT
+					# has_character_modifier = holding_epic_tournament
+					# }
+					# }
+					# }
+					# }
+					# }
+					# }
+					# }
 				}
 			}
 			custom_tooltip = {
 				text = hold_a_epic_tournamentCOOLDOWN
-				hidden_tooltip = { 
+				hidden_tooltip = {
 					OR = {
-						NOT = { has_character_flag = epic_tournament }
-						had_character_flag = { flag = epic_tournament days = 3650 }
+						NOT = {
+							has_character_flag = epic_tournament
+						}
+						had_character_flag = {
+							flag = epic_tournament days = 3650
+						}
 					}
 				}
 			}
 			custom_tooltip = {
 				text = hold_a_epic_tournamentATTENDING
-				hidden_tooltip = { 
-					NOT = { has_character_flag = attending_tournament }
+				hidden_tooltip = {
+					NOT = {
+						has_character_flag = attending_tournament
+					}
 				}
 			}
 			custom_tooltip = {
 				text = is_not_busy_trigger_tooltip
-				hidden_tooltip = { NOT = { has_character_flag = do_not_disturb } }
+				hidden_tooltip = {
+					NOT = {
+						has_character_flag = do_not_disturb
+					}
+				}
 			}
 		}
-		
 		effect = {
 			clr_character_flag = epic_tournament
 			set_character_flag = epic_tournament
 			set_character_flag = tourny_in_progress
-			set_character_flag = do_not_disturb 
-			clr_character_flag = tournament_has_ended						
+			set_character_flag = do_not_disturb
+			clr_character_flag = tournament_has_ended
 			add_character_modifier = {
 				name = "holding_epic_tournament"
 				duration = 400
 			}
-			character_event = { id = tourney.1 tooltip = "tournament_invite" }
+			character_event = {
+				id = tourney.1 tooltip = "tournament_invite"
+			}
 			hidden_tooltip = {
-				character_event = { id = 70001 days = 30 } # Tournament start
+				character_event = {
+					id = 70001 days = 30
+				} # Tournament start
 			}
 		}
-		
 		ai_will_do = {
 			factor = 1
-			
 			modifier = {
 				factor = 0.02
 			}
-			
-			modifier = { #save up for higher tourney
+			modifier = {
+				#save up for higher tourney
 				factor = 0
 				OR = {
 					trait = ambitious
@@ -159,18 +192,21 @@ decisions = {
 				OR = {
 					AND = {
 						yearly_income = 75
-						NOT = { treasury = 150 }
+						NOT = {
+							treasury = 150
+						}
 					}
 					AND = {
 						OR = {
 							tier = EMPEROR
 							yearly_income = 150
-						}	
-						NOT = { treasury = 300 }
+						}
+						NOT = {
+							treasury = 300
+						}
 					}
 				}
 			}
-			
 			#AI unlikley to do
 			modifier = {
 				factor = 0.2
@@ -181,90 +217,87 @@ decisions = {
 					trait = stressed
 					trait = depressed
 					trait = slothful
-				}	
+				}
 			}
-			
 			#AI likely to do
 			modifier = {
 				factor = 5
 				OR = {
 					trait = gregarious
 					trait = charitable
-					trait = gluttonous 
+					trait = gluttonous
 					trait = hedonist
 					trait = duelist
-				}	
-			}			
+				}
+			}
 		}
 	}
-	
 	# buy_indulgence_for_sins = {
-		# only_playable = yes
-		# potential = {
-			# is_playable = yes
-			# religion = catholic
-			# age = 16
-			# demesne_size = 1
-			# NOT = { has_character_flag = ask_for_indulgence }
-		# }
-		# allow = {
-			# scaled_wealth = 1.0
-			# wealth = 25
-			# is_heretic = no
-		# }
-		# effect = {
-			# set_character_flag = ask_for_indulgence
-			# rightful_religious_head_scope = {
-				# character_event = { id = 39250 days = 5 random = 12 tooltip = "indulgence_ask" }
-			# }
-		# }
-		# ai_will_do = {
-			# factor = 1
-			# modifier = {
-				# factor = 0
-				# OR = {
-					# NOT = { scaled_wealth = 10.0 }
-					# piety = 0
-				# }
-			# }
-		# }
+	# only_playable = yes
+	# potential = {
+	# is_playable = yes
+	# religion = catholic
+	# age = 16
+	# demesne_size = 1
+	# NOT = { has_character_flag = ask_for_indulgence }
+	# }
+	# allow = {
+	# scaled_wealth = 1.0
+	# wealth = 25
+	# is_heretic = no
+	# }
+	# effect = {
+	# set_character_flag = ask_for_indulgence
+	# rightful_religious_head_scope = {
+	# character_event = { id = 39250 days = 5 random = 12 tooltip = "indulgence_ask" }
+	# }
+	# }
+	# ai_will_do = {
+	# factor = 1
+	# modifier = {
+	# factor = 0
+	# OR = {
+	# NOT = { scaled_wealth = 10.0 }
+	# piety = 0
+	# }
+	# }
+	# }
+	# }
+	# issue_declaration_of_repentance = {
+	# only_playable = yes
+	# potential = {
+	# is_playable = yes
+	# religion = catholic
+	# age = 16
+	# demesne_size = 1
+	# NOT = { has_character_flag = ask_for_repentance }
+	# rightful_religious_head_scope = {
+	# ROOT = {
+	# excommunicated_for = PREV
+	# }
+	# }
+	# }
+	# allow = {
+	# scaled_wealth = 2.0
+	# is_heretic = no
+	# }
+	# effect = {
+	# set_character_flag = ask_for_repentance
+	# rightful_religious_head_scope = {
+	# character_event = { id = 39252 days = 5 random = 12 tooltip = "repentance_ask" }
+	# }
+	# }
+	# ai_will_do = {
+	# factor = 1
+	# modifier = {
+	# factor = 0
+	# NOT = {
+	# scaled_wealth = 10.0
+	# }
+	# }
+	# }
 	# }
 
-	# issue_declaration_of_repentance = {
-		# only_playable = yes
-		# potential = {
-			# is_playable = yes
-			# religion = catholic
-			# age = 16
-			# demesne_size = 1
-			# NOT = { has_character_flag = ask_for_repentance }
-			# rightful_religious_head_scope = {
-				# ROOT = {
-					# excommunicated_for = PREV
-				# }
-			# }
-		# }
-		# allow = {
-			# scaled_wealth = 2.0
-			# is_heretic = no
-		# }
-		# effect = {
-			# set_character_flag = ask_for_repentance
-			# rightful_religious_head_scope = {
-				# character_event = { id = 39252 days = 5 random = 12 tooltip = "repentance_ask" }
-			# }
-		# }
-		# ai_will_do = {
-			# factor = 1
-			# modifier = {
-				# factor = 0
-				# NOT = {
-					# scaled_wealth = 10.0
-				# }
-			# }
-		# }
-	# }
-	
 	demand_liege_title = {
 		only_playable = yes
 		is_high_prio = yes
@@ -273,22 +306,34 @@ decisions = {
 			is_playable = yes
 			has_ambition = obj_gain_any_title
 			liege = {
-				NOT = { character = ROOT }
+				NOT = {
+					character = ROOT
+				}
 			}
 			is_adult = yes
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 		}
 		allow = {
 			prestige = 60
 			liege = {
 				has_regent = no
-				NOT = { has_opinion_modifier = { who = ROOT modifier = requested_land } }
+				NOT = {
+					has_opinion_modifier = {
+						who = ROOT modifier = requested_land
+					}
+				}
 				demesne_size = 3
 				any_demesne_title = {
 					can_be_given_away = yes
 					tier = COUNT
-					NOT = { location = { is_capital = yes } }
+					NOT = {
+						location = {
+							is_capital = yes
+						}
+					}
 				}
 			}
 		}
@@ -304,21 +349,31 @@ decisions = {
 					limit = {
 						can_be_given_away = yes
 						tier = COUNT
-						NOT = { location = { is_capital = yes } }
+						NOT = {
+							location = {
+								is_capital = yes
+							}
+						}
 					}
 					save_event_target_as = vassal_wanted_title
 				}
 			}
 			custom_tooltip = {
 				text = demand_liege_title_tooltip
-				hidden_tooltip = { liege = { letter_event = { id = 63041 days = 4 } } } # "vassal_request_events.txt"
+				hidden_tooltip = {
+					liege = {
+						letter_event = {
+							id = 63041 days = 4
+						}
+					}
+				} # "vassal_request_events.txt"
 			}
 		}
 		ai_will_do = {
 			factor = 0 # The AI is limited to the similar event 63040
 		}
 	}
-	
+
 	sadaqah_saddka  = {
 		only_playable = yes
 		potential = {
@@ -330,13 +385,17 @@ decisions = {
 			}
 			is_adult = yes
 			demesne_size = 1
-			NOT = { has_character_flag = voluntary_charity }
-			rightful_religious_head_scope = {	
+			NOT = {
+				has_character_flag = voluntary_charity
+			}
+			rightful_religious_head_scope = {
 				NOT = {
 					character = ROOT
 				}
 				NOT = {
-					has_opinion_modifier = { who = ROOT modifier = opinion_sadaqah }
+					has_opinion_modifier = {
+						who = ROOT modifier = opinion_sadaqah
+					}
 				}
 			}
 		}
@@ -349,7 +408,9 @@ decisions = {
 			scaled_wealth = -0.25
 			piety = 25
 			rightful_religious_head_scope = {
-				character_event = { id = 31000 days = 5 random = 12 tooltip = "sadaqah_voluntary_charity" }
+				character_event = {
+					id = 31000 days = 5 random = 12 tooltip = "sadaqah_voluntary_charity"
+				}
 			}
 		}
 		ai_will_do = {
@@ -358,7 +419,9 @@ decisions = {
 				factor = 0
 				ai = yes
 				OR = {
-					NOT = { scaled_wealth = 10.0 }
+					NOT = {
+						scaled_wealth = 10.0
+					}
 					piety = 0
 				}
 			}
@@ -368,7 +431,6 @@ decisions = {
 	hold_a_furusiyya  = {
 		only_independent = yes
 		is_high_prio = yes
-		
 		potential = {
 			is_playable = yes
 			independent = yes
@@ -379,27 +441,37 @@ decisions = {
 			religion_group = muslim
 			OR = {
 				gender_equality_trigger = yes
-				NOT = { is_female = yes	}
+				NOT = {
+					is_female = yes
+				}
 			}
 			OR = {
 				tier = king
-				tier = emperor 
+				tier = emperor
 			}
 			location = {
-				owner = { character = ROOT }
+				owner = {
+					character = ROOT
+				}
 			}
 		}
 		allow = {
 			war = no
 			in_command = no
 			prisoner = no
-			NOT = { is_inaccessible_trigger = yes }
+			NOT = {
+				is_inaccessible_trigger = yes
+			}
 			age = 16
 			prestige = 500
 			wealth = 200
 			custom_tooltip = {
 				text = is_not_busy_trigger_tooltip
-				hidden_tooltip = { NOT = { has_character_flag = do_not_disturb } }
+				hidden_tooltip = {
+					NOT = {
+						has_character_flag = do_not_disturb
+					}
+				}
 			}
 		}
 		effect = {
@@ -410,11 +482,17 @@ decisions = {
 				hidden = yes
 			}
 			clr_character_flag = tournament_has_ended_furusiyya
-			hidden_tooltip = { character_event = { id = 88999 days = 300 } } # Safety catch flag clearing
+			hidden_tooltip = {
+				character_event = {
+					id = 88999 days = 300
+				}
+			} # Safety catch flag clearing
 			wealth = -200
 			prestige = 100
 			decadence = -5
-			character_event = { id = 88283 tooltip = "furusiyya_invite" }
+			character_event = {
+				id = 88283 tooltip = "furusiyya_invite"
+			}
 		}
 		ai_will_do = {
 			factor = 1
@@ -429,7 +507,7 @@ decisions = {
 			}
 		}
 	}
-	
+
 	petition_doge_for_tp = {
 		only_playable = yes
 		is_high_prio = yes
@@ -437,8 +515,12 @@ decisions = {
 			is_playable = yes
 			is_merchant_republic = no
 			is_patrician = yes
-			liege = { is_merchant_republic = yes }
-			NOT = { has_character_flag = petition_doge_for_tp_taken }
+			liege = {
+				is_merchant_republic = yes
+			}
+			NOT = {
+				has_character_flag = petition_doge_for_tp_taken
+			}
 			OR = {
 				liege = {
 					any_vassal = {
@@ -450,7 +532,9 @@ decisions = {
 					}
 				}
 				AND = {
-					NOT = { num_of_trade_posts = 1 }
+					NOT = {
+						num_of_trade_posts = 1
+					}
 					liege = {
 						any_vassal = {
 							is_patrician = yes
@@ -471,14 +555,16 @@ decisions = {
 		effect = {
 			set_character_flag = petition_doge_for_tp_taken
 			liege = {
-				letter_event = { id = REP.500 days = 5 tooltip = EVTTOOLTIP_REP_500 }
+				letter_event = {
+					id = REP.500 days = 5 tooltip = EVTTOOLTIP_REP_500
+				}
 			}
 		}
 		ai_will_do = {
 			factor = 1
 		}
 	}
-	
+
 	usurp_tp = {
 		only_playable = yes
 		is_high_prio = yes
@@ -486,7 +572,9 @@ decisions = {
 			is_playable = yes
 			is_merchant_republic = yes
 			is_patrician = yes
-			NOT = { has_character_flag = usurp_tp_taken }
+			NOT = {
+				has_character_flag = usurp_tp_taken
+			}
 			OR = {
 				any_vassal = {
 					is_patrician = yes
@@ -496,7 +584,9 @@ decisions = {
 					}
 				}
 				AND = {
-					NOT = { num_of_trade_posts = 1 }
+					NOT = {
+						num_of_trade_posts = 1
+					}
 					any_vassal = {
 						is_patrician = yes
 						num_of_trade_posts = 10
@@ -505,8 +595,10 @@ decisions = {
 			}
 		}
 		allow = {
-			custom_tooltip = { text = IS_NOT_INCAPACITATED
-					is_incapacitated_trigger = no }
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			is_merchant_republic = yes
 		}
 		effect = {
@@ -531,12 +623,16 @@ decisions = {
 						}
 					}
 					set_character_flag = target_patrician_doge
-					letter_event = { id = REP.510 days = 5 tooltip = EVTTOOLTIP_REP_510 }
+					letter_event = {
+						id = REP.510 days = 5 tooltip = EVTTOOLTIP_REP_510
+					}
 				}
 			}
 			if = {
 				limit = {
-					NOT = { num_of_trade_posts = 1 }
+					NOT = {
+						num_of_trade_posts = 1
+					}
 					any_vassal = {
 						is_patrician = yes
 						num_of_trade_posts = 10
@@ -548,7 +644,9 @@ decisions = {
 						num_of_trade_posts = 10
 					}
 					set_character_flag = target_patrician_doge
-					letter_event = { id = REP.510 days = 5 tooltip = EVTTOOLTIP_REP_510 }
+					letter_event = {
+						id = REP.510 days = 5 tooltip = EVTTOOLTIP_REP_510
+					}
 				}
 			}
 		}
@@ -556,28 +654,27 @@ decisions = {
 			factor = 1
 		}
 	}
-	
+
 	form_new_kingdom = {
 		only_independent = yes
 		is_high_prio = yes
-		
 		potential = {
-			NOT = { religion_group = greenskin_gods_group }
+			NOT = {
+				religion_group = greenskin_gods_group
+			}
 			is_playable = yes
 			tier = DUKE
-			NOT = { tier = KING }
-			
+			NOT = {
+				tier = KING
+			}
 			has_dlc = "Charlemagne"
-			
 			holy_order = no
-			
 			NOT = {
 				has_game_rule = {
 					name = dynamic_realms
 					value = off
 				}
 			}
-			
 			OR = {
 				ai = no
 				AND = {
@@ -601,7 +698,9 @@ decisions = {
 		allow = {
 			is_adult = yes
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			independent = yes
 			prestige = 1000
 			OR = {
@@ -630,7 +729,6 @@ decisions = {
 					base_title = THIS
 					copy_title_laws = yes
 				}
-
 				hidden_tooltip = {
 					empire = {
 						ROOT = {
@@ -639,7 +737,6 @@ decisions = {
 							}
 						}
 					}
-
 					ROOT = {
 						primary_title = {
 							holder_scope = {
@@ -660,8 +757,9 @@ decisions = {
 												kingdom = {
 													has_holder = no
 												}
-												
-												NOT = { de_jure_liege_or_above = PREVPREVPREVPREV }
+												NOT = {
+													de_jure_liege_or_above = PREVPREVPREVPREV
+												}
 												ROOT = {
 													completely_controls = PREV
 												}
@@ -678,10 +776,11 @@ decisions = {
 						}
 					}
 				}
-
 			}
 			wealth = -300
-			custom_tooltip = { text = form_new_kingdom_tooltip }
+			custom_tooltip = {
+				text = form_new_kingdom_tooltip
+			}
 			chronicle = {
 				entry = CHRONICLE_FOUNDED_NEW_KINGDOM_OR_EMPIRE
 				portrait = [Root.GetID]
@@ -698,17 +797,18 @@ decisions = {
 	form_new_empire = {
 		only_independent = yes
 		is_high_prio = yes
-		
 		potential = {
-			NOT = { religion_group = greenskin_gods_group }
+			NOT = {
+				religion_group = greenskin_gods_group
+			}
 			is_playable = yes
 			tier = KING
 			is_nomadic = no
 			has_dlc = "Charlemagne"
-			
 			holy_order = no
-			
-			NOT = { tier = EMPEROR }
+			NOT = {
+				tier = EMPEROR
+			}
 			OR = {
 				ai = no
 				AND = {
@@ -721,7 +821,6 @@ decisions = {
 				}
 				prestige = 120000
 			}
-			
 			NOT = {
 				has_game_rule = {
 					name = dynamic_realms
@@ -732,7 +831,9 @@ decisions = {
 		allow = {
 			is_adult = yes
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			independent = yes
 			prestige = 8000
 			OR = {
@@ -761,7 +862,6 @@ decisions = {
 					base_title = THIS
 					copy_title_laws = yes
 				}
-
 				hidden_tooltip = {
 					ROOT = {
 						primary_title = {
@@ -783,8 +883,9 @@ decisions = {
 												empire = {
 													has_holder = no
 												}
-												
-												NOT = { de_jure_liege_or_above = PREVPREVPREVPREV }
+												NOT = {
+													de_jure_liege_or_above = PREVPREVPREVPREV
+												}
 												ROOT = {
 													completely_controls = PREV
 												}
@@ -803,7 +904,9 @@ decisions = {
 				}
 			}
 			wealth = -1000
-			custom_tooltip = { text = form_new_empire_tooltip }
+			custom_tooltip = {
+				text = form_new_empire_tooltip
+			}
 			chronicle = {
 				entry = CHRONICLE_FOUNDED_NEW_KINGDOM_OR_EMPIRE
 				portrait = [Root.GetID]
@@ -816,40 +919,67 @@ decisions = {
 			factor = 1
 		}
 	}
-
 	# Hold Wargames - for nomads
+
 	hold_nomad_wargames = {
 		only_playable = yes
-		
 		potential = {
 			is_playable = yes
 			is_nomadic = yes
-			NOT = { has_character_modifier = holding_nomad_wargames }
-			NOT = { has_character_modifier = held_nomad_wargames }
-			NOT = { religion_group = greenskin_gods_group } #Greenskins shouldn't get out of Tribal
-			NOT = { religion = asrai_cadai } #Neither Asrai
-			NOT = { trait = creature_beastman } #Nor Beastmen
+			NOT = {
+				has_character_modifier = holding_nomad_wargames
+			}
+			NOT = {
+				has_character_modifier = held_nomad_wargames
+			}
+			NOT = {
+				religion_group = greenskin_gods_group
+			} #Greenskins shouldn't get out of Tribal
+			NOT = {
+				religion = asrai_cadai
+			} #Neither Asrai
+			NOT = {
+				trait = creature_beastman
+			} #Nor Beastmen
 		}
 		allow = {
-			custom_tooltip = { text = IS_NOT_INCAPACITATED
-					is_incapacitated_trigger = no }
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			is_adult = yes
 			prisoner = no
-			NOT = { trait = incapable }
-			NOT = { is_inaccessible_trigger = yes }
-			NOT = { religion_group = greenskin_gods_group } #Greenskins shouldn't get out of Tribal
-			NOT = { religion = asrai_cadai } #Neither Asrai
-			NOT = { trait = creature_beastman } #Nor Beastmen
+			NOT = {
+				trait = incapable
+			}
+			NOT = {
+				is_inaccessible_trigger = yes
+			}
+			NOT = {
+				religion_group = greenskin_gods_group
+			} #Greenskins shouldn't get out of Tribal
+			NOT = {
+				religion = asrai_cadai
+			} #Neither Asrai
+			NOT = {
+				trait = creature_beastman
+			} #Nor Beastmen
 			war = no
 			any_demesne_title = {
-				NOT = { higher_tier_than = count }
+				NOT = {
+					higher_tier_than = count
+				}
 				is_occupied = no
 			}
 			wealth = 20
 			prestige = 100
 			custom_tooltip = {
 				text = is_not_busy_trigger_tooltip
-				hidden_tooltip = { NOT = { has_character_flag = do_not_disturb } }
+				hidden_tooltip = {
+					NOT = {
+						has_character_flag = do_not_disturb
+					}
+				}
 			}
 		}
 		effect = {
@@ -860,7 +990,11 @@ decisions = {
 			}
 			set_character_flag = recent_minor_decision
 			set_character_flag = do_not_disturb
-			hidden_tooltip = { character_event = { id = HL.7000 } }
+			hidden_tooltip = {
+				character_event = {
+					id = HL.7000
+				}
+			}
 		}
 		revoke_allowed = {
 			always = no
@@ -882,8 +1016,10 @@ decisions = {
 			}
 			modifier = {
 				factor = 0.5
-				NOT = { martial = 10 }
-			}	
+				NOT = {
+					martial = 10
+				}
+			}
 			modifier = {
 				factor = 0
 				has_character_flag = recent_minor_decision
@@ -893,25 +1029,38 @@ decisions = {
 						days = 730
 					}
 				}
-			}	
+			}
 		}
 	}
-	
+
 	convert_to_feudalism_indep  = {
 		only_independent = yes
 		is_high_prio = yes
-		
 		potential = {
 			is_playable = yes
 			is_tribal = yes
 			independent = yes
-			NOT = { religion_group = greenskin_gods_group } #Greenskins shouldn't get out of Tribal
-			NOT = { religion = asrai_cadai } #Neither Asrai
-			NOT = { trait = creature_beastman } #Nor Beastmen
-			NOT = { trait = creature_ogre } #
-			NOT = { culture_group = lizardman_group }
-			NOT = { culture = amazon_main }
-			NOT = { culture = miyan }
+			NOT = {
+				religion_group = greenskin_gods_group
+			} #Greenskins shouldn't get out of Tribal
+			NOT = {
+				religion = asrai_cadai
+			} #Neither Asrai
+			NOT = {
+				trait = creature_beastman
+			} #Nor Beastmen
+			NOT = {
+				trait = creature_ogre
+			} #
+			NOT = {
+				culture_group = lizardman_group
+			}
+			NOT = {
+				culture = amazon_main
+			}
+			NOT = {
+				culture = miyan
+			}
 		}
 		allow = {
 			war = no
@@ -919,27 +1068,30 @@ decisions = {
 				text = TT_NOT_UNREFORMED_PAGAN
 				hidden_tooltip = {
 					OR = {
-						NOT = { religion_group = pagan_group }
+						NOT = {
+							religion_group = pagan_group
+						}
 						is_reformed_religion = yes
 					}
 				}
 			}
-			primary_title = { has_law = tribal_organization_4 }
+			primary_title = {
+				has_law = tribal_organization_4
+			}
 			capital_holding = {
 				OR = {
 					AND = {
-							holding_type = tribal
-							has_building = tb_hillfort_4
-						}
-						AND = {
-						    holding_type = tribal
-						    has_building = tb_norscan_fort_4
-						}
+						holding_type = tribal
+						has_building = tb_hillfort_4
+					}
+					AND = {
+						holding_type = tribal
+						has_building = tb_norscan_fort_4
+					}
 					holding_type = castle
 				}
 			}
 		}
-		
 		effect = {
 			hidden_tooltip = {
 				any_demesne_title = {
@@ -949,7 +1101,6 @@ decisions = {
 					}
 					convert_to = CASTLE
 					refill_holding_levy = yes
-					
 					if = {
 						limit = {
 							dejure_liege_title = {
@@ -992,20 +1143,21 @@ decisions = {
 					}
 				}
 			}
-			
 			set_character_flag = achievement_not_a_tribe
-			
 			if = {
 				limit = {
-					OR = { trait = creature_human
+					OR = {
+						trait = creature_human
 						trait = creature_halfling
 						trait = khorne_demon
 						trait = nurgle_demon
 						trait = slaanesh_demon
-						trait = tzeentch_demon }
-					NOT = { religion_group = ormazd_gods_group }
+						trait = tzeentch_demon
+					}
+					NOT = {
+						religion_group = ormazd_gods_group
+					}
 				}
-				
 				if = {
 					limit = {
 						ai = no
@@ -1017,13 +1169,11 @@ decisions = {
 				}
 				set_government_type = feudal_government
 			}
-			
 			if = {
 				limit = {
 					trait = creature_human
 					religion_group = ormazd_gods_group
 				}
-				
 				if = {
 					limit = {
 						ai = no
@@ -1035,40 +1185,51 @@ decisions = {
 				}
 				set_government_type = muslim_government
 			}
-			
 			if = {
-				limit = { trait = creature_elf
-					culture_group = asur_group }
+				limit = {
+					trait = creature_elf
+					culture_group = asur_group
+				}
 				set_government_type = highborn_government
-				}
-			
+			}
 			if = {
-				limit = { trait = creature_elf
-					culture_group = druchi_group }
+				limit = {
+					trait = creature_elf
+					culture_group = druchi_group
+				}
 				set_government_type = druchii_government
-				}
+			}
 			if = {
-				limit = { trait = creature_nehekharan }
+				limit = {
+					trait = creature_nehekharan
+				}
 				set_government_type = nehekharan_government
-				}
+			}
 			if = {
-				limit = { trait = creature_dwarf }
+				limit = {
+					trait = creature_dwarf
+				}
 				set_government_type = dwarf_government
-				}
+			}
 			if = {
-				limit = { trait = creature_chaos_dwarf 
-					religion = hashut }
+				limit = {
+					trait = creature_chaos_dwarf
+					religion = hashut
+				}
 				set_government_type = chaosdwarf_government
-				}
+			}
 			if = {
-				limit = { OR = { trait = vampire_carstein_visible
+				limit = {
+					OR = {
+						trait = vampire_carstein_visible
 						trait = vampire_lahmian_visible
 						trait = vampire_strigoi_visible
 						trait = vampire_jade_visible
-						trait = vampire_mahtmasi_visible } }
-				set_government_type = vampiric_government
+						trait = vampire_mahtmasi_visible
+					}
 				}
-			
+				set_government_type = vampiric_government
+			}
 			if = {
 				limit = {
 					higher_tier_than = king
@@ -1078,43 +1239,54 @@ decisions = {
 				}
 			}
 		}
-		
 		ai_will_do = {
 			factor = 1
 			modifier = {
 				factor = 0.01
 				religion = khorne
-				}
+			}
 			modifier = {
 				factor = 0.1
 				religion = nurgle
-				}
+			}
 			modifier = {
 				factor = 0
 				culture_group = kurgan_group
-				}
+			}
 			modifier = {
 				factor = 0
 				culture_group = hung_group
-				}
-			
+			}
 		}
 	}
-	
+
 	convert_to_feudalism_vassal = {
 		is_high_prio = yes
 		only_rulers = yes
-
 		potential = {
 			is_tribal = yes
 			independent = no
-			NOT = { religion_group = greenskin_gods_group } #Greenskins shouldn't get out of Tribal
-			NOT = { religion = asrai_cadai } #Neither Asrai
-			NOT = { trait = creature_beastman } #Nor Beastmen
-			NOT = { trait = creature_ogre } #
-			NOT = { culture_group = lizardman_group }
-			NOT = { culture = amazon_main }
-			NOT = { culture = miyan }
+			NOT = {
+				religion_group = greenskin_gods_group
+			} #Greenskins shouldn't get out of Tribal
+			NOT = {
+				religion = asrai_cadai
+			} #Neither Asrai
+			NOT = {
+				trait = creature_beastman
+			} #Nor Beastmen
+			NOT = {
+				trait = creature_ogre
+			} #
+			NOT = {
+				culture_group = lizardman_group
+			}
+			NOT = {
+				culture = amazon_main
+			}
+			NOT = {
+				culture = miyan
+			}
 		}
 		allow = {
 			war = no
@@ -1122,7 +1294,9 @@ decisions = {
 				text = TT_NOT_UNREFORMED_PAGAN
 				hidden_tooltip = {
 					OR = {
-						NOT = { religion_group = pagan_group }
+						NOT = {
+							religion_group = pagan_group
+						}
 						is_reformed_religion = yes
 					}
 				}
@@ -1135,7 +1309,6 @@ decisions = {
 				}
 			}
 		}
-		
 		effect = {
 			hidden_tooltip = {
 				any_demesne_title = {
@@ -1145,7 +1318,6 @@ decisions = {
 					}
 					convert_to = CASTLE
 					refill_holding_levy = yes
-					
 					if = {
 						limit = {
 							dejure_liege_title = {
@@ -1187,25 +1359,27 @@ decisions = {
 						}
 					}
 				}
-				
 				liege = {
-					character_event = { id = 55100 } # Notify Liege
+					character_event = {
+						id = 55100
+					} # Notify Liege
 				}
 			}
-			
 			set_character_flag = achievement_not_a_tribe
-			
 			if = {
 				limit = {
-					OR = { trait = creature_human
+					OR = {
+						trait = creature_human
 						trait = creature_halfling
 						trait = khorne_demon
 						trait = nurgle_demon
 						trait = slaanesh_demon
-						trait = tzeentch_demon }
-					NOT = { religion_group = ormazd_gods_group }
+						trait = tzeentch_demon
+					}
+					NOT = {
+						religion_group = ormazd_gods_group
+					}
 				}
-				
 				if = {
 					limit = {
 						ai = no
@@ -1217,13 +1391,11 @@ decisions = {
 				}
 				set_government_type = feudal_government
 			}
-			
 			if = {
 				limit = {
 					trait = creature_human
 					religion_group = ormazd_gods_group
 				}
-				
 				if = {
 					limit = {
 						ai = no
@@ -1235,52 +1407,66 @@ decisions = {
 				}
 				set_government_type = muslim_government
 			}
-			
-			
 			if = {
-				limit = { trait = creature_elf
-					culture_group = asur_group }
+				limit = {
+					trait = creature_elf
+					culture_group = asur_group
+				}
 				set_government_type = highborn_government
-				}
-			
+			}
 			if = {
-				limit = { trait = creature_elf
-					culture_group = druchi_group }
+				limit = {
+					trait = creature_elf
+					culture_group = druchi_group
+				}
 				set_government_type = druchii_government
-				}
+			}
 			if = {
-				limit = { trait = creature_nehekharan }
+				limit = {
+					trait = creature_nehekharan
+				}
 				set_government_type = nehekharan_government
-				}
+			}
 			if = {
-				limit = { trait = creature_dwarf }
+				limit = {
+					trait = creature_dwarf
+				}
 				set_government_type = dwarf_government
-				}
+			}
 			if = {
-				limit = { trait = creature_chaos_dwarf 
-					religion = hashut }
+				limit = {
+					trait = creature_chaos_dwarf
+					religion = hashut
+				}
 				set_government_type = chaosdwarf_government
-				}
+			}
 			if = {
-				limit = { OR = { trait = vampire_carstein_visible
+				limit = {
+					OR = {
+						trait = vampire_carstein_visible
 						trait = vampire_lahmian_visible
 						trait = vampire_strigoi_visible
 						trait = vampire_jade_visible
-						trait = vampire_mahtmasi_visible } }
-				set_government_type = vampiric_government
+						trait = vampire_mahtmasi_visible
+					}
 				}
+				set_government_type = vampiric_government
+			}
 		}
-		
 		ai_will_do = {
 			factor = 1
 			modifier = {
 				factor = 0.001
 				liege = {
 					OR = {
-						NOT = { religion_group = ROOT }
+						NOT = {
+							religion_group = ROOT
+						}
 						AND = {
 							religion_group = pagan_group
-							NOT = { religion = ROOT }
+							NOT = {
+								religion = ROOT
+							}
 						}
 					}
 				}
@@ -1288,47 +1474,55 @@ decisions = {
 			modifier = {
 				factor = 0
 				culture_group = kurgan_group
-				}
+			}
 			modifier = {
 				factor = 0
 				culture_group = hung_group
-				}
+			}
 			modifier = {
 				factor = 0.01
 				liege = {
-					NOT = { culture_group = ROOT }
+					NOT = {
+						culture_group = ROOT
+					}
 				}
 			}
 			modifier = {
 				factor = 0.01
 				religion = khorne
 				liege = {
-					NOT = { culture_group = ROOT }
+					NOT = {
+						culture_group = ROOT
+					}
 				}
 			}
-			
 			modifier = {
 				factor = 0.01
 				liege = {
 					religion_group = ROOT
-					NOT = { religion_group = pagan_group }
-					NOT = { religion = ROOT }
+					NOT = {
+						religion_group = pagan_group
+					}
+					NOT = {
+						religion = ROOT
+					}
 				}
 			}
 			modifier = {
 				factor = 0.1
 				liege = {
 					culture_group = ROOT
-					NOT = { culture = ROOT }
+					NOT = {
+						culture = ROOT
+					}
 				}
 			}
 		}
 	}
-	
+
 	convert_to_republic_indep  = {
 		only_independent = yes
 		is_high_prio = yes
-		
 		potential = {
 			is_playable = yes
 			is_tribal = yes
@@ -1336,14 +1530,27 @@ decisions = {
 			has_dlc = "The Republic"
 			trait = creature_human
 			is_vampire_trigger = no
-			NOT = { culture_group = lizardman_group }
-
-			NOT = { religion_group = greenskin_gods_group } #Greenskins shouldn't get out of Tribal
-			NOT = { religion = asrai_cadai } #Neither Asrai
-			NOT = { trait = creature_beastman } #Nor Beastmen
-			NOT = { trait = creature_ogre } #
-			NOT = { culture = amazon_main }
-			NOT = { culture = miyan }
+			NOT = {
+				culture_group = lizardman_group
+			}
+			NOT = {
+				religion_group = greenskin_gods_group
+			} #Greenskins shouldn't get out of Tribal
+			NOT = {
+				religion = asrai_cadai
+			} #Neither Asrai
+			NOT = {
+				trait = creature_beastman
+			} #Nor Beastmen
+			NOT = {
+				trait = creature_ogre
+			} #
+			NOT = {
+				culture = amazon_main
+			}
+			NOT = {
+				culture = miyan
+			}
 		}
 		allow = {
 			war = no
@@ -1353,12 +1560,16 @@ decisions = {
 				text = TT_NOT_UNREFORMED_PAGAN
 				hidden_tooltip = {
 					OR = {
-						NOT = { religion_group = pagan_group }
+						NOT = {
+							religion_group = pagan_group
+						}
 						is_reformed_religion = yes
 					}
 				}
 			}
-			primary_title = { has_law = tribal_organization_4 }
+			primary_title = {
+				has_law = tribal_organization_4
+			}
 			capital_scope = {
 				port = yes
 			}
@@ -1372,13 +1583,10 @@ decisions = {
 				}
 			}
 		}
-		
 		effect = {
 			hidden_tooltip = {
 				create_family_palace = yes
-				
 				set_government_type = merchant_republic_government
-				
 				if = {
 					limit = {
 						NOT = {
@@ -1388,8 +1596,8 @@ decisions = {
 							}
 						}
 					}
-					
-					any_unique_dynasty_vassal = { # gives random vassals a family palace
+					any_unique_dynasty_vassal = {
+						# gives random vassals a family palace
 						count = 4
 						limit = {
 							is_female = no
@@ -1399,16 +1607,18 @@ decisions = {
 							}
 							is_patrician = no
 							prisoner = no
-							NOT = { trait = incapable }
+							NOT = {
+								trait = incapable
+							}
 							is_adult = yes
-							NOT = { 
-								dynasty = none 
+							NOT = {
+								dynasty = none
 							}
 						}
-						
 						if = {
-							limit = { is_tribal = yes }
-							
+							limit = {
+								is_tribal = yes
+							}
 							hidden_tooltip = {
 								any_demesne_title = {
 									limit = {
@@ -1417,7 +1627,6 @@ decisions = {
 									}
 									convert_to = CITY
 									refill_holding_levy = yes
-									
 									if = {
 										limit = {
 											dejure_liege_title = {
@@ -1461,7 +1670,6 @@ decisions = {
 								}
 							}
 						}
-						
 						create_family_palace = yes
 					}
 				}
@@ -1472,7 +1680,6 @@ decisions = {
 					}
 					convert_to = CITY
 					refill_holding_levy = yes
-					
 					if = {
 						limit = {
 							dejure_liege_title = {
@@ -1515,12 +1722,12 @@ decisions = {
 					}
 				}
 			}
-			
 			if = {
-				limit = { ai = no }
+				limit = {
+					ai = no
+				}
 				set_character_flag = achievement_res_publica
 			}
-			
 			if = {
 				limit = {
 					ai = no
@@ -1530,29 +1737,24 @@ decisions = {
 					picture = GFX_evt_busy_trading_dock_republic
 				}
 			}
-			
 			set_government_type = merchant_republic_government
 		}
-		
 		ai_will_do = {
 			factor = 0
 		}
 	}
-	
 }
-
 targetted_decisions = {
+
 	embrace_mutazila = {
 		only_playable = yes
-		
 		filter = self
 		ai_target_filter = self
-		
 		potential = {
 			has_dlc = "Sons of Abraham"
 			is_playable = yes
 			religion = ormazd
-			NOT = { 
+			NOT = {
 				OR = {
 					trait = mutazilite
 					trait = ashari
@@ -1561,23 +1763,20 @@ targetted_decisions = {
 			is_adult = yes
 			prisoner = no
 		}
-		
 		allow = {
 			piety = 50
 		}
-		
 		effect = {
 			add_trait = mutazilite
-			character_event = { id = SoA.600 tooltip = EVTTOOLTIP_SoA_600 }
+			character_event = {
+				id = SoA.600 tooltip = EVTTOOLTIP_SoA_600
+			}
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 1
-			
 			modifier = {
 				factor = 0
 				trait = zealous
@@ -1588,24 +1787,25 @@ targetted_decisions = {
 			}
 			modifier = {
 				factor = 1.2
-				liege = { trait = mutazilite }
+				liege = {
+					trait = mutazilite
+				}
 			}
 			modifier = {
 				factor = 0.005 # Slow it down
 			}
 		}
 	}
+
 	embrace_ashari = {
 		only_playable = yes
-		
 		filter = self
 		ai_target_filter = self
-		
-		potential = {	
+		potential = {
 			has_dlc = "Sons of Abraham"
 			is_playable = yes
 			religion = ormazd
-			NOT = { 
+			NOT = {
 				OR = {
 					trait = mutazilite
 					trait = ashari
@@ -1614,23 +1814,20 @@ targetted_decisions = {
 			is_adult = yes
 			prisoner = no
 		}
-		
 		allow = {
 			piety = 50
 		}
-		
 		effect = {
 			add_trait = ashari
-			character_event = { id = SoA.601 tooltip = EVTTOOLTIP_SoA_601 }
+			character_event = {
+				id = SoA.601 tooltip = EVTTOOLTIP_SoA_601
+			}
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 1
-			
 			modifier = {
 				factor = 0
 				trait = cynical
@@ -1641,7 +1838,9 @@ targetted_decisions = {
 			}
 			modifier = {
 				factor = 1.2
-				liege = { trait = ashari }
+				liege = {
+					trait = ashari
+				}
 			}
 			modifier = {
 				factor = 1.2
@@ -1661,4 +1860,3 @@ targetted_decisions = {
 		}
 	}
 }
-

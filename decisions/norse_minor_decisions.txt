@@ -1,17 +1,18 @@
 targetted_decisions = {
+
 	make_shieldmaiden = {
 		only_playable = yes
 		filter = court
 		ai_target_filter = court
-
 		from_potential = {
 			is_playable = yes
 			religion = norscan_gods
 		}
-
 		potential = {
 			is_female = yes
-			FROM = { is_liege_of = ROOT	}
+			FROM = {
+				is_liege_of = ROOT
+			}
 			religion = norscan_gods
 			NOT = {
 				trait = shieldmaiden
@@ -21,13 +22,14 @@ targetted_decisions = {
 				is_landed = yes
 				any_spouse = {
 					OR = {
-						NOT = { character = FROM }
+						NOT = {
+							character = FROM
+						}
 						is_landed = no
 					}
 				}
 			}
 		}
-
 		allow = {
 			is_adult = yes
 			martial = 10
@@ -57,36 +59,47 @@ targetted_decisions = {
 			}
 			custom_tooltip = {
 				text = make_shieldmaiden_custom_tooltip_3
-				hidden_tooltip = { NOT = { has_character_modifier = recently_relieved_shieldmaiden_timer } }
+				hidden_tooltip = {
+					NOT = {
+						has_character_modifier = recently_relieved_shieldmaiden_timer
+					}
+				}
 			}
 		}
-
 		effect = {
-			custom_tooltip = { text = make_shieldmaiden_custom_tooltip_4 }
-
+			custom_tooltip = {
+				text = make_shieldmaiden_custom_tooltip_4
+			}
 			hidden_tooltip = {
-				character_event = { id = 79020 }
+				character_event = {
+					id = 79020
+				}
 			}
 		}
-
 		revoke_allowed = {
 			always = no
 		}
-
 		ai_will_do = {
 			factor = 0.01
-			
 			modifier = {
 				factor = 1.5
-				reverse_opinion = { who = FROM value = 40 }
+				reverse_opinion = {
+					who = FROM value = 40
+				}
 			}
 			modifier = {
 				factor = 0.2
-				NOT = { reverse_opinion = { who = FROM value = 5 } }
+				NOT = {
+					reverse_opinion = {
+						who = FROM value = 5
+					}
+				}
 			}
 			modifier = {
 				factor = 0
-				FROM = { is_rival = ROOT }
+				FROM = {
+					is_rival = ROOT
+				}
 			}
 			modifier = {
 				factor = 10
@@ -106,29 +119,29 @@ targetted_decisions = {
 		only_playable = yes
 		filter = court
 		ai_target_filter = court
-
 		from_potential = {
 			is_playable = yes
 			religion = norscan_gods
 		}
-
 		potential = {
-			NOT = {	character = FROM }
+			NOT = {
+				character = FROM
+			}
 			trait = shieldmaiden
-			FROM = { is_liege_of = ROOT	}
+			FROM = {
+				is_liege_of = ROOT
+			}
 			is_female = yes
 			religion = norscan_gods
 		}
-
 		allow = {
 		}
-
 		effect = {
 			remove_trait = shieldmaiden
-
 			hidden_tooltip = {
-				character_event = { id = 79023 }
-
+				character_event = {
+					id = 79023
+				}
 				add_character_modifier = {
  					modifier = recently_relieved_shieldmaiden_timer
  					days = 365
@@ -136,21 +149,22 @@ targetted_decisions = {
 				}
 			}
 		}
-
 		revoke_allowed = {
 			always = no
 		}
-
 		ai_will_do = {
 			factor = 0.01
-			
 			modifier = {
 				factor = 10
-				FROM = { is_rival = ROOT }
+				FROM = {
+					is_rival = ROOT
+				}
 			}
 			modifier = {
 				factor = 10
-				NOT = { martial = 9 }
+				NOT = {
+					martial = 9
+				}
 			}
 		}
 	}

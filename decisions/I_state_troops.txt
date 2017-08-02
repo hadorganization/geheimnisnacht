@@ -8,9 +8,9 @@
 #	realm_owned: all titles in the same top realm as the AI
 #	dynasty_owned: all titles owned by members of the same dynasty
 #	all: all titles (Avoid if possible. VERY CPU-HEAVY!)
-#	
-
+#
 title_decisions = {
+
 	state_troop_swordsmen = {
 		filter = sub_realm_owned
 		ai_target_filter = sub_realm_owned
@@ -42,10 +42,10 @@ title_decisions = {
 						wealth = 1000
 					}
 					hidden_tooltip = {
-					AND = {
-						ai = yes
-						wealth = 400
-					}
+						AND = {
+							ai = yes
+							wealth = 400
+						}
 					}
 				}
 			}
@@ -56,33 +56,43 @@ title_decisions = {
 			}
 		}
 		effect = {
-			FROM = {				
+			FROM = {
 				if = {
-					limit = { ai = no }
+					limit = {
+						ai = no
+					}
 					wealth = -1000
 				}
 				hidden_tooltip = {
-				if = {
-					limit = { ai = yes }
-					wealth = -400
-				}
+					if = {
+						limit = {
+							ai = yes
+						}
+						wealth = -400
+					}
 				}
 			}
 			location = {
-				add_province_modifier = { name = founded_state_troops duration = 3600 } 
+				add_province_modifier = {
+					name = founded_state_troops duration = 3600
+				}
 			}
 			hidden_tooltip = {
-				change_variable = { which = swordsmen_regiment value = 1 }
+				change_variable = {
+					which = swordsmen_regiment value = 1
+				}
 				create_random_soldier = {
 					random_traits = yes
 					religion = FROM
 					culture = FROM
-					dynasty = none 
+					dynasty = none
 					female = no
 					age = 30
 				}
 				new_character = {
-					character_event = { id = state_troops.1 } 
+					character_event = {
+						id = state_troops.1
+					}
 				}
 			}
 		}
@@ -91,11 +101,12 @@ title_decisions = {
 		}
 		ai_will_do = {
 			factor = 1
-			
 			modifier = {
 				factor = 0
 				FROM = {
-					NOT = { wealth = 500 }
+					NOT = {
+						wealth = 500
+					}
 				}
 			}
 			modifier = {
@@ -111,8 +122,10 @@ title_decisions = {
 				factor = 0.01
 				FROM = {
 					OR = {
-						NOT = { culture_group = imperial_group }
-						AND = {						
+						NOT = {
+							culture_group = imperial_group
+						}
+						AND = {
 							culture_group = imperial_group
 							NOT = {
 								culture = middenlander
@@ -139,7 +152,7 @@ title_decisions = {
 			}
 		}
 	}
-	
+
 	state_troop_crossbowmen = {
 		filter = sub_realm_owned
 		ai_target_filter = sub_realm_owned
@@ -171,10 +184,10 @@ title_decisions = {
 						wealth = 1000
 					}
 					hidden_tooltip = {
-					AND = {
-						ai = yes
-						wealth = 400
-					}
+						AND = {
+							ai = yes
+							wealth = 400
+						}
 					}
 				}
 			}
@@ -185,33 +198,43 @@ title_decisions = {
 			}
 		}
 		effect = {
-			FROM = {				
+			FROM = {
 				if = {
-					limit = { ai = no }
+					limit = {
+						ai = no
+					}
 					wealth = -1000
 				}
 				hidden_tooltip = {
-				if = {
-					limit = { ai = yes }
-					wealth = -400
-				}
+					if = {
+						limit = {
+							ai = yes
+						}
+						wealth = -400
+					}
 				}
 			}
 			location = {
-				add_province_modifier = { name = founded_state_troops duration = 3600 } 
+				add_province_modifier = {
+					name = founded_state_troops duration = 3600
+				}
 			}
 			hidden_tooltip = {
-				change_variable = { which = crossbowmen_regiment value = 1 }
+				change_variable = {
+					which = crossbowmen_regiment value = 1
+				}
 				create_random_soldier = {
 					random_traits = yes
 					religion = FROM
 					culture = FROM
-					dynasty = none 
+					dynasty = none
 					female = no
 					age = 30
 				}
 				new_character = {
-					character_event = { id = state_troops.2 } 
+					character_event = {
+						id = state_troops.2
+					}
 				}
 			}
 		}
@@ -220,11 +243,12 @@ title_decisions = {
 		}
 		ai_will_do = {
 			factor = 1
-			
 			modifier = {
 				factor = 0
 				FROM = {
-				NOT = { wealth = 500 }
+					NOT = {
+						wealth = 500
+					}
 				}
 			}
 			modifier = {
@@ -239,34 +263,36 @@ title_decisions = {
 			modifier = {
 				factor = 0.01
 				FROM = {
-				OR = {
-					NOT = { culture_group = imperial_group }
-					AND = {
-						culture_group = imperial_group
+					OR = {
 						NOT = {
-							culture = nordlander
-							culture = talabeclander
-							culture = hochlander
-							culture = ostermarker
+							culture_group = imperial_group
+						}
+						AND = {
+							culture_group = imperial_group
+							NOT = {
+								culture = nordlander
+								culture = talabeclander
+								culture = hochlander
+								culture = ostermarker
+							}
 						}
 					}
-				}
 				}
 			}
 			modifier = {
 				factor = 0.1
 				FROM = {
-				OR = {
-					culture = nordlander
-					culture = talabeclander
-					culture = hochlander
-					culture = ostermarker
-				}
+					OR = {
+						culture = nordlander
+						culture = talabeclander
+						culture = hochlander
+						culture = ostermarker
+					}
 				}
 			}
 		}
 	}
-	
+
 	state_troop_halberdier = {
 		filter = sub_realm_owned
 		ai_target_filter = sub_realm_owned
@@ -298,10 +324,10 @@ title_decisions = {
 						wealth = 1250
 					}
 					hidden_tooltip = {
-					AND = {
-						ai = yes
-						wealth = 400
-					}
+						AND = {
+							ai = yes
+							wealth = 400
+						}
 					}
 				}
 			}
@@ -312,33 +338,43 @@ title_decisions = {
 			}
 		}
 		effect = {
-			FROM = {				
+			FROM = {
 				if = {
-					limit = { ai = no }
+					limit = {
+						ai = no
+					}
 					wealth = -1250
 				}
 				hidden_tooltip = {
-				if = {
-					limit = { ai = yes }
-					wealth = -400
-				}
+					if = {
+						limit = {
+							ai = yes
+						}
+						wealth = -400
+					}
 				}
 			}
 			location = {
-				add_province_modifier = { name = founded_state_troops duration = 3600 } 
+				add_province_modifier = {
+					name = founded_state_troops duration = 3600
+				}
 			}
 			hidden_tooltip = {
-				change_variable = { which = halberdier_regiment value = 1 }
+				change_variable = {
+					which = halberdier_regiment value = 1
+				}
 				create_random_soldier = {
 					random_traits = yes
 					religion = FROM
 					culture = FROM
-					dynasty = none 
+					dynasty = none
 					female = no
 					age = 30
 				}
 				new_character = {
-					character_event = { id = state_troops.3 } 
+					character_event = {
+						id = state_troops.3
+					}
 				}
 			}
 		}
@@ -347,11 +383,12 @@ title_decisions = {
 		}
 		ai_will_do = {
 			factor = 1
-			
 			modifier = {
 				factor = 0
 				FROM = {
-				NOT = { wealth = 500 }
+					NOT = {
+						wealth = 500
+					}
 				}
 			}
 			modifier = {
@@ -366,18 +403,20 @@ title_decisions = {
 			modifier = {
 				factor = 0.1
 				FROM = {
-				culture_group = imperial_group
+					culture_group = imperial_group
 				}
 			}
 			modifier = {
 				factor = 0.01
 				FROM = {
-				NOT = { culture_group = imperial_group }
+					NOT = {
+						culture_group = imperial_group
+					}
 				}
 			}
 		}
 	}
-	
+
 	state_troop_greatsword = {
 		filter = sub_realm_owned
 		ai_target_filter = sub_realm_owned
@@ -409,10 +448,10 @@ title_decisions = {
 						wealth = 1250
 					}
 					hidden_tooltip = {
-					AND = {
-						ai = yes
-						wealth = 400
-					}
+						AND = {
+							ai = yes
+							wealth = 400
+						}
 					}
 				}
 			}
@@ -423,33 +462,43 @@ title_decisions = {
 			}
 		}
 		effect = {
-			FROM = {				
+			FROM = {
 				if = {
-					limit = { ai = no }
+					limit = {
+						ai = no
+					}
 					wealth = -1250
 				}
 				hidden_tooltip = {
-				if = {
-					limit = { ai = yes }
-					wealth = -400
-				}
+					if = {
+						limit = {
+							ai = yes
+						}
+						wealth = -400
+					}
 				}
 			}
 			location = {
-				add_province_modifier = { name = founded_state_troops duration = 3600 } 
+				add_province_modifier = {
+					name = founded_state_troops duration = 3600
+				}
 			}
 			hidden_tooltip = {
-				change_variable = { which = greatsword_regiment value = 1 }
+				change_variable = {
+					which = greatsword_regiment value = 1
+				}
 				create_random_soldier = {
 					random_traits = yes
 					religion = FROM
 					culture = FROM
-					dynasty = none 
+					dynasty = none
 					female = no
 					age = 30
 				}
 				new_character = {
-					character_event = { id = state_troops.4 } 
+					character_event = {
+						id = state_troops.4
+					}
 				}
 			}
 		}
@@ -458,11 +507,12 @@ title_decisions = {
 		}
 		ai_will_do = {
 			factor = 1
-			
 			modifier = {
 				factor = 0
 				FROM = {
-				NOT = { wealth = 500 }
+					NOT = {
+						wealth = 500
+					}
 				}
 			}
 			modifier = {
@@ -477,36 +527,38 @@ title_decisions = {
 			modifier = {
 				factor = 0.01
 				FROM = {
-				OR = {
-					NOT = { culture_group = imperial_group }
-					AND = {
-						culture_group = imperial_group
+					OR = {
 						NOT = {
-							culture = middenlander
-							culture = stirlander
-							culture = averlander
-							culture = ostlander
-							culture = reiklander
+							culture_group = imperial_group
+						}
+						AND = {
+							culture_group = imperial_group
+							NOT = {
+								culture = middenlander
+								culture = stirlander
+								culture = averlander
+								culture = ostlander
+								culture = reiklander
+							}
 						}
 					}
-				}
 				}
 			}
 			modifier = {
 				factor = 0.1
 				FROM = {
-				OR = {
-					culture = middenlander
-					culture = stirlander
-					culture = averlander
-					culture = ostlander
-					culture = reiklander
-				}
+					OR = {
+						culture = middenlander
+						culture = stirlander
+						culture = averlander
+						culture = ostlander
+						culture = reiklander
+					}
 				}
 			}
 		}
 	}
-	
+
 	state_troop_handgunner = {
 		filter = sub_realm_owned
 		ai_target_filter = sub_realm_owned
@@ -538,10 +590,10 @@ title_decisions = {
 						wealth = 1500
 					}
 					hidden_tooltip = {
-					AND = {
-						ai = yes
-						wealth = 400
-					}
+						AND = {
+							ai = yes
+							wealth = 400
+						}
 					}
 				}
 			}
@@ -552,33 +604,43 @@ title_decisions = {
 			}
 		}
 		effect = {
-			FROM = {				
+			FROM = {
 				if = {
-					limit = { ai = no }
+					limit = {
+						ai = no
+					}
 					wealth = -1500
 				}
 				hidden_tooltip = {
-				if = {
-					limit = { ai = yes }
-					wealth = -400
-				}
+					if = {
+						limit = {
+							ai = yes
+						}
+						wealth = -400
+					}
 				}
 			}
 			location = {
-				add_province_modifier = { name = founded_state_troops duration = 3600 } 
+				add_province_modifier = {
+					name = founded_state_troops duration = 3600
+				}
 			}
 			hidden_tooltip = {
-				change_variable = { which = handgunner_regiment value = 1 }
+				change_variable = {
+					which = handgunner_regiment value = 1
+				}
 				create_random_soldier = {
 					random_traits = yes
 					religion = FROM
 					culture = FROM
-					dynasty = none 
+					dynasty = none
 					female = no
 					age = 30
 				}
 				new_character = {
-					character_event = { id = state_troops.5 } 
+					character_event = {
+						id = state_troops.5
+					}
 				}
 			}
 		}
@@ -587,11 +649,12 @@ title_decisions = {
 		}
 		ai_will_do = {
 			factor = 1
-			
 			modifier = {
 				factor = 0
 				FROM = {
-				NOT = { wealth = 500 }
+					NOT = {
+						wealth = 500
+					}
 				}
 			}
 			modifier = {
@@ -606,34 +669,36 @@ title_decisions = {
 			modifier = {
 				factor = 0.01
 				FROM = {
-				OR = {
-					NOT = { culture_group = imperial_group }
-					AND = {
-						culture_group = imperial_group
+					OR = {
 						NOT = {
-							culture = reiklander
-							culture = hochlander
-							culture = westerlander
-							culture = wissenlander
+							culture_group = imperial_group
+						}
+						AND = {
+							culture_group = imperial_group
+							NOT = {
+								culture = reiklander
+								culture = hochlander
+								culture = westerlander
+								culture = wissenlander
+							}
 						}
 					}
-				}
 				}
 			}
 			modifier = {
 				factor = 0.1
 				FROM = {
-				OR = {
-					culture = reiklander
-					culture = hochlander
-					culture = westerlander
-					culture = wissenlander
-				}
+					OR = {
+						culture = reiklander
+						culture = hochlander
+						culture = westerlander
+						culture = wissenlander
+					}
 				}
 			}
 		}
 	}
-	
+
 	state_troop_artillery = {
 		filter = sub_realm_owned
 		ai_target_filter = sub_realm_owned
@@ -665,10 +730,10 @@ title_decisions = {
 						wealth = 2000
 					}
 					hidden_tooltip = {
-					AND = {
-						ai = yes
-						wealth = 400
-					}
+						AND = {
+							ai = yes
+							wealth = 400
+						}
 					}
 				}
 			}
@@ -679,33 +744,43 @@ title_decisions = {
 			}
 		}
 		effect = {
-			FROM = {				
+			FROM = {
 				if = {
-					limit = { ai = no }
+					limit = {
+						ai = no
+					}
 					wealth = -2000
 				}
 				hidden_tooltip = {
-				if = {
-					limit = { ai = yes }
-					wealth = -400
-				}
+					if = {
+						limit = {
+							ai = yes
+						}
+						wealth = -400
+					}
 				}
 			}
 			location = {
-				add_province_modifier = { name = founded_state_troops duration = 3600 } 
+				add_province_modifier = {
+					name = founded_state_troops duration = 3600
+				}
 			}
 			hidden_tooltip = {
-				change_variable = { which = artillery_regiment value = 1 }
+				change_variable = {
+					which = artillery_regiment value = 1
+				}
 				create_random_soldier = {
 					random_traits = yes
 					religion = FROM
 					culture = FROM
-					dynasty = none 
+					dynasty = none
 					female = no
 					age = 30
 				}
 				new_character = {
-					character_event = { id = state_troops.6 } 
+					character_event = {
+						id = state_troops.6
+					}
 				}
 			}
 		}
@@ -714,11 +789,12 @@ title_decisions = {
 		}
 		ai_will_do = {
 			factor = 1
-			
 			modifier = {
 				factor = 0
 				FROM = {
-				NOT = { wealth = 500 }
+					NOT = {
+						wealth = 500
+					}
 				}
 			}
 			modifier = {
@@ -733,28 +809,30 @@ title_decisions = {
 			modifier = {
 				factor = 0.01
 				FROM = {
-				OR = {
-						NOT = { culture_group = imperial_group }
-					AND = {
-						culture_group = imperial_group
+					OR = {
 						NOT = {
-							culture = wissenlander
+							culture_group = imperial_group
+						}
+						AND = {
+							culture_group = imperial_group
+							NOT = {
+								culture = wissenlander
+							}
 						}
 					}
-				}
 				}
 			}
 			modifier = {
 				factor = 0.1
 				FROM = {
-				OR = {
-					culture = wissenlander
-				}
+					OR = {
+						culture = wissenlander
+					}
 				}
 			}
 		}
 	}
-	
+
 	state_troop_pistolier = {
 		filter = sub_realm_owned
 		ai_target_filter = sub_realm_owned
@@ -786,10 +864,10 @@ title_decisions = {
 						wealth = 1500
 					}
 					hidden_tooltip = {
-					AND = {
-						ai = yes
-						wealth = 400
-					}
+						AND = {
+							ai = yes
+							wealth = 400
+						}
 					}
 				}
 			}
@@ -800,31 +878,41 @@ title_decisions = {
 			}
 		}
 		effect = {
-			FROM = {				
+			FROM = {
 				if = {
-					limit = { ai = no }
+					limit = {
+						ai = no
+					}
 					wealth = -1500
 				}
 				if = {
-					limit = { ai = yes }
+					limit = {
+						ai = yes
+					}
 					wealth = -400
 				}
 			}
 			location = {
-				add_province_modifier = { name = founded_state_troops duration = 3600 } 
+				add_province_modifier = {
+					name = founded_state_troops duration = 3600
+				}
 			}
 			hidden_tooltip = {
-				change_variable = { which = pistolier_regiment value = 1 }
+				change_variable = {
+					which = pistolier_regiment value = 1
+				}
 				create_random_soldier = {
 					random_traits = yes
 					religion = FROM
 					culture = FROM
-					dynasty = none 
+					dynasty = none
 					female = no
 					age = 30
 				}
 				new_character = {
-					character_event = { id = state_troops.7 } 
+					character_event = {
+						id = state_troops.7
+					}
 				}
 			}
 		}
@@ -833,11 +921,12 @@ title_decisions = {
 		}
 		ai_will_do = {
 			factor = 1
-			
 			modifier = {
 				factor = 0
 				FROM = {
-				NOT = { wealth = 500 }
+					NOT = {
+						wealth = 500
+					}
 				}
 			}
 			modifier = {
@@ -852,33 +941,31 @@ title_decisions = {
 			modifier = {
 				factor = 0.01
 				FROM = {
-				OR = {
-					NOT = { culture_group = imperial_group }
-					AND = {
-						culture_group = imperial_group
+					OR = {
 						NOT = {
-							culture = averlander
-							culture = ostlander
-							culture = ostermarker
+							culture_group = imperial_group
+						}
+						AND = {
+							culture_group = imperial_group
+							NOT = {
+								culture = averlander
+								culture = ostlander
+								culture = ostermarker
+							}
 						}
 					}
-				}
 				}
 			}
 			modifier = {
 				factor = 0.1
 				FROM = {
-				OR = {
-					culture = averlander
-					culture = ostlander
-					culture = ostermarker
-				}
+					OR = {
+						culture = averlander
+						culture = ostlander
+						culture = ostermarker
+					}
 				}
 			}
 		}
 	}
-
 }
-
-
-

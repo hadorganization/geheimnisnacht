@@ -1,58 +1,63 @@
 targetted_decisions = {
+
 	z_targeted_spell_casting = {
 		ai_target_filter = realm
 		filter = all
 		from_potential = {
-			or = { 
-				z_magic_non_combat_caster = yes	
-				any_realm_character = { 
+			or = {
+				z_magic_non_combat_caster = yes
+				any_realm_character = {
 					z_magic_non_combat_caster = yes
 				}
 			}
 		}
 		potential = {
-		}	
-		allow = { 
-			FROM = { 
+		}
+		allow = {
+			FROM = {
 				piety = 200
-
 				or = {
-					z_magic_non_combat_valid_caster = yes	
-					any_realm_character = { 
+					z_magic_non_combat_valid_caster = yes
+					any_realm_character = {
 						z_magic_non_combat_valid_caster = yes
 					}
 				}
-			}			
-		}		
+			}
+		}
 		effect = {
 			save_event_target_as = spelltarget
 			location = {
 				save_event_target_as = spellloc
-			}			
+			}
 			FROM = {
 				piety = -200
 				save_event_target_as = spelllord
-				character_event = { id = magic_menu_non_combat.1}
+				character_event = {
+					id = magic_menu_non_combat.1
+				}
 			}
 		}
-		ai_will_do = { 
-			factor = 0.1		
+		ai_will_do = {
+			factor = 0.1
 			modifier = {
 				factor = 0.1
-				FROM = { trait = envious }
+				FROM = {
+					trait = envious
+				}
 			}
 			modifier = {
 				factor = 0.25
 				religion = asrai_cadai
-				NOT = { piety = 250 }
-			}
-			modifier = { 
-				factor = 2
-				FROM = {
-					character = ROOT 
+				NOT = {
+					piety = 250
 				}
 			}
-		 }				
+			modifier = {
+				factor = 2
+				FROM = {
+					character = ROOT
+				}
+			}
+		}
 	}
 }
-	

@@ -1,22 +1,27 @@
 targetted_decisions = {
+
 	create_mercenary_company_feudal = {
 		only_playable = yes
 		filter = home_court
 		ai_target_filter = home_court
-		
 		from_potential = {
 			is_playable = yes
 			is_landed = yes
 			mercenary = no
-			OR = { capital_scope = { region = world_old_world_border_princes }
+			OR = {
+				capital_scope = {
+					region = world_old_world_border_princes
+				}
 				culture_group = tilean_group
-				culture_group = estalian_group 
-				trait = creature_ogre }
-			OR = { trait = creature_human
-				trait = creature_ogre }
+				culture_group = estalian_group
+				trait = creature_ogre
+			}
+			OR = {
+				trait = creature_human
+				trait = creature_ogre
+			}
 			holy_order = no
 			has_dlc = "Zeus"
-		
 			OR = {
 				ai = no
 				AND = {
@@ -42,7 +47,6 @@ targetted_decisions = {
 				has_character_modifier = mercenary_traditions
 			}
 		}
-		
 		potential = {
 			can_be_mercenary_leader_potential_trigger = yes
 			OR = {
@@ -53,11 +57,12 @@ targetted_decisions = {
 				trait = creature_ogre
 			}
 		}
-		
 		allow = {
 			can_be_mercenary_leader_allow_trigger = yes
 			FROM = {
-				NOT = { has_mercenary_band = yes }
+				NOT = {
+					has_mercenary_band = yes
+				}
 				wealth = 50
 			}
 		}
@@ -104,19 +109,16 @@ targetted_decisions = {
 		}
 		ai_will_do = {
 			factor = 0.001
-			
-			modifier = { 
+			modifier = {
 				factor = 0
 				controls_religion = yes
 			}
-			
 		}
 	}
 
 	dissolve_mercenary_company_feudal = {
 		only_playable = yes
 		ai_target_filter = dynasty
-		
 		from_potential = {
 			is_playable = yes
 			is_landed = yes
@@ -129,7 +131,9 @@ targetted_decisions = {
 			replace_mercenary_captain_allow_trigger = yes
 		}
 		effect = {
-			character_event = { id = ZE.11020 }
+			character_event = {
+				id = ZE.11020
+			}
 		}
 		revoke_allowed = {
 			always = no
@@ -142,8 +146,7 @@ targetted_decisions = {
 	change_council_job = {
 		only_rulers = yes
 		filter = realm
-		ai_target_filter = self 
-		
+		ai_target_filter = self
 		from_potential = {
 			has_dlc = "Zeus"
 			is_ruler = yes
@@ -158,7 +161,9 @@ targetted_decisions = {
 		}
 		effect = {
 			hidden_tooltip = {
-				character_event = { id = ZE.6020 }
+				character_event = {
+					id = ZE.6020
+				}
 			}
 		}
 		revoke_allowed = {
@@ -168,34 +173,35 @@ targetted_decisions = {
 			factor = 0
 		}
 	}
-	
+
 	ask_wards_liege_to_allow_culture_religion_swap = {
 		only_playable = yes
 		filter = sub_realm
 		ai_target_filter = court
-		
 		from_potential = {
 			is_playable = yes
 			has_dlc = "Zeus"
 		}
-		
 		potential = {
 			prisoner = no
 			is_adult = no
 			is_landed = no
-			NOR = { 
+			NOR = {
 				has_character_flag = guardian_asked_to_change_focus
 				has_focus = focus_ch_heritage
 				character = FROM
 			}
-			
 			host = {
 				OR = {
 					character = FROM
 					is_liege_or_above = FROM
 				}
 			}
-			NOT = { liege = { character = FROM } }
+			NOT = {
+				liege = {
+					character = FROM
+				}
+			}
 			NOT = {
 				educator = {
 					culture = ROOT
@@ -203,18 +209,18 @@ targetted_decisions = {
 				}
 			}
 		}
-		
-		allow = { 
-			NOT = { 
+		allow = {
+			NOT = {
 				age = 10
 			}
 		}
-		
 		effect = {
 			set_character_flag = guardian_asked_to_change_focus
 			if = {
 				limit = {
-					liege = { character = FROM }
+					liege = {
+						character = FROM
+					}
 				}
 				hidden_tooltip = {
 					clear_focus = yes
@@ -224,7 +230,9 @@ targetted_decisions = {
 			}
 			hidden_tooltip = {
 				liege = {
-					letter_event = { id = ZE.2130 days = 5 }
+					letter_event = {
+						id = ZE.2130 days = 5
+					}
 				}
 			}
 		}
@@ -235,7 +243,11 @@ targetted_decisions = {
 			factor = 1
 			modifier = {
 				factor = 0
-				NOT = { host = { character = FROM } }
+				NOT = {
+					host = {
+						character = FROM
+					}
+				}
 			}
 			modifier = {
 				factor = 0
@@ -251,27 +263,29 @@ targetted_decisions = {
 			}
 		}
 	}
-	
+
 	change_wards_focus_to_heritage  = {
 		only_playable = yes
 		filter = court
 		ai_target_filter = court
-		
 		from_potential = {
 			is_playable = yes
 			has_dlc = "Zeus"
 		}
-		
 		potential = {
 			is_adult = no
-			NOR = { 
+			NOR = {
 				has_character_flag = guardian_asked_to_change_focus
 				has_focus = focus_ch_heritage
 				character = FROM
 			}
-			host = { character = FROM }
+			host = {
+				character = FROM
+			}
 			OR = {
-				liege = { character = FROM }
+				liege = {
+					character = FROM
+				}
 				prisoner = yes
 			}
 			OR = {
@@ -286,19 +300,19 @@ targetted_decisions = {
 				}
 			}
 		}
-		
-		allow = { 
-			NOT = { 
+		allow = {
+			NOT = {
 				age = 10
 			}
 		}
-		
 		effect = {
 			set_character_flag = guardian_asked_to_change_focus
 			if = {
 				limit = {
 					OR = {
-						liege = { character = FROM }
+						liege = {
+							character = FROM
+						}
 						prisoner = yes
 					}
 				}
@@ -310,7 +324,9 @@ targetted_decisions = {
 			}
 			hidden_tooltip = {
 				liege = {
-					letter_event = { id = ZE.2130 days = 5 }
+					letter_event = {
+						id = ZE.2130 days = 5
+					}
 				}
 			}
 		}
@@ -329,46 +345,93 @@ targetted_decisions = {
 		only_playable = yes
 		filter = liege
 		ai_target_filter = liege
-		
 		from_potential = {
 			has_dlc = "Zeus"
 			is_playable = yes
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 		}
 		potential = {
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			owes_favor_to = FROM
 		}
 		allow = {
 			ROOT = {
 				OR = {
-					has_opinion_modifier = { who = FROM modifier = declared_war } 
-					has_opinion_modifier = { who = FROM modifier = opinion_dishonorable } 
-					has_opinion_modifier = { who = FROM modifier = opinion_traitor } 
-					has_opinion_modifier = { who = FROM modifier = opinion_rebel_traitor } 
-					has_opinion_modifier = { who = FROM modifier = opinion_regicide_traitor } 
-					has_opinion_modifier = { who = FROM modifier = opinion_killed_close_kin } 
-					has_opinion_modifier = { who = FROM modifier = opinion_refused_abdicate_title } 
-					has_opinion_modifier = { who = FROM modifier = opinion_fatwa_target } 
-					has_opinion_modifier = { who = FROM modifier = opinion_refused_order } 
-					has_opinion_modifier = { who = FROM modifier = opinion_witch } 
-					has_opinion_modifier = { who = FROM modifier = opinion_takfir } 
-					has_opinion_modifier = { who = FROM modifier = opinion_unfaithful_wife } 
-					has_opinion_modifier = { who = FROM modifier = opinion_cuckolded } 
-					has_opinion_modifier = { who = FROM modifier = opinion_charge_heresiarch } 
-					has_opinion_modifier = { who = FROM modifier = opinion_charge_infidel } 
-					has_opinion_modifier = { who = FROM modifier = opinion_charge_deviant } 
-					has_opinion_modifier = { who = FROM modifier = opinion_charge_illegitimate } 
-					has_opinion_modifier = { who = FROM modifier = opinion_charge_traitor } 
-					has_opinion_modifier = { who = FROM modifier = opinion_charge_slanderer } 
-					has_opinion_modifier = { who = FROM modifier = abuse_of_office } 
+					has_opinion_modifier = {
+						who = FROM modifier = declared_war
+					}
+					has_opinion_modifier = {
+						who = FROM modifier = opinion_dishonorable
+					}
+					has_opinion_modifier = {
+						who = FROM modifier = opinion_traitor
+					}
+					has_opinion_modifier = {
+						who = FROM modifier = opinion_rebel_traitor
+					}
+					has_opinion_modifier = {
+						who = FROM modifier = opinion_regicide_traitor
+					}
+					has_opinion_modifier = {
+						who = FROM modifier = opinion_killed_close_kin
+					}
+					has_opinion_modifier = {
+						who = FROM modifier = opinion_refused_abdicate_title
+					}
+					has_opinion_modifier = {
+						who = FROM modifier = opinion_fatwa_target
+					}
+					has_opinion_modifier = {
+						who = FROM modifier = opinion_refused_order
+					}
+					has_opinion_modifier = {
+						who = FROM modifier = opinion_witch
+					}
+					has_opinion_modifier = {
+						who = FROM modifier = opinion_takfir
+					}
+					has_opinion_modifier = {
+						who = FROM modifier = opinion_unfaithful_wife
+					}
+					has_opinion_modifier = {
+						who = FROM modifier = opinion_cuckolded
+					}
+					has_opinion_modifier = {
+						who = FROM modifier = opinion_charge_heresiarch
+					}
+					has_opinion_modifier = {
+						who = FROM modifier = opinion_charge_infidel
+					}
+					has_opinion_modifier = {
+						who = FROM modifier = opinion_charge_deviant
+					}
+					has_opinion_modifier = {
+						who = FROM modifier = opinion_charge_illegitimate
+					}
+					has_opinion_modifier = {
+						who = FROM modifier = opinion_charge_traitor
+					}
+					has_opinion_modifier = {
+						who = FROM modifier = opinion_charge_slanderer
+					}
+					has_opinion_modifier = {
+						who = FROM modifier = abuse_of_office
+					}
 				}
 			}
 		}
 		effect = {
 			hidden_tooltip = {
-				FROM = { save_event_target_as = pardon_target }
-				character_event = { id = ZE.8120 }
+				FROM = {
+					save_event_target_as = pardon_target
+				}
+				character_event = {
+					id = ZE.8120
+				}
 			}
 		}
 		revoke_allowed = {
@@ -378,11 +441,10 @@ targetted_decisions = {
 			factor = 1000
 		}
 	}
-	
+
 	change_composition_mercenary_company_feudal = {
 		only_playable = yes
 		ai_target_filter = dynasty
-		
 		from_potential = {
 			is_playable = yes
 			is_landed = yes
@@ -399,7 +461,9 @@ targetted_decisions = {
 			replace_mercenary_captain_allow_trigger = yes
 		}
 		effect = {
-			character_event = { id = ZE.23100 }
+			character_event = {
+				id = ZE.23100
+			}
 		}
 		revoke_allowed = {
 			always = no
@@ -408,11 +472,10 @@ targetted_decisions = {
 			factor = 0.001
 		}
 	}
-	
+
 	send_troops_mercenary_company_feudal = {
 		only_playable = yes
 		ai_target_filter = dynasty
-		
 		from_potential = {
 			is_playable = yes
 			is_landed = yes
@@ -429,7 +492,9 @@ targetted_decisions = {
 			replace_mercenary_captain_allow_trigger = yes
 		}
 		effect = {
-			character_event = { id = ZE.23105 }
+			character_event = {
+				id = ZE.23105
+			}
 		}
 		revoke_allowed = {
 			always = no
@@ -438,26 +503,23 @@ targetted_decisions = {
 			factor = 0.001
 		}
 	}
-	
+
 	introduce_heir = {
 		only_playable = yes
 		is_high_prio = yes
-		
 		filter = home_court
 		ai_target_filter = home_court
-	
 		from_potential = {
 			is_playable = yes
 			has_ambition = obj_groom_an_heir
 			prisoner = no
-			NOR = { 
+			NOR = {
 				trait = incapable
 				is_inaccessible_trigger = yes
 			}
 			war = no
 			num_of_vassals = 7
 		}
-		
 		potential = {
 			is_alive = yes
 			NOR = {
@@ -473,12 +535,16 @@ targetted_decisions = {
 		}
 		allow = {
 			is_primary_heir = FROM
-			is_adult = no 
+			is_adult = no
 			age = 12
 			is_landed = no
-			host = { character = FROM }
+			host = {
+				character = FROM
+			}
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			NOR = {
 				trait = bastard
 				trait = eunuch
@@ -494,18 +560,19 @@ targetted_decisions = {
 				hidden_tooltip = {
 					set_character_flag = introduced_heir
 					save_event_target_as = introduced_heir
-					FROM = { character_event = { id = ZE.22900 } }
+					FROM = {
+						character_event = {
+							id = ZE.22900
+						}
+					}
 				}
 			}
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 1
-			
 			modifier = {
 				factor = 0.01
 				always = yes

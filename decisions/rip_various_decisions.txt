@@ -1,19 +1,21 @@
 targeted_decisions = {
-	
+
 	release_tributary = {
-		
 		ai_target_filter = self
-		
 		from_potential = {
 			ai = no
 		}
 		potential = {
 			is_tributary = yes
-			suzerain = { character = FROM }
+			suzerain = {
+				character = FROM
+			}
 		}
 		allow = {
 			war = no
-			FROM = { war = no }
+			FROM = {
+				war = no
+			}
 		}
 		effect = {
 			remove_tributary = FROM
@@ -29,7 +31,6 @@ targeted_decisions = {
 
 	break_non_aggression_pact = {
 		ai_target_filter = self
-		
 		from_potential = {
 			ai = no
 		}
@@ -38,23 +39,26 @@ targeted_decisions = {
 			has_non_aggression_pact_with = FROM
 		}
 		allow = {
-		FROM = { prestige = 200 }
+			FROM = {
+				prestige = 200
+			}
 			war = no
-			FROM = { war = no }
+			FROM = {
+				war = no
+			}
 		}
 		effect = {
 			opinion = {
 				who = FROM
 				modifier = broken_non_aggression_pact
 			}
-			FROM = { 
+			FROM = {
 				prestige = -200
 				add_character_modifier = {
 					name = broken_non_aggression_pact_char_modifier
 					years = 10
 				}
 			}
-			
 			FROM = {
 				set_truce = {
 					who = ROOT
@@ -69,29 +73,32 @@ targeted_decisions = {
 			factor = 0
 		}
 	}
-	
+
 	recruit_prisoner = {
 		filter = court
 		ai_target_filter = court
-		
 		from_potential = {
 			ai = no
 			has_dlc = "Reapers"
 		}
-		
 		potential = {
 			prisoner = yes
 			is_ruler = no
 			is_adult = yes
 			is_heir = no
 			is_married = no
-			NOT = {	trait = incapable }
-			host = { character = FROM }
+			NOT = {
+				trait = incapable
+			}
+			host = {
+				character = FROM
+			}
 			liege = {
-				NOT = { character = FROM }
+				NOT = {
+					character = FROM
+				}
 			}
 		}
-		
 		allow = {
 			liege = {
 				NOR = {
@@ -111,11 +118,12 @@ targeted_decisions = {
 				value = -25
 			}
 		}
-		
 		effect = {
 			hidden_tooltip = {
 				liege = {
-					character_event = { id = RIP.29700 }
+					character_event = {
+						id = RIP.29700
+					}
 				}
 			}
 			if = {
@@ -130,31 +138,31 @@ targeted_decisions = {
 			move_character = FROM
 			prisoner = no
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 0
 		}
 	}
-	
 	# The war is in FROMFROM
+
 	interfere_in_vassal_war_attacker = {
 		filter = vassal_wars
 		ai_target_filter = vassal_wars
-	
 		from_potential = {
 			ai = no
 			has_dlc = "Reapers"
 		}
-		
 		potential = {
 			FROMFROM = {
-				attacker = { character = ROOT }
+				attacker = {
+					character = ROOT
+				}
 			}
-			NOT = { owes_favor_to = FROM }
+			NOT = {
+				owes_favor_to = FROM
+			}
 			NOT = {
 				has_opinion_modifier = {
 					who = FROM
@@ -162,25 +170,28 @@ targeted_decisions = {
 				}
 			}
 		}
-		
 		allow = {
 			FROM = {
 				prestige = 100
-				NOT = { trait = incapable }
+				NOT = {
+					trait = incapable
+				}
 				prisoner = no
 				in_seclusion = no
 			}
 		}
-		
 		effect = {
-			FROM = { prestige = -100 }
+			FROM = {
+				prestige = -100
+			}
 			FROMFROM = {
 				defender = {
 					save_event_target_as = target_defender
 				}
 			}
-			character_event = { id = RIP.30000 days = 3 }
-			
+			character_event = {
+				id = RIP.30000 days = 3
+			}
 			hidden_tooltip = {
 				opinion = {
 					who = FROM
@@ -189,78 +200,76 @@ targeted_decisions = {
 				}
 			}
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 0
 		}
 	}
-	
 	# The war is in FROMFROM
+
 	interfere_in_vassal_war_attacker_use_favor = {
 		filter = vassal_wars
 		ai_target_filter = vassal_wars
-	
 		from_potential = {
 			ai = no
 			has_dlc = "Reapers"
 			has_dlc = "Conclave"
 		}
-		
 		potential = {
 			FROMFROM = {
-				attacker = { character = ROOT }
+				attacker = {
+					character = ROOT
+				}
 			}
 			owes_favor_to = FROM
 		}
-		
 		allow = {
 			FROM = {
-				NOT = { trait = incapable }
+				NOT = {
+					trait = incapable
+				}
 				prisoner = no
 				in_seclusion = no
 			}
 		}
-		
 		effect = {
 			FROMFROM = {
 				defender = {
 					save_event_target_as = target_defender
 				}
 			}
-			
 			reverse_remove_favor = FROM
-			
-			character_event = { id = RIP.30010 days = 3 }
+			character_event = {
+				id = RIP.30010 days = 3
+			}
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 0
 		}
 	}
-	
 	# The war is in FROMFROM
+
 	interfere_in_vassal_war_defender = {
 		filter = vassal_wars
 		ai_target_filter = vassal_wars
-	
 		from_potential = {
 			ai = no
 			has_dlc = "Reapers"
 		}
-		
 		potential = {
 			FROMFROM = {
-				defender = { character = ROOT }
+				defender = {
+					character = ROOT
+				}
 			}
-			NOT = { owes_favor_to = FROM }
+			NOT = {
+				owes_favor_to = FROM
+			}
 			NOT = {
 				has_opinion_modifier = {
 					who = FROM
@@ -268,25 +277,28 @@ targeted_decisions = {
 				}
 			}
 		}
-		
 		allow = {
 			FROM = {
 				prestige = 200
-				NOT = { trait = incapable }
+				NOT = {
+					trait = incapable
+				}
 				prisoner = no
 				in_seclusion = no
 			}
 		}
-		
 		effect = {
-			FROM = { prestige = -200 }
+			FROM = {
+				prestige = -200
+			}
 			FROMFROM = {
 				attacker = {
 					save_event_target_as = target_attacker
 				}
 			}
-			character_event = { id = RIP.30020 days = 3 }
-			
+			character_event = {
+				id = RIP.30020 days = 3
+			}
 			hidden_tooltip = {
 				opinion = {
 					who = FROM
@@ -295,105 +307,116 @@ targeted_decisions = {
 				}
 			}
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 0
 		}
 	}
-	
 	# The war is in FROMFROM
+
 	interfere_in_vassal_war_defender_use_favor = {
 		filter = vassal_wars
 		ai_target_filter = vassal_wars
-	
 		from_potential = {
 			ai = no
 			has_dlc = "Reapers"
 			has_dlc = "Conclave"
 		}
-		
 		potential = {
 			FROMFROM = {
-				defender = { character = ROOT }
+				defender = {
+					character = ROOT
+				}
 			}
 			owes_favor_to = FROM
 		}
-		
 		allow = {
 			FROM = {
-				NOT = { trait = incapable }
+				NOT = {
+					trait = incapable
+				}
 				prisoner = no
 				in_seclusion = no
 			}
 		}
-		
 		effect = {
 			FROMFROM = {
 				attacker = {
 					save_event_target_as = target_attacker
 				}
 			}
-			
 			reverse_remove_favor = FROM
-			
-			character_event = { id = RIP.30030 days = 3 }
+			character_event = {
+				id = RIP.30030 days = 3
+			}
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 0
 		}
 	}
-	
+
 	demand_gavelkind = {
 		filter = vassals
 		ai_target_filter = vassals
-	
 		from_potential = {
 			ai = no
 			has_dlc = "Reapers"
 			is_feudal = yes
 			is_vice_royalty = no
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 		}
-		
 		potential = {
 			is_playable = yes
-			liege = { character = FROM }
-			NOT = { character = FROM }
+			liege = {
+				character = FROM
+			}
+			NOT = {
+				character = FROM
+			}
 			is_law_potential = succ_gavelkind
-			NOT = { has_law = succ_gavelkind }
-			NOT = { owes_favor_to = FROM }
-			NOT = { has_opinion_modifier = { who = FROM name = opinion_demanded_succ_law_change } }
+			NOT = {
+				has_law = succ_gavelkind
+			}
+			NOT = {
+				owes_favor_to = FROM
+			}
+			NOT = {
+				has_opinion_modifier = {
+					who = FROM name = opinion_demanded_succ_law_change
+				}
+			}
 			is_feudal = yes
 			mercenary = no
 			holy_order = no
 			is_vice_royalty = no
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 		}
-		
 		allow = {
 			FROM = {
 				prestige = 100
-				NOT = { trait = incapable }
+				NOT = {
+					trait = incapable
+				}
 				prisoner = no
 				in_seclusion = no
 			}
 		}
-		
 		effect = {
 			prestige = -100
-			character_event = { id = RIP.30040 days = 3 }
-			
+			character_event = {
+				id = RIP.30040 days = 3
+			}
 			hidden_tooltip = {
 				opinion = {
 					who = FROM
@@ -402,20 +425,17 @@ targeted_decisions = {
 				}
 			}
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 0
 		}
 	}
-	
+
 	demand_gavelkind_use_favor = {
 		filter = vassals
 		ai_target_filter = vassals
-	
 		from_potential = {
 			ai = no
 			has_dlc = "Reapers"
@@ -423,37 +443,52 @@ targeted_decisions = {
 			is_feudal = yes
 			is_vice_royalty = no
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 		}
-		
 		potential = {
 			is_playable = yes
-			liege = { character = FROM }
-			NOT = { character = FROM }
+			liege = {
+				character = FROM
+			}
+			NOT = {
+				character = FROM
+			}
 			is_law_potential = succ_gavelkind
-			NOT = { has_law = succ_gavelkind }
+			NOT = {
+				has_law = succ_gavelkind
+			}
 			owes_favor_to = FROM
-			NOT = { has_opinion_modifier = { who = FROM name = opinion_demanded_succ_law_change } }
+			NOT = {
+				has_opinion_modifier = {
+					who = FROM name = opinion_demanded_succ_law_change
+				}
+			}
 			is_feudal = yes
 			mercenary = no
 			holy_order = no
 			is_vice_royalty = no
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 		}
-		
 		allow = {
 			FROM = {
 				prestige = 100
-				NOT = { trait = incapable }
+				NOT = {
+					trait = incapable
+				}
 				prisoner = no
 				in_seclusion = no
 			}
 		}
-		
 		effect = {
 			prestige = -100
-			character_event = { id = RIP.30050 days = 3 }
+			character_event = {
+				id = RIP.30050 days = 3
+			}
 			hidden_tooltip = {
 				opinion = {
 					who = FROM
@@ -462,30 +497,31 @@ targeted_decisions = {
 				}
 			}
 		}
-		
 		revoke_allowed = {
 			always = no
 		}
-		
 		ai_will_do = {
 			factor = 0
 		}
 	}
-	
+
 	ask_to_leave_court = {
 		filter = court
 		ai_target_filter = court
-		
 		from_potential = {
 			ai = no
 			has_dlc = "Reapers"
 		}
 		potential = {
-			liege = { character = FROM }
+			liege = {
+				character = FROM
+			}
 			can_be_asked_to_leave_court_trigger = yes
 			NOT = {
 				any_spouse = {
-					liege = { character = FROM }
+					liege = {
+						character = FROM
+					}
 					can_be_asked_to_leave_court_trigger = no
 				}
 			}
@@ -497,7 +533,9 @@ targeted_decisions = {
 			prisoner = no
 			NOT = {
 				any_spouse = {
-					liege = { character = FROM }
+					liege = {
+						character = FROM
+					}
 					OR = {
 						trait = incapable
 						prisoner = yes
@@ -506,98 +544,127 @@ targeted_decisions = {
 			}
 		}
 		effect = {
-			FROM = { prestige = -5 }
-		
+			FROM = {
+				prestige = -5
+			}
 			opinion = {
 				modifier = opinion_disappointed
 				who = FROM
 				years = 10
 			}
-			
 			any_spouse = {
-				limit = { liege = { character = FROM } }
+				limit = {
+					liege = {
+						character = FROM
+					}
+				}
 				opinion = {
 					modifier = opinion_disappointed
 					who = FROM
 					years = 10
 				}
 			}
-			
-			if = { # Move to a same-religion court
+			if = {
+				# Move to a same-religion court
 				limit = {
 					any_playable_ruler = {
 						is_within_diplo_range = ROOT
 						religion = ROOT
-						their_opinion = { who = ROOT value = 10 }
-						NOT = { character = FROM }
+						their_opinion = {
+							who = ROOT value = 10
+						}
+						NOT = {
+							character = FROM
+						}
 					}
 				}
 				any_playable_ruler = {
 					limit = {
 						is_within_diplo_range = ROOT
 						religion = ROOT
-						their_opinion = { who = ROOT value = 10 }
-						NOT = { character = FROM }
+						their_opinion = {
+							who = ROOT value = 10
+						}
+						NOT = {
+							character = FROM
+						}
 					}
 					save_event_target_as = new_court
 				}
 				move_character = event_target:new_court
 				any_spouse = {
 					limit = {
-						liege = { character = FROM }
+						liege = {
+							character = FROM
+						}
 					}
 					move_character = event_target:new_court
 				}
 				break = yes
 			}
-			
-			if = { # Move to any court where the character likes me
+			if = {
+				# Move to any court where the character likes me
 				limit = {
 					any_playable_ruler = {
 						is_within_diplo_range = ROOT
-						their_opinion = { who = ROOT value = 10 }
-						NOT = { character = FROM }
+						their_opinion = {
+							who = ROOT value = 10
+						}
+						NOT = {
+							character = FROM
+						}
 					}
 				}
 				any_playable_ruler = {
 					limit = {
 						is_within_diplo_range = ROOT
-						their_opinion = { who = ROOT value = 10 }
-						NOT = { character = FROM }
+						their_opinion = {
+							who = ROOT value = 10
+						}
+						NOT = {
+							character = FROM
+						}
 					}
 					save_event_target_as = new_court_secondary
 				}
 				move_character = event_target:new_court_secondary
 				any_spouse = {
 					limit = {
-						liege = { character = FROM }
+						liege = {
+							character = FROM
+						}
 					}
 					move_character = event_target:new_court
 				}
 				break = yes
 			}
-		
-			if = { # Go anywhere but here
+			if = {
+				# Go anywhere but here
 				limit = {
 					any_playable_ruler = {
-						NOT = { character = FROM }
+						NOT = {
+							character = FROM
+						}
 					}
 				}
 				any_playable_ruler = {
 					limit = {
-						NOT = { character = FROM }
+						NOT = {
+							character = FROM
+						}
 					}
 					save_event_target_as = new_court_backup
 				}
 				move_character = event_target:new_court_backup
 				any_spouse = {
 					limit = {
-						liege = { character = FROM }
+						liege = {
+							character = FROM
+						}
 					}
 					move_character = event_target:new_court
 				}
 			}
-			
 		}
 		revoke_allowed = {
 			always = no
@@ -606,7 +673,7 @@ targeted_decisions = {
 			factor = 0
 		}
 	}
-	
+
 	exchange_land_for_hospital = {
 		filter = all
 		ai_target_filter = all
@@ -628,9 +695,10 @@ targeted_decisions = {
 		potential = {
 			is_adult = yes
 			#owns holy order, this religion
-			primary_title = { holy_order = yes }
+			primary_title = {
+				holy_order = yes
+			}
 			religion = FROM
-			
 		}
 		allow = {
 			FROM = {
@@ -669,52 +737,45 @@ targeted_decisions = {
 	commit_suicide_immortal = {
 		filter = self
 		ai_target_filter = self
-		
 		potential = {
 			ai = no
 			is_adult = yes
 			prisoner = no
 			immortal = yes
-			NOR = { 		
-					trait = creature_orc
-					trait = creature_goblin
-					trait = creature_slann
-					trait = creature_nehekharan
-					trait = creature_elf
-					trait = creature_dwarf
-					trait = creature_chaos_dwarf
-					
-					trait = khorne_demon
-					trait = nurgle_demon
-					trait = slaanesh_demon
-					trait = tzeentch_demon
-					trait = hashut_kdaai
-					
-					trait = vampire_lahmian_visible
-					trait = vampire_carstein_visible
-					trait = vampire_blood_visible
-					trait = vampire_strigoi_visible
-					trait = vampire_necrarch_visible
-					trait = vampire_jade_visible
-					trait = vampire_mahtmasi_visible
-
-					trait = vampire_lahmian_hidden
-					trait = vampire_carstein_hidden
-					trait = vampire_blood_hidden
-					trait = vampire_strigoi_hidden
-					trait = vampire_necrarch_hidden
-					trait = vampire_jade_hidden
-					trait = vampire_mahtmasi_hidden
-
-					trait = creature_celdragon 
+			NOR = {
+				trait = creature_orc
+				trait = creature_goblin
+				trait = creature_slann
+				trait = creature_nehekharan
+				trait = creature_elf
+				trait = creature_dwarf
+				trait = creature_chaos_dwarf
+				trait = khorne_demon
+				trait = nurgle_demon
+				trait = slaanesh_demon
+				trait = tzeentch_demon
+				trait = hashut_kdaai
+				trait = vampire_lahmian_visible
+				trait = vampire_carstein_visible
+				trait = vampire_blood_visible
+				trait = vampire_strigoi_visible
+				trait = vampire_necrarch_visible
+				trait = vampire_jade_visible
+				trait = vampire_mahtmasi_visible
+				trait = vampire_lahmian_hidden
+				trait = vampire_carstein_hidden
+				trait = vampire_blood_hidden
+				trait = vampire_strigoi_hidden
+				trait = vampire_necrarch_hidden
+				trait = vampire_jade_hidden
+				trait = vampire_mahtmasi_hidden
+				trait = creature_celdragon
 			}
 			OR = {
 				trait = depressed
 				age = 100
 			}
 		}
-		
-
 		allow = {
 			immortal = yes
 			OR = {
@@ -722,47 +783,60 @@ targeted_decisions = {
 				age = 100
 			}
 			custom_tooltip = {
-				NOT = { has_character_flag = attempting_suicide }
+				NOT = {
+					has_character_flag = attempting_suicide
+				}
 				text = attempting_suicide_tooltip
 			}
 		}
-
 		effect = {
 			if = {
-				limit = { has_dlc = "Reapers" }
-
+				limit = {
+					has_dlc = "Reapers"
+				}
 				set_character_flag = attempting_suicide
-
 				if = {
-					limit = { NOT = { trait = incapable } }
-					character_event = { id = RIP.30200 }
+					limit = {
+						NOT = {
+							trait = incapable
+						}
+					}
+					character_event = {
+						id = RIP.30200
+					}
 				}
 				if = {
-					limit = { trait = incapable } 
-					character_event = { id = RIP.30210 }
+					limit = {
+						trait = incapable
+					}
+					character_event = {
+						id = RIP.30210
+					}
 				}
 			}
 			if = {
-				limit = { NOT = { has_dlc = "Reapers" } }
-
+				limit = {
+					NOT = {
+						has_dlc = "Reapers"
+					}
+				}
 				prestige = -200
-
 				add_character_modifier = {
 					modifier = suicide
 					duration = -1
 				}
 				if = {
-			limit = {
-				is_invincible_trigger = yes
+					limit = {
+						is_invincible_trigger = yes
+					}
+					antideath_effect = yes
+					break = yes
+				}
+				death = {
+					death_reason = death_suicide
+				}
 			}
-
-			antideath_effect = yes
-			break = yes 
 		}
-				death = { death_reason = death_suicide }
-			}
-		}
-
 		revoke_allowed = {
 			always = no
 		}
@@ -771,12 +845,11 @@ targeted_decisions = {
 		}
 	}
 }
-
 decisions = {
+
 	seek_treatment = {
 		only_playable = yes
 		is_high_prio = yes
-		
 		potential = {
 			is_playable = yes
 			OR = {
@@ -799,39 +872,61 @@ decisions = {
 			}
 			has_assigned_minor_title = title_court_physician
 		}
-		
 		allow = {
 			custom_tooltip = {
 				text = seek_treatment_tooltip_2
 				OR = {
-					NOT = { has_character_flag = being_treated }
-					had_character_flag = { flag = being_treated days = 20 }
+					NOT = {
+						has_character_flag = being_treated
+					}
+					had_character_flag = {
+						flag = being_treated days = 20
+					}
 				}
 				OR = {
-					AND = {	#if you have a developed disease and want further treatment
+					AND = {
+						#if you have a developed disease and want further treatment
 						character_disease_trigger = yes
 						OR = {
-							NOT = { has_character_flag = recent_treatment }
-							had_character_flag = { flag = recent_treatment days = 90 }
+							NOT = {
+								has_character_flag = recent_treatment
+							}
+							had_character_flag = {
+								flag = recent_treatment days = 90
+							}
 						}
 					}
-					AND = {	#if you have multiple symptoms and want to seek further treatment
+					AND = {
+						#if you have multiple symptoms and want to seek further treatment
 						num_of_symptoms = 2
 						OR = {
-							NOT = { has_character_flag = recent_treatment }
-							had_character_flag = { flag = recent_treatment days = 30 }
+							NOT = {
+								has_character_flag = recent_treatment
+							}
+							had_character_flag = {
+								flag = recent_treatment days = 30
+							}
 						}
 					}
-					AND = { #if your treatment failed and you want to try again
+					AND = {
+						#if your treatment failed and you want to try again
 						character_disease_trigger = no
 						num_of_symptoms = 1
 						OR = {
-							had_character_flag = { flag = disease_not_serious days = 10 } #anti-spam delay since event should handle this normally
-							had_character_flag = { flag = developing_illness days = 10 }
+							had_character_flag = {
+								flag = disease_not_serious days = 10
+							} #anti-spam delay since event should handle this normally
+							had_character_flag = {
+								flag = developing_illness days = 10
+							}
 						}
 						OR = {
-							NOT = { has_character_flag = recent_treatment }
-							had_character_flag = { flag = recent_treatment days = 30 }
+							NOT = {
+								has_character_flag = recent_treatment
+							}
+							had_character_flag = {
+								flag = recent_treatment days = 30
+							}
 						}
 						NOR = {
 							has_character_modifier = successful_treatment_1
@@ -881,7 +976,9 @@ decisions = {
 								character = ROOT
 							}
 						}
-						character_event = { id = RIP.11031 }
+						character_event = {
+							id = RIP.11031
+						}
 					}
 				}
 			}
@@ -891,7 +988,6 @@ decisions = {
 		}
 		ai_will_do = {
 			factor = 0.25
-
 			modifier = {
 				factor = 2
 				OR = {
@@ -899,28 +995,36 @@ decisions = {
 					trait = paranoid
 				}
 			}
-
 			modifier = {
 				factor = 1.4
-				NOT = { health = 5 }
+				NOT = {
+					health = 5
+				}
 			}
 			modifier = {
 				factor = 1.4
-				NOT = { health = 4 }
+				NOT = {
+					health = 4
+				}
 			}
 			modifier = {
 				factor = 1.4
-				NOT = { health = 3 }
+				NOT = {
+					health = 3
+				}
 			}
 			modifier = {
 				factor = 1.4
-				NOT = { health = 2 }
+				NOT = {
+					health = 2
+				}
 			}
 			modifier = {
 				factor = 1.4
-				NOT = { health = 1 }
+				NOT = {
+					health = 1
+				}
 			}
-			
 			modifier = {
 				factor = 0
 				OR = {
@@ -948,35 +1052,35 @@ decisions = {
 			}
 			NOR = {
 				religion = nurgle
-				trait = creature_forestspirit 
-				culture_group = daemonic_group 
-				trait = creature_treekin 
-				trait = creature_nehekharan 
-				trait = creature_slann 
-				trait = vampire_carstein_visible 
-				trait = vampire_blood_visible 
-				trait = vampire_strigoi_visible 
-				trait = vampire_necrarch_visible 
-				trait = vampire_jade_visible 
-				trait = vampire_mahtmasi_visible 
-				trait = vampire_lahmian_visible 
-				trait = vampire_carstein_hidden 
-				trait = vampire_blood_hidden 
-				trait = vampire_strigoi_hidden 
-				trait = vampire_necrarch_hidden 
-				trait = vampire_jade_hidden 
-				trait = vampire_mahtmasi_hidden 
-				trait = vampire_lahmian_hidden 
-				trait = khorne_demon 
-				trait = slaanesh_demon 
-				trait = tzeentch_demon 
-				trait = hashut_kdaai 
-				trait = nurgle_demon 
-				trait = creature_skink 
-				trait = creature_saurus 
-				trait = creature_orc 
-				trait = creature_goblin 
-				trait = creature_snotling 
+				trait = creature_forestspirit
+				culture_group = daemonic_group
+				trait = creature_treekin
+				trait = creature_nehekharan
+				trait = creature_slann
+				trait = vampire_carstein_visible
+				trait = vampire_blood_visible
+				trait = vampire_strigoi_visible
+				trait = vampire_necrarch_visible
+				trait = vampire_jade_visible
+				trait = vampire_mahtmasi_visible
+				trait = vampire_lahmian_visible
+				trait = vampire_carstein_hidden
+				trait = vampire_blood_hidden
+				trait = vampire_strigoi_hidden
+				trait = vampire_necrarch_hidden
+				trait = vampire_jade_hidden
+				trait = vampire_mahtmasi_hidden
+				trait = vampire_lahmian_hidden
+				trait = khorne_demon
+				trait = slaanesh_demon
+				trait = tzeentch_demon
+				trait = hashut_kdaai
+				trait = nurgle_demon
+				trait = creature_skink
+				trait = creature_saurus
+				trait = creature_orc
+				trait = creature_goblin
+				trait = creature_snotling
 			}
 		}
 		allow = {
@@ -994,8 +1098,12 @@ decisions = {
 				text = 3_year_physician_cooldown
 				hidden_tooltip = {
 					OR = {
-						NOT = { has_character_flag = 3_year_physician_cooldown }
-						had_character_flag = { flag = 3_year_physician_cooldown days = 1095 }
+						NOT = {
+							has_character_flag = 3_year_physician_cooldown
+						}
+						had_character_flag = {
+							flag = 3_year_physician_cooldown days = 1095
+						}
 					}
 				}
 			}
@@ -1004,7 +1112,9 @@ decisions = {
 			custom_tooltip = {
 				text = employ_court_physician_tooltip
 				hidden_tooltip = {
-					character_event = { id = RIP.11050 }
+					character_event = {
+						id = RIP.11050
+					}
 					clr_character_flag = 3_year_physician_cooldown
 					set_character_flag = 3_year_physician_cooldown
 				}
@@ -1015,7 +1125,6 @@ decisions = {
 		}
 		ai_will_do = {
 			factor = 0.1
-			
 			modifier = {
 				factor = 0
 				AND = {
@@ -1047,17 +1156,13 @@ decisions = {
 			}
 		}
 	}
-
-
 	#Seclusion
 
 	shut_the_gates = {
 		only_rulers = yes
 		is_high_prio = yes
-		
 		filter = self
 		ai_target_filter = self
-		
 		potential = {
 			has_dlc = "Reapers"
 			OR = {
@@ -1070,12 +1175,15 @@ decisions = {
 				is_inaccessible_trigger = yes
 			}
 		}
-		
 		allow = {
 			prisoner = no
 			custom_tooltip = {
 				text = is_not_busy_trigger_tooltip
-				hidden_tooltip = { NOT = { has_character_flag = do_not_disturb } }
+				hidden_tooltip = {
+					NOT = {
+						has_character_flag = do_not_disturb
+					}
+				}
 			}
 			OR = {
 				trait = paranoid
@@ -1084,7 +1192,9 @@ decisions = {
 					hidden_tooltip = {
 						OR = {
 							ai = no
-							capital_scope = { has_epidemic = yes }
+							capital_scope = {
+								has_epidemic = yes
+							}
 						}
 						OR = {
 							capital_scope = {
@@ -1107,7 +1217,9 @@ decisions = {
 					}
 				}
 			}
-			NOT = { has_character_modifier = recently_opened_gates }
+			NOT = {
+				has_character_modifier = recently_opened_gates
+			}
 		}
 		effect = {
 			#Achievement flag
@@ -1124,14 +1236,21 @@ decisions = {
 				remove_title = title_commander
 			}
 			set_character_flag = do_not_disturb
-			custom_tooltip = { text = shut_the_gates_info_tooltip }
+			custom_tooltip = {
+				text = shut_the_gates_info_tooltip
+			}
 			add_character_modifier = {
 				name = in_seclusion
 				duration = -1
 			}
-			if = { # If you are a councillor, stop working and return home
+			if = {
+				# If you are a councillor, stop working and return home
 				limit = {
-					host = { NOT = { character = ROOT } }
+					host = {
+						NOT = {
+							character = ROOT
+						}
+					}
 					OR = {
 						is_councillor = yes
 						has_minor_title = title_councilmember_king
@@ -1141,34 +1260,47 @@ decisions = {
 				force_host = ROOT
 			}
 			hidden_tooltip = {
-				character_event = { id = RIP.12000 }
-				any_courtier = { # Unlanded councillors stop working in order to go into seclusion with their liege
+				character_event = {
+					id = RIP.12000
+				}
+				any_courtier = {
+					# Unlanded councillors stop working in order to go into seclusion with their liege
 					limit = {
 						prisoner = no
 						is_councillor = yes
 						is_landed = no
-						liege = { character = ROOT }
-						NOT = { character = ROOT }
+						liege = {
+							character = ROOT
+						}
+						NOT = {
+							character = ROOT
+						}
 					}
 					add_character_modifier = {
 						name = in_seclusion
 						duration = -1
 					}
 				}
-				any_courtier = { # Unlanded non-councillors join their liege in seclusion
+				any_courtier = {
+					# Unlanded non-councillors join their liege in seclusion
 					limit = {
 						prisoner = no
 						is_councillor = no
 						is_landed = no
-						liege = { character = ROOT }
-						NOT = { character = ROOT }
+						liege = {
+							character = ROOT
+						}
+						NOT = {
+							character = ROOT
+						}
 					}
 					add_character_modifier = {
 						name = in_seclusion
 						duration = -1
 					}
 				}
-				any_courtier = { # Landed councillors return home while you, their liege, is in seclusion
+				any_courtier = {
+					# Landed councillors return home while you, their liege, is in seclusion
 					limit = {
 						prisoner = no
 						OR = {
@@ -1177,12 +1309,17 @@ decisions = {
 							has_minor_title = title_councilmember_emperor
 						}
 						is_landed = yes
-						liege = { character = ROOT }
-						NOT = { character = ROOT }
+						liege = {
+							character = ROOT
+						}
+						NOT = {
+							character = ROOT
+						}
 					}
 					force_host = THIS
 				}
-				any_courtier = { # Landed children being educated in your court are sent home, with the guardianship ending
+				any_courtier = {
+					# Landed children being educated in your court are sent home, with the guardianship ending
 					limit = {
 						prisoner = no
 						is_landed = yes
@@ -1191,23 +1328,35 @@ decisions = {
 					}
 					remove_guardian = yes
 				}
-				if = { #If you are getting educated elsewhere, then go home to be secluded
+				if = {
+					#If you are getting educated elsewhere, then go home to be secluded
 					limit = {
-						NOT = { age = 16 }
+						NOT = {
+							age = 16
+						}
 						is_abroad = yes
 					}
 					remove_guardian = yes
 					force_host = ROOT
 				}
 				any_vassal = {
-					character_event = { id = RIP.12001 days = 7 random = 7 }
-				}
-				if = { #Notify employer that councillor is going into seclusion
-					limit = { 
-						is_councillor = yes 
-						liege = { ai = no }
+					character_event = {
+						id = RIP.12001 days = 7 random = 7
 					}
-					liege = { letter_event = { id = RIP.12101 days = 1 } }
+				}
+				if = {
+					#Notify employer that councillor is going into seclusion
+					limit = {
+						is_councillor = yes
+						liege = {
+							ai = no
+						}
+					}
+					liege = {
+						letter_event = {
+							id = RIP.12101 days = 1
+						}
+					}
 				}
 			}
 		}
@@ -1216,7 +1365,6 @@ decisions = {
 		}
 		ai_will_do = {
 			factor = 0.2
-			
 			modifier = {
 				factor = 0.01
 				OR = {
@@ -1250,26 +1398,24 @@ decisions = {
 			}
 			modifier = {
 				factor = 50
-				capital_scope = { disease = bubonic_plague }
+				capital_scope = {
+					disease = bubonic_plague
+				}
 			}
 		}
 	}
-	
+
 	open_the_gates = {
 		only_rulers = yes
 		is_high_prio = yes
-		
 		filter = self
-		
 		potential = {
 			is_ruler = yes
 			has_character_modifier = in_seclusion
 		}
-
 		allow = {
 			has_character_modifier = in_seclusion
 		}
-
 		effect = {
 			clr_character_flag = do_not_disturb
 			clr_character_flag = exposed_to_outside
@@ -1280,8 +1426,9 @@ decisions = {
 			clr_character_flag = seclusion_child_has_lover
 			clr_character_flag = seclusion_tunnel
 			clr_character_flag = seclusion_food_events
-
-			custom_tooltip = { text = open_the_gates_info_tooltip }
+			custom_tooltip = {
+				text = open_the_gates_info_tooltip
+			}
 			remove_character_modifier = in_seclusion
 			add_character_modifier = {
 				name = recently_opened_gates
@@ -1289,11 +1436,15 @@ decisions = {
 			}
 			hidden_tooltip = {
 				clr_character_flag = seclusion_events_on
-				character_event = { id = RIP.11557 days = 40 random = 20} #clears starvation modifiers
+				character_event = {
+					id = RIP.11557 days = 40 random = 20
+				} #clears starvation modifiers
 				any_courtier = {
 					clr_character_flag = seclusion_events_on
 					remove_character_modifier = in_seclusion
-					character_event = { id = RIP.11557 days = 40 random = 20} #clears starvation modifiers
+					character_event = {
+						id = RIP.11557 days = 40 random = 20
+					} #clears starvation modifiers
 				}
 				any_vassal = {
 					limit = {
@@ -1303,16 +1454,23 @@ decisions = {
 							has_minor_title = title_councilmember_emperor
 						}
 						is_landed = yes
-						liege = { character = ROOT }
+						liege = {
+							character = ROOT
+						}
 						NOT = {
 							has_character_modifier = in_seclusion
 						}
-						host = { NOT = { character = ROOT } }
+						host = {
+							NOT = {
+								character = ROOT
+							}
+						}
 					}
 					force_host = ROOT
 				}
 			}
-			if = { # Rejoin your liege's court if both of you are not in seclusion
+			if = {
+				# Rejoin your liege's court if both of you are not in seclusion
 				limit = {
 					OR = {
 						is_councillor = yes
@@ -1330,112 +1488,133 @@ decisions = {
 						force_host = PREV
 					}
 				}
-
-				if = { #Notify employer that councillor is going into seclusion
-					limit = { 
-						is_councillor = yes 
+				if = {
+					#Notify employer that councillor is going into seclusion
+					limit = {
+						is_councillor = yes
 						#liege = { ai = no }
 					}
-					liege = { character_event = { id = RIP.12100 days = 1 } }
+					liege = {
+						character_event = {
+							id = RIP.12100 days = 1
+						}
+					}
 				}
 			}
-
-			if = { limit = { has_character_modifier = secluded_revelry } remove_character_modifier = secluded_revelry }
-			if = { limit = { has_character_modifier = savoring_the_end_days } remove_character_modifier = savoring_the_end_days }
+			if = {
+				limit = {
+					has_character_modifier = secluded_revelry
+				} remove_character_modifier = secluded_revelry
+			}
+			if = {
+				limit = {
+					has_character_modifier = savoring_the_end_days
+				} remove_character_modifier = savoring_the_end_days
+			}
 		}
 		revoke_allowed = {
 			always = no
 		}
 		ai_will_do = {
 			factor = 0.1
-
 			modifier = {
 				factor = 0
 				AND = {
-					capital_scope = { has_disease = yes }
-					NOT = { has_character_modifier = starving_food_shortage }
+					capital_scope = {
+						has_disease = yes
+					}
+					NOT = {
+						has_character_modifier = starving_food_shortage
+					}
 				}
 			}
-			
 			modifier = {
 				factor = 0.5
 				trait = paranoid
 			}
-
 			modifier = {
 				factor = 3
 				trait = brave
 			}
-
 			modifier = {
 				factor = 3
-				capital_scope = { has_disease = no }
+				capital_scope = {
+					has_disease = no
+				}
 			}
-
 			modifier = {
 				factor = 3
 				has_character_modifier = starving_food_shortage
 			}
 		}
 	}
-	
 }
-
 title_decisions = {
+
 	build_hospital = {
 		only_playable = yes
 		hide_in_decisions_list = yes		# player can build hospitals from the province view
 		ai_target_filter = owned
-		
-		from_potential = {					# scope: character who is building
+		from_potential = {
+			# scope: character who is building
 			ai = yes
 			is_playable = yes
 			has_dlc = "Reapers"
 			war = no
 			wealth = 600
 		}
-		
 		potential = {
 			tier = COUNT
 			has_hospital = no
 			has_siege = no
 			is_occupied = no
 		}
-		
 		allow = {
 			always = yes
 		}
-		
 		ai_will_do = {
 			factor = 0.1
-			
 			modifier = {
 				factor = 0.1
-				owner = { independent = no }
+				owner = {
+					independent = no
+				}
 			}
 			modifier = {
 				factor = 0.1
-				owner = { trait = greedy }
+				owner = {
+					trait = greedy
+				}
 			}
 			modifier = {
 				factor = 0.1
-				owner = { trait = arbitrary }
+				owner = {
+					trait = arbitrary
+				}
 			}
 			modifier = {
 				factor = 0.1
-				owner = { trait = slothful }
+				owner = {
+					trait = slothful
+				}
 			}
 			modifier = {
 				factor = 0.1
-				owner = { trait = zealous }
+				owner = {
+					trait = zealous
+				}
 			}
 			modifier = {
 				factor = 0.1
-				owner = { trait = content }
+				owner = {
+					trait = content
+				}
 			}
 			modifier = {
 				factor = 5
-				owner = { has_character_flag = seen_the_light_of_modern_medicine }
+				owner = {
+					has_character_flag = seen_the_light_of_modern_medicine
+				}
 			}
 			modifier = {
 				factor = 2
@@ -1444,28 +1623,39 @@ title_decisions = {
 			modifier = {
 				factor = 2
 				OR = {
-					owner = { is_ill = yes }
-					owner = { num_of_symptoms = 1 }
+					owner = {
+						is_ill = yes
+					}
+					owner = {
+						num_of_symptoms = 1
+					}
 				}
 			}
 			modifier = {
 				factor = 2
-				owner = { trait = charitable }
+				owner = {
+					trait = charitable
+				}
 			}
 			modifier = {
 				factor = 2
-				owner = { trait = diligent }
+				owner = {
+					trait = diligent
+				}
 			}
 			modifier = {
 				factor = 2
-				owner = { trait = kind }
+				owner = {
+					trait = kind
+				}
 			}
 			modifier = {
 				factor = 2
-				owner = { trait = erudite }
+				owner = {
+					trait = erudite
+				}
 			}
 		}
-		
 		effect = {
 			location = {
 				build_holding = {
@@ -1475,4 +1665,3 @@ title_decisions = {
 		}
 	}
 }
-	

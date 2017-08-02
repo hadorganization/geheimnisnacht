@@ -3,36 +3,37 @@
 # Hermetics decisions for Monks and Mystics
 #
 ###########################################
-
 targeted_decisions = {
+
 	brew_happiness_potion = {
 		filter = home_court
 		ai_target_filter = home_court
 		is_in_society = yes
-
 		from_potential = {
 			has_dlc = "Mystics"
 			society_rank = {
 				rank >= 2
-				society = hermetics
+					 society = hermetics
 			}
 		}
-
 		potential = {
 			OR = {
 				trait = stressed
 				trait = depressed
 			}
 			OR = {
-				FROM = { ai = no }
+				FROM = {
+					ai = no
+				}
 				is_close_relative = FROM
 				is_friend = FROM
 				is_lover = FROM
 			}
 		}
-
 		allow = {
-			FROM = { has_society_currency_minor_trigger = yes }
+			FROM = {
+				has_society_currency_minor_trigger = yes
+			}
 			OR = {
 				trait = stressed
 				trait = depressed
@@ -50,54 +51,77 @@ targeted_decisions = {
 			}
 			custom_tooltip = {
 				text = must_not_already_be_preparing_potion_tt
-				hidden_tooltip = { FROM = { NOT = { has_character_flag = preparing_potion } } }
+				hidden_tooltip = {
+					FROM = {
+						NOT = {
+							has_character_flag = preparing_potion
+						}
+					}
+				}
 			}
 		}
-
 		effect = {
-			FROM = { detract_society_currency_minor_effect = yes }
-			FROM = { set_character_flag = preparing_potion }
-
+			FROM = {
+				detract_society_currency_minor_effect = yes
+			}
+			FROM = {
+				set_character_flag = preparing_potion
+			}
 			if = {
-				limit = { character = FROM } #Making yourself a potion
+				limit = {
+					character = FROM
+				} #Making yourself a potion
 				custom_tooltip = {
 					text = brew_happiness_potion_effect_self
 					set_character_flag = potion_target_is_self
-					character_event = { id = MNM.5115 }
+					character_event = {
+						id = MNM.5115
+					}
 				}
 			}
-
 			if = {
-				limit = { NOT = { character = FROM } } #Making someone else a potion
+				limit = {
+					NOT = {
+						character = FROM
+					}
+				} #Making someone else a potion
 				save_event_target_as = potion_target
 				custom_tooltip = {
 					text = brew_happiness_potion_effect_other
-					FROM = { character_event = { id = MNM.5115 } }
+					FROM = {
+						character_event = {
+							id = MNM.5115
+						}
+					}
 				}
 			}
-
 			tooltip = {
-				if = { 
-					limit = { trait = stressed }
+				if = {
+					limit = {
+						trait = stressed
+					}
 					remove_trait = stressed
 				}
-				if = { 
-					limit = { trait = depressed }
+				if = {
+					limit = {
+						trait = depressed
+					}
 					remove_trait = depressed
 				}
 				if = {
-					limit = { has_character_modifier = apathetic }
+					limit = {
+						has_character_modifier = apathetic
+					}
 					remove_character_modifier = apathetic
 				}
 			}
 		}
-
-		revoke_allowed = { always = no }
-
+		revoke_allowed = {
+			always = no
+		}
 		ai_will_do = {
-
 			factor = 0.001
-			modifier = {	
+			modifier = {
 				factor = 100
 				character = FROM
 			}
@@ -113,17 +137,14 @@ targeted_decisions = {
 
 	hermetics_perform_scrying = {
 		is_in_society = yes
-		
 		filter = self
 		ai_target_filter = self
-		
 		potential = {
 			character = FROM
 			has_dlc = "Mystics"
 			society_member_of = hermetics
 			society_rank >= 2
 		}
-
 		allow = {
 			has_society_currency_minor_trigger = yes
 			custom_tooltip = {
@@ -132,7 +153,6 @@ targeted_decisions = {
 				#NOT = { has_character_modifier = scrying_cooldown }
 			}
 		}
-
 		effect = {
 			hidden_effect = {
 				add_character_modifier = {
@@ -140,16 +160,17 @@ targeted_decisions = {
 					years = 1
 					hidden = yes
 				}
-				character_event = { id = MNM.1200 days = 1 }
+				character_event = {
+					id = MNM.1200 days = 1
+				}
 			}
 			detract_society_currency_minor_effect = yes
 		}
-
-		revoke_allowed = { always = no }
-
+		revoke_allowed = {
+			always = no
+		}
 		ai_will_do = {
 			factor = 0.1
-
 			modifier = {
 				factor = 0.5
 				is_dumb_trigger = yes
@@ -175,28 +196,27 @@ targeted_decisions = {
 
 	hermetics_make_horoscope = {
 		is_in_society = yes
-		
 		ai_target_filter = court
-		
 		from_potential = {
 			has_dlc = "Mystics"
 			society_member_of = hermetics
 			society_rank = 3
 		}
-
 		potential = {
     		is_child_of = FROM
 		}
-
 		allow = {
     		is_adult = no
 			custom_tooltip = {
 				text = hermetics_horoscope_cooldown_tooltip
-				NOT = { has_character_modifier = horoscope_cooldown }
+				NOT = {
+					has_character_modifier = horoscope_cooldown
+				}
 			}
-			FROM = { has_society_currency_medium_trigger = yes }
+			FROM = {
+				has_society_currency_medium_trigger = yes
+			}
 		}
-
 		effect = {
 			hidden_effect = {
 				add_character_modifier = {
@@ -205,16 +225,19 @@ targeted_decisions = {
 					hidden = yes
 				}
 				save_event_target_as = horoscope_child
-				FROM = { character_event = { id = MNM.1250 days = 5 } }
+				FROM = {
+					character_event = {
+						id = MNM.1250 days = 5
+					}
+				}
 			}
 			detract_society_currency_medium_effect = yes
 		}
-
-		revoke_allowed = { always = no }
-
+		revoke_allowed = {
+			always = no
+		}
 		ai_will_do = {
 			factor = 0.01
-
 			modifier = {
 				factor = 1.5
 				is_dumb_trigger = yes
@@ -229,21 +252,23 @@ targeted_decisions = {
 			}
 			modifier = {
 				factor = 1.5
-				FROM = { trait = trusting }
+				FROM = {
+					trait = trusting
+				}
 			}
 			modifier = {
 				factor = 0.5
-				FROM = { trait = cynical }
+				FROM = {
+					trait = cynical
+				}
 			}
 		}
 	}
-	
+
 	choose_hermetic_art = {
 		only_playable = yes
-		
 		filter = self
 		ai_target_filter = self
-		
 		potential = {
 			character = FROM
 			has_dlc = "Mystics"
@@ -252,30 +277,34 @@ targeted_decisions = {
 			society_member_of = hermetics
 			society_rank == 4
 		}
-		
 		allow = {
 			custom_tooltip = {
 				text = choose_hermetic_art_allow_tooltip
-				
-				NOT = { has_character_flag = choosing_hermetic_art }
+				NOT = {
+					has_character_flag = choosing_hermetic_art
+				}
 			}
 			OR = {
-				NOT = { lifestyle_traits = 1 }
+				NOT = {
+					lifestyle_traits = 1
+				}
 				trait = scholar
 				trait = mystic
 				trait = theologian
 			}
 			has_society_currency_minor_trigger = yes
 		}
-		
 		effect = {
 			hidden_tooltip = {
 				if = {
 					limit = {
-						NOT = { lifestyle_traits = 1 }
+						NOT = {
+							lifestyle_traits = 1
+						}
 					}
-					
-					character_event = { id = MNM.1900 }
+					character_event = {
+						id = MNM.1900
+					}
 				}
 				if = {
 					limit = {
@@ -285,16 +314,17 @@ targeted_decisions = {
 							trait = theologian
 						}
 					}
-					
-					character_event = { id = MNM.1901 }
+					character_event = {
+						id = MNM.1901
+					}
 				}
 			}
 			set_character_flag = choosing_hermetic_art
 			detract_society_currency_minor_effect = yes
 		}
-		
-		revoke_allowed = { always = no }
-
+		revoke_allowed = {
+			always = no
+		}
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -303,26 +333,27 @@ targeted_decisions = {
 			}
 		}
 	}
-
 	#Power: write Magnum Opus
+
 	hermetics_write_magnum_opus = {
 		is_in_society = yes
-		
 		filter = self
 		ai_target_filter = self
-
 		potential = {
 			society_member_of = hermetics
 			society_rank = 4
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 		}
-
 		allow = {
 			FROM = {
 				custom_tooltip = {
 					text = hermetics_wrote_magnum_opus_cd_tooltip
-					NOT = { has_character_flag = wrote_magnum_opus }
+					NOT = {
+						has_character_flag = wrote_magnum_opus
+					}
 				}
 				has_society_currency_major_trigger = yes
 				custom_tooltip = {
@@ -333,45 +364,46 @@ targeted_decisions = {
 							has_artifact = magnum_opus_theurgy_ritual_2
 							has_artifact = magnum_opus_theurgy_ritual_3
 							has_artifact = magnum_opus_theurgy_ritual_4
-    					}
+						}
     					NOR = {
     						has_artifact = magnum_opus_theurgy_contemplation_1
 							has_artifact = magnum_opus_theurgy_contemplation_2
 							has_artifact = magnum_opus_theurgy_contemplation_3
 							has_artifact = magnum_opus_theurgy_contemplation_4
-    					}
+						}
     					NOR = {
     						has_artifact = magnum_opus_astrology_stars_1
 							has_artifact = magnum_opus_astrology_stars_2
 							has_artifact = magnum_opus_astrology_stars_3
 							has_artifact = magnum_opus_astrology_stars_4
-    					}
+						}
     					NOR = {
     						has_artifact = magnum_opus_astrology_planets_1
 							has_artifact = magnum_opus_astrology_planets_2
 							has_artifact = magnum_opus_astrology_planets_3
 							has_artifact = magnum_opus_astrology_planets_4
-    					}
+						}
     					NOR = {
     						has_artifact = magnum_opus_alchemy_panacea_1
 							has_artifact = magnum_opus_alchemy_panacea_2
 							has_artifact = magnum_opus_alchemy_panacea_3
 							has_artifact = magnum_opus_alchemy_panacea_4
-    					}
+						}
     					NOR = {
     						has_artifact = magnum_opus_alchemy_transmutation_1
 							has_artifact = magnum_opus_alchemy_transmutation_2
 							has_artifact = magnum_opus_alchemy_transmutation_3
 							has_artifact = magnum_opus_alchemy_transmutation_4
-    					}
-    				}
-    			}
+						}
+					}
+				}
 			}
 		}
-
 		effect = {
-			hidden_effect = { 
-				character_event = { id = MNM.1610 days = 1 }
+			hidden_effect = {
+				character_event = {
+					id = MNM.1610 days = 1
+				}
 				set_character_flag = wrote_magnum_opus
 			}
 			detract_society_currency_major_effect = yes
@@ -380,10 +412,9 @@ targeted_decisions = {
 			always = no
 		}
 	}
-	
+
 	invite_hermetic_to_stargazing = {
 		only_playable = yes
-		
 		from_potential = {
 			has_dlc = "Mystics"
 			is_playable = yes
@@ -391,44 +422,63 @@ targeted_decisions = {
 			prisoner = no
 			society_member_of = hermetics
 		}
-		
 		potential = {
-			NOT = { character = FROM }
+			NOT = {
+				character = FROM
+			}
 			is_adult = yes
 			prisoner = no
 			society_member_of = hermetics
 			is_within_diplo_range = FROM
 		}
-		
 		allow = {
 			ROOT = {
 				war = no
-				NOT = { trait = incapable }
-				NOT = { trait = blinded }
-				NOT = { is_inaccessible_trigger = yes }
+				NOT = {
+					trait = incapable
+				}
+				NOT = {
+					trait = blinded
+				}
+				NOT = {
+					is_inaccessible_trigger = yes
+				}
 				custom_tooltip = {
 					text = tooltip_not_busy
-					NOT = { has_character_flag = do_not_disturb }
+					NOT = {
+						has_character_flag = do_not_disturb
+					}
 				}
 			}
 			FROM = {
 				war = no
-				NOT = { trait = incapable }
-				NOT = { trait = blinded }
-				NOT = { is_inaccessible_trigger = yes }
+				NOT = {
+					trait = incapable
+				}
+				NOT = {
+					trait = blinded
+				}
+				NOT = {
+					is_inaccessible_trigger = yes
+				}
 				custom_tooltip = {
 					text = has_not_recently_performed_stargazing
-					NOT = { has_character_modifier = stargazing_timer }
-					NOT = { has_character_modifier = inviting_to_stargazing }
+					NOT = {
+						has_character_modifier = stargazing_timer
+					}
+					NOT = {
+						has_character_modifier = inviting_to_stargazing
+					}
 				}
 			}
 		}
-		
 		effect = {
 			FROM = {
 				if = {
 					limit = {
-						NOT = { has_character_modifier = inviting_to_stargazing }
+						NOT = {
+							has_character_modifier = inviting_to_stargazing
+						}
 					}
 					add_character_modifier = {
 						modifier = inviting_to_stargazing
@@ -440,15 +490,16 @@ targeted_decisions = {
 				set_character_flag = do_not_disturb
 			}
 			hidden_tooltip = {
-				letter_event = { id = MNM.1920 days = 7 } # Invitation
+				letter_event = {
+					id = MNM.1920 days = 7
+				} # Invitation
 			}
 		}
-		
-		revoke_allowed = { always = no }
-		
+		revoke_allowed = {
+			always = no
+		}
 		ai_will_do = {
 			factor = 1
-			
 			modifier = {
 				factor = 0.001 # Slow down
 			}
@@ -469,16 +520,13 @@ targeted_decisions = {
 			}
 		}
 	}
-
-	
 }
-
 society_decisions = {
+
 	hermetics_acquire_ingredients_decision = {
 		potential = {
 			society_member_of = hermetics
 		}
-		
 		allow = {
 			custom_tooltip = {
 				text = tooltip_not_busy
@@ -498,7 +546,9 @@ society_decisions = {
 				text = acquire_ingredients_decision_apprentice_requirement
 				hidden_trigger = {
 					any_courtier_or_vassal = {
-						liege = { character = ROOT }
+						liege = {
+							character = ROOT
+						}
 						has_minor_title = title_hermetics_apprentice
 					}
 				}
@@ -515,7 +565,6 @@ society_decisions = {
 				}
 			}
 		}
-		
 		effect = {
 			custom_tooltip = {
 				text = acquire_ingredients_effect_tooltip
@@ -525,11 +574,13 @@ society_decisions = {
 				years = 5
 				hidden = yes
 			}
-			character_event = { id = MNM.1800 }
+			character_event = {
+				id = MNM.1800
+			}
 		}
-		
-		revoke_allowed = { always = no }
-		
+		revoke_allowed = {
+			always = no
+		}
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -543,13 +594,12 @@ society_decisions = {
 			}
 		}
 	}
-
 	#Write a Theory Paper
+
 	hermetics_write_theory_paper = {
 		potential = {
 			society_member_of = hermetics
 		}
-
 		allow = {
 			prisoner = no
 			custom_tooltip = {
@@ -560,11 +610,14 @@ society_decisions = {
 					}
 				}
 			}
-			NOT = { is_inaccessible_trigger = yes }
+			NOT = {
+				is_inaccessible_trigger = yes
+			}
 			prisoner = no
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 		}
-
 		effect = {
 			custom_tooltip = {
 				text = write_theory_paper_decision_effect_tt
@@ -573,10 +626,11 @@ society_decisions = {
 					years = 5
 					hidden = yes
 				}
-				character_event = { id = MNM.1630 }
+				character_event = {
+					id = MNM.1630
+				}
 			}
 		}
-
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -584,11 +638,10 @@ society_decisions = {
 			}
 		}
 	}
-	
+
 	hermetic_grand_debate = {
 		only_playable = yes
 		is_high_prio = yes
-		
 		potential = {
 			has_dlc = "Mystics"
 			is_playable = yes
@@ -596,49 +649,66 @@ society_decisions = {
 			society_member_of = hermetics
 			society_rank == 4
 		}
-		
 		allow = {
 			wealth = 100
 			prestige = 400
 			prisoner = no
-			NOT = { is_inaccessible_trigger = yes }
-			NOT = { trait = incapable }
+			NOT = {
+				is_inaccessible_trigger = yes
+			}
+			NOT = {
+				trait = incapable
+			}
 			custom_tooltip = {
 				text = is_not_busy_trigger_tooltip
-				hidden_tooltip = { NOT = { has_character_flag = do_not_disturb } }
+				hidden_tooltip = {
+					NOT = {
+						has_character_flag = do_not_disturb
+					}
+				}
 			}
 			custom_tooltip = {
 				text = GRAND_DEBATE_HOLDING_TOOLTIP
 				OR = {
-					NOT = { has_global_flag = holding_grand_debate }
-					had_global_flag = { flag = holding_grand_debate days = 150 }
+					NOT = {
+						has_global_flag = holding_grand_debate
+					}
+					had_global_flag = {
+						flag = holding_grand_debate days = 150
+					}
 				}
 			}
 			custom_tooltip = {
 				text = GRAND_DEBATE_COOLDOWN_TOOLTIP
 				OR = {
-					NOT = { has_global_flag = held_grand_debate }
-					had_global_flag = { flag = held_grand_debate days = 3650 }
+					NOT = {
+						has_global_flag = held_grand_debate
+					}
+					had_global_flag = {
+						flag = held_grand_debate days = 3650
+					}
 				}
 			}
 		}
-		
 		effect = {
-			character_event = { id = MNM.1980 tooltip = GRAND_DEBATE_INVITE_TOOLTIP }
+			character_event = {
+				id = MNM.1980 tooltip = GRAND_DEBATE_INVITE_TOOLTIP
+			}
 			wealth = -100
 			hidden_tooltip = {
 				clr_character_flag = grand_debate_has_ended
 				set_character_flag = do_not_disturb
 				set_global_flag = holding_grand_debate
-				character_event = { id = MNM.1982 days = 300 } # Safety catch flag clearing
+				character_event = {
+					id = MNM.1982 days = 300
+				} # Safety catch flag clearing
 			}
 		}
-		
-		revoke_allowed = { always = no }
-		
+		revoke_allowed = {
+			always = no
+		}
 		ai_will_do = {
 			factor = 1
-			
 			modifier = {
 				factor = 0.001 # Slow down
 			}

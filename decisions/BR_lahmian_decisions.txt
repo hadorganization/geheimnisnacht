@@ -1,4 +1,5 @@
 targetted_decisions = {
+
 	send_a_seductress = {
 		ai_target_filter = spouse ##only players use this mechanic, since filter all is too CPU intensive. AI will use other mechanics
 		from_potential = {
@@ -9,32 +10,38 @@ targetted_decisions = {
 					is_female = yes
 					is_landed = no
 					trait = vampire_lahmian_visible
-					NOT = { trait = on_lahmian_mission }
+					NOT = {
+						trait = on_lahmian_mission
+					}
 				}
 			}
 		}
-
 		potential = {
 			is_playable = yes
 			is_female = no
 			higher_tier_than = BARON
 			is_within_diplo_range = FROM
 			age = 16
-			NOT = { has_character_flag = lahmian_target }
-			NOT = { is_lover = FROM }
+			NOT = {
+				has_character_flag = lahmian_target
+			}
+			NOT = {
+				is_lover = FROM
+			}
 			trait = creature_human
 		}
-
 		allow = {
-			FROM = { wealth = 25 }
+			FROM = {
+				wealth = 25
+			}
 		}
-
 		effect = {
-			character_event = { id = lahmia.7 }
+			character_event = {
+				id = lahmia.7
+			}
 			#set_character_flag = temp_lahmian_target
 			#FROM = { character_event = { id = lahmia.5  } }
 		}
-
 		ai_will_do = {
 			factor = 0
 		}
@@ -47,31 +54,39 @@ targetted_decisions = {
 			AND = {
 				trait = lahmian_queen
 				trait = vampire_lahmian_visible
-				NOT = { trait = on_lahmian_mission }
+				NOT = {
+					trait = on_lahmian_mission
+				}
 			}
 		}
-
 		potential = {
-			custom_tooltip = { text = IS_NOT_INCAPACITATED
-			is_incapacitated_trigger = no }
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			is_playable = yes
 			is_female = no
 			higher_tier_than = BARON
 			is_within_diplo_range = FROM
 			age = 16
-			NOT = { has_character_flag = lahmian_target }
-			NOT = { is_lover = FROM }
+			NOT = {
+				has_character_flag = lahmian_target
+			}
+			NOT = {
+				is_lover = FROM
+			}
 			trait = creature_human
 		}
-
 		allow = {
-			FROM = { wealth = 25 }
+			FROM = {
+				wealth = 25
+			}
 		}
-
 		effect = {
-			character_event = { id = lahmia.105 }
+			character_event = {
+				id = lahmia.105
+			}
 		}
-
 		ai_will_do = {
 			factor = 0
 		}
@@ -86,23 +101,21 @@ targetted_decisions = {
 				trait = vampire_lahmian_visible
 			}
 		}
-
 		potential = {
 			AND = {
 				trait = vampire_lahmian_visible
 				trait = on_lahmian_mission
-				NOT = { has_character_flag = recruitment_mission }
+				NOT = {
+					has_character_flag = recruitment_mission
+				}
 			}
 		}
-
 		allow = {
 			always = yes
 		}
-
 		effect = {
 			set_character_flag = return_home_lahmia
 		}
-
 		ai_will_do = {
 			factor = 0
 		}
@@ -117,7 +130,6 @@ targetted_decisions = {
 				trait = vampire_lahmian_visible
 			}
 		}
-
 		potential = {
 			AND = {
 				trait = vampire_lahmian_visible
@@ -125,16 +137,13 @@ targetted_decisions = {
 				has_character_flag = recruitment_mission
 			}
 		}
-
 		allow = {
 			always = yes
 		}
-
 		effect = {
 			clr_character_flag = recruitment_mission
 			remove_trait = on_lahmian_mission
 		}
-
 		ai_will_do = {
 			factor = 0
 		}
@@ -146,23 +155,25 @@ targetted_decisions = {
 			ai = no
 			trait = vampire_lahmian_visible
 		}
-
 		potential = {
 			is_lover = FROM
 			is_landed = no
-			NOT = { same_realm = FROM }
+			NOT = {
+				same_realm = FROM
+			}
 			trait = creature_human
-			NOT = { religion_group = chaos_gods_group }
+			NOT = {
+				religion_group = chaos_gods_group
+			}
 		}
-
 		allow = {
 			always = yes
 		}
-
 		effect = {
-			character_event = { id = lahmia.200 }
+			character_event = {
+				id = lahmia.200
+			}
 		}
-
 		ai_will_do = {
 			factor = 0
 		}
@@ -177,27 +188,31 @@ targetted_decisions = {
 			any_dynasty_member ={
 				AND = {
 					trait = vampire_lahmian_visible
-					NOT = { trait = on_lahmian_mission }
+					NOT = {
+						trait = on_lahmian_mission
+					}
 				}
 			}
 		}
-
 		potential = {
 			dynasty = FROM
 			trait = vampire_lahmian_visible
-			NOT = { trait = on_lahmian_mission }
+			NOT = {
+				trait = on_lahmian_mission
+			}
 		}
-
 		allow = {
-			FROM = { wealth = 10 }
+			FROM = {
+				wealth = 10
+			}
 		}
-
 		effect = {
-			FROM = { wealth = -10 }
+			FROM = {
+				wealth = -10
+			}
 			add_trait = on_lahmian_mission
 			set_character_flag = recruitment_mission
 		}
-
 		ai_will_do = {
 			factor = 0
 		}
@@ -210,44 +225,49 @@ targetted_decisions = {
 			trait = vampire_lahmian_visible
 			trait = lahmian_queen
 		}
-
 		potential = {
 			higher_tier_than = BARON
 			is_within_diplo_range = FROM
 			religion_group = old_world_group
 			trait = creature_human
 			location = {
-				NOT = { has_province_modifier = lahmian_presence }
+				NOT = {
+					has_province_modifier = lahmian_presence
+				}
 			}
 		}
-
 		allow = {
-			FROM = { wealth = 100 }
+			FROM = {
+				wealth = 100
+			}
 		}
-
 		effect = {
-			FROM = { wealth = -100 }
-			character_event = { id = lahmia.300 }
+			FROM = {
+				wealth = -100
+			}
+			character_event = {
+				id = lahmia.300
+			}
 		}
-
 		ai_will_do = {
 			factor = 0
 		}
 	}
 }
-
 decisions = {
+
 	retake_lahmia = {
 		is_high_prio = yes
 		only_rulers = yes
-
 		potential = {
 			age = 16
 			is_ruler = yes
 			higher_tier_than = BARON
 			independent = yes
 			trait = lahmian_queen
-			NOT = { has_global_flag = wh_retake_lahmia }
+			NOT = {
+				has_global_flag = wh_retake_lahmia
+			}
 		}
 		allow = {
 			wealth = 2500
@@ -261,7 +281,11 @@ decisions = {
 			prestige = 800
 			hidden_tooltip = {
 				set_global_flag = wh_retake_lahmia
-				c_lahmia = { ROOT = { capital = PREV } }
+				c_lahmia = {
+					ROOT = {
+						capital = PREV
+					}
+				}
 				give_nickname = nick_the_beautiful_sun
 			}
 		}
@@ -276,14 +300,15 @@ decisions = {
 	rebuild_palace_and_blood_temple = {
 		is_high_prio = yes
 		only_rulers = yes
-
 		potential = {
 			age = 16
 			is_ruler = yes
 			higher_tier_than = BARON
 			independent = yes
 			trait = lahmian_queen
-			NOT = { has_global_flag = wh_rebuild_palace_and_blood_temple }
+			NOT = {
+				has_global_flag = wh_rebuild_palace_and_blood_temple
+			}
 		}
 		allow = {
 			wealth = 1500
@@ -297,7 +322,11 @@ decisions = {
 			prestige = 1000
 			hidden_tooltip = {
 				set_global_flag = wh_rebuild_palace_and_blood_temple
-		 		1127 = { add_province_modifier = { name = great_city_lahmia days = -1 }	}
+		 		1127 = {
+					add_province_modifier = {
+						name = great_city_lahmia days = -1
+					}
+				}
 			}
 		}
 		revoke_allowed = {

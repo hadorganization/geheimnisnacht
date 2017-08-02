@@ -3,73 +3,76 @@
 # Society decisions for monastic orders
 #
 ###########################################
-
-	
-
 society_decisions = {
+
 	monastic_orders_invite_ascetic = {
 		only_playable = yes
-		
 		potential = {
 			has_dlc = "Mystics"
 			society_rank >= 3
 			is_monastic_member_trigger = yes
-			NOT = { has_character_flag = ascetic_arriving }
+			NOT = {
+				has_character_flag = ascetic_arriving
+			}
 		}
-
 		allow = {
 			has_society_currency_medium_trigger = yes
 			is_inaccessible_trigger = no
 		}
-
 		effect = {
 			set_character_flag = ascetic_arriving
 			detract_society_currency_medium_effect = yes
-			
 			custom_tooltip = {
 				text = monastic_orders_invite_ascetic_tt
-				character_event = { id = MNM.4432 days = 7 }
+				character_event = {
+					id = MNM.4432 days = 7
+				}
 			}
 		}
-
 		revoke_allowed = {
 			always = no
 		}
-
 		ai_will_do = {
 			factor = 0.001
 			modifier = {
 				factor = 0.1
-				any_courtier = { is_monastic_member_trigger = yes } #Less likely to invite if there is already someone else at court
+				any_courtier = {
+					is_monastic_member_trigger = yes
+				} #Less likely to invite if there is already someone else at court
 			}
 			modifier = {
-				any_courtier = { has_job_title = job_spiritual learning = 16 }
+				any_courtier = {
+					has_job_title = job_spiritual learning = 16
+				}
 				factor = 0.01
 			}
 		}
 	}
 }
-
 targetted_decisions = {
-	monastic_orders_spiritual_guidance = {  ### Monastic Order Rank 2 power : targeted decision to remove one of target's vices
+
+	monastic_orders_spiritual_guidance = {
+		### Monastic Order Rank 2 power : targeted decision to remove one of target's vices
 		potential = {
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			OR = {
 				same_realm = FROM
 				same_society_as = FROM
 			}
 			is_within_diplo_range = FROM
 		}
-		
 		from_potential = {
 			has_DLC = "Mystics"
 			society_rank >= 2
 			is_monastic_member_trigger = yes
 			is_adult = yes
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			religion = ROOT
 		}
-		
 		allow = {
 			FROM = {
 				has_society_currency_medium_trigger = yes	###requires 300SocCur
@@ -87,7 +90,8 @@ targetted_decisions = {
 				is_close_relative = FROM
 			}
 			NOT = {
-				has_opinion_modifier = {	###opinion modifier 10yrs cooldown
+				has_opinion_modifier = {
+					###opinion modifier 10yrs cooldown
 					who =  FROM
 					modifier = opinion_spiritual_guidance
 				}
@@ -97,47 +101,79 @@ targetted_decisions = {
 				OR ={
 					AND = {
 						trait = lustful
-						FROM = { NOT = { trait = lustful } }
+						FROM = {
+							NOT = {
+								trait = lustful
+							}
+						}
 					}
 					AND = {
 						trait = gluttonous
-						FROM = { NOT = { trait = gluttonous } }
+						FROM = {
+							NOT = {
+								trait = gluttonous
+							}
+						}
 					}
 					AND = {
 						trait = greedy
-						FROM = { NOT = { trait = greedy } }
+						FROM = {
+							NOT = {
+								trait = greedy
+							}
+						}
 					}
 					AND = {
 						trait = slothful
-						FROM = { NOT = { trait = slothful } }
+						FROM = {
+							NOT = {
+								trait = slothful
+							}
+						}
 					}
 					AND = {
 						trait = wroth
-						FROM = { NOT = { trait = wroth } }
+						FROM = {
+							NOT = {
+								trait = wroth
+							}
+						}
 					}
 					AND = {
 						trait = envious
-						FROM = { NOT = { trait = envious } }
+						FROM = {
+							NOT = {
+								trait = envious
+							}
+						}
 					}
 					AND = {
 						trait = proud
-						FROM = { NOT = { trait = proud } }
+						FROM = {
+							NOT = {
+								trait = proud
+							}
+						}
 					}
 				}
 			}
 		}
-		
 		effect = {
 			FROM = {
 				detract_society_currency_medium_effect = yes	###lose 300SocCur
 			}
-			random_list = {				###Will randomly remove one sin that target has and you don't
+			random_list = {
+				###Will randomly remove one sin that target has and you don't
 				10 = {
 					modifier = {
 						factor = 0
 						OR = {
-							NOT = { trait = lustful }
-							FROM = { trait = lustful }
+							NOT = {
+								trait = lustful
+							}
+							FROM = {
+								trait = lustful
+							}
 						}
 					}
 					set_character_flag = spiritual_guidance_lustful
@@ -147,8 +183,12 @@ targetted_decisions = {
 					modifier = {
 						factor = 0
 						OR = {
-							NOT = { trait = gluttonous }
-							FROM = { trait = gluttonous }
+							NOT = {
+								trait = gluttonous
+							}
+							FROM = {
+								trait = gluttonous
+							}
 						}
 					}
 					set_character_flag = spiritual_guidance_gluttonous
@@ -158,8 +198,12 @@ targetted_decisions = {
 					modifier = {
 						factor = 0
 						OR = {
-							NOT = { trait = greedy }
-							FROM = { trait = greedy }
+							NOT = {
+								trait = greedy
+							}
+							FROM = {
+								trait = greedy
+							}
 						}
 					}
 					set_character_flag = spiritual_guidance_greedy
@@ -169,8 +213,12 @@ targetted_decisions = {
 					modifier = {
 						factor = 0
 						OR = {
-							NOT = { trait = slothful }
-							FROM = { trait = slothful }
+							NOT = {
+								trait = slothful
+							}
+							FROM = {
+								trait = slothful
+							}
 						}
 					}
 					set_character_flag = spiritual_guidance_slothful
@@ -180,8 +228,12 @@ targetted_decisions = {
 					modifier = {
 						factor = 0
 						OR = {
-							NOT = { trait = wroth }
-							FROM = { trait = wroth }
+							NOT = {
+								trait = wroth
+							}
+							FROM = {
+								trait = wroth
+							}
 						}
 					}
 					set_character_flag = spiritual_guidance_wroth
@@ -191,8 +243,12 @@ targetted_decisions = {
 					modifier = {
 						factor = 0
 						OR = {
-							NOT = { trait = envious }
-							FROM = { trait = envious }
+							NOT = {
+								trait = envious
+							}
+							FROM = {
+								trait = envious
+							}
 						}
 					}
 					set_character_flag = spiritual_guidance_envious
@@ -202,27 +258,36 @@ targetted_decisions = {
 					modifier = {
 						factor = 0
 						OR = {
-							NOT = { trait = proud }
-							FROM = { trait = proud }
+							NOT = {
+								trait = proud
+							}
+							FROM = {
+								trait = proud
+							}
 						}
 					}
 					set_character_flag = spiritual_guidance_proud
 					remove_trait = proud
 				}
 			}
-			opinion = {										###opinion mostly serves as a 10 years cooldown ; +5 Opinion
+			opinion = {
+				###opinion mostly serves as a 10 years cooldown ; +5 Opinion
 				who = FROM
 				modifier = opinion_spiritual_guidance
 				months = 120
 			}
-			FROM = { character_event = { id = MNM.4950 } }
-			character_event = { id = MNM.4951 }
+			FROM = {
+				character_event = {
+					id = MNM.4950
+				}
+			}
+			character_event = {
+				id = MNM.4951
+			}
 		}
-		
 		revoke_allowed = {
-		always = no
+			always = no
 		}
-		
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -243,26 +308,29 @@ targetted_decisions = {
 			}
 		}
 	}
-	
-	monastic_orders_teach_virtue = {  ### Monastic Order Rank 3 power : targeted decision to give target a virtue
+
+	monastic_orders_teach_virtue = {
+		### Monastic Order Rank 3 power : targeted decision to give target a virtue
 		potential = {
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			OR = {
 				same_realm = FROM
 				same_society_as = FROM
 			}
 			is_within_diplo_range = FROM
 		}
-		
 		from_potential = {
 			has_DLC = "Mystics"
 			society_rank >= 3
 			is_monastic_member_trigger = yes
 			is_adult = yes
-			NOT = { trait = incapable }
+			NOT = {
+				trait = incapable
+			}
 			religion = ROOT
 		}
-		
 		allow = {
 			FROM = {
 				has_society_currency_major_trigger = yes	###requires 500SocCur
@@ -280,7 +348,8 @@ targetted_decisions = {
 				is_close_relative = FROM
 			}
 			NOT = {
-				has_opinion_modifier = {	###opinion modifier 10yrs cooldown
+				has_opinion_modifier = {
+					###opinion modifier 10yrs cooldown
 					who =  FROM
 					modifier = opinion_teach_virtue
 				}
@@ -289,48 +358,80 @@ targetted_decisions = {
 				text = teach_virtue_tooltip
 				OR ={
 					AND = {
-						NOT = { trait = chaste }
-						FROM = { trait = chaste }
+						NOT = {
+							trait = chaste
+						}
+						FROM = {
+							trait = chaste
+						}
 					}
 					AND = {
-						NOT = { trait = temperate }
-						FROM = { trait = temperate }
+						NOT = {
+							trait = temperate
+						}
+						FROM = {
+							trait = temperate
+						}
 					}
 					AND = {
-						NOT = { trait = charitable }
-						FROM = { trait = charitable }
+						NOT = {
+							trait = charitable
+						}
+						FROM = {
+							trait = charitable
+						}
 					}
 					AND = {
-						NOT = { trait = diligent }
-						FROM = { trait = diligent }
+						NOT = {
+							trait = diligent
+						}
+						FROM = {
+							trait = diligent
+						}
 					}
 					AND = {
-						NOT = { trait = patient }
-						FROM = { trait = patient }
+						NOT = {
+							trait = patient
+						}
+						FROM = {
+							trait = patient
+						}
 					}
 					AND = {
-						NOT = { trait = kind }
-						FROM = { trait = kind }
+						NOT = {
+							trait = kind
+						}
+						FROM = {
+							trait = kind
+						}
 					}
 					AND = {
-						NOT = { trait = humble }
-						FROM = { trait = humble }
+						NOT = {
+							trait = humble
+						}
+						FROM = {
+							trait = humble
+						}
 					}
 				}
 			}
 		}
-		
 		effect = {
 			FROM = {
 				detract_society_currency_major_effect = yes	###lose 500SocCur
 			}
-			random_list = {				###Will randomly add one virtue that you have and target doesn't
+			random_list = {
+				###Will randomly add one virtue that you have and target doesn't
 				10 = {
 					modifier = {
 						factor = 0
 						OR = {
 							trait = chaste
-							FROM = { NOT = { trait = chaste } }
+							FROM = {
+								NOT = {
+									trait = chaste
+								}
+							}
 						}
 					}
 					set_character_flag = teach_virtue_chaste
@@ -341,7 +442,11 @@ targetted_decisions = {
 						factor = 0
 						OR = {
 							trait = temperate
-							FROM = { NOT = { trait = temperate } }
+							FROM = {
+								NOT = {
+									trait = temperate
+								}
+							}
 						}
 					}
 					set_character_flag = teach_virtue_temperate
@@ -352,7 +457,11 @@ targetted_decisions = {
 						factor = 0
 						OR = {
 							trait = charitable
-							FROM = { NOT = { trait = charitable } }
+							FROM = {
+								NOT = {
+									trait = charitable
+								}
+							}
 						}
 					}
 					set_character_flag = teach_virtue_charitable
@@ -363,7 +472,11 @@ targetted_decisions = {
 						factor = 0
 						OR = {
 							trait = diligent
-							FROM = { NOT = { trait = diligent } }
+							FROM = {
+								NOT = {
+									trait = diligent
+								}
+							}
 						}
 					}
 					set_character_flag = teach_virtue_diligent
@@ -374,7 +487,11 @@ targetted_decisions = {
 						factor = 0
 						OR = {
 							trait = patient
-							FROM = { NOT = { trait = patient } }
+							FROM = {
+								NOT = {
+									trait = patient
+								}
+							}
 						}
 					}
 					set_character_flag = teach_virtue_patient
@@ -385,7 +502,11 @@ targetted_decisions = {
 						factor = 0
 						OR = {
 							trait = kind
-							FROM = { NOT = { trait = kind } }
+							FROM = {
+								NOT = {
+									trait = kind
+								}
+							}
 						}
 					}
 					set_character_flag = teach_virtue_kind
@@ -396,26 +517,35 @@ targetted_decisions = {
 						factor = 0
 						OR = {
 							trait = humble
-							FROM = { NOT = { trait = humble } }
+							FROM = {
+								NOT = {
+									trait = humble
+								}
+							}
 						}
 					}
 					set_character_flag = teach_virtue_humble
 					add_trait = humble
 				}
 			}
-			opinion = {										###opinion mostly serves as a 10 years cooldown ; +10 Opinion
+			opinion = {
+				###opinion mostly serves as a 10 years cooldown ; +10 Opinion
 				who = FROM
 				modifier = opinion_teach_virtue
 				months = 120
 			}
-			FROM = { character_event = { id = MNM.4960 } }
-			character_event = { id = MNM.4961 }
+			FROM = {
+				character_event = {
+					id = MNM.4960
+				}
+			}
+			character_event = {
+				id = MNM.4961
+			}
 		}
-		
 		revoke_allowed = {
-		always = no
+			always = no
 		}
-		
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -437,22 +567,24 @@ targetted_decisions = {
 		}
 	}
 }
-
 title_decisions = {
 	# Monastic Order Rank 4 Power - Convert County
+
 	monastic_order_convert_county = {
 		only_rulers = yes
-		
 		from_potential = {
 			has_dlc = "Mystics"
 			is_ruler = yes
 			is_monastic_member_trigger = yes
 			society_rank == 4
 		}
-		
 		potential = {
 			tier = COUNT
-			location = { NOT = { religion = FROM } }
+			location = {
+				NOT = {
+					religion = FROM
+				}
+			}
 			holder_scope = {
 				OR = {
 					is_liege_or_above = FROM
@@ -460,21 +592,29 @@ title_decisions = {
 				}
 			}
 		}
-		
 		allow = {
 			FROM = {
 				society_currency >= 1000
 			}
 			location = {
-				NOT = { religion = FROM }
-				owner = { NOT = { religion = PREV } } # Cannot convert counties of owners who has that religion
+				NOT = {
+					religion = FROM
+				}
+				owner = {
+					NOT = {
+						religion = PREV
+					}
+				} # Cannot convert counties of owners who has that religion
 			}
 		}
-		
 		effect = {
 			FROM = {
 				change_society_currency = -1000
-				hidden_tooltip = { character_event = { id = MNM.4990 } }
+				hidden_tooltip = {
+					character_event = {
+						id = MNM.4990
+					}
+				}
 			}
 			location = {
 				religion = FROM
@@ -484,15 +624,23 @@ title_decisions = {
 				}
 			}
 			hidden_tooltip = {
-				if = { # Notify county owner
+				if = {
+					# Notify county owner
 					limit = {
-						holder_scope = { NOT = { character = FROM } }
+						holder_scope = {
+							NOT = {
+								character = FROM
+							}
+						}
 					}
-					holder_scope = { character_event = { id = MNM.4991 } }
+					holder_scope = {
+						character_event = {
+							id = MNM.4991
+						}
+					}
 				}
 			}
 		}
-		
 		ai_will_do = {
 			factor = 1
 		}

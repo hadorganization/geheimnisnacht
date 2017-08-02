@@ -1,12 +1,12 @@
 
 # misc maintenance events
-namespace = br_maintenance
-
+namespace = wh_maintenance
+# upon title holder change clears crown_law_change title flag
+# triggered by on_new_holder, on_new_holder_inheritance, on_new_holder_usurpation from 00_on_actions.txt
 character_event = {
-	# by Achab
-	id = br_maintenance.101 # upon title holder change clears crown_law_change title flag
+	id = wh_maintenance.1
 	hide_window = yes
-	is_triggered_only = yes # triggered by on_new_holder, on_new_holder_inheritance, on_new_holder_usurpation from 00_on_actions.txt
+	is_triggered_only = yes
 
 	trigger = {
 		# only for crown law titles
@@ -20,6 +20,78 @@ character_event = {
 			# FROM is the newly acquired tile
 			clr_title_flag = crown_law_change
 			# set_title_flag = clawch_cleared # DEBUG
+		}
+	}
+}
+
+# varios checks for provs triggered by on_new_holder, on_new_holder_inheritance, on_new_holder_usurpation from 00_on_actions.txt
+character_event = {
+	id = wh_maintenance.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		# nehekhara fix
+		log = "wh_maintenance.2 work fine"
+		any_realm_province = {
+			limit = {
+				region = world_nehekhara
+				not = {
+					has_province_modifier = nehekharan_curse
+				}
+				owner = {
+					is_undead_trigger = no
+				}
+			}
+			add_province_modifier = {
+				name = nehekharan_curse
+				duration = -1
+			}
+		}
+		any_realm_province = {
+			limit = {
+				region = world_nehekhara
+				has_province_modifier = nehekharan_curse
+				owner = {
+					is_undead_trigger = yes
+				}
+			}
+			remove_province_modifier = nehekharan_curse
+		}
+	}
+}
+
+# heal undeds and demons
+character_event = {
+	id = wh_maintenance.3
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			is_undead_trigger = yes
+			is_demon_trigger = yes
+		}
+		OR = {
+			wh_is_injured_trigger = yes
+			AND = {
+				wh_is_sick_trigger = yes
+				not = {
+					religion = nurgle
+				}
+			}
+		}
+	}
+
+	immediate = {
+		wh_heal_injury_effect = yes
+		if = {
+			limit = {
+				NOT = {
+					religion = nurgle
+				}
+			}
+			wh_heal_sick_effect = yes
 		}
 	}
 }

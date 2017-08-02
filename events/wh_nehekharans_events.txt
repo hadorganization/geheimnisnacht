@@ -275,31 +275,7 @@ character_event = {
 	only_rulers = yes
 
 	trigger = {
-		NOT = {
-			trait = vampire_lahmian_visible
-		}
-		NOT = {
-			trait = vampire_carstein_visible
-		}
-		NOT = {
-			trait = vampire_blood_visible
-		}
-		NOT = {
-			trait = vampire_strigoi_visible
-		}
-		NOT = {
-			trait = vampire_necrarch_visible
-		}
-		NOT = {
-			trait = vampire_jade_visible
-		}
-		NOT = {
-			trait = vampire_mahtmasi_visible
-		}
-		NOT = {
-			trait = creature_nehekharan
-		}
-
+		is_undead_trigger = no
 	}
 
 	option = {
@@ -308,7 +284,6 @@ character_event = {
  		siege = {
  			morale = -0.01
  			troops = -0.025
-
 		}
 		ai_chance = {
 			factor = 1
@@ -522,339 +497,6 @@ character_event = {
 	}
 }
 
-# Nehekharan provinces under living rulers are not good provinces
-province_event = {
-	id = snehekharan.10
-	# desc = EVTDESCsnehekharan10
-	# picture = GFX_evt_khemri_king
-	hide_window = yes
-	
-
-	trigger = {
-		location = {
-			region = world_nehekhara
-		}
-		owner = {
-			is_undead_trigger = no
-		}
-	}
-
-	immediate = {
-		add_province_modifier = {
-			name = nehekharan_curse
-			duration = -1
-		}
-	}
-}
-
-# Nehekharan provinces under Tomb Kings lose the malus
-province_event = {
-	id = snehekharan.10005
-	# desc = EVTDESCsnehekharan10005
-	# picture = GFX_evt_khemri_king
-	hide_window = yes
- 	mean_time_to_happen = {
-		days = 5
-	}
-
-	trigger = {
-		location = {
-			region = world_nehekhara
-		}
-		has_province_modifier = nehekharan_curse
-		owner = {
-			is_undead_trigger = yes
-		}
-	}
-
-	immediate = {
-		remove_province_modifier = nehekharan_curse
-	}
-}
-
-# Nehekharan Tomb Kings regenerate wounds (same for demons)
-character_event = {
-	id = snehekharan.11
-	# desc = EVTDESCsnehekharan11
-	# picture = GFX_evt_khemri_king
-	hide_window = yes
-	
- 	mean_time_to_happen = {
-		days = 15
-		modifier = {
-			factor = 10
-			is_vampire_trigger = yes
-		}
-	}
-
-	trigger = {
-		OR = {
-			trait = creature_nehekharan
-			trait = khorne_demon
-			trait = nurgle_demon
-			trait = slaanesh_demon
-			trait = tzeentch_demon
-			trait = hashut_kdaai
-			trait = vampire_lahmian_visible
-			trait = vampire_carstein_visible
-			trait = vampire_blood_visible
-			trait = vampire_strigoi_visible
-			trait = vampire_necrarch_visible
-			trait = vampire_jade_visible
-			trait = vampire_mahtmasi_visible
-			trait = vampire_lahmian_hidden
-			trait = vampire_carstein_hidden
-			trait = vampire_blood_hidden
-			trait = vampire_strigoi_hidden
-			trait = vampire_necrarch_hidden
-			trait = vampire_jade_hidden
-			trait = vampire_mahtmasi_hidden
-		}
-		OR = {
-			trait = incapable
-			trait = fat
-			trait = undernourished
-			trait = infirm
-			trait = wounded
-			trait = maimed
-			trait = blinded
-			trait = disfigured
-			trait = one_eyed
-			trait = one_handed
-			trait = one_legged
-			trait = mangled
-			trait = severely_injured
-			trait = lovers_pox
-			AND = {
-				trait = has_nurgles_rot
-				NOT = {
-					trait = nurgle_demon
-				}
-			}
-			# AND = { trait = has_creeping_buboes
-			# NOT = { trait = nurgle_demon } }
-			AND = {
-				trait = has_measles
-				NOT = {
-					trait = nurgle_demon
-				}
-			}
-			AND = {
-				trait = has_typhus
-				NOT = {
-					trait = nurgle_demon
-				}
-			}
-			AND = {
-				trait = pneumonic
-				NOT = {
-					trait = nurgle_demon
-				}
-			}
-			AND = {
-				trait = has_tomb_rot
-				NOT = {
-					trait = nurgle_demon
-				}
-			}
-			AND = {
-				trait = has_bone_auge
-				NOT = {
-					trait = nurgle_demon
-				}
-			}
-			AND = {
-				trait = pneumonic
-				NOT = {
-					trait = nurgle_demon
-				}
-			}
-			AND = {
-				trait = flu
-				NOT = {
-					trait = nurgle_demon
-				}
-			}
-			AND = {
-				trait = dysentery
-				NOT = {
-					trait = nurgle_demon
-				}
-			}
-			AND = {
-				trait = gout
-				NOT = {
-					trait = nurgle_demon
-				}
-			}
-			AND = {
-				trait = rabies
-				NOT = {
-					trait = nurgle_demon
-				}
-			}
-			AND = {
-				trait = cancer
-				NOT = {
-					trait = nurgle_demon
-				}
-			}
-			AND = {
-				trait = scurvy
-				NOT = {
-					trait = nurgle_demon
-				}
-			}
-			trait = eunuch
-		}
-
-	}
-
-	immediate = {
-		remove_trait = incapable
-		remove_trait = infirm
-		remove_trait = wounded
-		remove_trait = maimed
-		remove_trait = blinded
-		remove_trait = eunuch
-		remove_trait = disfigured
-		remove_trait = fat
-		remove_trait = undernourished
-		remove_trait = one_eyed
-		remove_trait = one_handed
-		remove_trait = one_legged
-		remove_trait = mangled
-		remove_trait = severely_injured
-		remove_trait = lovers_pox
-		if = {
-			limit = {
-				NOT = {
-					trait = nurgle_demon
-				}
-			}
-			remove_trait = has_nurgles_rot
-
-		}
-		if = {
-			limit = {
-				NOT = {
-					trait = nurgle_demon
-				}
-			}
-			remove_trait = has_creeping_buboes
-
-		}
-		if = {
-			limit = {
-				NOT = {
-					trait = nurgle_demon
-				}
-			}
-			remove_trait = has_measles
-
-		}
-		if = {
-			limit = {
-				NOT = {
-					trait = nurgle_demon
-				}
-			}
-			remove_trait = has_typhus
-
-		}
-		if = {
-			limit = {
-				NOT = {
-					trait = nurgle_demon
-				}
-			}
-			remove_trait = pneumonic
-
-		}
-		if = {
-			limit = {
-				NOT = {
-					trait = nurgle_demon
-				}
-			}
-			remove_trait = has_tomb_rot
-
-		}
-		if = {
-			limit = {
-				NOT = {
-					trait = nurgle_demon
-				}
-			}
-			remove_trait = has_bone_auge
-
-		}
-		if = {
-			limit = {
-				NOT = {
-					trait = nurgle_demon
-				}
-			}
-			remove_trait = flu
-
-		}
-		if = {
-			limit = {
-				NOT = {
-					trait = nurgle_demon
-				}
-			}
-			remove_trait = dysentery
-
-		}
-		if = {
-			limit = {
-				NOT = {
-					trait = nurgle_demon
-				}
-			}
-			remove_trait = gout
-
-		}
-		if = {
-			limit = {
-				NOT = {
-					trait = nurgle_demon
-				}
-			}
-			remove_trait = food_poisoning
-
-		}
-		if = {
-			limit = {
-				NOT = {
-					trait = nurgle_demon
-				}
-			}
-			remove_trait = rabies
-
-		}
-		if = {
-			limit = {
-				NOT = {
-					trait = nurgle_demon
-				}
-			}
-			remove_trait = cancer
-
-		}
-		if = {
-			limit = {
-				NOT = {
-					trait = nurgle_demon
-				}
-			}
-			remove_trait = scurvy
-
-		}
-	}
-}
-
 # Nehekharan prisoners give tomb rot to their jailers
 character_event = {
 	id = snehekharan.12
@@ -869,10 +511,8 @@ character_event = {
 		trait = khemri_tomb_king
 		prisoner = yes
 		host = {
-			NOT = {
+			nor = {
 				trait = creature_nehekharan
-			}
-			NOT = {
 				trait = has_tomb_rot
 			}
 		}
@@ -1908,67 +1548,19 @@ character_event = {
 	is_triggered_only = yes
 	only_rulers = yes
 	min_age = 14
+	prisoner = no
+	capable_only = yes
 
 	trigger = {
 		independent = no
-		prisoner = no
 		NOT = {
 			has_character_flag = nehekharan_staring_evt
 		}
-		NOT = {
-			trait = incapable
-		}
-		NOT = {
-			trait = creature_nehekharan
-		}
-		NOT = {
-			trait = vampire_lahmian_visible
-		}
-		NOT = {
-			trait = vampire_carstein_visible
-		}
-		NOT = {
-			trait = vampire_blood_visible
-		}
-		NOT = {
-			trait = vampire_strigoi_visible
-		}
-		NOT = {
-			trait = vampire_necrarch_visible
-		}
-		NOT = {
-			trait = vampire_jade_visible
-		}
-		NOT = {
-			trait = vampire_mahtmasi_visible
-		}
-		NOT = {
-			trait = vampire_lahmian_hidden
-		}
-		NOT = {
-			trait = vampire_carstein_hidden
-		}
-		NOT = {
-			trait = vampire_blood_hidden
-		}
-		NOT = {
-			trait = vampire_strigoi_hidden
-		}
-		NOT = {
-			trait = vampire_necrarch_hidden
-		}
-		NOT = {
-			trait = vampire_jade_hidden
-		}
-		NOT = {
-			trait = vampire_mahtmasi_hidden
-		}
+		is_undead_trigger = no
 		liege = {
 			trait = creature_nehekharan
-			NOT = {
+			nor = {
 				trait = incapable
-			}
-			NOT = {
 				trait = incapacitated
 			}
 			prisoner = no
@@ -2327,67 +1919,19 @@ character_event = {
 	only_rulers = yes
 	min_age = 4
 	max_age = 11
+	capable_only = yes
+	prisoner = no
 
 	trigger = {
 		independent = no
-		prisoner = no
 		NOT = {
 			has_character_flag = nehekharan_kid_evt
 		}
-		NOT = {
-			trait = incapable
-		}
-		NOT = {
-			trait = creature_nehekharan
-		}
-		NOT = {
-			trait = vampire_lahmian_visible
-		}
-		NOT = {
-			trait = vampire_carstein_visible
-		}
-		NOT = {
-			trait = vampire_blood_visible
-		}
-		NOT = {
-			trait = vampire_strigoi_visible
-		}
-		NOT = {
-			trait = vampire_necrarch_visible
-		}
-		NOT = {
-			trait = vampire_jade_visible
-		}
-		NOT = {
-			trait = vampire_mahtmasi_visible
-		}
-		NOT = {
-			trait = vampire_lahmian_hidden
-		}
-		NOT = {
-			trait = vampire_carstein_hidden
-		}
-		NOT = {
-			trait = vampire_blood_hidden
-		}
-		NOT = {
-			trait = vampire_strigoi_hidden
-		}
-		NOT = {
-			trait = vampire_necrarch_hidden
-		}
-		NOT = {
-			trait = vampire_jade_hidden
-		}
-		NOT = {
-			trait = vampire_mahtmasi_hidden
-		}
+		is_undead_trigger = no
 		liege = {
 			trait = creature_nehekharan
-			NOT = {
+			nor = {
 				trait = incapable
-			}
-			NOT = {
 				trait = incapacitated
 			}
 			prisoner = no
@@ -2761,68 +2305,20 @@ character_event = {
 	is_triggered_only = yes
 	only_rulers = yes
 	min_age = 15
+	culture = nehekka
+	prisoner = no
+	capable_only = yes
 
 	trigger = {
 		independent = no
-		culture = nehekka
-		prisoner = no
 		NOT = {
 			has_character_flag = nehekharan_water_evt
 		}
-		NOT = {
-			trait = incapable
-		}
-		NOT = {
-			trait = creature_nehekharan
-		}
-		NOT = {
-			trait = vampire_lahmian_visible
-		}
-		NOT = {
-			trait = vampire_carstein_visible
-		}
-		NOT = {
-			trait = vampire_blood_visible
-		}
-		NOT = {
-			trait = vampire_strigoi_visible
-		}
-		NOT = {
-			trait = vampire_necrarch_visible
-		}
-		NOT = {
-			trait = vampire_jade_visible
-		}
-		NOT = {
-			trait = vampire_mahtmasi_visible
-		}
-		NOT = {
-			trait = vampire_lahmian_hidden
-		}
-		NOT = {
-			trait = vampire_carstein_hidden
-		}
-		NOT = {
-			trait = vampire_blood_hidden
-		}
-		NOT = {
-			trait = vampire_strigoi_hidden
-		}
-		NOT = {
-			trait = vampire_necrarch_hidden
-		}
-		NOT = {
-			trait = vampire_jade_hidden
-		}
-		NOT = {
-			trait = vampire_mahtmasi_hidden
-		}
+		is_undead_trigger = no
 		liege = {
 			trait = creature_nehekharan
-			NOT = {
+			nor = {
 				trait = incapable
-			}
-			NOT = {
 				trait = incapacitated
 			}
 			prisoner = no
@@ -3009,15 +2505,14 @@ character_event = {
 	is_triggered_only = yes
 	only_rulers = yes
 	min_age = 350
+	culture = nehekka
+	prisoner = no
+	capable_only = yes
 
 	trigger = {
 		NOT = {
-			trait = incapable
-		}
-		NOT = {
 			trait = incapacitated
 		}
-		prisoner = no
 		NOT = {
 			has_character_flag = nehekharan_food_evt
 		}

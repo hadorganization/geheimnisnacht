@@ -7299,79 +7299,79 @@ letter_event = {
 
 # Castle has been erected
 province_event = {
-id = SoA.1454
-desc = EVTDESC_SOA_1454
-picture = GFX_evt_moors
-border = GFX_event_normal_frame_religion
-is_triggered_only = yes
-immediate = {
-	FROMFROM = {
-		wealth = -300
+	id = SoA.1454
+	desc = EVTDESC_SOA_1454
+	picture = GFX_evt_moors
+	border = GFX_event_normal_frame_religion
+	is_triggered_only = yes
+	immediate = {
+		FROMFROM = {
+			wealth = -300
+		}
 	}
-}
-option = {
-	name = EVTOPTA_SOA_1024
-	build_holding = {
-		type = castle
-		holder = FROMFROM
+	option = {
+		name = EVTOPTA_SOA_1024
+		build_holding = {
+			type = castle
+			holder = FROMFROM
+		}
 	}
-}
 }
 
 # Ping event when expelling a Muslim Holy Order
 character_event = {
-id = SoA.1460
-desc = OK
-picture = GFX_evt_moors
-border = GFX_event_normal_frame_religion
-hide_window = yes
-is_triggered_only = yes
-immediate = {
-	any_title_under = {
-		limit = {
-			tier = BARON
-			location = {
-				owner = {
-					OR = {
-						character = FROM
-						is_liege_or_above = FROM
+	id = SoA.1460
+	desc = OK
+	picture = GFX_evt_moors
+	border = GFX_event_normal_frame_religion
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		any_title_under = {
+			limit = {
+				tier = BARON
+				location = {
+					owner = {
+						OR = {
+							character = FROM
+							is_liege_or_above = FROM
+						}
 					}
 				}
 			}
+			usurp_title = FROM
 		}
-		usurp_title = FROM
-	}
-	if = {
-		limit = {
-			is_liege_or_above = FROM
+		if = {
+			limit = {
+				is_liege_or_above = FROM
+			}
+			set_defacto_liege = THIS
 		}
-		set_defacto_liege = THIS
-	}
-	FROM = {
-		letter_event = {
-			id = SoA.1461
+		FROM = {
+			letter_event = {
+				id = SoA.1461
+			}
+		}
+		opinion = {
+			who = FROM
+			modifier = opinion_expelled_from_realm
 		}
 	}
-	opinion = {
-		who = FROM
-		modifier = opinion_expelled_from_realm
+	option = {
+		name = OK
 	}
-}
-option = {
-	name = OK
-}
 }
 
 # Notification event when expelling a Muslim Holy Order
 letter_event = {
-id = SoA.1461
-desc = EVTDESC_SOA_1461
-border = GFX_event_letter_frame_religion
-is_triggered_only = yes
-immediate = {
-	remove_character_modifier = donated_to_holy_order
-}
-option = {
-	name = EVTOPTB_SOA_1061
-}
+	id = SoA.1461
+	desc = EVTDESC_SOA_1461
+	border = GFX_event_letter_frame_religion
+	is_triggered_only = yes
+	immediate = {
+		remove_character_modifier = donated_to_holy_order
+	}
+	option = {
+		name = EVTOPTB_SOA_1061
+	}
 }

@@ -15926,337 +15926,363 @@ character_event = {
 
 character_event = {
 
-# trick
-id = RIP.30310
-desc = placeholdername_11# RIP.30310.d
-border = GFX_event_normal_frame_intrigue
-picture = GFX_evt_suspicious_noble # TODO better pic
-is_triggered_only = yes
-option = {
-	name = placeholdername_12 # RIP.30310.a
-	event_target:immortal_rival = {
-		if = {
-			limit = {
-				is_invincible_trigger = yes
+	# trick
+	id = RIP.30310
+	desc = placeholdername_11# RIP.30310.d
+	border = GFX_event_normal_frame_intrigue
+	picture = GFX_evt_suspicious_noble # TODO better pic
+	is_triggered_only = yes
+	option = {
+		name = placeholdername_12 # RIP.30310.a
+		event_target:immortal_rival = {
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
 			}
-			antideath_effect = yes
-			break = yes
-		}
-		death = {
-			death_reason = death_execution_crushing killer = ROOT
+			death = {
+				death_reason = death_execution_crushing killer = ROOT
+			}
 		}
 	}
-}
-option = {
+	option = {
 
-	trigger = {
-		stewardship = 14
-	}
-	name = placeholdername_13 # RIP.30310.b
-	tooltip_info = stewardship
-	capital_scope = {
-		add_province_modifier = {
-			name = trapped_immortal
-			duration = -1
+		trigger = {
+			stewardship = 14
+		}
+		name = placeholdername_13 # RIP.30310.b
+		tooltip_info = stewardship
+		capital_scope = {
+			add_province_modifier = {
+				name = trapped_immortal
+				duration = -1
+			}
 		}
 	}
-}
 }
 
 character_event = {
 
-# the power of money
-id = RIP.30311
-desc = placeholdername_14# RIP.30311.d
-border = GFX_event_normal_frame_economy
-picture = GFX_evt_suspicious_noble # TODO better pic
-is_triggered_only = yes
-option = {
-	name = placeholdername_15 # RIP.30311.a # prison
-	event_target:immortal_rival = {
-		imprison = ROOT
-	}
-}
-option = {
-
-	trigger = {
-		OR = {
-			trait = lunatic
-			trait = possessed
-			trait = hunter
+	# the power of money
+	id = RIP.30311
+	desc = placeholdername_14# RIP.30311.d
+	border = GFX_event_normal_frame_economy
+	picture = GFX_evt_suspicious_noble # TODO better pic
+	is_triggered_only = yes
+	option = {
+		name = placeholdername_15 # RIP.30311.a # prison
+		event_target:immortal_rival = {
+			imprison = ROOT
 		}
 	}
-	name = placeholdername_17 # RIP.30311.e # platypus
-	tooltip_info = hunter
-	custom_tooltip = {
-		text = immortal_hunter_tooltip
-	}
-	event_target:immortal_rival = {
-		if = {
-			limit = {
-				is_invincible_trigger = yes
+	option = {
+
+		trigger = {
+			OR = {
+				trait = lunatic
+				trait = possessed
+				trait = hunter
 			}
-			antideath_effect = yes
-			break = yes
 		}
-		death = {
-			death_reason = death_platypus killer = ROOT
+		name = placeholdername_17 # RIP.30311.e # platypus
+		tooltip_info = hunter
+		custom_tooltip = {
+			text = immortal_hunter_tooltip
 		}
-	}
-}
-option = {
-
-	trigger = {
-		NOT = {
-			trait = kind
-		}
-	}
-	name = placeholdername_16 # RIP.30311.b	# burn
-	event_target:immortal_rival = {
-		if = {
-			limit = {
-				is_invincible_trigger = yes
+		event_target:immortal_rival = {
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
 			}
-			antideath_effect = yes
-			break = yes
-		}
-		death = {
-			death_reason = death_execution_burning killer = ROOT
-		}
-	}
-}
-option = {
-
-	trigger = {
-		stewardship = 14
-	}
-	name = placeholdername_13 # RIP.30310.c	# work
-	tooltip_info = stewardship
-	event_target:immortal_rival = {
-		if = {
-			limit = {
-				is_invincible_trigger = yes
+			death = {
+				death_reason = death_platypus killer = ROOT
 			}
-			antideath_effect = yes
-			break = yes
-		}
-		death = {
-			death_reason = death_missing killer = ROOT
 		}
 	}
-	capital_scope = {
-		add_province_modifier = {
-			name = trapped_immortal
-			duration = -1
-		}
-	}
-}
-}
+	option = {
 
-character_event = {
-
-# debate
-id = RIP.30312
-desc = placeholdername_23 # RIP.30312.d
-border = GFX_event_normal_frame_religion
-picture = GFX_evt_suspicious_noble # TODO better pic
-is_triggered_only = yes
-option = {
-	name = placeholdername_24 # RIP.30312.a # new
-	character_event = {
-		id = RIP.30313 days = 0
-	}
-}
-option = {
-	name = placeholdername_25 # RIP.30312.b # refuse
-	character_event = {
-		id = RIP.30313 days = 0
-	}
-}
-}
-
-character_event = {
-
-# debate2
-id = RIP.30313
-desc = placeholdername_26 # RIP.30313.d
-border = GFX_event_normal_frame_religion
-picture = GFX_evt_suspicious_noble # TODO better pic
-is_triggered_only = yes
-option = {
-	name = placeholdername_27 # RIP.30313.a # argue on
-	character_event = {
-		id = RIP.30314 days = 0
-	}
-}
-option = {
-	name = placeholdername_28 # RIP.30313.b # kill
-	event_target:immortal_rival = {
-		if = {
-			limit = {
-				is_invincible_trigger = yes
-			}
-			antideath_effect = yes
-			break = yes
-		}
-		death = {
-			death_reason = death_accident killer = ROOT
-		}
-	}
-}
-}
-
-character_event = {
-
-# debate3
-id = RIP.30314
-desc = placeholdername_29 # RIP.30314.d
-border = GFX_event_normal_frame_religion
-picture = GFX_evt_suspicious_noble # TODO better pic
-is_triggered_only = yes
-option = {
-	name = placeholdername_30 # RIP.30314.a
-	event_target:immortal_rival = {
-		if = {
-			limit = {
-				is_invincible_trigger = yes
-			}
-			antideath_effect = yes
-			break = yes
-		}
-		death = {
-			death_reason = death_missing killer = ROOT
-		}
-	}
-}
-}
-
-character_event = {
-
-# immortal suspicions
-id = RIP.30315
-desc = placeholdername_43 # RIP.30315.d
-border = GFX_event_normal_frame_intrigue
-picture = GFX_evt_suspicious_noble
-immediate = {
-	most_popular_vassal = {
-		limit = {
-			ai = yes
-			immortal = no
+		trigger = {
 			NOT = {
-				opinion = {
-					who = ROOT value = 50
+				trait = kind
+			}
+		}
+		name = placeholdername_16 # RIP.30311.b	# burn
+		event_target:immortal_rival = {
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
+				death_reason = death_execution_burning killer = ROOT
+			}
+		}
+	}
+	option = {
+
+		trigger = {
+			stewardship = 14
+		}
+		name = placeholdername_13 # RIP.30310.c	# work
+		tooltip_info = stewardship
+		event_target:immortal_rival = {
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
+				death_reason = death_missing killer = ROOT
+			}
+		}
+		capital_scope = {
+			add_province_modifier = {
+				name = trapped_immortal
+				duration = -1
+			}
+		}
+	}
+}
+
+character_event = {
+
+	# debate
+	id = RIP.30312
+	desc = placeholdername_23 # RIP.30312.d
+	border = GFX_event_normal_frame_religion
+	picture = GFX_evt_suspicious_noble # TODO better pic
+	is_triggered_only = yes
+	option = {
+		name = placeholdername_24 # RIP.30312.a # new
+		character_event = {
+			id = RIP.30313 days = 0
+		}
+	}
+	option = {
+		name = placeholdername_25 # RIP.30312.b # refuse
+		character_event = {
+			id = RIP.30313 days = 0
+		}
+	}
+}
+
+character_event = {
+
+	# debate2
+	id = RIP.30313
+	desc = placeholdername_26 # RIP.30313.d
+	border = GFX_event_normal_frame_religion
+	picture = GFX_evt_suspicious_noble # TODO better pic
+	is_triggered_only = yes
+	option = {
+		name = placeholdername_27 # RIP.30313.a # argue on
+		character_event = {
+			id = RIP.30314 days = 0
+		}
+	}
+	option = {
+		name = placeholdername_28 # RIP.30313.b # kill
+		event_target:immortal_rival = {
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
+				death_reason = death_accident killer = ROOT
+			}
+		}
+	}
+}
+
+character_event = {
+
+	# debate3
+	id = RIP.30314
+	desc = placeholdername_29 # RIP.30314.d
+	border = GFX_event_normal_frame_religion
+	picture = GFX_evt_suspicious_noble # TODO better pic
+	is_triggered_only = yes
+	option = {
+		name = placeholdername_30 # RIP.30314.a
+		event_target:immortal_rival = {
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
+				death_reason = death_missing killer = ROOT
+			}
+		}
+	}
+}
+
+character_event = {
+
+	# immortal suspicions
+	id = RIP.30315
+	desc = placeholdername_43 # RIP.30315.d
+	border = GFX_event_normal_frame_intrigue
+	picture = GFX_evt_suspicious_noble
+	immediate = {
+		most_popular_vassal = {
+			limit = {
+				ai = yes
+				immortal = no
+				NOT = {
+					opinion = {
+						who = ROOT value = 50
+					}
+				}
+				intrigue = 12
+			}
+			save_event_target_as = immortal_suspector
+		}
+	}
+	is_triggered_only = yes
+	only_playable = yes
+	only_capable = yes
+	trigger = {
+		immortal = yes
+		age = 70
+		NOR = {
+			has_character_flag = immortal_crisis
+			has_character_flag = immortal_crisis_confirmed
+			trait = creature_orc
+			trait = creature_goblin
+			trait = creature_slann
+			trait = creature_nehekharan
+			trait = creature_elf
+			trait = creature_dwarf
+			trait = khorne_demon
+			trait = nurgle_demon
+			trait = slaanesh_demon
+			trait = tzeentch_demon
+			trait = hashut_kdaai
+			trait = vampire_lahmian_visible
+			trait = vampire_carstein_visible
+			trait = vampire_blood_visible
+			trait = vampire_strigoi_visible
+			trait = vampire_necrarch_visible
+			trait = vampire_jade_visible
+			trait = vampire_mahtmasi_visible
+			trait = creature_celdragon
+		}
+	}
+	weight_multiplier = {
+		days = 1
+		modifier = {
+			factor = 2
+			age = 100
+		}
+		modifier = {
+			factor = 2
+			age = 150
+		}
+		modifier = {
+			factor = 2
+			age = 200
+		}
+		modifier = {
+			factor = 2
+			age = 300
+		}
+	}
+	option = {
+		name = EVTOPTA_CM_6000 # Sweet text reuse
+		set_character_flag = immortal_crisis
+		event_target:immortal_suspector = {
+			opinion = {
+				modifier = immortal_suspicions who = ROOT years = 100
+			}
+		}
+	}
+}
+
+character_event = {
+
+	# clean up immortal crisis
+	id = RIP.30316
+	hide_window = yes
+	is_triggered_only = yes
+	only_playable = yes
+	only_capable = yes
+	trigger = {
+		immortal = yes
+		OR = {
+			has_character_flag = immortal_crisis
+			has_character_flag = immortal_crisis_confirmed
+		}
+		NOR = {
+			any_vassal = {
+				has_opinion_modifier = {
+					who = ROOT modifier = immortal_hate
 				}
 			}
-			intrigue = 12
-		}
-		save_event_target_as = immortal_suspector
-	}
-}
-is_triggered_only = yes
-only_playable = yes
-only_capable = yes
-trigger = {
-	immortal = yes
-	age = 70
-	NOR = {
-		has_character_flag = immortal_crisis
-		has_character_flag = immortal_crisis_confirmed
-		trait = creature_orc
-		trait = creature_goblin
-		trait = creature_slann
-		trait = creature_nehekharan
-		trait = creature_elf
-		trait = creature_dwarf
-		trait = khorne_demon
-		trait = nurgle_demon
-		trait = slaanesh_demon
-		trait = tzeentch_demon
-		trait = hashut_kdaai
-		trait = vampire_lahmian_visible
-		trait = vampire_carstein_visible
-		trait = vampire_blood_visible
-		trait = vampire_strigoi_visible
-		trait = vampire_necrarch_visible
-		trait = vampire_jade_visible
-		trait = vampire_mahtmasi_visible
-		trait = creature_celdragon
-	}
-}
-weight_multiplier = {
-	days = 1
-	modifier = {
-		factor = 2
-		age = 100
-	}
-	modifier = {
-		factor = 2
-		age = 150
-	}
-	modifier = {
-		factor = 2
-		age = 200
-	}
-	modifier = {
-		factor = 2
-		age = 300
-	}
-}
-option = {
-	name = EVTOPTA_CM_6000 # Sweet text reuse
-	set_character_flag = immortal_crisis
-	event_target:immortal_suspector = {
-		opinion = {
-			modifier = immortal_suspicions who = ROOT years = 100
+			any_vassal = {
+				has_opinion_modifier = {
+					who = ROOT modifier = immortal_suspicions
+				}
+			}
 		}
 	}
-}
+	option = {
+		clr_character_flag = immortal_crisis
+		clr_character_flag = immortal_crisis_confirmed
+	}
 }
 
 character_event = {
 
-# clean up immortal crisis
-id = RIP.30316
-hide_window = yes
-is_triggered_only = yes
-only_playable = yes
-only_capable = yes
-trigger = {
-	immortal = yes
-	OR = {
+	# suspicions spread
+	id = RIP.30317
+	hide_window = yes
+	is_triggered_only = yes
+	only_playable = yes
+	only_capable = yes
+	immediate = {
+		random_vassal = {
+			limit = {
+				ai = yes
+				immortal = no
+				NOR = {
+					opinion = {
+						who = ROOT value = 50
+					}
+					has_opinion_modifier = {
+						who = ROOT modifier = immortal_suspicions
+					}
+					has_opinion_modifier = {
+						who = ROOT modifier = immortal_loyalty
+					}
+					has_opinion_modifier = {
+						who = ROOT modifier = immortal_hate
+					}
+				}
+			}
+			save_event_target_as = immortal_suspector
+		}
+	}
+	trigger = {
 		has_character_flag = immortal_crisis
-		has_character_flag = immortal_crisis_confirmed
-	}
-	NOR = {
-		any_vassal = {
-			has_opinion_modifier = {
-				who = ROOT modifier = immortal_hate
-			}
+		NOT = {
+			has_character_flag = immortal_crisis_confirmed
 		}
 		any_vassal = {
-			has_opinion_modifier = {
-				who = ROOT modifier = immortal_suspicions
-			}
-		}
-	}
-}
-option = {
-	clr_character_flag = immortal_crisis
-	clr_character_flag = immortal_crisis_confirmed
-}
-}
-
-character_event = {
-
-# suspicions spread
-id = RIP.30317
-hide_window = yes
-is_triggered_only = yes
-only_playable = yes
-only_capable = yes
-immediate = {
-	random_vassal = {
-		limit = {
 			ai = yes
 			immortal = no
 			NOR = {
@@ -16274,127 +16300,101 @@ immediate = {
 				}
 			}
 		}
-		save_event_target_as = immortal_suspector
+	}
+	option = {
+		name = RIP.30302.a
+		random_list = {
+			90 = {
+				event_target:immortal_suspector = {
+					opinion = {
+						modifier = immortal_suspicions who = ROOT years = 100
+					}
+				}
+			}
+			10 = {
+				event_target:immortal_suspector = {
+					opinion = {
+						modifier = immortal_loyalty who = ROOT years = 100
+					}
+				}
+			}
+		}
 	}
 }
-trigger = {
-	has_character_flag = immortal_crisis
-	NOT = {
-		has_character_flag = immortal_crisis_confirmed
+
+character_event = {
+
+	# suspicions are confirmed
+	id = RIP.30318
+	desc = placeholdername_44 # RIP.30318.d
+	border = GFX_event_normal_frame_intrigue
+	picture = GFX_evt_suspicious_noble
+	is_triggered_only = yes
+	only_playable = yes
+	only_capable = yes
+	trigger = {
+		immortal = yes
+		age = 70
+		has_character_flag = immortal_crisis
+		any_vassal = {
+			ai = yes
+			immortal = no
+			has_opinion_modifier = {
+				who = ROOT modifier = immortal_suspicions
+			}
+			intrigue = 16
+		}
 	}
-	any_vassal = {
-		ai = yes
-		immortal = no
-		NOR = {
+	weight_multiplier = {
+		days = 1
+		modifier = {
+			factor = 2
+			age = 100
+		}
+		modifier = {
+			factor = 2
+			age = 150
+		}
+		modifier = {
+			factor = 2
+			age = 200
+		}
+		modifier = {
+			factor = 2
+			age = 300
+		}
+	}
+	option = {
+		name = CURSES
+		set_character_flag = immortal_crisis_confirmed
+		any_vassal = {
+			limit = {
+				has_opinion_modifier = {
+					who = ROOT modifier = immortal_suspicions
+				}
+			}
+			hidden_effect = {
+				remove_opinion = {
+					who = ROOT modifier = immortal_suspicions
+				}
+			}
 			opinion = {
-				who = ROOT value = 50
-			}
-			has_opinion_modifier = {
-				who = ROOT modifier = immortal_suspicions
-			}
-			has_opinion_modifier = {
-				who = ROOT modifier = immortal_loyalty
-			}
-			has_opinion_modifier = {
-				who = ROOT modifier = immortal_hate
+				modifier = immortal_hate who = ROOT years = 100
 			}
 		}
+		clr_character_flag = immortal_crisis
 	}
-}
-option = {
-	name = RIP.30302.a
-	random_list = {
-		90 = {
-			event_target:immortal_suspector = {
-				opinion = {
-					modifier = immortal_suspicions who = ROOT years = 100
-				}
-			}
-		}
-		10 = {
-			event_target:immortal_suspector = {
-				opinion = {
-					modifier = immortal_loyalty who = ROOT years = 100
-				}
-			}
-		}
-	}
-}
 }
 
 character_event = {
 
-# suspicions are confirmed
-id = RIP.30318
-desc = placeholdername_44 # RIP.30318.d
-border = GFX_event_normal_frame_intrigue
-picture = GFX_evt_suspicious_noble
-is_triggered_only = yes
-only_playable = yes
-only_capable = yes
-trigger = {
-	immortal = yes
-	age = 70
-	has_character_flag = immortal_crisis
-	any_vassal = {
-		ai = yes
-		immortal = no
-		has_opinion_modifier = {
-			who = ROOT modifier = immortal_suspicions
-		}
-		intrigue = 16
+	# spare event
+	id = RIP.30400
+	desc = RIP.30302.d
+	border = GFX_event_normal_frame_war
+	picture = GFX_evt_suspicious_noble # TODO better pic
+	is_triggered_only = yes
+	option = {
+		name = RIP.30302.a
 	}
-}
-weight_multiplier = {
-	days = 1
-	modifier = {
-		factor = 2
-		age = 100
-	}
-	modifier = {
-		factor = 2
-		age = 150
-	}
-	modifier = {
-		factor = 2
-		age = 200
-	}
-	modifier = {
-		factor = 2
-		age = 300
-	}
-}
-option = {
-	name = CURSES
-	set_character_flag = immortal_crisis_confirmed
-	any_vassal = {
-		limit = {
-			has_opinion_modifier = {
-				who = ROOT modifier = immortal_suspicions
-			}
-		}
-		hidden_effect = {
-			remove_opinion = {
-				who = ROOT modifier = immortal_suspicions
-			}
-		}
-		opinion = {
-			modifier = immortal_hate who = ROOT years = 100
-		}
-	}
-	clr_character_flag = immortal_crisis
-}
-}
-
-character_event = {
-
-# spare event
-id = RIP.30400
-desc = RIP.30302.d
-border = GFX_event_normal_frame_war
-picture = GFX_evt_suspicious_noble # TODO better pic
-is_triggered_only = yes
-option = {
-	name = RIP.30302.a
-}
 }

@@ -25739,1261 +25739,1653 @@ character_event = {
 
 # The prisoner becomes monstrous
 character_event = {
-id = spleasure.161
-desc = EVTDESCAspleasure161
-picture = GFX_evt_mage_lore_slaanesh
-is_triggered_only = yes
-option = {
-	name = EVTOPTAspleasure161
-	set_graphical_culture = beastman_ungor
-	add_trait = monstrous
-	prisoner = no
-	opinion = {
-		modifier = opinion_polymorphed_me
-		who = FROM
-	}
-	hidden_tooltip = {
-		FROM = {
-			any_vassal = {
+	id = spleasure.161
+	desc = EVTDESCAspleasure161
+	picture = GFX_evt_mage_lore_slaanesh
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAspleasure161
+		set_graphical_culture = beastman_ungor
+		add_trait = monstrous
+		prisoner = no
+		opinion = {
+			modifier = opinion_polymorphed_me
+			who = FROM
+		}
+		hidden_tooltip = {
+			FROM = {
+				any_vassal = {
+					limit = {
+						religion = cadai
+					}
+					opinion = {
+						modifier = opinion_barbaric
+						who = FROM
+					}
+				} # closes anyvassal
+			} # closes from
+			any_dynasty_member = {
 				limit = {
-					religion = cadai
-				}
-				opinion = {
-					modifier = opinion_barbaric
-					who = FROM
-				}
-			} # closes anyvassal
-		} # closes from
-		any_dynasty_member = {
-			limit = {
-				religion_group = cytharai_group
-			}
-			opinion = {
-				modifier = opinion_polymorphed_family_druchii
-				who = FROM
-			}
-		} # closes anydynastyme
-		any_dynasty_member = {
-			limit = {
-				NOT = {
 					religion_group = cytharai_group
 				}
+				opinion = {
+					modifier = opinion_polymorphed_family_druchii
+					who = FROM
+				}
+			} # closes anydynastyme
+			any_dynasty_member = {
+				limit = {
+					NOT = {
+						religion_group = cytharai_group
+					}
+				}
+				opinion = {
+					modifier = opinion_polymorphed_family
+					who = FROM
+				}
+			} # closes anydynastyme
+		}
+		FROM = {
+			character_event = {
+				id = spleasure.16105
 			}
-			opinion = {
-				modifier = opinion_polymorphed_family
-				who = FROM
-			}
-		} # closes anydynastyme
-	}
-	FROM = {
-		character_event = {
-			id = spleasure.16105
+		}
+		ai_chance = {
+			factor = 1
 		}
 	}
-	ai_chance = {
-		factor = 1
-	}
-}
 }
 
 # The prisoner becomes monstrous - Notify jailer
 character_event = {
-id = spleasure.16105
-desc = {
-	text = EVTDESCAspleasure16105
+	id = spleasure.16105
+	desc = {
+		text = EVTDESCAspleasure16105
 
-	trigger = {
-		FROM = {
-			NOT = {
+		trigger = {
+			FROM = {
+				NOT = {
+					is_female = yes
+				}
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCBspleasure16105
+
+		trigger = {
+			FROM = {
 				is_female = yes
 			}
 		}
 	}
-}
-desc = {
-	text = EVTDESCBspleasure16105
+	picture = GFX_evt_mage_lore_slaanesh
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAspleasure16105
+		any_vassal = {
+			limit = {
+				NOT = {
+					trait = brave
+				}
+				NOT = {
+					trait = quick
+				}
+				NOT = {
+					trait = genius
+				}
+			}
+			opinion = {
+				modifier = opinion_scared_into_submission
+				who = ROOT
+			}
 
-	trigger = {
-		FROM = {
-			is_female = yes
 		}
-	}
-}
-picture = GFX_evt_mage_lore_slaanesh
-is_triggered_only = yes
-option = {
-	name = EVTOPTAspleasure16105
-	any_vassal = {
-		limit = {
-			NOT = {
-				trait = brave
+		any_courtier = {
+			limit = {
+				NOT = {
+					trait = brave
+				}
+				NOT = {
+					trait = quick
+				}
+				NOT = {
+					trait = genius
+				}
 			}
-			NOT = {
-				trait = quick
+			opinion = {
+				modifier = opinion_scared_into_submission
+				who = ROOT
 			}
-			NOT = {
-				trait = genius
-			}
-		}
-		opinion = {
-			modifier = opinion_scared_into_submission
-			who = ROOT
-		}
 
-	}
-	any_courtier = {
-		limit = {
-			NOT = {
-				trait = brave
-			}
-			NOT = {
-				trait = quick
-			}
-			NOT = {
-				trait = genius
-			}
 		}
-		opinion = {
-			modifier = opinion_scared_into_submission
-			who = ROOT
+		ai_chance = {
+			factor = 1
 		}
-
 	}
-	ai_chance = {
-		factor = 1
-	}
-}
 }
 
 # The prisoner resists the spell
 character_event = {
-id = spleasure.162
-desc = EVTDESCAspleasure162
-picture = GFX_evt_mage_lore_slaanesh
-is_triggered_only = yes
-option = {
-	name = EVTOPTAspleasure162
-	FROM = {
-		character_event = {
-			id = spleasure.16205
+	id = spleasure.162
+	desc = EVTDESCAspleasure162
+	picture = GFX_evt_mage_lore_slaanesh
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAspleasure162
+		FROM = {
+			character_event = {
+				id = spleasure.16205
+			}
+		}
+		ai_chance = {
+			factor = 1
 		}
 	}
-	ai_chance = {
-		factor = 1
-	}
-}
 }
 
 # The prisoner resisted the spell - Notify jailer
 character_event = {
-id = spleasure.16205
-desc = {
-	text = EVTDESCAspleasure16205
+	id = spleasure.16205
+	desc = {
+		text = EVTDESCAspleasure16205
 
-	trigger = {
-		FROM = {
-			NOT = {
+		trigger = {
+			FROM = {
+				NOT = {
+					is_female = yes
+				}
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCBspleasure16205
+
+		trigger = {
+			FROM = {
 				is_female = yes
 			}
 		}
 	}
-}
-desc = {
-	text = EVTDESCBspleasure16205
-
-	trigger = {
-		FROM = {
-			is_female = yes
+	picture = GFX_evt_mage_lore_slaanesh
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAspleasure16205
+		piety = -50
+		prestige = -50
+		ai_chance = {
+			factor = 1
 		}
 	}
-}
-picture = GFX_evt_mage_lore_slaanesh
-is_triggered_only = yes
-option = {
-	name = EVTOPTAspleasure16205
-	piety = -50
-	prestige = -50
-	ai_chance = {
-		factor = 1
-	}
-}
 }
 
 # The prisoner counteracted the spell and got free
 character_event = {
-id = spleasure.163
-desc = EVTDESCAspleasure163
-picture = GFX_evt_mage_lore_slaanesh
-is_triggered_only = yes
-option = {
-	name = EVTOPTAspleasure163
-	prisoner = no
-	FROM = {
-		character_event = {
-			id = spleasure.16305
+	id = spleasure.163
+	desc = EVTDESCAspleasure163
+	picture = GFX_evt_mage_lore_slaanesh
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAspleasure163
+		prisoner = no
+		FROM = {
+			character_event = {
+				id = spleasure.16305
+			}
+		}
+		ai_chance = {
+			factor = 1
 		}
 	}
-	ai_chance = {
-		factor = 1
-	}
-}
 }
 
 # The prisoner counteracted the spell and got free - Jailer becomes unsightly
 character_event = {
-id = spleasure.16305
-desc = EVTDESCAspleasure16305
-picture = GFX_evt_mage_lore_slaanesh
-is_triggered_only = yes
-option = {
-	name = EVTOPTAspleasure16305
-	add_trait = unsightly
-	prestige = -150
-	piety = -100
-	ai_chance = {
-		factor = 1
+	id = spleasure.16305
+	desc = EVTDESCAspleasure16305
+	picture = GFX_evt_mage_lore_slaanesh
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAspleasure16305
+		add_trait = unsightly
+		prestige = -150
+		piety = -100
+		ai_chance = {
+			factor = 1
+		}
 	}
-}
 }
 
 # The prisoner becomes a toad
 character_event = {
-id = spleasure.164
-desc = EVTDESCAspleasure164
-picture = GFX_evt_mage_lore_slaanesh
-is_triggered_only = yes
-option = {
-	name = EVTOPTAspleasure164
-	set_graphical_culture = averlander
-	hidden_tooltip = {
-		remove_trait = creature_elf
-		remove_trait = creature_chaos_dwarf
-		remove_trait = creature_dwarf
-		remove_trait = creature_human
-		remove_trait = creature_amazon
-		remove_trait = creature_beastman
-		remove_trait = resting
-		remove_trait = avatar_isha
-		remove_trait = avatar_kurnous
-	}
-	add_trait = creature_toad
-	add_trait = disinherited
-	prisoner = no
-	opinion = {
-		modifier = opinion_polymorphed_master
-		who = FROM
-	}
-	hidden_tooltip = {
-		FROM = {
-			any_vassal = {
+	id = spleasure.164
+	desc = EVTDESCAspleasure164
+	picture = GFX_evt_mage_lore_slaanesh
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAspleasure164
+		set_graphical_culture = averlander
+		hidden_tooltip = {
+			remove_trait = creature_elf
+			remove_trait = creature_chaos_dwarf
+			remove_trait = creature_dwarf
+			remove_trait = creature_human
+			remove_trait = creature_amazon
+			remove_trait = creature_beastman
+			remove_trait = resting
+			remove_trait = avatar_isha
+			remove_trait = avatar_kurnous
+		}
+		add_trait = creature_toad
+		add_trait = disinherited
+		prisoner = no
+		opinion = {
+			modifier = opinion_polymorphed_master
+			who = FROM
+		}
+		hidden_tooltip = {
+			FROM = {
+				any_vassal = {
+					limit = {
+						religion = cadai
+					}
+					opinion = {
+						modifier = opinion_barbaric
+						who = FROM
+					}
+				} # closes anyvassal
+			} # closes from
+			any_dynasty_member = {
 				limit = {
-					religion = cadai
-				}
-				opinion = {
-					modifier = opinion_barbaric
-					who = FROM
-				}
-			} # closes anyvassal
-		} # closes from
-		any_dynasty_member = {
-			limit = {
-				religion_group = cytharai_group
-			}
-			opinion = {
-				modifier = opinion_polymorphed_family_druchii
-				who = FROM
-			}
-		} # closes anydynastyme
-		any_dynasty_member = {
-			limit = {
-				NOT = {
 					religion_group = cytharai_group
 				}
+				opinion = {
+					modifier = opinion_polymorphed_family_druchii
+					who = FROM
+				}
+			} # closes anydynastyme
+			any_dynasty_member = {
+				limit = {
+					NOT = {
+						religion_group = cytharai_group
+					}
+				}
+				opinion = {
+					modifier = opinion_polymorphed_family
+					who = FROM
+				}
+			} # closes anydynastyme
+		}
+		FROM = {
+			character_event = {
+				id = spleasure.16405
 			}
-			opinion = {
-				modifier = opinion_polymorphed_family
-				who = FROM
-			}
-		} # closes anydynastyme
-	}
-	FROM = {
-		character_event = {
-			id = spleasure.16405
+		}
+		ai_chance = {
+			factor = 1
 		}
 	}
-	ai_chance = {
-		factor = 1
-	}
-}
 }
 
 # The prisoner becomes toad - Notify jailer
 character_event = {
-id = spleasure.16405
-desc = {
-	text = EVTDESCAspleasure16405
+	id = spleasure.16405
+	desc = {
+		text = EVTDESCAspleasure16405
 
-	trigger = {
-		FROM = {
-			NOT = {
+		trigger = {
+			FROM = {
+				NOT = {
+					is_female = yes
+				}
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCBspleasure16405
+
+		trigger = {
+			FROM = {
 				is_female = yes
 			}
 		}
 	}
-}
-desc = {
-	text = EVTDESCBspleasure16405
+	picture = GFX_evt_mage_lore_slaanesh
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAspleasure16405
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = spleasure.16406 days = 120 random = 100
+				}
+			}
+		}
+		any_vassal = {
+			limit = {
+				NOT = {
+					trait = brave
+				}
+				NOT = {
+					trait = quick
+				}
+				NOT = {
+					trait = brilliant
+				}
+				NOT = {
+					trait = genius
+				}
+			}
+			opinion = {
+				modifier = opinion_scared_into_submission
+				who = ROOT
+			}
 
-	trigger = {
-		FROM = {
-			is_female = yes
 		}
-	}
-}
-picture = GFX_evt_mage_lore_slaanesh
-is_triggered_only = yes
-option = {
-	name = EVTOPTAspleasure16405
-	hidden_tooltip = {
-		FROM = {
-			character_event = {
-				id = spleasure.16406 days = 120 random = 100
+		any_courtier = {
+			limit = {
+				NOT = {
+					trait = brave
+				}
+				NOT = {
+					trait = quick
+				}
+				NOT = {
+					trait = brilliant
+				}
+				NOT = {
+					trait = genius
+				}
 			}
-		}
-	}
-	any_vassal = {
-		limit = {
-			NOT = {
-				trait = brave
+			opinion = {
+				modifier = opinion_scared_into_submission
+				who = ROOT
 			}
-			NOT = {
-				trait = quick
-			}
-			NOT = {
-				trait = brilliant
-			}
-			NOT = {
-				trait = genius
-			}
-		}
-		opinion = {
-			modifier = opinion_scared_into_submission
-			who = ROOT
-		}
 
-	}
-	any_courtier = {
-		limit = {
-			NOT = {
-				trait = brave
-			}
-			NOT = {
-				trait = quick
-			}
-			NOT = {
-				trait = brilliant
-			}
-			NOT = {
-				trait = genius
-			}
 		}
-		opinion = {
-			modifier = opinion_scared_into_submission
-			who = ROOT
+		ai_chance = {
+			factor = 1
 		}
-
 	}
-	ai_chance = {
-		factor = 1
-	}
-}
 }
 
 # The toad is deposed
 character_event = {
-id = spleasure.16406
-desc = EVTDESCAspleasure16406
-picture = GFX_evt_mage_lore_slaanesh
-trigger = {
-	trait = creature_toad
-	is_ruler = yes
-}
-is_triggered_only = yes
-option = {
-	name = EVTOPTAspleasure16406
-	abdicate = yes
-	ai_chance = {
-		factor = 1
+	id = spleasure.16406
+	desc = EVTDESCAspleasure16406
+	picture = GFX_evt_mage_lore_slaanesh
+	trigger = {
+		trait = creature_toad
+		is_ruler = yes
 	}
-}
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAspleasure16406
+		abdicate = yes
+		ai_chance = {
+			factor = 1
+		}
+	}
 }
 
 # The prisoner counteracted the spell and got free
 character_event = {
-id = spleasure.165
-desc = EVTDESCAspleasure165
-picture = GFX_evt_mage_lore_slaanesh
-is_triggered_only = yes
-option = {
-	name = EVTOPTAspleasure165
-	prisoner = no
-	FROM = {
-		character_event = {
-			id = spleasure.16505
+	id = spleasure.165
+	desc = EVTDESCAspleasure165
+	picture = GFX_evt_mage_lore_slaanesh
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAspleasure165
+		prisoner = no
+		FROM = {
+			character_event = {
+				id = spleasure.16505
+			}
+		}
+		ai_chance = {
+			factor = 1
 		}
 	}
-	ai_chance = {
-		factor = 1
-	}
-}
 }
 
 # The prisoner counteracted the spell and got free - Jailer becomes scaled
 character_event = {
-id = spleasure.16505
-desc = EVTDESCAspleasure16505
-picture = GFX_evt_mage_lore_slaanesh
-is_triggered_only = yes
-option = {
-	name = EVTOPTAspleasure16505
-	hidden_tooltip = {
-		character_event = {
-			id = mutation.1001
+	id = spleasure.16505
+	desc = EVTDESCAspleasure16505
+	picture = GFX_evt_mage_lore_slaanesh
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAspleasure16505
+		hidden_tooltip = {
+			character_event = {
+				id = mutation.1001
+			}
+		}
+		add_trait = mut_scales
+		prestige = -150
+		piety = -100
+		ai_chance = {
+			factor = 1
 		}
 	}
-	add_trait = mut_scales
-	prestige = -150
-	piety = -100
-	ai_chance = {
-		factor = 1
-	}
-}
 }
 
 # The prisoner becomes a pig
 character_event = {
-id = spleasure.166
-desc = EVTDESCAspleasure166
-picture = GFX_evt_mage_lore_slaanesh
-is_triggered_only = yes
-option = {
-	name = EVTOPTAspleasure166
-	set_graphical_culture = averlander
-	hidden_tooltip = {
-		remove_trait = creature_elf
-		remove_trait = creature_chaos_dwarf
-		remove_trait = creature_dwarf
-		remove_trait = creature_human
-		remove_trait = creature_amazon
-		remove_trait = creature_beastman
-		remove_trait = resting
-		remove_trait = avatar_isha
-		remove_trait = avatar_kurnous
-	}
-	add_trait = creature_pig
-	add_trait = disinherited
-	prisoner = no
-	opinion = {
-		modifier = opinion_polymorphed_master
-		who = FROM
-	}
-	hidden_tooltip = {
-		FROM = {
-			any_vassal = {
+	id = spleasure.166
+	desc = EVTDESCAspleasure166
+	picture = GFX_evt_mage_lore_slaanesh
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAspleasure166
+		set_graphical_culture = averlander
+		hidden_tooltip = {
+			remove_trait = creature_elf
+			remove_trait = creature_chaos_dwarf
+			remove_trait = creature_dwarf
+			remove_trait = creature_human
+			remove_trait = creature_amazon
+			remove_trait = creature_beastman
+			remove_trait = resting
+			remove_trait = avatar_isha
+			remove_trait = avatar_kurnous
+		}
+		add_trait = creature_pig
+		add_trait = disinherited
+		prisoner = no
+		opinion = {
+			modifier = opinion_polymorphed_master
+			who = FROM
+		}
+		hidden_tooltip = {
+			FROM = {
+				any_vassal = {
+					limit = {
+						religion = cadai
+					}
+					opinion = {
+						modifier = opinion_barbaric
+						who = FROM
+					}
+				} # closes anyvassal
+			} # closes from
+			any_dynasty_member = {
 				limit = {
-					religion = cadai
-				}
-				opinion = {
-					modifier = opinion_barbaric
-					who = FROM
-				}
-			} # closes anyvassal
-		} # closes from
-		any_dynasty_member = {
-			limit = {
-				religion_group = cytharai_group
-			}
-			opinion = {
-				modifier = opinion_polymorphed_family_druchii
-				who = FROM
-			}
-		} # closes anydynastyme
-		any_dynasty_member = {
-			limit = {
-				NOT = {
 					religion_group = cytharai_group
 				}
+				opinion = {
+					modifier = opinion_polymorphed_family_druchii
+					who = FROM
+				}
+			} # closes anydynastyme
+			any_dynasty_member = {
+				limit = {
+					NOT = {
+						religion_group = cytharai_group
+					}
+				}
+				opinion = {
+					modifier = opinion_polymorphed_family
+					who = FROM
+				}
+			} # closes anydynastyme
+		}
+		FROM = {
+			character_event = {
+				id = spleasure.16605
 			}
-			opinion = {
-				modifier = opinion_polymorphed_family
-				who = FROM
-			}
-		} # closes anydynastyme
-	}
-	FROM = {
-		character_event = {
-			id = spleasure.16605
+		}
+		ai_chance = {
+			factor = 1
 		}
 	}
-	ai_chance = {
-		factor = 1
-	}
-}
 }
 
 # The prisoner becomes pig - Notify jailer
 character_event = {
-id = spleasure.16605
-desc = {
-	text = EVTDESCAspleasure16605
+	id = spleasure.16605
+	desc = {
+		text = EVTDESCAspleasure16605
 
-	trigger = {
-		FROM = {
-			NOT = {
+		trigger = {
+			FROM = {
+				NOT = {
+					is_female = yes
+				}
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCBspleasure16605
+
+		trigger = {
+			FROM = {
 				is_female = yes
 			}
 		}
 	}
-}
-desc = {
-	text = EVTDESCBspleasure16605
+	picture = GFX_evt_mage_lore_slaanesh
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAspleasure16605
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = spleasure.16606 days = 120 random = 100
+				}
+			}
+		}
+		ai_chance = {
+			factor = 1
+		}
+		any_vassal = {
+			limit = {
+				NOT = {
+					trait = brave
+				}
+				NOT = {
+					trait = quick
+				}
+				NOT = {
+					trait = brilliant
+				}
+				NOT = {
+					trait = genius
+				}
+			}
+			opinion = {
+				modifier = opinion_scared_into_submission
+				who = ROOT
+			}
 
-	trigger = {
-		FROM = {
-			is_female = yes
 		}
-	}
-}
-picture = GFX_evt_mage_lore_slaanesh
-is_triggered_only = yes
-option = {
-	name = EVTOPTAspleasure16605
-	hidden_tooltip = {
-		FROM = {
-			character_event = {
-				id = spleasure.16606 days = 120 random = 100
+		any_courtier = {
+			limit = {
+				NOT = {
+					trait = brave
+				}
+				NOT = {
+					trait = quick
+				}
+				NOT = {
+					trait = brilliant
+				}
+				NOT = {
+					trait = genius
+				}
 			}
-		}
-	}
-	ai_chance = {
-		factor = 1
-	}
-	any_vassal = {
-		limit = {
-			NOT = {
-				trait = brave
+			opinion = {
+				modifier = opinion_scared_into_submission
+				who = ROOT
 			}
-			NOT = {
-				trait = quick
-			}
-			NOT = {
-				trait = brilliant
-			}
-			NOT = {
-				trait = genius
-			}
-		}
-		opinion = {
-			modifier = opinion_scared_into_submission
-			who = ROOT
-		}
 
-	}
-	any_courtier = {
-		limit = {
-			NOT = {
-				trait = brave
-			}
-			NOT = {
-				trait = quick
-			}
-			NOT = {
-				trait = brilliant
-			}
-			NOT = {
-				trait = genius
-			}
 		}
-		opinion = {
-			modifier = opinion_scared_into_submission
-			who = ROOT
-		}
-
 	}
-}
 }
 
 # The pig is deposed
 character_event = {
-id = spleasure.16606
-desc = EVTDESCAspleasure16606
-picture = GFX_evt_mage_lore_slaanesh
-trigger = {
-	trait = creature_pig
-	is_ruler = yes
-}
-is_triggered_only = yes
-option = {
-	name = EVTOPTAspleasure16606
-	abdicate = yes
-	ai_chance = {
-		factor = 1
+	id = spleasure.16606
+	desc = EVTDESCAspleasure16606
+	picture = GFX_evt_mage_lore_slaanesh
+	trigger = {
+		trait = creature_pig
+		is_ruler = yes
 	}
-}
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAspleasure16606
+		abdicate = yes
+		ai_chance = {
+			factor = 1
+		}
+	}
 }
 
 # The prisoner counteracted the spell and got free
 character_event = {
-id = spleasure.167
-desc = EVTDESCAspleasure167
-picture = GFX_evt_mage_lore_slaanesh
-is_triggered_only = yes
-option = {
-	name = EVTOPTAspleasure167
-	prisoner = no
-	FROM = {
-		character_event = {
-			id = spleasure.16705
+	id = spleasure.167
+	desc = EVTDESCAspleasure167
+	picture = GFX_evt_mage_lore_slaanesh
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAspleasure167
+		prisoner = no
+		FROM = {
+			character_event = {
+				id = spleasure.16705
+			}
+		}
+		ai_chance = {
+			factor = 1
 		}
 	}
-	ai_chance = {
-		factor = 1
-	}
-}
 }
 
 # The prisoner counteracted the spell and got free - Jailer becomes fat
 character_event = {
-id = spleasure.16705
-desc = EVTDESCAspleasure16705
-picture = GFX_evt_mage_lore_slaanesh
-is_triggered_only = yes
-option = {
-	name = EVTOPTAspleasure16705
-	hidden_tooltip = {
-		remove_trait = undernourished
+	id = spleasure.16705
+	desc = EVTDESCAspleasure16705
+	picture = GFX_evt_mage_lore_slaanesh
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAspleasure16705
+		hidden_tooltip = {
+			remove_trait = undernourished
+		}
+		add_trait = fat
+		prestige = -150
+		piety = -100
+		ai_chance = {
+			factor = 1
+		}
 	}
-	add_trait = fat
-	prestige = -150
-	piety = -100
-	ai_chance = {
-		factor = 1
-	}
-}
 }
 
 # A monstrous character makes a monstrous son
 character_event = {
-id = spleasure.168
-hide_window = yes
-trigger = {
-	graphical_culture = ungorgfx
-	OR = {
-		mother_even_if_dead = {
-			trait = monstrous
-		}
-		father_even_if_dead = {
-			trait = monstrous
+	id = spleasure.168
+	hide_window = yes
+	trigger = {
+		graphical_culture = ungorgfx
+		OR = {
+			mother_even_if_dead = {
+				trait = monstrous
+			}
+			father_even_if_dead = {
+				trait = monstrous
+			}
 		}
 	}
-}
-is_triggered_only = yes
-immediate = {
-	add_trait = monstrous
-}
+	is_triggered_only = yes
+	immediate = {
+		add_trait = monstrous
+	}
 }
 
 # The prisoner switches gender
 long_character_event = {
-id = spleasure.169
-desc = {
-	text = EVTDESCAspleasure169
+	id = spleasure.169
+	desc = {
+		text = EVTDESCAspleasure169
 
-	trigger = {
-		NOT = {
+		trigger = {
+			NOT = {
+				is_female = yes
+			}
+			OR = {
+				trait = creature_human
+				trait = creature_halfling
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCBspleasure169
+
+		trigger = {
 			is_female = yes
-		}
-		OR = {
-			trait = creature_human
-			trait = creature_halfling
-		}
-	}
-}
-desc = {
-	text = EVTDESCBspleasure169
-
-	trigger = {
-		is_female = yes
-		OR = {
-			trait = creature_human
-			trait = creature_halfling
+			OR = {
+				trait = creature_human
+				trait = creature_halfling
+			}
 		}
 	}
-}
-desc = {
-	text = EVTDESCCspleasure169
+	desc = {
+		text = EVTDESCCspleasure169
 
-	trigger = {
-		NOT = {
+		trigger = {
+			NOT = {
+				is_female = yes
+			}
+			OR = {
+				trait = creature_dwarf
+				trait = creature_chaos_dwarf
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCDspleasure169
+
+		trigger = {
 			is_female = yes
-		}
-		OR = {
-			trait = creature_dwarf
-			trait = creature_chaos_dwarf
-		}
-	}
-}
-desc = {
-	text = EVTDESCDspleasure169
-
-	trigger = {
-		is_female = yes
-		OR = {
-			trait = creature_dwarf
-			trait = creature_chaos_dwarf
+			OR = {
+				trait = creature_dwarf
+				trait = creature_chaos_dwarf
+			}
 		}
 	}
-}
-desc = {
-	text = EVTDESCEspleasure169
+	desc = {
+		text = EVTDESCEspleasure169
 
-	trigger = {
-		NOT = {
+		trigger = {
+			NOT = {
+				is_female = yes
+			}
+			trait = creature_elf
+		}
+	}
+	desc = {
+		text = EVTDESCFspleasure169
+
+		trigger = {
 			is_female = yes
+			trait = creature_elf
 		}
-		trait = creature_elf
 	}
-}
-desc = {
-	text = EVTDESCFspleasure169
+	desc = {
+		text = EVTDESCGspleasure169
 
-	trigger = {
-		is_female = yes
-		trait = creature_elf
-	}
-}
-desc = {
-	text = EVTDESCGspleasure169
-
-	trigger = {
-		NOT = {
-			is_female = yes
-		}
-		trait = creature_beastman
-	}
-}
-desc = {
-	text = EVTDESCHspleasure169
-
-	trigger = {
-		is_female = yes
-		trait = creature_beastman
-	}
-}
-desc = {
-	text = EVTDESCIspleasure169
-
-	trigger = {
-		NOT = {
-			is_female = yes
-		}
-		trait = creature_amazon
-	}
-}
-desc = {
-	text = EVTDESCLspleasure169
-
-	trigger = {
-		is_female = yes
-		trait = creature_amazon
-	}
-}
-picture = GFX_evt_mage_lore_slaanesh
-is_triggered_only = yes
-option = {
-	name = EVTOPTAspleasure169
-	if = {
-		limit = {
-			graphical_culture = empiregfx
-		}
-		set_graphical_culture = empirerev
-	}
-	if = {
-		limit = {
-			graphical_culture = sylvaniangfx
-		}
-		set_graphical_culture = sylvanianrev
-	}
-	if = {
-		limit = {
-			graphical_culture = kurgangfx
-		}
-		set_graphical_culture = kurganrev
-	}
-	if = {
-		limit = {
-			graphical_culture = arabyangfx
-		}
-		set_graphical_culture = arabyanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = dwarfgfx
-		}
-		set_graphical_culture = dwarfrev
-	}
-	if = {
-		limit = {
-			graphical_culture = norsedwarfgfx
-		}
-		set_graphical_culture = norse_dwarfrev
-	}
-	if = {
-		limit = {
-			graphical_culture = imperialdwarfgfx
-		}
-		set_graphical_culture = imperialdwarfrev
-	}
-	if = {
-		limit = {
-			graphical_culture = chaosdwarfgfx
-		}
-		set_graphical_culture = chaosdwarfrev
-	}
-	if = {
-		limit = {
-			graphical_culture = asurgfx
-		}
-		set_graphical_culture = asurrev
-	}
-	if = {
-		limit = {
-			graphical_culture = asraigfx
-		}
-		set_graphical_culture = asrairev
-	}
-	if = {
-		limit = {
-			graphical_culture = druchiigfx
-		}
-		set_graphical_culture = druchiirev
-	}
-	if = {
-		limit = {
-			graphical_culture = hobbitsgfx
-		}
-		set_graphical_culture = hobbitsrev
-	}
-	if = {
-		limit = {
-			graphical_culture = sartosantileangfx
-		}
-		set_graphical_culture = sartosantileanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = bretonniangfx
-		}
-		set_graphical_culture = bretonniarev
-	}
-	if = {
-		limit = {
-			graphical_culture = amazongfx
-		}
-		set_graphical_culture = amazonrev
-	}
-	if = {
-		limit = {
-			graphical_culture = northempiregfx
-		}
-		set_graphical_culture = northempirerev
-	}
-	if = {
-		limit = {
-			graphical_culture = tileagfx
-		}
-		set_graphical_culture = tilearev
-	}
-	if = {
-		limit = {
-			graphical_culture = estileangfx
-		}
-		set_graphical_culture = estileanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = hunggfx
-		}
-		set_graphical_culture = hungrev
-	}
-	if = {
-		limit = {
-			graphical_culture = southarabyangfx
-		}
-		set_graphical_culture = southarabyanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = northmangfx
-		}
-		set_graphical_culture = northmanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = beastmangfx
-		}
-		set_graphical_culture = beastmanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = ungorgfx
-		}
-		set_graphical_culture = ungorrev
-	}
-	if = {
-		limit = {
-			graphical_culture = nehekkagfx
-		}
-		set_graphical_culture = nomadrev
-	}
-	if = {
-		limit = {
-			graphical_culture = westerngfx
-		}
-		set_graphical_culture = westernrev
-	}
-	if = {
-		limit = {
-			graphical_culture = occitangfx
-		}
-		set_graphical_culture = occitanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = southerngfx
-		}
-		set_graphical_culture = southernrev
-	}
-	if = {
-		limit = {
-			graphical_culture = celticgfx
-		}
-		set_graphical_culture = celticrev
-	}
-	if = {
-		limit = {
-			graphical_culture = norsegfx
-		}
-		set_graphical_culture = norserev
-	}
-	if = {
-		limit = {
-			graphical_culture = saxongfx
-		}
-		set_graphical_culture = saxonrev
-	}
-	if = {
-		limit = {
-			graphical_culture = easternslavicgfx
-		}
-		set_graphical_culture = easternslavicrev
-	}
-	if = {
-		limit = {
-			graphical_culture = byzantinegfx
-		}
-		set_graphical_culture = byzantinerev
-	}
-	if = {
-		limit = {
-			graphical_culture = muslimgfx
-		}
-		set_graphical_culture = muslimrev
-	}
-	if = {
-		limit = {
-			graphical_culture = turkishgfx
-		}
-		set_graphical_culture = turkishrev
-	}
-	if = {
-		limit = {
-			graphical_culture = mongolgfx
-		}
-		set_graphical_culture = mongolrev
-	}
-	if = {
-		limit = {
-			graphical_culture = africangfx
-		}
-		set_graphical_culture = africanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = westafricangfx
-		}
-		set_graphical_culture = africanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = andalusiangfx
-		}
-		set_graphical_culture = andalusianrev
-	}
-	if = {
-		limit = {
-			graphical_culture = indiangfx
-		}
-		set_graphical_culture = indianrev
-	}
-	if = {
-		limit = {
-			graphical_culture = persiangfx
-		}
-		set_graphical_culture = persianrev
-	}
-	if = {
-		limit = {
-			graphical_culture = empiregfx
-		}
-		set_graphical_culture = empirerev
-	}
-	if = {
-		limit = {
-			graphical_culture = livinglahmiangfx
-		}
-		set_graphical_culture = livinglahmianrev
-	}
-	if = {
-		limit = {
-			graphical_culture = reiklandergfx
-		}
-		set_graphical_culture = reiklanderrev
-	}
-	if = {
-		limit = {
-			graphical_culture = bretonniangfx
-		}
-		set_graphical_culture = bretonnianrev
-	}
-	if = {
-		limit = {
-			graphical_culture = striganygfx
-		}
-		set_graphical_culture = striganyrev
-	}
-	if = {
-		limit = {
-			graphical_culture = sartosangfx
-		}
-		set_graphical_culture = sartosanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = strygangfx
-		}
-		set_graphical_culture = stryganrev
-	}
-	if = {
-		limit = {
-			graphical_culture = amazongfx
-		}
-		set_graphical_culture = amazonrev
-	}
-	if = {
-		limit = {
-			graphical_culture = arabyansartosangfx
-		}
-		set_graphical_culture = arabyansartosanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = cathayangfx
-		}
-		set_graphical_culture = cathayanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = livingjadegfx
-		}
-		set_graphical_culture = livingjaderev
-	}
-	if = {
-		limit = {
-			graphical_culture = wasaigfx
-		}
-		set_graphical_culture = wasairev
-	}
-	if = {
-		limit = {
-			graphical_culture = cophicgfx
-		}
-		set_graphical_culture = cophicrev
-	}
-	if = {
-		limit = {
-			graphical_culture = tevarigfx
-		}
-		set_graphical_culture = tevarirev
-	}
-	if = {
-		limit = {
-			graphical_culture = medeangfx
-		}
-		set_graphical_culture = medeanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = wasailigfx
-		}
-		set_graphical_culture = wasailirev
-	}
-	if = {
-		limit = {
-			graphical_culture = westerlandergfx
-		}
-		set_graphical_culture = westerlanderrev
-	}
-	if = {
-		limit = {
-			graphical_culture = sudenburgergfx
-		}
-		set_graphical_culture = sudenburgerrev
-	}
-	if = {
-		limit = {
-			graphical_culture = norscangfx
-		}
-		set_graphical_culture = norscanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = norscansartosangfx
-		}
-		set_graphical_culture = norscansartosanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = kislevitegfx
-		}
-		set_graphical_culture = kisleviterev
-	}
-	if = {
-		limit = {
-			graphical_culture = ropsmanngfx
-		}
-		set_graphical_culture = ropsmannrev
-	}
-	if = {
-		limit = {
-			graphical_culture = tileangfx
-		}
-		set_graphical_culture = tileanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = estaliangfx
-		}
-		set_graphical_culture = estalianrev
-	}
-	if = {
-		limit = {
-			graphical_culture = mykengfx
-		}
-		set_graphical_culture = mykenrev
-	}
-	if = {
-		limit = {
-			graphical_culture = albiongfx
-		}
-		set_graphical_culture = albionrev
-	}
-	if = {
-		limit = {
-			graphical_culture = nagarythiangfx
-		}
-		set_graphical_culture = nagarythianrev
-	}
-	if = {
-		limit = {
-			graphical_culture = caledoriangfx
-		}
-		set_graphical_culture = caledorianrev
-	}
-	add_trait = transgender
-	if = {
-		limit = {
+		trigger = {
+			NOT = {
+				is_female = yes
+			}
 			trait = creature_beastman
+		}
+	}
+	desc = {
+		text = EVTDESCHspleasure169
+
+		trigger = {
 			is_female = yes
-		}
-		add_trait = horns_small
-	}
-	if = {
-		limit = {
 			trait = creature_beastman
-			is_female = no
 		}
-		remove_trait = horns_small
-		remove_trait = horns_average
-		remove_trait = horns_big
-		add_trait = horns_none
 	}
-	opinion = {
-		modifier = opinion_polymorphed_me
-		who = FROM
+	desc = {
+		text = EVTDESCIspleasure169
+
+		trigger = {
+			NOT = {
+				is_female = yes
+			}
+			trait = creature_amazon
+		}
 	}
-	hidden_tooltip = {
-		FROM = {
-			any_vassal = {
+	desc = {
+		text = EVTDESCLspleasure169
+
+		trigger = {
+			is_female = yes
+			trait = creature_amazon
+		}
+	}
+	picture = GFX_evt_mage_lore_slaanesh
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAspleasure169
+		if = {
+			limit = {
+				graphical_culture = empiregfx
+			}
+			set_graphical_culture = empirerev
+		}
+		if = {
+			limit = {
+				graphical_culture = sylvaniangfx
+			}
+			set_graphical_culture = sylvanianrev
+		}
+		if = {
+			limit = {
+				graphical_culture = kurgangfx
+			}
+			set_graphical_culture = kurganrev
+		}
+		if = {
+			limit = {
+				graphical_culture = arabyangfx
+			}
+			set_graphical_culture = arabyanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = dwarfgfx
+			}
+			set_graphical_culture = dwarfrev
+		}
+		if = {
+			limit = {
+				graphical_culture = norsedwarfgfx
+			}
+			set_graphical_culture = norse_dwarfrev
+		}
+		if = {
+			limit = {
+				graphical_culture = imperialdwarfgfx
+			}
+			set_graphical_culture = imperialdwarfrev
+		}
+		if = {
+			limit = {
+				graphical_culture = chaosdwarfgfx
+			}
+			set_graphical_culture = chaosdwarfrev
+		}
+		if = {
+			limit = {
+				graphical_culture = asurgfx
+			}
+			set_graphical_culture = asurrev
+		}
+		if = {
+			limit = {
+				graphical_culture = asraigfx
+			}
+			set_graphical_culture = asrairev
+		}
+		if = {
+			limit = {
+				graphical_culture = druchiigfx
+			}
+			set_graphical_culture = druchiirev
+		}
+		if = {
+			limit = {
+				graphical_culture = hobbitsgfx
+			}
+			set_graphical_culture = hobbitsrev
+		}
+		if = {
+			limit = {
+				graphical_culture = sartosantileangfx
+			}
+			set_graphical_culture = sartosantileanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = bretonniangfx
+			}
+			set_graphical_culture = bretonniarev
+		}
+		if = {
+			limit = {
+				graphical_culture = amazongfx
+			}
+			set_graphical_culture = amazonrev
+		}
+		if = {
+			limit = {
+				graphical_culture = northempiregfx
+			}
+			set_graphical_culture = northempirerev
+		}
+		if = {
+			limit = {
+				graphical_culture = tileagfx
+			}
+			set_graphical_culture = tilearev
+		}
+		if = {
+			limit = {
+				graphical_culture = estileangfx
+			}
+			set_graphical_culture = estileanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = hunggfx
+			}
+			set_graphical_culture = hungrev
+		}
+		if = {
+			limit = {
+				graphical_culture = southarabyangfx
+			}
+			set_graphical_culture = southarabyanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = northmangfx
+			}
+			set_graphical_culture = northmanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = beastmangfx
+			}
+			set_graphical_culture = beastmanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = ungorgfx
+			}
+			set_graphical_culture = ungorrev
+		}
+		if = {
+			limit = {
+				graphical_culture = nehekkagfx
+			}
+			set_graphical_culture = nomadrev
+		}
+		if = {
+			limit = {
+				graphical_culture = westerngfx
+			}
+			set_graphical_culture = westernrev
+		}
+		if = {
+			limit = {
+				graphical_culture = occitangfx
+			}
+			set_graphical_culture = occitanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = southerngfx
+			}
+			set_graphical_culture = southernrev
+		}
+		if = {
+			limit = {
+				graphical_culture = celticgfx
+			}
+			set_graphical_culture = celticrev
+		}
+		if = {
+			limit = {
+				graphical_culture = norsegfx
+			}
+			set_graphical_culture = norserev
+		}
+		if = {
+			limit = {
+				graphical_culture = saxongfx
+			}
+			set_graphical_culture = saxonrev
+		}
+		if = {
+			limit = {
+				graphical_culture = easternslavicgfx
+			}
+			set_graphical_culture = easternslavicrev
+		}
+		if = {
+			limit = {
+				graphical_culture = byzantinegfx
+			}
+			set_graphical_culture = byzantinerev
+		}
+		if = {
+			limit = {
+				graphical_culture = muslimgfx
+			}
+			set_graphical_culture = muslimrev
+		}
+		if = {
+			limit = {
+				graphical_culture = turkishgfx
+			}
+			set_graphical_culture = turkishrev
+		}
+		if = {
+			limit = {
+				graphical_culture = mongolgfx
+			}
+			set_graphical_culture = mongolrev
+		}
+		if = {
+			limit = {
+				graphical_culture = africangfx
+			}
+			set_graphical_culture = africanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = westafricangfx
+			}
+			set_graphical_culture = africanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = andalusiangfx
+			}
+			set_graphical_culture = andalusianrev
+		}
+		if = {
+			limit = {
+				graphical_culture = indiangfx
+			}
+			set_graphical_culture = indianrev
+		}
+		if = {
+			limit = {
+				graphical_culture = persiangfx
+			}
+			set_graphical_culture = persianrev
+		}
+		if = {
+			limit = {
+				graphical_culture = empiregfx
+			}
+			set_graphical_culture = empirerev
+		}
+		if = {
+			limit = {
+				graphical_culture = livinglahmiangfx
+			}
+			set_graphical_culture = livinglahmianrev
+		}
+		if = {
+			limit = {
+				graphical_culture = reiklandergfx
+			}
+			set_graphical_culture = reiklanderrev
+		}
+		if = {
+			limit = {
+				graphical_culture = bretonniangfx
+			}
+			set_graphical_culture = bretonnianrev
+		}
+		if = {
+			limit = {
+				graphical_culture = striganygfx
+			}
+			set_graphical_culture = striganyrev
+		}
+		if = {
+			limit = {
+				graphical_culture = sartosangfx
+			}
+			set_graphical_culture = sartosanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = strygangfx
+			}
+			set_graphical_culture = stryganrev
+		}
+		if = {
+			limit = {
+				graphical_culture = amazongfx
+			}
+			set_graphical_culture = amazonrev
+		}
+		if = {
+			limit = {
+				graphical_culture = arabyansartosangfx
+			}
+			set_graphical_culture = arabyansartosanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = cathayangfx
+			}
+			set_graphical_culture = cathayanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = livingjadegfx
+			}
+			set_graphical_culture = livingjaderev
+		}
+		if = {
+			limit = {
+				graphical_culture = wasaigfx
+			}
+			set_graphical_culture = wasairev
+		}
+		if = {
+			limit = {
+				graphical_culture = cophicgfx
+			}
+			set_graphical_culture = cophicrev
+		}
+		if = {
+			limit = {
+				graphical_culture = tevarigfx
+			}
+			set_graphical_culture = tevarirev
+		}
+		if = {
+			limit = {
+				graphical_culture = medeangfx
+			}
+			set_graphical_culture = medeanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = wasailigfx
+			}
+			set_graphical_culture = wasailirev
+		}
+		if = {
+			limit = {
+				graphical_culture = westerlandergfx
+			}
+			set_graphical_culture = westerlanderrev
+		}
+		if = {
+			limit = {
+				graphical_culture = sudenburgergfx
+			}
+			set_graphical_culture = sudenburgerrev
+		}
+		if = {
+			limit = {
+				graphical_culture = norscangfx
+			}
+			set_graphical_culture = norscanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = norscansartosangfx
+			}
+			set_graphical_culture = norscansartosanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = kislevitegfx
+			}
+			set_graphical_culture = kisleviterev
+		}
+		if = {
+			limit = {
+				graphical_culture = ropsmanngfx
+			}
+			set_graphical_culture = ropsmannrev
+		}
+		if = {
+			limit = {
+				graphical_culture = tileangfx
+			}
+			set_graphical_culture = tileanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = estaliangfx
+			}
+			set_graphical_culture = estalianrev
+		}
+		if = {
+			limit = {
+				graphical_culture = mykengfx
+			}
+			set_graphical_culture = mykenrev
+		}
+		if = {
+			limit = {
+				graphical_culture = albiongfx
+			}
+			set_graphical_culture = albionrev
+		}
+		if = {
+			limit = {
+				graphical_culture = nagarythiangfx
+			}
+			set_graphical_culture = nagarythianrev
+		}
+		if = {
+			limit = {
+				graphical_culture = caledoriangfx
+			}
+			set_graphical_culture = caledorianrev
+		}
+		add_trait = transgender
+		if = {
+			limit = {
+				trait = creature_beastman
+				is_female = yes
+			}
+			add_trait = horns_small
+		}
+		if = {
+			limit = {
+				trait = creature_beastman
+				is_female = no
+			}
+			remove_trait = horns_small
+			remove_trait = horns_average
+			remove_trait = horns_big
+			add_trait = horns_none
+		}
+		opinion = {
+			modifier = opinion_polymorphed_me
+			who = FROM
+		}
+		hidden_tooltip = {
+			FROM = {
+				any_vassal = {
+					limit = {
+						religion = cadai
+					}
+					opinion = {
+						modifier = opinion_barbaric
+						who = FROM
+					}
+				} # closes anyvassal
+			} # closes from
+			any_dynasty_member = {
 				limit = {
-					religion = cadai
-				}
-				opinion = {
-					modifier = opinion_barbaric
-					who = FROM
-				}
-			} # closes anyvassal
-		} # closes from
-		any_dynasty_member = {
-			limit = {
-				religion_group = cytharai_group
-			}
-			opinion = {
-				modifier = opinion_polymorphed_family_druchii
-				who = FROM
-			}
-		} # closes anydynastyme
-		any_dynasty_member = {
-			limit = {
-				NOT = {
 					religion_group = cytharai_group
 				}
+				opinion = {
+					modifier = opinion_polymorphed_family_druchii
+					who = FROM
+				}
+			} # closes anydynastyme
+			any_dynasty_member = {
+				limit = {
+					NOT = {
+						religion_group = cytharai_group
+					}
+				}
+				opinion = {
+					modifier = opinion_polymorphed_family
+					who = FROM
+				}
+			} # closes anydynastyme
+		}
+		FROM = {
+			character_event = {
+				id = spleasure.16905
 			}
-			opinion = {
-				modifier = opinion_polymorphed_family
-				who = FROM
-			}
-		} # closes anydynastyme
-	}
-	FROM = {
-		character_event = {
-			id = spleasure.16905
+		}
+		ai_chance = {
+			factor = 1
 		}
 	}
-	ai_chance = {
-		factor = 1
-	}
-}
 }
 
 # The prisoner switches gender - Notify jailer
 character_event = {
-id = spleasure.16905
-desc = {
-	text = EVTDESCAspleasure16905
+	id = spleasure.16905
+	desc = {
+		text = EVTDESCAspleasure16905
 
+		trigger = {
+			FROM = {
+				NOT = {
+					is_female = yes
+				}
+				OR = {
+					trait = creature_human
+					trait = creature_halfling
+				}
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCBspleasure16905
+
+		trigger = {
+			FROM = {
+				is_female = yes
+				OR = {
+					trait = creature_human
+					trait = creature_halfling
+				}
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCCspleasure16905
+
+		trigger = {
+			FROM = {
+				NOT = {
+					is_female = yes
+				}
+				OR = {
+					trait = creature_dwarf
+					trait = creature_chaos_dwarf
+				}
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCDspleasure16905
+
+		trigger = {
+			FROM = {
+				is_female = yes
+				OR = {
+					trait = creature_dwarf
+					trait = creature_chaos_dwarf
+				}
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCEspleasure16905
+
+		trigger = {
+			FROM = {
+				NOT = {
+					is_female = yes
+				}
+				trait = creature_elf
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCFspleasure16905
+
+		trigger = {
+			FROM = {
+				is_female = yes
+				trait = creature_elf
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCGspleasure16905
+
+		trigger = {
+			FROM = {
+				NOT = {
+					is_female = yes
+				}
+				trait = creature_beastman
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCHspleasure16905
+
+		trigger = {
+			FROM = {
+				is_female = yes
+				trait = creature_beastman
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCIspleasure16905
+
+		trigger = {
+			FROM = {
+				NOT = {
+					is_female = yes
+				}
+				trait = creature_amazon
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCLspleasure16905
+
+		trigger = {
+			FROM = {
+				is_female = yes
+				trait = creature_amazon
+			}
+		}
+	}
+	picture = GFX_evt_mage_lore_slaanesh
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAspleasure16905
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = spleasure.16906 days = 190 random = 120
+				}
+			}
+		}
+		hidden_tooltip = {
+			if = {
+				limit = {
+					FROM = {
+						trait = homosexual
+					}
+				}
+				FROM = {
+					character_event = {
+						id = spleasure.16907 days = 90 random = 90
+					}
+				}
+			}
+		}
+		hidden_tooltip = {
+			if = {
+				limit = {
+					FROM = {
+						NOT = {
+							trait = homosexual
+						}
+					}
+				}
+				FROM = {
+					character_event = {
+						id = spleasure.16908 days = 90 random = 90
+					}
+				}
+			}
+		}
+		ai_chance = {
+			factor = 1
+		}
+		any_vassal = {
+			limit = {
+				NOT = {
+					trait = brave
+				}
+				NOT = {
+					trait = celibate
+				}
+				NOT = {
+					trait = quick
+				}
+				NOT = {
+					trait = brilliant
+				}
+				NOT = {
+					trait = genius
+				}
+			}
+			opinion = {
+				modifier = opinion_scared_into_submission
+				who = ROOT
+			}
+
+		}
+		any_courtier = {
+			limit = {
+				NOT = {
+					trait = brave
+				}
+				NOT = {
+					trait = celibate
+				}
+				NOT = {
+					trait = quick
+				}
+				NOT = {
+					trait = brilliant
+				}
+				NOT = {
+					trait = genius
+				}
+			}
+			opinion = {
+				modifier = opinion_scared_into_submission
+				who = ROOT
+			}
+
+		}
+	}
+}
+
+# Agnatic/Enatic realms toss the new character out
+character_event = {
+	id = spleasure.16906
+	desc = EVTDESCAspleasure16906
+	desc = {
+		text = EVTDESCAspleasure16906
+
+		trigger = {
+			NOT = {
+				is_female = yes
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCBspleasure16906
+
+		trigger = {
+			is_female = yes
+		}
+	}
+	picture = GFX_evt_bad_news
 	trigger = {
+		is_ruler = yes
+		OR = {
+			AND = {
+				is_female = yes			 # the game still considers her a female
+				primary_title = {
+					has_law = enatic_succession
+				}
+			}
+			AND = {
+				is_female = no			 # the game still considers him a female
+				primary_title = {
+					has_law = agnatic_succession
+				}
+			}
+		}
+	}
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAspleasure16906
+		abdicate = yes
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# The swap is complete (homosexual)
+character_event = {
+	id = spleasure.16907
+	desc = {
+		text = EVTDESCAspleasure16907
+
+		trigger = {
+			NOT = {
+				is_female = yes
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCBspleasure16907
+
+		trigger = {
+			is_female = yes
+		}
+	}
+	picture = GFX_evt_mage_lore_slaanesh
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAspleasure16907
+		remove_trait = homosexual
+		hidden_tooltip = {
+			spouse = {
+				character_event = {
+					id = spleasure.172 days = 150 random = 100
+				}
+			}
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# The swap is complete (straight)
+character_event = {
+	id = spleasure.16908
+	desc = {
+		text = EVTDESCAspleasure16908
+
+		trigger = {
+			NOT = {
+				is_female = yes
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCBspleasure16908
+
+		trigger = {
+			is_female = yes
+		}
+	}
+	picture = GFX_evt_mage_lore_slaanesh
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAspleasure16908
+		add_trait = homosexual
+		hidden_tooltip = {
+			spouse = {
+				character_event = {
+					id = spleasure.173 days = 150 random = 100
+				}
+			}
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# The prisoner counteracted the spell and got free
+character_event = {
+	id = spleasure.170
+	desc = EVTDESCAspleasure170
+	picture = GFX_evt_mage_lore_slaanesh
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAspleasure170
+		prisoner = no
 		FROM = {
+			character_event = {
+				id = spleasure.17005
+			}
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# The prisoner counteracted the spell and got free
+character_event = {
+	id = spleasure.17005
+	desc = {
+		text = EVTDESCAspleasure17005
+
+		trigger = {
+			NOT = {
+				is_female = yes
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCBspleasure17005
+
+		trigger = {
+			is_female = yes
+		}
+	}
+	picture = GFX_evt_mage_lore_slaanesh
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAspleasure17005
+		prestige = -150
+		piety = -100
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# Slaanesh gender mutation
+character_event = {
+	id = spleasure.171
+	desc = {
+		text = EVTDESCAspleasure171
+
+		trigger = {
 			NOT = {
 				is_female = yes
 			}
@@ -27003,12 +27395,10 @@ desc = {
 			}
 		}
 	}
-}
-desc = {
-	text = EVTDESCBspleasure16905
+	desc = {
+		text = EVTDESCBspleasure171
 
-	trigger = {
-		FROM = {
+		trigger = {
 			is_female = yes
 			OR = {
 				trait = creature_human
@@ -27016,12 +27406,10 @@ desc = {
 			}
 		}
 	}
-}
-desc = {
-	text = EVTDESCCspleasure16905
+	desc = {
+		text = EVTDESCCspleasure171
 
-	trigger = {
-		FROM = {
+		trigger = {
 			NOT = {
 				is_female = yes
 			}
@@ -27031,12 +27419,10 @@ desc = {
 			}
 		}
 	}
-}
-desc = {
-	text = EVTDESCDspleasure16905
+	desc = {
+		text = EVTDESCDspleasure171
 
-	trigger = {
-		FROM = {
+		trigger = {
 			is_female = yes
 			OR = {
 				trait = creature_dwarf
@@ -27044,1212 +27430,826 @@ desc = {
 			}
 		}
 	}
-}
-desc = {
-	text = EVTDESCEspleasure16905
+	desc = {
+		text = EVTDESCEspleasure171
 
-	trigger = {
-		FROM = {
+		trigger = {
 			NOT = {
 				is_female = yes
 			}
 			trait = creature_elf
 		}
 	}
-}
-desc = {
-	text = EVTDESCFspleasure16905
+	desc = {
+		text = EVTDESCFspleasure171
 
-	trigger = {
-		FROM = {
+		trigger = {
 			is_female = yes
 			trait = creature_elf
 		}
 	}
-}
-desc = {
-	text = EVTDESCGspleasure16905
+	desc = {
+		text = EVTDESCGspleasure171
 
-	trigger = {
-		FROM = {
+		trigger = {
 			NOT = {
 				is_female = yes
 			}
 			trait = creature_beastman
 		}
 	}
-}
-desc = {
-	text = EVTDESCHspleasure16905
+	desc = {
+		text = EVTDESCHspleasure171
 
-	trigger = {
-		FROM = {
+		trigger = {
 			is_female = yes
 			trait = creature_beastman
 		}
 	}
-}
-desc = {
-	text = EVTDESCIspleasure16905
+	desc = {
+		text = EVTDESCIspleasure171
 
-	trigger = {
-		FROM = {
+		trigger = {
 			NOT = {
 				is_female = yes
 			}
 			trait = creature_amazon
 		}
 	}
-}
-desc = {
-	text = EVTDESCLspleasure16905
+	desc = {
+		text = EVTDESCLspleasure171
 
-	trigger = {
-		FROM = {
+		trigger = {
 			is_female = yes
 			trait = creature_amazon
 		}
 	}
-}
-picture = GFX_evt_mage_lore_slaanesh
-is_triggered_only = yes
-option = {
-	name = EVTOPTAspleasure16905
-	hidden_tooltip = {
-		FROM = {
+	picture = GFX_evt_mage_lore_slaanesh
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAspleasure171
+		if = {
+			limit = {
+				graphical_culture = empiregfx
+			}
+			set_graphical_culture = empirerev
+		}
+		if = {
+			limit = {
+				graphical_culture = sylvaniangfx
+			}
+			set_graphical_culture = sylvanianrev
+		}
+		if = {
+			limit = {
+				graphical_culture = kurgangfx
+			}
+			set_graphical_culture = kurganrev
+		}
+		if = {
+			limit = {
+				graphical_culture = arabyangfx
+			}
+			set_graphical_culture = arabyanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = dwarfgfx
+			}
+			set_graphical_culture = dwarfrev
+		}
+		if = {
+			limit = {
+				graphical_culture = slayerdwarfgfx
+			}
+			set_graphical_culture = slayer_dwarfrev
+		}
+		if = {
+			limit = {
+				graphical_culture = norsedwarfgfx
+			}
+			set_graphical_culture = norse_dwarfrev
+		}
+		if = {
+			limit = {
+				graphical_culture = imperialdwarfgfx
+			}
+			set_graphical_culture = imperialdwarfrev
+		}
+		if = {
+			limit = {
+				graphical_culture = chaosdwarfgfx
+			}
+			set_graphical_culture = chaosdwarfrev
+		}
+		if = {
+			limit = {
+				graphical_culture = asurgfx
+			}
+			set_graphical_culture = asurrev
+		}
+		if = {
+			limit = {
+				graphical_culture = asraigfx
+			}
+			set_graphical_culture = asrairev
+		}
+		if = {
+			limit = {
+				graphical_culture = druchiigfx
+			}
+			set_graphical_culture = druchiirev
+		}
+		if = {
+			limit = {
+				graphical_culture = hobbitsgfx
+			}
+			set_graphical_culture = hobbitsrev
+		}
+		if = {
+			limit = {
+				graphical_culture = sartosantileangfx
+			}
+			set_graphical_culture = sartosantileanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = bretonniangfx
+			}
+			set_graphical_culture = bretonniarev
+		}
+		if = {
+			limit = {
+				graphical_culture = amazongfx
+			}
+			set_graphical_culture = amazonrev
+		}
+		if = {
+			limit = {
+				graphical_culture = northempiregfx
+			}
+			set_graphical_culture = northempirerev
+		}
+		if = {
+			limit = {
+				graphical_culture = tileagfx
+			}
+			set_graphical_culture = tilearev
+		}
+		if = {
+			limit = {
+				graphical_culture = estileangfx
+			}
+			set_graphical_culture = estileanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = hunggfx
+			}
+			set_graphical_culture = hungrev
+		}
+		if = {
+			limit = {
+				graphical_culture = southarabyangfx
+			}
+			set_graphical_culture = southarabyanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = northmangfx
+			}
+			set_graphical_culture = northmanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = beastmangfx
+			}
+			set_graphical_culture = beastmanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = ungorgfx
+			}
+			set_graphical_culture = ungorrev
+		}
+		if = {
+			limit = {
+				graphical_culture = nehekkagfx
+			}
+			set_graphical_culture = nomadrev
+		}
+		if = {
+			limit = {
+				graphical_culture = westerngfx
+			}
+			set_graphical_culture = westernrev
+		}
+		if = {
+			limit = {
+				graphical_culture = occitangfx
+			}
+			set_graphical_culture = occitanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = southerngfx
+			}
+			set_graphical_culture = southernrev
+		}
+		if = {
+			limit = {
+				graphical_culture = celticgfx
+			}
+			set_graphical_culture = celticrev
+		}
+		if = {
+			limit = {
+				graphical_culture = norsegfx
+			}
+			set_graphical_culture = norserev
+		}
+		if = {
+			limit = {
+				graphical_culture = saxongfx
+			}
+			set_graphical_culture = saxonrev
+		}
+		if = {
+			limit = {
+				graphical_culture = easternslavicgfx
+			}
+			set_graphical_culture = easternslavicrev
+		}
+		if = {
+			limit = {
+				graphical_culture = byzantinegfx
+			}
+			set_graphical_culture = byzantinerev
+		}
+		if = {
+			limit = {
+				graphical_culture = muslimgfx
+			}
+			set_graphical_culture = muslimrev
+		}
+		if = {
+			limit = {
+				graphical_culture = turkishgfx
+			}
+			set_graphical_culture = turkishrev
+		}
+		if = {
+			limit = {
+				graphical_culture = mongolgfx
+			}
+			set_graphical_culture = mongolrev
+		}
+		if = {
+			limit = {
+				graphical_culture = africangfx
+			}
+			set_graphical_culture = africanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = westafricangfx
+			}
+			set_graphical_culture = africanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = andalusiangfx
+			}
+			set_graphical_culture = andalusianrev
+		}
+		if = {
+			limit = {
+				graphical_culture = indiangfx
+			}
+			set_graphical_culture = indianrev
+		}
+		if = {
+			limit = {
+				graphical_culture = persiangfx
+			}
+			set_graphical_culture = persianrev
+		}
+		if = {
+			limit = {
+				graphical_culture = olddwarfgfx
+			}
+			set_graphical_culture = olddwarfrev
+		}
+		if = {
+			limit = {
+				graphical_culture = oldchaosdwarfgfx
+			}
+			set_graphical_culture = oldchaosdwarfrev
+		}
+		if = {
+			limit = {
+				graphical_culture = reiklandergfx
+			}
+			set_graphical_culture = reiklanderrev
+		}
+		if = {
+			limit = {
+				graphical_culture = bretonniangfx
+			}
+			set_graphical_culture = bretonnianrev
+		}
+		if = {
+			limit = {
+				graphical_culture = striganygfx
+			}
+			set_graphical_culture = striganyrev
+		}
+		if = {
+			limit = {
+				graphical_culture = sartosangfx
+			}
+			set_graphical_culture = sartosanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = strygangfx
+			}
+			set_graphical_culture = stryganrev
+		}
+		if = {
+			limit = {
+				graphical_culture = amazongfx
+			}
+			set_graphical_culture = amazonrev
+		}
+		if = {
+			limit = {
+				graphical_culture = arabyansartosangfx
+			}
+			set_graphical_culture = arabyansartosanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = cathayangfx
+			}
+			set_graphical_culture = cathayanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = livingjadegfx
+			}
+			set_graphical_culture = livingjaderev
+		}
+		if = {
+			limit = {
+				graphical_culture = wasaigfx
+			}
+			set_graphical_culture = wasairev
+		}
+		if = {
+			limit = {
+				graphical_culture = cophicgfx
+			}
+			set_graphical_culture = cophicrev
+		}
+		if = {
+			limit = {
+				graphical_culture = tevarigfx
+			}
+			set_graphical_culture = tevarirev
+		}
+		if = {
+			limit = {
+				graphical_culture = medeangfx
+			}
+			set_graphical_culture = medeanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = wasailigfx
+			}
+			set_graphical_culture = wasailirev
+		}
+		if = {
+			limit = {
+				graphical_culture = westerlandergfx
+			}
+			set_graphical_culture = westerlanderrev
+		}
+		if = {
+			limit = {
+				graphical_culture = sudenburgergfx
+			}
+			set_graphical_culture = sudenburgerrev
+		}
+		if = {
+			limit = {
+				graphical_culture = norscangfx
+			}
+			set_graphical_culture = norscanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = norscansartosangfx
+			}
+			set_graphical_culture = norscansartosanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = kislevitegfx
+			}
+			set_graphical_culture = kisleviterev
+		}
+		if = {
+			limit = {
+				graphical_culture = ropsmanngfx
+			}
+			set_graphical_culture = ropsmannrev
+		}
+		if = {
+			limit = {
+				graphical_culture = tileangfx
+			}
+			set_graphical_culture = tileanrev
+		}
+		if = {
+			limit = {
+				graphical_culture = estaliangfx
+			}
+			set_graphical_culture = estalianrev
+		}
+		if = {
+			limit = {
+				graphical_culture = mykengfx
+			}
+			set_graphical_culture = mykenrev
+		}
+		if = {
+			limit = {
+				graphical_culture = albiongfx
+			}
+			set_graphical_culture = albionrev
+		}
+		if = {
+			limit = {
+				graphical_culture = nagarythiangfx
+			}
+			set_graphical_culture = nagarythianrev
+		}
+		if = {
+			limit = {
+				graphical_culture = caledoriangfx
+			}
+			set_graphical_culture = caledorianrev
+		}
+		add_trait = transgender
+		if = {
+			limit = {
+				trait = creature_beastman
+				is_female = yes
+			}
+			add_trait = horns_small
+		}
+		if = {
+			limit = {
+				trait = creature_beastman
+				is_female = no
+			}
+			remove_trait = horns_small
+			remove_trait = horns_average
+			remove_trait = horns_big
+			add_trait = horns_none
+		}
+		hidden_tooltip = {
 			character_event = {
 				id = spleasure.16906 days = 190 random = 120
 			}
 		}
-	}
-	hidden_tooltip = {
-		if = {
-			limit = {
-				FROM = {
+		hidden_tooltip = {
+			if = {
+				limit = {
 					trait = homosexual
 				}
-			}
-			FROM = {
 				character_event = {
 					id = spleasure.16907 days = 90 random = 90
 				}
 			}
 		}
-	}
-	hidden_tooltip = {
-		if = {
-			limit = {
-				FROM = {
+		hidden_tooltip = {
+			if = {
+				limit = {
 					NOT = {
 						trait = homosexual
 					}
 				}
-			}
-			FROM = {
 				character_event = {
 					id = spleasure.16908 days = 90 random = 90
 				}
 			}
 		}
-	}
-	ai_chance = {
-		factor = 1
-	}
-	any_vassal = {
-		limit = {
-			NOT = {
-				trait = brave
-			}
-			NOT = {
-				trait = celibate
-			}
-			NOT = {
-				trait = quick
-			}
-			NOT = {
-				trait = brilliant
-			}
-			NOT = {
-				trait = genius
-			}
-		}
-		opinion = {
-			modifier = opinion_scared_into_submission
-			who = ROOT
-		}
-
-	}
-	any_courtier = {
-		limit = {
-			NOT = {
-				trait = brave
-			}
-			NOT = {
-				trait = celibate
-			}
-			NOT = {
-				trait = quick
-			}
-			NOT = {
-				trait = brilliant
-			}
-			NOT = {
-				trait = genius
-			}
-		}
-		opinion = {
-			modifier = opinion_scared_into_submission
-			who = ROOT
-		}
-
-	}
-}
-}
-
-# Agnatic/Enatic realms toss the new character out
-character_event = {
-id = spleasure.16906
-desc = EVTDESCAspleasure16906
-desc = {
-	text = EVTDESCAspleasure16906
-
-	trigger = {
-		NOT = {
-			is_female = yes
-		}
-	}
-}
-desc = {
-	text = EVTDESCBspleasure16906
-
-	trigger = {
-		is_female = yes
-	}
-}
-picture = GFX_evt_bad_news
-trigger = {
-	is_ruler = yes
-	OR = {
-		AND = {
-			is_female = yes			 # the game still considers her a female
-			primary_title = {
-				has_law = enatic_succession
-			}
-		}
-		AND = {
-			is_female = no			 # the game still considers him a female
-			primary_title = {
-				has_law = agnatic_succession
-			}
-		}
-	}
-}
-is_triggered_only = yes
-option = {
-	name = EVTOPTAspleasure16906
-	abdicate = yes
-	ai_chance = {
-		factor = 1
-	}
-}
-}
-
-# The swap is complete (homosexual)
-character_event = {
-id = spleasure.16907
-desc = {
-	text = EVTDESCAspleasure16907
-
-	trigger = {
-		NOT = {
-			is_female = yes
-		}
-	}
-}
-desc = {
-	text = EVTDESCBspleasure16907
-
-	trigger = {
-		is_female = yes
-	}
-}
-picture = GFX_evt_mage_lore_slaanesh
-is_triggered_only = yes
-option = {
-	name = EVTOPTAspleasure16907
-	remove_trait = homosexual
-	hidden_tooltip = {
-		spouse = {
-			character_event = {
-				id = spleasure.172 days = 150 random = 100
-			}
-		}
-	}
-	ai_chance = {
-		factor = 1
-	}
-}
-}
-
-# The swap is complete (straight)
-character_event = {
-id = spleasure.16908
-desc = {
-	text = EVTDESCAspleasure16908
-
-	trigger = {
-		NOT = {
-			is_female = yes
-		}
-	}
-}
-desc = {
-	text = EVTDESCBspleasure16908
-
-	trigger = {
-		is_female = yes
-	}
-}
-picture = GFX_evt_mage_lore_slaanesh
-is_triggered_only = yes
-option = {
-	name = EVTOPTAspleasure16908
-	add_trait = homosexual
-	hidden_tooltip = {
-		spouse = {
-			character_event = {
-				id = spleasure.173 days = 150 random = 100
-			}
-		}
-	}
-	ai_chance = {
-		factor = 1
-	}
-}
-}
-
-# The prisoner counteracted the spell and got free
-character_event = {
-id = spleasure.170
-desc = EVTDESCAspleasure170
-picture = GFX_evt_mage_lore_slaanesh
-is_triggered_only = yes
-option = {
-	name = EVTOPTAspleasure170
-	prisoner = no
-	FROM = {
-		character_event = {
-			id = spleasure.17005
-		}
-	}
-	ai_chance = {
-		factor = 1
-	}
-}
-}
-
-# The prisoner counteracted the spell and got free
-character_event = {
-id = spleasure.17005
-desc = {
-	text = EVTDESCAspleasure17005
-
-	trigger = {
-		NOT = {
-			is_female = yes
-		}
-	}
-}
-desc = {
-	text = EVTDESCBspleasure17005
-
-	trigger = {
-		is_female = yes
-	}
-}
-picture = GFX_evt_mage_lore_slaanesh
-is_triggered_only = yes
-option = {
-	name = EVTOPTAspleasure17005
-	prestige = -150
-	piety = -100
-	ai_chance = {
-		factor = 1
-	}
-}
-}
-
-# Slaanesh gender mutation
-character_event = {
-id = spleasure.171
-desc = {
-	text = EVTDESCAspleasure171
-
-	trigger = {
-		NOT = {
-			is_female = yes
-		}
-		OR = {
-			trait = creature_human
-			trait = creature_halfling
-		}
-	}
-}
-desc = {
-	text = EVTDESCBspleasure171
-
-	trigger = {
-		is_female = yes
-		OR = {
-			trait = creature_human
-			trait = creature_halfling
-		}
-	}
-}
-desc = {
-	text = EVTDESCCspleasure171
-
-	trigger = {
-		NOT = {
-			is_female = yes
-		}
-		OR = {
-			trait = creature_dwarf
-			trait = creature_chaos_dwarf
-		}
-	}
-}
-desc = {
-	text = EVTDESCDspleasure171
-
-	trigger = {
-		is_female = yes
-		OR = {
-			trait = creature_dwarf
-			trait = creature_chaos_dwarf
-		}
-	}
-}
-desc = {
-	text = EVTDESCEspleasure171
-
-	trigger = {
-		NOT = {
-			is_female = yes
-		}
-		trait = creature_elf
-	}
-}
-desc = {
-	text = EVTDESCFspleasure171
-
-	trigger = {
-		is_female = yes
-		trait = creature_elf
-	}
-}
-desc = {
-	text = EVTDESCGspleasure171
-
-	trigger = {
-		NOT = {
-			is_female = yes
-		}
-		trait = creature_beastman
-	}
-}
-desc = {
-	text = EVTDESCHspleasure171
-
-	trigger = {
-		is_female = yes
-		trait = creature_beastman
-	}
-}
-desc = {
-	text = EVTDESCIspleasure171
-
-	trigger = {
-		NOT = {
-			is_female = yes
-		}
-		trait = creature_amazon
-	}
-}
-desc = {
-	text = EVTDESCLspleasure171
-
-	trigger = {
-		is_female = yes
-		trait = creature_amazon
-	}
-}
-picture = GFX_evt_mage_lore_slaanesh
-is_triggered_only = yes
-option = {
-	name = EVTOPTAspleasure171
-	if = {
-		limit = {
-			graphical_culture = empiregfx
-		}
-		set_graphical_culture = empirerev
-	}
-	if = {
-		limit = {
-			graphical_culture = sylvaniangfx
-		}
-		set_graphical_culture = sylvanianrev
-	}
-	if = {
-		limit = {
-			graphical_culture = kurgangfx
-		}
-		set_graphical_culture = kurganrev
-	}
-	if = {
-		limit = {
-			graphical_culture = arabyangfx
-		}
-		set_graphical_culture = arabyanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = dwarfgfx
-		}
-		set_graphical_culture = dwarfrev
-	}
-	if = {
-		limit = {
-			graphical_culture = slayerdwarfgfx
-		}
-		set_graphical_culture = slayer_dwarfrev
-	}
-	if = {
-		limit = {
-			graphical_culture = norsedwarfgfx
-		}
-		set_graphical_culture = norse_dwarfrev
-	}
-	if = {
-		limit = {
-			graphical_culture = imperialdwarfgfx
-		}
-		set_graphical_culture = imperialdwarfrev
-	}
-	if = {
-		limit = {
-			graphical_culture = chaosdwarfgfx
-		}
-		set_graphical_culture = chaosdwarfrev
-	}
-	if = {
-		limit = {
-			graphical_culture = asurgfx
-		}
-		set_graphical_culture = asurrev
-	}
-	if = {
-		limit = {
-			graphical_culture = asraigfx
-		}
-		set_graphical_culture = asrairev
-	}
-	if = {
-		limit = {
-			graphical_culture = druchiigfx
-		}
-		set_graphical_culture = druchiirev
-	}
-	if = {
-		limit = {
-			graphical_culture = hobbitsgfx
-		}
-		set_graphical_culture = hobbitsrev
-	}
-	if = {
-		limit = {
-			graphical_culture = sartosantileangfx
-		}
-		set_graphical_culture = sartosantileanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = bretonniangfx
-		}
-		set_graphical_culture = bretonniarev
-	}
-	if = {
-		limit = {
-			graphical_culture = amazongfx
-		}
-		set_graphical_culture = amazonrev
-	}
-	if = {
-		limit = {
-			graphical_culture = northempiregfx
-		}
-		set_graphical_culture = northempirerev
-	}
-	if = {
-		limit = {
-			graphical_culture = tileagfx
-		}
-		set_graphical_culture = tilearev
-	}
-	if = {
-		limit = {
-			graphical_culture = estileangfx
-		}
-		set_graphical_culture = estileanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = hunggfx
-		}
-		set_graphical_culture = hungrev
-	}
-	if = {
-		limit = {
-			graphical_culture = southarabyangfx
-		}
-		set_graphical_culture = southarabyanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = northmangfx
-		}
-		set_graphical_culture = northmanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = beastmangfx
-		}
-		set_graphical_culture = beastmanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = ungorgfx
-		}
-		set_graphical_culture = ungorrev
-	}
-	if = {
-		limit = {
-			graphical_culture = nehekkagfx
-		}
-		set_graphical_culture = nomadrev
-	}
-	if = {
-		limit = {
-			graphical_culture = westerngfx
-		}
-		set_graphical_culture = westernrev
-	}
-	if = {
-		limit = {
-			graphical_culture = occitangfx
-		}
-		set_graphical_culture = occitanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = southerngfx
-		}
-		set_graphical_culture = southernrev
-	}
-	if = {
-		limit = {
-			graphical_culture = celticgfx
-		}
-		set_graphical_culture = celticrev
-	}
-	if = {
-		limit = {
-			graphical_culture = norsegfx
-		}
-		set_graphical_culture = norserev
-	}
-	if = {
-		limit = {
-			graphical_culture = saxongfx
-		}
-		set_graphical_culture = saxonrev
-	}
-	if = {
-		limit = {
-			graphical_culture = easternslavicgfx
-		}
-		set_graphical_culture = easternslavicrev
-	}
-	if = {
-		limit = {
-			graphical_culture = byzantinegfx
-		}
-		set_graphical_culture = byzantinerev
-	}
-	if = {
-		limit = {
-			graphical_culture = muslimgfx
-		}
-		set_graphical_culture = muslimrev
-	}
-	if = {
-		limit = {
-			graphical_culture = turkishgfx
-		}
-		set_graphical_culture = turkishrev
-	}
-	if = {
-		limit = {
-			graphical_culture = mongolgfx
-		}
-		set_graphical_culture = mongolrev
-	}
-	if = {
-		limit = {
-			graphical_culture = africangfx
-		}
-		set_graphical_culture = africanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = westafricangfx
-		}
-		set_graphical_culture = africanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = andalusiangfx
-		}
-		set_graphical_culture = andalusianrev
-	}
-	if = {
-		limit = {
-			graphical_culture = indiangfx
-		}
-		set_graphical_culture = indianrev
-	}
-	if = {
-		limit = {
-			graphical_culture = persiangfx
-		}
-		set_graphical_culture = persianrev
-	}
-	if = {
-		limit = {
-			graphical_culture = olddwarfgfx
-		}
-		set_graphical_culture = olddwarfrev
-	}
-	if = {
-		limit = {
-			graphical_culture = oldchaosdwarfgfx
-		}
-		set_graphical_culture = oldchaosdwarfrev
-	}
-	if = {
-		limit = {
-			graphical_culture = reiklandergfx
-		}
-		set_graphical_culture = reiklanderrev
-	}
-	if = {
-		limit = {
-			graphical_culture = bretonniangfx
-		}
-		set_graphical_culture = bretonnianrev
-	}
-	if = {
-		limit = {
-			graphical_culture = striganygfx
-		}
-		set_graphical_culture = striganyrev
-	}
-	if = {
-		limit = {
-			graphical_culture = sartosangfx
-		}
-		set_graphical_culture = sartosanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = strygangfx
-		}
-		set_graphical_culture = stryganrev
-	}
-	if = {
-		limit = {
-			graphical_culture = amazongfx
-		}
-		set_graphical_culture = amazonrev
-	}
-	if = {
-		limit = {
-			graphical_culture = arabyansartosangfx
-		}
-		set_graphical_culture = arabyansartosanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = cathayangfx
-		}
-		set_graphical_culture = cathayanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = livingjadegfx
-		}
-		set_graphical_culture = livingjaderev
-	}
-	if = {
-		limit = {
-			graphical_culture = wasaigfx
-		}
-		set_graphical_culture = wasairev
-	}
-	if = {
-		limit = {
-			graphical_culture = cophicgfx
-		}
-		set_graphical_culture = cophicrev
-	}
-	if = {
-		limit = {
-			graphical_culture = tevarigfx
-		}
-		set_graphical_culture = tevarirev
-	}
-	if = {
-		limit = {
-			graphical_culture = medeangfx
-		}
-		set_graphical_culture = medeanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = wasailigfx
-		}
-		set_graphical_culture = wasailirev
-	}
-	if = {
-		limit = {
-			graphical_culture = westerlandergfx
-		}
-		set_graphical_culture = westerlanderrev
-	}
-	if = {
-		limit = {
-			graphical_culture = sudenburgergfx
-		}
-		set_graphical_culture = sudenburgerrev
-	}
-	if = {
-		limit = {
-			graphical_culture = norscangfx
-		}
-		set_graphical_culture = norscanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = norscansartosangfx
-		}
-		set_graphical_culture = norscansartosanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = kislevitegfx
-		}
-		set_graphical_culture = kisleviterev
-	}
-	if = {
-		limit = {
-			graphical_culture = ropsmanngfx
-		}
-		set_graphical_culture = ropsmannrev
-	}
-	if = {
-		limit = {
-			graphical_culture = tileangfx
-		}
-		set_graphical_culture = tileanrev
-	}
-	if = {
-		limit = {
-			graphical_culture = estaliangfx
-		}
-		set_graphical_culture = estalianrev
-	}
-	if = {
-		limit = {
-			graphical_culture = mykengfx
-		}
-		set_graphical_culture = mykenrev
-	}
-	if = {
-		limit = {
-			graphical_culture = albiongfx
-		}
-		set_graphical_culture = albionrev
-	}
-	if = {
-		limit = {
-			graphical_culture = nagarythiangfx
-		}
-		set_graphical_culture = nagarythianrev
-	}
-	if = {
-		limit = {
-			graphical_culture = caledoriangfx
-		}
-		set_graphical_culture = caledorianrev
-	}
-	add_trait = transgender
-	if = {
-		limit = {
-			trait = creature_beastman
-			is_female = yes
-		}
-		add_trait = horns_small
-	}
-	if = {
-		limit = {
-			trait = creature_beastman
-			is_female = no
-		}
-		remove_trait = horns_small
-		remove_trait = horns_average
-		remove_trait = horns_big
-		add_trait = horns_none
-	}
-	hidden_tooltip = {
-		character_event = {
-			id = spleasure.16906 days = 190 random = 120
-		}
-	}
-	hidden_tooltip = {
 		if = {
 			limit = {
-				trait = homosexual
+				trait = mutation_major
 			}
-			character_event = {
-				id = spleasure.16907 days = 90 random = 90
-			}
+			add_trait = mutation_massive
 		}
-	}
-	hidden_tooltip = {
+		if = {
+			limit = {
+				trait = mutation_minor
+			}
+			add_trait = mutation_major
+		}
 		if = {
 			limit = {
 				NOT = {
-					trait = homosexual
+					trait = mutation_major
+					trait = mutation_massive
+					trait = mutation_minor
 				}
 			}
-			character_event = {
-				id = spleasure.16908 days = 90 random = 90
+			add_trait = mutation_minor
+		}
+		if = {
+			limit = {
+				NOT = {
+					religion = atharti
+					religion = cult_of_pleasure
+					religion = slaanesh
+				}
 			}
+			# character_event = { id = spleasure.65 } 	# cultist exposed only when hidden
+			increase_visibility_effect = yes # increase visibility
+		}
+		ai_chance = {
+			factor = 1
 		}
 	}
-	if = {
-		limit = {
-			trait = mutation_major
-		}
-		add_trait = mutation_massive
-	}
-	if = {
-		limit = {
-			trait = mutation_minor
-		}
-		add_trait = mutation_major
-	}
-	if = {
-		limit = {
-			NOT = {
-				trait = mutation_major
-				trait = mutation_massive
-				trait = mutation_minor
-			}
-		}
-		add_trait = mutation_minor
-	}
-	if = {
-		limit = {
-			NOT = {
-				religion = atharti
-				religion = cult_of_pleasure
-				religion = slaanesh
-			}
-		}
-		# character_event = { id = spleasure.65 } 	# cultist exposed only when hidden
-		increase_visibility_effect = yes # increase visibility
-	}
-	ai_chance = {
-		factor = 1
-	}
-}
 }
 
 # The swap is complete (homosexual), notify spouse
 character_event = {
-id = spleasure.172
-desc = {
-	text = EVTDESCAspleasure172
+	id = spleasure.172
+	desc = {
+		text = EVTDESCAspleasure172
 
-	trigger = {
-		NOT = {
+		trigger = {
+			NOT = {
+				is_female = yes
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCBspleasure172
+
+		trigger = {
 			is_female = yes
 		}
 	}
-}
-desc = {
-	text = EVTDESCBspleasure172
+	picture = GFX_evt_mage_lore_slaanesh
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAspleasure172
 
-	trigger = {
-		is_female = yes
+		trigger = {
+			OR = {
+				trait = homosexual
+				ai = no
+			}
+		} # A wish come true
+		hidden_tooltip = {
+			spouse = {
+				character_event = {
+					id = spleasure.17205
+				}
+			}
+		}
+		ai_chance = {
+			factor = 1
+		}
 	}
-}
-picture = GFX_evt_mage_lore_slaanesh
-is_triggered_only = yes
-option = {
-	name = EVTOPTAspleasure172
+	option = {
+		name = EVTOPTBspleasure172
 
-	trigger = {
-		OR = {
-			trait = homosexual
+		trigger = {
+			NOT = {
+				trait = homosexual
+			}
+		} # This marriage is over
+		hidden_tooltip = {
+			spouse = {
+				character_event = {
+					id = spleasure.17206
+				}
+			}
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+	option = {
+		name = EVTOPTCspleasure172
+
+		trigger = {
 			ai = no
-		}
-	} # A wish come true
-	hidden_tooltip = {
-		spouse = {
-			character_event = {
-				id = spleasure.17205
-			}
+		} # I don't care
+		ai_chance = {
+			factor = 1
 		}
 	}
-	ai_chance = {
-		factor = 1
-	}
-}
-option = {
-	name = EVTOPTBspleasure172
-
-	trigger = {
-		NOT = {
-			trait = homosexual
-		}
-	} # This marriage is over
-	hidden_tooltip = {
-		spouse = {
-			character_event = {
-				id = spleasure.17206
-			}
-		}
-	}
-	ai_chance = {
-		factor = 1
-	}
-}
-option = {
-	name = EVTOPTCspleasure172
-
-	trigger = {
-		ai = no
-	} # I don't care
-	ai_chance = {
-		factor = 1
-	}
-}
 }
 
 # The swap is complete (homosexual), the spouse is fine with it
 character_event = {
-id = spleasure.17205
-desc = {
-	text = EVTDESCAspleasure17205
+	id = spleasure.17205
+	desc = {
+		text = EVTDESCAspleasure17205
 
-	trigger = {
-		NOT = {
+		trigger = {
+			NOT = {
+				is_female = yes
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCBspleasure17205
+
+		trigger = {
 			is_female = yes
 		}
 	}
-}
-desc = {
-	text = EVTDESCBspleasure17205
-
-	trigger = {
-		is_female = yes
+	picture = GFX_evt_mage_lore_slaanesh
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAspleasure17205
+		add_lover = FROM
+		ai_chance = {
+			factor = 1
+		}
 	}
-}
-picture = GFX_evt_mage_lore_slaanesh
-is_triggered_only = yes
-option = {
-	name = EVTOPTAspleasure17205
-	add_lover = FROM
-	ai_chance = {
-		factor = 1
-	}
-}
 }
 
 # The swap is complete (homosexual), the spouse leaves
 character_event = {
-id = spleasure.17206
-desc = {
-	text = EVTDESCAspleasure17206
+	id = spleasure.17206
+	desc = {
+		text = EVTDESCAspleasure17206
 
-	trigger = {
-		NOT = {
+		trigger = {
+			NOT = {
+				is_female = yes
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCBspleasure17206
+
+		trigger = {
 			is_female = yes
 		}
 	}
-}
-desc = {
-	text = EVTDESCBspleasure17206
-
-	trigger = {
-		is_female = yes
+	picture = GFX_evt_mage_lore_slaanesh
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAspleasure17206
+		remove_spouse = FROM
+		prestige = -100
+		ai_chance = {
+			factor = 1
+		}
 	}
-}
-picture = GFX_evt_mage_lore_slaanesh
-is_triggered_only = yes
-option = {
-	name = EVTOPTAspleasure17206
-	remove_spouse = FROM
-	prestige = -100
-	ai_chance = {
-		factor = 1
-	}
-}
 }
 
 # The swap is complete (straight), notify spouse
 character_event = {
-id = spleasure.173
-desc = {
-	text = EVTDESCAspleasure173
+	id = spleasure.173
+	desc = {
+		text = EVTDESCAspleasure173
 
-	trigger = {
-		NOT = {
+		trigger = {
+			NOT = {
+				is_female = yes
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCBspleasure173
+
+		trigger = {
 			is_female = yes
 		}
 	}
-}
-desc = {
-	text = EVTDESCBspleasure173
+	picture = GFX_evt_mage_lore_slaanesh
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAspleasure173
 
-	trigger = {
-		is_female = yes
+		trigger = {
+			OR = {
+				trait = homosexual
+				ai = no
+			}
+		} # A wish come true
+		hidden_tooltip = {
+			spouse = {
+				character_event = {
+					id = spleasure.17305
+				}
+			}
+		}
+		ai_chance = {
+			factor = 1
+		}
 	}
-}
-picture = GFX_evt_mage_lore_slaanesh
-is_triggered_only = yes
-option = {
-	name = EVTOPTAspleasure173
+	option = {
+		name = EVTOPTBspleasure173
 
-	trigger = {
-		OR = {
-			trait = homosexual
+		trigger = {
+			NOT = {
+				trait = homosexual
+			}
+		} # This marriage is over
+		hidden_tooltip = {
+			spouse = {
+				character_event = {
+					id = spleasure.17306
+				}
+			}
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+	option = {
+		name = EVTOPTCspleasure173
+
+		trigger = {
 			ai = no
-		}
-	} # A wish come true
-	hidden_tooltip = {
-		spouse = {
-			character_event = {
-				id = spleasure.17305
-			}
+		} # I don't care
+		ai_chance = {
+			factor = 1
 		}
 	}
-	ai_chance = {
-		factor = 1
-	}
-}
-option = {
-	name = EVTOPTBspleasure173
-
-	trigger = {
-		NOT = {
-			trait = homosexual
-		}
-	} # This marriage is over
-	hidden_tooltip = {
-		spouse = {
-			character_event = {
-				id = spleasure.17306
-			}
-		}
-	}
-	ai_chance = {
-		factor = 1
-	}
-}
-option = {
-	name = EVTOPTCspleasure173
-
-	trigger = {
-		ai = no
-	} # I don't care
-	ai_chance = {
-		factor = 1
-	}
-}
 }
 
 # The swap is complete (straight), the spouse is fine with it
 character_event = {
-id = spleasure.17305
-desc = {
-	text = EVTDESCAspleasure17305
+	id = spleasure.17305
+	desc = {
+		text = EVTDESCAspleasure17305
 
-	trigger = {
-		NOT = {
+		trigger = {
+			NOT = {
+				is_female = yes
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCBspleasure17305
+
+		trigger = {
 			is_female = yes
 		}
 	}
-}
-desc = {
-	text = EVTDESCBspleasure17305
-
-	trigger = {
-		is_female = yes
+	picture = GFX_evt_mage_lore_slaanesh
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAspleasure17305
+		add_lover = FROM
+		ai_chance = {
+			factor = 1
+		}
 	}
-}
-picture = GFX_evt_mage_lore_slaanesh
-is_triggered_only = yes
-option = {
-	name = EVTOPTAspleasure17305
-	add_lover = FROM
-	ai_chance = {
-		factor = 1
-	}
-}
 }
 
 # The swap is complete (straight), the spouse leaves
 character_event = {
-id = spleasure.17306
-desc = {
-	text = EVTDESCAspleasure17306
+	id = spleasure.17306
+	desc = {
+		text = EVTDESCAspleasure17306
 
-	trigger = {
-		NOT = {
+		trigger = {
+			NOT = {
+				is_female = yes
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCBspleasure17306
+
+		trigger = {
 			is_female = yes
 		}
 	}
-}
-desc = {
-	text = EVTDESCBspleasure17306
-
-	trigger = {
-		is_female = yes
+	picture = GFX_evt_mage_lore_slaanesh
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAspleasure17306
+		remove_spouse = FROM
+		prestige = -100
+		ai_chance = {
+			factor = 1
+		}
 	}
-}
-picture = GFX_evt_mage_lore_slaanesh
-is_triggered_only = yes
-option = {
-	name = EVTOPTAspleasure17306
-	remove_spouse = FROM
-	prestige = -100
-	ai_chance = {
-		factor = 1
-	}
-}
 }
 
 # Gender-swapped man gets knocked up by spouse
@@ -28428,56 +28428,18 @@ option = {
 
 # Gender-swapped woman knocks up by spouse
 character_event = {
-id = spleasure.175
+	id = spleasure.175
 
-# desc = EVTDESCspleasure175
+	# desc = EVTDESCspleasure175
 
-# picture = GFX_evt_cult_of_pleasure
-min_age = 15
-capable_only = yes
-prisoner = no
-only_women = yes
-hide_window = yes
-trigger = {
-	trait = transgender
-	NOT = {
-		trait = creature_orc
-	}		# Infertile species
-	NOT = {
-		trait = creature_goblin
-	}
-	NOT = {
-		trait = creature_snotling
-	}
-	NOT = {
-		trait = creature_nehekharan
-	}
-	is_vampire_trigger = no
-	NOT = {
-		trait = celibate
-	}
-	NOT = {
-		trait = infertile
-	}
-	OR = {
-		NOT = {
-			age = 45
-		}
-		AND = {
-			NOT = {
-				trait = creature_human
-			}
-			NOT = {
-				trait = creature_halfling
-			}
-		}
-	}
-	is_pregnant = no
-	spouse = {
-		is_female = yes
-		NOT = {
-			trait = eunuch
-		}
+	# picture = GFX_evt_cult_of_pleasure
+	min_age = 15
+	capable_only = yes
+	prisoner = no
+	only_women = yes
+	hide_window = yes
+	trigger = {
+		trait = transgender
 		NOT = {
 			trait = creature_orc
 		}		# Infertile species
@@ -28491,996 +28453,1034 @@ trigger = {
 			trait = creature_nehekharan
 		}
 		is_vampire_trigger = no
-		# To avoid halfbreeds
+		NOT = {
+			trait = celibate
+		}
+		NOT = {
+			trait = infertile
+		}
 		OR = {
+			NOT = {
+				age = 45
+			}
 			AND = {
-				ROOT = {
+				NOT = {
 					trait = creature_human
 				}
-				trait = creature_human
-			}
-			AND = {
-				ROOT = {
-					trait = creature_amazon
-				}
-				trait = creature_amazon
-			}
-			AND = {
-				ROOT = {
-					trait = creature_elf
-				}
-				trait = creature_elf
-			}
-			AND = {
-				ROOT = {
+				NOT = {
 					trait = creature_halfling
 				}
-				trait = creature_halfling
 			}
-			AND = {
-				ROOT = {
+		}
+		is_pregnant = no
+		spouse = {
+			is_female = yes
+			NOT = {
+				trait = eunuch
+			}
+			NOT = {
+				trait = creature_orc
+			}		# Infertile species
+			NOT = {
+				trait = creature_goblin
+			}
+			NOT = {
+				trait = creature_snotling
+			}
+			NOT = {
+				trait = creature_nehekharan
+			}
+			is_vampire_trigger = no
+			# To avoid halfbreeds
+			OR = {
+				AND = {
+					ROOT = {
+						trait = creature_human
+					}
+					trait = creature_human
+				}
+				AND = {
+					ROOT = {
+						trait = creature_amazon
+					}
+					trait = creature_amazon
+				}
+				AND = {
+					ROOT = {
+						trait = creature_elf
+					}
+					trait = creature_elf
+				}
+				AND = {
+					ROOT = {
+						trait = creature_halfling
+					}
+					trait = creature_halfling
+				}
+				AND = {
+					ROOT = {
+						trait = creature_dwarf
+					}
 					trait = creature_dwarf
 				}
-				trait = creature_dwarf
-			}
-			AND = {
-				ROOT = {
+				AND = {
+					ROOT = {
+						trait = creature_chaos_dwarf
+					}
 					trait = creature_chaos_dwarf
 				}
-				trait = creature_chaos_dwarf
-			}
-			AND = {
-				ROOT = {
+				AND = {
+					ROOT = {
+						trait = creature_skaven
+					}
 					trait = creature_skaven
 				}
-				trait = creature_skaven
 			}
+			is_alive = yes
+			NOT = {
+				trait = incapable
+			}
+			NOT = {
+				has_character_modifier = stage_progressed
+			} # so that the consorts will cycle
 		}
-		is_alive = yes
-		NOT = {
+	}
+	mean_time_to_happen = {
+		years = 15
+		modifier = {
+			factor = 1.5
+			war = yes
+		}
+		modifier = {
+			factor = 1.75
+			trait = creature_elf
+		}
+		modifier = {
+			factor = 45
+			in_command = yes
+		}
+		modifier = {
+			factor = 0.45
+			trait = retired_with_harem
+		}
+		modifier = {
+			factor = 0.15
+			has_character_modifier = horny_harem_mod
+		}
+		modifier = {
+			factor = 0.75
+			trait = lustful
+		}
+		modifier = {
+			factor = 4
+			trait = shy
+		}
+		modifier = {
+			factor = 0.9
+			trait = gregarious
+		}
+		modifier = {
+			factor = 0.85
+			trait = hedonist
+		}
+		modifier = {
+			factor = 4
+			trait = chaste
+		}
+		modifier = {
+			factor = 4
+			trait = ill
+		}
+		modifier = {
+			factor = 1.75
+			trait = stressed
+		}
+		modifier = {
+			factor = 2.75
+			trait = depressed
+		}
+		modifier = {
+			factor = 1.5
+			trait = kind
+		}
+		modifier = {
+			factor = 1.5
+			trait = just
+		}
+		modifier = {
+			factor = 0.95
+			trait = cruel
+		}
+		modifier = {
+			factor = 0.95
+			trait = arbitrary
+		}
+		modifier = {
+			factor = 1.75
+			trait = possessed
+		}
+		modifier = {
+			factor = 1.75
+			trait = hunchback
+		}
+		modifier = {
+			factor = 1.25
+			trait = clubfooted
+		}
+		modifier = {
+			factor = 4
+			trait = pneumonic
+		}
+		modifier = {
+			factor = 3.75
+			trait = homosexual
+		}
+		modifier = {
+			factor = 1.75
+			trait = dwarf
+		}
+		modifier = {
+			factor = 2.75
+			trait = inbred
+		}
+		modifier = {
+			factor = 0.95
+			is_strong_trigger = yes
+		}
+		modifier = {
+			factor = 1.25
+			trait = weak
+		}
+		modifier = {
+			factor = 1.25
+			trait = scholar
+		}
+		modifier = {
+			factor = 1.25
+			trait = gardener
+		}
+		modifier = {
+			factor = 1.25
+			trait = hunter
+		}
+		modifier = {
+			factor = 1.25
+			trait = duelist
+		}
+		modifier = {
+			factor = 1.25
+			trait = falconer
+		}
+		modifier = {
+			factor = 1.25
+			trait = mystic
+		}
+		modifier = {
+			factor = 1.25
+			trait = temperate
+		}
+		modifier = {
+			factor = 1.25
+			trait = charitable
+		}
+		modifier = {
+			factor = 1.5
+			trait = slothful
+		}
+		modifier = {
+			factor = 1.25
+			trait = diligent
+		}
+		modifier = {
+			factor = 1.25
+			trait = patient
+		}
+		modifier = {
+			factor = 1.15
+			trait = humble
+		}
+		modifier = {
+			factor = 1.1
+			trait = craven
+		}
+		modifier = {
+			factor = 0.9
+			trait = brave
+		}
+		modifier = {
+			factor = 1.5
+			trait = paranoid
+		}
+		modifier = {
+			factor = 0.8
+			trait = trusting
+		}
+		modifier = {
+			factor = 100
 			trait = incapable
 		}
-		NOT = {
-			has_character_modifier = stage_progressed
-		} # so that the consorts will cycle
-	}
-}
-mean_time_to_happen = {
-	years = 15
-	modifier = {
-		factor = 1.5
-		war = yes
-	}
-	modifier = {
-		factor = 1.75
-		trait = creature_elf
-	}
-	modifier = {
-		factor = 45
-		in_command = yes
-	}
-	modifier = {
-		factor = 0.45
-		trait = retired_with_harem
-	}
-	modifier = {
-		factor = 0.15
-		has_character_modifier = horny_harem_mod
-	}
-	modifier = {
-		factor = 0.75
-		trait = lustful
-	}
-	modifier = {
-		factor = 4
-		trait = shy
-	}
-	modifier = {
-		factor = 0.9
-		trait = gregarious
-	}
-	modifier = {
-		factor = 0.85
-		trait = hedonist
-	}
-	modifier = {
-		factor = 4
-		trait = chaste
-	}
-	modifier = {
-		factor = 4
-		trait = ill
-	}
-	modifier = {
-		factor = 1.75
-		trait = stressed
-	}
-	modifier = {
-		factor = 2.75
-		trait = depressed
-	}
-	modifier = {
-		factor = 1.5
-		trait = kind
-	}
-	modifier = {
-		factor = 1.5
-		trait = just
-	}
-	modifier = {
-		factor = 0.95
-		trait = cruel
-	}
-	modifier = {
-		factor = 0.95
-		trait = arbitrary
-	}
-	modifier = {
-		factor = 1.75
-		trait = possessed
-	}
-	modifier = {
-		factor = 1.75
-		trait = hunchback
-	}
-	modifier = {
-		factor = 1.25
-		trait = clubfooted
-	}
-	modifier = {
-		factor = 4
-		trait = pneumonic
-	}
-	modifier = {
-		factor = 3.75
-		trait = homosexual
-	}
-	modifier = {
-		factor = 1.75
-		trait = dwarf
-	}
-	modifier = {
-		factor = 2.75
-		trait = inbred
-	}
-	modifier = {
-		factor = 0.95
-		is_strong_trigger = yes
-	}
-	modifier = {
-		factor = 1.25
-		trait = weak
-	}
-	modifier = {
-		factor = 1.25
-		trait = scholar
-	}
-	modifier = {
-		factor = 1.25
-		trait = gardener
-	}
-	modifier = {
-		factor = 1.25
-		trait = hunter
-	}
-	modifier = {
-		factor = 1.25
-		trait = duelist
-	}
-	modifier = {
-		factor = 1.25
-		trait = falconer
-	}
-	modifier = {
-		factor = 1.25
-		trait = mystic
-	}
-	modifier = {
-		factor = 1.25
-		trait = temperate
-	}
-	modifier = {
-		factor = 1.25
-		trait = charitable
-	}
-	modifier = {
-		factor = 1.5
-		trait = slothful
-	}
-	modifier = {
-		factor = 1.25
-		trait = diligent
-	}
-	modifier = {
-		factor = 1.25
-		trait = patient
-	}
-	modifier = {
-		factor = 1.15
-		trait = humble
-	}
-	modifier = {
-		factor = 1.1
-		trait = craven
-	}
-	modifier = {
-		factor = 0.9
-		trait = brave
-	}
-	modifier = {
-		factor = 1.5
-		trait = paranoid
-	}
-	modifier = {
-		factor = 0.8
-		trait = trusting
-	}
-	modifier = {
-		factor = 100
-		trait = incapable
-	}
-	modifier = {
-		factor = 10
-		trait = infirm
-	}
-	modifier = {
-		factor = 15
-		trait = leper
-	}
-	modifier = {
-		factor = 1.75
-		trait = disfigured
-	}
-	modifier = {
-		factor = 1.75
-		trait = wounded
-	}
-	modifier = {
-		factor = 1.75
-		trait = maimed
-	}
-	modifier = {
-		factor = 2
-		trait = blinded
-	}
-	modifier = {
-		factor = 1.75
-		trait = fat
-	}
-	modifier = {
-		factor = 1.75
-		trait = undernourished
-	}
-	modifier = {
-		factor = 0.9
-		trait = drunkard
-	}
-	modifier = {
-		factor = 1.2
-		trait = addict
-	}
-	modifier = {
-		factor = 1.5
-		trait = diligent
-	}
-	modifier = {
-		factor = 100
-		trait = creature_human
-		NOT = {
-			fertility = 0.01
+		modifier = {
+			factor = 10
+			trait = infirm
 		}
-	}
-	modifier = {
-		factor = 4
-		trait = creature_human
-		fertility = 0
-		NOT = {
+		modifier = {
+			factor = 15
+			trait = leper
+		}
+		modifier = {
+			factor = 1.75
+			trait = disfigured
+		}
+		modifier = {
+			factor = 1.75
+			trait = wounded
+		}
+		modifier = {
+			factor = 1.75
+			trait = maimed
+		}
+		modifier = {
+			factor = 2
+			trait = blinded
+		}
+		modifier = {
+			factor = 1.75
+			trait = fat
+		}
+		modifier = {
+			factor = 1.75
+			trait = undernourished
+		}
+		modifier = {
+			factor = 0.9
+			trait = drunkard
+		}
+		modifier = {
+			factor = 1.2
+			trait = addict
+		}
+		modifier = {
+			factor = 1.5
+			trait = diligent
+		}
+		modifier = {
+			factor = 100
+			trait = creature_human
+			NOT = {
+				fertility = 0.01
+			}
+		}
+		modifier = {
+			factor = 4
+			trait = creature_human
+			fertility = 0
+			NOT = {
+				fertility = 0.1
+			}
+		}
+		modifier = {
+			factor = 2
+			trait = creature_human
 			fertility = 0.1
+			NOT = {
+				fertility = 0.3
+			}
 		}
-	}
-	modifier = {
-		factor = 2
-		trait = creature_human
-		fertility = 0.1
-		NOT = {
+		modifier = {
+			factor = 0.95
+			trait = creature_human
 			fertility = 0.3
+			NOT = {
+				fertility = 0.5
+			}
 		}
-	}
-	modifier = {
-		factor = 0.95
-		trait = creature_human
-		fertility = 0.3
-		NOT = {
+		modifier = {
+			factor = 0.9
+			trait = creature_human
 			fertility = 0.5
+			NOT = {
+				fertility = 0.75
+			}
 		}
-	}
-	modifier = {
-		factor = 0.9
-		trait = creature_human
-		fertility = 0.5
-		NOT = {
+		modifier = {
+			factor = 0.85
+			trait = creature_human
 			fertility = 0.75
+			NOT = {
+				fertility = 0.9
+			}
 		}
-	}
-	modifier = {
-		factor = 0.85
-		trait = creature_human
-		fertility = 0.75
-		NOT = {
+		modifier = {
+			factor = 0.8
+			trait = creature_human
 			fertility = 0.9
+			NOT = {
+				fertility = 1.0
+			}
 		}
-	}
-	modifier = {
-		factor = 0.8
-		trait = creature_human
-		fertility = 0.9
-		NOT = {
+		modifier = {
+			factor = 0.75
+			trait = creature_human
 			fertility = 1.0
+			NOT = {
+				fertility = 1.1
+			}
 		}
-	}
-	modifier = {
-		factor = 0.75
-		trait = creature_human
-		fertility = 1.0
-		NOT = {
+		modifier = {
+			factor = 0.7
+			trait = creature_human
 			fertility = 1.1
+			NOT = {
+				fertility = 1.2
+			}
 		}
-	}
-	modifier = {
-		factor = 0.7
-		trait = creature_human
-		fertility = 1.1
-		NOT = {
+		modifier = {
+			factor = 0.6
+			trait = creature_human
 			fertility = 1.2
+			NOT = {
+				fertility = 1.4
+			}
 		}
-	}
-	modifier = {
-		factor = 0.6
-		trait = creature_human
-		fertility = 1.2
-		NOT = {
+		modifier = {
+			factor = 0.5
+			trait = creature_human
 			fertility = 1.4
+			NOT = {
+				fertility = 1.6
+			}
 		}
-	}
-	modifier = {
-		factor = 0.5
-		trait = creature_human
-		fertility = 1.4
-		NOT = {
+		modifier = {
+			factor = 0.5
+			trait = creature_human
 			fertility = 1.6
 		}
-	}
-	modifier = {
-		factor = 0.5
-		trait = creature_human
-		fertility = 1.6
-	}
-	modifier = {
-		factor = 1.75
-		trait = creature_human
-		NOT = {
+		modifier = {
+			factor = 1.75
+			trait = creature_human
+			NOT = {
+				age = 18
+			}
+		}
+		modifier = {
+			factor = 0.65
+			trait = creature_human
 			age = 18
+			NOT = {
+				age = 30
+			}
 		}
-	}
-	modifier = {
-		factor = 0.65
-		trait = creature_human
-		age = 18
-		NOT = {
+		modifier = {
+			factor = 0.85
+			trait = creature_human
 			age = 30
+			NOT = {
+				age = 40
+			}
 		}
-	}
-	modifier = {
-		factor = 0.85
-		trait = creature_human
-		age = 30
-		NOT = {
+		modifier = {
+			factor = 2
+			trait = creature_human
 			age = 40
+			NOT = {
+				age = 55
+			}
 		}
-	}
-	modifier = {
-		factor = 2
-		trait = creature_human
-		age = 40
-		NOT = {
-			age = 55
+		modifier = {
+			factor = 0.95
+			num_of_children = 0
 		}
-	}
-	modifier = {
-		factor = 0.95
-		num_of_children = 0
-	}
-	modifier = {
-		factor = 0.85
-		num_of_children = 1
-		NOT = {
+		modifier = {
+			factor = 0.85
+			num_of_children = 1
+			NOT = {
+				num_of_children = 5
+			}
+		}
+		modifier = {
+			factor = 1.25
 			num_of_children = 5
+			NOT = {
+				num_of_children = 10
+			}
 		}
-	}
-	modifier = {
-		factor = 1.25
-		num_of_children = 5
-		NOT = {
+		modifier = {
+			factor = 0.8
+			any_lover = {
+				trait = pet_consort
+				count = 2
+			}
+		}
+		modifier = {
+			factor = 0.7
+			any_lover = {
+				trait = pet_consort
+				count = 3
+			}
+		}
+		modifier = {
+			factor = 0.6
+			any_lover = {
+				trait = pet_consort
+				count = 4
+			}
+		}
+		modifier = {
+			factor = 0.5
+			any_lover = {
+				trait = pet_consort
+				count = 5
+			}
+		}
+		modifier = {
+			factor = 2.5
 			num_of_children = 10
 		}
-	}
-	modifier = {
-		factor = 0.8
-		any_lover = {
-			trait = pet_consort
-			count = 2
+		modifier = {
+			factor = 0
+			num_of_children = 5
+			trait = creature_elf
+		}
+		modifier = {
+			factor = 10
+			trait = creature_human
+			age = 55
+		}
+		modifier = {
+			factor = 1.25
+			trait = poor_warrior
+		}
+		modifier = {
+			factor = 1.25
+			trait = trained_warrior
+		}
+		modifier = {
+			factor = 1.25
+			trait = skilled_warrior
+		}
+		modifier = {
+			factor = 1.25
+			trait = master_warrior
+		}
+		modifier = {
+			factor = 1.25
+			trait = naive_appeaser
+		}
+		modifier = {
+			factor = 1.25
+			trait = underhanded_rogue
+		}
+		modifier = {
+			factor = 1.25
+			trait = charismatic_negotiator
+		}
+		modifier = {
+			factor = 1.25
+			trait = grey_eminence
+		}
+		modifier = {
+			factor = 1.25
+			trait = misguided_warrior
+		}
+		modifier = {
+			factor = 1.25
+			trait = tough_soldier
+		}
+		modifier = {
+			factor = 1.25
+			trait = skilled_tactician
+		}
+		modifier = {
+			factor = 1.25
+			trait = brilliant_strategist
 		}
 	}
-	modifier = {
-		factor = 0.7
-		any_lover = {
-			trait = pet_consort
-			count = 3
+	immediate = {
+		# name = "EVTOPTArape.0007"
+		spouse = {
+			character_event = {
+				id = spleasure.176
+			} # pingy ping
 		}
 	}
-	modifier = {
-		factor = 0.6
-		any_lover = {
-			trait = pet_consort
-			count = 4
-		}
-	}
-	modifier = {
-		factor = 0.5
-		any_lover = {
-			trait = pet_consort
-			count = 5
-		}
-	}
-	modifier = {
-		factor = 2.5
-		num_of_children = 10
-	}
-	modifier = {
-		factor = 0
-		num_of_children = 5
-		trait = creature_elf
-	}
-	modifier = {
-		factor = 10
-		trait = creature_human
-		age = 55
-	}
-	modifier = {
-		factor = 1.25
-		trait = poor_warrior
-	}
-	modifier = {
-		factor = 1.25
-		trait = trained_warrior
-	}
-	modifier = {
-		factor = 1.25
-		trait = skilled_warrior
-	}
-	modifier = {
-		factor = 1.25
-		trait = master_warrior
-	}
-	modifier = {
-		factor = 1.25
-		trait = naive_appeaser
-	}
-	modifier = {
-		factor = 1.25
-		trait = underhanded_rogue
-	}
-	modifier = {
-		factor = 1.25
-		trait = charismatic_negotiator
-	}
-	modifier = {
-		factor = 1.25
-		trait = grey_eminence
-	}
-	modifier = {
-		factor = 1.25
-		trait = misguided_warrior
-	}
-	modifier = {
-		factor = 1.25
-		trait = tough_soldier
-	}
-	modifier = {
-		factor = 1.25
-		trait = skilled_tactician
-	}
-	modifier = {
-		factor = 1.25
-		trait = brilliant_strategist
-	}
-}
-immediate = {
-	# name = "EVTOPTArape.0007"
-	spouse = {
-		character_event = {
-			id = spleasure.176
-		} # pingy ping
-	}
-}
 }
 
 # Ping spouse
 character_event = {
-id = spleasure.176
-hide_window = yes
-is_triggered_only = yes
-immediate = {
-	FROM = {
-		character_event = {
-			id = rape.0009
+	id = spleasure.176
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		FROM = {
+			character_event = {
+				id = rape.0009
+			}
 		}
 	}
-}
 }
 
 # On birth event to swap back reversed children
 character_event = {
-id = spleasure.177
-hide_window = yes
-trigger = {
-	OR = {
-		graphical_culture = empirerevgfx
-		graphical_culture = sylvanianrevgfx
-		graphical_culture = kurganrevgfx
-		graphical_culture = arabyanrevgfx
-		graphical_culture = dwarfrevgfx
-		graphical_culture = norsedwarfrevgfx
-		graphical_culture = imperialdwarfrevgfx
-		graphical_culture = chaosdwarfrevgfx
-		graphical_culture = slayerdwarfrevgfx
-		graphical_culture = asurrevgfx
-		graphical_culture = druchiirevgfx
-		graphical_culture = hobbitsrevgfx
-		graphical_culture = sartosantileanrevgfx
-		graphical_culture = bretonniarevgfx
-		graphical_culture = amazonrevgfx
-		graphical_culture = northempirerevgfx
-		graphical_culture = tilearevgfx
-		graphical_culture = estileanrevgfx
-		graphical_culture = hungrevgfx
-		graphical_culture = nomadrevgfx
-		graphical_culture = westernrevgfx
-		graphical_culture = occitanrevgfx
-		graphical_culture = southernrevgfx
-		graphical_culture = celticrevgfx
-		graphical_culture = norserevgfx
-		graphical_culture = saxonrevgfx
-		graphical_culture = easternslavicrevgfx
-		graphical_culture = byzantinerevgfx
-		graphical_culture = muslimrevgfx
-		graphical_culture = turkishrevgfx
-		graphical_culture = mongolrevgfx
-		graphical_culture = africanrevgfx
-		graphical_culture = andalusianrevgfx
-		graphical_culture = indianrevgfx
-		graphical_culture = persianrevgfx
-		graphical_culture = livinglahmianrevgfx
-		graphical_culture = reiklanderrevgfx
-		graphical_culture = striganyrevgfx
-		graphical_culture = sartosanrevgfx
-		graphical_culture = stryganrevgfx
-		graphical_culture = arabyansartosanrevgfx
-		graphical_culture = cathayanrevgfx
-		graphical_culture = livingjaderevgfx
-		graphical_culture = wasairevgfx
-		graphical_culture = tevarirevgfx
-		graphical_culture = cophicrevgfx
-		graphical_culture = medeanrevgfx
-		graphical_culture = wasailirevgfx
-		graphical_culture = westerlanderrevgfx
-		graphical_culture = sudenburgerrevgfx
-		graphical_culture = norscanrevgfx
-		graphical_culture = norscansartosanrevgfx
-		graphical_culture = kisleviterevgfx
-		graphical_culture = ropsmannrevgfx
-		graphical_culture = tileanrevgfx
-		graphical_culture = estalianrevgfx
-		graphical_culture = mykenrevgfx
-		graphical_culture = nagarythianrevgfx
-		graphical_culture = caledorianrevgfx
-	}
-}
-is_triggered_only = yes
-immediate = {
-	if = {
-		limit = {
+	id = spleasure.177
+	hide_window = yes
+	trigger = {
+		OR = {
 			graphical_culture = empirerevgfx
-		}
-		set_graphical_culture = averlander
-	}
-	if = {
-		limit = {
 			graphical_culture = sylvanianrevgfx
-		}
-		set_graphical_culture = sylvanian
-	}
-	if = {
-		limit = {
 			graphical_culture = kurganrevgfx
-		}
-		set_graphical_culture = aghol
-	}
-	if = {
-		limit = {
 			graphical_culture = arabyanrevgfx
-		}
-		set_graphical_culture = ramaccan
-	}
-	if = {
-		limit = {
 			graphical_culture = dwarfrevgfx
-		}
-		set_graphical_culture = dwarf_main
-	}
-	if = {
-		limit = {
-			graphical_culture = slayerdwarfrevgfx
-		}
-		set_graphical_culture = dwarf_slayer_culture
-	}
-	if = {
-		limit = {
-			graphical_culture = slayerdwarfrevgfx
-		}
-		set_graphical_culture = dwarf_norse
-	}
-	if = {
-		limit = {
+			graphical_culture = norsedwarfrevgfx
 			graphical_culture = imperialdwarfrevgfx
-		}
-		set_graphical_culture = dwarf_imperial
-	}
-	if = {
-		limit = {
 			graphical_culture = chaosdwarfrevgfx
-		}
-		set_graphical_culture = dwarf_chaos
-	}
-	if = {
-		limit = {
+			graphical_culture = slayerdwarfrevgfx
 			graphical_culture = asurrevgfx
-		}
-		set_graphical_culture = yvressi
-	}
-	if = {
-		limit = {
-			graphical_culture = asrairevgfx
-		}
-		set_graphical_culture = loren
-	}
-	if = {
-		limit = {
 			graphical_culture = druchiirevgfx
-		}
-		set_graphical_culture = naggarondi
-	}
-	if = {
-		limit = {
 			graphical_culture = hobbitsrevgfx
-		}
-		set_graphical_culture = mootlander
-	}
-	if = {
-		limit = {
 			graphical_culture = sartosantileanrevgfx
-		}
-		set_graphical_culture = sartosan_tilean
-	}
-	if = {
-		limit = {
 			graphical_culture = bretonniarevgfx
-		}
-		set_graphical_culture = armoric
-	}
-	if = {
-		limit = {
 			graphical_culture = amazonrevgfx
-		}
-		set_graphical_culture = amazon_main
-	}
-	if = {
-		limit = {
 			graphical_culture = northempirerevgfx
-		}
-		set_graphical_culture = bjornling
-	}
-	if = {
-		limit = {
 			graphical_culture = tilearevgfx
-		}
-		set_graphical_culture = umbrian
-	}
-	if = {
-		limit = {
 			graphical_culture = estileanrevgfx
-		}
-		set_graphical_culture = norteno
-	}
-	if = {
-		limit = {
 			graphical_culture = hungrevgfx
-		}
-		set_graphical_culture = chi_an
-	}
-	# if = { limit = { graphical_culture = southarabyanrevgfx }
-	# 		set_graphical_culture = southarabyanrev }
-	if = {
-		limit = {
-			graphical_culture = northmanrevgfx
-		}
-		set_graphical_culture = bjornling
-	}
-	if = {
-		limit = {
-			graphical_culture = beastmanrevgfx
-		}
-		set_graphical_culture = beastman_main
-	}
-	if = {
-		limit = {
-			graphical_culture = ungorrevgfx
-		}
-		set_graphical_culture = beastman_ungor
-	}
-	if = {
-		limit = {
 			graphical_culture = nomadrevgfx
-		}
-		set_graphical_culture = nomad
-	}
-	if = {
-		limit = {
 			graphical_culture = westernrevgfx
-		}
-		set_graphical_culture = averlander
-	}
-	if = {
-		limit = {
 			graphical_culture = occitanrevgfx
-		}
-		set_graphical_culture = averlander
-	}
-	if = {
-		limit = {
 			graphical_culture = southernrevgfx
-		}
-		set_graphical_culture = umbrian
-	}
-	if = {
-		limit = {
 			graphical_culture = celticrevgfx
-		}
-		set_graphical_culture = nortagnese
-	}
-	if = {
-		limit = {
 			graphical_culture = norserevgfx
-		}
-		set_graphical_culture = aesling
-	}
-	if = {
-		limit = {
 			graphical_culture = saxonrevgfx
-		} # not used currently
-		set_graphical_culture = averlander
-	}
-	if = {
-		limit = {
 			graphical_culture = easternslavicrevgfx
-		}
-		set_graphical_culture = kislevite
-	}
-	if = {
-		limit = {
 			graphical_culture = byzantinerevgfx
-		}
-		set_graphical_culture = myken
-	}
-	if = {
-		limit = {
 			graphical_culture = muslimrevgfx
-		}
-		set_graphical_culture = ramaccan
-	}
-	if = {
-		limit = {
 			graphical_culture = turkishrevgfx
-		}
-		set_graphical_culture = medean
-	}
-	if = {
-		limit = {
 			graphical_culture = mongolrevgfx
-		}
-		set_graphical_culture = chi_an
-	}
-	if = {
-		limit = {
 			graphical_culture = africanrevgfx
-		}
-		set_graphical_culture = bayaji
-	}
-	if = {
-		limit = {
 			graphical_culture = andalusianrevgfx
-		}
-		set_graphical_culture = sartosan_tilean
-	}
-	# if = { limit = { graphical_culture = indianrevgfx }
-	# 		set_graphical_culture = indianrev } # not employed within the mod
-	if = {
-		limit = {
+			graphical_culture = indianrevgfx
 			graphical_culture = persianrevgfx
-		}
-		set_graphical_culture = cophic
-	}
-	if = {
-		limit = {
-			graphical_culture = empirerevgfx
-		}
-		set_graphical_culture = averlander
-	}
-	if = {
-		limit = {
 			graphical_culture = livinglahmianrevgfx
-		}
-		set_graphical_culture = lahmian
-	}
-	if = {
-		limit = {
 			graphical_culture = reiklanderrevgfx
-		}
-		set_graphical_culture = reiklander
-	}
-	if = {
-		limit = {
-			graphical_culture = bretonnianrevgfx
-		}
-		set_graphical_culture = bourgon
-	}
-	if = {
-		limit = {
 			graphical_culture = striganyrevgfx
-		}
-		set_graphical_culture = strigany
-	}
-	if = {
-		limit = {
 			graphical_culture = sartosanrevgfx
-		}
-		set_graphical_culture = sartosan_tilean
-	}
-	if = {
-		limit = {
 			graphical_culture = stryganrevgfx
-		}
-		set_graphical_culture = strygan
-	}
-	if = {
-		limit = {
-			graphical_culture = amazonrevgfx
-		}
-		set_graphical_culture = amazon_main
-	}
-	if = {
-		limit = {
 			graphical_culture = arabyansartosanrevgfx
-		}
-		set_graphical_culture = sartosan_arabyan
-	}
-	if = {
-		limit = {
 			graphical_culture = cathayanrevgfx
-		}
-		set_graphical_culture = cathayan
-	}
-	if = {
-		limit = {
 			graphical_culture = livingjaderevgfx
-		}
-		set_graphical_culture = living_jade
-	}
-	if = {
-		limit = {
 			graphical_culture = wasairevgfx
-		}
-		set_graphical_culture = wasai
-	}
-	if = {
-		limit = {
 			graphical_culture = tevarirevgfx
-		}
-		set_graphical_culture = tevari
-	}
-	if = {
-		limit = {
 			graphical_culture = cophicrevgfx
-		}
-		set_graphical_culture = cophic
-	}
-	if = {
-		limit = {
 			graphical_culture = medeanrevgfx
-		}
-		set_graphical_culture = medean
-	}
-	if = {
-		limit = {
 			graphical_culture = wasailirevgfx
-		}
-		set_graphical_culture = wasaili
-	}
-	if = {
-		limit = {
 			graphical_culture = westerlanderrevgfx
-		}
-		set_graphical_culture = westerlander
-	}
-	if = {
-		limit = {
 			graphical_culture = sudenburgerrevgfx
-		}
-		set_graphical_culture = sudenburger
-	}
-	if = {
-		limit = {
 			graphical_culture = norscanrevgfx
-		}
-		set_graphical_culture = aesling
-	}
-	if = {
-		limit = {
 			graphical_culture = norscansartosanrevgfx
-		}
-		set_graphical_culture = sartosan_norscan
-	}
-	if = {
-		limit = {
 			graphical_culture = kisleviterevgfx
-		}
-		set_graphical_culture = kislevite
-	}
-	if = {
-		limit = {
 			graphical_culture = ropsmannrevgfx
-		}
-		set_graphical_culture = ropsmann
-	}
-	if = {
-		limit = {
 			graphical_culture = tileanrevgfx
-		}
-		set_graphical_culture = lucian
-	}
-	if = {
-		limit = {
 			graphical_culture = estalianrevgfx
-		}
-		set_graphical_culture = astur
-	}
-	if = {
-		limit = {
 			graphical_culture = mykenrevgfx
-		}
-		set_graphical_culture = myken
-	}
-	if = {
-		limit = {
 			graphical_culture = nagarythianrevgfx
-		}
-		set_graphical_culture = nagarythi
-	}
-	if = {
-		limit = {
 			graphical_culture = caledorianrevgfx
 		}
-		set_graphical_culture = caledori
 	}
-}
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = {
+				graphical_culture = empirerevgfx
+			}
+			set_graphical_culture = averlander
+		}
+		if = {
+			limit = {
+				graphical_culture = sylvanianrevgfx
+			}
+			set_graphical_culture = sylvanian
+		}
+		if = {
+			limit = {
+				graphical_culture = kurganrevgfx
+			}
+			set_graphical_culture = aghol
+		}
+		if = {
+			limit = {
+				graphical_culture = arabyanrevgfx
+			}
+			set_graphical_culture = ramaccan
+		}
+		if = {
+			limit = {
+				graphical_culture = dwarfrevgfx
+			}
+			set_graphical_culture = dwarf_main
+		}
+		if = {
+			limit = {
+				graphical_culture = slayerdwarfrevgfx
+			}
+			set_graphical_culture = dwarf_slayer_culture
+		}
+		if = {
+			limit = {
+				graphical_culture = slayerdwarfrevgfx
+			}
+			set_graphical_culture = dwarf_norse
+		}
+		if = {
+			limit = {
+				graphical_culture = imperialdwarfrevgfx
+			}
+			set_graphical_culture = dwarf_imperial
+		}
+		if = {
+			limit = {
+				graphical_culture = chaosdwarfrevgfx
+			}
+			set_graphical_culture = dwarf_chaos
+		}
+		if = {
+			limit = {
+				graphical_culture = asurrevgfx
+			}
+			set_graphical_culture = yvressi
+		}
+		if = {
+			limit = {
+				graphical_culture = asrairevgfx
+			}
+			set_graphical_culture = loren
+		}
+		if = {
+			limit = {
+				graphical_culture = druchiirevgfx
+			}
+			set_graphical_culture = naggarondi
+		}
+		if = {
+			limit = {
+				graphical_culture = hobbitsrevgfx
+			}
+			set_graphical_culture = mootlander
+		}
+		if = {
+			limit = {
+				graphical_culture = sartosantileanrevgfx
+			}
+			set_graphical_culture = sartosan_tilean
+		}
+		if = {
+			limit = {
+				graphical_culture = bretonniarevgfx
+			}
+			set_graphical_culture = armoric
+		}
+		if = {
+			limit = {
+				graphical_culture = amazonrevgfx
+			}
+			set_graphical_culture = amazon_main
+		}
+		if = {
+			limit = {
+				graphical_culture = northempirerevgfx
+			}
+			set_graphical_culture = bjornling
+		}
+		if = {
+			limit = {
+				graphical_culture = tilearevgfx
+			}
+			set_graphical_culture = umbrian
+		}
+		if = {
+			limit = {
+				graphical_culture = estileanrevgfx
+			}
+			set_graphical_culture = norteno
+		}
+		if = {
+			limit = {
+				graphical_culture = hungrevgfx
+			}
+			set_graphical_culture = chi_an
+		}
+		# if = { limit = { graphical_culture = southarabyanrevgfx }
+		# 		set_graphical_culture = southarabyanrev }
+		if = {
+			limit = {
+				graphical_culture = northmanrevgfx
+			}
+			set_graphical_culture = bjornling
+		}
+		if = {
+			limit = {
+				graphical_culture = beastmanrevgfx
+			}
+			set_graphical_culture = beastman_main
+		}
+		if = {
+			limit = {
+				graphical_culture = ungorrevgfx
+			}
+			set_graphical_culture = beastman_ungor
+		}
+		if = {
+			limit = {
+				graphical_culture = nomadrevgfx
+			}
+			set_graphical_culture = nomad
+		}
+		if = {
+			limit = {
+				graphical_culture = westernrevgfx
+			}
+			set_graphical_culture = averlander
+		}
+		if = {
+			limit = {
+				graphical_culture = occitanrevgfx
+			}
+			set_graphical_culture = averlander
+		}
+		if = {
+			limit = {
+				graphical_culture = southernrevgfx
+			}
+			set_graphical_culture = umbrian
+		}
+		if = {
+			limit = {
+				graphical_culture = celticrevgfx
+			}
+			set_graphical_culture = nortagnese
+		}
+		if = {
+			limit = {
+				graphical_culture = norserevgfx
+			}
+			set_graphical_culture = aesling
+		}
+		if = {
+			limit = {
+				graphical_culture = saxonrevgfx
+			} # not used currently
+			set_graphical_culture = averlander
+		}
+		if = {
+			limit = {
+				graphical_culture = easternslavicrevgfx
+			}
+			set_graphical_culture = kislevite
+		}
+		if = {
+			limit = {
+				graphical_culture = byzantinerevgfx
+			}
+			set_graphical_culture = myken
+		}
+		if = {
+			limit = {
+				graphical_culture = muslimrevgfx
+			}
+			set_graphical_culture = ramaccan
+		}
+		if = {
+			limit = {
+				graphical_culture = turkishrevgfx
+			}
+			set_graphical_culture = medean
+		}
+		if = {
+			limit = {
+				graphical_culture = mongolrevgfx
+			}
+			set_graphical_culture = chi_an
+		}
+		if = {
+			limit = {
+				graphical_culture = africanrevgfx
+			}
+			set_graphical_culture = bayaji
+		}
+		if = {
+			limit = {
+				graphical_culture = andalusianrevgfx
+			}
+			set_graphical_culture = sartosan_tilean
+		}
+		# if = { limit = { graphical_culture = indianrevgfx }
+		# 		set_graphical_culture = indianrev } # not employed within the mod
+		if = {
+			limit = {
+				graphical_culture = persianrevgfx
+			}
+			set_graphical_culture = cophic
+		}
+		if = {
+			limit = {
+				graphical_culture = empirerevgfx
+			}
+			set_graphical_culture = averlander
+		}
+		if = {
+			limit = {
+				graphical_culture = livinglahmianrevgfx
+			}
+			set_graphical_culture = lahmian
+		}
+		if = {
+			limit = {
+				graphical_culture = reiklanderrevgfx
+			}
+			set_graphical_culture = reiklander
+		}
+		if = {
+			limit = {
+				graphical_culture = bretonnianrevgfx
+			}
+			set_graphical_culture = bourgon
+		}
+		if = {
+			limit = {
+				graphical_culture = striganyrevgfx
+			}
+			set_graphical_culture = strigany
+		}
+		if = {
+			limit = {
+				graphical_culture = sartosanrevgfx
+			}
+			set_graphical_culture = sartosan_tilean
+		}
+		if = {
+			limit = {
+				graphical_culture = stryganrevgfx
+			}
+			set_graphical_culture = strygan
+		}
+		if = {
+			limit = {
+				graphical_culture = amazonrevgfx
+			}
+			set_graphical_culture = amazon_main
+		}
+		if = {
+			limit = {
+				graphical_culture = arabyansartosanrevgfx
+			}
+			set_graphical_culture = sartosan_arabyan
+		}
+		if = {
+			limit = {
+				graphical_culture = cathayanrevgfx
+			}
+			set_graphical_culture = cathayan
+		}
+		if = {
+			limit = {
+				graphical_culture = livingjaderevgfx
+			}
+			set_graphical_culture = living_jade
+		}
+		if = {
+			limit = {
+				graphical_culture = wasairevgfx
+			}
+			set_graphical_culture = wasai
+		}
+		if = {
+			limit = {
+				graphical_culture = tevarirevgfx
+			}
+			set_graphical_culture = tevari
+		}
+		if = {
+			limit = {
+				graphical_culture = cophicrevgfx
+			}
+			set_graphical_culture = cophic
+		}
+		if = {
+			limit = {
+				graphical_culture = medeanrevgfx
+			}
+			set_graphical_culture = medean
+		}
+		if = {
+			limit = {
+				graphical_culture = wasailirevgfx
+			}
+			set_graphical_culture = wasaili
+		}
+		if = {
+			limit = {
+				graphical_culture = westerlanderrevgfx
+			}
+			set_graphical_culture = westerlander
+		}
+		if = {
+			limit = {
+				graphical_culture = sudenburgerrevgfx
+			}
+			set_graphical_culture = sudenburger
+		}
+		if = {
+			limit = {
+				graphical_culture = norscanrevgfx
+			}
+			set_graphical_culture = aesling
+		}
+		if = {
+			limit = {
+				graphical_culture = norscansartosanrevgfx
+			}
+			set_graphical_culture = sartosan_norscan
+		}
+		if = {
+			limit = {
+				graphical_culture = kisleviterevgfx
+			}
+			set_graphical_culture = kislevite
+		}
+		if = {
+			limit = {
+				graphical_culture = ropsmannrevgfx
+			}
+			set_graphical_culture = ropsmann
+		}
+		if = {
+			limit = {
+				graphical_culture = tileanrevgfx
+			}
+			set_graphical_culture = lucian
+		}
+		if = {
+			limit = {
+				graphical_culture = estalianrevgfx
+			}
+			set_graphical_culture = astur
+		}
+		if = {
+			limit = {
+				graphical_culture = mykenrevgfx
+			}
+			set_graphical_culture = myken
+		}
+		if = {
+			limit = {
+				graphical_culture = nagarythianrevgfx
+			}
+			set_graphical_culture = nagarythi
+		}
+		if = {
+			limit = {
+				graphical_culture = caledorianrevgfx
+			}
+			set_graphical_culture = caledori
+		}
+	}
 }

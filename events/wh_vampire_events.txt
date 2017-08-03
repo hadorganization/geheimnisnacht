@@ -12206,1235 +12206,1407 @@ character_event = {
 
 # A darkness spreads across the lands I
 character_event = {
-id = svampires.85100
-desc = EVTDESCsvampires85100
-picture = GFX_evt_bad_news
-border = GFX_event_normal_frame_intrigue
-hide_from = yes
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires85100
-	add_trait = stressed
-	random_list = {
-		20 = {
-			add_trait = wounded
-		}
-		10 = {
-			add_trait = pneumonic
-		}
-		70 = {
-		}
+	id = svampires.85100
+	desc = EVTDESCsvampires85100
+	picture = GFX_evt_bad_news
+	border = GFX_event_normal_frame_intrigue
+	hide_from = yes
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires85100
+		add_trait = stressed
+		random_list = {
+			20 = {
+				add_trait = wounded
+			}
+			10 = {
+				add_trait = pneumonic
+			}
+			70 = {
+			}
 
-	}
-	any_realm_province = {
-		limit = {
-			owner = {
-				character = ROOT
-			}
-			NOT = {
-				culture = nehekharan
-			}
 		}
-		add_province_modifier = {
-			name = cursed_lands duration = 720
-			stacking = yes
-		}
-	}
-	hidden_tooltip = {
-		FROM = {
-			character_event = {
-				id = svampires.85101 days = 5 random = 14
+		any_realm_province = {
+			limit = {
+				owner = {
+					character = ROOT
+				}
+				NOT = {
+					culture = nehekharan
+				}
+			}
+			add_province_modifier = {
+				name = cursed_lands duration = 720
+				stacking = yes
 			}
 		}
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = svampires.85101 days = 5 random = 14
+				}
+			}
+		}
 	}
-}
 }
 
 # Voodoo - continue to spread darkness
 character_event = {
-id = svampires.85101
-desc = EVTDESCsvampires85101
-picture = GFX_evt_voodoo_shaman
-border = GFX_event_normal_frame_intrigue
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires85101
-	FROM = {
-		character_event = {
-			id = svampires.85102 days = 15 random = 24
-		}
-	}
-	ai_chance = {
-		factor = 90
-	}
-}
-option = {
-	# Enough
-	name = EVTOPTBsvampires85101
-	ai_chance = {
-		factor = 10
-		modifier = {
-			factor = 5
-			FROM = {
-				religion = shadowmen
+	id = svampires.85101
+	desc = EVTDESCsvampires85101
+	picture = GFX_evt_voodoo_shaman
+	border = GFX_event_normal_frame_intrigue
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires85101
+		FROM = {
+			character_event = {
+				id = svampires.85102 days = 15 random = 24
 			}
 		}
-
+		ai_chance = {
+			factor = 90
+		}
 	}
-}
+	option = {
+		# Enough
+		name = EVTOPTBsvampires85101
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 5
+				FROM = {
+					religion = shadowmen
+				}
+			}
+
+		}
+	}
 }
 
 # A darkness spreads across the lands II
 character_event = {
-id = svampires.85102
-desc = EVTDESCsvampires85102
-picture = GFX_evt_bad_news
-border = GFX_event_normal_frame_intrigue
-hide_from = yes
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires85102
-	if = {
-		limit = {
-			NOT = {
-				trait = depressed
+	id = svampires.85102
+	desc = EVTDESCsvampires85102
+	picture = GFX_evt_bad_news
+	border = GFX_event_normal_frame_intrigue
+	hide_from = yes
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires85102
+		if = {
+			limit = {
+				NOT = {
+					trait = depressed
+				}
 			}
+			add_trait = depressed
 		}
-		add_trait = depressed
-	}
-	random_list = {
-		20 = {
-			add_trait = maimed
-		}
-		10 = {
-			add_trait = blinded
-		}
-		70 = {
-		}
+		random_list = {
+			20 = {
+				add_trait = maimed
+			}
+			10 = {
+				add_trait = blinded
+			}
+			70 = {
+			}
 
-	}
-	any_courtier = {
-		opinion = {
-			who = ROOT modifier = opinion_cursed months = 24
 		}
-	}
-	any_realm_province = {
-		limit = {
-			owner = {
-				character = ROOT
-			}
-			NOT = {
-				culture = nehekharan
+		any_courtier = {
+			opinion = {
+				who = ROOT modifier = opinion_cursed months = 24
 			}
 		}
-		add_province_modifier = {
-			name = cursed_lands duration = 200
-			stacking = yes
+		any_realm_province = {
+			limit = {
+				owner = {
+					character = ROOT
+				}
+				NOT = {
+					culture = nehekharan
+				}
+			}
+			add_province_modifier = {
+				name = cursed_lands duration = 200
+				stacking = yes
+			}
 		}
-	}
-	hidden_tooltip = {
-		FROM = {
-			character_event = {
-				id = svampires.85103 days = 5 random = 14
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = svampires.85103 days = 5 random = 14
+				}
 			}
 		}
 	}
-}
 }
 
 # Voodoo - continue to spread darkness
 character_event = {
-id = svampires.85103
-desc = EVTDESCsvampires85103
-picture = GFX_evt_voodoo_shaman
-border = GFX_event_normal_frame_intrigue
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires85103
-	FROM = {
-		character_event = {
-			id = svampires.85104 days = 50 random = 50
+	id = svampires.85103
+	desc = EVTDESCsvampires85103
+	picture = GFX_evt_voodoo_shaman
+	border = GFX_event_normal_frame_intrigue
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires85103
+		FROM = {
+			character_event = {
+				id = svampires.85104 days = 50 random = 50
+			}
+		}
+		ai_chance = {
+			factor = 50
 		}
 	}
-	ai_chance = {
-		factor = 50
-	}
-}
-option = {
-	# Enough
-	name = EVTOPTBsvampires85103
-	ai_chance = {
-		factor = 50
-		modifier = {
-			factor = 1.5
-			FROM = {
-				religion = shadowmen
+	option = {
+		# Enough
+		name = EVTOPTBsvampires85103
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 1.5
+				FROM = {
+					religion = shadowmen
+				}
 			}
 		}
 	}
-}
 }
 
 # A darkness spreads across the lands III
 character_event = {
-id = svampires.85104
-desc = EVTDESCsvampires85104
-picture = GFX_evt_bad_news
-border = GFX_event_normal_frame_intrigue
-hide_from = yes
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires85104
-	if = {
-		limit = {
-			NOT = {
-				trait = depressed
+	id = svampires.85104
+	desc = EVTDESCsvampires85104
+	picture = GFX_evt_bad_news
+	border = GFX_event_normal_frame_intrigue
+	hide_from = yes
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires85104
+		if = {
+			limit = {
+				NOT = {
+					trait = depressed
+				}
 			}
+			add_trait = depressed
 		}
-		add_trait = depressed
-	}
-	random_list = {
-		20 = {
-			add_trait = incapable
+		random_list = {
+			20 = {
+				add_trait = incapable
+			}
+			10 = {
+				if = {
+					limit = {
+						is_invincible_trigger = yes
+					}
+					antideath_effect = yes
+					break = yes
+				}
+				death = {
+					death_reason = death_murder_unknown
+				}
+			}
+			70 = {
+			}
+
 		}
-		10 = {
-			if = {
+		if = {
+			limit = {
+				any_child = {
+					is_ruler = no
+					is_invincible_trigger = no
+					NOT = {
+						age = 20
+					}
+				}
+			}
+			random_child = {
 				limit = {
-					is_invincible_trigger = yes
+					is_ruler = no
+					is_invincible_trigger = no
+					NOT = {
+						age = 20
+					}
 				}
-				antideath_effect = yes
-				break = yes
+				death = {
+					death_reason = death_murder_unknown
+				}
 			}
-			death = {
-				death_reason = death_murder_unknown
-			}
-		}
-		70 = {
-		}
 
-	}
-	if = {
-		limit = {
-			any_child = {
-				is_ruler = no
-				is_invincible_trigger = no
-				NOT = {
-					age = 20
-				}
-			}
 		}
-		random_child = {
+		if = {
 			limit = {
-				is_ruler = no
-				is_invincible_trigger = no
-				NOT = {
-					age = 20
+				any_spouse = {
+					is_ruler = no
+					is_invincible_trigger = no
+					is_vampire_trigger = no
 				}
 			}
-			death = {
-				death_reason = death_murder_unknown
+			random_spouse = {
+				limit = {
+					is_ruler = no
+					is_invincible_trigger = no
+					is_vampire_trigger = no
+				}
+				death = {
+					death_reason = death_murder_unknown
+				}
 			}
-		}
 
-	}
-	if = {
-		limit = {
-			any_spouse = {
-				is_ruler = no
-				is_invincible_trigger = no
-				is_vampire_trigger = no
+		}
+		any_vassal = {
+			opinion = {
+				who = ROOT modifier = opinion_cursed months = 24
+			}
+			capital_scope = {
+				add_province_modifier = {
+					name = cursed_lands duration = 40
+					stacking = yes
+				}
 			}
 		}
-		random_spouse = {
+		any_realm_province = {
 			limit = {
-				is_ruler = no
-				is_invincible_trigger = no
-				is_vampire_trigger = no
+				owner = {
+					character = ROOT
+				}
+				NOT = {
+					culture = nehekharan
+				}
 			}
-			death = {
-				death_reason = death_murder_unknown
-			}
-		}
-
-	}
-	any_vassal = {
-		opinion = {
-			who = ROOT modifier = opinion_cursed months = 24
-		}
-		capital_scope = {
 			add_province_modifier = {
-				name = cursed_lands duration = 40
+				name = cursed_lands duration = 80
 				stacking = yes
 			}
 		}
-	}
-	any_realm_province = {
-		limit = {
-			owner = {
-				character = ROOT
-			}
-			NOT = {
-				culture = nehekharan
-			}
-		}
-		add_province_modifier = {
-			name = cursed_lands duration = 80
-			stacking = yes
-		}
-	}
-	hidden_tooltip = {
-		FROM = {
-			character_event = {
-				id = svampires.85103 days = 5 random = 14
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = svampires.85103 days = 5 random = 14
+				}
 			}
 		}
 	}
-}
 }
 
 # The locusts come
 character_event = {
-id = svampires.85200
-desc = EVTDESCsvampires85200
-picture = GFX_evt_locust_plague
-border = GFX_event_normal_frame_intrigue
-hide_from = yes
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires85200
-	add_trait = stressed
-	random_list = {
-		20 = {
-			add_trait = wounded
-		}
-		10 = {
-			add_trait = maimed
-		}
-		70 = {
-		}
+	id = svampires.85200
+	desc = EVTDESCsvampires85200
+	picture = GFX_evt_locust_plague
+	border = GFX_event_normal_frame_intrigue
+	hide_from = yes
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires85200
+		add_trait = stressed
+		random_list = {
+			20 = {
+				add_trait = wounded
+			}
+			10 = {
+				add_trait = maimed
+			}
+			70 = {
+			}
 
-	}
-	any_realm_province = {
-		limit = {
-			owner = {
-				character = ROOT
-			}
-			NOT = {
-				culture = nehekharan
-			}
 		}
-		add_province_modifier = {
-			name = locust_plague duration = 320
-			stacking = yes
-		}
-	}
-	hidden_tooltip = {
-		FROM = {
-			character_event = {
-				id = svampires.85201 days = 5 random = 14
+		any_realm_province = {
+			limit = {
+				owner = {
+					character = ROOT
+				}
+				NOT = {
+					culture = nehekharan
+				}
+			}
+			add_province_modifier = {
+				name = locust_plague duration = 320
+				stacking = yes
 			}
 		}
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = svampires.85201 days = 5 random = 14
+				}
+			}
+		}
 	}
-}
 }
 
 # Voodoo - continue to spread the plague
 character_event = {
-id = svampires.85201
-desc = EVTDESCsvampires85201
-picture = GFX_evt_voodoo_shaman
-border = GFX_event_normal_frame_intrigue
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires85201
-	FROM = {
-		character_event = {
-			id = svampires.85202 days = 15 random = 24
+	id = svampires.85201
+	desc = EVTDESCsvampires85201
+	picture = GFX_evt_voodoo_shaman
+	border = GFX_event_normal_frame_intrigue
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires85201
+		FROM = {
+			character_event = {
+				id = svampires.85202 days = 15 random = 24
+			}
+		}
+		ai_chance = {
+			factor = 90
 		}
 	}
-	ai_chance = {
-		factor = 90
-	}
-}
-option = {
-	# Enough
-	name = EVTOPTBsvampires85201
-	ai_chance = {
-		factor = 10
-		modifier = {
-			factor = 5
-			FROM = {
-				religion = shadowmen
+	option = {
+		# Enough
+		name = EVTOPTBsvampires85201
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 5
+				FROM = {
+					religion = shadowmen
+				}
 			}
 		}
 	}
-}
 }
 
 # The locusts come II
 character_event = {
-id = svampires.85202
-desc = EVTDESCsvampires85202
-picture = GFX_evt_locust_plague
-border = GFX_event_normal_frame_intrigue
-hide_from = yes
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires85202
-	if = {
-		limit = {
-			NOT = {
-				trait = depressed
+	id = svampires.85202
+	desc = EVTDESCsvampires85202
+	picture = GFX_evt_locust_plague
+	border = GFX_event_normal_frame_intrigue
+	hide_from = yes
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires85202
+		if = {
+			limit = {
+				NOT = {
+					trait = depressed
+				}
 			}
+			add_trait = depressed
 		}
-		add_trait = depressed
-	}
-	random_list = {
-		20 = {
-			add_trait = maimed
-		}
-		10 = {
-			add_trait = blinded
-		}
-		70 = {
-		}
+		random_list = {
+			20 = {
+				add_trait = maimed
+			}
+			10 = {
+				add_trait = blinded
+			}
+			70 = {
+			}
 
-	}
-	any_realm_province = {
-		limit = {
-			owner = {
-				character = ROOT
-			}
-			NOT = {
-				culture = nehekharan
-			}
 		}
-		add_province_modifier = {
-			name = locust_plague duration = 100
-			stacking = yes
-		}
-	}
-	hidden_tooltip = {
-		FROM = {
-			character_event = {
-				id = svampires.85203 days = 5 random = 14
+		any_realm_province = {
+			limit = {
+				owner = {
+					character = ROOT
+				}
+				NOT = {
+					culture = nehekharan
+				}
+			}
+			add_province_modifier = {
+				name = locust_plague duration = 100
+				stacking = yes
 			}
 		}
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = svampires.85203 days = 5 random = 14
+				}
+			}
+		}
 	}
-}
 }
 
 # Voodoo - continue to spread locust plague
 character_event = {
-id = svampires.85203
-desc = EVTDESCsvampires85203
-picture = GFX_evt_voodoo_shaman
-border = GFX_event_normal_frame_intrigue
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires85203
-	FROM = {
-		character_event = {
-			id = svampires.85204 days = 50 random = 50
+	id = svampires.85203
+	desc = EVTDESCsvampires85203
+	picture = GFX_evt_voodoo_shaman
+	border = GFX_event_normal_frame_intrigue
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires85203
+		FROM = {
+			character_event = {
+				id = svampires.85204 days = 50 random = 50
+			}
+		}
+		ai_chance = {
+			factor = 50
 		}
 	}
-	ai_chance = {
-		factor = 50
-	}
-}
-option = {
-	# Enough
-	name = EVTOPTBsvampires85203
-	ai_chance = {
-		factor = 50
-		modifier = {
-			factor = 1.5
-			FROM = {
-				religion = shadowmen
+	option = {
+		# Enough
+		name = EVTOPTBsvampires85203
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 1.5
+				FROM = {
+					religion = shadowmen
+				}
 			}
 		}
 	}
-}
 }
 
 # The locusts come III
 character_event = {
-id = svampires.85204
-desc = EVTDESCsvampires85204
-picture = GFX_evt_locust_plague
-border = GFX_event_normal_frame_intrigue
-hide_from = yes
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires85204
-	capital_scope = {
-		capital_holding = {
-			destroy_random_building = yes
-		}
-	}
-	if = {
-		limit = {
-			NOT = {
-				trait = depressed
-			}
-		}
-		add_trait = depressed
-	}
-	random_list = {
-		20 = {
-			add_trait = incapable
-		}
-		10 = {
-			if = {
-				limit = {
-					is_invincible_trigger = yes
-				}
-				antideath_effect = yes
-				break = yes
-			}
-			death = {
-				death_reason = death_murder_unknown
-			}
-		}
-		70 = {
-		}
-
-	}
-	if = {
-		limit = {
-			any_child = {
-				is_ruler = no
-				is_invincible_trigger = no
-				NOT = {
-					age = 20
-				}
-			}
-		}
-		random_child = {
-			limit = {
-				is_ruler = no
-				is_invincible_trigger = no
-				NOT = {
-					age = 20
-				}
-			}
-			death = {
-				death_reason = death_murder_unknown
-			}
-		}
-
-	}
-	if = {
-		limit = {
-			any_spouse = {
-				is_ruler = no
-				is_invincible_trigger = no
-				is_vampire_trigger = no
-			}
-		}
-		random_spouse = {
-			limit = {
-				is_ruler = no
-				is_invincible_trigger = no
-				is_vampire_trigger = no
-			}
-			death = {
-				death_reason = death_murder_unknown
-			}
-		}
-
-	}
-	any_vassal = {
-		opinion = {
-			who = ROOT modifier = opinion_cursed months = 1
-		}
+	id = svampires.85204
+	desc = EVTDESCsvampires85204
+	picture = GFX_evt_locust_plague
+	border = GFX_event_normal_frame_intrigue
+	hide_from = yes
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires85204
 		capital_scope = {
+			capital_holding = {
+				destroy_random_building = yes
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					trait = depressed
+				}
+			}
+			add_trait = depressed
+		}
+		random_list = {
+			20 = {
+				add_trait = incapable
+			}
+			10 = {
+				if = {
+					limit = {
+						is_invincible_trigger = yes
+					}
+					antideath_effect = yes
+					break = yes
+				}
+				death = {
+					death_reason = death_murder_unknown
+				}
+			}
+			70 = {
+			}
+
+		}
+		if = {
+			limit = {
+				any_child = {
+					is_ruler = no
+					is_invincible_trigger = no
+					NOT = {
+						age = 20
+					}
+				}
+			}
+			random_child = {
+				limit = {
+					is_ruler = no
+					is_invincible_trigger = no
+					NOT = {
+						age = 20
+					}
+				}
+				death = {
+					death_reason = death_murder_unknown
+				}
+			}
+
+		}
+		if = {
+			limit = {
+				any_spouse = {
+					is_ruler = no
+					is_invincible_trigger = no
+					is_vampire_trigger = no
+				}
+			}
+			random_spouse = {
+				limit = {
+					is_ruler = no
+					is_invincible_trigger = no
+					is_vampire_trigger = no
+				}
+				death = {
+					death_reason = death_murder_unknown
+				}
+			}
+
+		}
+		any_vassal = {
+			opinion = {
+				who = ROOT modifier = opinion_cursed months = 1
+			}
+			capital_scope = {
+				add_province_modifier = {
+					name = locust_plague duration = 40
+					stacking = yes
+				}
+			}
+		}
+		any_realm_province = {
+			limit = {
+				owner = {
+					character = ROOT
+				}
+				NOT = {
+					culture = nehekharan
+				}
+			}
 			add_province_modifier = {
-				name = locust_plague duration = 40
+				name = locust_plague duration = 80
 				stacking = yes
 			}
 		}
-	}
-	any_realm_province = {
-		limit = {
-			owner = {
-				character = ROOT
-			}
-			NOT = {
-				culture = nehekharan
-			}
-		}
-		add_province_modifier = {
-			name = locust_plague duration = 80
-			stacking = yes
-		}
-	}
-	hidden_tooltip = {
-		FROM = {
-			character_event = {
-				id = svampires.85203 days = 5 random = 14
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = svampires.85203 days = 5 random = 14
+				}
 			}
 		}
 	}
-}
 }
 
 # Cursed his lands
 character_event = {
-id = svampires.86
-desc = EVTDESCsvampires86
-picture = GFX_evt_bad_news
-border = GFX_event_normal_frame_intrigue
-hide_from = yes
-is_triggered_only = yes
-immediate = {
-	capital_scope = {
-		add_province_modifier = {
-			name = cursed_lands duration = 465
-			stacking = yes
+	id = svampires.86
+	desc = EVTDESCsvampires86
+	picture = GFX_evt_bad_news
+	border = GFX_event_normal_frame_intrigue
+	hide_from = yes
+	is_triggered_only = yes
+	immediate = {
+		capital_scope = {
+			add_province_modifier = {
+				name = cursed_lands duration = 465
+				stacking = yes
+			}
 		}
 	}
-}
-option = {
-	name = EVTOPTAsvampires86
+	option = {
+		name = EVTOPTAsvampires86
 
-	trigger = {
-		OR = {
-			is_vampire_trigger = yes
-			has_character_modifier = magic_power_2
-			has_character_modifier = magic_power_3
-			has_character_modifier = magic_power_4
-			has_character_modifier = magic_power_1
+		trigger = {
+			OR = {
+				is_vampire_trigger = yes
+				has_character_modifier = magic_power_2
+				has_character_modifier = magic_power_3
+				has_character_modifier = magic_power_4
+				has_character_modifier = magic_power_1
+			}
 		}
-	}
-	hidden_tooltip = {
-		random_list = {
-			75 = {
-				FROM = {
-					character_event = {
-						id = svampires.85001
+		hidden_tooltip = {
+			random_list = {
+				75 = {
+					FROM = {
+						character_event = {
+							id = svampires.85001
+						}
+					} # broke enchantment
+
+				}
+				25 = {
+					FROM = {
+						character_event = {
+							id = svampires.86002
+						}
+					} # failed to break enchantment
+					modifier = {
+						factor = 0.95
+						trait = magic_potential_2
 					}
-				} # broke enchantment
-
-			}
-			25 = {
-				FROM = {
-					character_event = {
-						id = svampires.86002
+					modifier = {
+						factor = 0.85
+						trait = magic_potential_3
 					}
-				} # failed to break enchantment
-				modifier = {
-					factor = 0.95
-					trait = magic_potential_2
-				}
-				modifier = {
-					factor = 0.85
-					trait = magic_potential_3
-				}
-				modifier = {
-					factor = 0.75
-					trait = magic_potential_4
-				}
-				modifier = {
-					factor = 0.75
-					is_vampire_trigger = yes
-				}
-				modifier = {
-					factor = 0.75
-					trait = vampire_necrarch_visible
-				}
-				modifier = {
-					factor = 0.75
-					trait = lore_heavens
-					trait = vampire_jade_visible
-				}
-				modifier = {
-					factor = 1.5
-					has_character_modifier = magic_power_1
-				}
-				modifier = {
-					factor = 1.15
-					has_character_modifier = magic_power_2
-				}
-				modifier = {
-					factor = 0.85
-					has_character_modifier = magic_power_3
-				}
-				modifier = {
-					factor = 0.5
-					has_character_modifier = magic_power_4
-				}
-				modifier = {
-					factor = 1.5
-					trait = hedge_wizard
+					modifier = {
+						factor = 0.75
+						trait = magic_potential_4
+					}
+					modifier = {
+						factor = 0.75
+						is_vampire_trigger = yes
+					}
+					modifier = {
+						factor = 0.75
+						trait = vampire_necrarch_visible
+					}
+					modifier = {
+						factor = 0.75
+						trait = lore_heavens
+						trait = vampire_jade_visible
+					}
+					modifier = {
+						factor = 1.5
+						has_character_modifier = magic_power_1
+					}
+					modifier = {
+						factor = 1.15
+						has_character_modifier = magic_power_2
+					}
+					modifier = {
+						factor = 0.85
+						has_character_modifier = magic_power_3
+					}
+					modifier = {
+						factor = 0.5
+						has_character_modifier = magic_power_4
+					}
+					modifier = {
+						factor = 1.5
+						trait = hedge_wizard
+					}
+
 				}
 
-			}
+			} # closerandomlist
 
-		} # closerandomlist
-
-	} # closehiddentooltip
-}
-option = {
-	name = EVTOPTBsvampires86
-	hidden_tooltip = {
-		FROM = {
-			character_event = {
-				id = svampires.86002
+		} # closehiddentooltip
+	}
+	option = {
+		name = EVTOPTBsvampires86
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = svampires.86002
+				}
 			}
 		}
 	}
-}
 }
 
 # Cursing the lands - Continuation
 character_event = {
-id = svampires.86002
-desc = EVTDESCsvampires86002
-picture = GFX_evt_voodoo_shaman
-border = GFX_event_normal_frame_intrigue
-is_triggered_only = yes
-option = {
-	# Spread discontent and darkness
-	name = EVTOPTAsvampires86002
-	FROM = {
-		character_event = {
-			id = svampires.86100 days = 5 random = 14
+	id = svampires.86002
+	desc = EVTDESCsvampires86002
+	picture = GFX_evt_voodoo_shaman
+	border = GFX_event_normal_frame_intrigue
+	is_triggered_only = yes
+	option = {
+		# Spread discontent and darkness
+		name = EVTOPTAsvampires86002
+		FROM = {
+			character_event = {
+				id = svampires.86100 days = 5 random = 14
+			}
+		}
+		ai_chance = {
+			factor = 50
 		}
 	}
-	ai_chance = {
-		factor = 50
-	}
-}
-option = {
-	# Spread a disease
-	name = EVTOPTBsvampires86002
-	FROM = {
-		character_event = {
-			id = svampires.86200 days = 5 random = 14
+	option = {
+		# Spread a disease
+		name = EVTOPTBsvampires86002
+		FROM = {
+			character_event = {
+				id = svampires.86200 days = 5 random = 14
+			}
+		}
+		ai_chance = {
+			factor = 50
 		}
 	}
-	ai_chance = {
-		factor = 50
-	}
-}
 }
 
 # A darkness spreads across the lands I
 character_event = {
-id = svampires.86100
-desc = EVTDESCsvampires86100
-picture = GFX_evt_bad_news
-border = GFX_event_normal_frame_intrigue
-hide_from = yes
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires86100
-	random_list = {
-		20 = {
-			add_trait = stressed
-		}
-		10 = {
-			add_trait = depressed
-		}
-		70 = {
-		}
+	id = svampires.86100
+	desc = EVTDESCsvampires86100
+	picture = GFX_evt_bad_news
+	border = GFX_event_normal_frame_intrigue
+	hide_from = yes
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires86100
+		random_list = {
+			20 = {
+				add_trait = stressed
+			}
+			10 = {
+				add_trait = depressed
+			}
+			70 = {
+			}
 
-	}
-	any_realm_province = {
-		limit = {
-			owner = {
-				character = ROOT
-			}
-			NOT = {
-				culture = nehekharan
-			}
 		}
-		add_province_modifier = {
-			name = cursed_lands duration = 250
-			stacking = yes
-		}
-	}
-	hidden_tooltip = {
-		FROM = {
-			character_event = {
-				id = svampires.86101 days = 5 random = 14
+		any_realm_province = {
+			limit = {
+				owner = {
+					character = ROOT
+				}
+				NOT = {
+					culture = nehekharan
+				}
+			}
+			add_province_modifier = {
+				name = cursed_lands duration = 250
+				stacking = yes
 			}
 		}
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = svampires.86101 days = 5 random = 14
+				}
+			}
+		}
 	}
-}
 }
 
 # Voodoo - continue to spread darkness
 character_event = {
-id = svampires.86101
-desc = EVTDESCsvampires86101
-picture = GFX_evt_voodoo_shaman
-border = GFX_event_normal_frame_intrigue
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires86101
-	FROM = {
-		character_event = {
-			id = svampires.86102 days = 15 random = 24
+	id = svampires.86101
+	desc = EVTDESCsvampires86101
+	picture = GFX_evt_voodoo_shaman
+	border = GFX_event_normal_frame_intrigue
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires86101
+		FROM = {
+			character_event = {
+				id = svampires.86102 days = 15 random = 24
+			}
+		}
+		ai_chance = {
+			factor = 90
 		}
 	}
-	ai_chance = {
-		factor = 90
-	}
-}
-option = {
-	# Enough
-	name = EVTOPTBsvampires86101
-	ai_chance = {
-		factor = 10
-		modifier = {
-			factor = 5
-			FROM = {
-				religion = shadowmen
+	option = {
+		# Enough
+		name = EVTOPTBsvampires86101
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 5
+				FROM = {
+					religion = shadowmen
+				}
 			}
 		}
 	}
-}
 }
 
 # A darkness spreads across the lands II
 character_event = {
-id = svampires.86102
-desc = EVTDESCsvampires86102
-picture = GFX_evt_bad_news
-border = GFX_event_normal_frame_intrigue
-hide_from = yes
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires86102
-	any_courtier = {
-		opinion = {
-			who = ROOT modifier = opinion_cursed months = 5
-		}
-	}
-	any_realm_province = {
-		limit = {
-			owner = {
-				character = ROOT
-			}
-			NOT = {
-				culture = nehekharan
+	id = svampires.86102
+	desc = EVTDESCsvampires86102
+	picture = GFX_evt_bad_news
+	border = GFX_event_normal_frame_intrigue
+	hide_from = yes
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires86102
+		any_courtier = {
+			opinion = {
+				who = ROOT modifier = opinion_cursed months = 5
 			}
 		}
-		add_province_modifier = {
-			name = cursed_lands duration = 200
-			stacking = yes
+		any_realm_province = {
+			limit = {
+				owner = {
+					character = ROOT
+				}
+				NOT = {
+					culture = nehekharan
+				}
+			}
+			add_province_modifier = {
+				name = cursed_lands duration = 200
+				stacking = yes
+			}
 		}
-	}
-	hidden_tooltip = {
-		FROM = {
-			character_event = {
-				id = svampires.86103 days = 5 random = 14
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = svampires.86103 days = 5 random = 14
+				}
 			}
 		}
 	}
-}
 }
 
 # Voodoo - continue to spread darkness
 character_event = {
-id = svampires.86103
-desc = EVTDESCsvampires86103
-picture = GFX_evt_voodoo_shaman
-border = GFX_event_normal_frame_intrigue
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires86103
-	FROM = {
-		character_event = {
-			id = svampires.86104 days = 50 random = 50
+	id = svampires.86103
+	desc = EVTDESCsvampires86103
+	picture = GFX_evt_voodoo_shaman
+	border = GFX_event_normal_frame_intrigue
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires86103
+		FROM = {
+			character_event = {
+				id = svampires.86104 days = 50 random = 50
+			}
+		}
+		ai_chance = {
+			factor = 50
 		}
 	}
-	ai_chance = {
-		factor = 50
-	}
-}
-option = {
-	# Enough
-	name = EVTOPTBsvampires86103
-	ai_chance = {
-		factor = 50
-		modifier = {
-			factor = 1.5
-			FROM = {
-				religion = shadowmen
+	option = {
+		# Enough
+		name = EVTOPTBsvampires86103
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 1.5
+				FROM = {
+					religion = shadowmen
+				}
 			}
 		}
 	}
-}
 }
 
 # A darkness spreads across the lands III
 character_event = {
-id = svampires.86104
-desc = EVTDESCsvampires86104
-picture = GFX_evt_bad_news
-border = GFX_event_normal_frame_intrigue
-hide_from = yes
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires86104
-	any_vassal = {
-		opinion = {
-			who = ROOT modifier = opinion_cursed months = 24
+	id = svampires.86104
+	desc = EVTDESCsvampires86104
+	picture = GFX_evt_bad_news
+	border = GFX_event_normal_frame_intrigue
+	hide_from = yes
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires86104
+		any_vassal = {
+			opinion = {
+				who = ROOT modifier = opinion_cursed months = 24
+			}
+			capital_scope = {
+				add_province_modifier = {
+					name = cursed_lands duration = 40
+					stacking = yes
+				}
+			}
 		}
-		capital_scope = {
+		any_realm_province = {
+			limit = {
+				owner = {
+					character = ROOT
+				}
+				NOT = {
+					culture = nehekharan
+				}
+			}
 			add_province_modifier = {
-				name = cursed_lands duration = 40
+				name = cursed_lands duration = 80
 				stacking = yes
 			}
 		}
-	}
-	any_realm_province = {
-		limit = {
-			owner = {
-				character = ROOT
-			}
-			NOT = {
-				culture = nehekharan
-			}
-		}
-		add_province_modifier = {
-			name = cursed_lands duration = 80
-			stacking = yes
-		}
-	}
-	hidden_tooltip = {
-		FROM = {
-			character_event = {
-				id = svampires.86103 days = 5 random = 14
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = svampires.86103 days = 5 random = 14
+				}
 			}
 		}
 	}
-}
 }
 
 # A disease spreads across the lands I
 character_event = {
-id = svampires.86200
-desc = EVTDESCsvampires86200
-picture = GFX_evt_bad_news
-border = GFX_event_normal_frame_intrigue
-hide_from = yes
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires86200
-	random_list = {
-		20 = {
-			add_trait = stressed
-		}
-		10 = {
-			add_trait = depressed
-		}
-		70 = {
-		}
+	id = svampires.86200
+	desc = EVTDESCsvampires86200
+	picture = GFX_evt_bad_news
+	border = GFX_event_normal_frame_intrigue
+	hide_from = yes
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires86200
+		random_list = {
+			20 = {
+				add_trait = stressed
+			}
+			10 = {
+				add_trait = depressed
+			}
+			70 = {
+			}
 
-	}
-	add_trait = pneumonic
-	any_realm_province = {
-		limit = {
-			owner = {
-				character = ROOT
-			}
-			NOT = {
-				culture = nehekharan
-			}
 		}
-		add_province_modifier = {
-			name = cursed_lands duration = 50
-			stacking = yes
-		}
-	}
-	hidden_tooltip = {
-		FROM = {
-			character_event = {
-				id = svampires.86201 days = 5 random = 14
+		add_trait = pneumonic
+		any_realm_province = {
+			limit = {
+				owner = {
+					character = ROOT
+				}
+				NOT = {
+					culture = nehekharan
+				}
+			}
+			add_province_modifier = {
+				name = cursed_lands duration = 50
+				stacking = yes
 			}
 		}
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = svampires.86201 days = 5 random = 14
+				}
+			}
+		}
 	}
-}
 }
 
 # Voodoo - continue to spread disease
 character_event = {
-id = svampires.86201
-desc = EVTDESCsvampires86201
-picture = GFX_evt_voodoo_shaman
-border = GFX_event_normal_frame_intrigue
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires86201
-	FROM = {
-		character_event = {
-			id = svampires.86202 days = 15 random = 24
+	id = svampires.86201
+	desc = EVTDESCsvampires86201
+	picture = GFX_evt_voodoo_shaman
+	border = GFX_event_normal_frame_intrigue
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires86201
+		FROM = {
+			character_event = {
+				id = svampires.86202 days = 15 random = 24
+			}
+		}
+		ai_chance = {
+			factor = 90
 		}
 	}
-	ai_chance = {
-		factor = 90
-	}
-}
-option = {
-	# Enough
-	name = EVTOPTBsvampires86201
-	ai_chance = {
-		factor = 10
-		modifier = {
-			factor = 5
-			FROM = {
-				religion = shadowmen
+	option = {
+		# Enough
+		name = EVTOPTBsvampires86201
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 5
+				FROM = {
+					religion = shadowmen
+				}
 			}
 		}
 	}
-}
 }
 
 # A disease spreads across the lands II
 character_event = {
-id = svampires.86202
-desc = EVTDESCsvampires86202
-picture = GFX_evt_bad_news
-border = GFX_event_normal_frame_intrigue
-hide_from = yes
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires86202
-	any_courtier = {
-		random = {
-			chance = 20
-			add_trait = pneumonic
-			opinion = {
-				who = ROOT modifier = opinion_cursed months = 1
+	id = svampires.86202
+	desc = EVTDESCsvampires86202
+	picture = GFX_evt_bad_news
+	border = GFX_event_normal_frame_intrigue
+	hide_from = yes
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires86202
+		any_courtier = {
+			random = {
+				chance = 20
+				add_trait = pneumonic
+				opinion = {
+					who = ROOT modifier = opinion_cursed months = 1
+				}
+			}
+		}
+		any_realm_province = {
+			limit = {
+				owner = {
+					character = ROOT
+				}
+				NOT = {
+					culture = nehekharan
+				}
+			}
+			add_province_modifier = {
+				name = cursed_lands duration = 200
+				stacking = yes
+			}
+		}
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = svampires.86203 days = 5 random = 14
+				}
 			}
 		}
 	}
-	any_realm_province = {
-		limit = {
-			owner = {
-				character = ROOT
-			}
-			NOT = {
-				culture = nehekharan
-			}
-		}
-		add_province_modifier = {
-			name = cursed_lands duration = 200
-			stacking = yes
-		}
-	}
-	hidden_tooltip = {
-		FROM = {
-			character_event = {
-				id = svampires.86203 days = 5 random = 14
-			}
-		}
-	}
-}
 }
 
 # Voodoo - continue to spread disease
 character_event = {
-id = svampires.86203
-desc = EVTDESCsvampires86203
-picture = GFX_evt_voodoo_shaman
-border = GFX_event_normal_frame_intrigue
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires86203
-	FROM = {
-		character_event = {
-			id = svampires.86204 days = 50 random = 50
+	id = svampires.86203
+	desc = EVTDESCsvampires86203
+	picture = GFX_evt_voodoo_shaman
+	border = GFX_event_normal_frame_intrigue
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires86203
+		FROM = {
+			character_event = {
+				id = svampires.86204 days = 50 random = 50
+			}
+		}
+		ai_chance = {
+			factor = 50
 		}
 	}
-	ai_chance = {
-		factor = 50
-	}
-}
-option = {
-	# Enough
-	name = EVTOPTBsvampires86203
-	ai_chance = {
-		factor = 50
-		modifier = {
-			factor = 1.5
-			FROM = {
-				religion = shadowmen
+	option = {
+		# Enough
+		name = EVTOPTBsvampires86203
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 1.5
+				FROM = {
+					religion = shadowmen
+				}
 			}
 		}
 	}
-}
 }
 
 # A disease spreads across the lands III
 character_event = {
-id = svampires.86204
-desc = EVTDESCsvampires86204
-picture = GFX_evt_bad_news
-border = GFX_event_normal_frame_intrigue
-hide_from = yes
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires86204
-	any_courtier = {
-		random = {
-			chance = 20
-			add_trait = pneumonic
-			opinion = {
-				who = ROOT modifier = opinion_cursed months = 12
+	id = svampires.86204
+	desc = EVTDESCsvampires86204
+	picture = GFX_evt_bad_news
+	border = GFX_event_normal_frame_intrigue
+	hide_from = yes
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires86204
+		any_courtier = {
+			random = {
+				chance = 20
+				add_trait = pneumonic
+				opinion = {
+					who = ROOT modifier = opinion_cursed months = 12
+				}
 			}
 		}
-	}
-	any_vassal = {
-		random = {
-			chance = 20
-			add_trait = pneumonic
-			opinion = {
-				who = ROOT modifier = opinion_cursed months = 12
+		any_vassal = {
+			random = {
+				chance = 20
+				add_trait = pneumonic
+				opinion = {
+					who = ROOT modifier = opinion_cursed months = 12
+				}
+			}
+			capital_scope = {
+				add_province_modifier = {
+					name = cursed_lands duration = 40
+					stacking = yes
+				}
 			}
 		}
-		capital_scope = {
+		any_realm_province = {
+			limit = {
+				owner = {
+					character = ROOT
+				}
+				NOT = {
+					culture = nehekharan
+				}
+			}
 			add_province_modifier = {
-				name = cursed_lands duration = 40
+				name = cursed_lands duration = 30
 				stacking = yes
 			}
 		}
-	}
-	any_realm_province = {
-		limit = {
-			owner = {
-				character = ROOT
-			}
-			NOT = {
-				culture = nehekharan
-			}
-		}
-		add_province_modifier = {
-			name = cursed_lands duration = 30
-			stacking = yes
-		}
-	}
-	hidden_tooltip = {
-		FROM = {
-			character_event = {
-				id = svampires.86203 days = 5 random = 14
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = svampires.86203 days = 5 random = 14
+				}
 			}
 		}
 	}
-}
 }
 
 # Cursed him
 character_event = {
-id = svampires.87
-desc = EVTDESCsvampires87
-picture = GFX_evt_bad_news
-border = GFX_event_normal_frame_intrigue
-hide_from = yes
-is_triggered_only = yes
-immediate = {
-	if = {
-		limit = {
-			NOT = {
+	id = svampires.87
+	desc = EVTDESCsvampires87
+	picture = GFX_evt_bad_news
+	border = GFX_event_normal_frame_intrigue
+	hide_from = yes
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = {
+				NOT = {
+					has_dlc = "Reapers"
+				}
+			}
+			add_trait = ill
+		}
+		if = {
+			limit = {
 				has_dlc = "Reapers"
 			}
+			add_symptom_effect = yes
 		}
-		add_trait = ill
 	}
-	if = {
-		limit = {
-			has_dlc = "Reapers"
+	option = {
+		name = EVTOPTAsvampires87
+
+		trigger = {
+			OR = {
+				is_vampire_trigger = yes
+				has_character_modifier = magic_power_2
+				has_character_modifier = magic_power_3
+				has_character_modifier = magic_power_4
+				has_character_modifier = magic_power_1
+			}
 		}
-		add_symptom_effect = yes
+		hidden_tooltip = {
+			random_list = {
+				75 = {
+					FROM = {
+						character_event = {
+							id = svampires.85001
+						}
+					} # broke enchantment
+
+				}
+				25 = {
+					FROM = {
+						character_event = {
+							id = svampires.87002
+						}
+					} # failed to break enchantment
+					modifier = {
+						factor = 0.95
+						trait = magic_potential_2
+					}
+					modifier = {
+						factor = 0.85
+						trait = magic_potential_3
+					}
+					modifier = {
+						factor = 0.75
+						trait = magic_potential_4
+					}
+					modifier = {
+						factor = 0.75
+						is_vampire_trigger = yes
+					}
+					modifier = {
+						factor = 0.75
+						trait = vampire_necrarch_visible
+					}
+					modifier = {
+						factor = 0.75
+						trait = lore_heavens
+						trait = vampire_jade_visible
+					}
+					modifier = {
+						factor = 1.5
+						has_character_modifier = magic_power_1
+					}
+					modifier = {
+						factor = 1.15
+						has_character_modifier = magic_power_2
+					}
+					modifier = {
+						factor = 0.85
+						has_character_modifier = magic_power_3
+					}
+					modifier = {
+						factor = 0.5
+						has_character_modifier = magic_power_4
+					}
+					modifier = {
+						factor = 1.5
+						trait = hedge_wizard
+					}
+
+				}
+
+			} # closerandomlist
+
+		} # closehiddentooltip
+	}
+	option = {
+		name = EVTOPTBsvampires87
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = svampires.87002
+				}
+			}
+		}
 	}
 }
-option = {
-	name = EVTOPTAsvampires87
 
-	trigger = {
-		OR = {
-			is_vampire_trigger = yes
-			has_character_modifier = magic_power_2
-			has_character_modifier = magic_power_3
-			has_character_modifier = magic_power_4
-			has_character_modifier = magic_power_1
+# Cursing the man - Continuation
+character_event = {
+	id = svampires.87002
+	desc = EVTDESCsvampires87002
+	picture = GFX_evt_voodoo_shaman
+	border = GFX_event_normal_frame_intrigue
+	is_triggered_only = yes
+	option = {
+		# Pin the doll
+		name = EVTOPTAsvampires87002
+		FROM = {
+			character_event = {
+				id = svampires.87100 days = 5 random = 14
+			}
+		}
+		ai_chance = {
+			factor = 25
 		}
 	}
-	hidden_tooltip = {
-		random_list = {
-			75 = {
-				FROM = {
-					character_event = {
-						id = svampires.85001
-					}
-				} # broke enchantment
+	option = {
+		# Carve the doll's eyes
+		name = EVTOPTBsvampires87002
 
+		trigger = {
+			FROM = {
+				NOT = {
+					trait = blinded
+				}
 			}
-			25 = {
-				FROM = {
-					character_event = {
-						id = svampires.87002
-					}
-				} # failed to break enchantment
-				modifier = {
-					factor = 0.95
-					trait = magic_potential_2
-				}
-				modifier = {
-					factor = 0.85
-					trait = magic_potential_3
-				}
-				modifier = {
-					factor = 0.75
-					trait = magic_potential_4
-				}
-				modifier = {
-					factor = 0.75
-					is_vampire_trigger = yes
-				}
-				modifier = {
-					factor = 0.75
-					trait = vampire_necrarch_visible
-				}
-				modifier = {
-					factor = 0.75
-					trait = lore_heavens
-					trait = vampire_jade_visible
-				}
-				modifier = {
-					factor = 1.5
-					has_character_modifier = magic_power_1
-				}
-				modifier = {
-					factor = 1.15
-					has_character_modifier = magic_power_2
-				}
-				modifier = {
-					factor = 0.85
-					has_character_modifier = magic_power_3
-				}
-				modifier = {
-					factor = 0.5
-					has_character_modifier = magic_power_4
-				}
-				modifier = {
-					factor = 1.5
-					trait = hedge_wizard
-				}
-
+		}
+		FROM = {
+			character_event = {
+				id = svampires.87200 days = 5 random = 14
 			}
-
-		} # closerandomlist
-
-	} # closehiddentooltip
+		}
+		ai_chance = {
+			factor = 25
+		}
+	}
+	option = {
+		# Squash the doll
+		name = EVTOPTCsvampires87002
+		FROM = {
+			character_event = {
+				id = svampires.87300 days = 5 random = 14
+			}
+		}
+		ai_chance = {
+			factor = 25
+		}
+	}
+	option = {
+		# More
+		name = EVTOPTDsvampires87002
+		FROM = {
+			character_event = {
+				id = svampires.87003
+			}
+		}
+		ai_chance = {
+			factor = 25
+		}
+	}
 }
-option = {
-	name = EVTOPTBsvampires87
-	hidden_tooltip = {
+
+# Pinging event
+character_event = {
+	id = svampires.87003
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		FROM = {
+			character_event = {
+				id = svampires.87004
+			}
+		}
+	}
+}
+
+# Cursing the man - Continuation II
+character_event = {
+	id = svampires.87004
+	desc = EVTDESCsvampires87004
+	picture = GFX_evt_voodoo_shaman
+	border = GFX_event_normal_frame_intrigue
+	is_triggered_only = yes
+	option = {
+		# Cut the doll's tiny bits
+		name = EVTOPTAsvampires87004
+
+		trigger = {
+			FROM = {
+				NOR = {
+					trait = eunuch
+					trait = infertile
+				}
+			}
+		}
+		FROM = {
+			character_event = {
+				id = svampires.87400 days = 5 random = 14
+			}
+		}
+		ai_chance = {
+			factor = 25
+		}
+	}
+	option = {
+		# Boil the doll's head
+		name = EVTOPTBsvampires87004
+		FROM = {
+			character_event = {
+				id = svampires.87500 days = 5 random = 14
+			}
+		}
+		ai_chance = {
+			factor = 25
+		}
+	}
+	option = {
+		# Bind the doll's heart
+		name = EVTOPTCsvampires87004
+
+		trigger = {
+			FROM = {
+				OR = {
+					has_lover = yes
+					any_friend = {
+						is_alive = yes
+					}
+					is_married = yes
+				}
+			}
+		}
+		FROM = {
+			character_event = {
+				id = svampires.87600 days = 5 random = 14
+			}
+		}
+		ai_chance = {
+			factor = 25
+		}
+	}
+	option = {
+		# Back to previous
+		name = EVTOPTDsvampires87004
+		FROM = {
+			character_event = {
+				id = svampires.87005
+			}
+		}
+		ai_chance = {
+			factor = 25
+		}
+	}
+}
+
+# Pinging event
+character_event = {
+	id = svampires.87005
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
 		FROM = {
 			character_event = {
 				id = svampires.87002
@@ -13442,781 +13614,697 @@ option = {
 		}
 	}
 }
-}
-
-# Cursing the man - Continuation
-character_event = {
-id = svampires.87002
-desc = EVTDESCsvampires87002
-picture = GFX_evt_voodoo_shaman
-border = GFX_event_normal_frame_intrigue
-is_triggered_only = yes
-option = {
-	# Pin the doll
-	name = EVTOPTAsvampires87002
-	FROM = {
-		character_event = {
-			id = svampires.87100 days = 5 random = 14
-		}
-	}
-	ai_chance = {
-		factor = 25
-	}
-}
-option = {
-	# Carve the doll's eyes
-	name = EVTOPTBsvampires87002
-
-	trigger = {
-		FROM = {
-			NOT = {
-				trait = blinded
-			}
-		}
-	}
-	FROM = {
-		character_event = {
-			id = svampires.87200 days = 5 random = 14
-		}
-	}
-	ai_chance = {
-		factor = 25
-	}
-}
-option = {
-	# Squash the doll
-	name = EVTOPTCsvampires87002
-	FROM = {
-		character_event = {
-			id = svampires.87300 days = 5 random = 14
-		}
-	}
-	ai_chance = {
-		factor = 25
-	}
-}
-option = {
-	# More
-	name = EVTOPTDsvampires87002
-	FROM = {
-		character_event = {
-			id = svampires.87003
-		}
-	}
-	ai_chance = {
-		factor = 25
-	}
-}
-}
-
-# Pinging event
-character_event = {
-id = svampires.87003
-hide_window = yes
-is_triggered_only = yes
-immediate = {
-	FROM = {
-		character_event = {
-			id = svampires.87004
-		}
-	}
-}
-}
-
-# Cursing the man - Continuation II
-character_event = {
-id = svampires.87004
-desc = EVTDESCsvampires87004
-picture = GFX_evt_voodoo_shaman
-border = GFX_event_normal_frame_intrigue
-is_triggered_only = yes
-option = {
-	# Cut the doll's tiny bits
-	name = EVTOPTAsvampires87004
-
-	trigger = {
-		FROM = {
-			NOR = {
-				trait = eunuch
-				trait = infertile
-			}
-		}
-	}
-	FROM = {
-		character_event = {
-			id = svampires.87400 days = 5 random = 14
-		}
-	}
-	ai_chance = {
-		factor = 25
-	}
-}
-option = {
-	# Boil the doll's head
-	name = EVTOPTBsvampires87004
-	FROM = {
-		character_event = {
-			id = svampires.87500 days = 5 random = 14
-		}
-	}
-	ai_chance = {
-		factor = 25
-	}
-}
-option = {
-	# Bind the doll's heart
-	name = EVTOPTCsvampires87004
-
-	trigger = {
-		FROM = {
-			OR = {
-				has_lover = yes
-				any_friend = {
-					is_alive = yes
-				}
-				is_married = yes
-			}
-		}
-	}
-	FROM = {
-		character_event = {
-			id = svampires.87600 days = 5 random = 14
-		}
-	}
-	ai_chance = {
-		factor = 25
-	}
-}
-option = {
-	# Back to previous
-	name = EVTOPTDsvampires87004
-	FROM = {
-		character_event = {
-			id = svampires.87005
-		}
-	}
-	ai_chance = {
-		factor = 25
-	}
-}
-}
-
-# Pinging event
-character_event = {
-id = svampires.87005
-hide_window = yes
-is_triggered_only = yes
-immediate = {
-	FROM = {
-		character_event = {
-			id = svampires.87002
-		}
-	}
-}
-}
 
 # Pinning the doll
 character_event = {
-id = svampires.87100
-desc = EVTDESCsvampires87100
-picture = GFX_evt_bad_news
-border = GFX_event_normal_frame_intrigue
-hide_from = yes
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires87100
-	if = {
-		limit = {
-			NOR = {
+	id = svampires.87100
+	desc = EVTDESCsvampires87100
+	picture = GFX_evt_bad_news
+	border = GFX_event_normal_frame_intrigue
+	hide_from = yes
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires87100
+		if = {
+			limit = {
+				NOR = {
+					trait = wounded
+					trait = maimed
+					trait = incapable
+				}
+			}
+			add_trait = wounded
+		}
+		if = {
+			limit = {
 				trait = wounded
+				NOR = {
+					trait = maimed
+					trait = incapable
+				}
+			}
+			add_trait = maimed
+		}
+		if = {
+			limit = {
 				trait = maimed
+				NOT = {
+					trait = incapable
+				}
+			}
+			add_trait = incapable
+		}
+		if = {
+			limit = {
 				trait = incapable
+				is_invincible_trigger = no
+			}
+			death = {
+				death_reason = death_murder_unknown
 			}
 		}
-		add_trait = wounded
-	}
-	if = {
-		limit = {
-			trait = wounded
-			NOR = {
-				trait = maimed
-				trait = incapable
-			}
-		}
-		add_trait = maimed
-	}
-	if = {
-		limit = {
-			trait = maimed
-			NOT = {
-				trait = incapable
-			}
-		}
-		add_trait = incapable
-	}
-	if = {
-		limit = {
-			trait = incapable
-			is_invincible_trigger = no
-		}
-		death = {
-			death_reason = death_murder_unknown
-		}
-	}
-	hidden_tooltip = {
-		FROM = {
-			character_event = {
-				id = svampires.87101 days = 5 random = 14
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = svampires.87101 days = 5 random = 14
+				}
 			}
 		}
 	}
-}
 }
 
 # Pinned the doll - What next?
 character_event = {
-id = svampires.87101
-desc = EVTDESCsvampires87101
-picture = GFX_evt_voodoo_shaman
-border = GFX_event_normal_frame_intrigue
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires87101
-	FROM = {
-		character_event = {
-			id = svampires.87003
-		}
-	}
-	ai_chance = {
-		factor = 50
-	}
-}
-option = {
-	# Enough
-	name = EVTOPTBsvampires87101
-	ai_chance = {
-		factor = 50
-		modifier = {
-			factor = 1.5
-			FROM = {
-				religion = shadowmen
-			}
-		}
-	}
-}
-}
-
-# Carve the doll's eyes
-character_event = {
-id = svampires.87200
-desc = EVTDESCsvampires87200
-picture = GFX_evt_bad_news
-border = GFX_event_normal_frame_intrigue
-hide_from = yes
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires87200
-	add_trait = blinded
-	hidden_tooltip = {
-		FROM = {
-			character_event = {
-				id = svampires.87201 days = 5 random = 14
-			}
-		}
-	}
-}
-}
-
-# Carved the doll's eyes - What next?
-character_event = {
-id = svampires.87201
-desc = EVTDESCsvampires87201
-picture = GFX_evt_voodoo_shaman
-border = GFX_event_normal_frame_intrigue
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires87201
-	FROM = {
-		character_event = {
-			id = svampires.87003
-		}
-	}
-	ai_chance = {
-		factor = 50
-	}
-}
-option = {
-	# Enough
-	name = EVTOPTBsvampires87201
-	ai_chance = {
-		factor = 50
-		modifier = {
-			factor = 1.5
-			FROM = {
-				religion = shadowmen
-			}
-		}
-	}
-}
-}
-
-# Squash the doll
-character_event = {
-id = svampires.87300
-desc = EVTDESCsvampires87300
-picture = GFX_evt_bad_news
-border = GFX_event_normal_frame_intrigue
-hide_from = yes
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires87300
-	if = {
-		limit = {
-			NOR = {
-				trait = undernourished
-				trait = incapable
-			}
-		}
-		add_trait = undernourished
-	}
-	if = {
-		limit = {
-			trait = undernourished
-			NOT = {
-				trait = incapable
-			}
-		}
-		add_trait = incapable
-	}
-	if = {
-		limit = {
-			trait = incapable
-			is_invincible_trigger = no
-		}
-		death = {
-			death_reason = death_murder_unknown
-		}
-	}
-	hidden_tooltip = {
-		FROM = {
-			character_event = {
-				id = svampires.87301 days = 5 random = 14
-			}
-		}
-	}
-}
-}
-
-# Squashed the doll - What next?
-character_event = {
-id = svampires.87301
-desc = EVTDESCsvampires87301
-picture = GFX_evt_voodoo_shaman
-border = GFX_event_normal_frame_intrigue
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires87301
-	FROM = {
-		character_event = {
-			id = svampires.87003
-		}
-	}
-	ai_chance = {
-		factor = 50
-	}
-}
-option = {
-	# Enough
-	name = EVTOPTBsvampires87301
-	ai_chance = {
-		factor = 50
-		modifier = {
-			factor = 1.5
-			FROM = {
-				religion = shadowmen
-			}
-		}
-	}
-}
-}
-
-# Cut the doll's tiny bits
-character_event = {
-id = svampires.87400
-desc = EVTDESCsvampires87400
-picture = GFX_evt_bad_news
-border = GFX_event_normal_frame_intrigue
-hide_from = yes
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires87400
-	if = {
-		limit = {
-			is_female = no
-		}
-		add_trait = eunuch
-	}
-	if = {
-		limit = {
-			is_female = yes
-		}
-		add_trait = infertile
-	}
-	hidden_tooltip = {
-		FROM = {
-			character_event = {
-				id = svampires.87401 days = 5 random = 14
-			}
-		}
-	}
-}
-}
-
-# Sterlized the doll - What next?
-character_event = {
-id = svampires.87401
-desc = EVTDESCsvampires87401
-picture = GFX_evt_voodoo_shaman
-border = GFX_event_normal_frame_intrigue
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires87401
-	FROM = {
-		character_event = {
-			id = svampires.87003
-		}
-	}
-	ai_chance = {
-		factor = 50
-	}
-}
-option = {
-	# Enough
-	name = EVTOPTBsvampires87401
-	ai_chance = {
-		factor = 50
-		modifier = {
-			factor = 1.5
-			FROM = {
-				religion = shadowmen
-			}
-		}
-	}
-}
-}
-
-# Boil doll's head
-character_event = {
-id = svampires.87500
-desc = EVTDESCsvampires87500
-picture = GFX_evt_lunatic
-border = GFX_event_normal_frame_intrigue
-hide_from = yes
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires87500
-	random = {
-		chance = 20
-		if = {
-			limit = {
-				NOT = {
-					trait = infirm
-				}
-			}
-			add_trait = infirm
-		}
-		change_learning = -1
-	}
-	change_variable = {
-		which = "lunatic_counter" value = 7
-	}
-	hidden_tooltip = {
-		character_event = {
-			id = mutation.1005
-		}
-		FROM = {
-			character_event = {
-				id = svampires.87501 days = 5 random = 14
-			}
-		}
-	}
-}
-}
-
-# Boiled the doll - What next?
-character_event = {
-id = svampires.87501
-desc = EVTDESCsvampires87501
-picture = GFX_evt_voodoo_shaman
-border = GFX_event_normal_frame_intrigue
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires87501
-	FROM = {
-		character_event = {
-			id = svampires.87003
-		}
-	}
-	ai_chance = {
-		factor = 50
-	}
-}
-option = {
-	# Enough
-	name = EVTOPTBsvampires87501
-	ai_chance = {
-		factor = 50
-		modifier = {
-			factor = 1.5
-			FROM = {
-				religion = shadowmen
-			}
-		}
-	}
-}
-}
-
-# Bind doll's heart
-character_event = {
-id = svampires.87600
-desc = EVTDESCsvampires87600
-picture = GFX_evt_lunatic
-border = GFX_event_normal_frame_intrigue
-hide_from = yes
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires87600
-	hidden_tooltip = {
-		FROM = {
-			character_event = {
-				id = svampires.87601 days = 5 random = 14
-			}
-		}
-	}
-	if = {
-		limit = {
-			has_lover = yes
-		}
-		random_lover = {
-			remove_lover = ROOT
-			add_rival = ROOT
-		}
-		break = yes
-	}
-	if = {
-		limit = {
-			any_friend = {
-				is_alive = yes
-			}
-		}
-		random_friend = {
-			remove_friend = ROOT
-			add_rival = ROOT
-		}
-		break = yes
-	}
-	if = {
-		limit = {
-			is_married = yes
-		}
-		random_spouse = {
-			add_rival = ROOT
-		}
-		break = yes
-	}
-}
-}
-
-# Bound doll's heart - What next?
-character_event = {
-id = svampires.87601
-desc = EVTDESCsvampires87601
-picture = GFX_evt_voodoo_shaman
-border = GFX_event_normal_frame_intrigue
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires87601
-	hidden_tooltip = {
+	id = svampires.87101
+	desc = EVTDESCsvampires87101
+	picture = GFX_evt_voodoo_shaman
+	border = GFX_event_normal_frame_intrigue
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires87101
 		FROM = {
 			character_event = {
 				id = svampires.87003
 			}
 		}
+		ai_chance = {
+			factor = 50
+		}
 	}
-	ai_chance = {
-		factor = 50
-	}
-}
-option = {
-	# Enough
-	name = EVTOPTBsvampires87601
-	ai_chance = {
-		factor = 50
-		modifier = {
-			factor = 1.5
-			FROM = {
-				religion = shadowmen
+	option = {
+		# Enough
+		name = EVTOPTBsvampires87101
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 1.5
+				FROM = {
+					religion = shadowmen
+				}
 			}
 		}
 	}
 }
+
+# Carve the doll's eyes
+character_event = {
+	id = svampires.87200
+	desc = EVTDESCsvampires87200
+	picture = GFX_evt_bad_news
+	border = GFX_event_normal_frame_intrigue
+	hide_from = yes
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires87200
+		add_trait = blinded
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = svampires.87201 days = 5 random = 14
+				}
+			}
+		}
+	}
+}
+
+# Carved the doll's eyes - What next?
+character_event = {
+	id = svampires.87201
+	desc = EVTDESCsvampires87201
+	picture = GFX_evt_voodoo_shaman
+	border = GFX_event_normal_frame_intrigue
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires87201
+		FROM = {
+			character_event = {
+				id = svampires.87003
+			}
+		}
+		ai_chance = {
+			factor = 50
+		}
+	}
+	option = {
+		# Enough
+		name = EVTOPTBsvampires87201
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 1.5
+				FROM = {
+					religion = shadowmen
+				}
+			}
+		}
+	}
+}
+
+# Squash the doll
+character_event = {
+	id = svampires.87300
+	desc = EVTDESCsvampires87300
+	picture = GFX_evt_bad_news
+	border = GFX_event_normal_frame_intrigue
+	hide_from = yes
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires87300
+		if = {
+			limit = {
+				NOR = {
+					trait = undernourished
+					trait = incapable
+				}
+			}
+			add_trait = undernourished
+		}
+		if = {
+			limit = {
+				trait = undernourished
+				NOT = {
+					trait = incapable
+				}
+			}
+			add_trait = incapable
+		}
+		if = {
+			limit = {
+				trait = incapable
+				is_invincible_trigger = no
+			}
+			death = {
+				death_reason = death_murder_unknown
+			}
+		}
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = svampires.87301 days = 5 random = 14
+				}
+			}
+		}
+	}
+}
+
+# Squashed the doll - What next?
+character_event = {
+	id = svampires.87301
+	desc = EVTDESCsvampires87301
+	picture = GFX_evt_voodoo_shaman
+	border = GFX_event_normal_frame_intrigue
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires87301
+		FROM = {
+			character_event = {
+				id = svampires.87003
+			}
+		}
+		ai_chance = {
+			factor = 50
+		}
+	}
+	option = {
+		# Enough
+		name = EVTOPTBsvampires87301
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 1.5
+				FROM = {
+					religion = shadowmen
+				}
+			}
+		}
+	}
+}
+
+# Cut the doll's tiny bits
+character_event = {
+	id = svampires.87400
+	desc = EVTDESCsvampires87400
+	picture = GFX_evt_bad_news
+	border = GFX_event_normal_frame_intrigue
+	hide_from = yes
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires87400
+		if = {
+			limit = {
+				is_female = no
+			}
+			add_trait = eunuch
+		}
+		if = {
+			limit = {
+				is_female = yes
+			}
+			add_trait = infertile
+		}
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = svampires.87401 days = 5 random = 14
+				}
+			}
+		}
+	}
+}
+
+# Sterlized the doll - What next?
+character_event = {
+	id = svampires.87401
+	desc = EVTDESCsvampires87401
+	picture = GFX_evt_voodoo_shaman
+	border = GFX_event_normal_frame_intrigue
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires87401
+		FROM = {
+			character_event = {
+				id = svampires.87003
+			}
+		}
+		ai_chance = {
+			factor = 50
+		}
+	}
+	option = {
+		# Enough
+		name = EVTOPTBsvampires87401
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 1.5
+				FROM = {
+					religion = shadowmen
+				}
+			}
+		}
+	}
+}
+
+# Boil doll's head
+character_event = {
+	id = svampires.87500
+	desc = EVTDESCsvampires87500
+	picture = GFX_evt_lunatic
+	border = GFX_event_normal_frame_intrigue
+	hide_from = yes
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires87500
+		random = {
+			chance = 20
+			if = {
+				limit = {
+					NOT = {
+						trait = infirm
+					}
+				}
+				add_trait = infirm
+			}
+			change_learning = -1
+		}
+		change_variable = {
+			which = "lunatic_counter" value = 7
+		}
+		hidden_tooltip = {
+			character_event = {
+				id = mutation.1005
+			}
+			FROM = {
+				character_event = {
+					id = svampires.87501 days = 5 random = 14
+				}
+			}
+		}
+	}
+}
+
+# Boiled the doll - What next?
+character_event = {
+	id = svampires.87501
+	desc = EVTDESCsvampires87501
+	picture = GFX_evt_voodoo_shaman
+	border = GFX_event_normal_frame_intrigue
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires87501
+		FROM = {
+			character_event = {
+				id = svampires.87003
+			}
+		}
+		ai_chance = {
+			factor = 50
+		}
+	}
+	option = {
+		# Enough
+		name = EVTOPTBsvampires87501
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 1.5
+				FROM = {
+					religion = shadowmen
+				}
+			}
+		}
+	}
+}
+
+# Bind doll's heart
+character_event = {
+	id = svampires.87600
+	desc = EVTDESCsvampires87600
+	picture = GFX_evt_lunatic
+	border = GFX_event_normal_frame_intrigue
+	hide_from = yes
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires87600
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = svampires.87601 days = 5 random = 14
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_lover = yes
+			}
+			random_lover = {
+				remove_lover = ROOT
+				add_rival = ROOT
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				any_friend = {
+					is_alive = yes
+				}
+			}
+			random_friend = {
+				remove_friend = ROOT
+				add_rival = ROOT
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				is_married = yes
+			}
+			random_spouse = {
+				add_rival = ROOT
+			}
+			break = yes
+		}
+	}
+}
+
+# Bound doll's heart - What next?
+character_event = {
+	id = svampires.87601
+	desc = EVTDESCsvampires87601
+	picture = GFX_evt_voodoo_shaman
+	border = GFX_event_normal_frame_intrigue
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires87601
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = svampires.87003
+				}
+			}
+		}
+		ai_chance = {
+			factor = 50
+		}
+	}
+	option = {
+		# Enough
+		name = EVTOPTBsvampires87601
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 1.5
+				FROM = {
+					religion = shadowmen
+				}
+			}
+		}
+	}
 }
 
 # Mahtmasi uses shadow to quicken the voodoo doll plot
 character_event = {
-id = svampires.88
-desc = EVTDESCsvampires88
-picture = GFX_evt_mahtmasi_summoning
-border = GFX_event_normal_frame_intrigue
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires88
-	hidden_tooltip = {
-		if = {
-			limit = {
-				has_plot = plot_make_voodoo_doll
-			}
-			plot_target_char = {
-				character_event = {
-					id = svampires.90 days = 27
+	id = svampires.88
+	desc = EVTDESCsvampires88
+	picture = GFX_evt_mahtmasi_summoning
+	border = GFX_event_normal_frame_intrigue
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires88
+		hidden_tooltip = {
+			if = {
+				limit = {
+					has_plot = plot_make_voodoo_doll
 				}
+				plot_target_char = {
+					character_event = {
+						id = svampires.90 days = 27
+					}
+				}
+				character_event = {
+					id = svampires.88001 days = 50
+				} # clean flag
+				break = yes
+
 			}
-			character_event = {
-				id = svampires.88001 days = 50
-			} # clean flag
-			break = yes
+			if = {
+				limit = {
+					OR = {
+						has_plot = plot_kill_character
+						has_plot = plot_kill_spouse
+					}
+				}
+				plot_target_char = {
+					character_event = {
+						id = svampires.90001 days = 27
+					}
+				}
+				character_event = {
+					id = svampires.88001 days = 50
+				} # clean flag
+				break = yes
+
+			}
 
 		}
-		if = {
-			limit = {
-				OR = {
-					has_plot = plot_kill_character
-					has_plot = plot_kill_spouse
-				}
-			}
-			plot_target_char = {
-				character_event = {
-					id = svampires.90001 days = 27
-				}
-			}
-			character_event = {
-				id = svampires.88001 days = 50
-			} # clean flag
-			break = yes
-
+		ai_chance = {
+			factor = 50
 		}
-
 	}
-	ai_chance = {
-		factor = 50
-	}
-}
 }
 
 # clean the shadowflag
 character_event = {
-id = svampires.88001
-hide_window = yes
-is_triggered_only = yes
-immediate = {
-	clr_character_flag = using_shadow_plot
-}
+	id = svampires.88001
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		clr_character_flag = using_shadow_plot
+	}
 }
 
 # Close relative turned to Shadowmen, do you do the same?
 character_event = {
-id = svampires.89
-desc = EVTDESCsvampires89
-picture = GFX_evt_voodoo_shaman
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires89
+	id = svampires.89
+	desc = EVTDESCsvampires89
+	picture = GFX_evt_voodoo_shaman
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires89
 
-	trigger = {
-		religion = akghan
-	}
-	religion = shadowmen
-	piety = -50
-	ai_chance = {
-		factor = 50
-		modifier = {
-			factor = 0
-			trait = zealous
+		trigger = {
+			religion = akghan
 		}
-		modifier = {
-			factor = 1.4
-			trait = cynical
-		}
-		modifier = {
-			factor = 0.5
-			trait = brave
-		}
-		modifier = {
-			factor = 2
-			trait = craven
-		}
-		modifier = {
-			factor = 0.1
-			age = 40
-		}
-		modifier = {
-			factor = 1.5
-			father = {
-				character = FROM
+		religion = shadowmen
+		piety = -50
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0
+				trait = zealous
 			}
-		}
-		modifier = {
-			factor = 1.5
-			mother = {
-				character = FROM
+			modifier = {
+				factor = 1.4
+				trait = cynical
 			}
-		}
+			modifier = {
+				factor = 0.5
+				trait = brave
+			}
+			modifier = {
+				factor = 2
+				trait = craven
+			}
+			modifier = {
+				factor = 0.1
+				age = 40
+			}
+			modifier = {
+				factor = 1.5
+				father = {
+					character = FROM
+				}
+			}
+			modifier = {
+				factor = 1.5
+				mother = {
+					character = FROM
+				}
+			}
 
+		}
 	}
-}
-option = {
-	name = EVTOPTBsvampires89
-	piety = 50
-	ai_chance = {
-		factor = 50
+	option = {
+		name = EVTOPTBsvampires89
+		piety = 50
+		ai_chance = {
+			factor = 50
+		}
 	}
-}
 }
 
 # The plot attempt
 character_event = {
-id = svampires.90
-desc = EVTDESCsvampires.83005
-picture = GFX_evt_feast
-border = GFX_event_normal_frame_intrigue
-hide_from = yes
-is_triggered_only = yes
-trigger = {
-	prisoner = no
-	# Is the plot still in motion?
-	OR = {
-		FROM = {
-			has_plot = plot_make_voodoo_doll
-			plot_target_char = {
-				character = ROOT
+	id = svampires.90
+	desc = EVTDESCsvampires.83005
+	picture = GFX_evt_feast
+	border = GFX_event_normal_frame_intrigue
+	hide_from = yes
+	is_triggered_only = yes
+	trigger = {
+		prisoner = no
+		# Is the plot still in motion?
+		OR = {
+			FROM = {
+				has_plot = plot_make_voodoo_doll
+				plot_target_char = {
+					character = ROOT
+				}
 			}
-		}
-		FROMFROM = {
-			has_plot = plot_make_voodoo_doll
-			plot_target_char = {
-				character = ROOT
+			FROMFROM = {
+				has_plot = plot_make_voodoo_doll
+				plot_target_char = {
+					character = ROOT
+				}
 			}
 		}
 	}
-}
-immediate = {
-	save_event_target_as = target_victim
-}
-option = {
-	name = EVTOPTAsvampires.83005 # Does not notice weird behavior
+	immediate = {
+		save_event_target_as = target_victim
+	}
+	option = {
+		name = EVTOPTAsvampires.83005 # Does not notice weird behavior
 
-	trigger = {
-		NOT = {
+		trigger = {
+			NOT = {
+				OR = {
+					AND = {
+						trait = paranoid
+						random = 33
+					}
+					AND = {
+						trait = arabyan_scholar
+						random = 40
+					}
+					AND = {
+						trait = deceitful
+						random = 50
+					}
+					AND = {
+						religion = shadowmen	# Knows the danger
+						random = 60
+					}
+					AND = {
+						religion = akghan	# Knows the danger
+						random = 60
+					}
+					AND = {
+						trait = trusting
+						random = 90
+					}
+					AND = {
+						NOT = {
+							trait = paranoid
+						}
+						NOT = {
+							trait = trusting
+						}
+						NOT = {
+							trait = deceitful
+						}
+						NOT = {
+							religion = shadowmen
+						}
+						NOT = {
+							trait = arabyan_scholar
+						}
+						NOT = {
+							religion = akghan
+						}
+						random = 75
+					}
+				}
+			}
+		}
+		hidden_tooltip = {
+			random_list = {
+				25 = {
+					modifier = {
+						factor = 0
+						FROM = {
+							has_character_flag = using_shadow_plot
+						}
+					}
+					hidden_tooltip = {
+						FROM = {
+							character_event = {
+								id = svampires.83013 days = 1
+							}
+						}
+					}
+					character_event = {
+						id = svampires.83006 days = 1
+					} # Object stolen, he notices
+				}
+				75 = {
+					hidden_tooltip = {
+						FROM = {
+							character_event = {
+								id = svampires.83014 days = 1
+							}
+						}
+					}
+					character_event = {
+						id = svampires.83007 days = 1
+					} # Object stolen, he doesn't notices
+				}
+			}
+		}
+	}
+	option = {
+		name = EVTOPTBsvampires.83005 # Notices weird movement
+
+		trigger = {
 			OR = {
 				AND = {
 					trait = paranoid
@@ -14253,10 +14341,10 @@ option = {
 						trait = deceitful
 					}
 					NOT = {
-						religion = shadowmen
+						trait = arabyan_scholar
 					}
 					NOT = {
-						trait = arabyan_scholar
+						religion = shadowmen
 					}
 					NOT = {
 						religion = akghan
@@ -14265,171 +14353,150 @@ option = {
 				}
 			}
 		}
-	}
-	hidden_tooltip = {
-		random_list = {
-			25 = {
-				modifier = {
-					factor = 0
-					FROM = {
-						has_character_flag = using_shadow_plot
-					}
-				}
-				hidden_tooltip = {
-					FROM = {
-						character_event = {
-							id = svampires.83013 days = 1
+		hidden_tooltip = {
+			random_list = {
+				50 = {
+					modifier = {
+						factor = 0
+						FROM = {
+							has_character_flag = using_shadow_plot
 						}
 					}
-				}
-				character_event = {
-					id = svampires.83006 days = 1
-				} # Object stolen, he notices
-			}
-			75 = {
-				hidden_tooltip = {
-					FROM = {
-						character_event = {
-							id = svampires.83014 days = 1
+					hidden_tooltip = {
+						FROM = {
+							character_event = {
+								id = svampires.83015 days = 1
+							}
 						}
 					}
+					character_event = {
+						id = svampires.83008 days = 1
+					} # Lives, plotter discovered
 				}
-				character_event = {
-					id = svampires.83007 days = 1
-				} # Object stolen, he doesn't notices
+				50 = {
+					hidden_tooltip = {
+						FROM = {
+							character_event = {
+								id = svampires.83016 days = 1
+							}
+						}
+					}
+					character_event = {
+						id = svampires.83009 days = 1
+					} # Lives, plotter unknown
+				}
 			}
 		}
 	}
-}
-option = {
-	name = EVTOPTBsvampires.83005 # Notices weird movement
-
-	trigger = {
-		OR = {
-			AND = {
-				trait = paranoid
-				random = 33
-			}
-			AND = {
-				trait = arabyan_scholar
-				random = 40
-			}
-			AND = {
-				trait = deceitful
-				random = 50
-			}
-			AND = {
-				religion = shadowmen	# Knows the danger
-				random = 60
-			}
-			AND = {
-				religion = akghan	# Knows the danger
-				random = 60
-			}
-			AND = {
-				trait = trusting
-				random = 90
-			}
-			AND = {
-				NOT = {
-					trait = paranoid
-				}
-				NOT = {
-					trait = trusting
-				}
-				NOT = {
-					trait = deceitful
-				}
-				NOT = {
-					trait = arabyan_scholar
-				}
-				NOT = {
-					religion = shadowmen
-				}
-				NOT = {
-					religion = akghan
-				}
-				random = 75
-			}
-		}
-	}
-	hidden_tooltip = {
-		random_list = {
-			50 = {
-				modifier = {
-					factor = 0
-					FROM = {
-						has_character_flag = using_shadow_plot
-					}
-				}
-				hidden_tooltip = {
-					FROM = {
-						character_event = {
-							id = svampires.83015 days = 1
-						}
-					}
-				}
-				character_event = {
-					id = svampires.83008 days = 1
-				} # Lives, plotter discovered
-			}
-			50 = {
-				hidden_tooltip = {
-					FROM = {
-						character_event = {
-							id = svampires.83016 days = 1
-						}
-					}
-				}
-				character_event = {
-					id = svampires.83009 days = 1
-				} # Lives, plotter unknown
-			}
-		}
-	}
-}
 }
 
 # Poisoned Wine - the murder attempt
 character_event = {
-id = svampires.90001
-desc = EVTDESC8155
-picture = GFX_evt_feast
-border = GFX_event_normal_frame_intrigue
-hide_from = yes
-is_triggered_only = yes
-trigger = {
-	prisoner = no
-	# Is the plot still in motion?
-	OR = {
-		FROM = {
-			OR = {
-				has_plot = plot_kill_character
-				has_plot = plot_kill_spouse
+	id = svampires.90001
+	desc = EVTDESC8155
+	picture = GFX_evt_feast
+	border = GFX_event_normal_frame_intrigue
+	hide_from = yes
+	is_triggered_only = yes
+	trigger = {
+		prisoner = no
+		# Is the plot still in motion?
+		OR = {
+			FROM = {
+				OR = {
+					has_plot = plot_kill_character
+					has_plot = plot_kill_spouse
+				}
+				plot_target_char = {
+					character = ROOT
+				}
 			}
-			plot_target_char = {
-				character = ROOT
-			}
-		}
-		FROMFROM = {
-			OR = {
-				has_plot = plot_kill_character
-				has_plot = plot_kill_spouse
-			}
-			plot_target_char = {
-				character = ROOT
+			FROMFROM = {
+				OR = {
+					has_plot = plot_kill_character
+					has_plot = plot_kill_spouse
+				}
+				plot_target_char = {
+					character = ROOT
+				}
 			}
 		}
 	}
-}
-immediate = {
-	save_event_target_as = target_victim
-}
-option = {
-	name = "EVTOPTA8155" # Drinks the wine
+	immediate = {
+		save_event_target_as = target_victim
+	}
+	option = {
+		name = "EVTOPTA8155" # Drinks the wine
 
-	trigger = {
-		NOT = {
+		trigger = {
+			NOT = {
+				OR = {
+					AND = {
+						trait = paranoid
+						random = 33
+					}
+					AND = {
+						trait = temperate
+						random = 50
+					}
+					AND = {
+						trait = gluttonous
+						random = 90
+					}
+					AND = {
+						NOT = {
+							trait = temperate
+						}
+						NOT = {
+							trait = gluttonous
+						}
+						NOT = {
+							trait = paranoid
+						}
+						random = 75
+					}
+				}
+			}
+		}
+		hidden_tooltip = {
+			random_list = {
+				25 = {
+					modifier = {
+						factor = 0
+						FROM = {
+							has_character_flag = using_shadow_plot
+						}
+					}
+					hidden_tooltip = {
+						FROM = {
+							character_event = {
+								id = 8163 days = 1
+							}
+						}
+					}
+					character_event = {
+						id = 8156 days = 1
+					} # Dies, murderer discovered
+				}
+				75 = {
+					hidden_tooltip = {
+						FROM = {
+							character_event = {
+								id = 8164 days = 1
+							}
+						}
+					}
+					character_event = {
+						id = 8157 days = 1
+					} # Dies, murderer unknown
+				}
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTB8155" # Discovers the poison
+
+		trigger = {
 			OR = {
 				AND = {
 					trait = paranoid
@@ -14457,288 +14524,221 @@ option = {
 				}
 			}
 		}
-	}
-	hidden_tooltip = {
-		random_list = {
-			25 = {
-				modifier = {
-					factor = 0
-					FROM = {
-						has_character_flag = using_shadow_plot
-					}
-				}
-				hidden_tooltip = {
-					FROM = {
-						character_event = {
-							id = 8163 days = 1
+		hidden_tooltip = {
+			random_list = {
+				50 = {
+					modifier = {
+						factor = 0
+						FROM = {
+							has_character_flag = using_shadow_plot
 						}
 					}
-				}
-				character_event = {
-					id = 8156 days = 1
-				} # Dies, murderer discovered
-			}
-			75 = {
-				hidden_tooltip = {
-					FROM = {
-						character_event = {
-							id = 8164 days = 1
+					hidden_tooltip = {
+						FROM = {
+							character_event = {
+								id = 8165 days = 1
+							}
 						}
 					}
+					character_event = {
+						id = 8158 days = 1
+					} # Lives, murderer discovered
 				}
-				character_event = {
-					id = 8157 days = 1
-				} # Dies, murderer unknown
+				50 = {
+					hidden_tooltip = {
+						FROM = {
+							character_event = {
+								id = 8166 days = 1
+							}
+						}
+					}
+					character_event = {
+						id = 8159 days = 1
+					} # Lives, murderer unknown
+				}
 			}
 		}
 	}
-}
-option = {
-	name = "EVTOPTB8155" # Discovers the poison
-
-	trigger = {
-		OR = {
-			AND = {
-				trait = paranoid
-				random = 33
-			}
-			AND = {
-				trait = temperate
-				random = 50
-			}
-			AND = {
-				trait = gluttonous
-				random = 90
-			}
-			AND = {
-				NOT = {
-					trait = temperate
-				}
-				NOT = {
-					trait = gluttonous
-				}
-				NOT = {
-					trait = paranoid
-				}
-				random = 75
-			}
-		}
-	}
-	hidden_tooltip = {
-		random_list = {
-			50 = {
-				modifier = {
-					factor = 0
-					FROM = {
-						has_character_flag = using_shadow_plot
-					}
-				}
-				hidden_tooltip = {
-					FROM = {
-						character_event = {
-							id = 8165 days = 1
-						}
-					}
-				}
-				character_event = {
-					id = 8158 days = 1
-				} # Lives, murderer discovered
-			}
-			50 = {
-				hidden_tooltip = {
-					FROM = {
-						character_event = {
-							id = 8166 days = 1
-						}
-					}
-				}
-				character_event = {
-					id = 8159 days = 1
-				} # Lives, murderer unknown
-			}
-		}
-	}
-}
 }
 
 # Vampires do not tolerate competition in love
 character_event = {
-id = svampires.91
-desc = EVTDESCsvampires91
-picture = GFX_evt_vampire_politics
-religion_group = necromantic_group
-capable_only = yes
-prisoner = no
-trigger = {
-	is_vampire_trigger = yes
-	cant_love_trigger = yes
-	has_lover = yes
-	any_lover = {
+	id = svampires.91
+	desc = EVTDESCsvampires91
+	picture = GFX_evt_vampire_politics
+	religion_group = necromantic_group
+	capable_only = yes
+	prisoner = no
+	trigger = {
 		is_vampire_trigger = yes
-		num_of_lovers = 2
 		cant_love_trigger = yes
-	}
-}
-mean_time_to_happen = {
-	months = 60
-	modifier = {
-		factor = 0.8
-		trait = wroth
-	}
-	modifier = {
-		factor = 0.6
-		trait = vampire_lahmian_visible
-	}
-	modifier = {
-		factor = 0.7
-		trait = vampire_carstein_visible
-	}
-	modifier = {
-		factor = 0.8
-		trait = vampire_jade_visible
-	}
-	modifier = {
-		factor = 0.5
-		trait = envious
-	}
-	modifier = {
-		factor = 0.8
-		trait = cruel
-	}
-	modifier = {
-		factor = 1.2
-		trait = charitable
-	}
-	modifier = {
-		factor = 1.2
-		trait = kind
-	}
-	modifier = {
-		factor = 1.2
-		trait = patient
-	}
-}
-option = {
-	name = EVTOPTAsvampires91
-	random_lover = {
-		limit = {
+		has_lover = yes
+		any_lover = {
 			is_vampire_trigger = yes
 			num_of_lovers = 2
 			cant_love_trigger = yes
 		}
-		character_event = {
-			id = svampires.91001
-		}
 	}
-}
-option = {
-	name = EVTOPTBsvampires91
-
-	trigger = {
-		OR = {
+	mean_time_to_happen = {
+		months = 60
+		modifier = {
+			factor = 0.8
+			trait = wroth
+		}
+		modifier = {
+			factor = 0.6
+			trait = vampire_lahmian_visible
+		}
+		modifier = {
+			factor = 0.7
+			trait = vampire_carstein_visible
+		}
+		modifier = {
+			factor = 0.8
+			trait = vampire_jade_visible
+		}
+		modifier = {
+			factor = 0.5
+			trait = envious
+		}
+		modifier = {
+			factor = 0.8
+			trait = cruel
+		}
+		modifier = {
+			factor = 1.2
 			trait = charitable
+		}
+		modifier = {
+			factor = 1.2
 			trait = kind
 		}
+		modifier = {
+			factor = 1.2
+			trait = patient
+		}
 	}
-	ai_chance = {
-		factor = 0
+	option = {
+		name = EVTOPTAsvampires91
+		random_lover = {
+			limit = {
+				is_vampire_trigger = yes
+				num_of_lovers = 2
+				cant_love_trigger = yes
+			}
+			character_event = {
+				id = svampires.91001
+			}
+		}
 	}
-}
+	option = {
+		name = EVTOPTBsvampires91
+
+		trigger = {
+			OR = {
+				trait = charitable
+				trait = kind
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
 }
 
 # Letcher receives ultimatum
 character_event = {
-id = svampires.91001
-desc = EVTDESCsvampires91001
-picture = GFX_evt_vampire_politics
-capable_only = yes
-prisoner = no
-trigger = {
-	is_vampire_trigger = yes
-	cant_love_trigger = yes
-	has_lover = yes
-	any_lover = {
-		cant_love_trigger = yes
+	id = svampires.91001
+	desc = EVTDESCsvampires91001
+	picture = GFX_evt_vampire_politics
+	capable_only = yes
+	prisoner = no
+	trigger = {
 		is_vampire_trigger = yes
-		num_of_lovers = 2
+		cant_love_trigger = yes
+		has_lover = yes
+		any_lover = {
+			cant_love_trigger = yes
+			is_vampire_trigger = yes
+			num_of_lovers = 2
+		}
 	}
-}
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires91001
-	any_lover = {
-		limit = {
-			NOT = {
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires91001
+		any_lover = {
+			limit = {
+				NOT = {
+					character = FROM
+				}
+				cant_love_trigger = yes
+			}
+			character_event = {
+				id = svampires.91004
+			}
+		}
+		any_lover = {
+			limit = {
 				character = FROM
 			}
-			cant_love_trigger = yes
-		}
-		character_event = {
-			id = svampires.91004
-		}
-	}
-	any_lover = {
-		limit = {
-			character = FROM
-		}
-		character_event = {
-			id = svampires.91003
+			character_event = {
+				id = svampires.91003
+			}
 		}
 	}
-}
-option = {
-	name = EVTOPTBsvampires91001
-	any_lover = {
-		limit = {
-			character = FROM
-		}
-		character_event = {
-			id = svampires.91002
+	option = {
+		name = EVTOPTBsvampires91001
+		any_lover = {
+			limit = {
+				character = FROM
+			}
+			character_event = {
+				id = svampires.91002
+			}
 		}
 	}
-}
 }
 
 # The lover is dumped and becomes the letcher's rival
 character_event = {
-id = svampires.91002
-desc = EVTDESCsvampires91002
-picture = GFX_evt_vampire_politics
-capable_only = yes
-prisoner = no
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires91002
-	remove_lover = FROM
-	add_rival = FROM
-}
+	id = svampires.91002
+	desc = EVTDESCsvampires91002
+	picture = GFX_evt_vampire_politics
+	capable_only = yes
+	prisoner = no
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires91002
+		remove_lover = FROM
+		add_rival = FROM
+	}
 }
 
 # The lover is conforted
 character_event = {
-id = svampires.91003
-desc = EVTDESCsvampires91003
-picture = GFX_evt_vampire_politics
-capable_only = yes
-prisoner = no
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires91003
-	prestige = 100
-}
+	id = svampires.91003
+	desc = EVTDESCsvampires91003
+	picture = GFX_evt_vampire_politics
+	capable_only = yes
+	prisoner = no
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires91003
+		prestige = 100
+	}
 }
 
 # Other lovers are dumped and become rivals of the selected
 character_event = {
-id = svampires.91004
-desc = EVTDESCsvampires91004
-picture = GFX_evt_vampire_politics
-capable_only = yes
-prisoner = no
-is_triggered_only = yes
-option = {
-	name = EVTOPTAsvampires91004
-	remove_lover = FROM
-	add_rival = FROMFROM
-}
+	id = svampires.91004
+	desc = EVTDESCsvampires91004
+	picture = GFX_evt_vampire_politics
+	capable_only = yes
+	prisoner = no
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTAsvampires91004
+		remove_lover = FROM
+		add_rival = FROMFROM
+	}
 }

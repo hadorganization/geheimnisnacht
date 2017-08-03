@@ -10805,150 +10805,115 @@ character_event = {
 
 # Think someone is trying to kill you
 character_event = {
-id = 3485
-desc = EVTDESC3485
-picture = GFX_evt_hunt
-only_playable = yes
-min_age = 16
-capable_only = yes
-prisoner = no
-war = no
-is_triggered_only = yes
-trigger = {
-	trait = paranoid
-	in_command = no
-	NOT = {
-		is_inaccessible_trigger = yes
-	}
-}
-weight_multiplier = {
-	factor = 1
-	modifier = {
-		factor = 0.4
-		trait = wroth
-	}
-	modifier = {
-		factor = 0.5
-		trait = lustful
-	}
-	modifier = {
-		factor = 3.0
-		trait = diligent
-	}
-	modifier = {
-		factor = 5.0
-		trait = humble
-	}
-}
-option = {
-	name = EVTOPTA3485
-	random = {
-		chance = 15
-		add_trait = stressed
-		hidden_tooltip = {
-			character_event = {
-				id = 38282
-			}
-		}
-	}
-}
-option = {
-	name = EVTOPTB3485
-
+	id = 3485
+	desc = EVTDESC3485
+	picture = GFX_evt_hunt
+	only_playable = yes
+	min_age = 16
+	capable_only = yes
+	prisoner = no
+	war = no
+	is_triggered_only = yes
 	trigger = {
-		any_courtier = {
-			age = 16
-			is_female = no
-			prisoner = no
-			OR = {
-				trait = deceitful
-				trait = wroth
-				trait = brave
-				trait = ambitious
-				trait = diligent
-			}
-			NOR = {
-				character = ROOT
-				trait = incapable
+		trait = paranoid
+		in_command = no
+		NOT = {
+			is_inaccessible_trigger = yes
+		}
+	}
+	weight_multiplier = {
+		factor = 1
+		modifier = {
+			factor = 0.4
+			trait = wroth
+		}
+		modifier = {
+			factor = 0.5
+			trait = lustful
+		}
+		modifier = {
+			factor = 3.0
+			trait = diligent
+		}
+		modifier = {
+			factor = 5.0
+			trait = humble
+		}
+	}
+	option = {
+		name = EVTOPTA3485
+		random = {
+			chance = 15
+			add_trait = stressed
+			hidden_tooltip = {
+				character_event = {
+					id = 38282
+				}
 			}
 		}
 	}
-	random_courtier = {
-		limit = {
-			age = 16
-			is_female = no
-			prisoner = no
-			OR = {
-				trait = deceitful
-				trait = wroth
-				trait = brave
-				trait = ambitious
-				trait = diligent
-			}
-			NOR = {
-				character = ROOT
-				trait = incapable
+	option = {
+		name = EVTOPTB3485
+
+		trigger = {
+			any_courtier = {
+				age = 16
+				is_female = no
+				prisoner = no
+				OR = {
+					trait = deceitful
+					trait = wroth
+					trait = brave
+					trait = ambitious
+					trait = diligent
+				}
+				NOR = {
+					character = ROOT
+					trait = incapable
+				}
 			}
 		}
-		opinion = {
-			modifier = paranoid_neg
-			who = ROOT
-			years = 10
+		random_courtier = {
+			limit = {
+				age = 16
+				is_female = no
+				prisoner = no
+				OR = {
+					trait = deceitful
+					trait = wroth
+					trait = brave
+					trait = ambitious
+					trait = diligent
+				}
+				NOR = {
+					character = ROOT
+					trait = incapable
+				}
+			}
+			opinion = {
+				modifier = paranoid_neg
+				who = ROOT
+				years = 10
+			}
 		}
 	}
-}
 }
 
 # Imagine that friend trying to poison?
 character_event = {
-id = 3490
-desc = EVTDESC3490
-picture = GFX_evt_scandal
-only_playable = yes
-min_age = 16
-capable_only = yes
-prisoner = no
-war = no
-is_triggered_only = yes
-trigger = {
-	trait = paranoid
-	in_command = no
-	any_courtier = {
-		age = 16
-		prisoner = no
-		opinion = {
-			who = ROOT value = 65
-		}
-		NOR = {
-			character = ROOT
-			trait = incapable
-			trait = paranoid
-		}
-	}
-}
-weight_multiplier = {
-	factor = 1
-	modifier = {
-		factor = 4.0
-		trait = gluttonous
-	}
-	modifier = {
-		factor = 5.0
-		trait = lustful
-	}
-	modifier = {
-		factor = 0.5
-		trait = temperate
-	}
-	modifier = {
-		factor = 0.5
-		trait = chaste
-	}
-}
-option = {
-	name = EVTOPTA3490
-	random_courtier = {
-		limit = {
+	id = 3490
+	desc = EVTDESC3490
+	picture = GFX_evt_scandal
+	only_playable = yes
+	min_age = 16
+	capable_only = yes
+	prisoner = no
+	war = no
+	is_triggered_only = yes
+	trigger = {
+		trait = paranoid
+		in_command = no
+		any_courtier = {
 			age = 16
 			prisoner = no
 			opinion = {
@@ -10960,223 +10925,226 @@ option = {
 				trait = paranoid
 			}
 		}
-		character_event = {
-			id = 3491
-			days = 1
-			tooltip = EVTTOOLTIP3491
+	}
+	weight_multiplier = {
+		factor = 1
+		modifier = {
+			factor = 4.0
+			trait = gluttonous
+		}
+		modifier = {
+			factor = 5.0
+			trait = lustful
+		}
+		modifier = {
+			factor = 0.5
+			trait = temperate
+		}
+		modifier = {
+			factor = 0.5
+			trait = chaste
 		}
 	}
-}
+	option = {
+		name = EVTOPTA3490
+		random_courtier = {
+			limit = {
+				age = 16
+				prisoner = no
+				opinion = {
+					who = ROOT value = 65
+				}
+				NOR = {
+					character = ROOT
+					trait = incapable
+					trait = paranoid
+				}
+			}
+			character_event = {
+				id = 3491
+				days = 1
+				tooltip = EVTTOOLTIP3491
+			}
+		}
+	}
 }
 
 # Paranoid
 character_event = {
-id = 3491
-desc = EVTDESC3491
-picture = GFX_evt_scandal
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3491
-	opinion = {
-		modifier = paranoid_neg
-		who = FROM
-		years = 10
-	}
-	FROM = {
-		character_event = {
-			id = 3492
-			days = 2
-			tooltip = EVTTOOLTIP3492
-		}
-	}
-}
-}
-
-# Paranoid
-character_event = {
-id = 3492
-desc = EVTDESC3492
-picture = GFX_evt_scandal
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3492
-	FROM = {
+	id = 3491
+	desc = EVTDESC3491
+	picture = GFX_evt_scandal
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3491
 		opinion = {
 			modifier = paranoid_neg
-			who = ROOT
-			years = 2
+			who = FROM
+			years = 10
+		}
+		FROM = {
+			character_event = {
+				id = 3492
+				days = 2
+				tooltip = EVTTOOLTIP3492
+			}
 		}
 	}
 }
+
+# Paranoid
+character_event = {
+	id = 3492
+	desc = EVTDESC3492
+	picture = GFX_evt_scandal
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3492
+		FROM = {
+			opinion = {
+				modifier = paranoid_neg
+				who = ROOT
+				years = 2
+			}
+		}
+	}
 }
 
 # Paranoia is dangerous
 character_event = {
-id = 3495
-desc = EVTDESC3495
-picture = GFX_evt_scandal
-only_playable = yes
-min_age = 16
-capable_only = yes
-prisoner = no
-war = no
-is_triggered_only = yes
-trigger = {
-	in_command = no
-	prestige = 100
-	trait = paranoid
-}
-weight_multiplier = {
-	factor = 1
-	modifier = {
-		factor = 2.0
-		trait = slothful
+	id = 3495
+	desc = EVTDESC3495
+	picture = GFX_evt_scandal
+	only_playable = yes
+	min_age = 16
+	capable_only = yes
+	prisoner = no
+	war = no
+	is_triggered_only = yes
+	trigger = {
+		in_command = no
+		prestige = 100
+		trait = paranoid
 	}
-	modifier = {
-		factor = 3.0
-		trait = envious
-	}
-	modifier = {
-		factor = 0.4
-		trait = patient
-	}
-	modifier = {
-		factor = 0.5
-		trait = humble
-	}
-}
-option = {
-	name = EVTOPTA3495
-	prestige = -10
-	if = {
-		limit = {
-			NOR = {
-				trait = craven trait = berserker
-			}
+	weight_multiplier = {
+		factor = 1
+		modifier = {
+			factor = 2.0
+			trait = slothful
 		}
-		random = {
-			chance = 15
-			add_trait = craven
-			hidden_tooltip = {
-				character_event = {
-					id = 38257
+		modifier = {
+			factor = 3.0
+			trait = envious
+		}
+		modifier = {
+			factor = 0.4
+			trait = patient
+		}
+		modifier = {
+			factor = 0.5
+			trait = humble
+		}
+	}
+	option = {
+		name = EVTOPTA3495
+		prestige = -10
+		if = {
+			limit = {
+				NOR = {
+					trait = craven trait = berserker
+				}
+			}
+			random = {
+				chance = 15
+				add_trait = craven
+				hidden_tooltip = {
+					character_event = {
+						id = 38257
+					}
 				}
 			}
 		}
 	}
-}
-option = {
-	name = EVTOPTB3495
-	any_courtier = {
-		limit = {
-			age = 16
-			prisoner = no
-		}
-		opinion = {
-			modifier = paranoid_neg
-			who = ROOT
-			years = 5
+	option = {
+		name = EVTOPTB3495
+		any_courtier = {
+			limit = {
+				age = 16
+				prisoner = no
+			}
+			opinion = {
+				modifier = paranoid_neg
+				who = ROOT
+				years = 5
+			}
 		}
 	}
-}
 }
 
 # Trusting positive
 character_event = {
-id = 3500
-desc = EVTDESC3500
-picture = GFX_evt_carriage
-only_playable = yes
-min_age = 16
-capable_only = yes
-prisoner = no
-war = no
-is_triggered_only = yes
-trigger = {
-	trait = trusting
-	in_command = no
-	piety = 100
-}
-weight_multiplier = {
-	factor = 1
-	modifier = {
-		factor = 0.3
-		trait = greedy
+	id = 3500
+	desc = EVTDESC3500
+	picture = GFX_evt_carriage
+	only_playable = yes
+	min_age = 16
+	capable_only = yes
+	prisoner = no
+	war = no
+	is_triggered_only = yes
+	trigger = {
+		trait = trusting
+		in_command = no
+		piety = 100
 	}
-	modifier = {
-		factor = 0.3
-		trait = envious
+	weight_multiplier = {
+		factor = 1
+		modifier = {
+			factor = 0.3
+			trait = greedy
+		}
+		modifier = {
+			factor = 0.3
+			trait = envious
+		}
+		modifier = {
+			factor = 3.0
+			trait = diligent
+		}
+		modifier = {
+			factor = 5.0
+			trait = humble
+		}
 	}
-	modifier = {
-		factor = 3.0
-		trait = diligent
+	option = {
+		name = EVTOPTA3500
+		piety = 15
 	}
-	modifier = {
-		factor = 5.0
-		trait = humble
-	}
-}
-option = {
-	name = EVTOPTA3500
-	piety = 15
-}
 }
 
 # Trusting positive: Start
 character_event = {
-id = 3505
-desc = EVTDESC3505
-picture = GFX_evt_carriage
-only_playable = yes
-min_age = 16
-capable_only = yes
-prisoner = no
-war = no
-is_triggered_only = yes
-trigger = {
-	trait = trusting
-	in_command = no
-	NOT = {
-		is_inaccessible_trigger = yes
-	}
-	OR = {
-		tier = count
-		tier = duke
-		is_councillor = yes
-	}
-	any_courtier = {
-		age = 16
-		prisoner = no
-		NOR = {
+	id = 3505
+	desc = EVTDESC3505
+	picture = GFX_evt_carriage
+	only_playable = yes
+	min_age = 16
+	capable_only = yes
+	prisoner = no
+	war = no
+	is_triggered_only = yes
+	trigger = {
+		trait = trusting
+		in_command = no
+		NOT = {
 			is_inaccessible_trigger = yes
-			character = ROOT
-			trait = incapable
 		}
-	}
-}
-weight_multiplier = {
-	factor = 1
-	modifier = {
-		factor = 0.3
-		trait = envious
-	}
-	modifier = {
-		factor = 0.5
-		trait = lustful
-	}
-	modifier = {
-		factor = 5.0
-		trait = temperate
-	}
-	modifier = {
-		factor = 4.0
-		trait = patient
-	}
-}
-option = {
-	name = EVTOPTA3505
-	random_courtier = {
-		limit = {
+		OR = {
+			tier = count
+			tier = duke
+			is_councillor = yes
+		}
+		any_courtier = {
 			age = 16
 			prisoner = no
 			NOR = {
@@ -11185,162 +11153,154 @@ option = {
 				trait = incapable
 			}
 		}
-		character_event = {
-			id = 3506
-			tooltip = EVTTOOLTIP3506
+	}
+	weight_multiplier = {
+		factor = 1
+		modifier = {
+			factor = 0.3
+			trait = envious
+		}
+		modifier = {
+			factor = 0.5
+			trait = lustful
+		}
+		modifier = {
+			factor = 5.0
+			trait = temperate
+		}
+		modifier = {
+			factor = 4.0
+			trait = patient
 		}
 	}
-}
+	option = {
+		name = EVTOPTA3505
+		random_courtier = {
+			limit = {
+				age = 16
+				prisoner = no
+				NOR = {
+					is_inaccessible_trigger = yes
+					character = ROOT
+					trait = incapable
+				}
+			}
+			character_event = {
+				id = 3506
+				tooltip = EVTTOOLTIP3506
+			}
+		}
+	}
 }
 
 # Trusting Positive: Courtier
 character_event = {
-id = 3506
-desc = EVTDESC3506
-picture = GFX_evt_carriage
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3506
-	opinion = {
-		modifier = trusting_pos
-		who = FROM
-		years = 1
-	}
-	FROM = {
-		character_event = {
-			id = 3507
-			tooltip = EVTTOOLTIP3507
+	id = 3506
+	desc = EVTDESC3506
+	picture = GFX_evt_carriage
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3506
+		opinion = {
+			modifier = trusting_pos
+			who = FROM
+			years = 1
+		}
+		FROM = {
+			character_event = {
+				id = 3507
+				tooltip = EVTTOOLTIP3507
+			}
 		}
 	}
-}
 }
 
 # Trusting Positive: The End
 character_event = {
-id = 3507
-desc = EVTDESC3507
-picture = GFX_evt_carriage
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3507
-	FROM = {
+	id = 3507
+	desc = EVTDESC3507
+	picture = GFX_evt_carriage
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3507
+		FROM = {
+			opinion = {
+				modifier = trusting_pos
+				who = ROOT
+				years = 1
+			}
+		}
 		opinion = {
 			modifier = trusting_pos
-			who = ROOT
-			years = 1
+			who = FROM
+			years = 2
 		}
 	}
-	opinion = {
-		modifier = trusting_pos
-		who = FROM
-		years = 2
-	}
-}
 }
 
 # Trusting negative
 character_event = {
-id = 3510
-desc = EVTDESC3510
-picture = GFX_evt_drunk
-only_playable = yes
-min_age = 16
-capable_only = yes
-prisoner = no
-war = no
-is_triggered_only = yes
-trigger = {
-	trait = trusting
-	in_command = no
-	treasury = 200
-	NOR = {
-		learning = 9
-		is_inaccessible_trigger = yes
+	id = 3510
+	desc = EVTDESC3510
+	picture = GFX_evt_drunk
+	only_playable = yes
+	min_age = 16
+	capable_only = yes
+	prisoner = no
+	war = no
+	is_triggered_only = yes
+	trigger = {
+		trait = trusting
+		in_command = no
+		treasury = 200
+		NOR = {
+			learning = 9
+			is_inaccessible_trigger = yes
+		}
 	}
-}
-weight_multiplier = {
-	factor = 1
-	modifier = {
-		factor = 3.0
-		trait = envious
+	weight_multiplier = {
+		factor = 1
+		modifier = {
+			factor = 3.0
+			trait = envious
+		}
+		modifier = {
+			factor = 4.0
+			trait = wroth
+		}
+		modifier = {
+			factor = 0.4
+			trait = charitable
+		}
+		modifier = {
+			factor = 0.4
+			trait = patient
+		}
 	}
-	modifier = {
-		factor = 4.0
-		trait = wroth
+	option = {
+		name = EVTOPTA3510
+		scaled_wealth = -0.05
 	}
-	modifier = {
-		factor = 0.4
-		trait = charitable
-	}
-	modifier = {
-		factor = 0.4
-		trait = patient
-	}
-}
-option = {
-	name = EVTOPTA3510
-	scaled_wealth = -0.05
-}
 }
 
 # Trusting negative: Start
 character_event = {
-id = 3515
-desc = EVTDESC3515
-picture = GFX_evt_falconing
-only_playable = yes
-min_age = 16
-capable_only = yes
-prisoner = no
-war = no
-is_triggered_only = yes
-trigger = {
-	trait = trusting
-	in_command = no
-	NOT = {
-		is_inaccessible_trigger = yes
-	}
-	any_courtier = {
-		age = 16
-		prisoner = no
-		OR = {
-			NAND = {
-				trait = brave
-				trait = falconer
-			}
-			trait = paranoid
-			martial = 8
-		}
-		NOR = {
+	id = 3515
+	desc = EVTDESC3515
+	picture = GFX_evt_falconing
+	only_playable = yes
+	min_age = 16
+	capable_only = yes
+	prisoner = no
+	war = no
+	is_triggered_only = yes
+	trigger = {
+		trait = trusting
+		in_command = no
+		NOT = {
 			is_inaccessible_trigger = yes
-			character = ROOT
-			trait = incapable
 		}
-	}
-}
-weight_multiplier = {
-	factor = 1
-	modifier = {
-		factor = 3.0
-		trait = envious
-	}
-	modifier = {
-		factor = 4.0
-		trait = wroth
-	}
-	modifier = {
-		factor = 0.4
-		trait = patient
-	}
-	modifier = {
-		factor = 0.5
-		trait = humble
-	}
-}
-option = {
-	name = EVTOPTA3515
-	random_courtier = {
-		limit = {
+		any_courtier = {
 			age = 16
 			prisoner = no
 			OR = {
@@ -11357,50 +11317,90 @@ option = {
 				trait = incapable
 			}
 		}
-		character_event = {
-			id = 3516
-			tooltip = EVTTOOLTIP3516
+	}
+	weight_multiplier = {
+		factor = 1
+		modifier = {
+			factor = 3.0
+			trait = envious
+		}
+		modifier = {
+			factor = 4.0
+			trait = wroth
+		}
+		modifier = {
+			factor = 0.4
+			trait = patient
+		}
+		modifier = {
+			factor = 0.5
+			trait = humble
 		}
 	}
-}
+	option = {
+		name = EVTOPTA3515
+		random_courtier = {
+			limit = {
+				age = 16
+				prisoner = no
+				OR = {
+					NAND = {
+						trait = brave
+						trait = falconer
+					}
+					trait = paranoid
+					martial = 8
+				}
+				NOR = {
+					is_inaccessible_trigger = yes
+					character = ROOT
+					trait = incapable
+				}
+			}
+			character_event = {
+				id = 3516
+				tooltip = EVTTOOLTIP3516
+			}
+		}
+	}
 }
 
 # Trusting negative: Courtier
 character_event = {
-id = 3516
-desc = EVTDESC3516
-picture = GFX_evt_falconing
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3516
-	FROM = {
-		opinion = {
-			modifier = opinion_disappointed
-			who = ROOT
-			years = 2
-		}
-		character_event = {
-			id = 3517
-			tooltip = EVTTOOLTIP3517
+	id = 3516
+	desc = EVTDESC3516
+	picture = GFX_evt_falconing
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3516
+		FROM = {
+			opinion = {
+				modifier = opinion_disappointed
+				who = ROOT
+				years = 2
+			}
+			character_event = {
+				id = 3517
+				tooltip = EVTTOOLTIP3517
+			}
 		}
 	}
-}
 }
 
 # Trusting negative: The End
 character_event = {
-id = 3517
-desc = EVTDESC3517
-picture = GFX_evt_falconing
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3517
-	opinion = {
-		modifier = opinion_disappointed
-		who = FROM
-		years = 2
+	id = 3517
+	desc = EVTDESC3517
+	picture = GFX_evt_falconing
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3517
+		opinion = {
+			modifier = opinion_disappointed
+			who = FROM
+			years = 2
+		}
 	}
-}
 }
 
 # LIFESTYLE TRAITS
@@ -11409,195 +11409,171 @@ option = {
 
 # Celibate
 character_event = {
-id = 3520
-desc = EVTDESC3520
-picture = GFX_evt_quarrel
-only_playable = yes
-min_age = 16
-capable_only = yes
-prisoner = no
-religion_group = old_world_group
-war = no
-is_triggered_only = yes
-trigger = {
-	trait = celibate
-	in_command = no
-	fertility = 0.4
-	has_lover = no
-	OR = {
-		trait = chaste
-		piety = 50
-		trait = humble
-	}
-	is_married = yes
-	spouse = {
-		is_alive = yes
-		is_abroad = no
-		prisoner = no
-		has_lover = no
-		is_pregnant = no
-		OR = {
-			trait = lustful
-			trait = hedonist
-			NAND = {
-				trait = chaste
-				trait = celibate
-			}
-		}
-	}
-}
-weight_multiplier = {
-	factor = 1
-	modifier = {
-		factor = 0.5
-		trait = wroth
-	}
-	modifier = {
-		factor = 2
-		diplomacy = 8
-	}
-}
-option = {
-	name = EVTOPTA3520
-	piety = 10
-	spouse = {
-		character_event = {
-			id = 3521
-			days = 2
-			tooltip = EVTTOOLTIP3521
-		}
-		opinion = {
-			modifier = opinion_spurned
-			who = ROOT
-			years = 5
-		}
-	}
-}
-option = {
-	name = EVTOPTB3520
-	remove_trait = celibate
-	piety = -10
-	spouse = {
-		add_lover = ROOT
-	}
-}
-option = {
-	name = EVTOPTC3520
-
+	id = 3520
+	desc = EVTDESC3520
+	picture = GFX_evt_quarrel
+	only_playable = yes
+	min_age = 16
+	capable_only = yes
+	prisoner = no
+	religion_group = old_world_group
+	war = no
+	is_triggered_only = yes
 	trigger = {
-		fertility = 0.5
+		trait = celibate
+		in_command = no
+		fertility = 0.4
+		has_lover = no
+		OR = {
+			trait = chaste
+			piety = 50
+			trait = humble
+		}
+		is_married = yes
 		spouse = {
 			is_alive = yes
 			is_abroad = no
-			fertility = 0.5
+			prisoner = no
+			has_lover = no
+			is_pregnant = no
 			OR = {
-				reverse_opinion = {
-					who = ROOT value = 30
-				}
-				opinion = {
-					who = ROOT value = 30
+				trait = lustful
+				trait = hedonist
+				NAND = {
+					trait = chaste
+					trait = celibate
 				}
 			}
 		}
 	}
-	remove_trait = celibate
-	piety = -10
-	spouse = {
-		add_lover = ROOT
-	}
-	random = {
-		chance = 20
-		spouse = {
-			impregnate_cuckoo = ROOT
+	weight_multiplier = {
+		factor = 1
+		modifier = {
+			factor = 0.5
+			trait = wroth
+		}
+		modifier = {
+			factor = 2
+			diplomacy = 8
 		}
 	}
-}
+	option = {
+		name = EVTOPTA3520
+		piety = 10
+		spouse = {
+			character_event = {
+				id = 3521
+				days = 2
+				tooltip = EVTTOOLTIP3521
+			}
+			opinion = {
+				modifier = opinion_spurned
+				who = ROOT
+				years = 5
+			}
+		}
+	}
+	option = {
+		name = EVTOPTB3520
+		remove_trait = celibate
+		piety = -10
+		spouse = {
+			add_lover = ROOT
+		}
+	}
+	option = {
+		name = EVTOPTC3520
+
+		trigger = {
+			fertility = 0.5
+			spouse = {
+				is_alive = yes
+				is_abroad = no
+				fertility = 0.5
+				OR = {
+					reverse_opinion = {
+						who = ROOT value = 30
+					}
+					opinion = {
+						who = ROOT value = 30
+					}
+				}
+			}
+		}
+		remove_trait = celibate
+		piety = -10
+		spouse = {
+			add_lover = ROOT
+		}
+		random = {
+			chance = 20
+			spouse = {
+				impregnate_cuckoo = ROOT
+			}
+		}
+	}
 }
 
 # Celibate: Spouse
 character_event = {
-id = 3521
-desc = EVTDESC3521
-picture = GFX_evt_quarrel
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3521
-	if = {
-		limit = {
-			religion_group = old_world_group
+	id = 3521
+	desc = EVTDESC3521
+	picture = GFX_evt_quarrel
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3521
+		if = {
+			limit = {
+				religion_group = old_world_group
+			}
+			add_trait = chaste
+			break = yes
 		}
-		add_trait = chaste
-		break = yes
-	}
-	if = {
-		limit = {
-			religion_group = ormazd_gods_group
-		}
-		piety = 5
-	}
-}
-option = {
-	name = EVTOPTB3521
-	spouse = {
-		reverse_opinion = {
-			modifier = opinion_spurned
-			who = ROOT
-			years = 1
+		if = {
+			limit = {
+				religion_group = ormazd_gods_group
+			}
+			piety = 5
 		}
 	}
-}
+	option = {
+		name = EVTOPTB3521
+		spouse = {
+			reverse_opinion = {
+				modifier = opinion_spurned
+				who = ROOT
+				years = 1
+			}
+		}
+	}
 }
 
 # Celibate: Advice
 character_event = {
-id = 3525
-desc = EVTDESC3525
-picture = GFX_evt_courtiers_talking
-only_playable = yes
-min_age = 27
-capable_only = yes
-prisoner = no
-religion_group = old_world_group
-war = no
-is_triggered_only = yes
-trigger = {
-	in_command = no
-	NOT = {
-		is_inaccessible_trigger = yes
-	}
-	trait = celibate
-	OR = {
-		trait = chaste
+	id = 3525
+	desc = EVTDESC3525
+	picture = GFX_evt_courtiers_talking
+	only_playable = yes
+	min_age = 27
+	capable_only = yes
+	prisoner = no
+	religion_group = old_world_group
+	war = no
+	is_triggered_only = yes
+	trigger = {
+		in_command = no
 		NOT = {
-			trait = lustful
-		}
-		piety = 30
-	}
-	any_vassal = {
-		trait = chaste
-		age = 16
-		NOR = {
-			age = 25
 			is_inaccessible_trigger = yes
-			trait = celibate
-			trait = hedonist
 		}
-	}
-}
-weight_multiplier = {
-	factor = 1
-	modifier = {
-		factor = 0.5
-		trait = shy
-	}
-	modifier = {
-		factor = 2
-		trait = gregarious
-	}
-}
-immediate = {
-	random_vassal = {
-		limit = {
+		trait = celibate
+		OR = {
+			trait = chaste
+			NOT = {
+				trait = lustful
+			}
+			piety = 30
+		}
+		any_vassal = {
 			trait = chaste
 			age = 16
 			NOR = {
@@ -11607,170 +11583,161 @@ immediate = {
 				trait = hedonist
 			}
 		}
-		save_event_target_as = chaste_vassal
 	}
-}
-option = {
-	name = EVTOPTA3525
-	event_target:chaste_vassal = {
-		character_event = {
-			id = 3526
-			days = 2
-			tooltip = EVTTOOLTIP3526
+	weight_multiplier = {
+		factor = 1
+		modifier = {
+			factor = 0.5
+			trait = shy
+		}
+		modifier = {
+			factor = 2
+			trait = gregarious
 		}
 	}
-}
-option = {
-	name = EVTOPTB3525
-	event_target:chaste_vassal = {
-		opinion = {
-			modifier = opinion_disappointed
-			who = ROOT
-			years = 5
-		}
-	}
-}
-option = {
-	name = EVTOPTA3525
-	tooltip_info = zealous
-
-	trigger = {
-		trait = zealous
-	}
-	if = {
-		limit = {
-			NOT = {
-				trait = paranoid
+	immediate = {
+		random_vassal = {
+			limit = {
+				trait = chaste
+				age = 16
+				NOR = {
+					age = 25
+					is_inaccessible_trigger = yes
+					trait = celibate
+					trait = hedonist
+				}
 			}
+			save_event_target_as = chaste_vassal
 		}
-		add_trait = paranoid
 	}
-	event_target:chaste_vassal = {
-		add_trait = paranoid
-		hidden_tooltip = {
+	option = {
+		name = EVTOPTA3525
+		event_target:chaste_vassal = {
 			character_event = {
-				id = 38275
+				id = 3526
+				days = 2
+				tooltip = EVTTOOLTIP3526
 			}
 		}
-		opinion = {
-			modifier = opinion_horrified
-			who = ROOT
-			years = 5
+	}
+	option = {
+		name = EVTOPTB3525
+		event_target:chaste_vassal = {
+			opinion = {
+				modifier = opinion_disappointed
+				who = ROOT
+				years = 5
+			}
 		}
 	}
-}
+	option = {
+		name = EVTOPTA3525
+		tooltip_info = zealous
+
+		trigger = {
+			trait = zealous
+		}
+		if = {
+			limit = {
+				NOT = {
+					trait = paranoid
+				}
+			}
+			add_trait = paranoid
+		}
+		event_target:chaste_vassal = {
+			add_trait = paranoid
+			hidden_tooltip = {
+				character_event = {
+					id = 38275
+				}
+			}
+			opinion = {
+				modifier = opinion_horrified
+				who = ROOT
+				years = 5
+			}
+		}
+	}
 }
 
 # Celibate: Vassal
 character_event = {
-id = 3526
-desc = EVTDESC3526
-picture = GFX_evt_courtiers_talking
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3526
-	FROM = {
-		character_event = {
-			id = 3527
-			days = 2
-			tooltip = EVTTOOLTIP3527
+	id = 3526
+	desc = EVTDESC3526
+	picture = GFX_evt_courtiers_talking
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3526
+		FROM = {
+			character_event = {
+				id = 3527
+				days = 2
+				tooltip = EVTTOOLTIP3527
+			}
+		}
+		opinion = {
+			modifier = opinion_grateful
+			who = FROM
+			years = 2
 		}
 	}
-	opinion = {
-		modifier = opinion_grateful
-		who = FROM
-		years = 2
+	option = {
+		name = EVTOPTB3526
+		add_character_modifier = {
+			name = the_perturbed
+			duration = 90
+		}
 	}
-}
-option = {
-	name = EVTOPTB3526
-	add_character_modifier = {
-		name = the_perturbed
-		duration = 90
-	}
-}
 }
 
 # Celibate: ROOT
 character_event = {
-id = 3527
-desc = EVTDESC3527
-picture = GFX_evt_courtiers_talking
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3527
-	FROM = {
-		reverse_opinion = {
-			modifier = opinion_grateful
-			who = ROOT
-			years = 2
-		}
-		hidden_tooltip = {
-			random = {
-				chance = 10
-				character_event = {
-					id = 5062
-					days = 2
+	id = 3527
+	desc = EVTDESC3527
+	picture = GFX_evt_courtiers_talking
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3527
+		FROM = {
+			reverse_opinion = {
+				modifier = opinion_grateful
+				who = ROOT
+				years = 2
+			}
+			hidden_tooltip = {
+				random = {
+					chance = 10
+					character_event = {
+						id = 5062
+						days = 2
+					}
 				}
 			}
 		}
 	}
 }
-}
 
 # Celibate: Start
 character_event = {
-id = 3530
-desc = EVTDESC3530
-picture = GFX_evt_bishop
-only_playable = yes
-min_age = 20
-capable_only = yes
-prisoner = no
-is_triggered_only = yes
-religion_group = old_world_group
-war = no
-trigger = {
-	trait = celibate
-	in_command = no
-	NOR = {
-		is_inaccessible_trigger = yes
-		trait = lustful
-	}
-	any_courtier = {
-		age = 16
-		is_priest = yes
-		is_female = no
-		NOT = {
+	id = 3530
+	desc = EVTDESC3530
+	picture = GFX_evt_bishop
+	only_playable = yes
+	min_age = 20
+	capable_only = yes
+	prisoner = no
+	is_triggered_only = yes
+	religion_group = old_world_group
+	war = no
+	trigger = {
+		trait = celibate
+		in_command = no
+		NOR = {
 			is_inaccessible_trigger = yes
-		}
-		OR = {
-			trait = hedonist
 			trait = lustful
 		}
-		opinion = {
-			who = ROOT value = 0
-		}
-		reverse_opinion = {
-			who = ROOT value = 0
-		}
-	}
-}
-weight_multiplier = {
-	factor = 1
-	modifier = {
-		factor = 0.5
-		diplomacy = 5
-	}
-	modifier = {
-		factor = 2
-		trait = proud
-	}
-}
-option = {
-	name = EVTOPA3530
-	random_courtier = {
-		limit = {
+		any_courtier = {
 			age = 16
 			is_priest = yes
 			is_female = no
@@ -11788,303 +11755,303 @@ option = {
 				who = ROOT value = 0
 			}
 		}
-		character_event = {
-			id = 3531
-			days = 3
-			tooltip = EVTTOOLTIP3530
+	}
+	weight_multiplier = {
+		factor = 1
+		modifier = {
+			factor = 0.5
+			diplomacy = 5
+		}
+		modifier = {
+			factor = 2
+			trait = proud
 		}
 	}
-}
-option = {
-	name = EVTOPTB3530
-	if = {
-		limit = {
-			NOT = {
-				trait = slothful
+	option = {
+		name = EVTOPA3530
+		random_courtier = {
+			limit = {
+				age = 16
+				is_priest = yes
+				is_female = no
+				NOT = {
+					is_inaccessible_trigger = yes
+				}
+				OR = {
+					trait = hedonist
+					trait = lustful
+				}
+				opinion = {
+					who = ROOT value = 0
+				}
+				reverse_opinion = {
+					who = ROOT value = 0
+				}
+			}
+			character_event = {
+				id = 3531
+				days = 3
+				tooltip = EVTTOOLTIP3530
 			}
 		}
-		add_trait = slothful
 	}
-}
+	option = {
+		name = EVTOPTB3530
+		if = {
+			limit = {
+				NOT = {
+					trait = slothful
+				}
+			}
+			add_trait = slothful
+		}
+	}
 }
 
 # Celibate: Vassal
 character_event = {
-id = 3531
-desc = EVTDESC3531
-picture = GFX_evt_bishop
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3531
-	opinion = {
-		modifier = opinion_embarrassed
-		who = FROM
-		years = 2
-	}
-	FROM = {
-		character_event = {
-			id = 3532
-			days = 1
-			tooltip = EVTTOOLTIP3532
+	id = 3531
+	desc = EVTDESC3531
+	picture = GFX_evt_bishop
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3531
+		opinion = {
+			modifier = opinion_embarrassed
+			who = FROM
+			years = 2
+		}
+		FROM = {
+			character_event = {
+				id = 3532
+				days = 1
+				tooltip = EVTTOOLTIP3532
+			}
 		}
 	}
-}
 }
 
 # Celibate: ROOT
 character_event = {
-id = 3532
-desc = EVTDESC3532
-picture = GFX_evt_bishop
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3532 # Embarrassed
-	piety = 10
-}
-option = {
-	name = EVTOPTB3532
-	add_character_modifier = {
-		name = the_idle
-		duration = 90
+	id = 3532
+	desc = EVTDESC3532
+	picture = GFX_evt_bishop
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3532 # Embarrassed
+		piety = 10
 	}
-}
-option = {
-	name = EVTOPTC3532
-	random = {
-		chance = 25
-		add_trait = humble
+	option = {
+		name = EVTOPTB3532
+		add_character_modifier = {
+			name = the_idle
+			duration = 90
+		}
 	}
-}
+	option = {
+		name = EVTOPTC3532
+		random = {
+			chance = 25
+			add_trait = humble
+		}
+	}
 }
 
 # Celibate: Start
 character_event = {
-id = 3535
-desc = EVTDESC3535
-picture = GFX_evt_knight_kneeling
-only_playable = yes
-min_age = 20
-capable_only = yes
-prisoner = no
-religion_group = old_world_group
-war = no
-is_triggered_only = yes
-trigger = {
-	in_command = no
-	trait = celibate
-	trait = zealous
-	NOR = {
-		is_inaccessible_trigger = yes
-		trait = lustful
-	}
-	any_courtier = {
-		age = 16
+	id = 3535
+	desc = EVTDESC3535
+	picture = GFX_evt_knight_kneeling
+	only_playable = yes
+	min_age = 20
+	capable_only = yes
+	prisoner = no
+	religion_group = old_world_group
+	war = no
+	is_triggered_only = yes
+	trigger = {
 		in_command = no
 		trait = celibate
-		is_priest = yes
+		trait = zealous
 		NOR = {
 			is_inaccessible_trigger = yes
 			trait = lustful
 		}
-	}
-}
-weight_multiplier = {
-	factor = 1
-	modifier = {
-		factor = 0.5
-		trait = proud
-	}
-	modifier = {
-		factor = 2
-		trait = humble
-	}
-}
-option = {
-	name = EVTOPTA3535
-	prestige = -10
-	add_character_modifier = {
-		name = the_flagellant
-		duration = 365
-	}
-	character_event = {
-		id = 3536
-		tooltip = EVTTOOLTIP3536
-	}
-}
-option = {
-	name = EVTOPTB3535
-	piety = -5
-	if = {
-		limit = {
-			NOT = {
-				trait = slothful
+		any_courtier = {
+			age = 16
+			in_command = no
+			trait = celibate
+			is_priest = yes
+			NOR = {
+				is_inaccessible_trigger = yes
+				trait = lustful
 			}
 		}
-		add_trait = slothful
 	}
-	random = {
-		chance = 10
-		remove_trait = zealous
+	weight_multiplier = {
+		factor = 1
+		modifier = {
+			factor = 0.5
+			trait = proud
+		}
+		modifier = {
+			factor = 2
+			trait = humble
+		}
 	}
-}
+	option = {
+		name = EVTOPTA3535
+		prestige = -10
+		add_character_modifier = {
+			name = the_flagellant
+			duration = 365
+		}
+		character_event = {
+			id = 3536
+			tooltip = EVTTOOLTIP3536
+		}
+	}
+	option = {
+		name = EVTOPTB3535
+		piety = -5
+		if = {
+			limit = {
+				NOT = {
+					trait = slothful
+				}
+			}
+			add_trait = slothful
+		}
+		random = {
+			chance = 10
+			remove_trait = zealous
+		}
+	}
 }
 
 # Celibate
 character_event = {
-id = 3536
-desc = EVTDESC3536
-picture = GFX_evt_knight_kneeling
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3536
-	prestige = 10
-	random_courtier = {
-		limit = {
-			trait = celibate
-			is_priest = yes
-			NOT = {
-				trait = lustful
+	id = 3536
+	desc = EVTDESC3536
+	picture = GFX_evt_knight_kneeling
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3536
+		prestige = 10
+		random_courtier = {
+			limit = {
+				trait = celibate
+				is_priest = yes
+				NOT = {
+					trait = lustful
+				}
+			}
+			character_event = {
+				id = 3537
+				days = 2
+				tooltip = EVTTOOLTIP3537
 			}
 		}
-		character_event = {
-			id = 3537
-			days = 2
-			tooltip = EVTTOOLTIP3537
-		}
 	}
-}
 }
 
 # Celibate: Courtier
 character_event = {
-id = 3537
-desc = EVTDESC3537
-picture = GFX_evt_knight_kneeling
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3537
-	opinion = {
-		modifier = opinion_delighted
-		who = FROM
-		years = 2
-	}
-	FROM = {
-		set_character_flag = flagellation_idol
-		character_event = {
-			id = 3538
-			days = 2
-			tooltip = EVTTOOLTIPA3538
+	id = 3537
+	desc = EVTDESC3537
+	picture = GFX_evt_knight_kneeling
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3537
+		opinion = {
+			modifier = opinion_delighted
+			who = FROM
+			years = 2
+		}
+		FROM = {
+			set_character_flag = flagellation_idol
+			character_event = {
+				id = 3538
+				days = 2
+				tooltip = EVTTOOLTIPA3538
+			}
 		}
 	}
-}
-option = {
-	name = EVTOPTB3537
-	opinion = {
-		modifier = opinion_pitiful
-		who = FROM
-		years = 2
-	}
-	FROM = {
-		set_character_flag = flagellation_idiot
-		character_event = {
-			id = 3538
-			days = 2
-			tooltip = EVTTOOLTIPB3538
+	option = {
+		name = EVTOPTB3537
+		opinion = {
+			modifier = opinion_pitiful
+			who = FROM
+			years = 2
+		}
+		FROM = {
+			set_character_flag = flagellation_idiot
+			character_event = {
+				id = 3538
+				days = 2
+				tooltip = EVTTOOLTIPB3538
+			}
 		}
 	}
-}
 }
 
 # Celibate: ROOT
 character_event = {
-id = 3538
-desc = EVTDESC3538
-picture = GFX_evt_knight_kneeling
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3538
+	id = 3538
+	desc = EVTDESC3538
+	picture = GFX_evt_knight_kneeling
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3538
 
-	trigger = {
-		has_character_flag = flagellation_idol
+		trigger = {
+			has_character_flag = flagellation_idol
+		}
+		clr_character_flag = flagellation_idol
+		opinion = {
+			modifier = opinion_delighted
+			who = FROM
+			years = 2
+		}
 	}
-	clr_character_flag = flagellation_idol
-	opinion = {
-		modifier = opinion_delighted
-		who = FROM
-		years = 2
-	}
-}
-option = {
-	name = EVTOPTB3538
+	option = {
+		name = EVTOPTB3538
 
-	trigger = {
-		has_character_flag = flagellation_idiot
+		trigger = {
+			has_character_flag = flagellation_idiot
+		}
+		clr_character_flag = flagellation_idiot
+		opinion = {
+			modifier = opinion_pitiful
+			who = FROM
+			years = 2
+		}
 	}
-	clr_character_flag = flagellation_idiot
-	opinion = {
-		modifier = opinion_pitiful
-		who = FROM
-		years = 2
-	}
-}
 }
 
 # SCHOLAR
 
 # Scholar: Gain learning
 character_event = {
-id = 3540
-desc = EVTDESC3540
-picture = GFX_evt_library
-only_playable = yes
-min_age = 20
-capable_only = yes
-prisoner = no
-war = no
-is_triggered_only = yes
-trigger = {
-	trait = scholar
-	in_command = no
-	NOR = {
-		is_inaccessible_trigger = yes
-		learning = 15
-		trait = slothful
-		trait = content
-	}
-	any_courtier = {
-		age = 16
-		NOT = {
+	id = 3540
+	desc = EVTDESC3540
+	picture = GFX_evt_library
+	only_playable = yes
+	min_age = 20
+	capable_only = yes
+	prisoner = no
+	war = no
+	is_triggered_only = yes
+	trigger = {
+		trait = scholar
+		in_command = no
+		NOR = {
 			is_inaccessible_trigger = yes
+			learning = 15
+			trait = slothful
+			trait = content
 		}
-		OR = {
-			learning = 10
-			trait = scholar
-		}
-		has_job_action = no
-	}
-}
-weight_multiplier = {
-	factor = 1
-	modifier = {
-		factor = 2
-		trait = ambitious
-	}
-	modifier = {
-		factor = 2
-		trait = diligent
-	}
-	modifier = {
-		factor = 0.5
-		trait = shy
-	}
-	modifier = {
-		factor = 0.2
-		trait = wroth
-	}
-}
-immediate = {
-	random_courtier = {
-		limit = {
+		any_courtier = {
 			age = 16
 			NOT = {
 				is_inaccessible_trigger = yes
@@ -12095,223 +12062,225 @@ immediate = {
 			}
 			has_job_action = no
 		}
-		save_event_target_as = my_courtier
 	}
-}
-option = {
-	name = EVTOPTA3540 # Demand
-	piety = -10
-	event_target:my_courtier = {
-		character_event = {
-			id = 3541
-			days = 2
-			tooltip = EVTTOOLTIP3541
+	weight_multiplier = {
+		factor = 1
+		modifier = {
+			factor = 2
+			trait = ambitious
+		}
+		modifier = {
+			factor = 2
+			trait = diligent
+		}
+		modifier = {
+			factor = 0.5
+			trait = shy
+		}
+		modifier = {
+			factor = 0.2
+			trait = wroth
 		}
 	}
-}
-option = {
-	name = EVTOPTB3540 # Ask nicely
-	prestige = -10
-	event_target:my_courtier = {
-		set_character_flag = asked_scholar
-		character_event = {
-			id = 3541
-			days = 2
-			tooltip = EVTTOOLTIP3541
+	immediate = {
+		random_courtier = {
+			limit = {
+				age = 16
+				NOT = {
+					is_inaccessible_trigger = yes
+				}
+				OR = {
+					learning = 10
+					trait = scholar
+				}
+				has_job_action = no
+			}
+			save_event_target_as = my_courtier
 		}
 	}
-}
-option = {
-	name = EVTOPTC3540 # Bribe
-	scaled_wealth = -0.10
-	event_target:my_courtier = {
-		set_character_flag = bribed_scholar
-		character_event = {
-			id = 3541
-			days = 2
-			tooltip = EVTTOOLTIP3541
+	option = {
+		name = EVTOPTA3540 # Demand
+		piety = -10
+		event_target:my_courtier = {
+			character_event = {
+				id = 3541
+				days = 2
+				tooltip = EVTTOOLTIP3541
+			}
 		}
 	}
-}
-option = {
-	name = EVTOPTD3540 # Ignore
-	add_trait = content
-}
+	option = {
+		name = EVTOPTB3540 # Ask nicely
+		prestige = -10
+		event_target:my_courtier = {
+			set_character_flag = asked_scholar
+			character_event = {
+				id = 3541
+				days = 2
+				tooltip = EVTTOOLTIP3541
+			}
+		}
+	}
+	option = {
+		name = EVTOPTC3540 # Bribe
+		scaled_wealth = -0.10
+		event_target:my_courtier = {
+			set_character_flag = bribed_scholar
+			character_event = {
+				id = 3541
+				days = 2
+				tooltip = EVTTOOLTIP3541
+			}
+		}
+	}
+	option = {
+		name = EVTOPTD3540 # Ignore
+		add_trait = content
+	}
 }
 
 # Scholar: Courtier reacts to demands/bribes or being asked nicely
 character_event = {
-id = 3541
-desc = EVTDESC3541
-picture = GFX_evt_library
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3541
+	id = 3541
+	desc = EVTDESC3541
+	picture = GFX_evt_library
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3541
 
-	trigger = {
-		has_character_flag = pressured_scholar
-	}
-	clr_character_flag = pressured_scholar
-	FROM = {
-		set_character_flag = irritated_scholar
-		character_event = {
-			id = 3542
-			days = 7
-			tooltip = EVTTOOLTIP3542
+		trigger = {
+			has_character_flag = pressured_scholar
+		}
+		clr_character_flag = pressured_scholar
+		FROM = {
+			set_character_flag = irritated_scholar
+			character_event = {
+				id = 3542
+				days = 7
+				tooltip = EVTTOOLTIP3542
+			}
+		}
+		opinion = {
+			modifier = opinion_disgruntled
+			who = ROOT
+			years = 2
 		}
 	}
-	opinion = {
-		modifier = opinion_disgruntled
-		who = ROOT
-		years = 2
-	}
-}
-option = {
-	name = EVTOPTB3541
+	option = {
+		name = EVTOPTB3541
 
-	trigger = {
-		has_character_flag = asked_scholar
-	}
-	clr_character_flag = asked_scholar
-	FROM = {
-		set_character_flag = happy_scholar
-		character_event = {
-			id = 3542
-			days = 7
-			tooltip = EVTTOOLTIP3542
+		trigger = {
+			has_character_flag = asked_scholar
+		}
+		clr_character_flag = asked_scholar
+		FROM = {
+			set_character_flag = happy_scholar
+			character_event = {
+				id = 3542
+				days = 7
+				tooltip = EVTTOOLTIP3542
+			}
+		}
+		opinion = {
+			modifier = opinion_delighted
+			who = ROOT
+			years = 2
 		}
 	}
-	opinion = {
-		modifier = opinion_delighted
-		who = ROOT
-		years = 2
-	}
-}
-option = {
-	name = EVTOPTC3541
+	option = {
+		name = EVTOPTC3541
 
-	trigger = {
-		has_character_flag = bribed_scholar
-	}
-	clr_character_flag = bribed_scholar
-	treasury = 10
-	FROM = {
-		set_character_flag = generous_scholar
-		character_event = {
-			id = 3542
-			days = 7
-			tooltip = EVTTOOLTIP3542
+		trigger = {
+			has_character_flag = bribed_scholar
+		}
+		clr_character_flag = bribed_scholar
+		treasury = 10
+		FROM = {
+			set_character_flag = generous_scholar
+			character_event = {
+				id = 3542
+				days = 7
+				tooltip = EVTTOOLTIP3542
+			}
 		}
 	}
-}
 }
 
 # Scholar: ROOT get learning
 character_event = {
-id = 3542
-desc = EVTDESC3542
-picture = GFX_evt_library
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3542
+	id = 3542
+	desc = EVTDESC3542
+	picture = GFX_evt_library
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3542
 
-	trigger = {
-		has_character_flag = irritated_scholar
+		trigger = {
+			has_character_flag = irritated_scholar
+		}
+		clr_character_flag = irritated_scholar
+		opinion = {
+			modifier = opinion_disgruntled
+			who = FROM
+			years = 2
+		}
+		change_learning = 1
 	}
-	clr_character_flag = irritated_scholar
-	opinion = {
-		modifier = opinion_disgruntled
-		who = FROM
-		years = 2
-	}
-	change_learning = 1
-}
-option = {
-	name = EVTOPTA3542
+	option = {
+		name = EVTOPTA3542
 
-	trigger = {
-		has_character_flag = happy_scholar
+		trigger = {
+			has_character_flag = happy_scholar
+		}
+		clr_character_flag = happy_scholar
+		opinion = {
+			modifier = opinion_delighted
+			who = FROM
+			years = 2
+		}
+		change_learning = 2
 	}
-	clr_character_flag = happy_scholar
-	opinion = {
-		modifier = opinion_delighted
-		who = FROM
-		years = 2
-	}
-	change_learning = 2
-}
-option = {
-	name = EVTOPTA3542
+	option = {
+		name = EVTOPTA3542
 
-	trigger = {
-		has_character_flag = generous_scholar
+		trigger = {
+			has_character_flag = generous_scholar
+		}
+		clr_character_flag = generous_scholar
+		change_learning = 1
 	}
-	clr_character_flag = generous_scholar
-	change_learning = 1
-}
 }
 
 # Scholar: Improve relation
 character_event = {
-id = 3543
-desc = EVTDESC3543
-picture = GFX_evt_courtiers_talking
-only_playable = yes
-min_age = 20
-capable_only = yes
-prisoner = no
-war = no
-is_triggered_only = yes
-trigger = {
-	trait = scholar
-	in_command = no
-	OR = {
-		trait = zealous
-		NOT = {
-			trait = cynical
-		}
-	}
-	NOT = {
-		is_inaccessible_trigger = yes
-		has_character_modifier = the_idle
-	}
-	any_courtier = {
-		age = 16
+	id = 3543
+	desc = EVTDESC3543
+	picture = GFX_evt_courtiers_talking
+	only_playable = yes
+	min_age = 20
+	capable_only = yes
+	prisoner = no
+	war = no
+	is_triggered_only = yes
+	trigger = {
+		trait = scholar
 		in_command = no
-		NOR = {
-			is_inaccessible_trigger = yes
-			character = ROOT
-		}
-		is_priest = yes
-		has_job_action = no
 		OR = {
-			trait = scholar
-			learning = 9
+			trait = zealous
+			NOT = {
+				trait = cynical
+			}
 		}
-		opinion = {
-			who = ROOT value = 0
+		NOT = {
+			is_inaccessible_trigger = yes
+			has_character_modifier = the_idle
 		}
-	}
-}
-weight_multiplier = {
-	factor = 1
-	modifier = {
-		factor = 2
-		trait = gregarious
-	}
-	modifier = {
-		factor = 0.5
-		trait = slothful
-	}
-}
-option = {
-	name = EVTOPTA3543
-	random_courtier = {
-		limit = {
+		any_courtier = {
 			age = 16
 			in_command = no
-			NOT = {
+			NOR = {
 				is_inaccessible_trigger = yes
+				character = ROOT
 			}
 			is_priest = yes
 			has_job_action = no
@@ -12323,128 +12292,144 @@ option = {
 				who = ROOT value = 0
 			}
 		}
-		character_event = {
-			id = 3544
-			days = 2
-			tooltip = EVTTOOLTIP3544
+	}
+	weight_multiplier = {
+		factor = 1
+		modifier = {
+			factor = 2
+			trait = gregarious
+		}
+		modifier = {
+			factor = 0.5
+			trait = slothful
 		}
 	}
-}
-option = {
-	name = EVTOPTB3543
-	add_character_modifier = {
-		name = the_idle
-		duration = 90
+	option = {
+		name = EVTOPTA3543
+		random_courtier = {
+			limit = {
+				age = 16
+				in_command = no
+				NOT = {
+					is_inaccessible_trigger = yes
+				}
+				is_priest = yes
+				has_job_action = no
+				OR = {
+					trait = scholar
+					learning = 9
+				}
+				opinion = {
+					who = ROOT value = 0
+				}
+			}
+			character_event = {
+				id = 3544
+				days = 2
+				tooltip = EVTTOOLTIP3544
+			}
+		}
 	}
-}
+	option = {
+		name = EVTOPTB3543
+		add_character_modifier = {
+			name = the_idle
+			duration = 90
+		}
+	}
 }
 
 # Scholar - Continue
 character_event = {
-id = 3544
-desc = EVTDESC3544
-picture = GFX_evt_courtiers_talking
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3544
-	FROM = {
-		reverse_opinion = {
-			modifier = opinion_tiresome
-			who = ROOT
-			years = 1
-		}
-		set_character_flag = you_tiresome
-		character_event = {
-			id = 3545
-			days = 2
-			tooltip = EVTTOOLTIP3545
-		}
-	}
-}
-option = {
-	name = EVTOPTB3544
-	add_friend = FROM
-	FROM = {
-		set_character_flag = you_friend
-		character_event = {
-			id = 3545
-			days = 2
-			tooltip = EVTTOOLTIP3545
+	id = 3544
+	desc = EVTDESC3544
+	picture = GFX_evt_courtiers_talking
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3544
+		FROM = {
+			reverse_opinion = {
+				modifier = opinion_tiresome
+				who = ROOT
+				years = 1
+			}
+			set_character_flag = you_tiresome
+			character_event = {
+				id = 3545
+				days = 2
+				tooltip = EVTTOOLTIP3545
+			}
 		}
 	}
-}
+	option = {
+		name = EVTOPTB3544
+		add_friend = FROM
+		FROM = {
+			set_character_flag = you_friend
+			character_event = {
+				id = 3545
+				days = 2
+				tooltip = EVTTOOLTIP3545
+			}
+		}
+	}
 }
 
 # Scholar: ROOT gets Courtier's response
 character_event = {
-id = 3545
-desc = EVTDESC3545
-picture = GFX_evt_courtiers_talking
-war = no
-is_triggered_only = yes
-trigger = {
-	in_command = no
-	OR = {
-		has_character_flag = you_tiresome
-		has_character_flag = you_friend
-	}
-}
-option = {
-	name = EVTOPTA3545
-
+	id = 3545
+	desc = EVTDESC3545
+	picture = GFX_evt_courtiers_talking
+	war = no
+	is_triggered_only = yes
 	trigger = {
-		has_character_flag = you_friend
-	}
-	clr_character_flag = you_friend
-	add_friend = FROM
-}
-option = {
-	name = EVTOPTB3545
-
-	trigger = {
-		has_character_flag = you_tiresome
-	}
-	clr_character_flag = you_tiresome
-	FROM = {
-		opinion = {
-			modifier = opinion_tiresome
-			who = ROOT
-			years = 1
+		in_command = no
+		OR = {
+			has_character_flag = you_tiresome
+			has_character_flag = you_friend
 		}
 	}
-}
+	option = {
+		name = EVTOPTA3545
+
+		trigger = {
+			has_character_flag = you_friend
+		}
+		clr_character_flag = you_friend
+		add_friend = FROM
+	}
+	option = {
+		name = EVTOPTB3545
+
+		trigger = {
+			has_character_flag = you_tiresome
+		}
+		clr_character_flag = you_tiresome
+		FROM = {
+			opinion = {
+				modifier = opinion_tiresome
+				who = ROOT
+				years = 1
+			}
+		}
+	}
 }
 
 # Scholar: Daddy/Mummy, read a story for me!
 character_event = {
-id = 3546
-desc = EVTDESC3546
-picture = GFX_evt_family
-only_playable = yes
-min_age = 20
-capable_only = yes
-prisoner = no
-war = no
-is_triggered_only = yes
-trigger = {
-	trait = scholar
-	in_command = no
-	any_child = {
-		is_alive = yes
-		age = 6
-		NOR = {
-			age = 16
-			trait = content
-			trait = slothful
-		}
-	}
-}
-weight_multiplier = {
-	factor = 1
-}
-immediate = {
-	random_child = {
-		limit = {
+	id = 3546
+	desc = EVTDESC3546
+	picture = GFX_evt_family
+	only_playable = yes
+	min_age = 20
+	capable_only = yes
+	prisoner = no
+	war = no
+	is_triggered_only = yes
+	trigger = {
+		trait = scholar
+		in_command = no
+		any_child = {
 			is_alive = yes
 			age = 6
 			NOR = {
@@ -12453,280 +12438,296 @@ immediate = {
 				trait = slothful
 			}
 		}
-		save_event_target_as = scholar_child
 	}
-}
-option = {
-	name = EVTOPTA3546
-	event_target:scholar_child = {
-		set_character_flag = history_lesson
-		character_event = {
-			id = 3547
-			tooltip = EVTTOOLTIP3547
+	weight_multiplier = {
+		factor = 1
+	}
+	immediate = {
+		random_child = {
+			limit = {
+				is_alive = yes
+				age = 6
+				NOR = {
+					age = 16
+					trait = content
+					trait = slothful
+				}
+			}
+			save_event_target_as = scholar_child
 		}
 	}
-}
-option = {
-	name = EVTOPTB3546
-	event_target:scholar_child = {
-		opinion = {
-			modifier = opinion_disappointed
-			who = ROOT
-			months = 6
+	option = {
+		name = EVTOPTA3546
+		event_target:scholar_child = {
+			set_character_flag = history_lesson
+			character_event = {
+				id = 3547
+				tooltip = EVTTOOLTIP3547
+			}
 		}
 	}
-}
-option = {
-	name = EVTOPTC3546
-	event_target:scholar_child = {
-		set_character_flag = legendary_story
-		character_event = {
-			id = 3547
-			tooltip = EVTTOOLTIP3547
+	option = {
+		name = EVTOPTB3546
+		event_target:scholar_child = {
+			opinion = {
+				modifier = opinion_disappointed
+				who = ROOT
+				months = 6
+			}
 		}
 	}
-}
+	option = {
+		name = EVTOPTC3546
+		event_target:scholar_child = {
+			set_character_flag = legendary_story
+			character_event = {
+				id = 3547
+				tooltip = EVTTOOLTIP3547
+			}
+		}
+	}
 }
 
 # Scholar: Child
 character_event = {
-id = 3547
-desc = EVTDESC3547
-picture = GFX_evt_family
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3547
+	id = 3547
+	desc = EVTDESC3547
+	picture = GFX_evt_family
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3547
 
-	trigger = {
-		has_character_flag = history_lesson
-	}
-	clr_character_flag = history_lesson
-	opinion = {
-		modifier = opinion_embarrassed
-		who = FROM
-		years = 2
-	}
-	FROM = {
-		set_character_flag = embarrassed_child
-		character_event = {
-			id = 3548
-			tooltip = EVTTOOLTIP3548
+		trigger = {
+			has_character_flag = history_lesson
+		}
+		clr_character_flag = history_lesson
+		opinion = {
+			modifier = opinion_embarrassed
+			who = FROM
+			years = 2
+		}
+		FROM = {
+			set_character_flag = embarrassed_child
+			character_event = {
+				id = 3548
+				tooltip = EVTTOOLTIP3548
+			}
 		}
 	}
-}
-option = {
-	name = EVTOPTB3547
+	option = {
+		name = EVTOPTB3547
 
-	trigger = {
-		has_character_flag = legendary_story
-	}
-	clr_character_flag = legendary_story
-	opinion = {
-		modifier = opinion_embarrassed
-		who = FROM
-		years = 2
-	}
-	FROM = {
-		set_character_flag = embarrassed_child
-		character_event = {
-			id = 3548
-			tooltip = EVTTOOLTIP3548
+		trigger = {
+			has_character_flag = legendary_story
+		}
+		clr_character_flag = legendary_story
+		opinion = {
+			modifier = opinion_embarrassed
+			who = FROM
+			years = 2
+		}
+		FROM = {
+			set_character_flag = embarrassed_child
+			character_event = {
+				id = 3548
+				tooltip = EVTTOOLTIP3548
+			}
 		}
 	}
-}
-option = {
-	name = EVTOPTC3547
+	option = {
+		name = EVTOPTC3547
 
-	trigger = {
-		has_character_flag = history_lesson
-	}
-	clr_character_flag = history_lesson
-	opinion = {
-		modifier = opinion_delighted
-		who = FROM
-		years = 2
-	}
-	FROM = {
-		set_character_flag = delighted_child
-		character_event = {
-			id = 3548
-			tooltip = EVTTOOLTIP3548
+		trigger = {
+			has_character_flag = history_lesson
+		}
+		clr_character_flag = history_lesson
+		opinion = {
+			modifier = opinion_delighted
+			who = FROM
+			years = 2
+		}
+		FROM = {
+			set_character_flag = delighted_child
+			character_event = {
+				id = 3548
+				tooltip = EVTTOOLTIP3548
+			}
 		}
 	}
-}
-option = {
-	name = EVTOPTD3547
+	option = {
+		name = EVTOPTD3547
 
-	trigger = {
-		has_character_flag = legendary_story
-	}
-	clr_character_flag = legendary_story
-	opinion = {
-		modifier = opinion_delighted
-		who = FROM
-		years = 2
-	}
-	FROM = {
-		set_character_flag = delighted_child
-		character_event = {
-			id = 3548
-			tooltip = EVTTOOLTIP3548
+		trigger = {
+			has_character_flag = legendary_story
+		}
+		clr_character_flag = legendary_story
+		opinion = {
+			modifier = opinion_delighted
+			who = FROM
+			years = 2
+		}
+		FROM = {
+			set_character_flag = delighted_child
+			character_event = {
+				id = 3548
+				tooltip = EVTTOOLTIP3548
+			}
 		}
 	}
-}
 }
 
 # Scholar: ROOT
 character_event = {
-id = 3548
-desc = EVTDESC3548
-picture = GFX_evt_family
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3548
+	id = 3548
+	desc = EVTDESC3548
+	picture = GFX_evt_family
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3548
 
-	trigger = {
-		has_character_flag = embarrassed_child
-	}
-	clr_character_flag = embarrassed_child
-	FROM = {
-		opinion = {
-			modifier = opinion_embarrassed
-			who = ROOT
-			years = 2
+		trigger = {
+			has_character_flag = embarrassed_child
 		}
-	}
-}
-option = {
-	name = EVTOPTB3548
-
-	trigger = {
-		has_character_flag = delighted_child
-	}
-	clr_character_flag = delighted_child
-	FROM = {
-		opinion = {
-			modifier = opinion_delighted
-			who = ROOT
-			years = 2
-		}
-		if = {
-			limit = {
-				learning = 6
-				NOT = {
-					trait = ambitious
-				}
-			}
-			random_list = {
-				40 = {
-					add_trait = ambitious
-					hidden_tooltip = {
-						character_event = {
-							id = 38278 # Notify Ambitious
-						}
-						ROOT = {
-							character_event = {
-								id = 38178 # Notify Child is Ambitious
-							}
-						}
-					}
-				}
-				10 = {
-					add_trait = slothful
-					hidden_tooltip = {
-						character_event = {
-							id = 38251 # Notify Slothful
-						}
-						ROOT = {
-							character_event = {
-								id = 38151 # Notify Child is Slothful
-							}
-						}
-					}
-				}
-				40 = {
-					add_trait = diligent
-					hidden_tooltip = {
-						character_event = {
-							id = 38256 # Notify Diligent
-						}
-						ROOT = {
-							character_event = {
-								id = 38156 # Notify Child is Diligent
-							}
-						}
-					}
-				}
-				10 = {
-					add_trait = content
-					hidden_tooltip = {
-						character_event = {
-							id = 38279 # Notify Content
-						}
-						ROOT = {
-							character_event = {
-								id = 38179 # Notify Child is Content
-							}
-						}
-					}
-				}
+		clr_character_flag = embarrassed_child
+		FROM = {
+			opinion = {
+				modifier = opinion_embarrassed
+				who = ROOT
+				years = 2
 			}
 		}
-		if = {
-			limit = {
-				NOT = {
+	}
+	option = {
+		name = EVTOPTB3548
+
+		trigger = {
+			has_character_flag = delighted_child
+		}
+		clr_character_flag = delighted_child
+		FROM = {
+			opinion = {
+				modifier = opinion_delighted
+				who = ROOT
+				years = 2
+			}
+			if = {
+				limit = {
 					learning = 6
+					NOT = {
+						trait = ambitious
+					}
+				}
+				random_list = {
+					40 = {
+						add_trait = ambitious
+						hidden_tooltip = {
+							character_event = {
+								id = 38278 # Notify Ambitious
+							}
+							ROOT = {
+								character_event = {
+									id = 38178 # Notify Child is Ambitious
+								}
+							}
+						}
+					}
+					10 = {
+						add_trait = slothful
+						hidden_tooltip = {
+							character_event = {
+								id = 38251 # Notify Slothful
+							}
+							ROOT = {
+								character_event = {
+									id = 38151 # Notify Child is Slothful
+								}
+							}
+						}
+					}
+					40 = {
+						add_trait = diligent
+						hidden_tooltip = {
+							character_event = {
+								id = 38256 # Notify Diligent
+							}
+							ROOT = {
+								character_event = {
+									id = 38156 # Notify Child is Diligent
+								}
+							}
+						}
+					}
+					10 = {
+						add_trait = content
+						hidden_tooltip = {
+							character_event = {
+								id = 38279 # Notify Content
+							}
+							ROOT = {
+								character_event = {
+									id = 38179 # Notify Child is Content
+								}
+							}
+						}
+					}
 				}
 			}
-			random_list = {
-				10 = {
-					add_trait = ambitious
-					hidden_tooltip = {
-						character_event = {
-							id = 38278 # Notify Ambitious
-						}
-						ROOT = {
+			if = {
+				limit = {
+					NOT = {
+						learning = 6
+					}
+				}
+				random_list = {
+					10 = {
+						add_trait = ambitious
+						hidden_tooltip = {
 							character_event = {
-								id = 38178 # Notify Child is Ambitious
+								id = 38278 # Notify Ambitious
+							}
+							ROOT = {
+								character_event = {
+									id = 38178 # Notify Child is Ambitious
+								}
 							}
 						}
 					}
-				}
-				40 = {
-					add_trait = slothful
-					hidden_tooltip = {
-						character_event = {
-							id = 38251 # Notify Slothful
-						}
-						ROOT = {
+					40 = {
+						add_trait = slothful
+						hidden_tooltip = {
 							character_event = {
-								id = 38151 # Notify Child is Slothful
+								id = 38251 # Notify Slothful
+							}
+							ROOT = {
+								character_event = {
+									id = 38151 # Notify Child is Slothful
+								}
 							}
 						}
 					}
-				}
-				10 = {
-					add_trait = diligent
-					hidden_tooltip = {
-						character_event = {
-							id = 38256 # Notify Diligent
-						}
-						ROOT = {
+					10 = {
+						add_trait = diligent
+						hidden_tooltip = {
 							character_event = {
-								id = 38156 # Notify Child is Diligent
+								id = 38256 # Notify Diligent
+							}
+							ROOT = {
+								character_event = {
+									id = 38156 # Notify Child is Diligent
+								}
 							}
 						}
 					}
-				}
-				40 = {
-					add_trait = content
-					hidden_tooltip = {
-						character_event = {
-							id = 38279 # Notify Content
-						}
-						ROOT = {
+					40 = {
+						add_trait = content
+						hidden_tooltip = {
 							character_event = {
-								id = 38179 # Notify Child is Content
+								id = 38279 # Notify Content
+							}
+							ROOT = {
+								character_event = {
+									id = 38179 # Notify Child is Content
+								}
 							}
 						}
 					}
@@ -12734,295 +12735,238 @@ option = {
 			}
 		}
 	}
-}
 }
 
 # Scholar: The Intervention
 character_event = {
-id = 3550
-desc = EVTDESC3550
-picture = GFX_evt_quarrel
-only_playable = yes
-min_age = 20
-capable_only = yes
-prisoner = no
-war = no
-is_triggered_only = yes
-trigger = {
-	trait = scholar
-	in_command = no
-	OR = {
-		trait = zealous
-		trait = diligent
-		trait = ambitious
-	}
-	OR = {
-		is_married = yes
-		any_courtier = {
-			age = 16
-			in_command = no
-			NOT = {
-				trait = scholar
-			}
-			OR = {
-				trait = envious
-				trait = paranoid
-				trait = wroth
-			}
-			opinion = {
-				who = ROOT value = 50
-			}
-		}
-	}
-}
-weight_multiplier = {
-	factor = 1
-	modifier = {
-		factor = 2
-		learning = 10
-	}
-	modifier = {
-		factor = 0.5
-		trait = wroth
-	}
-}
-option = {
-	name = EVTOPTA3550
-
+	id = 3550
+	desc = EVTDESC3550
+	picture = GFX_evt_quarrel
+	only_playable = yes
+	min_age = 20
+	capable_only = yes
+	prisoner = no
+	war = no
+	is_triggered_only = yes
 	trigger = {
-		is_married = yes
-	}
-	spouse = {
-		character_event = {
-			id = 3551
-			days = 2
-			tooltip = EVTTOOLTIP3551
+		trait = scholar
+		in_command = no
+		OR = {
+			trait = zealous
+			trait = diligent
+			trait = ambitious
+		}
+		OR = {
+			is_married = yes
+			any_courtier = {
+				age = 16
+				in_command = no
+				NOT = {
+					trait = scholar
+				}
+				OR = {
+					trait = envious
+					trait = paranoid
+					trait = wroth
+				}
+				opinion = {
+					who = ROOT value = 50
+				}
+			}
 		}
 	}
-}
-option = {
-	name = EVTOPTB3550
-	add_trait = content
-}
-option = {
-	name = EVTOPTC3550
+	weight_multiplier = {
+		factor = 1
+		modifier = {
+			factor = 2
+			learning = 10
+		}
+		modifier = {
+			factor = 0.5
+			trait = wroth
+		}
+	}
+	option = {
+		name = EVTOPTA3550
 
-	trigger = {
-		is_married = no
-		any_courtier = {
-			age = 16
-			in_command = no
-			NOT = {
-				trait = scholar
-			}
-			OR = {
-				trait = envious
-				trait = paranoid
-				trait = wroth
-			}
-			opinion = {
-				who = ROOT value = 25
+		trigger = {
+			is_married = yes
+		}
+		spouse = {
+			character_event = {
+				id = 3551
+				days = 2
+				tooltip = EVTTOOLTIP3551
 			}
 		}
 	}
-	random_courtier = {
-		limit = {
-			age = 16
-			in_command = no
-			NOT = {
-				trait = scholar
-			}
-			OR = {
-				trait = envious
-				trait = paranoid
-				trait = wroth
-			}
-			opinion = {
-				who = ROOT value = 50
+	option = {
+		name = EVTOPTB3550
+		add_trait = content
+	}
+	option = {
+		name = EVTOPTC3550
+
+		trigger = {
+			is_married = no
+			any_courtier = {
+				age = 16
+				in_command = no
+				NOT = {
+					trait = scholar
+				}
+				OR = {
+					trait = envious
+					trait = paranoid
+					trait = wroth
+				}
+				opinion = {
+					who = ROOT value = 25
+				}
 			}
 		}
-		character_event = {
-			id = 3552
-			days = 2
-			tooltip = EVTTOOLTIP3552
+		random_courtier = {
+			limit = {
+				age = 16
+				in_command = no
+				NOT = {
+					trait = scholar
+				}
+				OR = {
+					trait = envious
+					trait = paranoid
+					trait = wroth
+				}
+				opinion = {
+					who = ROOT value = 50
+				}
+			}
+			character_event = {
+				id = 3552
+				days = 2
+				tooltip = EVTTOOLTIP3552
+			}
 		}
 	}
-}
-option = {
-	name = EVTOPTD3550
-	scaled_wealth = 0.5
-	random = {
-		chance = 25
-		remove_trait = scholar
+	option = {
+		name = EVTOPTD3550
+		scaled_wealth = 0.5
+		random = {
+			chance = 25
+			remove_trait = scholar
+		}
 	}
-}
 }
 
 # Scholar: Spouse worries - intervention?
 character_event = {
-id = 3551
-desc = EVTDESC3551
-picture = GFX_evt_quarrel
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3551 # Intervention!
-	FROM = {
-		character_event = {
-			id = 3553
-			tooltip = EVTTOOLTIP3553
+	id = 3551
+	desc = EVTDESC3551
+	picture = GFX_evt_quarrel
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3551 # Intervention!
+		FROM = {
+			character_event = {
+				id = 3553
+				tooltip = EVTTOOLTIP3553
+			}
 		}
 	}
-}
-option = {
-	name = EVTOPTB3551
-	add_trait = slothful
-}
+	option = {
+		name = EVTOPTB3551
+		add_trait = slothful
+	}
 }
 
 # Scholar: Courtier worries - intervention?
 character_event = {
-id = 3552
-desc = EVTDESC3552
-picture = GFX_evt_quarrel
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3552 # Intervention!
-	FROM = {
-		character_event = {
-			id = 3553
-			tooltip = EVTTOOLTIP3553
+	id = 3552
+	desc = EVTDESC3552
+	picture = GFX_evt_quarrel
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3552 # Intervention!
+		FROM = {
+			character_event = {
+				id = 3553
+				tooltip = EVTTOOLTIP3553
+			}
 		}
 	}
-}
-option = {
-	name = EVTOPTB3552
-	add_trait = slothful
-}
+	option = {
+		name = EVTOPTB3552
+		add_trait = slothful
+	}
 }
 
 # Scholar: Intervention!
 character_event = {
-id = 3553
-desc = EVTDESC3553
-picture = GFX_evt_quarrel
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3553
-	add_character_modifier = {
-		name = the_bibliophage
-		duration = 365
-	}
-	FROM = {
-		opinion = {
-			modifier = opinion_disappointed
-			who = ROOT
-			years = 2
+	id = 3553
+	desc = EVTDESC3553
+	picture = GFX_evt_quarrel
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3553
+		add_character_modifier = {
+			name = the_bibliophage
+			duration = 365
+		}
+		FROM = {
+			opinion = {
+				modifier = opinion_disappointed
+				who = ROOT
+				years = 2
+			}
 		}
 	}
-}
-option = {
-	name = EVTOPTB3553
-	add_character_modifier = {
-		name = the_bookaddict
-		duration = 365
-	}
-	FROM = {
-		opinion = {
-			modifier = opinion_relieved
-			who = ROOT
-			years = 2
+	option = {
+		name = EVTOPTB3553
+		add_character_modifier = {
+			name = the_bookaddict
+			duration = 365
+		}
+		FROM = {
+			opinion = {
+				modifier = opinion_relieved
+				who = ROOT
+				years = 2
+			}
 		}
 	}
-}
 }
 
 # GARDENER
 
 # Gardener: Flower Power
 character_event = {
-id = 3555
-desc = EVTDESC3555
-picture = GFX_evt_garden
-only_playable = yes
-min_age = 20
-capable_only = yes
-prisoner = no
-war = no
-is_triggered_only = yes
-trigger = {
-	trait = gardener
-	in_command = no
-	NOR = {
-		is_inaccessible_trigger = yes
-		has_character_modifier = flower_power
-	}
-	OR = {
-		trait = kind
-		trait = charitable
-		trait = gregarious
-	}
-	spouse = {
-		is_alive = yes
-		is_abroad = no
-		prisoner = no
-	}
-	any_courtier = {
-		NOT = {
-			spouse = {
-				character = ROOT
-			}
-		}
-		is_opposite_sex = ROOT
-		OR = {
-			AND = {
-				is_female = yes
-				is_pregnant = no
-			}
-			ROOT = {
-				is_pregnant = no
-				is_female = yes
-			}
-		}
-		age = 20
-		is_abroad = no
-		prisoner = no
+	id = 3555
+	desc = EVTDESC3555
+	picture = GFX_evt_garden
+	only_playable = yes
+	min_age = 20
+	capable_only = yes
+	prisoner = no
+	war = no
+	is_triggered_only = yes
+	trigger = {
+		trait = gardener
+		in_command = no
 		NOR = {
 			is_inaccessible_trigger = yes
-			age = 40
+			has_character_modifier = flower_power
 		}
-		opinion = {
-			who = ROOT value = 30
+		OR = {
+			trait = kind
+			trait = charitable
+			trait = gregarious
 		}
-		reverse_opinion = {
-			who = ROOT value = 30
+		spouse = {
+			is_alive = yes
+			is_abroad = no
+			prisoner = no
 		}
-	}
-}
-weight_multiplier = {
-	factor = 1
-	modifier = {
-		factor = 2
-		trait = lustful
-	}
-	modifier = {
-		factor = 0.5
-		trait = chaste
-	}
-}
-option = {
-	name = EVTOPTA3555
-	spouse = {
-		character_event = {
-			id = 3556
-			days = 2
-			tooltip = EVTTOOLTIPA3556
-		}
-	}
-}
-option = {
-	name = EVTOPTB3555
-	random_courtier = {
-		limit = {
+		any_courtier = {
 			NOT = {
 				spouse = {
 					character = ROOT
@@ -13040,12 +12984,12 @@ option = {
 				}
 			}
 			age = 20
-			NOR = {
-				age = 40
-				is_inaccessible_trigger = yes
-			}
 			is_abroad = no
 			prisoner = no
+			NOR = {
+				is_inaccessible_trigger = yes
+				age = 40
+			}
 			opinion = {
 				who = ROOT value = 30
 			}
@@ -13053,680 +12997,709 @@ option = {
 				who = ROOT value = 30
 			}
 		}
-		character_event = {
-			id = 3556
-			days = 2
-			tooltip = EVTTOOLTIPB3556
+	}
+	weight_multiplier = {
+		factor = 1
+		modifier = {
+			factor = 2
+			trait = lustful
+		}
+		modifier = {
+			factor = 0.5
+			trait = chaste
 		}
 	}
-	random = {
-		chance = 10
+	option = {
+		name = EVTOPTA3555
 		spouse = {
-			opinion = {
-				modifier = opinion_idiot
-				who = ROOT
-				years = 1
+			character_event = {
+				id = 3556
+				days = 2
+				tooltip = EVTTOOLTIPA3556
 			}
 		}
 	}
-}
-option = {
-	name = EVTOPTC3555
-	add_character_modifier = {
-		name = flower_power
-		duration = 30
+	option = {
+		name = EVTOPTB3555
+		random_courtier = {
+			limit = {
+				NOT = {
+					spouse = {
+						character = ROOT
+					}
+				}
+				is_opposite_sex = ROOT
+				OR = {
+					AND = {
+						is_female = yes
+						is_pregnant = no
+					}
+					ROOT = {
+						is_pregnant = no
+						is_female = yes
+					}
+				}
+				age = 20
+				NOR = {
+					age = 40
+					is_inaccessible_trigger = yes
+				}
+				is_abroad = no
+				prisoner = no
+				opinion = {
+					who = ROOT value = 30
+				}
+				reverse_opinion = {
+					who = ROOT value = 30
+				}
+			}
+			character_event = {
+				id = 3556
+				days = 2
+				tooltip = EVTTOOLTIPB3556
+			}
+		}
+		random = {
+			chance = 10
+			spouse = {
+				opinion = {
+					modifier = opinion_idiot
+					who = ROOT
+					years = 1
+				}
+			}
+		}
 	}
-}
+	option = {
+		name = EVTOPTC3555
+		add_character_modifier = {
+			name = flower_power
+			duration = 30
+		}
+	}
 }
 
 # Gardener: Spouse
 character_event = {
-id = 3556
-desc = EVTDESC3556
-picture = GFX_evt_garden
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3556
-	FROM = {
-		character_event = {
-			id = 3557
-			tooltip = EVTTOOLTIP3557
+	id = 3556
+	desc = EVTDESC3556
+	picture = GFX_evt_garden
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3556
+		FROM = {
+			character_event = {
+				id = 3557
+				tooltip = EVTTOOLTIP3557
+			}
+			reverse_opinion = {
+				modifier = opinion_flattered
+				who = ROOT
+				years = 1
+			}
 		}
-		reverse_opinion = {
-			modifier = opinion_flattered
-			who = ROOT
-			years = 1
-		}
-	}
-	hidden_tooltip = {
-		if = {
-			limit = {
-				spouse = {
-					is_alive = yes
-					is_abroad = no
-					NOT = {
-						character = FROM
+		hidden_tooltip = {
+			if = {
+				limit = {
+					spouse = {
+						is_alive = yes
+						is_abroad = no
+						NOT = {
+							character = FROM
+						}
 					}
 				}
-			}
-			FROM = {
-				spouse = {
-					random = {
-						chance = 15
-						character_event = {
-							id = 3559
+				FROM = {
+					spouse = {
+						random = {
+							chance = 15
+							character_event = {
+								id = 3559
+							}
 						}
 					}
 				}
 			}
 		}
 	}
-}
-option = {
-	name = EVTOPTB3556
-	FROM = {
-		character_event = {
-			id = 3558
-			tooltip = EVTTOOLTIP3558
-		}
-		reverse_opinion = {
-			modifier = opinion_disappointed
-			who = ROOT
-			years = 1
+	option = {
+		name = EVTOPTB3556
+		FROM = {
+			character_event = {
+				id = 3558
+				tooltip = EVTTOOLTIP3558
+			}
+			reverse_opinion = {
+				modifier = opinion_disappointed
+				who = ROOT
+				years = 1
+			}
 		}
 	}
-}
 }
 
 # Gardener: Good response FROM spouse/courtier
 character_event = {
-id = 3557
-desc = EVTDESC3557
-picture = GFX_evt_garden
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3557
-	FROM = {
-		opinion = {
-			modifier = opinion_flattered
-			who = ROOT
-			years = 1
+	id = 3557
+	desc = EVTDESC3557
+	picture = GFX_evt_garden
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3557
+		FROM = {
+			opinion = {
+				modifier = opinion_flattered
+				who = ROOT
+				years = 1
+			}
 		}
 	}
-}
 }
 
 # Gardener: Bad response FROM spouse/courtier
 character_event = {
-id = 3558
-desc = EVTDESC3558
-picture = GFX_evt_garden
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3558
-	FROM = {
-		opinion = {
-			modifier = opinion_disappointed
-			who = ROOT
-			years = 1
+	id = 3558
+	desc = EVTDESC3558
+	picture = GFX_evt_garden
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3558
+		FROM = {
+			opinion = {
+				modifier = opinion_disappointed
+				who = ROOT
+				years = 1
+			}
 		}
 	}
-}
 }
 
 # Gardener: Spouse sees ROOT give rose to courtier
 character_event = {
-id = 3559
-desc = EVTDESC3559
-picture = GFX_evt_garden
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3559
+	id = 3559
+	desc = EVTDESC3559
+	picture = GFX_evt_garden
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3559
 
-	trigger = {
+		trigger = {
+			spouse = {
+				any_lover = {
+					character = ROOT
+				}
+			}
+		}
+		character_event = {
+			id = 64105
+			tooltip = EVTTOOLTIP64105
+		}
+	}
+	option = {
+		name = EVTOPTB3559
 		spouse = {
-			any_lover = {
-				character = ROOT
+			reverse_opinion = {
+				modifier = opinion_angry
+				who = ROOT
+				years = 5
 			}
 		}
 	}
-	character_event = {
-		id = 64105
-		tooltip = EVTTOOLTIP64105
-	}
-}
-option = {
-	name = EVTOPTB3559
-	spouse = {
-		reverse_opinion = {
-			modifier = opinion_angry
-			who = ROOT
-			years = 5
+	option = {
+		name = EVTOPTC3559
+		spouse = {
+			reverse_opinion = {
+				modifier = opinion_forgive
+				who = ROOT
+				years = 5
+			}
 		}
 	}
-}
-option = {
-	name = EVTOPTC3559
-	spouse = {
-		reverse_opinion = {
-			modifier = opinion_forgive
-			who = ROOT
-			years = 5
-		}
-	}
-}
 }
 
 # Gardener: Gain stewardship
 character_event = {
-id = 3560
-desc = EVTDESC3560
-picture = GFX_evt_garden
-only_playable = yes
-min_age = 20
-capable_only = yes
-prisoner = no
-war = no
-is_triggered_only = yes
-trigger = {
-	trait = gardener
-	in_command = no
-	NOR = {
-		is_inaccessible_trigger = yes
-		stewardship = 15
-	}
-	OR = {
-		trait = diligent
-		trait = ambitious
-		NOR = {
-			trait = slothful
-			trait = content
-		}
-	}
-	any_courtier = {
-		age = 16
+	id = 3560
+	desc = EVTDESC3560
+	picture = GFX_evt_garden
+	only_playable = yes
+	min_age = 20
+	capable_only = yes
+	prisoner = no
+	war = no
+	is_triggered_only = yes
+	trigger = {
+		trait = gardener
 		in_command = no
-		NOT = {
+		NOR = {
 			is_inaccessible_trigger = yes
+			stewardship = 15
 		}
 		OR = {
-			learning = 10
-			trait = gardener
-			diplomacy = 8
+			trait = diligent
+			trait = ambitious
+			NOR = {
+				trait = slothful
+				trait = content
+			}
 		}
-	}
-}
-weight_multiplier = {
-	factor = 1
-	modifier = {
-		factor = 2
-		learning = 9
-	}
-}
-option = {
-	name = EVTOPTA3560 # Demand
-	piety = -10
-	random_courtier = {
-		limit = {
+		any_courtier = {
 			age = 16
 			in_command = no
+			NOT = {
+				is_inaccessible_trigger = yes
+			}
 			OR = {
 				learning = 10
 				trait = gardener
 				diplomacy = 8
 			}
 		}
-		set_character_flag = pressured_scholar
-		character_event = {
-			id = 3561
-			days = 2
-			tooltip = EVTTOOLTIP3561
+	}
+	weight_multiplier = {
+		factor = 1
+		modifier = {
+			factor = 2
+			learning = 9
 		}
 	}
-}
-option = {
-	name = EVTOPTB3560 # Ask nicely
-	random_courtier = {
-		limit = {
-			age = 16
-			in_command = no
-			OR = {
-				learning = 10
-				trait = gardener
-				diplomacy = 8
+	option = {
+		name = EVTOPTA3560 # Demand
+		piety = -10
+		random_courtier = {
+			limit = {
+				age = 16
+				in_command = no
+				OR = {
+					learning = 10
+					trait = gardener
+					diplomacy = 8
+				}
+			}
+			set_character_flag = pressured_scholar
+			character_event = {
+				id = 3561
+				days = 2
+				tooltip = EVTTOOLTIP3561
 			}
 		}
-		set_character_flag = asked_scholar
-		character_event = {
-			id = 3561
-			days = 2
-			tooltip = EVTTOOLTIP3561
-		}
 	}
-}
-option = {
-	name = EVTOPTC3560 # Bribe
-	scaled_wealth = -0.10
-	random_courtier = {
-		limit = {
-			age = 16
-			in_command = no
-			OR = {
-				learning = 10
-				trait = gardener
-				diplomacy = 8
+	option = {
+		name = EVTOPTB3560 # Ask nicely
+		random_courtier = {
+			limit = {
+				age = 16
+				in_command = no
+				OR = {
+					learning = 10
+					trait = gardener
+					diplomacy = 8
+				}
+			}
+			set_character_flag = asked_scholar
+			character_event = {
+				id = 3561
+				days = 2
+				tooltip = EVTTOOLTIP3561
 			}
 		}
-		set_character_flag = bribed_scholar
-		character_event = {
-			id = 3561
-			days = 2
-			tooltip = EVTTOOLTIP3561
+	}
+	option = {
+		name = EVTOPTC3560 # Bribe
+		scaled_wealth = -0.10
+		random_courtier = {
+			limit = {
+				age = 16
+				in_command = no
+				OR = {
+					learning = 10
+					trait = gardener
+					diplomacy = 8
+				}
+			}
+			set_character_flag = bribed_scholar
+			character_event = {
+				id = 3561
+				days = 2
+				tooltip = EVTTOOLTIP3561
+			}
 		}
 	}
-}
-option = {
-	name = EVTOPTD3560 # Ignore
-	add_trait = content
-}
+	option = {
+		name = EVTOPTD3560 # Ignore
+		add_trait = content
+	}
 }
 
 # Gardener: Courtier reacts to demands/bribes or being asked nicely
 character_event = {
-id = 3561
-desc = EVTDESC3561
-picture = GFX_evt_garden
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3561
+	id = 3561
+	desc = EVTDESC3561
+	picture = GFX_evt_garden
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3561
 
-	trigger = {
-		has_character_flag = pressured_scholar
-	}
-	clr_character_flag = pressured_scholar
-	FROM = {
-		set_character_flag = irritated_scholar
-		character_event = {
-			id = 3562
-			days = 7
-			tooltip = EVTTOOLTIP3562
+		trigger = {
+			has_character_flag = pressured_scholar
+		}
+		clr_character_flag = pressured_scholar
+		FROM = {
+			set_character_flag = irritated_scholar
+			character_event = {
+				id = 3562
+				days = 7
+				tooltip = EVTTOOLTIP3562
+			}
+		}
+		opinion = {
+			modifier = opinion_disgruntled
+			who = ROOT
+			years = 2
 		}
 	}
-	opinion = {
-		modifier = opinion_disgruntled
-		who = ROOT
-		years = 2
-	}
-}
-option = {
-	name = EVTOPTB3561
+	option = {
+		name = EVTOPTB3561
 
-	trigger = {
-		has_character_flag = asked_scholar
-	}
-	clr_character_flag = asked_scholar
-	FROM = {
-		set_character_flag = happy_scholar
-		character_event = {
-			id = 3562
-			days = 7
-			tooltip = EVTTOOLTIP3562
+		trigger = {
+			has_character_flag = asked_scholar
+		}
+		clr_character_flag = asked_scholar
+		FROM = {
+			set_character_flag = happy_scholar
+			character_event = {
+				id = 3562
+				days = 7
+				tooltip = EVTTOOLTIP3562
+			}
+		}
+		opinion = {
+			modifier = opinion_delighted
+			who = ROOT
+			years = 2
 		}
 	}
-	opinion = {
-		modifier = opinion_delighted
-		who = ROOT
-		years = 2
-	}
-}
-option = {
-	name = EVTOPTC3561
+	option = {
+		name = EVTOPTC3561
 
-	trigger = {
-		has_character_flag = bribed_scholar
-	}
-	clr_character_flag = bribed_scholar
-	FROM = {
-		set_character_flag = generous_scholar
-		character_event = {
-			id = 3562
-			days = 7
-			tooltip = EVTTOOLTIP3562
+		trigger = {
+			has_character_flag = bribed_scholar
+		}
+		clr_character_flag = bribed_scholar
+		FROM = {
+			set_character_flag = generous_scholar
+			character_event = {
+				id = 3562
+				days = 7
+				tooltip = EVTTOOLTIP3562
+			}
 		}
 	}
-}
 }
 
 # Gardener: ROOT get Stewardship
 character_event = {
-id = 3562
-desc = EVTDESC3562
-picture = GFX_evt_garden
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3562
+	id = 3562
+	desc = EVTDESC3562
+	picture = GFX_evt_garden
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3562
 
-	trigger = {
-		has_character_flag = irritated_scholar
+		trigger = {
+			has_character_flag = irritated_scholar
+		}
+		clr_character_flag = irritated_scholar
+		opinion = {
+			modifier = opinion_disgruntled
+			who = FROM
+			years = 2
+		}
+		change_stewardship = 1
 	}
-	clr_character_flag = irritated_scholar
-	opinion = {
-		modifier = opinion_disgruntled
-		who = FROM
-		years = 2
-	}
-	change_stewardship = 1
-}
-option = {
-	name = EVTOPTA3562
+	option = {
+		name = EVTOPTA3562
 
-	trigger = {
-		has_character_flag = happy_scholar
+		trigger = {
+			has_character_flag = happy_scholar
+		}
+		clr_character_flag = happy_scholar
+		opinion = {
+			modifier = opinion_delighted
+			who = FROM
+			years = 2
+		}
+		change_stewardship = 2
 	}
-	clr_character_flag = happy_scholar
-	opinion = {
-		modifier = opinion_delighted
-		who = FROM
-		years = 2
-	}
-	change_stewardship = 2
-}
-option = {
-	name = EVTOPTA3562
+	option = {
+		name = EVTOPTA3562
 
-	trigger = {
-		has_character_flag = generous_scholar
+		trigger = {
+			has_character_flag = generous_scholar
+		}
+		clr_character_flag = generous_scholar
+		change_stewardship = 1
 	}
-	clr_character_flag = generous_scholar
-	change_stewardship = 1
-}
 }
 
 # Gardener: Spend too much money?
 character_event = {
-id = 3563
-desc = EVTDESC3563
-picture = GFX_evt_garden
-only_playable = yes
-min_age = 20
-capable_only = yes
-prisoner = no
-war = no
-is_triggered_only = yes
-trigger = {
-	trait = gardener
-	in_command = no
-	OR = {
-		trait = charitable
-		NOT = {
-			trait = greedy
-		}
-	}
-	OR = {
-		is_married = yes
-		any_courtier = {
-			age = 16
-			in_command = no
-			trait = greedy
-			stewardship = 8
-		}
-	}
-}
-weight_multiplier = {
-	factor = 1
-	modifier = {
-		factor = 2
-		stewardship = 10
-	}
-	modifier = {
-		factor = 0.5
-		trait = slothful
-	}
-}
-option = {
-	name = EVTOPTA3563
-
+	id = 3563
+	desc = EVTDESC3563
+	picture = GFX_evt_garden
+	only_playable = yes
+	min_age = 20
+	capable_only = yes
+	prisoner = no
+	war = no
+	is_triggered_only = yes
 	trigger = {
-		is_married = yes
-	}
-	spouse = {
-		character_event = {
-			id = 3564
-			days = 2
-			tooltip = EVTTOOLTIP3564
-		}
-	}
-}
-option = {
-	name = EVTOPTB3563
-	prestige = 10
-	random_list = {
-		70 = {
-		}
-		20 = {
-			add_trait = depressed
-			hidden_tooltip = {
-				character_event = {
-					id = 38288 # Notify Depressed
-				}
+		trait = gardener
+		in_command = no
+		OR = {
+			trait = charitable
+			NOT = {
+				trait = greedy
 			}
 		}
-		10 = {
-			remove_trait = gardener
-			hidden_tooltip = {
-				character_event = {
-					id = 38289 # Notify remove Gardener
-				}
+		OR = {
+			is_married = yes
+			any_courtier = {
+				age = 16
+				in_command = no
+				trait = greedy
+				stewardship = 8
 			}
 		}
 	}
-}
-option = {
-	name = EVTOPTC3563
+	weight_multiplier = {
+		factor = 1
+		modifier = {
+			factor = 2
+			stewardship = 10
+		}
+		modifier = {
+			factor = 0.5
+			trait = slothful
+		}
+	}
+	option = {
+		name = EVTOPTA3563
 
-	trigger = {
-		any_courtier = {
-			age = 16
-			in_command = no
-			trait = greedy
-			stewardship = 8
+		trigger = {
+			is_married = yes
+		}
+		spouse = {
+			character_event = {
+				id = 3564
+				days = 2
+				tooltip = EVTTOOLTIP3564
+			}
 		}
 	}
-	scaled_wealth = -0.15
-	random_courtier = {
-		limit = {
-			age = 16
-			in_command = no
-			trait = greedy
-			stewardship = 8
-		}
-		character_event = {
-			id = 3565
-			days = 2
-			tooltip = EVTTOOLTIP3565
+	option = {
+		name = EVTOPTB3563
+		prestige = 10
+		random_list = {
+			70 = {
+			}
+			20 = {
+				add_trait = depressed
+				hidden_tooltip = {
+					character_event = {
+						id = 38288 # Notify Depressed
+					}
+				}
+			}
+			10 = {
+				remove_trait = gardener
+				hidden_tooltip = {
+					character_event = {
+						id = 38289 # Notify remove Gardener
+					}
+				}
+			}
 		}
 	}
-}
+	option = {
+		name = EVTOPTC3563
+
+		trigger = {
+			any_courtier = {
+				age = 16
+				in_command = no
+				trait = greedy
+				stewardship = 8
+			}
+		}
+		scaled_wealth = -0.15
+		random_courtier = {
+			limit = {
+				age = 16
+				in_command = no
+				trait = greedy
+				stewardship = 8
+			}
+			character_event = {
+				id = 3565
+				days = 2
+				tooltip = EVTTOOLTIP3565
+			}
+		}
+	}
 }
 
 # Gardener: Spouse interferes
 character_event = {
-id = 3564
-desc = EVTDESC3564
-picture = GFX_evt_quarrel
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3564
-	opinion = {
-		modifier = opinion_worried
-		who = FROM
-		years = 2
-	}
-	FROM = {
-		character_event = {
-			id = 3566
-			tooltip = EVTTOOLTIP3566
-		}
-	}
-}
-option = {
-	name = EVTOPTB3564
-	scaled_wealth = -0.05
-	FROM = {
+	id = 3564
+	desc = EVTDESC3564
+	picture = GFX_evt_quarrel
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3564
 		opinion = {
-			modifier = opinion_grateful
-			who = ROOT
+			modifier = opinion_worried
+			who = FROM
 			years = 2
 		}
+		FROM = {
+			character_event = {
+				id = 3566
+				tooltip = EVTTOOLTIP3566
+			}
+		}
 	}
-}
+	option = {
+		name = EVTOPTB3564
+		scaled_wealth = -0.05
+		FROM = {
+			opinion = {
+				modifier = opinion_grateful
+				who = ROOT
+				years = 2
+			}
+		}
+	}
 }
 
 # Gardener: Courtier interferes
 character_event = {
-id = 3565
-desc = EVTDESC3565
-picture = GFX_evt_quarrel
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3565
-	opinion = {
-		modifier = opinion_worried
-		who = FROM
-		years = 2
-	}
-	FROM = {
-		character_event = {
-			id = 3567
-			tooltip = EVTTOOLTIP3567
+	id = 3565
+	desc = EVTDESC3565
+	picture = GFX_evt_quarrel
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3565
+		opinion = {
+			modifier = opinion_worried
+			who = FROM
+			years = 2
+		}
+		FROM = {
+			character_event = {
+				id = 3567
+				tooltip = EVTTOOLTIP3567
+			}
 		}
 	}
-}
-option = {
-	name = EVTOPTB3565
-	add_trait = slothful
-}
+	option = {
+		name = EVTOPTB3565
+		add_trait = slothful
+	}
 }
 
 # Gardener: Spouse confronts him/her
 character_event = {
-id = 3566
-desc = EVTDESC3566
-picture = GFX_evt_quarrel
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3566
-	add_character_modifier = {
-		name = the_naturalist
-		duration = 90
-	}
-	FROM = {
-		opinion = {
-			modifier = opinion_worried
-			who = ROOT
-			years = 2
+	id = 3566
+	desc = EVTDESC3566
+	picture = GFX_evt_quarrel
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3566
+		add_character_modifier = {
+			name = the_naturalist
+			duration = 90
+		}
+		FROM = {
+			opinion = {
+				modifier = opinion_worried
+				who = ROOT
+				years = 2
+			}
 		}
 	}
-}
-option = {
-	name = EVTOPTB3566
-	add_character_modifier = {
-		name = the_natural_addict
-		duration = 90
-	}
-	FROM = {
-		opinion = {
-			modifier = opinion_relieved
-			who = ROOT
-			years = 2
+	option = {
+		name = EVTOPTB3566
+		add_character_modifier = {
+			name = the_natural_addict
+			duration = 90
+		}
+		FROM = {
+			opinion = {
+				modifier = opinion_relieved
+				who = ROOT
+				years = 2
+			}
 		}
 	}
-}
 }
 
 # Gardener: Courtier confronts him/her
 character_event = {
-id = 3567
-desc = EVTDESC3567
-picture = GFX_evt_quarrel
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3567
-	add_character_modifier = {
-		name = the_naturalist
-		duration = 90
-	}
-	FROM = {
-		opinion = {
-			modifier = opinion_worried
-			who = ROOT
-			years = 2
+	id = 3567
+	desc = EVTDESC3567
+	picture = GFX_evt_quarrel
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3567
+		add_character_modifier = {
+			name = the_naturalist
+			duration = 90
+		}
+		FROM = {
+			opinion = {
+				modifier = opinion_worried
+				who = ROOT
+				years = 2
+			}
 		}
 	}
-}
-option = {
-	name = EVTOPTB3567
-	add_character_modifier = {
-		name = the_natural_addict
-		duration = 90
-	}
-	FROM = {
-		opinion = {
-			modifier = opinion_relieved
-			who = ROOT
-			years = 2
+	option = {
+		name = EVTOPTB3567
+		add_character_modifier = {
+			name = the_natural_addict
+			duration = 90
+		}
+		FROM = {
+			opinion = {
+				modifier = opinion_relieved
+				who = ROOT
+				years = 2
+			}
 		}
 	}
-}
 }
 
 # Gardener: The Bees!
 character_event = {
-id = 3568
-desc = EVTDESC3568
-picture = GFX_evt_garden
-only_playable = yes
-min_age = 20
-capable_only = yes
-prisoner = no
-war = no
-is_triggered_only = yes
-trigger = {
-	trait = gardener
-	in_command = no
-	NOR = {
-		is_inaccessible_trigger = yes
-		is_ill = yes
-		health = 6
-	}
-	any_courtier = {
-		age = 16
-		is_councillor = yes
-		NOT = {
+	id = 3568
+	desc = EVTDESC3568
+	picture = GFX_evt_garden
+	only_playable = yes
+	min_age = 20
+	capable_only = yes
+	prisoner = no
+	war = no
+	is_triggered_only = yes
+	trigger = {
+		trait = gardener
+		in_command = no
+		NOR = {
 			is_inaccessible_trigger = yes
+			is_ill = yes
+			health = 6
 		}
-		OR = {
-			trait = brave
-			trait = diligent
-			trait = ambitious
-		}
-	}
-}
-weight_multiplier = {
-	factor = 1
-	modifier = {
-		factor = 2
-		trait = brave
-	}
-	modifier = {
-		factor = 0.5
-		trait = slothful
-	}
-}
-option = {
-	name = EVTOPTA3568
-	random_courtier = {
-		limit = {
+		any_courtier = {
 			age = 16
 			is_councillor = yes
 			NOT = {
@@ -13738,551 +13711,549 @@ option = {
 				trait = ambitious
 			}
 		}
-		character_event = {
-			id = 3569
-			tooltip = EVTTOOLTIP3569
+	}
+	weight_multiplier = {
+		factor = 1
+		modifier = {
+			factor = 2
+			trait = brave
+		}
+		modifier = {
+			factor = 0.5
+			trait = slothful
 		}
 	}
-}
-option = {
-	name = EVTOPTB3568
+	option = {
+		name = EVTOPTA3568
+		random_courtier = {
+			limit = {
+				age = 16
+				is_councillor = yes
+				NOT = {
+					is_inaccessible_trigger = yes
+				}
+				OR = {
+					trait = brave
+					trait = diligent
+					trait = ambitious
+				}
+			}
+			character_event = {
+				id = 3569
+				tooltip = EVTTOOLTIP3569
+			}
+		}
+	}
+	option = {
+		name = EVTOPTB3568
 
-	trigger = {
-		any_child = {
-			is_alive = yes
-			is_abroad = no
-			prisoner = no
-			age = 14
-			OR = {
-				trait = brave
-				trait = diligent
-				trait = ambitious
-			}
-		}
-	}
-	random_child = {
-		limit = {
-			is_alive = yes
-			is_abroad = no
-			prisoner = no
-			age = 14
-			OR = {
-				trait = brave
-				trait = diligent
-				trait = ambitious
-			}
-		}
-		character_event = {
-			id = 3569
-			tooltip = EVTTOOLTIP3569
-		}
-	}
-}
-option = {
-	name = EVTOPTC3568
-
-	trigger = {
-		spouse = {
-			is_alive = yes
-			is_abroad = no
-			prisoner = no
-			is_councillor = no
-			OR = {
-				trait = brave
-				trait = diligent
-				trait = ambitious
-			}
-		}
-	}
-	spouse = {
-		character_event = {
-			id = 3569
-			tooltip = EVTTOOLTIP3569
-		}
-	}
-}
-option = {
-	name = EVTOPTD3568
-	random_list = {
-		40 = {
-		}
-		30 = {
-			add_trait = wounded
-			hidden_tooltip = {
-				character_event = {
-					days = 3
-					id = 38280 # Notify Wounded
+		trigger = {
+			any_child = {
+				is_alive = yes
+				is_abroad = no
+				prisoner = no
+				age = 14
+				OR = {
+					trait = brave
+					trait = diligent
+					trait = ambitious
 				}
 			}
 		}
-		30 = {
-			give_ill_effect = yes
-		}
-		20 = {
-			change_stewardship = 1
+		random_child = {
+			limit = {
+				is_alive = yes
+				is_abroad = no
+				prisoner = no
+				age = 14
+				OR = {
+					trait = brave
+					trait = diligent
+					trait = ambitious
+				}
+			}
+			character_event = {
+				id = 3569
+				tooltip = EVTTOOLTIP3569
+			}
 		}
 	}
-}
+	option = {
+		name = EVTOPTC3568
+
+		trigger = {
+			spouse = {
+				is_alive = yes
+				is_abroad = no
+				prisoner = no
+				is_councillor = no
+				OR = {
+					trait = brave
+					trait = diligent
+					trait = ambitious
+				}
+			}
+		}
+		spouse = {
+			character_event = {
+				id = 3569
+				tooltip = EVTTOOLTIP3569
+			}
+		}
+	}
+	option = {
+		name = EVTOPTD3568
+		random_list = {
+			40 = {
+			}
+			30 = {
+				add_trait = wounded
+				hidden_tooltip = {
+					character_event = {
+						days = 3
+						id = 38280 # Notify Wounded
+					}
+				}
+			}
+			30 = {
+				give_ill_effect = yes
+			}
+			20 = {
+				change_stewardship = 1
+			}
+		}
+	}
 }
 
 # Gardener: Courtier/spouse/child is asked to help remove beehive
 character_event = {
-id = 3569
-desc = EVTDESC3569
-picture = GFX_evt_garden
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3569
-	random_list = {
-		40 = {
-			FROM = {
-				set_character_flag = beehive_removed
+	id = 3569
+	desc = EVTDESC3569
+	picture = GFX_evt_garden
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3569
+		random_list = {
+			40 = {
+				FROM = {
+					set_character_flag = beehive_removed
+				}
+			}
+			30 = {
+				add_trait = wounded
+				hidden_tooltip = {
+					character_event = {
+						days = 3
+						id = 38280 # Notify Wounded
+					}
+				}
+				opinion = {
+					modifier = opinion_irritated
+					who = FROM
+					years = 1
+				}
+				FROM = {
+					set_character_flag = beehive_wounded
+				}
+			}
+			20 = {
+				give_ill_effect = yes
+				opinion = {
+					modifier = opinion_irritated
+					who = FROM
+					years = 1
+				}
+				FROM = {
+					set_character_flag = beehive_ill
+				}
+			}
+			10 = {
+				change_stewardship = 1
 			}
 		}
-		30 = {
-			add_trait = wounded
+		FROM = {
 			hidden_tooltip = {
 				character_event = {
-					days = 3
-					id = 38280 # Notify Wounded
+					id = 3670
 				}
 			}
 			opinion = {
-				modifier = opinion_irritated
-				who = FROM
+				modifier = opinion_grateful
+				who = ROOT
+				years = 5
+			}
+		}
+	}
+	option = {
+		name = EVTOPTB3569
+		FROM = {
+			reverse_opinion = {
+				modifier = opinion_coward
+				who = ROOT
 				years = 1
 			}
-			FROM = {
-				set_character_flag = beehive_wounded
-			}
-		}
-		20 = {
-			give_ill_effect = yes
-			opinion = {
-				modifier = opinion_irritated
-				who = FROM
-				years = 1
-			}
-			FROM = {
-				set_character_flag = beehive_ill
-			}
-		}
-		10 = {
-			change_stewardship = 1
-		}
-	}
-	FROM = {
-		hidden_tooltip = {
-			character_event = {
-				id = 3670
-			}
-		}
-		opinion = {
-			modifier = opinion_grateful
-			who = ROOT
-			years = 5
-		}
-	}
-}
-option = {
-	name = EVTOPTB3569
-	FROM = {
-		reverse_opinion = {
-			modifier = opinion_coward
-			who = ROOT
-			years = 1
-		}
-		hidden_tooltip = {
-			character_event = {
-				id = 3671
+			hidden_tooltip = {
+				character_event = {
+					id = 3671
+				}
 			}
 		}
 	}
-}
 }
 
 # Gardener: FROM helped
 character_event = {
-id = 3670
-desc = EVTDESC3670
-picture = GFX_evt_garden
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3670
+	id = 3670
+	desc = EVTDESC3670
+	picture = GFX_evt_garden
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3670
 
-	trigger = {
-		has_character_flag = beehive_removed
+		trigger = {
+			has_character_flag = beehive_removed
+		}
+		clr_character_flag = beehive_removed
+		opinion = {
+			modifier = opinion_grateful
+			who = FROM
+			years = 4
+		}
 	}
-	clr_character_flag = beehive_removed
-	opinion = {
-		modifier = opinion_grateful
-		who = FROM
-		years = 4
-	}
-}
-option = {
-	name = EVTOPTB3670
+	option = {
+		name = EVTOPTB3670
 
-	trigger = {
-		has_character_flag = beehive_wounded
+		trigger = {
+			has_character_flag = beehive_wounded
+		}
+		clr_character_flag = beehive_wounded
+		reverse_opinion = {
+			modifier = opinion_irritated
+			who = FROM
+			years = 4
+		}
+		opinion = {
+			modifier = opinion_grateful
+			who = FROM
+			years = 4
+		}
 	}
-	clr_character_flag = beehive_wounded
-	reverse_opinion = {
-		modifier = opinion_irritated
-		who = FROM
-		years = 4
-	}
-	opinion = {
-		modifier = opinion_grateful
-		who = FROM
-		years = 4
-	}
-}
-option = {
-	name = EVTOPTC3670
+	option = {
+		name = EVTOPTC3670
 
-	trigger = {
-		has_character_flag = beehive_ill
+		trigger = {
+			has_character_flag = beehive_ill
+		}
+		clr_character_flag = beehive_ill
+		reverse_opinion = {
+			modifier = opinion_irritated
+			who = FROM
+			years = 4
+		}
+		opinion = {
+			modifier = opinion_grateful
+			who = FROM
+			years = 4
+		}
 	}
-	clr_character_flag = beehive_ill
-	reverse_opinion = {
-		modifier = opinion_irritated
-		who = FROM
-		years = 4
-	}
-	opinion = {
-		modifier = opinion_grateful
-		who = FROM
-		years = 4
-	}
-}
 }
 
 # Gardener: FROM refused to help
 character_event = {
-id = 3671
-desc = EVTDESC3671
-picture = GFX_evt_garden
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3671
-	opinion = {
-		modifier = opinion_coward
-		who = FROM
-		years = 1
-	}
-	random_list = {
-		40 = {
+	id = 3671
+	desc = EVTDESC3671
+	picture = GFX_evt_garden
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3671
+		opinion = {
+			modifier = opinion_coward
+			who = FROM
+			years = 1
 		}
-		30 = {
-			add_trait = wounded
-			hidden_tooltip = {
-				character_event = {
-					days = 3
-					id = 38280 # Notify Wounded
+		random_list = {
+			40 = {
+			}
+			30 = {
+				add_trait = wounded
+				hidden_tooltip = {
+					character_event = {
+						days = 3
+						id = 38280 # Notify Wounded
+					}
 				}
 			}
-		}
-		20 = {
-			give_ill_effect = yes
-		}
-		10 = {
-			change_stewardship = 1
+			20 = {
+				give_ill_effect = yes
+			}
+			10 = {
+				change_stewardship = 1
+			}
 		}
 	}
-}
 }
 
 # MYSTIC
 
 # Mystic: Gain intrigue
 character_event = {
-id = 3570
-desc = EVTDESC3570
-picture = GFX_evt_shadowy_cabal
-only_playable = yes
-min_age = 20
-capable_only = yes
-prisoner = no
-war = no
-is_triggered_only = yes
-trigger = {
-	trait = mystic
-	in_command = no
-	NOR = {
-		has_character_modifier = intriguing_book
-		is_inaccessible_trigger = yes
-		intrigue = 15
-	}
-	OR = {
-		trait = diligent
-		trait = ambitious
-		NAND = {
-			trait = slothful
-			trait = content
-		}
-	}
-	any_courtier = {
-		age = 16
+	id = 3570
+	desc = EVTDESC3570
+	picture = GFX_evt_shadowy_cabal
+	only_playable = yes
+	min_age = 20
+	capable_only = yes
+	prisoner = no
+	war = no
+	is_triggered_only = yes
+	trigger = {
+		trait = mystic
 		in_command = no
+		NOR = {
+			has_character_modifier = intriguing_book
+			is_inaccessible_trigger = yes
+			intrigue = 15
+		}
 		OR = {
-			learning = 10
-			trait = mystic
-			intrigue = 8
+			trait = diligent
+			trait = ambitious
+			NAND = {
+				trait = slothful
+				trait = content
+			}
+		}
+		any_courtier = {
+			age = 16
+			in_command = no
+			OR = {
+				learning = 10
+				trait = mystic
+				intrigue = 8
+			}
 		}
 	}
-}
-weight_multiplier = {
-	factor = 1
-	modifier = {
-		factor = 2
-		learning = 9
+	weight_multiplier = {
+		factor = 1
+		modifier = {
+			factor = 2
+			learning = 9
+		}
 	}
-}
-option = {
-	name = EVTOPTA3570 # Demand
-	piety = -10
-	random = {
-		chance = 25
-		random_courtier = {
-			limit = {
-				age = 16
-				in_command = no
-				OR = {
-					learning = 10
-					trait = scholar
+	option = {
+		name = EVTOPTA3570 # Demand
+		piety = -10
+		random = {
+			chance = 25
+			random_courtier = {
+				limit = {
+					age = 16
+					in_command = no
+					OR = {
+						learning = 10
+						trait = scholar
+					}
+				}
+				set_character_flag = pressured_scholar
+				character_event = {
+					id = 3571
+					days = 2
+					tooltip = EVTTOOLTIP3571
 				}
 			}
-			set_character_flag = pressured_scholar
-			character_event = {
-				id = 3571
-				days = 2
-				tooltip = EVTTOOLTIP3571
-			}
 		}
 	}
-}
-option = {
-	name = EVTOPTB3570 # Ask nicely
-	prestige = -10
-	random = {
-		chance = 25
-		random_courtier = {
-			limit = {
-				age = 16
-				in_command = no
-				OR = {
-					learning = 10
-					trait = scholar
-					diplomacy = 8
+	option = {
+		name = EVTOPTB3570 # Ask nicely
+		prestige = -10
+		random = {
+			chance = 25
+			random_courtier = {
+				limit = {
+					age = 16
+					in_command = no
+					OR = {
+						learning = 10
+						trait = scholar
+						diplomacy = 8
+					}
+				}
+				set_character_flag = asked_scholar
+				character_event = {
+					id = 3571
+					days = 2
+					tooltip = EVTTOOLTIP3571
 				}
 			}
-			set_character_flag = asked_scholar
-			character_event = {
-				id = 3571
-				days = 2
-				tooltip = EVTTOOLTIP3571
-			}
 		}
 	}
-}
-option = {
-	name = EVTOPTC3570 # Bribe
-	scaled_wealth = -0.10
-	random = {
-		chance = 25
-		random_courtier = {
-			limit = {
-				age = 16
-				in_command = no
-				OR = {
-					learning = 10
-					trait = scholar
+	option = {
+		name = EVTOPTC3570 # Bribe
+		scaled_wealth = -0.10
+		random = {
+			chance = 25
+			random_courtier = {
+				limit = {
+					age = 16
+					in_command = no
+					OR = {
+						learning = 10
+						trait = scholar
+					}
+				}
+				set_character_flag = bribed_scholar
+				character_event = {
+					id = 3571
+					days = 2
+					tooltip = EVTTOOLTIP3571
 				}
 			}
-			set_character_flag = bribed_scholar
-			character_event = {
-				id = 3571
-				days = 2
-				tooltip = EVTTOOLTIP3571
-			}
 		}
 	}
-}
-option = {
-	name = EVTOPTD3570 # Ignore
-	add_trait = content
-}
+	option = {
+		name = EVTOPTD3570 # Ignore
+		add_trait = content
+	}
 }
 
 # Mystic: Courtier reacts to demands/bribes or being asked nicely
 character_event = {
-id = 3571
-desc = EVTDESC3571
-picture = GFX_evt_shadowy_cabal
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3571
+	id = 3571
+	desc = EVTDESC3571
+	picture = GFX_evt_shadowy_cabal
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3571
 
-	trigger = {
-		has_character_flag = pressured_scholar
-	}
-	clr_character_flag = pressured_scholar
-	FROM = {
-		set_character_flag = irritated_scholar
-		character_event = {
-			id = 3572
-			days = 7
-			tooltip = EVTTOOLTIP3572
+		trigger = {
+			has_character_flag = pressured_scholar
+		}
+		clr_character_flag = pressured_scholar
+		FROM = {
+			set_character_flag = irritated_scholar
+			character_event = {
+				id = 3572
+				days = 7
+				tooltip = EVTTOOLTIP3572
+			}
+		}
+		opinion = {
+			modifier = opinion_disgruntled
+			who = ROOT
+			years = 2
 		}
 	}
-	opinion = {
-		modifier = opinion_disgruntled
-		who = ROOT
-		years = 2
-	}
-}
-option = {
-	name = EVTOPTB3571
+	option = {
+		name = EVTOPTB3571
 
-	trigger = {
-		has_character_flag = asked_scholar
-	}
-	clr_character_flag = asked_scholar
-	FROM = {
-		set_character_flag = happy_scholar
-		character_event = {
-			id = 3572
-			days = 7
-			tooltip = EVTTOOLTIP3572
+		trigger = {
+			has_character_flag = asked_scholar
+		}
+		clr_character_flag = asked_scholar
+		FROM = {
+			set_character_flag = happy_scholar
+			character_event = {
+				id = 3572
+				days = 7
+				tooltip = EVTTOOLTIP3572
+			}
+		}
+		opinion = {
+			modifier = opinion_delighted
+			who = ROOT
+			years = 2
 		}
 	}
-	opinion = {
-		modifier = opinion_delighted
-		who = ROOT
-		years = 2
-	}
-}
-option = {
-	name = EVTOPTC3571
+	option = {
+		name = EVTOPTC3571
 
-	trigger = {
-		has_character_flag = bribed_scholar
-	}
-	clr_character_flag = bribed_scholar
-	treasury = 20
-	FROM = {
-		set_character_flag = generous_scholar
-		character_event = {
-			id = 3572
-			days = 7
-			tooltip = EVTTOOLTIP3572
+		trigger = {
+			has_character_flag = bribed_scholar
+		}
+		clr_character_flag = bribed_scholar
+		treasury = 20
+		FROM = {
+			set_character_flag = generous_scholar
+			character_event = {
+				id = 3572
+				days = 7
+				tooltip = EVTTOOLTIP3572
+			}
 		}
 	}
-}
 }
 
 # Mystic: ROOT get intrigue
 character_event = {
-id = 3572
-desc = EVTDESC3572
-picture = GFX_evt_shadowy_cabal
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3572
+	id = 3572
+	desc = EVTDESC3572
+	picture = GFX_evt_shadowy_cabal
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3572
 
-	trigger = {
-		has_character_flag = irritated_scholar
+		trigger = {
+			has_character_flag = irritated_scholar
+		}
+		clr_character_flag = irritated_scholar
+		opinion = {
+			modifier = opinion_disgruntled
+			who = FROM
+			years = 2
+		}
+		add_character_modifier = {
+			name = intriguing_book
+			duration = 60
+		}
 	}
-	clr_character_flag = irritated_scholar
-	opinion = {
-		modifier = opinion_disgruntled
-		who = FROM
-		years = 2
-	}
-	add_character_modifier = {
-		name = intriguing_book
-		duration = 60
-	}
-}
-option = {
-	name = EVTOPTA3572
+	option = {
+		name = EVTOPTA3572
 
-	trigger = {
-		has_character_flag = happy_scholar
+		trigger = {
+			has_character_flag = happy_scholar
+		}
+		clr_character_flag = happy_scholar
+		opinion = {
+			modifier = opinion_delighted
+			who = FROM
+			years = 2
+		}
+		add_character_modifier = {
+			name = intriguing_book
+			duration = 90
+		}
 	}
-	clr_character_flag = happy_scholar
-	opinion = {
-		modifier = opinion_delighted
-		who = FROM
-		years = 2
-	}
-	add_character_modifier = {
-		name = intriguing_book
-		duration = 90
-	}
-}
-option = {
-	name = EVTOPTA3572
+	option = {
+		name = EVTOPTA3572
 
-	trigger = {
-		has_character_flag = generous_scholar
+		trigger = {
+			has_character_flag = generous_scholar
+		}
+		clr_character_flag = generous_scholar
+		add_character_modifier = {
+			name = intriguing_book
+			duration = 60
+		}
 	}
-	clr_character_flag = generous_scholar
-	add_character_modifier = {
-		name = intriguing_book
-		duration = 60
-	}
-}
 }
 
 # Mystic: Start #
 character_event = {
-id = 3575
-desc = EVTDESC3575
-picture = GFX_evt_shadowy_cabal
-only_playable = yes
-min_age = 20
-capable_only = yes
-prisoner = no
-war = no
-is_triggered_only = yes
-trigger = {
-	trait = mystic
-	in_command = no
-	NOT = {
-		is_inaccessible_trigger = yes
-	}
-	any_courtier = {
-		age = 16
+	id = 3575
+	desc = EVTDESC3575
+	picture = GFX_evt_shadowy_cabal
+	only_playable = yes
+	min_age = 20
+	capable_only = yes
+	prisoner = no
+	war = no
+	is_triggered_only = yes
+	trigger = {
+		trait = mystic
 		in_command = no
 		NOT = {
 			is_inaccessible_trigger = yes
 		}
-		OR = {
-			is_priest = yes
-			has_job_title = job_spiritual
-		}
-		religion = ROOT
-		piety = 50
-		has_job_action = no
-	}
-}
-weight_multiplier = {
-	factor = 1
-	modifier = {
-		factor = 2
-		trait = zealous
-	}
-	modifier = {
-		factor = 0.5
-		trait = cynical
-	}
-}
-option = {
-	name = EVTOPTA3575
-	random_courtier = {
-		limit = {
+		any_courtier = {
 			age = 16
 			in_command = no
 			NOT = {
@@ -14296,491 +14267,520 @@ option = {
 			piety = 50
 			has_job_action = no
 		}
-		character_event = {
-			id = 3576
-			days = 1
-			tooltip = EVTTOOLTIP3576
+	}
+	weight_multiplier = {
+		factor = 1
+		modifier = {
+			factor = 2
+			trait = zealous
+		}
+		modifier = {
+			factor = 0.5
+			trait = cynical
 		}
 	}
-}
-option = {
-	name = EVTOPTB3575
-	add_character_modifier = {
-		name = the_pious
-		duration = 90
+	option = {
+		name = EVTOPTA3575
+		random_courtier = {
+			limit = {
+				age = 16
+				in_command = no
+				NOT = {
+					is_inaccessible_trigger = yes
+				}
+				OR = {
+					is_priest = yes
+					has_job_title = job_spiritual
+				}
+				religion = ROOT
+				piety = 50
+				has_job_action = no
+			}
+			character_event = {
+				id = 3576
+				days = 1
+				tooltip = EVTTOOLTIP3576
+			}
+		}
 	}
-}
+	option = {
+		name = EVTOPTB3575
+		add_character_modifier = {
+			name = the_pious
+			duration = 90
+		}
+	}
 }
 
 # Mystic: Initiation - noble
 character_event = {
-id = 3576
-desc = EVTDESC3576
-picture = GFX_evt_shadowy_cabal
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3576 # Dangerous Initiation
-	FROM = {
-		character_event = {
-			id = 3577
-			days = 7
-			tooltip = EVTTOOLTIP3577
+	id = 3576
+	desc = EVTDESC3576
+	picture = GFX_evt_shadowy_cabal
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3576 # Dangerous Initiation
+		FROM = {
+			character_event = {
+				id = 3577
+				days = 7
+				tooltip = EVTTOOLTIP3577
+			}
 		}
 	}
-}
-option = {
-	name = EVTOPTB3576 # Skill-based Initiation
-	FROM = {
-		character_event = {
-			id = 3578
-			days = 7
-			tooltip = EVTTOOLTIP3578
+	option = {
+		name = EVTOPTB3576 # Skill-based Initiation
+		FROM = {
+			character_event = {
+				id = 3578
+				days = 7
+				tooltip = EVTTOOLTIP3578
+			}
 		}
 	}
-}
-option = {
-	name = EVTOPTC3576 # Ignore
-	add_character_modifier = {
-		name = the_curious # Replace and use modifier somewhere else
-		duration = 90
+	option = {
+		name = EVTOPTC3576 # Ignore
+		add_character_modifier = {
+			name = the_curious # Replace and use modifier somewhere else
+			duration = 90
+		}
 	}
-}
 }
 
 # Mystic: Dangerous Initiation - ROOT
 character_event = {
-id = 3577
-desc = EVTDESC3577
-picture = GFX_evt_shadowy_cabal
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3577 # Accept
-	FROM = {
-		character_event = {
-			id = 3579
-			days = 1
-			tooltip = EVTTOOLTIP3579
+	id = 3577
+	desc = EVTDESC3577
+	picture = GFX_evt_shadowy_cabal
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3577 # Accept
+		FROM = {
+			character_event = {
+				id = 3579
+				days = 1
+				tooltip = EVTTOOLTIP3579
+			}
 		}
 	}
-}
-option = {
-	name = EVTOPTB3577 # Decline
-	remove_character_modifier = the_curious
-}
+	option = {
+		name = EVTOPTB3577 # Decline
+		remove_character_modifier = the_curious
+	}
 }
 
 # Mystic: Skill-based Initiation - ROOT
 character_event = {
-id = 3578
-desc = EVTDESC3578
-picture = GFX_evt_shadowy_cabal
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3578 # Accept
-	FROM = {
-		character_event = {
-			id = 3579
-			days = 1
-			tooltip = EVTTOOLTIP3579
+	id = 3578
+	desc = EVTDESC3578
+	picture = GFX_evt_shadowy_cabal
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3578 # Accept
+		FROM = {
+			character_event = {
+				id = 3579
+				days = 1
+				tooltip = EVTTOOLTIP3579
+			}
 		}
 	}
-}
-option = {
-	name = EVTOPTB3578 # Decline
-	remove_character_modifier = the_curious
-}
+	option = {
+		name = EVTOPTB3578 # Decline
+		remove_character_modifier = the_curious
+	}
 }
 
 # Mystic: Initiation success or fail? Noble
 character_event = {
-id = 3579
-desc = EVTDESC3579
-picture = GFX_evt_shadowy_cabal
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3579
-	change_diplomacy = 1
-	FROM = {
-		character_event = {
-			# Success!
-			id = 3580
-			days = 1
-			tooltip = EVTTOOLTIP3580
+	id = 3579
+	desc = EVTDESC3579
+	picture = GFX_evt_shadowy_cabal
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3579
+		change_diplomacy = 1
+		FROM = {
+			character_event = {
+				# Success!
+				id = 3580
+				days = 1
+				tooltip = EVTTOOLTIP3580
+			}
 		}
 	}
-}
-option = {
-	name = EVTOPTB3579
-	change_intrigue = 1
-	FROM = {
-		character_event = {
-			# Fail!
-			id = 3581
-			days = 1
-			tooltip = EVTTOOLTIP3581
+	option = {
+		name = EVTOPTB3579
+		change_intrigue = 1
+		FROM = {
+			character_event = {
+				# Fail!
+				id = 3581
+				days = 1
+				tooltip = EVTTOOLTIP3581
+			}
 		}
 	}
-}
 }
 
 # Mystic: Successful Initiation - ROOT
 character_event = {
-id = 3580
-desc = EVTDESC3580
-picture = GFX_evt_shadowy_cabal
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3580
-	add_character_modifier = {
-		name = esoteric_religion
-		duration = -1
+	id = 3580
+	desc = EVTDESC3580
+	picture = GFX_evt_shadowy_cabal
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3580
+		add_character_modifier = {
+			name = esoteric_religion
+			duration = -1
+		}
 	}
-}
 }
 
 # Mystic: Failed Initiation - ROOT
 character_event = {
-id = 3581
-desc = EVTDESC3581
-picture = GFX_evt_shadowy_cabal
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3581
-	random = {
-		chance = 20
-		add_trait = depressed
+	id = 3581
+	desc = EVTDESC3581
+	picture = GFX_evt_shadowy_cabal
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3581
+		random = {
+			chance = 20
+			add_trait = depressed
+		}
+		opinion = {
+			modifier = opinion_disgruntled
+			who = FROM
+			years = 2
+		}
 	}
-	opinion = {
-		modifier = opinion_disgruntled
-		who = FROM
-		years = 2
-	}
-}
 }
 
 # Mystic: Alchemy - Start
 character_event = {
-id = 3585
-desc = EVTDESC3585
-picture = GFX_evt_library
-only_playable = yes
-min_age = 20
-capable_only = yes
-prisoner = no
-war = no
-is_triggered_only = yes
-trigger = {
-	trait = mystic
-	in_command = no
-	OR = {
-		trait = quick
-		trait = genius
-		learning = 8
-	}
-	OR = {
-		trait = diligent
-		trait = ambitious
-		NOR = {
-			trait = slothful
-			trait = content
+	id = 3585
+	desc = EVTDESC3585
+	picture = GFX_evt_library
+	only_playable = yes
+	min_age = 20
+	capable_only = yes
+	prisoner = no
+	war = no
+	is_triggered_only = yes
+	trigger = {
+		trait = mystic
+		in_command = no
+		OR = {
+			trait = quick
+			trait = genius
+			learning = 8
+		}
+		OR = {
+			trait = diligent
+			trait = ambitious
+			NOR = {
+				trait = slothful
+				trait = content
+			}
 		}
 	}
-}
-weight_multiplier = {
-	factor = 1
-	modifier = {
-		factor = 2
-		stewardship = 8
-	}
-	modifier = {
-		factor = 0.5
-		martial = 10
-	}
-}
-option = {
-	name = EVTOPTA3585
-	set_character_flag = fiddle_alchemy
-	character_event = {
-		id = 3586
-		tooltip = EVTTOOLTIPA3586
-	}
-}
-option = {
-	name = EVTOPTB3585
-	set_character_flag = research_alchemy
-	character_event = {
-		id = 3586
-		tooltip = EVTTOOLTIPB3586
-	}
-}
-option = {
-	name = EVTOPTC3585
-	random_list = {
-		70 = {
+	weight_multiplier = {
+		factor = 1
+		modifier = {
+			factor = 2
+			stewardship = 8
 		}
-		15 = {
-			add_trait = stressed
-		}
-		15 = {
-			remove_trait = mystic
+		modifier = {
+			factor = 0.5
+			martial = 10
 		}
 	}
-}
+	option = {
+		name = EVTOPTA3585
+		set_character_flag = fiddle_alchemy
+		character_event = {
+			id = 3586
+			tooltip = EVTTOOLTIPA3586
+		}
+	}
+	option = {
+		name = EVTOPTB3585
+		set_character_flag = research_alchemy
+		character_event = {
+			id = 3586
+			tooltip = EVTTOOLTIPB3586
+		}
+	}
+	option = {
+		name = EVTOPTC3585
+		random_list = {
+			70 = {
+			}
+			15 = {
+				add_trait = stressed
+			}
+			15 = {
+				remove_trait = mystic
+			}
+		}
+	}
 }
 
 # Mystic: fiddle with alchemy
 character_event = {
-id = 3586
-desc = EVTDESC3586
-picture = GFX_evt_library
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3586
-	if = {
-		limit = {
-			has_character_flag = fiddle_alchemy
-			NOT = {
-				has_character_flag = research_alchemy
-			}
-		}
-		random_list = {
-			70 = {
-				character_event = {
-					id = 3587
-					tooltip = EVTTOOLTIP3587
-				}
-			}
-			30 = {
-				character_event = {
-					id = 3588
-					tooltip = EVTTOOLTIP3588
-				}
-			}
-		}
-	}
-	if = {
-		limit = {
-			has_character_flag = research_alchemy
-			NOT = {
+	id = 3586
+	desc = EVTDESC3586
+	picture = GFX_evt_library
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3586
+		if = {
+			limit = {
 				has_character_flag = fiddle_alchemy
-			}
-		}
-		random_list = {
-			50 = {
-				character_event = {
-					id = 3587
-					tooltip = EVTTOOLTIP3587
+				NOT = {
+					has_character_flag = research_alchemy
 				}
 			}
-			50 = {
-				character_event = {
-					id = 3588
-					tooltip = EVTTOOLTIP3588
+			random_list = {
+				70 = {
+					character_event = {
+						id = 3587
+						tooltip = EVTTOOLTIP3587
+					}
+				}
+				30 = {
+					character_event = {
+						id = 3588
+						tooltip = EVTTOOLTIP3588
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_character_flag = research_alchemy
+				NOT = {
+					has_character_flag = fiddle_alchemy
+				}
+			}
+			random_list = {
+				50 = {
+					character_event = {
+						id = 3587
+						tooltip = EVTTOOLTIP3587
+					}
+				}
+				50 = {
+					character_event = {
+						id = 3588
+						tooltip = EVTTOOLTIP3588
+					}
 				}
 			}
 		}
 	}
-}
 }
 
 # Mystic: Alchemy - wounded
 character_event = {
-id = 3587
-desc = EVTDESC3587
-picture = GFX_evt_library
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3587
+	id = 3587
+	desc = EVTDESC3587
+	picture = GFX_evt_library
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3587
 
-	trigger = {
-		is_married = yes
-	}
-	add_trait = wounded
-	if = {
-		limit = {
-			NOT = {
-				trait = ugly
+		trigger = {
+			is_married = yes
+		}
+		add_trait = wounded
+		if = {
+			limit = {
+				NOT = {
+					trait = ugly
+				}
+			}
+			add_trait = ugly
+		}
+		spouse = {
+			opinion = {
+				modifier = opinion_worried
+				who = ROOT
+				years = 1
 			}
 		}
-		add_trait = ugly
 	}
-	spouse = {
-		opinion = {
-			modifier = opinion_worried
-			who = ROOT
-			years = 1
-		}
-	}
-}
-option = {
-	name = EVTOPTB3587
+	option = {
+		name = EVTOPTB3587
 
-	trigger = {
-		is_married = no
-	}
-	add_trait = wounded
-	if = {
-		limit = {
-			NOT = {
-				trait = ugly
-			}
+		trigger = {
+			is_married = no
 		}
-		add_trait = ugly
+		add_trait = wounded
+		if = {
+			limit = {
+				NOT = {
+					trait = ugly
+				}
+			}
+			add_trait = ugly
+		}
 	}
-}
 }
 
 # Mystic: Alchemy - Success!
 character_event = {
-id = 3588
-desc = EVTDESC3588
-picture = GFX_evt_library
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3588
-	add_character_modifier = {
-		name = the_alchemist
-		duration = 1825
+	id = 3588
+	desc = EVTDESC3588
+	picture = GFX_evt_library
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3588
+		add_character_modifier = {
+			name = the_alchemist
+			duration = 1825
+		}
 	}
-}
 }
 
 # Mystic: Cure for illness - Start
 character_event = {
-id = 3590
-desc = EVTDESC3590
-picture = GFX_evt_illness
-only_playable = yes
-min_age = 20
-capable_only = yes
-prisoner = no
-lacks_dlc = "Reapers"
-war = no
-is_triggered_only = yes
-trigger = {
-	trait = mystic
-	in_command = no
-	OR = {
-		trait = quick
-		trait = genius
-		learning = 10
-	}
-	is_ill = yes
-}
-weight_multiplier = {
-	factor = 1
-	modifier = {
-		factor = 2
-		stewardship = 8
-	}
-	modifier = {
-		factor = 0.5
-		martial = 10
-	}
-}
-option = {
-	name = EVTOPTA3590
-	random_list = {
-		70 = {
-			character_event = {
-				id = 3591
-				tooltip = EVTTOOLTIP3591
-			}
+	id = 3590
+	desc = EVTDESC3590
+	picture = GFX_evt_illness
+	only_playable = yes
+	min_age = 20
+	capable_only = yes
+	prisoner = no
+	lacks_dlc = "Reapers"
+	war = no
+	is_triggered_only = yes
+	trigger = {
+		trait = mystic
+		in_command = no
+		OR = {
+			trait = quick
+			trait = genius
+			learning = 10
 		}
-		30 = {
-			character_event = {
-				id = 3592
-				tooltip = EVTTOOLTIP3592
-			}
+		is_ill = yes
+	}
+	weight_multiplier = {
+		factor = 1
+		modifier = {
+			factor = 2
+			stewardship = 8
+		}
+		modifier = {
+			factor = 0.5
+			martial = 10
 		}
 	}
-}
-option = {
-	name = EVTOPTB3590
-	random_list = {
-		10 = {
-		}
-		10 = {
-			add_trait = pneumonic
-		}
-		33 = {
-			remove_trait = ill
-			hidden_tooltip = {
+	option = {
+		name = EVTOPTA3590
+		random_list = {
+			70 = {
 				character_event = {
-					id = 38283 # Notify remove ill
+					id = 3591
+					tooltip = EVTTOOLTIP3591
 				}
 			}
-			if = {
-				limit = {
-					NOT = {
-						trait = zealous
-					}
+			30 = {
+				character_event = {
+					id = 3592
+					tooltip = EVTTOOLTIP3592
 				}
-				add_trait = zealous
+			}
+		}
+	}
+	option = {
+		name = EVTOPTB3590
+		random_list = {
+			10 = {
+			}
+			10 = {
+				add_trait = pneumonic
+			}
+			33 = {
+				remove_trait = ill
 				hidden_tooltip = {
 					character_event = {
-						days = 3
-						id = 38269 # Notify Zealous
+						id = 38283 # Notify remove ill
+					}
+				}
+				if = {
+					limit = {
+						NOT = {
+							trait = zealous
+						}
+					}
+					add_trait = zealous
+					hidden_tooltip = {
+						character_event = {
+							days = 3
+							id = 38269 # Notify Zealous
+						}
 					}
 				}
 			}
 		}
 	}
-}
-option = {
-	name = EVTOPTC3590
-	random = {
-		chance = 10
-		remove_trait = ill
+	option = {
+		name = EVTOPTC3590
+		random = {
+			chance = 10
+			remove_trait = ill
+		}
 	}
-}
 }
 
 # Mystic: Cure for illness - Lunatic
 character_event = {
-id = 3591
-desc = EVTDESC3591
-picture = GFX_evt_illness
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3591
+	id = 3591
+	desc = EVTDESC3591
+	picture = GFX_evt_illness
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3591
 
-	trigger = {
-		is_married = yes
-	}
-	add_trait = lunatic
-	spouse = {
-		opinion = {
-			modifier = opinion_worried
-			who = ROOT
-			years = 1
+		trigger = {
+			is_married = yes
+		}
+		add_trait = lunatic
+		spouse = {
+			opinion = {
+				modifier = opinion_worried
+				who = ROOT
+				years = 1
+			}
 		}
 	}
-}
-option = {
-	name = EVTOPTB3591
+	option = {
+		name = EVTOPTB3591
 
-	trigger = {
-		is_married = no
+		trigger = {
+			is_married = no
+		}
+		add_trait = lunatic
 	}
-	add_trait = lunatic
-}
 }
 
 # Mystic: Cure for illness - Success!
 character_event = {
-id = 3592
-desc = EVTDESC3592
-picture = GFX_evt_recovery
-is_triggered_only = yes
-option = {
-	name = EVTOPTA3592
-	cure_illness = yes
-	add_character_modifier = {
-		name = the_alchemist
-		duration = 1825
+	id = 3592
+	desc = EVTDESC3592
+	picture = GFX_evt_recovery
+	is_triggered_only = yes
+	option = {
+		name = EVTOPTA3592
+		cure_illness = yes
+		add_character_modifier = {
+			name = the_alchemist
+			duration = 1825
+		}
 	}
-}
 }
 
 # Mystic: Cure for illness - Start

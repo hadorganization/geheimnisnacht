@@ -14,10 +14,8 @@ narrative_event = {
 	war = no
 
 	trigger = {
-		AND = {
-			has_landed_title = e_kislev
-			is_feudal = yes
-		}
+		has_landed_title = e_kislev
+		is_feudal = yes
 		NOT = {
 			has_global_flag = erengrad_claim
 		}
@@ -70,13 +68,14 @@ narrative_event = {
 	}
 }
 
-# Burning of the Erengrad Veche
+# Burning of the Erengrad Veche need to check how it works on_new_holder_inheritance on_new_holder on_new_holder_inheritance
 narrative_event = {
 	id = erengrad.101
 	title = EVTTITLE_ERENGRAD_1
 	desc = EVTDESC_ERENGRAD_1
 	picture = GFX_evt_burning_house
 	border = GFX_event_narrative_frame_war
+	is_triggered_only = yes
 
 	trigger = {
 		has_global_flag = erengrad_claim
@@ -84,15 +83,9 @@ narrative_event = {
 			has_global_flag = veche
 		}
 		ROOT = {
-			AND = {
-				has_landed_title = e_kislev
-				has_landed_title = k_norvard
-			}
+			has_landed_title = e_kislev
+			has_landed_title = k_norvard
 		}
-	}
-
-	mean_time_to_happen = {
-		days = 1
 	}
 
 	option = {

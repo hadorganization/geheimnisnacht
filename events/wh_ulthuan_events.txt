@@ -397,40 +397,33 @@ character_event = {
 # Now to remove the modifier if the culture changes to non-asur
 province_event = {
 	id = ulthuan.6
-	title = "Ulthuan"
-	desc = ulthuan6desc # "Non elves are not affected by the vortex, nor - we suppose - dark elves who are... more aligned with chaos or just have more sex?"
-	picture = GFX_evt_council
+	#title = "Ulthuan"
+	#desc = ulthuan6desc # "Non elves are not affected by the vortex, nor - we suppose - dark elves who are... more aligned with chaos or just have more sex?"
+	#picture = GFX_evt_council
 	hide_window = yes
 
 	trigger = {
-		NOT = {
+		region = world_ulthuan
+		nor = {
 			has_game_rule = {
 				name = warhammer_ulthuan_depopulation value = off
 			}
-		}
-		NOT = {
+			province_id = 1492 # Not Lothern, it welcomes visitors from around the world and hence non elves replace elven population losses
 			culture_group = asur_group
 		}
 		has_province_modifier = ulthuan
-		NOT = {
-			province_id = 1492 # Not Lothern, it welcomes visitors from around the world and hence non elves replace elven population losses
-		}
-		region = world_ulthuan
 	}
 
 	mean_time_to_happen = {
 		days = 1
 	}
 
-	option = {
-		name = "OK"
-		ROOT = {
-			remove_province_modifier = ulthuan
-			remove_province_modifier = ulthuan_lightly_depopulated
-			remove_province_modifier = ulthuan_moderately_depopulated
-			remove_province_modifier = ulthuan_heavily_depopulated
-			remove_province_modifier = ulthuan_severely_depopulated
-		}
+	immediate = {
+		remove_province_modifier = ulthuan
+		remove_province_modifier = ulthuan_lightly_depopulated
+		remove_province_modifier = ulthuan_moderately_depopulated
+		remove_province_modifier = ulthuan_heavily_depopulated
+		remove_province_modifier = ulthuan_severely_depopulated
 	}
 }
 

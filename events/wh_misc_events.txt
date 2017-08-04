@@ -26,11 +26,13 @@ narrative_event = {
 	}
 }
 
-# Myrmidia Incarnate Trait Gained
+# Myrmidia Incarnate Trait Gained on_yearly_pulse
 character_event = {
 	id = DR_misc.2
 	hide_window = yes
 	only_rulers = yes
+	religion = myrmidian
+	is_triggered_only = yes
 
 	trigger = {
 		has_global_flag = ee_restored
@@ -40,20 +42,17 @@ character_event = {
 		}
 	}
 
-	mean_time_to_happen = {
-		days = 1
-	}
-
-	option = {
-		name = OK
+	immediate = {
 		add_trait = myrmidia_incarnate
 	}
 }
 
-# Myrmidia Incarnate Trait Lost
+# Myrmidia Incarnate Trait Lost on_yearly_pulse
 character_event = {
 	id = DR_misc.3
 	hide_window = yes
+	religion = myrmidian
+	is_triggered_only = yes
 
 	trigger = {
 		has_global_flag = ee_restored
@@ -64,12 +63,7 @@ character_event = {
 		is_alive = yes
 	}
 
-	mean_time_to_happen = {
-		days = 1
-	}
-
-	option = {
-		name = OK
+	immediate = {
 		remove_trait = myrmidia_incarnate
 	}
 }
@@ -78,12 +72,13 @@ character_event = {
 
 # Magritta
 
-# Magritta Re-Established
+# Magritta Re-Established on_yearly_pulse
 character_event = {
 	id = DR_misc.200
 	hide_window = yes
 	religion = myrmidian
 	only_rulers = yes
+	is_triggered_only = yes
 
 	trigger = {
 		has_landed_title = b_inquisitoria_general
@@ -99,10 +94,6 @@ character_event = {
 				religion = ROOT
 			}
 		}
-	}
-
-	mean_time_to_happen = {
-		days = 1
 	}
 
 	immediate = {
@@ -156,11 +147,13 @@ character_event = {
 	}
 }
 
-# Magritta De-Established
+# Magritta De-Established on_yearly_pulse
 character_event = {
 	id = DR_misc.201
 	hide_window = yes
 	only_playable = yes
+	religion = myrmidian
+	is_triggered_only = yes
 
 	trigger = {
 		has_landed_title = d_high_temple_of_magritta
@@ -175,10 +168,6 @@ character_event = {
 		}
 	}
 
-	mean_time_to_happen = {
-		days = 1
-	}
-
 	immediate = {
 		d_high_temple_of_magritta = {
 			unsafe_destroy_landed_title = THIS
@@ -188,12 +177,13 @@ character_event = {
 
 # Remas
 
-# Remas Re-Established
+# Remas Re-Established on_yearly_pulse
 character_event = {
 	id = DR_misc.202
 	hide_window = yes
 	religion = myrmidian
 	only_rulers = yes
+	is_triggered_only = yes
 
 	trigger = {
 		has_landed_title = b_matermyrmidia
@@ -209,10 +199,6 @@ character_event = {
 				religion = ROOT
 			}
 		}
-	}
-
-	mean_time_to_happen = {
-		days = 1
 	}
 
 	immediate = {
@@ -270,11 +256,12 @@ character_event = {
 	}
 }
 
-# Remas De-Established
+# Remas De-Established on_yearly_pulse
 character_event = {
 	id = DR_misc.203
 	hide_window = yes
 	only_playable = yes
+	is_triggered_only = yes
 
 	trigger = {
 		has_landed_title = d_high_temple_of_remas
@@ -289,18 +276,10 @@ character_event = {
 		}
 	}
 
-	mean_time_to_happen = {
-		days = 1
-	}
-
 	immediate = {
 		d_high_temple_of_remas = {
 			unsafe_destroy_landed_title = THIS
 		}
-	}
-
-	option = {
-		name = OK
 	}
 }
 
@@ -983,10 +962,11 @@ character_event = {
 	}
 }
 
-# Sailing the Mists of Albion
+# Sailing the Mists of Albion on_yearly_pulse
 character_event = {
 	id = DR_misc.1002
 	hide_window = yes
+	is_triggered_only = yes
 
 	trigger = {
 		has_global_flag = mists_of_albion
@@ -1026,10 +1006,6 @@ character_event = {
 				}
 			}
 		}
-	}
-
-	mean_time_to_happen = {
-		days = 1
 	}
 
 	immediate = {

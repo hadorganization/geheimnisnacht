@@ -6,47 +6,27 @@ character_event = {
 	title = Inspiration
 	desc = fickletzeentch # The great Architect of Fate has touched your addled brain, giving you brief glimpses of inspiration and clarity.
 	picture = GFX_evt_library
+	only_playable = yes
+	religion = tzeentch
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	is_triggered_only = yes
 
 	trigger = {
-		is_landed = yes
-		religion = tzeentch
-		NOT = {
-			trait = genius
-		}
-		NOT = {
-			trait = brilliant
-		}
-		NOT = {
-			trait = quick
-		}
-		NOT = {
-			trait = smart
-		}
-		NOT = {
-			trait = bright
-		}
-		NOT = {
-			learning = 8
-		}
-		NOT = {
+		nor = {
 			has_character_flag = touched_by_tzeentch
-		}
-		NOT = {
 			has_character_flag = failed_tzeentch_test
-		}
-		NOT = {
 			has_character_flag = refused_dark
-		}
-		NOT = {
+			trait = genius
+			trait = brilliant
+			trait = quick
+			trait = smart
+			trait = bright
+			learning = 8
 			trait = lore_dark_magic
-		}
-		NOT = {
 			trait = creature_beastman
-		} # only on_birth
+		}
 	}
 
 	option = {
@@ -79,13 +59,9 @@ character_event = {
 			25 = {
 				if = {
 					limit = {
-						NOT = {
+						nor = {
 							trait = mut_thirdeye
-						}
-						NOT = {
 							trait = mutation_minor
-						}
-						NOT = {
 							trait = dumb
 						}
 					}
@@ -136,16 +112,10 @@ character_event = {
 			45 = {
 				if = {
 					limit = {
-						NOT = {
+						nor = {
 							trait = mut_tongue
-						}
-						NOT = {
 							trait = mutation_major
-						}
-						NOT = {
 							trait = imbecile
-						}
-						NOT = {
 							trait = disfigured
 						}
 					}
@@ -178,10 +148,8 @@ character_event = {
 		name = TestofTzeentch9C # I fear the power of change...
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					trait = content
-				}
-				NOT = {
 					trait = craven
 				}
 			}
@@ -213,5 +181,147 @@ character_event = {
 			}
 			change_learning = 4
 		}
+	}
+}
+
+# pious tzeentchians get magic
+character_event = {
+	id = fickletzeentch.2
+	title = MAGIC
+	desc = chaosmagic # Your natural abilities seem to run towards magic. Training will be expensive, but perhaps for 100 gold you could get started on building a magical lab and hiring someone to teach you.
+	picture = "GFX_evt_mage_lore_tzeentch"
+	only_playable = yes
+	religion = tzeentch
+	min_age = 16
+	capable_only = yes
+	prisoner = no
+	religion = tzeentch
+
+	trigger = {
+		piety = 1500
+		nor = {
+			trait = hedge_wizard
+			trait = creature_beastman
+			has_character_flag = refused_dark
+			has_character_modifier = magic_power_1
+				has_character_modifier = magic_power_2
+				has_character_modifier = magic_power_3
+				has_character_modifier = magic_power_4
+		}
+		OR = {
+			trait = genius
+			trait = elusive_shadow
+			trait = brilliant
+			trait = bright
+			trait = magic_potential_1
+			trait = magic_potential_2
+			trait = magic_potential_3
+			trait = magic_potential_4
+			has_character_flag = magic_potential_flag_1
+			has_character_flag = magic_potential_flag_2
+			has_character_flag = magic_potential_flag_3
+			has_character_flag = magic_potential_flag_4
+		}
+	}
+
+	option = {
+		name = highelfmagic6A # Yes, I will build a lab and study magic!
+		if = {
+			limit = {
+				has_character_flag = magic_potential_flag_4
+			}
+			add_trait = magic_potential_4
+			clr_character_flag = magic_potential_flag_4
+		}
+		if = {
+			limit = {
+				has_character_flag = magic_potential_flag_3
+			}
+			add_trait = magic_potential_3
+			clr_character_flag = magic_potential_flag_3
+		}
+		if = {
+			limit = {
+				has_character_flag = magic_potential_flag_2
+			}
+			add_trait = magic_potential_2
+			clr_character_flag = magic_potential_flag_2
+		}
+		if = {
+			limit = {
+				has_character_flag = magic_potential_flag_1
+			}
+			add_trait = magic_potential_1
+			clr_character_flag = magic_potential_flag_1
+		}
+		add_trait = lore_tzeentch
+		z_magic_power_sequential_addition = yes
+		top_liege = {
+			if = {
+				limit = {
+					religion_group = chaos_gods_group
+					NOT = {
+						has_character_flag = chaosmagic2
+					}
+				}
+				character_event = {
+					id = fickletzeentch.4 days = 7
+				}
+			}
+		}
+		father = {
+			character_event = {
+				id = fickletzeentch.3
+			}
+		}
+		mother = {
+			character_event = {
+				id = fickletzeentch.3
+			}
+		}
+	}
+
+	option = {
+		trigger = {
+			ai = no
+		}
+		name = highelfmagic6B # No, I do not wish to study magic
+		set_character_flag = refused_dark
+	}
+}
+
+# parents are informed
+character_event = {
+	id = fickletzeentch.3
+	title = MAGIC
+	desc = chaosmagic1 # Your child has been blessed by the gods, and has developed strange powers. The path of the chaos sorcerer is in its future for certain...
+	picture = "GFX_evt_tzeentch"
+	min_age = 16
+	is_triggered_only = yes
+
+	option = {
+		name = chaosmagic1A # The gods bless our family!
+		prestige = 200
+	}
+}
+
+# the top liege, if kislevite culture group is informed someone is studying magic independently
+character_event = {
+	id = fickletzeentch.4
+	title = MAGIC
+	desc = chaosmagic2 # One of your vassals has been blessed by the gods, and wields their power through dark sorcery. News is spreading throughout your court.
+	picture = "GFX_evt_tzeentch"
+	min_age = 16
+	only_rulers = yes
+	ai = no
+	is_triggered_only = yes
+
+	option = {
+		name = chaosmagic2A # The gods bless my realm. I am pleased.
+	}
+
+	option = {
+		name = chaosmagic2B # Do not bother me with this again
+		set_character_flag = chaosmagic2
 	}
 }

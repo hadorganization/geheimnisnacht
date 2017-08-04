@@ -2233,34 +2233,26 @@ narrative_event = {
 	}
 }
 
-# Weak Warboss for Orcs
+# Weak Warboss for Orcs on_yearly_pulse
 character_event = {
 	id = DR_greenskins.161
 	desc = DR_greenskins161DESC
 	religion_group = greenskin_gods_group
 	only_rulers = yes
 	culture_group = orc_group
-
-	mean_time_to_happen = {
-		days = 1
-	}
+	religion_group = greenskin_gods_group
+	is_triggered_only = yes
 
 	trigger = {
-		is_ruler = yes
-		religion_group = greenskin_gods_group
-		NOT = {
+		nor = {
 			has_character_modifier = weak_warboss
-		}
-		NOT = {
 			has_character_flag = weak_warboss_bashed_heads
 		}
 		culture_group = orc_group
 		higher_real_tier_than = DUKE # People who can actually have vassals above baron level
 		OR = {
-			NOT = {
+			nor = {
 				prestige = 0
-			}
-			NOT = {
 				martial = 9
 			}
 			prisoner = yes
@@ -2274,9 +2266,6 @@ character_event = {
 			trait = wounded
 			trait = in_hiding
 		}
-	}
-
-	immediate = {
 	}
 
 	option = {
@@ -8775,34 +8764,25 @@ province_event = {
 	}
 }
 
-# Weak Warboss event for Goblins ( Slightly different from the Orc one )
+# Weak Warboss event for Goblins ( Slightly different from the Orc one ) on_yearly_pulse
 character_event = {
 	id = DR_greenskins.204
 	desc = DR_greenskins204DESC
 	religion_group = greenskin_gods_group
 	only_rulers = yes
 	culture_group = goblin_group
-
-	mean_time_to_happen = {
-		days = 1
-	}
+	religion_group = greenskin_gods_group
+	is_triggered_only = yes
 
 	trigger = {
-		is_ruler = yes
-		religion_group = greenskin_gods_group
-		NOT = {
+		nor = {
 			has_character_modifier = weak_warboss
-		}
-		NOT = {
 			has_character_flag = weak_warboss_bashed_heads
 		}
-		culture_group = goblin_group
 		higher_real_tier_than = DUKE # People who can actually have vassals above baron level
 		OR = {
-			NOT = {
+			nor = {
 				prestige = 0
-			}
-			NOT = {
 				intrigue = 9
 			}
 			prisoner = yes
@@ -8814,9 +8794,6 @@ character_event = {
 			trait = blinded
 			trait = wounded
 		}
-	}
-
-	immediate = {
 	}
 
 	option = {
@@ -9142,13 +9119,13 @@ province_event = {
 	id = DR_greenskins.211
 	desc = DR_greenskins211DESC
 	picture = GFX_evt_orc_banner
+	religion_group = greenskin_gods_group
 
 	mean_time_to_happen = {
 		days = 10
 	}
 
-	trigger = {
-		religion_group = greenskin_gods_group
+	trigger = {		
 		OR = {
 			culture_group = goblin_group
 			culture_group = orc_group

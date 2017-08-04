@@ -8,13 +8,14 @@
 # Beware: Paranoid witch hunters will consider even a good explanation proof of guilt as well, as clearly a good cultist would be a good liar!
 namespace = witchhunter
 
-# First spawn some witch hunters in the relevant courts - any court count or above that is a theocracy gets a few, from the old world religions
+# First spawn some witch hunters in the relevant courts - any court count or above that is a theocracy gets a few, from the old world religions on_yearly_pulse
 character_event = {
 	id = witchhunter.0
 	title = WITCH_HUNTERS # Witch Hunters
 	desc = EVTDESC_WITCHHUNTER_0 # "Witch Hunters are a necessary evil - though their methods can be cruel, they are the first line of defense against the spread of Chaos. As a major religious site, you have several witch hunters in your court."
 	picture = "GFX_evt_witch_hunters"
 	only_rulers = yes
+	min_age = 16
 	religion_group = old_world_group
 
 	trigger = {
@@ -23,23 +24,15 @@ character_event = {
 		higher_tier_than = BARON
 		top_liege = {
 			religion_group = old_world_group
-		}
-		top_liege = {
 			NOT = {
 				has_character_modifier = expelled_k_witch_hunters_order
 			}
 		}
-		religion_group = old_world_group
 		is_nomadic = no
 		is_tribal = no
 		NOT = {
 			num_of_friends = 3
 		} # no number of courtiers with witch hunter trait command exists, so we just make all witch hunters friends of the arch priest
-		age = 16
-	}
-
-	mean_time_to_happen = {
-		days = 1
 	}
 
 	option = {

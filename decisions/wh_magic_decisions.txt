@@ -56,6 +56,10 @@ decisions = {
 			NOT = {
 				has_character_modifier = magic_cooldown
 			}
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			trait = creature_forestspirit
 			OR = {
 				any_current_enemy = {
@@ -134,7 +138,6 @@ decisions = {
 		is_high_prio = yes
 		potential = {
 			age = 16
-			is_incapacitated_trigger = no
 			NOT = {
 				has_character_modifier = magic_cooldown
 			}
@@ -149,7 +152,10 @@ decisions = {
 			}
 		}
 		allow = {
-			in_command = yes
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 		}
 		effect = {
 			if = {
@@ -279,10 +285,9 @@ decisions = {
 			}
 		}
 		allow = {
-			OR = {
-				trait = lore_dark_magic
-				trait = lore_tzeentch
-				trait = lore_slaanesh
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
 			}
 		}
 		effect = {
@@ -373,11 +378,8 @@ decisions = {
 
 	summon_demon = {
 		potential = {
-			is_incapacitated_trigger = no
-			NOT = {
+			nor = {
 				religion = asrai_cadai
-			}
-			NOT = {
 				has_character_modifier = magic_cooldown_summoning
 			}
 			OR = {
@@ -397,13 +399,10 @@ decisions = {
 			}
 		}
 		allow = {
-			prisoner = no
 			piety = 450
-			OR = {
-				has_character_modifier = magic_power_1
-				has_character_modifier = magic_power_2
-				has_character_modifier = magic_power_3
-				has_character_modifier = magic_power_4
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
 			}
 		}
 		effect = {
@@ -507,37 +506,23 @@ decisions = {
 			is_ruler = yes
 			ai = no
 			age = 12
-			is_incapacitated_trigger = no
-			NOT = {
+			nor = {
 				religion = asrai_cadai
-			}
-			NOT = {
 				has_character_modifier = magic_power_1
-			}
-			NOT = {
 				has_character_modifier = magic_power_2
-			}
-			NOT = {
 				has_character_modifier = magic_power_3
-			}
-			NOT = {
 				has_character_modifier = magic_power_4
 			}
 			any_courtier = {
-				NOT = {
+				age = 16
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
+				nor = {
 					has_character_modifier = magic_cooldown_summoning
-				}
-				NOT = {
-					trait = incapable
-				}
-				NOT = {
-					trait = incapacitated
-				}
-				NOT = {
 					religion = asrai_cadai
 				}
-				prisoner = no
-				age = 16
 				OR = {
 					trait = lore_tzeentch
 					trait = lore_nurgle
@@ -566,13 +551,10 @@ decisions = {
 						NOT = {
 							has_character_modifier = magic_cooldown_summoning
 						}
-						NOT = {
-							trait = incapable
+						custom_tooltip = {
+							text = IS_NOT_INCAPACITATED
+							is_incapacitated_trigger = no
 						}
-						NOT = {
-							trait = incapacitated
-						}
-						prisoner = no
 						OR = {
 							trait = lore_tzeentch
 							trait = lore_nurgle
@@ -589,13 +571,14 @@ decisions = {
 							has_character_modifier = magic_power_4
 						}
 					}
+					# mage decides if he wants to do it
 					character_event = {
 						id = schaos.84
 					}
 				}
-			} #mage decides if he wants to do it
+			}
 			piety = -450
-		} #closes effect
+		}
 		revoke_allowed = {
 			always = no
 		}
@@ -662,60 +645,44 @@ decisions = {
 				}
 			}
 		}
-	} #closes decision
+	}
 
 	learn_magic_yourself = {
 		#for private characters studying by themselves
 		potential = {
 			is_ruler = yes
 			higher_tier_than = BARON
-			is_incapacitated_trigger = no
 			age = 12
-			NOT = {
-				trait = witch_hunter
+			OR = {
+				is_living_human_trigger = yes
+				trait = creature_elf
 			}
-			NOT = {
-				religion = khorne
-			}
-			NOT = {
-				trait = vampire_blood_hidden
-			}
-			NOT = {
-				trait = vampire_blood_visible
-			}
-			NOT = {
+			nor = {
 				has_character_flag = taken_hedge_wizard_decision
+				religion = khorne
+				trait = witch_hunter
+				trait = hedge_wizard
+				top_liege = {
+					trait = malekith
+				}
+				has_character_modifier = magic_power_1
+				has_character_modifier = magic_power_2
+				has_character_modifier = magic_power_3
+				has_character_modifier = magic_power_4
 			}
 			OR = {
 				independent = yes
 				liege = {
-					NOT = {
+					nor = {
 						religion = taalite
-					}
-					NOT = {
 						religion = ulrican
-					}
-					NOT = {
 						religion = manannite
-					}
-					NOT = {
 						religion = shallyan
-					}
-					NOT = {
 						religion = myrmidian
-					}
-					NOT = {
 						religion = grail
-					}
-					NOT = {
 						religion = sigmarite
 					}
 				}
-			}
-			OR = {
-				trait = creature_human
-				trait = creature_amazon
-				trait = creature_elf
 			}
 			OR = {
 				is_female = yes
@@ -723,34 +690,14 @@ decisions = {
 					religion = ursun
 				}
 			}
-			NOT = {
-				top_liege = {
-					trait = malekith
-				}
-			}
-			NOT = {
-				trait = hedge_wizard
-			}
-			NOT = {
-				trait = incapable
-			}
-			NOT = {
-				has_character_modifier = magic_power_1
-			}
-			NOT = {
-				has_character_modifier = magic_power_2
-			}
-			NOT = {
-				has_character_modifier = magic_power_3
-			}
-			NOT = {
-				has_character_modifier = magic_power_4
-			}
-			is_vampire_trigger = no
 		}
 		allow = {
 			learning = 15
 			wealth = 500
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 		}
 		effect = {
 			wealth = -500
@@ -842,134 +789,25 @@ decisions = {
 			}
 			modifier = {
 				factor = 0
-				NOT = {
+				nor = {
 					trait = ambitious
-				}
-				NOT = {
 					trait = scholar
-				}
-				NOT = {
 					trait = mystic
-				}
-				NOT = {
 					trait = envious
-				}
-				NOT = {
 					has_character_modifier = fake_mage
 				}
 			}
-		} #closesaiwilldo
-	} #closesevent
+		}
+	}
 
 	learn_necromancy_yourself = {
 		#for private characters studying by themselves
 		potential = {
 			is_ruler = yes
 			higher_tier_than = BARON
-			prisoner = no
 			age = 16
-			is_incapacitated_trigger = no
-			NOT = {
-				trait = witch_hunter
-			}
-			NOT = {
-				religion = khorne
-			}
-			NOT = {
-				has_character_flag = taken_hedge_wizard_decision
-			}
-			NOT = {
-				has_character_flag = taken_necromancer_decision
-			}
 			OR = {
-				independent = yes
-				liege = {
-					NOT = {
-						religion = taalite
-					}
-					NOT = {
-						religion = ulrican
-					}
-					NOT = {
-						religion = manannite
-					}
-					NOT = {
-						religion = shallyan
-					}
-					NOT = {
-						religion = myrmidian
-					}
-					NOT = {
-						religion = grail
-					}
-					NOT = {
-						religion = sigmarite
-					}
-					NOT = {
-						religion = ursun
-					}
-				}
-			}
-			OR = {
-				trait = creature_human
-				trait = khemri_tomb_king
-			}
-			NOT = {
-				top_liege = {
-					trait = malekith
-				}
-			}
-			NOT = {
-				trait = king_settra
-			}
-			NOT = {
-				trait = hedge_wizard
-			}
-			NOT = {
-				trait = mage_apprentice
-			}
-			NOT = {
-				trait = vampire_blood_visible
-			}
-			NOT = {
-				trait = vampire_blood_hidden
-			}
-			NOT = {
-				trait = vampire_jade_visible
-			}
-			NOT = {
-				trait = vampire_jade_hidden
-			}
-			NOT = {
-				trait = incapable
-			}
-			NOT = {
-				has_character_modifier = magic_power_1
-			}
-			NOT = {
-				has_character_modifier = magic_power_2
-			}
-			NOT = {
-				has_character_modifier = magic_power_3
-			}
-			NOT = {
-				has_character_modifier = magic_power_4
-			}
-			OR = {
-				trait = vampire_lahmian_visible
-				trait = vampire_carstein_visible
-				# trait = vampire_blood_visible
-				trait = vampire_strigoi_visible
-				trait = vampire_necrarch_visible
-				trait = vampire_jade_visible
-				trait = vampire_mahtmasi_visible
-				trait = vampire_lahmian_hidden
-				trait = vampire_carstein_hidden
-				# trait = vampire_blood_hidden
-				trait = vampire_strigoi_hidden
-				trait = vampire_necrarch_hidden
-				trait = vampire_jade_hidden
-				trait = vampire_mahtmasi_hidden
+				is_vampire_trigger = yes
 				trait = widowed
 				trait = impaler
 				trait = mystic
@@ -979,10 +817,52 @@ decisions = {
 				has_character_modifier = the_necronomicon
 				has_character_flag = undead_insight
 			}
+			nor = {
+				has_character_flag = taken_hedge_wizard_decision
+				has_character_flag = taken_necromancer_decision
+				religion = khorne
+				trait = witch_hunter
+				trait = hedge_wizard
+				trait = king_settra
+				trait = mage_apprentice
+				trait = vampire_blood_visible
+				trait = vampire_blood_hidden
+				trait = vampire_jade_visible
+				trait = vampire_jade_hidden
+				top_liege = {
+					trait = malekith
+				}
+				has_character_modifier = magic_power_1
+				has_character_modifier = magic_power_2
+				has_character_modifier = magic_power_3
+				has_character_modifier = magic_power_4
+			}
+			OR = {
+				independent = yes
+				liege = {
+					nor = {
+						religion = taalite
+						religion = ulrican
+						religion = manannite
+						religion = shallyan
+						religion = myrmidian
+						religion = grail
+						religion = sigmarite
+					}
+				}
+			}
+			OR = {
+				trait = creature_human
+				trait = khemri_tomb_king
+			}
 		}
 		allow = {
 			learning = 15
 			wealth = 150
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 		}
 		effect = {
 			wealth = -150
@@ -1078,53 +958,39 @@ decisions = {
 			}
 			modifier = {
 				factor = 0
-				NOT = {
+				nor = {
 					has_character_flag = undead_insight
-				}
-				NOT = {
 					trait = ambitious
-				}
-				NOT = {
 					trait = scholar
-				}
-				NOT = {
 					trait = mystic
-				}
-				NOT = {
 					trait = envious
-				}
-				NOT = {
 					trait = cruel
-				}
-				NOT = {
 					trait = depressed
-				}
-				NOT = {
 					has_character_modifier = fake_mage
 				}
 			}
-		} #closesaiwilldo
-	} #closesevent
+		}
+	}
 
 	undead_summoning = {
 		potential = {
 			is_ruler = yes
 			higher_tier_than = BARON
-			prisoner = no
 			age = 16
-			NOT = {
-				trait = incapable
-			}
+			trait = lore_necromancy
 			OR = {
 				has_character_modifier = magic_power_1
 				has_character_modifier = magic_power_2
 				has_character_modifier = magic_power_3
 				has_character_modifier = magic_power_4
 			}
-			trait = lore_necromancy
 		}
 		allow = {
 			piety = 150
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			NOT = {
 				has_character_modifier = magic_cooldown
 			}
@@ -1139,19 +1005,11 @@ decisions = {
 						}
 					}
 				}
-				NOT = {
+				nor = {
 					has_province_modifier = province_tainted_1
-				}
-				NOT = {
 					has_province_modifier = province_tainted_2
-				}
-				NOT = {
 					has_province_modifier = province_tainted_3
-				}
-				NOT = {
 					has_province_modifier = province_tainted_4
-				}
-				NOT = {
 					has_province_modifier = province_tainted_5
 				}
 				NOT = {
@@ -1205,56 +1063,39 @@ decisions = {
 				factor = 1.85
 				has_character_modifier = necromantic_power_5
 			}
-		} #closesaiwilldo
-	} #closesevent
+		}
+	}
 
 	hunt_demon_down = {
 		potential = {
-			prisoner = no
 			is_ruler = yes
+			age = 16
 			higher_tier_than = BARON
-			NOT = {
+			nor = {
 				religion_group = chaos_gods_group
-			}
-			NOT = {
 				any_friend = {
-					OR = {
-						trait = khorne_demon
-						trait = nurgle_demon
-						trait = slaanesh_demon
-						trait = tzeentch_demon
-					}
+					is_demon_trigger = yes
 				}
-			}
-			age = 12
-			NOT = {
-				trait = incapable
 			}
 			#has_any_opinion_modifier = opinion_demon_havoc
 			any_courtier = {
-				OR = {
-					trait = khorne_demon
-					trait = nurgle_demon
-					trait = slaanesh_demon
-					trait = tzeentch_demon
-				}
+				is_demon_trigger = yes
 				is_ruler = no
 			}
 		}
 		allow = {
 			wealth = 150
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 		}
 		effect = {
 			wealth = -150
 			hidden_tooltip = {
 				random_courtier = {
 					limit = {
-						OR = {
-							trait = khorne_demon
-							trait = nurgle_demon
-							trait = slaanesh_demon
-							trait = tzeentch_demon
-						}
+						is_demon_trigger = yes
 					}
 					character_event = {
 						id = sdemons.4 days = 4
@@ -1287,23 +1128,298 @@ decisions = {
 				factor = 0.05
 				is_cultist_trigger = yes
 			}
-		} #closesaiwilldo
-	} #closesdecision
+		}
+	}
 }
+
 targetted_decisions = {
 
+	use_potion_of_healing = {
+		is_high_prio = yes
+		potential = {
+			has_artifact = potion_of_healing
+		}
+		allow = {
+			OR = {
+				wh_is_injured_trigger = yes
+				wh_is_sick_trigger = yes
+			}
+		}
+		effect = {
+			wh_heal_sick_effect = yes
+			wh_heal_injury_effect = yes
+			destroy_artifact = potion_of_healing
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	# craft
+	z_craft_magic_item = {
+		ai_target_filter = self
+		filter = court
+		from_potential = {
+			ai = no
+		}
+		potential = {
+			age = 16
+			z_combat_magic_caster = yes
+			OR = {
+				character = FROM
+				liege = {
+					character = FROM
+				}
+			}
+		}
+		allow = {
+			z_combat_magic_valid_caster = yes
+			in_command = no
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
+		}
+		effect = {
+			set_character_flag = casting
+			save_event_target_as = magic_caster
+			save_event_target_as = item_crafter
+			if = {
+				limit = {
+					not = {
+						has_character_flag = magicxp
+					}
+				}
+				z_magic_xp_turnon = yes
+			}
+			location = {
+				save_event_target_as = spellloc
+			}
+			FROM = {
+				save_event_target_as = spelllord
+				save_event_target_as = item_recipient
+				character_event = {
+					id = z_item_crafting_menu.0
+				}
+			}
+		}
+	}
+
+	z_magic_phase = {
+		ai_target_filter = self
+		filter = court
+		potential = {
+			age = 16
+			z_combat_magic_caster = yes
+			OR = {
+				character = FROM
+				liege = {
+					character = FROM
+				}
+			}
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
+		}
+		allow = {
+			z_combat_magic_valid_caster = yes
+			in_command = yes
+		}
+		effect = {
+			set_character_flag = casting
+			save_event_target_as = magic_caster
+			if = {
+				limit = {
+					not = {
+						has_character_flag = magicxp
+					}
+				}
+				z_magic_xp_turnon = yes
+			}
+			location = {
+				save_event_target_as = spellloc
+			}
+			FROM = {
+				save_event_target_as = spelllord
+				character_event = {
+					id = z_spell_menu.1
+				}
+			}
+		}
+	}
+
+	z_targeted_spell_casting = {
+		ai_target_filter = realm
+		filter = all
+		from_potential = {
+			or = {
+				z_magic_non_combat_caster = yes
+				any_realm_character = {
+					z_magic_non_combat_caster = yes
+				}
+			}
+		}
+		potential = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
+		}
+		allow = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
+			FROM = {
+				piety = 200
+				or = {
+					z_magic_non_combat_valid_caster = yes
+					any_realm_character = {
+						z_magic_non_combat_valid_caster = yes
+					}
+				}
+			}
+		}
+		effect = {
+			save_event_target_as = spelltarget
+			location = {
+				save_event_target_as = spellloc
+			}
+			FROM = {
+				piety = -200
+				save_event_target_as = spelllord
+				character_event = {
+					id = magic_menu_non_combat.1
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0.1
+			modifier = {
+				factor = 0.1
+				FROM = {
+					trait = envious
+				}
+			}
+			modifier = {
+				factor = 0.25
+				religion = asrai_cadai
+				NOT = {
+					piety = 250
+				}
+			}
+			modifier = {
+				factor = 2
+				FROM = {
+					character = ROOT
+				}
+			}
+		}
+	}
+
+	# steal
+	steal_artifact = {
+		is_high_prio = yes
+		filter = court
+		ai_target_filter = court
+		only_rulers = yes
+		from_potential = {
+			OR = {
+				ai = no
+				OR = {
+					trait = cruel
+					trait = impaler
+					trait = greedy
+					is_vampire_trigger = yes
+				}
+			}
+			higher_tier_than = BARON
+		}
+		potential = {
+			prisoner = yes
+			OR = {
+				has_artifact = mothers_ruin
+				has_artifact = goblin_bane
+				has_artifact = legbiter
+				has_artifact = crow_feeder
+				has_artifact = brain_wounder
+				has_artifact = troll_cleaver
+				has_artifact = dragon_tooth
+				has_artifact = orc_hewer
+				has_artifact = stone_breaker
+				has_artifact = blood_bringer
+				has_artifact = grudge_settler
+				has_artifact = beast_slayer
+				has_artifact = ghal_maraz
+				has_artifact = sword_1
+				has_artifact = sword_2
+				has_artifact = sword_3
+				has_artifact = sword_4
+				has_artifact = sword_5
+				has_artifact = ring_of_persuasion
+				has_artifact = ring_of_invisibility
+				has_artifact = ring_of_speed
+				has_artifact = ring_of_command
+				has_artifact = amulet_of_protection_1
+				has_artifact = amulet_of_protection_3
+				has_artifact = amulet_of_protection_5
+				has_artifact = dark_crystal
+			}
+		}
+		allow = {
+			prisoner = yes
+		}
+		effect = {
+			FROM = {
+				character_event = {
+					id = stealing.0
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	prisonersteal_carstein_ring = {
+ 		is_high_prio = yes
+		filter = court
+		ai_target_filter = court
+		only_rulers = yes
+		from_potential = {
+			has_global_flag = carstein_ring_revealed
+			is_ruler = yes
+		}
+		potential = {
+			#prisoner = yes
+			has_artifact = carstein_ring
+		}
+		allow = {
+			prisoner = yes
+		}
+		effect = {
+			hidden_tooltip = {
+				character_event = {
+					id = svampires.13
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	# spells
 	healing_spell = {
 		filter = court
 		ai_target_filter = court
 		from_potential = {
 			trait = lore_high_magic
-			NOT = {
-				trait = incapable
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
 			}
-			NOT = {
-				trait = infirm
-			}
-			is_incapacitated_trigger = no
 			NOT = {
 				has_character_modifier = magic_cooldown
 			}
@@ -1316,14 +1432,7 @@ targetted_decisions = {
 		}
 		potential = {
 			host = FROM
-			OR = {
-				trait = wounded
-				trait = maimed
-				trait = incapable
-				trait = troubled_pregnancy
-				trait = hard_pregnancy
-				trait = disfigured
-			}
+			wh_is_injured_trigger = yes
 			is_undead_trigger = no
 		}
 		allow = {
@@ -1428,413 +1537,84 @@ targetted_decisions = {
 							}
 						}
 					}
-				} #closesif
-				if = {
-					limit = {
-						trait = maimed
+				}
+				random_list = {
+					50 = {
+						wh_heal_injury_effect = yes
 					}
-					random_list = {
-						50 = {
-							remove_trait = maimed
+					50 = {
+						character_event = {
+							id = aicleanup.010
 						}
-						50 = {
-							character_event = {
-								id = aicleanup.010
+						modifier = {
+							factor = 0.75
+							FROM = {
+								has_character_modifier = magic_power_2
 							}
-							modifier = {
-								factor = 0.75
-								FROM = {
-									has_character_modifier = magic_power_2
-								}
+						}
+						modifier = {
+							factor = 0.5
+							FROM = {
+								has_character_modifier = magic_power_3
 							}
-							modifier = {
-								factor = 0.5
-								FROM = {
-									has_character_modifier = magic_power_3
-								}
+						}
+						modifier = {
+							factor = 0.25
+							FROM = {
+								has_character_modifier = magic_power_4
 							}
-							modifier = {
-								factor = 0.25
-								FROM = {
-									has_character_modifier = magic_power_4
-								}
+						}
+						modifier = {
+							factor = 0.75
+							FROM = {
+								trait = genius
 							}
-							modifier = {
-								factor = 0.75
-								FROM = {
-									trait = genius
-								}
+						}
+						modifier = {
+							factor = 1.5
+							FROM = {
+								trait = dim
 							}
-							modifier = {
-								factor = 1.5
-								FROM = {
-									trait = dim
-								}
+						}
+						modifier = {
+							factor = 2
+							FROM = {
+								trait = slow
 							}
-							modifier = {
-								factor = 2
-								FROM = {
-									trait = slow
-								}
+						}
+						modifier = {
+							factor = 3
+							FROM = {
+								trait = idiot
 							}
-							modifier = {
-								factor = 3
-								FROM = {
-									trait = idiot
-								}
+						}
+						modifier = {
+							factor = 4
+							FROM = {
+								trait = imbecile
 							}
-							modifier = {
-								factor = 4
-								FROM = {
-									trait = imbecile
-								}
+						}
+						modifier = {
+							factor = 1.25
+							FROM = {
+								trait = wroth
 							}
-							modifier = {
-								factor = 1.25
-								FROM = {
-									trait = wroth
-								}
+						}
+						modifier = {
+							factor = 1.25
+							FROM = {
+								trait = slothful
 							}
-							modifier = {
-								factor = 1.25
-								FROM = {
-									trait = slothful
-								}
-							}
-							modifier = {
-								factor = 1.5
-								FROM = {
-									trait = hedge_wizard
-								}
+						}
+						modifier = {
+							factor = 1.5
+							FROM = {
+								trait = hedge_wizard
 							}
 						}
 					}
-				} #closesif
-				if = {
-					limit = {
-						trait = incapable
-					}
-					random_list = {
-						40 = {
-							remove_trait = incapable
-						}
-						60 = {
-							character_event = {
-								id = aicleanup.010
-							}
-							modifier = {
-								factor = 0.75
-								FROM = {
-									has_character_modifier = magic_power_2
-								}
-							}
-							modifier = {
-								factor = 0.5
-								FROM = {
-									has_character_modifier = magic_power_3
-								}
-							}
-							modifier = {
-								factor = 0.25
-								FROM = {
-									has_character_modifier = magic_power_4
-								}
-							}
-							modifier = {
-								factor = 0.75
-								FROM = {
-									trait = genius
-								}
-							}
-							modifier = {
-								factor = 1.5
-								FROM = {
-									trait = dim
-								}
-							}
-							modifier = {
-								factor = 2
-								FROM = {
-									trait = slow
-								}
-							}
-							modifier = {
-								factor = 3
-								FROM = {
-									trait = idiot
-								}
-							}
-							modifier = {
-								factor = 4
-								FROM = {
-									trait = imbecile
-								}
-							}
-							modifier = {
-								factor = 1.25
-								FROM = {
-									trait = wroth
-								}
-							}
-							modifier = {
-								factor = 1.25
-								FROM = {
-									trait = slothful
-								}
-							}
-							modifier = {
-								factor = 1.5
-								FROM = {
-									trait = hedge_wizard
-								}
-							}
-						}
-					}
-				} #closesif
-				if = {
-					limit = {
-						trait = troubled_pregnancy
-					}
-					random_list = {
-						40 = {
-							remove_trait = troubled_pregnancy
-						}
-						60 = {
-							character_event = {
-								id = aicleanup.010
-							}
-							modifier = {
-								factor = 0.75
-								FROM = {
-									has_character_modifier = magic_power_2
-								}
-							}
-							modifier = {
-								factor = 0.5
-								FROM = {
-									has_character_modifier = magic_power_3
-								}
-							}
-							modifier = {
-								factor = 0.25
-								FROM = {
-									has_character_modifier = magic_power_4
-								}
-							}
-							modifier = {
-								factor = 0.75
-								FROM = {
-									trait = genius
-								}
-							}
-							modifier = {
-								factor = 1.5
-								FROM = {
-									trait = dim
-								}
-							}
-							modifier = {
-								factor = 2
-								FROM = {
-									trait = slow
-								}
-							}
-							modifier = {
-								factor = 3
-								FROM = {
-									trait = idiot
-								}
-							}
-							modifier = {
-								factor = 4
-								FROM = {
-									trait = imbecile
-								}
-							}
-							modifier = {
-								factor = 1.25
-								FROM = {
-									trait = wroth
-								}
-							}
-							modifier = {
-								factor = 1.25
-								FROM = {
-									trait = slothful
-								}
-							}
-							modifier = {
-								factor = 1.5
-								FROM = {
-									trait = hedge_wizard
-								}
-							}
-						}
-					}
-				} #closesif
-				if = {
-					limit = {
-						trait = hard_pregnancy
-					}
-					random_list = {
-						50 = {
-							remove_trait = hard_pregnancy
-						}
-						50 = {
-							character_event = {
-								id = aicleanup.010
-							}
-							modifier = {
-								factor = 0.75
-								FROM = {
-									has_character_modifier = magic_power_2
-								}
-							}
-							modifier = {
-								factor = 0.5
-								FROM = {
-									has_character_modifier = magic_power_3
-								}
-							}
-							modifier = {
-								factor = 0.25
-								FROM = {
-									has_character_modifier = magic_power_4
-								}
-							}
-							modifier = {
-								factor = 0.75
-								FROM = {
-									trait = genius
-								}
-							}
-							modifier = {
-								factor = 1.5
-								FROM = {
-									trait = dim
-								}
-							}
-							modifier = {
-								factor = 2
-								FROM = {
-									trait = slow
-								}
-							}
-							modifier = {
-								factor = 3
-								FROM = {
-									trait = idiot
-								}
-							}
-							modifier = {
-								factor = 4
-								FROM = {
-									trait = imbecile
-								}
-							}
-							modifier = {
-								factor = 1.25
-								FROM = {
-									trait = wroth
-								}
-							}
-							modifier = {
-								factor = 1.25
-								FROM = {
-									trait = slothful
-								}
-							}
-							modifier = {
-								factor = 1.5
-								FROM = {
-									trait = hedge_wizard
-								}
-							}
-						}
-					}
-				} #closesif
-				if = {
-					limit = {
-						trait = disfigured
-					}
-					random_list = {
-						50 = {
-							remove_trait = disfigured
-						}
-						50 = {
-							character_event = {
-								id = aicleanup.010
-							}
-							modifier = {
-								factor = 0.75
-								FROM = {
-									has_character_modifier = magic_power_2
-								}
-							}
-							modifier = {
-								factor = 0.5
-								FROM = {
-									has_character_modifier = magic_power_3
-								}
-							}
-							modifier = {
-								factor = 0.25
-								FROM = {
-									has_character_modifier = magic_power_4
-								}
-							}
-							modifier = {
-								factor = 0.75
-								FROM = {
-									trait = genius
-								}
-							}
-							modifier = {
-								factor = 1.5
-								FROM = {
-									trait = dim
-								}
-							}
-							modifier = {
-								factor = 2
-								FROM = {
-									trait = slow
-								}
-							}
-							modifier = {
-								factor = 3
-								FROM = {
-									trait = idiot
-								}
-							}
-							modifier = {
-								factor = 4
-								FROM = {
-									trait = imbecile
-								}
-							}
-							modifier = {
-								factor = 1.25
-								FROM = {
-									trait = wroth
-								}
-							}
-							modifier = {
-								factor = 1.25
-								FROM = {
-									trait = slothful
-								}
-							}
-							modifier = {
-								factor = 1.5
-								FROM = {
-									trait = hedge_wizard
-								}
-							}
-						}
-					}
-				} #closesif
-			} #closeshiddentooltip
+				}
+			}
 		}
 		revoke_allowed = {
 			always = yes
@@ -1843,13 +1623,9 @@ targetted_decisions = {
 			factor = 1
 			modifier = {
 				factor = 0
-				NOT = {
-					FROM = {
+				FROM = {
+					nor = {
 						trait = kind
-					}
-				}
-				NOT = {
-					FROM = {
 						dynasty = ROOT
 					}
 				}
@@ -1878,14 +1654,9 @@ targetted_decisions = {
 				trait = lore_high_magic
 				trait = lore_light
 			}
-			NOT = {
-				trait = incapable
-			}
-			NOT = {
-				trait = infirm
-			}
-			NOT = {
-				trait = troubled_pregnancy
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
 			}
 			NOT = {
 				has_character_modifier = magic_cooldown
@@ -2068,13 +1839,9 @@ targetted_decisions = {
 			factor = 1
 			modifier = {
 				factor = 0.5
-				NOT = {
-					FROM = {
+				FROM = {
+					nor = {
 						trait = kind
-					}
-				}
-				NOT = {
-					FROM = {
 						dynasty = ROOT
 					}
 				}
@@ -2123,7 +1890,10 @@ targetted_decisions = {
 			primary_title = {
 				higher_tier_than = BARON
 			}
-			is_incapacitated_trigger = no
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			NOT = {
 				has_character_modifier = magic_cooldown_summoning
 			}
@@ -2147,24 +1917,18 @@ targetted_decisions = {
 			host = {
 				character = FROM
 			}
-			NOT = {
+			nor = {
 				trait = avatar_kurnous
-			}
-			NOT = {
 				trait = avatar_isha
-			}
-			NOT = {
 				trait = everqueen
 			}
 			OR = {
 				trait = creature_elf
 				trait = creature_chaos_dwarf
 				trait = creature_dwarf
-				trait = creature_human
-				trait = creature_amazon
+				is_living_human_trigger = yes
 				trait = creature_beastman
 			}
-			is_vampire_trigger = no
 		}
 		allow = {
 			prisoner = yes
@@ -2225,9 +1989,9 @@ targetted_decisions = {
 							} #Notify Cruel
 						}
 					}
-				} #closes if
-			} #closesfrom
-		} #closes effect
+				}
+			}
+		}
 		revoke_allowed = {
 			always = no
 		}
@@ -2318,68 +2082,43 @@ targetted_decisions = {
 				}
 			}
 		}
-	} #closes decision
+	}
 
 	mage_ward_apprentice = {
 		filter = realm
 		ai_target_filter = realm
 		from_potential = {
-			NOT = {
-				trait = incapable
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
 			}
-			NOT = {
+			nor = {
 				trait = vampire_blood_visible
-			}
-			NOT = {
 				trait = vampire_blood_hidden
-			}
-			NOT = {
 				religion = asrai_cadai
-			} #they have their own decision
-			NOT = {
 				religion = taalite
-			}
-			NOT = {
 				religion = ulrican
-			}
-			NOT = {
 				religion = manannite
-			}
-			NOT = {
 				religion = shallyan
-			}
-			NOT = {
 				religion = myrmidian
-			}
-			NOT = {
 				religion = grail
-			}
-			NOT = {
 				religion = sigmarite
-			}
- 			OR = {
-				ROOT = {
-					is_female = no
+				any_friend = {
+					trait = mage_apprentice
 				}
-				AND = {
-					NOT = {
-						religion = ormazd
-					}
-     				NOT = {
-						religion = kitabid
-					}
-     				NOT = {
-						culture = ramaccan
-					}
-     				NOT = {
-						culture = medean
-					}
-     				NOT = {
-						culture = tevari
-					}
-    				NOT = {
-						culture = cophic
-					}
+			}
+			# подумать над этим
+ 			nand = {
+				ROOT = {
+					is_female = yes
+				}
+				or = {
+					religion = ormazd
+					religion = kitabid
+					culture = ramaccan
+					culture = medean
+					culture = tevari
+					culture = cophic
 				}
 			}
 			OR = {
@@ -2406,20 +2145,21 @@ targetted_decisions = {
 				trait = creature_amazon
 				trait = creature_human
 			}
-			NOT = {
-				any_friend = {
-					trait = mage_apprentice
-				}
-			} #just one at a time
 		}
 		potential = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			guardian = {
 				FROM = {
 					character = PREV
 				}
 			}
-			prisoner = no
 			age = 10
+			NOT = {
+				age = 15
+			}
 			OR = {
 				is_female = yes
 				FROM = {
@@ -2428,42 +2168,20 @@ targetted_decisions = {
 					}
 				}
 			}
-			NOT = {
-				age = 15
-			}
 			OR = {
 				trait = creature_elf
 				trait = creature_amazon
 				trait = creature_human
 			}
-			NOT = {
+			nor = {
 				trait = mage_apprentice
-			}
-			NOT = {
-				trait = incapable
-			}
-			NOT = {
 				trait = hedge_wizard
-			}
-			NOT = {
 				trait = vampire_blood_visible
-			}
-			NOT = {
 				trait = vampire_blood_hidden
-			}
-			NOT = {
 				has_character_modifier = apprenticeship_refused
-			}
-			NOT = {
 				has_character_modifier = magic_power_1
-			}
-			NOT = {
 				has_character_modifier = magic_power_2
-			}
-			NOT = {
 				has_character_modifier = magic_power_3
-			}
-			NOT = {
 				has_character_modifier = magic_power_4
 			}
 		}
@@ -2480,7 +2198,7 @@ targetted_decisions = {
 					character_event = {
 						id = sorcererapprentice.7 days = 350
 					}
-				} #Start teaching
+				}
 				if = {
 					limit = {
 						FROM = {
@@ -2582,12 +2300,10 @@ targetted_decisions = {
 			}
 			modifier = {
 				factor = 0.75
-				NOT = {
+				nor = {
 					father = {
 						character = FROM
 					}
-				}
-				NOT = {
 					mother = {
 						character = FROM
 					}
@@ -2812,31 +2528,30 @@ targetted_decisions = {
 					}
 				}
 			}
-		} #closesaiwilldo
+		}
 	}
 
 	chaosmage_ward_apprentice = {
 		filter = realm
 		ai_target_filter = realm
 		from_potential = {
-			is_incapacitated_trigger = no
-			religion_group = chaos_gods_group
-			NOT = {
-				religion = khorne
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
 			}
-			NOT = {
+			religion_group = chaos_gods_group
+			nor = {
+				religion = khorne
 				religion = hashut
+				any_friend = {
+					trait = mage_apprentice
+				}
 			}
 			OR = {
 				trait = lore_tzeentch
 				trait = lore_nurgle
 				trait = lore_slaanesh
 			}
-			NOT = {
-				any_friend = {
-					trait = mage_apprentice
-				}
-			} #just one at a time
 		}
 		potential = {
 			guardian = {
@@ -2844,39 +2559,25 @@ targetted_decisions = {
 					character = PREV
 				}
 			}
-			prisoner = no
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			OR = {
-				trait = creature_human
-				trait = creature_amazon
+				is_living_human_trigger = yes
 				trait = creature_elf
 			}
 			age = 10
-			is_vampire_trigger = no
 			NOT = {
 				age = 15
 			}
-			NOT = {
+			nor = {
 				trait = mage_apprentice
-			}
-			NOT = {
-				trait = incapable
-			}
-			NOT = {
 				trait = hedge_wizard
-			}
-			NOT = {
 				has_character_modifier = apprenticeship_refused
-			}
-			NOT = {
 				has_character_modifier = magic_power_1
-			}
-			NOT = {
 				has_character_modifier = magic_power_2
-			}
-			NOT = {
 				has_character_modifier = magic_power_3
-			}
-			NOT = {
 				has_character_modifier = magic_power_4
 			}
 		}
@@ -2894,7 +2595,7 @@ targetted_decisions = {
 						id = sorcererapprentice.9 days = 350
 					}
 				}
-			} #Start teaching
+			}
 		}
 		revoke_allowed = {
 			always = yes
@@ -3032,44 +2733,38 @@ targetted_decisions = {
 				factor = 0.5
 				age = 14
 			}
-		} #closesaiwilldo
+		}
 	}
 
 	necromancer_ward_apprentice = {
 		filter = realm
 		ai_target_filter = realm
 		from_potential = {
-			NOT = {
-				trait = incapable
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
 			}
-			OR = {
-				trait = vampire_lahmian_visible
-				trait = vampire_carstein_visible
-				# trait = vampire_blood_visible
-				trait = vampire_strigoi_visible
-				trait = vampire_necrarch_visible
-				# trait = vampire_jade_visible
-				trait = vampire_mahtmasi_visible
-				trait = vampire_lahmian_hidden
-				trait = vampire_carstein_hidden
-				# trait = vampire_blood_hidden
-				trait = vampire_strigoi_hidden
-				trait = vampire_necrarch_hidden
-				# trait = vampire_jade_hidden
-				trait = vampire_mahtmasi_hidden
-				trait = lore_necromancy
+			#is_undead_trigger = yes
+			trait = lore_necromancy
+			nor = {
+				trait = vampire_blood_visible
+				trait = vampire_jade_visible
+				trait = vampire_blood_hidden
+				trait = vampire_jade_hidden
+				any_friend = {
+					trait = mage_apprentice
+				}
 			}
 			OR = {
 				trait = khemri_tomb_king
 				trait = creature_human
 			}
-			NOT = {
-				any_friend = {
-					trait = mage_apprentice
-				}
-			} #just one at a time
 		}
 		potential = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			NOT = {
 				character = FROM
 			}
@@ -3101,43 +2796,18 @@ targetted_decisions = {
 				trait = khemri_tomb_king
 				trait = creature_human
 			}
-			NOT = {
+			nor = {
 				trait = mage_apprentice
-			}
-			NOT = {
 				trait = vampire_blood_hidden
-			}
-			NOT = {
 				trait = vampire_blood_visible
-			}
-			NOT = {
-				trait = incapable
-			}
-			NOT = {
 				trait = hedge_wizard
-			}
-			NOT = {
 				has_character_flag = taken_hedge_wizard_decision
-			}
-			NOT = {
 				has_character_flag = taken_necromancer_decision
-			}
-			NOT = {
 				has_character_modifier = apprenticeship_refused_necr
-			}
-			NOT = {
 				has_character_modifier = magic_power_1
-			}
-			NOT = {
 				has_character_modifier = magic_power_2
-			}
-			NOT = {
 				has_character_modifier = magic_power_3
-			}
-			NOT = {
 				has_character_modifier = magic_power_4
-			}
-			NOT = {
 				trait = king_settra
 			}
 		}
@@ -3417,39 +3087,29 @@ targetted_decisions = {
 					}
 				}
 			}
-		} #closesaiwilldo
+		}
 	}
 
 	necro_execute_prisoner = {
 		ai_target_filter = court
 		from_potential = {
 			is_ruler = yes
-			NOT = {
-				trait = incapable
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
 			}
 			trait = lore_necromancy
 		}
 		potential = {
 			prisoner = yes
+			NOT = {
+				character = FROM
+			}
 			host = {
 				character = FROM
 			}
-			NOT = {
-				trait = khorne_demon
-			}
-			NOT = {
-				trait = nurgle_demon
-			}
-			NOT = {
-				trait = slaanesh_demon
-			}
-			NOT = {
-				trait = tzeentch_demon
-			}
+			is_demon_trigger = no
 			is_undead_trigger = no
-			NOT = {
-				character = FROM
-			}                            # Can't do this decision on yourself...
 		}
 		allow = {
 			prisoner = yes
@@ -3461,20 +3121,6 @@ targetted_decisions = {
 					is_invincible_trigger = yes
 				}
 				antideath_effect = yes
-				break = yes
-			}
-			if = {
-				limit = {
-					OR = {
-						trait = khorne_demon
-						trait = nurgle_demon
-						trait = slaanesh_demon
-						trait = tzeentch_demon
-					}
-				}
-				character_event = {
-					id = sdemons.1
-				}
 				break = yes
 			}
 			death = {
@@ -3509,33 +3155,25 @@ targetted_decisions = {
 						character = FROM
 					}
 					FROM = {
-						NOT = {
+						nor = {
 							has_opinion_modifier = {
 								who = ROOT modifier = opinion_traitor
 							}
-						}
-						NOT = {
 							has_opinion_modifier = {
 								who = ROOT modifier = opinion_rebel_traitor
 							}
-						}
-						NOT = {
 							has_opinion_modifier = {
 								who = ROOT modifier = opinion_dishonorable
 							}
-						}
-						NOT = {
 							has_opinion_modifier = {
 								who = ROOT modifier = opinion_confirmed_heretic
 							}
-						}
-						NOT = {
 							has_opinion_modifier = {
 								who = ROOT modifier = opinion_burned_by_asuryan
 							}
 						}
 						religion = ROOT
-					} #closesFROM
+					}
 				}
 				FROM = {
 					any_vassal = {
@@ -3546,8 +3184,8 @@ targetted_decisions = {
 							modifier = opinion_tyrant
 							who = FROM
 						}
-					} #closes anyvassal
-				} #closes from
+					}
+				}
 				FROM = {
 					any_courtier = {
 						limit = {
@@ -3558,9 +3196,9 @@ targetted_decisions = {
 							modifier = opinion_tyrant
 							who = FROM
 						}
-					} #closes anyvassal
-				} #closes from
-			} #closesif
+					}
+				}
+			}
 			hidden_tooltip = {
 				mother = {
 					opinion = {
@@ -3747,6 +3385,6 @@ targetted_decisions = {
 					has_character_modifier = necromantic_power_5
 				}
 			}
-		} #aiwilldo
-	} #decision
+		}
+	}
 }

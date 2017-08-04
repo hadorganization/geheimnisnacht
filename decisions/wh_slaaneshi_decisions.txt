@@ -13,36 +13,12 @@ decisions = {
 			}
 			is_ruler = yes
 			is_female = yes
-			NOT = {
+			nor = {
 				trait = incapable
-			}
-			NOT = {
 				trait = celibate
-			}
-			NOT = {
 				trait = infertile
 			}
-			NOT = {
-				trait = vampire_lahmian_visible
-			}
-			NOT = {
-				trait = vampire_carstein_visible
-			}
-			NOT = {
-				trait = vampire_blood_visible
-			}
-			NOT = {
-				trait = vampire_strigoi_visible
-			}
-			NOT = {
-				trait = vampire_necrarch_visible
-			}
-			NOT = {
-				trait = vampire_jade_visible
-			}
-			NOT = {
-				trait = vampire_mahtmasi_visible
-			}
+			fertility > 0
 		}
 		allow = {
 			OR = {
@@ -59,10 +35,8 @@ decisions = {
 			factor = 1
 			modifier = {
 				factor = 0.5
-				NOT = {
+				nor = {
 					trait = infirm
-				}
-				NOT = {
 					trait = undernourished
 				} #if healthy aftermath, less likely to do it
 			}
@@ -224,42 +198,6 @@ decisions = {
 		is_high_prio = yes
 		potential = {
 			ai = no
-			NOT = {
-				is_pregnant = yes
-			}
-			NOT = {
-				trait = incapable
-			}
-			NOT = {
-				trait = incapacitated
-			}
-			NOT = {
-				trait = studying_magic
-			}
-			NOT = {
-				trait = crafting_magic_item
-			}
-			NOT = {
-				trait = infirm
-			}
-			NOT = {
-				trait = maimed
-			}
-			NOT = {
-				trait = retired_with_harem
-			}
-			NOT = {
-				trait = in_hiding
-			}
-			NOT = {
-				trait = questing
-			}
-			NOT = {
-				trait = blood_questing
-			}
-			NOT = {
-				trait = monster_hunting
-			}
 			is_ruler = yes
 			age = 14
 			OR = {
@@ -277,20 +215,17 @@ decisions = {
 			}
 		}
 		allow = {
-			NOT = {
+			is_pregnant = no
+			nor = {
 				trait = celibate
-			}
-			NOT = {
-				trait = pregnant
-			}
-			NOT = {
 				trait = chaste
+				trait = maimed
+				trait = infirm
 			}
 			custom_tooltip = {
 				text = IS_NOT_INCAPACITATED
 				is_incapacitated_trigger = no
 			}
-			prisoner = no
 			is_ill = no
 			war = no
 		}
@@ -331,13 +266,9 @@ decisions = {
 			trait = retired_with_harem
 		}
 		allow = {
-			NOT = {
+			nor = {
 				trait = lustful
-			}
-			NOT = {
 				trait = hedonist
-			}
-			NOT = {
 				trait = slothful
 			} #cannot stop on his own
 		}
@@ -364,30 +295,24 @@ decisions = {
 			factor = 0
 		}
 	}
-} #decisions
+}
+
 targetted_decisions = {
 
 	make_noble_concubine = {
-		#To cover male rulers wanting to take landed/underage females as consorts
+		# To cover male rulers wanting to take landed/underage females as consorts
 		ai_target_filter = court
 		only_rulers = yes
 		from_potential = {
 			is_ruler = yes
 			age = 14
-			is_female = no
+			or = {
+				is_female = no
+				religion = amazon
+			}
+			wh_num_of_consorts_trigger = yes
 			NOT = {
 				trait = incapable
-			}
-       		OR = {
-         		NOT = {
-					num_of_consorts = 3
-				}
-         		AND = {
-          			religion = slaanesh
-           			NOT = {
-						num_of_consorts = 6
-					}
-				}
 			}
 			OR = {
 				religion = cult_of_pleasure
@@ -396,25 +321,14 @@ targetted_decisions = {
 				religion = amazon
 			}
 		}
+		# target
 		potential = {
 			prisoner = yes
 			host = {
 				character = FROM
 			}
-			NOR = {
-				trait = vampire_carstein_visible
-				trait = vampire_blood_visible
-				trait = vampire_lahmian_visible
-				trait = vampire_strigoi_visible
-				trait = vampire_necrarch_visible
-				trait = vampire_jade_visible
-				trait = vampire_mahtmasi_visible
-				trait = khemri_tomb_king
-				trait = khorne_demon
-				trait = nurgle_demon
-				trait = tzeentch_demon
-				trait = slaanesh_demon
-			}
+			is_undead_trigger = no
+			is_demon_trigger = no
 			OR = {
 				trait = creature_human
 				trait = creature_elf
@@ -424,7 +338,13 @@ targetted_decisions = {
 				trait = creature_ogre
 				trait = creature_amazon
 			}
-			is_female = yes
+			or = {
+				is_female = yes
+				FROM = {
+					religion = amazon
+					is_female = yes
+				}
+			}
 			OR = {
 				is_ruler = yes
 				NOT = {
@@ -444,10 +364,8 @@ targetted_decisions = {
 					age = 10
 				}
 			}
-			NOT = {
-				character = FROM
-			}                            # Can't do this decision on yourself...
-			NOT = {
+			nor = {
+				character = FROM # Can't do this decision on yourself...
 				trait = incapable
 			}
 		}
@@ -620,10 +538,10 @@ targetted_decisions = {
 				}
 			}
 		}
-	} #decision
+	}
 
 	make_pet_consort = {
-		#For female on male, male on male and female on female concubinage (the pet_consort trait is assigned on_forced_consort when it's male on female)
+		# For female on male, male on male and female on female concubinage (the pet_consort trait is assigned on_forced_consort when it's male on female)
 		filter = court
 		ai_target_filter = court
 		only_rulers = yes
@@ -641,9 +559,13 @@ targetted_decisions = {
 			}
 		}
 		potential = {
+			is_undead_trigger = no
+			is_demon_trigger = no
 			OR = {
 				prisoner = yes
-				is_ruler = no		#courtiers can be made concubines, like in vanilla
+				# courtiers can be made concubines, like in vanilla
+				is_ruler = no
+				# Amazons can take any male courtier
 				AND = {
 					FROM = {
 						religion = amazon
@@ -651,45 +573,38 @@ targetted_decisions = {
 					}
 					is_female = no
 				}
-			}	#Amazons can take any male courtier
-			OR = {
-				NOT = {
-					is_close_relative = FROM
-				}
-				NOT = {
-					religion = amazon
-				}
+			}
+			nand = {
+				is_close_relative = FROM
+				religion = amazon
 			}
 			host = {
 				character = FROM
 			}
-			NOT = {
-				character = FROM
-			}                            # Can't do this decision on yourself...
+			# so it doesn't appear on males trying to take females
+			# конкубины идут отдельно?
 			OR = {
 				is_female = no
 				FROM = {
 					is_female = yes
 				}
-			}	#so it doesn't appear on males trying to take females
-			OR = {
-				is_female = no
+			}
+			# so that Amazons can only take males
+			nand = {
+				is_female = yes
 				FROM = {
-					NOT = {
-						religion = amazon
+					religion = amazon
+				}
+			}
+			# so that only Amazon Queens can take pet consorts
+			nand = {
+				from = {
+					religion = amazon
+					not = {
+						higher_tier_than = DUKE
 					}
 				}
-			}	#so that Amazons can only take males
-			OR = {
-				FROM = {
-					higher_tier_than = DUKE
-				}
-				FROM = {
-					NOT = {
-						religion = amazon
-					}
-				}
-			}	#so that only Amazon Queens can take pet consorts
+			}
 			OR = {
 				age = 16
 				AND = {
@@ -703,16 +618,12 @@ targetted_decisions = {
 					age = 10
 				}
 			}
-			NOT = {
+			nor = {
+				# Can't do this decision on yourself...
+				character = FROM
 				trait = incapable
-			}
-			NOT = {
 				trait = pet_consort
-			}
-			NOT = {
 				trait = druchi_witch_elf
-			}
-			NOT = {
 				trait = druchi_assassin
 			}
 			OR = {
@@ -724,29 +635,11 @@ targetted_decisions = {
 				trait = creature_ogre
 				trait = creature_amazon
 			}
-			NOR = {
-				trait = vampire_carstein_visible
-				trait = vampire_blood_visible
-				trait = vampire_lahmian_visible
-				trait = vampire_strigoi_visible
-				trait = vampire_necrarch_visible
-				trait = vampire_jade_visible
-				trait = vampire_mahtmasi_visible
-				trait = khemri_tomb_king
-				trait = khorne_demon
-				trait = nurgle_demon
-				trait = tzeentch_demon
-				trait = slaanesh_demon
-			}
-			OR = {
-				NOT = {
-					FROM = {
-						religion_group = cytharai_group
-					}
+			nand = {
+				FROM = {
+					religion_group = cytharai_group
 				}
-				NOT = {
-					trait = druchi_sorceress
-				}
+				trait = druchi_sorceress
 			}
 		}
 		allow = {
@@ -1176,7 +1069,7 @@ targetted_decisions = {
 	}
 
 	pleasure_twist = {
-		#For perverting other characters as a cultist
+		# For perverting other characters as a cultist
 		ai_target_filter = realm
 		only_rulers = yes
 		from_potential = {
@@ -1186,35 +1079,25 @@ targetted_decisions = {
 				is_incapacitated_trigger = no
 			}
 			society_member_of = cult_of_pleasure
-			NOT = {
+			nor = {
 				has_any_opinion_modifier = opinion_twisting
-			}
-			NOT = {
 				religion = atharti
 				religion = slaanesh
-			} #busted
+			}
 			age = 16
 		}
 		potential = {
 			is_within_diplo_range = FROM
 			age = 14
-			NOT = {
+			nor = {
 				character = FROM
-			}
-			NOT = {
 				society_member_of = cult_of_pleasure
 				religion = atharti
 				religion = slaanesh
-			}
-			NOT = {
 				has_any_opinion_modifier = opinion_recently_twisted
-			}
-			NOT = {
 				has_any_opinion_modifier = opinion_twisting
 			}
-			NOT = {
-				is_demon_trigger = yes
-			}
+			is_demon_trigger = no
 		}
 		allow = {
 			FROM = {
@@ -1351,15 +1234,16 @@ targetted_decisions = {
 	}
 
 	slaanesh_quirk = {
-		#Slaaneshi having fun with their friends and relatives
+		# Slaaneshi having fun with their friends and relatives
 		filter = court
 		ai_target_filter = court
 		from_potential = {
-			is_incapacitated_trigger = no
-			NOT = {
-				has_character_modifier = ai_quirking_cooldown
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
 			}
-			NOT = {
+			nor = {
+				has_character_modifier = ai_quirking_cooldown
 				has_any_opinion_modifier = opinion_quirking
 			}
 			OR = {
@@ -1386,13 +1270,10 @@ targetted_decisions = {
 		}
 		potential = {
 			is_within_diplo_range = FROM
-			age = 16	#For now...
-			prisoner = no
-			NOT = {
-				trait = incapacitated
-			}
-			NOT = {
-				trait = in_hiding
+			age = 16	# For now...
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
 			}
 			OR = {
 				trait = creature_elf
@@ -1421,23 +1302,11 @@ targetted_decisions = {
 					trait = slaanesh_demon
 				}
 			}
-			NOT = {
+			nor = {
 				character = FROM
-			}
-			NOT = {
 				trait = pet_consort
-			}
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
-			}
-			NOT = {
 				has_any_opinion_modifier = opinion_recently_quirked
-			}
-			NOT = {
 				has_any_opinion_modifier = opinion_quirking
-			}
-			NOT = {
 				is_demon_trigger = yes
 			}
 		}
@@ -1602,7 +1471,10 @@ targetted_decisions = {
 			primary_title = {
 				higher_tier_than = BARON
 			}
-			is_incapacitated_trigger = no
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			NOT = {
 				has_character_modifier = magic_cooldown
 			}
@@ -1688,8 +1560,8 @@ targetted_decisions = {
 						}
 					}
 				} #closes if
-			} #closesfrom
-		} #closes effect
+			}
+		}
 		revoke_allowed = {
 			always = no
 		}
@@ -1799,7 +1671,7 @@ targetted_decisions = {
 				}
 			}
 		}
-	} #closes decision
+	}
 
 	transgender_marriage = {
 		filter = court
@@ -1807,11 +1679,12 @@ targetted_decisions = {
 		from_potential = {
 			is_married = no
 			trait = transgender
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			primary_title = {
 				higher_tier_than = BARON
-			}
-			NOT = {
-				trait = incapable
 			}
 			OR = {
 				trait = creature_elf
@@ -1849,9 +1722,9 @@ targetted_decisions = {
 				FROM = {
 					add_spouse = ROOT
 					add_trait = transgender #new spouse might remove the trait automatically
-				} #closesfrom
+				}
 			} #closeshiddentooltip
-		} #closes effect
+		}
 		revoke_allowed = {
 			always = no
 		}
@@ -1968,5 +1841,5 @@ targetted_decisions = {
 				}
 			}
 		}
-	} #closes decision
+	}
 }

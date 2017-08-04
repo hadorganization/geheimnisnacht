@@ -1,15 +1,13 @@
 is_disease_immune_race = {
+	NOT = {
+		religion = nurgle
+	}
 	OR = {
 		trait = creature_forestspirit
 		trait = creature_treekin
 		trait = creature_slann
-		# think about it
-		AND = {
-			is_demon_trigger = yes
-			NOT = {
-				religion = nurgle
-			}
-		}
+		is_demon_prince_trigger = yes
+		is_demon_trigger = yes
 		trait = creature_skink
 		trait = creature_saurus
 		trait = creature_orc
@@ -53,6 +51,20 @@ wh_is_injured_trigger = {
 		trait = severely_injured
 		trait = lovers_pox
 		trait = eunuch
+	}
+}
+
+wh_num_of_consorts_trigger = {
+    OR = {
+        NOT = {
+			num_of_consorts = 3
+		}
+        AND = {
+          	religion = slaanesh
+           	NOT = {
+				num_of_consorts = 6
+			}
+		}
 	}
 }
 
@@ -112,11 +124,20 @@ is_demon_trigger = {
 		trait = slaanesh_daemonette
 		trait = tzeentch_flamer
 		trait = hashut_kdaai
-		# need it?
-		trait = prince_khorne
-		trait = prince_nurgle
-		trait = prince_slaanesh
-		trait = prince_tzeentch
+	}
+}
+
+is_demon_prince_trigger = {
+	trait = prince_khorne
+	trait = prince_nurgle
+	trait = prince_slaanesh
+	trait = prince_tzeentch
+}
+
+is_slaanesh_demon_trigger = {
+	OR = {
+		trait = slaanesh_demon
+		trait = slaanesh_daemonette
 	}
 }
 
@@ -212,6 +233,7 @@ is_immortal_trigger = {
 
 is_incapacitated_trigger = {
 	OR = {
+		prisoner = yes
 		trait = incapable
 		trait = incapacitated
 		trait = studying_magic
@@ -238,7 +260,6 @@ is_incapacitated_trigger = {
 		trait = in_stock
 		trait = pet_consort
 		trait = on_pilgrimage
-		prisoner = yes
 		trait = creature_celdragon
 		trait = hollowed
 	}
@@ -286,6 +307,7 @@ is_incorruptible_trigger = {
 		is_undead_trigger = yes
 	}
 }
+
 cannot_marry_trigger = {
 	OR = {
 		is_theocracy = yes

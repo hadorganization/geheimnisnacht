@@ -1,0 +1,578 @@
+namespace = orcs
+
+# # Orcs create heirs via event, 2 sons
+
+# character_event = {
+
+# id = orcs.0
+
+# title = AN_HEIR
+
+# desc = EVTDESCORCS.0 # Orc reproduction remains a mystery, but every dynasty needs heirs and these are close kin of yours and will inherit your possessions upon your death.
+
+# picture = "GFX_evt_orcs"
+
+# is_triggered_only = yes
+
+# trigger = {
+
+# age = 30
+
+# is_landed = yes
+
+# NOT = { num_of_children = 2 }
+
+# NOT = { has_character_flag = spawnedorcs }
+
+# OR = {
+
+# culture_group = goblin_group
+
+# culture_group = orc_group
+
+# }
+
+# }
+
+# option = {
+
+# name = "OK"
+
+# set_character_flag = spawnedorcs
+
+# create_random_soldier = {
+
+# random_traits = yes
+
+# dynasty = ROOT
+
+# culture = ROOT
+
+# religion = ROOT
+
+# father = ROOT
+
+# female = no
+
+# age = 18
+
+# }
+
+# new_character = {
+
+# change_martial = 5
+
+# }
+
+# create_random_soldier = {
+
+# random_traits = yes
+
+# dynasty = ROOT
+
+# culture = ROOT
+
+# religion = ROOT
+
+# father = ROOT
+
+# female = no
+
+# age = 17
+
+# }
+
+# new_character = {
+
+# change_martial = 5
+
+# }
+
+# create_random_soldier = {
+
+# random_traits = yes
+
+# dynasty = ROOT
+
+# culture = ROOT
+
+# religion = ROOT
+
+# father = ROOT
+
+# female = no
+
+# age = 16
+
+# }
+
+# new_character = {
+
+# change_martial = 5
+
+# }
+
+# recalc_succession = yes
+
+# }
+
+# }
+
+
+# # Ork Gardening events
+
+# character_event = {
+
+# id = orcs.14
+
+# desc = "EVTDESCORCS.14"
+
+# picture = GFX_evt_garden
+
+# min_age = 25
+
+# capable_only = yes
+
+# prisoner = no
+
+# is_triggered_only = yes
+
+# trigger = {
+
+# culture_group = orc_group
+
+# has_dlc = "Way of Life"
+
+# in_command = no
+
+# NOT = {
+
+# lifestyle_traits = 1
+
+# }
+
+# NOT = {
+
+# has_character_flag = ORKPLANT
+
+# }
+
+# NOT = {
+
+# has_character_modifier = the_impaler
+
+# }
+
+# NOT = {
+
+# has_character_modifier = the_gardener
+
+# }
+
+# }
+
+# immediate = {
+
+# set_character_flag = ORKPLANT
+
+# }
+
+# option = {
+
+# name = "EVTDESCORCS14A"
+
+# piety = 20
+
+# set_character_flag = fungal_planter
+
+# }
+
+# option = {
+
+# name = "EVTDESCORCS14B"
+
+# prestige = 20
+
+# set_character_flag = goblin_planter
+
+# }
+
+# }
+
+# # Stake/Pole
+
+# character_event = {
+
+# id = orcs.15
+
+# desc = "EVTDESCORCS.15"
+
+# picture = "GFX_evt_pale_rider"
+
+# min_age = 25
+
+# capable_only = yes
+
+# prisoner = no
+
+# is_triggered_only = yes
+
+# trigger = {
+
+# culture_group = orc_group
+
+# NOT = { has_dlc = "Way of Life" }
+
+# has_character_flag = ORKPLANT
+
+# NOT = {
+
+# lifestyle_traits = 1
+
+# }
+
+# NOT = {
+
+# has_character_flag = fungal_planter
+
+# }
+
+# has_character_flag = goblin_planter
+
+# NOT = {
+
+# has_character_modifier = the_impaler
+
+# }
+
+# NOT = {
+
+# has_character_modifier = the_gardener
+
+# }
+
+# }
+
+# option = {
+
+# name = "EVTDESCORCS15A"
+
+# prestige = 20
+
+# clr_character_flag = goblin_planter
+
+# }
+
+# option = {
+
+# name = "EVTDESCORCS15B"
+
+# character_event = {
+
+# id = orcs.16
+
+# days = 30
+
+# tooltip = "EVTDESCORCS15C"
+
+# }
+
+# }
+
+# }
+
+# # Red Rose
+
+# character_event = {
+
+# id = orcs.16
+
+# desc = "EVTDESCORCS.16"
+
+# picture = GFX_evt_garden
+
+# min_age = 25
+
+# capable_only = yes
+
+# prisoner = no
+
+# is_triggered_only = yes
+
+# trigger = {
+
+# NOT = { has_dlc = "Way of Life" }
+
+# has_character_flag = ORKPLANT
+
+# culture_group = orc_group
+
+# NOT = {
+
+# lifestyle_traits = 1
+
+# }
+
+# NOT = {
+
+# has_character_flag = goblin_planter
+
+# }
+
+# has_character_flag = fungal_planter
+
+# NOT = {
+
+# has_character_modifier = the_impaler
+
+# }
+
+# NOT = {
+
+# has_character_modifier = the_gardener
+
+# }
+
+# }
+
+# option = {
+
+# name = "EVTDESCORCS16A"
+
+# wealth = 30
+
+# clr_character_flag = fungus_planter
+
+# }
+
+# option = {
+
+# name = "EVTDESCORCS16B"
+
+# set_character_flag = fungus_harvester
+
+# character_event = {
+
+# id = orcs.19
+
+# days = 30
+
+# random = 10
+
+# tooltip = "EVTDESCORCS16C"
+
+# }
+
+# }
+
+# }
+
+# # Atone for thy sins or ignore it and become an Impaler
+
+# character_event = {
+
+# id = orcs.17
+
+# desc = "EVTDESCORCS.17"
+
+# picture = "GFX_evt_garden"
+
+# is_triggered_only = yes
+
+# option = {
+
+# name = "EVTDESCORCS17A"
+
+# prestige = 40
+
+# clr_character_flag = fungal_planter
+
+# clr_character_flag = goblin_planter
+
+# set_character_flag = goblin_harvester
+
+# }
+
+# option = {
+
+# name = "EVTDESCORCS17B"
+
+# piety = 20
+
+# clr_character_flag = fungal_planter
+
+# clr_character_flag = goblin_planter
+
+# set_character_flag = fungus_harvester
+
+# }
+
+# }
+
+# # Impaler
+
+# character_event = {
+
+# id = orcs.18
+
+# desc = "EVTDESCORCS.18"
+
+# picture = "GFX_evt_pale_rider"
+
+# min_age = 25
+
+# capable_only = yes
+
+# prisoner = no
+
+# is_triggered_only = yes
+
+# trigger = {
+
+# culture_group = orc_group
+
+# NOT = { has_dlc = "Way of Life" }
+
+# has_character_flag = ORKPLANT
+
+# NOT = {
+
+# lifestyle_traits = 1
+
+# }
+
+# has_character_flag = goblin_harvester
+
+# NOT = {
+
+# has_character_modifier = the_impaler
+
+# }
+
+# NOT = {
+
+# has_character_modifier = the_gardener
+
+# }
+
+# }
+
+# immediate = {
+
+# clr_character_flag = goblin_harvester
+
+# clr_character_flag = fungus_harvester
+
+# }
+
+# option = {
+
+# name = "EVTDESCORCS18A"
+
+# add_trait = impaler
+
+# clr_character_flag = ORKPLANT
+
+# }
+
+# option = {
+
+# name = "EVTDESCORCS18B"
+
+# clr_character_flag = ORKPLANT
+
+# add_character_modifier = {
+
+# name = the_impaler
+
+# duration = 365
+
+# }
+
+# }
+
+# }
+
+# # Gardener
+
+# character_event = {
+
+# id = orcs.19
+
+# desc = "EVTDESCORCS.19"
+
+# picture = "GFX_evt_garden"
+
+# min_age = 25
+
+# capable_only = yes
+
+# prisoner = no
+
+# is_triggered_only = yes
+
+# trigger = {
+
+# culture_group = orc_group
+
+# NOT = { has_dlc = "Way of Life" }
+
+# has_character_flag = ORKPLANT
+
+# NOT = {
+
+# lifestyle_traits = 1
+
+# }
+
+# has_character_flag = fungus_harvester
+
+# NOT = {
+
+# has_character_modifier = the_gardener
+
+# }
+
+# NOT = {
+
+# has_character_modifier = the_impaler
+
+# }
+
+# }
+
+# immediate = {
+
+# clr_character_flag = fungus_harvester
+
+# clr_character_flag = goblin_harvester
+
+# }
+
+# option = {
+
+# name = "EVTDESCORCS19A"
+
+# add_trait = gardener
+
+# clr_character_flag = ORKPLANT
+
+# }
+
+# option = {
+
+# name = "EVTDESCORCS19B"
+
+# clr_character_flag = ORKPLANT
+
+# add_character_modifier = {
+
+# name = the_gardener
+
+# duration = 365
+
+# }
+
+# }
+
+# }

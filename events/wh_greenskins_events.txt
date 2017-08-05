@@ -9,6 +9,466 @@ namespace = DR_greenskins
 
 # It can also be manually increased in through a decision, but you will be challenged to a duel by another Greenskin if you do so, for trying to impose your rule.
 
+# Now to assign the size traits for orcs that don't have them on_yearly_pulse
+character_event = {
+	id = DR_greenskins.1
+	title = YOUR_SIZE
+	desc = EVTDESCDR_greenskins.1 # Orcs and goblins grow in size from the number of battles they have fought in and won. As you have reached the age of adulthood, your size is...
+	picture = "GFX_evt_orcs"
+	min_age = 16
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			culture_group = goblin_group
+			culture_group = orc_group
+		}
+		nor = {
+			trait = orc_small
+			trait = orc_average
+			trait = orc_large
+			trait = orc_huge
+			trait = goblin_small
+			trait = goblin_average
+			trait = goblin_large
+			trait = goblin_huge
+		}
+	}
+
+	option = {
+		name = ARRRRGH
+		if = {
+			limit = {
+				culture_group = orc_group
+				martial = 5
+				NOT = {
+					martial = 10
+				}
+			}
+			add_trait = orc_small
+		}
+		if = {
+			limit = {
+				culture_group = orc_group
+				martial = 10
+				NOT = {
+					martial = 15
+				}
+			}
+			add_trait = orc_average
+		}
+		if = {
+			limit = {
+				culture_group = orc_group
+				martial = 15
+				NOT = {
+					martial = 25
+				}
+			}
+			add_trait = orc_large
+		}
+		if = {
+			limit = {
+				culture_group = orc_group
+				martial = 25
+			}
+			add_trait = orc_huge
+		}
+		if = {
+			limit = {
+				culture_group = goblin_group
+				martial = 5
+				NOT = {
+					martial = 10
+				}
+			}
+			add_trait = goblin_small
+		}
+		if = {
+			limit = {
+				culture_group = goblin_group
+				martial = 10
+				NOT = {
+					martial = 15
+				}
+			}
+			add_trait = goblin_average
+		}
+		if = {
+			limit = {
+				culture_group = goblin_group
+				martial = 15
+				NOT = {
+					martial = 25
+				}
+			}
+			add_trait = goblin_large
+		}
+		if = {
+			limit = {
+				culture_group = goblin_group
+				martial = 25
+			}
+			add_trait = goblin_huge
+		}
+	}
+}
+
+# Event for greenskins to grow in size from battles
+character_event = {
+	id = DR_greenskins.2
+	desc = EVTDESCDR_greenskins.2 # With each victory in battle, you grow a little in size and strength!
+	picture = "GFX_evt_orcs"
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			culture_group = goblin_group
+			culture_group = orc_group
+		}
+		nor = {
+			trait = orc_huge
+			trait = goblin_huge
+		}
+	}
+	weight_multiplier = {
+		days = 1
+		modifier = {
+			factor = 2
+			trait = brave
+		}
+		modifier = {
+			factor = 2
+			trait = cruel
+		}
+		modifier = {
+			factor = 2
+			trait = wroth
+		}
+	}
+
+	option = {
+		name = "EVTOPTAORCSGROW2"
+		if = {
+			limit = {
+				trait = orc_small
+			}
+			add_trait = orc_average
+			remove_trait = orc_small
+		}
+		if = {
+			limit = {
+				trait = orc_average
+			}
+			add_trait = orc_large
+			remove_trait = orc_average
+		}
+		if = {
+			limit = {
+				trait = orc_large
+			}
+			add_trait = orc_huge
+			remove_trait = orc_large
+		}
+		if = {
+			limit = {
+				trait = goblin_small
+			}
+			add_trait = goblin_average
+			remove_trait = goblin_small
+		}
+		if = {
+			limit = {
+				trait = goblin_average
+			}
+			add_trait = goblin_large
+			remove_trait = goblin_average
+		}
+		if = {
+			limit = {
+				trait = goblin_large
+			}
+			add_trait = goblin_huge
+			remove_trait = goblin_large
+		}
+	}
+}
+
+# DR_greenskins.10-200 reserved for Flavor Events for Orks
+
+# Cruelty/stressed Bad event.
+character_event = {
+	id = DR_greenskins.10
+	desc = EVTDESCDR_greenskins.10 # Taday, Yer favorite grot done dropped yer best choppa on 'is foot cuz da handle came of'...
+	picture = "GFX_evt_orcs"
+	min_age = 16
+	culture_group = orc_group
+	is_triggered_only = yes
+
+	trigger = {
+		war = no
+		prisoner = no
+		is_landed = yes
+	}
+
+	option = {
+		name = EVTDESCORCS10A # "Ya stupid git ruined ma best Choppa!!!"
+		prestige = -50
+		random = {
+			chance = 15
+			add_trait = cruel
+		}
+	}
+
+	option = {
+		name = EVTDESCORCS10B # "ZOG IT!"
+		prestige = -25
+		random = {
+			chance = 5
+			add_trait = stressed
+		}
+	}
+}
+
+# Wroth/Sloth with bonus for really cunnin' orks.
+character_event = {
+	id = DR_greenskins.11
+	desc = EVTDESCDR_greenskins.11 # After doing your daily drops, you notice a Goblin attempting to make away with a Heavy, double bladed Choppa
+	picture = "GFX_evt_orcs"
+	min_age = 16
+	culture_group = orc_group
+
+	trigger = {
+		prisoner = no
+		is_landed = yes
+	}
+
+	mean_time_to_happen = {
+		months = 180
+	}
+
+	option = {
+		name = EVTDESCORCS11A # Oi! Dat's mine! Git 'im, lads!
+		random = {
+			chance = 25
+			add_trait = cruel
+		}
+		random = {
+			chance = 25
+			add_trait = wroth
+		}
+	}
+
+	option = {
+		name = EVTDESCORCS11B # Zog It...
+		prestige = -25
+		random = {
+			chance = 15
+			add_trait = slothful
+		}
+	}
+
+	option = {
+		name = "EVTDESCORCS11C" # Woit... Lessee wher' is stash is
+		# tooltip = EVTDESCORCS11D
+		trigger = {
+			OR = {
+				trait = quick
+				trait = genius
+				trait = deceitful
+			}
+			NOT = {
+				OR = {
+					trait = inbred
+					trait = slow
+					trait = imbecile
+				}
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = DR_greenskins.12
+			}
+		}
+	}
+}
+
+character_event = {
+	id = DR_greenskins.12
+	desc = EVTDESCDR_greenskins.12 # Grot brings you back to his stash
+	picture = "GFX_evt_orcs"
+	is_triggered_only = yes
+
+	option = {
+		name = EVTDESCORCS12A # Da's gonna git me a big bag 'o teef...!
+		wealth = 150
+		random = {
+			chance = 10
+			add_trait = greedy
+		}
+	}
+
+	option = {
+		name = EVTDESCORCS12B # Oi'm 'now a few lads who'd loik a gud choppa...;;;;;;;;;;;;x,,,,,,,,,
+		prestige = 150
+		piety = 50
+		wealth = 25
+		random = {
+			chance = 15
+			add_trait = gregarious
+		}
+	}
+}
+
+# Ork War Event - Shaman spawns (Dynasty).
+character_event = {
+	id = DR_greenskins.13
+	desc = EVTDESCDR_greenskins.13 # In times of war, It's not uncommon for Ork Shamans to join a Warboss's retinue, so that they may witness their nascent legend
+	picture = "GFX_evt_orcs"
+	min_age = 16
+	culture_group = orc_group
+	is_triggered_only = yes
+
+	trigger = {
+		war = yes
+		prisoner = no
+		is_landed = yes
+	}
+
+	option = {
+		name = EVTDESCORCS13A # "Wot? Jus' tell 'im ta stay outta mah way!!
+		prestige = 50
+		piety = 25
+		create_random_priest = {
+			random_traits = yes
+			dynasty = ROOT
+			culture = ROOT
+			religion = ROOT
+			female = no
+			age = 30
+		}
+		new_character = {
+			change_learning = 5
+			add_trait = greenskin_shaman
+			z_magic_power_sequential_addition = yes
+		}
+		recalc_succession = yes
+	}
+
+	option = {
+		name = EVTDESCORCS13B # Oi'm not sure 'bout dat... Wot if he makes meeb head splode?
+		prestige = -50
+		random = {
+			chance = 25
+			add_trait = craven
+		}
+	}
+}
+
+# This event chain determines who gets to become shamans. For now, it is based on the mystic trait
+
+# Landed characters only so far, as studying magic is expensive and we don't want all greenskin mystics to become shamans on_bi_yearly_pulse
+character_event = {
+	id = DR_greenskins.100
+	title = MAGIC
+	desc = greenskinmagic0 # You iz becoming weird as youz mates say... but maybe you iz just becoming mo' powerful! Do you want to start studying the deeper mysteries of Gork and Mork?
+	picture = "GFX_evt_orcs"
+	min_age = 16
+	religion_group = greenskin_gods_group
+	is_triggered_only = yes
+
+	trigger = {
+		is_landed = yes
+		OR = {
+			culture_group = goblin_group
+			culture_group = orc_group
+		}
+		OR = {
+			piety = 1000
+			trait = scholar
+			trait = mystic
+		}
+		nor = {
+			trait = lore_waaagh
+			has_character_flag = refused_shaman
+		}
+	}
+
+	option = {
+		name = greenskinmagic0A # I will get da power!
+		trigger = {
+			nor = {
+				trait = craven
+				trait = content
+			}
+		}
+		add_trait = lore_waaagh
+		z_magic_power_sequential_addition = yes
+		top_liege = {
+			if = {
+				limit = {
+					OR = {
+						culture_group = orc_group
+						culture_group = goblin_group
+					}
+				}
+			}
+			character_event = {
+				id = DR_greenskins.102 days = 7
+			}
+		}
+		father = {
+			character_event = {
+				id = DR_greenskins.101
+			}
+		}
+		mother = {
+			character_event = {
+				id = DR_greenskins.101
+			}
+		}
+	}
+
+	option = {
+		name = greenskinmagic0B # Nah, I just likes to use my smasher!
+		trigger = {
+			trait = craven
+			trait = content
+		}
+		set_character_flag = refused_shaman
+	}
+}
+
+# parents are informed
+character_event = {
+	id = DR_greenskins.101
+	title = MAGIC
+	desc = greenskinmagic1 # One of your boyz is becoming decidedly weird... he has starting casting magical spells, and chanting and dancing oddly!
+	picture = "GFX_evt_orcs"
+	min_age = 16
+	is_triggered_only = yes
+
+	option = {
+		name = greenskinmagic1A # Dats my boy!
+		prestige = 200
+	}
+}
+
+# the top liege, if orc or goblin culture group is informed someone has become a shaman
+character_event = {
+	id = DR_greenskins.102
+	title = MAGIC
+	desc = greenskinmagic2 # One of your chiefs has become a shaman, and is said to have been granted strange powers by Gork and Mork.
+	picture = "GFX_evt_orcs"
+	min_age = 16
+	ai = no
+	is_triggered_only = yes
+
+	option = {
+		name = greenskinmagic2A # Dat him? He iz gonna fight and smash our enemies for us!
+	}
+}
+
 # Greenskin Power increases
 character_event = {
 	id = DR_greenskins.110
@@ -18,7 +478,6 @@ character_event = {
 	religion_group = greenskin_gods_group
 
 	trigger = {
-		religion_group = greenskin_gods_group
 		NOT = {
 			tier = BARON
 			has_law = greenskin_power_1

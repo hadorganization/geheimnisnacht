@@ -1410,243 +1410,88 @@ targetted_decisions = {
 		}
 	}
 
-	# spells
-	healing_spell = {
-		filter = court
-		ai_target_filter = court
-		from_potential = {
-			trait = lore_high_magic
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
-			}
-			NOT = {
-				has_character_modifier = magic_cooldown
-			}
-			OR = {
-				has_character_modifier = magic_power_1
-				has_character_modifier = magic_power_2
-				has_character_modifier = magic_power_3
-				has_character_modifier = magic_power_4
-			}
-		}
-		potential = {
-			host = {
-				character = FROM
-			}
-			wh_is_injured_trigger = yes
-			is_undead_trigger = no
-		}
-		allow = {
-		}
-		effect = {
-			if = {
-				limit = {
-					FROM = {
-						religion = asrai_cadai
-						NOT = {
-							trait = creature_forestspirit
-						}
-					}
-				}
-				piety = -100
-			}
-			hidden_tooltip = {
-				FROM = {
-					add_character_modifier = {
-						name = magic_cooldown
-						duration = 300
-						hidden = yes
-					}
-				}
-				if = {
-					limit = {
-						trait = wounded
-					}
-					random_list = {
-						60 = {
-							remove_trait = wounded
-						}
-						40 = {
-							character_event = {
-								id = aicleanup.010
-							}
-							modifier = {
-								factor = 0.75
-								FROM = {
-									has_character_modifier = magic_power_2
-								}
-							}
-							modifier = {
-								factor = 0.5
-								FROM = {
-									has_character_modifier = magic_power_3
-								}
-							}
-							modifier = {
-								factor = 0.25
-								FROM = {
-									has_character_modifier = magic_power_4
-								}
-							}
-							modifier = {
-								factor = 0.75
-								FROM = {
-									trait = genius
-								}
-							}
-							modifier = {
-								factor = 1.5
-								FROM = {
-									trait = dim
-								}
-							}
-							modifier = {
-								factor = 2
-								FROM = {
-									trait = slow
-								}
-							}
-							modifier = {
-								factor = 3
-								FROM = {
-									trait = idiot
-								}
-							}
-							modifier = {
-								factor = 4
-								FROM = {
-									trait = imbecile
-								}
-							}
-							modifier = {
-								factor = 1.25
-								FROM = {
-									trait = wroth
-								}
-							}
-							modifier = {
-								factor = 1.25
-								FROM = {
-									trait = slothful
-								}
-							}
-							modifier = {
-								factor = 1.5
-								FROM = {
-									trait = hedge_wizard
-								}
-							}
-						}
-					}
-				}
-				random_list = {
-					50 = {
-						wh_heal_injury_effect = yes
-					}
-					50 = {
-						character_event = {
-							id = aicleanup.010
-						}
-						modifier = {
-							factor = 0.75
-							FROM = {
-								has_character_modifier = magic_power_2
-							}
-						}
-						modifier = {
-							factor = 0.5
-							FROM = {
-								has_character_modifier = magic_power_3
-							}
-						}
-						modifier = {
-							factor = 0.25
-							FROM = {
-								has_character_modifier = magic_power_4
-							}
-						}
-						modifier = {
-							factor = 0.75
-							FROM = {
-								trait = genius
-							}
-						}
-						modifier = {
-							factor = 1.5
-							FROM = {
-								trait = dim
-							}
-						}
-						modifier = {
-							factor = 2
-							FROM = {
-								trait = slow
-							}
-						}
-						modifier = {
-							factor = 3
-							FROM = {
-								trait = idiot
-							}
-						}
-						modifier = {
-							factor = 4
-							FROM = {
-								trait = imbecile
-							}
-						}
-						modifier = {
-							factor = 1.25
-							FROM = {
-								trait = wroth
-							}
-						}
-						modifier = {
-							factor = 1.25
-							FROM = {
-								trait = slothful
-							}
-						}
-						modifier = {
-							factor = 1.5
-							FROM = {
-								trait = hedge_wizard
-							}
-						}
-					}
-				}
-			}
-		}
-		revoke_allowed = {
-			always = yes
-		}
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				FROM = {
-					nor = {
-						trait = kind
-						dynasty = ROOT
-					}
-				}
-			}
-			modifier = {
-				factor = 0.1
-				FROM = {
-					trait = envious
-				}
-			}
-			modifier = {
-				factor = 0.25
-				religion = asrai_cadai
-				NOT = {
-					piety = 250
-				}
-			}
-		}
-	}
+	# spells disable for now
+	# healing_spell = {
+	# 	filter = court
+	# 	ai_target_filter = court
+	# 	from_potential = {
+	# 		trait = lore_high_magic
+	# 		custom_tooltip = {
+	# 			text = IS_NOT_INCAPACITATED
+	# 			is_incapacitated_trigger = no
+	# 		}
+	# 		NOT = {
+	# 			has_character_modifier = magic_cooldown
+	# 		}
+	# 		OR = {
+	# 			has_character_modifier = magic_power_1
+	# 			has_character_modifier = magic_power_2
+	# 			has_character_modifier = magic_power_3
+	# 			has_character_modifier = magic_power_4
+	# 		}
+	# 	}
+	# 	potential = {
+	# 		host = {
+	# 			character = FROM
+	# 		}
+	# 		wh_is_injured_trigger = yes
+	# 		is_undead_trigger = no
+	# 	}
+	# 	allow = {
+	# 	}
+	# 	effect = {
+	# 		if = {
+	# 			limit = {
+	# 				FROM = {
+	# 					religion = asrai_cadai
+	# 					NOT = {
+	# 						trait = creature_forestspirit
+	# 					}
+	# 				}
+	# 			}
+	# 			piety = -100
+	# 		}
+	# 		hidden_tooltip = {
+	# 			FROM = {
+	# 				add_character_modifier = {
+	# 					name = magic_cooldown
+	# 					duration = 300
+	# 					hidden = yes
+	# 				}
+	# 			}
+	# 			magic_physical_healing = yes
+	# 			magic_symptoms_healing = yes
+	# 		}
+	# 	}
+	# 	revoke_allowed = {
+	# 		always = yes
+	# 	}
+	# 	ai_will_do = {
+	# 		factor = 1
+	# 		modifier = {
+	# 			factor = 0
+	# 			FROM = {
+	# 				nor = {
+	# 					trait = kind
+	# 					dynasty = ROOT
+	# 				}
+	# 			}
+	# 		}
+	# 		modifier = {
+	# 			factor = 0.1
+	# 			FROM = {
+	# 				trait = envious
+	# 			}
+	# 		}
+	# 		modifier = {
+	# 			factor = 0.25
+	# 			religion = asrai_cadai
+	# 			NOT = {
+	# 				piety = 250
+	# 			}
+	# 		}
+	# 	}
+	# }
 
 	exorcism_spell = {
 		filter = court

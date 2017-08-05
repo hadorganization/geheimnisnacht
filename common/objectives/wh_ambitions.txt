@@ -1,16 +1,15 @@
+#
+
 obj_win_war = {
 	type = character
-
 	allow = {
-		prisoner = no
 		is_adult = yes
 		is_landed = yes
-		not = { trait = incapable }
+		is_incapacitated_trigger = no
 		war = no
 	}
 	chance = {
 		factor = 100
-
 		modifier = {
 			factor = 100 # Don't discard objective if there is war
 			war = yes
@@ -37,15 +36,21 @@ obj_win_war = {
 		}
 		modifier = {
 			factor = 0.5
-			not = { martial = 8 }
+			not = {
+				martial = 8
+			}
 		}
 		modifier = {
 			factor = 0.25
-			not = { martial = 5 }
+			not = {
+				martial = 5
+			}
 		}
 		modifier = {
 			factor = 0
-			not = { martial = 3 }
+			not = {
+				martial = 3
+			}
 		}
 		modifier = {
 			factor = 1.25
@@ -71,29 +76,513 @@ obj_win_war = {
 	success = {
 		custom_tooltip = {
 			text = DR_obj_win_war
-			hidden_tooltip = { has_character_flag = obj_win_war_won_war }
+			hidden_tooltip = {
+				has_character_flag = obj_win_war_won_war
+			}
 		}
 	}
 	abort = {
 		or = {
 			is_ruler = no
-			prisoner = yes
-			trait = incapable
+			is_incapacitated_trigger = yes
 		}
 	}
 	abort_effect = {
 	}
 	effect = {
 		if = {
-			limit = { not = { has_character_flag = obj_win_war } }
+			limit = {
+				not = {
+					has_character_flag = obj_win_war
+				}
+			}
 			change_martial = 1
 			prestige = 50
 		}
 		if = {
-			limit = { has_character_flag = obj_win_war }
+			limit = {
+				has_character_flag = obj_win_war
+			}
 			prestige = 25
 		}
 		set_character_flag = obj_win_war
 		clr_character_flag = obj_win_war_won_war
+	}
+}
+
+obj_acquire_dark_crystal = {
+	type = character
+	allow = {
+		prisoner = no
+		is_adult = yes
+		higher_tier_than = COUNT
+		is_incapacitated_trigger = no
+		OR = {
+			trait = vampire_jade_visible
+			religion = draconite
+			AND = {
+				ai = no
+				learning = 20
+				or = {
+					has_landed_title = c_tlaxtlan
+					has_landed_title = c_calxi
+					has_landed_title = c_mutiris
+				}
+			}
+		}
+      	nor = {
+			culture_group = daemonic_group
+			trait = khemri_soldier
+			has_artifact = dark_crystal
+		}
+      	NAND = {
+			has_global_flag = tlaxtlan_crystal_found
+			has_global_flag = calxi_crystal_found
+			has_global_flag = mutiris_crystal_found
+		}
+	}
+	chance = {
+		factor = 100
+		modifier = {
+			factor = 0.01
+			trait = content
+		}
+		modifier = {
+			factor = 5
+			trait = vampire_jade_visible
+		}
+		modifier = {
+			factor = 0.25
+			trait = slothful
+		}
+		modifier = {
+			factor = 2
+			trait = ambitious
+		}
+		modifier = {
+			factor = 1.5
+			trait = greedy
+		}
+		modifier = {
+			factor = 1.5
+			trait = zealous
+			religion = draconite
+		}
+		modifier = {
+			factor = 2.0
+			trait = lunatic_2
+			trait = vampire_jade_visible
+		}
+		modifier = {
+			factor = 1.25
+			learning = 10
+		}
+		modifier = {
+			factor = 1.25
+			learning = 12
+		}
+		modifier = {
+			factor = 1.25
+			learning = 14
+		}
+		modifier = {
+			factor = 1.5
+			learning = 16
+		}
+	}
+	success = {
+		has_artifact = dark_crystal
+	}
+	abort = {
+		is_incapacitated_trigger = yes
+	}
+	abort_effect = {
+	}
+	effect = {
+		if = {
+			limit = {
+				religion = draconite
+			}
+			piety = 500
+			change_diplomacy = 1
+		}
+	}
+}
+
+obj_slaanesh_purge_imperfection = {
+	type = character
+	allow = {
+		is_adult = yes
+		religion = slaanesh
+		OR = {
+			trait = ugly
+			trait = disfigured
+		}
+		nor = {
+			trait = incapable
+			trait = infirm
+		}
+		is_demon_trigger = no
+	}
+	chance = {
+		factor = 100
+		modifier = {
+			factor = 2
+			trait = zealous
+		}
+		modifier = {
+			factor = 1.5
+			trait = ambitious
+		}
+		modifier = {
+			factor = 0.01
+			trait = content
+		}
+	}
+	success = {
+		nor = {
+			trait = ugly
+			trait = disfigured
+		}
+	}
+	abort = {
+		NOT = {
+			religion = slaanesh
+		}
+	}
+	abort_effect = {
+		clr_character_flag = Pet_Daemonette_helped_ambition
+	}
+	effect = {
+		piety = 100
+		clr_character_flag = Pet_Daemonette_helped_ambition
+	}
+}
+
+obj_slaanesh_denounce_celibacy = {
+	type = character
+	allow = {
+		is_adult = yes
+		religion = slaanesh
+		trait = celibate
+		nor = {
+			trait = incapable
+			trait = infirm
+		}
+		is_demon_trigger = no
+	}
+	chance = {
+		factor = 100
+		modifier = {
+			factor = 2
+			trait = zealous
+		}
+		modifier = {
+			factor = 1.5
+			trait = ambitious
+		}
+		modifier = {
+			factor = 0.01
+			trait = content
+		}
+	}
+	success = {
+		NOT = {
+			trait = celibate
+		}
+	}
+	abort = {
+		NOT = {
+			religion = slaanesh
+		}
+	}
+	abort_effect = {
+		clr_character_flag = Pet_Daemonette_helped_ambition
+	}
+	effect = {
+		piety = 100
+		clr_character_flag = Pet_Daemonette_helped_ambition
+	}
+}
+
+obj_slaanesh_indulge_sexual_excess = {
+	type = character
+	allow = {
+		is_adult = yes
+		religion = slaanesh
+		trait = chaste
+		nor = {
+			trait = incapable
+			trait = infirm
+		}
+		is_demon_trigger = no
+	}
+	chance = {
+		factor = 100
+		modifier = {
+			factor = 2
+			trait = zealous
+		}
+		modifier = {
+			factor = 1.5
+			trait = ambitious
+		}
+		modifier = {
+			factor = 0.01
+			trait = content
+		}
+	}
+	success = {
+		NOT = {
+			trait = chaste
+		}
+	}
+	abort = {
+		NOT = {
+			religion = slaanesh
+		}
+	}
+	abort_effect = {
+		clr_character_flag = Pet_Daemonette_helped_ambition
+	}
+	effect = {
+		piety = 100
+		clr_character_flag = Pet_Daemonette_helped_ambition
+	}
+}
+
+obj_slaanesh_embrace_cruelty = {
+	type = character
+	allow = {
+		is_adult = yes
+		religion = slaanesh
+		OR = {
+			trait = shy
+			trait = kind
+		}
+		nor = {
+			trait = incapable
+			trait = infirm
+		}
+		is_demon_trigger = no
+	}
+	chance = {
+		factor = 100
+		modifier = {
+			factor = 2
+			trait = zealous
+		}
+		modifier = {
+			factor = 1.5
+			trait = ambitious
+		}
+		modifier = {
+			factor = 0.01
+			trait = content
+		}
+	}
+	success = {
+		NOT = {
+			trait = shy
+		}
+		NOT = {
+			trait = kind
+		}
+	}
+	abort = {
+		NOT = {
+			religion = slaanesh
+		}
+	}
+	abort_effect = {
+		clr_character_flag = Pet_Daemonette_helped_ambition
+	}
+	effect = {
+		piety = 100
+		clr_character_flag = Pet_Daemonette_helped_ambition
+	}
+}
+
+obj_slaanesh_intemperance_food = {
+	type = character
+	allow = {
+		is_adult = yes
+		religion = slaanesh
+		trait = temperate
+		nor = {
+			trait = incapable
+			trait = infirm
+		}
+		is_demon_trigger = no
+	}
+	chance = {
+		factor = 100
+		modifier = {
+			factor = 2
+			trait = zealous
+		}
+		modifier = {
+			factor = 1.5
+			trait = ambitious
+		}
+		modifier = {
+			factor = 0.01
+			trait = content
+		}
+	}
+	success = {
+		NOT = {
+			trait = temperate
+		}
+	}
+	abort = {
+		NOT = {
+			religion = slaanesh
+		}
+	}
+	abort_effect = {
+		clr_character_flag = Pet_Daemonette_helped_ambition
+	}
+	effect = {
+		piety = 100
+		clr_character_flag = Pet_Daemonette_helped_ambition
+	}
+}
+
+obj_slaanesh_indulge_greed = {
+	type = character
+	allow = {
+		is_adult = yes
+		religion = slaanesh
+		trait = charitable
+		nor = {
+			trait = incapable
+			trait = infirm
+		}
+		is_demon_trigger = no
+	}
+	chance = {
+		factor = 100
+		modifier = {
+			factor = 2
+			trait = zealous
+		}
+		modifier = {
+			factor = 1.5
+			trait = ambitious
+		}
+		modifier = {
+			factor = 0.01
+			trait = content
+		}
+	}
+	success = {
+		NOT = {
+			trait = charitable
+		}
+	}
+	abort = {
+		NOT = {
+			religion = slaanesh
+		}
+	}
+	abort_effect = {
+		clr_character_flag = Pet_Daemonette_helped_ambition
+	}
+	effect = {
+		piety = 100
+		clr_character_flag = Pet_Daemonette_helped_ambition
+	}
+}
+
+obj_slaanesh_reject_hate = {
+	type = character
+	allow = {
+		is_adult = yes
+		religion = slaanesh
+		trait = wroth
+		nor = {
+			trait = incapable
+			trait = infirm
+		}
+		is_demon_trigger = no
+	}
+	chance = {
+		factor = 100
+		modifier = {
+			factor = 2
+			trait = zealous
+		}
+		modifier = {
+			factor = 1.5
+			trait = ambitious
+		}
+		modifier = {
+			factor = 0.01
+			trait = content
+		}
+	}
+	success = {
+		NOT = {
+			trait = wroth
+		}
+	}
+	abort = {
+		NOT = {
+			religion = slaanesh
+		}
+	}
+	abort_effect = {
+		clr_character_flag = Pet_Daemonette_helped_ambition
+	}
+	effect = {
+		piety = 100
+		clr_character_flag = Pet_Daemonette_helped_ambition
+	}
+}
+
+obj_slaanesh_embrace_pride = {
+	type = character
+	allow = {
+		is_adult = yes
+		religion = slaanesh
+		trait = humble
+		nor = {
+			trait = incapable
+			trait = infirm
+		}
+		is_demon_trigger = no
+	}
+	chance = {
+		factor = 100
+		modifier = {
+			factor = 2
+			trait = zealous
+		}
+		modifier = {
+			factor = 1.5
+			trait = ambitious
+		}
+		modifier = {
+			factor = 0.01
+			trait = content
+		}
+	}
+	success = {
+		NOT = {
+			trait = humble
+		}
+	}
+	abort = {
+		NOT = {
+			religion = slaanesh
+		}
+	}
+	abort_effect = {
+		clr_character_flag = Pet_Daemonette_helped_ambition
+	}
+	effect = {
+		piety = 100
+		clr_character_flag = Pet_Daemonette_helped_ambition
 	}
 }

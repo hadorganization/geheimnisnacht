@@ -92,7 +92,7 @@ decisions = {
 						}
 					}
 				}
-			} #closesOR
+			}
 		}
 		effect = {
 			if = {
@@ -182,7 +182,7 @@ decisions = {
 		ai_will_do = {
 			factor = 1
 		}
-	} #closedecision
+	}
 
 	convert_to_shadowmen = {
 		is_high_prio = yes
@@ -251,7 +251,7 @@ decisions = {
 				age = 40
 			}
 		}
-	} #closedecision
+	}
 }
 targetted_decisions = {
 
@@ -260,23 +260,13 @@ targetted_decisions = {
 		ai_target_filter = court
 		only_rulers = yes
 		from_potential = {
-			primary_title = {
-				higher_tier_than = BARON
-			}
-			NOT = {
-				trait = incapable
-			}
+			is_playable = yes
 			age = 16
 			trait = creature_ogre
 		}
 		potential = {
 			prisoner = yes
-			primary_title = {
-				higher_tier_than = BARON
-			}
-			NOT = {
-				trait = incapable
-			}
+			is_playable = yes
 			host = {
 				character = FROM
 			}
@@ -284,6 +274,10 @@ targetted_decisions = {
 		allow = {
 			prisoner = yes
 			FROM = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
 				prestige = 10
 			}
 		}
@@ -307,18 +301,8 @@ targetted_decisions = {
 				death_reason = death_execution
 				killer = FROM
 			}
+			wh_execution_opinion_effect = yes
 			hidden_tooltip = {
-				FROM = {
-					any_vassal = {
-						limit = {
-							religion = cadai
-						}
-						opinion = {
-							modifier = opinion_barbaric
-							who = FROM
-						}
-					}
-				}
 				any_dynasty_member = {
 					limit = {
 						religion_group = cytharai_group
@@ -327,7 +311,7 @@ targetted_decisions = {
 						modifier = opinion_eaten_family_druchii
 						who = FROM
 					}
-				} #closes anydynastyme
+				}
 				any_dynasty_member = {
 					limit = {
 						NOT = {
@@ -338,37 +322,7 @@ targetted_decisions = {
 						modifier = opinion_eaten_family
 						who = FROM
 					}
-				} #closes anydynastyme
-			}
-			FROM = {
-				remove_opinion = {
-					who = ROOT modifier = opinion_traitor
 				}
-				remove_opinion = {
-					who = ROOT modifier = opinion_rebel_traitor
-				}
-				remove_opinion = {
-					who = ROOT modifier = opinion_dishonorable
-				}
-			}
-			prestige = -10
-			FROM = {
-				if = {
-					limit = {
-						NOT = {
-							trait = cruel
-						}
-					}
-					random = {
-						chance = 10
-						add_trait = cruel
-						hidden_tooltip = {
-							character_event = {
-								id = 38259
-							} #Notify Cruel
-						}
-					}
-				} #closes if
 			}
 		}
 		revoke_allowed = {

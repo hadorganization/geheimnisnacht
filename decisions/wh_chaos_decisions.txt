@@ -2,36 +2,23 @@ decisions = {
 
 	make_offer_chaos = {
 		is_high_prio = yes
-		only_rulers = yes
+		only_playable = yes
 		potential = {
 			prisoner = no
 			is_ruler = yes
 			religion_group = chaos_gods_group
 			age = 12
-			NOT = {
+			nor = {
 				religion = hashut
-			}
-			# NOT = { religion = chaos }
-			NOT = {
 				trait = creature_beastman
 			}
-			NOT = {
-				trait = incapable
-			}
-			NOT = {
-				trait = khorne_demon
-			}
-			NOT = {
-				trait = nurgle_demon
-			}
-			NOT = {
-				trait = slaanesh_demon
-			}
-			NOT = {
-				trait = tzeentch_demon
-			}
+			is_demon_trigger = no
 		}
 		allow = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			piety = 500
 			wealth = 250
 			higher_tier_than = COUNT
@@ -98,39 +85,18 @@ decisions = {
 
 	tzeentchian_sacrifice = {
 		is_high_prio = yes
-		only_rulers = yes
+		only_playable = yes
 		potential = {
-			prisoner = no
-			is_ruler = yes
 			religion = tzeentch
 			age = 12
 			trait = creature_human
-			NOT = {
-				trait = incapable
-			}
-			NOT = {
-				trait = questing
-			}
-			NOT = {
-				trait = studying_magic
-			}
-			NOT = {
-				trait = monster_hunting
-			}
-			NOT = {
-				trait = khorne_demon
-			}
-			NOT = {
-				trait = nurgle_demon
-			}
-			NOT = {
-				trait = slaanesh_demon
-			}
-			NOT = {
-				trait = tzeentch_demon
-			}
+			is_demon_trigger = no
 		}
 		allow = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			any_courtier = {
 				prisoner = yes
 				OR = {
@@ -257,17 +223,10 @@ decisions = {
 
 	summon_daemon_host = {
 		is_high_prio = yes
-		only_rulers = yes
+		only_playable = yes
 		potential = {
-			is_ruler = yes
 			age = 16
-			prisoner = no
-			OR = {
-				trait = prince_khorne
-				trait = prince_nurgle
-				trait = prince_slaanesh
-				trait = prince_tzeentch
-			}
+			is_demon_prince_trigger = yes
 			primary_title = {
 				higher_tier_than = BARON
 			}
@@ -276,15 +235,12 @@ decisions = {
 			}
 		}
 		allow = {
-			war = yes
-			OR = {
-				trait = prince_khorne
-				trait = prince_nurgle
-				trait = prince_slaanesh
-				trait = prince_tzeentch
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
 			}
+			war = yes
 			piety = 500
-			prisoner = no
 		}
 		effect = {
 			piety = -500
@@ -325,13 +281,13 @@ decisions = {
 			modifier = {
 				factor = 1.5
 				trait = craven
-			} #endmodifier
-		} #endaiwilldo
-	} #enddecision
+			}
+		}
+	}
 
 	khorne_death_tournament = {
 		is_high_prio = yes
-		only_rulers = yes
+		only_playable = yes
 		potential = {
 			age = 16
 			OR = {
@@ -343,25 +299,12 @@ decisions = {
 				is_nomadic = yes
 			}
 			higher_tier_than = COUNT
-			is_ruler = yes
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
-			}
-			prisoner = no
 			religion = khorne
 			war = no
-			NOT = {
+			nor = {
 				has_character_flag = khornetournament_participant
-			}
-			NOT = {
 				has_character_modifier = kh_tournament_cooldown
-			}
-			NOT = {
 				trait = pregnant
-			}
-			NOT = {
-				trait = questing
 			}
 			OR = {
 				any_courtier = {
@@ -373,14 +316,11 @@ decisions = {
 						text = IS_NOT_INCAPACITATED
 						is_incapacitated_trigger = no
 					}
-					prisoner = no
 					religion = khorne
 					war = no
 					age = 16
-					NOT = {
+					nor = {
 						has_character_flag = khornetournament_participant
-					}
-					NOT = {
 						trait = pregnant
 					}
 					count = 2
@@ -397,10 +337,8 @@ decisions = {
 					religion = khorne
 					war = no
 					age = 16
-					NOT = {
+					nor = {
 						has_character_flag = khornetournament_participant
-					}
-					NOT = {
 						trait = pregnant
 					}
 					count = 2
@@ -408,15 +346,14 @@ decisions = {
 			}
 		}
 		allow = {
-			prestige = 250
-			wealth = 25
-			independent = yes
-			war = no
-			prisoner = no
 			custom_tooltip = {
 				text = IS_NOT_INCAPACITATED
 				is_incapacitated_trigger = no
 			}
+			prestige = 250
+			wealth = 25
+			independent = yes
+			war = no
 		}
 		effect = {
 			prestige = -250
@@ -468,10 +405,8 @@ decisions = {
 						prisoner = no
 						war = no
 						age = 16
-						NOT = {
+						nor = {
 							has_character_flag = khornetournament_participant
-						}
-						NOT = {
 							trait = pregnant
 						}
 					}
@@ -497,10 +432,8 @@ decisions = {
 						religion = khorne
 						war = no
 						age = 16
-						NOT = {
+						nor = {
 							has_character_flag = khornetournament_participant
-						}
-						NOT = {
 							trait = pregnant
 						}
 					}
@@ -557,52 +490,32 @@ decisions = {
 targetted_decisions = {
 
 	vassal_eat_soul = {
+		only_playable = yes
 		filter = court
 		ai_target_filter = court
 		from_potential = {
 			primary_title = {
 				higher_tier_than = BARON
 			}
-			NOT = {
-				trait = incapable
-			}
 			age = 14
-			OR = {
-				trait = prince_khorne
-				trait = prince_nurgle
-				trait = prince_slaanesh
-				trait = prince_tzeentch
-			}
+			is_demon_prince_trigger = yes
 		}
 		potential = {
 			prisoner = yes
-			primary_title = {
-				higher_tier_than = BARON
-			}
 			host = {
 				character = FROM
 			}
-			NOT = {
-				trait = creature_nehekharan
-			}
-			NOT = {
-				trait = khorne_demon
-			}
-			NOT = {
-				trait = nurgle_demon
-			}
-			NOT = {
-				trait = slaanesh_demon
-			}
-			NOT = {
-				trait = tzeentch_demon
-			}
 			is_invincible_trigger = no
-			is_vampire_trigger = no
+			is_undead_trigger = no
+			is_demon_trigger = no
 		}
 		allow = {
 			prisoner = yes
 			FROM = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
 				prestige = 10
 			}
 		}
@@ -631,18 +544,8 @@ targetted_decisions = {
 				death_reason = death_execution
 				killer = FROM
 			}
+			wh_execution_opinion_effect = yes
 			hidden_tooltip = {
-				FROM = {
-					any_vassal = {
-						limit = {
-							religion = cadai
-						}
-						opinion = {
-							modifier = opinion_barbaric
-							who = FROM
-						}
-					}
-				}
 				any_dynasty_member = {
 					limit = {
 						religion_group = cytharai_group
@@ -651,7 +554,7 @@ targetted_decisions = {
 						modifier = opinion_soulsucked_family_druchii
 						who = FROM
 					}
-				} #closes anydynastyme
+				}
 				any_dynasty_member = {
 					limit = {
 						NOT = {
@@ -662,34 +565,7 @@ targetted_decisions = {
 						modifier = opinion_soulsucked_family
 						who = FROM
 					}
-				} #closes anydynastyme
-			}
-			FROM = {
-				remove_opinion = {
-					who = ROOT modifier = opinion_traitor
 				}
-				remove_opinion = {
-					who = ROOT modifier = opinion_rebel_traitor
-				}
-				remove_opinion = {
-					who = ROOT modifier = opinion_dishonorable
-				}
-			}
-			prestige = -10
-			FROM = {
-				if = {
-					limit = {
-						NOT = {
-							trait = cruel
-						}
-					}
-					add_trait = cruel
-					hidden_tooltip = {
-						character_event = {
-							id = 38259
-						} #Notify Cruel
-					}
-				} #closes if
 			}
 		}
 		revoke_allowed = {
@@ -750,15 +626,11 @@ targetted_decisions = {
 	}
 
 	vassal_spread_disease = {
+		only_playable = yes
 		filter = court
 		ai_target_filter = court
 		from_potential = {
-			primary_title = {
-				higher_tier_than = BARON
-			}
-			NOT = {
-				trait = incapable
-			}
+			is_playable = yes
 			age = 14
 			OR = {
 				trait = has_nurgles_rot
@@ -772,55 +644,22 @@ targetted_decisions = {
 			}
 		}
 		potential = {
-			OR = {
-				trait = creature_human
-				trait = creature_elf
-				trait = creature_dwarf
-				trait = creature_chaos_dwarf
-				trait = creature_halfling
-				trait = creature_saurus
-				trait = creature_skink
-				trait = creature_beastman
-				trait = creature_skaven
-				trait = creature_ogre
-				trait = creature_orc
-				trait = creature_goblin
-				trait = creature_snotling
-			}
+			is_disease_immune_race = no
 			OR = {
 				prisoner = yes
 				religion = nurgle
 			}
-			primary_title = {
-				higher_tier_than = BARON
-			}
-			NOT = {
-				trait = creature_nehekharan
-			}
-			NOT = {
-				trait = khorne_demon
-			}
-			NOT = {
-				trait = nurgle_demon
-			}
-			NOT = {
-				trait = slaanesh_demon
-			}
-			NOT = {
-				trait = tzeentch_demon
-			}
 			NOT = {
 				character = FROM
 			}
-			is_undead_trigger = no
 		}
 		allow = {
 			FROM = {
-				prestige = 10
 				custom_tooltip = {
 					text = IS_NOT_INCAPACITATED
 					is_incapacitated_trigger = no
 				}
+				prestige = 10
 			}
 		}
 		effect = {

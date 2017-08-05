@@ -6,12 +6,10 @@ targetted_decisions = {
 		filter = home_court
 		only_rulers = yes
 		from_potential = {
-			is_ruler = yes
+			is_playable = yes
 			religion = hashut
-			NOT = {
+			nor = {
 				has_character_flag = sacrificing_prisoner_hashut
-			}
-			NOT = {
 				has_character_flag = selling_prisoner_slavery
 			}
 		}
@@ -23,6 +21,12 @@ targetted_decisions = {
 		}
 		allow = {
 			prisoner = yes
+			FROM = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
+			}
 		}
 		effect = {
 			FROM = {
@@ -38,42 +42,50 @@ targetted_decisions = {
 				factor = 0.04
 			}
 			modifier = {
-				factor = 4 FROM = {
+				factor = 4
+				FROM = {
 					trait = creature_dwarf
 				}
 			}
 			modifier = {
-				factor = 3 ROOT = {
+				factor = 3
+				FROM = {
 					trait = impaler
 				}
 			}
 			modifier = {
-				factor = 2 ROOT = {
+				factor = 2
+				FROM = {
 					trait = zealous
 				}
 			}
 			modifier = {
-				factor = 3 ROOT = {
+				factor = 3
+				FROM = {
 					trait = lunatic_3
 				}
 			}
 			modifier = {
-				factor = 2 ROOT = {
+				factor = 2
+				FROM = {
 					trait = lunatic_2
 				}
 			}
 			modifier = {
-				factor = 2 ROOT = {
+				factor = 2
+				FROM = {
 					trait = cruel
 				}
 			}
 			modifier = {
-				factor = 0.1 ROOT = {
+				factor = 0.1
+				FROM = {
 					trait = kind
 				}
 			}
 			modifier = {
-				factor = 100 ROOT = {
+				factor = 100
+				FROM = {
 					has_character_modifier = must_sacrifice_hashut
 				}
 			}
@@ -83,14 +95,11 @@ targetted_decisions = {
 	chaos_dwarf_sell_into_slavery = {
 		ai_target_filter = home_court
 		filter = home_court
-		only_rulers = yes
 		from_potential = {
 			is_ruler = yes
 			culture_group = dwarf_chaos_group
-			NOT = {
+			nor = {
 				has_character_flag = selling_prisoner_slavery
-			}
-			NOT = {
 				has_character_flag = sacrificing_prisoner_hashut
 			}
 		}
@@ -102,12 +111,16 @@ targetted_decisions = {
 			NOT = {
 				culture_group = dwarf_chaos_group
 			}
-			NOT = {
-				trait = khemri_tomb_king
-			}
+			is_invincible_trigger = no
 		}
 		allow = {
 			prisoner = yes
+			FROM = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
+			}
 		}
 		effect = {
 			FROM = {
@@ -130,11 +143,25 @@ targetted_decisions = {
 			}
 		}
 	}
-	#Not actually FOR the Chaos Dwarfs, but for people to buy stuff from them
 
+	#Not actually FOR the Chaos Dwarfs, but for people to buy stuff from them
 	buy_from_chaos_dwarfs = {
 		ai_target_filter = global
-		only_rulers = yes
+		only_playable = yes
+		from_potential = {
+			is_ruler = yes
+			higher_tier_than = BARON
+			nor = {
+				culture_group = dwarf_chaos_group
+				trait = creature_chaos_dwarf
+				religion = stromfels
+			}
+			OR = {
+				religion_group = chaos_gods_group
+				religion_group = greenskin_gods_group
+				religion_group = old_gods_group
+			}
+		}
 		potential = {
 			is_ruler = yes
 			higher_tier_than = COUNT
@@ -190,43 +217,21 @@ targetted_decisions = {
 				}
 			}
 		}
-		from_potential = {
-			is_ruler = yes
-			higher_tier_than = BARON
-			NOT = {
-				culture_group = dwarf_chaos_group
-			}
-			NOT = {
-				trait = creature_chaos_dwarf
-			}
-			NOT = {
-				religion = stromfels
-			}
-			OR = {
-				religion_group = chaos_gods_group
-				religion_group = greenskin_gods_group
-				religion_group = old_gods_group
-			}
-		}
 		allow = {
-			NOT = {
-				FROM = {
-					war_with = ROOT
+			FROM = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
 				}
 			}
-			NOT = {
+			nor = {
 				has_character_flag = buying_chaos_dwarfs
-			}
-			NOT = {
 				has_character_modifier = recently_brought_from_chaos_dwarfs
-			}
-			NOT = {
 				ROOT = {
 					has_character_modifier = recently_sold_chaos_dwarfs
 				}
-			}
-			NOT = {
 				FROM = {
+					war_with = ROOT
 					liege = {
 						character = ROOT
 					}
@@ -286,11 +291,12 @@ targetted_decisions = {
 					wealth = 200
 				}
 			}
+			# Tribes are eager to get their hands on better stuff
 			modifier = {
 				factor = 2
 				FROM = {
 					is_tribal = yes
-				} #Tribes are eager to get their hands on better stuff
+				}
 			}
 			modifier = {
 				factor = 0.25
@@ -316,11 +322,11 @@ targetted_decisions = {
 			}
 		}
 	}
-	#Sell your god damn stuff
 
+	# Sell your god damn stuff
 	sell_stuff_chaos_dwarfs = {
 		ai_target_filter = all
-		only_rulers = yes
+		only_playable = yes
 		from_potential = {
 			ai = no
 			is_ruler = yes
@@ -380,13 +386,9 @@ targetted_decisions = {
 		potential = {
 			is_ruler = yes
 			higher_tier_than = BARON
-			NOT = {
+			nor = {
 				culture_group = dwarf_chaos_group
-			}
-			NOT = {
 				trait = creature_chaos_dwarf
-			}
-			NOT = {
 				religion = stromfels
 			}
 			OR = {
@@ -396,29 +398,21 @@ targetted_decisions = {
 			}
 		}
 		allow = {
-			NOT = {
+			FROM = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
+			}
+			nor = {
 				ROOT = {
 					war_with = FROM
-				}
-			}
-			NOT = {
-				ROOT = {
 					has_character_flag = buying_chaos_dwarfs
-				}
-			}
-			NOT = {
-				ROOT = {
 					has_character_modifier = recently_brought_from_chaos_dwarfs
-				}
-			}
-			NOT = {
-				ROOT = {
 					liege = {
 						character = FROM
 					}
 				}
-			}
-			NOT = {
 				FROM = {
 					has_character_modifier = recently_sold_chaos_dwarfs
 				}
@@ -498,12 +492,12 @@ targetted_decisions = {
 		}
 	}
 }
+
 decisions = {
 
 	grand_sacrifice_hashut = {
-		only_rulers = yes
+		only_playable = yes
 		potential = {
-			higher_tier_than = BARON
 			is_ruler = yes
 			religion = hashut
 			NOT = {
@@ -511,6 +505,10 @@ decisions = {
 			}
 		}
 		allow = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			OR = {
 				num_of_prisoners = 1
 				capital_holding = {
@@ -624,30 +622,26 @@ decisions = {
 	# }
 
 	get_taurus_mount ={
-		only_rulers = yes
+		only_playable = yes
 		potential = {
 			age = 16
 			culture_group = dwarf_chaos_group
 			religion = hashut
-			NOT = {
+			nor = {
 				has_artifact = lamassu_mount
-			}
-			NOT = {
 				has_character_flag = taming_beast
 			}
 		}
 		allow = {
-			piety = 1000
 			custom_tooltip = {
 				text = IS_NOT_INCAPACITATED
 				is_incapacitated_trigger = no
 			}
+			piety = 1000
 		}
 		effect = {
-			ROOT = {
-				character_event = {
-					id = DR_chaos_dwarf.20
-				}
+			character_event = {
+				id = DR_chaos_dwarf.20
 			}
 		}
 		ai_will_do = {
@@ -662,24 +656,22 @@ decisions = {
 	}
 
 	get_lamassu_mount ={
-		only_rulers = yes
+		only_playable = yes
 		potential = {
 			age = 16
 			culture_group = dwarf_chaos_group
 			religion = hashut
-			NOT = {
+			nor = {
 				has_artifact = lamassu_mount
-			}
-			NOT = {
 				has_character_flag = taming_beast
 			}
 		}
 		allow = {
-			piety = 1000
 			custom_tooltip = {
 				text = IS_NOT_INCAPACITATED
 				is_incapacitated_trigger = no
 			}
+			piety = 1000
 			trait = chaos_dwarf_sorcerer
 		}
 		effect = {

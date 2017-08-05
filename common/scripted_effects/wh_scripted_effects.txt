@@ -1,3 +1,145 @@
+
+# from is killer, this/root is victim
+wh_execution_opinion_effect = {
+	# elves
+	FROM = {
+		any_vassal = {
+			limit = {
+				religion = cadai
+			}
+			opinion = {
+				modifier = opinion_barbaric
+				who = FROM
+			}
+		}
+	}
+	# vassals
+	if = {
+		limit = {
+			liege = {
+				character = FROM
+			}
+			FROM = {
+				nor = {
+					has_opinion_modifier = {
+						who = ROOT modifier = opinion_traitor
+					}
+					has_opinion_modifier = {
+						who = ROOT modifier = opinion_rebel_traitor
+					}
+					has_opinion_modifier = {
+						who = ROOT modifier = opinion_dishonorable
+					}
+					has_opinion_modifier = {
+						who = ROOT modifier = opinion_confirmed_heretic
+					}
+					has_opinion_modifier = {
+						who = ROOT modifier = opinion_burned_by_asuryan
+					}
+				}
+				religion = ROOT
+			}
+		}
+		FROM = {
+			any_vassal = {
+				limit = {
+					religion = FROM
+				}
+				opinion = {
+					modifier = opinion_tyrant
+					who = FROM
+				}
+			}
+		}
+		FROM = {
+			any_courtier = {
+				limit = {
+					religion = FROM
+					is_landed = no
+				}
+				opinion = {
+					modifier = opinion_tyrant
+					who = FROM
+				}
+			}
+		}
+	}
+	# dynasty
+	if = {
+		limit = {
+			dynasty = FROM
+			FROM = {
+				OR = {
+					trait = creature_human
+					trait = creature_amazon
+					trait = creature_elf
+					trait = creature_dwarf
+					trait = creature_chaos_dwarf
+				}
+			}
+		}
+		FROM = {
+			add_trait = kinslayer
+		}
+	}
+	# dynasty of victim
+	any_dynasty_member = {
+		limit = {
+			is_close_relative = ROOT
+			NOT = {
+				character = FROM
+			}
+		}
+		opinion = {
+			who = FROM
+			modifier = evil_murderer
+		}
+	}
+	any_lover = {
+		limit = {
+			NOT = {
+				character = FROM
+			}
+		}
+		opinion = {
+			who = FROM
+			modifier = evil_murderer
+		}
+	}
+	any_friend = {
+		limit = {
+			NOT = {
+				character = FROM
+			}
+		}
+		opinion = {
+			who = FROM
+			modifier = evil_murderer
+		}
+	}
+	# Notify Cruel
+	FROM = {
+		if = {
+			limit = {
+				NOT = {
+					trait = cruel
+				}
+			}
+			random = {
+				chance = 10
+				add_trait = cruel
+				hidden_tooltip = {
+					character_event = {
+						id = 38259
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
 wh_heal_sick_effect = {
 	remove_trait = lovers_pox
 	remove_trait = has_nurgles_rot

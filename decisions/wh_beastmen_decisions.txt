@@ -26,48 +26,32 @@ decisions = {
 	#
 
 	duel_beastman_decision = {
+		only_playable = yes
 		is_high_prio = yes
 		potential = {
 			liege = {
 				age = 16
-				prisoner = no
-				has_regent = no
-				higher_tier_than = COUNT
 				NOT = {
 					character = ROOT
 				}
-				NOT = {
-					trait = incapable
-				}
 				trait = creature_beastman
-			}
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
 			}
 			age = 16
-			prisoner = no
-			has_regent = no
-			NOT = {
+			is_female = no
+			nor = {
 				trait = pet_consort
-			}
-			NOT = {
 				trait = blinded
 			}
 			trait = creature_beastman
-			is_female = no
-			NOT = {
-				trait = incapable
-			}
 			OR = {
 				ai = no
-				AND = {
-					NOT = {
-						trait = craven
-					}
-					NOT = {
-						trait = content
-					}
+				nor = {
+					trait = craven
+					trait = content
 				}
 			}
 			OR = {
@@ -76,32 +60,32 @@ decisions = {
 				has_job_title = job_treasurer
 				has_job_title = job_spymaster
 				has_job_title = job_spiritual
-				any_vassal = {
-					character = ROOT
-				}
+				# strange place
+				# any_vassal = {
+				# 	character = ROOT
+				# }
+				# siblings can always fight for dominance
 				liege = {
 					sibling = ROOT
-				} #siblings can always fight for dominance
-			} #closesor
-		} #closepotential
+				}
+			}
+		}
 		allow = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			prestige = 200
-			NOT = {
+			nor = {
 				has_character_flag = duel
+				has_character_flag = do_not_disturb
 			}
 			liege = {
-				NOT = {
+				nor = {
 					has_character_flag = do_not_disturb
-				}
-				NOT = {
 					is_looting = yes
-				}
-				NOT = {
 					has_character_flag = duel
 				}
-			}
-			NOT = {
-				has_character_flag = do_not_disturb
 			}
 			custom_tooltip = {
 				text = duel_tooltip_recent_duel
@@ -131,8 +115,6 @@ decisions = {
 				character_event = {
 					id = beastmen.23
 				}
-			}
-			liege = {
 				save_event_target_as = duelist_b
 				set_character_flag = duel
 				hidden_tooltip = {
@@ -629,11 +611,11 @@ decisions = {
 				}
 			}
 		}
-	} #closedecision
+	}
 
 	gather_beastmen_army = {
+		only_playable = yes
 		is_high_prio = yes
-		#is_mercenary = yes
 		potential = {
 			trait = creature_beastman
 		}
@@ -674,6 +656,7 @@ decisions = {
 	}
 
 	beastman_slaver = {
+		only_playable = yes
 		potential = {
 			age = 16
 			trait = creature_beastman
@@ -705,12 +688,18 @@ decisions = {
 	}
 
 	beastman_herdstone_offering = {
+		only_playable = yes
 		potential = {
 			age = 16
 			trait = creature_beastman
 			religion_group = chaos_gods_group
 		}
 		allow = {
+
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			capital_scope = {
 				has_province_modifier = beastman_herdstone
 			}
@@ -750,64 +739,62 @@ decisions = {
 		}
 	}
 
-	beastman_baron_cleaning = {
-		#AI cleaning
-		potential = {
-			trait = creature_beastman
-			tier = BARON
-			lower_tier_than = COUNT
-		}
-		allow = {
-			trait = creature_beastman
-			tier = BARON
-			lower_tier_than = COUNT
-		}
-		effect = {
-			capital_scope = {
-				any_province_holding = {
-					owner = {
-						character = ROOT
-					}
-					destroy_settlement = THIS
-				}
-			}
-		}
-		ai_will_do = {
-			factor = 100
-		}
-	}
+	# think about it
+	# beastman_baron_cleaning = {
+	# 	#AI cleaning
+	# 	potential = {
+	# 		trait = creature_beastman
+	# 		tier = BARON
+	# 		lower_tier_than = COUNT
+	# 	}
+	# 	allow = {
+	# 		trait = creature_beastman
+	# 		tier = BARON
+	# 		lower_tier_than = COUNT
+	# 	}
+	# 	effect = {
+	# 		capital_scope = {
+	# 			any_province_holding = {
+	# 				owner = {
+	# 					character = ROOT
+	# 				}
+	# 				destroy_settlement = THIS
+	# 			}
+	# 		}
+	# 	}
+	# 	ai_will_do = {
+	# 		factor = 100
+	# 	}
+	# }
 }
+
 targetted_decisions = {
 
 	beastman_eat_prisoner = {
+		only_playable = yes
 		filter = court
 		ai_target_filter = court
-		only_rulers = yes
 		from_potential = {
 			primary_title = {
 				higher_tier_than = BARON
-			}
-			NOT = {
-				trait = incapable
 			}
 			age = 16
 			trait = creature_beastman
 		}
 		potential = {
 			prisoner = yes
-			primary_title = {
-				higher_tier_than = BARON
-			}
-			NOT = {
-				trait = incapable
-			}
+			#is_ruler = yes
 			host = {
 				character = FROM
 			}
 		}
 		allow = {
 			prisoner = yes
-			FROM = {
+			from = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
 				prestige = 10
 			}
 		}
@@ -831,68 +818,26 @@ targetted_decisions = {
 				death_reason = death_execution
 				killer = FROM
 			}
-			hidden_tooltip = {
-				FROM = {
-					any_vassal = {
-						limit = {
-							religion = cadai
-						}
-						opinion = {
-							modifier = opinion_barbaric
-							who = FROM
-						}
-					}
+			wh_execution_opinion_effect = yes
+			any_dynasty_member = {
+				limit = {
+					religion_group = cytharai_group
 				}
-				any_dynasty_member = {
-					limit = {
+				opinion = {
+					modifier = opinion_eaten_family_druchii
+					who = FROM
+				}
+			}
+			any_dynasty_member = {
+				limit = {
+					NOT = {
 						religion_group = cytharai_group
 					}
-					opinion = {
-						modifier = opinion_eaten_family_druchii
-						who = FROM
-					}
-				} #closes anydynastyme
-				any_dynasty_member = {
-					limit = {
-						NOT = {
-							religion_group = cytharai_group
-						}
-					}
-					opinion = {
-						modifier = opinion_eaten_family
-						who = FROM
-					}
-				} #closes anydynastyme
-			}
-			FROM = {
-				remove_opinion = {
-					who = ROOT modifier = opinion_traitor
 				}
-				remove_opinion = {
-					who = ROOT modifier = opinion_rebel_traitor
+				opinion = {
+					modifier = opinion_eaten_family
+					who = FROM
 				}
-				remove_opinion = {
-					who = ROOT modifier = opinion_dishonorable
-				}
-			}
-			prestige = -10
-			FROM = {
-				if = {
-					limit = {
-						NOT = {
-							trait = cruel
-						}
-					}
-					random = {
-						chance = 10
-						add_trait = cruel
-						hidden_tooltip = {
-							character_event = {
-								id = 38259
-							} #Notify Cruel
-						}
-					}
-				} #closes if
 			}
 		}
 		revoke_allowed = {

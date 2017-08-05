@@ -1,5 +1,26 @@
 decisions = {
 
+	use_potion_of_healing = {
+		is_high_prio = yes
+		potential = {
+			has_artifact = potion_of_healing
+		}
+		allow = {
+			OR = {
+				wh_is_injured_trigger = yes
+				wh_is_sick_trigger = yes
+			}
+		}
+		effect = {
+			wh_heal_sick_effect = yes
+			wh_heal_injury_effect = yes
+			destroy_artifact = potion_of_healing
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
 	spirit_reinforcements = {
 		is_high_prio = yes
 		potential = {
@@ -1134,27 +1155,6 @@ decisions = {
 
 targetted_decisions = {
 
-	use_potion_of_healing = {
-		is_high_prio = yes
-		potential = {
-			has_artifact = potion_of_healing
-		}
-		allow = {
-			OR = {
-				wh_is_injured_trigger = yes
-				wh_is_sick_trigger = yes
-			}
-		}
-		effect = {
-			wh_heal_sick_effect = yes
-			wh_heal_injury_effect = yes
-			destroy_artifact = potion_of_healing
-		}
-		ai_will_do = {
-			factor = 1
-		}
-	}
-
 	# craft
 	z_craft_magic_item = {
 		ai_target_filter = self
@@ -1431,7 +1431,9 @@ targetted_decisions = {
 			}
 		}
 		potential = {
-			host = FROM
+			host = {
+				character = FROM
+			}
 			wh_is_injured_trigger = yes
 			is_undead_trigger = no
 		}
@@ -3214,10 +3216,8 @@ targetted_decisions = {
 				}
 				any_child = {
 					limit = {
-						NOT = {
+						nor = {
 							character = FROM
-						}
-						NOT = {
 							has_character_flag = evil_murderer
 						}
 					}

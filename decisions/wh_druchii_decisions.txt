@@ -10,26 +10,22 @@ targetted_decisions = {
 			higher_tier_than = DUKE
 			independent = yes
 			realm_size = 75		#At the very least...
-			NOT = {
+			age = 16
+			nor = {
 				has_any_opinion_modifier = preparing_to_invade_elf
+				has_truce = ROOT
 			}
 			OR = {
 				religion_group = cadai_group
 				religion_group = cytharai_group
-			}
-			age = 16
-			NOT = {
-				has_truce = ROOT
 			}
 		}
 		potential = {
 			is_within_diplo_range = FROM
 			independent = yes
 			realm_size = 50		#At the very least...
-			NOT = {
+			nor = {
 				character = FROM
-			}
-			NOT = {
 				religion_group = FROM
 			}
 			higher_tier_than = DUKE
@@ -41,11 +37,15 @@ targetted_decisions = {
 		}
 		allow = {
 			FROM = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
 				prestige = 1000
+				wealth = 350
 				NOT = {
 					has_any_opinion_modifier = attempted_ulthuan_invasion
 				}
-				wealth = 350
 			}
 		}
 		effect = {
@@ -179,7 +179,6 @@ targetted_decisions = {
 		}
 	}
 
-
 	vassal_feed_to_nauglir = {
 		filter = court
 		ai_target_filter = court
@@ -267,7 +266,7 @@ targetted_decisions = {
 						who = FROM
 					}
 				} #closes anydynastyme
-			} #closes hiddentooltip
+			}
 			FROM = {
 				remove_opinion = {
 					who = ROOT modifier = opinion_traitor
@@ -392,11 +391,11 @@ targetted_decisions = {
 		allow = {
 			prisoner = yes
 			FROM = {
-				prestige = 10
 				custom_tooltip = {
 					text = IS_NOT_INCAPACITATED
 					is_incapacitated_trigger = no
 				}
+				prestige = 10
 			}
 		}
 		effect = {
@@ -456,7 +455,7 @@ targetted_decisions = {
 						who = FROM
 					}
 				} #closes anydynastyme
-			} #closes hiddentooltip
+			}
 			FROM = {
 				remove_opinion = {
 					who = ROOT modifier = opinion_traitor
@@ -572,11 +571,11 @@ targetted_decisions = {
 		allow = {
 			prisoner = yes
 			FROM = {
-				prestige = 10
 				custom_tooltip = {
 					text = IS_NOT_INCAPACITATED
 					is_incapacitated_trigger = no
 				}
+				prestige = 10
 			}
 		}
 		effect = {
@@ -636,7 +635,7 @@ targetted_decisions = {
 						who = FROM
 					}
 				} #closes anydynastyme
-			} #closes hiddentooltip
+			}
 			FROM = {
 				remove_opinion = {
 					who = ROOT modifier = opinion_traitor
@@ -752,11 +751,11 @@ targetted_decisions = {
 		allow = {
 			prisoner = yes
 			FROM = {
-				prestige = 10
 				custom_tooltip = {
 					text = IS_NOT_INCAPACITATED
 					is_incapacitated_trigger = no
 				}
+				prestige = 10
 			}
 		}
 		effect = {
@@ -816,7 +815,7 @@ targetted_decisions = {
 						who = FROM
 					}
 				} #closes anydynastyme
-			} #closes hiddentooltip
+			}
 			FROM = {
 				remove_opinion = {
 					who = ROOT modifier = opinion_traitor
@@ -912,7 +911,8 @@ targetted_decisions = {
 
 decisions = {
 
-	goraiding ={
+	goraiding = {
+		only_playable = yes
 		potential = {
 			age = 16
 			culture_group = druchi_group
@@ -923,16 +923,14 @@ decisions = {
 			}
 		}
 		allow = {
-			wealth = 50
 			custom_tooltip = {
 				text = IS_NOT_INCAPACITATED
 				is_incapacitated_trigger = no
 			}
+			wealth = 50
 			nor = {
 				wealth = 1000
-				trait = maimed
 				trait = wounded
-				trait = on_dark_elf_raid
 			}
 			OR = {
 				trait = ambitious
@@ -960,13 +958,12 @@ decisions = {
 		}
 	}
 
-	returnfromraiding ={
+	returnfromraiding = {
 		potential = {
-			age = 16
 			trait = on_dark_elf_raid
+			ai = no
 		}
 		allow = {
-			ai = no
 		}
 		effect = {
 			ROOT = {
@@ -990,6 +987,7 @@ decisions = {
 
 	holdafeast = {
 		is_high_prio = yes
+		only_playable = yes
 		potential = {
 			culture_group = druchi_group
 			is_ruler = yes
@@ -997,7 +995,6 @@ decisions = {
                 is_feudal = yes
                 is_tribal = yes
 			}
-            prisoner = no
             nor = {
                 has_character_modifier = holding_large_druchi_feast
                 has_character_modifier = large_feast_timer
@@ -1018,10 +1015,6 @@ decisions = {
 			}
             any_demesne_title = {
                 is_occupied = no
-			}
-            prisoner = no
-            NOT = {
-				trait = in_hiding
 			}
             wealth = 25
             # month = 10
@@ -1075,7 +1068,9 @@ decisions = {
 		}
 	}
 
+	# think about it
 	hire_sorceress = {
+		only_playable = yes
 		potential = {
 			age = 16
 			culture_group = druchi_group
@@ -1121,12 +1116,8 @@ decisions = {
 	}
 
 	druchii_police_decision = {
-		only_rulers = yes
+		only_playable = yes
 		potential = {
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
-			}
 			has_landed_title = e_naggaroth
 			trait = creature_elf
 			religion_group = cytharai_group
@@ -1142,6 +1133,10 @@ decisions = {
 			}
 		}
 		allow = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			NOT = {
 				has_character_modifier = recently_employed_druchiiservices
 			}
@@ -1186,7 +1181,7 @@ decisions = {
 						who = ROOT
 					}
 				}
-			} #closes hiddentooltip
+			}
 			if = {
 				limit = {
 					NOT = {
@@ -1265,10 +1260,6 @@ decisions = {
 
 	witch_elf_decision = {
 		potential = {
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
-			}
 			trait = creature_elf
 			religion_group = cytharai_group
 			is_female = yes
@@ -1327,7 +1318,7 @@ decisions = {
 				character_event = {
 					id = druchiiinv.23001
 				}
-			} #closes hiddentooltip
+			}
 		}
 		revoke_allowed = {
 			always = no

@@ -1,13 +1,149 @@
+# amazons, lizardmen
+
 decisions = {
+
+	hold_fertility_ritual = {
+		is_high_prio = yes
+		only_playable = yes
+		potential = {
+			age = 16
+			religion = amazon
+			trait = creature_amazon
+			is_female = yes
+			higher_tier_than = BARON
+		}
+		allow = {
+			wealth = 25
+			month = 4
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
+			nor = {
+				month = 6
+				trait = pregnant
+				trait = disinherited_amazon
+				trait = questing
+				has_character_flag = holding_amazon_ritual
+			}
+			war = no
+			any_courtier = {
+				is_female = no
+				age = 16
+				OR = {
+					NOT = {
+						age = 45
+					}
+					is_immortal_trigger = yes
+				}
+				OR = {
+					custom_tooltip = {
+						text = AMAZON_EXC_REQUIREMENT
+						has_character_flag = amazon_exception
+					}
+					trait = in_stock
+				}
+			}
+		}
+		effect = {
+			ROOT = {
+				character_event = {
+					id = amazon.8
+				}
+				hidden_tooltip = {
+					set_variable = {
+						which = "eating_count" value = 0
+					}
+					set_variable = {
+						which = "drinking_count" value = 0
+					}
+				}
+			}
+			any_courtier = {
+				hidden_tooltip = {
+					set_variable = {
+						which = "eating_count" value = 0
+					}
+					set_variable = {
+						which = "drinking_count" value = 0
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+
+	free_stock_slaves = {
+		is_high_prio = yes
+		only_playable = yes
+		potential = {
+			NOT = {
+				trait = creature_amazon
+			}
+			OR = {
+				trait = in_stock
+				any_vassal = {
+					trait = in_stock
+				}
+				any_courtier = {
+					trait = in_stock
+				}
+			}
+			OR = {
+				independent = yes
+				top_liege = {
+					NOT = {
+						trait = creature_amazon
+					}
+				}
+			}
+		}
+		allow = {
+			NOT = {
+				trait = creature_amazon
+			}
+			OR = {
+				trait = in_stock
+				any_vassal = {
+					trait = in_stock
+				}
+				any_courtier = {
+					trait = in_stock
+				}
+			}
+			OR = {
+				independent = yes
+				top_liege = {
+					NOT = {
+						trait = creature_amazon
+					}
+				}
+			}
+		}
+		effect = {
+			remove_trait = in_stock
+			any_vassal = {
+				remove_trait = in_stock
+			}
+			any_courtier = {
+				remove_trait = in_stock
+			}
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
 
 	awaken_slann = {
 		is_high_prio = yes
-		only_rulers = yes
+		only_playable = yes
+		only_independent = yes
 		potential = {
+			# think about it
 			ai = no
 			trait = creature_skink
-			is_ruler = yes
-			independent = yes
 			war = yes
 			any_war = {
 				OR = {
@@ -15,14 +151,13 @@ decisions = {
 					is_primary_defender = yes
 				}
 			}
-			NOT = {
-				trait = incapable
-			}
-			NOT = {
+			nor = {
 				has_character_modifier = wakeslann_cooldown
-			}
-			NOT = {
 				trait = defective
+			}
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
 			}
 			any_vassal = {
 				trait = creature_slann
@@ -34,6 +169,7 @@ decisions = {
 			NOT = {
 				decadence = 75
 			}
+
 		}
 		effect = {
 			piety = -300
@@ -65,21 +201,13 @@ decisions = {
 
 	amazon_brawling_tournament = {
 		is_high_prio = yes
-		only_rulers = yes
+		only_playable = yes
 		potential = {
 			trait = creature_amazon
 			higher_tier_than = COUNT
 			is_female = yes
-			is_ruler = yes
-			NOT = {
-				trait = incapable
-			}
 			NOT = {
 				trait = disinherited_amazon
-			}
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
 			}
 			war = no
 			OR = {
@@ -88,32 +216,19 @@ decisions = {
 				}
 				is_immortal_trigger = yes
 			}
-			NOT = {
+			nor = {
 				has_character_flag = brawling_participant
-			}
-			NOT = {
 				has_character_modifier = am_brawling_cooldown
-			}
-			NOT = {
 				trait = pregnant
 			}
 			OR = {
 				any_courtier = {
 					trait = creature_amazon
 					prisoner = no
-					NOT = {
-						trait = incapable
-					}
-					NOT = {
+					nor = {
 						has_character_flag = brawling_participant
-					}
-					NOT = {
 						trait = disinherited
-					}
-					NOT = {
 						trait = disinherited_amazon
-					}
-					NOT = {
 						trait = pregnant
 					}
 					custom_tooltip = {
@@ -133,33 +248,24 @@ decisions = {
 					trait = creature_amazon
 					prisoner = no
 					age = 16
-					NOT = {
-						trait = incapable
-					}
-					NOT = {
-						has_character_flag = brawling_participant
-					}
-					NOT = {
-						trait = disinherited
-					}
-					NOT = {
-						trait = disinherited_amazon
-					}
-					NOT = {
-						trait = pregnant
-					}
-					custom_tooltip = {
-						text = IS_NOT_INCAPACITATED
-						is_incapacitated_trigger = no
-					}
-					OR = {
-						NOT = {
-							age = 45
-						}
-						is_immortal_trigger = yes
-					}
-					count = 2
+					has_character_flag = brawling_participant
 				}
+				nor = {
+					trait = disinherited
+					trait = disinherited_amazon
+					trait = pregnant
+				}
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
+				OR = {
+					NOT = {
+						age = 45
+					}
+					is_immortal_trigger = yes
+				}
+				count = 2
 			}
 		}
 		allow = {
@@ -172,6 +278,10 @@ decisions = {
 			NOT = {
 				month = 11
 			}
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 		}
 		effect = {
 			prestige = -150
@@ -179,7 +289,8 @@ decisions = {
 			decadence = -5
 			hidden_tooltip = {
 				set_variable = {
-					which = "brawl_player" value = 0
+					which = "brawl_player"
+					value = 0
 				}
 				set_character_flag = brawling_participant
 				set_character_flag = brawling_host
@@ -201,7 +312,7 @@ decisions = {
 				}
 				character_event = {
 					id = slizardmen.61900 days = 30
-				} #Cleanup flags and stuff
+				}
 				add_character_modifier = {
 					name = am_brawling_cooldown
 					hidden = yes
@@ -210,25 +321,15 @@ decisions = {
 				any_vassal = {
 					limit = {
 						trait = creature_amazon
-						prisoner = no
-						NOT = {
-							trait = incapable
-						}
-						NOT = {
+						nor = {
 							has_character_flag = brawling_participant
-						}
-						NOT = {
 							trait = disinherited
-						}
-						NOT = {
 							trait = disinherited_amazon
+							trait = pregnant
 						}
 						custom_tooltip = {
 							text = IS_NOT_INCAPACITATED
 							is_incapacitated_trigger = no
-						}
-						NOT = {
-							trait = pregnant
 						}
 						age = 16
 						OR = {
@@ -246,31 +347,22 @@ decisions = {
 					character_event = {
 						id = slizardmen.61900 days = 30
 					}
-				} #Cleanup flags and stuff
+				}
 				any_courtier = {
 					limit = {
 						trait = creature_amazon
 						prisoner = no
 						is_ruler = no
 						age = 16
-						NOT = {
-							trait = incapable
-						}
-						NOT = {
+						nor = {
 							has_character_flag = brawling_participant
-						}
-						NOT = {
 							trait = disinherited
-						}
-						NOT = {
 							trait = disinherited_amazon
+							trait = pregnant
 						}
 						custom_tooltip = {
 							text = IS_NOT_INCAPACITATED
 							is_incapacitated_trigger = no
-						}
-						NOT = {
-							trait = pregnant
 						}
 						OR = {
 							NOT = {
@@ -287,7 +379,7 @@ decisions = {
 					character_event = {
 						id = slizardmen.61900 days = 30
 					}
-				} #Cleanup flags and stuff
+				}
 			}
 		}
 		revoke_allowed = {
@@ -323,43 +415,32 @@ decisions = {
 
 	search_youth_fountain = {
 		is_high_prio = yes
-		only_rulers = yes
+		only_playable = yes
 		potential = {
 			OR = {
 				trait = creature_amazon
 				trait = creature_skink
 				trait = creature_human
 			}
-			higher_tier_than = BARON
-			is_ruler = yes
 			war = no
-			prisoner = no
 			capital_scope = {
 				location = {
 					region = world_new_world_lustria
 				}
 			}
-			NOT = {
-				trait = incapable
-			}
-			NOT = {
-				is_immortal_trigger = yes
-			}
-			NOT = {
+			is_immortal_trigger = no
+			nor = {
 				has_character_flag = searching_the_fountain
-			}
-			NOT = {
 				trait = pregnant
 			}
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
-			}
-			is_vampire_trigger = no
 		}
 		allow = {
 			prestige = 50
 			wealth = 450
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 		}
 		effect = {
 			prestige = -50
@@ -415,79 +496,76 @@ decisions = {
 
 targetted_decisions = {
 
-	give_province_lizardmen_1 = {
-		filter = realm
-		ai_target_filter = self
-		from_potential = {
-			ai = no
-			always = no #OBSOLETE
-			trait = creature_skink
-			NOT = {
-				trait = incapable
-			}
-			is_ruler = yes
-			NOR = {
-				any_vassal = {
-					has_character_modifier = tagged_recipient
-				}
-				any_courtier = {
-					has_character_modifier = tagged_recipient
-				}
-			}
-		}
-		potential = {
-			trait = creature_skink
-			always = no #OBSOLETE
-			NOT = {
-				character = FROM
-			}
-			liege = {
-				character = FROM
-			}
-			NOT = {
-				trait = incapable
-			}
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
-			}
-			NOT = {
-				trait = disinherited_amazon
-			}
-			NOT = {
-				trait = disinherited
-			}                     # Can't do this decision on yourself...
-		}
-		allow = {
-			FROM = {
-				any_demesne_title = {
-					can_be_given_away = yes
-				}
-			}
-		}
-		effect = {
-			add_character_modifier =  {
-				name = tagged_recipient
-				duration = 30
-			}
-		}
-		revoke_allowed = {
-			always = no
-		}
-		ai_will_do = {
-			factor = 0
-		}
-	}
+	# think about it
+	# give_province_lizardmen_1 = {
+	# 	filter = realm
+	# 	ai_target_filter = self
+	# 	from_potential = {
+	# 		ai = no
+	# 		always = no #OBSOLETE
+	# 		trait = creature_skink
+	# 		is_ruler = yes
+	# 		NOR = {
+	# 			any_vassal = {
+	# 				has_character_modifier = tagged_recipient
+	# 			}
+	# 			any_courtier = {
+	# 				has_character_modifier = tagged_recipient
+	# 			}
+	# 		}
+	# 	}
+	# 	potential = {
+	# 		trait = creature_skink
+	# 		always = no #OBSOLETE
+	# 		NOT = {
+	# 			character = FROM
+	# 		}
+	# 		liege = {
+	# 			character = FROM
+	# 		}
+	# 		custom_tooltip = {
+	# 			text = IS_NOT_INCAPACITATED
+	# 			is_incapacitated_trigger = no
+	# 		}
+	# 		from = {
+	# 			custom_tooltip = {
+	# 				text = IS_NOT_INCAPACITATED
+	# 				is_incapacitated_trigger = no
+	# 			}
+	# 		}
+	# 		nor = {
+	# 			trait = disinherited_amazon
+	# 			trait = disinherited
+	# 		}
+	# 	}
+	# 	allow = {
+	# 		FROM = {
+	# 			any_demesne_title = {
+	# 				can_be_given_away = yes
+	# 			}
+	# 		}
+	# 	}
+	# 	effect = {
+	# 		add_character_modifier =  {
+	# 			name = tagged_recipient
+	# 			duration = 30
+	# 		}
+	# 	}
+	# 	revoke_allowed = {
+	# 		always = no
+	# 	}
+	# 	ai_will_do = {
+	# 		factor = 0
+	# 	}
+	# }
 
+	# think about it
 	give_province_amazon_1 = {
 		filter = realm
 		ai_target_filter = self
 		from_potential = {
 			ai = no
 			trait = creature_amazon
-			NOT = {
-				trait = incapable
-			}
 			is_ruler = yes
 			NOR = {
 				any_vassal = {
@@ -506,21 +584,25 @@ targetted_decisions = {
 			liege = {
 				character = FROM
 			}
-			NOT = {
+			nor = {
 				trait = disinherited_amazon
-			}
-			NOT = {
 				trait = disinherited
-			}
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
 			}
 		}
 		allow = {
 			FROM = {
 				any_demesne_title = {
 					can_be_given_away = yes
+				}
+			}
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
+			from = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
 				}
 			}
 		}
@@ -538,8 +620,8 @@ targetted_decisions = {
 			factor = 0
 		}
 	}
-	# Amazon - Exile complacent Amazon
 
+	# Amazon - Exile complacent Amazon
 	exile_complacent_amazon = {
 		filter = dynasty
 		ai_target_filter = dynasty
@@ -569,9 +651,12 @@ targetted_decisions = {
 		allow = {
 			FROM = {
 				piety = 100
-				prisoner = no
 				NOT = {
 					trait = complacent
+				}
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
 				}
 			}
 		}
@@ -599,8 +684,8 @@ targetted_decisions = {
 			}
 		}
 	}
-	#Decision to eat prisoners for the Miyan
 
+	#Decision to eat prisoners for the Miyan
 	eat_prisoner_miyan = {
 		only_rulers = yes
 		from_potential = {
@@ -613,20 +698,25 @@ targetted_decisions = {
 				is_incapacitated_trigger = no
 			}
 			age = 16
-			# trait = creature_halfling
 		}
 		potential = {
 			prisoner = yes
 			host = {
 				character = FROM
 			}
-			NOT = {
+			nor = {
 				trait = khemri_tomb_king
+				character = FROM
 			}
-			# NOT = { religion = FROM }
 		}
 		allow = {
 			prisoner = yes
+			from = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
+			}
 		}
 		effect = {
 			hidden_tooltip = {
@@ -701,101 +791,101 @@ targetted_decisions = {
 
 title_decisions = {
 
-	give_province_lizardmen_2 = {
-		filter = owned
-		ai_target_filter = owned
-		potential = {
-			can_be_given_away = yes
-			always = no #OBSOLETE
-			FROM = {
-				culture_group = lizardman_group
-				demesne_size = 2
-			}
-			holder_scope = {
-				always = no #OBSOLETE
-				character = FROM
-				ai = no
-			}
-		}
-		allow = {
-			FROM = {
-				OR = {
-					any_vassal = {
-						has_character_modifier = tagged_recipient
-					}
-					any_courtier = {
-						has_character_modifier = tagged_recipient
-					}
-				}
-			}
-		}
-		effect = {
-			if = {
-				limit = {
-					FROM = {
-						any_vassal = {
-							has_character_modifier = tagged_recipient
-						}
-					}
-				}
-				FROM = {
-					any_vassal = {
-						limit = {
-							has_character_modifier = tagged_recipient
-						}
-						ROOT = {
-							grant_title = PREV
-							set_government_type = lizardmen_government
-							if = {
-								limit = {
-									higher_tier_than = COUNT
-								}
-								add_law = agnatic_succession
-								add_law = succ_open_elective
-							}
-						}
-						remove_character_modifier = tagged_recipient
-					}
-				}
-				break = yes
-			}
-			if = {
-				limit = {
-					FROM = {
-						any_courtier = {
-							has_character_modifier = tagged_recipient
-						}
-					}
-				}
-				FROM = {
-					any_courtier = {
-						limit = {
-							has_character_modifier = tagged_recipient
-						}
-						ROOT = {
-							grant_title = PREV
-							set_government_type = lizardmen_government
-							if = {
-								limit = {
-									higher_tier_than = COUNT
-								}
-								add_law = agnatic_succession
-								add_law = succ_open_elective
-							}
-						}
-						remove_character_modifier = tagged_recipient
-					}
-				}
-				break = yes
-			}
-		}
-		revoke_allowed = {
-			always = no
-		}
-		ai_will_do = {
-			factor = 0
-		}
-	} #closestitledecision
+	# give_province_lizardmen_2 = {
+	# 	filter = owned
+	# 	ai_target_filter = owned
+	# 	potential = {
+	# 		can_be_given_away = yes
+	# 		always = no #OBSOLETE
+	# 		FROM = {
+	# 			culture_group = lizardman_group
+	# 			demesne_size = 2
+	# 		}
+	# 		holder_scope = {
+	# 			always = no #OBSOLETE
+	# 			character = FROM
+	# 			ai = no
+	# 		}
+	# 	}
+	# 	allow = {
+	# 		FROM = {
+	# 			OR = {
+	# 				any_vassal = {
+	# 					has_character_modifier = tagged_recipient
+	# 				}
+	# 				any_courtier = {
+	# 					has_character_modifier = tagged_recipient
+	# 				}
+	# 			}
+	# 		}
+	# 	}
+	# 	effect = {
+	# 		if = {
+	# 			limit = {
+	# 				FROM = {
+	# 					any_vassal = {
+	# 						has_character_modifier = tagged_recipient
+	# 					}
+	# 				}
+	# 			}
+	# 			FROM = {
+	# 				any_vassal = {
+	# 					limit = {
+	# 						has_character_modifier = tagged_recipient
+	# 					}
+	# 					ROOT = {
+	# 						grant_title = PREV
+	# 						set_government_type = lizardmen_government
+	# 						if = {
+	# 							limit = {
+	# 								higher_tier_than = COUNT
+	# 							}
+	# 							add_law = agnatic_succession
+	# 							add_law = succ_open_elective
+	# 						}
+	# 					}
+	# 					remove_character_modifier = tagged_recipient
+	# 				}
+	# 			}
+	# 			break = yes
+	# 		}
+	# 		if = {
+	# 			limit = {
+	# 				FROM = {
+	# 					any_courtier = {
+	# 						has_character_modifier = tagged_recipient
+	# 					}
+	# 				}
+	# 			}
+	# 			FROM = {
+	# 				any_courtier = {
+	# 					limit = {
+	# 						has_character_modifier = tagged_recipient
+	# 					}
+	# 					ROOT = {
+	# 						grant_title = PREV
+	# 						set_government_type = lizardmen_government
+	# 						if = {
+	# 							limit = {
+	# 								higher_tier_than = COUNT
+	# 							}
+	# 							add_law = agnatic_succession
+	# 							add_law = succ_open_elective
+	# 						}
+	# 					}
+	# 					remove_character_modifier = tagged_recipient
+	# 				}
+	# 			}
+	# 			break = yes
+	# 		}
+	# 	}
+	# 	revoke_allowed = {
+	# 		always = no
+	# 	}
+	# 	ai_will_do = {
+	# 		factor = 0
+	# 	}
+	# }
 
 	give_province_amazon_2 = {
 		filter = owned
@@ -885,196 +975,196 @@ title_decisions = {
 		ai_will_do = {
 			factor = 0
 		}
-	} #closestitledecision
+	}
 
-	give_province_lizardmen_ai = {
-		filter = owned
-		ai_target_filter = owned
-		potential = {
-			can_be_given_away = yes
-			always = no #OBSOLETE
-			FROM = {
-				culture_group = lizardman_group
-				demesne_size = 2
-			}
-			holder_scope = {
-				always = no #OBSOLETE
-				character = FROM
-				ai = yes
-				OR = {
-					any_courtier = {
-						is_female = no
-						prisoner = no
-						NOT = {
-							character = FROM
-						}
-						NOT = {
-							trait = disinherited_amazon
-						}
-						NOT = {
-							trait = disinherited
-						}
-						trait = creature_skink
-					}
-					any_vassal = {
-						is_female = no
-						prisoner = no
-						NOT = {
-							character = FROM
-						}
-						NOT = {
-							trait = disinherited_amazon
-						}
-						NOT = {
-							trait = disinherited
-						}
-						trait = creature_skink
-					}
-				}
-			}
-			tier = COUNT
-			is_capital = no
-		}
-		allow = {
-			always = yes
-		}
-		effect = {
-			FROM = {
-				if = {
-					limit = {
-						FROM = {
-							any_vassal = {
-								is_female = no
-								prisoner = no
-								NOT = {
-									character = FROM
-								}
-								NOT = {
-									trait = disinherited_amazon
-								}
-								NOT = {
-									trait = disinherited
-								}
-								trait = creature_skink
-							}
-						}
-					}
-					FROM = {
-						any_vassal = {
-							limit = {
-								is_female = no
-								prisoner = no
-								NOT = {
-									character = FROM
-								}
-								NOT = {
-									trait = disinherited_amazon
-								}
-								NOT = {
-									trait = disinherited
-								}
-								trait = creature_skink
-							}
-							ROOT = {
-								grant_title = PREV
-								if = {
-									limit = {
-										higher_tier_than = COUNT
-									}
-									add_law = succ_appointment
-								}
-							}
-							clr_character_flag = tagged_recipient
-						}
-					}
-					break = yes
-				}
-				if = {
-					limit = {
-						FROM = {
-							any_courtier = {
-								is_female = no
-								prisoner = no
-								NOT = {
-									character = FROM
-								}
-								NOT = {
-									trait = disinherited_amazon
-								}
-								NOT = {
-									trait = disinherited
-								}
-								trait = creature_skink
-							}
-						}
-					}
-					FROM = {
-						any_courtier = {
-							limit = {
-								is_female = no
-								prisoner = no
-								NOT = {
-									character = FROM
-								}
-								NOT = {
-									trait = disinherited_amazon
-								}
-								NOT = {
-									trait = disinherited
-								}
-								trait = creature_skink
-							}
-							ROOT = {
-								grant_title = PREV
-								if = {
-									limit = {
-										higher_tier_than = COUNT
-									}
-									add_law = succ_appointment
-								}
-							}
-							clr_character_flag = tagged_recipient
-						}
-					}
-					break = yes
-				}
-			}
-		}
-		revoke_allowed = {
-			always = no
-		}
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0.5
-				FROM = {
-					trait = greedy
-				}
-			}
-			modifier = {
-				factor = 0
-				FROM = {
-					NOT = {
-						over_max_demesne_size = 1
-					}
-				}
-			}
-			modifier = {
-				factor = 0
-				FROM = {
-					NOT = {
-						any_demesne_title = {
-							tier = DUKE
-							count = 3
-						}
-					}
-				}
-				ROOT = {
-					tier = DUKE
-				}
-			}
-		}
-	} #closestitledecision
+	# give_province_lizardmen_ai = {
+	# 	filter = owned
+	# 	ai_target_filter = owned
+	# 	potential = {
+	# 		can_be_given_away = yes
+	# 		always = no #OBSOLETE
+	# 		FROM = {
+	# 			culture_group = lizardman_group
+	# 			demesne_size = 2
+	# 		}
+	# 		holder_scope = {
+	# 			always = no #OBSOLETE
+	# 			character = FROM
+	# 			ai = yes
+	# 			OR = {
+	# 				any_courtier = {
+	# 					is_female = no
+	# 					prisoner = no
+	# 					NOT = {
+	# 						character = FROM
+	# 					}
+	# 					NOT = {
+	# 						trait = disinherited_amazon
+	# 					}
+	# 					NOT = {
+	# 						trait = disinherited
+	# 					}
+	# 					trait = creature_skink
+	# 				}
+	# 				any_vassal = {
+	# 					is_female = no
+	# 					prisoner = no
+	# 					NOT = {
+	# 						character = FROM
+	# 					}
+	# 					NOT = {
+	# 						trait = disinherited_amazon
+	# 					}
+	# 					NOT = {
+	# 						trait = disinherited
+	# 					}
+	# 					trait = creature_skink
+	# 				}
+	# 			}
+	# 		}
+	# 		tier = COUNT
+	# 		is_capital = no
+	# 	}
+	# 	allow = {
+	# 		always = yes
+	# 	}
+	# 	effect = {
+	# 		FROM = {
+	# 			if = {
+	# 				limit = {
+	# 					FROM = {
+	# 						any_vassal = {
+	# 							is_female = no
+	# 							prisoner = no
+	# 							NOT = {
+	# 								character = FROM
+	# 							}
+	# 							NOT = {
+	# 								trait = disinherited_amazon
+	# 							}
+	# 							NOT = {
+	# 								trait = disinherited
+	# 							}
+	# 							trait = creature_skink
+	# 						}
+	# 					}
+	# 				}
+	# 				FROM = {
+	# 					any_vassal = {
+	# 						limit = {
+	# 							is_female = no
+	# 							prisoner = no
+	# 							NOT = {
+	# 								character = FROM
+	# 							}
+	# 							NOT = {
+	# 								trait = disinherited_amazon
+	# 							}
+	# 							NOT = {
+	# 								trait = disinherited
+	# 							}
+	# 							trait = creature_skink
+	# 						}
+	# 						ROOT = {
+	# 							grant_title = PREV
+	# 							if = {
+	# 								limit = {
+	# 									higher_tier_than = COUNT
+	# 								}
+	# 								add_law = succ_appointment
+	# 							}
+	# 						}
+	# 						clr_character_flag = tagged_recipient
+	# 					}
+	# 				}
+	# 				break = yes
+	# 			}
+	# 			if = {
+	# 				limit = {
+	# 					FROM = {
+	# 						any_courtier = {
+	# 							is_female = no
+	# 							prisoner = no
+	# 							NOT = {
+	# 								character = FROM
+	# 							}
+	# 							NOT = {
+	# 								trait = disinherited_amazon
+	# 							}
+	# 							NOT = {
+	# 								trait = disinherited
+	# 							}
+	# 							trait = creature_skink
+	# 						}
+	# 					}
+	# 				}
+	# 				FROM = {
+	# 					any_courtier = {
+	# 						limit = {
+	# 							is_female = no
+	# 							prisoner = no
+	# 							NOT = {
+	# 								character = FROM
+	# 							}
+	# 							NOT = {
+	# 								trait = disinherited_amazon
+	# 							}
+	# 							NOT = {
+	# 								trait = disinherited
+	# 							}
+	# 							trait = creature_skink
+	# 						}
+	# 						ROOT = {
+	# 							grant_title = PREV
+	# 							if = {
+	# 								limit = {
+	# 									higher_tier_than = COUNT
+	# 								}
+	# 								add_law = succ_appointment
+	# 							}
+	# 						}
+	# 						clr_character_flag = tagged_recipient
+	# 					}
+	# 				}
+	# 				break = yes
+	# 			}
+	# 		}
+	# 	}
+	# 	revoke_allowed = {
+	# 		always = no
+	# 	}
+	# 	ai_will_do = {
+	# 		factor = 1
+	# 		modifier = {
+	# 			factor = 0.5
+	# 			FROM = {
+	# 				trait = greedy
+	# 			}
+	# 		}
+	# 		modifier = {
+	# 			factor = 0
+	# 			FROM = {
+	# 				NOT = {
+	# 					over_max_demesne_size = 1
+	# 				}
+	# 			}
+	# 		}
+	# 		modifier = {
+	# 			factor = 0
+	# 			FROM = {
+	# 				NOT = {
+	# 					any_demesne_title = {
+	# 						tier = DUKE
+	# 						count = 3
+	# 					}
+	# 				}
+	# 			}
+	# 			ROOT = {
+	# 				tier = DUKE
+	# 			}
+	# 		}
+	# 	}
+	# }
 
 	give_province_amazon_ai = {
 		filter = owned
@@ -1259,7 +1349,7 @@ title_decisions = {
 				}
 			}
 		}
-	} #closestitledecision
+	}
 }
 
 plot_decisions = {
@@ -1273,7 +1363,8 @@ plot_decisions = {
 					has_character_flag = faction_misaligned_chief_ultimatum_taken
 				}
 				had_character_flag = {
-					flag = faction_misaligned_chief_ultimatum_taken days = 7
+					flag = faction_misaligned_chief_ultimatum_taken
+					days = 7
 				}
 			}
 		}
@@ -1285,10 +1376,8 @@ plot_decisions = {
 				is_incapacitated_trigger = no
 			}
 			liege = {
-				NOT = {
+				nor = {
 					war_with = ROOT
-				}
-				NOT = {
 					reverse_has_truce = ROOT
 				}
 			}
@@ -1361,13 +1450,9 @@ plot_decisions = {
 								defender = {
 									character = PREV
 								}
-								NOT = {
+								nor = {
 									using_cb = depose_liege
-								}
-								NOT = {
 									using_cb = overthrow_ruler
-								}
-								NOT = {
 									using_cb = overthrow_ruler_no_calls
 								}
 							}
@@ -1413,10 +1498,8 @@ plot_decisions = {
 				is_incapacitated_trigger = no
 			}
 			liege = {
-				NOT = {
+				nor = {
 					war_with = ROOT
-				}
-				NOT = {
 					reverse_has_truce = ROOT
 				}
 			}
@@ -1522,7 +1605,7 @@ plot_decisions = {
 }
 
 settlement_decisions  = {
-	
+
 	cutback_jungle_decision = {
 		filter = realm_owned
 		ai_target_filter = owned

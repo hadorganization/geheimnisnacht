@@ -1,4 +1,34 @@
+#
+
 decisions = {
+
+	craft_item = {
+		potential = {
+			OR = {
+				has_character_modifier = magic_power_1
+				has_character_modifier = magic_power_2
+				has_character_modifier = magic_power_3
+				has_character_modifier = magic_power_4
+			}
+		}
+		allow = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
+			wealth = 250
+		}
+		effect = {
+			ROOT = {
+				character_event = {
+					id = crafting.0
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
 
 	use_potion_of_healing = {
 		is_high_prio = yes
@@ -1155,6 +1185,47 @@ decisions = {
 
 targetted_decisions = {
 
+	commission_crafting = {
+        ai_target_filter = home_court
+        filter = sub_realm
+        potential = {
+            nor = {
+				trait = vampire_necrarch_visible
+				character = FROM
+			}
+            is_liege_or_above = FROM
+            OR = {
+                has_character_modifier = magic_power_1
+                has_character_modifier = magic_power_2
+                has_character_modifier = magic_power_3
+                has_character_modifier = magic_power_4
+			}
+		}
+        allow = {
+            FROM = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
+				wealth = 375
+			}
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
+		}
+        effect = {
+			FROM = {
+				character_event = {
+					id = commissioned_crafting.0
+				}
+			}
+		}
+        ai_will_do = {
+            factor = 0.01 # 10% chance per year of commissioning
+		}
+	}
+
 	# craft
 	z_craft_magic_item = {
 		ai_target_filter = self
@@ -1217,14 +1288,14 @@ targetted_decisions = {
 					character = FROM
 				}
 			}
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
-			}
 		}
 		allow = {
 			z_combat_magic_valid_caster = yes
 			in_command = yes
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 		}
 		effect = {
 			set_character_flag = casting
@@ -1261,10 +1332,6 @@ targetted_decisions = {
 			}
 		}
 		potential = {
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
-			}
 		}
 		allow = {
 			custom_tooltip = {
@@ -1397,6 +1464,12 @@ targetted_decisions = {
 		}
 		allow = {
 			prisoner = yes
+			FROM = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
+			}
 		}
 		effect = {
 			hidden_tooltip = {
@@ -1501,10 +1574,6 @@ targetted_decisions = {
 				trait = lore_high_magic
 				trait = lore_light
 			}
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
-			}
 			NOT = {
 				has_character_modifier = magic_cooldown
 			}
@@ -1523,7 +1592,13 @@ targetted_decisions = {
 			is_undead_trigger = no
 		}
 		allow = {
-			piety = 50
+			FROM = {
+				piety = 50
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
+			}
 		}
 		effect = {
 			piety = -50
@@ -1737,10 +1812,6 @@ targetted_decisions = {
 			primary_title = {
 				higher_tier_than = BARON
 			}
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
-			}
 			NOT = {
 				has_character_modifier = magic_cooldown_summoning
 			}
@@ -1784,6 +1855,11 @@ targetted_decisions = {
 				OR = {
 					has_character_modifier = magic_power_3
 					has_character_modifier = magic_power_4
+				}
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+
 				}
 			}
 		}
@@ -1935,10 +2011,6 @@ targetted_decisions = {
 		filter = realm
 		ai_target_filter = realm
 		from_potential = {
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
-			}
 			nor = {
 				trait = vampire_blood_visible
 				trait = vampire_blood_hidden
@@ -1994,10 +2066,6 @@ targetted_decisions = {
 			}
 		}
 		potential = {
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
-			}
 			guardian = {
 				FROM = {
 					character = PREV
@@ -2035,6 +2103,14 @@ targetted_decisions = {
 		allow = {
 			FROM = {
 				learning = 14
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
+			}
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
 			}
 		}
 		effect = {
@@ -2382,10 +2458,6 @@ targetted_decisions = {
 		filter = realm
 		ai_target_filter = realm
 		from_potential = {
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
-			}
 			religion_group = chaos_gods_group
 			nor = {
 				religion = khorne
@@ -2406,19 +2478,13 @@ targetted_decisions = {
 					character = PREV
 				}
 			}
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
-			}
 			OR = {
 				is_living_human_trigger = yes
 				trait = creature_elf
 			}
 			age = 10
-			NOT = {
-				age = 15
-			}
 			nor = {
+				age = 15
 				trait = mage_apprentice
 				trait = hedge_wizard
 				has_character_modifier = apprenticeship_refused
@@ -2431,6 +2497,14 @@ targetted_decisions = {
 		allow = {
 			FROM = {
 				learning = 8
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
+			}
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
 			}
 		}
 		effect = {
@@ -2469,12 +2543,10 @@ targetted_decisions = {
 			}
 			modifier = {
 				factor = 0.75
-				NOT = {
+				nor = {
 					father = {
 						character = FROM
 					}
-				}
-				NOT = {
 					mother = {
 						character = FROM
 					}
@@ -2587,10 +2659,6 @@ targetted_decisions = {
 		filter = realm
 		ai_target_filter = realm
 		from_potential = {
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
-			}
 			#is_undead_trigger = yes
 			trait = lore_necromancy
 			nor = {
@@ -2608,10 +2676,6 @@ targetted_decisions = {
 			}
 		}
 		potential = {
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
-			}
 			NOT = {
 				character = FROM
 			}
@@ -2661,6 +2725,14 @@ targetted_decisions = {
 		allow = {
 			FROM = {
 				learning = 14
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
+			}
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
 			}
 		}
 		effect = {
@@ -2704,12 +2776,10 @@ targetted_decisions = {
 			}
 			modifier = {
 				factor = 0.75
-				NOT = {
+				nor = {
 					father = {
 						character = FROM
 					}
-				}
-				NOT = {
 					mother = {
 						character = FROM
 					}
@@ -2941,10 +3011,6 @@ targetted_decisions = {
 		ai_target_filter = court
 		from_potential = {
 			is_ruler = yes
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
-			}
 			trait = lore_necromancy
 		}
 		potential = {
@@ -2960,6 +3026,12 @@ targetted_decisions = {
 		}
 		allow = {
 			prisoner = yes
+			from = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
+			}
 		}
 		effect = {
 			prisoner = no

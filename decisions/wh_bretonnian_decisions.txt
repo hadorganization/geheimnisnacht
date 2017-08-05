@@ -78,6 +78,7 @@ decisions = {
 	}
 
 	goonthegrailquest ={
+		only_playable = yes
 		potential = {
 			age = 16
 			religion = grail
@@ -100,25 +101,13 @@ decisions = {
 			}
 		}
 		allow = {
-			nor = {
-				trait = maimed
-				trait = wounded
-				trait = craven
-			}
 			custom_tooltip = {
 				text = IS_NOT_INCAPACITATED
 				is_incapacitated_trigger = no
 			}
-			OR = {
-				ai = no
-				OR = {
-					primary_title = {
-						higher_real_tier_than = COUNT
-					}
-					trait = brave
-					trait = proud
-					trait = ambitious
-				}
+			nor = {
+				trait = wounded
+				trait = craven
 			}
 		}
 		effect = {
@@ -138,16 +127,10 @@ decisions = {
 			}
 			modifier = {
 				factor = 0.5
-				OR = {
-					NOT = {
-						trait = ambitious
-					}
-					NOT = {
-						trait = zealous
-					}
-					NOT = {
-						trait = brave
-					}
+				nor = {
+					trait = ambitious
+					trait = zealous
+					trait = brave
 				}
 			}
 		}

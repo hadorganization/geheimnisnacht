@@ -412,6 +412,7 @@ decisions = {
 		}
 	}
 }
+
 targetted_decisions = {
 
 	give_province_lizardmen_1 = {
@@ -697,6 +698,7 @@ targetted_decisions = {
 		}
 	}
 }
+
 title_decisions = {
 
 	give_province_lizardmen_2 = {
@@ -1259,6 +1261,7 @@ title_decisions = {
 		}
 	} #closestitledecision
 }
+
 plot_decisions = {
 
 	faction_misaligned_chief_ultimatum = {
@@ -1514,6 +1517,155 @@ plot_decisions = {
 					}
 				}
 			}
+		}
+	}
+}
+
+settlement_decisions  = {
+	
+	cutback_jungle_decision = {
+		filter = realm_owned
+		ai_target_filter = owned
+		from_potential = {
+			ai = no # Handled by event
+		}
+		potential = {
+			is_capital = yes
+			location = {
+				has_province_modifier = lustria_jungle
+			}
+			OR = {
+				holder_scope = {
+					any_liege = {
+						character = FROM
+					}
+				}
+				holder_scope = {
+					character = FROM
+				}
+			}
+		}
+		allow = {
+			FROM = {
+				wealth = 25
+			}
+			location = {
+				NOT = {
+					has_province_modifier = recent_cutback
+				}
+				OR = {
+					has_province_modifier = lustria_medium_jungle
+					has_province_modifier = lustria_dense_jungle
+					has_province_modifier = lustria_oppressive_jungle
+				}
+			}
+			OR = {
+				FROM = {
+					in_command = no
+					custom_tooltip = {
+						text = IS_NOT_INCAPACITATED
+						is_incapacitated_trigger = no
+					}
+				}
+				FROM = {
+					job_treasurer = {
+						character = yes
+						age = 16
+						custom_tooltip = {
+							text = IS_NOT_INCAPACITATED
+							is_incapacitated_trigger = no
+						}
+						in_command = no
+					}
+				}
+			}
+		}
+		effect = {
+			location = {
+				add_province_modifier =  {
+					name = recent_cutback
+					hidden = yes
+					duration = 120
+				}
+			}
+			FROM = {
+				character_event = {
+					id = lizardman.261
+				}
+			} #Choose who will cut back your jungle
+		}
+		ai_will_do = {
+			factor = 0.1
+			modifier = {
+				factor = 0.1
+				FROM = {
+					NOT = {
+						wealth = 50
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				location = {
+					has_province_modifier = lustria_dense_jungle
+				}
+			}
+			modifier = {
+				factor = 5
+				location = {
+					has_province_modifier = lustria_oppressive_jungle
+				}
+			}
+		}
+	}
+
+	z_purge_province = {
+		filter = sub_realm_owned
+		ai_target_filter = sub_realm_owned
+		from_potential = {
+		}
+		potential = {
+			holder_scope = {
+				character = FROM
+			}
+			dejure_liege_title = {
+				holder_scope = {
+					character = FROM
+				}
+			}
+			FROM = {
+				culture_group = lizardman_group
+			}
+			NOT = {
+				location = {
+					culture_group = lizardman_group
+				}
+			}
+		}
+		allow = {
+			holder_scope = {
+				#has_character_modifier = favour_sotek
+				war = no
+			}
+		}
+		effect = {
+			save_event_target_as = purge_prov
+			location = {
+				add_province_modifier = {
+					name = z_being_purged duration = 3650
+				}
+			}
+			FROM = {
+				character_event = {
+					id = z_purge.0
+				}
+			}
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
 		}
 	}
 }

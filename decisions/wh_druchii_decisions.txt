@@ -177,7 +177,8 @@ targetted_decisions = {
 				}
 			}
 		}
-	}	#closesdecision
+	}
+
 
 	vassal_feed_to_nauglir = {
 		filter = court
@@ -186,9 +187,6 @@ targetted_decisions = {
 		from_potential = {
 			primary_title = {
 				higher_tier_than = BARON
-			}
-			NOT = {
-				trait = incapable
 			}
 			age = 14
 			religion_group = cytharai_group
@@ -205,6 +203,10 @@ targetted_decisions = {
 		allow = {
 			prisoner = yes
 			FROM = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
 				prestige = 10
 			}
 		}
@@ -366,9 +368,6 @@ targetted_decisions = {
 			primary_title = {
 				higher_tier_than = BARON
 			}
-			NOT = {
-				trait = incapable
-			}
 			age = 14
 			OR = {
 				has_artifact = black_dragon_mount
@@ -394,6 +393,10 @@ targetted_decisions = {
 			prisoner = yes
 			FROM = {
 				prestige = 10
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
 			}
 		}
 		effect = {
@@ -554,9 +557,6 @@ targetted_decisions = {
 			primary_title = {
 				higher_tier_than = BARON
 			}
-			NOT = {
-				trait = incapable
-			}
 			age = 14
 			has_artifact = wyvern_mount
 		}
@@ -573,6 +573,10 @@ targetted_decisions = {
 			prisoner = yes
 			FROM = {
 				prestige = 10
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
 			}
 		}
 		effect = {
@@ -733,9 +737,6 @@ targetted_decisions = {
 			primary_title = {
 				higher_tier_than = BARON
 			}
-			NOT = {
-				trait = incapable
-			}
 			age = 14
 			has_artifact = gryphon_mount
 		}
@@ -752,6 +753,10 @@ targetted_decisions = {
 			prisoner = yes
 			FROM = {
 				prestige = 10
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
 			}
 		}
 		effect = {
@@ -904,18 +909,227 @@ targetted_decisions = {
 		}
 	}
 }
+
 decisions = {
+
+	goraiding ={
+		potential = {
+			age = 16
+			culture_group = druchi_group
+			OR = {
+				trait = ambitious
+				trait = brave
+				ai = no
+			}
+		}
+		allow = {
+			wealth = 50
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
+			nor = {
+				wealth = 1000
+				trait = maimed
+				trait = wounded
+				trait = on_dark_elf_raid
+			}
+			OR = {
+				trait = ambitious
+				trait = brave
+				ai = no
+			}
+		}
+		effect = {
+			ROOT = {
+				character_event = {
+					id = darkelf.8
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				num_of_children = 0
+			}
+			modifier = {
+				factor = 0
+				age = 35
+			}
+		}
+	}
+
+	returnfromraiding ={
+		potential = {
+			age = 16
+			trait = on_dark_elf_raid
+		}
+		allow = {
+			ai = no
+		}
+		effect = {
+			ROOT = {
+				character_event = {
+					id = darkelf.11
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				num_of_children = 0
+			}
+			modifier = {
+				factor = 0
+				age = 35
+			}
+		}
+	}
+
+	holdafeast = {
+		is_high_prio = yes
+		potential = {
+			culture_group = druchi_group
+			is_ruler = yes
+            OR = {
+                is_feudal = yes
+                is_tribal = yes
+			}
+            prisoner = no
+            nor = {
+                has_character_modifier = holding_large_druchi_feast
+                has_character_modifier = large_feast_timer
+                has_character_modifier = fabulous_feast
+                has_character_flag = guest_druchi_feast_started
+				has_character_flag = do_not_disturb
+                liege = {
+                    has_character_modifier = holding_large_druchi_feast
+				}
+			}
+            num_of_vassals = 1
+		}
+        allow = {
+            war = no
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
+            any_demesne_title = {
+                is_occupied = no
+			}
+            prisoner = no
+            NOT = {
+				trait = in_hiding
+			}
+            wealth = 25
+            # month = 10
+            prestige = 100
+		}
+        effect = {
+            wealth = -25
+            add_character_modifier = {
+                name = holding_large_druchi_feast
+                duration = -1
+			}
+            set_character_flag = recent_minor_decision
+            set_character_flag = do_not_disturb
+			hidden_tooltip = {
+				character_event = {
+					id = druchii_feast.1000
+				}
+			}
+		}
+        revoke_allowed = {
+            always = no
+		}
+        ai_will_do = {
+            factor = 1
+            modifier = {
+                factor = 0
+                NOT = {
+                    wealth = 200
+				}
+			}
+            modifier = {
+                factor = 0
+                trait = shy
+			}
+            modifier = {
+                factor = 0
+                NOT = {
+					diplomacy = 10
+				}
+			}
+            modifier = {
+                factor = 0
+                has_character_flag = recent_minor_decision
+                NOT = {
+                    had_character_flag = {
+                        flag = recent_minor_decision
+                        days = 730
+					}
+				}
+			}
+		}
+	}
+
+	hire_sorceress = {
+		potential = {
+			age = 16
+			culture_group = druchi_group
+			higher_tier_than = BARON
+		}
+		allow = {
+			age = 16
+			culture_group = druchi_group
+			higher_tier_than = BARON
+			wealth = 500
+			any_playable_ruler = {
+				NOT = {
+					character = ROOT
+				}
+				any_courtier = {
+					custom_tooltip = {
+						text = IS_NOT_INCAPACITATED
+						is_incapacitated_trigger = no
+					}
+					trait = druchi_sorceress
+					nor = {
+						has_character_modifier = magic_power_4
+						has_character_flag = hired_sorceress
+					}
+					is_landed  = no
+					is_married = no
+				}
+			}
+		}
+		effect = {
+			ROOT = {
+				character_event = {
+					id = darkelf.25
+				}
+			}
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
 
 	druchii_police_decision = {
 		only_rulers = yes
 		potential = {
-			prisoner = no
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			has_landed_title = e_naggaroth
 			trait = creature_elf
 			religion_group = cytharai_group
-			NOT = {
-				trait = incapable
-			}
 			capital_scope = {
 				empire = {
 					title = e_naggaroth
@@ -1051,36 +1265,28 @@ decisions = {
 
 	witch_elf_decision = {
 		potential = {
-			prisoner = no
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			trait = creature_elf
 			religion_group = cytharai_group
 			is_female = yes
 			age = 15
-			NOT = {
+			nor = {
 				age = 100
-			}
-			NOT = {
-				trait = incapable
-			}
-			NOT = {
 				trait = druchi_witch_elf
-			}
-			NOT = {
 				trait = druchi_sorceress
-			}
-			NOR = {
 				has_character_modifier = magic_power_1
 				has_character_modifier = magic_power_2
 				has_character_modifier = magic_power_3
 				has_character_modifier = magic_power_4
+				higher_tier_than = DUKE
 			}
 			capital_scope = {
 				empire = {
 					title = e_naggaroth
 				}
-			}
-			NOT = {
-				higher_tier_than = DUKE
 			}
 			OR = {
 				independent = yes

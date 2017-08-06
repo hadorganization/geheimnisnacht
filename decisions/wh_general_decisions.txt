@@ -1,12 +1,12 @@
+# general
+
 decisions = {
 
 	impose_marriage_dominance = {
-		only_rulers = yes
+		only_playable = yes
 		potential = {
 			is_married = yes
 			higher_tier_than = COUNT
-			prisoner = no
-			is_incapacitated_trigger = no
 			OR = {
 				trait = creature_human
 				trait = creature_dwarf
@@ -135,7 +135,8 @@ decisions = {
 
 	reform_backbinz_horde = {
 		is_high_prio = yes
-		only_rulers = yes
+		only_playable = yes
+		only_independent = yes
 		potential = {
 			capital_scope = {
 				location = {
@@ -143,9 +144,6 @@ decisions = {
 				}
 			}
 			age = 16
-			is_ruler = yes
-			higher_tier_than = BARON
-			independent = yes
 			trait = creature_goblin
 			NOT = {
 				e_da_backbinz = {
@@ -186,7 +184,7 @@ decisions = {
 
 	convert_to_shadowmen = {
 		is_high_prio = yes
-		only_rulers = yes
+		only_playable = yes
 		potential = {
 			OR = {
 				capital_scope = {
@@ -197,8 +195,6 @@ decisions = {
 				}
 			}
 			age = 16
-			is_ruler = yes
-			higher_tier_than = BARON
 			trait = creature_human
 			religion = akghan
 		}
@@ -253,6 +249,7 @@ decisions = {
 		}
 	}
 }
+
 targetted_decisions = {
 
 	ogre_eat_prisoner = {

@@ -1,5 +1,4 @@
 # These laws give the council more or less power over certain decisions
-
 law_groups = {
 	law_voting_power = {
 		law_type = council
@@ -38,13 +37,10 @@ law_groups = {
 laws = {
 	# COUNCIL POWER LAWS
 	##############################
-
 	#VOTE ON LAW CHANGES
 	law_voting_power_0 = {
 		group = law_voting_power
-		
 		default = yes
-		
 		allow = {
 			has_law = law_voting_power_1
 			has_law = banish_voting_power_0
@@ -53,25 +49,43 @@ laws = {
 			has_law = imprison_voting_power_0
 			has_law = execution_voting_power_0
 			has_law = war_voting_power_0
-			NOT = { holder_scope = { culture_group = dwarf_group } }
-			NOT = { holder_scope = { culture_group = dwarf_chaos_group } }
-			NOT = { holder_scope = { culture_group = asur_group } }
-			NOT = { holder_scope = { culture_group = asrai_group } }
+			holder_scope = {
+				nor = {
+					culture_group = dwarf_group
+					culture_group = dwarf_chaos_group
+					culture_group = asur_group
+					culture_group = asrai_group
+				}
+			}
 			OR = {
-				NOT = { holder_scope = { is_tribal = yes } }
+				NOT = {
+					holder_scope = {
+						is_tribal = yes
+					}
+				}
 				has_law = tribal_organization_4
 			}
-			NOT = { is_nomadic = yes }
+			NOT = {
+				is_nomadic = yes
+			}
 		}
 		potential = {
 			has_dlc = "Zeus"
 			higher_tier_than = baron
 			#ADD RACES WHO AREN'T SUPPOSED TO HAVE COUNCILS
-			NOT = { holder_scope = { culture_group = asur_group } }
-			holder_scope = { NOT = { religion_group = greenskin_gods_group } }
-			holder_scope = { NOT = { trait = creature_beastman } }
+			holder_scope = {
+				nor = {
+					culture_group = asur_group
+					religion_group = greenskin_gods_group
+					trait = creature_beastman
+				}
+			}
 			OR = {
-				NOT = { holder_scope = { is_tribal = yes } }
+				NOT = {
+					holder_scope = {
+						is_tribal = yes
+					}
+				}
 				has_law = tribal_organization_1
 				has_law	= tribal_organization_2
 				has_law	= tribal_organization_3
@@ -80,7 +94,7 @@ laws = {
 		}
 		revoke_allowed = {
 			always = no
-		}			
+		}
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -97,8 +111,8 @@ laws = {
 			}
 			hidden_tooltip = {
 				if = {
-					limit = { 
-						has_law = law_voting_power_1 
+					limit = {
+						has_law = law_voting_power_1
 						holder_scope = {
 							primary_title = {
 								title = PREVPREV
@@ -108,7 +122,11 @@ laws = {
 					holder_scope = {
 						any_vassal = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_decreased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_decreased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT
@@ -118,7 +136,11 @@ laws = {
 						}
 						any_courtier = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_decreased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_decreased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT
@@ -132,77 +154,98 @@ laws = {
 				disable_council_voting_on_issue = enforce_peace
 			}
 		}
-		
 		demesne_size = 2
 	}
-
 	law_voting_power_1 = {
 		group = law_voting_power
-		
 		default_selection = {
 			factor = 0
-			
-			additive_modifier = { 
-				value = 10		
-				NOT = { title = e_bretonnia }
-				holder_scope = { 
+			additive_modifier = {
+				value = 10
+				NOT = {
+					title = e_bretonnia
+				}
+				holder_scope = {
 					religion_group = old_world_group
 					is_feudal = yes
-				}	
+				}
 			}
-			 additive_modifier = { 
-				 value = 10			
-				holder_scope = { culture_group = asur_group }
-			 }
-			 additive_modifier = { 
-				 value = 10			
-				holder_scope = { is_visible_vampire_trigger = yes }
-			 }
-			 additive_modifier = { 
-				 value = 10			
-				holder_scope = { culture_group = asrai_group }
-			 }
-			 additive_modifier = { 
-				 value = 10			
-				holder_scope = { OR = { culture_group = dwarf_group
-							culture_group = dwarf_chaos_group } }
-			 }
-			# additive_modifier = { 
-				# value = 10			
-				# title = e_hre	
-			# }
-			# additive_modifier = { 
-				# value = 10			
-				# title = e_byzantium	
-			# }
-			additive_modifier = { 
-				value = 10			
-				holder_scope = { 
+			additive_modifier = {
+				value = 10
+				holder_scope = {
+					culture_group = asur_group
+				}
+			}
+			additive_modifier = {
+				value = 10
+				holder_scope = {
+					is_visible_vampire_trigger = yes
+				}
+			}
+			additive_modifier = {
+				value = 10
+				holder_scope = {
+					culture_group = asrai_group
+				}
+			}
+			additive_modifier = {
+				value = 10
+				holder_scope = {
 					OR = {
-						is_nomadic = yes	
-						is_tribal = yes	
+						culture_group = dwarf_group
+						culture_group = dwarf_chaos_group
+					}
+				}
+			}
+			# additive_modifier = {
+			# value = 10
+			# title = e_hre
+			# }
+			# additive_modifier = {
+			# value = 10
+			# title = e_byzantium
+			# }
+			additive_modifier = {
+				value = 10
+				holder_scope = {
+					OR = {
+						is_nomadic = yes
+						is_tribal = yes
 						is_republic = yes
 					}
 				}
 			}
 		}
-		
 		allow = {
 			has_law = law_voting_power_0
 			OR = {
-				NOT = { holder_scope = { is_tribal = yes } }
+				NOT = {
+					holder_scope = {
+						is_tribal = yes
+					}
+				}
 				has_law = tribal_organization_1
-				holder_scope = { culture_group = asur_group } 
+				holder_scope = {
+					culture_group = asur_group
+				}
 			}
 		}
 		potential = {
 			has_dlc = "Zeus"
 			#ADD RACES WHO AREN'T SUPPOSED TO HAVE COUNCILS
-			holder_scope = { NOT = { religion_group = greenskin_gods_group } }
-			holder_scope = { NOT = { trait = creature_beastman } }
+			holder_scope = {
+				nor = {
+					religion_group = greenskin_gods_group
+					trait = creature_beastman
+				}
+			}
 			higher_tier_than = baron
 			OR = {
-				NOT = { holder_scope = { is_tribal = yes } }
+				NOT = {
+					holder_scope = {
+						is_tribal = yes
+					}
+				}
 				has_law = tribal_organization_1
 				has_law	= tribal_organization_2
 				has_law	= tribal_organization_3
@@ -211,7 +254,7 @@ laws = {
 		}
 		revoke_allowed = {
 			always = no
-		}			
+		}
 		ai_will_do = {
 			factor = 0
 		}
@@ -228,7 +271,7 @@ laws = {
 			}
 			hidden_tooltip = {
 				if = {
-					limit = { 
+					limit = {
 						has_law = law_voting_power_0
 						holder_scope = {
 							primary_title = {
@@ -239,7 +282,11 @@ laws = {
 					holder_scope = {
 						any_vassal = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_increased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_increased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT
@@ -249,7 +296,11 @@ laws = {
 						}
 						any_courtier = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_increased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_increased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT
@@ -264,12 +315,10 @@ laws = {
 			}
 		}
 	}
-
 	#VOTE ON WAR
 	war_voting_power_0 = {
 		group = war_voting_power
 		default = yes
-		
 		allow = {
 			has_law = law_voting_power_1
 			has_law = war_voting_power_1
@@ -278,23 +327,41 @@ laws = {
 			has_law = grant_title_voting_power_0
 			has_law = imprison_voting_power_0
 			has_law = execution_voting_power_0
-			NOT = { holder_scope = { culture_group = dwarf_group } }
-			NOT = { holder_scope = { culture_group = dwarf_chaos_group } }
-			NOT = { holder_scope = { culture_group = asur_group } }
+			holder_scope = {
+				nor = {
+					culture_group = dwarf_group
+					culture_group = dwarf_chaos_group
+					culture_group = asur_group
+				}
+			}
 			OR = {
-				NOT = { holder_scope = { is_tribal = yes } }
+				NOT = {
+					holder_scope = {
+						is_tribal = yes
+					}
+				}
 				has_law = tribal_organization_4
 			}
-			NOT = { is_nomadic = yes }
+			NOT = {
+				is_nomadic = yes
+			}
 		}
 		potential = {
 			has_dlc = "Zeus"
 			higher_tier_than = baron
 			#ADD RACES WHO AREN'T SUPPOSED TO HAVE COUNCILS
-			holder_scope = { NOT = { religion_group = greenskin_gods_group } }
-			holder_scope = { NOT = { trait = creature_beastman } }
+			holder_scope = {
+				nor = {
+					religion_group = greenskin_gods_group
+					trait = creature_beastman
+				}
+			}
 			OR = {
-				NOT = { holder_scope = { is_tribal = yes } }
+				NOT = {
+					holder_scope = {
+						is_tribal = yes
+					}
+				}
 				has_law = tribal_organization_1
 				has_law	= tribal_organization_2
 				has_law	= tribal_organization_3
@@ -303,7 +370,7 @@ laws = {
 		}
 		revoke_allowed = {
 			always = no
-		}			
+		}
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -320,7 +387,7 @@ laws = {
 			}
 			hidden_tooltip = {
 				if = {
-					limit = { 
+					limit = {
 						has_law = war_voting_power_1
 						holder_scope = {
 							primary_title = {
@@ -331,7 +398,11 @@ laws = {
 					holder_scope = {
 						any_vassal = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_decreased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_decreased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT
@@ -341,7 +412,11 @@ laws = {
 						}
 						any_courtier = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_decreased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_decreased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT
@@ -355,47 +430,55 @@ laws = {
 			}
 		}
 	}
-
 	war_voting_power_1 = {
 		group = war_voting_power
-		
 		default_selection = {
 			factor = 0
-			
-			additive_modifier = { 
-				value = 10			
-				NOT = { title = e_bretonnia }
-				holder_scope = { 
+			additive_modifier = {
+				value = 10
+				NOT = {
+					title = e_bretonnia
+				}
+				holder_scope = {
 					religion_group = old_world_group
 					is_feudal = yes
-				}	
+				}
 			}
-			 additive_modifier = { 
-				 value = 10			
-				holder_scope = { OR = { culture_group = dwarf_group
-							culture_group = dwarf_chaos_group } }
-			 }
-			 additive_modifier = { 
-				 value = 10			
-				holder_scope = { culture_group = asur_group }
-			 }
-			# additive_modifier = { 
-				# value = 10			
-				# title = e_hre	
+			additive_modifier = {
+				value = 10
+				holder_scope = {
+					OR = {
+						culture_group = dwarf_group
+						culture_group = dwarf_chaos_group
+					}
+				}
+			}
+			additive_modifier = {
+				value = 10
+				holder_scope = {
+					culture_group = asur_group
+				}
+			}
+			# additive_modifier = {
+			# value = 10
+			# title = e_hre
 			# }
-			additive_modifier = { 
-				value = 10			
-				OR = {
-					holder_scope = { is_nomadic = yes }	
+			additive_modifier = {
+				value = 10
+				holder_scope = {
+					is_nomadic = yes
 				}
 			}
 		}
-		
 		allow = {
 			has_law = law_voting_power_1
 			has_law = war_voting_power_0
 			OR = {
-				NOT = { holder_scope = { is_tribal = yes } }
+				NOT = {
+					holder_scope = {
+						is_tribal = yes
+					}
+				}
 				has_law = tribal_organization_1
 			}
 		}
@@ -403,10 +486,18 @@ laws = {
 			has_dlc = "Zeus"
 			higher_tier_than = baron
 			#ADD RACES WHO AREN'T SUPPOSED TO HAVE COUNCILS
-			holder_scope = { NOT = { religion_group = greenskin_gods_group } }
-			holder_scope = { NOT = { trait = creature_beastman } }
+			holder_scope = {
+				nor = {
+					religion_group = greenskin_gods_group
+					trait = creature_beastman
+				}
+			}
 			OR = {
-				NOT = { holder_scope = { is_tribal = yes } }
+				NOT = {
+					holder_scope = {
+						is_tribal = yes
+					}
+				}
 				has_law = tribal_organization_1
 				has_law	= tribal_organization_2
 				has_law	= tribal_organization_3
@@ -415,7 +506,7 @@ laws = {
 		}
 		revoke_allowed = {
 			always = no
-		}			
+		}
 		ai_will_do = {
 			factor = 0
 		}
@@ -429,7 +520,7 @@ laws = {
 			}
 			hidden_tooltip = {
 				if = {
-					limit = { 
+					limit = {
 						has_law = war_voting_power_0
 						holder_scope = {
 							primary_title = {
@@ -440,7 +531,11 @@ laws = {
 					holder_scope = {
 						any_vassal = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_increased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_increased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT
@@ -450,7 +545,11 @@ laws = {
 						}
 						any_courtier = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_increased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_increased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT
@@ -463,34 +562,49 @@ laws = {
 				revoke_law = war_voting_power_0
 			}
 		}
-		
 		vassal_limit = 2
 	}
-
 	#VOTE ON REVOKE TITLES
 	revoke_title_voting_power_0 = {
 		group = revoke_title_voting_power
 		default = yes
-		
 		allow = {
-			NOT = { holder_scope = { culture_group = dwarf_group } }
-			NOT = { holder_scope = { culture_group = dwarf_chaos_group } }
-			NOT = { holder_scope = { culture_group = asur_group } }
+			holder_scope = {
+				nor = {
+					culture_group = dwarf_group
+					culture_group = dwarf_chaos_group
+					culture_group = asur_group
+				}
+			}
 			has_law = revoke_title_voting_power_1
 			OR = {
-				NOT = { holder_scope = { is_tribal = yes } }
+				NOT = {
+					holder_scope = {
+						is_tribal = yes
+					}
+				}
 				has_law = tribal_organization_4
 			}
-			NOT = { is_nomadic = yes }
+			NOT = {
+				is_nomadic = yes
+			}
 		}
 		potential = {
 			has_dlc = "Zeus"
 			higher_tier_than = baron
 			#ADD RACES WHO AREN'T SUPPOSED TO HAVE COUNCILS
-			holder_scope = { NOT = { religion_group = greenskin_gods_group } }
-			holder_scope = { NOT = { trait = creature_beastman } }
+			holder_scope = {
+				nor = {
+					religion_group = greenskin_gods_group
+					trait = creature_beastman
+				}
+			}
 			OR = {
-				NOT = { holder_scope = { is_tribal = yes } }
+				NOT = {
+					holder_scope = {
+						is_tribal = yes
+					}
+				}
 				has_law = tribal_organization_2
 				has_law	= tribal_organization_3
 				has_law = tribal_organization_4
@@ -498,7 +612,7 @@ laws = {
 		}
 		revoke_allowed = {
 			always = no
-		}			
+		}
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -511,7 +625,7 @@ laws = {
 		effect = {
 			hidden_tooltip = {
 				if = {
-					limit = { 
+					limit = {
 						has_law = revoke_title_voting_power_1
 						holder_scope = {
 							primary_title = {
@@ -522,7 +636,11 @@ laws = {
 					holder_scope = {
 						any_vassal = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_decreased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_decreased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT
@@ -532,7 +650,11 @@ laws = {
 						}
 						any_courtier = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_decreased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_decreased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT
@@ -547,53 +669,67 @@ laws = {
 			disable_council_voting_on_issue = revoke_title_interaction
 		}
 	}
-
 	revoke_title_voting_power_1 = {
 		group = revoke_title_voting_power
-		
 		default_selection = {
 			factor = 0
-			
-			additive_modifier = { 
-				value = 10			
-				NOT = { title = e_bretonnia }
-				holder_scope = { 
+			additive_modifier = {
+				value = 10
+				NOT = {
+					title = e_bretonnia
+				}
+				holder_scope = {
 					religion_group = old_world_group
 					is_feudal = yes
-				}	
+				}
 			}
-			 additive_modifier = { 
-				 value = 10			
-				holder_scope = { OR = { culture_group = dwarf_group
-							culture_group = dwarf_chaos_group } }
-			 }
-			 additive_modifier = { 
-				 value = 10			
-				holder_scope = { culture_group = asur_group }
-			 }
-			 additive_modifier = { 
-				 value = 10			
-				holder_scope = { is_visible_vampire_trigger = yes }
-			 }
-			# additive_modifier = { 
-				# value = 10			
-				# title = e_hre	
+			additive_modifier = {
+				value = 10
+				holder_scope = {
+					OR = {
+						culture_group = dwarf_group
+						culture_group = dwarf_chaos_group
+					}
+				}
+			}
+			additive_modifier = {
+				value = 10
+				holder_scope = {
+					culture_group = asur_group
+				}
+			}
+			additive_modifier = {
+				value = 10
+				holder_scope = {
+					is_visible_vampire_trigger = yes
+				}
+			}
+			# additive_modifier = {
+			# value = 10
+			# title = e_hre
 			# }
-			additive_modifier = { 
-				value = 10			
-				OR = {
-					holder_scope = { is_nomadic = yes }	
+			additive_modifier = {
+				value = 10
+				holder_scope = {
+					is_nomadic = yes
 				}
 			}
 		}
-		
 		allow = {
-			NOT = { holder_scope = { culture_group = asur_group } }
+			NOT = {
+				holder_scope = {
+					culture_group = asur_group
+				}
+			}
 			has_law = law_voting_power_1
 			has_law = war_voting_power_1
 			has_law = revoke_title_voting_power_0
 			OR = {
-				NOT = { holder_scope = { is_tribal = yes } }
+				NOT = {
+					holder_scope = {
+						is_tribal = yes
+					}
+				}
 				has_law = tribal_organization_2
 			}
 		}
@@ -601,10 +737,18 @@ laws = {
 			has_dlc = "Zeus"
 			higher_tier_than = baron
 			#ADD RACES WHO AREN'T SUPPOSED TO HAVE COUNCILS
-			holder_scope = { NOT = { religion_group = greenskin_gods_group } }
-			holder_scope = { NOT = { trait = creature_beastman } }
+			holder_scope = {
+				nor = {
+					religion_group = greenskin_gods_group
+					trait = creature_beastman
+				}
+			}
 			OR = {
-				NOT = { holder_scope = { is_tribal = yes } }
+				NOT = {
+					holder_scope = {
+						is_tribal = yes
+					}
+				}
 				has_law	= tribal_organization_2
 				has_law	= tribal_organization_3
 				has_law = tribal_organization_4
@@ -612,7 +756,7 @@ laws = {
 		}
 		revoke_allowed = {
 			always = no
-		}			
+		}
 		ai_will_do = {
 			factor = 0
 		}
@@ -622,7 +766,7 @@ laws = {
 		effect = {
 			hidden_tooltip = {
 				if = {
-					limit = { 
+					limit = {
 						has_law = revoke_title_voting_power_0
 						#is_landed_title_being_created = no
 						holder_scope = {
@@ -631,10 +775,14 @@ laws = {
 							}
 						}
 					}
-					holder_scope = { 
+					holder_scope = {
 						any_vassal = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_increased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_increased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT
@@ -644,7 +792,11 @@ laws = {
 						}
 						any_courtier = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_increased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_increased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT
@@ -660,36 +812,52 @@ laws = {
 		}
 		vassal_limit = 2
 	}
-
 	#VOTE ON IMPRISON
 	imprison_voting_power_0 = {
 		group = imprison_voting_power
 		default = yes
-		
 		allow = {
-			NOT = { holder_scope = { culture_group = asur_group } }
+			holder_scope = {
+				not = {
+					culture_group = asur_group
+				}
+			}
 			has_law = imprison_voting_power_1
 			OR = {
-				NOT = { holder_scope = { is_tribal = yes } }
+				NOT = {
+					holder_scope = {
+						is_tribal = yes
+					}
+				}
 				has_law = tribal_organization_4
 			}
-			NOT = { is_nomadic = yes }
+			NOT = {
+				is_nomadic = yes
+			}
 		}
 		potential = {
 			has_dlc = "Zeus"
 			higher_tier_than = baron
 			#ADD RACES WHO AREN'T SUPPOSED TO HAVE COUNCILS
-			holder_scope = { NOT = { religion_group = greenskin_gods_group } }
-			holder_scope = { NOT = { trait = creature_beastman } }
+			holder_scope = {
+				nor = {
+					religion_group = greenskin_gods_group
+					trait = creature_beastman
+				}
+			}
 			OR = {
-				NOT = { holder_scope = { is_tribal = yes } }
+				NOT = {
+					holder_scope = {
+						is_tribal = yes
+					}
+				}
 				has_law	= tribal_organization_3
 				has_law = tribal_organization_4
 			}
 		}
 		revoke_allowed = {
 			always = no
-		}			
+		}
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -702,7 +870,7 @@ laws = {
 		effect = {
 			hidden_tooltip = {
 				if = {
-					limit = { 
+					limit = {
 						has_law = imprison_voting_power_1
 						holder_scope = {
 							primary_title = {
@@ -713,7 +881,11 @@ laws = {
 					holder_scope = {
 						any_vassal = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_decreased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_decreased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT
@@ -723,7 +895,11 @@ laws = {
 						}
 						any_courtier = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_decreased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_decreased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT
@@ -738,39 +914,43 @@ laws = {
 			disable_council_voting_on_issue = imprison_character_interaction
 		}
 	}
-
 	imprison_voting_power_1 = {
 		group = imprison_voting_power
-		
 		default_selection = {
 			factor = 0
-			
-			additive_modifier = { 
-				value = 10			
-				NOT = { title = e_bretonnia }
-				holder_scope = { 
+			additive_modifier = {
+				value = 10
+				NOT = {
+					title = e_bretonnia
+				}
+				holder_scope = {
 					religion_group = old_world_group
 					is_feudal = yes
-				}	
+				}
 			}
-			 additive_modifier = { 
-				 value = 10			
-				holder_scope = { culture_group = asur_group }
-			 }
-			additive_modifier = { 
-				value = 10			
-				OR = {
-					holder_scope = { is_nomadic = yes }	
+			additive_modifier = {
+				value = 10
+				holder_scope = {
+					culture_group = asur_group
+				}
+			}
+			additive_modifier = {
+				value = 10
+				holder_scope = {
+					is_nomadic = yes
 				}
 			}
 		}
-		
 		allow = {
 			has_law = law_voting_power_1
 			has_law = war_voting_power_1
 			has_law = imprison_voting_power_0
 			OR = {
-				NOT = { holder_scope = { is_tribal = yes } }
+				NOT = {
+					holder_scope = {
+						is_tribal = yes
+					}
+				}
 				has_law = tribal_organization_3
 			}
 		}
@@ -778,17 +958,25 @@ laws = {
 			has_dlc = "Zeus"
 			higher_tier_than = baron
 			#ADD RACES WHO AREN'T SUPPOSED TO HAVE COUNCILS
-			holder_scope = { NOT = { religion_group = greenskin_gods_group } }
-			holder_scope = { NOT = { trait = creature_beastman } }
+			holder_scope = {
+				nor = {
+					religion_group = greenskin_gods_group
+					trait = creature_beastman
+				}
+			}
 			OR = {
-				NOT = { holder_scope = { is_tribal = yes } }
+				NOT = {
+					holder_scope = {
+						is_tribal = yes
+					}
+				}
 				has_law	= tribal_organization_3
 				has_law = tribal_organization_4
 			}
 		}
 		revoke_allowed = {
 			always = no
-		}			
+		}
 		ai_will_do = {
 			factor = 0
 		}
@@ -798,7 +986,7 @@ laws = {
 		effect = {
 			hidden_tooltip = {
 				if = {
-					limit = { 
+					limit = {
 						has_law = imprison_voting_power_0
 						holder_scope = {
 							primary_title = {
@@ -809,7 +997,11 @@ laws = {
 					holder_scope = {
 						any_vassal = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_increased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_increased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT
@@ -819,7 +1011,11 @@ laws = {
 						}
 						any_courtier = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_increased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_increased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT
@@ -835,29 +1031,45 @@ laws = {
 		}
 		vassal_limit = 2
 	}
-
 	#VOTE ON GRANT TITLES
 	grant_title_voting_power_0 = {
 		group = grant_title_voting_power
 		default = yes
-		
 		allow = {
-			NOT = { holder_scope = { culture_group = asur_group } }
+			NOT = {
+				holder_scope = {
+					culture_group = asur_group
+				}
+			}
 			has_law = grant_title_voting_power_1
 			OR = {
-				NOT = { holder_scope = { is_tribal = yes } }
+				NOT = {
+					holder_scope = {
+						is_tribal = yes
+					}
+				}
 				has_law = tribal_organization_4
 			}
-			NOT = { is_nomadic = yes }
+			NOT = {
+				is_nomadic = yes
+			}
 		}
 		potential = {
 			has_dlc = "Zeus"
 			higher_tier_than = baron
 			#ADD RACES WHO AREN'T SUPPOSED TO HAVE COUNCILS
-			holder_scope = { NOT = { religion_group = greenskin_gods_group } }
-			holder_scope = { NOT = { trait = creature_beastman } }
+			holder_scope = {
+				nor = {
+					religion_group = greenskin_gods_group
+					trait = creature_beastman
+				}
+			}
 			OR = {
-				NOT = { holder_scope = { is_tribal = yes } }
+				NOT = {
+					holder_scope = {
+						is_tribal = yes
+					}
+				}
 				has_law	= tribal_organization_2
 				has_law	= tribal_organization_3
 				has_law = tribal_organization_4
@@ -865,7 +1077,7 @@ laws = {
 		}
 		revoke_allowed = {
 			always = no
-		}			
+		}
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -878,7 +1090,7 @@ laws = {
 		effect = {
 			hidden_tooltip = {
 				if = {
-					limit = { 
+					limit = {
 						has_law = grant_title_voting_power_1
 						holder_scope = {
 							primary_title = {
@@ -889,7 +1101,11 @@ laws = {
 					holder_scope = {
 						any_vassal = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_decreased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_decreased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT
@@ -899,7 +1115,11 @@ laws = {
 						}
 						any_courtier = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_decreased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_decreased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT
@@ -914,43 +1134,49 @@ laws = {
 			disable_council_voting_on_issue = grant_landed_title_interaction
 		}
 	}
-
 	grant_title_voting_power_1 = {
 		group = grant_title_voting_power
-		
 		default_selection = {
 			factor = 0
-			
-			additive_modifier = { 
-				value = 10			
-				NOT = { title = e_bretonnia }
-				holder_scope = { 
+			additive_modifier = {
+				value = 10
+				NOT = {
+					title = e_bretonnia
+				}
+				holder_scope = {
 					religion_group = old_world_group
 					is_feudal = yes
-				}	
+				}
 			}
-			 additive_modifier = { 
-				 value = 10			
-				holder_scope = { is_visible_vampire_trigger = yes }
-			 }
-			 additive_modifier = { 
-				 value = 10			
-				holder_scope = { culture_group = asur_group }
-			 }
-			additive_modifier = { 
-				value = 10			
-				OR = {
-					holder_scope = { is_nomadic = yes }	
+			additive_modifier = {
+				value = 10
+				holder_scope = {
+					is_visible_vampire_trigger = yes
+				}
+			}
+			additive_modifier = {
+				value = 10
+				holder_scope = {
+					culture_group = asur_group
+				}
+			}
+			additive_modifier = {
+				value = 10
+				holder_scope = {
+					is_nomadic = yes
 				}
 			}
 		}
-		
 		allow = {
 			has_law = law_voting_power_1
 			has_law = war_voting_power_1
 			has_law = grant_title_voting_power_0
 			OR = {
-				NOT = { holder_scope = { is_tribal = yes } }
+				NOT = {
+					holder_scope = {
+						is_tribal = yes
+					}
+				}
 				has_law = tribal_organization_2
 			}
 		}
@@ -958,10 +1184,18 @@ laws = {
 			has_dlc = "Zeus"
 			higher_tier_than = baron
 			#ADD RACES WHO AREN'T SUPPOSED TO HAVE COUNCILS
-			holder_scope = { NOT = { religion_group = greenskin_gods_group } }
-			holder_scope = { NOT = { trait = creature_beastman } }
+			holder_scope = {
+				nor = {
+					religion_group = greenskin_gods_group
+					trait = creature_beastman
+				}
+			}
 			OR = {
-				NOT = { holder_scope = { is_tribal = yes } }
+				NOT = {
+					holder_scope = {
+						is_tribal = yes
+					}
+				}
 				has_law	= tribal_organization_2
 				has_law	= tribal_organization_3
 				has_law = tribal_organization_4
@@ -969,7 +1203,7 @@ laws = {
 		}
 		revoke_allowed = {
 			always = no
-		}			
+		}
 		ai_will_do = {
 			factor = 0
 		}
@@ -979,7 +1213,7 @@ laws = {
 		effect = {
 			hidden_tooltip = {
 				if = {
-					limit = { 
+					limit = {
 						has_law = grant_title_voting_power_0
 						holder_scope = {
 							primary_title = {
@@ -990,7 +1224,11 @@ laws = {
 					holder_scope = {
 						any_vassal = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_increased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_increased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT
@@ -1000,7 +1238,11 @@ laws = {
 						}
 						any_courtier = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_increased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_increased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT
@@ -1016,36 +1258,56 @@ laws = {
 		}
 		vassal_limit = 2
 	}
-
 	#VOTE ON BANISH
 	banish_voting_power_0 = {
 		group = banish_voting_power
 		default = yes
-		
 		allow = {
-			NOT = { holder_scope = { culture_group = asur_group } }
+			NOT = {
+				holder_scope = {
+					culture_group = asur_group
+				}
+			}
 			has_law = banish_voting_power_1
 			OR = {
-				NOT = { holder_scope = { is_tribal = yes } }
+				NOT = {
+					holder_scope = {
+						is_tribal = yes
+					}
+				}
 				has_law = tribal_organization_4
 			}
-			NOT = { is_nomadic = yes }
+			NOT = {
+				is_nomadic = yes
+			}
 		}
 		potential = {
 			has_dlc = "Zeus"
 			higher_tier_than = baron
 			#ADD RACES WHO AREN'T SUPPOSED TO HAVE COUNCILS
-			holder_scope = { NOT = { religion_group = greenskin_gods_group } }
-			holder_scope = { NOT = { trait = creature_beastman } }
+			holder_scope = {
+				NOT = {
+					religion_group = greenskin_gods_group
+				}
+			}
+			holder_scope = {
+				NOT = {
+					trait = creature_beastman
+				}
+			}
 			OR = {
-				NOT = { holder_scope = { is_tribal = yes } }
+				NOT = {
+					holder_scope = {
+						is_tribal = yes
+					}
+				}
 				has_law	= tribal_organization_3
 				has_law = tribal_organization_4
 			}
 		}
 		revoke_allowed = {
 			always = no
-		}			
+		}
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -1058,7 +1320,7 @@ laws = {
 		effect = {
 			hidden_tooltip = {
 				if = {
-					limit = { 
+					limit = {
 						has_law = banish_voting_power_1
 						holder_scope = {
 							primary_title = {
@@ -1069,7 +1331,11 @@ laws = {
 					holder_scope = {
 						any_vassal = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_decreased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_decreased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT
@@ -1079,7 +1345,11 @@ laws = {
 						}
 						any_courtier = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_decreased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_decreased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT
@@ -1094,45 +1364,53 @@ laws = {
 			disable_council_voting_on_issue = exile_imprisoned_interaction
 		}
 	}
-
 	banish_voting_power_1 = {
 		group = banish_voting_power
 		default = yes
-		
 		default_selection = {
 			factor = 0
-			
-			additive_modifier = { 
-				value = 10			
-				NOT = { title = e_bretonnia }
-				holder_scope = { 
+			additive_modifier = {
+				value = 10
+				NOT = {
+					title = e_bretonnia
+				}
+				holder_scope = {
 					religion_group = old_world_group
 					is_feudal = yes
-				}	
+				}
 			}
-			 additive_modifier = { 
-				 value = 10			
-				holder_scope = { culture_group = asur_group }
-			 }
-			# additive_modifier = { 
-				# value = 10			
-				# title = e_hre	
+			additive_modifier = {
+				value = 10
+				holder_scope = {
+					culture_group = asur_group
+				}
+			}
+			# additive_modifier = {
+			# value = 10
+			# title = e_hre
 			# }
-			additive_modifier = { 
-				value = 10			
-				OR = {
-					holder_scope = { is_nomadic = yes }	
+			additive_modifier = {
+				value = 10
+				holder_scope = {
+					is_nomadic = yes
 				}
 			}
 		}
-		
 		allow = {
-			NOT = { holder_scope = { culture_group = asur_group } }
+			NOT = {
+				holder_scope = {
+					culture_group = asur_group
+				}
+			}
 			has_law = law_voting_power_1
 			has_law = war_voting_power_1
 			has_law = banish_voting_power_0
 			OR = {
-				NOT = { holder_scope = { is_tribal = yes } }
+				NOT = {
+					holder_scope = {
+						is_tribal = yes
+					}
+				}
 				has_law = tribal_organization_3
 			}
 		}
@@ -1140,17 +1418,25 @@ laws = {
 			has_dlc = "Zeus"
 			higher_tier_than = baron
 			#ADD RACES WHO AREN'T SUPPOSED TO HAVE COUNCILS
-			holder_scope = { NOT = { religion_group = greenskin_gods_group } }
-			holder_scope = { NOT = { trait = creature_beastman } }
+			holder_scope = {
+				nor = {
+					religion_group = greenskin_gods_group
+					trait = creature_beastman
+				}
+			}
 			OR = {
-				NOT = { holder_scope = { is_tribal = yes } }
+				NOT = {
+					holder_scope = {
+						is_tribal = yes
+					}
+				}
 				has_law	= tribal_organization_3
 				has_law = tribal_organization_4
 			}
 		}
 		revoke_allowed = {
 			always = no
-		}			
+		}
 		ai_will_do = {
 			factor = 0
 		}
@@ -1160,7 +1446,7 @@ laws = {
 		effect = {
 			hidden_tooltip = {
 				if = {
-					limit = { 
+					limit = {
 						has_law = banish_voting_power_0
 						holder_scope = {
 							primary_title = {
@@ -1171,7 +1457,11 @@ laws = {
 					holder_scope = {
 						any_vassal = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_increased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_increased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT
@@ -1181,7 +1471,11 @@ laws = {
 						}
 						any_courtier = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_increased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_increased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT
@@ -1197,37 +1491,52 @@ laws = {
 		}
 		vassal_limit = 2
 	}
-	
 	#VOTE ON EXECUTE
 	execution_voting_power_0 = {
 		group = execution_voting_power
-		
 		default = yes
-		
 		allow = {
-			NOT = { holder_scope = { culture_group = asur_group } }
+			NOT = {
+				holder_scope = {
+					culture_group = asur_group
+				}
+			}
 			has_law = execution_voting_power_1
 			OR = {
-				NOT = { holder_scope = { is_tribal = yes } }
+				NOT = {
+					holder_scope = {
+						is_tribal = yes
+					}
+				}
 				has_law = tribal_organization_4
 			}
-			NOT = { is_nomadic = yes }
+			NOT = {
+				is_nomadic = yes
+			}
 		}
 		potential = {
 			has_dlc = "Zeus"
 			higher_tier_than = baron
 			#ADD RACES WHO AREN'T SUPPOSED TO HAVE COUNCILS
-			holder_scope = { NOT = { religion_group = greenskin_gods_group } }
-			holder_scope = { NOT = { trait = creature_beastman } }
+			holder_scope = {
+				nor = {
+					religion_group = greenskin_gods_group
+					trait = creature_beastman
+				}
+			}
 			OR = {
-				NOT = { holder_scope = { is_tribal = yes } }
+				NOT = {
+					holder_scope = {
+						is_tribal = yes
+					}
+				}
 				has_law	= tribal_organization_3
 				has_law = tribal_organization_4
 			}
 		}
 		revoke_allowed = {
 			always = no
-		}			
+		}
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -1240,7 +1549,7 @@ laws = {
 		effect = {
 			hidden_tooltip = {
 				if = {
-					limit = { 
+					limit = {
 						has_law = execution_voting_power_1
 						holder_scope = {
 							primary_title = {
@@ -1251,7 +1560,11 @@ laws = {
 					holder_scope = {
 						any_vassal = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_decreased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_decreased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT
@@ -1261,7 +1574,11 @@ laws = {
 						}
 						any_courtier = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_decreased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_decreased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT
@@ -1276,46 +1593,54 @@ laws = {
 			disable_council_voting_on_issue = execute_imprisoned_interaction
 		}
 	}
-	
 	execution_voting_power_1 = {
 		group = execution_voting_power
-		
 		default_selection = {
 			factor = 0
-			
-			additive_modifier = { 
-				value = 10			
-				NOT = { title = e_bretonnia }
-				holder_scope = { 
+			additive_modifier = {
+				value = 10
+				NOT = {
+					title = e_bretonnia
+				}
+				holder_scope = {
 					religion_group = old_world_group
 					is_feudal = yes
-				}	
+				}
 			}
-			 additive_modifier = { 
-				 value = 10			
-				holder_scope = { culture_group = asur_group }
-			 }
-			# additive_modifier = { 
-				# value = 10			
-				# title = e_hre	
+			additive_modifier = {
+				value = 10
+				holder_scope = {
+					culture_group = asur_group
+				}
+			}
+			# additive_modifier = {
+			# value = 10
+			# title = e_hre
 			# }
-			additive_modifier = { 
-				value = 10			
-				OR = {
-					holder_scope = { is_nomadic = yes }	
+			additive_modifier = {
+				value = 10
+				holder_scope = {
+					is_nomadic = yes
 				}
 			}
 		}
-		
 		allow = {
 			has_law = law_voting_power_1
 			has_law = war_voting_power_1
 			has_law = execution_voting_power_0
 			#ADD RACES WHO AREN'T SUPPOSED TO HAVE COUNCILS
-			holder_scope = { NOT = { religion_group = greenskin_gods_group } }
-			holder_scope = { NOT = { trait = creature_beastman } }
+			holder_scope = {
+				nor = {
+					religion_group = greenskin_gods_group
+					trait = creature_beastman
+				}
+			}
 			OR = {
-				NOT = { holder_scope = { is_tribal = yes } }
+				NOT = {
+					holder_scope = {
+						is_tribal = yes
+					}
+				}
 				has_law = tribal_organization_3
 			}
 		}
@@ -1323,14 +1648,18 @@ laws = {
 			has_dlc = "Zeus"
 			higher_tier_than = baron
 			OR = {
-				NOT = { holder_scope = { is_tribal = yes } }
+				NOT = {
+					holder_scope = {
+						is_tribal = yes
+					}
+				}
 				has_law	= tribal_organization_3
 				has_law = tribal_organization_4
 			}
 		}
 		revoke_allowed = {
 			always = no
-		}			
+		}
 		ai_will_do = {
 			factor = 0
 		}
@@ -1340,7 +1669,7 @@ laws = {
 		effect = {
 			hidden_tooltip = {
 				if = {
-					limit = { 
+					limit = {
 						has_law = execution_voting_power_0
 						holder_scope = {
 							primary_title = {
@@ -1351,7 +1680,11 @@ laws = {
 					holder_scope = {
 						any_vassal = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_increased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_increased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT
@@ -1361,7 +1694,11 @@ laws = {
 						}
 						any_courtier = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_increased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_increased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT
@@ -1377,16 +1714,15 @@ laws = {
 		}
 		vassal_limit = 2
 	}
-
 	#VOTE ON SUCCESSION
 	succession_voting_power_0 = {
 		group = succession_voting_power
-		
 		default = yes
-		
 		allow = {
-			NOT = { holder_scope = { culture_group = asur_group } }
-			NOT = {
+			nor = {
+				holder_scope = {
+					culture_group = asur_group
+				}
 				has_law = succession_voting_power_0
 			}
 		}
@@ -1397,12 +1733,16 @@ laws = {
 				is_feudal = yes
 			}
 			#ADD RACES WHO AREN'T SUPPOSED TO HAVE COUNCILS
-			holder_scope = { NOT = { religion_group = greenskin_gods_group } }
-			holder_scope = { NOT = { trait = creature_beastman } }
+			holder_scope = {
+				nor = {
+					religion_group = greenskin_gods_group
+					trait = creature_beastman
+				}
+			}
 		}
 		revoke_allowed = {
 			always = no
-		}			
+		}
 		ai_will_do = {
 			factor = 1
 		}
@@ -1415,7 +1755,7 @@ laws = {
 			}
 			hidden_tooltip = {
 				if = {
-					limit = { 
+					limit = {
 						has_law = succession_voting_power_1
 						holder_scope = {
 							primary_title = {
@@ -1426,7 +1766,11 @@ laws = {
 					holder_scope = {
 						any_vassal = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_decreased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_decreased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT
@@ -1436,7 +1780,11 @@ laws = {
 						}
 						any_courtier = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_decreased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_decreased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT
@@ -1450,10 +1798,8 @@ laws = {
 			}
 		}
 	}
-	
 	succession_voting_power_1 = {
 		group = succession_voting_power
-		
 		allow = {
 			has_law = law_voting_power_1
 			has_law = war_voting_power_1
@@ -1462,17 +1808,23 @@ laws = {
 		potential = {
 			has_dlc = "Zeus"
 			higher_tier_than = duke
-			holder_scope = { culture_group = asur_group }
+			holder_scope = {
+				culture_group = asur_group
+			}
 			holder_scope = {
 				is_feudal = yes
 			}
 			#ADD RACES WHO AREN'T SUPPOSED TO HAVE COUNCILS
-			holder_scope = { NOT = { religion_group = greenskin_gods_group } }
-			holder_scope = { NOT = { trait = creature_beastman } }
+			holder_scope = {
+				nor = {
+					religion_group = greenskin_gods_group
+					trait = creature_beastman
+				}
+			}
 		}
 		revoke_allowed = {
 			always = no
-		}			
+		}
 		ai_will_do = {
 			factor = 0
 		}
@@ -1481,20 +1833,20 @@ laws = {
 		}
 		default_selection = {
 			factor = 0
-			 additive_modifier = { 
-				 value = 10			
-				holder_scope = { culture_group = asur_group }
-			 }
+			additive_modifier = {
+				value = 10
+				holder_scope = {
+					culture_group = asur_group
+				}
+			}
 		}
-		
 		effect = {
 			custom_tooltip = {
 				text = succession_voting_power_1_effect_tooltip
 			}
-			
 			hidden_tooltip = {
 				if = {
-					limit = { 
+					limit = {
 						has_law = succession_voting_power_0
 						holder_scope = {
 							primary_title = {
@@ -1505,7 +1857,11 @@ laws = {
 					holder_scope = {
 						any_vassal = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_increased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_increased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT
@@ -1515,7 +1871,11 @@ laws = {
 						}
 						any_courtier = {
 							limit = {
-								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_increased_council_power } }
+								NOT = {
+									has_opinion_modifier = {
+										who = ROOT modifier = opinion_increased_council_power
+									}
+								}
 							}
 							opinion = {
 								who = ROOT

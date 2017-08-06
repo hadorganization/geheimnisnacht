@@ -141,23 +141,33 @@ decisions = {
 		only_playable = yes
 		only_independent = yes
 		potential = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			# think about it
 			ai = no
 			trait = creature_skink
 			war = yes
-			any_war = {
-				OR = {
-					is_primary_attacker = yes
-					is_primary_defender = yes
-				}
+			or = {
+				is_primary_war_defender = yes
+				is_primary_war_attacker = yes
 			}
+			# any_war = {
+			# 	OR = {
+			# 		any_defender = {
+			# 			character = ROOT
+			# 			is_primary_war_defender = yes
+			# 		}
+			# 		any_attacker = {
+			# 			character = ROOT
+			# 			is_primary_war_attacker = yes
+			# 		}
+			# 	}
+			# }
 			nor = {
 				has_character_modifier = wakeslann_cooldown
 				trait = defective
-			}
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
 			}
 			any_vassal = {
 				trait = creature_slann
@@ -169,7 +179,6 @@ decisions = {
 			NOT = {
 				decadence = 75
 			}
-
 		}
 		effect = {
 			piety = -300
@@ -249,23 +258,23 @@ decisions = {
 					prisoner = no
 					age = 16
 					has_character_flag = brawling_participant
-				}
-				nor = {
-					trait = disinherited
-					trait = disinherited_amazon
-					trait = pregnant
-				}
-				custom_tooltip = {
-					text = IS_NOT_INCAPACITATED
-					is_incapacitated_trigger = no
-				}
-				OR = {
-					NOT = {
-						age = 45
+					nor = {
+						trait = disinherited
+						trait = disinherited_amazon
+						trait = pregnant
 					}
-					is_immortal_trigger = yes
+					custom_tooltip = {
+						text = IS_NOT_INCAPACITATED
+						is_incapacitated_trigger = no
+					}
+					OR = {
+						NOT = {
+							age = 45
+						}
+						is_immortal_trigger = yes
+					}
+					count = 2
 				}
-				count = 2
 			}
 		}
 		allow = {
@@ -424,9 +433,7 @@ decisions = {
 			}
 			war = no
 			capital_scope = {
-				location = {
-					region = world_new_world_lustria
-				}
+				region = world_new_world_lustria
 			}
 			is_immortal_trigger = no
 			nor = {

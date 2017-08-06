@@ -250,65 +250,65 @@ decisions = {
 		}
 	}
 
-	#re-create the hammerer regiments from the golden age
-	hammerer_regiments = {
-		only_playable = yes
-		is_high_prio = yes
-		potential = {
-			NOT = {
-				has_global_flag = hammerer_regiments_reformed
-			}
-			tier = emperor
-			war = no
-			trait = creature_dwarf
-			religion_group = dwarf_gods_group
-			culture_group = dwarf_group
-			realm_size = 80
-			capital_scope = {
-				has_empty_holding = yes
-			}
-			any_realm_character = {
-				trait = hammerer
-			}
-		}
-		allow = {
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
-			}
-			realm_size = 120
-			treasury = 400
-			any_realm_character = {
-				trait = hammerer
-				count = 3
-			}
-		}
-		effect = {
-			set_global_flag = hammerer_regiments_reformed
-			prestige = 200
-			piety = 20
-			d_the_hammerers = {
-				holder_scope = {
-					set_defacto_liege = ROOT
-					ROOT = {
-						capital_scope = {
-							build_holding = {
-								type = castle
-								holder = PREVPREV
-							}
-						}
-					}
-				}
-			}
-			treasury = -400
-		}
-		revoke_allowed = {
-			always = no
-		}
-		ai_will_do = {
-			factor = 100
-		}
-	}
+	# re-create the hammerer regiments from the golden age
+	# hammerer_regiments = {
+	# 	only_playable = yes
+	# 	is_high_prio = yes
+	# 	potential = {
+	# 		NOT = {
+	# 			has_global_flag = hammerer_regiments_reformed
+	# 		}
+	# 		tier = emperor
+	# 		war = no
+	# 		trait = creature_dwarf
+	# 		religion_group = dwarf_gods_group
+	# 		culture_group = dwarf_group
+	# 		realm_size = 80
+	# 		capital_scope = {
+	# 			has_empty_holding = yes
+	# 		}
+	# 		any_realm_character = {
+	# 			trait = hammerer
+	# 		}
+	# 	}
+	# 	allow = {
+	# 		custom_tooltip = {
+	# 			text = IS_NOT_INCAPACITATED
+	# 			is_incapacitated_trigger = no
+	# 		}
+	# 		realm_size = 120
+	# 		treasury = 400
+	# 		any_realm_character = {
+	# 			trait = hammerer
+	# 			count = 3
+	# 		}
+	# 	}
+	# 	effect = {
+	# 		set_global_flag = hammerer_regiments_reformed
+	# 		prestige = 200
+	# 		piety = 20
+	# 		d_the_hammerers = {
+	# 			holder_scope = {
+	# 				set_defacto_liege = ROOT
+	# 				ROOT = {
+	# 					capital_scope = {
+	# 						build_holding = {
+	# 							type = castle
+	# 							holder = PREVPREV
+	# 						}
+	# 					}
+	# 				}
+	# 			}
+	# 		}
+	# 		treasury = -400
+	# 	}
+	# 	revoke_allowed = {
+	# 		always = no
+	# 	}
+	# 	ai_will_do = {
+	# 		factor = 100
+	# 	}
+	# }
 }
 
 targetted_decisions = {
@@ -376,12 +376,6 @@ targetted_decisions = {
 				factor = 2
 				FROM = {
 					trait = ambitious
-				}
-			}
-			modifier = {
-				factor = 0.1
-				FROM = {
-					trait = proud
 				}
 			}
 			modifier = {

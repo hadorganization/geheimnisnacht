@@ -459,12 +459,7 @@ targetted_decisions = {
 			}
 			if = {
 				limit = {
-					OR = {
-						trait = khorne_demon
-						trait = nurgle_demon
-						trait = slaanesh_demon
-						trait = tzeentch_demon
-					}
+					is_demon_trigger = yes
 				}
 				character_event = {
 					id = sdemons.1
@@ -547,14 +542,15 @@ targetted_decisions = {
 						has_artifact = red_dragon_mount
 					}
 					FROM = {
-						has_artifact = creature_beastman
+						trait = creature_beastman
 					}
 				}
 			}
 			modifier = {
 				factor = 0
 				reverse_opinion = {
-					who = FROM value = 20
+					who = FROM
+					value = 20
 				}
 			}
 			modifier = {

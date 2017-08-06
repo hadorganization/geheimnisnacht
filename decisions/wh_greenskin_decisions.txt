@@ -991,28 +991,22 @@ decisions = {
 	}
 
 	choose_greenskin_branch = {
+		only_playable = yes
 		potential = {
 			is_adult = yes
 			religion = greenskin_gods
-			NOT = {
-				OR = {
-					trait = greenskin_gods_gork
-					trait = greenskin_gods_mork
-				}
-			}
 		}
 		allow = {
-			NOT = {
-				OR = {
-					trait = greenskin_gods_gork
-					trait = greenskin_gods_mork
-				}
+			nor = {
+				trait = greenskin_gods_gork
+				trait = greenskin_gods_mork
 			}
 		}
 		effect = {
+			# Choose branch
 			character_event = {
 				id = DR_greenskins.206
-			} #Choose branch
+			}
 		}
 		revoke_allowed = {
 			always = no

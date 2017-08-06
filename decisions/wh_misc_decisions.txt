@@ -1,19 +1,18 @@
-#
-
 targetted_decisions = {
 
 	send_son_to_university = {
 		filter = dynasty
 		ai_target_filter = dynasty
-		#only_rulers = yes
+		# is_high_prio = yes
+		only_rulers = yes
 		from_potential = {
 			is_ruler = yes
-			NOR = {
+			NOT = {
 				trait = witch_hunter
+			}
+			NOR = {
 				religion = grail
 				religion = false_grail
-				is_tribal = yes
-				is_nomadic = yes
 			}
 			trait = creature_human
 			OR = {
@@ -29,11 +28,23 @@ targetted_decisions = {
 					region = world_greater_araby
 				}
 			}
+			NOT = {
+				is_tribal = yes
+			}
+			NOT = {
+				is_nomadic = yes
+			}
+			prisoner = no
+			NOT = {
+				trait = incapable
+			}
 		}
 		potential = {
 			age = 16
 			is_landed = no
 			in_command = no
+			prisoner = no
+			is_incapacitated_trigger = no
 			OR = {
 				father = {
 					character = FROM
@@ -58,18 +69,21 @@ targetted_decisions = {
 					}
 				}
 			}
+			NOT = {
+				trait = witch_hunter
+			}
+			NOR = {
+				religion = grail
+				religion = false_grail
+			}
+			trait = creature_human
+			OR = {
+				religion_group = old_world_group
+				religion_group = ormazd_gods_group
+				religion = northern_gods
+			}
 		}
 		allow = {
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
-			}
-			from = {
-				custom_tooltip = {
-					text = IS_NOT_INCAPACITATED
-					is_incapacitated_trigger = no
-				}
-			}
 			host = {
 				character = FROM
 			}
@@ -147,13 +161,16 @@ targetted_decisions = {
 		}
 	}
 }
-
 decisions = {
 
 	restore_eternal_empire = {
 		is_high_prio = yes
 		potential = {
 			age = 16
+			prisoner = no
+			NOT = {
+				trait = incapable
+			}
 			NOT = {
 				has_global_flag = ee_restored
 			}
@@ -164,10 +181,6 @@ decisions = {
 			}
 		}
 		allow = {
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
-			}
 			prestige = 1500
 			OR = {
 				has_landed_title = e_estalia
@@ -300,32 +313,44 @@ decisions = {
 			}
 			set_global_flag = ee_restored
 			narrative_event = {
-				id = DR_misc.1
-				tooltip = EVTTOOLTIPETERNALRESTORED
+				id = DR_misc.1 tooltip = EVTTOOLTIPETERNALRESTORED
 			}
 		}
 		ai_will_do = {
 			factor = 1
 		}
 	}
+	#Parade of the Idols ( Atruhayid )
 
-	# Parade of the Idols ( Atruhayid )
 	celebrate_atruhayid_festival = {
-		only_playable = yes
 		is_high_prio = yes
+		only_rulers = yes
         potential = {
+            is_ruler = yes
             is_feudal = yes
+            prisoner = no
             religion = atruhayid
-            nor = {
+            NOT = {
+				trait = incapable
+			}
+            NOT = {
                 has_character_modifier = holding_atruhayid_feast
+			}
+            NOT = {
                 has_character_modifier = large_feast_timer
+			}
+            NOT = {
                 has_character_modifier = fabulous_feast
-				has_character_flag = do_not_disturb
+			}
+            NOT = {
                 liege = {
                     has_character_modifier = holding_atruhayid_feast
 				}
 			}
             num_of_vassals = 1
+            NOT = {
+				has_character_flag = do_not_disturb
+			}
 		}
         allow = {
 			custom_tooltip = {
@@ -336,6 +361,7 @@ decisions = {
             any_demesne_title = {
                 is_occupied = no
 			}
+            prisoner = no
             scaled_wealth = 0.2
             month = 5
 			NOT = {
@@ -396,11 +422,10 @@ decisions = {
 			}
 		}
 	}
+	#Borderlands Prince Leagues
+	#Only for human rulers inside the Borderlands region
 
-	# Borderlands Prince Leagues
-	# Only for human rulers inside the Borderlands region
 	create_elective_league = {
-		only_playable = yes
         potential = {
             ai = no  # adjacency calculation is expensive, so ai instead uses MTTH event ElectiveLeagues.30
             OR = {
@@ -431,7 +456,6 @@ decisions = {
 		}
 	}
 }
-
 settlement_decisions = {
 
 	cleanse_skaven_presence = {

@@ -970,48 +970,18 @@ character_event = {
 
 	trigger = {
 		has_global_flag = mists_of_albion
-		ROOT = {
-			OR = {
-				any_army = {
-					location = {
-						province_id = 1868
-					}
-				}
-				AND = {
-					NOT = {
-						religion = old_faith
-					}
-					NOT = {
-						culture_group = albion_group
-					}
-					any_army = {
-						OR = {
-							location = {
-								province_id = 1868
-							}
-							location = {
-								province_id = 1938
-							}
-							location = {
-								province_id = 1912
-							}
-							location = {
-								province_id = 1865
-							}
-							location = {
-								province_id = 2074
-							}
-						}
-					}
+		OR = {
+			any_army = {
+				location = {
+					province_id = 1868
 				}
 			}
-		}
-	}
-
-	immediate = {
-		ROOT = {
-			any_army = {
-				limit = {
+			AND = {
+				nor = {
+					religion = old_faith
+					culture_group = albion_group
+				}
+				any_army = {
 					OR = {
 						location = {
 							province_id = 1868
@@ -1030,32 +1000,52 @@ character_event = {
 						}
 					}
 				}
-				troops = -1.00
-			}
-		}
-		if = {
-			limit = {
-				NOT = {
-					has_character_flag = pleasestopalbionwarning
-				}
-			}
-			character_event = {
-				id = DR_misc.1002
 			}
 		}
 	}
 
-	option = {
-		name = OK
+	immediate = {
+		any_army = {
+			limit = {
+				OR = {
+					location = {
+						province_id = 1868
+					}
+					location = {
+						province_id = 1938
+					}
+					location = {
+						province_id = 1912
+					}
+					location = {
+						province_id = 1865
+					}
+					location = {
+						province_id = 2074
+					}
+				}
+			}
+			troops = -1.00
+		}
+		character_event = {
+			id = DR_misc.1003
+		}
 	}
 }
 
 # followup event to army owner
 character_event = {
-	id = DR_misc.1002
+	id = DR_misc.1003
 	picture = GFX_evt_ship_storm
-	is_triggered_only = yes
 	desc = EVTDESC_DR_misc_albion_mists_sink_ship
+	ai = no
+	is_triggered_only = yes
+	
+	trigger = {
+		NOT = {
+			has_character_flag = wh_misc.1002_block
+		}
+	}
 
 	option = {
 		name = EVTOPTA_DR_misc_albion_mists_sink_ship
@@ -1063,7 +1053,7 @@ character_event = {
 
 	option = {
 		name = EVTOPTB_DR_misc_albion_mists_sink_ship
-		set_character_flag = pleasestopalbionwarning
+		set_character_flag = wh_misc.1002_block
 	}
 }
 

@@ -1,5 +1,3 @@
-#
-
 targetted_decisions = {
 
 	send_a_seductress = {
@@ -8,28 +6,29 @@ targetted_decisions = {
 			ai = no
 			trait = lahmian_queen
 			any_dynasty_member ={
-				is_female = yes
-				is_landed = no
-				trait = vampire_lahmian_visible
-				NOT = {
-					trait = on_lahmian_mission
+				AND = {
+					is_female = yes
+					is_landed = no
+					trait = vampire_lahmian_visible
+					NOT = {
+						trait = on_lahmian_mission
+					}
 				}
 			}
 		}
 		potential = {
 			is_playable = yes
 			is_female = no
+			higher_tier_than = BARON
 			is_within_diplo_range = FROM
 			age = 16
-			nor = {
+			NOT = {
 				has_character_flag = lahmian_target
+			}
+			NOT = {
 				is_lover = FROM
 			}
 			trait = creature_human
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
-			}
 		}
 		allow = {
 			FROM = {
@@ -52,33 +51,34 @@ targetted_decisions = {
 		ai_target_filter = spouse ##only players use this mechanic, since filter all is too CPU intensive. AI will use other mechanics
 		from_potential = {
 			ai = no
-			trait = lahmian_queen
-			trait = vampire_lahmian_visible
-			NOT = {
-				trait = on_lahmian_mission
+			AND = {
+				trait = lahmian_queen
+				trait = vampire_lahmian_visible
+				NOT = {
+					trait = on_lahmian_mission
+				}
 			}
 		}
 		potential = {
-			is_playable = yes
-			is_female = no
-			is_within_diplo_range = FROM
-			age = 16
-			nor = {
-				has_character_flag = lahmian_target
-				is_lover = FROM
-			}
-			trait = creature_human
 			custom_tooltip = {
 				text = IS_NOT_INCAPACITATED
 				is_incapacitated_trigger = no
 			}
+			is_playable = yes
+			is_female = no
+			higher_tier_than = BARON
+			is_within_diplo_range = FROM
+			age = 16
+			NOT = {
+				has_character_flag = lahmian_target
+			}
+			NOT = {
+				is_lover = FROM
+			}
+			trait = creature_human
 		}
 		allow = {
 			FROM = {
-				custom_tooltip = {
-					text = IS_NOT_INCAPACITATED
-					is_incapacitated_trigger = no
-				}
 				wealth = 25
 			}
 		}
@@ -96,17 +96,22 @@ targetted_decisions = {
 		ai_target_filter = spouse ##only players use this mechanic, since filter all is too CPU intensive. AI will use other mechanics
 		from_potential = {
 			ai = no
-			trait = lahmian_queen
-			trait = vampire_lahmian_visible
+			AND = {
+				trait = lahmian_queen
+				trait = vampire_lahmian_visible
+			}
 		}
 		potential = {
-			trait = vampire_lahmian_visible
-			trait = on_lahmian_mission
-			NOT = {
-				has_character_flag = recruitment_mission
+			AND = {
+				trait = vampire_lahmian_visible
+				trait = on_lahmian_mission
+				NOT = {
+					has_character_flag = recruitment_mission
+				}
 			}
 		}
 		allow = {
+			always = yes
 		}
 		effect = {
 			set_character_flag = return_home_lahmia
@@ -120,15 +125,20 @@ targetted_decisions = {
 		ai_target_filter = spouse ##only players use this mechanic, since filter all is too CPU intensive. AI will use other mechanics
 		from_potential = {
 			ai = no
-			trait = lahmian_queen
-			trait = vampire_lahmian_visible
+			AND = {
+				trait = lahmian_queen
+				trait = vampire_lahmian_visible
+			}
 		}
 		potential = {
-			trait = vampire_lahmian_visible
-			trait = on_lahmian_mission
-			has_character_flag = recruitment_mission
+			AND = {
+				trait = vampire_lahmian_visible
+				trait = on_lahmian_mission
+				has_character_flag = recruitment_mission
+			}
 		}
 		allow = {
+			always = yes
 		}
 		effect = {
 			clr_character_flag = recruitment_mission
@@ -148,13 +158,16 @@ targetted_decisions = {
 		potential = {
 			is_lover = FROM
 			is_landed = no
-			nor = {
+			NOT = {
 				same_realm = FROM
-				religion_group = chaos_gods_group
 			}
 			trait = creature_human
+			NOT = {
+				religion_group = chaos_gods_group
+			}
 		}
 		allow = {
+			always = yes
 		}
 		effect = {
 			character_event = {
@@ -173,9 +186,11 @@ targetted_decisions = {
 			trait = vampire_lahmian_visible
 			trait = lahmian_queen
 			any_dynasty_member ={
-				trait = vampire_lahmian_visible
-				NOT = {
-					trait = on_lahmian_mission
+				AND = {
+					trait = vampire_lahmian_visible
+					NOT = {
+						trait = on_lahmian_mission
+					}
 				}
 			}
 		}
@@ -204,7 +219,6 @@ targetted_decisions = {
 	}
 
 	establish_lahmian_presence = {
-		only_playable = yes
 		ai_target_filter = spouse ##only players use this mechanic, since filter all is too CPU intensive. AI will use other mechanics
 		from_potential = {
 			ai = no
@@ -212,6 +226,7 @@ targetted_decisions = {
 			trait = lahmian_queen
 		}
 		potential = {
+			higher_tier_than = BARON
 			is_within_diplo_range = FROM
 			religion_group = old_world_group
 			trait = creature_human
@@ -239,15 +254,15 @@ targetted_decisions = {
 		}
 	}
 }
-
 decisions = {
 
 	retake_lahmia = {
-		only_playable = yes
-		only_independent = yes
 		is_high_prio = yes
+		only_rulers = yes
 		potential = {
 			age = 16
+			is_ruler = yes
+			higher_tier_than = BARON
 			independent = yes
 			trait = lahmian_queen
 			NOT = {
@@ -283,11 +298,13 @@ decisions = {
 	}
 
 	rebuild_palace_and_blood_temple = {
-		only_playable = yes
-		only_independent = yes
 		is_high_prio = yes
+		only_rulers = yes
 		potential = {
 			age = 16
+			is_ruler = yes
+			higher_tier_than = BARON
+			independent = yes
 			trait = lahmian_queen
 			NOT = {
 				has_global_flag = wh_rebuild_palace_and_blood_temple
@@ -307,8 +324,7 @@ decisions = {
 				set_global_flag = wh_rebuild_palace_and_blood_temple
 		 		1127 = {
 					add_province_modifier = {
-						name = great_city_lahmia
-						days = -1
+						name = great_city_lahmia days = -1
 					}
 				}
 			}

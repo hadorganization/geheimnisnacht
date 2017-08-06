@@ -1533,38 +1533,34 @@ can_be_councilmember_king_trigger = {
 	NOT = { trait = incapable }
 	NOT = { trait = in_hiding }
 	NOT = { has_character_modifier = resigned_in_anger }
-	AND = {
+	OR = {
+		is_female = no
 		OR = {
-			is_female = no
-			AND = {
-				OR = {
-					religion = cathar
-					religion = messalian
-				}
-				liege = { religion = ROOT }
-			}
-			AND = {
-				liege = {
-					primary_title = {
-						OR = {
-							has_law = status_of_women_1
-							has_law = status_of_women_2
-							has_law = status_of_women_3
-						}
+			religion = cathar
+			religion = messalian
+		}
+			liege = { religion = ROOT }
+		AND = {
+			liege = {
+				primary_title = {
+					OR = {
+						has_law = status_of_women_1
+						has_law = status_of_women_2
+						has_law = status_of_women_3
 					}
 				}
-				is_landed = yes
 			}
-			OR = {
-				liege = { primary_title = { has_law = status_of_women_4 } }
-				has_game_rule = {
-					name = gender
-					value = all
-				}
+			is_landed = yes
+		}
+		OR = {
+			liege = { primary_title = { has_law = status_of_women_4 } }
+			has_game_rule = {
+				name = gender
+				value = all
 			}
 		}
-		is_adult = yes
 	}
+		is_adult = yes
 }
 
 can_be_councilmember_emperor_trigger = {

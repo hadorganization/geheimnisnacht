@@ -3,6 +3,7 @@ decisions = {
 	skaven_flip_flopping = {
 		is_high_prio = yes
 		potential = {
+			age = 16
 			NOR = {
 				trait = warlock_engineer
 				trait = plaguelord
@@ -10,13 +11,10 @@ decisions = {
 				trait = eshin_assassin
 				trait = council_warlord
 				trait = grey_seer
-			}
-			NOT = {
 				liege = {
 					character = ROOT
 				}
 			}
-			age = 16
 			trait = creature_skaven
 		}
 		allow = {
@@ -45,7 +43,8 @@ decisions = {
 				liege = {
 					ROOT = {
 						any_demesne_title = {
-							culture = ROOT }
+							culture = ROOT
+						}
 					}
 				}
 			}
@@ -78,7 +77,10 @@ decisions = {
 	}
 
 	acquire_warpstone = {
+		only_playable = yes
 		potential = {
+			age = 16
+			trait = creature_skaven
 			OR = {
 				trait = warlock_engineer
 				trait = plaguelord
@@ -88,19 +90,17 @@ decisions = {
 				trait = grey_seer
 				higher_tier_than = COUNT
 			}
-			age = 16
-			trait = creature_skaven
 			NOT = {
 				has_character_modifier = warpstone_5
 			}
 		}
 		allow = {
-			wealth = 500
-			prestige = 100
 			custom_tooltip = {
 				text = IS_NOT_INCAPACITATED
 				is_incapacitated_trigger = no
 			}
+			wealth = 500
+			prestige = 100
 		}
 		effect = {
 			wealth = -500
@@ -221,13 +221,10 @@ decisions = {
 	}
 
 	eat_warpstone = {
+		only_playable = yes
 		is_high_prio = yes
 		potential = {
-			prisoner = no
 			age = 16
-			NOT = {
-				trait = incapable
-			}
 			NOT = {
 				has_character_modifier = warpstone_timer
 			}
@@ -296,17 +293,17 @@ decisions = {
 	}
 
 	skaven_gain_claim = {
+		only_playable = yes
 		is_high_prio = yes
 		potential = {
+			age = 16
+			trait = creature_skaven
 			independent = no
-			higher_tier_than = BARON
 			NOT = {
 				liege = {
 					character = ROOT
 				}
 			}
-			age = 16
-			trait = creature_skaven
 		}
 		allow = {
 			custom_tooltip = {
@@ -317,7 +314,8 @@ decisions = {
 				liege = {
 					primary_title = {
 						ROOT = {
-							has_claim = PREV }
+							has_claim = PREV
+						}
 					}
 				}
 			}
@@ -382,16 +380,12 @@ decisions = {
 targetted_decisions = {
 
 	snatch_breeder = {
-		#Any female skaven courtier in a Skaven's court is his breeder and he makes babies from her
+		# Any female skaven courtier in a Skaven's court is his breeder and he makes babies from her
 		ai_target_filter = court
 		only_rulers = yes
 		from_potential = {
-			is_ruler = yes
 			age = 14
 			is_female = no
-			NOT = {
-				trait = incapable
-			}
        		trait = creature_skaven
 		}
 		potential = {
@@ -403,10 +397,16 @@ targetted_decisions = {
 			is_female = yes
 			NOT = {
 				character = FROM
-			}                            
+			}
 		}
 		allow = {
 			prisoner = yes
+			from = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
+			}
 		}
 		effect = {
 			if = {
@@ -492,15 +492,16 @@ targetted_decisions = {
 		}
 	}
 }
+
 settlement_decisions = {
 
 	skaven_demagogy = {
+		only_independent = yes
 		#Skaven don't need culture conversion in their provinces, Skaven subjects will cowardly emulate their leader out of fear
 		filter = realm_owned
 		ai_target_filter = owned
 		from_potential = {
 			trait = creature_skaven
-			independent = yes
 		}
 		potential = {
 			is_capital = yes

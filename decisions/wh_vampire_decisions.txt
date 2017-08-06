@@ -1,10 +1,8 @@
 decisions = {
 
 	ask_liege_vampirization = {
-		only_rulers = yes
+		only_playable = yes
 		potential = {
-			is_ruler = yes
-			higher_tier_than = BARON
 			independent = no
 			liege = {
 				age = 16
@@ -18,8 +16,7 @@ decisions = {
 					trait = vampire_mahtmasi_visible
 				}
 			}
-			is_vampire_trigger = no
-			trait = creature_human
+			is_living_human_trigger = yes
 		}
 		allow = {
 			custom_tooltip = {
@@ -36,6 +33,7 @@ decisions = {
 				}
 			}
 			OR = {
+				# ai = no
 				trait = ambitious
 				trait = lunatic_1
 				trait = lunatic_2
@@ -126,7 +124,7 @@ decisions = {
 			}
 		}
 	}
-	
+
 	increase_bloodorder_size = {
 		potential = {
 			has_dlc = "Horse Lords"
@@ -205,111 +203,112 @@ decisions = {
 		}
 	}
 
-	start_blood_quest = {
-		is_high_prio = yes
-		only_rulers = yes
-		potential = {
-			always = no	#deactivated for now
-			trait = vampire_blood_visible
-			is_incapacitated_trigger = no
-			higher_tier_than = BARON
-		}
-		allow = {
-			prisoner = no
-			war = no
-			prestige = 50
-			piety = 20
-		}
-		effect = {
-			prestige = -50
-			piety = -20
-			clr_character_flag = empire_questing
-			clr_character_flag = border_princes_questing
-			clr_character_flag = kislev_questing
-			clr_character_flag = bretonnia_questing
-			clr_character_flag = estilea_questing
-			clr_character_flag = badlands_questing
-			clr_character_flag = araby_questing
-			clr_character_flag = nehekhara_questing
-			clr_character_flag = norsca_questing
-			clr_character_flag = mountains_questing
-			clr_character_flag = darklands_questing
-			clr_character_flag = ulthuan_questing
-			clr_character_flag = naggaroth_questing
-			clr_character_flag = athel_loren_questing
-			clr_character_flag = chaos_wastes_questing
-			clr_character_flag = ocean_questing
-			hidden_tooltip = {
-				character_event = {
-					id = sblooddragons.22
-				}
-				add_trait = blood_questing
-				add_character_modifier = {
- 					name = blood_quest_startup
-					duration = 150
-					hidden = yes
-				}
-				any_courtier = {
-					limit = {
-						NOR = {
-							trait = incapable
-							prisoner = yes
-							trait = resting
-							trait = blood_questing
-							is_ruler = yes
-						}
-						trait = vampire_blood_visible
-					}
-					character_event = {
-						id = sblooddragons.23
-					}
-				}
-				any_vassal = {
-					limit = {
-						NOR = {
-							trait = incapable
-							prisoner = yes
-							trait = resting
-							trait = blood_questing
-						}
-						trait = vampire_blood_visible
-					}
-					character_event = {
-						id = sblooddragons.23
-					}
-				}
-			}
-		}
-		revoke_allowed = {
-			always = no
-		}
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				war = yes
-			}
-			modifier = {
-				factor = 2
-				trait = proud
-			}
-			modifier = {
-				factor = 2
-				trait = ambitious
-			}
-			modifier = {
-				factor = 0.5
-				trait = content
-			}
-			modifier = {
-				factor = 5
-				primary_title = {
-					mercenary = yes
-					adventurer = yes
-				}
-			}
-		}
-	}
+	# think about it
+	# start_blood_quest = {
+	# 	is_high_prio = yes
+	# 	only_rulers = yes
+	# 	potential = {
+	# 		always = no	#deactivated for now
+	# 		trait = vampire_blood_visible
+	# 		is_incapacitated_trigger = no
+	# 		higher_tier_than = BARON
+	# 	}
+	# 	allow = {
+	# 		prisoner = no
+	# 		war = no
+	# 		prestige = 50
+	# 		piety = 20
+	# 	}
+	# 	effect = {
+	# 		prestige = -50
+	# 		piety = -20
+	# 		clr_character_flag = empire_questing
+	# 		clr_character_flag = border_princes_questing
+	# 		clr_character_flag = kislev_questing
+	# 		clr_character_flag = bretonnia_questing
+	# 		clr_character_flag = estilea_questing
+	# 		clr_character_flag = badlands_questing
+	# 		clr_character_flag = araby_questing
+	# 		clr_character_flag = nehekhara_questing
+	# 		clr_character_flag = norsca_questing
+	# 		clr_character_flag = mountains_questing
+	# 		clr_character_flag = darklands_questing
+	# 		clr_character_flag = ulthuan_questing
+	# 		clr_character_flag = naggaroth_questing
+	# 		clr_character_flag = athel_loren_questing
+	# 		clr_character_flag = chaos_wastes_questing
+	# 		clr_character_flag = ocean_questing
+	# 		hidden_tooltip = {
+	# 			character_event = {
+	# 				id = sblooddragons.22
+	# 			}
+	# 			add_trait = blood_questing
+	# 			add_character_modifier = {
+ 	# 				name = blood_quest_startup
+	# 				duration = 150
+	# 				hidden = yes
+	# 			}
+	# 			any_courtier = {
+	# 				limit = {
+	# 					NOR = {
+	# 						trait = incapable
+	# 						prisoner = yes
+	# 						trait = resting
+	# 						trait = blood_questing
+	# 						is_ruler = yes
+	# 					}
+	# 					trait = vampire_blood_visible
+	# 				}
+	# 				character_event = {
+	# 					id = sblooddragons.23
+	# 				}
+	# 			}
+	# 			any_vassal = {
+	# 				limit = {
+	# 					NOR = {
+	# 						trait = incapable
+	# 						prisoner = yes
+	# 						trait = resting
+	# 						trait = blood_questing
+	# 					}
+	# 					trait = vampire_blood_visible
+	# 				}
+	# 				character_event = {
+	# 					id = sblooddragons.23
+	# 				}
+	# 			}
+	# 		}
+	# 	}
+	# 	revoke_allowed = {
+	# 		always = no
+	# 	}
+	# 	ai_will_do = {
+	# 		factor = 1
+	# 		modifier = {
+	# 			factor = 0
+	# 			war = yes
+	# 		}
+	# 		modifier = {
+	# 			factor = 2
+	# 			trait = proud
+	# 		}
+	# 		modifier = {
+	# 			factor = 2
+	# 			trait = ambitious
+	# 		}
+	# 		modifier = {
+	# 			factor = 0.5
+	# 			trait = content
+	# 		}
+	# 		modifier = {
+	# 			factor = 5
+	# 			primary_title = {
+	# 				mercenary = yes
+	# 				adventurer = yes
+	# 			}
+	# 		}
+	# 	}
+	# }
 
 	stop_blood_questing = {
 		only_rulers = yes
@@ -318,15 +317,12 @@ decisions = {
 			is_ruler = yes
 			NOT = {
 				has_character_modifier = blood_quest_startup
-			}
-			NOT = {
 				has_character_flag = ocean_questing
-			}
-			NOT = {
 				liege = {
 					ROOT = {
 						has_opinion_modifier = {
-							who = PREV modifier = opinion_blood_questing
+							who = PREV
+							modifier = opinion_blood_questing
 						}
 					}
 					has_character_flag = ocean_questing
@@ -655,12 +651,15 @@ decisions = {
 			trait = vampire_blood_visible
 			age = 16
 			NOR = {
-				trait = incapable
 				trait = resting
 				trait = blood_questing
 			}
 		}
 		allow = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			check_variable = {
 				which = "blooddragon_reserve" value = 10
 			}
@@ -715,6 +714,7 @@ decisions = {
 	}
 
 	strigoi_hibernate = {
+		only_playable = yes
 		potential = {
 			trait = vampire_strigoi_visible
 			age = 16
@@ -872,6 +872,7 @@ decisions = {
 	}
 
 	forbid_crystal = {
+		only_playable = yes
 		potential = {
 			has_artifact = dark_crystal
 			NOT = {
@@ -906,6 +907,7 @@ decisions = {
 	}
 
 	open_crystal = {
+		only_playable = yes
 		potential = {
 			has_artifact = dark_crystal
 			has_character_flag = forbidden_jade_crystal
@@ -938,11 +940,10 @@ decisions = {
 	}
 
 	gaze_into_crystal = {
+		only_playable = yes
 		is_high_prio = yes
-		only_rulers = yes
 		potential = {
 			has_artifact = dark_crystal
-			is_ruler = yes
 		}
 		allow = {
 			custom_tooltip = {
@@ -1021,31 +1022,19 @@ decisions = {
 	}
 
 	strygos_prepared_invasion = {
-		only_rulers = yes
+		only_playable = yes
+		only_independent = yes
 		potential = {
 			age = 16
-			is_ruler = yes
-			higher_tier_than = BARON
 			lower_tier_than = EMPEROR
-			independent = yes
 			NOT = {
 				has_character_flag = preparing_strygos_invasion
-			}
-			NOT = {
 				e_strygos = {
 					has_holder = yes
 				}
-			}
-			NOT = {
 				e_strygos_2 = {
 					has_holder = yes
 				}
-			}
-			NOR = {
-				trait = incapable
-				trait = blood_questing
-				trait = resting
-				trait = incapacitated
 			}
 			OR = {
 				trait = vampire_strigoi_visible
@@ -1056,6 +1045,10 @@ decisions = {
 			}
 		}
 		allow = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			wealth = 100
 			prestige = 500
 			piety = 150
@@ -1149,19 +1142,15 @@ decisions = {
 	}
 
 	reform_strygos = {
+		only_playable = yes
+		only_independent = yes
 		is_high_prio = yes
-		only_rulers = yes
 		potential = {
 			age = 16
-			is_ruler = yes
-			higher_tier_than = BARON
-			independent = yes
-			NOT = {
+			nor = {
 				e_strygos = {
 					has_holder = yes
 				}
-			}
-			NOT = {
 				e_strygos_2 = {
 					has_holder = yes
 				}
@@ -1225,20 +1214,12 @@ decisions = {
 	}
 
 	expel_strigany = {
-		only_rulers = yes
+		only_playable = yes
+		only_independent = yes
 		potential = {
 			age = 16
-			is_ruler = yes
-			higher_tier_than = BARON
-			independent = yes
-			NOT = {
+			nor = {
 				has_character_modifier = expelled_strigany
-			}
-			NOR = {
-				trait = incapable
-				trait = blood_questing
-				trait = resting
-				trait = incapacitated
 				culture_group = strigany_group
 				trait = vampire_strigoi_visible
 			}
@@ -1254,6 +1235,10 @@ decisions = {
 			}
 		}
 		allow = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			prestige = 150
 			piety = 50
 		}
@@ -1365,21 +1350,17 @@ decisions = {
 	}
 
 	welcome_strigany = {
-		only_rulers = yes
+		only_playable = yes
+		only_independent = yes
 		potential = {
 			age = 16
-			is_ruler = yes
-			higher_tier_than = BARON
-			independent = yes
 			has_character_modifier = expelled_strigany
-			NOR = {
-				trait = incapable
-				trait = blood_questing
-				trait = resting
-				trait = incapacitated
-			}
 		}
 		allow = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			wealth = 25
 			prestige = 150
 			piety = 50
@@ -1422,10 +1403,10 @@ decisions = {
 	}
 
 	embrace_strygan_culture = {
-		only_rulers = yes
+		only_playable = yes
+		only_independent = yes
 		potential = {
 			age = 16
-			is_ruler = yes
 			capital_scope = {
 				location = {
 					region = world_badlands_strygos
@@ -1436,12 +1417,12 @@ decisions = {
 				trait = vampire_strigoi_visible
 				culture = strigany
 			}
+		}
+		allow = {
 			custom_tooltip = {
 				text = IS_NOT_INCAPACITATED
 				is_incapacitated_trigger = no
 			}
-		}
-		allow = {
 		}
 		effect = {
 			culture = strygan
@@ -1474,19 +1455,20 @@ decisions = {
 	}
 
 	nagashi_experiment = {
+		only_playable = yes
 		potential = {
 			religion = nagashi
 			trait = lore_necromancy
-			is_incapacitated_trigger = no
 			age = 16
-			NOR = {
-				trait = incapable
-				trait = resting
-				trait = blood_questing
+			not = {
 				has_character_flag = experimenting_necromancy
 			}
 		}
 		allow = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			check_variable = {
 				which = "sample_counter" value = 5
 			}
@@ -1529,6 +1511,7 @@ decisions = {
 	}
 
 	mahtmasi_scare_goblins = {
+		only_playable = yes
 		is_high_prio = yes
 		potential = {
 			trait = vampire_mahtmasi_visible
@@ -1582,6 +1565,7 @@ decisions = {
 	}
 
 	use_shadow_plot = {
+		only_playable = yes
 		potential = {
 			OR = {
 				trait = vampire_mahtmasi_visible
@@ -1602,20 +1586,16 @@ decisions = {
 			}
 			NOT = {
 				has_character_flag = murder_in_motion
-			}
-			NOT = {
 				has_character_flag = voodoo_success_flag
-			}
-			NOT = {
 				has_character_modifier = magic_cooldown
 			}
 		}
 		allow = {
-			piety = 200
 			custom_tooltip = {
 				text = IS_NOT_INCAPACITATED
 				is_incapacitated_trigger = no
 			}
+			piety = 200
 		}
 		effect = {
 			piety = -200
@@ -1649,6 +1629,7 @@ decisions = {
 		}
 	}
 }
+
 targetted_decisions = {
 
 	turn_courtier_into_vampire = {
@@ -1658,9 +1639,9 @@ targetted_decisions = {
 		from_potential = {
 			is_ruler = yes
 			is_visible_vampire_trigger = yes
-			is_incapacitated_trigger = no
 		}
 		potential = {
+			is_vampire_trigger = no
 			OR = {
 				host = {
 					character = FROM
@@ -1678,7 +1659,6 @@ targetted_decisions = {
 					character = FROM
 				}
 			}
-			is_visible_vampire_trigger = no
 			NOT = {
 				character = FROM
 			}
@@ -1686,6 +1666,10 @@ targetted_decisions = {
 		}
 		allow = {
 			FROM = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
 				OR = {
 					NOT = {
 						trait = vampire_necrarch_visible
@@ -1806,7 +1790,8 @@ targetted_decisions = {
 				hidden_tooltip = {
 					FROM = {
 						character_event = {
-							id = mutation.1005 }
+							id = mutation.1005
+						}
 					}
 				}
 			} #lunacy counter
@@ -2184,14 +2169,17 @@ targetted_decisions = {
 	}
 
 	makeavampireheir = {
+		only_rulers = yes
 		filter = realm
 		ai_target_filter = realm
 		from_potential = {
 			is_visible_vampire_trigger = yes
 		}
 		potential = {
-			is_visible_vampire_trigger = yes
-			NOT = {
+			is_vampire_trigger = yes
+			nor = {
+				higher_tier_than = FROM
+				character = FROM
 				dynasty = FROM
 			}
 			OR = {
@@ -2211,15 +2199,9 @@ targetted_decisions = {
 					character = FROM
 				}
 			}
-			NOT = {
-				higher_tier_than = FROM
-			}
-			NOT = {
-				character = FROM
-			}
 		}
 		allow = {
-			is_visible_vampire_trigger = yes
+			is_vampire_trigger = yes
 			has_opinion_modifier = {
 				modifier = opinion_sired_me
 				who = FROM
@@ -2372,9 +2354,6 @@ targetted_decisions = {
 		potential = {
 			is_visible_vampire_trigger = yes
 			NOT = {
-				trait = incapable
-			}
-			NOT = {
 				dynasty = FROM
 			}
 			NOT = {
@@ -2383,16 +2362,22 @@ targetted_decisions = {
 			higher_tier_than = FROM
 		}
 		allow = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			is_visible_vampire_trigger = yes
 			FROM = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
 				NOT = {
 					has_opinion_modifier = {
 						modifier = opinion_v_rejected_adoption
 						who = ROOT
 					}
 				}
-			}
-			FROM = {
 				has_opinion_modifier = {
 					modifier = opinion_sired_me
 					who = ROOT
@@ -2412,22 +2397,12 @@ targetted_decisions = {
 			modifier = {
 				factor = 0.15
 				FROM = {
-					NOT = {
+					nor = {
 						diplomacy = 15
-					}
-					NOT = {
 						martial = 15
-					}
-					NOT = {
 						stewardship = 15
-					}
-					NOT = {
 						intrigue = 15
-					}
-					NOT = {
 						learning = 15
-					}
-					NOT = {
 						trait = proud
 					}
 				}
@@ -2530,15 +2505,11 @@ targetted_decisions = {
 	create_blooddragon_company = {
 		filter = home_court
 		ai_target_filter = home_court
-		only_rulers = yes
+		only_playable = yes
 		from_potential = {
 			has_dlc = "Horse Lords"
 			is_ruler = yes
 			trait = vampire_blood_visible
-			NOT = {
-				trait = incapable
-			}
-			higher_tier_than = BARON
 		}
 		potential = {
 			is_ruler = no
@@ -2551,26 +2522,25 @@ targetted_decisions = {
 			}
 		}
 		allow = {
+			from = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
+			}
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			is_adult = yes
 			is_ruler = no
 			martial = 10
-			is_incapacitated_trigger = no
-			NOT = {
+			nor = {
 				trait = infirm
-			}
-			NOT = {
 				trait = maimed
-			}
-			NOT = {
 				trait = blinded
-			}
-			NOT = {
 				trait = eunuch
-			}
-			NOT = {
 				trait = weak
-			}
-			NOT = {
 				trait = fragile
 			}
 			liege = {
@@ -2622,14 +2592,13 @@ targetted_decisions = {
 			}
 			FROM = {
 				make_tributary = {
-					who = ROOT percentage = 0.6
+					who = ROOT
+					percentage = 0.6
 				}
 			}
-			ROOT = {
-				piety = 75
-				wealth = 50
-				prestige = 50
-			}
+			piety = 75
+			wealth = 50
+			prestige = 50
 		}
 		revoke_allowed = {
 			always = no
@@ -3012,11 +2981,8 @@ targetted_decisions = {
 	send_strigany_caravan = {
 		filter = home_court
 		ai_target_filter = home_court
-		only_rulers = yes
+		only_playable = yes
 		from_potential = {
-			higher_tier_than = BARON
-			is_ruler = yes
-			is_incapacitated_trigger = no
 			NOT = {
 				has_any_opinion_modifier = opinion_strigany_caravan_beacon
 			}
@@ -3034,7 +3000,6 @@ targetted_decisions = {
 			host = {
 				character = FROM
 			}
-			is_incapacitated_trigger = no
 			OR = {
 				is_married = no
 				any_spouse = {
@@ -3043,42 +3008,26 @@ targetted_decisions = {
 			}
 			religion_group = necromantic_group
 			culture_group = strigany_group
-			NOT = {
+			nor = {
 				has_any_opinion_modifier = opinion_strigany_caravan_beacon
-			}
-			NOT = {
 				has_any_opinion_modifier = opinion_strigany_caravan_beacon2
-			}
-			NOT = {
 				character = FROM
 			}
 			is_living_human_trigger = yes
 			any_playable_ruler = {
 				higher_tier_than = BARON
 				is_within_diplo_range = FROM
-				NOT = {
+				trait = creature_human
+				is_landed = yes
+				nor = {
 					has_any_opinion_modifier = opinion_strigany_caravan_beacon2
-				}
-				NOT = {
 					capital_scope = {
 						has_province_modifier = strigany_caravan
 					}
-				}
-				trait = creature_human
-				is_landed = yes
-				NOT = {
 					trait = witch_hunter
-				}
-				NOT = {
 					character = FROM
-				}
-				NOT = {
 					culture_group = strigany_group
-				}
-				NOT = {
 					has_character_modifier = expelled_strigany
-				}
-				NOT = {
 					top_liege = {
 						has_character_modifier = expelled_strigany
 					}
@@ -3091,9 +3040,17 @@ targetted_decisions = {
 			}
 		}
 		allow = {
-			FROM = {
+			from = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
 				wealth = 25
 				prestige = 50
+			}
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
 			}
 		}
 		effect = {
@@ -3210,12 +3167,6 @@ targetted_decisions = {
 		}
       	potential = {
 			trait = vampire_necrarch_visible
-      	    NOR = {
-				trait = resting
-				trait = incapable
-				trait = incapacitated
-				trait = in_hiding
-			}
            	OR = {
                 has_character_modifier = magic_power_1
                 has_character_modifier = magic_power_2
@@ -3225,19 +3176,20 @@ targetted_decisions = {
 			is_within_diplo_range = FROM
 		}
         allow = {
-      	    NOT = {
-				character = FROM
-			}
-      	    NOT = {
-				has_character_modifier = recently_asked_crafting
-			}
-            FROM = {
+			from = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
 				wealth = 375
 			}
-            ROOT = {
-				NOT = {
-					trait = crafting_magic_item
-				}
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
+      	    nor = {
+				character = FROM
+				has_character_modifier = recently_asked_crafting
 			}
 		}
         effect = {
@@ -3261,13 +3213,9 @@ targetted_decisions = {
 		ai_target_filter = court
       	from_potential = {
            	trait = vampire_jade_visible
-			NOT = {
+			nor = {
 				has_character_modifier = magic_cooldown
-			}
-			NOT = {
 				trait = blinded
-			}
-           	NOR = {
                 has_character_modifier = jade_degradation_3
                 has_character_modifier = jade_degradation_4
 			}
@@ -3275,10 +3223,8 @@ targetted_decisions = {
       	potential = {
 			is_undead_trigger = no
 			is_demon_trigger = no
-			NOT = {
+			nor = {
 				trait = creature_forestspirit
-			}
-			NOT = {
 				trait = creature_treekin
 			}
 			is_within_diplo_range = FROM
@@ -3290,10 +3236,8 @@ targetted_decisions = {
 			}
 		}
         allow = {
-			NOT = {
+			nor = {
 				character = FROM
-			}
-			NOT = {
 				has_any_opinion_modifier = opinion_ensnared_me
 			}
 			is_within_diplo_range = FROM
@@ -3477,21 +3421,23 @@ targetted_decisions = {
 settlement_decisions = {
 
 	occupy_barony = {
+		only_playable = yes
 		filter = all
 		ai_target_filter = all
 		from_potential = {
 			trait = vampire_blood_visible
-			NOT = {
-				trait = incapable
-			}
 			higher_tier_than = COUNT
 		}
 		potential = {
+			from = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
+			}
 			is_capital = yes
 			owner = {
 				war_with = FROM
-			}
-			owner = {
 				NOT = {
 					character = FROM
 				}
@@ -3501,13 +3447,9 @@ settlement_decisions = {
 			is_occupied = yes
 			location = {
 				is_within_diplo_range = FROM
-			}
-			location = {
 				NOT = {
 					has_province_modifier = occupying_region
 				}
-			}
-			location = {
 				has_empty_holding = yes
 			}
 			FROM = {
@@ -3555,6 +3497,7 @@ settlement_decisions = {
 	}
 
 	jade_sack_province = {
+		only_playable = yes
 		filter = owned
 		ai_target_filter = owned
 		is_high_prio = yes
@@ -3573,32 +3516,16 @@ settlement_decisions = {
 				}
 			}
 			location = {
-				NOT = {
+				nor = {
 					has_province_modifier = jade_depopulation
-				}
-			}
-			location = {
-				NOT = {
 					has_province_modifier = province_scourged
-				}
-			}
-			location = {
-				NOT = {
 					has_province_modifier = province_slave_raid
-				}
-			}
-			location = {
-				NOT = {
 					has_province_modifier = province_slave_raid_chaos_dwarf
+					culture = nehekharan
 				}
 			}
 			NOT = {
 				is_nomadic = yes
-			}
-			location = {
-				NOT = {
-					culture = nehekharan
-				}
 			}
 			OR = {
 				location = {

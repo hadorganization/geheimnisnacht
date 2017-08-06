@@ -1,16 +1,13 @@
 decisions = {
 
 	employ_clay_sculptor = {
+		only_playable = yes
 		potential = {
-			prisoner = no
 			religion = draconite
 			age = 14
 			OR = {
 				culture = cathayan
 				culture = living_jade
-			}
-			NOT = {
-				trait = incapable
 			}
 			NOT = {
 				any_courtier = {
@@ -19,12 +16,12 @@ decisions = {
 			}
 		}
 		allow = {
-			piety = 100
-			wealth = 100
 			custom_tooltip = {
 				text = IS_NOT_INCAPACITATED
 				is_incapacitated_trigger = no
 			}
+			piety = 100
+			wealth = 100
 			OR = {
 				custom_tooltip = {
 					text = HAS_LINK_WITH_CATHAY
@@ -69,16 +66,13 @@ decisions = {
 	}
 
 	employ_astromancer = {
+		only_playable = yes
 		potential = {
-			prisoner = no
 			religion = draconite
 			age = 14
 			OR = {
 				culture = cathayan
 				culture = living_jade
-			}
-			NOT = {
-				trait = incapable
 			}
 			NOT = {
 				any_courtier = {
@@ -87,12 +81,12 @@ decisions = {
 			}
 		}
 		allow = {
-			piety = 450
-			wealth = 250
 			custom_tooltip = {
 				text = IS_NOT_INCAPACITATED
 				is_incapacitated_trigger = no
 			}
+			piety = 450
+			wealth = 250
 			OR = {
 				custom_tooltip = {
 					text = HAS_LINK_WITH_CATHAY
@@ -179,27 +173,26 @@ decisions = {
 	}
 
 	establish_cathay_link = {
+		only_playable = yes
 		is_high_prio = yes
 		potential = {
-			prisoner = no
 			religion = draconite
 			OR = {
 				culture = cathayan
 				culture = living_jade
 			}
-			NOT = {
-				trait = incapable
-			}
-			NOT = {
+			nor = {
 				has_dynasty_flag = link_with_cathay
-			}
-			NOT = {
 				top_liege = {
 					has_dynasty_flag = link_with_cathay
 				}
 			}
 		}
 		allow = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			prestige = 500
 			wealth = 500
 			OR = {
@@ -220,10 +213,6 @@ decisions = {
 					}
 					has_artifact = dark_crystal
 				}
-			}
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
 			}
 		}
 		effect = {
@@ -248,6 +237,7 @@ decisions = {
 	}
 
 	shashala_relinked = {
+		only_playable = yes
 		is_high_prio = yes
 		potential = {
 			has_nickname = nick_the_grand_generaless
@@ -258,13 +248,13 @@ decisions = {
 			}
 		}
 		allow = {
-			prestige = 100
-			piety = 100
-			has_artifact = dark_crystal
 			custom_tooltip = {
 				text = IS_NOT_INCAPACITATED
 				is_incapacitated_trigger = no
 			}
+			prestige = 100
+			piety = 100
+			has_artifact = dark_crystal
 		}
 		effect = {
 			prestige = -100
@@ -285,6 +275,7 @@ decisions = {
 	}
 
 	naparaya_relinked = {
+		only_playable = yes
 		is_high_prio = yes
 		potential = {
 			religion = draconite
@@ -333,10 +324,10 @@ decisions = {
 		}
 	}
 }
+
 targetted_decisions = {
 
 	ship_shdroi = {
-		is_high_prio = yes
 		filter = court
 		ai_target_filter = court
 		from_potential = {
@@ -346,9 +337,6 @@ targetted_decisions = {
 				culture = cathayan
 				culture = living_jade
 			}
-			NOT = {
-				trait = incapable
-			}
 		}
 		potential = {
 			prisoner = yes
@@ -356,11 +344,11 @@ targetted_decisions = {
 		}
 		allow = {
 			FROM = {
-				wealth = 100
 				custom_tooltip = {
 					text = IS_NOT_INCAPACITATED
 					is_incapacitated_trigger = no
 				}
+				wealth = 100
 				OR = {
 					custom_tooltip = {
 						text = HAS_LINK_WITH_CATHAY
@@ -414,13 +402,6 @@ targetted_decisions = {
 		ai_target_filter = court
 		from_potential = {
 			is_ruler = yes
-			NOT = {
-				trait = incapable
-			}
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
-			}
 		}
 		potential = {
 			prisoner = yes
@@ -429,17 +410,19 @@ targetted_decisions = {
 			host = {
 				character = FROM
 			}
-			NOT = {
+			nor = {
 				trait = eunuch
-			}
-			NOT = {
 				age = 11
-			}
-			NOT = {
 				character = FROM
-			}                            
+			}
 		}
 		allow = {
+			from = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
+			}
 			prisoner = yes
 			NOT = {
 				age = 11
@@ -449,12 +432,7 @@ targetted_decisions = {
 			prisoner = no
 			if = {
 				limit = {
-					OR = {
-						trait = khorne_demon
-						trait = nurgle_demon
-						trait = slaanesh_demon
-						trait = tzeentch_demon
-					}
+					is_demon_trigger = yes
 				}
 				character_event = {
 					id = sdemons.1

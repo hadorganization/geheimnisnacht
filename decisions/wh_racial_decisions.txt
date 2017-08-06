@@ -6,12 +6,10 @@ decisions = {
     # Humans
     ai_race_human = {
 		potential = {
-			ai=yes
-			NOT = {
-				AND = {
-					is_female = yes
-					culture_group = amazon_group
-				}
+			ai = yes
+			nand = {
+				is_female = yes
+				culture_group = amazon_group
 			}
 			OR = {
 				graphical_culture = westerngfx
@@ -85,19 +83,12 @@ decisions = {
 					culture_group = amazon_group
 				}
 			}
-			NOT = {
+			nor = {
 				trait = creature_human
-			}
-			NOT = {
 				trait = creature_amazon
-			}
-			NOT = {
 				trait = creature_monster
-			}
-			NOT = {
 				trait = creature_celdragon
 			}
-			#Witch Hunter Check
 		}
         allow = {
             always = yes
@@ -159,7 +150,7 @@ decisions = {
     # Witch Hunter safecheck
     ai_witch_hunter_human = {
 		potential = {
-			ai=yes
+			ai = yes
 			age = 16
 			trait = creature_human
 			OR = {
@@ -248,7 +239,7 @@ decisions = {
 	# Amazons
     ai_race_amazon = {
 		potential = {
-            ai=yes
+            ai = yes
             OR = {
 				graphical_culture = westerngfx
 				graphical_culture = easterngfx
@@ -320,16 +311,10 @@ decisions = {
 			}
 			is_female = yes
 			culture_group = amazon_group
-			NOT = {
+			nor = {
 				trait = creature_amazon
-			}
-			NOT = {
 				trait = creature_human
-			}
-			NOT = {
 				trait = creature_monster
-			}
-			NOT = {
 				trait = creature_celdragon
 			}
 		}
@@ -355,7 +340,7 @@ decisions = {
 	#remove nehekharan cultured humans
     ai_culture_nehekharan_nomad = {
 		potential = {
-			ai=yes
+			ai = yes
 			culture = nehekharan
 			trait = creature_human
 		}
@@ -372,7 +357,7 @@ decisions = {
     # Elfs
     ai_race_elf = {
 		potential = {
-			ai=yes
+			ai = yes
 			OR = {
 				graphical_culture = asurgfx
 				graphical_culture = nagarythiangfx
@@ -380,12 +365,10 @@ decisions = {
 				graphical_culture = asraigfx
 				graphical_culture = druchiigfx
 			}
-			NOT = {
-				OR = {
-					trait = creature_elf
-					trait = creature_treekin
-					trait = creature_forestspirit
-				}
+			nor = {
+				trait = creature_elf
+				trait = creature_treekin
+				trait = creature_forestspirit
 			}
 		}
         allow = {
@@ -421,7 +404,7 @@ decisions = {
     # Dwarfs
     ai_race_dwarf = {
 		potential = {
-            ai=yes
+            ai = yes
             OR = {
 				graphical_culture = dwarfgfx
 				graphical_culture = imperialdwarfgfx
@@ -524,7 +507,7 @@ decisions = {
     # Chaos Dwarfs
     ai_race_chaos_dwarf = {
 		potential = {
-			ai=yes
+			ai = yes
 			OR = {
 				graphical_culture = chaosdwarfgfx
 				graphical_culture = oldchaosdwarfgfx
@@ -546,7 +529,7 @@ decisions = {
     # Halflings
     ai_race_halfling = {
 		potential = {
-			ai=yes
+			ai = yes
 			OR = {
 				graphical_culture = hobbitsgfx
 				graphical_culture = miyangfx
@@ -568,17 +551,15 @@ decisions = {
     # Orcs
     ai_race_orc = {
 		potential = {
-			ai=yes
+			ai = yes
 			OR = {
 				graphical_culture = orcgfx
 				graphical_culture = savageorcgfx
 				graphical_culture = blackorcgfx
 			}
-			NOT = {
-				OR = {
-					trait = creature_orc
-					trait = creature_snotling
-				}
+			nor = {
+				trait = creature_orc
+				trait = creature_snotling
 			}
 		}
         allow = {
@@ -645,17 +626,15 @@ decisions = {
     # Goblins
     ai_race_goblin = {
 		potential = {
-			ai=yes
+			ai = yes
 			OR = {
 				graphical_culture = goblingfx
 				graphical_culture = nightgoblingfx
 				graphical_culture = forestgoblingfx
 			}
-			NOT = {
-				OR = {
-					trait = creature_goblin
-					trait = creature_snotling
-				}
+			nor = {
+				trait = creature_goblin
+				trait = creature_snotling
 			}
 		}
         allow = {
@@ -716,7 +695,7 @@ decisions = {
     # Nehekharans
     ai_race_nehekharan = {
 		potential = {
-			ai=yes
+			ai = yes
 			graphical_culture = nehekharangfx
 			NOT = {
 				trait = creature_nehekharan
@@ -826,9 +805,9 @@ decisions = {
 							name = magic_power_3 duration = -1
 						}
 					}
-				} #closesrandomlist
+				}
 			}
-		} #closeseffect
+		}
         ai_will_do = {
 			factor = 1500
 		}
@@ -836,16 +815,12 @@ decisions = {
     # Nehekharans 2 - Safety event if there's nehekharans without caste running around
     ai_race_nehekharan_slaves = {
 		potential = {
-			ai=yes
+			ai = yes
 			graphical_culture = nehekharangfx
 			trait = creature_nehekharan
-			NOT = {
+			nor = {
 				trait = khemri_tomb_king
-			}
-			NOT = {
 				trait = khemri_liche_priest
-			}
-			NOT = {
 				trait = khemri_soldier
 			}
 		}
@@ -871,7 +846,7 @@ decisions = {
     # Skaven
     ai_race_skaven = {
 		potential = {
-			ai=yes
+			ai = yes
 			culture_group = skaven_group
 			NOT = {
 				trait = creature_skaven
@@ -941,7 +916,7 @@ decisions = {
     # Ogre
     ai_race_ogre = {
 		potential = {
-			ai=yes
+			ai = yes
 			graphical_culture = ogresgfx
 			NOT = {
 				trait = creature_ogre
@@ -960,15 +935,11 @@ decisions = {
     # Lizardmen
     ai_race_lizardman = {
 		potential = {
-			ai=yes
+			ai = yes
 			graphical_culture = lizardmangfx
-			NOT = {
+			nor = {
 				trait = creature_skink
-			}
-			NOT = {
 				trait = creature_slann
-			}
-			NOT = {
 				trait = creature_saurus
 			}
 		}
@@ -1005,7 +976,7 @@ decisions = {
     # Lizardmen
     ai_dynasty_lizardman = {
 		potential = {
-			ai=yes
+			ai = yes
 			OR = {
 				trait = creature_amazon
 				graphical_culture = lizardmangfx
@@ -1030,7 +1001,7 @@ decisions = {
     # Beastmen
     ai_race_beastman = {
 		potential = {
-			ai=yes
+			ai = yes
 			graphical_culture = beastmangfx
 			NOT = {
 				trait = creature_beastman
@@ -1044,16 +1015,10 @@ decisions = {
 			if = {
 				limit = {
 					is_female = no
-					NOT = {
+					nor = {
 						trait = horns_none
-					}
-					NOT = {
 						trait = horns_small
-					}
-					NOT = {
 						trait = horns_average
-					}
-					NOT = {
 						trait = horns_big
 					}
 				}
@@ -1080,7 +1045,7 @@ decisions = {
 	# Intermarriage fix
     ai_intermarriage_fix = {
 		potential = {
-			ai=yes
+			ai = yes
 			spouse = {
 				is_alive = yes
 			}
@@ -1088,13 +1053,9 @@ decisions = {
 				AND = {
 					trait = creature_human
 					spouse = {
-						NOT = {
+						nor = {
 							trait = creature_human
-						}
-						NOT = {
 							trait = creature_amazon
-						}
-						NOT = {
 							trait = creature_beastman
 						}
 						OR = {
@@ -1215,7 +1176,7 @@ decisions = {
 	# Intermarriage fix
     ai_intermarriage_fix_elf = {
 		potential = {
-			ai=yes
+			ai = yes
 			OR = {
 				graphical_culture = asurgfx
 				graphical_culture = nagarythiangfx

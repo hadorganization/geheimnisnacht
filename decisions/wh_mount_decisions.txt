@@ -1,9 +1,11 @@
 decisions = {
 
 	trainapegasusmount = {
+		only_playable = yes
 		potential = {
 			age = 12
-			NOT = {
+			nor = {
+				has_artifact = pegasus_mount
 				culture = sylvanian
 			}
 			OR = {
@@ -15,22 +17,17 @@ decisions = {
 				culture_group = tilean_group
 				culture_group = estalian_group
 			}
-			NOT = {
-				has_artifact = pegasus_mount
-			}
 		}
 		allow = {
-			wealth = 500
 			custom_tooltip = {
 				text = IS_NOT_INCAPACITATED
 				is_incapacitated_trigger = no
 			}
+			wealth = 500
 		}
 		effect = {
-			ROOT = {
-				character_event = {
-					id = mounts.0
-				}
+			character_event = {
+				id = mounts.0
 			}
 		}
 		ai_will_do = {
@@ -45,9 +42,11 @@ decisions = {
 	}
 
 	trainagryphonmount = {
+		only_playable = yes
 		potential = {
 			age = 12
-			NOT = {
+			nor = {
+				has_artifact = gryphon_mount
 				culture = sylvanian
 			}
 			OR = {
@@ -56,22 +55,17 @@ decisions = {
 				culture_group = asrai_group
 				culture_group = asur_group
 			}
-			NOT = {
-				has_artifact = gryphon_mount
-			}
 		}
 		allow = {
-			wealth = 1000
 			custom_tooltip = {
 				text = IS_NOT_INCAPACITATED
 				is_incapacitated_trigger = no
 			}
+			wealth = 1000
 		}
 		effect = {
-			ROOT = {
-				character_event = {
-					id = mounts.2
-				}
+			character_event = {
+				id = mounts.2
 			}
 		}
 		ai_will_do = {
@@ -86,28 +80,27 @@ decisions = {
 	}
 
 	trainawyvernmount = {
+		only_playable = yes
 		potential = {
 			age = 12
+			NOT = {
+				has_artifact = wyvern_mount
+			}
 			OR = {
 				culture_group = goblin_group
 				culture_group = orc_group
 			}
-			NOT = {
-				has_artifact = wyvern_mount
-			}
 		}
 		allow = {
-			wealth = 1000
 			custom_tooltip = {
 				text = IS_NOT_INCAPACITATED
 				is_incapacitated_trigger = no
 			}
+			wealth = 1000
 		}
 		effect = {
-			ROOT = {
-				character_event = {
-					id = mounts.4
-				}
+			character_event = {
+				id = mounts.4
 			}
 		}
 		ai_will_do = {
@@ -122,26 +115,25 @@ decisions = {
 	}
 
 	trainadragonmount = {
+		only_playable = yes
 		potential = {
 			age = 18
-			culture = caledori
 			NOT = {
 				has_artifact = red_dragon_mount
 			}
+			culture = caledori
 		}
 		allow = {
-			wealth = 1000
 			custom_tooltip = {
 				text = IS_NOT_INCAPACITATED
 				is_incapacitated_trigger = no
 			}
+			wealth = 1000
 			prestige = 2000
 		}
 		effect = {
-			ROOT = {
-				character_event = {
-					id = mounts.6
-				}
+			character_event = {
+				id = mounts.6
 			}
 		}
 		ai_will_do = {
@@ -156,8 +148,12 @@ decisions = {
 	}
 
 	buildabyssalterror = {
+		only_playable = yes
 		potential = {
 			age = 18
+			NOT = {
+				has_artifact = abyssal_terror_mount
+			}
 			OR = {
 				trait = vampire_lahmian_visible
 				trait = vampire_carstein_visible
@@ -167,16 +163,13 @@ decisions = {
 				# trait = vampire_jade_visible
 				trait = vampire_mahtmasi_visible
 			}
-			NOT = {
-				has_artifact = abyssal_terror_mount
-			}
 		}
 		allow = {
-			piety = 1500
 			custom_tooltip = {
 				text = IS_NOT_INCAPACITATED
 				is_incapacitated_trigger = no
 			}
+			piety = 1500
 			OR = {
 				has_character_modifier = necromantic_power_5
 				has_character_modifier = necromantic_power_4
@@ -185,10 +178,8 @@ decisions = {
 		}
 		effect = {
 			set_character_flag = abyssal_terror_mount
-			ROOT = {
-				character_event = {
-					id = mounts.9
-				}
+			character_event = {
+				id = mounts.9
 			}
 		}
 		ai_will_do = {
@@ -201,10 +192,8 @@ decisions = {
 			}
 			modifier = {
 				factor = 0
-				NOT = {
+				nor = {
 					trait = vampire_carstein_visible
-				}
-				NOT = {
 					trait = vampire_blood_visible
 				}
 			}
@@ -212,26 +201,25 @@ decisions = {
 	}
 
 	searchnigthmaremount = {
+		only_playable = yes
 		potential = {
 			age = 16
-			trait = vampire_blood_visible
 			NOT = {
 				has_artifact = nightmare_mount
 			}
+			trait = vampire_blood_visible
 		}
 		allow = {
-			piety = 1500
 			custom_tooltip = {
 				text = IS_NOT_INCAPACITATED
 				is_incapacitated_trigger = no
 			}
+			piety = 1500
 		}
 		effect = {
 			add_trait = blood_questing
-			ROOT = {
-				character_event = {
-					id = mounts.11
-				}
+			character_event = {
+				id = mounts.11
 			}
 		}
 		ai_will_do = {

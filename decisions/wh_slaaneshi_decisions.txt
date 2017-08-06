@@ -1,31 +1,31 @@
 decisions = {
 
 	celibate_mom_dec = {
-		is_high_prio = yes
 		only_rulers = yes
+		is_high_prio = yes
 		potential = {
 			#ai = no
 			age = 16
-			prisoner = no
 			OR = {
 				has_character_flag = survivor_mom
 				num_of_children = 6
 			}
-			is_ruler = yes
 			is_female = yes
 			nor = {
-				trait = incapable
 				trait = celibate
 				trait = infertile
 			}
 			fertility > 0
 		}
 		allow = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			OR = {
 				has_character_flag = survivor_mom
 				num_of_children = 6
 			}
-			is_female = yes
 		}
 		effect = {
 			prestige = -150
@@ -194,11 +194,10 @@ decisions = {
 	}
 
 	join_harem_decision = {
-		only_rulers = yes
+		only_playable = yes
 		is_high_prio = yes
 		potential = {
 			ai = no
-			is_ruler = yes
 			age = 14
 			OR = {
 				religion = cult_of_pleasure
@@ -215,16 +214,16 @@ decisions = {
 			}
 		}
 		allow = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			is_pregnant = no
 			nor = {
 				trait = celibate
 				trait = chaste
 				trait = maimed
 				trait = infirm
-			}
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
 			}
 			is_ill = no
 			war = no
@@ -270,7 +269,7 @@ decisions = {
 				trait = lustful
 				trait = hedonist
 				trait = slothful
-			} #cannot stop on his own
+			}
 		}
 		effect = {
 			remove_trait = retired_with_harem
@@ -311,9 +310,6 @@ targetted_decisions = {
 				religion = amazon
 			}
 			wh_num_of_consorts_trigger = yes
-			NOT = {
-				trait = incapable
-			}
 			OR = {
 				religion = cult_of_pleasure
 				religion = atharti
@@ -365,11 +361,16 @@ targetted_decisions = {
 				}
 			}
 			nor = {
-				character = FROM 
-				trait = incapable
+				character = FROM
 			}
 		}
 		allow = {
+			from = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
+			}
 			prisoner = yes
 		}
 		effect = {
@@ -548,9 +549,6 @@ targetted_decisions = {
 		from_potential = {
 			is_ruler = yes
 			age = 14
-			NOT = {
-				trait = incapable
-			}
 			OR = {
 				religion = cult_of_pleasure
 				religion = atharti
@@ -559,6 +557,12 @@ targetted_decisions = {
 			}
 		}
 		potential = {
+			nor = {
+				character = FROM
+				trait = pet_consort
+				trait = druchi_witch_elf
+				trait = druchi_assassin
+			}
 			is_undead_trigger = no
 			is_demon_trigger = no
 			OR = {
@@ -618,14 +622,6 @@ targetted_decisions = {
 					age = 10
 				}
 			}
-			nor = {
-				
-				character = FROM
-				trait = incapable
-				trait = pet_consort
-				trait = druchi_witch_elf
-				trait = druchi_assassin
-			}
 			OR = {
 				trait = creature_human
 				trait = creature_elf
@@ -643,6 +639,12 @@ targetted_decisions = {
 			}
 		}
 		allow = {
+			from = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
+			}
 			OR = {
 				prisoner = yes
 				is_ruler = no		# courtiers can be made concubines, like in vanilla
@@ -835,36 +837,34 @@ targetted_decisions = {
 		}
 	}
 
+	# For all concubinages, mostly used for Slaaneshi flavor
 	manage_pet_consort = {
-		#For all concubinages, mostly used for Slaaneshi flavor
 		filter = court
 		ai_target_filter = court
-		only_rulers = yes
 		from_potential = {
-			is_ruler = yes
+			age = 14
+			is_playable = yes
+			#For now, let's not stress the AI
+			ai = no
 			NOT = {
 				has_character_flag = handling_consort
 			}
-			ai = no			#For now, let's not stress the AI
 			OR = {
 				religion = cult_of_pleasure
 				religion = atharti
 				religion = slaanesh
 				religion = amazon
 			}
-			age = 14
 		}
 		potential = {
 			age = 10
 			host = {
 				character = FROM
 			}
-			NOT = {
+			nor = {
 				has_character_modifier = consort_cooldown
-			}
-			NOT = {
 				character = FROM
-			}                            
+			}
 			OR = {
 				trait = pet_consort
 				AND = {
@@ -873,7 +873,8 @@ targetted_decisions = {
 						OR = {
 							religion = cult_of_pleasure
 							religion = atharti
-							religion = slaanesh }
+							religion = slaanesh
+						}
 					}
 				}
 			}	#Covers regular concubines
@@ -884,6 +885,10 @@ targetted_decisions = {
 		}
 		allow = {
 			FROM = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
 				prestige = 10
 			}
 		}
@@ -1022,19 +1027,18 @@ targetted_decisions = {
 		#The vanilla option is no longer avaiable to ai to avoid rabbit-elves
 		filter = court
 		ai_target_filter = court
-		only_rulers = yes
 		from_potential = {
-			is_ruler = yes
-			ai = no			#Player only
+			ai = no
+			is_playable = yes
 			age = 16
 			is_female = no
 			FROM = {
-				NOT = {
+				nor = {
 					religion = cult_of_pleasure
 					religion = atharti
 					religion = slaanesh
 				}
-			}	#handled by manage pet consort
+			}
 		}
 		potential = {
 			is_consort = FROM
@@ -1043,7 +1047,7 @@ targetted_decisions = {
 			}
 			NOT = {
 				character = FROM
-			}                            
+			}
 		}
 		allow = {
 			FROM = {
@@ -1074,10 +1078,6 @@ targetted_decisions = {
 		only_rulers = yes
 		from_potential = {
 			is_ruler = yes
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
-			}
 			society_member_of = cult_of_pleasure
 			nor = {
 				has_any_opinion_modifier = opinion_twisting
@@ -1101,11 +1101,11 @@ targetted_decisions = {
 		}
 		allow = {
 			FROM = {
-				prestige = 10
 				custom_tooltip = {
 					text = IS_NOT_INCAPACITATED
 					is_incapacitated_trigger = no
 				}
+				prestige = 10
 			}
 		}
 		effect = {
@@ -1238,10 +1238,6 @@ targetted_decisions = {
 		filter = court
 		ai_target_filter = court
 		from_potential = {
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
-			}
 			nor = {
 				has_character_modifier = ai_quirking_cooldown
 				has_any_opinion_modifier = opinion_quirking
@@ -1312,6 +1308,10 @@ targetted_decisions = {
 		}
 		allow = {
 			FROM = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
 				piety = 10
 			}
 		}
@@ -1471,10 +1471,6 @@ targetted_decisions = {
 			primary_title = {
 				higher_tier_than = BARON
 			}
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
-			}
 			NOT = {
 				has_character_modifier = magic_cooldown
 			}
@@ -1507,6 +1503,10 @@ targetted_decisions = {
 		allow = {
 			prisoner = yes
 			FROM = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
 				piety = 20
 			}
 		}
@@ -1679,10 +1679,6 @@ targetted_decisions = {
 		from_potential = {
 			is_married = no
 			trait = transgender
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
-			}
 			primary_title = {
 				higher_tier_than = BARON
 			}
@@ -1696,7 +1692,7 @@ targetted_decisions = {
 			}
 		}
 		potential = {
-			same_sex = yes
+			same_sex = from
 			NOT = {
 				character = FROM
 			}
@@ -1714,6 +1710,10 @@ targetted_decisions = {
 		}
 		allow = {
 			FROM = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
 				piety = 20
 			}
 		}
@@ -1814,30 +1814,22 @@ targetted_decisions = {
 			}
 			modifier = {
 				factor = 0.25
-				ROOT = {
-					trait = plain
-				}
+				trait = plain
 			}
 			modifier = {
 				factor = 0.25
-				ROOT = {
-					trait = ugly
-				}
+				trait = ugly
 			}
 			modifier = {
 				factor = 0.25
-				ROOT = {
-					trait = unsightly
-				}
+				trait = unsightly
 			}
 			modifier = {
 				factor = 2
-				ROOT = {
-					OR = {
-						trait = beautiful
-						trait = fair
-						trait = pretty
-					}
+				OR = {
+					trait = beautiful
+					trait = fair
+					trait = pretty
 				}
 			}
 		}

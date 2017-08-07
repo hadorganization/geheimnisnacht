@@ -1,29 +1,21 @@
 #
 decisions = {
+
     passing_asuryan = {
-		only_rulers = yes
+		only_playable = yes
 		is_high_prio = yes
         potential = {
 			trait = creature_elf
-			is_ruler = yes
-			prisoner = no
 			is_female = no
 			age = 12
 			has_landed_title = e_ulthuan
-			NOT = {
-				religion = asrai_cadai
-			}
 			OR = {
 				religion_group = cadai_group
 				religion_group = cytharai_group
 			}
-			NOT = {
-				trait = phoenix_king
-			}
-			NOT = {
+			nor = {
+				religion = asrai_cadai
 				trait = burnt_by_asuryan
-			}
-			NOT = {
 				has_character_flag = asuryan_crowning_flag
 			}
 		}
@@ -33,14 +25,6 @@ decisions = {
 				is_incapacitated_trigger = no
 			}
             war = no
-            prisoner = no
-            NOT = {
-				trait = incapable
-			}
-            NOT = {
-				trait = in_hiding
-			}
-			has_landed_title = e_ulthuan
 			NOT = {
 				trait = phoenix_king
 			}
@@ -96,8 +80,8 @@ decisions = {
 	}
 
 	# Burnt Asur may change religion_group like Malekith
-
 	renounce_cadai = {
+		only_playable = yes
 		is_high_prio = yes
 		potential = {
 			has_landed_title = e_ulthuan
@@ -108,6 +92,10 @@ decisions = {
 			}
 		}
 		allow = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			has_landed_title = e_ulthuan
 			religion = cadai
 			trait = burnt_by_asuryan
@@ -147,10 +135,8 @@ decisions = {
 						}
 						religion = cadai
 						trait = creature_elf
-						NOT = {
+						nor = {
 							is_theocracy = yes
-						}
-						NOT = {
 							character = ROOT
 						}
 						can_change_religion = yes
@@ -209,8 +195,8 @@ decisions = {
 	}
 
 	asurpolitical_stand = {
+		only_playable = yes
 		is_high_prio = yes
-		only_rulers = yes
 		potential = {
 			culture_group = asur_group
 			trait = creature_elf
@@ -219,16 +205,12 @@ decisions = {
 					title = e_ulthuan
 				}
 			}
-			NOT = {
+			nor = {
 				has_character_flag = elf_politics_flag
-			}
-			NOT = {
 				trait = isolationist_elf
 				trait = interventionist_elf
 			}
-			is_ruler = yes
 			age = 16
-			prisoner = no
 		}
 		allow = {
 			custom_tooltip = {
@@ -255,7 +237,7 @@ decisions = {
 	}
 
 	phoenix_asurpolitical_stand = {
-		only_rulers = yes
+		only_playable = yes
 		potential = {
 			culture_group = asur_group
 			trait = creature_elf
@@ -275,9 +257,7 @@ decisions = {
 					days = 3650
 				}
 			}
-			is_ruler = yes
 			age = 16
-			prisoner = no
 		}
 		allow = {
 			custom_tooltip = {
@@ -318,25 +298,23 @@ decisions = {
 		only_playable = yes
 		only_independent = yes
 		potential = {
-			independent = yes
-			higher_tier_than = BARON
 			religion_group = cadai_group
-			NOT = {
+			nor = {
 				religion = asrai_cadai
-			}
-			e_ulthuan = {
-				holder_scope = {
-					trait = interventionist_elf
-				}
-			}	#only if Ulthuan is open
-			trait = creature_elf
-			NOT = {
+				# only if you are a colony
 				capital_scope = {
 					empire = {
 						title = e_ulthuan
 					}
 				}
-			}	#only if you are a colony
+			}
+			# only if Ulthuan is open
+			e_ulthuan = {
+				holder_scope = {
+					trait = interventionist_elf
+				}
+			}
+			trait = creature_elf
 			e_ulthuan = {
 				holder_scope = {
 					top_liege = {
@@ -348,6 +326,10 @@ decisions = {
 			}
 		}
 		allow = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			OR = {
 				wealth = 250
 				AND = {
@@ -419,27 +401,23 @@ decisions = {
 		only_playable = yes
 		only_independent = yes
 		potential = {
-			independent = yes
-			higher_tier_than = BARON
 			religion_group = cadai_group
-			NOT = {
+			nor = {
 				religion = asrai_cadai
-			}
-			e_ulthuan = {
-				holder_scope = {
-					NOT = {
-						trait = interventionist_elf
-					}
-				}
-			}	#only if Ulthuan is closed
-			trait = creature_elf
-			NOT = {
+				# only if you are a colony
 				capital_scope = {
 					empire = {
 						title = e_ulthuan
 					}
 				}
-			}	#only if you are a colony
+			}
+			# only if Ulthuan is open
+			e_ulthuan = {
+				holder_scope = {
+					trait = interventionist_elf
+				}
+			}
+			trait = creature_elf
 			e_ulthuan = {
 				holder_scope = {
 					top_liege = {
@@ -451,6 +429,10 @@ decisions = {
 			}
 		}
 		allow = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			wealth = 1000
 			prestige = 500
 		}
@@ -506,24 +488,23 @@ decisions = {
 	call_ulthuan = {
 		only_playable = yes
 		potential = {
-			higher_tier_than = BARON
 			religion_group = cadai_group
-			NOT = {
+			nor = {
 				religion = asrai_cadai
-			}
-			e_ulthuan = {
-				holder_scope = {
-					trait = interventionist_elf
-				}
-			}	#only if Ulthuan is open
-			trait = creature_elf
-			NOT = {
+				# only if you are a colony
 				capital_scope = {
 					empire = {
 						title = e_ulthuan
 					}
 				}
-			}	#only if you are a colony
+			}
+			# only if Ulthuan is open
+			e_ulthuan = {
+				holder_scope = {
+					trait = interventionist_elf
+				}
+			}
+			trait = creature_elf
 			e_ulthuan = {
 				holder_scope = {
 					top_liege = {
@@ -537,14 +518,20 @@ decisions = {
 					has_character_flag = asked_ulthuan_assistance
 				}
 				had_character_flag = {
-					flag = asked_ulthuan_assistance days = 900
+					flag = asked_ulthuan_assistance
+					days = 900
 				}
 			}
 		}
 		allow = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			war = yes
 			prestige = 50
 			piety = 50
+			# Ulthuan will never answer to help against other Asur
 			any_war = {
 				OR = {
 					defender = {
@@ -558,7 +545,7 @@ decisions = {
 							trait = creature_elf
 							religion_group = cadai_group
 						}
-					} #Ulthuan will never answer to help against other Asur
+					}
 				}
 			}
 		}
@@ -657,7 +644,8 @@ decisions = {
 					holder_scope = {
 						NOT = {
 							opinion = {
-								who = ROOT value = 0
+								who = ROOT
+								value = 0
 							}
 						}
 					}
@@ -667,49 +655,44 @@ decisions = {
 	}
 
 	restore_everqueendom = {
-		is_high_prio = yes
+		only_playable = yes
 		only_independent = yes
+		is_high_prio = yes
 	 	potential = {
-			is_playable = yes
-			independent = yes
 			trait = phoenix_king
 			religion_group = cadai_group
-			NOT = {
+			nor = {
 				religion = asrai_cadai
-			}
-			has_landed_title = e_ulthuan
-			NOT =  {
 				trait = everqueen
-			}
-			NOT =  {
 				trait = everqueen_heir
 			}
+			has_landed_title = e_ulthuan
 			k_avelorn = {
 				holder_scope = {
 					OR = {
 						character = ROOT
 						is_liege_or_above = ROOT
 					}
-					NOT =  {
+					nor =  {
 						trait = everqueen
-					}
-					NOT =  {
 						trait = everqueen_heir
 					}
 				}
 			}
 		}
 		allow = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			k_avelorn = {
 				holder_scope = {
 					OR = {
 						character = ROOT
 						is_liege_or_above = ROOT
 					}
-					NOT =  {
+					nor =  {
 						trait = everqueen
-					}
-					NOT =  {
 						trait = everqueen_heir
 					}
 				}
@@ -720,10 +703,8 @@ decisions = {
 						character = ROOT
 						is_liege_or_above = ROOT
 					}
-					NOT =  {
+					nor =  {
 						trait = everqueen
-					}
-					NOT =  {
 						trait = everqueen_heir
 					}
 				}
@@ -734,10 +715,8 @@ decisions = {
 						character = ROOT
 						is_liege_or_above = ROOT
 					}
-					NOT =  {
+					nor =  {
 						trait = everqueen
-					}
-					NOT =  {
 						trait = everqueen_heir
 					}
 				}
@@ -749,7 +728,8 @@ decisions = {
 					everqueen_heir = {
 						is_alive = yes
 					}
-				}		# if Everprincess exists, give it to her
+				}
+				# if Everprincess exists, give it to her
 				everqueen_heir = {
 					k_avelorn = {
 						grant_title = PREV
@@ -760,7 +740,7 @@ decisions = {
 					c_gaen_vale = {
 						grant_title = PREV
 					}
-				}	#closes everqueenheir
+				}
 			}
 			if = {
 				limit = {
@@ -770,7 +750,8 @@ decisions = {
 							is_alive = yes
 						}
 					}
-				}		# if not, but Phoenix King is married, spouse becomes Everqueen
+				}
+				# if not, but Phoenix King is married, spouse becomes Everqueen
 				spouse = {
 					add_trait = everqueen
 					k_avelorn = {
@@ -782,7 +763,7 @@ decisions = {
 					c_gaen_vale = {
 						grant_title = PREV
 					}
-				}	#closesspouse
+				}
 			}
 			if = {
 				limit = {
@@ -792,7 +773,8 @@ decisions = {
 							is_alive = yes
 						}
 					}
-				}		#else create a new character
+				}
+				# else create a new character
 				create_character = {
 					random_traits = no
 					dynasty = RANDOM
@@ -873,8 +855,8 @@ decisions = {
 					c_gaen_vale = {
 						grant_title = PREV
 					}
-				}	#closesnewcharacter
-			}	#closesif
+				}
+			}
 		}
 		revoke_allowed = {
 			always = no
@@ -890,58 +872,43 @@ decisions = {
 
 	matrimonial_inheritance_decision = {
 		only_playable = yes
-		only_rulers = yes
 		is_high_prio = yes
 	 	potential = {
-			ai= yes #Sadly the limitations on the code cause always gameover on succession for the player
-				is_playable = yes
-				is_married = yes
-				is_ruler = yes
-				trait = creature_elf
-				culture_group = asur_group
-				age = 300
-				NOT = {
+			# Sadly the limitations on the code cause always gameover on succession for the player
+			ai = yes
+			is_married = yes
+			trait = creature_elf
+			culture_group = asur_group
+			age = 300
+			nor = {
 				has_character_modifier = asked_matriheir_timer
-			}
-				NOT = {
 				trait = in_matriheritage
-			}
-				NOT = {
 				trait = phoenix_king
-			}
-				NOT = {
 				trait = everqueen
-			}
-				NOT = {
 				trait = everqueen_heir
 			}
-				spouse = {
-				is_playable = yes
+			spouse = {
+				ai = yes
 				is_married = yes
-				is_ruler = yes
-				is_mercenary = no
-				is_adventurer = no
+				# is_mercenary = no
+				# is_adventurer = no
 				trait = creature_elf
 				culture_group = asur_group
-				NOT = {
+				nor = {
 					trait = phoenix_king
-				}
-				NOT = {
 					trait = everqueen
-				}
-				NOT = {
 					trait = everqueen_heir
 				}
 				age = 300
 			}
 		}
 		allow = {
-			NOT = {
-				num_of_children = 1
-			}
 			custom_tooltip = {
 				text = IS_NOT_INCAPACITATED
 				is_incapacitated_trigger = no
+			}
+			NOT = {
+				num_of_children = 1
 			}
 			primary_title = {
 				OR = {
@@ -955,13 +922,13 @@ decisions = {
 				trait = infertile
 			}
 			spouse = {
-				OR = {
-					age = 400
-					trait = infertile
-				}
 				custom_tooltip = {
 					text = IS_NOT_INCAPACITATED
 					is_incapacitated_trigger = no
+				}
+				OR = {
+					age = 400
+					trait = infertile
 				}
 				primary_title = {
 					OR = {
@@ -1038,6 +1005,827 @@ decisions = {
 					}
 				}
 			}
+			# seems it was target decision
+			# modifier = {
+			# 	factor = 0.75
+			# 	FROM = {
+			# 		NOT = {
+			# 			religion = ROOT
+			# 		}
+			# 	}
+			# }
+			# modifier = {
+			# 	factor = 0.25
+			# 	NOT = {
+			# 		opinion = {
+			# 			who = FROM
+			# 			value = -100
+			# 		}
+			# 	}
+			# }
+			# modifier = {
+			# 	factor = 0.75
+			# 	NOT = {
+			# 		opinion = {
+			# 			who = FROM
+			# 			value = -80
+			# 		}
+			# 	}
+			# }
+			# modifier = {
+			# 	factor = 0.75
+			# 	NOT = {
+			# 		opinion = {
+			# 			who = FROM
+			# 			value = -60
+			# 		}
+			# 	}
+			# }
+			# modifier = {
+			# 	factor = 0.75
+			# 	NOT = {
+			# 		opinion = {
+			# 			who = FROM
+			# 			value = -40
+			# 		}
+			# 	}
+			# }
+			# modifier = {
+			# 	factor = 0.75
+			# 	NOT = {
+			# 		opinion = {
+			# 			who = FROM
+			# 			value = -20
+			# 		}
+			# 	}
+			# }
+			# modifier = {
+			# 	factor = 0.75
+			# 	NOT = {
+			# 		opinion = {
+			# 			who = FROM
+			# 			value = 0
+			# 		}
+			# 	}
+			# }
+			# modifier = {
+			# 	factor = 1.25
+			# 	opinion = {
+			# 		who = FROM
+			# 		value = 20
+			# 	}
+			# }
+			# modifier = {
+			# 	factor = 1.25
+			# 	opinion = {
+			# 		who = FROM
+			# 		value = 40
+			# 	}
+			# }
+			# modifier = {
+			# 	factor = 1.5
+			# 	opinion = {
+			# 		who = FROM
+			# 		value = 60
+			# 	}
+			# }
+			# modifier = {
+			# 	factor = 1.5
+			# 	opinion = {
+			# 		who = FROM
+			# 		value = 80
+			# 	}
+			# }
+			# modifier = {
+			# 	factor = 1.5
+			# 	opinion = {
+			# 		who = FROM
+			# 		value = 100
+			# 	}
+			# }
+		}
+	}
+}
+
+targetted_decisions = {
+
+	help_colony = {
+		only_playable = yes
+		ai_target_filter = court	#active only for players
+		from_potential = {
+			ai = no
+			higher_tier_than = COUNT
+			trait = creature_elf
+			trait = interventionist_elf
+		}
+		potential = {
+			trait = creature_elf
+			religion_group = cadai_group
+			nor = {
+				capital_scope = {
+					empire = {
+						title = e_ulthuan
+					}
+				}
+				any_consort = {
+					character = FROM
+				}
+			}
+		}
+		allow = {
+			war = yes
+			# Ulthuan will never answer to help against other Asur
+			any_war = {
+				OR = {
+					defender = {
+						NOT = {
+							trait = creature_elf
+							religion_group = cadai_group
+						}
+					}
+ 					attacker = {
+						NOT = {
+							trait = creature_elf
+							religion_group = cadai_group
+						}
+					}
+				}
+			}
+		}
+		effect = {
+			character_event = {
+				id = asur.45
+			}
+			FROM = {
+				join_defender_wars = ROOT
+				join_attacker_wars = ROOT
+			}
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	asur_debate_decision = {
+		only_playable = yes
+		filter = realm
+		ai_target_filter = realm
+		from_potential = {
+			age = 16
+			NOT = {
+				is_liege_of = ROOT
+			}
+			OR = {
+				trait = isolationist_elf
+				trait = interventionist_elf
+			}
+			OR = {
+				ai = no
+				higher_tier_than = COUNT
+			}
+		}
+		potential = {
+			age = 16
+			NOT = {
+				character = FROM
+			}
+			OR = {
+				trait = isolationist_elf
+				trait = interventionist_elf
+			}
+			OR = {
+				AND = {
+					FROM = {
+						trait = isolationist_elf
+					}
+					trait = interventionist_elf
+				}
+				AND = {
+					FROM = {
+						trait = interventionist_elf
+					}
+					trait = isolationist_elf
+				}
+			}
+		}
+		allow = {
+			FROM = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
+				NOT = {
+					has_opinion_modifier = {
+						who = ROOT modifier = opinion_fled_debate
+					}
+				}
+			}
+			war = no
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
+			FROM = {
+				prestige = 50
+				piety = 10
+			}
+			custom_tooltip = {
+				text = debate_tooltip_fought_before
+				hidden_tooltip = {
+					NOT = {
+						has_opinion_modifier = {
+							who = FROM
+							modifier = opinion_fought_debate
+						}
+					}
+					FROM = {
+						nor = {
+							has_character_modifier = recent_debate_timer
+							has_opinion_modifier = {
+								who = ROOT modifier = opinion_fought_debate
+							}
+						}
+					}
+				}
+			}
+			hidden_tooltip = {
+				not = {
+					has_character_flag = do_not_disturb
+				}
+			}
+			custom_tooltip = {
+				text = debate_tooltip_recent_debate
+				hidden_tooltip = {
+					nor = {
+						FROM = {
+							has_character_modifier = recent_debate_victory
+						}
+						has_character_modifier = recent_debate_timer
+					}
+				}
+			}
+		}
+		effect = {
+			FROM = {
+				add_character_modifier = {
+					modifier = recent_debate_timer
+					duration = 365
+					hidden = yes
+				}
+			}
+			hidden_tooltip = {
+				character_event = {
+					id = asurdebate.11000
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_character_modifier = declined_prestige_debate_timer
+			}
+			modifier = {
+				factor = 0.5
+			}
+			#the Opponent's traits
+			modifier = {
+				factor = 0.75
+				trait = quick
+			}
+			modifier = {
+				factor = 0.75
+				trait = bright
+			}
+			modifier = {
+				factor = 0.75
+				trait = brilliant
+			}
+			modifier = {
+				factor = 0.75
+				trait = genius
+			}
+			modifier = {
+				factor = 0.75
+				trait = gregarious
+			}
+			modifier = {
+				factor = 0.75
+				trait = patient
+			}
+			modifier = {
+				factor = 0.75
+				diplomacy = 20
+			}
+			modifier = {
+				factor = 1.5
+				trait = shy
+			}
+			modifier = {
+				factor = 1.5
+				trait = wroth
+			}
+			modifier = {
+				factor = 1.5
+				trait = slow
+			}
+			modifier = {
+				factor = 2
+				trait = imbecile
+			}
+			modifier = {
+				factor = 1.25
+				trait = isolationist_elf
+			}
+			#the Challengers traits
+			modifier = {
+				factor = 1.5
+				FROM = {
+					trait = quick
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					trait = bright
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					trait = brilliant
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					trait = genius
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					trait = patient
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					trait = gregarious
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					diplomacy = 20
+				}
+			}
+			modifier = {
+				factor = 0.75
+				FROM = {
+					trait = shy
+				}
+			}
+			modifier = {
+				factor = 0.85
+				FROM = {
+					religion = cult_of_pleasure
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					NOT = {
+						religion = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 4
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = -100
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = -80
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = -60
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = -40
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = -20
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = 0
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0.75
+				FROM = {
+					opinion = {
+						who = ROOT
+						value = 20
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				FROM = {
+					opinion = {
+						who = ROOT
+						value = 40
+					}
+				}
+			}
+			modifier = {
+				factor = 0.25
+				FROM = {
+					opinion = {
+						who = ROOT
+						value = 60
+					}
+				}
+			}
+			modifier = {
+				factor = 0.25
+				FROM = {
+					opinion = {
+						who = ROOT
+						value = 80
+					}
+				}
+			}
+			modifier = {
+				factor = 0.1
+				FROM = {
+					opinion = {
+						who = ROOT
+						value = 100
+					}
+				}
+			}
+		}
+	}
+
+	send_asur_apprentice = {
+		only_playable = yes
+		filter = court
+		ai_target_filter = court
+		from_potential = {
+			religion_group = cadai_group
+			NOT = {
+				religion = asrai_cadai
+			}
+			trait = creature_elf
+		}
+		potential = {
+			is_landed = no
+			religion_group = cadai_group
+			trait = creature_elf
+			age = 6
+			nor = {
+				religion = asrai_cadai
+				trait = asur_mage
+				trait = mage_apprentice
+			}
+		}
+		allow = {
+			from = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
+			}
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
+			c_hoeth = {
+				holder_scope = {
+					religion_group = cadai_group
+					top_liege = {
+						has_landed_title = e_ulthuan
+					}
+				}
+			}
+			e_ulthuan = {
+				holder_scope = {
+					religion_group = cadai_group
+				}
+			}
+			is_landed = no
+			OR = {
+				AND = {
+					NOT = {
+						age = 12
+					}
+					FROM = {
+						wealth = 450
+						capital_scope = {
+							empire = {
+								title = e_ulthuan
+							}
+						}
+					}
+				}
+				AND = {
+					age = 12
+					FROM = {
+						wealth = 750
+					}
+					capital_scope = {
+						empire = {
+							title = e_ulthuan
+						}
+					}
+				}
+				AND = {
+					NOT = {
+						age = 12
+					}
+					FROM = {
+						wealth = 850
+						NOT = {
+							capital_scope = {
+								empire = {
+									title = e_ulthuan
+								}
+							}
+						}
+					}
+				}
+				AND = {
+					age = 12
+					FROM = {
+						wealth = 1250
+					}
+					NOT = {
+						capital_scope = {
+							empire = {
+								title = e_ulthuan
+							}
+						}
+					}
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					age = 12
+					FROM = {
+						capital_scope = {
+							empire = {
+								title = e_ulthuan
+							}
+						}
+					}
+				}
+				FROM = {
+					wealth = -750
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						age = 12
+					}
+					FROM = {
+						capital_scope = {
+							empire = {
+								title = e_ulthuan
+							}
+						}
+					}
+				}
+				FROM = {
+					wealth = -450
+				}
+			}
+			if = {
+				limit = {
+					age = 12
+					FROM = {
+						NOT = {
+							capital_scope = {
+								empire = {
+									title = e_ulthuan
+								}
+							}
+						}
+					}
+				}
+				FROM = {
+					wealth = -1250
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						age = 12
+					}
+					FROM = {
+						NOT = {
+							capital_scope = {
+								empire = {
+									title = e_ulthuan
+								}
+							}
+						}
+					}
+				}
+				FROM = {
+					wealth = -850
+				}
+			}
+			hidden_tooltip = {
+				if = {
+					limit = {
+						FROM = {
+							trait = creature_elf
+							is_female = no
+						}
+						e_naggaroth = {
+							holder_scope  = {
+								trait = malekith
+							}
+						}
+					}
+					e_naggaroth = {
+						holder_scope  = {
+							opinion = {
+								modifier = opinion_sorcerous_rival
+								who = FROM
+							}
+						}
+					}
+				}
+			}
+			character_event = {
+				id = highelfmagic.2
+			}
+		}
+		revoke_allowed = {
+			always = yes
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = {
+					dynasty = FROM
+				}
+			}
+			modifier = {
+				factor = 0
+				nor = {
+					father = {
+						character = FROM
+					}
+					mother = {
+						character = FROM
+					}
+				}
+			}
+			modifier = {
+				factor = 50
+				OR = {
+					father = {
+						character = FROM
+					}
+					mother = {
+						character = FROM
+					}
+				}
+			}
+			modifier = {
+				factor = 1.35
+				trait = quick
+			}
+			modifier = {
+				factor = 1.25
+				trait = bright
+			}
+			modifier = {
+				factor = 1.45
+				trait = smart
+			}
+			modifier = {
+				factor = 1.5
+				trait = quick
+			}
+			modifier = {
+				factor = 1.75
+				trait = brilliant
+			}
+			modifier = {
+				factor = 1.95
+				trait = genius
+			}
+			modifier = {
+				factor = 0.85
+				trait = dim
+			}
+			modifier = {
+				factor = 0.75
+				trait = dumb
+			}
+			modifier = {
+				factor = 0.65
+				trait = slow
+			}
+			modifier = {
+				factor = 0.5
+				trait = idiot
+			}
+			modifier = {
+				factor = 0.45
+				trait = imbecile
+			}
+			modifier = {
+				factor = 1.25
+				trait = gregarious
+			}
+			modifier = {
+				factor = 1.25
+				trait = ambitious
+			}
+			modifier = {
+				factor = 1.5
+				trait = diligent
+			}
+			modifier = {
+				factor = 1.15
+				trait = patient
+			}
+			modifier = {
+				factor = 0.75
+				trait = slothful
+			}
+			modifier = {
+				factor = 0.001
+				age = 16
+			}
+			modifier = {
+				factor = 0
+				age = 16
+				nor = {
+					trait = magic_potential_1
+					trait = magic_potential_2
+					trait = magic_potential_3
+					trait = magic_potential_4
+				}
+			}
 			modifier = {
 				factor = 0.75
 				FROM = {
@@ -1048,10 +1836,10 @@ decisions = {
 			}
 			modifier = {
 				factor = 0.25
-				ROOT = {
+				FROM = {
 					NOT = {
 						opinion = {
-							who = FROM
+							who = ROOT
 							value = -100
 						}
 					}
@@ -1059,10 +1847,10 @@ decisions = {
 			}
 			modifier = {
 				factor = 0.75
-				ROOT = {
+				FROM = {
 					NOT = {
 						opinion = {
-							who = FROM
+							who = ROOT
 							value = -80
 						}
 					}
@@ -1070,10 +1858,10 @@ decisions = {
 			}
 			modifier = {
 				factor = 0.75
-				ROOT = {
+				FROM = {
 					NOT = {
 						opinion = {
-							who = FROM
+							who = ROOT
 							value = -60
 						}
 					}
@@ -1081,10 +1869,10 @@ decisions = {
 			}
 			modifier = {
 				factor = 0.75
-				ROOT = {
+				FROM = {
 					NOT = {
 						opinion = {
-							who = FROM
+							who = ROOT
 							value = -40
 						}
 					}
@@ -1092,10 +1880,10 @@ decisions = {
 			}
 			modifier = {
 				factor = 0.75
-				ROOT = {
+				FROM = {
 					NOT = {
 						opinion = {
-							who = FROM
+							who = ROOT
 							value = -20
 						}
 					}
@@ -1103,10 +1891,10 @@ decisions = {
 			}
 			modifier = {
 				factor = 0.75
-				ROOT = {
+				FROM = {
 					NOT = {
 						opinion = {
-							who = FROM
+							who = ROOT
 							value = 0
 						}
 					}
@@ -1114,49 +1902,3398 @@ decisions = {
 			}
 			modifier = {
 				factor = 1.25
-				ROOT = {
+				FROM = {
 					opinion = {
-						who = FROM
+						who = ROOT
 						value = 20
 					}
 				}
 			}
 			modifier = {
 				factor = 1.25
-				ROOT = {
+				FROM = {
 					opinion = {
-						who = FROM
+						who = ROOT
 						value = 40
 					}
 				}
 			}
 			modifier = {
 				factor = 1.5
-				ROOT = {
+				FROM = {
 					opinion = {
-						who = FROM
+						who = ROOT
 						value = 60
 					}
 				}
 			}
 			modifier = {
 				factor = 1.5
-				ROOT = {
+				FROM = {
 					opinion = {
-						who = FROM
+						who = ROOT
 						value = 80
 					}
 				}
 			}
 			modifier = {
 				factor = 1.5
-				ROOT = {
+				FROM = {
 					opinion = {
-						who = FROM
+						who = ROOT
 						value = 100
 					}
 				}
 			}
 		}
 	}
-} #closesalldecisions
+
+	asur_force_stance_favour = {
+		only_playable = yes
+		filter = realm
+		ai_target_filter = realm
+		from_potential = {
+			age = 16
+			OR = {
+				trait = isolationist_elf
+				trait = interventionist_elf
+			}
+		}
+		potential = {
+			age = 16
+			nor = {
+				character = FROM
+				# only through faction
+				trait = phoenix_king
+			}
+			OR = {
+				trait = isolationist_elf
+				trait = interventionist_elf
+			}
+			OR = {
+				AND = {
+					FROM = {
+						trait = isolationist_elf
+					}
+					trait = interventionist_elf
+				}
+				AND = {
+					FROM = {
+						trait = interventionist_elf
+					}
+					trait = isolationist_elf
+				}
+			}
+		}
+		allow = {
+			FROM = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
+				NOT = {
+					has_opinion_modifier = {
+						who = ROOT modifier = opinion_fled_debate
+					}
+				}
+			}
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
+			war = no
+			FROM = {
+				prestige = 50
+				piety = 10
+			}
+			owes_favor_to = FROM
+			custom_tooltip = {
+				text = debate_tooltip_fought_before
+				hidden_tooltip = {
+					NOT = {
+						has_opinion_modifier = {
+							who = FROM
+							modifier = opinion_fought_debate
+						}
+					}
+					FROM = {
+						nor = {
+							has_character_modifier = recent_debate_timer
+							has_opinion_modifier = {
+								who = ROOT modifier = opinion_fought_debate
+							}
+						}
+					}
+				}
+			}
+			hidden_tooltip = {
+				NOT = {
+					has_character_flag = do_not_disturb
+				}
+			}
+			custom_tooltip = {
+				text = debate_tooltip_recent_debate
+				hidden_tooltip = {
+					nor = {
+						FROM = {
+							has_character_modifier = recent_debate_victory
+						}
+						has_character_modifier = recent_debate_timer
+					}
+				}
+			}
+		}
+		effect = {
+			reverse_remove_favor = FROM
+			FROM = {
+				prestige = -150
+				add_character_modifier = {
+					modifier = recent_debate_timer
+					duration = 365
+					hidden = yes
+				}
+			}
+			hidden_tooltip = {
+				character_event = {
+					id = asurdebate.12
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_character_modifier = declined_prestige_debate_timer
+			}
+			modifier = {
+				factor = 0.5
+			}
+			#the Opponent's traits
+			modifier = {
+				factor = 0.75
+				trait = quick
+			}
+			modifier = {
+				factor = 0.75
+				trait = bright
+			}
+			modifier = {
+				factor = 0.75
+				trait = brilliant
+			}
+			modifier = {
+				factor = 0.75
+				trait = genius
+			}
+			modifier = {
+				factor = 0.75
+				trait = gregarious
+			}
+			modifier = {
+				factor = 0.75
+				trait = patient
+			}
+			modifier = {
+				factor = 0.75
+				diplomacy = 20
+			}
+			modifier = {
+				factor = 1.5
+				trait = shy
+			}
+			modifier = {
+				factor = 1.5
+				trait = wroth
+			}
+			modifier = {
+				factor = 1.5
+				trait = slow
+			}
+			modifier = {
+				factor = 2
+				trait = imbecile
+			}
+			modifier = {
+				factor = 1.25
+				trait = isolationist_elf
+			}
+			#the Challengers traits
+			modifier = {
+				factor = 1.5
+				FROM = {
+					trait = quick
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					trait = bright
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					trait = brilliant
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					trait = genius
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					trait = patient
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					trait = gregarious
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					diplomacy = 20
+				}
+			}
+			modifier = {
+				factor = 0.75
+				FROM = {
+					trait = shy
+				}
+			}
+			modifier = {
+				factor = 0.85
+				FROM = {
+					religion = cult_of_pleasure
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					NOT = {
+						religion = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 4
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = -100
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = -80
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = -60
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = -40
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = -20
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = 0
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0.75
+				FROM = {
+					opinion = {
+						who = ROOT
+						value = 20
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				FROM = {
+					opinion = {
+						who = ROOT
+						value = 40
+					}
+				}
+			}
+			modifier = {
+				factor = 0.25
+				FROM = {
+					opinion = {
+						who = ROOT
+						value = 60
+					}
+				}
+			}
+			modifier = {
+				factor = 0.25
+				FROM = {
+					opinion = {
+						who = ROOT
+						value = 80
+					}
+				}
+			}
+			modifier = {
+				factor = 0.1
+				FROM = {
+					opinion = {
+						who = ROOT
+						value = 100
+					}
+				}
+			}
+		}
+	}
+
+	asur_meeting_decision = {
+		only_playable = yes
+		filter = realm
+		ai_target_filter = realm
+		from_potential = {
+			age = 16
+			trait = isolationist_elf
+			trait = creature_elf
+			culture_group = asur_group
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
+			# Dumb AI conditions
+			OR = {
+				ai = no
+				AND = {
+					ROOT = {
+						wealth = 150
+					}
+					NOT = {
+						wealth = 0
+					}
+				}
+				owes_favor_to = ROOT #Wants to clear a favor
+				trait = ambitious #Just wants a favor
+				AND = {
+					ROOT = {
+						any_spouse = {
+							any_rival =  {
+								character = FROM
+							}
+						}
+					}
+					NOT = {
+						any_rival = {
+							character = ROOT
+						}
+					}
+				}
+				#Wants to separate friend from rival
+				ROOT = {
+					is_married = yes
+					any_lover = {
+						character = ROOT
+					}
+				}
+				#Wants to separate lover from other guy
+				AND = {
+					is_married = no
+					trait = creature_elf
+					NOT = {
+						cannot_marry_trigger = yes
+					}
+					ROOT = {
+						is_married = no
+						trait = creature_elf
+						NOT = {
+							cannot_marry_trigger = yes
+						}
+						higher_tier_than = FROM
+					}
+					OR = {
+						AND = {
+							is_female = no
+							ROOT = {
+								is_female = yes
+							}
+						}
+						AND = {
+							is_female = yes
+							ROOT = {
+								is_female = no
+							}
+						}
+					}
+				}
+				#Social climber
+				ROOT = {
+					any_rival = {
+						character = FROM
+					}
+				}
+			}
+		}
+		potential = {
+			age = 16
+			is_ruler = yes
+			culture_group = asur_group
+			trait = creature_elf
+			location = {
+				region = world_ulthuan
+			}
+			NOT = {
+				character = FROM
+			}
+		}
+		allow = {
+			FROM = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
+				NOT = {
+					has_opinion_modifier = {
+						who = ROOT modifier = opinion_fled_debate
+					}
+				}
+				prestige = 1
+			}
+			war = no
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
+			custom_tooltip = {
+				text = debate_tooltip_fought_before
+				hidden_tooltip = {
+					NOT = {
+						has_opinion_modifier = {
+							who = FROM
+							modifier = opinion_fought_debate
+						}
+					}
+					FROM = {
+						nor = {
+							has_character_modifier = recent_debate_timer
+							has_opinion_modifier = {
+								who = ROOT modifier = opinion_fought_debate
+							}
+						}
+					}
+				}
+			}
+			hidden_tooltip = {
+				NOT = {
+					has_character_flag = do_not_disturb
+				}
+			}
+			custom_tooltip = {
+				text = debate_tooltip_recent_meeting
+				hidden_tooltip = {
+					FROM = {
+						NOT = {
+							has_character_modifier = recent_meeting_timer
+						}
+					}
+				}
+			}
+		}
+		effect = {
+			prestige = -50
+			FROM = {
+				add_character_modifier = {
+					modifier = recent_meeting_timer
+					duration = 1725
+					hidden = yes
+				}
+			}
+			hidden_tooltip = {
+				letter_event = {
+					id = asurdebate.13
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_character_modifier = declined_prestige_debate_timer
+			}
+			modifier = {
+				factor = 0.5
+			}
+			#the Target's traits
+			modifier = {
+				factor = 0.75
+				trait = quick
+			}
+			modifier = {
+				factor = 0.75
+				trait = bright
+			}
+			modifier = {
+				factor = 0.75
+				trait = brilliant
+			}
+			modifier = {
+				factor = 0.75
+				trait = genius
+			}
+			modifier = {
+				factor = 0.75
+				trait = gregarious
+			}
+			modifier = {
+				factor = 0.75
+				trait = patient
+			}
+			modifier = {
+				factor = 0.75
+				diplomacy = 20
+			}
+			modifier = {
+				factor = 1.5
+				trait = shy
+			}
+			modifier = {
+				factor = 1.5
+				trait = wroth
+			}
+			modifier = {
+				factor = 1.5
+				trait = slow
+			}
+			modifier = {
+				factor = 2
+				trait = imbecile
+			}
+			#the Petitioner's traits
+			modifier = {
+				factor = 1.5
+				FROM = {
+					trait = quick
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					trait = bright
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					trait = brilliant
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					trait = genius
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					trait = patient
+				}
+			}
+			modifier = {
+				factor = 1.75
+				FROM = {
+					trait = gregarious
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					diplomacy = 20
+				}
+			}
+			modifier = {
+				factor = 0.75
+				FROM = {
+					trait = shy
+				}
+			}
+			modifier = {
+				factor = 2
+				FROM = {
+					trait = ambitious
+				}
+			}
+			modifier = {
+				factor = 1.85
+				FROM = {
+					trait = deceitful
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					trait = isolationist_elf
+				}
+				trait = isolationist_elf
+			}
+			modifier = {
+				factor = 2.5
+				FROM = {
+					any_lover = {
+						character = ROOT
+					}
+				}
+				FROM = {
+					any_spouse = {
+						any_rival = {
+							character = FROM
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0.85
+				FROM = {
+					NOT = {
+						religion = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 1.85
+				FROM = {
+					owes_favor_to = ROOT
+				}
+			}
+			modifier = {
+				factor = 3
+				FROM = {
+					diplomacy = 15
+				}
+			}
+			modifier = {
+				factor = 1.85
+				FROM = {
+					prestige = 200
+				}
+			}
+			modifier = {
+				factor = 1.85
+				FROM = {
+					prestige = 400
+				}
+			}
+			modifier = {
+				factor = 1.85
+				FROM = {
+					prestige = 600
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					NOT = {
+						wealth = -150
+					}
+				}
+			}
+			modifier = {
+				factor = 1.75
+				FROM = {
+					NOT = {
+						wealth = -300
+					}
+				}
+			}
+			modifier = {
+				factor = 0.01
+				NOT = {
+					any_rival = {
+						character = FROM
+					}
+				}
+				#Wants to shame rival
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = -100
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				NOT = {
+					any_rival = {
+						character = FROM
+					}
+				}
+				#Wants to shame rival
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = -80
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0.75
+				NOT = {
+					any_rival = {
+						character = FROM
+					}
+				}
+				#Wants to shame rival
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = -60
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0.75
+				NOT = {
+					any_rival = {
+						character = FROM
+					}
+				}
+				#Wants to shame rival
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = -40
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0.85
+				NOT = {
+					any_rival = {
+						character = FROM
+					}
+				}	#Wants to shame rival
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = -20
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0.95
+				NOT = {
+					any_rival = {
+						character = FROM
+					}
+				}	#Wants to shame rival
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = 0
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 1.25
+				FROM = {
+					opinion = {
+						who = ROOT
+						value = 20
+					}
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					opinion = {
+						who = ROOT
+						value = 40
+					}
+				}
+			}
+			modifier = {
+				factor = 1.75
+				FROM = {
+					opinion = {
+						who = ROOT
+						value = 60
+					}
+				}
+			}
+			modifier = {
+				factor = 1.85
+				FROM = {
+					opinion = {
+						who = ROOT
+						value = 80
+					}
+				}
+			}
+			modifier = {
+				factor = 2.5
+				FROM = {
+					opinion = {
+						who = ROOT
+						value = 100
+					}
+				}
+			}
+		}
+	}
+
+	asur_buy_favour = {
+		# use your connections to buy a favor from another ruler
+		only_playable = yes
+		filter = realm
+		ai_target_filter = realm
+		from_potential = {
+			age = 16
+			NOT = {
+				has_character_flag = recently_asked_isofavor
+			}
+			trait = isolationist_elf
+		}
+		potential = {
+			age = 16
+			nor = {
+				character = FROM
+				trait = phoenix_king
+			}
+			OR = {
+				trait = isolationist_elf
+				trait = interventionist_elf
+			}
+			OR = {
+				AND = {
+					FROM = {
+						trait = interventionist_elf
+					}
+					trait = interventionist_elf
+				}
+				AND = {
+					FROM = {
+						trait = isolationist_elf
+					}
+					trait = isolationist_elf
+				}
+			}
+		}
+		allow = {
+			from = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
+			}
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
+			NOT = {
+				owes_favor_to = FROM
+			}
+			OR = {
+				AND = {
+					FROM = {
+						prestige = 100
+					}
+					tier = BARON
+				}
+				AND = {
+					FROM = {
+						prestige = 250
+					}
+					tier = COUNT
+				}
+				AND = {
+					FROM = {
+						prestige = 500
+					}
+					tier = DUKE
+				}
+				AND = {
+					FROM = {
+						prestige = 1000
+					}
+					tier = KING
+				}
+				AND = {
+					FROM = {
+						prestige = 2000
+					}
+					tier = EMPEROR
+				}
+			}
+		}
+		effect = {
+ 			if = {
+				limit = {
+					ROOT = {
+						tier = BARON
+					}
+				}
+				FROM = {
+					prestige = -100
+				}
+			}
+			if = {
+				limit = {
+					ROOT = {
+						tier = COUNT
+					}
+				}
+				FROM = {
+					prestige = -250
+				}
+			}
+			if = {
+				limit = {
+					ROOT = {
+						tier = DUKE
+					}
+				}
+				FROM = {
+					prestige = -500
+				}
+			}
+			if = {
+				limit = {
+					ROOT = {
+						tier = KING
+					}
+				}
+				FROM = {
+					prestige = -1000
+				}
+			}
+			if = {
+				limit = {
+					ROOT = {
+						tier = EMPEROR
+					}
+				}
+				FROM = {
+					prestige = -2000
+				}
+			}
+			set_character_flag = recently_asked_isofavor
+			hidden_tooltip = {
+				long_character_event = {
+					id = asurdebate.19
+					days = 5
+					random = 5
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0.5
+			}
+			#the Opponent's traits
+			modifier = {
+				factor = 1.25
+				trait = gregarious
+			}
+			modifier = {
+				factor = 1.25
+				trait = patient
+			}
+			modifier = {
+				factor = 1.25
+				diplomacy = 20
+			}
+			modifier = {
+				factor = 0.85
+				trait = shy
+			}
+			modifier = {
+				factor = 0.85
+				trait = wroth
+			}
+			modifier = {
+				factor = 1.5
+				trait = slow
+			}
+			modifier = {
+				factor = 2
+				trait = imbecile
+			}
+			modifier = {
+				factor = 0.75
+				prestige = 500
+			}
+			modifier = {
+				factor = 0.75
+				prestige = 1500
+			}
+			modifier = {
+				factor = 0.75
+				prestige = 2500
+			}
+			modifier = {
+				factor = 0.75
+				prestige = 3000
+			}
+			#the Challengers traits
+			modifier = {
+				factor = 1.5
+				FROM = {
+					is_lover = ROOT
+				}
+			}
+			modifier = {
+				factor = 1.75
+				FROM = {
+					is_friend = ROOT
+				}
+			}
+			modifier = {
+				factor = 0.35
+				FROM = {
+					is_rival = ROOT
+				}
+			}
+			modifier = {
+				factor = 1.75
+				FROM = {
+					higher_tier_than = ROOT
+				}
+			}
+			modifier = {
+				factor = 0.75
+				FROM = {
+					lower_tier_than = ROOT
+				}
+			}
+			modifier = {
+				factor = 1.25
+				FROM = {
+					trait = phoenix_king
+				}
+			}
+			modifier = {
+				factor = 1.25
+				FROM = {
+					trait = everqueen
+				}
+			}
+			modifier = {
+				factor = 1.75
+				FROM = {
+					prestige = 3000
+				}
+			}
+			modifier = {
+				factor = 1.25
+				FROM = {
+					trait = quick
+				}
+			}
+			modifier = {
+				factor = 1.25
+				FROM = {
+					trait = bright
+				}
+			}
+			modifier = {
+				factor = 1.25
+				FROM = {
+					trait = brilliant
+				}
+			}
+			modifier = {
+				factor = 1.25
+				FROM = {
+					trait = genius
+				}
+			}
+			modifier = {
+				factor = 1.25
+				FROM = {
+					trait = patient
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					trait = gregarious
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					diplomacy = 20
+				}
+			}
+			modifier = {
+				factor = 0.75
+				FROM = {
+					trait = shy
+				}
+			}
+			modifier = {
+				factor = 1.85
+				FROM = {
+					religion = cult_of_pleasure
+				}
+			}
+			modifier = {
+				factor = 0.75
+				FROM = {
+					NOT = {
+						religion = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.85
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = -100
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0.85
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = -80
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0.85
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = -60
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0.85
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = -40
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0.85
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = -20
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0.85
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = 0
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 1.25
+				FROM = {
+					opinion = {
+						who = ROOT
+						value = 20
+					}
+				}
+			}
+			modifier = {
+				factor = 1.25
+				FROM = {
+					opinion = {
+						who = ROOT
+						value = 40
+					}
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					opinion = {
+						who = ROOT
+						value = 60
+					}
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					opinion = {
+						who = ROOT
+						value = 80
+					}
+				}
+			}
+			modifier = {
+				factor = 1.75
+				FROM = {
+					opinion = {
+						who = ROOT
+						value = 100
+					}
+				}
+			}
+		}
+	}
+
+	make_asur_supercourtier = {
+		only_playable = yes
+		filter = court
+		ai_target_filter = court
+		from_potential = {
+			culture_group = asur_group
+			nor = {
+				religion = asrai_cadai
+				has_landed_title = e_ulthuan
+			}
+			trait = creature_elf
+		}
+		potential = {
+			is_ruler = no
+			culture_group = asur_group
+			is_close_relative = FROM
+			trait = creature_elf
+			age = 16
+			OR = {
+				trait = elven_scion
+				trait = elven_maiden
+			}
+			nor = {
+				religion = asrai_cadai
+				trait = asur_mage
+				trait = mage_apprentice
+				trait = everqueen_heir
+			}
+		}
+		allow = {
+			from = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
+			}
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
+			e_ulthuan = {
+				holder_scope = {
+					religion_group = cadai_group
+					NOT = {
+						num_of_vassals = 35
+					}
+				}
+			}
+			is_ruler = no
+			OR = {
+				FROM = {
+					capital_scope = {
+						empire = {
+							title = e_ulthuan
+						}
+					}
+				}
+				e_ulthuan = {
+					holder_scope = {
+						trait = interventionist_elf
+					}
+				}
+			}
+			OR = {
+				FROM = {
+					wealth = 150
+					capital_scope = {
+						empire = {
+							title = e_ulthuan
+						}
+					}
+				}
+				FROM = {
+					wealth = 300
+					NOT = {
+						capital_scope = {
+							empire = {
+								title = e_ulthuan
+							}
+						}
+					}
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					FROM = {
+						capital_scope = {
+							empire = {
+								title = e_ulthuan
+							}
+						}
+					}
+				}
+				FROM = {
+					wealth = -150
+				}
+			}
+			if = {
+				limit = {
+					FROM = {
+						NOT = {
+							capital_scope = {
+								empire = {
+									title = e_ulthuan
+								}
+							}
+						}
+					}
+				}
+				FROM = {
+					wealth = -300
+				}
+			}
+			e_ulthuan = {
+				holder_scope = {
+					letter_event = {
+						id = asur.54
+					}
+				}
+			}
+		}
+		revoke_allowed = {
+			always = yes
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = {
+					dynasty = FROM
+				}
+			}
+			modifier = {
+				factor = 0
+				nor = {
+					father = {
+						character = FROM
+					}
+					mother = {
+						character = FROM
+					}
+				}
+			}
+			modifier = {
+				factor = 50
+				OR = {
+					father = {
+						character = FROM
+					}
+					mother = {
+						character = FROM
+					}
+				}
+			}
+			modifier = {
+				factor = 1.35
+				trait = quick
+			}
+			modifier = {
+				factor = 1.25
+				trait = bright
+			}
+			modifier = {
+				factor = 1.45
+				trait = smart
+			}
+			modifier = {
+				factor = 1.5
+				trait = quick
+			}
+			modifier = {
+				factor = 1.75
+				trait = brilliant
+			}
+			modifier = {
+				factor = 1.95
+				trait = genius
+			}
+			modifier = {
+				factor = 0.85
+				trait = dim
+			}
+			modifier = {
+				factor = 0.75
+				trait = dumb
+			}
+			modifier = {
+				factor = 0.65
+				trait = slow
+			}
+			modifier = {
+				factor = 0.5
+				trait = idiot
+			}
+			modifier = {
+				factor = 0.45
+				trait = imbecile
+			}
+			modifier = {
+				factor = 1.25
+				trait = gregarious
+			}
+			modifier = {
+				factor = 1.25
+				trait = ambitious
+			}
+			modifier = {
+				factor = 1.5
+				trait = diligent
+			}
+			modifier = {
+				factor = 1.15
+				trait = patient
+			}
+			modifier = {
+				factor = 0.75
+				trait = slothful
+			}
+			modifier = {
+				factor = 5
+				FROM = {
+					tier = KING
+				}
+			}
+			modifier = {
+				factor = 2
+				FROM = {
+					current_heir = {
+						character = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				FROM = {
+					current_heir = {
+						is_married = no
+					}
+				}
+			}
+			modifier = {
+				#Better send him to wizardry school
+				factor = 0
+				OR = {
+					trait = magic_potential_1
+					trait = magic_potential_2
+					trait = magic_potential_3
+					trait = magic_potential_4
+				}
+			}
+			modifier = {
+				factor = 0.75
+				FROM = {
+					NOT = {
+						religion = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.25
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = -100
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0.75
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = -80
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0.75
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = -60
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0.75
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = -40
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0.75
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = -20
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0.75
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = 0
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 1.25
+				FROM = {
+					opinion = {
+						who = ROOT
+						value = 20
+					}
+				}
+			}
+			modifier = {
+				factor = 1.25
+				FROM = {
+					opinion = {
+						who = ROOT
+						value = 40
+					}
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					opinion = {
+						who = ROOT
+						value = 60
+					}
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					opinion = {
+						who = ROOT
+						value = 80
+					}
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					opinion = {
+						who = ROOT
+						value = 100
+					}
+				}
+			}
+		}
+	}
+
+	#Handles elven marriages
+	elven_courting_decision = {
+		ai_target_filter = realm
+		only_playable = yes
+		from_potential = {
+			trait = creature_elf
+			is_betrothed = no
+			is_married = no
+			age = 25
+			cannot_marry_trigger = no
+			NOT = {
+				has_character_modifier = courting_timer
+			}
+		}
+		potential = {
+			NOT = {
+				has_character_modifier = courting_timer
+			}
+			trait = creature_elf
+			age = 25
+			OR = {
+				AND = {
+					FROM = {
+						is_female = no
+					}
+					is_female = yes
+				}
+				AND = {
+					FROM = {
+						is_female = yes
+					}
+					is_female = no
+				}
+			}
+		}
+		allow = {
+			from = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
+			}
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
+			is_married = no
+			is_betrothed = no
+			nor = {
+				trait = courting
+				FROM = {
+					trait = courting
+				}
+			}
+		}
+		effect = {
+			hidden_tooltip = {
+				FROM = {
+					set_variable = {
+						which = "courting_score"
+						value = 0
+					}
+					clr_character_flag = asking_for_matrilineal
+					clr_character_flag = landless_fiancee_flag
+				}
+				clr_character_flag = asking_for_matrilineal
+				clr_character_flag = landless_fiancee_flag
+				add_character_modifier = {
+					name = courting_timer
+					hidden=yes
+					duration = 365
+				}
+				FROM = {
+					add_character_modifier = {
+						name = courting_timer
+						hidden=yes
+						duration = 365
+					}
+				}
+				character_event = {
+					id = selfmarriage.1
+				}
+			} #Set targets, pray gods of coding.
+		}
+		revoke_allowed = {
+			always = yes
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0.15
+			}
+			#Main reasons
+			modifier = {
+				factor = 0.5
+				FROM = {
+					NOT = {
+						religion = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.15
+				FROM = {
+					NOT = {
+						religion_group = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				FROM = {
+					is_female = yes
+				} #Less likely to be the ones starting the courting
+			}
+			modifier = {
+				factor = 0.1
+				FROM = {
+					is_close_relative = ROOT
+				}
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					NOT = {
+						religion = atharti
+					}
+					father = {
+						character = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					NOT = {
+						religion = atharti
+					}
+					mother = {
+						character = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					NOT = {
+						religion = atharti
+					}
+					any_child = {
+						character = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.25
+				NOR = {
+					FROM = {
+						higher_tier_than = DUKE
+					}
+					FROM = {
+						father_even_if_dead = {
+							higher_tier_than = DUKE
+						}
+					}
+					FROM = {
+						mother_even_if_dead = {
+							higher_tier_than = DUKE
+						}
+					}
+				}
+				OR = {
+					trait = phoenix_king
+					father_even_if_dead = {
+						trait = phoenix_king
+					}
+					mother_even_if_dead = {
+						trait = phoenix_king
+					}
+				}
+			}
+			modifier = {
+				factor = 0.85
+				FROM = {
+					trait = infertile
+				}
+			}
+			modifier = {
+				#Provincial scum
+				factor = 0.75
+				FROM = {
+					capital_scope = {
+						empire = {
+							title = e_ulthuan
+						}
+					}
+				}
+				NOT = {
+					capital_scope = {
+						empire = {
+							title = e_ulthuan
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					NOT = {
+						age = 30
+					}
+				}
+				NOT = {
+					age = 30
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					age = 30
+				}
+				age = 30
+			}
+			modifier = {
+				factor = 1.35
+				FROM = {
+					age = 40
+				}
+			}
+			modifier = {
+				factor = 1.5
+				father = {
+					current_heir = {
+						character = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 1.5
+				mother = {
+					current_heir = {
+						character = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.75
+				num_of_children = 2
+			}
+			modifier = {
+				factor = 0.95
+				NOT = {
+					piety = 0
+				}
+			}
+			modifier = {
+				factor = 0.65
+				NOT = {
+					prestige = 0
+				}
+			}
+			modifier = {
+				factor = 1.25
+				prestige = 100
+			}
+			modifier = {
+				factor = 1.25
+				prestige = 300
+			}
+			modifier = {
+				factor = 1.25
+				prestige = 500
+			}
+			modifier = {
+				factor = 1.25
+				prestige = 700
+			}
+			modifier = {
+				factor = 1.25
+				prestige = 900
+			}
+			modifier = {
+				factor = 0.75
+				NOT = {
+					wealth = 0
+				}
+			}
+			modifier = {
+				factor = 0.85
+				NOT = {
+					wealth = 150
+				}
+			}
+			modifier = {
+				factor = 0.95
+				NOT = {
+					wealth = 250
+				}
+			}
+			modifier = {
+				factor = 1.15
+				wealth = 150
+			}
+			modifier = {
+				factor = 1.15
+				wealth = 250
+			}
+			modifier = {
+				factor = 1.15
+				wealth = 500
+			}
+			modifier = {
+				factor = 1.25
+				dynasty = FROM
+			}
+			modifier = {
+				factor = 0.45
+				trait = infertile
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					father = {
+						character = FROM
+					}
+					mother = {
+						character = FROM
+					}
+				}
+			}
+			modifier = {
+				factor = 0.25
+				is_close_relative = FROM
+			}
+			modifier = {
+				factor = 0.65
+				NOT = {
+					culture = FROM
+				}
+			}
+			modifier = {
+				#Safeguard the Princedoms' integrity
+				factor = 0.35
+				NOT = {
+					culture = FROM
+				}
+				OR = {
+					higher_tier_than = DUKE
+					father_even_if_dead = {
+						higher_tier_than = DUKE
+					}
+					mother_even_if_dead = {
+						higher_tier_than = DUKE
+					}
+				}
+				OR = {
+					FROM = {
+						higher_tier_than = DUKE
+					}
+					FROM = {
+						father_even_if_dead = {
+							higher_tier_than = DUKE
+						}
+					}
+					FROM = {
+						mother_even_if_dead = {
+							higher_tier_than = DUKE
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					tier = BARON
+					father_even_if_dead = {
+						tier = BARON
+					}
+					mother_even_if_dead = {
+						tier = BARON
+					}
+				}
+				OR = {
+					FROM = {
+						tier = BARON
+					}
+					FROM = {
+						father_even_if_dead = {
+							tier = BARON
+						}
+					}
+					FROM = {
+						mother_even_if_dead = {
+							tier = BARON
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					tier = COUNT
+					father_even_if_dead = {
+						tier = COUNT
+					}
+					mother_even_if_dead = {
+						tier = COUNT
+					}
+				}
+				OR = {
+					FROM = {
+						tier = COUNT
+					}
+					FROM = {
+						father_even_if_dead = {
+							tier = COUNT
+						}
+					}
+					FROM = {
+						mother_even_if_dead = {
+							tier = COUNT
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					tier = DUKE
+					father_even_if_dead = {
+						tier = DUKE
+					}
+					mother_even_if_dead = {
+						tier = DUKE
+					}
+				}
+				OR = {
+					FROM = {
+						tier = DUKE
+					}
+					FROM = {
+						father_even_if_dead = {
+							tier = DUKE
+						}
+					}
+					FROM = {
+						mother_even_if_dead = {
+							tier = DUKE
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					tier = KING
+					father_even_if_dead = {
+						tier = KING
+					}
+					mother_even_if_dead = {
+						tier = KING
+					}
+				}
+				OR = {
+					FROM = {
+						tier = KING
+					}
+					FROM = {
+						father_even_if_dead = {
+							tier = KING
+						}
+					}
+					FROM = {
+						mother_even_if_dead = {
+							tier = KING
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					tier = EMPEROR
+					father_even_if_dead = {
+						tier = EMPEROR
+					}
+					mother_even_if_dead = {
+						tier = EMPEROR
+					}
+				}
+				OR = {
+					FROM = {
+						tier = EMPEROR
+					}
+					FROM = {
+						father_even_if_dead = {
+							tier = EMPEROR
+						}
+					}
+					FROM = {
+						mother_even_if_dead = {
+							tier = EMPEROR
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0.15
+				is_ruler = yes
+				FROM = {
+					is_ruler = no
+					father_even_if_dead = {
+						is_ruler = no
+					}
+					mother_even_if_dead = {
+						is_ruler = no
+					}
+				}
+			}
+			modifier = {
+				factor = 0.15
+				is_ruler = no
+				FROM = {
+					OR = {
+						is_ruler = yes
+						father_even_if_dead = {
+							is_ruler = yes
+						}
+						mother_even_if_dead = {
+							is_ruler = yes
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0.35
+				higher_tier_than = COUNT
+				FROM = {
+					is_ruler = yes
+					lower_tier_than = DUKE
+					father_even_if_dead = {
+						lower_tier_than = DUKE
+					}
+					mother_even_if_dead = {
+						lower_tier_than = DUKE
+					}
+				}
+			}
+			#Sentimental reasons
+			modifier = {
+				factor = 0.95
+				trait = homosexual
+			}
+			modifier = {
+				factor = 0.75
+				FROM = {
+					trait = homosexual
+				}
+			}
+			modifier = {
+				factor = 4
+				is_lover = FROM
+			}
+			modifier = {
+				factor = 0.85
+				NOT = {
+					is_lover = FROM
+				}
+				has_lover = yes
+			}
+			modifier = {
+				factor = 2.5
+				is_friend = FROM
+			}
+			modifier = {
+				factor = 0.15
+				is_rival = FROM
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					NOR = {
+						trait = magic_potential_1
+						trait = magic_potential_2
+						trait = magic_potential_3
+						trait = magic_potential_4
+					}
+				}
+				OR = {
+					trait = magic_potential_1
+					trait = magic_potential_2
+					trait = magic_potential_3
+					trait = magic_potential_4
+				}
+			}
+			modifier = {
+				factor = 1.25
+				FROM = {
+					OR = {
+						trait = amateurish_plotter
+						trait = flamboyant_schemer
+						trait = intricate_webweaver
+						trait = elusive_shadow
+					}
+				}
+				OR = {
+					trait = amateurish_plotter
+					trait = flamboyant_schemer
+					trait = intricate_webweaver
+					trait = elusive_shadow
+				}
+			}
+			modifier = {
+				factor = 1.25
+				FROM = {
+					OR = {
+						trait = naive_appeaser
+						trait = underhanded_rogue
+						trait = charismatic_negotiator
+						trait = grey_eminence
+					}
+				}
+				OR = {
+					trait = naive_appeaser
+					trait = underhanded_rogue
+					trait = charismatic_negotiator
+					trait = grey_eminence
+				}
+			}
+			modifier = {
+				factor = 1.25
+				FROM = {
+					OR = {
+						trait = indulgent_wastrel
+						trait = thrifty_clerk
+						trait = fortune_builder
+						trait = midas_touched
+					}
+				}
+				OR = {
+					trait = indulgent_wastrel
+					trait = thrifty_clerk
+					trait = fortune_builder
+					trait = midas_touched
+				}
+			}
+			modifier = {
+				factor = 1.25
+				FROM = {
+					OR = {
+						trait = misguided_warrior
+						trait = tough_soldier
+						trait = skilled_tactician
+						trait = brilliant_strategist
+					}
+				}
+				OR = {
+					trait = misguided_warrior
+					trait = tough_soldier
+					trait = skilled_tactician
+					trait = brilliant_strategist
+				}
+			}
+			modifier = {
+				factor = 1.25
+				FROM = {
+					OR = {
+						trait = detached_priest
+						trait = martial_cleric
+						trait = scholarly_theologian
+						trait = mastermind_theologian
+					}
+				}
+				OR = {
+					trait = detached_priest
+					trait = martial_cleric
+					trait = scholarly_theologian
+					trait = mastermind_theologian
+				}
+			}
+			modifier = {
+				factor = 1.25
+				trait = haughty
+			}
+			modifier = {
+				factor = 0.9
+				trait = stressed
+			}
+			modifier = {
+				factor = 0.9
+				trait = depressed
+			}
+			modifier = {
+				factor = 0.9
+				trait = lunatic_1
+			}
+			modifier = {
+				factor = 0.8
+				trait = lunatic_2
+			}
+			modifier = {
+				factor = 0.7
+				trait = lunatic_3
+			}
+			modifier = {
+				factor = 0.9
+				trait = ill
+			}
+			modifier = {
+				factor = 0.8
+				trait = pneumonic
+			}
+			modifier = {
+				factor = 0.7
+				trait = syphilitic
+			}
+			modifier = {
+				factor = 0.9
+				is_ill = yes
+			}
+			modifier = {
+				factor = 0.9
+				trait = scarred
+			}
+			modifier = {
+				factor = 0.9
+				trait = clubfooted
+			}
+			modifier = {
+				factor = 0.8
+				trait = harelip
+			}
+			modifier = {
+				factor = 0.7
+				trait = hunchback
+			}
+			modifier = {
+				factor = 0.9
+				trait = lisp
+			}
+			modifier = {
+				factor = 0.9
+				trait = stutter
+			}
+			modifier = {
+				factor = 0.6
+				trait = dwarf
+			}
+			modifier = {
+				factor = 1.5
+				trait = asur_mage
+				FROM = {
+					trait = asur_mage
+				}
+			}
+			modifier = {
+				factor = 1.25
+				trait = socializer
+				FROM = {
+					trait = socializer
+				}
+			}
+			modifier = {
+				factor = 1.25
+				trait = gamer
+				FROM = {
+					trait = gamer
+				}
+			}
+			modifier = {
+				factor = 1.25
+				trait = hedonist
+				FROM = {
+					trait = hedonist
+				}
+			}
+			modifier = {
+				factor = 1.25
+				trait = duelist
+				FROM = {
+					trait = duelist
+				}
+			}
+			modifier = {
+				factor = 1.25
+				trait = hunter
+				FROM = {
+					trait = hunter
+				}
+			}
+			modifier = {
+				factor = 1.25
+				trait = strategist
+				FROM = {
+					trait = strategist
+				}
+			}
+			modifier = {
+				factor = 1.25
+				trait = administrator
+				FROM = {
+					trait = administrator
+				}
+			}
+			modifier = {
+				factor = 1.25
+				trait = architect
+				FROM = {
+					trait = architect
+				}
+			}
+			modifier = {
+				factor = 1.25
+				trait = gardener
+				FROM = {
+					trait = gardener
+				}
+			}
+			modifier = {
+				factor = 1.25
+				trait = schemer
+				FROM = {
+					trait = schemer
+				}
+			}
+			modifier = {
+				factor = 1.25
+				trait = impaler
+				FROM = {
+					trait = impaler
+				}
+			}
+			modifier = {
+				factor = 0.75
+				trait = impaler
+				FROM = {
+					NOR = {
+						trait = impaler
+						trait = cruel
+					}
+				}
+			}
+			modifier = {
+				factor = 1.5
+				trait = seducer
+				FROM = {
+					trait = seductress
+				}
+			}
+			modifier = {
+				factor = 1.5
+				trait = seductress
+				FROM = {
+					trait = seducer
+				}
+			}
+			modifier = {
+				factor = 1.25
+				trait = scholar
+				FROM = {
+					trait = scholar
+				}
+			}
+			modifier = {
+				factor = 1.25
+				trait = theologian
+				FROM = {
+					trait = theologian
+				}
+			}
+			modifier = {
+				factor = 1.25
+				trait = mystic
+				FROM = {
+					trait = mystic
+				}
+			}
+			modifier = {
+				factor = 1.5
+				trait = celibate
+				FROM = {
+					trait = celibate
+				}
+			}
+			modifier = {
+				factor = 0.75
+				trait = celibate
+				FROM = {
+					NOT = {
+						trait = celibate
+					}
+				}
+			}
+			modifier = {
+				factor = 0.75
+				NOT = {
+					trait = celibate
+				}
+				FROM = {
+					trait = celibate
+				}
+			}
+			modifier = {
+				factor = 1.25
+				trait = poet
+				FROM = {
+					trait = poet
+				}
+			}
+			modifier = {
+				factor = 1.25
+				trait = falconer
+				FROM = {
+					trait = falconer
+				}
+			}
+			modifier = {
+				factor = 1.25
+				trait = chaste
+				FROM = {
+					trait = chaste
+				}
+			}
+			modifier = {
+				factor = 1.25
+				trait = lustful
+				FROM = {
+					trait = lustful
+				}
+			}
+			modifier = {
+				factor = 1.25
+				trait = lustful
+			}
+			modifier = {
+				factor = 1.5
+				FROM = {
+					trait = lustful
+				}
+			}
+			modifier = {
+				factor = 1.25
+				trait = temperate
+			}
+			modifier = {
+				factor = 0.85
+				trait = gluttonous
+			}
+			modifier = {
+				factor = 1.25
+				trait = charitable
+				FROM = {
+					NOT = {
+						trait = greedy
+					}
+				}
+			}
+			modifier = {
+				factor = 1.5
+				trait = kind
+				FROM = {
+					NOT = {
+						trait = cruel
+					}
+				}
+			}
+			modifier = {
+				factor = 0.85
+				trait = wroth
+			}
+			modifier = {
+				factor = 0.85
+				trait = envious
+			}
+			modifier = {
+				factor = 0.85
+				trait = humble
+			}
+			modifier = {
+				factor = 1.25
+				trait = proud
+			}
+			modifier = {
+				factor = 0.85
+				trait = deceitful
+				FROM = {
+					NOT = {
+						trait = deceitful
+					}
+				}
+			}
+			modifier = {
+				factor = 1.25
+				trait = honest
+				FROM = {
+					NOT = {
+						trait = deceitful
+					}
+				}
+			}
+			modifier = {
+				factor = 0.85
+				trait = craven
+			}
+			modifier = {
+				factor = 1.25
+				trait = brave
+			}
+			modifier = {
+				factor = 1.15
+				trait = shy
+			}
+			modifier = {
+				factor = 0.95
+				FROM = {
+					trait = shy
+				}
+			}
+			modifier = {
+				factor = 1.15
+				trait = content
+			}
+			modifier = {
+				factor = 0.85
+				trait = arbitrary
+				FROM = {
+					NOT = {
+						trait = arbitrary
+					}
+				}
+			}
+			modifier = {
+				factor = 1.25
+				trait = just
+				FROM = {
+					NOT = {
+						trait = arbitrary
+					}
+				}
+			}
+			modifier = {
+				factor = 0.85
+				trait = cynical
+				FROM = {
+					NOT = {
+						trait = cynical
+					}
+				}
+			}
+			modifier = {
+				factor = 1.25
+				trait = zealous
+				FROM = {
+					NOT = {
+						trait = cynical
+					}
+				}
+			}
+			modifier = {
+				factor = 0.95
+				trait = paranoid
+			}
+			modifier = {
+				factor = 0.85
+				trait = trusting
+			}
+			modifier = {
+				factor = 1.35
+				trait = gregarious
+			}
+			modifier = {
+				factor = 0.95
+				trait = ambitious
+			}
+			modifier = {
+				factor = 1.5
+				trait = diligent
+			}
+			modifier = {
+				factor = 1.25
+				trait = patient
+			}
+			modifier = {
+				factor = 0.95
+				trait = slothful
+			}
+			modifier = {
+				factor = 0.85
+				trait = cruel
+				FROM = {
+					NOR = {
+						trait = cruel
+						trait = impaler
+					}
+				}
+			}
+			modifier = {
+				factor = 1.35
+				trait = erudite
+			}
+			modifier = {
+				factor = 1.15
+				trait = stubborn
+			}
+			modifier = {
+				factor = 0.85
+				trait = fat
+			}
+			modifier = {
+				factor = 1.15
+				trait = undernourished
+			}
+			modifier = {
+				factor = 0.85
+				trait = blinded
+			}
+			modifier = {
+				factor = 0.65
+				trait = disfigured
+			}
+			modifier = {
+				factor = 1.5
+				has_artifact = black_dragon_mount
+			}
+			modifier = {
+				factor = 1.5
+				has_artifact = blue_dragon_mount
+			}
+			modifier = {
+				factor = 1.5
+				has_artifact = gold_dragon_mount
+			}
+			modifier = {
+				factor = 1.5
+				has_artifact = red_dragon_mount
+			}
+			modifier = {
+				factor = 1.5
+				has_artifact = white_dragon_mount
+			}
+			modifier = {
+				factor = 0.5
+				trait = burnt_by_asuryan
+			}
+			modifier = {
+				factor = 0
+				trait = burnt_by_asuryan
+				FROM = {
+					culture_group = asur_group
+				}
+			}
+			modifier = {
+				factor = 0.75
+				trait = asuryan_stain
+				FROM = {
+					culture_group = asur_group
+				}
+			}
+			modifier = {
+				factor = 0.15
+				culture_group = druchi_group
+				FROM = {
+					culture_group = asur_group
+				}
+			}
+			modifier = {
+				factor = 0.5
+				culture_group = asrai_group
+				FROM = {
+					culture_group = asur_group
+				}
+			}
+			modifier = {
+				factor = 0.85
+				trait = interventionist_elf
+				FROM = {
+					trait = isolationist_elf
+				}
+			}
+			modifier = {
+				factor = 0.85
+				trait = isolationist_elf
+				FROM = {
+					trait = interventionist_elf
+				}
+			}
+			modifier = {
+				factor = 0.5
+				trait = mutation_minor
+			}
+			modifier = {
+				factor = 0.25
+				trait = mutation_major
+			}
+			modifier = {
+				factor = 0
+				trait = mutation_massive
+			}
+			modifier = {
+				factor = 0
+				trait = avatar_isha
+				FROM = {
+					NOT = {
+						trait = avatar_kurnous
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				trait = avatar_kurnous
+				FROM = {
+					NOT = {
+						trait = avatar_isha
+					}
+				}
+			}
+			modifier = {
+				factor = 10
+				trait = avatar_kurnous
+				FROM = {
+					trait = avatar_isha
+				}
+			}
+			modifier = {
+				factor = 10
+				trait = avatar_isha
+				FROM = {
+					trait = avatar_kurnous
+				}
+			}
+			modifier = {
+				factor = 2
+				trait = asrai_spellsinger
+				FROM = {
+					trait = asrai_spellsinger
+				}
+			}
+			modifier = {
+				factor = 0.5
+				trait = hollowed
+			}
+			modifier = {
+				factor = 1.75
+				trait = druchi_black_guard
+				FROM = {
+					culture_group = druchi_group
+				}
+			}
+			modifier = {
+				factor = 1.35
+				trait = elven_maiden
+				FROM = {
+					trait = elven_scion
+				}
+			}
+			modifier = {
+				factor = 1.35
+				trait = elven_scion
+				FROM = {
+					trait = elven_maiden
+				}
+			}
+			modifier = {
+				factor = 1.15
+				trait = bright
+			}
+			modifier = {
+				factor = 1.25
+				trait = smart
+			}
+			modifier = {
+				factor = 1.35
+				trait = quick
+			}
+			modifier = {
+				factor = 1.45
+				trait = brilliant
+			}
+			modifier = {
+				factor = 1.5
+				trait = genius
+			}
+			modifier = {
+				factor = 0.95
+				trait = dim
+			}
+			modifier = {
+				factor = 0.85
+				trait = dumb
+			}
+			modifier = {
+				factor = 0.75
+				trait = slow
+			}
+			modifier = {
+				factor = 0.65
+				trait = idiot
+			}
+			modifier = {
+				factor = 0.5
+				trait = imbecile
+			}
+			modifier = {
+				factor = 0.75
+				trait = strong
+			}
+			modifier = {
+				factor = 0.85
+				trait = tough
+			}
+			modifier = {
+				factor = 0.95
+				trait = hardy
+			}
+			modifier = {
+				factor = 0.85
+				trait = robust
+			}
+			modifier = {
+				factor = 1.15
+				trait = soft
+			}
+			modifier = {
+				factor = 1.25
+				trait = fragile
+			}
+			modifier = {
+				factor = 1.35
+				trait = weak
+			}
+			modifier = {
+				factor = 1.75
+				trait = beautiful
+			}
+			modifier = {
+				factor = 1.5
+				trait = pretty
+			}
+			modifier = {
+				factor = 1.25
+				trait = fair
+			}
+			modifier = {
+				factor = 0.75
+				trait = plain
+			}
+			modifier = {
+				factor = 0.65
+				trait = ugly
+			}
+			modifier = {
+				factor = 0.5
+				trait = unsightly
+			}
+			modifier = {
+				factor = 0.45
+				trait = monstrous
+			}
+			modifier = {
+				factor = 1.25
+				trait = tall
+			}
+			modifier = {
+				factor = 0.75
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = -100
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0.85
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = -80
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0.85
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = -60
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0.85
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = -40
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0.85
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = -20
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0.85
+				FROM = {
+					NOT = {
+						opinion = {
+							who = ROOT
+							value = 0
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 1.25
+				FROM = {
+					opinion = {
+						who = ROOT
+						value = 20
+					}
+				}
+			}
+			modifier = {
+				factor = 1.25
+				FROM = {
+					opinion = {
+						who = ROOT
+						value = 40
+					}
+				}
+			}
+			modifier = {
+				factor = 1.25
+				FROM = {
+					opinion = {
+						who = ROOT
+						value = 60
+					}
+				}
+			}
+			modifier = {
+				factor = 1.25
+				FROM = {
+					opinion = {
+						who = ROOT
+						value = 80
+					}
+				}
+			}
+			modifier = {
+				factor = 1.25
+				FROM = {
+					opinion = {
+						who = ROOT
+						value = 100
+					}
+				}
+			}
+		}
+	}
+}
+
+plot_decisions = {
+
+	# for faction
+	faction_isolationist_elves_ultimatum = {
+		only_playable = yes
+		is_high_prio = yes
+		potential = {
+			leads_faction = faction_isolationist_elves
+			OR = {
+				NOT = {
+					has_character_flag = faction_isolationist_elves_ultimatum_taken
+				}
+				had_character_flag = {
+					flag = faction_isolationist_elves_ultimatum_taken days = 7
+				}
+			}
+		}
+		allow = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
+			war = no
+			liege = {
+				nor = {
+					war_with = ROOT
+					reverse_has_truce = ROOT
+				}
+			}
+			capital_holding = {
+				controller = {
+					character = ROOT
+				}
+			}
+		}
+		effect = {
+			liege = {
+				letter_event = {
+					id = asur.14 days = 3
+				}
+			}
+			hidden_tooltip = {
+				set_character_flag = faction_isolationist_elves_ultimatum_taken
+			}
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0.5 # Slow it down a little
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					faction_power =	{
+						faction = faction_isolationist_elves
+						power = 0.75
+					}
+				}
+			}
+			modifier = {
+				factor = 0.1
+				NOT = {
+					faction_power = {
+						faction = faction_isolationist_elves
+						power = 1.0
+					}
+				}
+			}
+			modifier = {
+				factor = 0.1
+				NOT = {
+					faction_power = {
+						faction = faction_isolationist_elves
+						power = 1.5
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				liege = {
+					any_war = {
+						OR = {
+							AND = {
+								defender = {
+									character = PREV
+								}
+								nor = {
+									using_cb = depose_liege
+									using_cb = overthrow_ruler
+									using_cb = overthrow_ruler_no_calls
+								}
+							}
+							AND = {
+								attacker = {
+									character = PREV
+								}
+								OR = {
+									using_cb = invasion
+									using_cb = religious
+									using_cb = tribal_invasion
+									# using_cb = viking_invasion
+									using_cb = claim_all
+									using_cb = claim
+									using_cb = other_claim
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	faction_interventionist_elves_ultimatum = {
+		only_playable = yes
+		is_high_prio = yes
+		potential = {
+			leads_faction = faction_interventionist_elves
+			OR = {
+				NOT = {
+					has_character_flag = faction_interventionist_elves_ultimatum_taken
+				}
+				had_character_flag = {
+					flag = faction_interventionist_elves_ultimatum_taken days = 7
+				}
+			}
+		}
+		allow = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
+			war = no
+			liege = {
+				nor = {
+					war_with = ROOT
+					reverse_has_truce = ROOT
+				}
+			}
+			capital_holding = {
+				controller = {
+					character = ROOT
+				}
+			}
+		}
+		effect = {
+			liege = {
+				letter_event = {
+					id = asur.21 days = 3
+				}
+			}
+			hidden_tooltip = {
+				set_character_flag = faction_interventionist_elves_ultimatum_taken
+			}
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0.5 # Slow it down a bit
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					faction_power =	{
+						faction = faction_interventionist_elves
+						power = 0.75
+					}
+				}
+			}
+			modifier = {
+				factor = 0.1
+				NOT = {
+					faction_power = {
+						faction = faction_interventionist_elves
+						power = 1.0
+					}
+				}
+			}
+			modifier = {
+				factor = 0.1
+				NOT = {
+					faction_power = {
+						faction = faction_interventionist_elves
+						power = 1.5
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				liege = {
+					any_war = {
+						OR = {
+							AND = {
+								defender = {
+									character = PREV
+								}
+								nor = {
+									using_cb = depose_liege
+									using_cb = overthrow_ruler
+									using_cb = overthrow_ruler_no_calls
+								}
+							}
+							AND = {
+								attacker = {
+									character = PREV
+								}
+								OR = {
+									using_cb = invasion
+									using_cb = religious
+									using_cb = tribal_invasion
+									# using_cb = viking_invasion
+									using_cb = claim_all
+									using_cb = claim
+									using_cb = other_claim
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,53 +1,55 @@
 decisions = {
-	# patrolyourlands ={
-	# potential = {
-	# NOT = { trait = on_knight_quest }
-	# age = 16
-	# religion = grail
-	# OR = {
-	# trait = bretonnian_knight_errant
-	# trait = bretonnian_knight
-	# trait = grail_knight
-	# }
-	# OR = {
-	# ai = no
-	# OR = {
-	# trait = brave
-	# trait = proud
-	# trait = ambitious
-	# }
-	# }
-	# }
-	# allow = {
-	# NOT = { trait = maimed }
-	# NOT = { trait = wounded }
-	# OR = {
-	# ai = no
-	# OR = {
-	# trait = brave
-	# trait = proud
-	# trait = ambitious
-	# }
-	# }
-	# NOT = { trait = craven }
-	# }
-	# effect = {
-	# ROOT = { character_event = { id = bretonnia.2 } }
-	# }
-	# ai_will_do = {
-	# factor = 1
-	# modifier = {
-    # factor = 0
-    # num_of_children = 0
-    # }
-	# modifier = {
-    # factor = 0
-    # age = 35
-    # }
-	# }
-	# }
+	patrolyourlands = {
+		only_playable = yes
+		potential = {
+			nor = {
+				trait = on_knight_quest
+				has_character_flag = on_grail_quest
+			}
+			age = 16
+			religion = grail
+			OR = {
+				trait = bretonnian_knight_errant
+				trait = bretonnian_knight
+				trait = grail_knight
+			}
+			OR = {
+				ai = no
+				OR = {
+					trait = brave
+					trait = proud
+					trait = ambitious
+				}
+			}
+		}
+		allow = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
+			NOT = {
+				trait = craven
+			}
+		}
+		effect = {
+			character_event = {
+				id = wh_bretonnia.2
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				num_of_children = 0
+			}
+			modifier = {
+				factor = 0
+				age = 35
+			}
+		}
+	}
 
-	returntoyourcastle ={
+	returntoyourcastle = {
 		potential = {
 			age = 16
 			religion = grail
@@ -60,10 +62,8 @@ decisions = {
 			ai = no
 		}
 		effect = {
-			ROOT = {
-				character_event = {
-					id = bretonnia.5
-				}
+			character_event = {
+				id = wh_bretonnia.5
 			}
 		}
 		ai_will_do = {
@@ -77,7 +77,7 @@ decisions = {
 		}
 	}
 
-	goonthegrailquest ={
+	goonthegrailquest = {
 		only_playable = yes
 		potential = {
 			age = 16
@@ -111,10 +111,8 @@ decisions = {
 			}
 		}
 		effect = {
-			ROOT = {
-				character_event = {
-					id = bretonnia.21
-				}
+			character_event = {
+				id = wh_bretonnia.21
 			}
 		}
 		ai_will_do = {

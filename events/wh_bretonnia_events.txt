@@ -1,12 +1,12 @@
 namespace = bretonnia
 
-# First off, to start with, all Bretonnian rulers that do not have the knight trait or grail knight trait at start should get it
+# all Bretonnian rulers that do not have trait at start should get it on_startup
 character_event = {
-	id = bretonnia.0
+	id = wh_bretonnia.0
 	title = KNIGHTHOOD
-	desc = EVTDESCBRETONNIA.0 # You are the ruler of a Bretonnian castle, and you - like the rest of your fellow rulers - are an ordained knight of the realm.
+	desc = EVTDESCwh_bretonnia.0 # You are the ruler of a Bretonnian castle, and you - like the rest of your fellow rulers - are an ordained knight of the realm.
 	picture = "GFX_evt_bretonnians"
-	only_rulers = yes
+	only_playable = yes
 	religion = grail
 	min_age = 16
 	only_men = yes
@@ -23,18 +23,22 @@ character_event = {
 	option = {
 		name = FOR_THE_LADY
 		add_trait = bretonnian_knight
-		remove_trait = bretonnian_knight_errant
+		hidden_tooltip = {
+			any_courtier = {
+				character_event = {
+					id = wh_bretonnia.1
+				}
+			}
+		}
 	}
 }
 
 # Now for the assignment of knight errant trait
 character_event = {
-	id = bretonnia.1
+	id = wh_bretonnia.1
 	title = KNIGHTHOOD
-	desc = EVTDESCBRETONNIA.1 # You are a skilled warrior, and it is time you took up your duties to the realm and became a Knight-errant of Bretonnia.
+	desc = EVTDESCwh_bretonnia.1 # You are a skilled warrior, and it is time you took up your duties to the realm and became a Knight-errant of wh_bretonnia.
 	picture = "GFX_evt_bretonnians"
-	only_rulers = yes
-	religion = grail
 	min_age = 16
 	only_men = yes
 	is_triggered_only = yes
@@ -58,9 +62,9 @@ character_event = {
 
 # normal quest menu
 character_event = {
-	id = bretonnia.2
+	id = wh_bretonnia.2
 	title = QUESTING
-	desc = EVTDESCBRETONNIA.2 # You are a knight of Bretonnia, it is only fitting that you travel the land doing great deeds, rescuing maidens and slaying monsters. Will you take up the questing life?
+	desc = EVTDESCwh_bretonnia.2 # You are a knight of Bretonnia, it is only fitting that you travel the land doing great deeds, rescuing maidens and slaying monsters. Will you take up the questing life?
 	picture = "GFX_evt_bretonnians"
 	min_age = 16
 	is_triggered_only = yes
@@ -77,11 +81,9 @@ character_event = {
 
 # maintenance event if character becomes maimed, gets bad trait, or reaches a certain age
 character_event = {
-	id = bretonnia.3
-	title = QUESTING
-	desc = EVTDESCBRETONNIA.3 # You have become maimed, and can no longer carry on the questing life. It is time to return to your castle, and focus on strengthening your own lands with the rest of your strength.
-	picture = "GFX_evt_bretonnians"
-	only_rulers = yes
+	id = wh_bretonnia.3
+	hide_window = yes
+	only_playable = yes
 	religion = grail
 	min_age = 16
 	only_men = yes
@@ -95,19 +97,18 @@ character_event = {
 		}
 	}
 
-	option = {
-		name = I_RETURN_HOME_FOR_THE_LADY
-		remove_trait = on_knight_quest
+	immediate = {
+		character_event = {
+			id = wh_bretonnia.5
+		}
 	}
 }
 
 # maintenance event if character becomes maimed, gets bad trait, or reaches a certain age
 character_event = {
-	id = bretonnia.4
-	title = QUESTING
-	desc = EVTDESCBRETONNIA.4 # You have quested for a long time now, perhaps it is time to return home and see to your responsibilites there?
-	picture = "GFX_evt_bretonnians"
-	only_rulers = yes
+	id = wh_bretonnia.4
+	hide_window = yes
+	only_playable = yes
 	religion = grail
 	min_age = 35
 	only_men = yes
@@ -116,28 +117,24 @@ character_event = {
 	trigger = {
 		trait = on_knight_quest
 		nor = {
-			has_character_flag = bretonnia4
+			has_character_flag = has_event_wh_wh_bretonnia.4
 			has_character_flag = on_grail_quest
 		}
 	}
 
-	option = {
-		name = I_RETURN_HOME_FOR_THE_LADY
-		remove_trait = on_knight_quest
-		set_character_flag = bretonnia4
-	}
-
-	option = {
-		name = NO_I_MUST_CONTINUE_QUESTING
-		set_character_flag = bretonnia4
+	immediate = {
+		set_character_flag = has_event_wh_wh_bretonnia.4
+		character_event = {
+			id = wh_bretonnia.5
+		}
 	}
 }
 
 # menu event for stop questing decision
 character_event = {
-	id = bretonnia.5
+	id = wh_bretonnia.5
 	title = QUESTING
-	desc = DO_YOU_WISH_TO_STOP_QUESTING
+	desc = EVTDESCwh_bretonnia.4
 	picture = "GFX_evt_bretonnians"
 	is_triggered_only = yes
 
@@ -148,6 +145,11 @@ character_event = {
 
 	option = {
 		name = NO_I_MUST_CONTINUE_QUESTING
+		trigger = {
+			not = {
+				trait = maimed
+			}
+		}
 	}
 }
 
@@ -155,11 +157,11 @@ character_event = {
 
 # troll lair
 character_event = {
-	id = bretonnia.6
+	id = wh_bretonnia.6
 	title = QUESTING_LIFE
-	desc = EVTDESCBRETONNIA.6 # While visiting a tavern, you hear stories of a nearby cave rumored to be a troll's lair. Do you want to investigate?
+	desc = EVTDESCwh_bretonnia.6 # While visiting a tavern, you hear stories of a nearby cave rumored to be a troll's lair. Do you want to investigate?
 	picture = "GFX_evt_feast"
-	only_rulers = yes
+	only_playable = yes
 	religion = grail
 	min_age = 16
 	only_men = yes
@@ -173,19 +175,19 @@ character_event = {
 	option = {
 		name = SQUIRE_SADDLE_MY_HORSE
 		character_event = {
-			id = bretonnia.7
+			id = wh_bretonnia.7
 		}
 	}
 
 	option = {
-		name = EVTOPTBRETONNIA.6.b # No, I seek greater glories than mere trolls!
+		name = EVTOPTwh_bretonnia.6.b # No, I seek greater glories than mere trolls!
 	}
 }
 
 character_event = {
-	id = bretonnia.7
+	id = wh_bretonnia.7
 	title = TROLL_LAIR
-	desc = EVTDESCBRETONNIA.7 # After a week of searching, you finally come upon some troll tracks which lead to a dark cave. Preparing yourself as best as you are able, you light some torches and prepare to destroy this threat to the local community.
+	desc = EVTDESCwh_bretonnia.7 # After a week of searching, you finally come upon some troll tracks which lead to a dark cave. Preparing yourself as best as you are able, you light some torches and prepare to destroy this threat to the local community.
 	picture = "GFX_evt_bandits"
 	is_triggered_only = yes
 
@@ -200,12 +202,12 @@ character_event = {
 			random_list = {
 				75 = {
 					character_event = {
-						id = bretonnia.9
+						id = wh_bretonnia.9
 					}
 				}
 				25 = {
 					character_event = {
-						id = bretonnia.8
+						id = wh_bretonnia.8
 					}
 				}
 			}
@@ -215,13 +217,13 @@ character_event = {
 				martial = 10
 			}
 			character_event = {
-				id = bretonnia.8
+				id = wh_bretonnia.8
 			}
 		}
 	}
 
 	option = {
-		name = EVTOPTBRETONNIA.7.b # No, wait... what if there is a dragon over there instead?
+		name = EVTOPTwh_bretonnia.7.b # No, wait... what if there is a dragon over there instead?
 		trigger = {
 			ai = no
 		}
@@ -231,14 +233,14 @@ character_event = {
 
 # trolls success
 character_event = {
-	id = bretonnia.8
+	id = wh_bretonnia.8
 	title = TROLL_LAIR
-	desc = EVTDESCBRETONNIA.8 # You march into troll the lair, and though they are strong opponents, they are no match for your superior knightly skill and tactics. After slaying half a dozen of them, you find some treasure and quickly claim it.
+	desc = EVTDESCwh_bretonnia.8 # You march into troll the lair, and though they are strong opponents, they are no match for your superior knightly skill and tactics. After slaying half a dozen of them, you find some treasure and quickly claim it.
 	picture = "GFX_evt_bretonnians"
 	is_triggered_only = yes
 
 	option = {
-		name = EVTOPTBRETONNIA.8.a # I dedicate this victory to the Lady!
+		name = EVTOPTwh_bretonnia.8.a # I dedicate this victory to the Lady!
 		wealth = 10
 		random = {
 			chance = 5
@@ -260,14 +262,14 @@ character_event = {
 
 # trolls defeat
 character_event = {
-	id = bretonnia.9
+	id = wh_bretonnia.9
 	title = TROLL_LAIR
-	desc = EVTDESCBRETONNIA.9 # You march into troll the lair, and quickly find yourself in trouble. Six trolls come at you all at once, and you are hard pressed to make it back to the exit alive!
+	desc = EVTDESCwh_bretonnia.9 # You march into troll the lair, and quickly find yourself in trouble. Six trolls come at you all at once, and you are hard pressed to make it back to the exit alive!
 	picture = "GFX_evt_bretonnians"
 	is_triggered_only = yes
 
 	option = {
-		name = EVTOPTBRETONNIA.9.a # Men, advance in the other direction - quickly!
+		name = EVTOPTwh_bretonnia.9.a # Men, advance in the other direction - quickly!
 		random_list = {
 			60 = {
 			}
@@ -295,11 +297,11 @@ character_event = {
 
 # orc band
 character_event = {
-	id = bretonnia.10
+	id = wh_bretonnia.10
 	title = QUESTING_LIFE
-	desc = EVTDESCBRETONNIA.10 # You hear rumors that an orc band is raiding this area. Do you want to investigate?
+	desc = EVTDESCwh_bretonnia.10 # You hear rumors that an orc band is raiding this area. Do you want to investigate?
 	picture = "GFX_evt_bretonnians"
-	only_rulers = yes
+	only_playable = yes
 	religion = grail
 	min_age = 16
 	only_men = yes
@@ -313,12 +315,12 @@ character_event = {
 	option = {
 		name = CHAAARGE
 		character_event = {
-			id = bretonnia.11
+			id = wh_bretonnia.11
 		}
 	}
 
 	option = {
-		name = EVTOPTBRETONNIA.10.b # No, a mere orc band is an unworthy foes!
+		name = EVTOPTwh_bretonnia.10.b # No, a mere orc band is an unworthy foes!
 		trigger = {
 			ai = no
 		}
@@ -326,14 +328,14 @@ character_event = {
 }
 
 character_event = {
-	id = bretonnia.11
+	id = wh_bretonnia.11
 	title = QUESTLING_LIFE
-	desc = EVTDESCBRETONNIA.11 # After some hard riding you quickly catch up to the orcs. There's about three dozen of them, and you are but a handful.
+	desc = EVTDESCwh_bretonnia.11 # After some hard riding you quickly catch up to the orcs. There's about three dozen of them, and you are but a handful.
 	picture = "GFX_evt_bretonnians"
 	is_triggered_only = yes
 
 	option = {
-		name = EVTOPTBRETONNIA.11.a # I hope there's enough for all of us!
+		name = EVTOPTwh_bretonnia.11.a # I hope there's enough for all of us!
 		if = {
 			limit = {
 				NOT = {
@@ -343,12 +345,12 @@ character_event = {
 			random_list = {
 				75 = {
 					character_event = {
-						id = bretonnia.13
+						id = wh_bretonnia.13
 					}
 				}
 				25 = {
 					character_event = {
-						id = bretonnia.12
+						id = wh_bretonnia.12
 					}
 				}
 			}
@@ -358,13 +360,13 @@ character_event = {
 				martial = 15
 			}
 			character_event = {
-				id = bretonnia.12
+				id = wh_bretonnia.12
 			}
 		}
 	}
 
 	option = {
-		name = EVTOPTBRETONNIA.11.b # No, wait. I think I see a giant over there, this way men!
+		name = EVTOPTwh_bretonnia.11.b # No, wait. I think I see a giant over there, this way men!
 		trigger = {
 			ai = no
 		}
@@ -374,14 +376,14 @@ character_event = {
 
 # orcs success
 character_event = {
-	id = bretonnia.12
+	id = wh_bretonnia.12
 	title = QUESTING_LIFE
-	desc = EVTDESCBRETONNIA.12 # You charge into the orcs, and with lance and sword, you drive a deep wedge into their hastily formed ranks. It is a glorious slaughter, and they will now know the folly of raiding in these lands!
+	desc = EVTDESCwh_bretonnia.12 # You charge into the orcs, and with lance and sword, you drive a deep wedge into their hastily formed ranks. It is a glorious slaughter, and they will now know the folly of raiding in these lands!
 	picture = "GFX_evt_bretonnians"
 	is_triggered_only = yes
 
 	option = {
-		name = EVTOPTBRETONNIA.12.a # The Lady granted me my strength!
+		name = EVTOPTwh_bretonnia.12.a # The Lady granted me my strength!
 		wealth = 5
 		prestige = 50
 		random = {
@@ -403,14 +405,14 @@ character_event = {
 }
 
 character_event = {
-	id = bretonnia.13
+	id = wh_bretonnia.13
 	title = QUESTING_LIFE
-	desc = EVTDESCBRETONNIA.13 # As soon as you charge the orcs, they spot you and form ranks. Some of them have great pikes, and as your charge is broken, you suddenly find yourself being attacked from all directions!
+	desc = EVTDESCwh_bretonnia.13 # As soon as you charge the orcs, they spot you and form ranks. Some of them have great pikes, and as your charge is broken, you suddenly find yourself being attacked from all directions!
 	picture = "GFX_evt_bretonnians"
 	is_triggered_only = yes
 
 	option = {
-		name = EVTOPTBRETONNIA.13.a # Men, advance backwards! Double quick!
+		name = EVTOPTwh_bretonnia.13.a # Men, advance backwards! Double quick!
 		random_list = {
 			55 = {
 			}
@@ -438,11 +440,11 @@ character_event = {
 
 # random attack by dark elf raiders
 character_event = {
-	id = bretonnia.14
+	id = wh_bretonnia.14
 	title = QUESTING_LIFE
-	desc = EVTDESCBRETONNIA.14 # As you travel along the sea-line you suddenly see a sleek black ship moored just off the coast. Along the beach, there is a dark elf raiding party, and they have several humans tied together as slaves, ready for transport.
+	desc = EVTDESCwh_bretonnia.14 # As you travel along the sea-line you suddenly see a sleek black ship moored just off the coast. Along the beach, there is a dark elf raiding party, and they have several humans tied together as slaves, ready for transport.
 	picture = "GFX_evt_bretonnians"
-	only_rulers = yes
+	only_playable = yes
 	religion = grail
 	min_age = 16
 	only_men = yes
@@ -464,12 +466,12 @@ character_event = {
 			random_list = {
 				80 = {
 					character_event = {
-						id = bretonnia.15
+						id = wh_bretonnia.15
 					}
 				}
 				20 = {
 					character_event = {
-						id = bretonnia.16
+						id = wh_bretonnia.16
 					}
 				}
 			}
@@ -479,7 +481,7 @@ character_event = {
 				martial = 15
 			}
 			character_event = {
-				id = bretonnia.15
+				id = wh_bretonnia.15
 			}
 		}
 	}
@@ -487,9 +489,9 @@ character_event = {
 
 # charge vs dark elves success
 character_event = {
-	id = bretonnia.15
+	id = wh_bretonnia.15
 	title = QUESTING_LIFE
-	desc = EVTDESCBRETONNIA.15 # Your mighty charge takes the dark elves completely by surprise, and rather than form a line and seek to repel you, they make a mad dash for their ships. You slay several of them, and free the captives.
+	desc = EVTDESCwh_bretonnia.15 # Your mighty charge takes the dark elves completely by surprise, and rather than form a line and seek to repel you, they make a mad dash for their ships. You slay several of them, and free the captives.
 	picture = "GFX_evt_bretonnians"
 	is_triggered_only = yes
 
@@ -516,14 +518,14 @@ character_event = {
 
 # dark elves defeat charge
 character_event = {
-	id = bretonnia.16
+	id = wh_bretonnia.16
 	title = QUESTING_LIFE
-	desc = EVTDESCBRETONNIA.16 # The dark elves saw you coming from afar, and quickly form ranks. They have a sorceress with them, and suddenly the air around you explodes with thunder and you are thrown from your horse!
+	desc = EVTDESCwh_bretonnia.16 # The dark elves saw you coming from afar, and quickly form ranks. They have a sorceress with them, and suddenly the air around you explodes with thunder and you are thrown from your horse!
 	picture = "GFX_evt_bretonnians"
 	is_triggered_only = yes
 
 	option = {
-		name = EVTOPTBRETONNIA.16.a # Arghh, men *cough* advance... backwards!
+		name = EVTOPTwh_bretonnia.16.a # Arghh, men *cough* advance... backwards!
 		wealth = -20
 		prestige = -50
 		random_list = {
@@ -551,35 +553,35 @@ character_event = {
 	}
 
 	option = {
-		name = EVTOPTBRETONNIA.16.b # A true knight never runs from danger!
+		name = EVTOPTwh_bretonnia.16.b # A true knight never runs from danger!
 		trigger = {
 			ai = no
 		}
 		character_event = {
-			id = bretonnia.17
+			id = wh_bretonnia.17
 		}
 	}
 }
 
 # dark elf desperate charge
 character_event = {
-	id = bretonnia.17
+	id = wh_bretonnia.17
 	title = THE_CHARGE
-	desc = EVTDESCBRETONNIA.17 # You get back up on your horse, right your lance, spit the blood from your mouth and with a great battle cry you charge the foul sorceress and her cohorts!
+	desc = EVTDESCwh_bretonnia.17 # You get back up on your horse, right your lance, spit the blood from your mouth and with a great battle cry you charge the foul sorceress and her cohorts!
 	picture = "GFX_evt_bretonnians"
 	is_triggered_only = yes
 
 	option = {
-		name = EVTOPTBRETONNIA.17.a # Forwards! To victory! For the Lady!
+		name = EVTOPTwh_bretonnia.17.a # Forwards! To victory! For the Lady!
 		random_list = {
 			50 = {
 				character_event = {
-					id = bretonnia.18
+					id = wh_bretonnia.18
 				}
 			}
 			50 = {
 				character_event = {
-					id = bretonnia.19
+					id = wh_bretonnia.19
 				}
 			}
 		}
@@ -588,9 +590,9 @@ character_event = {
 
 # dark elf charge,success
 character_event = {
-	id = bretonnia.18
+	id = wh_bretonnia.18
 	title = THE_CHARGE
-	desc = EVTDESCBRETONNIA.18 # The Sorceress casts another spell at you, but as her lightning bolt fails to stop you, she turns and runs and the rest follow. You slaughter many of them, and free the captives.
+	desc = EVTDESCwh_bretonnia.18 # The Sorceress casts another spell at you, but as her lightning bolt fails to stop you, she turns and runs and the rest follow. You slaughter many of them, and free the captives.
 	picture = "GFX_evt_bretonnians"
 	is_triggered_only = yes
 
@@ -621,9 +623,9 @@ character_event = {
 
 # dark elf charge,failure
 character_event = {
-	id = bretonnia.19
+	id = wh_bretonnia.19
 	title = THE_CHARGE
-	desc = EVTDESCBRETONNIA.19 # You rush dark elves, but the sorceress casts another spell at you. Lightning flares around you and you are in excruciating pain as you are one more blasted from your horse. This battle is over!
+	desc = EVTDESCwh_bretonnia.19 # You rush dark elves, but the sorceress casts another spell at you. Lightning flares around you and you are in excruciating pain as you are one more blasted from your horse. This battle is over!
 	picture = "GFX_evt_bretonnians"
 	is_triggered_only = yes
 
@@ -683,12 +685,12 @@ character_event = {
 
 # now a pick up event to go home when you are wounded
 character_event = {
-	id = bretonnia.20
+	id = wh_bretonnia.20
 	title = QUESTING
-	desc = EVTDESCBRETONNIA.20 # You have become wounded, and can no longer carry on the questing life. It is time to return to your castle and regain your strength.
+	desc = EVTDESCwh_bretonnia.20 # You have become wounded, and can no longer carry on the questing life. It is time to return to your castle and regain your strength.
 	picture = "GFX_evt_bretonnians"
 	min_age = 16
-	only_rulers = yes
+	only_playable = yes
 	religion = grail
 	min_age = 16
 	only_men = yes
@@ -703,7 +705,7 @@ character_event = {
 	}
 
 	option = {
-		name = EVTOPTBRETONNIA.20.a # I return home to heal - For the Lady!
+		name = EVTOPTwh_bretonnia.20.a # I return home to heal - For the Lady!
 		remove_trait = on_knight_quest
 	}
 }
@@ -712,11 +714,11 @@ character_event = {
 
 # first the menu to start a grail quest
 character_event = {
-	id = bretonnia.21
+	id = wh_bretonnia.21
 	title = THE_GRAIL_QUEST
-	desc = EVTDESCBRETONNIA.21 # You are a knight of Bretonnia, but only the most noble and pure knights are worthy to sip from the Holy Grail of the Lady of the Lake. Do you want to test yourself on this great - but also dangerous, quest?
+	desc = EVTDESCwh_bretonnia.21 # You are a knight of Bretonnia, but only the most noble and pure knights are worthy to sip from the Holy Grail of the Lady of the Lake. Do you want to test yourself on this great - but also dangerous, quest?
 	picture = "GFX_evt_bretonnians"
-	only_rulers = yes
+	only_playable = yes
 	religion = grail
 	min_age = 16
 	only_men = yes
@@ -736,11 +738,11 @@ character_event = {
 
 # then we try to get rid of the worst traits - in this case greed
 character_event = {
-	id = bretonnia.22
+	id = wh_bretonnia.22
 	title = THE_GRAIL_QUEST
-	desc = EVTDESCBRETONNIA.22 # You come across a remote shrine, dedicated to a sighting of The Lady many years ago. Rich offerings are on hand, and the pilgrims ask you to donate to the shrine to help feed the local village.
+	desc = EVTDESCwh_bretonnia.22 # You come across a remote shrine, dedicated to a sighting of The Lady many years ago. Rich offerings are on hand, and the pilgrims ask you to donate to the shrine to help feed the local village.
 	picture = "GFX_evt_tribal_shrine"
-	only_rulers = yes
+	only_playable = yes
 	religion = grail
 	min_age = 16
 	only_men = yes
@@ -764,7 +766,7 @@ character_event = {
 	}
 
 	option = {
-		name = EVTOPTBRETONNIA.22.b # Foul peasants - so that's where my tax money went!
+		name = EVTOPTwh_bretonnia.22.b # Foul peasants - so that's where my tax money went!
 		trigger = {
 			ai = no
 		}
@@ -775,12 +777,12 @@ character_event = {
 
 # then we try to get rid of the worst traits - in this case craven
 character_event = {
-	id = bretonnia.23
+	id = wh_bretonnia.23
 	title = THE_GRAIL_QUEST
-	desc = EVTDESCBRETONNIA.23 # You know you are not the bravest of knights, so when you hear word that a norscan berserker has slain twenty men single-handedly and he suddenly appears over the horizon you are cautious about riding him down, but...
+	desc = EVTDESCwh_bretonnia.23 # You know you are not the bravest of knights, so when you hear word that a norscan berserker has slain twenty men single-handedly and he suddenly appears over the horizon you are cautious about riding him down, but...
 	picture = "GFX_evt_bretonnians"
 	min_age = 16
-	only_rulers = yes
+	only_playable = yes
 	religion = grail
 	min_age = 16
 	only_men = yes
@@ -825,7 +827,7 @@ character_event = {
 	}
 
 	option = {
-		name = EVTOPTBRETONNIA.23.b # I'm all alone, no one will if I just ride away...
+		name = EVTOPTwh_bretonnia.23.b # I'm all alone, no one will if I just ride away...
 		trigger = {
 			ai = no
 		}
@@ -835,11 +837,11 @@ character_event = {
 
 # then we try to get rid of the worst traits - in this case lustful and hedonist
 character_event = {
-	id = bretonnia.24
+	id = wh_bretonnia.24
 	title = THE_GRAIL_QUEST
-	desc = EVTDESCBRETONNIA.24 # You are not the purest or most abstinent of knights, and just as you sit in a tavern considering these flaws of yours, a gorgeous barmaid approaches with a large pitcher of wine and a warm inviting smile...
+	desc = EVTDESCwh_bretonnia.24 # You are not the purest or most abstinent of knights, and just as you sit in a tavern considering these flaws of yours, a gorgeous barmaid approaches with a large pitcher of wine and a warm inviting smile...
 	picture = "GFX_evt_feast"
-	only_rulers = yes
+	only_playable = yes
 	religion = grail
 	min_age = 16
 	only_men = yes
@@ -859,14 +861,14 @@ character_event = {
 	}
 
 	option = {
-		name = EVTOPTBRETONNIA.24.a # Away with that, temptress! Just water for me from now on.
+		name = EVTOPTwh_bretonnia.24.a # Away with that, temptress! Just water for me from now on.
 		remove_trait = lustful
 		remove_trait = hedonist
 		add_trait = temperate
 	}
 
 	option = {
-		name = EVTOPTBRETONNIA.24.b # I could indulge myself just once more...
+		name = EVTOPTwh_bretonnia.24.b # I could indulge myself just once more...
 		trigger = {
 			ai = no
 		}
@@ -876,11 +878,11 @@ character_event = {
 
 # then we try to get rid of the worst traits - in this case cruel and wroth
 character_event = {
-	id = bretonnia.25
+	id = wh_bretonnia.25
 	title = THE_GRAIL_QUEST
-	desc = EVTDESCBRETONNIA.25 # While in a tavern, a peasant suddenly bumps into you and spills cheap wine all over you. He yells at you for being in his way, before realizing you are a knight, and then he slowly backs away with a sneer...
+	desc = EVTDESCwh_bretonnia.25 # While in a tavern, a peasant suddenly bumps into you and spills cheap wine all over you. He yells at you for being in his way, before realizing you are a knight, and then he slowly backs away with a sneer...
 	picture = "GFX_evt_feast"
-	only_rulers = yes
+	only_playable = yes
 	religion = grail
 	min_age = 16
 	only_men = yes
@@ -900,14 +902,14 @@ character_event = {
 	}
 
 	option = {
-		name = EVTOPTBRETONNIA.25.a # *restrain yourself* Be on your way, peasant...
+		name = EVTOPTwh_bretonnia.25.a # *restrain yourself* Be on your way, peasant...
 		remove_trait = wroth
 		remove_trait = cruel
 		add_trait = temperate
 	}
 
 	option = {
-		name = EVTOPTBRETONNIA.25.b # I'll horsewhip you from here till Cathay, you foul peasant!
+		name = EVTOPTwh_bretonnia.25.b # I'll horsewhip you from here till Cathay, you foul peasant!
 		trigger = {
 			ai = no
 		}
@@ -917,11 +919,11 @@ character_event = {
 
 # the green knights finally appears
 character_event = {
-	id = bretonnia.26
+	id = wh_bretonnia.26
 	title = THE_GRAIL_QUEST
-	desc = EVTDESCBRETONNIA.26 # You can't believe it... one day while riding in the woods, the Green Knight appears. This is the final test! If you prove worthy and defeat him, the Lady of the Lake will appear and allow you to sip from the Holy Grail!
+	desc = EVTDESCwh_bretonnia.26 # You can't believe it... one day while riding in the woods, the Green Knight appears. This is the final test! If you prove worthy and defeat him, the Lady of the Lake will appear and allow you to sip from the Holy Grail!
 	picture = "GFX_evt_bretonnians"
-	only_rulers = yes
+	only_playable = yes
 	religion = grail
 	min_age = 16
 	only_men = yes
@@ -944,7 +946,7 @@ character_event = {
 	}
 
 	option = {
-		name = EVTOPTBRETONNIA.26.a # Well met, Sir Knight! I am ready for the challenge!
+		name = EVTOPTwh_bretonnia.26.a # Well met, Sir Knight! I am ready for the challenge!
 		set_character_flag = defeated_green_knight
 		save_event_target_as = duelist_a
 		set_character_flag = duel
@@ -970,7 +972,7 @@ character_event = {
 		}
 		# Trigger the event to finish the quest - auto cancelled if character is dead.
 		character_event = {
-			id = bretonnia.27 days = 30 random = 5
+			id = wh_bretonnia.27 days = 30 random = 5
 		}
 		# THE END
 	}
@@ -978,11 +980,11 @@ character_event = {
 
 # the lady finally appears
 character_event = {
-	id = bretonnia.27
+	id = wh_bretonnia.27
 	title = THE_LADY_OF_THE_LAKE
-	desc = EVTDESCBRETONNIA.27 # It... it's finally happening! The Lady of the Lake appears before you, her grace and beauty beyond compare. Purified from your trials she allows you to sip from the Grail, and you feel vitality and strength flow into you!
+	desc = EVTDESCwh_bretonnia.27 # It... it's finally happening! The Lady of the Lake appears before you, her grace and beauty beyond compare. Purified from your trials she allows you to sip from the Grail, and you feel vitality and strength flow into you!
 	picture = "GFX_evt_knight_kneeling"
-	only_rulers = yes
+	only_playable = yes
 	religion = grail
 	min_age = 16
 	only_men = yes
@@ -1018,11 +1020,11 @@ character_event = {
 
 # Now for the event where if a ruler is not a grail knight, he must go on the quest, or abdicate
 character_event = {
-	id = bretonnia.30
+	id = wh_bretonnia.30
 	title = THE_GRAIL
 	desc = bretonnia30 # You are the ruler of Bretonnia, but you are not a Grail Knight. Convention demands that only a Grail Knight may rule, so you must either go on the quest and become a Grail Knight within 5 years, or abdicate the throne.
 	picture = "GFX_evt_bretonnians"
-	only_rulers = yes
+	only_playable = yes
 	religion = grail
 	min_age = 16
 	only_men = yes
@@ -1045,7 +1047,7 @@ character_event = {
 		add_trait = on_knight_quest
 		set_character_flag = on_grail_quest
 		character_event = {
-			id = bretonnia.31 days = 2555
+			id = wh_bretonnia.31 days = 2555
 		}
 	}
 
@@ -1058,7 +1060,7 @@ character_event = {
 	}
 
 	option = {
-		name = EVTOPTBRETONNIA.30.c # I care nothing for what my vassals think!
+		name = EVTOPTwh_bretonnia.30.c # I care nothing for what my vassals think!
 		trigger = {
 			ai = no
 		}
@@ -1071,7 +1073,7 @@ character_event = {
 		}
 		any_playable_ruler = {
 			character_event = {
-				id = bretonnia.33 days = 7
+				id = wh_bretonnia.33 days = 7
 			}
 		}
 	}
@@ -1079,11 +1081,11 @@ character_event = {
 
 # Now for the event where 7 years have passed and he must abdicate or face angry vassals
 character_event = {
-	id = bretonnia.31
+	id = wh_bretonnia.31
 	title = THE_GRAIL
-	desc = EVTDESCBRETONNIA.31 # Seven years have passed - have you become a Grail Knight?
+	desc = EVTDESCwh_bretonnia.31 # Seven years have passed - have you become a Grail Knight?
 	picture = "GFX_evt_bretonnians"
-	only_rulers = yes
+	only_playable = yes
 	religion = grail
 	min_age = 16
 	only_men = yes
@@ -1091,14 +1093,14 @@ character_event = {
 	is_triggered_only = yes
 
 	option = {
-		name = EVTOPTBRETONNIA.31.a # Yes, I rule with the Lady's Blessing.
+		name = EVTOPTwh_bretonnia.31.a # Yes, I rule with the Lady's Blessing.
 		trigger = {
 			trait = grail_knight
 		}
 		clr_character_flag = on_grail_quest
 		any_playable_ruler = {
 			character_event = {
-				id = bretonnia.32 days = 7
+				id = wh_bretonnia.32 days = 7
 			}
 		}
 	}
@@ -1113,13 +1115,13 @@ character_event = {
 		set_character_flag = false_grail_quest
 		any_playable_ruler = {
 			character_event = {
-				id = bretonnia.34 days = 7
+				id = wh_bretonnia.34 days = 7
 			}
 		}
 	}
 
 	option = {
-		name = EVTOPTBRETONNIA.30.c # I care nothing for what my vassals think!
+		name = EVTOPTwh_bretonnia.30.c # I care nothing for what my vassals think!
 		trigger = {
 			ai = no
 		}
@@ -1132,7 +1134,7 @@ character_event = {
 		}
 		any_playable_ruler = {
 			character_event = {
-				id = bretonnia.33 days = 7
+				id = wh_bretonnia.33 days = 7
 			}
 		}
 	}
@@ -1140,9 +1142,9 @@ character_event = {
 
 # players are informed if a ruler of bretonnia becomes a grail knight
 character_event = {
-	id = bretonnia.32
+	id = wh_bretonnia.32
 	title = BRETONNIA
-	desc = EVTDESCBRETONNIA.32 # Rumors reach you that the new ruler of Bretonnia has succeeded in the Grail Quest, and now rules with the blessing of the Lady of the Lake.
+	desc = EVTDESCwh_bretonnia.32 # Rumors reach you that the new ruler of Bretonnia has succeeded in the Grail Quest, and now rules with the blessing of the Lady of the Lake.
 	picture = "GFX_evt_bretonnians"
 	ai = no
 	is_triggered_only = yes
@@ -1154,9 +1156,9 @@ character_event = {
 
 # players are informed if a ruler of bretonnia has not become a grail knight but still clings to the throne
 character_event = {
-	id = bretonnia.33
+	id = wh_bretonnia.33
 	title = BRETONNIA
-	desc = EVTDESCBRETONNIA.33 # Rumors reach you that the new ruler of Bretonnia has failed in his Grail Quest, but has decided to rule on without the blessing of the Lady of the Lake. This is almost certain to start a civil war in that realm...
+	desc = EVTDESCwh_bretonnia.33 # Rumors reach you that the new ruler of Bretonnia has failed in his Grail Quest, but has decided to rule on without the blessing of the Lady of the Lake. This is almost certain to start a civil war in that realm...
 	picture = "GFX_evt_bretonnians"
 	ai = no
 	is_triggered_only = yes
@@ -1168,9 +1170,9 @@ character_event = {
 
 # players are informed if a ruler of bretonnia has not become a grail knight and has abdicatd
 character_event = {
-	id = bretonnia.34
+	id = wh_bretonnia.34
 	title = BRETONNIA
-	desc = EVTDESCBRETONNIA.34 # Rumors reach you that the new ruler of Bretonnia is having difficulty completing his grail quest, but is still determined to quest on until he succeeds.
+	desc = EVTDESCwh_bretonnia.34 # Rumors reach you that the new ruler of Bretonnia is having difficulty completing his grail quest, but is still determined to quest on until he succeeds.
 	picture = "GFX_evt_bretonnians"
 	ai = no
 	is_triggered_only = yes
@@ -1182,11 +1184,11 @@ character_event = {
 
 # the false grail appears
 character_event = {
-	id = bretonnia.35
+	id = wh_bretonnia.35
 	title = THE_LADY_OF_THE_LAKE
 	desc = bretonnia35desc # It... it's finally happening! The Lady of the Lake appears before you, her grace and beauty beyond compare. She let's you sip from the grail, but it is not the invigorating and life changing experience you had heard it would be. But, surely you feel... something?
 	picture = "GFX_evt_knight_kneeling"
-	only_rulers = yes
+	only_playable = yes
 	religion = grail
 	min_age = 16
 	only_men = yes
@@ -1225,12 +1227,12 @@ character_event = {
 
 # people doubt that he has become a grail knight, and he becomes a false grail heretic
 character_event = {
-	id = bretonnia.36
+	id = wh_bretonnia.36
 	title = THE_LADY_OF_THE_LAKE
 	desc = bretonnia36desc # There have been some doubts cast on your vision of the Lady and the Holy Grail. You do not have the aura that other grail knights have, nor did the Green Knight appear to challenge you.
 	picture = "GFX_evt_knight_kneeling"
 	min_age = 16
-	only_rulers = yes
+	only_playable = yes
 	religion = grail
 	min_age = 16
 	only_men = yes
@@ -1249,7 +1251,7 @@ character_event = {
 		set_character_flag = bretonnia36
 		any_playable_ruler = {
 			character_event = {
-				id = bretonnia.37 days = 7
+				id = wh_bretonnia.37 days = 7
 			}
 		}
 	}
@@ -1257,7 +1259,7 @@ character_event = {
 
 # players are informed if a ruler of bretonnia has possibly drunk from the false grail but will continue to rule
 character_event = {
-	id = bretonnia.37
+	id = wh_bretonnia.37
 	title = BRETONNIA
 	desc = bretonnia37desc # Rumors reach you that the new ruler of Bretonnia has supposedly completed his grail quest, but there are doubts as to whether or not it was the real Grail. This will make his rule a troubled one, no doubt.
 	picture = "GFX_evt_bretonnians"
@@ -1266,5 +1268,1466 @@ character_event = {
 
 	option = {
 		name = INTERESTING
+	}
+}
+
+
+# The landless son of a Bretonnian noble decides to set out as a Knight Errant ( First step to become a true Knight of the Realm )
+# Son wants to become a Knight Errant (Son) on_yearly_pulse
+character_event = {
+	id = wh_bretonnia.102
+	hide_window = yes
+	ai = yes
+	min_age = 16
+	max_age = 40
+	capable_only = yes
+	prisoner = no
+	only_men = yes
+	culture_group = bretonnian_group
+
+	trigger = {
+		is_landed = no
+		in_command = no
+		OR = {
+			religion = grail
+			religion = false_grail
+		}
+		nor = {
+			trait = on_errantry_quest
+			trait = bretonnian_knight
+			trait = grail_knight
+			has_character_flag = wants_knighterrant
+			has_character_flag = serving_knighterrant
+		}
+		father = {
+			is_alive = yes
+			is_ruler = yes
+			is_feudal = yes
+			is_liege_of = ROOT
+			is_incapacitated_trigger = no
+			culture_group = bretonnian_group
+			OR = {
+				religion = grail
+				religion = false_grail
+			}
+			ROOT = {
+				host = {
+					character = PREVPREV
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 120
+		modifier = {
+			factor = 0.25
+			OR = {
+				trait = misguided_warrior
+				trait = tough_soldier
+				trait = skilled_tactician
+				trait = brilliant_strategist
+			}
+		}
+		modifier = {
+			factor = 0.5
+			trait = ambitious
+		}
+		modifier = {
+			factor = 2
+			trait = content
+		}
+		modifier = {
+			factor = 0.75
+			trait = quick
+		}
+		modifier = {
+			factor = 1.5
+			trait = slow
+		}
+		modifier = {
+			factor = 0.5
+			trait = genius
+		}
+		modifier = {
+			factor = 2
+			trait = imbecile
+		}
+		modifier = {
+			factor = 0.5
+			trait = brave
+		}
+		modifier = {
+			factor = 2
+			trait = craven
+		}
+		modifier = {
+			factor = 0.75
+			trait = diligent
+		}
+		modifier = {
+			factor = 1.5
+			trait = slothful
+		}
+		modifier = {
+			factor = 0.75
+			is_strong_trigger = yes
+		}
+		modifier = {
+			factor = 1.5
+			trait = weak
+		}
+		# modifier = { factor = 1.5 is_primary_heir = yes }
+	}
+
+	immediate = {
+		liege = {
+			character_event = {
+				id = wh_bretonnia.103
+			}
+		}
+		set_character_flag = wants_knighterrant
+	}
+}
+
+# Son wants to become a Knight Errant (Father)
+character_event = {
+	id = wh_bretonnia.103
+	desc = DR_bretonnia_son_wants_knight_errant
+	picture = GFX_evt_viking_throneroom_oldgods
+	border = GFX_event_normal_frame_war
+	is_triggered_only = yes
+
+	option = {
+		name = DR_bretonnia_son_wants_knight_errant_deny
+		FROM = {
+			opinion = {
+				modifier = opinion_very_disappointed
+				years = 1
+				who = ROOT
+			}
+			clr_character_flag = wants_knighterrant
+			set_character_flag = denied_knighterrant
+		}
+		prestige = -50
+		piety = -100
+	}
+
+	option = {
+		name = DR_bretonnia_son_wants_knight_errant_accept
+		hidden_tooltip = {
+			FROM = {
+				clr_character_flag = wants_knighterrant
+				set_character_flag = serving_knighterrant
+				add_trait = on_errantry_quest
+			}
+		}
+		prestige = 100
+	}
+}
+
+# Son returns scarred but seasoned (Son)
+character_event = {
+	id = wh_bretonnia.104
+	hide_window = yes
+	has_character_flag = serving_knighterrant
+
+	trigger = {
+		nor = {
+			trait = bretonnian_knight
+			trait = scarred
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 160
+		modifier = {
+			factor = 0.75
+			trait = brave
+		}
+		modifier = {
+			factor = 1.25
+			trait = craven
+		}
+	}
+
+	immediate = {
+		liege = {
+			character_event = {
+				id = wh_bretonnia.105
+			}
+		}
+		clr_character_flag = serving_knighterrant
+	}
+}
+
+# Son returns scarred but seasoned (Father)
+character_event = {
+	id = wh_bretonnia.105
+	desc = DR_bretonnia_son_returns_experienced_knight_errant
+	picture = GFX_evt_viking_throneroom_oldgods
+	border = GFX_event_normal_frame_war
+	is_triggered_only = yes
+
+	option = {
+		name = DR_bretonnia_son_returns_experienced_knight_errant_opt
+		FROM = {
+			add_trait = scarred
+			add_trait = bretonnian_knight
+			remove_trait = on_errantry_quest
+			random_list = {
+				50 = {
+					change_martial = 1
+				}
+				25 = {
+					change_martial = 2
+				}
+				25 = {
+					change_martial = 3
+
+				}
+			}
+			hidden_tooltip = {
+				give_minor_title = title_sir_bretonnian
+			}
+		}
+	}
+}
+
+# Child returns a drunkard ( Child )
+character_event = {
+	id = wh_bretonnia.106
+	hide_window = yes
+	has_character_flag = serving_knighterrant
+
+	trigger = {
+		has_character_flag = serving_knighterrant
+		NOT = {
+			trait = drunkard
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 160
+		modifier = {
+			factor = 0.75
+			trait = gluttonous
+		}
+		modifier = {
+			factor = 1.25
+			trait = temperate
+		}
+	}
+
+	immediate = {
+		liege = {
+			character_event = {
+				id = wh_bretonnia.107
+			}
+		}
+		clr_character_flag = serving_knighterrant
+	}
+}
+
+# Child returns a drunkard ( Father )
+character_event = {
+	id = wh_bretonnia.107
+	desc = DR_bretonnia_son_returns_drunk_knight_errant
+	picture = GFX_evt_feast
+	is_triggered_only = yes
+
+	option = {
+		name = DR_bretonnia_son_returns_drunk_knight_errant_opt
+		FROM = {
+			add_trait = drunkard
+			add_trait = bretonnian_knight
+			remove_trait = on_errantry_quest
+			hidden_tooltip = {
+				give_minor_title = title_sir_bretonnian
+			}
+		}
+	}
+}
+
+# Son returns wounded and blinded (Son)
+character_event = {
+	id = wh_bretonnia.108
+	hide_window = yes
+	has_character_flag = serving_knighterrant
+
+	trigger = {
+		nor = {
+			trait = bretonnian_knight
+			trait = wounded
+			trait = blinded
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 250
+	}
+
+	immediate = {
+		add_trait = blinded
+		liege = {
+			character_event = {
+				id = wh_bretonnia.109
+			}
+		}
+	}
+	clr_character_flag = serving_knighterrant
+}
+
+# Son returns wounded and blinded (Father)
+character_event = {
+	id = wh_bretonnia.109
+	desc = DR_bretonnia_son_returns_wounded_knight_errant
+	picture = GFX_evt_viking_throneroom_oldgods
+	border = GFX_event_normal_frame_war
+	is_triggered_only = yes
+
+	option = {
+		name = DR_bretonnia_son_returns_wounded_knight_errant_opt
+		FROM = {
+			tooltip = {
+				add_trait = blinded
+			}
+			add_trait = wounded
+			add_trait = bretonnian_knight
+			remove_trait = on_errantry_quest
+			hidden_tooltip = {
+				give_minor_title = title_sir_bretonnian
+			}
+		}
+	}
+}
+
+# Son returns a better warrior (Son)
+character_event = {
+	id = wh_bretonnia.110
+	hide_window = yes
+	has_character_flag = serving_knighterrant
+
+	trigger = {
+		nor = {
+			trait = bretonnian_knight
+			trait = brilliant_strategist
+		}
+		has_character_flag = serving_knighterrant
+	}
+
+	mean_time_to_happen = {
+		months = 160
+		modifier = {
+			factor = 0.75
+			trait = duelist
+		}
+		modifier = {
+			factor = 0.5
+			trait = genius
+		}
+		modifier = {
+			factor = 0.75
+			trait = diligent
+		}
+		modifier = {
+			factor = 0.75
+			trait = quick
+		}
+		modifier = {
+			factor = 1.5
+			trait = slow
+		}
+		modifier = {
+			factor = 1.5
+			trait = imbecile
+		}
+	}
+
+	immediate = {
+		liege = {
+			character_event = {
+				id = wh_bretonnia.111
+			}
+		}
+		clr_character_flag = serving_knighterrant
+	}
+}
+
+# Son returns a better warrior (Father)
+character_event = {
+	id = wh_bretonnia.111
+	desc = DR_bretonnia_son_returns_better_knight_errant
+	picture = GFX_evt_viking_throneroom_oldgods
+	border = GFX_event_normal_frame_war
+	is_triggered_only = yes
+
+	option = {
+		name = DR_bretonnia_son_returns_better_knight_errant_opt
+		FROM = {
+			change_martial = 2
+			if = {
+				limit = {
+					trait = skilled_tactician
+				}
+				remove_trait = skilled_tactician
+				add_trait = brilliant_strategist
+			}
+			if = {
+				limit = {
+					trait = tough_soldier
+				}
+				remove_trait = tough_soldier
+				add_trait = skilled_tactician
+			}
+			if = {
+				limit = {
+					trait = misguided_warrior
+				}
+				remove_trait = misguided_warrior
+				add_trait = tough_soldier
+			}
+			add_trait = bretonnian_knight
+			remove_trait = on_errantry_quest
+			hidden_tooltip = {
+				give_minor_title = title_sir_bretonnian
+			}
+		}
+	}
+}
+
+# Son returns with PTSD (Son)
+character_event = {
+	id = wh_bretonnia.112
+	hide_window = yes
+	has_character_flag = serving_knighterrant
+
+	trigger = {
+		nor = {
+			trait = bretonnian_knight
+			trait = depressed
+			trait = stressed
+			trait = impaler
+			trait = cruel
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 180
+		modifier = {
+			factor = 0.75
+			trait = kind
+		}
+		modifier = {
+			factor = 0.75
+			trait = poet
+		}
+		modifier = {
+			factor = 0.75
+			trait = just
+		}
+	}
+
+	immediate = {
+		liege = {
+			character_event = {
+				id = wh_bretonnia.113
+			}
+		}
+		clr_character_flag = serving_knighterrant
+	}
+}
+
+# Son returns with PTSD
+character_event = {
+	id = wh_bretonnia.113
+	desc = DR_bretonnia_son_returns_depressed_knight_errant
+	picture = GFX_evt_viking_throneroom_oldgods
+	border = GFX_event_normal_frame_war
+	is_triggered_only = yes
+
+	option = {
+		name = DR_bretonnia_son_returns_depressed_knight_errant_opt
+		FROM = {
+			random_list = {
+				50 = {
+					add_trait = stressed
+				}
+				50 = {
+					add_trait = depressed
+				}
+			}
+			add_trait = bretonnian_knight
+			remove_trait = on_errantry_quest
+			hidden_tooltip = {
+				give_minor_title = title_sir_bretonnian
+			}
+		}
+	}
+}
+
+# Son returns home with lady (Son)
+character_event = {
+	id = wh_bretonnia.114
+	hide_window = yes
+	has_character_flag = serving_knighterrant
+
+	trigger = {
+		NOT = {
+			trait = bretonnian_knight
+		}
+		is_married = no
+	}
+
+	mean_time_to_happen = {
+		months = 180
+		modifier = {
+			factor = 0.75
+			trait = lustful
+		}
+	}
+
+	immediate = {
+		liege = {
+			character_event = {
+				id = wh_bretonnia.115
+			}
+		}
+		clr_character_flag = serving_knighterrant
+	}
+}
+
+# Son returns home with lady (Father)
+character_event = {
+	id = wh_bretonnia.115
+	desc = DR_bretonnia_son_returns_lowborn_wife_knight_errant
+	picture = GFX_evt_viking_throneroom_oldgods
+	border = GFX_event_normal_frame_war
+	is_triggered_only = yes
+
+	option = {
+		name = DR_bretonnia_son_returns_lowborn_wife_knight_errant_opt
+		create_character = {
+			random_traits = yes
+			dynasty = random
+			female = yes
+			age = 20
+			religion = FROM
+			culture = FROM
+			trait = beautiful
+			trait = bright
+		}
+		new_character = {
+			add_spouse = FROM
+		}
+		FROM = {
+			add_trait = bretonnian_knight
+			remove_trait = on_errantry_quest
+			hidden_tooltip = {
+				give_minor_title = title_sir_bretonnian
+			}
+		}
+	}
+}
+
+# Son returns home very ambitious (Son)
+character_event = {
+	id = wh_bretonnia.116
+	hide_window = yes
+	has_character_flag = serving_knighterrant
+
+	trigger = {
+		nor = {
+			trait = bretonnian_knight
+			trait = ambitious
+		}
+		has_character_flag = serving_knighterrant
+	}
+
+	mean_time_to_happen = {
+		months = 120
+		modifier = {
+			factor = 0.75
+			trait = hedonist
+		}
+		modifier = {
+			factor = 0.75
+			trait = lustful
+		}
+		modifier = {
+			factor = 0.75
+			trait = greedy
+		}
+		modifier = {
+			factor = 1.5
+			trait = slothful
+		}
+		modifier = {
+			factor = 1.5
+			trait = slow
+		}
+		modifier = {
+			factor = 1.5
+			trait = imbecile
+		}
+	}
+
+	immediate = {
+		liege = {
+			character_event = {
+				id = wh_bretonnia.117
+			}
+		}
+		clr_character_flag = serving_knighterrant
+	}
+}
+
+# Son returns home very ambitious
+character_event = {
+	id = wh_bretonnia.117
+	desc = DR_bretonnia_son_returns_ambitious_knight_errant
+	picture = GFX_evt_viking_throneroom_oldgods
+	border = GFX_event_normal_frame_war
+	is_triggered_only = yes
+
+	option = {
+		name = DR_bretonnia_son_returns_ambitious_knight_errant_opt
+		FROM = {
+			change_martial = 1
+			add_trait = ambitious
+			add_trait = bretonnian_knight
+			remove_trait = on_errantry_quest
+			hidden_tooltip = {
+				give_minor_title = title_sir_bretonnian
+			}
+		}
+	}
+}
+
+# Son dies in a battle (Son)
+character_event = {
+	id = wh_bretonnia.118
+	hide_window = yes
+	has_character_flag = serving_knighterrant
+
+	trigger = {
+		NOT = {
+			trait = bretonnian_knight
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 200
+		modifier = {
+			factor = 0.75
+			trait = brave
+		}
+		modifier = {
+			factor = 0.75
+			trait = wroth
+		}
+		modifier = {
+			factor = 0.75
+			trait = berserker
+		}
+		modifier = {
+			factor = 1.25
+			trait = craven
+		}
+		modifier = {
+			factor = 0.75
+			trait = drunkard
+		}
+		modifier = {
+			factor = 0.75
+			trait = has_tuberculosis
+		}
+		modifier = {
+			factor = 0.75
+			trait = has_typhoid_fever
+		}
+		modifier = {
+			factor = 0.75
+			trait = has_typhus
+		}
+		modifier = {
+			factor = 0.75
+			trait = has_bubonic_plague
+		}
+		modifier = {
+			factor = 0.75
+			trait = has_measles
+		}
+		modifier = {
+			factor = 0.75
+			trait = has_small_pox
+		}
+		modifier = {
+			factor = 0.75
+			trait = wounded
+		}
+		modifier = {
+			factor = 0.5
+			trait = infirm
+		}
+		modifier = {
+			factor = 0.5
+			trait = incapable
+		}
+	}
+
+	immediate = {
+		father = {
+			character_event = {
+				id = wh_bretonnia.1021
+			}
+		}
+		clr_character_flag = serving_knighterrant
+	}
+}
+
+# Son dies in a battle (Father)
+character_event = {
+	id = wh_bretonnia.119
+	desc = DR_bretonnia_son_dies_battle_knight_errant
+	picture = GFX_evt_viking_throneroom_oldgods
+	border = GFX_event_normal_frame_war
+	is_triggered_only = yes
+
+	option = {
+		name = DR_bretonnia_son_dies_battle_knight_errant_opt
+		FROM = {
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
+				death_reason = death_battle
+			}
+		}
+	}
+}
+
+# Son returns with gold (Son)
+character_event = {
+	id = wh_bretonnia.120
+	hide_window = yes
+	has_character_flag = serving_knighterrant
+
+	trigger = {
+		NOT = {
+			trait = bretonnian_knight
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 160
+		modifier = {
+			factor = 0.75
+			trait = greedy
+		}
+		modifier = {
+			factor = 0.75
+			stewardship = 10
+		}
+		modifier = {
+			factor = 0.5
+			stewardship = 15
+		}
+	}
+
+	immediate = {
+		father = {
+			character_event = {
+				id = wh_bretonnia.1023
+			}
+		}
+		clr_character_flag = serving_knighterrant
+	}
+}
+
+# Son returns with gold (Father)
+character_event = {
+	id = wh_bretonnia.121
+	desc = DR_bretonnia_son_returns_with_gold_knight_errant
+	picture = GFX_evt_viking_throneroom_oldgods
+	border = GFX_event_normal_frame_war
+	is_triggered_only = yes
+
+	option = {
+		name = DR_bretonnia_son_returns_with_gold_knight_errant_opt
+		FROM = {
+			wealth = 100
+			random = {
+				chance = 50
+				change_martial = 1
+			}
+			add_trait = bretonnian_knight
+			remove_trait = on_errantry_quest
+			hidden_tooltip = {
+				give_minor_title = title_sir_bretonnian
+			}
+		}
+		wealth = 50
+	}
+}
+
+# Father dies, Player Son is heir (Son)
+character_event = {
+	id = wh_bretonnia.122
+	desc = DR_bretonnia_son_return_knight_errant
+	picture = GFX_evt_viking_throneroom_oldgods
+	border = GFX_event_normal_frame_war
+	has_character_flag = serving_knighterrant
+
+	trigger = {
+		NOT = {
+			trait = bretonnian_knight
+		}
+		father_even_if_dead = {
+			is_alive = no
+		}
+	}
+
+	immediate = {
+		clr_character_flag = serving_knighterrant
+	}
+
+	option = {
+		name = DR_bretonnia_son_return_knight_errant_opt
+		prestige = 200
+		wealth = 200
+		add_trait = bretonnian_knight
+		remove_trait = on_errantry_quest
+		hidden_tooltip = {
+			give_minor_title = title_sir_bretonnian
+		}
+	}
+}
+
+# Son gets a landed title (Son)
+character_event = {
+	id = wh_bretonnia.123
+	desc = DR_bretonnia_son_return_knight_errant
+	picture = GFX_evt_viking_throneroom_oldgods
+	border = GFX_event_normal_frame_war
+	has_character_flag = serving_knighterrant
+
+	trigger = {
+		NOT = {
+			trait = bretonnian_knight
+		}
+		is_landed = yes
+	}
+
+	immediate = {
+		clr_character_flag = wants_knighterrant
+		clr_character_flag = serving_knighterrant
+	}
+
+	option = {
+		name = DR_bretonnia_son_return_knight_errant_opt
+		prestige = 200
+		wealth = 100
+		add_trait = bretonnian_knight
+		remove_trait = on_errantry_quest
+		hidden_tooltip = {
+			give_minor_title = title_sir_bretonnian
+		}
+	}
+}
+
+# Character proves he is worthy of being a Knight of the Realm through victory in battle
+character_event = {
+	id = wh_bretonnia.124
+	desc = "DR_bretonnia_become_knight_battle" # Battlefield Promotion
+	picture = "GFX_battle_promotion"
+	is_triggered_only = yes
+	only_men = yes # Might re-evaluate this on the future
+	capable_only = yes
+	culture_group = bretonnian_group
+
+	trigger = {
+		martial = 6
+		has_epidemic = no
+		is_ill = no
+		trait = creature_human
+		OR = {
+			religion = grail
+			religion = false_grail
+		}
+		NOR = {
+			health_traits = 1
+			religion_group = chaos_gods_group
+			religion_group = necromantic_group
+			trait = weak
+			trait = bretonnian_knight
+			trait = grail_knight
+			is_feudal = no
+			top_liege = {
+				is_feudal = no
+			}
+			trait = peasant_leader
+		}
+	}
+	weight_multiplier = {
+		days = 1
+		# good modifiers
+		modifier = {
+			factor = 10
+			is_strong_trigger = yes
+		}
+		modifier = {
+			factor = 2.5
+			OR = {
+				trait = poor_warrior
+				trait = trained_warrior
+				trait = skilled_warrior
+				trait = master_warrior
+				trait = impaler
+				trait = duelist
+			}
+		}
+		modifier = {
+			factor = 2
+			trait = brave
+		}
+		modifier = {
+			factor = 1.5
+			OR = {
+				trait = misguided_warrior
+				trait = tough_soldier
+				trait = skilled_tactician
+				trait = brilliant_strategist
+			}
+		}
+		modifier = {
+			factor = 1.2
+			OR = {
+				trait = genius
+				trait = quick
+				trait = diligent
+			}
+		}
+		# bad modifiers#
+		modifier = {
+			factor = 0.25
+			NOT = {
+				OR = {
+					religion = grail
+					religion = false_grail
+				}
+			}
+		}
+		modifier = {
+			factor = 0.25
+			OR = {
+				trait = clubfooted
+				trait = hunchback
+			}
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}
+		modifier = {
+			factor = 0.4
+			OR = {
+				trait = detached_priest
+				trait = martial_cleric
+				trait = scholarly_theologian
+				trait = mastermind_theologian
+				trait = scholar
+				trait = gardener
+				trait = poet
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTADR_bretonnia_become_knight" # Accept - Normal
+		ai_chance = {
+			factor = 1.2
+			modifier = {
+				factor = 3
+				OR = {
+					religion = grail
+					religion = false_grail
+				}
+				trait = zealous
+			}
+		}
+		prestige = 50
+		if = {
+			limit = {
+				OR = {
+					religion = grail
+					religion = false_grail
+				}
+			}
+			piety = 100
+		}
+		add_trait = bretonnian_knight
+		hidden_tooltip = {
+			give_minor_title = title_sir_bretonnian
+		}
+		any_liege = {
+			limit = {
+				at_location = ROOT
+				in_command = yes
+				trait = bretonnian_knight
+				prisoner = no
+				NOT = {
+					trait = incapable
+				}
+				opinion = {
+					who = ROOT value = 0
+				}
+			}
+		}
+	}
+}
+
+# Character proves he is worthy of being a Knight of the Realm through successful siege
+character_event = {
+	id = wh_bretonnia.125
+	desc = "DR_bretonnia_become_knight_siege" # Battlefield Promotion (siege)
+	picture = "GFX_battle_promotion"
+	is_triggered_only = yes
+	only_men = yes
+	capable_only = yes
+	culture_group = bretonnian_group
+
+	trigger = {
+		martial = 6
+		has_epidemic = no
+		is_ill = no
+		trait = creature_human
+		OR = {
+			religion = grail
+			religion = false_grail
+		}
+		NOR = {
+			health_traits = 1
+			religion_group = chaos_gods_group
+			religion_group = necromantic_group
+			trait = weak
+			trait = bretonnian_knight
+			trait = grail_knight
+			is_feudal = no
+			top_liege = {
+				is_feudal = no
+			}
+			trait = peasant_leader
+		}
+	}
+	weight_multiplier = {
+		days = 1
+		# good modifiers
+		modifier = {
+			factor = 10
+			is_strong_trigger = yes
+		}
+		modifier = {
+			factor = 2.5
+			OR = {
+				trait = poor_warrior
+				trait = trained_warrior
+				trait = skilled_warrior
+				trait = master_warrior
+				trait = impaler
+				trait = duelist
+			}
+		}
+		modifier = {
+			factor = 2
+			trait = brave
+		}
+		modifier = {
+			factor = 1.5
+			OR = {
+				trait = misguided_warrior
+				trait = tough_soldier
+				trait = skilled_tactician
+				trait = brilliant_strategist
+			}
+		}
+		modifier = {
+			factor = 1.2
+			OR = {
+				trait = genius
+				trait = quick
+				trait = diligent
+			}
+		}
+		# bad modifiers#
+		modifier = {
+			factor = 0.25
+			NOT = {
+				OR = {
+					religion = grail
+					religion = false_grail
+				}
+			}
+		}
+		modifier = {
+			factor = 0.25
+			OR = {
+				trait = clubfooted
+				trait = hunchback
+			}
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				trait = slothful
+				trait = craven
+			}
+		}
+		modifier = {
+			factor = 0.4
+			OR = {
+				trait = detached_priest
+				trait = martial_cleric
+				trait = scholarly_theologian
+				trait = mastermind_theologian
+				trait = scholar
+				trait = gardener
+				trait = poet
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTADR_bretonnia_become_knight" # Accept - Normal
+		ai_chance = {
+			factor = 1.2
+			modifier = {
+				factor = 3
+				OR = {
+					religion = grail
+					religion = false_grail
+				}
+				trait = zealous
+			}
+		}
+		prestige = 50
+		if = {
+			limit = {
+				OR = {
+					religion = grail
+					religion = false_grail
+				}
+			}
+			piety = 100
+		}
+		add_trait = bretonnian_knight
+		hidden_tooltip = {
+			give_minor_title = title_sir_bretonnian
+		}
+		any_liege = {
+			limit = {
+				at_location = ROOT
+				in_command = yes
+				trait = bretonnian_knight
+				prisoner = no
+				NOT = {
+					trait = incapable
+				}
+				opinion = {
+					who = ROOT value = 0
+				}
+			}
+		}
+	}
+}
+
+# Bret Virtue Stuff on_yearly_pulse
+character_event = {
+	id = wh_bretonnia.1000
+	hide_window = yes
+	only_playable = yes
+	religion = grail
+	min_age = 16
+	is_triggered_only = yes
+
+	immediate = {
+		remove_character_modifier = negative_bretonnian_virtue
+		remove_character_modifier = bretonnian_virtue_1
+		remove_character_modifier = bretonnian_virtue_2
+		remove_character_modifier = bretonnian_virtue_3
+		remove_character_modifier = bretonnian_virtue_4
+		remove_character_modifier = bretonnian_virtue_5
+		remove_character_modifier = bretonnian_virtue_6
+		remove_character_modifier = bretonnian_virtue_7
+		remove_character_modifier = bretonnian_virtue_8
+		remove_character_modifier = bretonnian_virtue_9
+		remove_character_modifier = bretonnian_virtue_10
+		remove_character_modifier = bretonnian_virtue_11
+		remove_character_modifier = bretonnian_virtue_12
+		remove_character_modifier = bretonnian_virtue_13
+		remove_character_modifier = bretonnian_virtue_14
+		remove_character_modifier = bretonnian_virtue_15
+		remove_character_modifier = bretonnian_virtue_16
+		remove_character_modifier = bretonnian_virtue_17
+		remove_character_modifier = bretonnian_virtue_18
+		remove_character_modifier = bretonnian_virtue_19
+		remove_character_modifier = bretonnian_virtue_20
+		if = {
+			limit = {
+				NOT = {
+					piety = 0
+				}
+			}
+			add_character_modifier = {
+				name = negative_bretonnian_virtue
+				duration = -1
+			}
+		}
+		if = {
+			limit = {
+				piety = 100
+				NOT = {
+					piety = 200
+				}
+			}
+			add_character_modifier = {
+				name = bretonnian_virtue_1
+				duration = -1
+			}
+		}
+		if = {
+			limit = {
+				piety = 200
+				NOT = {
+					piety = 300
+				}
+			}
+			add_character_modifier = {
+				name = bretonnian_virtue_2
+				duration = -1
+			}
+		}
+		if = {
+			limit = {
+				piety = 300
+				NOT = {
+					piety = 400
+				}
+			}
+			add_character_modifier = {
+				name = bretonnian_virtue_3
+				duration = -1
+			}
+		}
+		if = {
+			limit = {
+				piety = 400
+				NOT = {
+					piety = 500
+				}
+			}
+			add_character_modifier = {
+				name = bretonnian_virtue_4
+				duration = -1
+			}
+		}
+		if = {
+			limit = {
+				piety = 500
+				NOT = {
+					piety = 600
+				}
+			}
+			add_character_modifier = {
+				name = bretonnian_virtue_5
+				duration = -1
+			}
+		}
+		if = {
+			limit = {
+				piety = 600
+				NOT = {
+					piety = 700
+				}
+			}
+			add_character_modifier = {
+				name = bretonnian_virtue_6
+				duration = -1
+			}
+		}
+		if = {
+			limit = {
+				piety = 700
+				NOT = {
+					piety = 800
+				}
+			}
+			add_character_modifier = {
+				name = bretonnian_virtue_7
+				duration = -1
+			}
+		}
+		if = {
+			limit = {
+				piety = 800
+				NOT = {
+					piety = 900
+				}
+			}
+			add_character_modifier = {
+				name = bretonnian_virtue_8
+				duration = -1
+			}
+		}
+		if = {
+			limit = {
+				piety = 900
+				NOT = {
+					piety = 1000
+				}
+			}
+			add_character_modifier = {
+				name = bretonnian_virtue_9
+				duration = -1
+			}
+		}
+		if = {
+			limit = {
+				piety = 1000
+				NOT = {
+					piety = 1100
+				}
+			}
+			add_character_modifier = {
+				name = bretonnian_virtue_10
+				duration = -1
+			}
+		}
+		if = {
+			limit = {
+				piety = 1100
+				NOT = {
+					piety = 1200
+				}
+			}
+			add_character_modifier = {
+				name = bretonnian_virtue_11
+				duration = -1
+			}
+		}
+		if = {
+			limit = {
+				piety = 1200
+				NOT = {
+					piety = 1300
+				}
+			}
+			add_character_modifier = {
+				name = bretonnian_virtue_12
+				duration = -1
+			}
+
+		}
+		if = {
+			limit = {
+				piety = 1300
+				NOT = {
+					piety = 1400
+				}
+			}
+			add_character_modifier = {
+				name = bretonnian_virtue_13
+				duration = -1
+			}
+
+		}
+		if = {
+			limit = {
+				piety = 1400
+				NOT = {
+					piety = 1500
+				}
+			}
+			add_character_modifier = {
+				name = bretonnian_virtue_14
+				duration = -1
+			}
+		}
+		if = {
+			limit = {
+				piety = 1500
+				NOT = {
+					piety = 1600
+				}
+			}
+			add_character_modifier = {
+				name = bretonnian_virtue_15
+				duration = -1
+			}
+		}
+		if = {
+			limit = {
+				piety = 1600
+				NOT = {
+					piety = 1700
+				}
+			}
+			add_character_modifier = {
+				name = bretonnian_virtue_16
+				duration = -1
+			}
+		}
+		if = {
+			limit = {
+				piety = 1700
+				NOT = {
+					piety = 1800
+				}
+			}
+			add_character_modifier = {
+				name = bretonnian_virtue_17
+				duration = -1
+			}
+		}
+		if = {
+			limit = {
+				piety = 1800
+				NOT = {
+					piety = 1900
+				}
+			}
+			add_character_modifier = {
+				name = bretonnian_virtue_18
+				duration = -1
+			}
+		}
+		if = {
+			limit = {
+				piety = 1900
+				NOT = {
+					piety = 2000
+				}
+			}
+			add_character_modifier = {
+				name = bretonnian_virtue_19
+				duration = -1
+			}
+		}
+		if = {
+			limit = {
+				piety = 2000
+			}
+			add_character_modifier = {
+				name = bretonnian_virtue_20
+				duration = -1
+			}
+		}
 	}
 }

@@ -4,7 +4,7 @@ namespace = sdemons
 
 # demon avoids execution
 character_event = {
-	id = sdemons.1
+	id = wh_demons.1
 	desc = EVTDESCsdemons1
 	picture = GFX_evt_tzeentch
 	is_triggered_only = yes
@@ -40,7 +40,7 @@ character_event = {
 
 # demon escapes prison
 character_event = {
-	id = sdemons.2
+	id = wh_demons.2
 	desc = EVTDESCsdemons2
 	picture = GFX_evt_tzeentch
 	capable_only = yes
@@ -48,18 +48,9 @@ character_event = {
 	religion_group = chaos_gods_group
 
 	trigger = {
-		OR = {
-			trait = khorne_demon
-			trait = nurgle_demon
-			trait = slaanesh_demon
-			trait = tzeentch_demon
-			trait = hashut_kdaai
-		}
+		is_demon_trigger = yes
 		prisoner = yes
 	}
-	# 	mean_time_to_happen = {
-	# 			months = 50
-	# 	} # Now directly as an on_action
 
 	option = {
 		name = EVTOPTAsdemons2
@@ -69,7 +60,7 @@ character_event = {
 
 # free demon kills random person
 character_event = {
-	id = sdemons.3
+	id = wh_demons.3
 	desc = EVTDESCsdemons3
 	picture = GFX_evt_tzeentch
 	capable_only = yes
@@ -77,13 +68,7 @@ character_event = {
 	religion_group = chaos_gods_group
 
 	trigger = {
-		OR = {
-			trait = khorne_demon
-			trait = nurgle_demon
-			trait = slaanesh_demon
-			trait = tzeentch_demon
-			trait = hashut_kdaai
-		}
+		is_demon_trigger = yes
 		NOT = {
 			num_of_friends = 1
 		}
@@ -111,7 +96,6 @@ character_event = {
 			trait = nurgle_demon
 
 		}
-
 	}
 
 	option = {
@@ -119,52 +103,18 @@ character_event = {
 		random_courtier = {
 			limit = {
 				is_ruler = no
-				NOT = {
-					trait = khorne_demon
-				}
-				NOT = {
-					trait = nurgle_demon
-				}
-				NOT = {
-					trait = slaanesh_demon
-				}
-				NOT = {
-					trait = tzeentch_demon
-				}
-				NOT = {
-					trait = hashut_kdaai
-				}
-				NOT = {
+				is_demon_trigger = no
+				nor = {
 					trait = creature_nehekharan
-				}
-				NOT = {
 					trait = creature_slann
-				}
-				NOT = {
 					trait = everqueen
-				}
-				NOT = {
 					trait = malekith
-				}
-				NOT = {
 					trait = avatar_kurnous
-				}
-				NOT = {
 					trait = avatar_isha
-				}
-				NOT = {
 					has_artifact = carstein_ring
-				}
-				NOT = {
 					has_character_modifier = magic_power_1
-				}
-				NOT = {
 					has_character_modifier = magic_power_2
-				}
-				NOT = {
 					has_character_modifier = magic_power_3
-				}
-				NOT = {
 					has_character_modifier = magic_power_4
 				}
 			}
@@ -200,7 +150,7 @@ character_event = {
 
 # Try and hunt down a demon courtier
 character_event = {
-	id = sdemons.4
+	id = wh_demons.4
 	desc = EVTDESCsdemons4
 	picture = GFX_evt_demon_fighting
 	is_triggered_only = yes
@@ -208,163 +158,105 @@ character_event = {
 	option = {
 		name = EVTOPTAsdemons4
 		hidden_tooltip = {
-			random_list = {
-				50 = {
-					FROM = {
+			from = {
+				random_list = {
+					# Success
+					50 = {
 						character_event = {
-							id = sdemons.40001
+							id = wh_demons.40001
 						}
-					} # Success
-					modifier = {
-						factor = 1.5
-						FROM = {
+						modifier = {
+							factor = 1.5
 							trait = witch_hunter
 						}
-
-					}
-					modifier = {
-						factor = 1.25
-						FROM = {
+						modifier = {
+							factor = 1.25
 							trait = brave
 						}
-
-					}
-					modifier = {
-						factor = 1.5
-						FROM = {
+						modifier = {
+							factor = 1.5
 							trait = genius
 						}
-
-					}
-					modifier = {
-						factor = 1.45
-						FROM = {
+						modifier = {
+							factor = 1.45
 							trait = brilliant
 						}
-
-					}
-					modifier = {
-						factor = 1.35
-						FROM = {
+						modifier = {
+							factor = 1.35
 							trait = quick
 						}
-
-					}
-					modifier = {
-						factor = 1.25
-						FROM = {
+						modifier = {
+							factor = 1.25
 							trait = smart
 						}
-
-					}
-					modifier = {
-						factor = 1.15
-						FROM = {
+						modifier = {
+							factor = 1.15
 							trait = bright
 						}
-
-					}
-					modifier = {
-						factor = 0.95
-						FROM = {
+						modifier = {
+							factor = 0.95
 							trait = dim
 						}
-
-					}
-					modifier = {
-						factor = 0.85
-						FROM = {
+						modifier = {
+							factor = 0.85
 							trait = dumb
 						}
-
-					}
-					modifier = {
-						factor = 0.75
-						FROM = {
+						modifier = {
+							factor = 0.75
 							trait = slow
 						}
-
-					}
-					modifier = {
-						factor = 0.65
-						FROM = {
+						modifier = {
+							factor = 0.65
 							trait = idiot
 						}
 
-					}
-					modifier = {
-						factor = 0.5
-						FROM = {
+						modifier = {
+							factor = 0.5
 							trait = imbecile
 						}
 
-					}
-					modifier = {
-						factor = 1.15
-						FROM = {
+						modifier = {
+							factor = 1.15
 							learning = 10
 						}
 
-					}
-					modifier = {
-						factor = 1.25
-						FROM = {
+						modifier = {
+							factor = 1.25
 							learning = 15
 						}
 
-					}
-					modifier = {
-						factor = 1.35
-						FROM = {
+						modifier = {
+							factor = 1.35
 							learning = 20
 						}
 
-					}
-					modifier = {
-						factor = 1.45
-						FROM = {
+						modifier = {
+							factor = 1.45
 							learning = 25
 						}
-
-					}
-					modifier = {
-						factor = 1.25
-						FROM = {
+						modifier = {
+							factor = 1.25
 							has_character_modifier = magic_power_1
 						}
-
-					}
-					modifier = {
-						factor = 1.35
-						FROM = {
+						modifier = {
+							factor = 1.35
 							has_character_modifier = magic_power_2
 						}
-
-					}
-					modifier = {
-						factor = 1.45
-						FROM = {
+						modifier = {
+							factor = 1.45
 							has_character_modifier = magic_power_3
 						}
-
-					}
-					modifier = {
-						factor = 1.5
-						FROM = {
+						modifier = {
+							factor = 1.5
 							has_character_modifier = magic_power_4
 						}
-
 					}
-
-				}
-				50 = {
-					FROM = {
+					50 = {
 						character_event = {
-							id = sdemons.40002
+							id = wh_demons.40002
 						}
 					}
-				} # Failure
-
+				}
 			}
 		}
 	}
@@ -372,7 +264,7 @@ character_event = {
 
 # demon is killed
 character_event = {
-	id = sdemons.40001
+	id = wh_demons.40001
 	desc = EVTDESCsdemons40001
 	picture = GFX_evt_demon_fighting
 	is_triggered_only = yes
@@ -399,7 +291,7 @@ character_event = {
 
 # demon manages to slip through and escape
 character_event = {
-	id = sdemons.40002
+	id = wh_demons.40002
 	desc = EVTDESCsdemons40002
 	picture = GFX_evt_demon_fighting
 	is_triggered_only = yes
@@ -414,7 +306,7 @@ character_event = {
 
 # Bloodletter/Daemonette/Flamer makes random courtier rival of another random courtier
 character_event = {
-	id = sdemons.5
+	id = wh_demons.5
 	desc = EVTDESCsdemons5
 	picture = GFX_evt_tzeentch
 	capable_only = yes
@@ -429,108 +321,40 @@ character_event = {
 			trait = hashut_kdaai
 		}
 		any_courtier = {
- 			NOT = {
-				trait = khorne_demon
-			}
-			NOT = {
-				trait = nurgle_demon
-			}
-			NOT = {
-				trait = slaanesh_demon
-			}
-			NOT = {
-				trait = tzeentch_demon
-			}
-			NOT = {
+			is_demon_trigger = no
+			nor = {
 				any_friend = {
 					character = ROOT
 				}
-			}
-			NOT = {
 				trait = creature_nehekharan
-			}
-			NOT = {
 				trait = creature_slann
-			}
-			NOT = {
 				trait = everqueen
-			}
-			NOT = {
 				trait = malekith
-			}
-			NOT = {
 				trait = avatar_kurnous
-			}
-			NOT = {
 				trait = avatar_isha
-			}
-			NOT = {
 				has_artifact = carstein_ring
-			}
-			NOT = {
 				has_character_modifier = magic_power_1
-			}
-			NOT = {
 				has_character_modifier = magic_power_2
-			}
-			NOT = {
 				has_character_modifier = magic_power_3
-			}
-			NOT = {
 				has_character_modifier = magic_power_4
 			}
 			any_courtier = {
-				NOT = {
+				is_demon_trigger = no
+				nor = {
 					character = PREV
-				}
-				NOT = {
-					trait = khorne_demon
-				}
-				NOT = {
-					trait = nurgle_demon
-				}
-				NOT = {
-					trait = slaanesh_demon
-				}
-				NOT = {
-					trait = tzeentch_demon
-				}
-				NOT = {
 					any_friend = {
 						character = ROOT
 					}
-				}
-				NOT = {
 					trait = creature_nehekharan
-				}
-				NOT = {
 					trait = creature_slann
-				}
-				NOT = {
 					trait = everqueen
-				}
-				NOT = {
 					trait = malekith
-				}
-				NOT = {
 					trait = avatar_kurnous
-				}
-				NOT = {
 					trait = avatar_isha
-				}
-				NOT = {
 					has_artifact = carstein_ring
-				}
-				NOT = {
 					has_character_modifier = magic_power_1
-				}
-				NOT = {
 					has_character_modifier = magic_power_2
-				}
-				NOT = {
 					has_character_modifier = magic_power_3
-				}
-				NOT = {
 					has_character_modifier = magic_power_4
 				}
 			}
@@ -542,12 +366,10 @@ character_event = {
 		modifier = {
 			factor = 0.85
 			trait = khorne_demon
-
 		}
 		modifier = {
 			factor = 0.65
 			trait = tzeentch_demon
-
 		}
 	}
 
@@ -556,123 +378,51 @@ character_event = {
 		random_courtier = {
 			limit = {
 				is_ruler = no
-				NOT = {
-					trait = khorne_demon
-				}
-				NOT = {
-					trait = nurgle_demon
-				}
-				NOT = {
-					trait = slaanesh_demon
-				}
-				NOT = {
-					trait = tzeentch_demon
-				}
-				NOT = {
-					trait = hashut_kdaai
-				}
-				NOT = {
+				is_demon_trigger = no
+				nor = {
 					any_friend = {
 						character = ROOT
 					}
-				}
-				NOT = {
 					trait = creature_nehekharan
-				}
-				NOT = {
 					trait = creature_slann
-				}
-				NOT = {
 					trait = everqueen
-				}
-				NOT = {
 					trait = malekith
-				}
-				NOT = {
 					trait = avatar_kurnous
-				}
-				NOT = {
 					trait = avatar_isha
-				}
-				NOT = {
 					has_artifact = carstein_ring
-				}
-				NOT = {
 					has_character_modifier = magic_power_1
-				}
-				NOT = {
 					has_character_modifier = magic_power_2
-				}
-				NOT = {
 					has_character_modifier = magic_power_3
-				}
-				NOT = {
 					has_character_modifier = magic_power_4
 				}
 			}
 			random_courtier = {
 				limit = {
 					is_ruler = no
-					NOT = {
+					is_demon_trigger = no
+					nor = {
 						character = PREV
-					}
-					NOT = {
 						any_friend = {
 							character = ROOT
 						}
-					}
-					NOT = {
-						trait = khorne_demon
-					}
-					NOT = {
-						trait = nurgle_demon
-					}
-					NOT = {
-						trait = slaanesh_demon
-					}
-					NOT = {
-						trait = tzeentch_demon
-					}
-					NOT = {
 						trait = creature_nehekharan
-					}
-					NOT = {
 						trait = creature_slann
-					}
-					NOT = {
 						trait = everqueen
-					}
-					NOT = {
 						trait = malekith
-					}
-					NOT = {
 						trait = avatar_kurnous
-					}
-					NOT = {
 						trait = avatar_isha
-					}
-					NOT = {
 						has_artifact = carstein_ring
-					}
-					NOT = {
 						has_character_modifier = magic_power_1
-					}
-					NOT = {
 						has_character_modifier = magic_power_2
-					}
-					NOT = {
 						has_character_modifier = magic_power_3
-					}
-					NOT = {
 						has_character_modifier = magic_power_4
 					}
 				}
 				add_rival = PREV
 				character_event = {
-					id = sdemons.50001
+					id = wh_demons.50001
 				}
 			}
-
 		}
 		if = {
 			limit = {
@@ -694,9 +444,10 @@ character_event = {
 
 # you feel a new rivarly forming
 character_event = {
-	id = sdemons.50001
+	id = wh_demons.50001
 	desc = EVTDESCsdemons50001
 	picture = GFX_evt_courtiers_talking
+	ai = no
 	is_triggered_only = yes
 
 	option = {
@@ -706,7 +457,7 @@ character_event = {
 
 # Plaguebearer starts a chain random plague
 character_event = {
-	id = sdemons.6
+	id = wh_demons.6
 	desc = EVTDESCsdemons6
 	picture = GFX_evt_tzeentch
 	capable_only = yes
@@ -716,122 +467,29 @@ character_event = {
 	trigger = {
 		trait = nurgle_plaguebearer
 		any_courtier = {
- 			NOT = {
-				trait = khorne_demon
-			}
-			NOT = {
-				trait = nurgle_demon
-			}
-			NOT = {
-				trait = slaanesh_demon
-			}
-			NOT = {
-				trait = tzeentch_demon
-			}
-			NOT = {
-				trait = hashut_kdaai
-			}
-			NOT = {
+			is_ill = no
+			is_disease_immune_race = no
+			nor = {
 				any_friend = {
 					character = ROOT
 				}
-			}
-			NOT = {
 				trait = creature_nehekharan
-			}
-			NOT = {
 				trait = creature_slann
-			}
-			NOT = {
 				trait = everqueen
-			}
-			NOT = {
 				trait = malekith
-			}
-			NOT = {
 				trait = avatar_kurnous
-			}
-			NOT = {
 				trait = avatar_isha
-			}
-			NOT = {
 				has_artifact = carstein_ring
-			}
-			NOT = {
 				has_character_modifier = magic_power_1
-			}
-			NOT = {
 				has_character_modifier = magic_power_2
-			}
-			NOT = {
 				has_character_modifier = magic_power_3
-			}
-			NOT = {
 				has_character_modifier = magic_power_4
-			}
-			any_courtier = {
-				NOT = {
-					character = PREV
-				}
-				NOT = {
-					trait = khorne_demon
-				}
-				NOT = {
-					trait = nurgle_demon
-				}
-				NOT = {
-					trait = slaanesh_demon
-				}
-				NOT = {
-					trait = tzeentch_demon
-				}
-				NOT = {
-					trait = hashut_kdaai
-				}
-				NOT = {
-					any_friend = {
-						character = ROOT
-					}
-				}
-				NOT = {
-					trait = creature_nehekharan
-				}
-				NOT = {
-					trait = creature_slann
-				}
-				NOT = {
-					trait = everqueen
-				}
-				NOT = {
-					trait = malekith
-				}
-				NOT = {
-					trait = avatar_kurnous
-				}
-				NOT = {
-					trait = avatar_isha
-				}
-				NOT = {
-					has_artifact = carstein_ring
-				}
-				NOT = {
-					has_character_modifier = magic_power_1
-				}
-				NOT = {
-					has_character_modifier = magic_power_2
-				}
-				NOT = {
-					has_character_modifier = magic_power_3
-				}
-				NOT = {
-					has_character_modifier = magic_power_4
-				}
 			}
 		}
 	}
 
 	mean_time_to_happen = {
-		months = 500
+		years = 40
 	}
 
 	option = {
@@ -839,123 +497,23 @@ character_event = {
 		random_courtier = {
 			limit = {
 				is_ill = no
-				NOT = {
-					trait = khorne_demon
-				}
-				NOT = {
-					trait = nurgle_demon
-				}
-				NOT = {
-					trait = slaanesh_demon
-				}
-				NOT = {
-					trait = tzeentch_demon
-				}
-				NOT = {
-					trait = hashut_kdaai
-				}
-				NOT = {
-					any_friend = {
-						character = ROOT
-					}
-				}
-				NOT = {
+				is_disease_immune_race = no
+				nor = {
 					trait = creature_nehekharan
-				}
-				NOT = {
 					trait = creature_slann
-				}
-				NOT = {
 					trait = everqueen
-				}
-				NOT = {
 					trait = malekith
-				}
-				NOT = {
 					trait = avatar_kurnous
-				}
-				NOT = {
 					trait = avatar_isha
-				}
-				NOT = {
 					has_artifact = carstein_ring
-				}
-				NOT = {
 					has_character_modifier = magic_power_1
-				}
-				NOT = {
 					has_character_modifier = magic_power_2
-				}
-				NOT = {
 					has_character_modifier = magic_power_3
-				}
-				NOT = {
 					has_character_modifier = magic_power_4
 				}
 			}
-			random_courtier = {
-				limit = {
-					is_ill = no
-					NOT = {
-						character = PREV
-					}
-					NOT = {
-						trait = khorne_demon
-					}
-					NOT = {
-						trait = nurgle_demon
-					}
-					NOT = {
-						trait = slaanesh_demon
-					}
-					NOT = {
-						trait = tzeentch_demon
-					}
-					NOT = {
-						trait = hashut_kdaai
-					}
-					NOT = {
-						any_friend = {
-							character = ROOT
-						}
-					}
-					NOT = {
-						trait = creature_nehekharan
-					}
-					NOT = {
-						trait = creature_slann
-					}
-					NOT = {
-						trait = everqueen
-					}
-					NOT = {
-						trait = malekith
-					}
-					NOT = {
-						trait = avatar_kurnous
-					}
-					NOT = {
-						trait = avatar_isha
-					}
-					NOT = {
-						has_artifact = carstein_ring
-					}
-					NOT = {
-						has_character_modifier = magic_power_1
-					}
-					NOT = {
-						has_character_modifier = magic_power_2
-					}
-					NOT = {
-						has_character_modifier = magic_power_3
-					}
-					NOT = {
-						has_character_modifier = magic_power_4
-					}
-				}
-				character_event = {
-					id = sdemons.60001
-				}
+			character_event = {
+				id = wh_demons.60001
 			}
 		}
 		if = {
@@ -978,114 +536,10 @@ character_event = {
 
 # Papa Nurgle's conga
 character_event = {
-	id = sdemons.60001
+	id = wh_demons.60001
 	desc = EVTDESCsdemons60001
 	picture = GFX_evt_nurgle
 	is_triggered_only = yes
-
-	trigger = {
- 		NOT = {
-			trait = khorne_demon
-		}
-		NOT = {
-			trait = nurgle_demon
-		}
-		NOT = {
-			trait = slaanesh_demon
-		}
-		NOT = {
-			trait = tzeentch_demon
-		}
-		NOT = {
-			trait = hashut_kdaai
-		}
-		NOT = {
-			trait = creature_nehekharan
-		}
-		NOT = {
-			trait = creature_slann
-		}
-		NOT = {
-			trait = everqueen
-		}
-		NOT = {
-			trait = malekith
-		}
-		NOT = {
-			trait = avatar_kurnous
-		}
-		NOT = {
-			trait = avatar_isha
-		}
-		NOT = {
-			has_artifact = carstein_ring
-		}
-		NOT = {
-			has_character_modifier = magic_power_1
-		}
-		NOT = {
-			has_character_modifier = magic_power_2
-		}
-		NOT = {
-			has_character_modifier = magic_power_3
-		}
-		NOT = {
-			has_character_modifier = magic_power_4
-		}
-		any_courtier = {
-			NOT = {
-				character = PREV
-			}
-			NOT = {
-				trait = khorne_demon
-			}
-			NOT = {
-				trait = nurgle_demon
-			}
-			NOT = {
-				trait = slaanesh_demon
-			}
-			NOT = {
-				trait = tzeentch_demon
-			}
-			NOT = {
-				trait = creature_nehekharan
-			}
-			NOT = {
-				trait = creature_slann
-			}
-			NOT = {
-				trait = hashut_kdaai
-			}
-			NOT = {
-				trait = everqueen
-			}
-			NOT = {
-				trait = malekith
-			}
-			NOT = {
-				trait = avatar_kurnous
-			}
-			NOT = {
-				trait = avatar_isha
-			}
-			NOT = {
-				has_artifact = carstein_ring
-			}
-			NOT = {
-				has_character_modifier = magic_power_1
-			}
-			NOT = {
-				has_character_modifier = magic_power_2
-			}
-			NOT = {
-				has_character_modifier = magic_power_3
-			}
-			NOT = {
-				has_character_modifier = magic_power_4
-			}
-		}
-	}
 
 	option = {
 		name = EVTOPTAsdemons60001
@@ -1124,62 +578,28 @@ character_event = {
 			random_courtier = {
 				limit = {
 					is_ill = no
-					NOT = {
-						trait = khorne_demon
-					}
-					NOT = {
-						trait = nurgle_demon
-					}
-					NOT = {
-						trait = slaanesh_demon
-					}
-					NOT = {
-						trait = tzeentch_demon
-					}
-					NOT = {
+					is_disease_immune_race = no
+					nor = {
+						character = root
 						trait = creature_nehekharan
-					}
-					NOT = {
 						trait = creature_slann
-					}
-					NOT = {
 						trait = everqueen
-					}
-					NOT = {
 						trait = malekith
-					}
-					NOT = {
 						trait = avatar_kurnous
-					}
-					NOT = {
 						trait = avatar_isha
-					}
-					NOT = {
 						has_artifact = carstein_ring
-					}
-					NOT = {
 						has_character_modifier = magic_power_1
-					}
-					NOT = {
 						has_character_modifier = magic_power_2
-					}
-					NOT = {
 						has_character_modifier = magic_power_3
-					}
-					NOT = {
 						has_character_modifier = magic_power_4
 					}
 				}
-				random_list = {
-					50 = {
-						character_event = {
-							id = sdemons.60001
-						}
-					}
-					50 = {
+				random = {
+					chance = 50
+					character_event = {
+						id = wh_demons.60001
 					}
 				}
-
 			}
 		}
 	}
@@ -1187,7 +607,7 @@ character_event = {
 
 # Daemonette has fun with unfaithful couples
 character_event = {
-	id = sdemons.7
+	id = wh_demons.7
 	desc = EVTDESCsdemons7
 	picture = GFX_evt_tzeentch
 	capable_only = yes
@@ -1197,155 +617,76 @@ character_event = {
 	trigger = {
 		trait = slaanesh_daemonette
 		any_courtier = {
- 			NOT = {
-				trait = khorne_demon
-			}
-			NOT = {
-				trait = nurgle_demon
-			}
-			NOT = {
-				trait = slaanesh_demon
-			}
-			NOT = {
-				trait = tzeentch_demon
-			}
-			NOT = {
-				trait = hashut_kdaai
-			}
-			NOT = {
+			is_demon_trigger = no
+			nor = {
 				any_friend = {
 					character = ROOT
 				}
-			}
-			NOT = {
 				trait = creature_nehekharan
-			}
-			NOT = {
 				trait = creature_slann
-			}
-			NOT = {
 				trait = everqueen
-			}
-			NOT = {
 				trait = malekith
-			}
-			NOT = {
 				trait = avatar_kurnous
-			}
-			NOT = {
 				trait = avatar_isha
-			}
-			NOT = {
 				has_artifact = carstein_ring
-			}
-			NOT = {
-				trait = pet_consort
-			}
-			NOT = {
 				has_character_modifier = magic_power_1
-			}
-			NOT = {
 				has_character_modifier = magic_power_2
-			}
-			NOT = {
 				has_character_modifier = magic_power_3
-			}
-			NOT = {
 				has_character_modifier = magic_power_4
 			}
 			is_married = yes
 			has_lover = no
 			spouse = {
-				NOT = {
+				nor = {
 					trait = pet_consort
-				}
-				has_lover = yes
-				any_lover = {
-					NOT = {
+					any_lover = {
 						trait = pet_consort
 					}
 				}
+				has_lover = yes
 			}
 		}
 	}
 
 	mean_time_to_happen = {
-		months = 500
+		years = 40
 	}
 
 	option = {
 		name = EVTOPTAsdemons7
 		random_courtier = {
 			limit = {
-				NOT = {
-					trait = khorne_demon
-				}
-				NOT = {
-					trait = nurgle_demon
-				}
-				NOT = {
-					trait = slaanesh_demon
-				}
-				NOT = {
-					trait = tzeentch_demon
-				}
-				NOT = {
+				is_demon_trigger = no
+				nor = {
 					any_friend = {
 						character = ROOT
 					}
-				}
-				NOT = {
 					trait = creature_nehekharan
-				}
-				NOT = {
 					trait = creature_slann
-				}
-				NOT = {
 					trait = everqueen
-				}
-				NOT = {
 					trait = malekith
-				}
-				NOT = {
 					trait = avatar_kurnous
-				}
-				NOT = {
 					trait = avatar_isha
-				}
-				NOT = {
 					has_artifact = carstein_ring
-				}
-				NOT = {
-					trait = pet_consort
-				}
-				NOT = {
 					has_character_modifier = magic_power_1
-				}
-				NOT = {
 					has_character_modifier = magic_power_2
-				}
-				NOT = {
 					has_character_modifier = magic_power_3
-				}
-				NOT = {
 					has_character_modifier = magic_power_4
 				}
 				is_married = yes
 				has_lover = no
 				spouse = {
-					NOT = {
+					nor = {
 						trait = pet_consort
-					}
-					has_lover = yes
-					any_lover = {
-						NOT = {
+						any_lover = {
 							trait = pet_consort
 						}
 					}
+					has_lover = yes
 				}
 			}
 			character_event = {
-				id = sdemons.70001
+				id = wh_demons.70001
 			}
 		}
 		if = {
@@ -1368,7 +709,7 @@ character_event = {
 
 # You dream of your spouse cheating on you
 character_event = {
-	id = sdemons.70001
+	id = wh_demons.70001
 	desc = EVTDESCsdemons70001
 	picture = GFX_evt_bad_news
 	is_triggered_only = yes
@@ -1396,7 +737,7 @@ character_event = {
 
 # Demon adds province modifier wherever he is
 character_event = {
-	id = sdemons.8
+	id = wh_demons.8
 	desc = EVTDESCsdemons8
 	picture = GFX_evt_tzeentch
 	capable_only = yes
@@ -1404,18 +745,12 @@ character_event = {
 	religion_group = chaos_gods_group
 
 	trigger = {
-		OR = {
-			trait = khorne_demon
-			trait = nurgle_demon
-			trait = slaanesh_demon
-			trait = tzeentch_demon
-			trait = hashut_kdaai
-		}
+		is_demon_trigger = yes
 		is_ruler = yes
 	}
 
 	mean_time_to_happen = {
-		months = 50
+		years = 4
 		modifier = {
 			factor = 0.75
 			trait = khorne_demon
@@ -1453,7 +788,10 @@ character_event = {
 		}
 		if = {
 			limit = {
-				trait = tzeentch_demon
+				or = {
+					trait = tzeentch_demon
+					trait = hashut_kdaai
+				}
 			}
 			location = {
 				add_province_modifier = {
@@ -1479,50 +817,40 @@ character_event = {
 			}
 			location = {
 				add_province_modifier = {
-					name = nurgle_province_disease duration = 4000
+					name = nurgle_province_disease
+					duration = 4000
 				}
 			}
 			random_list = {
-				16 = {
+				10 = {
 					location = {
 						spawn_disease = tuberculosis
 					}
 				}
-				16 = {
+				10 = {
 					location = {
 						spawn_disease = typhoid_fever
 					}
 				}
-				16 = {
+				10 = {
 					location = {
 						spawn_disease = typhus
 					}
 				}
-				16 = {
+				10 = {
 					location = {
 						spawn_disease = measles
 					}
 				}
-				16 = {
+				10 = {
 					location = {
 						spawn_disease = small_pox
 					}
 				}
-				16 = {
+				10 = {
 					location = {
 						spawn_disease = syphilis
 					}
-				}
-			}
-		}
-		if = {
-			limit = {
-				trait = hashut_kdaai
-			}
-			location = {
-				add_province_modifier = {
-					name = warpdust_traces
-					duration = 4000
 				}
 			}
 		}

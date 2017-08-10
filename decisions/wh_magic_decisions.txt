@@ -1186,58 +1186,17 @@ decisions = {
 
 targetted_decisions = {
 
-	# commission_crafting = {
-    #     ai_target_filter = home_court
-    #     filter = sub_realm
-    #     potential = {
-    #         nor = {
-	# 			trait = vampire_necrarch_visible
-	# 			character = FROM
-	# 		}
-    #         is_liege_or_above = FROM
-    #         OR = {
-    #             has_character_modifier = magic_power_1
-    #             has_character_modifier = magic_power_2
-    #             has_character_modifier = magic_power_3
-    #             has_character_modifier = magic_power_4
-	# 		}
-	# 	}
-    #     allow = {
-    #         FROM = {
-	# 			custom_tooltip = {
-	# 				text = IS_NOT_INCAPACITATED
-	# 				is_incapacitated_trigger = no
-	# 			}
-	# 			wealth = 375
-	# 		}
-	# 		custom_tooltip = {
-	# 			text = IS_NOT_INCAPACITATED
-	# 			is_incapacitated_trigger = no
-	# 		}
-	# 	}
-    #     effect = {
-	# 		FROM = {
-	# 			character_event = {
-	# 				id = commissioned_crafting.0
-	# 			}
-	# 		}
-	# 	}
-    #     ai_will_do = {
-    #         factor = 0.01 # 10% chance per year of commissioning
-	# 	}
-	# }
-
-	# craft
-
 	z_craft_magic_item = {
-		ai_target_filter = self
+		only_playable = yes
+		ai_target_filter = court
 		filter = court
 		from_potential = {
-			ai = no
+			age = 16
 		}
 		potential = {
 			age = 16
 			z_combat_magic_caster = yes
+			z_combat_magic_valid_caster = yes
 			OR = {
 				character = FROM
 				liege = {
@@ -1250,7 +1209,6 @@ targetted_decisions = {
 				text = IS_NOT_INCAPACITATED
 				is_incapacitated_trigger = no
 			}
-			z_combat_magic_valid_caster = yes
 			in_command = no
 		}
 		effect = {
@@ -1276,6 +1234,86 @@ targetted_decisions = {
 				}
 			}
 		}
+
+		revoke_allowed = {
+			always = yes
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0.05
+			}
+			modifier = {
+				factor = 0.05
+				NOT = {
+					character = FROM
+				}
+			}
+			modifier = {
+				factor = 1.35
+				trait = quick
+			}
+			modifier = {
+				factor = 1.25
+				trait = bright
+			}
+			modifier = {
+				factor = 1.5
+				trait = smart
+			}
+			modifier = {
+				factor = 1.75
+				trait = quick
+			}
+			modifier = {
+				factor = 1.95
+				trait = brilliant
+			}
+			modifier = {
+				factor = 2
+				trait = genius
+			}
+			modifier = {
+				factor = 0.85
+				trait = dim
+			}
+			modifier = {
+				factor = 0.75
+				trait = dumb
+			}
+			modifier = {
+				factor = 0.65
+				trait = slow
+			}
+			modifier = {
+				factor = 0.5
+				trait = idiot
+			}
+			modifier = {
+				factor = 0.45
+				trait = imbecile
+			}
+			modifier = {
+				factor = 1.5
+				trait = gregarious
+			}
+			modifier = {
+				factor = 1.5
+				trait = ambitious
+			}
+			modifier = {
+				factor = 1.75
+				trait = diligent
+			}
+			modifier = {
+				factor = 1.25
+				trait = patient
+			}
+			modifier = {
+				factor = 0.85
+				trait = slothful
+			}
+		}
 	}
 
 	z_magic_phase = {
@@ -1284,6 +1322,7 @@ targetted_decisions = {
 		potential = {
 			age = 16
 			z_combat_magic_caster = yes
+			z_combat_magic_valid_caster = yes
 			OR = {
 				character = FROM
 				liege = {
@@ -1292,7 +1331,6 @@ targetted_decisions = {
 			}
 		}
 		allow = {
-			z_combat_magic_valid_caster = yes
 			in_command = yes
 			custom_tooltip = {
 				text = IS_NOT_INCAPACITATED

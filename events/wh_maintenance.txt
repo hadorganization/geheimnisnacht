@@ -58,10 +58,32 @@ character_event = {
 			}
 			remove_province_modifier = nehekharan_curse
 		}
+		# Now to remove the modifier if the culture changes to non-asur
+		# Non elves are not affected by the vortex, nor - we suppose - dark elves who are... more aligned with chaos or just have more sex?
+		any_realm_province = {
+			limit = {
+				region = world_ulthuan
+				or = {
+					has_province_modifier = ulthuan
+					has_province_modifier = ulthuan_lightly_depopulated
+					has_province_modifier = ulthuan_moderately_depopulated
+					has_province_modifier = ulthuan_heavily_depopulated
+					has_province_modifier = ulthuan_severely_depopulated
+				}
+				nor = {
+					has_game_rule = {
+						name = warhammer_ulthuan_depopulation
+						value = off
+					}
+					province_id = 1492 # Not Lothern, it welcomes visitors from around the world and hence non elves replace elven population losses
+					culture_group = asur_group
+				}
+			}
+		}
 	}
 }
 
-# heal undeds and demons
+# heal undeads and demons
 character_event = {
 	id = wh_maintenance.3
 	hide_window = yes

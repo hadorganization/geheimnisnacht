@@ -3,34 +3,25 @@ namespace = ulthuan
 # Provinces in Ulthuan slowly depopulate even during peace, but much faster during times of war when the province is occupied - first we assign each province in Ulthuan a modifier
 province_event = {
 	id = ulthuan.0
-	title = "Ulthuan"
-	desc = "Ulthuan is a nation in decline"
-	picture = GFX_evt_council
 	hide_window = yes
 	is_triggered_only = yes
 
 	trigger = {
-		NOT = {
+		culture_group = asur_group
+		region = world_ulthuan
+		nor = {
 			has_game_rule = {
 				name = warhammer_ulthuan_depopulation value = off
 			}
-		}
-		culture_group = asur_group
-		NOT = {
 			has_province_modifier = ulthuan
-		}
-		NOT = {
 			province_id = 1492 # Not Lothern, it welcomes visitors from around the world and hence non elves replace elven population losses
 		}
-		region = world_ulthuan
 	}
 
-	option = {
-		name = "OK"
-		ROOT = {
-			add_province_modifier = {
-				name = ulthuan duration = -1
-			}
+	immediate = {
+		add_province_modifier = {
+			name = ulthuan
+			duration = -1
 		}
 	}
 }
@@ -41,27 +32,21 @@ character_event = {
 	desc = ulthuan1desc # Whether through war or just the slow passage of time, the population in this province has fallen. Such is the fate of all elves in Ulthuan, to slowly diminish, but they will never yield to their enemies even so.
 	picture = "GFX_evt_elf_city"
 	culture_group = asur_group
-	only_rulers = yes
+	only_playable = yes
 
 	trigger = {
 		NOT = {
 			has_game_rule = {
-				name = warhammer_ulthuan_depopulation value = off
+				name = warhammer_ulthuan_depopulation
+				value = off
 			}
 		}
-		higher_tier_than = BARON
 		any_demesne_province = {
 			has_province_modifier = ulthuan
-			NOT = {
+			nor = {
 				has_province_modifier = ulthuan_lightly_depopulated
-			}
-			NOT = {
 				has_province_modifier = ulthuan_moderately_depopulated
-			}
-			NOT = {
 				has_province_modifier = ulthuan_heavily_depopulated
-			}
-			NOT = {
 				has_province_modifier = ulthuan_severely_depopulated
 			}
 		}
@@ -79,7 +64,8 @@ character_event = {
 		modifier = {
 			factor = 3
 			has_game_rule = {
-				name = warhammer_ulthuan_depopulation value = decreased
+				name = warhammer_ulthuan_depopulation
+				value = decreased
 			}
 		}
 	}
@@ -90,21 +76,16 @@ character_event = {
 			if = {
 				limit = {
 					has_province_modifier = ulthuan
-					NOT = {
+					nor = {
 						has_province_modifier = ulthuan_lightly_depopulated
-					}
-					NOT = {
 						has_province_modifier = ulthuan_moderately_depopulated
-					}
-					NOT = {
 						has_province_modifier = ulthuan_heavily_depopulated
-					}
-					NOT = {
 						has_province_modifier = ulthuan_severely_depopulated
 					}
 				}
 				add_province_modifier = {
-					name = ulthuan_lightly_depopulated duration = -1
+					name = ulthuan_lightly_depopulated
+					duration = -1
 				}
 			}
 		}
@@ -115,7 +96,7 @@ character_event = {
 	id = ulthuan.2
 	desc = ulthuan2desc # Whether through war or just the slow passage of time, the population in this province is now moderately depopulated. Empty villages and mansions dot the country side, their former inhabitants now only a distant memory.
 	picture = "GFX_evt_elf_city"
-	only_rulers = yes
+	only_playable = yes
 
 	trigger = {
 		NOT = {
@@ -123,7 +104,6 @@ character_event = {
 				name = warhammer_ulthuan_depopulation value = off
 			}
 		}
-		higher_tier_than = BARON
 		any_demesne_province = {
 			has_province_modifier = ulthuan
 			has_province_modifier = ulthuan_lightly_depopulated
@@ -155,10 +135,11 @@ character_event = {
 					has_province_modifier = ulthuan
 					has_province_modifier = ulthuan_lightly_depopulated
 				}
-				add_province_modifier = {
-					name = ulthuan_moderately_depopulated duration = -1
-				}
 				remove_province_modifier = ulthuan_lightly_depopulated
+				add_province_modifier = {
+					name = ulthuan_moderately_depopulated
+					duration = -1
+				}
 			}
 		}
 	}
@@ -168,7 +149,7 @@ character_event = {
 	id = ulthuan.3
 	desc = ulthuan3desc # Whether through war or just the slow passage of time, the population in this province is now heavily depopulated. The Lords there struggle to maintain a semblance of civilization, and many areas are now devoid of elves entirely, given over to nature and the wild beasts.
 	picture = "GFX_evt_elf_city"
-	only_rulers = yes
+	only_playable = yes
 
 	trigger = {
 		NOT = {
@@ -176,7 +157,6 @@ character_event = {
 				name = warhammer_ulthuan_depopulation value = off
 			}
 		}
-		higher_tier_than = BARON
 		any_demesne_province = {
 			has_province_modifier = ulthuan
 			has_province_modifier = ulthuan_moderately_depopulated
@@ -208,10 +188,11 @@ character_event = {
 					has_province_modifier = ulthuan
 					has_province_modifier = ulthuan_moderately_depopulated
 				}
-				add_province_modifier = {
-					name = ulthuan_heavily_depopulated duration = -1
-				}
 				remove_province_modifier = ulthuan_moderately_depopulated
+				add_province_modifier = {
+					name = ulthuan_heavily_depopulated
+					duration = -1
+				}
 			}
 		}
 	}
@@ -221,7 +202,7 @@ character_event = {
 	id = ulthuan.4
 	desc = ulthuan4desc # Whether through war or just the slow passage of time, the population in this province is now severely depopulated. The major noble families still maintain their mansions and the immediate surrounds, but they have lost the ability to control much more than that.
 	picture = "GFX_evt_elf_city"
-	only_rulers = yes
+	only_playable = yes
 
 	trigger = {
 		NOT = {
@@ -229,7 +210,6 @@ character_event = {
 				name = warhammer_ulthuan_depopulation value = off
 			}
 		}
-		higher_tier_than = BARON
 		any_demesne_province = {
 			has_province_modifier = ulthuan
 			has_province_modifier = ulthuan_heavily_depopulated
@@ -261,10 +241,11 @@ character_event = {
 					has_province_modifier = ulthuan
 					has_province_modifier = ulthuan_heavily_depopulated
 				}
-				add_province_modifier = {
-					name = ulthuan_severely_depopulated duration = -1
-				}
 				remove_province_modifier = ulthuan_heavily_depopulated
+				add_province_modifier = {
+					name = ulthuan_severely_depopulated
+					duration = -1
+				}
 			}
 		}
 	}
@@ -275,7 +256,8 @@ character_event = {
 	id = ulthuan.5
 	desc = ulthuan5desc # This province is occupied by enemies and many precious elven lives have been lost.
 	picture = "GFX_evt_elf_city"
-	only_rulers = yes
+	only_playable = yes
+	culture_group = asur_group
 
 	trigger = {
 		NOT = {
@@ -283,8 +265,6 @@ character_event = {
 				name = warhammer_ulthuan_depopulation value = off
 			}
 		}
-		culture_group = asur_group
-		higher_tier_than = BARON
 		any_demesne_title = {
 			location = {
 				has_province_modifier = ulthuan
@@ -301,7 +281,8 @@ character_event = {
 		modifier = {
 			factor = 5
 			has_game_rule = {
-				name = warhammer_ulthuan_depopulation value = decreased
+				name = warhammer_ulthuan_depopulation
+				value = decreased
 			}
 		}
 	}
@@ -320,86 +301,51 @@ character_event = {
 						has_province_modifier = ulthuan
 						has_province_modifier = ulthuan_heavily_depopulated
 					}
-					add_province_modifier = {
-						name = ulthuan_severely_depopulated duration = -1
-					}
 					remove_province_modifier = ulthuan_heavily_depopulated
+					add_province_modifier = {
+						name = ulthuan_severely_depopulated
+						duration = -1
+					}
 				}
 				if = {
 					limit = {
 						has_province_modifier = ulthuan
 						has_province_modifier = ulthuan_moderately_depopulated
 					}
-					add_province_modifier = {
-						name = ulthuan_heavily_depopulated duration = -1
-					}
 					remove_province_modifier = ulthuan_moderately_depopulated
+					add_province_modifier = {
+						name = ulthuan_heavily_depopulated
+						duration = -1
+					}
 				}
 				if = {
 					limit = {
 						has_province_modifier = ulthuan
 						has_province_modifier = ulthuan_lightly_depopulated
 					}
-					add_province_modifier = {
-						name = ulthuan_moderately_depopulated duration = -1
-					}
 					remove_province_modifier = ulthuan_lightly_depopulated
+					add_province_modifier = {
+						name = ulthuan_moderately_depopulated
+						duration = -1
+					}
 				}
 				if = {
 					limit = {
 						has_province_modifier = ulthuan
-						NOT = {
+						nor = {
 							has_province_modifier = ulthuan_lightly_depopulated
-						}
-						NOT = {
 							has_province_modifier = ulthuan_moderately_depopulated
-						}
-						NOT = {
 							has_province_modifier = ulthuan_heavily_depopulated
-						}
-						NOT = {
 							has_province_modifier = ulthuan_severely_depopulated
 						}
 					}
 					add_province_modifier = {
-						name = ulthuan_lightly_depopulated duration = -1
+						name = ulthuan_lightly_depopulated
+						duration = -1
 					}
 				}
 			}
 		}
-	}
-}
-
-# Now to remove the modifier if the culture changes to non-asur
-province_event = {
-	id = ulthuan.6
-	#title = "Ulthuan"
-	#desc = ulthuan6desc # "Non elves are not affected by the vortex, nor - we suppose - dark elves who are... more aligned with chaos or just have more sex?"
-	#picture = GFX_evt_council
-	hide_window = yes
-
-	trigger = {
-		region = world_ulthuan
-		nor = {
-			has_game_rule = {
-				name = warhammer_ulthuan_depopulation value = off
-			}
-			province_id = 1492 # Not Lothern, it welcomes visitors from around the world and hence non elves replace elven population losses
-			culture_group = asur_group
-		}
-		has_province_modifier = ulthuan
-	}
-
-	mean_time_to_happen = {
-		days = 1
-	}
-
-	immediate = {
-		remove_province_modifier = ulthuan
-		remove_province_modifier = ulthuan_lightly_depopulated
-		remove_province_modifier = ulthuan_moderately_depopulated
-		remove_province_modifier = ulthuan_heavily_depopulated
-		remove_province_modifier = ulthuan_severely_depopulated
 	}
 }
 
@@ -407,35 +353,30 @@ province_event = {
 character_event = {
 	id = ulthuan.6
 	hide_window = yes
+	only_playable = yes
 	is_triggered_only = yes
-	only_rulers = yes
 
 	trigger = {
-		NOT = {
-			has_game_rule = {
-				name = warhammer_ulthuan_depopulation value = off
-			}
-		}
-		is_ruler = yes
 		has_landed_title = e_ulthuan
-		NOT = {
+		nor = {
+			has_game_rule = {
+				name = warhammer_ulthuan_depopulation
+				value = off
+			}
 			has_global_flag = ulthuan_pop_set
 		}
 	}
 
-	option = {
-		name = OK
-		ROOT = {
-			any_realm_province = {
-				limit = {
-					region = world_ulthuan
-					NOT = {
-						has_province_modifier = ulthuan
-					}
+	immediate = {
+		any_realm_province = {
+			limit = {
+				region = world_ulthuan
+				NOT = {
+					has_province_modifier = ulthuan
 				}
-				province_event = {
-					id = ulthuan.0
-				}
+			}
+			province_event = {
+				id = ulthuan.0
 			}
 		}
 		set_global_flag = ulthuan_pop_set

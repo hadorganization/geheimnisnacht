@@ -94,13 +94,15 @@ character_event = {
 		modifier = {
 			factor = 0.2
 			has_game_rule = {
-				name = warhammer_battlefield_duels value = less_fequent
+				name = warhammer_battlefield_duels
+				value = less_fequent
 			}
 		}
 		modifier = {
 			factor = 5
 			has_game_rule = {
-				name = warhammer_battlefield_duels value = more_frequent
+				name = warhammer_battlefield_duels
+				value = more_frequent
 			}
 		}
 		# greater chance for duel of warlike races
@@ -238,11 +240,13 @@ character_event = {
 			save_event_target_as = attacker
 		}
 		add_character_modifier = {
-			name = battlefield_fight duration = 10
+			name = battlefield_fight 
+			duration = 10
 		}
 		event_target:duelist_a = {
 			add_character_modifier = {
-				name = battlefield_fight duration = 10
+				name = battlefield_fight 
+				duration = 10
 			}
 		}
 		# Remove targeting information (just from the fighter)
@@ -639,17 +643,20 @@ character_event = {
 		# set basic damage
 		event_target:defender = {
 			set_variable = {
-				which = "duel_dmg" value = 0
+				which = "duel_dmg"
+				value = 0
 			}
 		}
 		event_target:defender = {
 			set_variable = {
-				which = "duel_att_mod_app" value = "0"
+				which = "duel_att_mod_app"
+				value = "0"
 			}
 		}
 		event_target:attacker = {
 			set_variable = {
-				which = "duel_att_mod_app" value = "0"
+				which = "duel_att_mod_app"
+				value = "0"
 			}
 		}
 		# dmg from attack calculation (event_target:defender is victim)
@@ -661,12 +668,14 @@ character_event = {
 				limit = {
 					not = {
 						check_variable = {
-							which = "duel_att_mod_app" value = "0"
+							which = "duel_att_mod_app"
+							value = "0"
 						}
 					}
 				}
 				set_variable = {
-					which = "duel_att_mod_app" value = "0"
+					which = "duel_att_mod_app"
+					value = "0"
 				}
 			}
 		}
@@ -684,24 +693,28 @@ character_event = {
 			limit = {
 				not = {
 					check_variable = {
-						which = "dodge_timer" value = 0
+						which = "dodge_timer"
+						value = 0
 					}
 				}
 			}
 			change_variable = {
-				which = "dodge_timer" value = "-1"
+				which = "dodge_timer"
+				value = "-1"
 			}
 		}
 		if = {
 			limit = {
 				not = {
 					check_variable = {
-						which = "block_timer" value = 0
+						which = "block_timer"
+						value = 0
 					}
 				}
 			}
 			change_variable = {
-				which = "block_timer" value = "-1"
+				which = "block_timer"
+				value = "-1"
 			}
 		}
 		# now we have properly defined duel_dmg for defender
@@ -709,11 +722,13 @@ character_event = {
 		if = {
 			limit = {
 				check_variable = {
-					which = "high_magic_fire" value = 1
+					which = "high_magic_fire"
+					value = 1
 				}
 			}
 			change_variable = {
-				which = "high_magic_fire" value = -1
+				which = "high_magic_fire"
+				value = -1
 			}
 			save_event_target_as = magic_caster
 			event_target:defender = {
@@ -725,7 +740,8 @@ character_event = {
 					has_character_flag = resisted
 				}
 				set_variable = {
-					which = "high_magic_fire_dmg" value = 3
+					which = "high_magic_fire_dmg"
+					value = 3
 				}
 				clr_character_flag = resisted
 			}
@@ -736,7 +752,8 @@ character_event = {
 					}
 				}
 				set_variable = {
-					which = "high_magic_fire_dmg" value = 4
+					which = "high_magic_fire_dmg"
+					value = 4
 				}
 				change_variable = {
 					which = "high_magic_fire_dmg" which = caster_level_spellpower
@@ -752,11 +769,13 @@ character_event = {
 		if = {
 			limit = {
 				check_variable = {
-					which = "high_magic_curse" value = 1
+					which = "high_magic_curse"
+					value = 1
 				}
 			}
 			change_variable = {
-				which = "high_magic_curse" value = -1
+				which = "high_magic_curse"
+				value = -1
 			}
 			save_event_target_as = magic_caster
 			event_target:defender = {
@@ -768,7 +787,8 @@ character_event = {
 					has_character_flag = resisted
 				}
 				set_variable = {
-					which = "high_magic_curse_dmg" value = 1
+					which = "high_magic_curse_dmg"
+					value = 1
 				}
 				clr_character_flag = resisted
 			}
@@ -779,7 +799,8 @@ character_event = {
 					}
 				}
 				set_variable = {
-					which = "high_magic_curse_dmg" value = 3
+					which = "high_magic_curse_dmg"
+					value = 3
 				}
 				change_variable = {
 					which = "high_magic_curse_dmg" which = caster_level_spellpower
@@ -801,13 +822,15 @@ character_event = {
 			limit = {
 				event_target:defender = {
 					check_variable = {
-						which = "high_magic_curse" value = 1
+						which = "high_magic_curse"
+						value = 1
 					}
 				}
 			}
 			event_target:defender = {
 				change_variable = {
-					which = "high_magic_curse" value = -1
+					which = "high_magic_curse"
+					value = -1
 				}
 				save_event_target_as = magic_caster
 				ROOT = {
@@ -819,7 +842,8 @@ character_event = {
 						has_character_flag = resisted
 					}
 					set_variable = {
-						which = "high_magic_curse_dmg" value = 1
+						which = "high_magic_curse_dmg"
+						value = 1
 					}
 					clr_character_flag = resisted
 				}
@@ -830,7 +854,8 @@ character_event = {
 						}
 					}
 					set_variable = {
-						which = "high_magic_curse_dmg" value = 3
+						which = "high_magic_curse_dmg"
+						value = 3
 					}
 					change_variable = {
 						which = "high_magic_curse_dmg" which = caster_level_spellpower
@@ -852,18 +877,21 @@ character_event = {
 		if = {
 			limit = {
 				check_variable = {
-					which = "high_magic_healing" value = 1
+					which = "high_magic_healing"
+					value = 1
 				}
 			}
 			change_variable = {
-				which = "high_magic_healing" value = -1
+				which = "high_magic_healing"
+				value = -1
 			}
 			save_event_target_as = magic_caster
 			event_target:defender = {
 				save_event_target_as = spelltarget
 			}
 			set_variable = {
-				which = "high_magic_heal" value = 4
+				which = "high_magic_heal"
+				value = 4
 			}
 			change_variable = {
 				which = "high_magic_heal" which = caster_level_spellpower
@@ -875,15 +903,18 @@ character_event = {
 		if = {
 			limit = {
 				check_variable = {
-					which = "high_magic_shielding" value = 0
+					which = "high_magic_shielding"
+					value = 0
 				}
 			}
 			change_variable = {
-				which = "high_magic_shielding" value = -1
+				which = "high_magic_shielding"
+				value = -1
 			}
 			save_event_target_as = magic_caster
 			set_variable = {
-				which = "high_magic_shield" value = 4
+				which = "high_magic_shield"
+				value = 4
 			}
 			change_variable = {
 				which = "high_magic_shield" which = caster_level_spellpower
@@ -896,20 +927,23 @@ character_event = {
 			limit = {
 				event_target:defender = {
 					check_variable = {
-						which = "high_magic_shielding" value = 1
+						which = "high_magic_shielding"
+						value = 1
 					}
 				}
 			}
 			event_target:defender = {
 				change_variable = {
-					which = "high_magic_shielding" value = -1
+					which = "high_magic_shielding"
+					value = -1
 				}
 				save_event_target_as = magic_caster
 				ROOT = {
 					save_event_target_as = spelltarget
 				}
 				set_variable = {
-					which = "high_magic_shield" value = 4
+					which = "high_magic_shield"
+					value = 4
 				}
 				change_variable = {
 					which = "high_magic_shield" which = caster_level_spellpower
@@ -935,14 +969,16 @@ character_event = {
 				event_target:defender = {
 					NOT = {
 						check_variable = {
-							which = "duel_dmg" value = 0
+							which = "duel_dmg"
+							value = 0
 						}
 					}
 				}
 			}
 			event_target:defender = {
 				set_variable = {
-					which = "duel_dmg" value = 0
+					which = "duel_dmg"
+					value = 0
 				}
 			}
 		}
@@ -951,7 +987,8 @@ character_event = {
 				event_target:defender = {
 					NOT = {
 						check_variable = {
-							which = "duel_dmg" value = 1
+							which = "duel_dmg"
+							value = 1
 						}
 					}
 				}
@@ -960,7 +997,8 @@ character_event = {
 				chance = 50
 				event_target:defender = {
 					set_variable = {
-						which = "duel_dmg" value = 1
+						which = "duel_dmg"
+						value = 1
 					}
 				}
 			}
@@ -1049,42 +1087,51 @@ character_event = {
 		}
 		# clear all duel stats
 		set_variable = {
-			which = "duel_att_mod" value = 0
+			which = "duel_att_mod"
+			value = 0
 		}
 		set_variable = {
-			which = "duel_def_mod" value = 0
+			which = "duel_def_mod"
+			value = 0
 		}
 		set_variable = {
-			which = "duel_att" value = 0
+			which = "duel_att"
+			value = 0
 		}
 		set_variable = {
-			which = "duel_def" value = 0
+			which = "duel_def"
+			value = 0
 		}
 		set_variable = {
-			which = "duel_dmg" value = 0
+			which = "duel_dmg"
+			value = 0
 		}
 		set_variable = {
-			which = "duel_hp" value = 0
+			which = "duel_hp"
+			value = 0
 		}
 		set_variable = {
-			which = "duel_max_hp" value = 0
+			which = "duel_max_hp"
+			value = 0
 		}
-		# set_variable = { which = "duel_magic_att" value = 0 }
-		# set_variable = { which = "magic_points" value = 0 }
-		# clear effects
-		clr_character_flag = debug_effect_awarness
-		# clr_character_flag = duel_effect_weaken1
-		# clr_character_flag = duel_effect_weaken2
-		# clr_character_flag = duel_effect_freeze
-		clr_character_flag = duel_effect_noescape
-		clr_character_flag = duel
-		if = {
-			limit = {
-				has_character_flag = noescape_duel
-			}
-			clr_character_flag = noescape_duel
-		}
+		# set_variable = { which = "duel_magic_att"
+		value = 0 }
+	# set_variable = { which = "magic_points"
+	value = 0 }
+# clear effects
+clr_character_flag = debug_effect_awarness
+# clr_character_flag = duel_effect_weaken1
+# clr_character_flag = duel_effect_weaken2
+# clr_character_flag = duel_effect_freeze
+clr_character_flag = duel_effect_noescape
+clr_character_flag = duel
+if = {
+	limit = {
+		has_character_flag = noescape_duel
 	}
+	clr_character_flag = noescape_duel
+}
+}
 }
 
 # DO NOT TOUCH THIS FILE!

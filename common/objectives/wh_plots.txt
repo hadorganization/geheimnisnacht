@@ -7,12 +7,10 @@ plot_steal_carstein_ring = {
 	# Plotter scope
 	potential = {
 		has_global_flag = carstein_ring_revealed
-		prisoner = no
 		age = 16
-		nor = {
-			trait = incapable
-			trait = skaven_breeder
-			trait = incapacitated
+		is_incapacitated_trigger = no
+		root = {
+			has_artifact = carstein_ring
 		}
 	}
 	# Target allow trigger for when players target a specific character in the GUI
@@ -158,156 +156,46 @@ plot_steal_carstein_ring = {
 		modifier = {
 			factor = 0.01
 			their_opinion = {
-				who = FROM value = 25
+				who = FROM
+				value = 25
 			}
 		}
 		modifier = {
 			factor = 0.001
 			FROM = {
+				is_vampire_trigger = no
 				NOT = {
 					religion_group = old_world_group
 				}
-				NOT = {
-					trait = vampire_lahmian_visible
-				}
-				NOT = {
-					trait = vampire_carstein_visible
-				}
-				NOT = {
-					trait = vampire_blood_visible
-				}
-				NOT = {
-					trait = vampire_strigoi_visible
-				}
-				NOT = {
-					trait = vampire_necrarch_visible
-				}
-				NOT = {
-					trait = vampire_jade_visible
-				}
-				NOT = {
-					trait = vampire_mahtmasi_visible
-				}
-				NOT = {
-					trait = vampire_lahmian_hidden
-				}
-				NOT = {
-					trait = vampire_carstein_hidden
-				}
-				NOT = {
-					trait = vampire_blood_hidden
-				}
-				NOT = {
-					trait = vampire_strigoi_hidden
-				}
-				NOT = {
-					trait = vampire_necrarch_hidden
-				}
-				NOT = {
-					trait = vampire_jade_hidden
-				}
-				NOT = {
-					trait = vampire_mahtmasi_hidden
+			}
+		}
+		modifier = {
+			factor = 0.01
+			their_opinion = {
+				who = FROM
+				value = 0
+			}
+			FROM = {
+				is_vampire_trigger = yes
+				nor = {
+					trait = envious
+					trait = deceitful
+					trait = ambitious
+
 				}
 			}
 		}
 		modifier = {
 			factor = 0.01
 			their_opinion = {
-				who = FROM value = 0
+				who = FROM
+				value = 0
 			}
 			FROM = {
-				OR = {
-					trait = vampire_lahmian_visible
-					trait = vampire_carstein_visible
-					trait = vampire_blood_visible
-					trait = vampire_strigoi_visible
-					trait = vampire_necrarch_visible
-					trait = vampire_jade_visible
-					trait = vampire_mahtmasi_visible
-					trait = vampire_lahmian_hidden
-					trait = vampire_carstein_hidden
-					trait = vampire_blood_hidden
-					trait = vampire_strigoi_hidden
-					trait = vampire_necrarch_hidden
-					trait = vampire_jade_hidden
-					trait = vampire_mahtmasi_hidden
-				}
-			}
-			NOT = {
-				OR = {
-					FROM = {
-						trait = envious
-					}
-					FROM = {
-						trait = deceitful
-					}
-					FROM = {
-						trait = ambitious
-					}
-				}
-			}
-		}
-		modifier = {
-			factor = 0.01
-			their_opinion = {
-				who = FROM value = 0
-			}
-			FROM = {
-				NOT = {
-					trait = vampire_lahmian_visible
-				}
-				NOT = {
-					trait = vampire_carstein_visible
-				}
-				NOT = {
-					trait = vampire_blood_visible
-				}
-				NOT = {
-					trait = vampire_strigoi_visible
-				}
-				NOT = {
-					trait = vampire_necrarch_visible
-				}
-				NOT = {
-					trait = vampire_jade_visible
-				}
-				NOT = {
-					trait = vampire_mahtmasi_visible
-				}
-				NOT = {
-					trait = vampire_lahmian_hidden
-				}
-				NOT = {
-					trait = vampire_carstein_hidden
-				}
-				NOT = {
-					trait = vampire_blood_hidden
-				}
-				NOT = {
-					trait = vampire_strigoi_hidden
-				}
-				NOT = {
-					trait = vampire_necrarch_hidden
-				}
-				NOT = {
-					trait = vampire_jade_hidden
-				}
-				NOT = {
-					trait = vampire_mahtmasi_hidden
-				}
-			}
-			NOT = {
-				OR = {
-					FROM = {
-						trait = zealous
-					}
-					FROM = {
-						trait = brave
-					}
-					FROM = {
-						trait = kind
-					}
+				is_vampire_trigger = no
+				nor = {
+					trait = zealous
+					trait = brave
 				}
 			}
 		}
@@ -315,7 +203,8 @@ plot_steal_carstein_ring = {
 			factor = 1.5
 			NOT = {
 				their_opinion = {
-					who = FROM value = -25
+					who = FROM
+					value = -25
 				}
 			}
 		}
@@ -323,7 +212,8 @@ plot_steal_carstein_ring = {
 			factor = 2.0
 			NOT = {
 				their_opinion = {
-					who = FROM value = -50
+					who = FROM
+					value = -50
 				}
 			}
 		}
@@ -331,7 +221,8 @@ plot_steal_carstein_ring = {
 			factor = 2.0
 			NOT = {
 				their_opinion = {
-					who = FROM value = -75
+					who = FROM
+					value = -75
 				}
 			}
 		}
@@ -396,31 +287,36 @@ plot_steal_carstein_ring = {
 		modifier = {
 			factor = 1.25
 			check_variable = {
-				which = carstein_death_count value = 1
+				which = carstein_death_count
+				value = 1
 			}
 		}
 		modifier = {
 			factor = 1.25
 			check_variable = {
-				which = carstein_death_count value = 2
+				which = carstein_death_count
+				value = 2
 			}
 		}
 		modifier = {
 			factor = 1.25
 			check_variable = {
-				which = carstein_death_count value = 3
+				which = carstein_death_count
+				value = 3
 			}
 		}
 		modifier = {
 			factor = 1.5
 			check_variable = {
-				which = carstein_death_count value = 4
+				which = carstein_death_count
+				value = 4
 			}
 		}
 		modifier = {
 			factor = 1.75
 			check_variable = {
-				which = carstein_death_count value = 5
+				which = carstein_death_count
+				value = 5
 			}
 		}
 		modifier = {
@@ -464,29 +360,13 @@ plot_hunt_character = {
 	murder_plot = yes
 	# Plotter scope
 	potential = {
-		prisoner = no
 		age = 16
-		NOR = {
-			trait = incapable
-			trait = skaven_breeder
-			trait = resting
-			trait = incapacitated
-		}
-		NOT = {
-			AND = {
-				ai = yes
+		is_incapacitated_trigger = no
+		or = {
+			ai = no
+			nor = {
 				trait = trusting
-			}
-		}
-		NOT = {
-			AND = {
-				ai = yes
 				trait = craven
-			}
-		}
-		NOT = {
-			AND = {
-				ai = yes
 				trait = content
 			}
 		}
@@ -503,11 +383,10 @@ plot_hunt_character = {
 				# Purge the unclean
 				trait = witch_hunter
 				AND = {
-					religion = sigmarite
-					trait = zealous
-				}
-				AND = {
-					religion = grail
+					or = {
+						religion = sigmarite
+						religion = grail
+					}
 					trait = zealous
 				}
 				trait = bretonnian_knight
@@ -524,10 +403,7 @@ plot_hunt_character = {
 		}
 		is_within_diplo_range = FROM
 		OR = {
-			trait = prince_khorne
-			trait = prince_nurgle
-			trait = prince_slaanesh
-			trait = prince_tzeentch
+			is_demon_prince_trigger = yes
 			trait = creature_forestspirit
 			trait = creature_treekin
 			trait = vampire_strigoi_visible
@@ -554,7 +430,8 @@ plot_hunt_character = {
 						trait = vampire_strigoi_visible
 						trait = vampire_necrarch_visible
 						trait = vampire_jade_visible
-						trait = vampire_mahtmasi_visible }
+						trait = vampire_mahtmasi_visible
+					}
 				}
 			}
 		}
@@ -571,7 +448,7 @@ plot_hunt_character = {
 			}
 		}
 		# Don't kill my lovers, or their children
-		NOT = {
+		nor = {
 			FROM = {
 				any_lover = {
 					OR = {
@@ -581,8 +458,6 @@ plot_hunt_character = {
 					}
 				}
 			}
-		}
-		NOT = {
 			is_friend = FROM
 		}
 	}
@@ -592,68 +467,67 @@ plot_hunt_character = {
 			character = FROM
 		}
 		is_within_diplo_range = FROM
-		OR = {
-			trait = prince_khorne
-			trait = prince_nurgle
-			trait = prince_slaanesh
-			trait = prince_tzeentch
-			trait = creature_forestspirit
-			trait = creature_treekin
-			trait = vampire_strigoi_visible
-			trait = vampire_necrarch_visible
-			trait = creature_slann
-			AND = {
-				#Vampires plot normally against other vampires, but mortals need the special plot against them
-				ROOT = {
-					OR = {
-						trait = vampire_lahmian_visible
-						trait = vampire_carstein_visible
-						trait = vampire_blood_visible
-						trait = vampire_strigoi_visible
-						trait = vampire_necrarch_visible
-						trait = vampire_jade_visible
-						trait = vampire_mahtmasi_visible
-					}
-				}
-				FROM = {
-					NOR = {
-						trait = vampire_lahmian_visible
-						trait = vampire_carstein_visible
-						trait = vampire_blood_visible
-						trait = vampire_strigoi_visible
-						trait = vampire_necrarch_visible
-						trait = vampire_jade_visible
-						trait = vampire_mahtmasi_visible }
-				}
-			}
-		}
-		OR = {
-			FROM = {
-				NOR = {
-					trait = creature_saurus
-					trait = creature_slann
-					trait = creature_skink
-				}
-			}
-			NOT = {
-				trait = creature_slann
-			}
-		}
-		# Don't kill my lovers, or their children
-		NOT = {
-			FROM = {
-				any_lover = {
-					OR = {
-						character = ROOT
-						is_father = ROOT
-						is_mother = ROOT
-					}
-				}
-			}
-		}
-		NOT = {
-			is_friend = FROM
-		}
+		# OR = {
+		# 	trait = prince_khorne
+		# 	trait = prince_nurgle
+		# 	trait = prince_slaanesh
+		# 	trait = prince_tzeentch
+		# 	trait = creature_forestspirit
+		# 	trait = creature_treekin
+		# 	trait = vampire_strigoi_visible
+		# 	trait = vampire_necrarch_visible
+		# 	trait = creature_slann
+		# 	AND = {
+		# 		#Vampires plot normally against other vampires, but mortals need the special plot against them
+		# 		ROOT = {
+		# 			OR = {
+		# 				trait = vampire_lahmian_visible
+		# 				trait = vampire_carstein_visible
+		# 				trait = vampire_blood_visible
+		# 				trait = vampire_strigoi_visible
+		# 				trait = vampire_necrarch_visible
+		# 				trait = vampire_jade_visible
+		# 				trait = vampire_mahtmasi_visible
+		# 			}
+		# 		}
+		# 		FROM = {
+		# 			NOR = {
+		# 				trait = vampire_lahmian_visible
+		# 				trait = vampire_carstein_visible
+		# 				trait = vampire_blood_visible
+		# 				trait = vampire_strigoi_visible
+		# 				trait = vampire_necrarch_visible
+		# 				trait = vampire_jade_visible
+		# 				trait = vampire_mahtmasi_visible
+		# 			}
+		# 		}
+		# 	}
+		# }
+		# OR = {
+		# 	FROM = {
+		# 		NOR = {
+		# 			trait = creature_saurus
+		# 			trait = creature_slann
+		# 			trait = creature_skink
+		# 		}
+		# 	}
+		# 	NOT = {
+		# 		trait = creature_slann
+		# 	}
+		# }
+		# # Don't kill my lovers, or their children
+		# nor = {
+		# 	FROM = {
+		# 		any_lover = {
+		# 			OR = {
+		# 				character = ROOT
+		# 				is_father = ROOT
+		# 				is_mother = ROOT
+		# 			}
+		# 		}
+		# 	}
+		# 	is_friend = FROM
+		# }
 	}
 	chance = {
 		factor = 2
@@ -661,19 +535,11 @@ plot_hunt_character = {
 			factor = 0.1
 			FROM = {
 				trait = content
-				NOT = {
+				nor = {
 					trait = lunatic_3
-				}
-				NOT = {
 					trait = lunatic_2
-				}
-				NOT = {
 					trait = possessed
-				}
-				NOT = {
 					trait = witch_hunter
-				}
-				NOT = {
 					trait = zealous
 				}
 			}
@@ -702,16 +568,10 @@ plot_hunt_character = {
 		modifier = {
 			factor = 0.15
 			FROM = {
-				NOT = {
+				nor = {
 					wealth = 250
-				}
-				NOT = {
 					religion = sigmarite
-				}
-				NOT = {
 					trait = witch_hunter
-				}
-				NOT = {
 					any_courtier = {
 						trait = witch_hunter
 					}
@@ -874,28 +734,22 @@ plot_hunt_character = {
 		modifier = {
 			factor = 0
 			their_opinion = {
-				who = FROM value = 75
+				who = FROM
+				value = 75
 			}
 		}
 		modifier = {
 			factor = 0
 			their_opinion = {
-				who = FROM value = 50
+				who = FROM
+				value = 50
 			}
-			NOT = {
-				OR = {
-					FROM = {
-						trait = zealous
-					}
-					FROM = {
-						trait = witch_hunter
-					}
-					FROM = {
-						trait = brave
-					}
-					FROM = {
-						religion = sigmarite
-					}
+			from = {
+				nor = {
+					trait = zealous
+					trait = witch_hunter
+					trait = brave
+					religion = sigmarite
 				}
 			}
 		}
@@ -903,7 +757,8 @@ plot_hunt_character = {
 			factor = 1.5
 			NOT = {
 				their_opinion = {
-					who = FROM value = -25
+					who = FROM
+					value = -25
 				}
 			}
 		}
@@ -911,7 +766,8 @@ plot_hunt_character = {
 			factor = 2.0
 			NOT = {
 				their_opinion = {
-					who = FROM value = -50
+					who = FROM
+					value = -50
 				}
 			}
 		}
@@ -919,7 +775,8 @@ plot_hunt_character = {
 			factor = 2.0
 			NOT = {
 				their_opinion = {
-					who = FROM value = -75
+					who = FROM
+					value = -75
 				}
 			}
 		}
@@ -1022,22 +879,13 @@ plot_investigate_alignment = {
 	intrigue_plot = yes
 	# Plotter scope
 	potential = {
-		prisoner = no
 		age = 16
-		NOT = {
-			trait = incapable
-		}
-		NOT = {
-			trait = skaven_breeder
-		}
+		trait = creature_skink
+		religion = old_ones
+		is_incapacitated_trigger = no
 		NOT = {
 			trait = defective
 		}
-		NOT = {
-			trait = incapacitated
-		}
-		trait = creature_skink
-		religion = old_ones
 	}
 	# Target allow trigger for when players target a specific character in the GUI
 	target_potential = {
@@ -1142,13 +990,15 @@ plot_investigate_alignment = {
 		modifier = {
 			factor = 0.01
 			their_opinion = {
-				who = FROM value = 25
+				who = FROM
+				value = 25
 			}
 		}
 		modifier = {
 			factor = 0.01
 			their_opinion = {
-				who = FROM value = 0
+				who = FROM
+				value = 0
 			}
 			FROM = {
 				trait = content
@@ -1158,7 +1008,8 @@ plot_investigate_alignment = {
 			factor = 1.5
 			NOT = {
 				their_opinion = {
-					who = FROM value = -25
+					who = FROM
+					value = -25
 				}
 			}
 		}
@@ -1166,7 +1017,8 @@ plot_investigate_alignment = {
 			factor = 2.0
 			NOT = {
 				their_opinion = {
-					who = FROM value = -50
+					who = FROM
+					value = -50
 				}
 			}
 		}
@@ -1174,7 +1026,8 @@ plot_investigate_alignment = {
 			factor = 2.0
 			NOT = {
 				their_opinion = {
-					who = FROM value = -75
+					who = FROM
+					value = -75
 				}
 			}
 		}
@@ -1360,30 +1213,22 @@ plot_make_voodoo_doll = {
 		modifier = {
 			factor = 0.01
 			their_opinion = {
-				who = FROM value = 25
+				who = FROM
+				value = 25
 			}
 		}
 		modifier = {
 			factor = 0.01
 			their_opinion = {
-				who = FROM value = 0
+				who = FROM
+				value = 0
 			}
 			FROM = {
-				NOT = {
+				nor = {
 					trait = vampire_mahtmasi_visible
-				}
-			}
-			NOT = {
-				OR = {
-					FROM = {
-						trait = envious
-					}
-					FROM = {
-						trait = deceitful
-					}
-					FROM = {
-						trait = ambitious
-					}
+					trait = envious
+					trait = deceitful
+					trait = ambitious
 				}
 			}
 		}
@@ -1391,7 +1236,8 @@ plot_make_voodoo_doll = {
 			factor = 1.5
 			NOT = {
 				their_opinion = {
-					who = FROM value = -25
+					who = FROM
+					value = -25
 				}
 			}
 		}
@@ -1399,7 +1245,8 @@ plot_make_voodoo_doll = {
 			factor = 2.0
 			NOT = {
 				their_opinion = {
-					who = FROM value = -50
+					who = FROM
+					value = -50
 				}
 			}
 		}
@@ -1407,7 +1254,8 @@ plot_make_voodoo_doll = {
 			factor = 2.0
 			NOT = {
 				their_opinion = {
-					who = FROM value = -75
+					who = FROM
+					value = -75
 				}
 			}
 		}

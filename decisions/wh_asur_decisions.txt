@@ -3591,26 +3591,28 @@ targetted_decisions = {
 		}
 	}
 
-	#Handles elven marriages
+	# Handles elven marriages
 	elven_courting_decision = {
 		ai_target_filter = realm
 		only_playable = yes
 		from_potential = {
+			NOT = {
+				has_character_modifier = courting_timer
+			}
+			age = 25
 			trait = creature_elf
 			is_betrothed = no
 			is_married = no
-			age = 25
 			cannot_marry_trigger = no
-			NOT = {
-				has_character_modifier = courting_timer
-			}
 		}
 		potential = {
-			NOT = {
+			nor = {
 				has_character_modifier = courting_timer
+				trait = pet_consort
 			}
 			trait = creature_elf
 			age = 25
+			is_consort = no
 			OR = {
 				AND = {
 					FROM = {

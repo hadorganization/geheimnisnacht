@@ -1,5 +1,5 @@
 name = "Warhammer: Geheimnisnacht"
-path = "mod/geheimnisnacht-master"
+path = "mod/geheimnisnacht"
 
 user_dir = "geheimnisnacht"
 

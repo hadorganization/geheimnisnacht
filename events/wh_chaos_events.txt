@@ -52,9 +52,8 @@ character_event = {
 	desc = EVTDESCschaos3
 	picture = GFX_evt_chaos_hordes
 	min_age = 16
-	#max_age = 250
 	capable_only = yes
-	only_rulers = yes
+	only_playable = yes
 	prisoner = no
 	religion_group = chaos_gods_group
 
@@ -69,13 +68,10 @@ character_event = {
 		piety = 200
 		war = yes
 		trait = creature_human
-		NOT = {
-			trait = incapable
-		}
+		is_incapacitated_trigger = no
 		NOT = {
 			trait = infirm
 		}
-		age = 16
 	}
 
 	mean_time_to_happen = {
@@ -143,7 +139,7 @@ character_event = {
 	desc = EVTDESCschaos4
 	picture = GFX_evt_chaos_hordes
 	min_age = 16
-	only_rulers = yes
+	only_playable = yes
 
 	trigger = {
 		location = {
@@ -169,19 +165,15 @@ character_event = {
 			}
 			if = {
 				limit = {
-					NOT = {
+					nor = {
 						check_variable = {
 							which = "khorne_favor"
 							value = 1
 						}
-					}
-					NOT = {
 						check_variable = {
 							which = "nurgle_favor"
 							value = 1
 						}
-					}
-					NOT = {
 						check_variable = {
 							which = "slaanesh_favor"
 							value = 1
@@ -223,7 +215,6 @@ character_event = {
 					value = -1
 				}
 			}
-
 		}
 	}
 }
@@ -321,18 +312,23 @@ province_event = {
 				}
 			}
 		}
-
 	}
 
 	option = {
 		name = EVTOPTAschaos6
 		hidden_tooltip = {
+			# the eye strikes
 			province_event = {
-				id = schaos.8 days = 25 random = 40
-			} # the eye strikes
+				id = schaos.8
+				days = 25
+				random = 40
+			}
+			# remove it
 			province_event = {
-				id = schaos.7 days = 250 random = 900
-			} # remove it
+				id = schaos.7
+				days = 250
+				random = 900
+			}
 			add_province_modifier = {
 				name = warphole_epicentre
 				duration = -1
@@ -343,14 +339,16 @@ province_event = {
 					duration = -1
 				}
 				province_event = {
-					id = schaos.8 days = 25 random = 40
-				} # the eye strikes
+					id = schaos.8
+					days = 25
+					random = 40
+				}
 				province_event = {
-					id = schaos.7 days = 250 random = 900
-				} # remove it
-
+					id = schaos.7
+					days = 250
+					random = 900
+				}
 			}
-
 		}
 	}
 }
@@ -359,38 +357,38 @@ province_event = {
 province_event = {
 	id = schaos.7
 	hide_window = yes
+	is_triggered_only = yes
 
 	trigger = {
 		has_province_modifier = warphole_epicentre
 	}
-	is_triggered_only = yes
 
 	immediate = {
 		remove_province_modifier = warphole_epicentre
 	}
 }
 
-# The Eye strikes - Disabled for now
+# The Eye strikes - Disabled for now think about it
 province_event = {
 	id = schaos.8
 	desc = EVTDESCschaos8
 	picture = GFX_evt_chaos_hordes
 	notification = yes
+	is_triggered_only = yes
 
 	trigger = {
 		has_province_modifier = warphole_epicentre
 		always = no
-	} 				# Disabled for now
-	is_triggered_only = yes
+	}
 
 	immediate = {
 		province_event = {
-			id = schaos.8 days = 25 random = 40
+			id = schaos.8
+			days = 25
+			random = 40
 		}
 		siege = {
 			troops = -0.25
-		}
-		siege = {
 			enemy = {
 				morale = -0.1
 				troops = -0.25
@@ -424,19 +422,15 @@ character_event = {
 		hidden_tooltip = {
 			if = {
 				limit = {
-					NOT = {
+					nor = {
 						check_variable = {
 							which = "khorne_favor"
 							value = 1
 						}
-					}
-					NOT = {
 						check_variable = {
 							which = "tzeentch_favor"
 							value = 1
 						}
-					}
-					NOT = {
 						check_variable = {
 							which = "slaanesh_favor"
 							value = 1
@@ -511,86 +505,6 @@ character_event = {
 				}
 				add_symptom_effect = yes
 			}
-			any_courtier = {
-				limit = {
-					is_ruler = no
-				}
-				if = {
-					limit = {
-						NOT = {
-							check_variable = {
-								which = "khorne_favor"
-								value = 1
-							}
-						}
-						NOT = {
-							check_variable = {
-								which = "tzeentch_favor"
-								value = 1
-							}
-						}
-						NOT = {
-							check_variable = {
-								which = "slaanesh_favor"
-								value = 1
-							}
-						}
-					}
-					change_variable = {
-						which = "nurgle_favor"
-						value = 1
-					}
-				}
-				if = {
-					limit = {
-						OR = {
-							check_variable = {
-								which = "khorne_favor"
-								value = 1
-							}
-							check_variable = {
-								which = "tzeentch_favor"
-								value = 1
-							}
-							check_variable = {
-								which = "slaanesh_favor"
-								value = 1
-							}
-						}
-					}
-					change_variable = {
-						which = "khorne_favor"
-						value = -1
-					}
-					change_variable = {
-						which = "tzeentch_favor"
-						value = -1
-					}
-					change_variable = {
-						which = "slaanesh_favor"
-						value = -1
-					}
-				}
-				random_list = {
-					20 = {
-						add_trait = has_nurgles_rot
-					}
-					20 = {
-						add_trait = has_tuberculosis
-					}
-					20 = {
-						add_trait = has_typhus
-					}
-					20 = {
-						add_trait = has_bubonic_plague
-					}
-					20 = {
-						add_trait = leper
-					}
-				}
-
-			}
-
 		}
 	}
 }
@@ -616,19 +530,15 @@ character_event = {
 		hidden_tooltip = {
 			if = {
 				limit = {
-					NOT = {
+					nor = {
 						check_variable = {
 							which = "khorne_favor"
 							value = 1
 						}
-					}
-					NOT = {
 						check_variable = {
 							which = "tzeentch_favor"
 							value = 1
 						}
-					}
-					NOT = {
 						check_variable = {
 							which = "nurgle_favor"
 							value = 1
@@ -687,83 +597,6 @@ character_event = {
 					add_trait = slothful
 				}
 			}
-			any_courtier = {
-				limit = {
-					is_ruler = no
-				}
-				if = {
-					limit = {
-						NOT = {
-							check_variable = {
-								which = "khorne_favor"
-								value = 1
-							}
-						}
-						NOT = {
-							check_variable = {
-								which = "tzeentch_favor"
-								value = 1
-							}
-						}
-						NOT = {
-							check_variable = {
-								which = "nurgle_favor"
-								value = 1
-							}
-						}
-					}
-					change_variable = {
-						which = "slaanesh_favor"
-						value = 1
-					}
-				}
-				if = {
-					limit = {
-						OR = {
-							check_variable = {
-								which = "khorne_favor"
-								value = 1
-							}
-							check_variable = {
-								which = "tzeentch_favor"
-								value = 1
-							}
-							check_variable = {
-								which = "nurgle_favor"
-								value = 1
-							}
-						}
-					}
-					change_variable = {
-						which = "khorne_favor"
-						value = -1
-					}
-					change_variable = {
-						which = "tzeentch_favor"
-						value = -1
-					}
-					change_variable = {
-						which = "nurgle_favor"
-						value = -1
-					}
-				}
-				random_list = {
-					25 = {
-						add_trait = lustful
-					}
-					25 = {
-						add_trait = gluttonous
-					}
-					25 = {
-						add_trait = drunkard
-					}
-					25 = {
-						add_trait = slothful
-					}
-				}
-
-			}
-
 		}
 	}
 }
@@ -789,19 +622,15 @@ province_event = {
 		hidden_tooltip = {
 			if = {
 				limit = {
-					NOT = {
+					nor = {
 						check_variable = {
 							which = "slaanesh_favor"
 							value = 1
 						}
-					}
-					NOT = {
 						check_variable = {
 							which = "tzeentch_favor"
 							value = 1
 						}
-					}
-					NOT = {
 						check_variable = {
 							which = "nurgle_favor"
 							value = 1
@@ -860,83 +689,6 @@ province_event = {
 					add_trait = brave
 				}
 			}
-			any_courtier = {
-				limit = {
-					is_ruler = no
-				}
-				if = {
-					limit = {
-						NOT = {
-							check_variable = {
-								which = "slaanesh_favor"
-								value = 1
-							}
-						}
-						NOT = {
-							check_variable = {
-								which = "tzeentch_favor"
-								value = 1
-							}
-						}
-						NOT = {
-							check_variable = {
-								which = "nurgle_favor"
-								value = 1
-							}
-						}
-					}
-					change_variable = {
-						which = "khorne_favor"
-						value = 1
-					}
-				}
-				if = {
-					limit = {
-						OR = {
-							check_variable = {
-								which = "slaanesh_favor"
-								value = 1
-							}
-							check_variable = {
-								which = "tzeentch_favor"
-								value = 1
-							}
-							check_variable = {
-								which = "nurgle_favor"
-								value = 1
-							}
-						}
-					}
-					change_variable = {
-						which = "slaanesh_favor"
-						value = -1
-					}
-					change_variable = {
-						which = "tzeentch_favor"
-						value = -1
-					}
-					change_variable = {
-						which = "nurgle_favor"
-						value = -1
-					}
-				}
-				random_list = {
-					25 = {
-						add_trait = wroth
-					}
-					25 = {
-						add_trait = cruel
-					}
-					25 = {
-						add_trait = ambitious
-					}
-					25 = {
-						add_trait = brave
-					}
-				}
-
-			}
-
 		}
 	}
 }
@@ -962,19 +714,15 @@ character_event = {
 		hidden_tooltip = {
 			if = {
 				limit = {
-					NOT = {
+					nor = {
 						check_variable = {
 							which = "slaanesh_favor"
 							value = 1
 						}
-					}
-					NOT = {
 						check_variable = {
 							which = "khorne_favor"
 							value = 1
 						}
-					}
-					NOT = {
 						check_variable = {
 							which = "nurgle_favor"
 							value = 1
@@ -1033,83 +781,6 @@ character_event = {
 					add_trait = greedy
 				}
 			}
-			any_courtier = {
-				limit = {
-					is_ruler = no
-				}
-				if = {
-					limit = {
-						NOT = {
-							check_variable = {
-								which = "slaanesh_favor"
-								value = 1
-							}
-						}
-						NOT = {
-							check_variable = {
-								which = "khorne_favor"
-								value = 1
-							}
-						}
-						NOT = {
-							check_variable = {
-								which = "nurgle_favor"
-								value = 1
-							}
-						}
-					}
-					change_variable = {
-						which = "tzeentch_favor"
-						value = 1
-					}
-				}
-				if = {
-					limit = {
-						OR = {
-							check_variable = {
-								which = "slaanesh_favor"
-								value = 1
-							}
-							check_variable = {
-								which = "khorne_favor"
-								value = 1
-							}
-							check_variable = {
-								which = "nurgle_favor"
-								value = 1
-							}
-						}
-					}
-					change_variable = {
-						which = "slaanesh_favor"
-						value = -1
-					}
-					change_variable = {
-						which = "khorne_favor"
-						value = -1
-					}
-					change_variable = {
-						which = "nurgle_favor"
-						value = -1
-					}
-				}
-				random_list = {
-					25 = {
-						add_trait = paranoid
-					}
-					25 = {
-						add_trait = deceitful
-					}
-					25 = {
-						add_trait = ambitious
-					}
-					25 = {
-						add_trait = greedy
-					}
-				}
-
-			}
-
 		}
 	}
 }
@@ -1139,7 +810,8 @@ character_event = {
 		}
 	}
 
-	immediate = {
+	option = {
+		name = EVTOPTAschaos13
 		siege = {
 			troops = -0.05
 		}
@@ -1149,10 +821,6 @@ character_event = {
 				troops = -0.05
 			}
 		}
-	}
-
-	option = {
-		name = EVTOPTAschaos13
 	}
 }
 
@@ -1181,7 +849,8 @@ character_event = {
 		}
 	}
 
-	immediate = {
+	option = {
+		name = EVTOPTAschaos14
 		siege = {
 			troops = -0.25
 		}
@@ -1190,10 +859,6 @@ character_event = {
 				troops = -0.25
 			}
 		}
-	}
-
-	option = {
-		name = EVTOPTAschaos14
 	}
 }
 
@@ -1222,7 +887,8 @@ character_event = {
 		}
 	}
 
-	immediate = {
+	option = {
+		name = EVTOPTAschaos15
 		siege = {
 			troops = -0.5
 		}
@@ -1231,10 +897,6 @@ character_event = {
 				troops = -0.5
 			}
 		}
-	}
-
-	option = {
-		name = EVTOPTAschaos15
 	}
 }
 
@@ -1267,6 +929,14 @@ character_event = {
 	}
 
 	immediate = {
+		random = {
+			chance = 50
+			add_trait = blinded
+		}
+	}
+
+	option = {
+		name = EVTOPTAschaos16
 		siege = {
 			troops = -0.15
 		}
@@ -1274,41 +944,8 @@ character_event = {
 			enemy = {
 				morale = -0.1
 				troops = -0.025
-				leader = {
-					any_liege = {
-						limit = {
-							war_with = ROOT
-							NOT = {
-								ROOT = {
-									liege = {
-										has_landed_title = e_rebels
-									}
-								}
-							}
-						}
-					}
-				}
 			}
 		}
-		random = {
-			chance = 50
-			add_trait = blinded
-		}
-		tooltip = {
-			siege = {
-				troops = -0.05
-			}
-			siege = {
-				enemy = {
-					morale = 0.1
-					troops = -0.025
-				}
-			}
-		}
-	}
-
-	option = {
-		name = EVTOPTAschaos16
 	}
 }
 
@@ -1333,6 +970,7 @@ character_event = {
 			}
 		}
 		random_list = {
+			# success, summoned tzeentch demon
 			60 = {
 				modifier = {
 					factor = 0.75
@@ -1390,8 +1028,9 @@ character_event = {
 					character_event = {
 						id = schaos.20
 					}
-				} # success, summoned tzeentch demon
+				}
 			}
+			# failure, prisoner escapes
 			20 = {
 				modifier = {
 					factor = 0.75
@@ -1456,7 +1095,8 @@ character_event = {
 						id = schaos.17005
 					}
 				}
-			} # failure, prisoner escapes
+			}
+			# failure, prisoner explodes
 			20 = {
 				modifier = {
 					factor = 0
@@ -1474,15 +1114,15 @@ character_event = {
 						id = schaos.18
 					}
 				}
-			} # failure, prisoner explodes
+			}
+			# failure, tzeentch demon escapes
 			20 = {
 				FROM = {
 					character_event = {
 						id = schaos.19
 					}
 				}
-			} # failure, tzeentch demon escapes
-
+			}
 		}
 	}
 
@@ -1498,6 +1138,7 @@ character_event = {
 			}
 		}
 		random_list = {
+			# success, summoned nurgle demon
 			60 = {
 				modifier = {
 					factor = 0.75
@@ -1555,8 +1196,9 @@ character_event = {
 					character_event = {
 						id = schaos.22
 					}
-				} # success, summoned nurgle demon
+				}
 			}
+			# failure, prisoner escapes
 			20 = {
 				modifier = {
 					factor = 0.75
@@ -1621,7 +1263,8 @@ character_event = {
 						id = schaos.17005
 					}
 				}
-			} # failure, prisoner escapes
+			}
+			# failure, prisoner explodes
 			20 = {
 				modifier = {
 					factor = 0
@@ -1639,15 +1282,15 @@ character_event = {
 						id = schaos.18
 					}
 				}
-			} # failure, prisoner explodes
+			}
+			# failure, nurgle demon escapes
 			20 = {
 				FROM = {
 					character_event = {
 						id = schaos.21
 					}
 				}
-			} # failure, nurgle demon escapes
-
+			}
 		}
 	}
 
@@ -1664,6 +1307,7 @@ character_event = {
 			}
 		}
 		random_list = {
+			# success, summoned slaanesh demon
 			60 = {
 				modifier = {
 					factor = 0.75
@@ -1721,8 +1365,9 @@ character_event = {
 					character_event = {
 						id = schaos.24
 					}
-				} # success, summoned slaanesh demon
+				}
 			}
+			# failure, prisoner escapes
 			20 = {
 				modifier = {
 					factor = 0.75
@@ -1787,7 +1432,8 @@ character_event = {
 						id = schaos.17005
 					}
 				}
-			} # failure, prisoner escapes
+			}
+			# failure, prisoner explodes
 			20 = {
 				modifier = {
 					factor = 0
@@ -1805,15 +1451,15 @@ character_event = {
 						id = schaos.18
 					}
 				}
-			} # failure, prisoner explodes
+			}
+			# failure, slaanesh demon escapes
 			20 = {
 				FROM = {
 					character_event = {
 						id = schaos.23
 					}
 				}
-			} # failure, slaanesh demon escapes
-
+			}
 		}
 	}
 
@@ -1830,6 +1476,7 @@ character_event = {
 			}
 		}
 		random_list = {
+			# success, summoned khorne demon
 			60 = {
 				modifier = {
 					factor = 0.75
@@ -1887,8 +1534,9 @@ character_event = {
 					character_event = {
 						id = schaos.26
 					}
-				} # success, summoned khorne demon
+				}
 			}
+			# failure, prisoner escapes
 			20 = {
 				modifier = {
 					factor = 0.75
@@ -1953,7 +1601,8 @@ character_event = {
 						id = schaos.17005
 					}
 				}
-			} # failure, prisoner escapes
+			}
+			# failure, prisoner explodes
 			20 = {
 				modifier = {
 					factor = 0
@@ -1971,14 +1620,15 @@ character_event = {
 						id = schaos.18
 					}
 				}
-			} # failure, prisoner explodes
+			}
+			# failure, khorne demon escapes
 			20 = {
 				FROM = {
 					character_event = {
 						id = schaos.25
 					}
 				}
-			} # failure, khorne demon escapes
+			}
 
 		}
 	}
@@ -2134,78 +1784,7 @@ character_event = {
 		name = EVTOPTAschaos19
 		abdicate = yes
 		hidden_tooltip = {
-			set_graphical_culture = flamer_tzeentch
-			culture = flamer_tzeentch
-			religion = tzeentch
-			remove_trait = kind
-			remove_trait = content
-			remove_trait = humble
-			remove_trait = temperate
-			remove_trait = slothful
-			remove_trait = charitable
-			remove_trait = infirm
-			remove_trait = incapable
-			remove_trait = wounded
-			remove_trait = blinded
-			remove_trait = idiot
-			remove_trait = imbecile
-			remove_trait = dim
-			remove_trait = dumb
-			remove_trait = bright
-			remove_trait = brilliant
-			remove_trait = quick
-			remove_trait = witch_hunter
-			remove_trait = on_witch_hunt
-			remove_trait = has_nurgles_rot
-			remove_trait = creature_human
-			remove_trait = creature_dwarf
-			remove_trait = creature_chaos_dwarf
-			remove_trait = creature_elf
-			remove_trait = creature_amazon
-			remove_trait = creature_beastman
-			add_trait = ambitious
-			add_trait = proud
-			add_trait = greedy
-			add_trait = genius
-			add_trait = tzeentch_demon
-			add_trait = tzeentch_flamer
-			set_character_flag = ai_flag_refuse_conversion
-			set_character_flag = special_marshal
-			health = 25
-			any_lover = {
-				remove_lover = ROOT
-			}
-			any_friend = {
-				remove_friend = ROOT
-			}
-			any_spouse = {
-				remove_spouse = ROOT
-			}
-			if = {
-				limit = {
-					NOT = {
-						intrigue = 20
-					}
-				}
-				change_intrigue = 15
-
-			}
-			if = {
-				limit = {
-					NOT = {
-						learning = 20
-					}
-				}
-				change_learning = 15
-
-			}
-			if = {
-				limit = {
-					martial = 15
-				}
-				change_martial = -7
-
-			}
+			wh_make_flamer_tzeentch_effect = yes
 		}
 		FROM = {
 			character_event = {
@@ -2302,78 +1881,7 @@ character_event = {
 					value = 1
 				}
 			}
-			set_graphical_culture = flamer_tzeentch
-			culture = flamer_tzeentch
-			religion = tzeentch
-			remove_trait = kind
-			remove_trait = content
-			remove_trait = humble
-			remove_trait = temperate
-			remove_trait = slothful
-			remove_trait = charitable
-			remove_trait = infirm
-			remove_trait = incapable
-			remove_trait = wounded
-			remove_trait = blinded
-			remove_trait = idiot
-			remove_trait = imbecile
-			remove_trait = dim
-			remove_trait = dumb
-			remove_trait = bright
-			remove_trait = brilliant
-			remove_trait = quick
-			remove_trait = witch_hunter
-			remove_trait = on_witch_hunt
-			remove_trait = has_nurgles_rot
-			remove_trait = creature_human
-			remove_trait = creature_dwarf
-			remove_trait = creature_chaos_dwarf
-			remove_trait = creature_elf
-			remove_trait = creature_amazon
-			remove_trait = creature_beastman
-			add_trait = ambitious
-			add_trait = proud
-			add_trait = greedy
-			add_trait = genius
-			add_trait = tzeentch_demon
-			add_trait = tzeentch_flamer
-			set_character_flag = ai_flag_refuse_conversion
-			set_character_flag = special_marshal
-			health = 25
-			any_lover = {
-				remove_lover = ROOT
-			}
-			any_friend = {
-				remove_friend = ROOT
-			}
-			any_spouse = {
-				remove_spouse = ROOT
-			}
-			if = {
-				limit = {
-					NOT = {
-						intrigue = 20
-					}
-				}
-				change_intrigue = 15
-
-			}
-			if = {
-				limit = {
-					NOT = {
-						learning = 20
-					}
-				}
-				change_learning = 15
-
-			}
-			if = {
-				limit = {
-					martial = 15
-				}
-				change_martial = -7
-
-			}
+			wh_make_flamer_tzeentch_effect = yes
 		}
 		FROM = {
 			character_event = {
@@ -2474,108 +1982,7 @@ character_event = {
 		name = EVTOPTAschaos21
 		abdicate = yes
 		hidden_tooltip = {
-			set_graphical_culture = plaguebearer_nurgle
-			culture = plaguebearer_nurgle
-			religion = nurgle
-			remove_trait = cruel
-			remove_trait = ambitious
-			remove_trait = proud
-			remove_trait = gluttonous
-			remove_trait = diligent
-			remove_trait = greedy
-			remove_trait = infirm
-			remove_trait = incapable
-			remove_trait = scarred
-			remove_trait = idiot
-			remove_trait = imbecile
-			remove_trait = dim
-			remove_trait = dumb
-			remove_trait = bright
-			remove_trait = brilliant
-			remove_trait = quick
-			remove_trait = witch_hunter
-			remove_trait = on_witch_hunt
-			remove_trait = creature_human
-			remove_trait = creature_dwarf
-			remove_trait = creature_chaos_dwarf
-			remove_trait = creature_elf
-			remove_trait = creature_amazon
-			remove_trait = creature_beastman
-			add_trait = content
-			add_trait = humble
-			add_trait = charitable
-			add_trait = has_nurgles_rot
-			add_trait = leper
-			add_trait = nurgle_demon
-			add_trait = nurgle_plaguebearer
-			add_trait = ill
-			set_character_flag = ai_flag_refuse_conversion
-			set_character_flag = special_marshal
-			health = 25
-			random_list = {
-				25 = {
-					add_trait = has_tuberculosis
-				}
-				25 = {
-					add_trait = has_typhoid_fever
-				}
-				25 = {
-					add_trait = has_bubonic_plague
-				}
-				25 = {
-					add_trait = has_measles
-				}
-
-			}
-			random_list = {
-				25 = {
-					add_trait = has_small_pox
-				}
-				25 = {
-					add_trait = syphilitic
-				}
-				25 = {
-					add_trait = pneumonic
-				}
-				25 = {
-					add_trait = has_typhus
-				}
-
-			}
-			any_lover = {
-				remove_lover = ROOT
-			}
-			any_friend = {
-				remove_friend = ROOT
-			}
-			any_spouse = {
-				remove_spouse = ROOT
-			}
-			if = {
-				limit = {
-					NOT = {
-						stewardship = 20
-					}
-				}
-				change_stewardship = 15
-
-			}
-			if = {
-				limit = {
-					NOT = {
-						diplomacy = 20
-					}
-				}
-				change_diplomacy = 15
-
-			}
-			if = {
-				limit = {
-					martial = 15
-				}
-				change_martial = -7
-
-			}
+			wh_make_plaguebearer_nurgle_effect = yes
 		}
 		FROM = {
 			character_event = {
@@ -2672,108 +2079,7 @@ character_event = {
 					value = 1
 				}
 			}
-			set_graphical_culture = plaguebearer_nurgle
-			culture = plaguebearer_nurgle
-			religion = nurgle
-			remove_trait = cruel
-			remove_trait = ambitious
-			remove_trait = proud
-			remove_trait = gluttonous
-			remove_trait = diligent
-			remove_trait = greedy
-			remove_trait = infirm
-			remove_trait = incapable
-			remove_trait = scarred
-			remove_trait = idiot
-			remove_trait = imbecile
-			remove_trait = dim
-			remove_trait = dumb
-			remove_trait = bright
-			remove_trait = brilliant
-			remove_trait = quick
-			remove_trait = witch_hunter
-			remove_trait = on_witch_hunt
-			remove_trait = creature_human
-			remove_trait = creature_dwarf
-			remove_trait = creature_chaos_dwarf
-			remove_trait = creature_elf
-			remove_trait = creature_amazon
-			remove_trait = creature_beastman
-			add_trait = content
-			add_trait = humble
-			add_trait = charitable
-			add_trait = has_nurgles_rot
-			add_trait = leper
-			add_trait = nurgle_demon
-			add_trait = nurgle_plaguebearer
-			add_trait = ill
-			set_character_flag = ai_flag_refuse_conversion
-			set_character_flag = special_marshal
-			health = 25
-			random_list = {
-				25 = {
-					add_trait = has_tuberculosis
-				}
-				25 = {
-					add_trait = has_typhoid_fever
-				}
-				25 = {
-					add_trait = has_bubonic_plague
-				}
-				25 = {
-					add_trait = has_measles
-				}
-
-			}
-			random_list = {
-				25 = {
-					add_trait = has_small_pox
-				}
-				25 = {
-					add_trait = syphilitic
-				}
-				25 = {
-					add_trait = pneumonic
-				}
-				25 = {
-					add_trait = has_typhus
-				}
-
-			}
-			any_lover = {
-				remove_lover = ROOT
-			}
-			any_friend = {
-				remove_friend = ROOT
-			}
-			any_spouse = {
-				remove_spouse = ROOT
-			}
-			if = {
-				limit = {
-					NOT = {
-						stewardship = 20
-					}
-				}
-				change_stewardship = 15
-
-			}
-			if = {
-				limit = {
-					NOT = {
-						diplomacy = 20
-					}
-				}
-				change_diplomacy = 15
-
-			}
-			if = {
-				limit = {
-					martial = 15
-				}
-				change_martial = -7
-
-			}
+			wh_make_plaguebearer_nurgle_effect = yes
 		}
 		FROM = {
 			character_event = {
@@ -2874,100 +2180,7 @@ character_event = {
 		name = EVTOPTAschaos23
 		abdicate = yes
 		hidden_tooltip = {
-			set_graphical_culture = daemonette_slaanesh
-			culture = daemonette_slaanesh
-			religion = slaanesh
-			remove_trait = kind
-			remove_trait = chaste
-			remove_trait = celibate
-			remove_trait = content
-			remove_trait = humble
-			remove_trait = temperate
-			remove_trait = diligent
-			remove_trait = charitable
-			remove_trait = infirm
-			remove_trait = incapable
-			remove_trait = wounded
-			remove_trait = blinded
-			remove_trait = idiot
-			remove_trait = imbecile
-			remove_trait = dim
-			remove_trait = dumb
-			remove_trait = bright
-			remove_trait = brilliant
-			remove_trait = quick
-			remove_trait = witch_hunter
-			remove_trait = on_witch_hunt
-			remove_trait = creature_human
-			remove_trait = creature_dwarf
-			remove_trait = creature_chaos_dwarf
-			remove_trait = creature_elf
-			remove_trait = creature_amazon
-			remove_trait = creature_beastman
-			remove_trait = has_nurgles_rot
-			remove_trait = ill
-			add_trait = cruel
-			add_trait = deceitful
-			add_trait = slaanesh_demon
-			add_trait = slaanesh_daemonette
-			set_character_flag = ai_flag_refuse_conversion
-			set_character_flag = special_marshal
-			health = 25
-			random_list = {
-				25 = {
-					add_trait = lustful
-				}
-				25 = {
-					add_trait = greedy
-				}
-				25 = {
-					add_trait = gluttonous
-				}
-				25 = {
-					add_trait = slothful
-				}
-				25 = {
-					add_trait = proud
-				}
-				25 = {
-					add_trait = envious
-				}
-
-			}
-			any_lover = {
-				remove_lover = ROOT
-			}
-			any_friend = {
-				remove_friend = ROOT
-			}
-			any_spouse = {
-				remove_spouse = ROOT
-			}
-			if = {
-				limit = {
-					NOT = {
-						intrigue = 20
-					}
-				}
-				change_intrigue = 15
-
-			}
-			if = {
-				limit = {
-					NOT = {
-						diplomacy = 20
-					}
-				}
-				change_diplomacy = 15
-
-			}
-			if = {
-				limit = {
-					stewardship = 15
-				}
-				change_stewardship = -7
-
-			}
+			wh_make_daemonette_slaanesh_effect = yes
 		}
 		FROM = {
 			character_event = {
@@ -3064,100 +2277,7 @@ character_event = {
 					value = 1
 				}
 			}
-			set_graphical_culture = daemonette_slaanesh
-			culture = daemonette_slaanesh
-			religion = slaanesh
-			remove_trait = kind
-			remove_trait = chaste
-			remove_trait = celibate
-			remove_trait = content
-			remove_trait = humble
-			remove_trait = temperate
-			remove_trait = diligent
-			remove_trait = charitable
-			remove_trait = infirm
-			remove_trait = incapable
-			remove_trait = wounded
-			remove_trait = blinded
-			remove_trait = idiot
-			remove_trait = imbecile
-			remove_trait = dim
-			remove_trait = dumb
-			remove_trait = bright
-			remove_trait = brilliant
-			remove_trait = quick
-			remove_trait = witch_hunter
-			remove_trait = on_witch_hunt
-			remove_trait = creature_human
-			remove_trait = creature_dwarf
-			remove_trait = creature_chaos_dwarf
-			remove_trait = creature_elf
-			remove_trait = creature_amazon
-			remove_trait = creature_beastman
-			remove_trait = has_nurgles_rot
-			remove_trait = ill
-			add_trait = cruel
-			add_trait = deceitful
-			add_trait = slaanesh_demon
-			add_trait = slaanesh_daemonette
-			set_character_flag = ai_flag_refuse_conversion
-			set_character_flag = special_marshal
-			health = 25
-			random_list = {
-				25 = {
-					add_trait = lustful
-				}
-				25 = {
-					add_trait = greedy
-				}
-				25 = {
-					add_trait = gluttonous
-				}
-				25 = {
-					add_trait = slothful
-				}
-				25 = {
-					add_trait = proud
-				}
-				25 = {
-					add_trait = envious
-				}
-
-			}
-			any_lover = {
-				remove_lover = ROOT
-			}
-			any_friend = {
-				remove_friend = ROOT
-			}
-			any_spouse = {
-				remove_spouse = ROOT
-			}
-			if = {
-				limit = {
-					NOT = {
-						intrigue = 20
-					}
-				}
-				change_intrigue = 15
-
-			}
-			if = {
-				limit = {
-					NOT = {
-						diplomacy = 20
-					}
-				}
-				change_diplomacy = 15
-
-			}
-			if = {
-				limit = {
-					stewardship = 15
-				}
-				change_stewardship = -7
-
-			}
+			wh_make_daemonette_slaanesh_effect = yes
 		}
 		FROM = {
 			character_event = {
@@ -3258,84 +2378,7 @@ character_event = {
 		name = EVTOPTAschaos25
 		abdicate = yes
 		hidden_tooltip = {
-			set_graphical_culture = bloodletter_khorne
-			culture = bloodletter_khorne
-			religion = khorne
-			remove_trait = kind
-			remove_trait = chaste
-			remove_trait = patient
-			remove_trait = content
-			remove_trait = humble
-			remove_trait = temperate
-			remove_trait = diligent
-			remove_trait = charitable
-			remove_trait = infirm
-			remove_trait = incapable
-			remove_trait = wounded
-			remove_trait = blinded
-			remove_trait = weak
-			remove_trait = fragile
-			remove_trait = soft
-			remove_trait = hardy
-			remove_trait = tough
-			remove_trait = strong
-			remove_trait = witch_hunter
-			remove_trait = on_witch_hunt
-			remove_trait = creature_human
-			remove_trait = creature_dwarf
-			remove_trait = creature_chaos_dwarf
-			remove_trait = creature_elf
-			remove_trait = creature_amazon
-			remove_trait = creature_beastman
-			remove_trait = has_nurgles_rot
-			remove_trait = ill
-			add_trait = wroth
-			add_trait = honest
-			add_trait = khorne_demon
-			add_trait = khorne_bloodletter
-			set_character_flag = ai_flag_refuse_conversion
-			set_character_flag = special_marshal
-			health = 25
-			random_list = {
-				25 = {
-					add_trait = ambitious
-				}
-				25 = {
-					add_trait = gregarious
-				}
-				25 = {
-					add_trait = diligent
-				}
-				25 = {
-					add_trait = proud
-				}
-
-			}
-			any_lover = {
-				remove_lover = ROOT
-			}
-			any_friend = {
-				remove_friend = ROOT
-			}
-			any_spouse = {
-				remove_spouse = ROOT
-			}
-			if = {
-				limit = {
-					NOT = {
-						martial = 20
-					}
-				}
-				change_martial = 15
-
-			}
-			if = {
-				limit = {
-					intrigue = 15
-				}
-				change_intrigue = -7
-
-			}
+			wh_make_bloodletter_khorne_effect = yes
 		}
 		FROM = {
 			character_event = {
@@ -3432,84 +2475,7 @@ character_event = {
 					value = 1
 				}
 			}
-			set_graphical_culture = bloodletter_khorne
-			culture = bloodletter_khorne
-			religion = khorne
-			remove_trait = kind
-			remove_trait = chaste
-			remove_trait = patient
-			remove_trait = content
-			remove_trait = humble
-			remove_trait = temperate
-			remove_trait = diligent
-			remove_trait = charitable
-			remove_trait = infirm
-			remove_trait = incapable
-			remove_trait = wounded
-			remove_trait = blinded
-			remove_trait = weak
-			remove_trait = fragile
-			remove_trait = soft
-			remove_trait = hardy
-			remove_trait = tough
-			remove_trait = strong
-			remove_trait = witch_hunter
-			remove_trait = on_witch_hunt
-			remove_trait = creature_human
-			remove_trait = creature_dwarf
-			remove_trait = creature_chaos_dwarf
-			remove_trait = creature_elf
-			remove_trait = creature_amazon
-			remove_trait = creature_beastman
-			remove_trait = has_nurgles_rot
-			remove_trait = ill
-			add_trait = wroth
-			add_trait = honest
-			add_trait = khorne_demon
-			add_trait = khorne_bloodletter
-			set_character_flag = ai_flag_refuse_conversion
-			set_character_flag = special_marshal
-			health = 25
-			random_list = {
-				25 = {
-					add_trait = ambitious
-				}
-				25 = {
-					add_trait = gregarious
-				}
-				25 = {
-					add_trait = diligent
-				}
-				25 = {
-					add_trait = proud
-				}
-
-			}
-			any_lover = {
-				remove_lover = ROOT
-			}
-			any_friend = {
-				remove_friend = ROOT
-			}
-			any_spouse = {
-				remove_spouse = ROOT
-			}
-			if = {
-				limit = {
-					NOT = {
-						martial = 20
-					}
-				}
-				change_martial = 15
-
-			}
-			if = {
-				limit = {
-					intrigue = 15
-				}
-				change_intrigue = -7
-
-			}
+			wh_make_bloodletter_khorne_effect = yes
 		}
 		FROM = {
 			character_event = {
@@ -3616,6 +2582,7 @@ character_event = {
 			}
 		}
 		random_list = {
+			# success, summoned tzeentch demon
 			50 = {
 				modifier = {
 					factor = 0.95
@@ -3691,14 +2658,14 @@ character_event = {
 				}
 				character_event = {
 					id = schaos.29
-				} # success, summoned tzeentch demon
+				}
 			}
+			# failure, demon drags you to the Warp
 			50 = {
 				character_event = {
 					id = schaos.28
 				}
-			} # failure, demon drags you to the Warp
-
+			}
 		}
 	}
 
@@ -3712,6 +2679,7 @@ character_event = {
 			}
 		}
 		random_list = {
+			# success, summoned nurgle demon
 			50 = {
 				modifier = {
 					factor = 0.95
@@ -3787,14 +2755,14 @@ character_event = {
 				}
 				character_event = {
 					id = schaos.30
-				} # success, summoned nurgle demon
+				}
 			}
+			# failure, demon drags you to the Warp
 			50 = {
 				character_event = {
 					id = schaos.28
 				}
-			} # failure, demon drags you to the Warp
-
+			}
 		}
 	}
 
@@ -3808,6 +2776,7 @@ character_event = {
 			}
 		}
 		random_list = {
+			# success, summoned slaanesh demon
 			50 = {
 				modifier = {
 					factor = 0.95
@@ -3883,14 +2852,14 @@ character_event = {
 				}
 				character_event = {
 					id = schaos.31
-				} # success, summoned slaanesh demon
+				}
 			}
+			# failure, demon drags you to the Warp
 			50 = {
 				character_event = {
 					id = schaos.28
 				}
-			} # failure, demon drags you to the Warp
-
+			}
 		}
 	}
 
@@ -3903,6 +2872,7 @@ character_event = {
 			}
 		}
 		random_list = {
+			# success, summoned khorne demon
 			50 = {
 				modifier = {
 					factor = 0.95
@@ -3978,14 +2948,14 @@ character_event = {
 				}
 				character_event = {
 					id = schaos.32
-				} # success, summoned khorne demon
+				}
 			}
+			# failure, demon drags you to the Warp
 			50 = {
 				character_event = {
 					id = schaos.28
 				}
-			} # failure, demon drags you to the Warp
-
+			}
 		}
 	}
 
@@ -3995,6 +2965,7 @@ character_event = {
 			trait = chaos_dwarf_sorcerer
 		}
 		random_list = {
+			# success, summoned khorne demon
 			50 = {
 				modifier = {
 					factor = 0.95
@@ -4062,14 +3033,14 @@ character_event = {
 				}
 				character_event = {
 					id = wh_chaos_dwarf.52
-				} # success, summoned khorne demon
+				}
 			}
+			# failure, demon drags you to the Warp
 			50 = {
 				character_event = {
 					id = schaos.28
 				}
-			} # failure, demon drags you to the Warp
-
+			}
 		}
 	}
 }
@@ -4213,7 +3184,6 @@ character_event = {
 				25 = {
 					add_trait = has_typhus
 				}
-
 			}
 			random_list = {
 				25 = {
@@ -4228,7 +3198,6 @@ character_event = {
 				25 = {
 					add_trait = scurvy
 				}
-
 			}
 			add_friend = ROOT
 		}
@@ -4285,7 +3254,6 @@ character_event = {
 				33 = {
 					add_trait = gluttonous
 				}
-
 			}
 			random_list = {
 				34 = {
@@ -4297,7 +3265,6 @@ character_event = {
 				33 = {
 					add_trait = lustful
 				}
-
 			}
 			add_friend = ROOT
 		}
@@ -4357,7 +3324,6 @@ character_event = {
 				25 = {
 					add_trait = proud
 				}
-
 			}
 			add_friend = ROOT
 		}
@@ -4374,9 +3340,9 @@ character_event = {
 	picture = GFX_evt_chaos_hordes
 	min_age = 666
 	religion_group = chaos_gods_group
+	ai = no
 
 	trigger = {
-		ai = no
 		OR = {
 			AND = {
 				trait = khorne_demon
@@ -4455,12 +3421,7 @@ character_event = {
 				NOT = {
 					character = ROOT
 				}
-				OR = {
-					trait = khorne_demon
-					trait = slaanesh_demon
-					trait = nurgle_demon
-					trait = tzeentch_demon
-				}
+				is_demon_trigger = yes
 			}
 			if = {
 				limit = {
@@ -4484,47 +3445,35 @@ character_event = {
 	picture = GFX_evt_chaos_hordes
 	min_age = 666
 	religion_group = chaos_gods_group
+	#ai = no
 
 	trigger = {
-		ai = no
 		any_friend = {
- 			OR = {
-				trait = khorne_demon
-				trait = nurgle_demon
-				trait = tzeentch_demon
-				trait = slaanesh_demon
+			any_friend = {
+				is_demon_trigger = yes
+				count = 2
 			}
-			count = 2
 		}
-
+		not = {
+			has_character_flag = host_demon_commander
+		}
 	}
 
 	mean_time_to_happen = {
 		months = 480
 		modifier = {
 			factor = 0.25
-			NOT = {
+			nor = {
 				has_character_modifier = magic_power_1
-			}
-			NOT = {
 				has_character_modifier = magic_power_2
-			}
-			NOT = {
 				has_character_modifier = magic_power_3
-			}
-			NOT = {
 				has_character_modifier = magic_power_4
-			}
-			NOT = {
 				trait = magic_potential_4
-			}
-			NOT = {
 				has_character_flag = magic_potential_flag_4
 			}
 		}
 		modifier = {
 			factor = 10
-			has_character_flag = host_demon_commander
 		}
 		modifier = {
 			factor = 2
@@ -4642,72 +3591,17 @@ character_event = {
 			factor = 0.75
 			trait = hedge_wizard
 		}
-		modifier = {
-			factor = 0.25
-			any_friend = {
- 				OR = {
-					trait = khorne_demon
-					trait = nurgle_demon
-					trait = tzeentch_demon
-					trait = slaanesh_demon
-				}
-				NOT = {
-					has_character_flag = host_demon_commander
-				}
-				count = 3
-			}
-		}
-		modifier = {
-			factor = 0.25
-			any_friend = {
- 				OR = {
-					trait = khorne_demon
-					trait = nurgle_demon
-					trait = tzeentch_demon
-					trait = slaanesh_demon
-				}
-				NOT = {
-					has_character_flag = host_demon_commander
-				}
-				count = 4
-			}
-		}
-		modifier = {
-			factor = 0.25
-			any_friend = {
- 				OR = {
-					trait = khorne_demon
-					trait = nurgle_demon
-					trait = tzeentch_demon
-					trait = slaanesh_demon
-				}
-				NOT = {
-					has_character_flag = host_demon_commander
-				}
-				count = 5
-			}
-		}
-		modifier = {
-			factor = 0.05
-			any_friend = {
- 				OR = {
-					trait = khorne_demon
-					trait = nurgle_demon
-					trait = tzeentch_demon
-					trait = slaanesh_demon
-				}
-				NOT = {
-					has_character_flag = host_demon_commander
-				}
-				count = 6
-			}
-		}
-
 	}
 
 	option = {
 		name = EVTOPTAschaos34
 		random_friend = {
+			limit = {
+				any_friend = {
+					is_demon_trigger = yes
+					count = 2
+				}
+			}
 			character_event = {
 				id = schaos.35
 			}
@@ -4791,8 +3685,6 @@ character_event = {
 				trait = prince_nurgle
 				trait = prince_slaanesh
 				trait = prince_tzeentch
-			}
-			NOT = {
 				has_character_flag = host_demon_commander
 			}
 		}
@@ -4831,7 +3723,6 @@ character_event = {
 						id = schaos.38 days = 1
 					}
 				}
-
 			}
 			break = yes
 		}
@@ -4848,8 +3739,6 @@ character_event = {
 					trait = prince_nurgle
 					trait = prince_slaanesh
 					trait = prince_tzeentch
-				}
-				NOT = {
 					has_character_flag = inheriting_demon
 				}
 			}
@@ -4922,12 +3811,7 @@ character_event = {
 		}
 		any_friend = {
 			limit = {
-				OR = {
-					trait = khorne_demon
-					trait = nurgle_demon
-					trait = slaanesh_demon
-					trait = tzeentch_demon
-				}
+				is_demon_trigger = yes
 			}
 			clr_character_flag = inheriting_demon
 		}
@@ -4944,16 +3828,10 @@ character_event = {
 			modifier = {
 				factor = 0.01
 				any_friend = {
+					is_demon_trigger = yes
 					count = 2
-					OR = {
-						trait = khorne_demon
-						trait = nurgle_demon
-						trait = slaanesh_demon
-						trait = tzeentch_demon
-					}
 				}
 			}
-
 		}
 	}
 
@@ -4968,12 +3846,7 @@ character_event = {
 		}
 		any_friend = {
 			limit = {
-				OR = {
-					trait = khorne_demon
-					trait = nurgle_demon
-					trait = slaanesh_demon
-					trait = tzeentch_demon
-				}
+				is_demon_trigger = yes
 				has_character_flag = inheriting_demon
 			}
 			clr_character_flag = inheriting_demon
@@ -4991,16 +3864,10 @@ character_event = {
 			modifier = {
 				factor = 10
 				any_friend = {
+					is_demon_trigger = yes
 					count = 2
-					OR = {
-						trait = khorne_demon
-						trait = nurgle_demon
-						trait = slaanesh_demon
-						trait = tzeentch_demon
-					}
 				}
 			}
-
 		}
 	}
 }
@@ -5021,18 +3888,14 @@ character_event = {
 		NOT = {
 			num_of_friends = 1
 		}
-		OR = {
-			trait = khorne_demon
-			trait = nurgle_demon
-			trait = slaanesh_demon
-			trait = tzeentch_demon
-		}
+		is_demon_trigger = yes
 	}
 
 	immediate = {
 		host = {
 			character_event = {
-				id = schaos.38 days = 1
+				id = schaos.38
+				days = 1
 			}
 		}
 	}
@@ -5052,20 +3915,10 @@ character_event = {
 	religion = sigmarite
 
 	trigger = {
-		age = 16
 		trait = on_witch_hunt
 		any_courtier = {
-			NOT = {
-				trait = incapable
-			}
-			OR = {
-				trait = khorne_demon
-				trait = nurgle_demon
-				trait = slaanesh_demon
-				trait = tzeentch_demon
-			}
+			is_demon_trigger = yes
 		}
-
 	}
 
 	mean_time_to_happen = {
@@ -5073,62 +3926,34 @@ character_event = {
  		modifier = {
 			factor = 5
 			any_courtier = {
-				NOT = {
-					trait = incapable
-				}
 				trait = in_hiding
-				OR = {
-					trait = khorne_demon
-					trait = nurgle_demon
-					trait = slaanesh_demon
-					trait = tzeentch_demon
-				}
+				is_demon_trigger = yes
 			}
 		}
 	}
 
 	option = {
-		# ping demon
 		name = EVTOPTAschaos40
+		save_event_target_as = wh_witch_hunter
 		random_courtier = {
 			limit = {
-				NOT = {
-					trait = in_hiding
-				}
-				NOT = {
-					trait = incapable
-				}
-				OR = {
-					has_character_modifier = magic_power_1
-					has_character_modifier = magic_power_2
-					has_character_modifier = magic_power_3
-					has_character_modifier = magic_power_4
-					trait = magic_potential_1
-					trait = magic_potential_2
-					trait = magic_potential_3
-					trait = magic_potential_4
-				}
-
+				is_demon_trigger = yes
 			}
-			character_event = {
-				id = schaos.41
+			save_event_target_as = wh_demon
+			if = {
+				limit = {
+					NOT = {
+						num_of_friends = 1
+					}
+				}
+				random_friend = {
+					save_event_target_as = wh_demon_master
+				}
 			}
-
-		}
-
-	}
-}
-
-# ping demon
-character_event = {
-	id = schaos.41
-	hide_window = yes
-	is_triggered_only = yes
-
-	immediate = {
-		liege = {
-			character_event = {
-				id = schaos.42
+			liege = {
+				character_event = {
+					id = schaos.42
+				}
 			}
 		}
 	}
@@ -5145,7 +3970,7 @@ character_event = {
 	option = {
 		# Track it down!
 		name = EVTOPTAschaos42
-		FROMFROM = {
+		event_target:wh_witch_hunter = {
 			character_event = {
 				id = schaos.43
 			}
@@ -5154,26 +3979,8 @@ character_event = {
 			factor = 1
 			modifier = {
 				factor = 0
-				OR = {
-					society_member_of = cult_of_tzeentch3
-					society_member_of = cult_of_tzeentch2
-					society_member_of = cult_of_tzeentch
-					society_member_of = cult_of_nurgle3
-					society_member_of = cult_of_nurgle2
-					society_member_of = cult_of_nurgle
-					society_member_of = cult_of_slaanesh3
-					society_member_of = cult_of_slaanesh2
-					society_member_of = cult_of_slaanesh
-					society_member_of = cult_of_khorne3
-					society_member_of = cult_of_khorne2
-					society_member_of = cult_of_khorne
-					society_member_of = cult_of_undivided3
-					society_member_of = cult_of_undivided2
-					society_member_of = cult_of_undivided
-					religion_group = chaos_gods_group
-				}
+				is_cultist_trigger = yes
 			}
-
 		}
 	}
 
@@ -5185,28 +3992,11 @@ character_event = {
 			factor = 1
 			modifier = {
 				factor = 0
-				NOR = {
-					society_member_of = cult_of_tzeentch3
-					society_member_of = cult_of_tzeentch2
-					society_member_of = cult_of_tzeentch
-					society_member_of = cult_of_nurgle3
-					society_member_of = cult_of_nurgle2
-					society_member_of = cult_of_nurgle
-					society_member_of = cult_of_slaanesh3
-					society_member_of = cult_of_slaanesh2
-					society_member_of = cult_of_slaanesh
-					society_member_of = cult_of_khorne3
-					society_member_of = cult_of_khorne2
-					society_member_of = cult_of_khorne
-					society_member_of = cult_of_undivided3
-					society_member_of = cult_of_undivided2
-					society_member_of = cult_of_undivided
-				}
+				is_cultist_trigger = no
 				NOT = {
 					religion_group = chaos_gods_group
 				}
 			}
-
 		}
 	}
 }
@@ -5222,86 +4012,76 @@ character_event = {
 	option = {
 		name = EVTOPTAschaos43
 		hidden_tooltip = {
-			FROMFROM = {
-				random_list = {
-					40 = {
-						modifier = {
-							factor = 1.5
-							learning = 15
-						}
-						modifier = {
-							factor = 1.75
-							learning = 20
-						}
-						modifier = {
-							factor = 1.75
-							learning = 25
-						}
-						modifier = {
-							factor = 1.75
-							trait = scholarly_theologian
-						}
-						modifier = {
-							factor = 1.95
-							trait = mastermind_theologian
-						}
-						modifier = {
-							factor = 0.75
-							trait = dim
-						}
-						modifier = {
-							factor = 0.5
-							trait = dumb
-						}
-						modifier = {
-							factor = 0.5
-							trait = slow
-						}
-						modifier = {
-							factor = 0.25
-							trait = idiot
-						}
-						modifier = {
-							factor = 0.25
-							trait = imbecile
-						}
-						FROMFROM = {
-							character_event = {
-								id = schaos.46
-							}
-						} # demon dies
-
+			random_list = {
+				# check hunter skills, need to replace by duel engine later
+				40 = {
+					modifier = {
+						factor = 1.5
+						learning = 15
 					}
-					60 = {
-						if = {
-							limit = {
-								is_invincible_trigger = yes
-							}
-							antideath_effect = yes
-							break = yes
-						}
-						death = {
-							death_reason = death_murder
-							killer = FROMFROM
-						}
-						FROM = {
-							character_event = {
-								id = schaos.44
-							}
-						} # notify liege witch hunter died
-						FROMFROM = {
-							banish = yes
-							random_friend = {
-								remove_friend = FROMFROM
-								character_event = {
-									id = schaos.45
-								}
-							}
+					modifier = {
+						factor = 1.75
+						learning = 20
+					}
+					modifier = {
+						factor = 1.75
+						learning = 25
+					}
+					modifier = {
+						factor = 0.75
+						trait = dim
+					}
+					modifier = {
+						factor = 0.5
+						trait = dumb
+					}
+					modifier = {
+						factor = 0.5
+						trait = slow
+					}
+					modifier = {
+						factor = 0.25
+						trait = idiot
+					}
+					modifier = {
+						factor = 0.25
+						trait = imbecile
+					}
+					# demon dies
+					event_target:wh_demon = {
+						character_event = {
+							id = schaos.46
 						}
 					}
-
 				}
-
+				60 = {
+					# notify liege witch hunter died
+					FROM = {
+						character_event = {
+							id = schaos.44
+						}
+					}
+					event_target:wh_demon = {
+						banish = yes
+						event_target:wh_demon_master = {
+							remove_friend = event_target:wh_demon
+							character_event = {
+								id = schaos.45
+							}
+						}
+					}
+					if = {
+						limit = {
+							is_invincible_trigger = yes
+						}
+						antideath_effect = yes
+						break = yes
+					}
+					death = {
+						death_reason = death_murder
+						killer = event_target:wh_demon
+					}
+				}
 			}
 		}
 	}
@@ -5343,19 +4123,12 @@ character_event = {
 
 	option = {
 		name = EVTOPTAschaos46
-		FROM = {
+		event_target:wh_witch_hunter = {
 			piety = 150
 		}
-		if = {
-			limit = {
-				NOT = {
-					num_of_friends = 1
-				}
-			}
-			random_friend = {
-				character_event = {
-					id = schaos.47
-				}
+		event_target:wh_demon_master = {
+			character_event = {
+				id = schaos.47
 			}
 		}
 		if = {
@@ -5367,7 +4140,7 @@ character_event = {
 		}
 		death = {
 			death_reason = death_execution
-			killer = FROM
+			killer = event_target:wh_witch_hunter
 		}
 	}
 }
@@ -5383,9 +4156,11 @@ character_event = {
 	option = {
 		name = EVTOPTAschaos47
 		hidden_tooltip = {
-			FROMFROM = {
+			event_target:wh_witch_hunter = {
 				character_event = {
-					id = schaos.48 days = 30 random = 30
+					id = schaos.48
+					days = 30
+					random = 30
 				}
 			}
 		}
@@ -5403,91 +4178,84 @@ character_event = {
 	option = {
 		name = EVTOPTAschaos48
 		hidden_tooltip = {
-			FROMFROM = {
-				random_list = {
-					60 = {
-						modifier = {
-							factor = 1.5
-							learning = 15
-						}
-						modifier = {
-							factor = 1.75
-							learning = 20
-						}
-						modifier = {
-							factor = 1.75
-							learning = 25
-						}
-						modifier = {
-							factor = 1.75
-							trait = scholarly_theologian
-						}
-						modifier = {
-							factor = 1.95
-							trait = mastermind_theologian
-						}
-						modifier = {
-							factor = 0.75
-							trait = dim
-						}
-						modifier = {
-							factor = 0.5
-							trait = dumb
-						}
-						modifier = {
-							factor = 0.5
-							trait = slow
-						}
-						modifier = {
-							factor = 0.25
-							trait = idiot
-						}
-						modifier = {
-							factor = 0.25
-							trait = imbecile
-						}
-						modifier = {
-							factor = 10
-							FROM = {
-								religion_group = chaos_gods_group
-							}
-						}
-						modifier = {
-							factor = 1.25
-							FROM = {
-								has_character_modifier = magic_power_1
-							}
-						}
-						modifier = {
-							factor = 1.25
-							FROM = {
-								has_character_modifier = magic_power_2
-							}
-						}
-						modifier = {
-							factor = 1.5
-							FROM = {
-								has_character_modifier = magic_power_3
-							}
-						}
-						modifier = {
-							factor = 1.75
-							FROM = {
-								has_character_modifier = magic_power_4
-							}
-						}
-						FROMFROM = {
-							character_event = {
-								id = schaos.49
-							}
-						} # the connection is found out
-
+			random_list = {
+				60 = {
+					modifier = {
+						factor = 1.5
+						learning = 15
 					}
-					40 = {
+					modifier = {
+						factor = 1.75
+						learning = 20
 					}
-
+					modifier = {
+						factor = 1.75
+						learning = 25
+					}
+					modifier = {
+						factor = 1.75
+						trait = scholarly_theologian
+					}
+					modifier = {
+						factor = 1.95
+						trait = mastermind_theologian
+					}
+					modifier = {
+						factor = 0.75
+						trait = dim
+					}
+					modifier = {
+						factor = 0.5
+						trait = dumb
+					}
+					modifier = {
+						factor = 0.5
+						trait = slow
+					}
+					modifier = {
+						factor = 0.25
+						trait = idiot
+					}
+					modifier = {
+						factor = 0.25
+						trait = imbecile
+					}
+					modifier = {
+						factor = 10
+						FROM = {
+							religion_group = chaos_gods_group
+						}
+					}
+					modifier = {
+						factor = 1.25
+						FROM = {
+							has_character_modifier = magic_power_1
+						}
+					}
+					modifier = {
+						factor = 1.25
+						FROM = {
+							has_character_modifier = magic_power_2
+						}
+					}
+					modifier = {
+						factor = 1.5
+						FROM = {
+							has_character_modifier = magic_power_3
+						}
+					}
+					modifier = {
+						factor = 1.75
+						FROM = {
+							has_character_modifier = magic_power_4
+						}
+					}
+					FROMFROM = {
+						character_event = {
+							id = schaos.49
+						}
+					}
 				}
-
 			}
 		}
 	}
@@ -5523,8 +4291,6 @@ character_event = {
 		increase_visibility_effect = yes
 		FROM = {
 			banish = yes
-		}
-		FROM = {
 			remove_trait = on_witch_hunt
 		}
 	}
@@ -5538,8 +4304,6 @@ character_event = {
 		increase_visibility_effect = yes
 		FROM = {
 			imprison = yes
-		}
-		FROM = {
 			remove_trait = on_witch_hunt
 		}
 	}
@@ -5646,7 +4410,6 @@ character_event = {
 	id = schaos.51005
 	desc = EVTDESCschaos51005
 	picture = "GFX_evt_nurgle"
-
 	is_triggered_only = yes
 
 	option = {
@@ -6134,22 +4897,12 @@ character_event = {
 					}
 					if = {
 						limit = {
-							NOT = {
+							nor = {
 								trait = fragile
-							}
-							NOT = {
 								trait = soft
-							}
-							NOT = {
 								trait = weak
-							}
-							NOT = {
 								trait = hardy
-							}
-							NOT = {
 								trait = tough
-							}
-							NOT = {
 								trait = strong
 							}
 						}
@@ -6159,12 +4912,12 @@ character_event = {
 						id = schaos.57
 					}
 					character_event = {
-						id = mutation.1 days = 80 random = 120
+						id = mutation.1
+						days = 80
+						random = 120
 					}
 				}
-
 			}
-
 		}
 	}
 
@@ -6244,7 +4997,6 @@ character_event = {
 				health = 5
 			}
 		}
-
 	}
 
 	mean_time_to_happen = {
@@ -6281,7 +5033,8 @@ character_event = {
 				id = schaos.60
 			}
 			character_event = {
-				id = mutation.1005 days = 10
+				id = mutation.1005
+				days = 10
 			}
 		}
 	}
@@ -6312,9 +5065,8 @@ character_event = {
 				change_intrigue = 1
 				set_character_flag = slaanesh_cheating_intr
 			}
-			34 = {
+			33 = {
 			}
-
 		}
 		hidden_tooltip = {
  			# Slaanesh rigs the game, for your pleasure
@@ -6332,6 +5084,7 @@ character_event = {
 				change_intrigue = -1
 				clr_character_flag = slaanesh_cheating_intr
 			}
+			# think about it надо добавить зависимость статов персонажа к исходу
 			random_list = {
 				15 = {
 					change_diplomacy = 1
@@ -6340,17 +5093,27 @@ character_event = {
 					change_intrigue = 1
 				}
 				70 = {
+					modifier = {
+						factor = 0.95
+						intrigue = 15
+					}
+					modifier = {
+						factor = 0.85
+						intrigue = 20
+					}
+					modifier = {
+						factor = 0.75
+						intrigue = 25
+					}
+					modifier = {
+						factor = 0.65
+						intrigue = 30
+					}
 					health = -1
 					if = {
 						limit = {
 							NOT = {
 								health = 0
-							}
-							NOT = {
-								has_artifact = carstein_ring
-							}
-							NOT = {
-								trait = khemri_tomb_king
 							}
 						}
 						if = {
@@ -6366,12 +5129,10 @@ character_event = {
 						break = yes
 					}
 				}
-
 			}
 			character_event = {
 				id = schaos.60
 			}
-
 		}
 		ai_chance = {
 			factor = 40
@@ -6420,7 +5181,9 @@ character_event = {
 				id = mutation.1005
 			}
 			character_event = {
-				id = schaos.62 days = 8 random = 12
+				id = schaos.62
+				days = 8
+				random = 12
 			}
 			random_list = {
 				35 = {
@@ -6470,11 +5233,10 @@ character_event = {
 					}
 					modifier = {
 						factor = 1.25
-						trait = magic_potential_4
-					}
-					modifier = {
-						factor = 1.25
-						has_character_flag = magic_potential_flag_4
+						or = {
+							trait = magic_potential_4
+							has_character_flag = magic_potential_flag_4
+						}
 					}
 					modifier = {
 						factor = 0.95
@@ -6542,7 +5304,6 @@ character_event = {
 						factor = 1.5
 						has_character_modifier = magic_power_4
 					}
-
 				}
 			}
 		}
@@ -6562,23 +5323,7 @@ character_event = {
 	immediate = {
 		if = {
 			limit = {
-				OR = {
-					trait = creature_nehekharan
-					trait = vampire_lahmian_visible
-					trait = vampire_carstein_visible
-					trait = vampire_blood_visible
-					trait = vampire_strigoi_visible
-					trait = vampire_necrarch_visible
-					trait = vampire_jade_visible
-					trait = vampire_mahtmasi_visible
-					trait = vampire_lahmian_hidden
-					trait = vampire_carstein_hidden
-					trait = vampire_blood_hidden
-					trait = vampire_strigoi_hidden
-					trait = vampire_necrarch_hidden
-					trait = vampire_jade_hidden
-					trait = vampire_mahtmasi_hidden
-				}
+				is_undead_trigger = yes
 			}
 			character_event = {
 				id = schaos.82
@@ -6829,6 +5574,7 @@ character_event = {
 				}
 			}
 		}
+		# the demon takes over
 		if = {
 			limit = {
 				check_variable = {
@@ -6839,7 +5585,7 @@ character_event = {
 			character_event = {
 				id = schaos.63
 			}
-		} # the demon takes over
+		}
 	}
 }
 
@@ -6875,54 +5621,9 @@ character_event = {
 
 	trigger = {
 		trait = possessed
-		# cannot be possessed if undead
-		NOT = {
-			trait = creature_nehekharan
-		}
-		NOT = {
-			trait = vampire_lahmian_visible
-		}
-		NOT = {
-			trait = vampire_carstein_visible
-		}
-		NOT = {
-			trait = vampire_blood_visible
-		}
-		NOT = {
-			trait = vampire_strigoi_visible
-		}
-		NOT = {
-			trait = vampire_necrarch_visible
-		}
-		NOT = {
-			trait = vampire_jade_visible
-		}
-		NOT = {
-			trait = vampire_mahtmasi_visible
-		}
-		NOT = {
-			trait = vampire_lahmian_hidden
-		}
-		NOT = {
-			trait = vampire_carstein_hidden
-		}
-		NOT = {
-			trait = vampire_blood_hidden
-		}
-		NOT = {
-			trait = vampire_strigoi_hidden
-		}
-		NOT = {
-			trait = vampire_necrarch_hidden
-		}
-		NOT = {
-			trait = vampire_jade_hidden
-		}
-		NOT = {
-			trait = vampire_mahtmasi_hidden
-		}
-
+		is_undead_trigger = no
 	}
+
  	immediate = {
 		1 = {
 			change_variable = {
@@ -6934,9 +5635,6 @@ character_event = {
 
 	option = {
 		name = EVTOPTAschaos63
-		trigger = {
-			has_character_flag = possessed_by_khornate
-		}
 		clr_character_flag = possessed_by_khornate
 		set_variable = {
 			which = "possession_counter"
@@ -6946,397 +5644,33 @@ character_event = {
 		abdicate = yes
 		banish = yes
 		hidden_tooltip = {
-			set_graphical_culture = bloodletter_khorne
-			culture = bloodletter_khorne
-			religion = khorne
-			remove_trait = kind
-			remove_trait = chaste
-			remove_trait = patient
-			remove_trait = content
-			remove_trait = humble
-			remove_trait = temperate
-			remove_trait = diligent
-			remove_trait = charitable
-			remove_trait = infirm
-			remove_trait = incapable
-			remove_trait = wounded
-			remove_trait = blinded
-			remove_trait = weak
-			remove_trait = fragile
-			remove_trait = soft
-			remove_trait = hardy
-			remove_trait = tough
-			remove_trait = strong
-			remove_trait = witch_hunter
-			remove_trait = on_witch_hunt
-			remove_trait = creature_human
-			remove_trait = creature_dwarf
-			remove_trait = creature_chaos_dwarf
-			remove_trait = creature_elf
-			remove_trait = creature_amazon
-			remove_trait = creature_beastman
-			remove_trait = creature_orc
-			remove_trait = creature_goblin
-			remove_trait = creature_snotling
-			remove_trait = has_nurgles_rot
-			remove_trait = ill
-			add_trait = wroth
-			add_trait = honest
-			add_trait = khorne_demon
-			add_trait = khorne_bloodletter
-			health = 25
-			random_list = {
-				25 = {
-					add_trait = ambitious
+			if = {
+				limit = {
+					has_character_flag = possessed_by_tzeentchian
 				}
-				25 = {
-					add_trait = gregarious
-				}
-				25 = {
-					add_trait = diligent
-				}
-				25 = {
-					add_trait = proud
-				}
-
-			}
-			any_lover = {
-				remove_lover = ROOT
-			}
-			any_friend = {
-				remove_friend = ROOT
-			}
-			any_spouse = {
-				remove_spouse = ROOT
+				wh_make_flamer_tzeentch_effect = yes
+				break = yes
 			}
 			if = {
 				limit = {
-					NOT = {
-						martial = 20
-					}
+					has_character_flag = possessed_by_nurglite
 				}
-				change_martial = 15
-
+				wh_make_plaguebearer_nurgle_effect = yes
+				break = yes
 			}
 			if = {
 				limit = {
-					intrigue = 15
+					has_character_flag = possessed_by_slaaneshi
 				}
-				change_intrigue = -7
-
-			}
-		}
-	}
-
-	option = {
-		name = EVTOPTBschaos63
-		trigger = {
-			has_character_flag = possessed_by_nurglite
-		}
-		set_variable = {
-			which = "possession_counter"
-			value = 0
-		}
-		remove_trait = possessed
-		clr_character_flag = possessed_by_nurglite
-		abdicate = yes
-		banish = yes
-		hidden_tooltip = {
-			set_graphical_culture = plaguebearer_nurgle
-			culture = plaguebearer_nurgle
-			religion = nurgle
-			remove_trait = cruel
-			remove_trait = ambitious
-			remove_trait = proud
-			remove_trait = gluttonous
-			remove_trait = diligent
-			remove_trait = greedy
-			remove_trait = infirm
-			remove_trait = incapable
-			remove_trait = scarred
-			remove_trait = idiot
-			remove_trait = imbecile
-			remove_trait = dim
-			remove_trait = dumb
-			remove_trait = bright
-			remove_trait = brilliant
-			remove_trait = quick
-			remove_trait = witch_hunter
-			remove_trait = on_witch_hunt
-			remove_trait = creature_human
-			remove_trait = creature_dwarf
-			remove_trait = creature_chaos_dwarf
-			remove_trait = creature_elf
-			remove_trait = creature_amazon
-			remove_trait = creature_beastman
-			add_trait = content
-			add_trait = humble
-			add_trait = charitable
-			add_trait = has_nurgles_rot
-			add_trait = leper
-			add_trait = nurgle_demon
-			add_trait = nurgle_plaguebearer
-			add_trait = ill
-			health = 25
-			random_list = {
-				25 = {
-					add_trait = has_tuberculosis
-				}
-				25 = {
-					add_trait = has_typhoid_fever
-				}
-				25 = {
-					add_trait = has_bubonic_plague
-				}
-				25 = {
-					add_trait = has_measles
-				}
-
-			}
-			random_list = {
-				25 = {
-					add_trait = has_small_pox
-				}
-				25 = {
-					add_trait = syphilitic
-				}
-				25 = {
-					add_trait = pneumonic
-				}
-				25 = {
-					add_trait = has_typhus
-				}
-
-			}
-			any_lover = {
-				remove_lover = ROOT
-			}
-			any_friend = {
-				remove_friend = ROOT
-			}
-			any_spouse = {
-				remove_spouse = ROOT
+				wh_make_daemonette_slaanesh_effect = yes
+				break = yes
 			}
 			if = {
 				limit = {
-					NOT = {
-						stewardship = 20
-					}
+					has_character_flag = possessed_by_khornate
 				}
-				change_stewardship = 15
-
-			}
-			if = {
-				limit = {
-					NOT = {
-						diplomacy = 20
-					}
-				}
-				change_diplomacy = 15
-
-			}
-			if = {
-				limit = {
-					martial = 15
-				}
-				change_martial = -7
-
-			}
-		}
-	}
-
-	option = {
-		name = EVTOPTCschaos63
-		trigger = {
-			has_character_flag = possessed_by_slaaneshi
-		}
-		set_variable = {
-			which = "possession_counter"
-			value = 0
-		}
-		remove_trait = possessed
-		clr_character_flag = possessed_by_slaaneshi
-		abdicate = yes
-		banish = yes
-		hidden_tooltip = {
-			set_graphical_culture = daemonette_slaanesh
-			culture = daemonette_slaanesh
-			religion = slaanesh
-			remove_trait = kind
-			remove_trait = chaste
-			remove_trait = celibate
-			remove_trait = content
-			remove_trait = humble
-			remove_trait = temperate
-			remove_trait = diligent
-			remove_trait = charitable
-			remove_trait = infirm
-			remove_trait = incapable
-			remove_trait = wounded
-			remove_trait = blinded
-			remove_trait = idiot
-			remove_trait = imbecile
-			remove_trait = dim
-			remove_trait = dumb
-			remove_trait = bright
-			remove_trait = brilliant
-			remove_trait = quick
-			remove_trait = witch_hunter
-			remove_trait = on_witch_hunt
-			remove_trait = creature_human
-			remove_trait = creature_dwarf
-			remove_trait = creature_chaos_dwarf
-			remove_trait = creature_elf
-			remove_trait = creature_amazon
-			remove_trait = creature_beastman
-			remove_trait = has_nurgles_rot
-			remove_trait = ill
-			add_trait = cruel
-			add_trait = deceitful
-			add_trait = slaanesh_demon
-			add_trait = slaanesh_daemonette
-			health = 25
-			random_list = {
-				25 = {
-					add_trait = lustful
-				}
-				25 = {
-					add_trait = greedy
-				}
-				25 = {
-					add_trait = gluttonous
-				}
-				25 = {
-					add_trait = slothful
-				}
-				25 = {
-					add_trait = proud
-				}
-				25 = {
-					add_trait = envious
-				}
-
-			}
-			any_lover = {
-				remove_lover = ROOT
-			}
-			any_friend = {
-				remove_friend = ROOT
-			}
-			any_spouse = {
-				remove_spouse = ROOT
-			}
-			if = {
-				limit = {
-					NOT = {
-						intrigue = 20
-					}
-				}
-				change_intrigue = 15
-
-			}
-			if = {
-				limit = {
-					NOT = {
-						diplomacy = 20
-					}
-				}
-				change_diplomacy = 15
-
-			}
-			if = {
-				limit = {
-					stewardship = 15
-				}
-				change_stewardship = -7
-
-			}
-		}
-	}
-
-	option = {
-		name = EVTOPTDschaos63
-		trigger = {
-			has_character_flag = possessed_by_tzeentchian
-		}
-		set_variable = {
-			which = "possession_counter"
-			value = 0
-		}
-		remove_trait = possessed
-		clr_character_flag = possessed_by_tzeentchian
-		abdicate = yes
-		banish = yes
-		hidden_tooltip = {
-			set_graphical_culture = flamer_tzeentch
-			culture = flamer_tzeentch
-			religion = tzeentch
-			remove_trait = kind
-			remove_trait = content
-			remove_trait = humble
-			remove_trait = temperate
-			remove_trait = slothful
-			remove_trait = charitable
-			remove_trait = infirm
-			remove_trait = incapable
-			remove_trait = wounded
-			remove_trait = blinded
-			remove_trait = idiot
-			remove_trait = imbecile
-			remove_trait = dim
-			remove_trait = dumb
-			remove_trait = bright
-			remove_trait = brilliant
-			remove_trait = quick
-			remove_trait = witch_hunter
-			remove_trait = on_witch_hunt
-			remove_trait = has_nurgles_rot
-			remove_trait = creature_human
-			remove_trait = creature_dwarf
-			remove_trait = creature_chaos_dwarf
-			remove_trait = creature_elf
-			remove_trait = creature_amazon
-			remove_trait = creature_beastman
-			add_trait = ambitious
-			add_trait = proud
-			add_trait = greedy
-			add_trait = genius
-			add_trait = tzeentch_demon
-			add_trait = tzeentch_flamer
-			health = 25
-			any_lover = {
-				remove_lover = ROOT
-			}
-			any_friend = {
-				remove_friend = ROOT
-			}
-			any_spouse = {
-				remove_spouse = ROOT
-			}
-			if = {
-				limit = {
-					NOT = {
-						intrigue = 20
-					}
-				}
-				change_intrigue = 15
-
-			}
-			if = {
-				limit = {
-					NOT = {
-						learning = 20
-					}
-				}
-				change_learning = 15
-
-			}
-			if = {
-				limit = {
-					martial = 15
-				}
-				change_martial = -7
-
+				wh_make_bloodletter_khorne_effect = yes
+				break = yes
 			}
 		}
 	}
@@ -7358,7 +5692,9 @@ character_event = {
 		add_trait = wroth
 		hidden_tooltip = {
 			character_event = {
-				id = schaos.62 days = 4 random = 7
+				id = schaos.62
+				days = 4
+				random = 7
 			}
 			random_list = {
 				75 = {
@@ -7476,7 +5812,6 @@ character_event = {
 						factor = 1.5
 						has_character_modifier = magic_power_4
 					}
-
 				}
 			}
 		}
@@ -7498,28 +5833,15 @@ character_event = {
 		name = EVTOPTAschaos65
 		random_courtier = {
 			limit = {
-				NOT = {
+				nor = {
 					culture_group = daemonic_group
-				}
-				NOT = {
 					trait = avatar_isha
-				}
-				NOT = {
 					trait = avatar_kurnous
-				}
-				NOT = {
 					trait = everqueen
-				}
-				NOT = {
 					has_artifact = carstein_ring
-				}
-				NOT = {
 					trait = creature_nehekharan
-				}
-				NOT = {
 					trait = creature_forestspirit
 				}
-
 			}
 			if = {
 				limit = {
@@ -7549,7 +5871,9 @@ character_event = {
 		}
 		hidden_tooltip = {
 			character_event = {
-				id = schaos.62 days = 4 random = 7
+				id = schaos.62
+				days = 4
+				random = 7
 			}
 			random_list = {
 				75 = {
@@ -7597,13 +5921,13 @@ character_event = {
 						factor = 0.45
 						trait = genius
 					}
+
 					modifier = {
 						factor = 1.25
-						trait = magic_potential_4
-					}
-					modifier = {
-						factor = 1.25
-						has_character_flag = magic_potential_flag_4
+						or = {
+							trait = magic_potential_4
+							has_character_flag = magic_potential_flag_4
+						}
 					}
 					modifier = {
 						factor = 0.95
@@ -7667,7 +5991,6 @@ character_event = {
 						factor = 1.5
 						has_character_modifier = magic_power_4
 					}
-
 				}
 			}
 		}
@@ -7709,7 +6032,9 @@ character_event = {
 		}
 		hidden_tooltip = {
 			character_event = {
-				id = schaos.62 days = 4 random = 7
+				id = schaos.62
+				days = 4
+				random = 7
 			}
 			random_list = {
 				75 = {
@@ -7759,11 +6084,10 @@ character_event = {
 					}
 					modifier = {
 						factor = 1.25
-						trait = magic_potential_4
-					}
-					modifier = {
-						factor = 1.25
-						has_character_flag = magic_potential_flag_4
+						or = {
+							trait = magic_potential_4
+							has_character_flag = magic_potential_flag_4
+						}
 					}
 					modifier = {
 						factor = 0.95
@@ -7827,7 +6151,6 @@ character_event = {
 						factor = 1.5
 						has_character_modifier = magic_power_4
 					}
-
 				}
 			}
 		}
@@ -7865,7 +6188,9 @@ character_event = {
 		add_trait = lustful
 		hidden_tooltip = {
 			character_event = {
-				id = schaos.62 days = 4 random = 7
+				id = schaos.62
+				days = 4
+				random = 7
 			}
 			random_list = {
 				75 = {
@@ -7915,11 +6240,10 @@ character_event = {
 					}
 					modifier = {
 						factor = 1.25
-						trait = magic_potential_4
-					}
-					modifier = {
-						factor = 1.25
-						has_character_flag = magic_potential_flag_4
+						or = {
+							trait = magic_potential_4
+							has_character_flag = magic_potential_flag_4
+						}
 					}
 					modifier = {
 						factor = 0.95
@@ -7983,7 +6307,6 @@ character_event = {
 						factor = 1.5
 						has_character_modifier = magic_power_4
 					}
-
 				}
 			}
 		}
@@ -8005,25 +6328,14 @@ character_event = {
 		name = EVTOPTAschaos68
 		random_courtier = {
 			limit = {
-				NOT = {
+				nor = {
 					culture_group = daemonic_group
-				}
-				NOT = {
 					trait = avatar_isha
-				}
-				NOT = {
 					trait = avatar_kurnous
-				}
-				NOT = {
 					trait = everqueen
-				}
-				NOT = {
 					trait = creature_nehekharan
-				}
-				NOT = {
 					trait = creature_forestspirit
 				}
-
 			}
 			add_trait = wounded
 			opinion = {
@@ -8048,7 +6360,9 @@ character_event = {
 		}
 		hidden_tooltip = {
 			character_event = {
-				id = schaos.62 days = 4 random = 7
+				id = schaos.62
+				days = 4
+				random = 7
 			}
 			random_list = {
 				75 = {
@@ -8098,11 +6412,10 @@ character_event = {
 					}
 					modifier = {
 						factor = 1.25
-						trait = magic_potential_4
-					}
-					modifier = {
-						factor = 1.25
-						has_character_flag = magic_potential_flag_4
+						or = {
+							trait = magic_potential_4
+							has_character_flag = magic_potential_flag_4
+						}
 					}
 					modifier = {
 						factor = 0.95
@@ -8166,7 +6479,6 @@ character_event = {
 						factor = 1.5
 						has_character_modifier = magic_power_4
 					}
-
 				}
 			}
 		}
@@ -8239,11 +6551,10 @@ character_event = {
 					}
 					modifier = {
 						factor = 1.25
-						trait = magic_potential_4
-					}
-					modifier = {
-						factor = 1.25
-						has_character_flag = magic_potential_flag_4
+						or = {
+							trait = magic_potential_4
+							has_character_flag = magic_potential_flag_4
+						}
 					}
 					modifier = {
 						factor = 0.95
@@ -8307,7 +6618,6 @@ character_event = {
 						factor = 1.5
 						has_character_modifier = magic_power_4
 					}
-
 				}
 			}
 		}
@@ -8380,11 +6690,10 @@ character_event = {
 					}
 					modifier = {
 						factor = 1.25
-						trait = magic_potential_4
-					}
-					modifier = {
-						factor = 1.25
-						has_character_flag = magic_potential_flag_4
+						or = {
+							trait = magic_potential_4
+							has_character_flag = magic_potential_flag_4
+						}
 					}
 					modifier = {
 						factor = 0.95
@@ -8448,7 +6757,6 @@ character_event = {
 						factor = 1.5
 						has_character_modifier = magic_power_4
 					}
-
 				}
 			}
 		}
@@ -8472,7 +6780,6 @@ character_event = {
 					is_female = no
 					trait = homosexual
 				}
-
 			}
 		}
 	}
@@ -8614,11 +6921,10 @@ character_event = {
 					}
 					modifier = {
 						factor = 1.25
-						trait = magic_potential_4
-					}
-					modifier = {
-						factor = 1.25
-						has_character_flag = magic_potential_flag_4
+						or = {
+							trait = magic_potential_4
+							has_character_flag = magic_potential_flag_4
+						}
 					}
 					modifier = {
 						factor = 0.95
@@ -8682,7 +6988,6 @@ character_event = {
 						factor = 1.5
 						has_character_modifier = magic_power_4
 					}
-
 				}
 			}
 		}
@@ -8790,7 +7095,9 @@ character_event = {
 		}
 		hidden_tooltip = {
 			character_event = {
-				id = schaos.62 days = 4 random = 7
+				id = schaos.62
+				days = 4
+				random = 7
 			}
 			random_list = {
 				75 = {
@@ -8908,7 +7215,6 @@ character_event = {
 						factor = 1.5
 						has_character_modifier = magic_power_4
 					}
-
 				}
 			}
 		}
@@ -8981,11 +7287,10 @@ character_event = {
 					}
 					modifier = {
 						factor = 1.25
-						trait = magic_potential_4
-					}
-					modifier = {
-						factor = 1.25
-						has_character_flag = magic_potential_flag_4
+						or = {
+							trait = magic_potential_4
+							has_character_flag = magic_potential_flag_4
+						}
 					}
 					modifier = {
 						factor = 0.95
@@ -9122,11 +7427,10 @@ character_event = {
 					}
 					modifier = {
 						factor = 1.25
-						trait = magic_potential_4
-					}
-					modifier = {
-						factor = 1.25
-						has_character_flag = magic_potential_flag_4
+						or = {
+							trait = magic_potential_4
+							has_character_flag = magic_potential_flag_4
+						}
 					}
 					modifier = {
 						factor = 0.95
@@ -9190,7 +7494,6 @@ character_event = {
 						factor = 1.5
 						has_character_modifier = magic_power_4
 					}
-
 				}
 			}
 		}
@@ -9266,11 +7569,10 @@ character_event = {
 					}
 					modifier = {
 						factor = 1.25
-						trait = magic_potential_4
-					}
-					modifier = {
-						factor = 1.25
-						has_character_flag = magic_potential_flag_4
+						or = {
+							trait = magic_potential_4
+							has_character_flag = magic_potential_flag_4
+						}
 					}
 					modifier = {
 						factor = 0.95
@@ -9334,7 +7636,6 @@ character_event = {
 						factor = 1.5
 						has_character_modifier = magic_power_4
 					}
-
 				}
 			}
 		}
@@ -9426,11 +7727,10 @@ character_event = {
 					}
 					modifier = {
 						factor = 1.25
-						trait = magic_potential_4
-					}
-					modifier = {
-						factor = 1.25
-						has_character_flag = magic_potential_flag_4
+						or = {
+							trait = magic_potential_4
+							has_character_flag = magic_potential_flag_4
+						}
 					}
 					modifier = {
 						factor = 0.95
@@ -9494,7 +7794,6 @@ character_event = {
 						factor = 1.5
 						has_character_modifier = magic_power_4
 					}
-
 				}
 			}
 		}
@@ -9596,16 +7895,11 @@ character_event = {
 						trait = brilliant
 					}
 					modifier = {
-						factor = 0.45
-						trait = genius
-					}
-					modifier = {
 						factor = 1.25
-						trait = magic_potential_4
-					}
-					modifier = {
-						factor = 1.25
-						has_character_flag = magic_potential_flag_4
+						or = {
+							trait = magic_potential_4
+							has_character_flag = magic_potential_flag_4
+						}
 					}
 					modifier = {
 						factor = 0.95
@@ -9669,7 +7963,6 @@ character_event = {
 						factor = 1.5
 						has_character_modifier = magic_power_4
 					}
-
 				}
 			}
 		}
@@ -9776,11 +8069,10 @@ character_event = {
 					}
 					modifier = {
 						factor = 1.25
-						trait = magic_potential_4
-					}
-					modifier = {
-						factor = 1.25
-						has_character_flag = magic_potential_flag_4
+						or = {
+							trait = magic_potential_4
+							has_character_flag = magic_potential_flag_4
+						}
 					}
 					modifier = {
 						factor = 0.95
@@ -9844,7 +8136,6 @@ character_event = {
 						factor = 1.5
 						has_character_modifier = magic_power_4
 					}
-
 				}
 			}
 		}
@@ -9929,7 +8220,9 @@ character_event = {
 		}
 		hidden_tooltip = {
 			character_event = {
-				id = schaos.80005 days = 20 random = 45
+				id = schaos.80005
+				days = 20
+				random = 45
 			}
 			opinion = {
 				modifier = opinion_grateful
@@ -10149,12 +8442,13 @@ character_event = {
 				duration = 300
 				hidden = yes
 			}
+			# receive event and decide what to do
 			FROM = {
 				character_event = {
 					id = schaos.86
 				}
 			}
-		} # receive event and decide what to do
+		}
 		ai_chance = {
 			factor = 50
 			modifier = {
@@ -10267,13 +8561,7 @@ character_event = {
 			modifier = {
 				factor = 1.25
 				any_friend = {
-					OR = {
-						trait = slaanesh_demon
-						trait = khorne_demon
-						trait = nurgle_demon
-						trait = tzeentch_demon
-						trait = hashut_kdaai
-					}
+					is_demon_trigger = yes
 				}
 			}
 		}
@@ -10311,6 +8599,7 @@ character_event = {
 			}
 		}
 		random_list = {
+			# success, summoned tzeentch demon
 			50 = {
 				modifier = {
 					factor = 0.95
@@ -10405,8 +8694,9 @@ character_event = {
 					character_event = {
 						id = schaos.88
 					}
-				} # success, summoned tzeentch demon
+				}
 			}
+			# failure, demon drags you and the mage into the Warp
 			50 = {
 				character_event = {
 					id = schaos.87
@@ -10416,8 +8706,7 @@ character_event = {
 						id = schaos.28
 					}
 				}
-			} # failure, demon drags you and the mage into the Warp
-
+			}
 		}
 	}
 
@@ -10433,6 +8722,7 @@ character_event = {
 			}
 		}
 		random_list = {
+			# success, summoned nurgle demon
 			50 = {
 				modifier = {
 					factor = 0.95
@@ -10527,8 +8817,9 @@ character_event = {
 					character_event = {
 						id = schaos.89
 					}
-				} # success, summoned nurgle demon
+				}
 			}
+			# failure, demon drags you to the Warp
 			50 = {
 				character_event = {
 					id = schaos.87
@@ -10538,8 +8829,7 @@ character_event = {
 						id = schaos.28
 					}
 				}
-			} # failure, demon drags you to the Warp
-
+			}
 		}
 	}
 
@@ -10555,6 +8845,7 @@ character_event = {
 			}
 		}
 		random_list = {
+			# success, summoned slaanesh demon
 			50 = {
 				modifier = {
 					factor = 0.95
@@ -10649,8 +8940,9 @@ character_event = {
 					character_event = {
 						id = schaos.90
 					}
-				} # success, summoned slaanesh demon
+				}
 			}
+			# failure, demon drags you to the Warp
 			50 = {
 				character_event = {
 					id = schaos.87
@@ -10660,8 +8952,7 @@ character_event = {
 						id = schaos.28
 					}
 				}
-			} # failure, demon drags you to the Warp
-
+			}
 		}
 	}
 
@@ -10676,6 +8967,7 @@ character_event = {
 			}
 		}
 		random_list = {
+			# success, summoned khorne demon
 			50 = {
 				modifier = {
 					factor = 0.95
@@ -10770,8 +9062,9 @@ character_event = {
 					character_event = {
 						id = schaos.91
 					}
-				} # success, summoned khorne demon
+				}
 			}
+			# failure, demon drags you to the Warp
 			50 = {
 				character_event = {
 					id = schaos.87
@@ -10781,8 +9074,7 @@ character_event = {
 						id = schaos.28
 					}
 				}
-			} # failure, demon drags you to the Warp
-
+			}
 		}
 	}
 
@@ -10894,8 +9186,9 @@ character_event = {
 					character_event = {
 						id = wh_chaos_dwarf.53
 					}
-				} # success, summoned khorne demon
+				}
 			}
+			# failure, demon drags you to the Warp
 			50 = {
 				character_event = {
 					id = schaos.87
@@ -10905,8 +9198,7 @@ character_event = {
 						id = schaos.28
 					}
 				}
-			} # failure, demon drags you to the Warp
-
+			}
 		}
 	}
 }
@@ -11010,15 +9302,10 @@ character_event = {
 }
 
 # Bringing Offering to the Gods
-
 # Variables employed: khorne_favor, nurgle_favor, slaanesh_favor, tzeentch_favor
-
 # 10 necessary to become a Champion
-
 # 30 necessary to become a Chosen
-
 # 50 necessary to become a Prince
-
 # Offering to Khorne
 character_event = {
 	id = schaos.92
@@ -11035,67 +9322,9 @@ character_event = {
 		piety = -1250
 		wealth = -1000
 		hidden_tooltip = {
-			random_list = {
-				9 = {
-					character_event = {
-						id = schaos.92001
-					}
-				}
-				10 = {
-					modifier = {
-						factor = 0.5
-						any_friend = {
-							OR = {
-								trait = khorne_demon
-								trait = nurgle_demon
-								trait = slaanesh_demon
-								trait = tzeentch_demon
-								trait = hashut_kdaai
-							}
-						}
-					}
-					character_event = {
-						id = schaos.92002
-					}
-				}
-				15 = {
-					modifier = {
-						factor = 0
-						trait = khorne_berserker
-					}
-					character_event = {
-						id = schaos.92003
-					}
-				}
-				25 = {
-					character_event = {
-						id = schaos.92004
-					}
-				}
-				25 = {
-					modifier = {
-						factor = 0
-						trait = wroth
-					}
-					character_event = {
-						id = schaos.92005
-					}
-				}
-				5 = {
-					character_event = {
-						id = schaos.92006
-					}
-				}
-				5 = {
-					character_event = {
-						id = schaos.92007
-					}
-				}
-				1 = {
-					character_event = {
-						id = schaos.92008
-					}
-				}
+			set_character_flag = wh_schaos.92_offer_3
+			character_event = {
+				id = schaos.92000
 			}
 		}
 	}
@@ -11109,67 +9338,9 @@ character_event = {
 		piety = -1000
 		wealth = -750
 		hidden_tooltip = {
-			random_list = {
-				5 = {
-					character_event = {
-						id = schaos.92001
-					}
-				}
-				10 = {
-					modifier = {
-						factor = 0.5
-						any_friend = {
-							OR = {
-								trait = khorne_demon
-								trait = nurgle_demon
-								trait = slaanesh_demon
-								trait = tzeentch_demon
-								trait = hashut_kdaai
-							}
-						}
-					}
-					character_event = {
-						id = schaos.92002
-					}
-				}
-				10 = {
-					modifier = {
-						factor = 0
-						trait = khorne_berserker
-					}
-					character_event = {
-						id = schaos.92003
-					}
-				}
-				20 = {
-					character_event = {
-						id = schaos.92004
-					}
-				}
-				25 = {
-					modifier = {
-						factor = 0
-						trait = wroth
-					}
-					character_event = {
-						id = schaos.92005
-					}
-				}
-				10 = {
-					character_event = {
-						id = schaos.92006
-					}
-				}
-				10 = {
-					character_event = {
-						id = schaos.92007
-					}
-				}
-				5 = {
-					character_event = {
-						id = schaos.92008
-					}
-				}
+			set_character_flag = wh_schaos.92_offer_2
+			character_event = {
+				id = schaos.92000
 			}
 		}
 	}
@@ -11183,67 +9354,9 @@ character_event = {
 		piety = -750
 		wealth = -500
 		hidden_tooltip = {
-			random_list = {
-				1 = {
-					character_event = {
-						id = schaos.92001
-					}
-				}
-				4 = {
-					modifier = {
-						factor = 0.5
-						any_friend = {
-							OR = {
-								trait = khorne_demon
-								trait = nurgle_demon
-								trait = slaanesh_demon
-								trait = tzeentch_demon
-								trait = hashut_kdaai
-							}
-						}
-					}
-					character_event = {
-						id = schaos.92002
-					}
-				}
-				10 = {
-					modifier = {
-						factor = 0
-						trait = khorne_berserker
-					}
-					character_event = {
-						id = schaos.92003
-					}
-				}
-				15 = {
-					character_event = {
-						id = schaos.92004
-					}
-				}
-				25 = {
-					modifier = {
-						factor = 0
-						trait = wroth
-					}
-					character_event = {
-						id = schaos.92005
-					}
-				}
-				15 = {
-					character_event = {
-						id = schaos.92006
-					}
-				}
-				10 = {
-					character_event = {
-						id = schaos.92007
-					}
-				}
-				15 = {
-					character_event = {
-						id = schaos.92008
-					}
-				}
+			set_character_flag = wh_schaos.92_offer_1
+			character_event = {
+				id = schaos.92000
 			}
 		}
 	}
@@ -11257,77 +9370,168 @@ character_event = {
 		piety = -500
 		wealth = -250
 		hidden_tooltip = {
-			random_list = {
-				# Prize of your chosing (army, strength, health)
-				# Khorne sends a demon familiar
-				# Khorne makes you berserker
-				# Khorne gives favour (more than usual)
-				# Khorne makes you wroth
-				# Khorne makes you insane
-				# Khorne sends a mutation
-				# Khorne doesn't answer
-				1 = {
-					character_event = {
-						id = schaos.92001
+			character_event = {
+				id = schaos.92000
+			}
+		}
+	}
+}
+
+character_event = {
+	id = schaos.92000
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		random_list = {
+			# Prize of your chosing (army, strength, health)
+			# Khorne sends a demon familiar
+			# Khorne makes you berserker
+			# Khorne gives favour (more than usual)
+			# Khorne makes you wroth
+			# Khorne makes you insane
+			# Khorne sends a mutation
+			# Khorne doesn't answer
+			1 = {
+				modifier = {
+					factor = 9
+					has_character_flag = wh_schaos.92_offer_3
+				}
+				modifier = {
+					factor = 5
+					has_character_flag = wh_schaos.92_offer_2
+				}
+				character_event = {
+					id = schaos.92001
+				}
+			}
+			5 = {
+				modifier = {
+					factor = 2
+					has_character_flag = wh_schaos.92_offer_3
+				}
+				modifier = {
+					factor = 2
+					has_character_flag = wh_schaos.92_offer_2
+				}
+				modifier = {
+					factor = 0.5
+					any_friend = {
+						is_demon_trigger = yes
 					}
 				}
-				4 = {
-					modifier = {
-						factor = 0
-						any_friend = {
-							OR = {
-								trait = khorne_demon
-								trait = nurgle_demon
-								trait = slaanesh_demon
-								trait = tzeentch_demon
-								trait = hashut_kdaai
-							}
-						}
-					}
-					character_event = {
-						id = schaos.92002
+				character_event = {
+					id = schaos.92002
+				}
+			}
+			5 = {
+				modifier = {
+					factor = 3
+					has_character_flag = wh_schaos.92_offer_3
+				}
+				modifier = {
+					factor = 2
+					or = {
+						has_character_flag = wh_schaos.92_offer_2
+						has_character_flag = wh_schaos.92_offer_1
 					}
 				}
-				5 = {
-					modifier = {
-						factor = 0
-						trait = khorne_berserker
-					}
-					character_event = {
-						id = schaos.92003
+				modifier = {
+					factor = 0
+					trait = khorne_berserker
+				}
+				character_event = {
+					id = schaos.92003
+				}
+			}
+			10 = {
+				modifier = {
+					factor = 2.5
+					has_character_flag = wh_schaos.92_offer_3
+				}
+				modifier = {
+					factor = 2
+					has_character_flag = wh_schaos.92_offer_2
+				}
+				modifier = {
+					factor = 1.5
+					has_character_flag = wh_schaos.92_offer_1
+				}
+				character_event = {
+					id = schaos.92004
+				}
+			}
+			15 = {
+				modifier = {
+					factor = 2
+					or = {
+						has_character_flag = wh_schaos.92_offer_3
+						has_character_flag = wh_schaos.92_offer_2
+						has_character_flag = wh_schaos.92_offer_1
 					}
 				}
-				10 = {
-					character_event = {
-						id = schaos.92004
+				modifier = {
+					factor = 0
+					trait = wroth
+				}
+				character_event = {
+					id = schaos.92005
+				}
+			}
+			20 = {
+				modifier = {
+					factor = 0.25
+					has_character_flag = wh_schaos.92_offer_3
+				}
+				modifier = {
+					factor = 0.5
+					has_character_flag = wh_schaos.92_offer_2
+				}
+				modifier = {
+					factor = 0.75
+					has_character_flag = wh_schaos.92_offer_1
+				}
+				character_event = {
+					id = schaos.92006
+				}
+			}
+			20 = {
+				modifier = {
+					factor = 0.25
+					has_character_flag = wh_schaos.92_offer_3
+				}
+				modifier = {
+					factor = 0.5
+					or = {
+						has_character_flag = wh_schaos.92_offer_2
+						has_character_flag = wh_schaos.92_offer_1
 					}
 				}
-				15 = {
-					modifier = {
-						factor = 0
-						trait = wroth
-					}
-					character_event = {
-						id = schaos.92005
-					}
+				character_event = {
+					id = schaos.92007
 				}
-				20 = {
-					character_event = {
-						id = schaos.92006
-					}
+			}
+			25 = {
+				modifier = {
+					factor = 0.04
+					has_character_flag = wh_schaos.92_offer_3
 				}
-				20 = {
-					character_event = {
-						id = schaos.92007
-					}
+				modifier = {
+					factor = 0.2
+					has_character_flag = wh_schaos.92_offer_2
 				}
-				25 = {
-					character_event = {
-						id = schaos.92008
-					}
+				modifier = {
+					factor = 0.6
+					has_character_flag = wh_schaos.92_offer_1
+				}
+				character_event = {
+					id = schaos.92008
 				}
 			}
 		}
+		clr_character_flag = wh_schaos.92_offer_3
+		clr_character_flag = wh_schaos.92_offer_2
+		clr_character_flag = wh_schaos.92_offer_1
 	}
 }
 
@@ -11347,19 +9551,15 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					check_variable = {
 						which = "nurgle_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "slaanesh_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "tzeentch_favor"
 						value = 1
@@ -11371,37 +9571,7 @@ character_event = {
 				value = 4
 			}
 		}
-		if = {
-			limit = {
-				OR = {
-					check_variable = {
-						which = "nurgle_favor"
-						value = 1
-					}
-					check_variable = {
-						which = "slaanesh_favor"
-						value = 1
-					}
-					check_variable = {
-						which = "tzeentch_favor"
-						value = 1
-					}
-				}
-			}
-			set_variable = {
-				which = "nurgle_favor"
-				value = 0
-			}
-			set_variable = {
-				which = "slaanesh_favor"
-				value = 0
-			}
-			set_variable = {
-				which = "tzeentch_favor"
-				value = 0
-			}
-		}
-
+		wh_clear_not_khorne_favor_effect = yes
 	}
 
 	option = {
@@ -11441,65 +9611,7 @@ character_event = {
 	option = {
 		name = EVTOPTBschaos92001
 		change_martial = 2
-		if = {
-			limit = {
-				trait = tough
-			}
-			remove_trait = tough
-			add_trait = strong
-		}
-		if = {
-			limit = {
-				trait = hardy
-			}
-			remove_trait = hardy
-			add_trait = strong
-		}
-		if = {
-			limit = {
-				NOT = {
-					trait = strong
-				}
-				NOT = {
-					trait = tough
-				}
-				NOT = {
-					trait = hardy
-				}
-				NOT = {
-					trait = soft
-				}
-				NOT = {
-					trait = fragile
-				}
-				NOT = {
-					trait = weak
-				}
-
-			}
-			add_trait = tough
-		}
-		if = {
-			limit = {
-				trait = soft
-			}
-			remove_trait = soft
-			add_trait = tough
-		}
-		if = {
-			limit = {
-				trait = fragile
-			}
-			remove_trait = fragile
-			add_trait = hardy
-		}
-		if = {
-			limit = {
-				trait = weak
-			}
-			remove_trait = weak
-			add_trait = hardy
-		}
+		wh_improve_strength_effect = yes
 	}
 
 	option = {
@@ -11524,19 +9636,15 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					check_variable = {
 						which = "nurgle_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "slaanesh_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "tzeentch_favor"
 						value = 1
@@ -11578,7 +9686,6 @@ character_event = {
 				value = -5
 			}
 		}
-
 	}
 
 	option = {
@@ -11618,7 +9725,6 @@ character_event = {
 				25 = {
 					add_trait = proud
 				}
-
 			}
 			add_friend = ROOT
 		}
@@ -11636,19 +9742,15 @@ character_event = {
 	immediate = {
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					check_variable = {
 						which = "nurgle_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "slaanesh_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "tzeentch_favor"
 						value = 1
@@ -11716,19 +9818,15 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					check_variable = {
 						which = "nurgle_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "slaanesh_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "tzeentch_favor"
 						value = 1
@@ -11740,37 +9838,7 @@ character_event = {
 				value = 7
 			}
 		}
-		if = {
-			limit = {
-				OR = {
-					check_variable = {
-						which = "nurgle_favor"
-						value = 1
-					}
-					check_variable = {
-						which = "slaanesh_favor"
-						value = 1
-					}
-					check_variable = {
-						which = "tzeentch_favor"
-						value = 1
-					}
-				}
-			}
-			set_variable = {
-				which = "nurgle_favor"
-				value = 0
-			}
-			set_variable = {
-				which = "slaanesh_favor"
-				value = 0
-			}
-			set_variable = {
-				which = "tzeentch_favor"
-				value = 0
-			}
-		}
-
+		wh_clear_not_khorne_favor_effect = yes
 	}
 
 	option = {
@@ -11789,19 +9857,15 @@ character_event = {
 	immediate = {
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					check_variable = {
 						which = "nurgle_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "slaanesh_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "tzeentch_favor"
 						value = 1
@@ -11863,19 +9927,15 @@ character_event = {
 	immediate = {
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					check_variable = {
 						which = "nurgle_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "slaanesh_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "tzeentch_favor"
 						value = 1
@@ -11917,7 +9977,6 @@ character_event = {
 				value = -2
 			}
 		}
-
 	}
 
 	option = {
@@ -11939,19 +9998,15 @@ character_event = {
 	immediate = {
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					check_variable = {
 						which = "nurgle_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "slaanesh_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "tzeentch_favor"
 						value = 1
@@ -11993,128 +10048,7 @@ character_event = {
 				value = -2
 			}
 		}
-		random_list = {
-			7 = {
-				modifier = {
- 					factor = 0
- 					trait = mut_eyes
 
-				}
-				modifier = {
- 					factor = 1.5
- 					religion = tzeentch
-
-				}
-				character_event = {
-					id = mutation.2
-				}
-			} # thirdeye
-			8 = {
-				character_event = {
-					id = mutation.3
-				}
-			} # spines
-			8 = {
-				character_event = {
-					id = mutation.4
-				}
-			} # smell
-			8 = {
-				character_event = {
-					id = mutation.5
-				}
-			} # scales
-			7 = {
-				modifier = {
- 					factor = 1.75
- 					religion = khorne
-
-				}
-				character_event = {
-					id = mutation.6
-				}
-			} # horns
-			8 = {
-				character_event = {
-					id = mutation.7
-				}
-			} # spines
-			6 = {
-				modifier = {
- 					factor = 0
- 					trait = creature_beastman
-
-				}
-				modifier = {
- 					factor = 0
- 					trait = monstrous
-
-				}
-				modifier = {
- 					factor = 1.75
- 					religion = khorne
-
-				}
-				character_event = {
-					id = mutation.8
-				}
-			} # monstrous
-			8 = {
-				modifier = {
- 					factor = 1.75
- 					religion = nurgle
-
-				}
-				character_event = {
-					id = mutation.9
-				}
-			} # nurgles rot
-			7 = {
-				character_event = {
-					id = mutation.10
-				}
-			} # second head
-			8 = {
-				modifier = {
- 					factor = 1.75
- 					religion = tzeentch
-
-				}
-				character_event = {
-					id = mutation.20005
-				}
-			} # beak
-			7 = {
-				modifier = {
- 					factor = 1.75
- 					religion = slaanesh
-
-				}
-				character_event = {
-					id = mutation.20006
-				}
-			} # tongue
-			8 = {
-				character_event = {
-					id = mutation.20007
-				}
-			} # teeth
-			4 = {
-				character_event = {
-					id = mutation.20008
-				}
-			} # many eyes
-			6 = {
-				modifier = {
- 					factor = 0
- 					trait = mut_eyes
-
-				}
-				character_event = {
-					id = mutation.20009
-				}
-			} # big eyes
-		}
 	}
 }
 
@@ -12154,81 +10088,9 @@ character_event = {
 		piety = -1250
 		wealth = -1000
 		hidden_tooltip = {
-			random_list = {
-				9 = {
-					modifier = {
-						factor = 1.75
-						OR = {
-							trait = magic_potential_1
-							trait = magic_potential_2
-							trait = magic_potential_3
-							trait = magic_potential_4
-							has_character_flag = magic_potential_flag_1
-							has_character_flag = magic_potential_flag_2
-							has_character_flag = magic_potential_flag_3
-							has_character_flag = magic_potential_flag_4
-						}
-					}
-					character_event = {
-						id = schaos.93001
-					}
-				}
-				10 = {
-					modifier = {
-						factor = 0.5
-						any_friend = {
-							OR = {
-								trait = khorne_demon
-								trait = nurgle_demon
-								trait = slaanesh_demon
-								trait = tzeentch_demon
-								trait = hashut_kdaai
-							}
-						}
-					}
-					character_event = {
-						id = schaos.93002
-					}
-				}
-				15 = {
-					modifier = {
-						factor = 0
-						trait = kind
-						trait = content
-					}
-					character_event = {
-						id = schaos.93003
-					}
-				}
-				25 = {
-					character_event = {
-						id = schaos.93004
-					}
-				}
-				25 = {
-					modifier = {
-						factor = 0
-						trait = charitable
-					}
-					character_event = {
-						id = schaos.93005
-					}
-				}
-				5 = {
-					character_event = {
-						id = schaos.93006
-					}
-				}
-				5 = {
-					character_event = {
-						id = schaos.93007
-					}
-				}
-				1 = {
-					character_event = {
-						id = schaos.93008
-					}
-				}
+			set_character_flag = wh_schaos.93_offer_3
+			character_event = {
+				id = schaos.93000
 			}
 		}
 	}
@@ -12242,81 +10104,9 @@ character_event = {
 		piety = -1000
 		wealth = -750
 		hidden_tooltip = {
-			random_list = {
-				5 = {
-					modifier = {
-						factor = 1.75
-						OR = {
-							trait = magic_potential_1
-							trait = magic_potential_2
-							trait = magic_potential_3
-							trait = magic_potential_4
-							has_character_flag = magic_potential_flag_1
-							has_character_flag = magic_potential_flag_2
-							has_character_flag = magic_potential_flag_3
-							has_character_flag = magic_potential_flag_4
-						}
-					}
-					character_event = {
-						id = schaos.93001
-					}
-				}
-				10 = {
-					modifier = {
-						factor = 0.5
-						any_friend = {
-							OR = {
-								trait = khorne_demon
-								trait = nurgle_demon
-								trait = slaanesh_demon
-								trait = tzeentch_demon
-								trait = hashut_kdaai
-							}
-						}
-					}
-					character_event = {
-						id = schaos.93002
-					}
-				}
-				10 = {
-					modifier = {
-						factor = 0
-						trait = kind
-						trait = content
-					}
-					character_event = {
-						id = schaos.93003
-					}
-				}
-				20 = {
-					character_event = {
-						id = schaos.93004
-					}
-				}
-				25 = {
-					modifier = {
-						factor = 0
-						trait = charitable
-					}
-					character_event = {
-						id = schaos.93005
-					}
-				}
-				10 = {
-					character_event = {
-						id = schaos.93006
-					}
-				}
-				10 = {
-					character_event = {
-						id = schaos.93007
-					}
-				}
-				5 = {
-					character_event = {
-						id = schaos.93008
-					}
-				}
+			set_character_flag = wh_schaos.93_offer_2
+			character_event = {
+				id = schaos.93000
 			}
 		}
 	}
@@ -12330,81 +10120,9 @@ character_event = {
 		piety = -750
 		wealth = -500
 		hidden_tooltip = {
-			random_list = {
-				1 = {
-					modifier = {
-						factor = 1.75
-						OR = {
-							trait = magic_potential_1
-							trait = magic_potential_2
-							trait = magic_potential_3
-							trait = magic_potential_4
-							has_character_flag = magic_potential_flag_1
-							has_character_flag = magic_potential_flag_2
-							has_character_flag = magic_potential_flag_3
-							has_character_flag = magic_potential_flag_4
-						}
-					}
-					character_event = {
-						id = schaos.93001
-					}
-				}
-				4 = {
-					modifier = {
-						factor = 0.5
-						any_friend = {
-							OR = {
-								trait = khorne_demon
-								trait = nurgle_demon
-								trait = slaanesh_demon
-								trait = tzeentch_demon
-								trait = hashut_kdaai
-							}
-						}
-					}
-					character_event = {
-						id = schaos.93002
-					}
-				}
-				10 = {
-					modifier = {
-						factor = 0
-						trait = kind
-						trait = content
-					}
-					character_event = {
-						id = schaos.93003
-					}
-				}
-				15 = {
-					character_event = {
-						id = schaos.93004
-					}
-				}
-				25 = {
-					modifier = {
-						factor = 0
-						trait = charitable
-					}
-					character_event = {
-						id = schaos.93005
-					}
-				}
-				15 = {
-					character_event = {
-						id = schaos.93006
-					}
-				}
-				10 = {
-					character_event = {
-						id = schaos.93007
-					}
-				}
-				15 = {
-					character_event = {
-						id = schaos.93008
-					}
-				}
+			set_character_flag = wh_schaos.93_offer_1
+			character_event = {
+				id = schaos.93000
 			}
 		}
 	}
@@ -12418,91 +10136,173 @@ character_event = {
 		piety = -500
 		wealth = -250
 		hidden_tooltip = {
-			random_list = {
-				# Prize of your chosing (magic, love, presents)
-				# Nurgle sends a demon familiar
-				# Nurgle makes you kind
-				# Nurgle gives favour (more than usual)
-				# Nurgle makes you charitable
-				# Nurgle makes you insane
-				# Nurgle sends a mutation
-				# Nurgle doesn't answer
-				1 = {
-					modifier = {
-						factor = 1.75
-						OR = {
-							trait = magic_potential_1
-							trait = magic_potential_2
-							trait = magic_potential_3
-							trait = magic_potential_4
-							has_character_flag = magic_potential_flag_1
-							has_character_flag = magic_potential_flag_2
-							has_character_flag = magic_potential_flag_3
-							has_character_flag = magic_potential_flag_4
-						}
-					}
-					character_event = {
-						id = schaos.93001
+			character_event = {
+				id = schaos.93000
+			}
+		}
+	}
+}
+
+character_event = {
+	id = schaos.93000
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		random_list = {
+			# Prize of your chosing (magic, love, presents)
+			# Nurgle sends a demon familiar
+			# Nurgle makes you kind
+			# Nurgle gives favour (more than usual)
+			# Nurgle makes you charitable
+			# Nurgle makes you insane
+			# Nurgle sends a mutation
+			# Nurgle doesn't answer
+			1 = {
+				modifier = {
+					factor = 9
+					has_character_flag = wh_schaos.93_offer_3
+				}
+				modifier = {
+					factor = 5
+					has_character_flag = wh_schaos.93_offer_2
+				}
+				modifier = {
+					factor = 1.75
+					wh_has_any_magic_potential_trigger = yes
+				}
+				character_event = {
+					id = schaos.93001
+				}
+			}
+			5 = {
+				modifier = {
+					factor = 2
+					has_character_flag = wh_schaos.93_offer_3
+				}
+				modifier = {
+					factor = 2
+					has_character_flag = wh_schaos.93_offer_2
+				}
+				modifier = {
+					factor = 0.5
+					any_friend = {
+						is_demon_trigger = yes
 					}
 				}
-				4 = {
-					modifier = {
-						factor = 0
-						any_friend = {
-							OR = {
-								trait = khorne_demon
-								trait = nurgle_demon
-								trait = slaanesh_demon
-								trait = tzeentch_demon
-								trait = hashut_kdaai
-							}
-						}
-					}
-					character_event = {
-						id = schaos.93002
+				character_event = {
+					id = schaos.93002
+				}
+			}
+			5 = {
+				modifier = {
+					factor = 3
+					has_character_flag = wh_schaos.93_offer_3
+				}
+				modifier = {
+					factor = 2
+					or = {
+						has_character_flag = wh_schaos.93_offer_2
+						has_character_flag = wh_schaos.93_offer_1
 					}
 				}
-				5 = {
-					modifier = {
-						factor = 0
-						trait = kind
-						trait = content
-					}
-					character_event = {
-						id = schaos.93003
+				modifier = {
+					factor = 0
+					trait = kind
+					trait = content
+				}
+				character_event = {
+					id = schaos.93003
+				}
+			}
+			10 = {
+				modifier = {
+					factor = 2.5
+					has_character_flag = wh_schaos.93_offer_3
+				}
+				modifier = {
+					factor = 2
+					has_character_flag = wh_schaos.93_offer_2
+				}
+				modifier = {
+					factor = 1.5
+					has_character_flag = wh_schaos.93_offer_1
+				}
+				character_event = {
+					id = schaos.93004
+				}
+			}
+			15 = {
+				modifier = {
+					factor = 2
+					or = {
+						has_character_flag = wh_schaos.93_offer_3
+						has_character_flag = wh_schaos.93_offer_2
+						has_character_flag = wh_schaos.93_offer_1
 					}
 				}
-				10 = {
-					character_event = {
-						id = schaos.93004
+				modifier = {
+					factor = 0
+					trait = charitable
+				}
+				character_event = {
+					id = schaos.93005
+				}
+			}
+			20 = {
+				modifier = {
+					factor = 0.25
+					has_character_flag = wh_schaos.93_offer_3
+				}
+				modifier = {
+					factor = 0.5
+					has_character_flag = wh_schaos.93_offer_2
+				}
+				modifier = {
+					factor = 0.75
+					has_character_flag = wh_schaos.93_offer_1
+				}
+				character_event = {
+					id = schaos.93006
+				}
+			}
+			20 = {
+				modifier = {
+					factor = 0.25
+					has_character_flag = wh_schaos.93_offer_3
+				}
+				modifier = {
+					factor = 0.5
+					or = {
+						has_character_flag = wh_schaos.93_offer_2
+						has_character_flag = wh_schaos.93_offer_1
 					}
 				}
-				15 = {
-					modifier = {
-						factor = 0
-						trait = charitable
-					}
-					character_event = {
-						id = schaos.93005
-					}
+				character_event = {
+					id = schaos.93007
 				}
-				20 = {
-					character_event = {
-						id = schaos.93006
-					}
+			}
+			25 = {
+				modifier = {
+					factor = 0.04
+					has_character_flag = wh_schaos.93_offer_3
 				}
-				20 = {
-					character_event = {
-						id = schaos.93007
-					}
+				modifier = {
+					factor = 0.2
+					has_character_flag = wh_schaos.93_offer_2
 				}
-				25 = {
-					character_event = {
-						id = schaos.93008
-					}
+				modifier = {
+					factor = 0.6
+					has_character_flag = wh_schaos.93_offer_1
+				}
+				character_event = {
+					id = schaos.93008
 				}
 			}
 		}
+		clr_character_flag = wh_schaos.93_offer_3
+		clr_character_flag = wh_schaos.93_offer_2
+		clr_character_flag = wh_schaos.93_offer_1
 	}
 }
 
@@ -12522,19 +10322,15 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					check_variable = {
 						which = "khorne_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "slaanesh_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "tzeentch_favor"
 						value = 1
@@ -12546,116 +10342,19 @@ character_event = {
 				value = 4
 			}
 		}
-		if = {
-			limit = {
-				OR = {
-					check_variable = {
-						which = "khorne_favor"
-						value = 1
-					}
-					check_variable = {
-						which = "slaanesh_favor"
-						value = 1
-					}
-					check_variable = {
-						which = "tzeentch_favor"
-						value = 1
-					}
-				}
-			}
-			set_variable = {
-				which = "khorne_favor"
-				value = 0
-			}
-			set_variable = {
-				which = "slaanesh_favor"
-				value = 0
-			}
-			set_variable = {
-				which = "tzeentch_favor"
-				value = 0
-			}
-		}
-
+		wh_clear_not_nurgule_favor_effect = yes
 	}
 
 	option = {
 		name = EVTOPTAschaos93001
 		trigger = {
-			NOT = {
-				trait = hedge_wizard
-			}
-			NOT = {
-				trait = mage_apprentice
-			}
-			NOT = {
-				has_character_modifier = magic_power_1
-			}
-			NOT = {
-				has_character_modifier = magic_power_2
-			}
-			NOT = {
-				has_character_modifier = magic_power_3
-			}
-			NOT = {
-				has_character_modifier = magic_power_4
-			}
+			wh_is_mage_or_apprentice_trigger = no
 		}
 		add_trait = lore_nurgle
+		wh_reveal_magic_potential_effect = yes
 		if = {
 			limit = {
-				has_character_flag = magic_potential_flag_1
-			}
-			clr_character_flag = magic_potential_flag_1
-			add_trait = magic_potential_1
-		}
-		if = {
-			limit = {
-				has_character_flag = magic_potential_flag_2
-			}
-			clr_character_flag = magic_potential_flag_2
-			add_trait = magic_potential_2
-		}
-		if = {
-			limit = {
-				has_character_flag = magic_potential_flag_3
-			}
-			clr_character_flag = magic_potential_flag_3
-			add_trait = magic_potential_3
-		}
-		if = {
-			limit = {
-				has_character_flag = magic_potential_flag_4
-			}
-			clr_character_flag = magic_potential_flag_4
-			add_trait = magic_potential_4
-		}
-		if = {
-			limit = {
-				NOT = {
-					trait = magic_potential_1
-				}
-				NOT = {
-					trait = magic_potential_2
-				}
-				NOT = {
-					trait = magic_potential_3
-				}
-				NOT = {
-					trait = magic_potential_4
-				}
-				NOT = {
-					has_character_flag = magic_potential_flag_1
-				}
-				NOT = {
-					has_character_flag = magic_potential_flag_2
-				}
-				NOT = {
-					has_character_flag = magic_potential_flag_3
-				}
-				NOT = {
-					has_character_flag = magic_potential_flag_4
-				}
+				wh_has_any_magic_potential_trigger = no
 			}
 			add_trait = magic_potential_2
 		}
@@ -12673,7 +10372,6 @@ character_event = {
 					who = FROM
 				}
 			}
-
 		}
 	}
 
@@ -12684,7 +10382,6 @@ character_event = {
 				chance = 50
 				add_trait = has_nurgles_rot
 			}
-
 		}
 	}
 }
@@ -12705,19 +10402,15 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					check_variable = {
 						which = "khorne_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "slaanesh_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "tzeentch_favor"
 						value = 1
@@ -12759,7 +10452,6 @@ character_event = {
 				value = -5
 			}
 		}
-
 	}
 
 	option = {
@@ -12803,7 +10495,6 @@ character_event = {
 				25 = {
 					add_trait = has_measles
 				}
-
 			}
 			random_list = {
 				25 = {
@@ -12818,7 +10509,6 @@ character_event = {
 				25 = {
 					add_trait = has_typhus
 				}
-
 			}
 			add_friend = ROOT
 		}
@@ -12836,19 +10526,15 @@ character_event = {
 	immediate = {
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					check_variable = {
 						which = "khorne_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "slaanesh_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "tzeentch_favor"
 						value = 1
@@ -12890,7 +10576,6 @@ character_event = {
 				value = -4
 			}
 		}
-
 	}
 
 	option = {
@@ -12917,19 +10602,15 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					check_variable = {
 						which = "khorne_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "slaanesh_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "tzeentch_favor"
 						value = 1
@@ -12941,37 +10622,7 @@ character_event = {
 				value = 7
 			}
 		}
-		if = {
-			limit = {
-				OR = {
-					check_variable = {
-						which = "khorne_favor"
-						value = 1
-					}
-					check_variable = {
-						which = "slaanesh_favor"
-						value = 1
-					}
-					check_variable = {
-						which = "tzeentch_favor"
-						value = 1
-					}
-				}
-			}
-			set_variable = {
-				which = "khorne_favor"
-				value = 0
-			}
-			set_variable = {
-				which = "slaanesh_favor"
-				value = 0
-			}
-			set_variable = {
-				which = "tzeentch_favor"
-				value = 0
-			}
-		}
-
+		wh_clear_not_nurgule_favor_effect = yes
 	}
 
 	option = {
@@ -12990,19 +10641,15 @@ character_event = {
 	immediate = {
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					check_variable = {
 						which = "khorne_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "slaanesh_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "tzeentch_favor"
 						value = 1
@@ -13064,19 +10711,15 @@ character_event = {
 	immediate = {
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					check_variable = {
 						which = "khorne_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "slaanesh_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "tzeentch_favor"
 						value = 1
@@ -13118,7 +10761,6 @@ character_event = {
 				value = -2
 			}
 		}
-
 	}
 
 	option = {
@@ -13140,19 +10782,15 @@ character_event = {
 	immediate = {
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					check_variable = {
 						which = "khorne_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "slaanesh_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "tzeentch_favor"
 						value = 1
@@ -13194,128 +10832,7 @@ character_event = {
 				value = -2
 			}
 		}
-		random_list = {
-			7 = {
-				modifier = {
- 					factor = 0
- 					trait = mut_eyes
-
-				}
-				modifier = {
- 					factor = 1.5
- 					religion = tzeentch
-
-				}
-				character_event = {
-					id = mutation.2
-				}
-			} # thirdeye
-			8 = {
-				character_event = {
-					id = mutation.3
-				}
-			} # spines
-			8 = {
-				character_event = {
-					id = mutation.4
-				}
-			} # smell
-			8 = {
-				character_event = {
-					id = mutation.5
-				}
-			} # scales
-			7 = {
-				modifier = {
- 					factor = 1.75
- 					religion = khorne
-
-				}
-				character_event = {
-					id = mutation.6
-				}
-			} # horns
-			8 = {
-				character_event = {
-					id = mutation.7
-				}
-			} # spines
-			6 = {
-				modifier = {
- 					factor = 0
- 					trait = creature_beastman
-
-				}
-				modifier = {
- 					factor = 0
- 					trait = monstrous
-
-				}
-				modifier = {
- 					factor = 1.75
- 					religion = khorne
-
-				}
-				character_event = {
-					id = mutation.8
-				}
-			} # monstrous
-			8 = {
-				modifier = {
- 					factor = 1.75
- 					religion = nurgle
-
-				}
-				character_event = {
-					id = mutation.9
-				}
-			} # nurgles rot
-			7 = {
-				character_event = {
-					id = mutation.10
-				}
-			} # second head
-			8 = {
-				modifier = {
- 					factor = 1.75
- 					religion = tzeentch
-
-				}
-				character_event = {
-					id = mutation.20005
-				}
-			} # beak
-			7 = {
-				modifier = {
- 					factor = 1.75
- 					religion = slaanesh
-
-				}
-				character_event = {
-					id = mutation.20006
-				}
-			} # tongue
-			8 = {
-				character_event = {
-					id = mutation.20007
-				}
-			} # teeth
-			4 = {
-				character_event = {
-					id = mutation.20008
-				}
-			} # many eyes
-			6 = {
-				modifier = {
- 					factor = 0
- 					trait = mut_eyes
-
-				}
-				character_event = {
-					id = mutation.20009
-				}
-			} # big eyes
-		}
+		wh_add_mutation_effect = yes
 	}
 }
 
@@ -13355,80 +10872,9 @@ character_event = {
 		piety = -1250
 		wealth = -1000
 		hidden_tooltip = {
-			random_list = {
-				9 = {
-					modifier = {
-						factor = 1.75
-						OR = {
-							trait = magic_potential_1
-							trait = magic_potential_2
-							trait = magic_potential_3
-							trait = magic_potential_4
-							has_character_flag = magic_potential_flag_1
-							has_character_flag = magic_potential_flag_2
-							has_character_flag = magic_potential_flag_3
-							has_character_flag = magic_potential_flag_4
-						}
-					}
-					character_event = {
-						id = schaos.94001
-					}
-				}
-				10 = {
-					modifier = {
-						factor = 0.5
-						any_friend = {
-							OR = {
-								trait = khorne_demon
-								trait = nurgle_demon
-								trait = slaanesh_demon
-								trait = tzeentch_demon
-								trait = hashut_kdaai
-							}
-						}
-					}
-					character_event = {
-						id = schaos.94002
-					}
-				}
-				15 = {
-					modifier = {
-						factor = 0
-						has_artifact = pegasus_mount
-					}
-					character_event = {
-						id = schaos.94003
-					}
-				}
-				25 = {
-					character_event = {
-						id = schaos.94004
-					}
-				}
-				25 = {
-					modifier = {
-						factor = 0
-						trait = lustful
-					}
-					character_event = {
-						id = schaos.94005
-					}
-				}
-				5 = {
-					character_event = {
-						id = schaos.94006
-					}
-				}
-				5 = {
-					character_event = {
-						id = schaos.94007
-					}
-				}
-				1 = {
-					character_event = {
-						id = schaos.94008
-					}
-				}
+			set_character_flag = wh_schaos.94_offer_3
+			character_event = {
+				id = schaos.94000
 			}
 		}
 	}
@@ -13442,80 +10888,9 @@ character_event = {
 		piety = -1000
 		wealth = -750
 		hidden_tooltip = {
-			random_list = {
-				5 = {
-					modifier = {
-						factor = 1.75
-						OR = {
-							trait = magic_potential_1
-							trait = magic_potential_2
-							trait = magic_potential_3
-							trait = magic_potential_4
-							has_character_flag = magic_potential_flag_1
-							has_character_flag = magic_potential_flag_2
-							has_character_flag = magic_potential_flag_3
-							has_character_flag = magic_potential_flag_4
-						}
-					}
-					character_event = {
-						id = schaos.94001
-					}
-				}
-				10 = {
-					modifier = {
-						factor = 0
-						any_friend = {
-							OR = {
-								trait = khorne_demon
-								trait = nurgle_demon
-								trait = slaanesh_demon
-								trait = tzeentch_demon
-								trait = hashut_kdaai
-							}
-						}
-					}
-					character_event = {
-						id = schaos.94002
-					}
-				}
-				10 = {
-					modifier = {
-						factor = 0
-						has_artifact = pegasus_mount
-					}
-					character_event = {
-						id = schaos.94003
-					}
-				}
-				20 = {
-					character_event = {
-						id = schaos.94004
-					}
-				}
-				25 = {
-					modifier = {
-						factor = 0
-						trait = lustful
-					}
-					character_event = {
-						id = schaos.94005
-					}
-				}
-				10 = {
-					character_event = {
-						id = schaos.94006
-					}
-				}
-				10 = {
-					character_event = {
-						id = schaos.94007
-					}
-				}
-				5 = {
-					character_event = {
-						id = schaos.94008
-					}
-				}
+			set_character_flag = wh_schaos.94_offer_2
+			character_event = {
+				id = schaos.94000
 			}
 		}
 	}
@@ -13529,80 +10904,9 @@ character_event = {
 		piety = -750
 		wealth = -500
 		hidden_tooltip = {
-			random_list = {
-				1 = {
-					modifier = {
-						factor = 1.75
-						OR = {
-							trait = magic_potential_1
-							trait = magic_potential_2
-							trait = magic_potential_3
-							trait = magic_potential_4
-							has_character_flag = magic_potential_flag_1
-							has_character_flag = magic_potential_flag_2
-							has_character_flag = magic_potential_flag_3
-							has_character_flag = magic_potential_flag_4
-						}
-					}
-					character_event = {
-						id = schaos.94001
-					}
-				}
-				4 = {
-					modifier = {
-						factor = 0
-						any_friend = {
-							OR = {
-								trait = khorne_demon
-								trait = nurgle_demon
-								trait = slaanesh_demon
-								trait = tzeentch_demon
-								trait = hashut_kdaai
-							}
-						}
-					}
-					character_event = {
-						id = schaos.94002
-					}
-				}
-				10 = {
-					modifier = {
-						factor = 0
-						has_artifact = pegasus_mount
-					}
-					character_event = {
-						id = schaos.94003
-					}
-				}
-				15 = {
-					character_event = {
-						id = schaos.94004
-					}
-				}
-				25 = {
-					modifier = {
-						factor = 0
-						trait = lustful
-					}
-					character_event = {
-						id = schaos.94005
-					}
-				}
-				15 = {
-					character_event = {
-						id = schaos.94006
-					}
-				}
-				10 = {
-					character_event = {
-						id = schaos.94007
-					}
-				}
-				15 = {
-					character_event = {
-						id = schaos.94008
-					}
-				}
+			set_character_flag = wh_schaos.94_offer_1
+			character_event = {
+				id = schaos.94000
 			}
 		}
 	}
@@ -13616,87 +10920,167 @@ character_event = {
 		piety = -500
 		wealth = -250
 		hidden_tooltip = {
-			random_list = {
-				# Prize of your chosing (magic, beauty, healing)
-				# Slaanesh sends a demon familiar
-				# Slaanesh sends a pegasus
-				# Slaanesh gives favour (more than usual)
-				# Slaanesh makes you lustful
-				# Slaanesh makes you insane
-				# Slaanesh sends a mutation
-				# Slaanesh doesn't answer
-				1 = {
-					modifier = {
-						factor = 1.75
-						OR = {
-							trait = magic_potential_1
-							trait = magic_potential_2
-							trait = magic_potential_3
-							trait = magic_potential_4
-							has_character_flag = magic_potential_flag_1
-							has_character_flag = magic_potential_flag_2
-							has_character_flag = magic_potential_flag_3
-							has_character_flag = magic_potential_flag_4
-						}
-					}
-					character_event = {
-						id = schaos.94001
+			character_event = {
+				id = schaos.94000
+			}
+		}
+	}
+}
+
+character_event = {
+	id = schaos.94000
+	desc = EVTDESCschaos94
+	picture = GFX_evt_slaanesh
+	is_triggered_only = yes
+
+	immediate = {
+		random_list = {
+			# Prize of your chosing (magic, beauty, healing)
+			# Slaanesh sends a demon familiar
+			# Slaanesh sends a pegasus
+			# Slaanesh gives favour (more than usual)
+			# Slaanesh makes you lustful
+			# Slaanesh makes you insane
+			# Slaanesh sends a mutation
+			# Slaanesh doesn't answer
+			1 = {
+				modifier = {
+					factor = 9
+					has_character_flag = wh_schaos.94_offer_3
+				}
+				modifier = {
+					factor = 5
+					has_character_flag = wh_schaos.94_offer_2
+				}
+				modifier = {
+					factor = 1.75
+					wh_has_any_magic_potential_trigger = yes
+				}
+				character_event = {
+					id = schaos.94001
+				}
+			}
+			5 = {
+				modifier = {
+					factor = 2
+					has_character_flag = wh_schaos.94_offer_3
+				}
+				modifier = {
+					factor = 2
+					has_character_flag = wh_schaos.94_offer_2
+				}
+				modifier = {
+					factor = 0.5
+					any_friend = {
+						is_demon_trigger = yes
 					}
 				}
-				4 = {
-					modifier = {
-						factor = 0
-						any_friend = {
-							OR = {
-								trait = khorne_demon
-								trait = nurgle_demon
-								trait = slaanesh_demon
-								trait = tzeentch_demon
-								trait = hashut_kdaai
-							}
-						}
-					}
-					character_event = {
-						id = schaos.94002
+				character_event = {
+					id = schaos.94002
+				}
+			}
+			5 = {
+				modifier = {
+					factor = 3
+					has_character_flag = wh_schaos.94_offer_3
+				}
+				modifier = {
+					factor = 2
+					or = {
+						has_character_flag = wh_schaos.94_offer_2
+						has_character_flag = wh_schaos.94_offer_1
 					}
 				}
-				5 = {
-					modifier = {
-						factor = 0
-						has_artifact = pegasus_mount
-					}
-					character_event = {
-						id = schaos.94003
+				modifier = {
+					factor = 0
+					has_artifact = pegasus_mount
+				}
+				character_event = {
+					id = schaos.94003
+				}
+			}
+			10 = {
+				modifier = {
+					factor = 2.5
+					has_character_flag = wh_schaos.94_offer_3
+				}
+				modifier = {
+					factor = 2
+					has_character_flag = wh_schaos.94_offer_2
+				}
+				modifier = {
+					factor = 1.5
+					has_character_flag = wh_schaos.94_offer_1
+				}
+				character_event = {
+					id = schaos.94004
+				}
+			}
+			15 = {
+				modifier = {
+					factor = 2
+					or = {
+						has_character_flag = wh_schaos.94_offer_3
+						has_character_flag = wh_schaos.94_offer_2
+						has_character_flag = wh_schaos.94_offer_1
 					}
 				}
-				10 = {
-					character_event = {
-						id = schaos.94004
+				modifier = {
+					factor = 0
+					trait = lustful
+				}
+				character_event = {
+					id = schaos.94005
+				}
+			}
+			20 = {
+				modifier = {
+					factor = 0.25
+					has_character_flag = wh_schaos.94_offer_3
+				}
+				modifier = {
+					factor = 0.5
+					has_character_flag = wh_schaos.94_offer_2
+				}
+				modifier = {
+					factor = 0.75
+					has_character_flag = wh_schaos.94_offer_1
+				}
+				character_event = {
+					id = schaos.94006
+				}
+			}
+			20 = {
+				modifier = {
+					factor = 0.25
+					has_character_flag = wh_schaos.94_offer_3
+				}
+				modifier = {
+					factor = 0.5
+					or = {
+						has_character_flag = wh_schaos.94_offer_2
+						has_character_flag = wh_schaos.94_offer_1
 					}
 				}
-				15 = {
-					modifier = {
-						factor = 0
-						trait = lustful
-					}
-					character_event = {
-						id = schaos.94005
-					}
+				character_event = {
+					id = schaos.94007
 				}
-				20 = {
-					character_event = {
-						id = schaos.94006
-					}
+			}
+			25 = {
+				modifier = {
+					factor = 0.04
+					has_character_flag = wh_schaos.94_offer_3
 				}
-				20 = {
-					character_event = {
-						id = schaos.94007
-					}
+				modifier = {
+					factor = 0.2
+					has_character_flag = wh_schaos.94_offer_2
 				}
-				25 = {
-					character_event = {
-						id = schaos.94008
-					}
+				modifier = {
+					factor = 0.6
+					has_character_flag = wh_schaos.94_offer_1
+				}
+				character_event = {
+					id = schaos.94008
 				}
 			}
 		}
@@ -13719,19 +11103,15 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					check_variable = {
 						which = "khorne_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "nurgle_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "tzeentch_favor"
 						value = 1
@@ -13743,116 +11123,19 @@ character_event = {
 				value = 4
 			}
 		}
-		if = {
-			limit = {
-				OR = {
-					check_variable = {
-						which = "khorne_favor"
-						value = 1
-					}
-					check_variable = {
-						which = "nurgle_favor"
-						value = 1
-					}
-					check_variable = {
-						which = "tzeentch_favor"
-						value = 1
-					}
-				}
-			}
-			set_variable = {
-				which = "khorne_favor"
-				value = 0
-			}
-			set_variable = {
-				which = "nurgle_favor"
-				value = 0
-			}
-			set_variable = {
-				which = "tzeentch_favor"
-				value = 0
-			}
-		}
-
+		wh_clear_not_slaanesh_favor_effect = yes
 	}
 
 	option = {
 		name = EVTOPTAschaos94001
 		trigger = {
-			NOT = {
-				trait = hedge_wizard
-			}
-			NOT = {
-				trait = mage_apprentice
-			}
-			NOT = {
-				has_character_modifier = magic_power_1
-			}
-			NOT = {
-				has_character_modifier = magic_power_2
-			}
-			NOT = {
-				has_character_modifier = magic_power_3
-			}
-			NOT = {
-				has_character_modifier = magic_power_4
-			}
+			wh_is_mage_or_apprentice_trigger = no
 		}
 		add_trait = lore_slaanesh
+		wh_reveal_magic_potential_effect = yes
 		if = {
 			limit = {
-				has_character_flag = magic_potential_flag_1
-			}
-			clr_character_flag = magic_potential_flag_1
-			add_trait = magic_potential_1
-		}
-		if = {
-			limit = {
-				has_character_flag = magic_potential_flag_2
-			}
-			clr_character_flag = magic_potential_flag_2
-			add_trait = magic_potential_2
-		}
-		if = {
-			limit = {
-				has_character_flag = magic_potential_flag_3
-			}
-			clr_character_flag = magic_potential_flag_3
-			add_trait = magic_potential_3
-		}
-		if = {
-			limit = {
-				has_character_flag = magic_potential_flag_4
-			}
-			clr_character_flag = magic_potential_flag_4
-			add_trait = magic_potential_4
-		}
-		if = {
-			limit = {
-				NOT = {
-					trait = magic_potential_1
-				}
-				NOT = {
-					trait = magic_potential_2
-				}
-				NOT = {
-					trait = magic_potential_3
-				}
-				NOT = {
-					trait = magic_potential_4
-				}
-				NOT = {
-					has_character_flag = magic_potential_flag_1
-				}
-				NOT = {
-					has_character_flag = magic_potential_flag_2
-				}
-				NOT = {
-					has_character_flag = magic_potential_flag_3
-				}
-				NOT = {
-					has_character_flag = magic_potential_flag_4
-				}
+				wh_has_any_magic_potential_trigger = no
 			}
 			add_trait = magic_potential_2
 		}
@@ -13862,106 +11145,13 @@ character_event = {
 	option = {
 		name = EVTOPTBschaos94001
 		change_intrigue = 1
-		if = {
-			limit = {
-				trait = pretty
-			}
-			remove_trait = pretty
-			add_trait = beautiful
-		}
-		if = {
-			limit = {
-				trait = fair
-			}
-			remove_trait = fair
-			add_trait = beautiful
-		}
-		if = {
-			limit = {
-				NOT = {
-					trait = beautiful
-				}
-				NOT = {
-					trait = pretty
-				}
-				NOT = {
-					trait = fair
-				}
-				NOT = {
-					trait = plain
-				}
-				NOT = {
-					trait = ugly
-				}
-				NOT = {
-					trait = unsightly
-				}
-
-			}
-			add_trait = pretty
-		}
-		if = {
-			limit = {
-				trait = plain
-			}
-			remove_trait = plain
-			add_trait = pretty
-		}
-		if = {
-			limit = {
-				trait = ugly
-			}
-			remove_trait = ugly
-			add_trait = fair
-		}
-		if = {
-			limit = {
-				trait = unsightly
-			}
-			remove_trait = unsightly
-			add_trait = fair
-		}
+		wh_improve_beauty_effect = yes
 	}
 
 	option = {
 		name = EVTOPTCschaos94001
 		health = 5
-		if = {
-			limit = {
-				trait = wounded
-			}
-			remove_trait = wounded
-		}
-		if = {
-			limit = {
-				trait = maimed
-			}
-			remove_trait = maimed
-		}
-		if = {
-			limit = {
-				trait = blinded
-			}
-			remove_trait = blinded
-		}
-		if = {
-			limit = {
-				trait = eunuch
-			}
-			remove_trait = eunuch
-		}
-		if = {
-			limit = {
-				trait = incapable
-			}
-			remove_trait = incapable
-		}
-		if = {
-			limit = {
-				trait = disfigured
-			}
-			remove_trait = disfigured
-		}
+		wh_heal_injury_effect = yes
 	}
 }
 
@@ -13981,19 +11171,15 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					check_variable = {
 						which = "khorne_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "nurgle_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "tzeentch_favor"
 						value = 1
@@ -14102,19 +11288,15 @@ character_event = {
 	immediate = {
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					check_variable = {
 						which = "khorne_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "nurgle_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "tzeentch_favor"
 						value = 1
@@ -14182,19 +11364,15 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					check_variable = {
 						which = "khorne_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "nurgle_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "tzeentch_favor"
 						value = 1
@@ -14206,37 +11384,7 @@ character_event = {
 				value = 7
 			}
 		}
-		if = {
-			limit = {
-				OR = {
-					check_variable = {
-						which = "khorne_favor"
-						value = 1
-					}
-					check_variable = {
-						which = "nurgle_favor"
-						value = 1
-					}
-					check_variable = {
-						which = "tzeentch_favor"
-						value = 1
-					}
-				}
-			}
-			set_variable = {
-				which = "khorne_favor"
-				value = 0
-			}
-			set_variable = {
-				which = "nurgle_favor"
-				value = 0
-			}
-			set_variable = {
-				which = "tzeentch_favor"
-				value = 0
-			}
-		}
-
+		wh_clear_not_slaanesh_favor_effect = yes
 	}
 
 	option = {
@@ -14255,19 +11403,15 @@ character_event = {
 	immediate = {
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					check_variable = {
 						which = "khorne_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "nurgle_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "tzeentch_favor"
 						value = 1
@@ -14329,19 +11473,15 @@ character_event = {
 	immediate = {
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					check_variable = {
 						which = "khorne_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "nurgle_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "tzeentch_favor"
 						value = 1
@@ -14405,19 +11545,15 @@ character_event = {
 	immediate = {
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					check_variable = {
 						which = "khorne_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "nurgle_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "tzeentch_favor"
 						value = 1
@@ -14459,128 +11595,7 @@ character_event = {
 				value = -2
 			}
 		}
-		random_list = {
-			7 = {
-				modifier = {
- 					factor = 0
- 					trait = mut_eyes
-
-				}
-				modifier = {
- 					factor = 1.5
- 					religion = tzeentch
-
-				}
-				character_event = {
-					id = mutation.2
-				}
-			} # thirdeye
-			8 = {
-				character_event = {
-					id = mutation.3
-				}
-			} # spines
-			8 = {
-				character_event = {
-					id = mutation.4
-				}
-			} # smell
-			8 = {
-				character_event = {
-					id = mutation.5
-				}
-			} # scales
-			7 = {
-				modifier = {
- 					factor = 1.75
- 					religion = khorne
-
-				}
-				character_event = {
-					id = mutation.6
-				}
-			} # horns
-			8 = {
-				character_event = {
-					id = mutation.7
-				}
-			} # spines
-			6 = {
-				modifier = {
- 					factor = 0
- 					trait = creature_beastman
-
-				}
-				modifier = {
- 					factor = 0
- 					trait = monstrous
-
-				}
-				modifier = {
- 					factor = 1.75
- 					religion = khorne
-
-				}
-				character_event = {
-					id = mutation.8
-				}
-			} # monstrous
-			8 = {
-				modifier = {
- 					factor = 1.75
- 					religion = nurgle
-
-				}
-				character_event = {
-					id = mutation.9
-				}
-			} # nurgles rot
-			7 = {
-				character_event = {
-					id = mutation.10
-				}
-			} # second head
-			8 = {
-				modifier = {
- 					factor = 1.75
- 					religion = tzeentch
-
-				}
-				character_event = {
-					id = mutation.20005
-				}
-			} # beak
-			7 = {
-				modifier = {
- 					factor = 1.75
- 					religion = slaanesh
-
-				}
-				character_event = {
-					id = mutation.20006
-				}
-			} # tongue
-			8 = {
-				character_event = {
-					id = mutation.20007
-				}
-			} # teeth
-			4 = {
-				character_event = {
-					id = mutation.20008
-				}
-			} # many eyes
-			6 = {
-				modifier = {
- 					factor = 0
- 					trait = mut_eyes
-
-				}
-				character_event = {
-					id = mutation.20009
-				}
-			} # big eyes
-		}
+		wh_add_mutation_effect = yes
 	}
 }
 
@@ -14620,100 +11635,9 @@ character_event = {
 		piety = -1250
 		wealth = -1000
 		hidden_tooltip = {
-			random_list = {
-				9 = {
-					modifier = {
-						factor = 1.75
-						OR = {
-							trait = magic_potential_1
-							trait = magic_potential_2
-							trait = magic_potential_3
-							trait = magic_potential_4
-							has_character_flag = magic_potential_flag_1
-							has_character_flag = magic_potential_flag_2
-							has_character_flag = magic_potential_flag_3
-							has_character_flag = magic_potential_flag_4
-						}
-					}
-					character_event = {
-						id = schaos.95001
-					}
-				}
-				10 = {
-					modifier = {
-						factor = 0.05
-						any_friend = {
-							OR = {
-								trait = khorne_demon
-								trait = nurgle_demon
-								trait = slaanesh_demon
-								trait = tzeentch_demon
-								trait = hashut_kdaai
-							}
-						}
-					}
-					character_event = {
-						id = schaos.95002
-					}
-				}
-				15 = {
-					modifier = {
-						factor = 1.5
-						OR = {
-							trait = magic_potential_1
-							trait = magic_potential_2
-							trait = magic_potential_3
-							trait = magic_potential_4
-							has_character_flag = magic_potential_flag_1
-							has_character_flag = magic_potential_flag_2
-							has_character_flag = magic_potential_flag_3
-							has_character_flag = magic_potential_flag_4
-						}
-					}
-					modifier = {
-						factor = 0
-						OR = {
-							trait = hedge_wizard
-							trait = mage_apprentice
-							has_character_modifier = magic_power_1
-							has_character_modifier = magic_power_2
-							has_character_modifier = magic_power_3
-							has_character_modifier = magic_power_4
-						}
-					}
-					character_event = {
-						id = schaos.95003
-					}
-				}
-				25 = {
-					character_event = {
-						id = schaos.95004
-					}
-				}
-				25 = {
-					modifier = {
-						factor = 0
-						trait = ambitious
-					}
-					character_event = {
-						id = schaos.95005
-					}
-				}
-				5 = {
-					character_event = {
-						id = schaos.95006
-					}
-				}
-				5 = {
-					character_event = {
-						id = schaos.95007
-					}
-				}
-				1 = {
-					character_event = {
-						id = schaos.95008
-					}
-				}
+			set_character_flag = wh_schaos.95_offer_3
+			character_event = {
+				id = schaos.95000
 			}
 		}
 	}
@@ -14727,100 +11651,9 @@ character_event = {
 		piety = -1000
 		wealth = -750
 		hidden_tooltip = {
-			random_list = {
-				5 = {
-					modifier = {
-						factor = 1.75
-						OR = {
-							trait = magic_potential_1
-							trait = magic_potential_2
-							trait = magic_potential_3
-							trait = magic_potential_4
-							has_character_flag = magic_potential_flag_1
-							has_character_flag = magic_potential_flag_2
-							has_character_flag = magic_potential_flag_3
-							has_character_flag = magic_potential_flag_4
-						}
-					}
-					character_event = {
-						id = schaos.95001
-					}
-				}
-				10 = {
-					modifier = {
-						factor = 0.5
-						any_friend = {
-							OR = {
-								trait = khorne_demon
-								trait = nurgle_demon
-								trait = slaanesh_demon
-								trait = tzeentch_demon
-								trait = hashut_kdaai
-							}
-						}
-					}
-					character_event = {
-						id = schaos.95002
-					}
-				}
-				10 = {
-					modifier = {
-						factor = 1.5
-						OR = {
-							trait = magic_potential_1
-							trait = magic_potential_2
-							trait = magic_potential_3
-							trait = magic_potential_4
-							has_character_flag = magic_potential_flag_1
-							has_character_flag = magic_potential_flag_2
-							has_character_flag = magic_potential_flag_3
-							has_character_flag = magic_potential_flag_4
-						}
-					}
-					modifier = {
-						factor = 0
-						OR = {
-							trait = hedge_wizard
-							trait = mage_apprentice
-							has_character_modifier = magic_power_1
-							has_character_modifier = magic_power_2
-							has_character_modifier = magic_power_3
-							has_character_modifier = magic_power_4
-						}
-					}
-					character_event = {
-						id = schaos.95003
-					}
-				}
-				20 = {
-					character_event = {
-						id = schaos.95004
-					}
-				}
-				25 = {
-					modifier = {
-						factor = 0
-						trait = ambitious
-					}
-					character_event = {
-						id = schaos.95005
-					}
-				}
-				10 = {
-					character_event = {
-						id = schaos.95006
-					}
-				}
-				10 = {
-					character_event = {
-						id = schaos.95007
-					}
-				}
-				5 = {
-					character_event = {
-						id = schaos.95008
-					}
-				}
+			set_character_flag = wh_schaos.95_offer_2
+			character_event = {
+				id = schaos.95000
 			}
 		}
 	}
@@ -14834,100 +11667,9 @@ character_event = {
 		piety = -750
 		wealth = -500
 		hidden_tooltip = {
-			random_list = {
-				1 = {
-					modifier = {
-						factor = 1.75
-						OR = {
-							trait = magic_potential_1
-							trait = magic_potential_2
-							trait = magic_potential_3
-							trait = magic_potential_4
-							has_character_flag = magic_potential_flag_1
-							has_character_flag = magic_potential_flag_2
-							has_character_flag = magic_potential_flag_3
-							has_character_flag = magic_potential_flag_4
-						}
-					}
-					character_event = {
-						id = schaos.95001
-					}
-				}
-				4 = {
-					modifier = {
-						factor = 0.5
-						any_friend = {
-							OR = {
-								trait = khorne_demon
-								trait = nurgle_demon
-								trait = slaanesh_demon
-								trait = tzeentch_demon
-								trait = hashut_kdaai
-							}
-						}
-					}
-					character_event = {
-						id = schaos.95002
-					}
-				}
-				10 = {
-					modifier = {
-						factor = 1.5
-						OR = {
-							trait = magic_potential_1
-							trait = magic_potential_2
-							trait = magic_potential_3
-							trait = magic_potential_4
-							has_character_flag = magic_potential_flag_1
-							has_character_flag = magic_potential_flag_2
-							has_character_flag = magic_potential_flag_3
-							has_character_flag = magic_potential_flag_4
-						}
-					}
-					modifier = {
-						factor = 0
-						OR = {
-							trait = hedge_wizard
-							trait = mage_apprentice
-							has_character_modifier = magic_power_1
-							has_character_modifier = magic_power_2
-							has_character_modifier = magic_power_3
-							has_character_modifier = magic_power_4
-						}
-					}
-					character_event = {
-						id = schaos.95003
-					}
-				}
-				15 = {
-					character_event = {
-						id = schaos.95004
-					}
-				}
-				25 = {
-					modifier = {
-						factor = 0
-						trait = ambitious
-					}
-					character_event = {
-						id = schaos.95005
-					}
-				}
-				15 = {
-					character_event = {
-						id = schaos.95006
-					}
-				}
-				10 = {
-					character_event = {
-						id = schaos.95007
-					}
-				}
-				15 = {
-					character_event = {
-						id = schaos.95008
-					}
-				}
+			set_character_flag = wh_schaos.95_offer_1
+			character_event = {
+				id = schaos.95000
 			}
 		}
 	}
@@ -14941,114 +11683,177 @@ character_event = {
 		piety = -500
 		wealth = -250
 		hidden_tooltip = {
-			random_list = {
-				# Prize of your chosing (magic, intellect, more power)
-				# Tzeentch sends a demon familiar
-				# Tzeentch gifts magic
-				# Tzeentch gives favour (more than usual)
-				# Tzeentch makes you deceitful
-				# Tzeentch makes you insane
-				# Tzeentch sends a mutation
-				# Tzeentch doesn't answer
-				1 = {
-					modifier = {
-						factor = 1.75
-						OR = {
-							trait = magic_potential_1
-							trait = magic_potential_2
-							trait = magic_potential_3
-							trait = magic_potential_4
-							has_character_flag = magic_potential_flag_1
-							has_character_flag = magic_potential_flag_2
-							has_character_flag = magic_potential_flag_3
-							has_character_flag = magic_potential_flag_4
-						}
-					}
-					character_event = {
-						id = schaos.95001
+			character_event = {
+				id = schaos.95000
+			}
+		}
+	}
+}
+
+character_event = {
+	id = schaos.95000
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		random_list = {
+			# Prize of your chosing (magic, intellect, more power)
+			# Tzeentch sends a demon familiar
+			# Tzeentch gifts magic
+			# Tzeentch gives favour (more than usual)
+			# Tzeentch makes you deceitful
+			# Tzeentch makes you insane
+			# Tzeentch sends a mutation
+			# Tzeentch doesn't answer
+			1 = {
+				modifier = {
+					factor = 9
+					has_character_flag = wh_schaos.95_offer_3
+				}
+				modifier = {
+					factor = 5
+					has_character_flag = wh_schaos.95_offer_2
+				}
+				modifier = {
+					factor = 1.75
+					wh_has_any_magic_potential_trigger = yes
+				}
+				character_event = {
+					id = schaos.95001
+				}
+			}
+			5 = {
+				modifier = {
+					factor = 2
+					has_character_flag = wh_schaos.95_offer_3
+				}
+				modifier = {
+					factor = 2
+					has_character_flag = wh_schaos.95_offer_2
+				}
+				modifier = {
+					factor = 0.5
+					any_friend = {
+						is_demon_trigger = yes
 					}
 				}
-				4 = {
-					modifier = {
-						factor = 0
-						any_friend = {
-							OR = {
-								trait = khorne_demon
-								trait = nurgle_demon
-								trait = slaanesh_demon
-								trait = tzeentch_demon
-								trait = hashut_kdaai
-							}
-						}
-					}
-					character_event = {
-						id = schaos.95002
+				character_event = {
+					id = schaos.95002
+				}
+			}
+			5 = {
+				modifier = {
+					factor = 3
+					has_character_flag = wh_schaos.95_offer_3
+				}
+				modifier = {
+					factor = 2
+					or = {
+						has_character_flag = wh_schaos.95_offer_2
+						has_character_flag = wh_schaos.95_offer_1
 					}
 				}
-				5 = {
-					modifier = {
-						factor = 1.5
-						OR = {
-							trait = magic_potential_1
-							trait = magic_potential_2
-							trait = magic_potential_3
-							trait = magic_potential_4
-							has_character_flag = magic_potential_flag_1
-							has_character_flag = magic_potential_flag_2
-							has_character_flag = magic_potential_flag_3
-							has_character_flag = magic_potential_flag_4
-						}
-					}
-					modifier = {
-						factor = 0
-						OR = {
-							trait = hedge_wizard
-							trait = mage_apprentice
-							has_character_modifier = magic_power_1
-							has_character_modifier = magic_power_2
-							has_character_modifier = magic_power_3
-							has_character_modifier = magic_power_4
-						}
-					}
-					character_event = {
-						id = schaos.95003
+				modifier = {
+					factor = 1.5
+					wh_has_any_magic_potential_trigger = yes
+				}
+				modifier = {
+					factor = 0
+					wh_is_mage_or_apprentice_trigger = yes
+				}
+				character_event = {
+					id = schaos.95003
+				}
+			}
+			10 = {
+				modifier = {
+					factor = 2.5
+					has_character_flag = wh_schaos.95_offer_3
+				}
+				modifier = {
+					factor = 2
+					has_character_flag = wh_schaos.95_offer_2
+				}
+				modifier = {
+					factor = 1.5
+					has_character_flag = wh_schaos.95_offer_1
+				}
+				character_event = {
+					id = schaos.95004
+				}
+			}
+			15 = {
+				modifier = {
+					factor = 2
+					or = {
+						has_character_flag = wh_schaos.95_offer_3
+						has_character_flag = wh_schaos.95_offer_2
+						has_character_flag = wh_schaos.95_offer_1
 					}
 				}
-				10 = {
-					character_event = {
-						id = schaos.95004
+				modifier = {
+					factor = 0
+					trait = ambitious
+				}
+				character_event = {
+					id = schaos.95005
+				}
+			}
+			20 = {
+				modifier = {
+					factor = 0.25
+					has_character_flag = wh_schaos.95_offer_3
+				}
+				modifier = {
+					factor = 0.5
+					has_character_flag = wh_schaos.95_offer_2
+				}
+				modifier = {
+					factor = 0.75
+					has_character_flag = wh_schaos.95_offer_1
+				}
+				character_event = {
+					id = schaos.95006
+				}
+			}
+			20 = {
+				modifier = {
+					factor = 0.25
+					has_character_flag = wh_schaos.95_offer_3
+				}
+				modifier = {
+					factor = 0.5
+					or = {
+						has_character_flag = wh_schaos.95_offer_2
+						has_character_flag = wh_schaos.95_offer_1
 					}
 				}
-				15 = {
-					modifier = {
-						factor = 0
-						trait = ambitious
-					}
-					character_event = {
-						id = schaos.95005
-					}
+				character_event = {
+					id = schaos.95007
 				}
-				20 = {
-					character_event = {
-						id = schaos.95006
-					}
+			}
+			25 = {
+				modifier = {
+					factor = 0.04
+					has_character_flag = wh_schaos.95_offer_3
 				}
-				20 = {
-					character_event = {
-						id = schaos.95007
-					}
+				modifier = {
+					factor = 0.2
+					has_character_flag = wh_schaos.95_offer_2
 				}
-				25 = {
-					character_event = {
-						id = schaos.95008
-					}
+				modifier = {
+					factor = 0.6
+					has_character_flag = wh_schaos.95_offer_1
+				}
+				character_event = {
+					id = schaos.95008
 				}
 			}
 		}
 	}
 }
 
-# Prize of your chosing (magic, beauty, healing)
+# Prize of your chosing (magic, brain, healing)
 character_event = {
 	id = schaos.95001
 	desc = EVTDESCschaos95001
@@ -15064,19 +11869,15 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					check_variable = {
 						which = "khorne_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "nurgle_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "slaanesh_favor"
 						value = 1
@@ -15088,116 +11889,19 @@ character_event = {
 				value = 4
 			}
 		}
-		if = {
-			limit = {
-				OR = {
-					check_variable = {
-						which = "khorne_favor"
-						value = 1
-					}
-					check_variable = {
-						which = "nurgle_favor"
-						value = 1
-					}
-					check_variable = {
-						which = "slaanesh_favor"
-						value = 1
-					}
-				}
-			}
-			set_variable = {
-				which = "khorne_favor"
-				value = 0
-			}
-			set_variable = {
-				which = "nurgle_favor"
-				value = 0
-			}
-			set_variable = {
-				which = "slaanesh_favor"
-				value = 0
-			}
-		}
-
+		wh_clear_not_tzeentch_favor_effect = yes
 	}
 
 	option = {
 		name = EVTOPTAschaos95001
 		trigger = {
-			NOT = {
-				trait = hedge_wizard
-			}
-			NOT = {
-				trait = mage_apprentice
-			}
-			NOT = {
-				has_character_modifier = magic_power_1
-			}
-			NOT = {
-				has_character_modifier = magic_power_2
-			}
-			NOT = {
-				has_character_modifier = magic_power_3
-			}
-			NOT = {
-				has_character_modifier = magic_power_4
-			}
+			wh_is_mage_or_apprentice_trigger = no
 		}
 		add_trait = lore_tzeentch
+		wh_reveal_magic_potential_effect = yes
 		if = {
 			limit = {
-				has_character_flag = magic_potential_flag_1
-			}
-			clr_character_flag = magic_potential_flag_1
-			add_trait = magic_potential_1
-		}
-		if = {
-			limit = {
-				has_character_flag = magic_potential_flag_2
-			}
-			clr_character_flag = magic_potential_flag_2
-			add_trait = magic_potential_2
-		}
-		if = {
-			limit = {
-				has_character_flag = magic_potential_flag_3
-			}
-			clr_character_flag = magic_potential_flag_3
-			add_trait = magic_potential_3
-		}
-		if = {
-			limit = {
-				has_character_flag = magic_potential_flag_4
-			}
-			clr_character_flag = magic_potential_flag_4
-			add_trait = magic_potential_4
-		}
-		if = {
-			limit = {
-				NOT = {
-					trait = magic_potential_1
-				}
-				NOT = {
-					trait = magic_potential_2
-				}
-				NOT = {
-					trait = magic_potential_3
-				}
-				NOT = {
-					trait = magic_potential_4
-				}
-				NOT = {
-					has_character_flag = magic_potential_flag_1
-				}
-				NOT = {
-					has_character_flag = magic_potential_flag_2
-				}
-				NOT = {
-					has_character_flag = magic_potential_flag_3
-				}
-				NOT = {
-					has_character_flag = magic_potential_flag_4
-				}
+				wh_has_any_magic_potential_trigger = yes
 			}
 			add_trait = magic_potential_2
 		}
@@ -15208,105 +11912,7 @@ character_event = {
 	option = {
 		name = EVTOPTBschaos95001
 		change_intrigue = 1
-		if = {
-			limit = {
-				trait = brilliant
-			}
-			remove_trait = brilliant
-			add_trait = genius
-		}
-		if = {
-			limit = {
-				trait = quick
-			}
-			remove_trait = quick
-			add_trait = genius
-		}
-		if = {
-			limit = {
-				trait = smart
-			}
-			remove_trait = smart
-			add_trait = genius
-		}
-		if = {
-			limit = {
-				trait = bright
-			}
-			remove_trait = bright
-			add_trait = brilliant
-		}
-		if = {
-			limit = {
-				NOT = {
-					trait = genius
-				}
-				NOT = {
-					trait = brilliant
-				}
-				NOT = {
-					trait = quick
-				}
-				NOT = {
-					trait = smart
-				}
-				NOT = {
-					trait = bright
-				}
-				NOT = {
-					trait = dim
-				}
-				NOT = {
-					trait = dumb
-				}
-				NOT = {
-					trait = slow
-				}
-				NOT = {
-					trait = idiot
-				}
-				NOT = {
-					trait = imbecile
-				}
-
-			}
-			add_trait = brilliant
-		}
-		if = {
-			limit = {
-				trait = dim
-			}
-			remove_trait = dim
-			add_trait = quick
-		}
-		if = {
-			limit = {
-				trait = dumb
-			}
-			remove_trait = dumb
-			add_trait = quick
-		}
-		if = {
-			limit = {
-				trait = slow
-			}
-			remove_trait = slow
-			add_trait = quick
-		}
-		if = {
-			limit = {
-				trait = idiot
-			}
-			remove_trait = idiot
-			add_trait = quick
-		}
-		if = {
-			limit = {
-				trait = imbecile
-			}
-			remove_trait = imbecile
-			add_trait = bright
-		}
+		wh_improve_intelligence_effect = yes
 	}
 
 	option = {
@@ -15332,19 +11938,15 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					check_variable = {
 						which = "khorne_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "nurgle_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "slaanesh_favor"
 						value = 1
@@ -15430,19 +12032,15 @@ character_event = {
 	immediate = {
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					check_variable = {
 						which = "khorne_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "nurgle_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "slaanesh_favor"
 						value = 1
@@ -15490,60 +12088,10 @@ character_event = {
 	option = {
 		name = EVTOPTAschaos95003
 		add_trait = lore_tzeentch
+		wh_reveal_magic_potential_effect = yes
 		if = {
 			limit = {
-				has_character_flag = magic_potential_flag_1
-			}
-			clr_character_flag = magic_potential_flag_1
-			add_trait = magic_potential_1
-		}
-		if = {
-			limit = {
-				has_character_flag = magic_potential_flag_2
-			}
-			clr_character_flag = magic_potential_flag_2
-			add_trait = magic_potential_2
-		}
-		if = {
-			limit = {
-				has_character_flag = magic_potential_flag_3
-			}
-			clr_character_flag = magic_potential_flag_3
-			add_trait = magic_potential_3
-		}
-		if = {
-			limit = {
-				has_character_flag = magic_potential_flag_4
-			}
-			clr_character_flag = magic_potential_flag_4
-			add_trait = magic_potential_4
-		}
-		if = {
-			limit = {
-				NOT = {
-					trait = magic_potential_1
-				}
-				NOT = {
-					trait = magic_potential_2
-				}
-				NOT = {
-					trait = magic_potential_3
-				}
-				NOT = {
-					trait = magic_potential_4
-				}
-				NOT = {
-					has_character_flag = magic_potential_flag_1
-				}
-				NOT = {
-					has_character_flag = magic_potential_flag_2
-				}
-				NOT = {
-					has_character_flag = magic_potential_flag_3
-				}
-				NOT = {
-					has_character_flag = magic_potential_flag_4
-				}
+				wh_has_any_magic_potential_trigger = no
 			}
 			add_trait = magic_potential_2
 		}
@@ -15568,19 +12116,15 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					check_variable = {
 						which = "khorne_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "nurgle_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "slaanesh_favor"
 						value = 1
@@ -15592,37 +12136,7 @@ character_event = {
 				value = 7
 			}
 		}
-		if = {
-			limit = {
-				OR = {
-					check_variable = {
-						which = "khorne_favor"
-						value = 1
-					}
-					check_variable = {
-						which = "nurgle_favor"
-						value = 1
-					}
-					check_variable = {
-						which = "slaanesh_favor"
-						value = 1
-					}
-				}
-			}
-			set_variable = {
-				which = "khorne_favor"
-				value = 0
-			}
-			set_variable = {
-				which = "nurgle_favor"
-				value = 0
-			}
-			set_variable = {
-				which = "slaanesh_favor"
-				value = 0
-			}
-		}
-
+		wh_clear_not_tzeentch_favor_effect = yes
 	}
 
 	option = {
@@ -15641,19 +12155,15 @@ character_event = {
 	immediate = {
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					check_variable = {
 						which = "khorne_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "nurgle_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "slaanesh_favor"
 						value = 1
@@ -15715,19 +12225,15 @@ character_event = {
 	immediate = {
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					check_variable = {
 						which = "khorne_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "nurgle_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "slaanesh_favor"
 						value = 1
@@ -15791,19 +12297,15 @@ character_event = {
 	immediate = {
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					check_variable = {
 						which = "khorne_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "nurgle_favor"
 						value = 1
 					}
-				}
-				NOT = {
 					check_variable = {
 						which = "slaanesh_favor"
 						value = 1
@@ -15845,128 +12347,7 @@ character_event = {
 				value = -2
 			}
 		}
-		random_list = {
-			7 = {
-				modifier = {
- 					factor = 0
- 					trait = mut_eyes
-
-				}
-				modifier = {
- 					factor = 1.5
- 					religion = tzeentch
-
-				}
-				character_event = {
-					id = mutation.2
-				}
-			} # thirdeye
-			8 = {
-				character_event = {
-					id = mutation.3
-				}
-			} # spines
-			8 = {
-				character_event = {
-					id = mutation.4
-				}
-			} # smell
-			8 = {
-				character_event = {
-					id = mutation.5
-				}
-			} # scales
-			7 = {
-				modifier = {
- 					factor = 1.75
- 					religion = khorne
-
-				}
-				character_event = {
-					id = mutation.6
-				}
-			} # horns
-			8 = {
-				character_event = {
-					id = mutation.7
-				}
-			} # spines
-			6 = {
-				modifier = {
- 					factor = 0
- 					trait = creature_beastman
-
-				}
-				modifier = {
- 					factor = 0
- 					trait = monstrous
-
-				}
-				modifier = {
- 					factor = 1.75
- 					religion = khorne
-
-				}
-				character_event = {
-					id = mutation.8
-				}
-			} # monstrous
-			8 = {
-				modifier = {
- 					factor = 1.75
- 					religion = nurgle
-
-				}
-				character_event = {
-					id = mutation.9
-				}
-			} # nurgles rot
-			7 = {
-				character_event = {
-					id = mutation.10
-				}
-			} # second head
-			8 = {
-				modifier = {
- 					factor = 1.75
- 					religion = tzeentch
-
-				}
-				character_event = {
-					id = mutation.20005
-				}
-			} # beak
-			7 = {
-				modifier = {
- 					factor = 1.75
- 					religion = slaanesh
-
-				}
-				character_event = {
-					id = mutation.20006
-				}
-			} # tongue
-			8 = {
-				character_event = {
-					id = mutation.20007
-				}
-			} # teeth
-			4 = {
-				character_event = {
-					id = mutation.20008
-				}
-			} # many eyes
-			6 = {
-				modifier = {
- 					factor = 0
- 					trait = mut_eyes
-
-				}
-				character_event = {
-					id = mutation.20009
-				}
-			} # big eyes
-		}
+		wh_add_mutation_effect = yes
 	}
 }
 
@@ -15995,10 +12376,12 @@ character_event = {
 	id = schaos.96
 	desc = EVTDESCschaos96
 	picture = "GFX_evt_chosen_kurgan"
-	is_triggered_only = yes
 	capable_only = yes
+	religion_group = chaos_gods_group
+	is_triggered_only = yes
 
 	trigger = {
+		in_command = yes
 		piety = 50
 		OR = {
 			trait = creature_human
@@ -16012,14 +12395,6 @@ character_event = {
 				title = e_chaos_wastes
 			}
 		}
-		OR = {
-			religion = khorne
-			religion = nurgle
-			religion = slaanesh
-			religion = tzeentch
-			religion = chaos
-		}
-		in_command = yes
 	}
 
 	weight_multiplier = {
@@ -16437,7 +12812,6 @@ character_event = {
 					value = -5
 				}
 			}
-
 		}
 		if = {
 			limit = {
@@ -16596,48 +12970,15 @@ character_event = {
 		NOT = {
 			has_nickname = nick_the_forsaken
 		}
-		NOT = {
-			trait = champion_khorne
-		}
-		NOT = {
-			trait = champion_nurgle
-		}
-		NOT = {
-			trait = champion_slaanesh
-		}
-		NOT = {
-			trait = champion_tzeentch
-		}
-		NOT = {
-			trait = chosen_khorne
-		}
-		NOT = {
-			trait = chosen_nurgle
-		}
-		NOT = {
-			trait = chosen_slaanesh
-		}
-		NOT = {
-			trait = chosen_tzeentch
-		}
+		wh_is_chaos_chosen_trigger = no
+		wh_is_chaos_champion_trigger = no
 		OR = {
 			AND = {
 				religion = khorne
 				NOT = {
 					trait = craven
 				}
-				NOT = {
-					has_character_modifier = magic_power_1
-				}
-				NOT = {
-					has_character_modifier = magic_power_2
-				}
-				NOT = {
-					has_character_modifier = magic_power_3
-				}
-				NOT = {
-					has_character_modifier = magic_power_4
-				}
+				wh_is_mage_or_apprentice_trigger = no
 				check_variable = {
 					which = "khorne_favor"
 					value = 10
@@ -16778,7 +13119,6 @@ character_event = {
 				}
 			}
 		}
-
 	}
 
 	option = {
@@ -17020,18 +13360,7 @@ character_event = {
 		NOT = {
 			has_nickname = nick_the_forsaken
 		}
-		NOT = {
-			trait = chosen_khorne
-		}
-		NOT = {
-			trait = chosen_nurgle
-		}
-		NOT = {
-			trait = chosen_slaanesh
-		}
-		NOT = {
-			trait = chosen_tzeentch
-		}
+		wh_is_chaos_chosen_trigger = no
 		OR = {
 			AND = {
 				religion = khorne
@@ -17045,18 +13374,7 @@ character_event = {
 					trait = hardy
 					trait = brave
 				}
-				NOT = {
-					has_character_modifier = magic_power_1
-				}
-				NOT = {
-					has_character_modifier = magic_power_2
-				}
-				NOT = {
-					has_character_modifier = magic_power_3
-				}
-				NOT = {
-					has_character_modifier = magic_power_4
-				}
+				wh_is_mage_or_apprentice_trigger = no
 				check_variable = {
 					which = "khorne_favor"
 					value = 30
@@ -17104,12 +13422,7 @@ character_event = {
 				NOT = {
 					trait = content
 				}
-				OR = {
-					has_character_modifier = magic_power_1
-					has_character_modifier = magic_power_2
-					has_character_modifier = magic_power_3
-					has_character_modifier = magic_power_4
-				}
+				wh_is_mage_or_apprentice_trigger = yes
 				check_variable = {
 					which = "tzeentch_favor"
 					value = 30
@@ -17268,36 +13581,13 @@ character_event = {
 				value = 30
 			}
 		}
-		NOT = {
-			trait = prince_khorne
-		}
-		NOT = {
-			trait = prince_nurgle
-		}
-		NOT = {
-			trait = prince_slaanesh
-		}
-		NOT = {
-			trait = prince_tzeentch
-		}
-		NOT = {
+		is_demon_prince_trigger = no
+		nor = {
 			any_close_relative = {
-				OR = {
-					trait = prince_tzeentch
-					trait = prince_slaanesh
-					trait = prince_nurgle
-					trait = prince_khorne
-				}
+				is_demon_prince_trigger = yes
 			}
-		}
-		NOT = {
 			liege = {
-				OR = {
-					trait = prince_tzeentch
-					trait = prince_slaanesh
-					trait = prince_nurgle
-					trait = prince_khorne
-				}
+				is_demon_prince_trigger = yes
 			}
 		}
 		OR = {
@@ -17311,18 +13601,7 @@ character_event = {
 					trait = strong
 					trait = brave
 				}
-				NOT = {
-					has_character_modifier = magic_power_1
-				}
-				NOT = {
-					has_character_modifier = magic_power_2
-				}
-				NOT = {
-					has_character_modifier = magic_power_3
-				}
-				NOT = {
-					has_character_modifier = magic_power_4
-				}
+				wh_is_mage_or_apprentice_trigger = no
 				check_variable = {
 					which = "khorne_favor"
 					value = 40
@@ -17377,7 +13656,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 750
+		years = 60
 		modifier = {
 			factor = 0.75
 			piety = 750
@@ -17636,7 +13915,6 @@ character_event = {
 				modifier = opinion_scared_into_submission
 				who = ROOT
 			}
-
 		}
 		any_courtier = {
 			limit = {
@@ -17649,7 +13927,6 @@ character_event = {
 				modifier = opinion_scared_into_submission
 				who = ROOT
 			}
-
 		}
 	}
 }
@@ -17678,10 +13955,10 @@ character_event = {
 	option = {
 		name = EVTOPTAschaos102
 		hidden_tooltip = {
-			ROOT = {
-				character_event = {
-					id = schaos.104 days = 190 random = 290
-				}
+			character_event = {
+				id = schaos.104
+				days = 190
+				random = 290
 			}
 		}
 		location = {
@@ -17699,8 +13976,8 @@ character_event = {
 					disband_on_peace = yes
 					attrition = 0.5
 				}
-			} # endroot
-		} # endlocation
+			}
+		}
 	}
 }
 
@@ -17712,21 +13989,14 @@ character_event = {
 	trigger = {
 		NOR = {
 			ai = no
-			trait = prince_khorne
-			trait = prince_nurgle
-			trait = prince_slaanesh
-			trait = prince_tzeentch
+			is_demon_prince_trigger = yes
 		}
 		OR = {
-			trait = khorne_demon
-			trait = nurgle_demon
-			trait = slaanesh_demon
-			trait = tzeentch_demon
+			is_demon_trigger = yes
 			trait = creature_forestspirit
 			trait = creature_toad
 			trait = creature_pig
 			trait = khemri_soldier
-			trait = hashut_kdaai
 		}
 	}
 	is_triggered_only = yes
@@ -17760,107 +14030,101 @@ character_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		liege = {
-			capital_scope = {
-				location = {
-					owner = {
-						top_liege = {
-							ROOT = {
-								set_defacto_liege = ROOT
-								create_title = {
-									tier = DUKE
-									landless = yes
-									temporary = yes
-									culture = ROOT
-									name = "CLAIMANT_ADVENTURE"
-									holder = ROOT
-								}
-								set_character_flag = duchy_adventurer
-								spawn_unit = {
-									province = PREVPREVPREVPREV
-									home = PREVPREVPREVPREV
-									owner = THIS
-									# leader = THIS
-									match_character = PREV
-									match_mult = 0.33
-									match_min = 500
-									match_max = 10000
-									attrition = 0.25
-								}
-								spawn_unit = {
-									province = PREVPREVPREVPREV
-									home = PREVPREVPREVPREV
-									owner = THIS
-									match_character = PREV
-									match_mult = 0.33
-									match_min = 500
-									match_max = 10000
-									attrition = 0.25
-								}
-								spawn_unit = {
-									province = PREVPREVPREVPREV
-									home = PREVPREVPREVPREV
-									owner = THIS
-									match_character = PREV
-									match_mult = 0.33
-									match_min = 500
-									match_max = 10000
-									attrition = 0.25
-								}
-								spawn_unit = {
-									province = PREVPREVPREVPREV
-									home = PREVPREVPREVPREV
-									owner = THIS
-									match_character = PREV
-									match_mult = 0.33
-									match_min = 500
-									match_max = 10000
-									attrition = 0.25
-								}
-								spawn_unit = {
-									province = PREVPREVPREVPREV
-									home = PREVPREVPREVPREV
-									owner = THIS
-									match_character = PREV
-									match_mult = 0.33
-									match_min = 500
-									match_max = 10000
-									attrition = 0.25
-								}
-								spawn_unit = {
-									province = PREVPREVPREVPREV
-									home = PREVPREVPREVPREV
-									owner = THIS
-									match_character = PREV
-									match_mult = 0.33
-									match_min = 500
-									match_max = 10000
-									attrition = 0.25
-								}
-								spawn_unit = {
-									province = PREVPREVPREVPREV
-									home = PREVPREVPREVPREV
-									owner = THIS
-									attrition = 0.25
-									cannot_inherit = yes
-									earmark = demonic_host
- 									troops = {
-										daemonic_host = {
-											10000 10000
-										}
-									}
-								}
-								war = {
-									target = PREV
-									casus_belli = duchy_adventure
-									thirdparty_title = PREVPREVPREV
-									tier = DUKE
-								}
-							}
-						}
-					}
+		location = {
+			save_event_target_as = wh_schaos.105_location
+		}
+		top_liege = {
+			save_event_target_as = wh_schaos.105_target
+		}
+		set_defacto_liege = this
+		create_title = {
+			tier = DUKE
+			landless = yes
+			temporary = yes
+			culture = this
+			name = "CLAIMANT_ADVENTURE"
+			holder = this
+		}
+		set_character_flag = duchy_adventurer
+		spawn_unit = {
+			province = event_target:wh_schaos.105_location
+			home = event_target:wh_schaos.105_location
+			owner = THIS
+			# leader = THIS
+			match_character = event_target:wh_schaos.105_target
+			match_mult = 0.33
+			match_min = 500
+			match_max = 10000
+			attrition = 0.25
+		}
+		spawn_unit = {
+			province = event_target:wh_schaos.105_location
+			home = event_target:wh_schaos.105_location
+			owner = THIS
+			match_character = event_target:wh_schaos.105_target
+			match_mult = 0.33
+			match_min = 500
+			match_max = 10000
+			attrition = 0.25
+		}
+		spawn_unit = {
+			province = event_target:wh_schaos.105_location
+			home = event_target:wh_schaos.105_location
+			owner = THIS
+			match_character = event_target:wh_schaos.105_target
+			match_mult = 0.33
+			match_min = 500
+			match_max = 10000
+			attrition = 0.25
+		}
+		spawn_unit = {
+			province = event_target:wh_schaos.105_location
+			home = event_target:wh_schaos.105_location
+			owner = THIS
+			match_character = event_target:wh_schaos.105_target
+			match_mult = 0.33
+			match_min = 500
+			match_max = 10000
+			attrition = 0.25
+		}
+		spawn_unit = {
+			province = event_target:wh_schaos.105_location
+			home = event_target:wh_schaos.105_location
+			owner = THIS
+			match_character = event_target:wh_schaos.105_target
+			match_mult = 0.33
+			match_min = 500
+			match_max = 10000
+			attrition = 0.25
+		}
+		spawn_unit = {
+			province = event_target:wh_schaos.105_location
+			home = event_target:wh_schaos.105_location
+			owner = THIS
+			match_character = event_target:wh_schaos.105_target
+			match_mult = 0.33
+			match_min = 500
+			match_max = 10000
+			attrition = 0.25
+		}
+		spawn_unit = {
+			province = event_target:wh_schaos.105_location
+			home = event_target:wh_schaos.105_location
+			owner = THIS
+			attrition = 0.25
+			cannot_inherit = yes
+			earmark = demonic_host
+ 			troops = {
+				daemonic_host = {
+					10000 10000
 				}
 			}
+		}
+		war = {
+			target = event_target:wh_schaos.105_target
+			casus_belli = duchy_adventure
+			thirdparty_title = event_target:wh_schaos.105_target
+			tier = DUKE
 		}
 	}
 }

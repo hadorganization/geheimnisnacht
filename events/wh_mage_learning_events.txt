@@ -7527,7 +7527,7 @@ character_event = {
 
 	option = {
 		name = EVTOPTAsorcererapprentice15005
-		change_learning = 4
+		change_learning = 10
 		set_character_flag = undead_insight
 		clr_character_flag = nagash_book_quest
 		religion = nagashi
@@ -7543,7 +7543,7 @@ character_event = {
 
 	option = {
 		name = EVTOPTAsorcererapprentice15006
-		change_learning = 1
+		change_learning = 5
 		set_character_flag = undead_insight
 		clr_character_flag = nagash_book_quest
 		religion = nagashi
@@ -7559,7 +7559,7 @@ character_event = {
 
 	option = {
 		name = EVTOPTAsorcererapprentice15007
-		change_learning = 1
+		change_learning = 10
 		set_character_flag = undead_insight
 		clr_character_flag = nagash_book_quest
 		religion = nagashi
@@ -11236,5 +11236,31 @@ character_event = {
 	option = {
 		name = EVTOPTAsorcererapprentice20007
 		prestige = -75
+	}
+}
+character_event = {
+	id = necro_crown
+	picture = "GFX_evt_old_apprentice"
+	border = GFX_event_normal_frame_religion
+	desc = EVTDESCnecro_crown
+
+	trigger = {
+		has_artifact = nagash_crown
+		NOT = {
+			trait = lore_necromancy
+		}
+	}
+
+	mean_time_to_happen = {
+		modifier = {
+			factor = 0.0001
+			has_artifact = nagash_crown
+		}
+	}
+
+	option = {
+		name = EVTOPTAnecro_crown
+		prestige = 500
+		add_trait = lore_necromancy
 	}
 }

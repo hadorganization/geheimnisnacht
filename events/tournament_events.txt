@@ -1,20 +1,16 @@
 
 
 # Events for Tournament
-
 # ID 70000 - 70999 is reserved
 
 # Written by Chris King
-
 # Rewritten by Niklas Strid
 
 # edited for AGOT by Knuckey
-
 # AGOT tournaments adapted to Geheimnisnatch by DarkReborn
 namespace = tourney
 
 # Random Event Generator
-
 # Can be used in other tournament event chains (e.g. archery)
 
 # Particpant/Spectator Events
@@ -3063,7 +3059,6 @@ character_event = {
 }
 
 # New Match Up
-
 # Match jousters
 character_event = {
 	id = tourney.12
@@ -4298,7 +4293,6 @@ character_event = {
 }
 
 # SURVIVED
-
 # Inform round loser
 character_event = {
 	id = tourney.20
@@ -4409,7 +4403,6 @@ character_event = {
 }
 
 # UNHORSED
-
 # Inform round loser
 character_event = {
 	id = tourney.22
@@ -4509,7 +4502,6 @@ character_event = {
 }
 
 # WOUNDED
-
 # Inform round loser
 character_event = {
 	id = tourney.24
@@ -4633,7 +4625,6 @@ character_event = {
 }
 
 # MAIMED
-
 # Inform round loser
 character_event = {
 	id = tourney.26
@@ -4783,7 +4774,6 @@ character_event = {
 }
 
 # DEATH
-
 # Inform round loser
 character_event = {
 	id = tourney.28
@@ -6898,47 +6888,36 @@ character_event = {
 }
 
 # character_event = {
-
 # id = 70007
 
 # title = "TOURNAMENTTITLE2"
-
 # desc = "EVTDESC70007"
 
 # picture = "GFX_evt_joust"
-
 # is_triggered_only = yes
 
 # option = {
-
 # name = "EVTOPTA70007"
 
 # change_martial = 1
-
 # }
 
 # }
-
 # character_event = {
 
 # id = 70008
-
 # title = "TOURNAMENTTITLE2"
 
 # desc = "EVTDESC70008"
-
 # picture = "GFX_evt_joust"
 
 # is_triggered_only = yes
-
 # option = {
 
 # name = "EVTOPTA70008"
-
 # change_martial = -1
 
 # }
-
 # }
 
 # Character becomes craven
@@ -7215,7 +7194,6 @@ character_event = {
 }
 
 # Extra Events
-
 # Character is knighted
 character_event = {
 	id = 70050
@@ -8345,895 +8323,672 @@ character_event = {
 }
 
 # on death tourny cancelled
-
 # character_event = {
 
 # id = 70060
-
 # desc = "EVTDESC70060"
 
 # title = "TOURNAMENTTITLE3"
-
 # trigger = {
 
 # has_character_flag = tourny_in_progress
-
 # }
 
 # is_triggered_only = yes
-
 # option = {
 
 # name = "EVTOPTA70060"
-
 # hidden_tooltip = {
 
 # top_liege = {
-
 # any_realm_character = {
 
 # limit = {
-
 # has_character_flag = attending_tournament
 
 # has_opinion_modifier = { who = ROOT modifier = opinion_attending_tournament }
-
 # }
 
 # character_event = { id = 70037 }
-
 # }
 
 # }
-
 # }
 
 # }
-
 # }
 
 # # Tourny Rival sdrama
-
 # character_event = {
 
 # id = 71061
-
 # is_triggered_only = yes
 
 # hide_window = yes
-
 # immediate = {
 
 # random_opinion_modifier_target = {
-
 # limit = {
 
 # has_character_flag = tourny_in_progress
-
 # reverse_has_opinion_modifier = { who = PREV modifier = opinion_attending_tournament }
 
 # }
-
 # random_opinion_modifier_target = {
 
 # limit = {
-
 # has_opinion_modifier = { who = PREV modifier = opinion_attending_tournament }
 
 # has_character_flag = attending_tournament
-
 # NOT = { has_character_flag = lost_tournament }
 
 # is_female = no
-
 # NOT = { opinion = { who = ROOT value = 0 } }
 
 # NOT = { reverse_opinion = { who = ROOT value = 0 } }
-
 # NOT = { ROOT = { higher_tier_than = PREV } }
 
 # NOT = { trait = shy }
-
 # NOT = { trait = honorable }
 
 # prestige = 100
-
 # NOT = { is_rival = ROOT }
 
 # OR = {
-
 # culture = ROOT
 
 # same_liege = ROOT
-
 # NOT = { opinion = { who = ROOT value = -50 } }
 
 # }
-
 # NOT = { trait = incapable }
 
 # NOT = { trait = maimed }
-
 # NOT = { trait = blinded }
 
 # NOT = { trait = blinded_age }
-
 # NOT = { trait = crippled }
 
 # NOT = { trait = infirm }
-
 # }
 
 # character_event = { id = 71062 }
-
 # ROOT = { set_character_flag = attending_tournament_event }
 
 # }
-
 # }
 
 # }
-
 # option = {
 
 # name = OK
-
 # }
 
 # }
-
 # character_event = { # scope to target
 
 # id = 71062
-
 # is_triggered_only = yes
 
 # hide_window = yes
-
 # immediate = {
 
 # FROM = { character_event = { id = 70061 } }
-
 # }
 
 # option = {
-
 # name = OK
 
 # }
-
 # }
 
 # character_event = {
-
 # id = 70061
 
 # # title = "TOURNAMENTTITLE"
-
 # desc = "EVTDESC70061"
 
 # picture = "GFX_evt_joust"
-
 # is_triggered_only = yes
 
 # option = {
-
 # name = "EVTOPTA70061" # he just jests
 
 # ai_chance = {
-
 # factor = 10
 
 # modifier = {
-
 # factor = 2
 
 # trait = gregarious
-
 # }
 
 # modifier = {
-
 # factor = 2
 
 # trait = craven
-
 # }
 
 # }
-
 # prestige = -15
 
 # if = {
-
 # limit = {
 
 # NOT = { trait = gregarious }
-
 # NOT = { trait = shy }
 
 # NOT = { personality_traits = 6 }
-
 # }
 
 # random = {
-
 # chance = 20
 
 # add_trait = gregarious
-
 # hidden_tooltip = {
 
 # character_event = { id = 38265 }
-
 # }
 
 # }
-
 # }
 
 # if = {
-
 # limit = {
 
 # NOT = { trait = craven }
-
 # NOT = { trait = brave }
 
 # NOT = { personality_traits = 6 }
-
 # }
 
 # random = {
-
 # chance = 10
 
 # add_trait = craven
-
 # hidden_tooltip = {
 
 # character_event = { id = 38257 }
-
 # }
 
 # }
-
 # }
 
 # }
-
 # option = {
 
 # name = "EVTOPTB70061" # I will show him
-
 # ai_chance = {
 
 # factor = 10
-
 # modifier = {
 
 # factor = 2
-
 # trait = proud
 
 # }
-
 # modifier = {
 
 # factor = 2
-
 # trait = craven
 
 # }
-
 # modifier = {
 
 # factor = 2
-
 # trait = patient
 
 # }
-
 # }
 
 # if = {
-
 # limit = {
 
 # NOT = { trait = proud }
-
 # NOT = { trait = humble }
 
 # NOT = { personality_traits = 6 }
-
 # }
 
 # random = {
-
 # chance = 20
 
 # add_trait = proud
-
 # hidden_tooltip = {
 
 # character_event = { id = 38261 }
-
 # }
 
 # }
-
 # }
 
 # FROM = {
-
 # add_rival = ROOT
 
 # character_event = { id = 70062 days = 1 tooltip = "EVTTOOLTIP70062" }
-
 # }
 
 # }
-
 # option = {
 
 # name = "EVTOPTC70061" # Single combat!
-
 # trigger = {
 
 # NOT = { trait = craven }
-
 # NOT = { trait = weak }
 
 # }
-
 # ai_chance = {
 
 # factor = 10
-
 # modifier = {
 
 # factor = 2
-
 # trait = duelist
 
 # }
-
 # modifier = {
 
 # factor = 2
-
 # trait = brave
 
 # }
-
 # modifier = {
 
 # factor = 2
-
 # trait = wroth
 
 # }
-
 # modifier = {
 
 # factor = 2
-
 # trait = impaler
 
 # }
-
 # modifier = {
 
 # factor = 0.5
-
 # trait = humble
 
 # }
-
 # }
 
 # if = {
-
 # limit = {
 
 # NOT = { trait = wroth }
-
 # NOT = { trait = patient }
 
 # NOT = { personality_traits = 6 }
-
 # }
 
 # random = {
-
 # chance = 25
 
 # add_trait = wroth
-
 # hidden_tooltip = {
 
 # character_event = { id = 38254 }
-
 # }
 
 # }
-
 # }
 
 # FROM = {
-
 # character_event = { id = 70063 days = 1 tooltip = "EVTTOOLTIP70063" }
 
 # }
-
 # }
 
 # }
-
 # # other chaarcter is onformed of rivalry
 
 # character_event = {
-
 # id = 70062
 
 # desc = "EVTDESC70062"
-
 # picture = "GFX_evt_joust"
 
 # is_triggered_only = yes
-
 # option = {
 
 # name = "EVTOPTA70062"
-
 # add_rival = FROM
 
 # }
-
 # }
 
 # # other character is onformed of rchallenge to single combat!
-
 # character_event = {
 
 # id = 70063
-
 # desc = "EVTDESC70063"
 
 # picture = "GFX_evt_joust"
-
 # is_triggered_only = yes
 
 # option = {
-
 # name = "EVTOPTA70063" # apoligise profusely
 
 # ai_chance = {
-
 # factor = 10
 
 # modifier = {
-
 # factor = 2
 
 # trait = gregarious
-
 # }
 
 # modifier = {
-
 # factor = 2
 
 # trait = honorable
-
 # }
 
 # modifier = {
-
 # factor = 2
 
 # trait = patient
-
 # }
 
 # modifier = {
-
 # factor = 2
 
 # trait = craven
-
 # }
 
 # }
-
 # prestige = -30
 
 # if = {
-
 # limit = {
 
 # NOT = { trait = craven }
-
 # NOT = { trait = brave }
 
 # NOT = { personality_traits = 6 }
-
 # }
 
 # random = {
-
 # chance = 20
 
 # add_trait = craven
-
 # hidden_tooltip = {
 
 # character_event = { id = 38257 }
-
 # }
 
 # }
-
 # }
 
 # FROM = { character_event = { id = 70064 days = 1 tooltip = "EVTTOOLTIP70064" } }
-
 # }
 
 # option = {
-
 # name = "EVTOPTB70063" # I accept!
 
 # ai_chance = {
-
 # factor = 10
 
 # modifier = {
-
 # factor = 2
 
 # trait = duelist
-
 # }
 
 # modifier = {
-
 # factor = 2
 
 # trait = brave
-
 # }
 
 # modifier = {
-
 # factor = 2
 
 # trait = wroth
-
 # }
 
 # modifier = {
-
 # factor = 2
 
 # trait = impaler
-
 # }
 
 # modifier = {
-
 # factor = 0.5
 
 # trait = humble
-
 # }
 
 # }
-
 # FROM = {
 
 # set_character_flag = tourney_duel_challenger
-
 # set_character_flag = flag_duel_friendly
 
 # }
-
 # set_character_flag = tourney_duel_target
 
 # set_character_flag = flag_duel_friendly
-
 # hidden_tooltip = { e_rebels = { holder_scope = { character_event = { id = duel.1 days = 2 } } } }
 
 # }
-
 # }
 
 # # inform root of apology
-
 # character_event = {
 
 # id = 70064
-
 # desc = "EVTDESC70064"
 
 # picture = "GFX_evt_joust"
-
 # is_triggered_only = yes
 
 # option = {
-
 # name = "EVTOPTA70064"
 
 # prestige = 30
-
 # }
 
 # }
-
 # # inform root of win
 
 # character_event = {
-
 # id = 70065
 
 # desc = "EVTDESC70065"
-
 # picture = "GFX_evt_melee"
 
 # is_triggered_only = yes
-
 # show_from_from = yes
 
 # option = {
-
 # name = "EVTOPTA70065"
 
 # prestige = 30
-
 # }
 
 # }
-
 # # # inform root of draw
 
 # # character_event = {
-
 # # id = 70066
 
 # # desc = "EVTDESC70066"
-
 # # picture = "GFX_evt_melee"
 
 # # is_triggered_only = yes
-
 # # option = {
 
 # # name = "EVTOPTA70066"
-
 # # prestige = -5
 
 # # if = {
-
 # # limit = {
 
 # # NOT = {
-
 # # is_rival = FROM
 
 # # }
-
 # # }
 
 # # add_rival = FROM
-
 # # }
 
 # # hidden_tooltip = {
-
 # # top_liege = {
 
 # # if = {
-
 # # limit = {
 
 # # reverse_has_opinion_modifier = { who = ROOT modifier = opinion_attending_tournament }
-
 # # }
 
 # # character_event = { id = 70072 }
-
 # # }
 
 # # any_realm_lord = {
-
 # # limit = {
 
 # # reverse_has_opinion_modifier = { who = ROOT modifier = opinion_attending_tournament }
-
 # # }
 
 # # character_event = { id = 70072 }
-
 # # }
 
 # # }
-
 # # }
 
 # # }
-
 # # }
 
 # # inform root of loss
-
 # character_event = {
 
 # id = 70067
-
 # desc = "EVTDESC70067"
 
 # picture = "GFX_evt_melee"
-
 # is_triggered_only = yes
 
 # option = {
-
 # name = "EVTOPTA70067"
 
 # prestige = -30
-
 # }
 
 # }
-
 # # inform from of loss
 
 # character_event = {
-
 # id = 70068
 
 # desc = "EVTDESC70068"
-
 # picture = "GFX_evt_melee"
 
 # is_triggered_only = yes
-
 # option = {
 
 # name = "EVTOPTA70068"
-
 # prestige = -30
 
 # }
-
 # }
 
 # # # inform from of draw
-
 # # character_event = {
 
 # # id = 70069
-
 # # desc = "EVTDESC70069"
 
 # # picture = "GFX_evt_melee"
-
 # # is_triggered_only = yes
 
 # # option = {
-
 # # name = "EVTOPTA70066"
 
 # # prestige = -5
-
 # # }
 
 # # }
-
 # # inform from of win
 
 # character_event = {
-
 # id = 70070
 
 # desc = "EVTDESC70070"
-
 # picture = "GFX_evt_melee"
 
 # is_triggered_only = yes
-
 # show_from_from = yes
 
 # option = {
-
 # name = "EVTOPTA70065"
 
 # prestige = 30
-
 # }
 
 # }
-
 # # inform tourny holder of duel
 
 # character_event = {
-
 # id = 70071
 
 # desc = "EVTDESC70071"
-
 # picture = "GFX_evt_melee"
 
 # is_triggered_only = yes
-
 # option = {
 
 # name = "EVTOPTA70071"
-
 # FROMFROM = { tooltip = { } }
 
 # }
-
 # }
 
 # # # inform tourny holder of duel
-
 # # character_event = {
 
 # # id = 70072
-
 # # desc = "EVTDESC70072"
 
 # # picture = "GFX_evt_melee"
-
 # # is_triggered_only = yes
 
 # # option = {
-
 # # name = "EVTOPTA70071"
 
 # # top_liege = {
-
 # # random_realm_character = {
 
 # # limit = {
-
 # # character = FROMFROM
 
 # # }
-
 # # hidden_tooltip = { prestige = 0 }
 
 # # }
-
 # # }
 
 # # }
-
 # # }
 
 # # inform tourny holder of duel
-
 # character_event = {
 
 # id = 70073
-
 # desc = "EVTDESC70073"
 
 # picture = "GFX_evt_melee"
-
 # is_triggered_only = yes
 
 # option = {
-
 # name = "EVTOPTA70071"
 
 # FROMFROM = { tooltip = { } }
-
 # }
 
 # }
-
 # pursue queen fo love and beauty?
 character_event = {
 	id = 70074
@@ -10966,7 +10721,6 @@ letter_event = {
 }
 
 # more information for participants
-
 # Message about death
 character_event = {
 	id = 70038
@@ -11337,7 +11091,6 @@ character_event = {
 }
 
 # UNHORSED (BRIBED)
-
 # Inform round loser
 character_event = {
 	id = tourney.43
@@ -11907,7 +11660,6 @@ character_event = {
 }
 
 # AI resolved tourney (If player is involved, optimise)
-
 # Find Winner
 character_event = {
 	id = tourney.550
@@ -12700,7 +12452,6 @@ character_event = {
 }
 
 # Flag management
-
 # Safety catch - clears character flags and modifiers
 character_event = {
 	id = 70999

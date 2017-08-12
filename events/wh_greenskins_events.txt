@@ -2,11 +2,9 @@
 namespace = DR_greenskins
 
 # Gud n' Propa Greenskin stuff
-
 # Greenskin Power law
 
 # The Greenskin Law has a MMTH of automatically increasing or decreasing every 1 and a half years. This time can vary depending on character traits.
-
 # It can also be manually increased in through a decision, but you will be challenged to a duel by another Greenskin if you do so, for trying to impose your rule.
 
 # Now to assign the size traits for orcs that don't have them on_yearly_pulse
@@ -196,7 +194,6 @@ character_event = {
 }
 
 # DR_greenskins.10-200 reserved for Flavor Events for Orks
-
 # Cruelty/stressed Bad event.
 character_event = {
 	id = DR_greenskins.10
@@ -367,7 +364,6 @@ character_event = {
 }
 
 # This event chain determines who gets to become shamans. For now, it is based on the mystic trait
-
 # Landed characters only so far, as studying magic is expensive and we don't want all greenskin mystics to become shamans on_bi_yearly_pulse
 character_event = {
 	id = DR_greenskins.100
@@ -2029,267 +2025,201 @@ character_event = {
 }
 
 # # Greenskin population increases ( Triggered at on_actions in on_bi_yearly_pulse, jumps from character to the province in question )
-
 # character_event = {
 
 # id = DR_greenskins.170
-
 # is_triggered_only = yes
 
 # hide_window = yes
-
 # weight_multiplier = {
 
 # days = 1
-
 # }
 
 # trigger = {
-
 # religion_group = greenskin_gods_group
 
 # OR = {
-
 # culture_group = goblin_group
 
 # culture_group = orc_group
-
 # }
 
 # any_demesne_province = {
-
 # OR = {
 
 # has_province_modifier = medium_greenskin_population
-
 # has_province_modifier = large_greenskin_population
 
 # }
-
 # }
 
 # }
-
 # immediate = {
 
 # random_demesne_province = {
-
 # limit = {
 
 # OR = {
-
 # has_province_modifier = medium_greenskin_population
 
 # has_province_modifier = large_greenskin_population
-
 # }
 
 # }
-
 # province_event = { id = DR_greenskins.150 }
 
 # }
-
 # }
 
 # option = {
-
 # name = OK
 
 # }
-
 # }
 
 # # Greenskin population increases
-
 # province_event = {
 
 # id = DR_greenskins.150
-
 # picture = GFX_evt_greenskinsettlement
 
 # trigger = {
-
 # religion_group = greenskin_gods_group
 
 # OR = {
-
 # culture_group = goblin_group
 
 # culture_group = orc_group
-
 # }
 
 # OR = {
-
 # has_province_modifier = medium_greenskin_population
 
 # has_province_modifier = large_greenskin_population
-
 # }
 
 # }
-
 # mean_time_to_happen = {
 
 # months = 24
-
 # }
 
 # desc = {
-
 # text = "DR_greenskins.150.desc"
 
 # trigger = {
-
 # has_province_modifier = medium_greenskin_population
 
 # }
-
 # }
 
 # desc = {
-
 # text = "DR_greenskins.150.descB"
 
 # trigger = {
-
 # NOT = { has_province_modifier = medium_greenskin_population }
 
 # }
-
 # }
 
 # option = {
-
 # name = "DR_greenskins.150.opta"
 
 # if = {
-
 # limit = {
 
 # has_province_modifier = large_greenskin_population
-
 # }
 
 # remove_province_modifier = large_greenskin_population
-
 # if = {
 
 # limit = {
-
 # holder_scope = {
 
 # culture_group = orc_group
-
 # }
 
 # }
-
 # culture = orc_main
 
 # }
-
 # if = {
 
 # limit = {
-
 # holder_scope = {
 
 # culture_group = goblin_group
-
 # }
 
 # }
-
 # culture = goblin_main
 
 # }
-
 # if = {
 
 # limit = {
-
 # holder_scope = {
 
 # religion = greenskin_gods
-
 # }
 
 # }
-
 # religion = greenskin_gods
 
 # }
-
 # if = {
 
 # limit = {
-
 # holder_scope = {
 
 # religion = spider_god
-
 # }
 
 # }
-
 # religion = spider_god
 
 # }
-
 # any_province_holding = {
 
 # limit = {
-
 # NOT = { # Temples and Tribes are kept
 
 # OR = {
-
 # is_theocracy = yes
 
 # is_tribal = yes
-
 # }
 
 # }
-
 # }
 
 # convert_to = TRIBAL
-
 # add_building = tb_greenskin_camp_1
 
 # refill_holding_levy = yes
-
 # }
 
 # }
-
 # if = {
 
 # limit = {
-
 # has_province_modifier = medium_greenskin_population
 
 # }
-
 # remove_province_modifier = medium_greenskin_population
 
 # add_province_modifier = {
-
 # name = large_greenskin_population
 
 # duration = -1
-
 # }
 
 # }
-
 # }
 
 # }
-
 # In case non-Greenskins capture a province that's being "colonized", it'll get a "Greenskin population" debuff that will go away in when a Marshal suppresses them
 province_event = {
 	id = DR_greenskins.151
@@ -2740,7 +2670,6 @@ character_event = {
 }
 
 # Greenskin horde appears (temporary rebel title created, with a leader and a war)
-
 # Triggered from "on_rebel_revolt"
 province_event = {
 	id = DR_greenskins.171
@@ -5857,7 +5786,6 @@ character_event = {
 }
 
 # Troops flock to your banner
-
 # The target character is in FROM
 character_event = {
 	id = DR_greenskins.177
@@ -6022,7 +5950,6 @@ character_event = {
 }
 
 # A hero and his retinue appear in your court
-
 # The target character is in FROM
 character_event = {
 	id = DR_greenskins.178
@@ -6202,7 +6129,6 @@ character_event = {
 }
 
 # A smaller force arrives for the invasion
-
 # The target character is in FROM
 character_event = {
 	id = DR_greenskins.179
@@ -6647,7 +6573,6 @@ character_event = {
 }
 
 # Modified duel event
-
 # ROOT = attacker
 
 # FROM = defender
@@ -6762,7 +6687,6 @@ character_event = {
 }
 
 # MAKE LAND GREEN JOB ACTION EFFECTS
-
 # The Marshal has plundered and greatly increased your fame
 character_event = {
 	id = DR_greenskins.191
@@ -7450,739 +7374,555 @@ character_event = {
 }
 
 # # Liege informed
-
 # character_event = {
 
 # id = DR_greenskins.196
-
 # picture = GFX_evt_greenskinsettlement
 
 # border = GFX_event_normal_frame_war
-
 # is_triggered_only = yes
 
 # desc = "DR_greenskins.150.desc_liege"
-
 # option = {
 
 # name = DR_greenskins.150.opta_liege
-
 # prestige = 100
 
 # opinion = {
-
 # who = FROM
 
 # modifier = opinion_grateful
-
 # months = 6
 
 # }
-
 # }
 
 # }
-
 # # The Marshal gathers a small band of boyz ( Stupid AI version )
 
 # character_event = {
-
 # id = DR_greenskins.197
 
 # picture = GFX_evt_orcs
-
 # border = GFX_event_normal_frame_war
 
 # desc = "EVTDESCADR_greenskins_settle_boyz"
-
 # capable_only = yes
 
 # prisoner = no
-
 # trigger = {
 
 # liege = {
-
 # ai = yes
 
 # is_adult = yes
-
 # prisoner = no
 
 # NOT = { trait = incapable }
-
 # OR = {
 
 # NOT = { has_character_flag = tribal_organize_raid_troops }
-
 # had_character_flag = { flag = tribal_organize_raid_troops days = 650 }
 
 # }
-
 # }
 
 # religion_group = greenskin_gods_group
-
 # OR = {
 
 # culture_group = goblin_group
-
 # culture_group = orc_group
 
 # }
-
 # has_job_action = action_advance_mil_tech
 
 # location = {
-
 # county = {
 
 # is_occupied = no
-
 # }
 
 # }
-
 # }
 
 # mean_time_to_happen = {
-
 # months = 250
 
 # modifier = {
-
 # factor = 0.5
 
 # location = { capital_holding = { is_tribal = yes } }
-
 # }
 
 # modifier = {
-
 # factor = 1.25
 
 # trait = content
-
 # }
 
 # modifier = {
-
 # factor = 1.25
 
 # trait = kind
-
 # }
 
 # modifier = {
-
 # factor = 1.25
 
 # trait = charitable
-
 # }
 
 # modifier = {
-
 # factor = 1.25
 
 # trait = shy
-
 # }
 
 # modifier = {
-
 # factor = 0.75
 
 # trait = wroth
-
 # }
 
 # modifier = {
-
 # factor = 0.75
 
 # trait = greedy
-
 # }
 
 # modifier = {
-
 # factor = 0.5
 
 # trait = lunatic_3
-
 # }
 
 # modifier = {
-
 # factor = 0.75
 
 # trait = lunatic_2
-
 # }
 
 # modifier = {
-
 # factor = 0.95
 
 # trait = lunatic_1
-
 # }
 
 # modifier = {
-
 # factor = 0.75
 
 # trait = possessed
-
 # }
 
 # modifier = {
-
 # factor = 0.75
 
 # trait = cruel
-
 # }
 
 # modifier = {
-
 # factor = 0.75
 
 # location = { has_province_modifier = medium_greenskin_population }
-
 # }
 
 # modifier = {
-
 # factor = 0.5
 
 # location = { has_province_modifier = large_greenskin_population }
-
 # }
 
 # }
-
 # option = {
 
 # name = EVTOPTA_greenskins_settle_boyz
-
 # if = {
 
 # limit = {
-
 # location = {
 
 # NOT = { culture_group = ROOT }
-
 # }
 
 # }
-
 # if = {
 
 # limit = {
-
 # location = {
 
 # has_province_modifier = large_greenskin_population
-
 # }
 
 # }
-
 # location = {
 
 # remove_province_modifier = large_greenskin_population
-
 # if = {
 
 # limit = {
-
 # holder_scope = {
 
 # culture_group = orc_group
-
 # }
 
 # }
-
 # culture = orc_main
 
 # }
-
 # if = {
 
 # limit = {
-
 # holder_scope = {
 
 # culture_group = goblin_group
-
 # }
 
 # }
-
 # culture = goblin_main
 
 # }
-
 # if = {
 
 # limit = {
-
 # holder_scope = {
 
 # religion = greenskin_gods
-
 # }
 
 # }
-
 # religion = greenskin_gods
 
 # }
-
 # if = {
 
 # limit = {
-
 # holder_scope = {
 
 # religion = spider_god
-
 # }
 
 # }
-
 # religion = spider_god
 
 # }
-
 # any_province_holding = {
 
 # limit = {
-
 # NOT = { # Temples and Tribes are kept
 
 # OR = {
-
 # is_theocracy = yes
 
 # is_tribal = yes
-
 # }
 
 # }
-
 # }
 
 # convert_to = TRIBAL
-
 # add_building = tb_greenskin_camp_1
 
 # refill_holding_levy = yes
-
 # }
 
 # }
-
 # }
 
 # if = {
-
 # limit = {
 
 # location = { has_province_modifier = medium_greenskin_population }
-
 # }
 
 # location = {
-
 # remove_province_modifier = medium_greenskin_population
 
 # add_province_modifier = {
-
 # name = large_greenskin_population
 
 # duration = -1
-
 # }
 
 # }
-
 # }
 
 # if = {
-
 # limit = {
 
 # location = {
-
 # NOT = {
 
 # OR = {
-
 # has_province_modifier = medium_greenskin_population
 
 # has_province_modifier = large_greenskin_population
-
 # }
 
 # }
-
 # NOT = { culture_group = ROOT }
 
 # }
-
 # }
 
 # location = {
-
 # add_province_modifier = {
 
 # name = medium_greenskin_population
-
 # duration = -1
 
 # }
-
 # }
 
 # }
-
 # }
 
 # hidden_tooltip = {
-
 # liege = { character_event = { id = DR_greenskins.198 } }
 
 # }
-
 # }
 
 # }
-
 # # The liege is informed
 
 # character_event = {
-
 # id = DR_greenskins.198
 
 # picture = GFX_evt_orcs
-
 # border = GFX_event_normal_frame_war
 
 # desc = "EVTDESCADR_greenskins_settle_boyz"
-
 # is_triggered_only = yes
 
 # immediate = {
-
 # capital_scope = {
 
 # ROOT = {
-
 # spawn_unit = {
 
 # province = PREV
-
 # home = PREV
 
 # owner = THIS
-
 # match_character = THIS
 
 # match_mult = 0.05
-
 # match_min = 100
 
 # match_max = 3000
-
 # attrition = 1.0
 
 # cannot_inherit = yes
-
 # earmark = greenskin_band
 
 # }
-
 # spawn_unit = {
 
 # province = PREV
-
 # home = PREV
 
 # owner = THIS
-
 # match_character = THIS
 
 # match_mult = 0.05
-
 # match_min = 100
 
 # match_max = 3000
-
 # attrition = 1.0
 
 # cannot_inherit = yes
-
 # earmark = greenskin_band
 
 # }
-
 # spawn_unit = {
 
 # province = PREV
-
 # home = PREV
 
 # owner = THIS
-
 # match_character = THIS
 
 # match_mult = 0.05
-
 # match_min = 100
 
 # match_max = 3000
-
 # attrition = 1.0
 
 # cannot_inherit = yes
-
 # earmark = greenskin_band
 
 # }
-
 # }
 
 # }
-
 # clr_character_flag = tribal_organize_raid_troops
 
 # set_character_flag = tribal_organize_raid_troops
-
 # }
 
 # option = {
-
 # name = EVTOPTAbeastmen15
 
 # opinion = {
-
 # who = FROM
 
 # modifier = opinion_grateful
-
 # months = 12
 
 # }
-
 # }
 
 # }
-
 # # CLEANSING GREENSKINS
 
 # # The Marshal wants to fund expedition to clean Greenskins in a province
-
 # character_event = {
 
 # id = DR_greenskins.199
-
 # desc = EVTDESCADR_greenskins_cleansing_marshal
 
 # picture = GFX_evt_orcs2
-
 # border = GFX_event_normal_frame_war
 
 # capable_only = yes
-
 # prisoner = no
 
 # trigger = {
-
 # liege = {
 
 # is_adult = yes
-
 # prisoner = no
 
 # war = no
-
 # NOT = { trait = creature_nehekharan }
 
 # NOT = { religion_group = greenskin_gods_group }
-
 # NOT = {
 
 # OR = {
-
 # culture_group = orc_group
 
 # culture_group = goblin_group
-
 # }
 
 # }
-
 # NOT = { trait = incapable }
 
 # job_marshal = {
-
 # character = ROOT
 
 # }
-
 # any_demesne_province = {
 
 # has_province_modifier = greenskin_population_bad
-
 # }
 
 # }
-
 # # is_marshal = yes
 
 # # OR = {
-
 # # has_job_action = action_train_troops
 
 # # has_job_action = action_assist_arrest
-
 # # }
 
 # }
-
 # mean_time_to_happen = {
 
 # months = 60
-
 # modifier = {
 
 # factor = 1.25
-
 # NOT = { martial = 2 }
 
 # }
-
 # modifier = {
 
 # factor = 1.25
-
 # NOT = { martial = 3 }
 
 # }
-
 # modifier = {
 
 # factor = 1.25
-
 # NOT = { martial = 4 }
 
 # }
-
 # modifier = {
 
 # factor = 1.25
-
 # NOT = { martial = 5 }
 
 # }
-
 # modifier = {
 
 # factor = 0.75
-
 # martial = 9
 
 # }
-
 # modifier = {
 
 # factor = 0.75
-
 # martial = 10
 
 # }
-
 # modifier = {
 
 # factor = 0.50
-
 # martial = 11
 
 # }
-
 # modifier = {
 
 # factor = 0.40
-
 # martial = 12
 
 # }
-
 # modifier = {
 
 # factor = 0.25
-
 # martial = 13
 
 # }
-
 # modifier = {
 
 # factor = 0.5
-
 # trait = zealous
 
 # }
-
 # modifier = {
 
 # factor = 0.5
-
 # trait = brave
 
 # }
-
 # modifier = {
 
 # factor = 2.5
-
 # trait = craven
 
 # }
-
 # }
 
 # option = {
-
 # name = EVTOPTA_greenskins_cleansing_marshal
 
 # prestige = 50
-
 # liege = {
 
 # random_demesne_province = {
-
 # limit = {
 
 # has_province_modifier = greenskin_population_bad
-
 # }
 
 # province_event = { id = DR_greenskins.203 }
-
 # }
 
 # }
-
 # # liege = { character_event = { id = DR_greenskins.200 } }
 
 # }
-
 # }
 
 # Liege: fund expedition?

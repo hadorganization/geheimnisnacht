@@ -1,363 +1,273 @@
 
 
 # Events for Dynasty requests
-
 # ID 66000 - 66999 are reserved
 
 # Written by Johan Andersson
-
 # TODO remember to take into consideration
 
 # other dieseases of warhammer world
-
 # Ask for claim on title if a dynasty member is older and is childless
 
 # character_event = {
-
 # 	id = 66000
 
 # 	desc = EVTDESC66000
-
 # 	picture = GFX_evt_emissary
 
 # 	is_triggered_only = yes
-
 # 	min_age = 16
 
 # 	only_men = yes
-
 # 	trigger = {
 
 # 		num_of_children = 1
-
 # 		is_landed = no
 
 # 		NOT = { trait = eunuch }
-
 # 		NOT = { is_ascetic_trigger = yes }
 
 # 		any_dynasty_member = {
-
 # 			demesne_size = 1
 
 # 			NOT = { num_of_children = 1 }
-
 # 			age = 35
 
 # 			NOT = { has_law = succ_feudal_elective }
-
 # 			OR = {
 
 # 				is_feudal = yes
-
 # 				is_tribal = yes
 
 # 				is_nomadic = yes
-
 # 			}
 
 # 			NOT = { any_demesne_title = { claimed_by = root	} }
-
 # 		}
 
 # 		OR = {
-
 # 			diplomacy = 12
 
 # 			intrigue = 12
-
 # 		}
 
 # 	}
-
 # 	weight_multiplier = {
 
 # 		days = 1
-
 # 		modifier = {
 
 # 			factor = 10
-
 # 			trait = ambitious
 
 # 		}
-
 # 		modifier = {
 
 # 			factor = 5
-
 # 			trait = proud
 
 # 		}
-
 # 		modifier = {
 
 # 			factor = 0.8
-
 # 			trait = stressed
 
 # 		}
-
 # 		modifier = {
 
 # 			factor = 0.8
-
 # 			trait = depressed
 
 # 		}
-
 # 		modifier = {
 
 # 			factor = 0.75
-
 # 			trait = lunatic
 
 # 		}
-
 # 		modifier = {
 
 # 			factor = 0.75
-
 # 			trait = possessed
 
 # 		}
-
 # 		modifier = {
 
 # 			factor = 0.9
-
 # 			is_ill = yes
 
 # 		}
-
 # 		modifier = {
 
 # 			factor = 0.8
-
 # 			trait = pneumonic
 
 # 		}
-
 # 		modifier = {
 
 # 			factor = 0.8
-
 # 			trait = syphilitic
 
 # 		}
-
 # 		modifier = {
 
 # 			factor = 0.5
-
 # 			trait = leper
 
 # 		}
-
 # 		modifier = {
 
 # 			factor = 0.9
-
 # 			trait = wounded
 
 # 		}
-
 # 		modifier = {
 
 # 			factor = 0.8
-
 # 			is_maimed_trigger = yes
 
 # 		}
-
 # 		modifier = {
 
 # 			factor = 0.5
-
 # 			trait = infirm
 
 # 		}
-
 # 		modifier = {
 
 # 			factor = 0.4
-
 # 			trait = incapable
 
 # 		}
-
 # 		modifier = {
 
 # 			factor = 0.5
-
 # 			trait = drunkard
 
 # 		}
-
 # 		modifier = {
 
 # 			factor = 0.5
-
 # 			trait = has_tuberculosis
 
 # 		}
-
 # 		modifier = {
 
 # 			factor = 0.5
-
 # 			trait = has_typhoid_fever
 
 # 		}
-
 # 		modifier = {
 
 # 			factor = 0.5
-
 # 			trait = has_typhus
 
 # 		}
-
 # 		modifier = {
 
 # 			factor = 0.5
-
 # 			trait = has_bubonic_plague
 
 # 		}
-
 # 		modifier = {
 
 # 			factor = 0.5
-
 # 			trait = has_measles
 
 # 		}
-
 # 		modifier = {
 
 # 			factor = 0.5
-
 # 			trait = has_small_pox
 
 # 		}
-
 # 	}
 
 # 	option = {
-
 # 		name = EVTOPTA66000 # ask for a claim
 
 # 		ai_chance = {
-
 # 			factor = 1
 
 # 		}
-
 # 		random_dynasty_member = {
 
 # 			limit = {
-
 # 				demesne_size = 1
 
 # 				NOT = { num_of_children = 1 }
-
 # 				age = 35
 
 # 				NOT = { has_law = succ_feudal_elective }
-
 # 				OR = {
 
 # 					is_feudal = yes
-
 # 					is_tribal = yes
 
 # 					is_nomadic = yes
-
 # 				}
 
 # 				NOT = { any_demesne_title = { claimed_by = root	} }
-
 # 			}
 
 # 			character_event = {	id = 66010 days = 17	tooltip = EVTTOOLTIP66010 }
-
 # 		}
 
 # 	}
-
 # 	option = {
 
 # 		name = EVTOPTB66000 # ask for the actual title
-
 # 		ai_chance = {
 
 # 			factor = 1000
-
 # 		}
 
 # 		trigger = {
-
 # 			any_dynasty_member = {
 
 # 				NOT = { num_of_children = 1 }
-
 # 				age = 35
 
 # 				demesne_size = 2
-
 # 				NOT = { has_law = succ_feudal_elective }
 
 # 				OR = {
-
 # 					is_feudal = yes
 
 # 					is_tribal = yes
-
 # 					is_nomadic = yes
 
 # 				}
-
 # 				NOT = { any_demesne_title = { claimed_by = root	} }
 
 # 			}
-
 # 		}
 
 # 		random_dynasty_member = {
-
 # 			limit = {
 
 # 				NOT = { num_of_children = 1 }
-
 # 				age = 35
 
 # 				NOT = { has_law = succ_feudal_elective }
-
 # 				OR = {
 
 # 					is_feudal = yes
-
 # 					is_tribal = yes
 
 # 					is_nomadic = yes
-
 # 				}
 
 # 				NOT = { any_demesne_title = { claimed_by = root	} }
-
 # 				demesne_size = 2
 
 # 			}
-
 # 			character_event = {	id = 66020 tooltip = EVTTOOLTIP66020 }
 
 # 		}
-
 # 	}
 
 # }
-
 # Dynasty member asks for a claim
 character_event = {
 	id = 66010
@@ -513,7 +423,6 @@ character_event = {
 }
 
 # Landless claimants can ask the Dynasty head to fight a war for your claim.
-
 # Fired from 'on_yearly_pulse'
 character_event = {
 	id = 66099

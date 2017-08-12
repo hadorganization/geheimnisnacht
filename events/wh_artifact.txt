@@ -2,22 +2,23 @@
 # Become Lunatic
 character_event = {
 	id = crown_blade.1
+	desc = EVTDESCcrown_blade.1_ARTIFACT
 	picture = GFX_evt_lunatic
 	border = GFX_event_normal_frame_religion
-	desc = {
-		text = EVTDESCcrown_blade.1_ARTIFACT
-		trigger = {
-			OR = {
-				has_artifact = nagash_crown
-				has_artifact = alcadizar's_blade
-			}
-		}
-	}
+	is_triggered_only = yes
+	only_playable = yes
+
 	min_age = 4
 
 	trigger = {
 		NOT = {
 			trait = lunatic
+		}
+		NOT = {
+			is_undead_trigger = yes
+		}
+		NOT = {
+			is_demon_trigger = yes
 		}
 		OR = {
 			# Senile/comatose due to old age do not gain lunatic, immortals get a pass though
@@ -28,23 +29,11 @@ character_event = {
 		}
 	}
 
-	mean_time_to_happen = {
-		months = 48000 # once in 4000 years on average
-		modifier = {
-			factor = 0.0003
-			has_artifact = nagash_crown
-		}
-		modifier = {
-			factor = 0.0005
-			has_artifact = alcadizar's_blade
-		}
-		modifier = {
-			factor = 40000
-			trigger = {
-				OR = {
-					is_undead_trigger = yes
-					is_demon_trigger = yes
-				}
+	immediate = {
+		FROM = {
+			OR = {
+				has_artifact = nagash_crown
+				has_artifact = alcadizar's_blade
 			}
 		}
 	}
@@ -59,13 +48,6 @@ character_event = {
 				}
 			}
 		}
-		if = {
-			limit = {
-				OR = {
-					has_artifact = nagash_crown
-					has_artifact = alcadizar's_blade
-				}
-			}
 			add_trait = lunatic
 		}
 	}

@@ -475,19 +475,20 @@ character_event = {
 			trait = drunkard
 		}
 		modifier = {
-			factor = 0.05
+			factor = 0.0003
 			has_artifact = nagash_crown
 		}
 		modifier = {
-			factor = 0.05
+			factor = 0.0005
 			has_artifact = alcadizar's_blade
 		}
 		modifier = {
 			factor = 40000
 			trigger = {
-			OR = {
-				is_undead_trigger = yes
-				is_demon_trigger = yes
+				OR = {
+					is_undead_trigger = yes
+					is_demon_trigger = yes
+				}
 			}
 		}
 	}
@@ -585,6 +586,15 @@ character_event = {
 				trait = incapable
 			}
 			remove_trait = incapable
+		}
+		if = {
+			limit = {
+				OR = {
+					has_artifact = nagash_crown
+					has_artifact = alcadizar's_blade
+				}
+			}
+			add_trait = lunatic
 		}
 	}
 }

@@ -2,7 +2,6 @@ namespace = DR_chaosundivided
 
 # Chaos Undivided
 # Bringing an Offering to the Gods - Undivided Edition
-
 # Which Chaos God will you make an offering to?
 # ( Offerings as Undivided yield lesser results )
 character_event = {
@@ -165,15 +164,8 @@ character_event = {
 					modifier = {
 						factor = 0
 						any_friend = {
-							OR = {
-								trait = khorne_demon
-								trait = nurgle_demon
-								trait = slaanesh_demon
-								trait = tzeentch_demon
-								trait = hashut_kdaai
-							}
+							is_demon_trigger = yes
 						}
-
 					}
 					character_event = {
 						id = schaos.92002
@@ -238,13 +230,7 @@ character_event = {
 					modifier = {
 						factor = 0
 						any_friend = {
-							OR = {
-								trait = khorne_demon
-								trait = nurgle_demon
-								trait = slaanesh_demon
-								trait = tzeentch_demon
-								trait = hashut_kdaai
-							}
+							is_demon_trigger = yes
 						}
 
 					}
@@ -333,13 +319,7 @@ character_event = {
 					modifier = {
 						factor = 0
 						any_friend = {
-							OR = {
-								trait = khorne_demon
-								trait = nurgle_demon
-								trait = slaanesh_demon
-								trait = tzeentch_demon
-								trait = hashut_kdaai
-							}
+							is_demon_trigger = yes
 						}
 
 					}
@@ -350,16 +330,7 @@ character_event = {
 				10 = {
 					modifier = {
 						factor = 1.75
-						OR = {
-							trait = magic_potential_1
-							trait = magic_potential_2
-							trait = magic_potential_3
-							trait = magic_potential_4
-							has_character_flag = magic_potential_flag_1
-							has_character_flag = magic_potential_flag_2
-							has_character_flag = magic_potential_flag_3
-							has_character_flag = magic_potential_flag_4
-						}
+						wh_has_any_magic_potential_trigger = yes
 
 					}
 					character_event = {
@@ -417,13 +388,7 @@ character_event = {
 					modifier = {
 						factor = 0
 						any_friend = {
-							OR = {
-								trait = khorne_demon
-								trait = nurgle_demon
-								trait = slaanesh_demon
-								trait = tzeentch_demon
-								trait = hashut_kdaai
-							}
+							is_demon_trigger = yes
 						}
 
 					}
@@ -434,19 +399,7 @@ character_event = {
 				10 = {
 					modifier = {
 						factor = 0
-						OR = {
-							trait = black_dragon_mount
-							trait = blue_dragon_mount
-							trait = chaos_dragon_mount
-							trait = gold_dragon_mount
-							trait = green_dragon_mount
-							trait = wyvern_mount
-							trait = gryphon_mount
-							trait = red_dragon_mount
-							trait = white_dragon_mount
-							trait = pegasus_mount
-						}
-
+						wh_has_any_magic_potential_trigger = yes
 					}
 					character_event = {
 						id = schaos.94003
@@ -461,7 +414,6 @@ character_event = {
 					modifier = {
 						factor = 0
 						trait = lustful
-
 					}
 					character_event = {
 						id = schaos.94005
@@ -484,7 +436,6 @@ character_event = {
 
 # Everchosen Stuff
 # AI stuff
-
 # AI Everchosen appears
 narrative_event = {
 	id = DR_chaosundivided.10
@@ -500,66 +451,17 @@ narrative_event = {
 	min_age = 16
 
 	trigger = {
-		NOT = {
+		nor = {
 			everchosen = {
 				is_alive = yes
 			}
-		}
-		NOT = {
 			has_global_flag = everchosen_exists
 		}
-		# OR = {
-		# year = 1210
-		# AND = {
-		# has_game_rule = {
-		# name = mongol_invasion
-		#		value = random
-		# }
-		# total_years_played = 50
-		# }
-		# AND = {
-		# has_game_rule = {
-		# name = mongol_invasion
-		#		value = delayed_random
-		# }
-		# year = 1000
-		# total_years_played = 50
-		# }
-		# }
-		# NOR = {
-		# year = 1218
-		# has_game_rule = {
-		# name = mongol_invasion
-		#		value = off
-		# }
-		# }
 		controls_religion = yes # Let it happen for the Grand Theogonist. He's always around.
 	}
 
 	mean_time_to_happen = {
 		years = 90
-		# modifier = {
-		# factor = 0.5
-		# year = 1213
-		# }
-		# modifier = {
-		# factor = 0.5
-		# year = 1215
-		# }
-		# modifier = {
-		# factor = 66
-		# has_game_rule = {
-		# name = mongol_invasion
-		#		value = random
-		# }
-		# }
-		# modifier = {
-		# factor = 44
-		# has_game_rule = {
-		# name = mongol_invasion
-		#		value = delayed_random
-		# }
-		# }
 	}
 
 	immediate = {
@@ -571,8 +473,10 @@ narrative_event = {
 			}
 			set_global_flag = everchosen_exists
 			activate_title = {
-				title = e_host_chaos status = yes
+				title = e_host_chaos
+				status = yes
 			}
+			# need else
 			if = {
 				limit = {
 					any_independent_ruler = {
@@ -634,13 +538,13 @@ narrative_event = {
 					}
 					set_graphical_culture = everchosen_visual
 					set_character_flag = first_everchosen_war
-					# give items when DLC is out
 					any_demesne_title = {
 						limit = {
 							has_title_flag = to_be_destroyed
 						}
 						activate_title = {
-							title = THIS status = no
+							title = THIS
+							status = no
 						}
 						destroy_landed_title = THIS
 					}
@@ -648,12 +552,11 @@ narrative_event = {
 					prestige = 5000
 					set_character_flag = horde_invader
 					set_character_flag = existing_everchosen
-					# character_event = { id = DR_chaosundivided.12 } # Spawn troops
 					character_event = {
-						id = DR_chaosundivided.13 days = 1
-					} # Spawn population
+						id = DR_chaosundivided.13
+						days = 1
+					}
 				}
-				# break = yes
 			}
 			if = {
 				limit = {
@@ -743,14 +646,12 @@ narrative_event = {
 							set_creation_date = 1.1.1
 						}
 						prestige = 5000
-						# character_event = { id = 60505 } # Spawn Temujins generals
 						character_event = {
 							id = DR_chaosundivided.11
-						} # Spawn courtiers
-						# character_event = { id = DR_chaosundivided.12 } # Spawn troops
+						}
 						character_event = {
 							id = DR_chaosundivided.13 days = 1
-						} # Spawn population
+						}
 					}
 				}
 				# Archaon spawns
@@ -779,10 +680,8 @@ narrative_event = {
 						add_trait = ambitious
 						add_trait = zealous
 						add_trait = everchosen
-						# give items when DLC is out
 					}
 					new_character = {
-						# set_character_flag = is_temujin
 						e_host_chaos = {
 							set_title_landless = {
 								title = THIS status = yes
@@ -818,14 +717,14 @@ narrative_event = {
 							set_creation_date = 1.1.1
 						}
 						prestige = 5000
-						# character_event = { id = 60505 } # Spawn Temujins generals
+						# Spawn courtiers
 						character_event = {
 							id = DR_chaosundivided.11
-						} # Spawn courtiers
-						# character_event = { id = DR_chaosundivided.12 } # Spawn troops
+						}
+						# Spawn population
 						character_event = {
 							id = DR_chaosundivided.13 days = 1
-						} # Spawn population
+						}
 					}
 				}
 				# Spawn random Everchosen
@@ -836,1242 +735,126 @@ narrative_event = {
 							total_years_played = 511
 						}
 					}
-					random_list = {
-						5 = {
-							create_character = {
-								random_traits = yes
-								dynasty = culture
-								religion = chaos
+					create_character = {
+						random_traits = yes
+						dynasty = culture
+						religion = chaos
+						culture = aghol
+						female = no
+						age = 24
+						attributes = {
+							martial = 12
+						}
+						trait = brilliant_strategist
+						trait = ambitious
+						trait = diligent
+						trait = brave
+						trait = everchosen
+						trait = creature_human
+					}
+					new_character = {
+						# set_character_flag = is_temujin
+						e_host_chaos = {
+							set_title_landless = {
+								title = THIS status = yes
+							}
+							set_title_flag = temporary_landless_title
+							grant_title = PREV
+						}
+						set_defacto_liege = THIS
+						set_government_type = nomadic_government
+						wealth = 100000
+						set_character_flag = horde_invader
+						set_character_flag = created_everchosen
+						set_character_flag = first_everchosen_war
+						add_artifact = armor_of_morkar
+						new_artifact = {
+							set_creation_date = 1.1.1
+						}
+						add_artifact = crown_of_domination
+						new_artifact = {
+							set_creation_date = 1.1.1
+						}
+						add_artifact = eye_of_sheerian
+						new_artifact = {
+							set_creation_date = 1.1.1
+						}
+						add_artifact = slayer_of_kings
+						new_artifact = {
+							set_creation_date = 1.1.1
+						}
+						add_artifact = steed_of_the_apocalypse_mount
+						new_artifact = {
+							set_creation_date = 1.1.1
+						}
+						prestige = 5000
+						# Spawn courtiers
+						character_event = {
+							id = DR_chaosundivided.11
+						}
+						# Spawn population
+						character_event = {
+							id = DR_chaosundivided.13
+							days = 1
+						}
+						# set random culture
+						random_list = {
+							10 = {
 								culture = aghol
-								female = no
-								age = 24
-								attributes = {
-									martial = 12
-								}
-								trait = brilliant_strategist
-								trait = ambitious
-								trait = diligent
-								trait = brave
-								trait = everchosen
-								trait = creature_human
 							}
-							new_character = {
-								# set_character_flag = is_temujin
-								e_host_chaos = {
-									set_title_landless = {
-										title = THIS status = yes
-									}
-									set_title_flag = temporary_landless_title
-									grant_title = PREV
-								}
-								set_defacto_liege = THIS
-								set_government_type = nomadic_government
-								wealth = 100000
-								set_character_flag = horde_invader
-								set_character_flag = created_everchosen
-								set_character_flag = first_everchosen_war
-								add_artifact = armor_of_morkar
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = crown_of_domination
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = eye_of_sheerian
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = slayer_of_kings
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = steed_of_the_apocalypse_mount
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								prestige = 5000
-								# character_event = { id = 60505 } # Spawn Temujins generals
-								character_event = {
-									id = DR_chaosundivided.11
-								} # Spawn courtiers
-								# character_event = { id = DR_chaosundivided.12 } # Spawn troops
-								character_event = {
-									id = DR_chaosundivided.13 days = 1
-								} # Spawn population
-								set_graphical_culture = everchosen_visual
-							}
-						}
-						5 = {
-							create_character = {
-								random_traits = yes
-								dynasty = culture
-								religion = chaos
+							10 = {
 								culture = dolgan
-								female = no
-								age = 24
-								attributes = {
-									martial = 12
-								}
-								trait = brilliant_strategist
-								trait = ambitious
-								trait = diligent
-								trait = brave
-								trait = everchosen
-								trait = creature_human
 							}
-							new_character = {
-								# set_character_flag = is_temujin
-								e_host_chaos = {
-									set_title_landless = {
-										title = THIS status = yes
-									}
-									set_title_flag = temporary_landless_title
-									grant_title = PREV
-								}
-								set_defacto_liege = THIS
-								set_government_type = nomadic_government
-								wealth = 100000
-								set_character_flag = horde_invader
-								set_character_flag = created_everchosen
-								set_character_flag = first_everchosen_war
-								add_artifact = armor_of_morkar
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = crown_of_domination
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = eye_of_sheerian
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = slayer_of_kings
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = steed_of_the_apocalypse_mount
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								prestige = 5000
-								# character_event = { id = 60505 } # Spawn Temujins generals
-								character_event = {
-									id = DR_chaosundivided.11
-								} # Spawn courtiers
-								# character_event = { id = DR_chaosundivided.12 } # Spawn troops
-								character_event = {
-									id = DR_chaosundivided.13 days = 1
-								} # Spawn population
-								set_graphical_culture = everchosen_visual
-							}
-						}
-						5 = {
-							create_character = {
-								random_traits = yes
-								dynasty = culture
-								religion = chaos
+							10 = {
 								culture = gharhar
-								female = no
-								age = 24
-								attributes = {
-									martial = 12
-								}
-								trait = brilliant_strategist
-								trait = ambitious
-								trait = diligent
-								trait = brave
-								trait = everchosen
-								trait = creature_human
 							}
-							new_character = {
-								# set_character_flag = is_temujin
-								e_host_chaos = {
-									set_title_landless = {
-										title = THIS status = yes
-									}
-									set_title_flag = temporary_landless_title
-									grant_title = PREV
-								}
-								set_defacto_liege = THIS
-								set_government_type = nomadic_government
-								wealth = 100000
-								set_character_flag = horde_invader
-								set_character_flag = created_everchosen
-								set_character_flag = first_everchosen_war
-								add_artifact = armor_of_morkar
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = crown_of_domination
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = eye_of_sheerian
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = slayer_of_kings
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = steed_of_the_apocalypse_mount
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								prestige = 5000
-								# character_event = { id = 60505 } # Spawn Temujins generals
-								character_event = {
-									id = DR_chaosundivided.11
-								} # Spawn courtiers
-								# character_event = { id = DR_chaosundivided.12 } # Spawn troops
-								character_event = {
-									id = DR_chaosundivided.13 days = 1
-								} # Spawn population
-								set_graphical_culture = everchosen_visual
-							}
-						}
-						5 = {
-							create_character = {
-								random_traits = yes
-								dynasty = culture
-								religion = chaos
+							10 = {
 								culture = hastling
-								female = no
-								age = 24
-								attributes = {
-									martial = 12
-								}
-								trait = brilliant_strategist
-								trait = ambitious
-								trait = diligent
-								trait = brave
-								trait = everchosen
-								trait = creature_human
 							}
-							new_character = {
-								# set_character_flag = is_temujin
-								e_host_chaos = {
-									set_title_landless = {
-										title = THIS status = yes
-									}
-									set_title_flag = temporary_landless_title
-									grant_title = PREV
-								}
-								set_defacto_liege = THIS
-								set_government_type = nomadic_government
-								wealth = 100000
-								set_character_flag = horde_invader
-								set_character_flag = created_everchosen
-								set_character_flag = first_everchosen_war
-								add_artifact = armor_of_morkar
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = crown_of_domination
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = eye_of_sheerian
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = slayer_of_kings
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = steed_of_the_apocalypse_mount
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								prestige = 5000
-								# character_event = { id = 60505 } # Spawn Temujins generals
-								character_event = {
-									id = DR_chaosundivided.11
-								} # Spawn courtiers
-								# character_event = { id = DR_chaosundivided.12 } # Spawn troops
-								character_event = {
-									id = DR_chaosundivided.13 days = 1
-								} # Spawn population
-								set_graphical_culture = everchosen_visual
-							}
-						}
-						5 = {
-							create_character = {
-								random_traits = yes
-								dynasty = culture
-								religion = chaos
+							10 = {
 								culture = khazag
-								female = no
-								age = 24
-								attributes = {
-									martial = 12
-								}
-								trait = brilliant_strategist
-								trait = ambitious
-								trait = diligent
-								trait = brave
-								trait = everchosen
-								trait = creature_human
 							}
-							new_character = {
-								# set_character_flag = is_temujin
-								e_host_chaos = {
-									set_title_landless = {
-										title = THIS status = yes
-									}
-									set_title_flag = temporary_landless_title
-									grant_title = PREV
-								}
-								set_defacto_liege = THIS
-								set_government_type = nomadic_government
-								wealth = 100000
-								set_character_flag = horde_invader
-								set_character_flag = created_everchosen
-								set_character_flag = first_everchosen_war
-								add_artifact = armor_of_morkar
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = crown_of_domination
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = eye_of_sheerian
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = slayer_of_kings
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = steed_of_the_apocalypse_mount
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								prestige = 5000
-								# character_event = { id = 60505 } # Spawn Temujins generals
-								character_event = {
-									id = DR_chaosundivided.11
-								} # Spawn courtiers
-								# character_event = { id = DR_chaosundivided.12 } # Spawn troops
-								character_event = {
-									id = DR_chaosundivided.13 days = 1
-								} # Spawn population
-								set_graphical_culture = everchosen_visual
-							}
-						}
-						5 = {
-							create_character = {
-								random_traits = yes
-								dynasty = culture
-								religion = chaos
+							10 = {
 								culture = kul
-								female = no
-								age = 24
-								attributes = {
-									martial = 12
-								}
-								trait = brilliant_strategist
-								trait = ambitious
-								trait = diligent
-								trait = brave
-								trait = everchosen
-								trait = creature_human
 							}
-							new_character = {
-								# set_character_flag = is_temujin
-								e_host_chaos = {
-									set_title_landless = {
-										title = THIS status = yes
-									}
-									set_title_flag = temporary_landless_title
-									grant_title = PREV
-								}
-								set_defacto_liege = THIS
-								set_government_type = nomadic_government
-								wealth = 100000
-								set_character_flag = horde_invader
-								set_character_flag = created_everchosen
-								set_character_flag = first_everchosen_war
-								add_artifact = armor_of_morkar
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = crown_of_domination
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = eye_of_sheerian
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = slayer_of_kings
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = steed_of_the_apocalypse_mount
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								prestige = 5000
-								# character_event = { id = 60505 } # Spawn Temujins generals
-								character_event = {
-									id = DR_chaosundivided.11
-								} # Spawn courtiers
-								# character_event = { id = DR_chaosundivided.12 } # Spawn troops
-								character_event = {
-									id = DR_chaosundivided.13 days = 1
-								} # Spawn population
-								set_graphical_culture = everchosen_visual
-							}
-						}
-						5 = {
-							create_character = {
-								random_traits = yes
-								dynasty = culture
-								religion = chaos
+							10 = {
 								culture = kvellig
-								female = no
-								age = 24
-								attributes = {
-									martial = 12
-								}
-								trait = brilliant_strategist
-								trait = ambitious
-								trait = diligent
-								trait = brave
-								trait = everchosen
-								trait = creature_human
 							}
-							new_character = {
-								# set_character_flag = is_temujin
-								e_host_chaos = {
-									set_title_landless = {
-										title = THIS status = yes
-									}
-									set_title_flag = temporary_landless_title
-									grant_title = PREV
-								}
-								set_defacto_liege = THIS
-								set_government_type = nomadic_government
-								wealth = 100000
-								set_character_flag = horde_invader
-								set_character_flag = created_everchosen
-								set_character_flag = first_everchosen_war
-								add_artifact = armor_of_morkar
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = crown_of_domination
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = eye_of_sheerian
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = slayer_of_kings
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = steed_of_the_apocalypse_mount
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								prestige = 5000
-								# character_event = { id = 60505 } # Spawn Temujins generals
-								character_event = {
-									id = DR_chaosundivided.11
-								} # Spawn courtiers
-								# character_event = { id = DR_chaosundivided.12 } # Spawn troops
-								character_event = {
-									id = DR_chaosundivided.13 days = 1
-								} # Spawn population
-								set_graphical_culture = everchosen_visual
-							}
-						}
-						5 = {
-							create_character = {
-								random_traits = yes
-								dynasty = culture
-								religion = chaos
+							10 = {
 								culture = tahmak
-								female = no
-								age = 24
-								attributes = {
-									martial = 12
-								}
-								trait = brilliant_strategist
-								trait = ambitious
-								trait = diligent
-								trait = brave
-								trait = everchosen
-								trait = creature_human
 							}
-							new_character = {
-								# set_character_flag = is_temujin
-								e_host_chaos = {
-									set_title_landless = {
-										title = THIS status = yes
-									}
-									set_title_flag = temporary_landless_title
-									grant_title = PREV
-								}
-								set_defacto_liege = THIS
-								set_government_type = nomadic_government
-								wealth = 100000
-								set_character_flag = horde_invader
-								set_character_flag = created_everchosen
-								set_character_flag = first_everchosen_war
-								add_artifact = armor_of_morkar
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = crown_of_domination
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = eye_of_sheerian
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = slayer_of_kings
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = steed_of_the_apocalypse_mount
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								prestige = 5000
-								# character_event = { id = 60505 } # Spawn Temujins generals
-								character_event = {
-									id = DR_chaosundivided.11
-								} # Spawn courtiers
-								# character_event = { id = DR_chaosundivided.12 } # Spawn troops
-								character_event = {
-									id = DR_chaosundivided.13 days = 1
-								} # Spawn population
-								set_graphical_culture = everchosen_visual
-							}
-						}
-						5 = {
-							create_character = {
-								random_traits = yes
-								dynasty = culture
-								religion = chaos
-								culture = tokmar
-								female = no
-								age = 24
-								attributes = {
-									martial = 12
-								}
-								trait = brilliant_strategist
-								trait = ambitious
-								trait = diligent
-								trait = brave
-								trait = everchosen
-								trait = creature_human
-							}
-							new_character = {
-								# set_character_flag = is_temujin
-								e_host_chaos = {
-									set_title_landless = {
-										title = THIS status = yes
-									}
-									set_title_flag = temporary_landless_title
-									grant_title = PREV
-								}
-								set_defacto_liege = THIS
-								set_government_type = nomadic_government
-								wealth = 100000
-								set_character_flag = horde_invader
-								set_character_flag = created_everchosen
-								set_character_flag = first_everchosen_war
-								add_artifact = armor_of_morkar
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = crown_of_domination
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = eye_of_sheerian
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = slayer_of_kings
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = steed_of_the_apocalypse_mount
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								prestige = 5000
-								# character_event = { id = 60505 } # Spawn Temujins generals
-								character_event = {
-									id = DR_chaosundivided.11
-								} # Spawn courtiers
-								# character_event = { id = DR_chaosundivided.12 } # Spawn troops
-								character_event = {
-									id = DR_chaosundivided.13 days = 1
-								} # Spawn population
-								set_graphical_culture = everchosen_visual
-							}
-						}
-						5 = {
-							create_character = {
-								random_traits = yes
-								dynasty = culture
-								religion = chaos
+							10 = {
 								culture = yusak
-								female = no
-								age = 24
-								attributes = {
-									martial = 12
-								}
-								trait = brilliant_strategist
-								trait = ambitious
-								trait = diligent
-								trait = brave
-								trait = everchosen
-								trait = creature_human
 							}
-							new_character = {
-								# set_character_flag = is_temujin
-								e_host_chaos = {
-									set_title_landless = {
-										title = THIS status = yes
-									}
-									set_title_flag = temporary_landless_title
-									grant_title = PREV
-								}
-								set_defacto_liege = THIS
-								set_government_type = nomadic_government
-								wealth = 100000
-								set_character_flag = horde_invader
-								set_character_flag = created_everchosen
-								set_character_flag = first_everchosen_war
-								add_artifact = armor_of_morkar
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = crown_of_domination
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = eye_of_sheerian
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = slayer_of_kings
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = steed_of_the_apocalypse_mount
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								prestige = 5000
-								# character_event = { id = 60505 } # Spawn Temujins generals
-								character_event = {
-									id = DR_chaosundivided.11
-								} # Spawn courtiers
-								# character_event = { id = DR_chaosundivided.12 } # Spawn troops
-								character_event = {
-									id = DR_chaosundivided.13 days = 1
-								} # Spawn population
-								set_graphical_culture = everchosen_visual
-							}
-						}
-						5 = {
-							create_character = {
-								random_traits = yes
-								dynasty = culture
-								religion = chaos
+							10 = {
 								culture = chi_an
-								female = no
-								age = 24
-								attributes = {
-									martial = 12
-								}
-								trait = brilliant_strategist
-								trait = ambitious
-								trait = diligent
-								trait = brave
-								trait = everchosen
-								trait = creature_human
 							}
-							new_character = {
-								# set_character_flag = is_temujin
-								e_host_chaos = {
-									set_title_landless = {
-										title = THIS status = yes
-									}
-									set_title_flag = temporary_landless_title
-									grant_title = PREV
-								}
-								set_defacto_liege = THIS
-								set_government_type = nomadic_government
-								wealth = 100000
-								set_character_flag = horde_invader
-								set_character_flag = created_everchosen
-								set_character_flag = first_everchosen_war
-								add_artifact = armor_of_morkar
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = crown_of_domination
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = eye_of_sheerian
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = slayer_of_kings
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = steed_of_the_apocalypse_mount
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								prestige = 5000
-								# character_event = { id = 60505 } # Spawn Temujins generals
-								character_event = {
-									id = DR_chaosundivided.11
-								} # Spawn courtiers
-								# character_event = { id = DR_chaosundivided.12 } # Spawn troops
-								character_event = {
-									id = DR_chaosundivided.13 days = 1
-								} # Spawn population
-								set_graphical_culture = everchosen_visual
-							}
-						}
-						5 = {
-							create_character = {
-								random_traits = yes
-								dynasty = culture
-								religion = chaos
+							10 = {
 								culture = kuj
-								female = no
-								age = 24
-								attributes = {
-									martial = 12
-								}
-								trait = brilliant_strategist
-								trait = ambitious
-								trait = diligent
-								trait = brave
-								trait = everchosen
-								trait = creature_human
 							}
-							new_character = {
-								# set_character_flag = is_temujin
-								e_host_chaos = {
-									set_title_landless = {
-										title = THIS status = yes
-									}
-									set_title_flag = temporary_landless_title
-									grant_title = PREV
-								}
-								set_defacto_liege = THIS
-								set_government_type = nomadic_government
-								wealth = 100000
-								set_character_flag = horde_invader
-								set_character_flag = created_everchosen
-								set_character_flag = first_everchosen_war
-								add_artifact = armor_of_morkar
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = crown_of_domination
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = eye_of_sheerian
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = slayer_of_kings
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = steed_of_the_apocalypse_mount
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								prestige = 5000
-								# character_event = { id = 60505 } # Spawn Temujins generals
-								character_event = {
-									id = DR_chaosundivided.11
-								} # Spawn courtiers
-								# character_event = { id = DR_chaosundivided.12 } # Spawn troops
-								character_event = {
-									id = DR_chaosundivided.13 days = 1
-								} # Spawn population
-								set_graphical_culture = everchosen_visual
-							}
-						}
-						5 = {
-							create_character = {
-								random_traits = yes
-								dynasty = culture
-								religion = chaos
+							10 = {
 								culture = man_chu
-								female = no
-								age = 24
-								attributes = {
-									martial = 12
-								}
-								trait = brilliant_strategist
-								trait = ambitious
-								trait = diligent
-								trait = brave
-								trait = everchosen
-								trait = creature_human
 							}
-							new_character = {
-								# set_character_flag = is_temujin
-								e_host_chaos = {
-									set_title_landless = {
-										title = THIS status = yes
-									}
-									set_title_flag = temporary_landless_title
-									grant_title = PREV
-								}
-								set_defacto_liege = THIS
-								set_government_type = nomadic_government
-								wealth = 100000
-								set_character_flag = horde_invader
-								set_character_flag = created_everchosen
-								set_character_flag = first_everchosen_war
-								add_artifact = armor_of_morkar
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = crown_of_domination
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = eye_of_sheerian
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = slayer_of_kings
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = steed_of_the_apocalypse_mount
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								prestige = 5000
-								# character_event = { id = 60505 } # Spawn Temujins generals
-								character_event = {
-									id = DR_chaosundivided.11
-								} # Spawn courtiers
-								# character_event = { id = DR_chaosundivided.12 } # Spawn troops
-								character_event = {
-									id = DR_chaosundivided.13 days = 1
-								} # Spawn population
-								set_graphical_culture = everchosen_visual
-							}
-						}
-						5 = {
-							create_character = {
-								random_traits = yes
-								dynasty = culture
-								religion = chaos
+							10 = {
 								culture = mung
-								female = no
-								age = 24
-								attributes = {
-									martial = 12
-								}
-								trait = brilliant_strategist
-								trait = ambitious
-								trait = diligent
-								trait = brave
-								trait = everchosen
-								trait = creature_human
 							}
-							new_character = {
-								# set_character_flag = is_temujin
-								e_host_chaos = {
-									set_title_landless = {
-										title = THIS status = yes
-									}
-									set_title_flag = temporary_landless_title
-									grant_title = PREV
-								}
-								set_defacto_liege = THIS
-								set_government_type = nomadic_government
-								wealth = 100000
-								set_character_flag = horde_invader
-								set_character_flag = created_everchosen
-								set_character_flag = first_everchosen_war
-								add_artifact = armor_of_morkar
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = crown_of_domination
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = eye_of_sheerian
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = slayer_of_kings
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = steed_of_the_apocalypse_mount
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								prestige = 5000
-								# character_event = { id = 60505 } # Spawn Temujins generals
-								character_event = {
-									id = DR_chaosundivided.11
-								} # Spawn courtiers
-								# character_event = { id = DR_chaosundivided.12 } # Spawn troops
-								character_event = {
-									id = DR_chaosundivided.13 days = 1
-								} # Spawn population
-								set_graphical_culture = everchosen_visual
-							}
-						}
-						5 = {
-							create_character = {
-								random_traits = yes
-								dynasty = culture
-								religion = chaos
+							10 = {
 								culture = tong
-								female = no
-								age = 24
-								attributes = {
-									martial = 12
-								}
-								trait = brilliant_strategist
-								trait = ambitious
-								trait = diligent
-								trait = brave
-								trait = everchosen
-								trait = creature_human
 							}
-							new_character = {
-								# set_character_flag = is_temujin
-								e_host_chaos = {
-									set_title_landless = {
-										title = THIS status = yes
-									}
-									set_title_flag = temporary_landless_title
-									grant_title = PREV
-								}
-								set_defacto_liege = THIS
-								set_government_type = nomadic_government
-								wealth = 100000
-								set_character_flag = horde_invader
-								set_character_flag = created_everchosen
-								set_character_flag = first_everchosen_war
-								add_artifact = armor_of_morkar
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = crown_of_domination
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = eye_of_sheerian
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = slayer_of_kings
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = steed_of_the_apocalypse_mount
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								prestige = 5000
-								# character_event = { id = 60505 } # Spawn Temujins generals
-								character_event = {
-									id = DR_chaosundivided.11
-								} # Spawn courtiers
-								# character_event = { id = DR_chaosundivided.12 } # Spawn troops
-								character_event = {
-									id = DR_chaosundivided.13 days = 1
-								} # Spawn population
-								set_graphical_culture = everchosen_visual
-							}
-						}
-						5 = {
-							create_character = {
-								random_traits = yes
-								dynasty = culture
-								religion = chaos
+							10 = {
 								culture = tu_ka
-								female = no
-								age = 24
-								attributes = {
-									martial = 12
-								}
-								trait = brilliant_strategist
-								trait = ambitious
-								trait = diligent
-								trait = brave
-								trait = everchosen
-								trait = creature_human
 							}
-							new_character = {
-								# set_character_flag = is_temujin
-								e_host_chaos = {
-									set_title_landless = {
-										title = THIS status = yes
-									}
-									set_title_flag = temporary_landless_title
-									grant_title = PREV
-								}
-								set_defacto_liege = THIS
-								set_government_type = nomadic_government
-								wealth = 100000
-								set_character_flag = horde_invader
-								set_character_flag = created_everchosen
-								set_character_flag = first_everchosen_war
-								add_artifact = armor_of_morkar
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = crown_of_domination
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = eye_of_sheerian
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = slayer_of_kings
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = steed_of_the_apocalypse_mount
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								prestige = 5000
-								# character_event = { id = 60505 } # Spawn Temujins generals
-								character_event = {
-									id = DR_chaosundivided.11
-								} # Spawn courtiers
-								# character_event = { id = DR_chaosundivided.12 } # Spawn troops
-								character_event = {
-									id = DR_chaosundivided.13 days = 1
-								} # Spawn population
-								set_graphical_culture = everchosen_visual
-							}
-						}
-						5 = {
-							create_character = {
-								random_traits = yes
-								dynasty = culture
-								religion = chaos
+							10 = {
 								culture = wei_tu
-								female = no
-								age = 24
-								attributes = {
-									martial = 12
-								}
-								trait = brilliant_strategist
-								trait = ambitious
-								trait = diligent
-								trait = brave
-								trait = everchosen
-								trait = creature_human
 							}
-							new_character = {
-								# set_character_flag = is_temujin
-								e_host_chaos = {
-									set_title_landless = {
-										title = THIS status = yes
-									}
-									set_title_flag = temporary_landless_title
-									grant_title = PREV
-								}
-								set_defacto_liege = THIS
-								set_government_type = nomadic_government
-								wealth = 100000
-								set_character_flag = horde_invader
-								set_character_flag = created_everchosen
-								set_character_flag = first_everchosen_war
-								add_artifact = armor_of_morkar
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = crown_of_domination
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = eye_of_sheerian
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = slayer_of_kings
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = steed_of_the_apocalypse_mount
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								prestige = 5000
-								# character_event = { id = 60505 } # Spawn Temujins generals
-								character_event = {
-									id = DR_chaosundivided.11
-								} # Spawn courtiers
-								# character_event = { id = DR_chaosundivided.12 } # Spawn troops
-								character_event = {
-									id = DR_chaosundivided.13 days = 1
-								} # Spawn population
-								set_graphical_culture = everchosen_visual
-							}
-						}
-						5 = {
-							create_character = {
-								random_traits = yes
-								dynasty = culture
-								religion = chaos
+							10 = {
 								culture = wo
-								female = no
-								age = 24
-								attributes = {
-									martial = 12
-								}
-								trait = brilliant_strategist
-								trait = ambitious
-								trait = diligent
-								trait = brave
-								trait = everchosen
-								trait = creature_human
 							}
-							new_character = {
-								# set_character_flag = is_temujin
-								e_host_chaos = {
-									set_title_landless = {
-										title = THIS status = yes
-									}
-									set_title_flag = temporary_landless_title
-									grant_title = PREV
-								}
-								set_defacto_liege = THIS
-								set_government_type = nomadic_government
-								wealth = 100000
-								set_character_flag = horde_invader
-								set_character_flag = created_everchosen
-								set_character_flag = first_everchosen_war
-								add_artifact = armor_of_morkar
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = crown_of_domination
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = eye_of_sheerian
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = slayer_of_kings
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = steed_of_the_apocalypse_mount
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								prestige = 5000
-								# character_event = { id = 60505 } # Spawn Temujins generals
-								character_event = {
-									id = DR_chaosundivided.11
-								} # Spawn courtiers
-								# character_event = { id = DR_chaosundivided.12 } # Spawn troops
-								character_event = {
-									id = DR_chaosundivided.13 days = 1
-								} # Spawn population
-								set_graphical_culture = everchosen_visual
-							}
-						}
-						5 = {
-							create_character = {
-								random_traits = yes
-								dynasty = culture
-								religion = chaos
+							10 = {
 								culture = yin
-								female = no
-								age = 24
-								attributes = {
-									martial = 12
-								}
-								trait = brilliant_strategist
-								trait = ambitious
-								trait = diligent
-								trait = brave
-								trait = everchosen
-								trait = creature_human
-							}
-							new_character = {
-								# set_character_flag = is_temujin
-								e_host_chaos = {
-									set_title_landless = {
-										title = THIS status = yes
-									}
-									set_title_flag = temporary_landless_title
-									grant_title = PREV
-								}
-								set_defacto_liege = THIS
-								set_government_type = nomadic_government
-								wealth = 100000
-								set_character_flag = horde_invader
-								set_character_flag = created_everchosen
-								set_character_flag = first_everchosen_war
-								add_artifact = armor_of_morkar
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = crown_of_domination
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = eye_of_sheerian
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = slayer_of_kings
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								add_artifact = steed_of_the_apocalypse_mount
-								new_artifact = {
-									set_creation_date = 1.1.1
-								}
-								prestige = 5000
-								# character_event = { id = 60505 } # Spawn Temujins generals
-								character_event = {
-									id = DR_chaosundivided.11
-								} # Spawn courtiers
-								# character_event = { id = DR_chaosundivided.12 } # Spawn troops
-								character_event = {
-									id = DR_chaosundivided.13 days = 1
-								} # Spawn population
-								set_graphical_culture = everchosen_visual
 							}
 						}
+						set_graphical_culture = everchosen_visual
 					}
 				}
 			}
@@ -2091,8 +874,7 @@ narrative_event = {
 							25 = {
 								spawn_unit = {
 									province = 405 # Zanbaijin
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2106,8 +888,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 405 # Zanbaijin
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2121,8 +902,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 405 # Zanbaijin
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2136,8 +916,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 405 # Zanbaijin
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2151,8 +930,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 405 # Zanbaijin
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2166,8 +944,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 405 # Zanbaijin
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2181,8 +958,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 405 # Zanbaijin
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2196,8 +972,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 405 # Zanbaijin
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2211,8 +986,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 405 # Zanbaijin
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2226,8 +1000,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 405 # Zanbaijin
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2241,8 +1014,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 405 # Zanbaijin
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2256,8 +1028,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 405 # Zanbaijin
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2271,8 +1042,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 405 # Zanbaijin
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2286,8 +1056,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 405 # Zanbaijin
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2301,8 +1070,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 405 # Zanbaijin
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2318,8 +1086,7 @@ narrative_event = {
 									chance = 50
 									spawn_unit = {
 										province = 405 # Zanbaijin
-										troops =
-										{
+										troops = {
 											heavy_infantry = {
 												2750 2750
 											}
@@ -2333,8 +1100,7 @@ narrative_event = {
 									}
 									spawn_unit = {
 										province = 405 # Zanbaijin
-										troops =
-										{
+										troops = {
 											heavy_infantry = {
 												2750 2750
 											}
@@ -2348,8 +1114,7 @@ narrative_event = {
 									}
 									spawn_unit = {
 										province = 405 # Zanbaijin
-										troops =
-										{
+										troops = {
 											heavy_infantry = {
 												2750 2750
 											}
@@ -2366,8 +1131,7 @@ narrative_event = {
 									chance = 50
 									spawn_unit = {
 										province = 405 # Zanbaijin
-										troops =
-										{
+										troops = {
 											heavy_infantry = {
 												2750 2750
 											}
@@ -2381,8 +1145,7 @@ narrative_event = {
 									}
 									spawn_unit = {
 										province = 405 # Zanbaijin
-										troops =
-										{
+										troops = {
 											heavy_infantry = {
 												2750 2750
 											}
@@ -2396,8 +1159,7 @@ narrative_event = {
 									}
 									spawn_unit = {
 										province = 405 # Zanbaijin
-										troops =
-										{
+										troops = {
 											heavy_infantry = {
 												2750 2750
 											}
@@ -2428,8 +1190,7 @@ narrative_event = {
 							25 = {
 								spawn_unit = {
 									province = 409 # Dragoynovo
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2443,8 +1204,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 409 # Dragoynovo
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2458,8 +1218,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 409 # Dragoynovo
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2473,8 +1232,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 409 # Dragoynovo
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2488,8 +1246,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 409 # Dragoynovo
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2503,8 +1260,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 409 # Dragoynovo
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2518,8 +1274,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 409 # Dragoynovo
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2533,8 +1288,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 409 # Dragoynovo
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2548,8 +1302,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 409 # Dragoynovo
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2563,8 +1316,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 409 # Dragoynovo
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2578,8 +1330,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 409 # Dragoynovo
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2593,8 +1344,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 409 # Dragoynovo
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2608,8 +1358,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 409 # Dragoynovo
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2623,8 +1372,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 409 # Dragoynovo
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2638,8 +1386,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 409 # Dragoynovo
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2655,8 +1402,7 @@ narrative_event = {
 									chance = 50
 									spawn_unit = {
 										province = 409 # Dragoynovo
-										troops =
-										{
+										troops = {
 											heavy_infantry = {
 												2750 2750
 											}
@@ -2670,8 +1416,7 @@ narrative_event = {
 									}
 									spawn_unit = {
 										province = 409 # Dragoynovo
-										troops =
-										{
+										troops = {
 											heavy_infantry = {
 												2750 2750
 											}
@@ -2685,8 +1430,7 @@ narrative_event = {
 									}
 									spawn_unit = {
 										province = 409 # Dragoynovo
-										troops =
-										{
+										troops = {
 											heavy_infantry = {
 												2750 2750
 											}
@@ -2703,8 +1447,7 @@ narrative_event = {
 									chance = 50
 									spawn_unit = {
 										province = 409 # Dragoynovo
-										troops =
-										{
+										troops = {
 											heavy_infantry = {
 												2750 2750
 											}
@@ -2718,8 +1461,7 @@ narrative_event = {
 									}
 									spawn_unit = {
 										province = 409 # Dragoynovo
-										troops =
-										{
+										troops = {
 											heavy_infantry = {
 												2750 2750
 											}
@@ -2733,8 +1475,7 @@ narrative_event = {
 									}
 									spawn_unit = {
 										province = 409 # Dragoynovo
-										troops =
-										{
+										troops = {
 											heavy_infantry = {
 												2750 2750
 											}
@@ -2765,8 +1506,7 @@ narrative_event = {
 							25 = {
 								spawn_unit = {
 									province = 398 # Jakki
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2780,8 +1520,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 398 # Jakki
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2795,8 +1534,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 398 # Jakki
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2810,8 +1548,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 398 # Jakki
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2825,8 +1562,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 398 # Jakki
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2840,8 +1576,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 398 # Jakki
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2855,8 +1590,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 398 # Jakki
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2870,8 +1604,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 398 # Jakki
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2885,8 +1618,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 398 # Jakki
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2900,8 +1632,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 398 # Jakki
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2915,8 +1646,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 398 # Jakki
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2930,8 +1660,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 398 # Jakki
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2945,8 +1674,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 398 # Jakki
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2960,8 +1688,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 398 # Jakki
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2975,8 +1702,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 398 # Jakki
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -2992,8 +1718,7 @@ narrative_event = {
 									chance = 50
 									spawn_unit = {
 										province = 398 # Jakki
-										troops =
-										{
+										troops = {
 											heavy_infantry = {
 												2750 2750
 											}
@@ -3007,8 +1732,7 @@ narrative_event = {
 									}
 									spawn_unit = {
 										province = 398 # Jakki
-										troops =
-										{
+										troops = {
 											heavy_infantry = {
 												2750 2750
 											}
@@ -3022,8 +1746,7 @@ narrative_event = {
 									}
 									spawn_unit = {
 										province = 398 # Jakki
-										troops =
-										{
+										troops = {
 											heavy_infantry = {
 												2750 2750
 											}
@@ -3040,8 +1763,7 @@ narrative_event = {
 									chance = 50
 									spawn_unit = {
 										province = 398 # Jakki
-										troops =
-										{
+										troops = {
 											heavy_infantry = {
 												2750 2750
 											}
@@ -3055,8 +1777,7 @@ narrative_event = {
 									}
 									spawn_unit = {
 										province = 398 # Jakki
-										troops =
-										{
+										troops = {
 											heavy_infantry = {
 												2750 2750
 											}
@@ -3070,8 +1791,7 @@ narrative_event = {
 									}
 									spawn_unit = {
 										province = 398 # Jakki
-										troops =
-										{
+										troops = {
 											heavy_infantry = {
 												2750 2750
 											}
@@ -3102,8 +1822,7 @@ narrative_event = {
 							25 = {
 								spawn_unit = {
 									province = 1245 # Tohkar
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -3117,8 +1836,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 1245 # Tohkar
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -3132,8 +1850,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 1245 # Tohkar
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -3147,8 +1864,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 1245 # Tohkar
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -3162,8 +1878,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 1245 # Tohkar
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -3177,8 +1892,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 1245 # Tohkar
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -3192,8 +1906,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 1245 # Tohkar
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -3207,8 +1920,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 1245 # Tohkar
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -3222,8 +1934,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 1245 # Tohkar
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -3237,8 +1948,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 1245 # Tohkar
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -3252,8 +1962,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 1245 # Tohkar
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -3267,8 +1976,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 1245 # Tohkar
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -3282,8 +1990,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 1245 # Tohkar
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -3297,8 +2004,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 1245 # Tohkar
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -3312,8 +2018,7 @@ narrative_event = {
 								}
 								spawn_unit = {
 									province = 1245 # Tohkar
-									troops =
-									{
+									troops = {
 										heavy_infantry = {
 											2750 2750
 										}
@@ -3329,8 +2034,7 @@ narrative_event = {
 									chance = 50
 									spawn_unit = {
 										province = 1245 # Tohkar
-										troops =
-										{
+										troops = {
 											heavy_infantry = {
 												2750 2750
 											}
@@ -3344,8 +2048,7 @@ narrative_event = {
 									}
 									spawn_unit = {
 										province = 1245 # Tohkar
-										troops =
-										{
+										troops = {
 											heavy_infantry = {
 												2750 2750
 											}
@@ -3359,8 +2062,7 @@ narrative_event = {
 									}
 									spawn_unit = {
 										province = 1245 # Tohkar
-										troops =
-										{
+										troops = {
 											heavy_infantry = {
 												2750 2750
 											}
@@ -3377,8 +2079,7 @@ narrative_event = {
 									chance = 50
 									spawn_unit = {
 										province = 1245 # Tohkar
-										troops =
-										{
+										troops = {
 											heavy_infantry = {
 												2750 2750
 											}
@@ -3392,8 +2093,7 @@ narrative_event = {
 									}
 									spawn_unit = {
 										province = 1245 # Tohkar
-										troops =
-										{
+										troops = {
 											heavy_infantry = {
 												2750 2750
 											}
@@ -3407,8 +2107,7 @@ narrative_event = {
 									}
 									spawn_unit = {
 										province = 1245 # Tohkar
-										troops =
-										{
+										troops = {
 											heavy_infantry = {
 												2750 2750
 											}
@@ -3452,8 +2151,7 @@ narrative_event = {
 						# Spawn troops at capital
 						spawn_unit = {
 							province = ROOT
-							troops =
-							{
+							troops = {
 								heavy_infantry = {
 									2750 2750
 								}
@@ -3467,8 +2165,7 @@ narrative_event = {
 						}
 						spawn_unit = {
 							province = ROOT
-							troops =
-							{
+							troops = {
 								heavy_infantry = {
 									2750 2750
 								}
@@ -3482,8 +2179,7 @@ narrative_event = {
 						}
 						spawn_unit = {
 							province = ROOT
-							troops =
-							{
+							troops = {
 								heavy_infantry = {
 									2750 2750
 								}
@@ -3497,8 +2193,7 @@ narrative_event = {
 						}
 						spawn_unit = {
 							province = ROOT
-							troops =
-							{
+							troops = {
 								heavy_infantry = {
 									2750 2750
 								}
@@ -3512,8 +2207,7 @@ narrative_event = {
 						}
 						spawn_unit = {
 							province = ROOT
-							troops =
-							{
+							troops = {
 								heavy_infantry = {
 									2750 2750
 								}
@@ -3527,8 +2221,7 @@ narrative_event = {
 						}
 						spawn_unit = {
 							province = ROOT
-							troops =
-							{
+							troops = {
 								heavy_infantry = {
 									2750 2750
 								}
@@ -3542,8 +2235,7 @@ narrative_event = {
 						}
 						spawn_unit = {
 							province = ROOT
-							troops =
-							{
+							troops = {
 								heavy_infantry = {
 									2750 2750
 								}
@@ -3557,8 +2249,7 @@ narrative_event = {
 						}
 						spawn_unit = {
 							province = ROOT
-							troops =
-							{
+							troops = {
 								heavy_infantry = {
 									2750 2750
 								}
@@ -3572,8 +2263,7 @@ narrative_event = {
 						}
 						spawn_unit = {
 							province = ROOT
-							troops =
-							{
+							troops = {
 								heavy_infantry = {
 									2750 2750
 								}
@@ -3587,8 +2277,7 @@ narrative_event = {
 						}
 						spawn_unit = {
 							province = ROOT
-							troops =
-							{
+							troops = {
 								heavy_infantry = {
 									2750 2750
 								}
@@ -3602,8 +2291,7 @@ narrative_event = {
 						}
 						spawn_unit = {
 							province = ROOT
-							troops =
-							{
+							troops = {
 								heavy_infantry = {
 									2750 2750
 								}
@@ -3617,8 +2305,7 @@ narrative_event = {
 						}
 						spawn_unit = {
 							province = ROOT
-							troops =
-							{
+							troops = {
 								heavy_infantry = {
 									2750 2750
 								}
@@ -3632,8 +2319,7 @@ narrative_event = {
 						}
 						spawn_unit = {
 							province = ROOT
-							troops =
-							{
+							troops = {
 								heavy_infantry = {
 									2750 2750
 								}
@@ -3647,8 +2333,7 @@ narrative_event = {
 						}
 						spawn_unit = {
 							province = ROOT
-							troops =
-							{
+							troops = {
 								heavy_infantry = {
 									2750 2750
 								}
@@ -3662,8 +2347,7 @@ narrative_event = {
 						}
 						spawn_unit = {
 							province = ROOT
-							troops =
-							{
+							troops = {
 								heavy_infantry = {
 									2750 2750
 								}
@@ -3679,8 +2363,7 @@ narrative_event = {
 							chance = 50
 							spawn_unit = {
 								province = ROOT
-								troops =
-								{
+								troops = {
 									heavy_infantry = {
 										2750 2750
 									}
@@ -3694,8 +2377,7 @@ narrative_event = {
 							}
 							spawn_unit = {
 								province = ROOT
-								troops =
-								{
+								troops = {
 									heavy_infantry = {
 										2750 2750
 									}
@@ -3709,8 +2391,7 @@ narrative_event = {
 							}
 							spawn_unit = {
 								province = ROOT
-								troops =
-								{
+								troops = {
 									heavy_infantry = {
 										2750 2750
 									}
@@ -3727,8 +2408,7 @@ narrative_event = {
 							chance = 50
 							spawn_unit = {
 								province = ROOT
-								troops =
-								{
+								troops = {
 									heavy_infantry = {
 										2750 2750
 									}
@@ -3742,8 +2422,7 @@ narrative_event = {
 							}
 							spawn_unit = {
 								province = ROOT
-								troops =
-								{
+								troops = {
 									heavy_infantry = {
 										2750 2750
 									}
@@ -3757,8 +2436,7 @@ narrative_event = {
 							}
 							spawn_unit = {
 								province = ROOT
-								troops =
-								{
+								troops = {
 									heavy_infantry = {
 										2750 2750
 									}
@@ -3780,16 +2458,10 @@ narrative_event = {
 	option = {
 		name = "EVTOPTADR_chaosundivided.10"
 		trigger = {
-			NOT = {
+			nor = {
 				religion_group = chaos_gods_group
-			}
-			NOT = {
 				religion_group = greenskin_gods_group
-			}
-			NOT = {
 				religion_group = necromantic_group
-			}
-			NOT = {
 				religion_group = horned_rat_god_group
 			}
 		}
@@ -3822,12 +2494,6 @@ narrative_event = {
 			religion_group = horned_rat_god_group
 		}
 	}
-	# option = {
-	# name = "EVTOPTC60500"
-	# trigger = {
-	# government = nomadic_government
-	# }
-	# }
 }
 
 # Remove landless status fired from on_action
@@ -3852,7 +2518,8 @@ character_event = {
 				has_title_flag = temporary_landless_title
 			}
 			set_title_landless = {
-				title = THIS status = no
+				title = THIS
+				status = no
 			}
 		}
 	}
@@ -4024,8 +2691,7 @@ character_event = {
 			25 = {
 				spawn_unit = {
 					province = 405 # Zanbaijin
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4039,8 +2705,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 405 # Zanbaijin
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4054,8 +2719,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 405 # Zanbaijin
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4069,8 +2733,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 405 # Zanbaijin
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4084,8 +2747,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 405 # Zanbaijin
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4099,8 +2761,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 405 # Zanbaijin
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4114,8 +2775,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 405 # Zanbaijin
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4129,8 +2789,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 405 # Zanbaijin
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4144,8 +2803,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 405 # Zanbaijin
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4159,8 +2817,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 405 # Zanbaijin
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4174,8 +2831,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 405 # Zanbaijin
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4189,8 +2845,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 405 # Zanbaijin
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4204,8 +2859,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 405 # Zanbaijin
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4219,8 +2873,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 405 # Zanbaijin
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4234,8 +2887,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 405 # Zanbaijin
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4251,8 +2903,7 @@ character_event = {
 					chance = 50
 					spawn_unit = {
 						province = 405 # Zanbaijin
-						troops =
-						{
+						troops = {
 							heavy_infantry = {
 								2750 2750
 							}
@@ -4266,8 +2917,7 @@ character_event = {
 					}
 					spawn_unit = {
 						province = 405 # Zanbaijin
-						troops =
-						{
+						troops = {
 							heavy_infantry = {
 								2750 2750
 							}
@@ -4281,8 +2931,7 @@ character_event = {
 					}
 					spawn_unit = {
 						province = 405 # Zanbaijin
-						troops =
-						{
+						troops = {
 							heavy_infantry = {
 								2750 2750
 							}
@@ -4299,8 +2948,7 @@ character_event = {
 					chance = 50
 					spawn_unit = {
 						province = 405 # Zanbaijin
-						troops =
-						{
+						troops = {
 							heavy_infantry = {
 								2750 2750
 							}
@@ -4314,8 +2962,7 @@ character_event = {
 					}
 					spawn_unit = {
 						province = 405 # Zanbaijin
-						troops =
-						{
+						troops = {
 							heavy_infantry = {
 								2750 2750
 							}
@@ -4329,8 +2976,7 @@ character_event = {
 					}
 					spawn_unit = {
 						province = 405 # Zanbaijin
-						troops =
-						{
+						troops = {
 							heavy_infantry = {
 								2750 2750
 							}
@@ -4348,8 +2994,7 @@ character_event = {
 			25 = {
 				spawn_unit = {
 					province = 409 # Dragoynovo
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4363,8 +3008,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 409 # Dragoynovo
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4378,8 +3022,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 409 # Dragoynovo
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4393,8 +3036,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 409 # Dragoynovo
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4408,8 +3050,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 409 # Dragoynovo
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4423,8 +3064,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 409 # Dragoynovo
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4438,8 +3078,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 409 # Dragoynovo
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4453,8 +3092,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 409 # Dragoynovo
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4468,8 +3106,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 409 # Dragoynovo
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4483,8 +3120,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 409 # Dragoynovo
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4498,8 +3134,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 409 # Dragoynovo
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4513,8 +3148,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 409 # Dragoynovo
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4528,8 +3162,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 409 # Dragoynovo
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4543,8 +3176,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 409 # Dragoynovo
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4558,8 +3190,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 409 # Dragoynovo
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4575,8 +3206,7 @@ character_event = {
 					chance = 50
 					spawn_unit = {
 						province = 409 # Dragoynovo
-						troops =
-						{
+						troops = {
 							heavy_infantry = {
 								2750 2750
 							}
@@ -4590,8 +3220,7 @@ character_event = {
 					}
 					spawn_unit = {
 						province = 409 # Dragoynovo
-						troops =
-						{
+						troops = {
 							heavy_infantry = {
 								2750 2750
 							}
@@ -4605,8 +3234,7 @@ character_event = {
 					}
 					spawn_unit = {
 						province = 409 # Dragoynovo
-						troops =
-						{
+						troops = {
 							heavy_infantry = {
 								2750 2750
 							}
@@ -4623,8 +3251,7 @@ character_event = {
 					chance = 50
 					spawn_unit = {
 						province = 409 # Dragoynovo
-						troops =
-						{
+						troops = {
 							heavy_infantry = {
 								2750 2750
 							}
@@ -4638,8 +3265,7 @@ character_event = {
 					}
 					spawn_unit = {
 						province = 409 # Dragoynovo
-						troops =
-						{
+						troops = {
 							heavy_infantry = {
 								2750 2750
 							}
@@ -4653,8 +3279,7 @@ character_event = {
 					}
 					spawn_unit = {
 						province = 409 # Dragoynovo
-						troops =
-						{
+						troops = {
 							heavy_infantry = {
 								2750 2750
 							}
@@ -4672,8 +3297,7 @@ character_event = {
 			25 = {
 				spawn_unit = {
 					province = 398 # Jakki
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4687,8 +3311,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 398 # Jakki
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4702,8 +3325,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 398 # Jakki
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4717,8 +3339,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 398 # Jakki
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4732,8 +3353,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 398 # Jakki
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4747,8 +3367,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 398 # Jakki
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4762,8 +3381,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 398 # Jakki
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4777,8 +3395,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 398 # Jakki
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4792,8 +3409,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 398 # Jakki
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4807,8 +3423,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 398 # Jakki
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4822,8 +3437,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 398 # Jakki
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4837,8 +3451,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 398 # Jakki
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4852,8 +3465,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 398 # Jakki
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4867,8 +3479,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 398 # Jakki
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4882,8 +3493,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 398 # Jakki
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -4899,8 +3509,7 @@ character_event = {
 					chance = 50
 					spawn_unit = {
 						province = 398 # Jakki
-						troops =
-						{
+						troops = {
 							heavy_infantry = {
 								2750 2750
 							}
@@ -4914,8 +3523,7 @@ character_event = {
 					}
 					spawn_unit = {
 						province = 398 # Jakki
-						troops =
-						{
+						troops = {
 							heavy_infantry = {
 								2750 2750
 							}
@@ -4929,8 +3537,7 @@ character_event = {
 					}
 					spawn_unit = {
 						province = 398 # Jakki
-						troops =
-						{
+						troops = {
 							heavy_infantry = {
 								2750 2750
 							}
@@ -4947,8 +3554,7 @@ character_event = {
 					chance = 50
 					spawn_unit = {
 						province = 398 # Jakki
-						troops =
-						{
+						troops = {
 							heavy_infantry = {
 								2750 2750
 							}
@@ -4962,8 +3568,7 @@ character_event = {
 					}
 					spawn_unit = {
 						province = 398 # Jakki
-						troops =
-						{
+						troops = {
 							heavy_infantry = {
 								2750 2750
 							}
@@ -4977,8 +3582,7 @@ character_event = {
 					}
 					spawn_unit = {
 						province = 398 # Jakki
-						troops =
-						{
+						troops = {
 							heavy_infantry = {
 								2750 2750
 							}
@@ -4996,8 +3600,7 @@ character_event = {
 			25 = {
 				spawn_unit = {
 					province = 1245 # Tohkar
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -5011,8 +3614,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 1245 # Tohkar
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -5026,8 +3628,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 1245 # Tohkar
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -5041,8 +3642,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 1245 # Tohkar
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -5056,8 +3656,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 1245 # Tohkar
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -5071,8 +3670,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 1245 # Tohkar
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -5086,8 +3684,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 1245 # Tohkar
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -5101,8 +3698,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 1245 # Tohkar
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -5116,8 +3712,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 1245 # Tohkar
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -5131,8 +3726,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 1245 # Tohkar
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -5146,8 +3740,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 1245 # Tohkar
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -5161,8 +3754,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 1245 # Tohkar
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -5176,8 +3768,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 1245 # Tohkar
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -5191,8 +3782,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 1245 # Tohkar
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -5206,8 +3796,7 @@ character_event = {
 				}
 				spawn_unit = {
 					province = 1245 # Tohkar
-					troops =
-					{
+					troops = {
 						heavy_infantry = {
 							2750 2750
 						}
@@ -5223,8 +3812,7 @@ character_event = {
 					chance = 50
 					spawn_unit = {
 						province = 1245 # Tohkar
-						troops =
-						{
+						troops = {
 							heavy_infantry = {
 								2750 2750
 							}
@@ -5238,8 +3826,7 @@ character_event = {
 					}
 					spawn_unit = {
 						province = 1245 # Tohkar
-						troops =
-						{
+						troops = {
 							heavy_infantry = {
 								2750 2750
 							}
@@ -5253,8 +3840,7 @@ character_event = {
 					}
 					spawn_unit = {
 						province = 1245 # Tohkar
-						troops =
-						{
+						troops = {
 							heavy_infantry = {
 								2750 2750
 							}
@@ -5271,8 +3857,7 @@ character_event = {
 					chance = 50
 					spawn_unit = {
 						province = 1245 # Tohkar
-						troops =
-						{
+						troops = {
 							heavy_infantry = {
 								2750 2750
 							}
@@ -5286,8 +3871,7 @@ character_event = {
 					}
 					spawn_unit = {
 						province = 1245 # Tohkar
-						troops =
-						{
+						troops = {
 							heavy_infantry = {
 								2750 2750
 							}
@@ -5301,8 +3885,7 @@ character_event = {
 					}
 					spawn_unit = {
 						province = 1245 # Tohkar
-						troops =
-						{
+						troops = {
 							heavy_infantry = {
 								2750 2750
 							}
@@ -5347,10 +3930,8 @@ character_event = {
 	immediate = {
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					government = nomadic_government
-				}
-				NOT = {
 					has_character_modifier = invading_population_halt
 				}
 			}
@@ -5390,10 +3971,8 @@ character_event = {
 	immediate = {
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					government = nomadic_government
-				}
-				NOT = {
 					has_character_modifier = invading_population_halt
 				}
 			}
@@ -5430,9 +4009,7 @@ narrative_event = {
 	major = yes
 
 	trigger = {
-		ROOT = {
-			trait = everchosen
-		}
+		trait = everchosen
 	}
 
 	immediate = {
@@ -5442,19 +4019,18 @@ narrative_event = {
 			}
 		}
 		activate_title = {
-			title = e_host_chaos status = no
+			title = e_host_chaos
+			status = no
 		}
 		e_host_chaos = {
 			unsafe_destroy_landed_title = THIS
 		}
 		clr_global_flag = everchosen_exists
-		ROOT = {
-			destroy_artifact = armor_of_morkar
-			destroy_artifact = crown_of_domination
-			destroy_artifact = eye_of_sheerian
-			destroy_artifact = slayer_of_kings
-			destroy_artifact = steed_of_the_apocalypse_mount
-		}
+		destroy_artifact = armor_of_morkar
+		destroy_artifact = crown_of_domination
+		destroy_artifact = eye_of_sheerian
+		destroy_artifact = slayer_of_kings
+		destroy_artifact = steed_of_the_apocalypse_mount
 	}
 
 	option = {
@@ -5579,10 +4155,6 @@ character_event = {
 	is_triggered_only = yes
 
 	immediate = {
-	}
-
-	option = {
-		name = EXCELLENT
 		capital_holding = {
 			add_building = no_horde_1
 			add_building = no_horde_2

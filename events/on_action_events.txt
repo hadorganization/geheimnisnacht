@@ -6914,3 +6914,61 @@ character_event = {
 		name = "OK"
 	}
 }
+
+# Lunatic by artifacts
+character_event = {
+	id = crown_blade.1
+	desc = EVTDESCcrown_blade.1_ARTIFACT
+	picture = GFX_evt_lunatic
+	border = GFX_event_normal_frame_religion
+	is_triggered_only = yes
+	only_playable = yes
+
+	min_age = 4
+
+	trigger = {
+		NOT = {
+			is_undead_trigger = no
+			is_demon_trigger = no
+		}
+		has_artifact = alcadizar's_blade
+	}
+
+	option = {
+		name = EVTOPTAcrown_blade.1_ARTIFACTA
+		add_trait = lunatic
+		trigger = {
+			has_artifact = alcadizar's_blade
+		}
+	}
+}
+
+namespace = crown_blade
+
+# Become Lunatic
+character_event = {
+	id = crown_blade.2
+	desc = EVTDESCcrown_blade.2_ARTIFACT
+	picture = GFX_evt_lunatic
+	border = GFX_event_normal_frame_religion
+	is_triggered_only = yes
+	only_playable = yes
+
+	min_age = 4
+
+	trigger = {
+		is_undead_trigger = no
+		is_demon_trigger = no
+		has_artifact = nagash_crown
+	}
+
+	option = {
+		name = EVTOPTAcrown_blade.2_ARTIFACTA
+		add_trait = lunatic
+		add_trait = lore_necromancy
+		prestige = 500
+		trigger = {
+			has_artifact = nagash_crown
+		}
+	}
+}

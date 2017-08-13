@@ -1,3 +1,4 @@
+namespace = crown_blade
 
 # Become Lunatic
 character_event = {
@@ -11,43 +12,48 @@ character_event = {
 	min_age = 4
 
 	trigger = {
-		NOT = {
-			trait = lunatic
+		NOR = {
+			is_undead_trigger = no
+			is_demon_trigger = no
 		}
-		NOT = {
-			is_undead_trigger = yes
-		}
-		NOT = {
-			is_demon_trigger = yes
-		}
-		OR = {
-			# Senile/comatose due to old age do not gain lunatic, immortals get a pass though
-			NOT = {
-				age = 65
-			}
-			immortal = yes
-		}
-	}
-
-	immediate = {
-		FROM = {
-			OR = {
-				has_artifact = nagash_crown
-				has_artifact = alcadizar's_blade
-			}
-		}
+		has_artifact = alcadizar's_blade
 	}
 
 	option = {
-		name = {
-			text = EVTOPTAcrown_blade.1_ARTIFACT
-			trigger = {
-				OR = {
-					has_artifact = nagash_crown
-					has_artifact = alcadizar's_blade
-				}
-			}
+		name = EVTOPTAcrown_blade.1_ARTIFACTA
+		add_trait = lunatic
+		trigger = {
+			has_artifact = alcadizar's_blade
 		}
-			add_trait = lunatic
+	}
+}
+
+# Become Lunatic
+character_event = {
+	id = crown_blade.2
+	desc = EVTDESCcrown_blade.2_ARTIFACT
+	picture = GFX_evt_lunatic
+	border = GFX_event_normal_frame_religion
+	is_triggered_only = yes
+	only_playable = yes
+
+	min_age = 4
+
+	trigger = {
+		NOR = {
+			is_undead_trigger = no
+			is_demon_trigger = no
+		}
+		has_artifact = nagash_crown
+	}
+
+	option = {
+		name = EVTOPTAcrown_blade.2_ARTIFACTA
+		add_trait = lunatic
+		add_trait = lore_necromancy
+		prestige = 500
+		trigger = {
+			has_artifact = nagash_crown
+		}
 	}
 }

@@ -1,40 +1,28 @@
 
 # MECHANICS EVENTS
 # @author Arsakes <elminister@interia.pl>
-
 # @compatibility 2.3.0
 # @modified_on 0.4
-
 # @description Warhammer mod custom duel engine
 # @wip
-
 # duelengine.0 : triggering event!
 # Duel engine consit of:
-
 # 1.Decision events - that give chars opportunity to chose move
 # 2.Calculation events - that calculate the outcome of player decisions
-
 # and choose proper report events
 # 3. Paired (each report has it mirror event for the other character)
-
 # reporting events
 # DO NOT TOUCH THIS FILE!
-
 # !!!!!!!!!!!!!!!!!!!!!! DO NOT TOUCH !!!!!!!!!!!!!!!!!!!!!!
 # 1. Each round have two turns for both of characters.
-
 # Character A - event_target:charA
 # Character B - event_target:charB
-
 # CHARACTER STATS
 # duel_dmg - dmg taken form enemy this round
-
 # duel_att - base attack
 # duel_def - base defense
-
 # duel_hp - actual hit points
 # duel_max_hp - maximal hit points
-
 # duel_att_mod - attack value for given round
 # duel_def_mod - defence value for given round
 namespace = duelengine
@@ -49,10 +37,8 @@ character_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOT = {
+		nor = {
 			has_character_modifier = battlefield_fight
-		}
-		NOT = {
 			has_character_flag = duel
 		}
 		# Avoid crossing targets
@@ -62,20 +48,16 @@ character_event = {
 			at_location = ROOT
 			prisoner = no
 			is_alive = yes
-			NOT = {
+			nor = {
 				character = ROOT
-			}
-			NOT = {
 				has_character_modifier = battlefield_fight
-			}
-			NOT = {
 				has_character_flag = duel
 			}
 		}
 	}
 
 	weight_multiplier = {
-		days = 1
+		factor = 1
 		# Game Rules
 		modifier = {
 			factor = 0.2
@@ -174,13 +156,9 @@ character_event = {
 				at_location = ROOT
 				prisoner = no
 				is_alive = yes
-				NOT = {
+				nor = {
 					character = ROOT
-				}
-				NOT = {
 					has_character_modifier = battlefield_fight
-				}
-				NOT = {
 					has_character_flag = duel
 				}
 			}
@@ -188,8 +166,8 @@ character_event = {
 			set_character_flag = duel
 		}
 	}
-	# OPTIONS
 
+	# OPTIONS
 	option = {
 		# we assume that there is only one person marked with opinion_battle_duel_target
 		# which is wrong
@@ -206,7 +184,6 @@ character_event = {
 
 # END OF DUEL TRIGGERS
 # DUEL INIT: Things that need to be done once per duel
-
 # duelengine.1 Triggered for defender(target), gives option to fight or run- for charB
 character_event = {
 	id = duelengine.1
@@ -242,7 +219,8 @@ character_event = {
 		log = "CharB go wants duel."
 		event_target:attacker = {
 			character_event = {
-				id = duelengine.2 tooltip = "DUELENGINE_TOOLTIP_1A"
+				id = duelengine.2
+				tooltip = "DUELENGINE_TOOLTIP_1A"
 			}
 		}
 		ai_chance = {
@@ -349,13 +327,13 @@ character_event = {
 			}
 			modifier = {
 				factor = 2
-				FROM = {
+				event_target:charA = {
 					trait = strong
 				}
 			}
 			modifier = {
 				factor = 2
-				FROM = {
+				event_target:charA = {
 					trait = tall
 				}
 			}
@@ -455,8 +433,8 @@ character_event = {
 			}
 		}
 	}
-	# RUN from enemy!
 
+	# RUN from enemy!
 	option = {
 		name = "EVTOPT_DUELENGINE_1B"
 		hidden_tooltip = {
@@ -496,13 +474,13 @@ character_event = {
 			}
 			modifier = {
 				factor = 2
-				FROM = {
+				event_target:charB = {
 					trait = strong
 				}
 			}
 			modifier = {
 				factor = 2
-				FROM = {
+				event_target:charB = {
 					trait = tall
 				}
 			}
@@ -553,27 +531,32 @@ character_event = {
 		clear_event_target = attacker
 		clear_event_target = defender
 		event_target:charA = {
-			save_event_target_as = attacker
+			save_event_target_as = attacker # already saved?
+			# round variables clear event
 			character_event = {
 				id = duelaction.1
-			} # round variables clear event
+			}
+			# prepare action pick menu
 			character_event = {
 				id = duelaction.0
-			} # prepare action pick menu
+			}
 		}
 		event_target:charB = {
 			save_event_target_as = defender
+			# round variables clear event
 			character_event = {
 				id = duelaction.1
-			} # round variables clear event
+			}
+			# prepare action pick menu
 			character_event = {
 				id = duelaction.0
-			} # prepare action pick menu
+			}
 		}
 		event_target:charA = {
+			# send action pick menu to char A
 			character_event = {
 				id = duelaction.2
-			} # send action pick menu to char A
+			}
 		}
 	}
 }
@@ -587,33 +570,32 @@ character_event = {
 	immediate = {
 		if = {
 			limit = {
-				root = {
-					character = event_target:charA
-				}
+				character = event_target:charA
 			}
 			# Decision time for character B
 			log = "Action pick phase finished for charA, starting for B"
+			# triger action pick menu
 			event_target:charB = {
 				character_event = {
 					id = duelaction.2
-				} # triger action pick menu
+				}
 			}
 			break = yes
 		}
 		# Time to calculate outcome and go to next round
 		# we assume that all stat setting has been made and chars decided their actions
 		log = "Action pick phase finished for charB, resolving actions..."
+		# resolve actions
 		event_target:charA = {
 			character_event = {
 				id = duelaction.3
-			} # resolve actions
+			}
 		}
 	}
 }
 
 # This event assumes that one have properly defined event targets
 # event is triggered for event_target:attacker
-
 # whereas computation is done for defender
 # duelengine.5 : second calculation event, applies damage triggered from duelaction.3
 character_event = {
@@ -629,8 +611,6 @@ character_event = {
 				which = "duel_dmg"
 				value = 0
 			}
-		}
-		event_target:defender = {
 			set_variable = {
 				which = "duel_att_mod_app"
 				value = "0"
@@ -641,11 +621,10 @@ character_event = {
 				which = "duel_att_mod_app"
 				value = "0"
 			}
-		}
-		# dmg from attack calculation (event_target:defender is victim)
-		event_target:attacker = {
+			# dmg from attack calculation (event_target:defender is victim)
 			set_variable = {
-				which = "duel_att_mod_app" which = "duel_att_mod"
+				which = "duel_att_mod_app"
+				which = "duel_att_mod"
 			}
 			if = {
 				limit = {
@@ -664,12 +643,12 @@ character_event = {
 		}
 		event_target:defender = {
 			set_variable = {
-				which = "duel_att_mod_app" which = "event_target:attacker"
+				which = "duel_att_mod_app"
+				which = "event_target:attacker"
 			}
-		}
-		event_target:defender = {
 			set_variable = {
-				which = "duel_dmg" which = "duel_att_mod_app"
+				which = "duel_dmg"
+				which = "duel_att_mod_app"
 			}
 		}
 		if = {
@@ -739,13 +718,14 @@ character_event = {
 					value = 4
 				}
 				change_variable = {
-					which = "high_magic_fire_dmg" which = caster_level_spellpower
+					which = "high_magic_fire_dmg"
+					which = caster_level_spellpower
 				}
-				clr_character_flag = resisted
 			}
 			event_target:defender = {
 				subtract_variable = {
-					which = "duel_hp" which = "high_magic_fire_dmg"
+					which = "duel_hp"
+					which = "high_magic_fire_dmg"
 				}
 			}
 		}
@@ -786,18 +766,18 @@ character_event = {
 					value = 3
 				}
 				change_variable = {
-					which = "high_magic_curse_dmg" which = caster_level_spellpower
-				}
-				clr_character_flag = resisted
-			}
-			event_target:defender = {
-				subtract_variable = {
-					which = "duel_def_mod" which = "high_magic_curse_dmg"
+					which = "high_magic_curse_dmg"
+					which = caster_level_spellpower
 				}
 			}
 			event_target:defender = {
 				subtract_variable = {
-					which = "duel_att_mod" which = "high_magic_curse_dmg"
+					which = "duel_def_mod"
+					which = "high_magic_curse_dmg"
+				}
+				subtract_variable = {
+					which = "duel_att_mod"
+					which = "high_magic_curse_dmg"
 				}
 			}
 		}
@@ -816,7 +796,7 @@ character_event = {
 					value = -1
 				}
 				save_event_target_as = magic_caster
-				ROOT = {
+				event_target:attacker = {
 					save_event_target_as = spelltarget
 				}
 				magic_resist_test = yes
@@ -841,18 +821,18 @@ character_event = {
 						value = 3
 					}
 					change_variable = {
-						which = "high_magic_curse_dmg" which = caster_level_spellpower
-					}
-					clr_character_flag = resisted
-				}
-				ROOT = {
-					subtract_variable = {
-						which = "duel_def_mod" which = "high_magic_curse_dmg"
+						which = "high_magic_curse_dmg"
+						which = caster_level_spellpower
 					}
 				}
-				ROOT = {
+				event_target:attacker = {
 					subtract_variable = {
-						which = "duel_att_mod" which = "high_magic_curse_dmg"
+						which = "duel_def_mod"
+						which = "high_magic_curse_dmg"
+					}
+					subtract_variable = {
+						which = "duel_att_mod"
+						which = "high_magic_curse_dmg"
 					}
 				}
 			}
@@ -868,19 +848,17 @@ character_event = {
 				which = "high_magic_healing"
 				value = -1
 			}
-			save_event_target_as = magic_caster
-			event_target:defender = {
-				save_event_target_as = spelltarget
-			}
 			set_variable = {
 				which = "high_magic_heal"
 				value = 4
 			}
 			change_variable = {
-				which = "high_magic_heal" which = caster_level_spellpower
+				which = "high_magic_heal"
+				which = caster_level_spellpower
 			}
 			change_variable = {
-				which = "duel_hp" which = "high_magic_heal"
+				which = "duel_hp"
+				which = "high_magic_heal"
 			}
 		}
 		if = {
@@ -900,10 +878,12 @@ character_event = {
 				value = 4
 			}
 			change_variable = {
-				which = "high_magic_shield" which = caster_level_spellpower
+				which = "high_magic_shield"
+				which = caster_level_spellpower
 			}
 			change_variable = {
-				which = "duel_def_mod" which = "high_magic_shield"
+				which = "duel_def_mod"
+				which = "high_magic_shield"
 			}
 		}
 		if = {
@@ -920,36 +900,35 @@ character_event = {
 					which = "high_magic_shielding"
 					value = -1
 				}
-				save_event_target_as = magic_caster
-				ROOT = {
-					save_event_target_as = spelltarget
-				}
 				set_variable = {
 					which = "high_magic_shield"
 					value = 4
 				}
 				change_variable = {
-					which = "high_magic_shield" which = caster_level_spellpower
+					which = "high_magic_shield"
+					which = caster_level_spellpower
 				}
 				change_variable = {
-					which = "duel_def_mod" which = "high_magic_shield"
+					which = "duel_def_mod"
+					which = "high_magic_shield"
 				}
-			}
-		}
-		# APPLY: defence modifier (of victim)
-		event_target:defender = {
-			subtract_variable = {
-				which = "duel_dmg" which = "duel_def_mod"
 			}
 		}
 		clear_event_target = magic_caster
 		clear_event_target = spelltarget
+		# APPLY: defence modifier (of victim)
+		event_target:defender = {
+			subtract_variable = {
+				which = "duel_dmg"
+				which = "duel_def_mod"
+			}
+		}
 		# Ok now duel_dmg has proper value which we should substract from health
 		# thing that prevents infinite duels setting dmg to 1 if less than 0
 		# (50% chance) or to 0
-		if = {
-			limit = {
-				event_target:defender = {
+		event_target:defender = {
+			if = {
+				limit = {
 					NOT = {
 						check_variable = {
 							which = "duel_dmg"
@@ -957,17 +936,15 @@ character_event = {
 						}
 					}
 				}
-			}
-			event_target:defender = {
 				set_variable = {
 					which = "duel_dmg"
 					value = 0
 				}
 			}
 		}
-		if = {
-			limit = {
-				event_target:defender = {
+		event_target:defender = {
+			if = {
+				limit = {
 					NOT = {
 						check_variable = {
 							which = "duel_dmg"
@@ -975,10 +952,8 @@ character_event = {
 						}
 					}
 				}
-			}
-			random = {
-				chance = 50
-				event_target:defender = {
+				random = {
+					chance = 50
 					set_variable = {
 						which = "duel_dmg"
 						value = 1
@@ -1002,7 +977,8 @@ character_event = {
 			}
 			event_target:defender = {
 				subtract_variable = {
-					which = "duel_hp" which = "duel_dmg"
+					which = "duel_hp"
+					which = "duel_dmg"
 				}
 			}
 		}
@@ -1014,9 +990,7 @@ character_event = {
 		clear_event_target = defender
 		if = {
 			limit = {
-				root = {
-					character = event_target:charA
-				}
+				character = event_target:charA
 			}
 			log = "Round resolved for char A (id = duelengine.5), starting for char B"
 			event_target:charA = {
@@ -1035,9 +1009,7 @@ character_event = {
 		if = {
 			limit = {
 				NOT = {
-					root = {
-						character = event_target:charA
-					}
+					character = event_target:charA
 				}
 			}
 			log = "Round resolved for char B (id = duelengine.5), B received [Root.duel_dmg.GetValue] dmg, A received [From.duel_dmg.GetValue]."
@@ -1058,9 +1030,7 @@ character_event = {
 	hide_window = yes
 
 	trigger = {
-		root = {
-			is_alive = yes
-		}
+		is_alive = yes
 	}
 
 	immediate = {
@@ -1097,13 +1067,8 @@ character_event = {
 			which = "duel_max_hp"
 			value = 0
 		}
-		# set_variable = { which = "duel_magic_att"		value = 0 }
-		# set_variable = { which = "magic_points"	value = 0 }
 		# clear effects
 		clr_character_flag = debug_effect_awarness
-		# clr_character_flag = duel_effect_weaken1
-		# clr_character_flag = duel_effect_weaken2
-		# clr_character_flag = duel_effect_freeze
 		clr_character_flag = duel_effect_noescape
 		clr_character_flag = duel
 		if = {
@@ -1114,5 +1079,3 @@ character_event = {
 		}
 	}
 }
-
-# DO NOT TOUCH THIS FILE!

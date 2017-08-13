@@ -304,7 +304,6 @@ on_combat_pulse = {
 		10 = SJDwarfevents.85 #Hammerer crushes everything in his path
 		3 = wh_beastmen.53 # Beastman loses horns in battle
 		90 = schaos.96 # The Chaos Gods look favourably upon their Kurgans
-
 	}
 }
 
@@ -384,8 +383,13 @@ on_siege_over_loc_chars = {
 on_birth = {
 	events = {
 		sins.1189	#End hard pregnancy
-		# one event to set intelligence, strength, beauty and magic
+		
+		# check parents race, kill if tigger return 1 on_birth
 		wh_inheritance.0
+		# event to set intelligence, strength, beauty and magic
+		wh_inheritance.1
+		# Beastmen interbreeding
+		wh_inheritance.2
 		SJDwarfevents.61
 		aicleanup.014 #dwarf babies should not be born old already
 		spleasure.177
@@ -394,6 +398,13 @@ on_birth = {
 		aicleanup.025 #Males under Amazonian rule are disinherited at birth
 		aicleanup.026 #Females under Amazonian rule are legitimized to the mother's side always and given the proper trait
 		asur.55003 #On birth, remove matriinheritance
+		
+		health.3 #elven/dwarven infertility
+		wh_beastmen.41 #Turnskin baby
+		stillbirth.0
+		ormazdian.0
+		wh_beastmen.30	#Bray Shaman
+		spleasure.168 #monstrous curse
 	}
 }
 
@@ -418,13 +429,6 @@ on_adolescence = {
 # baby scope
 on_post_birth = {
 	events = {
-		health.3 #elven/dwarven infertility
-		wh_beastmen.41 #Turnskin baby
-		stillbirth.0
-		ormazdian.0
-		wh_beastmen.30	#Bray Shaman
-		spleasure.168 #monstrous curse
-		wh_beastmen.46	#Beastmen interbreeding
 	}
 }
 

@@ -4,7 +4,6 @@ namespace = DR_imperial
 
 # THE EMPIRE OF MAN ( or... just the Empire I guess )
 # Unification of the Imperial religions
-
 # Sigmarite/Taalite/Ulrican triumphant
 narrative_event = {
 	id = DR_imperial.1
@@ -238,274 +237,184 @@ narrative_event = {
 
 # # On_startup pick Taalite Hierarchs
 # character_event = {
-
 # id = DR_imperial.4
 # # title = EVTTITLE_DR_imperial_religion_unification_conversion
-
 # # desc = EVTDESC_DR_imperial_religion_unification_conversion
 # # picture = GFX_evt_icon
-
 # hide_window = yes
 # is_triggered_only = yes
-
 # trigger = {
 # NOT = { has_global_flag = taal_hierarchs_set }
-
 # }
 # immediate = {
-
 # # Saving possible Taalite Hierarchs as event targets
 # k_cult_of_taal_and_rhya = {
-
 # if = {
 # limit = {
-
 # holder_scope = {
 # is_female = no
-
 # }
 # }
-
 # holder_scope = {
 # save_event_target_as = taal_male_hierarch
-
 # random_courtier = {
 # limit = {
-
 # is_female = yes
 # }
-
 # save_event_target_as = taal_female_hierarch
 # }
-
 # }
 # }
-
 # if = {
 # limit = {
-
 # holder_scope = {
 # is_female = yes
-
 # }
 # }
-
 # holder_scope = {
 # save_event_target_as = taal_female_hierarch
-
 # random_courtier = {
 # limit = {
-
 # is_female = no
 # }
-
 # save_event_target_as = taal_male_hierarch
 # }
-
 # }
 # }
-
 # }
 # set_global_flag = taal_hierarchs_set
-
 # }
 # option = {
-
 # name = OK
 # }
-
 # }
 # # Taalite Hierarch rotates between female on spring/autumn and male on winter/summer
-
 # character_event = {
 # id = DR_imperial.5
-
 # # title = EVTTITLE_DR_imperial_religion_unification_conversion
 # # desc = EVTDESC_DR_imperial_religion_unification_conversion
-
 # # picture = GFX_evt_icon
 # hide_window = yes
-
 # # is_triggered_only = yes
 # trigger = {
-
 # has_landed_title = k_cult_of_taal_and_rhya
 # religion = taalite
-
 # # OR = {
 # # month = 1 # Spring
-
 # # month = 4 # Summer
 # # month = 7 # Autumn
-
 # # month = 10 # Winter
 # # }
-
 # }
 # mean_time_to_happen = {
-
 # months = 3
 # }
-
 # immediate = {
 # }
-
 # option = { # Male Hierarch
 # name = OK
-
 # trigger = {
 # OR = {
-
 # AND = { # Winter
 # month = 10
-
 # NOT = { month = 1 }
 # }
-
 # AND = { # Summer
 # month = 4
-
 # NOT = { month = 7 }
 # }
-
 # }
 # }
-
 # event_target:taal_male_hierarch = {
 # ROOT = {
-
 # any_demesne_title = {
 # gain_title = PREVPREV
-
 # }
 # }
-
 # }
 # }
-
 # option = { # Female Hierarch
 # name = OK
-
 # trigger = {
 # OR = {
-
 # AND = { # Spring
 # month = 1
-
 # NOT = { month = 4 }
 # }
-
 # AND = { # Autumn
 # month = 7
-
 # NOT = { month = 10 }
 # }
-
 # }
 # }
-
 # event_target:taal_female_hierarch = {
 # ROOT = {
-
 # any_demesne_title = {
 # gain_title = PREVPREV
-
 # }
 # }
-
 # }
 # ai_chance = { factor = 10 }
-
 # }
 # }
-
 # # On_death event to choose a new Hierarch
 # character_event = {
-
 # id = DR_imperial.6
 # # title = EVTTITLE_DR_imperial_religion_unification_conversion
-
 # # desc = EVTDESC_DR_imperial_religion_unification_conversion
 # # picture = GFX_evt_icon
-
 # hide_window = yes
 # is_triggered_only = yes
-
 # trigger = {
 # OR = {
-
 # event_target:taal_male_hierarch = {
 # character = ROOT
-
 # }
 # event_target:taal_female_hierarch = {
-
 # character = ROOT
 # }
-
 # }
 # }
-
 # immediate = {
 # k_cult_of_taal_and_rhya = {
-
 # if = {
 # limit = {
-
 # holder_scope = {
 # is_female = no
-
 # }
 # }
-
 # holder_scope = {
 # save_event_target_as = taal_male_hierarch
-
 # random_courtier = {
 # limit = {
-
 # is_female = yes
 # }
-
 # save_event_target_as = taal_female_hierarch
 # }
-
 # }
 # }
-
 # if = {
 # limit = {
-
 # holder_scope = {
 # is_female = yes
-
 # }
 # }
-
 # holder_scope = {
 # save_event_target_as = taal_female_hierarch
-
 # random_courtier = {
 # limit = {
-
 # is_female = no
 # }
-
 # save_event_target_as = taal_male_hierarch
 # }
-
 # }
 # }
-
 # }
 # }
-
 # option = {
 # name = OK
-
 # }
 # }
-
 # If there aren't any Arch-Lectors, give 2 Lectors the title
 character_event = {
 	id = DR_imperial.7

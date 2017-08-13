@@ -1471,7 +1471,6 @@ character_event = {
 					duration = 3600
 				}
 			}
-
 		}
 		morghur = {
 			character_event = {
@@ -1528,7 +1527,6 @@ character_event = {
 							}
 							destroy_settlement = THIS
 						}
-
 					}
 				}
 			}
@@ -4279,60 +4277,6 @@ character_event = {
 	}
 }
 
-# Beastmen interbreeding event
-character_event = {
-	id = wh_beastmen.46
-	hide_window = yes
-
-	trigger = {
-		OR = {
-			mother_even_if_dead = {
-				trait = creature_beastman
-			}
-			father_even_if_dead = {
-				trait = creature_beastman
-			}
-		}
-	}
-	is_triggered_only = yes
-
-	immediate = {
-		remove_trait = creature_elf
-		remove_trait = creature_human
-		remove_trait = creature_dwarf
-		remove_trait = creature_chaos_dwarf
-		remove_trait = creature_skaven
-		remove_trait = creature_amazon
-		remove_trait = creature_skink
-		remove_trait = creature_saurus
-		add_trait = creature_beastman
-		if = {
-			limit = {
-				NOT = {
-					religion_group = chaos_gods_group
-				}
-			}
-			religion = chaos
-		}
-		culture = beastman_main
-		set_graphical_culture = beastman_main
-		if = {
-			limit = {
-				NOT = {
-					liege = {
-						trait = creature_beastman
-					}
-				}
-			}
-			liege = {
-				character_event = {
-					id = wh_beastmen.42 days = 1
-				}
-			}
-		}
-	}
-}
-
 # The Beastmen ravage a province, one of them rapes a local
 # ROOT is attacker, FROM is province sieged
 character_event = {
@@ -4340,11 +4284,11 @@ character_event = {
 	hide_window = yes
 	culture_group = beastman_group
 	only_men = yes
+	only_playable = yes
 	is_triggered_only = yes
 
 	trigger = {
 		trait = creature_beastman
-		is_female = no
 		FROM = {
 			is_tribal = no
 			is_capital = yes
@@ -4369,26 +4313,25 @@ character_event = {
 
 	immediate = {
 		random = {
-			chance = {
-				FROM = {
-					owner = {
-						random_courtier = {
-							limit = {
-								is_female = yes
-								is_ruler = no
-								OR = {
-									trait = creature_human
-									trait = creature_amazon
-									trait = creature_elf
-									trait = creature_dwarf
-									trait = creature_chaos_dwarf
-								}
+			chance = 20
+			FROM = {
+				owner = {
+					random_courtier = {
+						limit = {
+							is_female = yes
+							is_ruler = no
+							OR = {
+								trait = creature_human
+								trait = creature_amazon
+								trait = creature_elf
+								trait = creature_dwarf
+								trait = creature_chaos_dwarf
 							}
-							impregnate_cuckoo = ROOT
 						}
+						impregnate_cuckoo = ROOT
 					}
 				}
-			}
+			}		
 		}
 	}
 }
@@ -4423,7 +4366,6 @@ character_event = {
 					modifier = opinion_scared_into_submission
 					who = ROOT
 				}
-
 			}
 			any_courtier = {
 				limit = {
@@ -4439,7 +4381,6 @@ character_event = {
 					modifier = opinion_scared_into_submission
 					who = ROOT
 				}
-
 			}
 			break = yes
 			# Other beastmen will get scared into submission only if one of their kind was eaten.
@@ -4459,7 +4400,6 @@ character_event = {
 				modifier = opinion_scared_into_submission
 				who = ROOT
 			}
-
 		}
 		any_courtier = {
 			limit = {
@@ -4614,7 +4554,6 @@ character_event = {
  						war_elephants = {
 							50 50
 						}
-
 					}
 					attrition = 1.0
 					cannot_inherit = yes

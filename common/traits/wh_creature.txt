@@ -1,17 +1,24 @@
 # There is no bitrh = 10000 as with randomly generated character this doesn't work
 # we need event to give racial traits basing on culture
-# 
+#
 creature_human = {
+	inherit_chance = 100
+	potential = {
+		nand = {
+			culture_group = amazon_group
+			is_female = yes
+		}
+	}
 	opposites = {
-		creature_orc		       
+		creature_orc
 		creature_elf
   		creature_goblin
  	    creature_snotling
-		creature_nehekharan				
-		creature_skink  
+		creature_nehekharan
+		creature_skink
 		creature_skaven
 		creature_ogre
-		creature_beastman 
+		creature_beastman
 		creature_chaosspawn
 	}
 
@@ -35,7 +42,7 @@ creature_elf = {
 	customizer = no
 	opposites = {
 		creature_dwarf
-		creature_beastman 
+		creature_beastman
 		creature_chaos_dwarf
 		creature_orc
 	}
@@ -69,7 +76,7 @@ creature_dwarf = {
 		creature_snotling
 		creature_orc
 		creature_skaven
-		creature_beastman 
+		creature_beastman
 		creature_chaosspawn
 	}
 	command_modifier = {
@@ -114,8 +121,10 @@ creature_chaos_dwarf = {
 
 creature_halfling = {
 	potential = {
-		OR = { culture_group = halfling_old_world
-			culture_group = halfling_lustrian }
+		OR = {
+			culture_group = halfling_old_world
+			culture_group = halfling_lustrian
+		}
 	}
 	inherit_chance = 100
 	stewardship = 1
@@ -163,7 +172,7 @@ creature_goblin = {
 	potential = {
 		culture_group = goblin_group
 		is_female = no
-	}	
+	}
 	inherit_chance = 100
 	learning = -2
 	diplomacy = -2
@@ -178,7 +187,7 @@ creature_goblin = {
 	ai_honor = -30
 	ai_zeal = 20
 	immortal = yes
-	fertility = -10.0	
+	fertility = -10.0
 	vassal_opinion = -10
 	male_insult = INSULT_BRUTE
 	female_insult = INSULT_BRUTE
@@ -208,7 +217,7 @@ creature_snotling = {
 	ai_honor = -20
 	immortal = yes
 	fertility = -10.0
-	can_hold_titles = no 
+	can_hold_titles = no
 	cannot_marry = yes
 	cannot_inherit = yes
 	male_insult = INSULT_BRUTE
@@ -218,16 +227,17 @@ creature_snotling = {
 }
 
 creature_amazon = {
+	inherit_chance = 100
 	potential = {
 		culture_group = amazon_group
 		is_female = yes
-	} 
+	}
 	opposites = {
 		creature_human
 		complacent
 		disinherited_amazon
 	}
-	cannot_marry = yes	
+	cannot_marry = yes
 	opposite_opinion = -100
 	customizer = no
 }
@@ -298,13 +308,13 @@ creature_ogre = {
 }
 
 creature_pig = {
-	random = no 
+	random = no
 	same_opinion = 10
 	general_opinion = -10
 	customizer = no
 	fertility = -10.0
 	incapacitating = yes
-	can_hold_titles = no 
+	can_hold_titles = no
 	male_insult = INSULT_FATPIG
 	female_insult = INSULT_SOW
 	male_insult_adj = INSULT_BLOATED
@@ -316,32 +326,32 @@ creature_pig = {
 }
 
 creature_toad = {
-	random = no 
+	random = no
 	same_opinion = 10
 	general_opinion = -20
 	customizer = no
 	fertility = -10.0
 	incapacitating = yes
-	can_hold_titles = no 
+	can_hold_titles = no
 }
 
 creature_beastman = {
 	inherit_chance = 100
 	opposites = {
 		creature_dwarf
-		creature_orc		       
+		creature_orc
 		creature_elf
 		creature_goblin
 		creature_snotling
-		creature_nehekharan				
-		creature_skink  
+		creature_nehekharan
+		creature_skink
 		creature_skaven
 		creature_ogre
-		creature_chaos_dwarf 
+		creature_chaos_dwarf
 		creature_chaosspawn
 	}
 	opposite_opinion = -100
-	ambition_opinion = -15 
+	ambition_opinion = -15
 	ruler_designer_cost = 0
 	fertility = 0.5
 	martial = 1
@@ -357,17 +367,17 @@ creature_beastman = {
 	female_insult_adj = INSULT_SAVAGE
 	ai_greed = 100
 	ai_ambition = 100
-	ai_rationality = -100 
+	ai_rationality = -100
 	ai_honor = -100
 }
 
 creature_forestspirit = {
 	potential = {
-			culture_group = forest_group
+		culture_group = forest_group
 	}
 	inherit_chance = 100
-	opposites = {		      
-		creature_elf 
+	opposites = {
+		creature_elf
 		creature_treekin
 	}
 	martial = 5
@@ -381,7 +391,7 @@ creature_forestspirit = {
 	opposite_opinion = 10
 	cannot_marry = yes
 	cannot_inherit = yes
-	can_hold_titles = no 
+	can_hold_titles = no
 	health = 100
 	immortal = yes
 	fertility = -50.0
@@ -390,11 +400,11 @@ creature_forestspirit = {
 	male_insult_adj = INSULT_ROTTEN
 	female_insult_adj = INSULT_ROTTEN
 	ai_zeal = 30
-	ai_rationality = -50 
+	ai_rationality = -50
 }
 
 creature_treekin = {
-	opposites = {		      
+	opposites = {
 		creature_elf
 		creature_forestspirit
 	}
@@ -416,23 +426,23 @@ creature_treekin = {
 	male_insult_adj = INSULT_ROTTEN
 	female_insult_adj = INSULT_ROTTEN
 	ai_zeal = 30
-	ai_rationality = -50 
+	ai_rationality = -50
 }
 
 creature_chaosspawn = {
 	inherit_chance = 100
 	opposites = {
 		creature_dwarf
-		creature_orc		       
+		creature_orc
 		creature_elf
-     		creature_goblin
+     	creature_goblin
 		creature_snotling
-		creature_nehekharan				
-		creature_skink  
+		creature_nehekharan
+		creature_skink
 		creature_skaven
 		creature_ogre
 		creature_chaos_dwarf
-		creature_beastman 
+		creature_beastman
 	}
 	opposite_opinion = -100
 	same_opinion = -100
@@ -450,7 +460,7 @@ creature_chaosspawn = {
 	male_insult_adj = INSULT_SAVAGE
 	female_insult_adj = INSULT_SAVAGE
 	ai_ambition = 100
-	ai_rationality = -200 
+	ai_rationality = -200
 	ai_honor = -100
 }
 
@@ -458,14 +468,14 @@ creature_monster = {
 	opposites = {
 		creature_slann
 		creature_saurus
-		creature_skink 
+		creature_skink
 		creature_human
 		creature_amazon
 		creature_elf
 		creature_orc
      	creature_goblin
 		creature_snotling
-		creature_nehekharan    
+		creature_nehekharan
 		creature_dwarf
 		creature_chaos_dwarf
 		creature_skaven
@@ -487,7 +497,6 @@ creature_monster = {
 	cannot_marry = yes
 	cannot_inherit = yes
 }
-
 
 creature_celdragon = {
 	customizer = no
@@ -523,7 +532,7 @@ creature_skink = {
 		creature_orc
 		creature_goblin
 		creature_snotling
-		creature_nehekharan    
+		creature_nehekharan
 		creature_dwarf
 		creature_chaos_dwarf
 		creature_skaven
@@ -579,7 +588,7 @@ creature_saurus = {
 		creature_orc
 		creature_goblin
 		creature_snotling
-		creature_nehekharan    
+		creature_nehekharan
 		creature_dwarf
 		creature_chaos_dwarf
 		creature_skaven
@@ -598,7 +607,7 @@ creature_saurus = {
 	customizer = no
 	cannot_marry = yes
 	cannot_inherit = yes
-	can_hold_titles = no 
+	can_hold_titles = no
 	ruler_designer_cost = 0
 	male_insult = INSULT_MONSTER
 	female_insult = INSULT_MONSTER

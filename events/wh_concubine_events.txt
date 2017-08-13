@@ -7,6 +7,7 @@ namespace = rape
 character_event = {
 	id = rape.0004
 	hide_window = yes
+	is_triggered_only = yes
 
 	trigger = {
 		liege = {
@@ -18,7 +19,6 @@ character_event = {
 			}
 		}
 	}
-	is_triggered_only = yes
 
 	immediate = {
 		add_trait = pet_consort
@@ -67,167 +67,32 @@ character_event = {
 # PET CONSORT EVENTS
 # Pet consort impregnates, the event checks first for the woman, she pings it to the random consort, who pings back to impregnate
 character_event = {
-	id = rape.0007
-	# desc = "EVTDESCrape.0007"
-	# picture = GFX_evt_cult_of_pleasure
+	id = rape.7
+	hide_window = yes
 	only_women = yes
 	min_age = 15
 	capable_only = yes
 	prisoner = no
-	hide_window = yes
+	only_playable = yes
+	is_triggered_only = yes
 
 	trigger = {
-		NOT = {
-			trait = creature_orc
-		}		# Infertile species
-		NOT = {
-			trait = creature_goblin
-		}
-		NOT = {
-			trait = creature_snotling
-		}
-		NOT = {
-			trait = creature_nehekharan
-		}
-		NOT = {
-			trait = transgender
-		}
-		NOT = {
-			trait = vampire_lahmian_visible
-		}
-		NOT = {
-			trait = vampire_carstein_visible
-		}
-		NOT = {
-			trait = vampire_blood_visible
-		}
-		NOT = {
-			trait = vampire_strigoi_visible
-		}
-		NOT = {
-			trait = vampire_necrarch_visible
-		}
-		NOT = {
-			trait = vampire_jade_visible
-		}
-		NOT = {
-			trait = vampire_mahtmasi_visible
-		}
-		NOT = {
-			trait = vampire_lahmian_hidden
-		}
-		NOT = {
-			trait = vampire_carstein_hidden
-		}
-		NOT = {
-			trait = vampire_blood_hidden
-		}
-		NOT = {
-			trait = vampire_strigoi_hidden
-		}
-		NOT = {
-			trait = vampire_necrarch_hidden
-		}
-		NOT = {
-			trait = vampire_jade_hidden
-		}
-		NOT = {
-			trait = vampire_mahtmasi_hidden
-		}
-		OR = {
-			NOT = {
-				trait = chaste
-			}
-			AND = {
-				trait = chaste
-				is_married = no
-			} # an unmarried chaste woman can still have children from consorts, but a married one won't
-		}
-		NOT = {
-			trait = celibate
-		}
-		NOT = {
-			trait = infertile
-		}
-		OR = {
-			NOT = {
-				age = 45
-			}
-			AND = {
-				NOT = {
-					trait = creature_human
-				}
-				NOT = {
-					trait = creature_halfling
-				}
-			}
+		# Infertile species
+		fertility = 0.1
+		is_incapacitated_trigger = no
+		# an unmarried chaste woman can still have children from consorts, but a married one won't
+		nand = {
+			trait = chaste
+			is_married = yes
 		}
 		is_pregnant = no
-		pet_consort = {
-			is_female = no			# male on female handled by vanilla
-			NOT = {
-				trait = eunuch
-			}
-			NOT = {
-				trait = transgender
-			}
-			NOT = {
-				trait = infertile
-			}
-			NOT = {
-				trait = creature_orc
-			}		# Infertile species
-			NOT = {
-				trait = creature_goblin
-			}
-			NOT = {
-				trait = creature_snotling
-			}
-			NOT = {
-				trait = creature_nehekharan
-			}
-			NOT = {
-				trait = vampire_lahmian_visible
-			}
-			NOT = {
-				trait = vampire_carstein_visible
-			}
-			NOT = {
-				trait = vampire_blood_visible
-			}
-			NOT = {
-				trait = vampire_strigoi_visible
-			}
-			NOT = {
-				trait = vampire_necrarch_visible
-			}
-			NOT = {
-				trait = vampire_jade_visible
-			}
-			NOT = {
-				trait = vampire_mahtmasi_visible
-			}
-			NOT = {
-				trait = vampire_lahmian_hidden
-			}
-			NOT = {
-				trait = vampire_carstein_hidden
-			}
-			NOT = {
-				trait = vampire_blood_hidden
-			}
-			NOT = {
-				trait = vampire_strigoi_hidden
-			}
-			NOT = {
-				trait = vampire_necrarch_hidden
-			}
-			NOT = {
-				trait = vampire_jade_hidden
-			}
-			NOT = {
-				trait = vampire_mahtmasi_hidden
-			}
+		any_lover = {
+			trait = pet_consort
+			# male on female handled by vanilla
+			is_female = no
+			fertility = 0.1
+			is_incapacitated_trigger = no
+			fertility = 0.1
 			# To avoid halfbreeds
 			OR = {
 				AND = {
@@ -266,267 +131,145 @@ character_event = {
 					}
 					trait = creature_chaos_dwarf
 				}
-				AND = {
-					ROOT = {
-						trait = creature_skaven
-					}
-					trait = creature_skaven
-				}
 			}
 			is_alive = yes
-			is_lover = ROOT		# consorts are already handled by vanilla
-			NOT = {
-				trait = incapable
-			}
+			# so that the consorts will cycle
 			NOT = {
 				has_character_modifier = stage_progressed
-			} # so that the consorts will cycle
+			}
 		}
 	}
 
-	mean_time_to_happen = {
-		years = 15
+	weight_multiplier = {
+		factor = 1
 		modifier = {
-			factor = 1.5
+			factor = 0.7
 			war = yes
 		}
 		modifier = {
-			factor = 1.75
-			trait = creature_elf
+			factor = 0.5
+			is_long_lived_character = yes
 		}
 		modifier = {
-			factor = 45
-			in_command = yes
+			factor = 0
+			or = {
+				in_command = yes
+				is_incapacitated_trigger = yes
+			}
 		}
 		modifier = {
-			factor = 0.45
+			factor = 2
 			trait = retired_with_harem
 		}
 		modifier = {
-			factor = 0.15
+			factor = 10
 			has_character_modifier = horny_harem_mod
 		}
 		modifier = {
-			factor = 0.75
+			factor = 1.5
 			trait = lustful
 		}
 		modifier = {
-			factor = 4
+			factor = 0.25
 			trait = shy
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.1
 			trait = gregarious
 		}
 		modifier = {
-			factor = 0.85
+			factor = 1.2
 			trait = hedonist
 		}
 		modifier = {
-			factor = 4
+			factor = 0.25
 			trait = chaste
 		}
 		modifier = {
-			factor = 4
+			factor = 0.25
 			trait = ill
 		}
 		modifier = {
-			factor = 1.75
+			factor = 0.5
 			trait = stressed
 		}
 		modifier = {
-			factor = 2.75
+			factor = 0.3
 			trait = depressed
 		}
 		modifier = {
-			factor = 1.5
+			factor = 0.6
 			trait = kind
 		}
 		modifier = {
-			factor = 1.5
-			trait = just
-		}
-		modifier = {
-			factor = 0.95
+			factor = 1.1
 			trait = cruel
 		}
 		modifier = {
-			factor = 0.95
+			factor = 1.1
 			trait = arbitrary
 		}
 		modifier = {
-			factor = 1.75
+			factor = 0.6
 			trait = possessed
 		}
 		modifier = {
-			factor = 1.75
+			factor = 0.6
 			trait = hunchback
 		}
 		modifier = {
-			factor = 1.25
+			factor = 0.6
 			trait = clubfooted
 		}
 		modifier = {
-			factor = 4
+			factor = 0.25
 			trait = pneumonic
 		}
 		modifier = {
-			factor = 3.75
+			factor = 0.25
 			trait = homosexual
 		}
 		modifier = {
-			factor = 1.75
-			trait = dwarf
-		}
-		modifier = {
-			factor = 2.75
+			factor = 0.75
 			trait = inbred
 		}
 		modifier = {
-			factor = 0.95
-			is_strong_trigger = yes
-		}
-		modifier = {
-			factor = 1.25
-			trait = weak
-		}
-		modifier = {
-			factor = 1.25
-			trait = scholar
-		}
-		modifier = {
-			factor = 1.25
-			trait = gardener
-		}
-		modifier = {
-			factor = 1.25
-			trait = hunter
-		}
-		modifier = {
-			factor = 1.25
-			trait = duelist
-		}
-		modifier = {
-			factor = 1.25
-			trait = falconer
-		}
-		modifier = {
-			factor = 1.25
-			trait = mystic
-		}
-		modifier = {
-			factor = 1.25
-			trait = temperate
-		}
-		modifier = {
-			factor = 1.25
-			trait = charitable
-		}
-		modifier = {
-			factor = 1.5
-			trait = slothful
-		}
-		modifier = {
-			factor = 1.25
-			trait = diligent
-		}
-		modifier = {
-			factor = 1.25
-			trait = patient
-		}
-		modifier = {
-			factor = 1.15
-			trait = humble
-		}
-		modifier = {
-			factor = 1.1
-			trait = craven
-		}
-		modifier = {
-			factor = 0.9
-			trait = brave
-		}
-		modifier = {
-			factor = 1.5
-			trait = paranoid
+			factor = 0.8
+			lifestyle_traits = 1
 		}
 		modifier = {
 			factor = 0.8
-			trait = trusting
+			lifestyle_traits = 2
 		}
 		modifier = {
-			factor = 100
-			trait = incapable
-		}
-		modifier = {
-			factor = 10
+			factor = 0.1
 			trait = infirm
 		}
 		modifier = {
-			factor = 15
+			factor = 0.1
 			trait = leper
 		}
 		modifier = {
-			factor = 1.75
-			trait = disfigured
-		}
-		modifier = {
-			factor = 1.75
-			trait = wounded
-		}
-		modifier = {
-			factor = 1.75
-			trait = maimed
-		}
-		modifier = {
-			factor = 2
-			trait = blinded
-		}
-		modifier = {
-			factor = 1.75
-			trait = fat
-		}
-		modifier = {
-			factor = 1.75
-			trait = undernourished
-		}
-		modifier = {
-			factor = 0.9
-			trait = drunkard
-		}
-		modifier = {
-			factor = 1.2
-			trait = addict
-		}
-		modifier = {
-			factor = 1.5
-			trait = diligent
-		}
-		modifier = {
-			factor = 100
-			trait = creature_human
-			NOT = {
-				fertility = 0.01
+			factor = 0.1
+			not = {
+				health = 1
 			}
 		}
 		modifier = {
-			factor = 4
-			trait = creature_human
-			fertility = 0
-			NOT = {
-				fertility = 0.1
+			factor = 0.1
+			not = {
+				health = 2
 			}
 		}
 		modifier = {
-			factor = 2
-			trait = creature_human
+			factor = 0.5
 			fertility = 0.1
 			NOT = {
 				fertility = 0.3
 			}
 		}
 		modifier = {
-			factor = 0.95
+			factor = 0.5
 			trait = creature_human
 			fertility = 0.3
 			NOT = {
@@ -534,204 +277,73 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 0.9
-			trait = creature_human
+			factor = 1.5
 			fertility = 0.5
-			NOT = {
-				fertility = 0.75
-			}
 		}
 		modifier = {
-			factor = 0.85
-			trait = creature_human
-			fertility = 0.75
-			NOT = {
-				fertility = 0.9
-			}
+			factor = 1.5
+			fertility = 1
 		}
 		modifier = {
-			factor = 0.8
-			trait = creature_human
-			fertility = 0.9
-			NOT = {
-				fertility = 1.0
-			}
+			factor = 1.5
+			fertility = 1.5
 		}
 		modifier = {
-			factor = 0.75
-			trait = creature_human
-			fertility = 1.0
-			NOT = {
-				fertility = 1.1
-			}
-		}
-		modifier = {
-			factor = 0.7
-			trait = creature_human
-			fertility = 1.1
-			NOT = {
-				fertility = 1.2
-			}
-		}
-		modifier = {
-			factor = 0.6
-			trait = creature_human
-			fertility = 1.2
-			NOT = {
-				fertility = 1.4
-			}
-		}
-		modifier = {
-			factor = 0.5
-			trait = creature_human
-			fertility = 1.4
-			NOT = {
-				fertility = 1.6
-			}
-		}
-		modifier = {
-			factor = 0.5
-			trait = creature_human
-			fertility = 1.6
-		}
-		modifier = {
-			factor = 1.75
-			trait = creature_human
-			NOT = {
-				age = 18
-			}
-		}
-		modifier = {
-			factor = 0.65
-			trait = creature_human
-			age = 18
-			NOT = {
-				age = 30
-			}
-		}
-		modifier = {
-			factor = 0.85
-			trait = creature_human
-			age = 30
-			NOT = {
-				age = 40
-			}
-		}
-		modifier = {
-			factor = 2
-			trait = creature_human
-			age = 40
-			NOT = {
-				age = 55
-			}
-		}
-		modifier = {
-			factor = 0.95
+			factor = 1.2
 			num_of_children = 0
 		}
 		modifier = {
-			factor = 0.85
+			factor = 1.1
 			num_of_children = 1
 			NOT = {
 				num_of_children = 5
 			}
 		}
 		modifier = {
-			factor = 1.25
+			factor = 0.5
 			num_of_children = 5
-			NOT = {
-				num_of_children = 10
-			}
 		}
 		modifier = {
-			factor = 0.8
+			factor = 0
+			num_of_children = 10
+		}
+		modifier = {
+			factor = 1.2
 			any_lover = {
 				trait = pet_consort
 				count = 2
 			}
 		}
 		modifier = {
-			factor = 0.7
+			factor = 1.2
 			any_lover = {
 				trait = pet_consort
 				count = 3
 			}
 		}
 		modifier = {
-			factor = 0.6
+			factor = 1.2
 			any_lover = {
 				trait = pet_consort
 				count = 4
 			}
 		}
 		modifier = {
-			factor = 0.5
+			factor = 1.2
 			any_lover = {
 				trait = pet_consort
 				count = 5
 			}
 		}
 		modifier = {
-			factor = 2.5
-			num_of_children = 10
+			factor = 0
+			num_of_children = 5
+			is_long_lived_character = yes
 		}
 		modifier = {
 			factor = 0
-			num_of_children = 5
-			trait = creature_elf
-		}
-		modifier = {
-			factor = 10
 			trait = creature_human
 			age = 55
-		}
-		modifier = {
-			factor = 1.25
-			trait = poor_warrior
-		}
-		modifier = {
-			factor = 1.25
-			trait = trained_warrior
-		}
-		modifier = {
-			factor = 1.25
-			trait = skilled_warrior
-		}
-		modifier = {
-			factor = 1.25
-			trait = master_warrior
-		}
-		modifier = {
-			factor = 1.25
-			trait = naive_appeaser
-		}
-		modifier = {
-			factor = 1.25
-			trait = underhanded_rogue
-		}
-		modifier = {
-			factor = 1.25
-			trait = charismatic_negotiator
-		}
-		modifier = {
-			factor = 1.25
-			trait = grey_eminence
-		}
-		modifier = {
-			factor = 1.25
-			trait = misguided_warrior
-		}
-		modifier = {
-			factor = 1.25
-			trait = tough_soldier
-		}
-		modifier = {
-			factor = 1.25
-			trait = skilled_tactician
-		}
-		modifier = {
-			factor = 1.25
-			trait = brilliant_strategist
 		}
 	}
 
@@ -739,75 +351,59 @@ character_event = {
 		# name = "EVTOPTArape.0007"
 		random_lover = {
 			limit = {
-				is_alive = yes
 				trait = pet_consort
-				is_female = no			# male on female handled by vanilla
-				NOT = {
-					trait = eunuch
+				# male on female handled by vanilla
+				is_female = no
+				fertility = 0.1
+				is_incapacitated_trigger = no
+				fertility = 0.1
+				# To avoid halfbreeds
+				OR = {
+					AND = {
+						ROOT = {
+							trait = creature_human
+						}
+						trait = creature_human
+					}
+					AND = {
+						ROOT = {
+							trait = creature_amazon
+						}
+						trait = creature_amazon
+					}
+					AND = {
+						ROOT = {
+							trait = creature_elf
+						}
+						trait = creature_elf
+					}
+					AND = {
+						ROOT = {
+							trait = creature_halfling
+						}
+						trait = creature_halfling
+					}
+					AND = {
+						ROOT = {
+							trait = creature_dwarf
+						}
+						trait = creature_dwarf
+					}
+					AND = {
+						ROOT = {
+							trait = creature_chaos_dwarf
+						}
+						trait = creature_chaos_dwarf
+					}
 				}
-				NOT = {
-					trait = creature_orc
-				}		# Infertile species
-				NOT = {
-					trait = creature_goblin
-				}
-				NOT = {
-					trait = creature_snotling
-				}
-				NOT = {
-					trait = creature_nehekharan
-				}
-				NOT = {
-					trait = vampire_lahmian_visible
-				}
-				NOT = {
-					trait = vampire_carstein_visible
-				}
-				NOT = {
-					trait = vampire_blood_visible
-				}
-				NOT = {
-					trait = vampire_strigoi_visible
-				}
-				NOT = {
-					trait = vampire_necrarch_visible
-				}
-				NOT = {
-					trait = vampire_jade_visible
-				}
-				NOT = {
-					trait = vampire_mahtmasi_visible
-				}
-				NOT = {
-					trait = vampire_lahmian_hidden
-				}
-				NOT = {
-					trait = vampire_carstein_hidden
-				}
-				NOT = {
-					trait = vampire_blood_hidden
-				}
-				NOT = {
-					trait = vampire_strigoi_hidden
-				}
-				NOT = {
-					trait = vampire_necrarch_hidden
-				}
-				NOT = {
-					trait = vampire_jade_hidden
-				}
-				NOT = {
-					trait = vampire_mahtmasi_hidden
-				}
-				NOT = {
-					trait = incapable
-				}
+				is_alive = yes
+				# so that the consorts will cycle
 				NOT = {
 					has_character_modifier = stage_progressed
-				} # so that the consorts will cycle
+				}
 			}
 			character_event = {
-				id = rape.0009
+				id = rape.9
 			}
 		}
 	}
@@ -815,7 +411,7 @@ character_event = {
 
 # Once the deed is done, the stage_progressed cooldown prevents the same guy from being always the father
 character_event = {
-	id = rape.0009
+	id = rape.9
 	desc = "EVTDESC662"
 	picture = GFX_evt_lovers
 	hide_window = yes
@@ -897,24 +493,6 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = {
-					fertility = 0.1
-				}
-			}
-			random_list = {
-				70 = {
-					FROM = {
-						character_event = {
-							id = rape.0010
-						}
-					}
-				}
-				30 = {
-				}
-			}
-		}
-		if = {
-			limit = {
 				fertility = 0.1
 				NOT = {
 					fertility = 0.3
@@ -924,7 +502,7 @@ character_event = {
 				75 = {
 					FROM = {
 						character_event = {
-							id = rape.0010
+							id = rape.10
 						}
 					}
 				}
@@ -943,7 +521,7 @@ character_event = {
 				80 = {
 					FROM = {
 						character_event = {
-							id = rape.0010
+							id = rape.10
 						}
 					}
 				}
@@ -962,7 +540,7 @@ character_event = {
 				85 = {
 					FROM = {
 						character_event = {
-							id = rape.0010
+							id = rape.10
 						}
 					}
 				}
@@ -981,7 +559,7 @@ character_event = {
 				90 = {
 					FROM = {
 						character_event = {
-							id = rape.0010
+							id = rape.10
 						}
 					}
 				}
@@ -1000,7 +578,7 @@ character_event = {
 				95 = {
 					FROM = {
 						character_event = {
-							id = rape.0010
+							id = rape.10
 						}
 					}
 				}
@@ -1016,7 +594,7 @@ character_event = {
 				99 = {
 					FROM = {
 						character_event = {
-							id = rape.0010
+							id = rape.10
 						}
 					}
 				}
@@ -1028,7 +606,7 @@ character_event = {
 }
 
 character_event = {
-	id = rape.0010
+	id = rape.10
 	desc = "EVTDESC662"
 	picture = GFX_evt_lovers
 	hide_window = yes

@@ -1,9 +1,176 @@
 #
 namespace = wh_inheritance
 
-# one event to set intelligence, strength, beauty, magic
+# check parents race, kill if tigger return 1 on_birth
 character_event = {
 	id = wh_inheritance.0
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		# absolutely can't reproduce
+		# greenskins
+		or = {
+			father_even_if_dead = {
+				trait = creature_orc
+			}
+			mother_even_if_dead = {
+				trait = creature_orc
+			}
+		}
+		or = {
+			father_even_if_dead = {
+				trait = creature_goblin
+			}
+			mother_even_if_dead = {
+				trait = creature_goblin
+			}
+		}
+		or = {
+			father_even_if_dead = {
+				trait = creature_snotling
+			}
+			mother_even_if_dead = {
+				trait = creature_snotling
+			}
+		}
+		# lizardmens
+		or = {
+			father_even_if_dead = {
+				trait = creature_skink
+			}
+			mother_even_if_dead = {
+				trait = creature_skink
+			}
+		}
+		# spirits
+		or = {
+			father_even_if_dead = {
+				trait = creature_forestspirit
+			}
+			mother_even_if_dead = {
+				trait = creature_forestspirit
+			}
+		}
+		or = {
+			father_even_if_dead = {
+				trait = creature_treekin
+			}
+			mother_even_if_dead = {
+				trait = creature_treekin
+			}
+		}
+		# undeads or demons
+		or = {
+			father_even_if_dead = {
+				or = {
+					is_undead_trigger = yes
+					is_demon_trigger = yes
+				}
+			}
+			mother_even_if_dead = {
+				or = {
+					is_undead_trigger = yes
+					is_demon_trigger = yes
+				}
+			}
+		}
+		# check if mother and father have same trait
+		nor = {
+			# beastmen can hybridize with everyone else
+			father_even_if_dead = {
+				trait = creature_beastman
+			}
+			mother_even_if_dead = {
+				trait = creature_beastman
+			}
+			# human
+			and = {
+				father_even_if_dead = {
+					or = {
+						trait = creature_human
+						trait = creature_amazon
+					}
+				}
+				mother_even_if_dead = {
+					or = {
+						trait = creature_human
+						trait = creature_amazon
+					}
+				}
+			}
+			# elf
+			and = {
+				father_even_if_dead = {
+					trait = creature_elf
+				}
+				mother_even_if_dead = {
+					trait = creature_elf
+				}
+			}
+			# dwarf
+			and = {
+				father_even_if_dead = {
+					or = {
+						trait = creature_dwarf
+						trait = creature_chaos_dwarf
+					}
+				}
+				mother_even_if_dead = {
+					or = {
+						trait = creature_dwarf
+						trait = creature_chaos_dwarf
+					}
+				}
+			}
+			# halfling
+			and = {
+				father_even_if_dead = {
+					trait = creature_halfling
+				}
+				mother_even_if_dead = {
+					trait = creature_halfling
+				}
+			}
+			# skaven
+			and = {
+				father_even_if_dead = {
+					trait = creature_skaven
+				}
+				mother_even_if_dead = {
+					trait = creature_skaven
+				}
+			}
+			# ogre
+			and = {
+				father_even_if_dead = {
+					trait = creature_ogre
+				}
+				mother_even_if_dead = {
+					trait = creature_ogre
+				}
+			}
+		}
+	}
+
+	immediate = {
+		log = "wh_inheritance.0 works fine"
+		if = {
+			limit = {
+				is_invincible_trigger = yes
+			}
+			antideath_effect = yes
+			break = yes
+		}
+		death = {
+			death_reason = death_childbirth
+		}
+	}
+}
+
+# one event to set intelligence, strength, beauty, magic
+character_event = {
+	id = wh_inheritance.1
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -11,11 +178,12 @@ character_event = {
 		not = {
 			has_character_flag = wh_has_event_inheritance.0
 		}
+		is_alive = yes
 	}
 
 	immediate = {
 		set_character_flag = wh_has_event_inheritance.0
-		log = "wh_inheritance.0 work fine"
+		# log = "wh_inheritance.1 work fine"
 		# intelligence inheritance
 		set_variable = {
 			which = wh_inheritance
@@ -1139,6 +1307,60 @@ character_event = {
 			set_variable = {
 				which = wh_inheritance
 				value = 0
+			}
+		}
+	}
+}
+
+# Beastmen interbreeding event
+character_event = {
+	id = wh_inheritance.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			mother_even_if_dead = {
+				trait = creature_beastman
+			}
+			father_even_if_dead = {
+				trait = creature_beastman
+			}
+		}
+	}
+
+	immediate = {
+		# log = "wh_inheritance.2 works fine"
+		remove_trait = creature_human
+		remove_trait = creature_amazon
+		remove_trait = creature_elf
+		remove_trait = creature_dwarf
+		remove_trait = creature_chaos_dwarf
+		remove_trait = creature_skaven
+		add_trait = creature_beastman
+		if = {
+			limit = {
+				NOT = {
+					religion_group = chaos_gods_group
+				}
+			}
+			religion = chaos
+		}
+		culture = beastman_main
+		set_graphical_culture = beastman_main
+		if = {
+			limit = {
+				NOT = {
+					liege = {
+						trait = creature_beastman
+					}
+				}
+			}
+			liege = {
+				character_event = {
+					id = wh_beastmen.42
+					days = 1
+				}
 			}
 		}
 	}

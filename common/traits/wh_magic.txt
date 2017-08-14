@@ -1,0 +1,425 @@
+# Magic potential
+#
+# magic potential is hidden and is semi randomly generated
+# on birth, there are 3 flags responsible for it
+#  magic_potential_1
+#  magic_potential_2
+#  magic_potential_3
+#
+# no magic potential is marked by no magic potential
+#
+# Magic Education traits
+
+magic_potential_1 = {
+	command_modifier = {
+		random = 0.1
+	}
+	customizer = no
+}
+magic_potential_2 = {
+	command_modifier = {
+		random = 0.1
+	}
+	combat_rating = 2
+	customizer = no
+}
+magic_potential_3 = {
+	command_modifier = {
+		random = 0.2
+	}
+	combat_rating = 3
+	customizer = no
+}
+magic_potential_4 = {
+	command_modifier = {
+		random = 0.3
+	}
+	combat_rating = 4
+	customizer = no
+}
+
+# No more magic
+hollowed = {
+	health = -0.01
+	diplomacy = -7
+	intrigue = -10
+	stewardship = -10
+	martial = -5
+	learning = -15
+	customizer = no
+	fertility = -0.7
+	cannot_inherit = yes
+	monthly_character_piety = -0.05
+	monthly_character_prestige = -0.05
+	ai_rationality = -100
+	ai_ambition = -100
+	ai_greed = -100
+	general_opinion = -10
+}
+
+# Studying magic
+studying_magic={
+	customizer = no
+	random = no
+	pilgrimage = yes
+}
+
+# Magic user types
+asrai_spellsinger = {
+	customizer = no
+	combat_rating = 2
+	religious = yes # Lost immediately on religion change
+}
+
+asur_mage = {
+	combat_rating = 2
+	opposites = {
+		hedge_wizard
+		druchi_mage
+		druchi_sorceress
+		asrai_spellsinger
+	}
+	opposite_opinion = -50
+	customizer = no
+}
+
+chaos_dwarf_sorcerer = {
+	potential = {
+		religion = hashut
+	}
+	customizer = no
+	random = no
+	command_modifier = {
+		morale_offence = 0.2
+    }
+	vassal_opinion = 20
+	learning = 5
+	health = 15
+	monthly_character_prestige = 0.5
+	monthly_character_piety = 0.5
+	combat_rating = 2
+}
+
+greenskin_shaman = {
+	combat_rating = 2
+	command_modifier = {
+		damage = 0.1
+		morale_offence = 0.1
+	}
+	customizer = no
+}
+
+mage_apprentice = {
+	customizer = no
+	cannot_marry = yes
+}
+
+bray_shaman = {
+	combat_rating = 2
+	customizer = no
+}
+
+ice_witch = {
+	customizer = no
+	monthly_character_piety = 0.04
+	ursun_opinion = 10
+	northern_gods_opinion = 10
+	combat_rating = 1
+	fertility = -0.2
+}
+
+hedge_wizard = {
+	opposites = {
+		asur_mage
+		druchi_mage
+		druchi_sorceress
+		asrai_spellsinger
+	}
+	opposite_opinion = -15
+	combat_rating = 1
+	customizer = no
+}
+
+druchi_mage = {
+	combat_rating = 2
+	opposites = {
+		hedge_wizard
+		asur_mage
+		druchi_sorceress
+		asrai_spellsinger
+	}
+	opposite_opinion = -100
+	customizer = no
+}
+
+druchi_sorceress = {
+	combat_rating = 2
+	opposites = {
+		hedge_wizard
+		asur_mage
+		druchi_mage
+		asrai_spellsinger
+	}
+	opposite_opinion = -100
+	customizer = no
+}
+
+skink_priest = {
+	monthly_character_piety = 0.05
+	opposite_opinion = 15
+	learning = 2
+	customizer = no
+	old_ones_opinion = 3
+}
+
+# Magic power levels
+magic_power_adept = {
+	potential = {
+		trait = creature_human
+	}
+	opposites = {
+		magic_power_lord
+		magic_power_archmaster
+		magic_power_magister
+	}
+	learning = 2
+	random = no
+	customizer = no
+}
+
+magic_power_magister = {
+	potential = {
+		trait = creature_human
+	}
+	opposites = {
+		magic_power_adept
+		magic_power_archmaster
+		magic_power_lord
+	}
+	learning = 4
+	combat_rating = 2
+	monthly_character_prestige = 0.2
+	random = no
+	customizer = no
+}
+
+magic_power_lord = {
+	opposites = {
+		magic_power_adept
+		magic_power_archmaster
+		magic_power_magister
+	}
+	monthly_character_prestige = 0.4
+	immortal = yes
+	learning = 4
+	combat_rating = 2
+	random = no
+	customizer = no
+}
+
+magic_power_archmaster = {
+	opposites = {
+		magic_power_adept
+		magic_power_lord
+		magic_power_magister
+	}
+	immortal = yes
+	learning = 5
+	combat_rating = 2
+	monthly_character_prestige = 0.6
+	random = no
+	customizer = no
+}
+
+# Non-Imperial magics
+lore_ice = {
+	command_modifier = {
+		winter_combat = 0.2
+		morale_offence = 0.1
+	}
+	random = no
+	customizer = no
+}
+
+#Winds of Magic (most common lores)
+lore_fire = {
+	command_modifier = {
+		morale_offence = 0.1
+	}
+	random = no
+	customizer = no
+}
+
+lore_beasts = {
+	command_modifier = {
+		morale_offence = 0.1
+	}
+	random = no
+	customizer = no
+}
+
+lore_metal = {
+	command_modifier = {
+		morale_offence = 0.1
+	}
+	random = no
+	customizer = no
+}
+
+lore_light = {
+	command_modifier = {
+		religious_enemy = 0.2
+		morale_defence = 0.2
+		defence = 0.1
+		speed = 0.05
+	}
+	random = no
+	customizer = no
+}
+
+lore_life = {
+	command_modifier = {
+		morale_defence = 0.2
+		defence = 0.1
+	}
+	random = no
+	customizer = no
+}
+
+lore_heavens = {
+	command_modifier = {
+		morale_defence = 0.2
+		defence = 0.1
+	}
+	random = no
+	customizer = no
+}
+
+lore_death = {
+	random = no
+	customizer = no
+	command_modifier = {
+		morale_offence = 0.1
+	}
+}
+lore_shadows = {
+	random = no
+	customizer = no
+	command_modifier = {
+		morale_offence = 0.1
+	}
+}
+
+# High elven magic
+lore_high_magic = {
+	command_modifier = {
+		religious_enemy = 0.3
+		morale_defence = 0.3
+		defence = 0.1
+	}
+	combat_rating = 1
+	random = no
+	customizer = no
+}
+
+#Lores of Chaos
+lore_dark_magic = {
+	command_modifier = {
+		morale_offence = 0.3
+	}
+	combat_rating = 1
+	random = no
+	customizer = no
+}
+
+lore_nurgle = {
+	random = no
+	customizer = no
+	command_modifier = {
+		morale_defence = 0.3
+	}
+	combat_rating = 1
+}
+
+lore_slaanesh = {
+	command_modifier = {
+		flank = 0.1
+		retreat = 0.1
+	}
+	combat_rating = 1
+	sex_appeal_opinion = 20 #Because Slaanesh
+	random = no
+	customizer = no
+}
+
+lore_tzeentch = {
+	random = no
+	command_modifier = {
+		random = 0.4
+	}
+	combat_rating = 1
+	random = no
+	customizer = no
+}
+
+#Other Lores
+lore_necromancy = {
+	command_modifier = {
+		morale_offence = 0.1
+		speed = 0.05
+	}
+	random = no
+	customizer = no
+}
+
+lore_waaagh = {
+	command_modifier = {
+		morale_offence = 0.1
+		speed = 0.05
+	}
+	random = no
+	customizer = no
+}
+
+lore_vermin = {
+	random = no
+	command_modifier = {
+		morale_offence = 0.05
+		speed = 0.01
+	}
+	combat_rating = 1
+	random = no
+	customizer = no
+}
+
+loremaster = {
+	learning = 3
+	combat_rating = -1
+	random = no
+	customizer = no
+	assassinate_chance_modifier = 1.0
+}
+
+beast_transformation = {
+	random = no
+	customizer = no
+	martial = 10
+	learning = -5
+	intrigue = -5
+	stewardship = -5
+	diplomacy = -5
+	command_modifier = {
+		morale_offence = 2
+		damage = 2
+		speed = 0.1
+	}
+}
+
+shadows_steed = {
+	random = no
+	customizer = no
+	command_modifier = {
+		speed = 2.0
+		retreat = 2.0
+	}
+}

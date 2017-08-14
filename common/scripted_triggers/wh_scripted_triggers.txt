@@ -154,6 +154,7 @@ is_demon_prince_trigger = {
 	trait = prince_nurgle
 	trait = prince_slaanesh
 	trait = prince_tzeentch
+	trait = everchosen
 }
 
 wh_is_chaos_chosen_trigger = {
@@ -252,15 +253,16 @@ is_invincible_trigger = {
 
 is_immortal_trigger = {
 	OR = {
-		#more entries might be added later on
-		is_undead_trigger = yes
-		trait = immortal
+		# more entries might be added later on
 		has_artifact = elixir_of_eternal_youth
+		trait = immortal
 		trait = creature_orc
 		trait = creature_goblin
 		trait = creature_slann
-		is_demon_trigger = yes
 		trait = creature_celdragon
+		is_undead_trigger = yes
+		is_demon_trigger = yes
+		is_demon_prince_trigger = yes
 	}
 }
 
@@ -314,7 +316,6 @@ is_cultist_trigger = {
 
 is_incorruptible_trigger = {
 	OR = {
-		is_demon_trigger = yes
 		trait = avatar_kurnous
 		trait = avatar_isha
 		trait = everqueen
@@ -327,14 +328,12 @@ is_incorruptible_trigger = {
 		trait = creature_orc
 		trait = creature_goblin
 		trait = creature_snotling
-		trait = chosen_khorne
-		trait = chosen_nurgle
-		trait = chosen_slaanesh
-		trait = chosen_tzeentch
 		trait = creature_chaosspawn
 		trait = creature_celdragon
 		has_character_flag = forsaken_flag
+		wh_is_chaos_chosen_trigger yes
 		is_undead_trigger = yes
+		is_demon_trigger = yes
 	}
 }
 

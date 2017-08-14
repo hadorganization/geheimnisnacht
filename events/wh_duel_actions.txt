@@ -1230,8 +1230,8 @@ character_event = {
 	picture = "GFX_evt_duel4"
 	border = GFX_event_normal_frame_war
 	is_triggered_only = yes
-	# charB got this event
 
+	# charB got this event
 	option = {
 		name = OK
 		trigger = {
@@ -1245,19 +1245,23 @@ character_event = {
 				or = {
 					is_invincible_trigger = yes
 					has_character_modifier = z_foresight_blessing_battle
+					has_character_flag = duel_no_death
 				}
 			}
 			antideath_effect = yes
+			# clearing event
 			event_target:charA = {
 				character_event = {
-					id = duelengine.6 days = 1
+					id = duelengine.6
+					days = 1
 				}
-			} # clearing event
+			}
 			event_target:charB = {
 				character_event = {
-					id = duelengine.6 days = 1
+					id = duelengine.6
+					days = 1
 				}
-			} # clearing event
+			}
 			clr_character_flag = duel
 			if = {
 				limit = {
@@ -1271,38 +1275,52 @@ character_event = {
 			death_reason = death_duel
 			killer = event_target:charA
 		}
+		# clean
 		event_target:charA = {
 			character_event = {
 				id = duelengine.6 days = 1
 			}
-		} # clearing event
+		}
 		event_target:charB = {
 			character_event = {
 				id = duelengine.6 days = 1
 			}
-		} # clearing event
+		}
 		clr_character_flag = duel
 	}
-	# charA got this event
 
+	# charA got this event
 	option = {
 		name = OK
 	 	if = {
 			limit = {
-				is_invincible_trigger = yes
+				or = {
+					is_invincible_trigger = yes
+					has_character_modifier = z_foresight_blessing_battle
+					has_character_flag = duel_no_death
+				}
 			}
 			antideath_effect = yes
+			# clearing event
 			event_target:charA = {
 				character_event = {
-					id = duelengine.6 days = 1
+					id = duelengine.6
+					days = 1
 				}
-			} # clearing event
+			}
 			event_target:charB = {
 				character_event = {
-					id = duelengine.6 days = 1
+					id = duelengine.6
+					days = 1
 				}
-			} # clearing event
+			}
 			clr_character_flag = duel
+			if = {
+				limit = {
+					has_character_modifier = z_foresight_blessing_battle
+				}
+				remove_character_modifier = z_foresight_blessing_battle
+			}
 			break = yes
 		}
 		death = {
@@ -1310,9 +1328,7 @@ character_event = {
 			killer = event_target:charB
 		}
 		trigger = {
-			root = {
-				character = event_target:charA
-			}
+			character = event_target:charA
 		}
 		event_target:charB = {
 			character_event = {
@@ -1353,16 +1369,17 @@ character_event = {
 		}
 		log = "Outcome report was shown to both."
 		clr_character_flag = duel
+		# clearing event
 		event_target:charA = {
 			character_event = {
 				id = duelengine.6 days = 1
 			}
-		} # clearing event
+		}
 		event_target:charB = {
 			character_event = {
 				id = duelengine.6 days = 1
 			}
-		} # clearing event
+		}
 		if = {
 			limit = {
 				has_character_flag = greenksin_bash_head_duel
@@ -1370,6 +1387,16 @@ character_event = {
 			remove_character_modifier = weak_warboss
 			clr_character_flag = greenksin_bash_head_duel
 			set_character_flag = weak_warboss_bashed_heads
+		}
+		# khorne tournament
+		if = {
+			limit = {
+				has_character_flag = duel_wh_chaos_khorne.120
+			}
+			# for winner
+			long_character_event = {
+				id = wh_chaos_khorne.122
+			}
 		}
 		if = {
 			# Slayer level progression
@@ -1398,25 +1425,25 @@ character_event = {
 	option = {
 		name = OK
 		trigger = {
-			root = {
-				character = event_target:charA
-			}
+			character = event_target:charA
 		}
+		# symmetric response
 		event_target:charB = {
 			character_event = {
 				id = duelaction.200
 			}
-		} # symmetric response
+		}
+		# clearing event
 		event_target:charA = {
 			character_event = {
 				id = duelengine.6 days = 1
 			}
-		} # clearing event
+		}
 		event_target:charB = {
 			character_event = {
 				id = duelengine.6 days = 1
 			}
-		} # clearing event
+		}
 		clr_character_flag = duel
 		if = {
 			limit = {

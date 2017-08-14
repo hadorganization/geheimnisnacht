@@ -5,7 +5,7 @@ namespace = rape
 
 # on_forced_consort (female)
 character_event = {
-	id = rape.0004
+	id = wh_concubine.4
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -26,7 +26,7 @@ character_event = {
 }
 
 character_event = {
-	id = rape.0005
+	id = wh_concubine.5
 	desc = "EVTDESCneutral661"
 	picture = GFX_evt_scandal
 	is_triggered_only = yes
@@ -42,7 +42,7 @@ character_event = {
 }
 
 character_event = {
-	id = rape.0006
+	id = wh_concubine.6
 	desc = "EVTDESCneutral662"
 	picture = GFX_evt_scandal
 	is_triggered_only = yes
@@ -67,7 +67,7 @@ character_event = {
 # PET CONSORT EVENTS
 # Pet consort impregnates, the event checks first for the woman, she pings it to the random consort, who pings back to impregnate
 character_event = {
-	id = rape.7
+	id = wh_concubine.7
 	hide_window = yes
 	only_women = yes
 	min_age = 15
@@ -348,7 +348,7 @@ character_event = {
 	}
 
 	immediate = {
-		# name = "EVTOPTArape.0007"
+		# name = "EVTOPTArape.07"
 		random_lover = {
 			limit = {
 				trait = pet_consort
@@ -403,7 +403,7 @@ character_event = {
 				}
 			}
 			character_event = {
-				id = rape.9
+				id = wh_concubine.9
 			}
 		}
 	}
@@ -411,7 +411,7 @@ character_event = {
 
 # Once the deed is done, the stage_progressed cooldown prevents the same guy from being always the father
 character_event = {
-	id = rape.9
+	id = wh_concubine.9
 	desc = "EVTDESC662"
 	picture = GFX_evt_lovers
 	hide_window = yes
@@ -502,7 +502,7 @@ character_event = {
 				75 = {
 					FROM = {
 						character_event = {
-							id = rape.10
+							id = wh_concubine.10
 						}
 					}
 				}
@@ -521,7 +521,7 @@ character_event = {
 				80 = {
 					FROM = {
 						character_event = {
-							id = rape.10
+							id = wh_concubine.10
 						}
 					}
 				}
@@ -540,7 +540,7 @@ character_event = {
 				85 = {
 					FROM = {
 						character_event = {
-							id = rape.10
+							id = wh_concubine.10
 						}
 					}
 				}
@@ -559,7 +559,7 @@ character_event = {
 				90 = {
 					FROM = {
 						character_event = {
-							id = rape.10
+							id = wh_concubine.10
 						}
 					}
 				}
@@ -578,7 +578,7 @@ character_event = {
 				95 = {
 					FROM = {
 						character_event = {
-							id = rape.10
+							id = wh_concubine.10
 						}
 					}
 				}
@@ -594,7 +594,7 @@ character_event = {
 				99 = {
 					FROM = {
 						character_event = {
-							id = rape.10
+							id = wh_concubine.10
 						}
 					}
 				}
@@ -606,7 +606,7 @@ character_event = {
 }
 
 character_event = {
-	id = rape.10
+	id = wh_concubine.10
 	desc = "EVTDESC662"
 	picture = GFX_evt_lovers
 	hide_window = yes
@@ -621,8 +621,8 @@ character_event = {
 
 # Lose pet consort trait
 character_event = {
-	id = rape.0011
-	desc = "EVTDESCrape.0011" # no need, only for unlanded characters
+	id = wh_concubine.11
+	desc = "EVTDESCrape.11" # no need, only for unlanded characters
 	picture = "GFX_evt_bad_news"
 	is_triggered_only = yes
 
@@ -632,7 +632,7 @@ character_event = {
 	}
 
 	option = {
-		name = "EVTOPTArape.0011"
+		name = "EVTOPTArape.11"
 		remove_trait = pet_consort
 		recalc_succession = yes
 	}
@@ -640,14 +640,14 @@ character_event = {
 
 # Pinging consort for thrall management
 character_event = {
-	id = rape.0012
+	id = wh_concubine.12
 	hide_window = yes
 	is_triggered_only = yes
 
 	immediate = {
 		FROMFROM = {
 			character_event = {
-				id = rape.0013
+				id = wh_concubine.13
 			}
 		}
 	}
@@ -655,14 +655,14 @@ character_event = {
 
 # What to do with this consort?
 character_event = {
-	id = rape.0013
-	desc = EVTDESCrape.0013
+	id = wh_concubine.13
+	desc = EVTDESCrape.13
 	picture = GFX_evt_slave_whipped
 	is_triggered_only = yes
 
 	option = {
 		# release
-		name = EVTOPTArape.0013
+		name = EVTOPTArape.13
 		piety = -50
 		clr_character_flag = amazon_exception
 		clr_character_flag = handling_consort
@@ -676,7 +676,7 @@ character_event = {
 
 	option = {
 		# castrate
-		name = EVTOPTBrape.0013
+		name = EVTOPTBrape.13
 		clr_character_flag = handling_consort
 		trigger = {
 			FROM = {
@@ -693,7 +693,7 @@ character_event = {
 
 	option = {
 		# kill
-		name = EVTOPTCrape.0013
+		name = EVTOPTCrape.13
 		clr_character_flag = handling_consort
 		trigger = {
 			OR = {
@@ -704,7 +704,6 @@ character_event = {
 					trait = creature_amazon
 				}
 			}	# Amazons can't kill with impunity other amazons
-
 		}
 		FROM = {
 			if = {
@@ -735,8 +734,6 @@ character_event = {
 					limit = {
 						NOT = {
 							character = ROOT
-						}
-						NOT = {
 							has_character_flag = evil_murderer
 						}
 					}
@@ -801,7 +798,7 @@ character_event = {
 
 	option = {
 		# Where's the kinky stuff?
-		name = EVTOPTDrape.0013
+		name = EVTOPTDrape.13
 		trigger = {
 			NOT = {
 				religion = amazon
@@ -809,14 +806,14 @@ character_event = {
 		}
 		FROM = {
 			character_event = {
-				id = rape.0014
+				id = wh_concubine.14
 			}
 		}
 	}
 
 	option = {
 		# I'm bored with him
-		name = EVTOPTDrape.0015
+		name = EVTOPTDrape.15
 		trigger = {
 			religion = amazon
 		}
@@ -826,14 +823,14 @@ character_event = {
 
 # Pinging consort for thrall management
 character_event = {
-	id = rape.0014
+	id = wh_concubine.14
 	hide_window = yes
 	is_triggered_only = yes
 
 	immediate = {
 		FROM = {
 			character_event = {
-				id = rape.0015
+				id = wh_concubine.15
 			}
 		}
 	}
@@ -841,14 +838,14 @@ character_event = {
 
 # What to do with this consort? - Kinky stuff
 character_event = {
-	id = rape.0015
-	desc = EVTDESCrape.0015
+	id = wh_concubine.15
+	desc = EVTDESCrape.15
 	picture = GFX_evt_slave_whipped
 	is_triggered_only = yes
 
 	option = {
 		# disfigure
-		name = EVTOPTArape.0015
+		name = EVTOPTArape.15
 		trigger = {
 			FROM = {
 				NOT = {
@@ -860,14 +857,16 @@ character_event = {
 			random = {
 				chance = 25
 				character_event = {
-					id = spleasure.57 days = 40 random = 20
+					id = spleasure.57
+					days = 40
+					random = 20
 				}
 			}
 		}
 		piety = 25
 		clr_character_flag = handling_consort
 		character_event = {
-			id = rape.0016
+			id = wh_concubine.16
 		}
 		FROM = {
 			add_trait = disfigured
@@ -876,7 +875,7 @@ character_event = {
 
 	option = {
 		# random - adult
-		name = EVTOPTBrape.0015
+		name = EVTOPTBrape.15
 		trigger = {
 			FROM = {
 				age = 16
@@ -886,7 +885,9 @@ character_event = {
 			random = {
 				chance = 30
 				character_event = {
-					id = spleasure.57 days = 40 random = 20
+					id = spleasure.57
+					days = 40
+					random = 20
 				}
 			}
 		}
@@ -894,7 +895,7 @@ character_event = {
 			random_list = {
 				25 = {
 					character_event = {
-						id = rape.0017
+						id = wh_concubine.17
 					}
 					FROM = {
 						add_trait = maimed
@@ -902,7 +903,7 @@ character_event = {
 				} # the mount
 				25 = {
 					character_event = {
-						id = rape.0018
+						id = wh_concubine.18
 					}
 					FROM = {
 						add_trait = wounded
@@ -910,7 +911,7 @@ character_event = {
 				} # the orgy
 				25 = {
 					character_event = {
-						id = rape.0019
+						id = wh_concubine.19
 					}
 					FROM = {
 						add_trait = undernourished
@@ -924,7 +925,7 @@ character_event = {
 						}
 					}
 					character_event = {
-						id = rape.0020
+						id = wh_concubine.20
 					}
 					FROM = {
 						add_trait = blinded
@@ -936,7 +937,7 @@ character_event = {
 
 	option = {
 		# random - kid
-		name = EVTOPTCrape.0015
+		name = EVTOPTCrape.15
 		trigger = {
 			FROM = {
 				NOT = {
@@ -956,7 +957,7 @@ character_event = {
 			random_list = {
 				25 = {
 					character_event = {
-						id = rape.0021
+						id = wh_concubine.21
 					}
 					FROM = {
 						add_trait = addict
@@ -964,7 +965,7 @@ character_event = {
 				} # the addiction
 				25 = {
 					character_event = {
-						id = rape.0022
+						id = wh_concubine.22
 					}
 					FROM = {
 						add_trait = fat
@@ -972,7 +973,7 @@ character_event = {
 				} # the feeding
 				25 = {
 					character_event = {
-						id = rape.0023
+						id = wh_concubine.23
 					}
 					FROM = {
 						add_trait = wounded
@@ -986,7 +987,7 @@ character_event = {
 						}
 					}
 					character_event = {
-						id = rape.0024
+						id = wh_concubine.24
 					}
 					hidden_tooltip = {
 						FROM = {
@@ -1006,7 +1007,7 @@ character_event = {
 
 	option = {
 		# I'm bored now, I'll think something later.
-		name = EVTOPTDrape.0015
+		name = EVTOPTDrape.15
 		clr_character_flag = handling_consort
 		piety = -20
 	}
@@ -1014,13 +1015,13 @@ character_event = {
 
 # Disfigured
 character_event = {
-	id = rape.0016
-	desc = EVTDESCrape.0016
+	id = wh_concubine.16
+	desc = EVTDESCrape.16
 	picture = GFX_evt_slave_whipped
 	is_triggered_only = yes
 
 	option = {
-		name = EVTOPTArape.0016
+		name = EVTOPTArape.16
 		clr_character_flag = handling_consort
 		piety = 10
 		prestige = 10
@@ -1029,10 +1030,10 @@ character_event = {
 
 # The mount
 character_event = {
-	id = rape.0017
+	id = wh_concubine.17
 	picture = GFX_evt_slave_whipped
 	desc = {
-		text = EVTDESCArape.0017
+		text = EVTDESCArape.17
 		trigger = {
 			NOT = {
 				religion_group = cytharai_group
@@ -1040,7 +1041,7 @@ character_event = {
 		}
 	}
 	desc = {
-		text = EVTDESCBrape.0017
+		text = EVTDESCBrape.17
 		trigger = {
 			religion_group = cytharai_group
 		}
@@ -1048,18 +1049,18 @@ character_event = {
 	is_triggered_only = yes
 
 	option = {
-		name = EVTOPTArape.0017
+		name = EVTOPTArape.17
 		clr_character_flag = handling_consort
 		hidden_tooltip = {
 			random_list = {
 				70 = {
 					character_event = {
-						id = rape.0025
+						id = wh_concubine.25
 					}
 				} # all fine
 				30 = {
 					character_event = {
-						id = rape.0026
+						id = wh_concubine.26
 					}
 				} # vegetable
 			}
@@ -1069,7 +1070,7 @@ character_event = {
 	}
 
 	option = {
-		name = EVTOPTBrape.0017
+		name = EVTOPTBrape.17
 		clr_character_flag = handling_consort
 		piety = 10
 		prestige = 10
@@ -1078,13 +1079,13 @@ character_event = {
 
 # Orgy
 character_event = {
-	id = rape.0018
-	desc = EVTDESCrape.0018
+	id = wh_concubine.18
+	desc = EVTDESCrape.18
 	picture = GFX_evt_slave_whipped
 	is_triggered_only = yes
 
 	option = {
-		name = EVTOPTArape.0018
+		name = EVTOPTArape.18
 		clr_character_flag = handling_consort
 		hidden_tooltip = {
 			random_list = {
@@ -1102,13 +1103,13 @@ character_event = {
 
 # Essiccation
 character_event = {
-	id = rape.0019
-	desc = EVTDESCrape.0019
+	id = wh_concubine.19
+	desc = EVTDESCrape.19
 	picture = GFX_evt_slave_whipped
 	is_triggered_only = yes
 
 	option = {
-		name = EVTOPTArape.0019
+		name = EVTOPTArape.19
 		clr_character_flag = handling_consort
 		piety = 10
 		prestige = 10
@@ -1117,13 +1118,13 @@ character_event = {
 
 # Painting
 character_event = {
-	id = rape.0020
-	desc = EVTDESCrape.0020
+	id = wh_concubine.20
+	desc = EVTDESCrape.20
 	picture = GFX_evt_slave_whipped
 	is_triggered_only = yes
 
 	option = {
-		name = EVTOPTArape.0020
+		name = EVTOPTArape.20
 		clr_character_flag = handling_consort
 		piety = 10
 		prestige = 10
@@ -1132,15 +1133,15 @@ character_event = {
 
 # Addiction
 character_event = {
-	id = rape.0021
-	desc = EVTDESCrape.0021
+	id = wh_concubine.21
+	desc = EVTDESCrape.21
 	picture = GFX_evt_slave_whipped
 	is_triggered_only = yes
 
 	option = {
 		# Take some yourself
 		clr_character_flag = handling_consort
-		name = EVTOPTArape.0021
+		name = EVTOPTArape.21
 		hidden_tooltip = {
 			random_list = {
 				70 = {
@@ -1155,7 +1156,7 @@ character_event = {
 	}
 
 	option = {
-		name = EVTOPTBrape.0021
+		name = EVTOPTBrape.21
 		clr_character_flag = handling_consort
 		piety = 10
 		prestige = 10
@@ -1164,15 +1165,15 @@ character_event = {
 
 # Feeding
 character_event = {
-	id = rape.0022
-	desc = EVTDESCrape.0022
+	id = wh_concubine.22
+	desc = EVTDESCrape.22
 	picture = GFX_evt_slave_whipped
 	is_triggered_only = yes
 
 	option = {
 		# Bake the plump thing
 		clr_character_flag = handling_consort
-		name = EVTOPTArape.0022
+		name = EVTOPTArape.22
 		FROMFROM = {
 			if = {
 				limit = {
@@ -1200,7 +1201,7 @@ character_event = {
 	}
 
 	option = {
-		name = EVTOPTBrape.0022
+		name = EVTOPTBrape.22
 		clr_character_flag = handling_consort
 		piety = 10
 		prestige = 10
@@ -1209,13 +1210,13 @@ character_event = {
 
 # Abuse
 character_event = {
-	id = rape.0023
-	desc = EVTDESCrape.0023
+	id = wh_concubine.23
+	desc = EVTDESCrape.23
 	picture = GFX_evt_slave_whipped
 	is_triggered_only = yes
 
 	option = {
-		name = EVTOPTArape.0023
+		name = EVTOPTArape.23
 		clr_character_flag = handling_consort
 		hidden_tooltip = {
 			random_list = {
@@ -1233,13 +1234,13 @@ character_event = {
 
 # Game
 character_event = {
-	id = rape.0024
-	desc = EVTDESCrape.0024
+	id = wh_concubine.24
+	desc = EVTDESCrape.24
 	picture = GFX_evt_slave_whipped
 	is_triggered_only = yes
 
 	option = {
-		name = EVTOPTArape.0024
+		name = EVTOPTArape.24
 		clr_character_flag = handling_consort
 		piety = 10
 		prestige = 10
@@ -1248,25 +1249,25 @@ character_event = {
 
 # Mount - All is fine
 character_event = {
-	id = rape.0025
-	desc = EVTDESCArape.0025
+	id = wh_concubine.25
+	desc = EVTDESCArape.25
 	picture = GFX_evt_slave_whipped
 	is_triggered_only = yes
 
 	option = {
-		name = EVTOPTArape.0025
+		name = EVTOPTArape.25
 	}
 }
 
 # Mount - Vegetable
 character_event = {
-	id = rape.0026
-	desc = EVTDESCrape.0026
+	id = wh_concubine.26
+	desc = EVTDESCrape.26
 	picture = GFX_evt_slave_whipped
 	is_triggered_only = yes
 
 	option = {
-		name = EVTOPTArape.0026
+		name = EVTOPTArape.26
 		add_trait = incapable
 	}
 }

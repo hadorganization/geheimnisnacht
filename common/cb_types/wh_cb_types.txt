@@ -10560,33 +10560,16 @@ beastman_migration = {
 			independent = yes
 			lower_tier_than = KING
 		}
-		FROM = {
-			higher_tier_than = COUNT
-		}
 	}
 	on_attacker_leader_death = {
 		end_war = invalid
 	}
 	can_use_title = {
-		NAND = {
-			region = world_albion
-			ROOT = {
-				has_global_flag = mists_of_albion
-				capital_scope = {
-					NOT = {
-						region = world_albion
-					}
-				}
-			}
-		}
-		NOT = {
-			region =
+		wh_cb_albion_check_trigger = yes
+		nor = {
+			region = world_nehekhara
 			region = world_underempire
 		}
-		NOT = {
-			region = world_nehekhara
-			region = world_nehekhara
-		} # the title must have at least one county which is NOT nehekharan (if all are, it is dead land, and cannot be occupied).
 		# The attacker needs at least one county in the target kingdom, or a border, or be only two sea zones away from one of your counties
 		any_direct_de_jure_vassal_title = {
 			OR = {
@@ -10705,7 +10688,8 @@ beastman_migration = {
 					type = invasion
 				}
 				character_event = {
-					id = wh_beastmen.10 days = 1
+					id = wh_beastmen.10
+					days = 1
 				}
 			}
 		}

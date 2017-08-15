@@ -90,6 +90,75 @@ wh_is_mage_or_apprentice_trigger = {
 	}
 }
 
+wh_cb_albion_check_trigger = {
+	NAND = {
+		location = {
+			region = world_albion
+		}
+		ROOT = {
+			has_global_flag = mists_of_albion
+			capital_scope = {
+				NOT = {
+					region = world_albion
+				}
+			}
+		}
+	}
+}
+
+wh_cb_root_not_same_realm_from = {
+	ROOT = {
+		NOT = {
+			same_realm = FROM
+		}
+	}
+}
+
+wh_cb_is_valid_title_trigger = {
+	OR = {
+		FROM = {
+			has_landed_title = PREV
+		}
+		holder_scope = {
+			is_liege_or_above = FROM
+		}
+	}
+}
+
+wh_cb_can_use_title_trigger = {
+	nor = {
+		ROOT = {
+			has_landed_title = PREV
+		}
+		holder_scope = {
+			is_liege_or_above = ROOT
+		}
+	}
+}
+
+wh_cb_pays_tribute_to_from_trigger = {
+	OR = {
+		pays_tribute_to = FROM
+		any_liege = {
+			OR = {
+				pays_tribute_to = FROM
+				FROM = {
+					pays_tribute_to = PREV
+				}
+			}
+		}
+	}
+}
+
+wh_cb_pays_tribute_to_root_trigger = {
+	OR = {
+		pays_tribute_to = ROOT
+		any_liege = {
+			pays_tribute_to = ROOT
+		}
+	}
+}
+
 is_long_lived_character = {
 	OR = {
 		trait = creature_elf

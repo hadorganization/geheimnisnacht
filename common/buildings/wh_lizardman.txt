@@ -1,0 +1,3664 @@
+castle = {
+
+	ca_spawning_pool = {
+		desc = ct_spawning_pool_desc
+		trigger = {
+			FROM = {
+				culture_group = lizardman_group
+				higher_tier_than = BARON
+			}
+			OR = {
+				region = world_greater_araby_southlands
+				region = world_new_world_lustria
+				region = world_dragon_isles
+			}
+			not = {
+				any_province_holding = {
+					or = {
+						has_building = ca_spawning_pool
+						has_building = ct_spawning_pool
+						has_building = tp_spawning_pool
+					}
+				}
+			}
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+			OR = {
+				region = world_new_world_lustria
+				region = world_dragon_isles
+				region = world_greater_araby_southlands
+			}
+			# FROM = { FROM = { is_capital = yes } }
+		}
+		prerequisites = {
+			ca_lizwall_1
+		}
+		fort_level = 1
+		gold_cost = 500
+		build_time = 1500
+		heavy_infantry = 20
+		light_infantry = 50
+		liege_piety = 0.05
+		monthly_character_piety = 0.05
+		monthly_character_wealth = 0.05
+		ai_creation_factor = 150
+		extra_tech_building_start = 0.2
+		retinuesize = 500
+	}
+
+	# Lizardman Pyramid-complex, extra HI at reduced LI cost.
+	ca_lizardman_keep_1 = {
+		desc = ca_lizardman_keep_1_desc
+		trigger = {
+			TECH_FORTIFICATIONS_CONSTRUCTION = 0
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		gold_cost = 175
+		build_time = 547 #1.5y
+		levy_size = 0.04
+		garrison_size = 0.08
+		heavy_infantry = 100
+		archers = 25
+		light_infantry = -23
+		tax_income = 0.5
+		tech_growth_modifier = 0.1
+		levy_reinforce_rate = 0.02
+		ai_creation_factor = 300 #The AI should always build this when it can
+		extra_tech_building_start = 1.0
+	}
+
+	ca_lizardman_keep_2 = {
+		desc = ca_lizardman_keep_1_desc
+		trigger = {
+			TECH_FORTIFICATIONS_CONSTRUCTION = 0
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		prerequisites = {
+			ca_lizwall_1
+		}
+		upgrades_from = ca_lizardman_keep_1
+		gold_cost = 225
+		build_time = 730 #2y
+		levy_size = 0.09
+		garrison_size = 0.15
+		levy_reinforce_rate = 0.02
+		ai_creation_factor = 101
+		extra_tech_building_start = 2.0
+	}
+
+	ca_lizardman_keep_3 = {
+		desc = ca_lizardman_keep_1_desc
+		trigger = {
+			TECH_FORTIFICATIONS_CONSTRUCTION = 2
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		prerequisites = {
+			ca_lizwall_2
+		}
+		upgrades_from = ca_lizardman_keep_2
+		gold_cost = 325
+		build_time = 1095 #3y
+		levy_size = 0.14
+		garrison_size = 0.2
+		levy_reinforce_rate = 0.01
+		ai_creation_factor = 100
+		extra_tech_building_start = 1.0
+	}
+
+	ca_lizardman_keep_4 = {
+		desc = ca_lizardman_keep_1_desc
+		trigger = {
+			TECH_FORTIFICATIONS_CONSTRUCTION = 4
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		upgrades_from = ca_lizardman_keep_3
+		gold_cost = 425
+		build_time = 1460 #4y
+		levy_size = 0.19
+		garrison_size = 0.25
+		levy_reinforce_rate = 0.01
+		ai_creation_factor = 99
+		extra_tech_building_start = 0.2
+	}
+
+	ca_lizardman_keep_5 = {
+		desc = ca_lizardman_keep_1_desc
+		trigger = {
+			TECH_FORTIFICATIONS_CONSTRUCTION = 6
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		upgrades_from = ca_lizardman_keep_4
+		gold_cost = 525
+		build_time = 2190 #6y
+		levy_size = 0.24
+		garrison_size = 0.3
+		levy_reinforce_rate = 0.01
+		ai_creation_factor = 98
+		extra_tech_building_start = 0.2
+	}
+
+	ca_lizardman_keep_6 = {
+		desc = ca_lizardman_keep_1_desc
+		trigger = {
+			TECH_FORTIFICATIONS_CONSTRUCTION = 8
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		upgrades_from = ca_lizardman_keep_5
+		gold_cost = 550
+		build_time = 2190 #6y
+		levy_size = 0.29
+		garrison_size = 0.4
+		levy_reinforce_rate = 0.01
+		ai_creation_factor = 97
+		extra_tech_building_start = 0.2
+	}
+
+	ca_lizwall_1 = {
+		desc = ca_lizwall_1_desc
+		trigger = {
+			TECH_FORTIFICATIONS_CONSTRUCTION = 0
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		gold_cost = 175
+		build_time = 547 #1.5y
+		garrison_size = 0.06
+		fort_level = 0.6
+		ai_creation_factor = 102
+		extra_tech_building_start = 1.0
+	}
+
+	ca_lizwall_2 = {
+		desc = ca_lizwall_1_desc
+		trigger = {
+			TECH_FORTIFICATIONS_CONSTRUCTION = 2
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		upgrades_from = ca_lizwall_1
+		gold_cost = 225
+		build_time = 730 #2y
+		fort_level = 0.6
+		garrison_size = 0.06
+		ai_creation_factor = 101
+		extra_tech_building_start = 2.0
+	}
+
+	ca_lizwall_3 = {
+		desc = ca_lizwall_1_desc
+		trigger = {
+			TECH_FORTIFICATIONS_CONSTRUCTION = 4
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		upgrades_from = ca_lizwall_2
+		gold_cost = 325
+		build_time = 1095 #3y
+		fort_level = 0.7
+		garrison_size = 0.1
+		ai_creation_factor = 100
+		extra_tech_building_start = 1.0
+	}
+
+	ca_lizwall_4 = {
+		desc = ca_lizwall_1_desc
+		trigger = {
+			TECH_FORTIFICATIONS_CONSTRUCTION = 6
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		upgrades_from = ca_lizwall_3
+		gold_cost = 425
+		build_time = 1460 #4y
+		fort_level = 0.7
+		garrison_size = 0.1
+		ai_creation_factor = 99
+		extra_tech_building_start = 0.2
+	}
+
+	ca_lizwall_5 = {
+		desc = ca_lizwall_1_desc
+		trigger = {
+			TECH_FORTIFICATIONS_CONSTRUCTION = 8
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		upgrades_from = ca_lizwall_4
+		gold_cost = 525
+		build_time = 2190 #6y
+		fort_level = 1.1
+		garrison_size = 0.23
+		ai_creation_factor = 98
+		extra_tech_building_start = 0.2
+	}
+
+	# Skink armories, less LI and archers
+	ca_skink_armory_1 = {
+		desc = ca_skink_armory_1_desc
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 0
+		}
+		gold_cost = 100
+		build_time = 365
+		light_infantry = 40
+		archers = 20
+		ai_creation_factor = 100
+		extra_tech_building_start = 1.0
+	}
+
+	ca_skink_armory_2 = {
+		desc = ca_skink_armory_1_desc
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 1
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		prerequisites = {
+			ca_lizwall_1
+		}
+		upgrades_from = ca_skink_armory_1
+		gold_cost = 120
+		build_time = 547
+		light_infantry = 50
+		archers = 25
+		ai_creation_factor = 99
+		extra_tech_building_start = 2.0
+	}
+
+	ca_skink_armory_3 = {
+		desc = ca_skink_armory_1_desc
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 5
+		}
+		upgrades_from = ca_skink_armory_2
+		gold_cost = 200
+		build_time = 1095
+		light_infantry = 60
+		archers = 30
+		ai_creation_factor = 98
+		extra_tech_building_start = 0.5
+	}
+
+	ca_skink_armory_4 = {
+		desc = ca_skink_armory_1_desc
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 7
+		}
+		upgrades_from = ca_skink_armory_3
+		gold_cost = 300
+		build_time = 1095
+		light_infantry = 70
+		archers = 40
+		ai_creation_factor = 98
+		extra_tech_building_start = 0.5
+	}
+
+	ca_skink_armory_5 = {
+		desc = ca_skink_armory_1_desc
+		potential = {
+			FROM = {
+				culture = lizardman_lost
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 7
+		}
+		upgrades_from = ca_skink_armory_4
+		gold_cost = 350
+		build_time = 1095
+		light_infantry = 80
+		archers = 50
+		ai_creation_factor = 98
+		extra_tech_building_start = 0.5
+	}
+
+	ca_skink_armory_6 = {
+		desc = ca_skink_armory_1_desc
+		potential = {
+			FROM = {
+				culture = lizardman_lost
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 7
+		}
+		upgrades_from = ca_skink_armory_5
+		gold_cost = 400
+		build_time = 1095
+		light_infantry = 90
+		archers = 60
+		ai_creation_factor = 98
+		extra_tech_building_start = 0.5
+	}
+
+	# Saurus battlegrounds, more HI
+	ca_saurus_battleground_1 = {
+		desc = ca_saurus_battleground_1_desc
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 0
+		}
+		gold_cost = 100
+		build_time = 365
+		heavy_infantry = 65
+		ai_creation_factor = 105
+		extra_tech_building_start = 1.0
+	}
+
+	ca_saurus_battleground_2 = {
+		desc = ca_saurus_battleground_1_desc
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 0
+		}
+		prerequisites = {
+			ca_lizwall_1
+		}
+		upgrades_from = ca_saurus_battleground_1
+		gold_cost = 120
+		build_time = 547
+		heavy_infantry = 85
+		retinuesize = 20
+		ai_creation_factor = 104
+		extra_tech_building_start = 1.8
+	}
+
+	ca_saurus_battleground_3 = {
+		desc = ca_saurus_battleground_1_desc
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+				}
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 1
+		}
+		prerequisites = {
+			ca_lizwall_2
+		}
+		upgrades_from = ca_saurus_battleground_2
+		gold_cost = 200
+		build_time = 730
+		heavy_infantry = 105
+		ai_creation_factor = 103
+		extra_tech_building_start = 3.0
+	}
+
+	ca_saurus_battleground_4 = {
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+				}
+			}
+		}
+		desc = ca_saurus_battleground_1_desc
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 3
+		}
+		upgrades_from = ca_saurus_battleground_3
+		gold_cost = 300
+		build_time = 1095
+		heavy_infantry = 125
+		retinuesize = 20
+		ai_creation_factor = 102
+		extra_tech_building_start = 3.0
+	}
+
+	ca_saurus_battleground_5 = {
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+				}
+			}
+		}
+		desc = ca_saurus_battleground_1_desc
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 5
+		}
+		upgrades_from = ca_saurus_battleground_4
+		gold_cost = 400
+		build_time = 2190
+		heavy_infantry = 135
+		ai_creation_factor = 101
+		extra_tech_building_start = 2.0
+	}
+
+	ca_saurus_battleground_6 = {
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+				}
+			}
+		}
+		desc = ca_saurus_battleground_1_desc
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 7
+		}
+		upgrades_from = ca_saurus_battleground_5
+		gold_cost = 500
+		build_time = 2190
+		heavy_infantry = 145
+		retinuesize = 20
+		ai_creation_factor = 100
+		extra_tech_building_start = 0.2
+	}
+
+	# Cold one Cav and Terradon Riders.
+	ca_lizstable_1 = {
+		desc = ca_lizstable_1_desc
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 0
+		}
+		gold_cost = 100
+		build_time = 730
+		light_cavalry = 15
+		knights = 25
+		light_cavalry_defensive = 0.15 #Flying units are pretty hard to hit
+		ai_creation_factor = 101
+		extra_tech_building_start = 0.8
+	}
+
+	ca_lizstable_2 = {
+		desc = ca_lizstable_1_desc
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 1
+		}
+		upgrades_from = ca_lizstable_1
+		gold_cost = 300
+		build_time = 1095
+		light_cavalry = 20
+		knights = 25
+		ai_creation_factor = 100
+		extra_tech_building_start = 0.8
+	}
+
+	ca_lizstable_3 = {
+		desc = ca_lizstable_1_desc
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 2
+		}
+		upgrades_from = ca_lizstable_2
+		gold_cost = 400
+		build_time = 2190
+		light_cavalry = 20
+		knights = 35
+		retinuesize = 20
+		ai_creation_factor = 99
+		extra_tech_building_start = 0.8
+	}
+
+	ca_lizstable_4 = {
+		desc = ca_lizstable_1_desc
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+				}
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 4
+		}
+		upgrades_from = ca_lizstable_3
+		gold_cost = 500
+		build_time = 2190
+		light_cavalry = 25
+		knights = 35
+		light_cavalry_defensive = 0.15
+		ai_creation_factor = 98
+		extra_tech_building_start = 0.8
+	}
+
+	ca_lizstable_5 = {
+		desc = ca_lizstable_1_desc
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+				}
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 2
+		}
+		upgrades_from = ca_lizstable_4
+		gold_cost = 600
+		build_time = 2190
+		light_cavalry = 25
+		knights = 45
+		ai_creation_factor = 99
+		extra_tech_building_start = 0.8
+	}
+
+	ca_lizstable_6 = {
+		desc = ca_lizstable_1_desc
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+				}
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 4
+		}
+		upgrades_from = ca_lizstable_5
+		gold_cost = 700
+		build_time = 2190
+		light_cavalry = 30
+		knights = 45
+		light_cavalry_defensive = 0.15
+		retinuesize = 20
+		ai_creation_factor = 98
+		extra_tech_building_start = 0.8
+	}
+
+	# Kroxigor Sections
+	ca_krogixor_1 = {
+		desc = ca_krogixor_1_desc
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 0
+		}
+		prerequisites = {
+			ca_lizwall_2
+		}
+		gold_cost = 200
+		build_time = 730
+		war_elephants = 3
+		ai_creation_factor = 101
+		extra_tech_building_start = 0.8
+	}
+
+	ca_krogixor_2 = {
+		desc = ca_krogixor_1_desc
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 1
+		}
+		upgrades_from = ca_krogixor_1
+		gold_cost = 300
+		build_time = 1095
+		war_elephants = 5
+		ai_creation_factor = 101
+		extra_tech_building_start = 0.8
+	}
+
+	ca_krogixor_3 = {
+		desc = ca_krogixor_1_desc
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 2
+		}
+		upgrades_from = ca_krogixor_2
+		gold_cost = 400
+		build_time = 2190
+		war_elephants = 7
+		ai_creation_factor = 101
+		extra_tech_building_start = 0.8
+	}
+
+	ca_krogixor_4 = {
+		desc = ca_krogixor_1_desc
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 2
+		}
+		upgrades_from = ca_krogixor_3
+		gold_cost = 500
+		build_time = 2190
+		war_elephants = 9
+		ai_creation_factor = 101
+		extra_tech_building_start = 0.8
+	}
+
+	# Skink Artisans
+	ca_skink_artisans_1 = {
+		desc = ca_skink_artisans_1_desc
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 0
+		}
+		prerequisites = {
+			ca_lizwall_2
+		}
+		gold_cost = 500
+		build_time = 1025
+		tax_income = 1.5
+		tech_growth_modifier = 0.05
+		light_infantry_defensive = 0.02
+		light_infantry_offensive = 0.01
+		archers_defensive = 0.02
+		archers_offensive = 0.01
+		heavy_infantry_defensive = 0.02
+		heavy_infantry_offensive = 0.01
+		knights_defensive = 0.02
+		knights_offensive = 0.01
+		light_cavalry_defensive = 0.02
+		light_cavalry_offensive = 0.01
+		war_elephants_defensive = 0.01
+		war_elephants_offensive = 0.01
+		ai_creation_factor = 101
+		extra_tech_building_start = 0.8
+	}
+
+	ca_skink_artisans_2 = {
+		desc = ca_skink_artisans_1_desc
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 1
+		}
+		upgrades_from = ca_skink_artisans_1
+		gold_cost = 750
+		build_time = 1650
+		tax_income = 1.5
+		tech_growth_modifier = 0.05
+		light_infantry_defensive = 0.02
+		light_infantry_offensive = 0.01
+		archers_defensive = 0.02
+		archers_offensive = 0.01
+		heavy_infantry_defensive = 0.02
+		heavy_infantry_offensive = 0.01
+		knights_defensive = 0.02
+		knights_offensive = 0.01
+		light_cavalry_defensive = 0.02
+		light_cavalry_offensive = 0.01
+		war_elephants_defensive = 0.01
+		war_elephants_offensive = 0.01
+		ai_creation_factor = 101
+		extra_tech_building_start = 0.8
+	}
+
+	ca_skink_artisans_3 = {
+		desc = ca_skink_artisans_1_desc
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+				}
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 2
+		}
+		upgrades_from = ca_skink_artisans_2
+		gold_cost = 800
+		build_time = 2190
+		tax_income = 1.5
+		tech_growth_modifier = 0.05
+		culture_techpoints = 0.02
+		light_infantry_defensive = 0.02
+		light_infantry_offensive = 0.01
+		archers_defensive = 0.02
+		archers_offensive = 0.01
+		heavy_infantry_defensive = 0.02
+		heavy_infantry_offensive = 0.01
+		knights_defensive = 0.02
+		knights_offensive = 0.01
+		light_cavalry_defensive = 0.02
+		light_cavalry_offensive = 0.01
+		war_elephants_defensive = 0.01
+		war_elephants_offensive = 0.01
+		ai_creation_factor = 101
+		extra_tech_building_start = 0.8
+	}
+
+	ca_skink_artisans_4 = {
+		desc = ca_skink_artisans_1_desc
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+				}
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 2
+		}
+		upgrades_from = ca_skink_artisans_3
+		gold_cost = 900
+		build_time = 2190
+		tax_income = 1.75
+		tech_growth_modifier = 0.1
+		light_infantry_defensive = 0.02
+		light_infantry_offensive = 0.01
+		archers_defensive = 0.02
+		archers_offensive = 0.01
+		heavy_infantry_defensive = 0.02
+		heavy_infantry_offensive = 0.01
+		knights_defensive = 0.02
+		knights_offensive = 0.01
+		light_cavalry_defensive = 0.02
+		light_cavalry_offensive = 0.01
+		war_elephants_defensive = 0.01
+		war_elephants_offensive = 0.01
+		ai_creation_factor = 101
+		extra_tech_building_start = 0.8
+	}
+
+	ca_skink_artisans_5 = {
+		desc = ca_skink_artisans_1_desc
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+				}
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 2
+		}
+		upgrades_from = ca_skink_artisans_4
+		gold_cost = 900
+		build_time = 2190
+		tax_income = 1.75
+		tech_growth_modifier = 0.1
+		culture_techpoints = 0.03
+		light_infantry_defensive = 0.02
+		light_infantry_offensive = 0.01
+		archers_defensive = 0.02
+		archers_offensive = 0.01
+		heavy_infantry_defensive = 0.02
+		heavy_infantry_offensive = 0.01
+		knights_defensive = 0.02
+		knights_offensive = 0.01
+		light_cavalry_defensive = 0.02
+		light_cavalry_offensive = 0.01
+		war_elephants_defensive = 0.01
+		war_elephants_offensive = 0.01
+		ai_creation_factor = 101
+		extra_tech_building_start = 0.8
+	}
+
+	# Treasure Troves
+	ca_treasuretrove_1 = {
+		desc = ca_treasuretrove_1_desc
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 0
+		}
+		prerequisites = {
+			ca_lizwall_2
+		}
+		gold_cost = 215
+		build_time = 1025
+		tax_income = 2.35
+		ai_creation_factor = 101
+		extra_tech_building_start = 0.8
+	}
+
+	ca_treasuretrove_2 = {
+		desc = ca_treasuretrove_1_desc
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 1
+		}
+		upgrades_from = ca_treasuretrove_1
+		gold_cost = 350
+		build_time = 1650
+		tax_income = 2.35
+		ai_creation_factor = 101
+		extra_tech_building_start = 0.8
+	}
+
+	ca_treasuretrove_3 = {
+		desc = ca_treasuretrove_1_desc
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 2
+		}
+		upgrades_from = ca_treasuretrove_2
+		gold_cost = 425
+		build_time = 2190
+		tax_income = 2.35
+		ai_creation_factor = 101
+		extra_tech_building_start = 0.8
+	}
+
+	ca_treasuretrove_4 = {
+		desc = ca_treasuretrove_1_desc
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 2
+		}
+		upgrades_from = ca_treasuretrove_3
+		gold_cost = 535
+		build_time = 2190
+		tax_income = 2.75
+		tech_growth_modifier = 0.05
+		ai_creation_factor = 101
+		extra_tech_building_start = 0.8
+	}
+
+	ca_treasuretrove_5 = {
+		desc = ca_treasuretrove_1_desc
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 2
+		}
+		upgrades_from = ca_treasuretrove_4
+		gold_cost = 650
+		build_time = 2190
+		tax_income = 2.75
+		tech_growth_modifier = 0.05
+		culture_techpoints = 0.02
+		ai_creation_factor = 101
+		extra_tech_building_start = 0.8
+	}
+
+	ca_treasuretrove_6 = {
+		desc = ca_treasuretrove_1_desc
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+				}
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 2
+		}
+		upgrades_from = ca_treasuretrove_5
+		gold_cost = 750
+		build_time = 2190
+		tax_income = 3
+		tech_growth_modifier = 0.05
+		culture_techpoints = 0.02
+		ai_creation_factor = 101
+		extra_tech_building_start = 0.8
+	}
+
+	#Old one Idols, provides MASSIVE bonuses for HUGE costs
+	ca_oldidol_1 = {
+		desc = tb_oldidol_1_desc
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 1
+		}
+		gold_cost = 1000
+		build_time = 1063
+		heavy_infantry = 45
+		light_infantry = 20
+		archers = 20
+		land_morale = 0.15
+		liege_piety = 0.05
+		tax_income = 2
+		levy_reinforce_rate = 0.07
+		land_organisation = 0.15
+		tech_growth_modifier = 0.15
+		heavy_infantry_defensive = 0.16
+		light_infantry_defensive = 0.13
+		archers_defensive = 0.13
+		light_infantry_morale = 0.1
+		archers_morale = 0.1
+		heavy_infantry_morale = 0.13
+		ai_creation_factor = 95
+		potential = {
+			FROM = {
+				capital_holding = {
+					title = FROMFROM
+				}
+				culture_group = lizardman_group
+			}
+		}
+		extra_tech_building_start = 1
+	}
+
+	ca_oldidol_2 = {
+		desc = tb_oldidol_2_desc
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 3
+		}
+		upgrades_from = ca_oldidol_1
+		gold_cost = 1100
+		build_time = 1063
+		war_elephants = 3
+		knights = 10
+		light_cavalry = 15
+		heavy_infantry = 60
+		archers = 20
+		light_infantry = 20
+		land_morale = 0.15
+		liege_piety = 0.07
+		tax_income = 2
+		land_organisation = 0.1
+		levy_reinforce_rate = 0.07
+		tech_growth_modifier = 0.2
+		light_infantry_defensive = 0.13
+		archers_defensive = 0.13
+		heavy_infantry_defensive = 0.13
+		light_infantry_morale = 0.16
+		archers_morale = 0.16
+		heavy_infantry_morale = 0.19
+		knights_defensive = 0.1
+		knights_morale = 0.13
+		light_cavalry_defensive = 0.1
+		light_cavalry_morale = 0.13
+		war_elephants_defensive = 0.1
+		war_elephants_morale = 0.13
+		ai_creation_factor = 94
+		potential = {
+			FROM = {
+				capital_holding = {
+					title = FROMFROM
+				}
+				OR = {
+					culture = lizardman_southland
+					culture = lizardman
+				}
+			}
+		}
+		extra_tech_building_start = 1.5
+	}
+
+	# Lost Lizardman sanctuary
+	ca_lostsanctuary_1 = {
+		desc = ca_lostsanctuary_1_desc
+		potential = {
+			FROM = {
+				culture = lizardman_lost
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 0
+		}
+		gold_cost = 100
+		build_time = 365
+		fort_level = 0.25
+		garrison_size = 0.03
+		light_infantry = 15
+		archers = 10
+		tax_income = 0.5
+		ai_creation_factor = 100
+		extra_tech_building_start = 1.0
+	}
+
+	ca_lostsanctuary_2 = {
+		desc = ca_lostsanctuary_1_desc
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 1
+		}
+		potential = {
+			FROM = {
+				culture = lizardman_lost
+			}
+		}
+		prerequisites = {
+			ca_lizwall_1
+		}
+		upgrades_from = ca_lostsanctuary_1
+		gold_cost = 120
+		build_time = 547
+		fort_level = 0.25
+		garrison_size = 0.06
+		ai_creation_factor = 99
+		extra_tech_building_start = 2.0
+	}
+
+	ca_lostsanctuary_3 = {
+		desc = ca_lostsanctuary_1_desc
+		potential = {
+			FROM = {
+				culture = lizardman_lost
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 5
+		}
+		upgrades_from = ca_lostsanctuary_2
+		gold_cost = 200
+		build_time = 1095
+		fort_level = 0.25
+		garrison_size = 0.09
+		tax_income = 0.5
+		light_infantry = 15
+		archers = 10
+		archers_defensive = 0.03
+		light_infantry_defensive = 0.03
+		ai_creation_factor = 98
+		extra_tech_building_start = 0.5
+	}
+
+	ca_lostsanctuary_4 = {
+		desc = ca_lostsanctuary_1_desc
+		potential = {
+			FROM = {
+				culture = lizardman_lost
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 7
+		}
+		upgrades_from = ca_lostsanctuary_3
+		gold_cost = 300
+		build_time = 1095
+		fort_level = 0.25
+		garrison_size = 0.12
+		ai_creation_factor = 98
+		extra_tech_building_start = 0.5
+	}
+
+	ca_lostsanctuary_5 = {
+		desc = ca_lostsanctuary_1_desc
+		potential = {
+			FROM = {
+				culture = lizardman_lost
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 7
+		}
+		upgrades_from = ca_lostsanctuary_4
+		gold_cost = 350
+		build_time = 1095
+		fort_level = 0.35
+		garrison_size = 0.17
+		tax_income = 0.75
+		light_infantry = 20
+		archers = 15
+		archers_defensive = 0.05
+		light_infantry_defensive = 0.05
+		ai_creation_factor = 98
+		extra_tech_building_start = 0.5
+	}
+
+	# Lustrian Lizardman Scar veterans
+	ca_lizscar_1 = {
+		desc = ca_lizscar_1_desc
+		potential = {
+			FROM = {
+				culture = lizardman
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 0
+		}
+		gold_cost = 100
+		build_time = 365
+		heavy_infantry = 15
+		land_morale = 0.05
+		heavy_infantry_defensive = 0.05
+		heavy_infantry_offensive = 0.05
+		heavy_infantry_morale = 0.05
+		ai_creation_factor = 100
+		extra_tech_building_start = 1.0
+	}
+
+	ca_lizscar_2 = {
+		desc = ca_lizscar_1_desc
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 1
+		}
+		potential = {
+			FROM = {
+				culture = lizardman
+			}
+		}
+		prerequisites = {
+			ca_lizwall_1
+		}
+		upgrades_from = ca_lizscar_1
+		gold_cost = 120
+		build_time = 547
+		heavy_infantry = 15
+		land_morale = 0.03
+		ai_creation_factor = 99
+		extra_tech_building_start = 2.0
+	}
+
+	ca_lizscar_3 = {
+		desc = ca_lizscar_1_desc
+		potential = {
+			FROM = {
+				culture = lizardman
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 5
+		}
+		upgrades_from = ca_lizscar_2
+		gold_cost = 200
+		build_time = 1095
+		heavy_infantry = 20
+		land_morale = 0.05
+		heavy_infantry_defensive = 0.05
+		heavy_infantry_morale = 0.05
+		heavy_infantry_offensive = 0.05
+		ai_creation_factor = 98
+		extra_tech_building_start = 0.5
+	}
+
+	ca_lizscar_4 = {
+		desc = ca_lizscar_1_desc
+		potential = {
+			FROM = {
+				culture = lizardman
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 7
+		}
+		upgrades_from = ca_lizscar_3
+		gold_cost = 300
+		build_time = 1095
+		heavy_infantry = 20
+		land_morale = 0.03
+		ai_creation_factor = 98
+		extra_tech_building_start = 0.5
+	}
+
+	# Southland Lizardman Stegadons, Terradons and Cold Ones
+	ca_southmon_1 = {
+		desc = ca_southmon_1_desc
+		potential = {
+			FROM = {
+				culture = lizardman_southland
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 0
+		}
+		gold_cost = 100
+		build_time = 365
+		war_elephants = 3
+		light_cavalry = 15
+		knights = 20
+		ai_creation_factor = 100
+		extra_tech_building_start = 1.0
+	}
+
+	ca_southmon_2 = {
+		desc = ca_southmon_1_desc
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 1
+		}
+		potential = {
+			FROM = {
+				culture = lizardman_southland
+			}
+		}
+		prerequisites = {
+			ca_lizwall_1
+		}
+		upgrades_from = ca_southmon_1
+		gold_cost = 120
+		build_time = 547
+		war_elephants = 3
+		light_cavalry = 15
+		knights = 20
+		ai_creation_factor = 99
+		extra_tech_building_start = 2.0
+	}
+
+	ca_southmon_3 = {
+		desc = ca_southmon_1_desc
+		potential = {
+			FROM = {
+				culture = lizardman_southland
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 5
+		}
+		upgrades_from = ca_southmon_2
+		gold_cost = 200
+		build_time = 1095
+		war_elephants = 5
+		light_cavalry = 17
+		knights = 22
+		ai_creation_factor = 98
+		extra_tech_building_start = 0.5
+	}
+
+	ca_southmon_4 = {
+		desc = ca_southmon_1_desc
+		potential = {
+			FROM = {
+				culture = lizardman_southland
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 7
+		}
+		upgrades_from = ca_southmon_3
+		gold_cost = 300
+		build_time = 1095
+		war_elephants = 5
+		light_cavalry = 17
+		knights = 22
+		ai_creation_factor = 98
+		extra_tech_building_start = 0.5
+	}
+
+	ca_mosasaurpens_1 = {
+		desc = mosasaurpens_desc
+		port = yes
+		trigger = {
+			TECH_NAVAL = 1
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		gold_cost = 100
+		build_time = 365
+		galleys = 5
+		war_elephants = 5
+		ai_creation_factor = 100
+		replaces = ca_shipyard_1
+		extra_tech_building_start = 0.3
+	}
+
+	ca_mosasaurpens_2 = {
+		desc = mosasaurpens_desc
+		port = yes
+		trigger = {
+			TECH_NAVAL = 2
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		upgrades_from = ca_mosasaurpens_1
+		gold_cost = 100
+		build_time = 730
+		galleys = 6
+		war_elephants = 8
+		ai_creation_factor = 99
+		replaces = ca_shipyard_2
+		extra_tech_building_start = 0.3
+	}
+
+	ca_mosasaurpens_3 = {
+		desc = mosasaurpens_desc
+		port = yes
+		trigger = {
+			TECH_NAVAL = 3
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		upgrades_from = ca_mosasaurpens_2
+		gold_cost = 100
+		build_time = 1095
+		galleys = 7
+		war_elephants = 11
+		ai_creation_factor = 98
+		replaces = ca_shipyard_3
+		extra_tech_building_start = 0.3
+	}
+
+	ca_mosasaurpens_4 = {
+		desc = mosasaurpens_desc
+		port = yes
+		trigger = {
+			TECH_NAVAL = 4
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		upgrades_from = ca_mosasaurpens_3
+		gold_cost = 100
+		build_time = 1460
+		galleys = 8
+		war_elephants = 15
+		ai_creation_factor = 97
+		replaces = ca_shipyard_4
+		extra_tech_building_start = 0.3
+	}
+}
+
+city = {
+
+	ct_spawning_pool = {
+		desc = ct_spawning_pool_desc
+		trigger = {
+			FROM = {
+				culture_group = lizardman_group
+				higher_tier_than = BARON
+
+			}
+			OR = {
+				region = world_greater_araby_southlands
+				region = world_new_world_lustria
+				region = world_dragon_isles
+
+			}
+			not = {
+				any_province_holding = {
+					or = {
+						has_building = ca_spawning_pool
+						has_building = ct_spawning_pool
+						has_building = tp_spawning_pool
+
+					}
+
+				}
+
+			}
+
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+			OR = {
+				region = world_new_world_lustria
+				region = world_dragon_isles
+				region = world_greater_araby_southlands
+
+			}
+			#FROM = { FROM = { is_capital = yes } }
+		}
+		prerequisites = {
+			ct_lizwall_1
+		}
+		fort_level = 1
+		gold_cost = 500
+		build_time = 1500
+		heavy_infantry = 20
+		light_infantry = 50
+		liege_piety = 0.05
+		monthly_character_piety = 0.05
+		monthly_character_wealth = 0.05
+		ai_creation_factor = 150
+		extra_tech_building_start = 0.2
+		retinuesize = 500
+
+	}
+
+
+	ct_skirmisherquarters_1 = {
+		desc = ct_skirmisherquarters_1_desc
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 0
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		gold_cost = 100
+		build_time = 365
+		light_infantry = 40
+		archers = 45
+		ai_creation_factor = 96
+		extra_tech_building_start = 1.0
+	}
+
+	ct_skirmisherquarters_2 = {
+		desc = ct_skirmisherquarters_1_desc
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 2
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		prerequisites = {
+			ct_lizwall_1
+		}
+		upgrades_from = ct_skirmisherquarters_1
+		gold_cost = 120
+		build_time = 547
+		light_infantry = 45
+		archers = 50
+		ai_creation_factor = 95
+		extra_tech_building_start = 0.2
+	}
+
+	ct_skirmisherquarters_3 = {
+		desc = ct_skirmisherquarters_1_desc
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 4
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		prerequisites = {
+			ct_lizwall_2
+		}
+		upgrades_from = ct_skirmisherquarters_2
+		gold_cost = 275
+		build_time = 730
+		light_infantry = 50
+		archers = 60
+		ai_creation_factor = 94
+		extra_tech_building_start = 0.2
+	}
+
+	ct_skirmisherquarters_4 = {
+		desc = ct_skirmisherquarters_1_desc
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 6
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		upgrades_from = ct_skirmisherquarters_3
+		gold_cost = 375
+		build_time = 1095
+		light_infantry = 55
+		archers = 65
+		ai_creation_factor = 93
+		extra_tech_building_start = 0.2
+	}
+
+	ct_skirmisherquarters_5 = {
+		desc = ct_skirmisherquarters_1_desc
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 8
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		upgrades_from = ct_skirmisherquarters_4
+		gold_cost = 425
+		build_time = 2190
+		light_infantry = 60
+		archers = 70
+		ai_creation_factor = 92
+		extra_tech_building_start = 0.2
+	}
+
+	# Temple-city, combination of training ground and city towns
+	ct_templecity_1 = {
+		desc = ct_templecity_1_desc
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 0
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		gold_cost = 250
+		build_time = 365
+		tax_income = 2.5
+		light_infantry = 30
+		archers = 30
+		heavy_infantry = 10
+		knights = 10
+		economy_techpoints = 0.01
+		tech_growth_modifier = 0.05
+		levy_size = 0.3
+		levy_reinforce_rate = 0.01
+		ai_creation_factor = 300 #The AI should always build this when it can
+		add_number_to_name = no
+		extra_tech_building_start = 0.4
+	}
+
+	ct_templecity_2 = {
+		desc = ct_templecity_1_desc
+		prerequisites = {
+			ct_lizwall_1
+		}
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 0
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		upgrades_from = ct_templecity_1
+		gold_cost = 275
+		build_time = 547
+		tax_income = 2.5
+		ai_creation_factor = 109
+		add_number_to_name = no
+		extra_tech_building_start = 0.8
+	}
+
+	ct_templecity_3 = {
+		desc = ct_templecity_1_desc
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 1
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		prerequisites = {
+			ct_lizwall_2
+		}
+		upgrades_from = ct_templecity_2
+		gold_cost = 350
+		build_time = 730
+		tax_income = 2.5
+		economy_techpoints = 0.01
+		tech_growth_modifier = 0.1
+		levy_size = 0.03
+		levy_reinforce_rate = 0.01
+		ai_creation_factor = 108
+		add_number_to_name = no
+		extra_tech_building_start = 0.2
+	}
+
+	ct_templecity_4 = {
+		desc = ct_templecity_1_desc
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 3
+		}
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+				}
+			}
+		}
+		upgrades_from = ct_templecity_3
+		gold_cost = 475
+		build_time = 1095
+		tax_income = 2.5
+		ai_creation_factor = 107
+		add_number_to_name = no
+		extra_tech_building_start = 0.2
+	}
+
+	ct_templecity_5 = {
+		desc = ct_templecity_1_desc
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 5
+		}
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+				}
+			}
+		}
+		upgrades_from = ct_templecity_4
+		gold_cost = 525
+		build_time = 2190
+		tax_income = 2.5
+		economy_techpoints = 0.01
+		tech_growth_modifier = 0.1
+		levy_size = 0.03
+		levy_reinforce_rate = 0.01
+		ai_creation_factor = 106
+		add_number_to_name = no
+		extra_tech_building_start = 0.2
+	}
+
+	ct_templecity_6 = {
+		desc = ct_templecity_1_desc
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 7
+		}
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+				}
+			}
+		}
+		upgrades_from = ct_templecity_5
+		gold_cost = 575
+		build_time = 2190
+		tax_income = 2.5
+		ai_creation_factor = 105
+		add_number_to_name = no
+		extra_tech_building_start = 0.2
+	}
+
+	# Sauri Warriors
+	ct_sauriwarriors_1 = {
+		desc = ct_sauriwarriors_1_desc
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 0
+		}
+		gold_cost = 375
+		build_time = 730
+		heavy_infantry = 15
+		knights = 10
+		ai_creation_factor = 101
+		extra_tech_building_start = 0.8
+	}
+
+	ct_sauriwarriors_2 = {
+		desc = ct_sauriwarriors_1_desc
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 1
+		}
+		upgrades_from = ct_sauriwarriors_1
+		gold_cost = 450
+		build_time = 1095
+		heavy_infantry = 15
+		knights = 10
+		ai_creation_factor = 101
+		extra_tech_building_start = 0.8
+	}
+
+	ct_sauriwarriors_3 = {
+		desc = ct_sauriwarriors_1_desc
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+				}
+			}
+		}
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 2
+		}
+		upgrades_from = ct_sauriwarriors_2
+		prerequisites = {
+			ct_lizwall_1
+		}
+		gold_cost = 550
+		build_time = 2190
+		heavy_infantry = 25
+		knights = 15
+		ai_creation_factor = 101
+		extra_tech_building_start = 0.8
+	}
+
+	ct_sauriwarriors_4 = {
+		desc = ct_sauriwarriors_1_desc
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+				}
+			}
+		}
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 2
+		}
+		upgrades_from = ct_sauriwarriors_3
+		gold_cost = 550
+		build_time = 2190
+		heavy_infantry = 25
+		knights = 15
+		ai_creation_factor = 101
+		extra_tech_building_start = 0.8
+	}
+
+	ct_lizwall_1 = {
+		desc = ca_lizwall_1_desc
+		trigger = {
+			TECH_FORTIFICATIONS_CONSTRUCTION = 0
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		gold_cost = 50
+		build_time = 365
+		fort_level = 0.55
+		garrison_size = 0.09
+		tax_income = 0.25
+		ai_creation_factor = 99
+		extra_tech_building_start = 1.0
+	}
+
+	ct_lizwall_2 = {
+		desc = ca_lizwall_1_desc
+		trigger = {
+			TECH_FORTIFICATIONS_CONSTRUCTION = 2
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		upgrades_from = ct_lizwall_1
+		gold_cost = 50
+		build_time = 547
+		fort_level = 0.55
+		levy_size = 0.09
+		tax_income = 0.25
+		ai_creation_factor = 98
+		extra_tech_building_start = 1.5
+	}
+
+	ct_lizwall_3 = {
+		desc = ca_lizwall_1_desc
+		trigger = {
+			TECH_FORTIFICATIONS_CONSTRUCTION = 4
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		upgrades_from = ct_lizwall_2
+		gold_cost = 100
+		build_time = 730
+		fort_level = 0.55
+		garrison_size = 0.14
+		tax_income = 0.25
+		ai_creation_factor = 97
+		extra_tech_building_start = 2.0
+	}
+
+	ct_lizwall_4 = {
+		desc = ca_lizwall_1_desc
+		trigger = {
+			TECH_FORTIFICATIONS_CONSTRUCTION = 6
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		upgrades_from = ct_lizwall_3
+		gold_cost = 100
+		build_time = 1095
+		fort_level = 0.65
+		garrison_size = 0.14
+		tax_income = 0.25
+		ai_creation_factor = 96
+		extra_tech_building_start = 1.0
+	}
+
+	ct_lizwall_5 = {
+		desc = ca_lizwall_1_desc
+		trigger = {
+			TECH_FORTIFICATIONS_CONSTRUCTION = 8
+		}
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+				}
+			}
+		}
+		upgrades_from = ct_lizwall_4
+		gold_cost = 150
+		build_time = 1460
+		fort_level = 1.2
+		garrison_size = 0.23
+		tax_income = 0.5
+		ai_creation_factor = 95
+		extra_tech_building_start = 0.2
+	}
+
+	ct_oldidol_1 = {
+		desc = tb_oldidol_1_desc
+		trigger = {
+			TECH_FORTIFICATIONS_CONSTRUCTION = 2
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		gold_cost = 1000
+		build_time = 1065
+		heavy_infantry = 20
+		light_infantry = 35
+		archers = 35
+		land_morale = 0.15
+		liege_piety = 0.05
+		tax_income = 2.5
+		land_organisation = 0.05
+		levy_reinforce_rate = 0.05
+		tech_growth_modifier = 0.2
+		heavy_infantry_defensive = 0.1
+		light_infantry_defensive = 0.1
+		archers_defensive = 0.1
+		light_infantry_morale = 0.16
+		archers_morale = 0.16
+		heavy_infantry_morale = 0.13
+		liege_prestige = 0.03
+		ai_creation_factor = 99
+		extra_tech_building_start = 1.0
+	}
+
+	ct_oldidol_2 = {
+		desc = tb_oldidol_2_desc
+		trigger = {
+			TECH_FORTIFICATIONS_CONSTRUCTION = 5
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		upgrades_from = ct_oldidol_1
+		gold_cost = 1000
+		build_time = 1063
+		heavy_infantry = 30
+		light_infantry = 50
+		archers = 50
+		land_morale = 0.15
+		liege_piety = 0.05
+		tax_income = 3
+		land_organisation = 0.05
+		levy_reinforce_rate = 0.05
+		tech_growth_modifier = 0.3
+		heavy_infantry_defensive = 0.1
+		light_infantry_defensive = 0.1
+		archers_defensive = 0.1
+		light_infantry_morale = 0.16
+		archers_morale = 0.16
+		heavy_infantry_morale = 0.13
+		liege_prestige = 0.03
+		ai_creation_factor = 98
+		extra_tech_building_start = 1.5
+	}
+
+	# Skink custodians
+	ct_skinkcustodian_1 = {
+		desc = ct_skinkcustodian_1_desc
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 0
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		gold_cost = 250
+		build_time = 365
+		land_morale = 0.03
+		levy_reinforce_rate = 0.02
+		tech_growth_modifier = 0.05
+		tax_income = 0.25
+		ai_creation_factor = 110
+		add_number_to_name = no
+		extra_tech_building_start = 0.4
+	}
+
+	ct_skinkcustodian_2 = {
+		desc = ct_skinkcustodian_1_desc
+		prerequisites = {
+			ct_lizwall_1
+		}
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 1
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		upgrades_from = ct_skinkcustodian_1
+		gold_cost = 275
+		build_time = 547
+		land_morale = 0.03
+		levy_reinforce_rate = 0.03
+		tech_growth_modifier = 0.05
+		tax_income = 0.25
+		liege_piety = 0.01 #It is a sacred duty to restore/upkeep the ancient tomes
+		ai_creation_factor = 109
+		add_number_to_name = no
+		extra_tech_building_start = 0.8
+	}
+
+	ct_skinkcustodian_3 = {
+		desc = ct_skinkcustodian_1_desc
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 3
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		prerequisites = {
+			ct_lizwall_2
+		}
+		upgrades_from = ct_skinkcustodian_2
+		gold_cost = 350
+		build_time = 730
+		land_morale = 0.03
+		levy_reinforce_rate = 0.03
+		tech_growth_modifier = 0.1
+		tax_income = 0.25
+		ai_creation_factor = 108
+		add_number_to_name = no
+		extra_tech_building_start = 0.2
+	}
+
+	ct_skinkcustodian_4 = {
+		desc = ct_skinkcustodian_1_desc
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 3
+		}
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+				}
+			}
+		}
+		upgrades_from = ct_skinkcustodian_3
+		gold_cost = 475
+		build_time = 1095
+		land_morale = 0.03
+		levy_reinforce_rate = 0.04
+		tech_growth_modifier = 0.1
+		tax_income = 0.35
+		liege_piety = 0.01 #It is a sacred duty to restore/upkeep the ancient tomes
+		ai_creation_factor = 107
+		add_number_to_name = no
+		extra_tech_building_start = 0.2
+	}
+
+	ct_skinkcustodian_5 = {
+		desc = ct_skinkcustodian_1_desc
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 5
+		}
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+				}
+			}
+		}
+		upgrades_from = ct_skinkcustodian_4
+		gold_cost = 525
+		build_time = 2190
+		land_morale = 0.03
+		levy_reinforce_rate = 0.04
+		tech_growth_modifier = 0.2
+		tax_income = 0.35
+		ai_creation_factor = 106
+		add_number_to_name = no
+		extra_tech_building_start = 0.2
+	}
+
+	ct_skinkcustodian_6 = {
+		desc = ct_skinkcustodian_1_desc
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 7
+		}
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+				}
+			}
+		}
+		upgrades_from = ct_skinkcustodian_5
+		gold_cost = 575
+		build_time = 2190
+		land_morale = 0.03
+		levy_reinforce_rate = 0.05
+		tech_growth_modifier = 0.3
+		tax_income = 0.35
+		liege_piety = 0.02 #It is a sacred duty to restore/upkeep the ancient tomes
+		ai_creation_factor = 105
+		add_number_to_name = no
+		extra_tech_building_start = 0.2
+	}
+
+	# Skink Artisans
+	ct_skink_artisans_1 = {
+		desc = ca_skink_artisans_1_desc
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 0
+		}
+		prerequisites = {
+			ct_lizwall_2
+		}
+		gold_cost = 500
+		build_time = 1025
+		tax_income = 2.15
+		tech_growth_modifier = 0.1
+		light_infantry_defensive = 0.02
+		light_infantry_offensive = 0.01
+		archers_defensive = 0.02
+		archers_offensive = 0.01
+		heavy_infantry_defensive = 0.02
+		heavy_infantry_offensive = 0.01
+		knights_defensive = 0.02
+		knights_offensive = 0.01
+		light_cavalry_defensive = 0.02
+		light_cavalry_offensive = 0.01
+		war_elephants_defensive = 0.01
+		war_elephants_offensive = 0.01
+		ai_creation_factor = 101
+		extra_tech_building_start = 0.8
+	}
+
+	ct_skink_artisans_2 = {
+		desc = ca_skink_artisans_1_desc
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 3
+		}
+		upgrades_from = ct_skink_artisans_1
+		gold_cost = 750
+		build_time = 1650
+		tax_income = 2.15
+		tech_growth_modifier = 0.1
+		light_infantry_defensive = 0.02
+		light_infantry_offensive = 0.01
+		archers_defensive = 0.02
+		archers_offensive = 0.01
+		heavy_infantry_defensive = 0.02
+		heavy_infantry_offensive = 0.01
+		knights_defensive = 0.02
+		knights_offensive = 0.01
+		light_cavalry_defensive = 0.02
+		light_cavalry_offensive = 0.01
+		war_elephants_defensive = 0.01
+		war_elephants_offensive = 0.01
+		ai_creation_factor = 101
+		extra_tech_building_start = 0.8
+	}
+
+	ct_skink_artisans_3 = {
+		desc = ca_skink_artisans_1_desc
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+				}
+			}
+		}
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 4
+		}
+		upgrades_from = ct_skink_artisans_2
+		gold_cost = 800
+		build_time = 2190
+		tax_income = 2.15
+		tech_growth_modifier = 0.1
+		culture_techpoints = 0.02
+		light_infantry_defensive = 0.02
+		light_infantry_offensive = 0.01
+		archers_defensive = 0.02
+		archers_offensive = 0.01
+		heavy_infantry_defensive = 0.02
+		heavy_infantry_offensive = 0.01
+		knights_defensive = 0.02
+		knights_offensive = 0.01
+		light_cavalry_defensive = 0.02
+		light_cavalry_offensive = 0.01
+		war_elephants_defensive = 0.01
+		war_elephants_offensive = 0.01
+		ai_creation_factor = 101
+		extra_tech_building_start = 0.8
+	}
+
+	ct_skink_artisans_4 = {
+		desc = ca_skink_artisans_1_desc
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+				}
+			}
+		}
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 5
+		}
+		upgrades_from = ct_skink_artisans_3
+		gold_cost = 900
+		build_time = 2190
+		tax_income = 2.45
+		tech_growth_modifier = 0.15
+		light_infantry_defensive = 0.02
+		light_infantry_offensive = 0.01
+		archers_defensive = 0.02
+		archers_offensive = 0.01
+		heavy_infantry_defensive = 0.02
+		heavy_infantry_offensive = 0.01
+		knights_defensive = 0.02
+		knights_offensive = 0.01
+		light_cavalry_defensive = 0.02
+		light_cavalry_offensive = 0.01
+		war_elephants_defensive = 0.01
+		war_elephants_offensive = 0.01
+		ai_creation_factor = 101
+		extra_tech_building_start = 0.8
+	}
+
+	ct_skink_artisans_5 = {
+		desc = ca_skink_artisans_1_desc
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+				}
+			}
+		}
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 7
+		}
+		upgrades_from = ct_skink_artisans_4
+		gold_cost = 900
+		build_time = 2190
+		tax_income = 2.45
+		tech_growth_modifier = 0.15
+		culture_techpoints = 0.03
+		light_infantry_defensive = 0.02
+		light_infantry_offensive = 0.01
+		archers_defensive = 0.02
+		archers_offensive = 0.01
+		heavy_infantry_defensive = 0.02
+		heavy_infantry_offensive = 0.01
+		knights_defensive = 0.02
+		knights_offensive = 0.01
+		light_cavalry_defensive = 0.02
+		light_cavalry_offensive = 0.01
+		war_elephants_defensive = 0.01
+		war_elephants_offensive = 0.01
+		ai_creation_factor = 101
+		extra_tech_building_start = 0.8
+	}
+
+	ct_mosasaurpens_1 = {
+		desc = mosasaurpens_desc
+		port = yes
+		trigger = {
+			TECH_NAVAL = 1
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		gold_cost = 100
+		build_time = 365
+		galleys = 5
+		war_elephants = 5
+		ai_creation_factor = 100
+		replaces = ct_shipyard_1
+		extra_tech_building_start = 0.3
+	}
+
+	ct_mosasaurpens_2 = {
+		desc = mosasaurpens_desc
+		port = yes
+		trigger = {
+			TECH_NAVAL = 2
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		upgrades_from = ct_mosasaurpens_1
+		gold_cost = 100
+		build_time = 730
+		galleys = 6
+		war_elephants = 8
+		ai_creation_factor = 99
+		replaces = ct_shipyard_2
+		extra_tech_building_start = 0.3
+	}
+
+	ct_mosasaurpens_3 = {
+		desc = mosasaurpens_desc
+		port = yes
+		trigger = {
+			TECH_NAVAL = 3
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		upgrades_from = ct_mosasaurpens_2
+		gold_cost = 100
+		build_time = 1095
+		galleys = 7
+		war_elephants = 11
+		ai_creation_factor = 98
+		replaces = ct_shipyard_3
+		extra_tech_building_start = 0.3
+	}
+
+	ct_mosasaurpens_4 = {
+		desc = mosasaurpens_desc
+		port = yes
+		trigger = {
+			TECH_NAVAL = 4
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		upgrades_from = ct_mosasaurpens_3
+		gold_cost = 100
+		build_time = 1460
+		galleys = 8
+		war_elephants = 15
+		ai_creation_factor = 97
+		replaces = ct_shipyard_4
+		extra_tech_building_start = 0.3
+	}
+}
+
+tribal = {
+	# Temple-city Ruins, combination of Hill-fort and market towns.
+	tb_ruincity_1 = {
+		desc = tb_ruincity_desc
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 0
+		}
+		gold_cost = 75
+		build_time = 365
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		fort_level = 0.35 #Temple cities, even when ruined, are notorious for being strongly fortified
+		garrison_size = 0.07
+		ai_creation_factor = 97
+		ai_feudal_modifier = 10
+		ai_republic_modifier = -10
+		extra_tech_building_start = 0
+	}
+
+	tb_ruincity_2 = {
+		desc = tb_ruincity_desc
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 0
+		}
+		upgrades_from = tb_ruincity_1
+		gold_cost = 125
+		build_time = 365
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		fort_level = 0.35
+		garrison_size = 0.07
+		ai_creation_factor = 98
+		convert_to_castle = ca_lizardman_keep_1
+		convert_to_city = ct_templecity_1
+		extra_tech_building_start = 1
+	}
+
+	tb_ruincity_3 = {
+		desc = tb_ruincity_desc
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 0
+		}
+		upgrades_from = tb_ruincity_2
+		gold_cost = 125
+		build_time = 365
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		fort_level = 0.35
+		garrison_size = 0.07
+		extra_tech_building_start = 10.0
+	}
+
+	tb_ruincity_4 = {
+		desc = tb_ruincity_desc
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 1
+		}
+		upgrades_from = tb_ruincity_3
+		gold_cost = 150
+		build_time = 365
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		fort_level = 0.35
+		garrison_size = 0.09
+		levy_size = 0.02
+		tax_income = 0.25 #The ruin is beginning to look like a proper city again
+		ai_creation_factor = 100
+		convert_to_castle = ca_lizardman_keep_2
+		convert_to_city = ct_templecity_2
+		extra_tech_building_start = 10.0
+	}
+
+	tb_ruincity_5 = {
+		desc = tb_ruincity_desc
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 1
+		}
+		upgrades_from = tb_ruincity_4
+		gold_cost = 150
+		build_time = 365
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		fort_level = 0.35
+		garrison_size = 0.1
+		levy_size = 0.03
+		tax_income = 0.35 #The ruin is beginning to look like a proper city again
+		ai_creation_factor = 100
+		extra_tech_building_start = 10.0
+	}
+
+	tb_ruincity_6 = {
+		desc = tb_ruincity_desc
+		trigger = {
+			TECH_CITY_CONSTRUCTION = 2
+		}
+		upgrades_from = tb_ruincity_5
+		gold_cost = 150
+		build_time = 365
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		fort_level = 0.35
+		garrison_size = 0.12
+		levy_size = 0.05
+		tax_income = 0.5 #The ruin is beginning to look like a proper city again
+		ai_creation_factor = 100
+		convert_to_castle = ca_lizardman_keep_3
+		convert_to_city	= ct_templecity_3
+		extra_tech_building_start = 10.0
+	}
+
+	#Skink Armory, combination of archery range and war camp
+	tb_skinkarmory_1 = {
+		desc = tb_skinkarmory_desc
+		trigger = {
+			TECH_LIGHT_INFANTRY = 0
+		}
+		prestige_cost = 300
+		build_time = 365
+		light_infantry = 60
+		archers = 60
+		ai_creation_factor = 95
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		extra_tech_building_start = 1
+	}
+
+	tb_skinkarmory_2 = {
+		desc = tb_skinkarmory_desc
+		trigger = {
+			TECH_LIGHT_INFANTRY = 0
+		}
+		upgrades_from = tb_skinkarmory_1
+		prestige_cost = 400
+		build_time = 547
+		light_infantry = 60
+		archers = 60
+		ai_creation_factor = 94
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		convert_to_castle = ca_skink_armory_1
+		convert_to_city = ct_skirmisherquarters_1
+		extra_tech_building_start = 1.5
+	}
+
+	tb_skinkarmory_3 = {
+		desc = tb_skinkarmory_desc
+		trigger = {
+			TECH_LIGHT_INFANTRY = 0
+		}
+		upgrades_from = tb_skinkarmory_2
+		prestige_cost = 500
+		build_time = 730
+		light_infantry = 70
+		archers = 70
+		ai_creation_factor = 93
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		extra_tech_building_start = 2
+	}
+
+	tb_skinkarmory_4 = {
+		desc = tb_skinkarmory_desc
+		trigger = {
+			TECH_LIGHT_INFANTRY = 0
+		}
+		upgrades_from = tb_skinkarmory_3
+		prestige_cost = 600
+		build_time = 1095
+		light_infantry = 70
+		archers = 70
+		ai_creation_factor = 92
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		convert_to_castle = ca_skink_armory_2
+		convert_to_city = ct_skirmisherquarters_2
+		extra_tech_building_start = 2.5
+	}
+
+	#skink Custodians, gives morale, increased levy reinforcement rate and tech spread.
+	tb_skinkcustodians_1 = {
+		desc = tb_skinkcustodians_desc
+		trigger = {
+			TECH_HEAVY_INFANTRY = 0
+		}
+		prestige_cost = 300
+		build_time = 365
+		land_morale = 0.03
+		levy_reinforce_rate = 0.05
+		tech_growth_modifier = 0.03
+		tax_income = 0.25
+		ai_creation_factor = 95
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		extra_tech_building_start = 1
+	}
+
+	tb_skinkcustodians_2 = {
+		desc = tb_skinkcustodians_desc
+		trigger = {
+			TECH_HEAVY_INFANTRY = 0
+		}
+		upgrades_from = tb_skinkcustodians_1
+		prestige_cost = 400
+		build_time = 547
+		land_morale = 0.03
+		levy_reinforce_rate = 0.05
+		tech_growth_modifier = 0.05
+		tax_income = 0.25
+		ai_creation_factor = 94
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		convert_to_city = ct_skinkcustodian_1
+		extra_tech_building_start = 1.5
+	}
+
+	tb_skinkcustodians_3 = {
+		desc = tb_skinkcustodians_desc
+		trigger = {
+			TECH_HEAVY_INFANTRY = 1
+		}
+		upgrades_from = tb_skinkcustodians_2
+		prestige_cost = 500
+		build_time = 730
+		land_morale = 0.03
+		levy_reinforce_rate = 0.1
+		tech_growth_modifier = 0.05
+		tax_income = 0.35
+		liege_piety = 0.01 #It is a sacred duty to restore/upkeep the ancient tomes
+		ai_creation_factor = 93
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		extra_tech_building_start = 2
+	}
+
+	tb_skinkcustodians_4 = {
+		desc = tb_skinkcustodians_desc
+		trigger = {
+			TECH_HEAVY_INFANTRY = 1
+		}
+		upgrades_from = tb_skinkcustodians_3
+		prestige_cost = 600
+		build_time = 1095
+		land_morale = 0.03
+		levy_reinforce_rate = 0.1
+		tech_growth_modifier = 0.05
+		tax_income = 0.35
+		liege_piety = 0.02 #It is a sacred duty to restore/upkeep the ancient tomes
+		ai_creation_factor = 92
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		convert_to_city = ct_skinkcustodian_2
+		extra_tech_building_start = 2.5
+	}
+
+	#saurii warriors, HI and some other bonuses.
+	tb_sauriwarriors_1 = {
+		desc = tb_sauriwarriors_desc
+		trigger = {
+			TECH_HEAVY_INFANTRY = 0
+		}
+		prestige_cost = 300
+		build_time = 365
+		heavy_infantry = 13
+		land_morale = 0.03
+		levy_reinforce_rate = 0.03
+		ai_creation_factor = 95
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		extra_tech_building_start = 1
+	}
+
+	tb_sauriwarriors_2 = {
+		desc = tb_sauriwarriors_desc
+		trigger = {
+			TECH_HEAVY_INFANTRY = 0
+		}
+		upgrades_from = tb_sauriwarriors_1
+		prestige_cost = 400
+		build_time = 547
+		heavy_infantry = 17
+		land_morale = 0.03
+		levy_reinforce_rate = 0.03
+		ai_creation_factor = 94
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		convert_to_castle = ca_saurus_battleground_1
+		convert_to_city = ct_sauriwarriors_1
+		extra_tech_building_start = 1.5
+	}
+
+	tb_sauriwarriors_3 = {
+		desc = tb_sauriwarriors_desc
+		trigger = {
+			TECH_HEAVY_INFANTRY = 1
+		}
+		upgrades_from = tb_sauriwarriors_2
+		prestige_cost = 500
+		build_time = 730
+		heavy_infantry = 23
+		land_morale = 0.05
+		levy_reinforce_rate = 0.05
+		light_infantry_offensive = 0.05
+		archers_offensive = 0.05
+		heavy_infantry_offensive = 0.03
+		ai_creation_factor = 93
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		extra_tech_building_start = 2
+	}
+
+	tb_sauriwarriors_4 = {
+		desc = tb_sauriwarriors_desc
+		trigger = {
+			TECH_HEAVY_INFANTRY = 1
+		}
+		upgrades_from = tb_sauriwarriors_3
+		prestige_cost = 600
+		build_time = 1095
+		heavy_infantry = 27
+		land_morale = 0.05
+		levy_reinforce_rate = 0.05
+		light_infantry_offensive = 0.05
+		archers_offensive = 0.05
+		heavy_infantry_offensive = 0.03
+		ai_creation_factor = 92
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		convert_to_castle = ca_saurus_battleground_2
+		convert_to_city = ct_sauriwarriors_2
+		extra_tech_building_start = 2.5
+	}
+
+	#Old one Idols, provides MASSIVE bonuses for HUGE costs
+	tb_oldidol_1 = {
+		desc = tb_oldidol_1_desc
+		trigger = {
+			TECH_HEAVY_INFANTRY = 1
+		}
+		gold_cost = 1000
+		build_time = 1063
+		heavy_infantry = 13
+		light_infantry = 33
+		archers = 33
+		land_morale = 0.15
+		liege_piety = 0.05
+		tax_income = 1.5
+		tech_growth_modifier = 0.1
+		land_organisation = 0.1
+		heavy_infantry_defensive = 0.1
+		light_infantry_defensive = 0.01
+		archers_defensive = 0.01
+		light_infantry_morale = 0.07
+		archers_morale = 0.07
+		heavy_infantry_morale = 0.13
+		liege_prestige = 0.02
+		ai_creation_factor = 95
+		potential = {
+			FROM = {
+				capital_holding = {
+					title = FROMFROM
+				}
+				culture_group = lizardman_group
+			}
+		}
+		extra_tech_building_start = 1
+	}
+
+	tb_oldidol_2 = {
+		desc = tb_oldidol_2_desc
+		trigger = {
+			TECH_HEAVY_INFANTRY = 2
+		}
+		upgrades_from = tb_oldidol_1
+		gold_cost = 1100
+		build_time = 1063
+		land_morale = 0.1
+		liege_piety = 0.07
+		tax_income = 2
+		heavy_infantry = 7
+		light_infantry = 17
+		archers = 17
+		land_organisation = 0.1
+		tech_growth_modifier = 0.15
+		light_infantry_defensive = 0.13
+		archers_defensive = 0.13
+		heavy_infantry_defensive = 0.13
+		light_infantry_morale = 0.13
+		archers_morale = 0.13
+		heavy_infantry_morale = 0.13
+		liege_prestige = 0.02
+		ai_creation_factor = 94
+		potential = {
+			FROM = {
+				capital_holding = {
+					title = FROMFROM
+				}
+				culture_group = lizardman_group
+			}
+		}
+		convert_to_city = ct_oldidol_1
+		convert_to_castle = ca_oldidol_1
+		extra_tech_building_start = 1.5
+	}
+}
+
+temple = {
+
+
+	tp_lizwall_1 = {
+		desc = ca_wall_1_desc
+		trigger = {
+			TECH_FORTIFICATIONS_CONSTRUCTION = 0
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		gold_cost = 50
+		build_time = 365
+		fort_level = 0.75
+		levy_size = 0.02
+		garrison_size = 0.04
+		tax_income = 0.25
+		ai_creation_factor = 95
+		extra_tech_building_start = 0.5
+	}
+
+	tp_lizwall_2 = {
+		desc = ca_wall_2_desc
+		trigger = {
+			TECH_FORTIFICATIONS_CONSTRUCTION = 2
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		upgrades_from = tp_lizwall_1
+		gold_cost = 50
+		build_time = 547
+		fort_level = 0.75
+		levy_size = 0.02
+		garrison_size = 0.04
+		tax_income = 0.25
+		ai_creation_factor = 94
+		extra_tech_building_start = 1.0
+	}
+
+	tp_lizwall_3 = {
+		desc = tp_wall_3_desc
+		trigger = {
+			TECH_FORTIFICATIONS_CONSTRUCTION = 4
+		}
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+					culture = slann
+				}
+			}
+		}
+		upgrades_from = tp_lizwall_2
+		gold_cost = 100
+		build_time = 730
+		fort_level = 1.25
+		levy_size = 0.05
+		garrison_size = 0.07
+		tax_income = 0.35
+		ai_creation_factor = 93
+		extra_tech_building_start = 1.5
+	}
+
+	tp_lizwall_4 = {
+		desc = tp_wall_4_desc
+		trigger = {
+			TECH_FORTIFICATIONS_CONSTRUCTION = 6
+		}
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+					culture = slann
+				}
+			}
+		}
+		upgrades_from = tp_lizwall_3
+		gold_cost = 100
+		build_time = 1095
+		fort_level = 1.25
+		levy_size = 0.05
+		garrison_size = 0.07
+		tax_income = 0.35
+		ai_creation_factor = 92
+		extra_tech_building_start = 0.2
+	}
+
+	tp_lizwall_5 = {
+		desc = tp_wall_5_desc
+		trigger = {
+			TECH_FORTIFICATIONS_CONSTRUCTION = 8
+		}
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+					culture = slann
+				}
+			}
+		}
+		upgrades_from = tp_lizwall_4
+		gold_cost = 150
+		build_time = 1460
+		fort_level = 1.75
+		levy_size = 0.08
+		garrison_size = 0.1
+		tax_income = 0.5
+		ai_creation_factor = 91
+		extra_tech_building_start = 0.2
+	}
+
+	tp_templecomplex_1 = {
+		desc = tp_templecomplex_1_desc
+		trigger = {
+			TECH_TEMPLE_CONSTRUCTION = 0
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		gold_cost = 150
+		build_time = 547
+		levy_size = 0.02
+		garrison_size = 0.08
+		fort_level = 0.1
+		heavy_infantry = 70
+		light_infantry = 15
+		archers = 15
+		tech_growth_modifier = 0.02
+		land_morale = 0.17
+		ai_creation_factor = 300 #The AI should always build this when it can
+		add_number_to_name = no
+		liege_piety = 0.07
+		extra_tech_building_start = 0.2
+	}
+
+	tp_templecomplex_2 = {
+		desc = tp_templecomplex_1_desc
+		trigger = {
+			TECH_TEMPLE_CONSTRUCTION = 0
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		prerequisites = {
+			tp_lizwall_1
+		}
+		upgrades_from = tp_templecomplex_1
+		gold_cost = 200
+		build_time = 730
+		levy_size = 0.04
+		garrison_size = 0.13
+		fort_level = 0.1
+		tech_growth_modifier = 0.02
+		ai_creation_factor = 95
+		add_number_to_name = no
+		liege_piety = 0.07
+		extra_tech_building_start = 0.2
+	}
+
+	tp_templecomplex_3 = {
+		desc = tp_templecomplex_1_desc
+		trigger = {
+			TECH_TEMPLE_CONSTRUCTION = 2
+		}
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+					culture = slann
+				}
+			}
+		}
+		upgrades_from = tp_templecomplex_2
+		gold_cost = 300
+		build_time = 1095
+		levy_size = 0.06
+		garrison_size = 0.15
+		fort_level = 0.15
+		tech_growth_modifier = 0.03
+		ai_creation_factor = 94
+		add_number_to_name = no
+		liege_piety = 0.07
+		extra_tech_building_start = 0.2
+	}
+
+	tp_templecomplex_4 = {
+		desc = tp_templecomplex_1_desc
+		trigger = {
+			TECH_TEMPLE_CONSTRUCTION = 4
+		}
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+					culture = slann
+				}
+			}
+		}
+		upgrades_from = tp_templecomplex_3
+		gold_cost = 400
+		build_time = 1460
+		levy_size = 0.08
+		garrison_size = 0.23
+		fort_level = 0.15
+		tech_growth_modifier = 0.04
+		ai_creation_factor = 93
+		add_number_to_name = no
+		liege_piety = 0.07
+		extra_tech_building_start = 0.2
+	}
+
+	tp_templecomplex_5 = {
+		desc = tp_templecomplex_1_desc
+		trigger = {
+			TECH_TEMPLE_CONSTRUCTION = 6
+		}
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+					culture = slann
+				}
+			}
+		}
+		upgrades_from = tp_templecomplex_4
+		gold_cost = 500
+		build_time = 2190
+		levy_size = 0.1
+		garrison_size = 0.29
+		fort_level = 0.2
+		tech_growth_modifier = 0.05
+		ai_creation_factor = 92
+		add_number_to_name = no
+		liege_piety = 0.07
+		extra_tech_building_start = 0.2
+	}
+
+	tp_templecomplex_6 = {
+		desc = tp_templecomplex_1_desc
+		trigger = {
+			TECH_TEMPLE_CONSTRUCTION = 8
+		}
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+					culture = slann
+				}
+			}
+		}
+		upgrades_from = tp_templecomplex_5
+		gold_cost = 500
+		build_time = 2190
+		levy_size = 0.12
+		garrison_size = 0.33
+		fort_level = 0.25
+		tech_growth_modifier = 0.1
+		ai_creation_factor = 91
+		add_number_to_name = no
+		liege_piety = 0.1
+		extra_tech_building_start = 0.2
+	}
+
+	tp_skinkmilitia_1 = {
+		desc = tp_skinkmilitia_1_desc
+		trigger = {
+			TECH_TEMPLE_CONSTRUCTION = 0
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		gold_cost = 100
+		build_time = 365
+		light_infantry = 40
+		archers = 40
+		ai_creation_factor = 94
+		extra_tech_building_start = 0.5
+	}
+
+	tp_skinkmilitia_2 = {
+		desc = tp_skinkmilitia_1_desc
+		trigger = {
+			TECH_TEMPLE_CONSTRUCTION = 0
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		prerequisites = {
+			tp_lizwall_1
+		}
+		upgrades_from = tp_skinkmilitia_1
+		gold_cost = 120
+		build_time = 547
+		light_infantry = 50
+		archers = 50
+		ai_creation_factor = 93
+		extra_tech_building_start = 1.0
+	}
+
+	tp_skinkmilitia_3 = {
+		desc = tp_skinkmilitia_1_desc
+		trigger = {
+			TECH_TEMPLE_CONSTRUCTION = 1
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+		}
+		prerequisites = {
+			tp_lizwall_2
+		}
+		upgrades_from = tp_skinkmilitia_2
+		gold_cost = 200
+		build_time = 730
+		light_infantry = 60
+		archers = 60
+		ai_creation_factor = 92
+		extra_tech_building_start = 0.5
+	}
+
+	tp_templeguard_1 = {
+		desc = tp_templeguard_1_desc
+		trigger = {
+			TECH_TEMPLE_CONSTRUCTION = 0
+		}
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+					culture = slann
+				}
+			}
+		}
+		gold_cost = 100
+		build_time = 365
+		heavy_infantry = 55
+		ai_creation_factor = 95
+		extra_tech_building_start = 0.5
+	}
+
+	tp_templeguard_2 = {
+		desc = tp_templeguard_1_desc
+		trigger = {
+			TECH_TEMPLE_CONSTRUCTION = 0
+		}
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+					culture = slann
+				}
+			}
+		}
+		prerequisites = {
+			tp_lizwall_1
+		}
+		upgrades_from = tp_templeguard_1
+		gold_cost = 120
+		build_time = 730
+		heavy_infantry = 70
+		ai_creation_factor = 94
+		extra_tech_building_start = 1.0
+	}
+
+	tp_templeguard_3 = {
+		desc = tp_templeguard_1_desc
+		trigger = {
+			TECH_TEMPLE_CONSTRUCTION = 2
+		}
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+					culture = slann
+				}
+			}
+		}
+		prerequisites = {
+			tp_lizwall_2
+		}
+		upgrades_from = tp_templeguard_2
+		gold_cost = 200
+		build_time = 730
+		heavy_infantry = 85
+		ai_creation_factor = 93
+		extra_tech_building_start = 0.2
+	}
+
+	tp_templeguard_4 = {
+		desc = tp_templeguard_1_desc
+		trigger = {
+			TECH_TEMPLE_CONSTRUCTION = 4
+		}
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+					culture = slann
+				}
+			}
+		}
+		upgrades_from = tp_templeguard_3
+		gold_cost = 300
+		build_time = 1095
+		heavy_infantry = 100
+		ai_creation_factor = 92
+		extra_tech_building_start = 0.2
+	}
+
+	tp_templeguard_5 = {
+		desc = tp_templeguard_1_desc
+		trigger = {
+			TECH_TEMPLE_CONSTRUCTION = 6
+		}
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+					culture = slann
+				}
+			}
+		}
+		upgrades_from = tp_templeguard_4
+		gold_cost = 400
+		build_time = 2190
+		heavy_infantry = 115
+		ai_creation_factor = 91
+		extra_tech_building_start = 0.2
+	}
+
+	tp_templeguard_6 = {
+		desc = tp_templeguard_1_desc
+		trigger = {
+			TECH_TEMPLE_CONSTRUCTION = 8
+		}
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+					culture = slann
+				}
+			}
+		}
+		upgrades_from = tp_templeguard_5
+		gold_cost = 500
+		build_time = 2190
+		heavy_infantry = 130
+		ai_creation_factor = 90
+		extra_tech_building_start = 0.2
+	}
+
+	tp_skinkmastercustodians_1 = {
+		desc = tp_skinkmastercustodians_1_desc
+		trigger = {
+			TECH_TEMPLE_CONSTRUCTION = 0
+		}
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+					culture = slann
+				}
+			}
+		}
+		gold_cost = 100
+		build_time = 365
+		tax_income = 2.85
+		tech_growth_modifier = 0.1
+		light_infantry = 10
+		archers = 5
+		culture_techpoints = 0.001
+		ai_creation_factor = 98
+		extra_tech_building_start = 0.3
+	}
+
+	tp_skinkmastercustodians_2 = {
+		desc = tp_skinkmastercustodians_1_desc
+		trigger = {
+			TECH_TEMPLE_CONSTRUCTION = 0
+		}
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+					culture = slann
+				}
+			}
+		}
+		prerequisites = {
+			tp_lizwall_1
+		}
+		upgrades_from = tp_skinkmastercustodians_1
+		gold_cost = 120
+		build_time = 547
+		tax_income = 2.85
+		tech_growth_modifier = 0.1
+		ai_creation_factor = 96
+		extra_tech_building_start = 0.6
+	}
+
+	tp_skinkmastercustodians_3 = {
+		desc = tp_skinkmastercustodians_1_desc
+		trigger = {
+			TECH_TEMPLE_CONSTRUCTION = 1
+		}
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+					culture = slann
+				}
+			}
+		}
+		prerequisites = {
+			tp_lizwall_2
+		}
+		upgrades_from = tp_skinkmastercustodians_2
+		gold_cost = 200
+		build_time = 730
+		tax_income = 3
+		tech_growth_modifier = 0.1
+		light_infantry = 10
+		archers = 10
+		heavy_infantry = 5
+		culture_techpoints = 0.001
+		ai_creation_factor = 95
+		extra_tech_building_start = 0.2
+	}
+
+	tp_skinkmastercustodians_4 = {
+		desc = tp_skinkmastercustodians_1_desc
+		trigger = {
+			TECH_TEMPLE_CONSTRUCTION = 3
+		}
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+					culture = slann
+				}
+			}
+		}
+		upgrades_from = tp_skinkmastercustodians_3
+		gold_cost = 300
+		build_time = 1095
+		tax_income = 3
+		tech_growth_modifier = 0.1
+		ai_creation_factor = 94
+		extra_tech_building_start = 0.2
+	}
+
+	tp_skinkmastercustodians_5 = {
+		desc = tp_skinkmastercustodians_1_desc
+		trigger = {
+			TECH_TEMPLE_CONSTRUCTION = 5
+		}
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+					culture = slann
+				}
+			}
+		}
+		upgrades_from = tp_skinkmastercustodians_4
+		gold_cost = 400
+		build_time = 2190
+		tax_income = 3.25
+		tech_growth_modifier = 0.2
+		light_infantry = 10
+		archers = 10
+		heavy_infantry = 10
+		culture_techpoints = 0.003
+		ai_creation_factor = 93
+		extra_tech_building_start = 0.2
+	}
+
+	tp_skinkmastercustodians_6 = {
+		desc = tp_skinkmastercustodians_1_desc
+		trigger = {
+			TECH_TEMPLE_CONSTRUCTION = 7
+		}
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+					culture = slann
+				}
+			}
+		}
+		upgrades_from = tp_skinkmastercustodians_5
+		gold_cost = 500
+		build_time = 2190
+		tax_income = 3.25
+		tech_growth_modifier = 0.2
+		ai_creation_factor = 92
+		extra_tech_building_start = 0.2
+	}
+
+	tp_techworks_1 = {
+		desc = tp_techworks_1_desc
+		trigger = {
+			TECH_TEMPLE_CONSTRUCTION = 3
+		}
+		potential = {
+			FROM = {
+				OR = {
+					culture = slann
+					culture = lizardman
+					culture = lizardman_southland
+				}
+			}
+		}
+		prerequisites = {
+			tp_lizwall_1
+		}
+		gold_cost = 120
+		build_time = 547
+		tech_growth_modifier = 0.05
+		light_infantry_offensive = 0.03
+		light_infantry_defensive = 0.03
+		archers_offensive = 0.03
+		archers_defensive = 0.03
+		heavy_infantry_offensive = 0.05
+		heavy_infantry_defensive = 0.05
+		ai_creation_factor = 93
+		add_number_to_name = no
+		liege_piety = 0.07
+		extra_tech_building_start = 0.2
+	}
+
+	tp_techworks_2 = {
+		desc = tp_techworks_1_desc
+		trigger = {
+			TECH_TEMPLE_CONSTRUCTION = 6
+		}
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+					culture = slann
+				}
+			}
+		}
+		prerequisites = {
+			tp_lizwall_2
+		}
+		upgrades_from = tp_techworks_1
+		gold_cost = 120
+		build_time = 547
+		tech_growth_modifier = 0.05
+		light_infantry_offensive = 0.05
+		light_infantry_defensive = 0.05
+		archers_offensive = 0.05
+		archers_defensive = 0.05
+		heavy_infantry_offensive = 0.07
+		heavy_infantry_defensive = 0.07
+		ai_creation_factor = 92
+		add_number_to_name = no
+		liege_piety = 0.07
+		extra_tech_building_start = 0.2
+	}
+
+	tp_templescarguard_1 = {
+		desc = tp_templescarguard_1_desc
+		trigger = {
+			TECH_TEMPLE_CONSTRUCTION = 6
+		}
+		potential = {
+			FROM = {
+				OR = {
+					culture = lizardman
+					culture = lizardman_southland
+					culture = slann
+				}
+			}
+		}
+		prerequisites = {
+			tp_lizwall_2
+		}
+		gold_cost = 500
+		build_time = 856
+		heavy_infantry = 75
+		knights = 35
+		knights_morale = 0.15
+		knights_offensive = 0.02
+		knights_defensive = 0.05
+		heavy_infantry_morale = 0.15
+		heavy_infantry_offensive = 0.02
+		heavy_infantry_defensive = 0.05
+		levy_reinforce_rate = 0.07
+		ai_creation_factor = 92
+		add_number_to_name = no
+		extra_tech_building_start = 0.2
+	}
+
+	tp_spawning_pool = {
+		desc = ct_spawning_pool_desc
+		trigger = {
+			FROM = {
+				culture_group = lizardman_group
+				higher_tier_than = BARON
+
+			}
+			OR = {
+				region = world_greater_araby_southlands
+				region = world_new_world_lustria
+				region = world_dragon_isles
+
+			}
+			not = {
+				any_province_holding = {
+					or = {
+						has_building = ca_spawning_pool
+						has_building = ct_spawning_pool
+						has_building = tp_spawning_pool
+
+					}
+
+				}
+
+			}
+
+		}
+		potential = {
+			FROM = {
+				culture_group = lizardman_group
+			}
+			OR = {
+				region = world_new_world_lustria
+				region = world_dragon_isles
+				region = world_greater_araby_southlands
+
+			}
+			#FROM = { FROM = { is_capital = yes } }
+		}
+		prerequisites = {
+			tp_lizwall_1
+		}
+		fort_level = 1
+		gold_cost = 500
+		build_time = 1500
+		heavy_infantry = 20
+		light_infantry = 50
+		liege_piety = 0.05
+		monthly_character_piety = 0.05
+		monthly_character_wealth = 0.05
+		ai_creation_factor = 150
+		extra_tech_building_start = 0.2
+		retinuesize = 500
+
+	}
+}

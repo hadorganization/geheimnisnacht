@@ -389,7 +389,7 @@ skaven_county_conquest = {
 	truce_days = 450
 	hostile_against_others = yes
 	is_permanent = yes
-	check_de_jure_tier = count
+	check_all_titles = yes
 	press_claim = yes
 	can_ask_to_join_war = yes
 	allow_whitepeace = no
@@ -407,6 +407,7 @@ skaven_county_conquest = {
 		}
 	}
 	can_use_title = {
+		tier = count
 		wh_cb_albion_check_trigger = yes
 		NOT = {
 			region = world_nehekhara
@@ -884,7 +885,7 @@ underempire_conquest = {
 	truce_days = 12750
 	hostile_against_others = yes
 	is_permanent = yes
-	check_de_jure_tier = count
+	check_all_titles = yes
 	press_claim = yes
 	can_ask_to_join_war = yes
 	allow_whitepeace = no
@@ -906,6 +907,7 @@ underempire_conquest = {
 		}
 	}
 	can_use_title = {
+		tier = count
 		wh_cb_albion_check_trigger = yes
 		region = world_underempire
 		OR = {
@@ -1052,7 +1054,7 @@ nehekharan_county_conquest = {
 	truce_days = 8250
 	hostile_against_others = yes
 	is_permanent = yes
-	check_de_jure_tier = count
+	check_all_titles = yes
 	press_claim = yes
 	can_ask_to_join_war = yes
 	can_call_allies = yes
@@ -1075,6 +1077,7 @@ nehekharan_county_conquest = {
 		}
 	}
 	can_use_title = {
+		tier = count
 		wh_cb_albion_check_trigger = yes
 		NOT = {
 			region = world_underempire
@@ -1882,7 +1885,7 @@ nehekharan_county_colonisation = {
 	truce_days = 3650
 	hostile_against_others = yes
 	is_permanent = yes
-	check_de_jure_tier = count
+	check_all_titles = yes
 	press_claim = yes
 	can_ask_to_join_war = yes
 	can_call_allies = yes
@@ -1905,6 +1908,7 @@ nehekharan_county_colonisation = {
 		}
 	}
 	can_use_title = {
+		tier = count
 		wh_cb_albion_check_trigger = yes
 		NOT = {
 			region = world_underempire
@@ -2065,7 +2069,7 @@ lustrian_rampage = {
 	sprite = 16
 	truce_days = 365
 	hostile_against_others = yes
-	check_de_jure_tier = count
+	check_all_titles = yes
 	attacker_can_call_allies = no
 	defender_can_call_allies = no
 	can_ask_to_join_war = no
@@ -2085,6 +2089,7 @@ lustrian_rampage = {
 		wh_cb_albion_check_trigger = yes
 	}
 	is_valid_title = {
+		tier = count
 		NOT = {
 			region = world_underempire
 		}
@@ -4307,8 +4312,9 @@ orc_county_conquest = {
 	sprite = 17
 	truce_days = 549 # A year and a half
 	hostile_against_others = yes
+	is_holy_war = yes
 	is_permanent = yes
-	check_de_jure_tier = count
+	check_all_titles = yes
 	press_claim = yes
 	is_holy_war = yes
 	can_ask_to_join_war = yes
@@ -4335,6 +4341,7 @@ orc_county_conquest = {
 		end_war = invalid
 	}
 	can_use_title = {
+		tier = count
 		wh_cb_albion_check_trigger = yes
 		nor = {
 			region = world_underempire
@@ -4843,7 +4850,7 @@ greenskin_uprising = {
 	truce_days = 365
 	hostile_against_others = yes
 	is_permanent = yes
-	check_de_jure_tier = count
+	check_all_titles = yes
 	# press_claim = yes
 	can_call_allies = no
 	can_ask_to_join_war = no
@@ -4866,6 +4873,7 @@ greenskin_uprising = {
 		}
 	}
 	is_valid_title = {
+		tier = count
 		wh_cb_is_valid_title_trigger = yes
 	}
 	on_success_title = {
@@ -4945,9 +4953,10 @@ purge_greenskins = {
 	war_name = WAR_NAME_ORC_COUNTY_PURGE
 	sprite = 17
 	truce_days = 549 # A year and a half
-	hostile_against_others = yes
+	hostile_against_others = no
+	is_holy_war = yes
 	is_permanent = yes
-	check_de_jure_tier = count
+	check_all_titles = yes
 	press_claim = yes
 	can_ask_to_join_war = yes
 	allow_whitepeace = no
@@ -4978,6 +4987,7 @@ purge_greenskins = {
 		}
 	}
 	can_use_title = {
+		tier = count
 		wh_cb_albion_check_trigger = yes
 		wh_cb_can_use_title_trigger = yes
 		NOT = {
@@ -5007,11 +5017,7 @@ purge_greenskins = {
 			any_realm_province = {
 				limit = {
 					controlled_by = ROOT
-					OR = {
-						religion_group = greenskin_gods_group
-						culture_group = orc_group
-						culture_group = goblin_group
-					}
+					religion_group = greenskin_gods_group
 				}
 				add_province_modifier = {
 					name = greenskin_population_bad
@@ -5406,7 +5412,7 @@ coastal_elf_colonization = {
 	truce_days = 2500
 	hostile_against_others = yes
 	is_permanent = yes
-	check_de_jure_tier = count
+	check_all_titles = yes
 	press_claim = yes
 	can_ask_to_join_war = yes
 	can_call_allies = yes
@@ -5440,6 +5446,7 @@ coastal_elf_colonization = {
 		}
 	}
 	can_use_title = {
+		tier = count
 		wh_cb_albion_check_trigger = yes
 		nor = {
 			region = world_underempire
@@ -6935,7 +6942,7 @@ bretonnian_forest_claim = {
 	truce_days = 3650
 	hostile_against_others = yes
 	is_permanent = yes
-	check_de_jure_tier = count
+	check_all_titles = yes
 	press_claim = yes
 	can_ask_to_join_war = yes
 	can_call_allies = yes
@@ -6953,6 +6960,7 @@ bretonnian_forest_claim = {
 		}
 	}
 	can_use_title = {
+		tier = count
 		wh_cb_albion_check_trigger = yes
 		empire = {
 			title = e_athel_loren
@@ -7119,7 +7127,7 @@ dwarven_reconquest = {
 	truce_days = 1825
 	hostile_against_others = yes
 	is_permanent = yes
-	check_de_jure_tier = count
+	check_all_titles = yes
 	press_claim = yes
 	can_ask_to_join_war = yes
 	allow_whitepeace = no
@@ -7148,6 +7156,7 @@ dwarven_reconquest = {
 		}
 	}
 	can_use_title = {
+		tier = count
 		wh_cb_albion_check_trigger = yes
 		NOT = {
 			region = world_underempire
@@ -7170,11 +7179,16 @@ dwarven_reconquest = {
 				#terrain = mountain_pass
 				region = world_karaz_ankor
 			}
-			any_neighbor_province = {
-				owner = {
-					OR = {
-						character = ROOT
-						is_liege_or_above = ROOT
+			or = {
+				root = {
+					tier = emperor
+				}
+				any_neighbor_province = {
+					owner = {
+						OR = {
+							character = ROOT
+							is_liege_or_above = ROOT
+						}
 					}
 				}
 			}
@@ -10171,7 +10185,7 @@ beastmen_uprising = {
 	truce_days = 365
 	hostile_against_others = yes
 	is_permanent = yes
-	check_de_jure_tier = count
+	check_all_titles = yes
 	press_claim = yes
 	attacker_can_call_allies = yes
 	defender_can_call_allies = no
@@ -10192,6 +10206,7 @@ beastmen_uprising = {
 		end_war = invalid
 	}
 	can_use_title = {
+		tier = count
 	}
 	is_valid_title = {
 		wh_cb_is_valid_title_trigger = yes
@@ -10599,13 +10614,13 @@ king_beastman_migration = {
 	}
 	on_success_title = {
 		any_de_jure_vassal_title = {
-			# take all baronies too
 			limit = {
-				same_realm = {
-					character = FROM
-				}
+				same_realm = from
 			}
-			usurp_title = ROOT
+			usurp_title = {
+				target = ROOT
+				type = invasion
+			}
 		}
 		hidden_tooltip = {
 			ROOT = {

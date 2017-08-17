@@ -10713,16 +10713,12 @@ king_beastman_migration = {
 	can_call_allies = yes
 	check_de_jure_tier = KING # this scans all dejure duchies for the counties which are held by or vassals(or below) of selected character. Only valid if is_permanent = yes
 	can_use_gui = {
-		ROOT = {
-			prestige = 50
-			population_factor = 0.15
-			is_within_diplo_range = FROM
-		}
+		prestige = 50
+		population_factor = 0.15
+		is_within_diplo_range = FROM
 	}
 	on_add = {
-		ROOT = {
-			prestige = -50
-		}
+		prestige = -50
 	}
 	can_use = {
 		ROOT = {
@@ -10781,10 +10777,8 @@ king_beastman_migration = {
 		ROOT = {
 			any_demesne_title = {
 				limit = {
-					NOT = {
+					nor = {
 						is_primary_type_title = yes
-					}
-					NOT = {
 						higher_tier_than = DUKE
 					}
 				}
@@ -10816,7 +10810,7 @@ king_beastman_migration = {
 		any_de_jure_vassal_title = {
 			# take all baronies too
 			limit = {
-				owner = {
+				same_realm = {
 					character = FROM
 				}
 			}
@@ -10829,7 +10823,8 @@ king_beastman_migration = {
 					type = invasion
 				}
 				character_event = {
-					id = wh_beastmen.10 days = 1
+					id = wh_beastmen.10
+					days = 1
 				}
 			}
 		}

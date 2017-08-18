@@ -8262,17 +8262,6 @@ crusade = {
 			}
 		}
 		FROM = {
-			# if = {
-			# limit = {
-			# has_dlc = "Legacy of Rome"
-			# OR = {
-			# has_landed_title = e_byzantium
-			# has_landed_title = e_roman_empire
-			# }
-			# religion_group = christian
-			# }
-			# hidden_tooltip = { character_event = { id = LoR.30 days = 12 } }
-			# }
 			hidden_tooltip = {
 				if = {
 					limit = {
@@ -10380,22 +10369,8 @@ beastman_migration = {
 	}
 	on_success = {
 		any_attacker = {
-			limit = {
-				character = ROOT
-			}
 			participation_scaled_piety = 50
 			participation_scaled_prestige = 25
-		}
-		any_attacker = {
-			limit = {
-				NOT = {
-					character = ROOT
-				}
-			}
-			hidden_tooltip = {
-				participation_scaled_piety = 50
-				participation_scaled_prestige = 25
-			}
 		}
 		ROOT = {
 			any_demesne_title = {
@@ -10419,20 +10394,14 @@ beastman_migration = {
 		}
 	}
 	on_success_title = {
-		any_de_jure_vassal_title = {
-			# take all baronies too
-			limit = {
-				owner = {
-					character = FROM
-				}
-			}
-			usurp_title = ROOT
-		}
 		hidden_tooltip = {
 			ROOT = {
-				usurp_title = {
-					target = PREV
-					type = invasion
+				vassalize_or_take_under_title_destroy_duchies  = {
+					title = PREV
+					enemy = FROM
+					same_religion = yes # Only vassalize rulers of my religion
+					is_religious = yes
+					type = holy_war
 				}
 				character_event = {
 					id = wh_beastmen.10
@@ -10457,22 +10426,8 @@ beastman_migration = {
 			prestige = -150
 		}
 		any_defender = {
-			limit = {
-				character = FROM
-			}
 			participation_scaled_piety = 200
 			participation_scaled_prestige = 100
-		}
-		any_defender = {
-			limit = {
-				NOT = {
-					character = FROM
-				}
-			}
-			hidden_tooltip = {
-				participation_scaled_piety = 200
-				participation_scaled_prestige = 100
-			}
 		}
 	}
 	attacker_ai_victory_worth = {
@@ -10563,22 +10518,8 @@ king_beastman_migration = {
 	}
 	on_success = {
 		any_attacker = {
-			limit = {
-				character = ROOT
-			}
 			participation_scaled_piety = 150
 			participation_scaled_prestige = 250
-		}
-		any_attacker = {
-			limit = {
-				NOT = {
-					character = ROOT
-				}
-			}
-			hidden_tooltip = {
-				participation_scaled_piety = 150
-				participation_scaled_prestige = 250
-			}
 		}
 		ROOT = {
 			any_demesne_title = {
@@ -10592,11 +10533,6 @@ king_beastman_migration = {
 			}
 			any_vassal = {
 				set_character_flag = migrating_away_vassal
-			}
-			occupy_minors_of_occupied_settlements = FROM
-			gain_all_occupied_titles = {
-				who = FROM
-				type = invasion
 			}
 			capital_holding = {
 				add_holding_modifier = {
@@ -10613,20 +10549,14 @@ king_beastman_migration = {
 		}
 	}
 	on_success_title = {
-		any_de_jure_vassal_title = {
-			limit = {
-				same_realm = from
-			}
-			usurp_title = {
-				target = ROOT
-				type = invasion
-			}
-		}
 		hidden_tooltip = {
-			ROOT = {
-				usurp_title = {
-					target = PREV
-					type = invasion
+			root = {
+				vassalize_or_take_under_title_destroy_duchies  = {
+					title = PREV
+					enemy = FROM
+					same_religion = yes # Only vassalize rulers of my religion
+					is_religious = yes
+					type = holy_war
 				}
 				character_event = {
 					id = wh_beastmen.10
@@ -10651,22 +10581,8 @@ king_beastman_migration = {
 			prestige = -250
 		}
 		any_defender = {
-			limit = {
-				character = FROM
-			}
 			participation_scaled_piety = 300
 			participation_scaled_prestige = 200
-		}
-		any_defender = {
-			limit = {
-				NOT = {
-					character = FROM
-				}
-			}
-			hidden_tooltip = {
-				participation_scaled_piety = 300
-				participation_scaled_prestige = 200
-			}
 		}
 	}
 	attacker_ai_victory_worth = {
@@ -10889,22 +10805,8 @@ chaos_dwarf_slaver_raid = {
 			prestige = 150
 		}
 		any_defender = {
-			limit = {
-				character = FROM
-			}
 			participation_scaled_prestige = 100
 			participation_scaled_piety = 100
-		}
-		any_defender = {
-			limit = {
-				NOT = {
-					character = FROM
-				}
-			}
-			hidden_tooltip = {
-				participation_scaled_prestige = 100
-				participation_scaled_piety = 100
-			}
 		}
 	}
 	attacker_ai_victory_worth = {
@@ -11559,22 +11461,8 @@ imperial_reconquest = {
 			}
 		}
 		any_defender = {
-			limit = {
-				character = FROM
-			}
 			participation_scaled_piety = 100
 			participation_scaled_prestige = 200
-		}
-		any_defender = {
-			limit = {
-				NOT = {
-					character = FROM
-				}
-			}
-			hidden_tooltip = {
-				participation_scaled_piety = 100
-				participation_scaled_prestige = 200
-			}
 		}
 	}
 	attacker_ai_victory_worth = {
@@ -12224,22 +12112,8 @@ strygan_reconquest = {
 			}
 		}
 		any_defender = {
-			limit = {
-				character = FROM
-			}
 			participation_scaled_piety = 100
 			participation_scaled_prestige = 200
-		}
-		any_defender = {
-			limit = {
-				NOT = {
-					character = FROM
-				}
-			}
-			hidden_tooltip = {
-				participation_scaled_piety = 100
-				participation_scaled_prestige = 200
-			}
 		}
 	}
 	attacker_ai_victory_worth = {
@@ -12379,22 +12253,8 @@ necrarch_thrall_raid = {
 			prestige = 100
 		}
 		any_defender = {
-			limit = {
-				character = FROM
-			}
 			participation_scaled_piety = 100
 			participation_scaled_prestige = 50
-		}
-		any_defender = {
-			limit = {
-				NOT = {
-					character = FROM
-				}
-			}
-			hidden_tooltip = {
-				participation_scaled_piety = 100
-				participation_scaled_prestige = 50
-			}
 		}
 		ROOT = {
 			prestige = -300
@@ -12412,22 +12272,8 @@ necrarch_thrall_raid = {
 			prestige = 150
 		}
 		any_defender = {
-			limit = {
-				character = FROM
-			}
 			participation_scaled_prestige = 100
 			participation_scaled_piety = 100
-		}
-		any_defender = {
-			limit = {
-				NOT = {
-					character = FROM
-				}
-			}
-			hidden_tooltip = {
-				participation_scaled_prestige = 100
-				participation_scaled_piety = 100
-			}
 		}
 	}
 	attacker_ai_victory_worth = {
@@ -12575,22 +12421,8 @@ jade_eradication_conquest = {
 			prestige = 100
 		}
 		any_defender = {
-			limit = {
-				character = FROM
-			}
 			participation_scaled_piety = 100
 			participation_scaled_prestige = 50
-		}
-		any_defender = {
-			limit = {
-				NOT = {
-					character = FROM
-				}
-			}
-			hidden_tooltip = {
-				participation_scaled_piety = 100
-				participation_scaled_prestige = 50
-			}
 		}
 		ROOT = {
 			prestige = -300
@@ -12608,22 +12440,8 @@ jade_eradication_conquest = {
 			prestige = 150
 		}
 		any_defender = {
-			limit = {
-				character = FROM
-			}
 			participation_scaled_prestige = 100
 			participation_scaled_piety = 100
-		}
-		any_defender = {
-			limit = {
-				NOT = {
-					character = FROM
-				}
-			}
-			hidden_tooltip = {
-				participation_scaled_prestige = 100
-				participation_scaled_piety = 100
-			}
 		}
 	}
 	attacker_ai_victory_worth = {

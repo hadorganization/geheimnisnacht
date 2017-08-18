@@ -43,12 +43,11 @@ character_event = {
 	desc = EVTDESCsdemons2
 	picture = GFX_evt_tzeentch
 	capable_only = yes
-	min_age = 666
 	religion_group = chaos_gods_group
+	is_triggered_only = yes
 
 	trigger = {
 		is_demon_trigger = yes
-		prisoner = yes
 	}
 
 	option = {
@@ -63,7 +62,6 @@ character_event = {
 	desc = EVTDESCsdemons3
 	picture = GFX_evt_tzeentch
 	capable_only = yes
-	min_age = 666
 	religion_group = chaos_gods_group
 
 	trigger = {
@@ -111,10 +109,7 @@ character_event = {
 					trait = avatar_kurnous
 					trait = avatar_isha
 					has_artifact = carstein_ring
-					has_character_modifier = magic_power_1
-					has_character_modifier = magic_power_2
-					has_character_modifier = magic_power_3
-					has_character_modifier = magic_power_4
+					wh_is_mage_or_apprentice_trigger = yes
 				}
 			}
 			if = {
@@ -157,104 +152,19 @@ character_event = {
 	option = {
 		name = EVTOPTAsdemons4
 		hidden_tooltip = {
+			# start duel
+			save_event_target_as = duelist_a
+			set_character_flag = duel
+			set_character_flag = duel_effect_noescape
+			set_character_flag = duel_wh_demons.4
 			from = {
-				random_list = {
-					# Success
-					50 = {
-						character_event = {
-							id = wh_demons.40001
-						}
-						modifier = {
-							factor = 1.5
-							trait = witch_hunter
-						}
-						modifier = {
-							factor = 1.25
-							trait = brave
-						}
-						modifier = {
-							factor = 1.5
-							trait = genius
-						}
-						modifier = {
-							factor = 1.45
-							trait = brilliant
-						}
-						modifier = {
-							factor = 1.35
-							trait = quick
-						}
-						modifier = {
-							factor = 1.25
-							trait = smart
-						}
-						modifier = {
-							factor = 1.15
-							trait = bright
-						}
-						modifier = {
-							factor = 0.95
-							trait = dim
-						}
-						modifier = {
-							factor = 0.85
-							trait = dumb
-						}
-						modifier = {
-							factor = 0.75
-							trait = slow
-						}
-						modifier = {
-							factor = 0.65
-							trait = idiot
-						}
-
-						modifier = {
-							factor = 0.5
-							trait = imbecile
-						}
-
-						modifier = {
-							factor = 1.15
-							learning = 10
-						}
-
-						modifier = {
-							factor = 1.25
-							learning = 15
-						}
-
-						modifier = {
-							factor = 1.35
-							learning = 20
-						}
-
-						modifier = {
-							factor = 1.45
-							learning = 25
-						}
-						modifier = {
-							factor = 1.25
-							has_character_modifier = magic_power_1
-						}
-						modifier = {
-							factor = 1.35
-							has_character_modifier = magic_power_2
-						}
-						modifier = {
-							factor = 1.45
-							has_character_modifier = magic_power_3
-						}
-						modifier = {
-							factor = 1.5
-							has_character_modifier = magic_power_4
-						}
-					}
-					50 = {
-						character_event = {
-							id = wh_demons.40002
-						}
-					}
+				save_event_target_as = duelist_b
+				set_character_flag = duel
+				set_character_flag = duel_effect_noescape
+				set_character_flag = duel_wh_demons.4
+				set_character_flag = duel_wh_demons.4_hunter
+				character_event = {
+					id = duelengine.1
 				}
 			}
 		}
@@ -272,34 +182,6 @@ character_event = {
 		name = EVTOPTAsdemons40001
 		piety = 200
 		prestige = 150
-		FROM = {
-			if = {
-				limit = {
-					is_invincible_trigger = yes
-				}
-				antideath_effect = yes
-				break = yes
-			}
-			death = {
-				death_reason = death_execution
-				killer = ROOT
-			}
-		}
-	}
-}
-
-# demon manages to slip through and escape
-character_event = {
-	id = wh_demons.40002
-	desc = EVTDESCsdemons40002
-	picture = GFX_evt_demon_fighting
-	is_triggered_only = yes
-
-	option = {
-		name = EVTOPTAsdemons40002
-		FROM = {
-			banish = yes
-		}
 	}
 }
 
@@ -309,7 +191,6 @@ character_event = {
 	desc = EVTDESCsdemons5
 	picture = GFX_evt_tzeentch
 	capable_only = yes
-	min_age = 666
 	religion_group = chaos_gods_group
 
 	trigger = {
@@ -460,7 +341,6 @@ character_event = {
 	desc = EVTDESCsdemons6
 	picture = GFX_evt_tzeentch
 	capable_only = yes
-	min_age = 777
 	religion_group = chaos_gods_group
 
 	trigger = {
@@ -610,7 +490,6 @@ character_event = {
 	desc = EVTDESCsdemons7
 	picture = GFX_evt_tzeentch
 	capable_only = yes
-	min_age = 666
 	religion_group = chaos_gods_group
 
 	trigger = {
@@ -628,10 +507,7 @@ character_event = {
 				trait = avatar_kurnous
 				trait = avatar_isha
 				has_artifact = carstein_ring
-				has_character_modifier = magic_power_1
-				has_character_modifier = magic_power_2
-				has_character_modifier = magic_power_3
-				has_character_modifier = magic_power_4
+				wh_is_mage_or_apprentice_trigger = yes
 			}
 			is_married = yes
 			has_lover = no
@@ -740,7 +616,6 @@ character_event = {
 	desc = EVTDESCsdemons8
 	picture = GFX_evt_tzeentch
 	capable_only = yes
-	min_age = 666
 	religion_group = chaos_gods_group
 
 	trigger = {

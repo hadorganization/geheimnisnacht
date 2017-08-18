@@ -3345,7 +3345,6 @@ character_event = {
 			AND = {
 				trait = khorne_demon
 				any_courtier = {
-					ai = no
 					OR = {
 						trait = slaanesh_demon
 						trait = nurgle_demon
@@ -3357,7 +3356,6 @@ character_event = {
 			AND = {
 				trait = slaanesh_demon
 				any_courtier = {
-					ai = no
 					OR = {
 						trait = khorne_demon
 						trait = nurgle_demon
@@ -3369,7 +3367,6 @@ character_event = {
 			AND = {
 				trait = nurgle_demon
 				any_courtier = {
-					ai = no
 					OR = {
 						trait = khorne_demon
 						trait = slaanesh_demon
@@ -3381,7 +3378,6 @@ character_event = {
 			AND = {
 				trait = tzeentch_demon
 				any_courtier = {
-					ai = no
 					OR = {
 						trait = khorne_demon
 						trait = slaanesh_demon
@@ -3393,7 +3389,6 @@ character_event = {
 			AND = {
 				trait = hashut_kdaai
 				any_courtier = {
-					ai = no
 					OR = {
 						trait = khorne_demon
 						trait = slaanesh_demon
@@ -3408,14 +3403,13 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 1
+		months = 120
 	}
 
 	option = {
 		name = EVTOPTAschaos33
 		random_courtier = {
 			limit = {
-				ai = no
 				NOT = {
 					character = ROOT
 				}
@@ -4009,76 +4003,19 @@ character_event = {
 	option = {
 		name = EVTOPTAschaos43
 		hidden_tooltip = {
-			random_list = {
-				# check hunter skills, need to replace by duel engine later
-				40 = {
-					modifier = {
-						factor = 1.5
-						learning = 15
-					}
-					modifier = {
-						factor = 1.75
-						learning = 20
-					}
-					modifier = {
-						factor = 1.75
-						learning = 25
-					}
-					modifier = {
-						factor = 0.75
-						trait = dim
-					}
-					modifier = {
-						factor = 0.5
-						trait = dumb
-					}
-					modifier = {
-						factor = 0.5
-						trait = slow
-					}
-					modifier = {
-						factor = 0.25
-						trait = idiot
-					}
-					modifier = {
-						factor = 0.25
-						trait = imbecile
-					}
-					# demon dies
-					event_target:wh_demon = {
-						character_event = {
-							id = schaos.46
-						}
-					}
-				}
-				60 = {
-					# notify liege witch hunter died
-					FROM = {
-						character_event = {
-							id = schaos.44
-						}
-					}
-					event_target:wh_demon = {
-						banish = yes
-						event_target:wh_demon_master = {
-							remove_friend = event_target:wh_demon
-							character_event = {
-								id = schaos.45
-							}
-						}
-					}
-					if = {
-						limit = {
-							is_invincible_trigger = yes
-						}
-						antideath_effect = yes
-						break = yes
-					}
-					death = {
-						death_reason = death_murder
-						killer = event_target:wh_demon
-					}
-				}
+			event_target:wh_demon = {
+				save_event_target_as = duelist_a
+				set_character_flag = duel
+				set_character_flag = duel_effect_noescape
+				set_character_flag = duel_wh_chaos.43
+			}
+			save_event_target_as = duelist_b
+			set_character_flag = duel
+			set_character_flag = duel_effect_noescape
+			set_character_flag = duel_wh_chaos.43
+			set_character_flag = duel_wh_chaos.43_hunter
+			character_event = {
+				id = duelengine.1
 			}
 		}
 	}
@@ -4094,51 +4031,6 @@ character_event = {
 
 	option = {
 		name = EVTOPTAschaos44
-	}
-}
-
-# Your demon escaped because of witch hunters, but you're safe
-character_event = {
-	id = schaos.45
-	title = DEMON_HUNT
-	desc = EVTDESCschaos45
-	picture = "GFX_evt_demon_fighting"
-	is_triggered_only = yes
-
-	option = {
-		name = EVTOPTAschaos45
-	}
-}
-
-# Demon gets killed by witch hunters
-character_event = {
-	id = schaos.46
-	title = DEMON_HUNT
-	desc = EVTDESCschaos46
-	picture = "GFX_evt_demon_fighting"
-	is_triggered_only = yes
-
-	option = {
-		name = EVTOPTAschaos46
-		event_target:wh_witch_hunter = {
-			piety = 150
-		}
-		event_target:wh_demon_master = {
-			character_event = {
-				id = schaos.47
-			}
-		}
-		if = {
-			limit = {
-				is_invincible_trigger = yes
-			}
-			antideath_effect = yes
-			break = yes
-		}
-		death = {
-			death_reason = death_execution
-			killer = event_target:wh_witch_hunter
-		}
 	}
 }
 

@@ -702,7 +702,7 @@ character_event = {
 			}
 		}
 	}
-	
+
 	# 150 years
 	weight_multiplier = {
 		factor = 1
@@ -1749,33 +1749,6 @@ character_event = {
 		}
 		new_character = {
 			add_trait = creature_beastman
-			character_event = {
-				id = wh_beastmen.11
-			}
-		}
-	}
-}
-
-# New character receives inheritance
-character_event = {
-	id = wh_beastmen.11
-	hide_window = yes
-	is_triggered_only = yes
-
-	immediate = {
-		# Now make all previous vassals independent too
-		character_event = {
-			id = wh_beastmen.12
-			days = 1
-		}
-		FROM = {
-			any_demesne_title = {
-				limit = {
-					has_title_flag = migrating_away
-				}
-				grant_title = ROOT
-				clr_title_flag = migrating_away
-			}			
 			create_title = {
 				tier = KING
 				landless = yes
@@ -1787,41 +1760,26 @@ character_event = {
 				nomad = yes
 			}
 			set_government_type = beastman_government
-		}
-	}
-}
-
-# New character becomes independent
-character_event = {
-	id = wh_beastmen.12
-	hide_window = yes
-	is_triggered_only = yes
-
-	immediate = {
-		set_defacto_liege = THIS
-		prestige = 50
-		piety = 10
-		any_demesne_title = {
-			add_law = agnatic_succession
-		}
-		any_vassal = {
-			limit = {
-				has_character_flag = migrating_away_vassal
+			root = {
+				any_demesne_title = {
+					limit = {
+						has_title_flag = migrating_away
+					}
+					clr_title_flag = migrating_away
+					grant_title = prevprev
+				}
 			}
-			character_event = {
-				id = wh_beastmen.13
-			}
-			clr_character_flag = migrating_away_vassal
-		}
-		FROMFROM = {
+			set_defacto_liege = THIS
+			prestige = 50
+			piety = 10
 			any_vassal = {
 				limit = {
 					has_character_flag = migrating_away_vassal
 				}
+				clr_character_flag = migrating_away_vassal
 				character_event = {
 					id = wh_beastmen.13
 				}
-				clr_character_flag = migrating_away_vassal
 			}
 		}
 	}

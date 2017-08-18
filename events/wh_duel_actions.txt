@@ -1223,6 +1223,7 @@ character_event = {
 # You can set them in duelaction.4 event exactly the same way u set triggering of report events.
 # in last the option that is last exectued please trigger duelengine.6 event to clear all duel variables and flags
 # OUTCOME: DEATH OF ONE PERSON
+
 # 1st event (for loser)
 character_event = {
 	id = duelaction.200
@@ -1292,6 +1293,9 @@ character_event = {
 	# charA got this event
 	option = {
 		name = OK
+		trigger = {
+			character = event_target:charA
+		}
 	 	if = {
 			limit = {
 				or = {
@@ -1327,9 +1331,6 @@ character_event = {
 			death_reason = death_duel
 			killer = event_target:charB
 		}
-		trigger = {
-			character = event_target:charA
-		}
 		event_target:charB = {
 			character_event = {
 				id = duelaction.201
@@ -1337,12 +1338,14 @@ character_event = {
 		}
 		event_target:charA = {
 			character_event = {
-				id = duelengine.6 days = 1
+				id = duelengine.6
+				days = 1
 			}
 		} # clearing event
 		event_target:charB = {
 			character_event = {
-				id = duelengine.6 days = 1
+				id = duelengine.6
+				days = 1
 			}
 		} # clearing event
 		clr_character_flag = duel
@@ -1356,8 +1359,8 @@ character_event = {
 	picture = "GFX_evt_duel4"
 	border = GFX_event_normal_frame_war
 	is_triggered_only = yes
+	
 	# charB got this event
-
 	option = {
 		name = OK
 		trigger = {
@@ -1398,6 +1401,53 @@ character_event = {
 				id = wh_chaos_khorne.122
 			}
 		}
+		# hunt demon
+		if = {
+			limit = {
+				has_character_flag = duel_wh_demons.4
+				has_character_flag = duel_wh_demons.4_hunter
+			}
+			clr_character_flag = duel_wh_demons.4
+			clr_character_flag = duel_wh_demons.4_hunter
+			# for winner
+			character_event = {
+				id = wh_demons.40001
+			}
+		}
+		# witch hunter tries to kill the demon
+		if = {
+			limit = {
+				has_character_flag = duel_wh_chaos.43
+			}
+			clr_character_flag = duel_wh_chaos.43
+			# if witch hunter win
+			if = {
+				limit = {
+					has_character_flag = duel_wh_chaos.43_hunter
+				}
+				clr_character_flag = duel_wh_chaos.43_hunter				
+				piety = 150
+				event_target:wh_demon_master = {
+					character_event = {
+						id = schaos.47
+					}
+				}
+			}
+			# witch hunter died
+			if = {
+				limit = {
+					not = {
+						has_character_flag = duel_wh_chaos.43_hunter
+					}
+				}	
+				piety = 150
+				event_target:wh_demon_master = {
+					character_event = {
+						id = schaos.45
+					}
+				}
+			}
+		}
 		if = {
 			# Slayer level progression
 			limit = {
@@ -1420,8 +1470,8 @@ character_event = {
 			}
 		}
 	}
+	
 	# charA got this event
-
 	option = {
 		name = OK
 		trigger = {
@@ -1452,6 +1502,63 @@ character_event = {
 			remove_character_modifier = weak_warboss
 			clr_character_flag = greenksin_bash_head_duel
 			set_character_flag = weak_warboss_bashed_heads
+		}
+		# khorne tournament
+		if = {
+			limit = {
+				has_character_flag = duel_wh_chaos_khorne.120
+			}
+			# for winner
+			long_character_event = {
+				id = wh_chaos_khorne.122
+			}
+		}
+		# hunt demon
+		if = {
+			limit = {
+				has_character_flag = duel_wh_demons.4
+				has_character_flag = duel_wh_demons.4_hunter
+			}
+			clr_character_flag = duel_wh_demons.4
+			clr_character_flag = duel_wh_demons.4_hunter
+			# for winner
+			character_event = {
+				id = wh_demons.40001
+			}
+		}
+		# witch hunter tries to kill the demon
+		if = {
+			limit = {
+				has_character_flag = duel_wh_chaos.43
+			}
+			clr_character_flag = duel_wh_chaos.43
+			# if witch hunter win
+			if = {
+				limit = {
+					has_character_flag = duel_wh_chaos.43_hunter
+				}
+				clr_character_flag = duel_wh_chaos.43_hunter				
+				piety = 150
+				event_target:wh_demon_master = {
+					character_event = {
+						id = schaos.47
+					}
+				}
+			}
+			# witch hunter died
+			if = {
+				limit = {
+					not = {
+						has_character_flag = duel_wh_chaos.43_hunter
+					}
+				}	
+				piety = 150
+				event_target:wh_demon_master = {
+					character_event = {
+						id = schaos.45
+					}
+				}
+			}
 		}
 		if = {
 			# Slayer level progression
@@ -1485,8 +1592,8 @@ character_event = {
 	picture = "GFX_evt_battle"
 	border = "GFX_event_normal_frame_war"
 	is_triggered_only = yes
+	
 	# charB got this event
-
 	option = {
 		name = OK
 		trigger = {
@@ -1509,8 +1616,8 @@ character_event = {
 		} # clearing event
 		clr_character_flag = duel
 	}
+	
 	# charA got this event
-
 	option = {
 		name = OK
 		trigger = {

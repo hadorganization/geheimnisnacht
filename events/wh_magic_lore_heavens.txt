@@ -1,0 +1,1031 @@
+namespace = heavens_lore
+long_character_event = {
+	id = heavens_lore.1#"High Magic"
+	desc = heavens_lore.1_desc#"High Magic, the true magic. "
+	is_triggered_only = yes
+
+	picture = GFX_evt_mage_lore_heavens
+	immediate = {
+		event_target:magic_caster = {
+			magic_xp_counter = yes
+			magic_points_setup = yes
+			magic_spells_known = yes
+		}
+	}
+	option = {
+	trigger = {event_target:magic_caster = {check_variable = { which = "spell_power" value = 1}} }
+		name = high_magic_lore.1a
+		long_character_event = {id = heavens_lore.2}
+	}
+	option = {
+	trigger = {event_target:magic_caster = {check_variable = { which = "spell_power" value = 1}} }
+		name = heavens_lore.1b
+		event_target:magic_caster = {
+			clr_character_flag = casting
+		}
+	}
+	option = {
+	trigger = {event_target:magic_caster = { not = { check_variable = { which = "spell_power" value = 0}} }}
+		name = heavens_lore.1c
+		event_target:magic_caster = {
+			clr_character_flag = casting
+		}
+	}
+
+}
+
+long_character_event = {
+	id = heavens_lore.2#"High Magic"
+	desc = heavens_lore.2_desc#"High Magic, the true magic. "
+	is_triggered_only = yes
+
+	picture = GFX_evt_mage_lore_heavens
+
+	immediate = {
+		magic_spells_known = yes
+	}
+
+	option = {
+	trigger = {event_target:magic_caster = {check_variable = { which = "spell_power" value = 1}check_variable = { which = "spellknownlvl" value = 1}} }
+		name = heavens_lore.2a#Foresight
+		character_event = {id = heavens_lore.100}
+	}
+	option = {
+	trigger = {event_target:magic_caster = {check_variable = { which = "spell_power" value = 1}check_variable = { which = "spellknownlvl" value = 2}}	}
+		name = heavens_lore.2b#Divination
+		character_event = {id = heavens_lore.200}
+	}
+	option = {
+	trigger = {event_target:magic_caster = {check_variable = { which = "spell_power" value = 2}check_variable = { which = "spellknownlvl" value = 3}}	}
+		name = heavens_lore.2c#Chain Lightning
+		character_event = {id = heavens_lore.300}
+	}
+	option = {
+	trigger = {event_target:magic_caster = {check_variable = { which = "spell_power" value = 3}check_variable = { which = "spellknownlvl" value = 4}}	}
+		name = heavens_lore.2d#Comet of Cassondora.
+		character_event = {id = heavens_lore.400}
+	}
+}
+
+
+
+
+#Drain Magic
+
+
+
+character_event = {
+	id = heavens_lore.100#"High Magic; Soul Quench"
+	desc = heavens_lore.100_desc#"You channel the arcane powers and lash out towards the enemy."
+	is_triggered_only = yes
+	picture = GFX_evt_mage_lore_heavens
+	immediate = {
+		event_target:magic_caster = {
+			change_variable = {which = "spell_power" value = -1}
+			miscast_test_5 = yes
+		}
+	}
+	option = {
+		name = heavens_lore.100a#
+		dispel_setup_effect = yes
+		if = {
+			limit = {
+				event_target:magic_caster = {
+					has_character_flag = has_dispel
+				}
+			}
+			dispel_saving_roll_50 = yes
+			event_target:magic_caster = {
+				clr_character_flag = has_dispel
+			}
+		}
+		if = {
+			limit = {
+				event_target:magic_caster = {
+					NOR = {
+						has_character_flag = miscast
+						has_character_flag = dispeled
+					}
+				}
+			}
+			character_event = { id = heavens_lore.101}
+		}
+		if = {
+			limit = {
+				event_target:magic_caster = {
+					has_character_flag = dispeled
+				}
+			}
+			event_target:magic_caster = { clr_character_flag = dispeled}
+			character_event = { id = heavens_lore.501}
+		}
+		if = {
+			limit = {
+				event_target:magic_caster = { has_character_flag = miscast }
+			}
+			character_event = {id = magic_system.99991}#If has the miscast flag, skip to the miscast event table
+		}
+
+	}
+}
+
+character_event = {
+	id = heavens_lore.101#Drain Magic Power 1"
+	desc = heavens_lore.101_desc#"Your spell burns through the air, taking from all enemies the ability to cast. "
+	is_triggered_only = yes
+	picture = GFX_evt_mage_lore_heavens
+	immediate = {
+		event_target:magic_caster = {
+			add_character_modifier = { name = magic_lore_heavens_foresight_tactics duration = 45 stacking = yes }
+		}
+		# character_event = { id = heavens_lore_proc.1 days = 15 random = 5}
+	}
+
+	option = {
+		name = heavens_lore.101a#No
+		character_event = {id = heavens_lore.500}
+	}
+}
+
+
+
+character_event = {
+	id = heavens_lore.200#"High Magic; Soul Quench"
+	desc = heavens_lore.200_desc#"You channel the arcane powers and lash out towards the enemy."
+	is_triggered_only = yes
+	picture = GFX_evt_mage_lore_heavens
+	immediate = {
+		event_target:magic_caster = {
+			change_variable = {which = "spell_power" value = -1}
+			if = {
+				limit = { has_character_modifier = magic_lore_heavens_foresight_tactics}
+				miscast_test_4 = yes
+			}
+			if = {
+				limit = { not = { has_character_modifier = magic_lore_heavens_foresight_tactics }}
+				miscast_test_5 = yes
+			}
+		}
+	}
+	option = {
+		name = heavens_lore.200a#
+		dispel_setup_effect = yes
+		if = {
+			limit = { not = { has_character_modifier = magic_lore_heavens_foresight_tactics }}
+			if = {
+				limit = {
+					event_target:magic_caster = {
+						has_character_flag = has_dispel
+					}
+				}
+				dispel_saving_roll_50 = yes
+				event_target:magic_caster = {
+					clr_character_flag = has_dispel
+				}
+			}
+		}
+		if = {
+			limit = { has_character_modifier = magic_lore_heavens_foresight_tactics }
+			if = {
+				limit = {
+					event_target:magic_caster = {
+						has_character_flag = has_dispel
+					}
+				}
+				dispel_saving_roll_40 = yes
+				event_target:magic_caster = {
+					clr_character_flag = has_dispel
+				}
+			}
+		}
+		if = {
+			limit = {
+				event_target:magic_caster = {
+					NOR = {
+						has_character_flag = miscast
+						has_character_flag = dispeled
+					}
+				}
+			}
+			character_event = { id = heavens_lore.201}
+		}
+		if = {
+			limit = {
+				event_target:magic_caster = {
+					has_character_flag = dispeled
+				}
+			}
+			event_target:magic_caster = { clr_character_flag = dispeled}
+			character_event = { id = heavens_lore.501}
+		}
+		if = {
+			limit = {
+				event_target:magic_caster = { has_character_flag = miscast }
+			}
+			character_event = {id = magic_system.99991}#If has the miscast flag, skip to the miscast event table
+		}
+
+	}
+}
+
+character_event = {
+	id = heavens_lore.201#Soul Quench 1"
+	desc = heavens_lore.201#"Your power consumes the life of your chosen target "
+	is_triggered_only = yes
+	picture = GFX_evt_mage_lore_heavens
+
+
+	option = {
+		name = heavens_lore.201a#No
+		character_event = { id = heavens_lore.500 }
+		random_list = {
+			25 = {
+				any_character = {
+					limit = {
+						war_with = root
+						any_army = {
+							location = { province = event_target:spellloc }
+						}
+					}
+					random_army = {
+						limit = {
+							location = { province = event_target:spellloc }
+						}
+						troops = -0.07
+						morale = -0.07
+					}
+				}
+				if = {
+					limit = {
+						event_target:magic_caster = {
+							at_location = event_target:spellloc
+						}
+					}
+					siege = {
+						enemy = {
+							troops = -0.07
+							morale = -0.07
+						}
+					}
+				}
+			}
+			25 = {
+				any_character = {
+					limit = {
+						war_with = root
+						any_army = {
+							location = { province = event_target:spellloc }
+						}
+					}
+					random_army = {
+						limit = {
+							location = { province = event_target:spellloc }
+						}
+						troops = -0.1
+						morale = -0.1
+					}
+				}
+				if = {
+					limit = {
+						event_target:magic_caster = {
+							at_location = event_target:spellloc
+						}
+					}
+					siege = {
+						enemy = {
+							troops = -0.1
+							morale = -0.1
+						}
+					}
+				}
+			}
+			25 = {
+				any_character = {
+					limit = {
+						war_with = root
+						any_army = {
+							location = { province = event_target:spellloc }
+						}
+					}
+					random_army = {
+						limit = {
+							location = { province = event_target:spellloc }
+						}
+						troops = -0.125
+						morale = -0.125
+					}
+				}
+				if = {
+					limit = {
+						event_target:magic_caster = {
+							at_location = event_target:spellloc
+						}
+					}
+					siege = {
+						enemy = {
+							troops = -0.125
+							morale = -0.125
+						}
+					}
+				}
+			}
+			25 = {
+				any_character = {
+					limit = {
+						war_with = root
+						any_army = {
+							location = { province = event_target:spellloc }
+						}
+					}
+					random_army = {
+						limit = {
+							location = { province = event_target:spellloc }
+						}
+						troops = -0.15
+						morale = -0.15
+					}
+				}
+				if = {
+					limit = {
+						event_target:magic_caster = {
+							at_location = event_target:spellloc
+						}
+					}
+					siege = {
+						enemy = {
+							troops = -0.15
+							morale = -0.15
+						}
+					}
+				}
+			}
+		}
+	}
+	after = { 
+		remove_character_modifiers = { modifier = magic_lore_heavens_foresight_tactics amount = 1 }
+	} 	
+}
+
+
+character_event = {
+	id = heavens_lore.300#"High Magic; Apotheosis"
+	desc = heavens_lore.300_desc#"You channel the arcane powers and let it flow to your dead and dying"
+	is_triggered_only = yes
+	picture = GFX_evt_mage_lore_heavens
+
+	immediate = {
+		event_target:magic_caster = {
+			change_variable = { which = "spell_power" value = -2}
+			if = {
+				limit = { has_character_modifier = magic_lore_heavens_foresight_tactics}
+				miscast_test_5 = yes
+			}
+			if = {
+				limit = { not = { has_character_modifier = magic_lore_heavens_foresight_tactics }}
+				miscast_test_6 = yes
+			}
+		}
+	}
+	option = {
+		name = heavens_lore.300a
+		dispel_setup_effect = yes
+		if = {
+			limit = { not = { has_character_modifier = magic_lore_heavens_foresight_tactics }}
+			if = {
+				limit = {
+					event_target:magic_caster = {
+						has_character_flag = has_dispel
+					}
+				}
+				dispel_saving_roll_50 = yes
+				event_target:magic_caster = {
+					clr_character_flag = has_dispel
+				}
+			}
+		}
+		if = {
+			limit = { has_character_modifier = magic_lore_heavens_foresight_tactics }
+			if = {
+				limit = {
+					event_target:magic_caster = {
+						has_character_flag = has_dispel
+					}
+				}
+				dispel_saving_roll_40 = yes
+				event_target:magic_caster = {
+					clr_character_flag = has_dispel
+				}
+			}
+		}
+		if = {
+			limit = {
+				event_target:magic_caster = {
+					NOR = {
+						has_character_flag = miscast
+						has_character_flag = dispeled
+					}
+				}
+			}
+			character_event = { id = heavens_lore.301}
+		}
+		if = {
+			limit = {
+				event_target:magic_caster = {
+					has_character_flag = dispeled
+				}
+			}
+			event_target:magic_caster = { clr_character_flag = dispeled}
+			character_event = { id = heavens_lore.501}
+		}
+		if = {
+			limit = {
+				event_target:magic_caster = { has_character_flag = miscast }
+			}
+			character_event = {id = magic_system.99991}#If has the miscast flag, skip to the miscast event table
+		}
+	}
+}
+
+character_event = {
+	id = heavens_lore.301#Apotheosis 1"
+	desc = heavens_lore.301_desc#"Your spell restores those close to death or those freshly dead"
+	is_triggered_only = yes
+	picture = GFX_evt_mage_lore_heavens
+	immediate = {
+	}
+	option = {
+		name = heavens_lore.301a#Cast Another Spell ?
+
+		any_character = {
+			limit = {
+				war_with = root
+				any_army = {
+					location = { province = event_target:spellloc }
+				}
+			}
+			random_army = {
+				limit = {
+					location = { province = event_target:spellloc }
+				}
+				troops = -0.07
+				morale = -0.07
+			}
+		}
+		if = {
+			limit = {
+				event_target:magic_caster = {
+					at_location = event_target:spellloc
+				}
+			}
+			siege = {
+				enemy = {
+					troops = -0.07
+					morale = -0.07
+				}
+			}
+		}
+		random_list = {
+			35 = {
+				modifier = {
+					factor = 1.2
+					event_target:magic_caster = { has_character_modifier = magic_lore_heavens_foresight_tactics }
+				}
+				repeat_event = { id = heavens_lore.302 days = 0}
+			}
+			65 = {
+				character_event = { id = heavens_lore.500}
+			}
+		}
+	}
+}
+character_event = {
+	id = heavens_lore.302#Apotheosis 1"
+	hide_window = yes
+	is_triggered_only = yes
+	picture = GFX_evt_mage_lore_heavens
+	immediate = {
+	}
+	option = {
+		name = heavens_lore.301a#Cast Another Spell ?
+
+		any_character = {
+			limit = {
+				war_with = root
+				any_army = {
+					location = { province = event_target:spellloc }
+				}
+			}
+			random_army = {
+				limit = {
+					location = { province = event_target:spellloc }
+				}
+				troops = -0.07
+				morale = -0.07
+			}
+		}
+		if = {
+			limit = {
+				event_target:magic_caster = {
+					at_location = event_target:spellloc
+				}
+			}
+			siege = {
+				enemy = {
+					troops = -0.07
+					morale = -0.07
+				}
+			}
+		}
+		random_list = {
+			35 = {
+				modifier = {
+					factor = 1.2
+					event_target:magic_caster = { has_character_modifier = magic_lore_heavens_foresight_tactics }
+				}
+				repeat_event = { id = heavens_lore.302 days = 0}
+			}
+			65 = {
+				character_event = { id = heavens_lore.500}
+			}
+		}
+	}
+	after = { 
+		remove_character_modifiers = { modifier = magic_lore_heavens_foresight_tactics amount = 1 }
+	} 	
+}
+
+
+character_event = {
+	id = heavens_lore.400#"High Magic; Soul Quench"
+	desc = heavens_lore.400_desc#"You channel the arcane powers and lash out towards the enemy."
+	is_triggered_only = yes
+	picture = GFX_evt_mage_lore_heavens
+	immediate = {
+		event_target:magic_caster = {
+			change_variable = {which = "spell_power" value = -3}
+			if = {
+				limit = { has_character_modifier = magic_lore_heavens_foresight_tactics}
+				miscast_test_6 = yes
+			}
+			if = {
+				limit = { not = { has_character_modifier = magic_lore_heavens_foresight_tactics }}
+				miscast_test_8 = yes
+			}
+		}
+	}
+	option = {
+		name = heavens_lore.400a#
+
+		dispel_setup_effect = yes
+		if = {
+			limit = { not = { has_character_modifier = magic_lore_heavens_foresight_tactics }}
+			if = {
+				limit = {
+					event_target:magic_caster = {
+						has_character_flag = has_dispel
+					}
+				}
+				dispel_saving_roll_60 = yes
+				event_target:magic_caster = {
+					clr_character_flag = has_dispel
+				}
+			}
+		}
+		if = {
+			limit = { has_character_modifier = magic_lore_heavens_foresight_tactics }
+			if = {
+				limit = {
+					event_target:magic_caster = {
+						has_character_flag = has_dispel
+					}
+				}
+				dispel_saving_roll_40 = yes
+				event_target:magic_caster = {
+					clr_character_flag = has_dispel
+				}
+			}
+		}
+		if = {
+			limit = {
+				event_target:magic_caster = {
+					NOR = {
+						has_character_flag = miscast
+						has_character_flag = dispeled
+					}
+				}
+			}
+			character_event = { id = heavens_lore.401}
+		}
+		if = {
+			limit = {
+				event_target:magic_caster = {
+					has_character_flag = dispeled
+				}
+			}
+			event_target:magic_caster = { clr_character_flag = dispeled}
+			character_event = { id = heavens_lore.501}
+		}
+		if = {
+			limit = {
+				event_target:magic_caster = { has_character_flag = miscast }
+			}
+			character_event = {id = magic_system.99991}#If has the miscast flag, skip to the miscast event table
+		}
+	}
+}
+
+character_event = {
+	id = heavens_lore.401#Soul Quench 1"
+	desc = heavens_lore.401#"Your power consumes the life of your chosen target "
+	is_triggered_only = yes
+	picture = GFX_evt_mage_lore_heavens
+	immediate = {
+		random_list = {
+			10 = {
+				modifier = {
+					factor = 1.5
+					event_target:magic_caster = { has_character_modifier = magic_lore_heavens_foresight_tactics }
+				}
+				character_event = { id = heavens_lore.402 days = 1}
+			}
+			10 = {
+				modifier = {
+					factor = 1.4
+					event_target:magic_caster = { has_character_modifier = magic_lore_heavens_foresight_tactics }
+				}
+				character_event = { id = heavens_lore.402 days = 2}
+			}
+			10 = {
+				modifier = {
+					factor = 1.3
+					event_target:magic_caster = { has_character_modifier = magic_lore_heavens_foresight_tactics }
+				}
+				character_event = { id = heavens_lore.402 days = 3}
+			}
+			10 = {
+				modifier = {
+					factor = 1.2
+					event_target:magic_caster = { has_character_modifier = magic_lore_heavens_foresight_tactics }
+				}
+				character_event = { id = heavens_lore.402 days = 4}
+			}
+			10 = {
+				modifier = {
+					factor = 1.1
+					event_target:magic_caster = { has_character_modifier = magic_lore_heavens_foresight_tactics }
+				}
+				character_event = { id = heavens_lore.402 days = 5}
+			}
+			10 = {
+				modifier = {
+					factor = 0.9
+					event_target:magic_caster = { has_character_modifier = magic_lore_heavens_foresight_tactics }
+				}
+				character_event = { id = heavens_lore.402 days = 6}
+			}
+			10 = {
+				modifier = {
+					factor = 0.8
+					event_target:magic_caster = { has_character_modifier = magic_lore_heavens_foresight_tactics }
+				}
+				character_event = { id = heavens_lore.402 days = 7}
+			}
+			10 = {
+				modifier = {
+					factor = 0.7
+					event_target:magic_caster = { has_character_modifier = magic_lore_heavens_foresight_tactics }
+				}
+				character_event = { id = heavens_lore.402 days = 8}
+			}
+			10 = {
+				modifier = {
+					factor = 0.6
+					event_target:magic_caster = { has_character_modifier = magic_lore_heavens_foresight_tactics }
+				}
+				character_event = { id = heavens_lore.402 days = 9}
+			}
+			10 = {
+				modifier = {
+					factor = 0.5
+					event_target:magic_caster = { has_character_modifier = magic_lore_heavens_foresight_tactics }
+				}
+				character_event = { id = heavens_lore.402 days = 10}
+			}
+		}
+	}
+
+	option = {
+		name = heavens_lore.401a#Cast Another Spell ?
+		root = {character_event = {id = heavens_lore.500}}
+	}
+
+}
+
+
+character_event = {
+	id = heavens_lore.402#Firey_convocation event 1"
+	#desc = heavens_lore.402_desc#"Your power consumes the life of your chosen target "
+	is_triggered_only = yes
+	hide_window = yes
+	#picture = GFX_evt_mage_lore_heavens
+	option = {
+		name = heavens_lore.402a
+		random_list = {
+			30 = {
+			}
+			25 = {
+				modifier = {
+					factor = 0.25
+						event_target:magic_caster = { has_character_modifier = magic_lore_heavens_foresight_tactics }
+					}
+				any_character = {
+					limit = {
+						not = {
+							war_with = root
+						}
+					}
+					random_army = {
+						limit = {
+							location = { province = event_target:spellloc }
+						}
+						random_list = {
+							20 = {
+								troops = -0.25
+								morale = -0.25
+							}
+							20 = {
+								troops = -0.35
+								morale = -0.35
+							}
+							20 = {
+								troops = -0.45
+								morale = -0.45
+							}
+							20 = {
+								troops = -0.55
+								morale = -0.55
+							}
+							20 = {
+								troops = -0.65
+								morale = -0.65
+							}
+							20 = {
+								troops = -0.75
+								morale = -0.75
+							}
+						}
+					}
+				}
+			}
+			45 = {
+				modifier = {
+					factor = 2
+						event_target:magic_caster = { has_character_modifier = magic_lore_heavens_foresight_tactics }
+				}
+				any_character = {
+					limit = {
+						war_with = root
+					}
+					random_army = {
+						limit = {
+							location = { province = event_target:spellloc }
+						}
+						random_list = {
+							20 = {
+								troops = -0.25
+								morale = -0.25
+							}
+							20 = {
+								troops = -0.35
+								morale = -0.35
+							}
+							20 = {
+								troops = -0.45
+								morale = -0.45
+							}
+							20 = {
+								troops = -0.55
+								morale = -0.55
+							}
+							20 = {
+								troops = -0.65
+								morale = -0.65
+							}
+							20 = {
+								troops = -0.75
+								morale = -0.75
+							}
+						}
+					}
+				}
+			}
+		}
+		any_character = {
+			if = {
+				limit = {
+					or = {
+						is_vassal_or_below = root
+						character = root
+					}
+					at_location = event_target:spellloc
+					in_battle = no
+				}
+				random_list = {
+					35 = {
+					}
+					40 = {
+						siege = {
+							enemy = {
+								random_list = {
+									20 = {
+										troops = -0.2
+										morale = -0.2
+									}
+									20 = {
+										troops = -0.3
+										morale = -0.3
+									}
+									20 = {
+										troops = -0.4
+										morale = -0.4
+									}
+									20 = {
+										troops = -0.5
+										morale = -0.5
+									}
+									20 = {
+										troops = -0.6
+										morale = -0.6
+									}
+								}
+							}
+						}
+					}
+					20 = {
+						event_target:spellloc = {
+							random_province_holding = {
+								destroy_random_building = yes
+							}
+						}
+						siege = {
+							enemy = {
+								random_list = {
+									20 = {
+										troops = -0.2
+										morale = -0.2
+									}
+									20 = {
+										troops = -0.3
+										morale = -0.3
+									}
+									20 = {
+										troops = -0.4
+										morale = -0.4
+									}
+									20 = {
+										troops = -0.5
+										morale = -0.5
+									}
+									20 = {
+										troops = -0.6
+										morale = -0.6
+									}
+								}
+							}
+						}
+					}
+					5 = {
+						event_target:spellloc = {
+							random_province_holding = {
+								destroy_settlement = this
+							}
+						}
+						siege = {
+							enemy = {
+								random_list = {
+									20 = {
+										troops = -0.2
+										morale = -0.2
+									}
+									20 = {
+										troops = -0.3
+										morale = -0.3
+									}
+									20 = {
+										troops = -0.4
+										morale = -0.4
+									}
+									20 = {
+										troops = -0.5
+										morale = -0.5
+									}
+									20 = {
+										troops = -0.6
+										morale = -0.6
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	after = { 
+		remove_character_modifiers = { modifier = magic_lore_heavens_foresight_tactics amount = 1 }
+	} 
+
+}
+
+
+
+
+
+#process
+
+character_event = {
+	id = heavens_lore.500#"High Magic; Soul Quench"
+	desc = heavens_lore.500_desc#"You channel the arcane powers and lash out towards the enemy."
+	is_triggered_only = yes
+	picture = GFX_evt_mage_lore_heavens
+	immediate = {
+		event_target:magic_caster = {
+			magic_item_proc = yes
+		}
+	}
+	option = {
+		name = heavens_lore.500a
+		character_event = { id = heavens_lore.503}
+	}
+}
+
+character_event = {
+	id = heavens_lore.501#"High Magic; Soul Quench"
+	desc = heavens_lore.501_desc#"You channel the arcane powers and lash out towards the enemy."
+	is_triggered_only = yes
+	picture = GFX_evt_mage_lore_heavens
+	immediate = {
+		event_target:magic_caster = {
+			clr_character_flag = dispeled
+			magic_item_proc = yes
+		}
+
+	}
+	option = {
+		name = heavens_lore.501a
+		character_event = { id = heavens_lore.503}
+	}
+
+}
+
+
+
+character_event = {
+	id = heavens_lore.503#"High Magic; Soul Quench"
+	desc = heavens_lore.503
+	is_triggered_only = yes
+	picture = GFX_evt_mage_lore_heavens
+	option = {
+		name = heavens_lore.503a
+		trigger = {
+			event_target:magic_caster = {
+
+				check_variable = { which = "spell_power" value = 1 }
+			}
+		}
+		repeat_event = { id = heavens_lore.2 }
+	}
+	option = {
+		name = heavens_lore.503b
+		event_target:magic_caster = {
+			character_event = { id = magic_system.99997 }
+		}
+	}
+}
+
+
+
+character_event = {
+	id = heavens_lore.900#"High Magic; Soul Quench"
+	is_triggered_only = yes
+	picture = GFX_evt_mage_lore_heavens
+	hide_window = yes
+	ai = yes
+	trigger = {
+		trait = lore_heavens
+		NOT = {
+			has_character_modifier = magic_cooldown
+		}
+	}
+	immediate = {
+		save_event_target_as = magic_caster
+		event_target:magic_caster = {
+			location = {
+				save_event_target_as = spellloc
+			}
+
+		}
+		character_event = { id = heavens_lore.1 }
+	}
+
+}

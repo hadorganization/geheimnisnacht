@@ -1,0 +1,557 @@
+namespace = light_lore
+long_character_event = {
+	id = light_lore.1#"High Magic"
+	desc = light_lore.1_desc#"High Magic, the true magic. "
+	is_triggered_only = yes
+
+	picture = GFX_evt_mage_lore_light
+	immediate = {
+		event_target:magic_caster = {
+			magic_xp_counter = yes
+			magic_points_setup = yes
+			magic_spells_known = yes
+		}
+	}
+	option = {
+	trigger = {event_target:magic_caster = {check_variable = { which = "spell_power" value = 1}} }
+		name = light_lore.1a#"High Magic; Drain Magic"
+		long_character_event = {id = light_lore.2}
+	}
+	option = {
+	trigger = {event_target:magic_caster = {check_variable = { which = "spell_power" value = 1}} }
+		name = light_lore.1b#"High Magic; Drain Magic"
+	}
+	option = {
+	trigger = {event_target:magic_caster = { not = { check_variable = { which = "spell_power" value = 1}} }}
+		name = light_lore.1c#"High Magic; Drain Magic"
+	}
+
+}
+
+
+long_character_event = {
+	id = light_lore.2#"High Magic"
+	desc = light_lore.2_desc#"High Magic, the true magic. "
+	is_triggered_only = yes
+
+	picture = GFX_evt_mage_lore_light
+
+	immediate = {
+		magic_spells_known = yes
+	}
+
+	option = {
+	trigger = {event_target:magic_caster = {check_variable = { which = "spell_power" value = 1}check_variable = { which = "spellknownlvl" value = 1}} }
+		name = light_lore.2a#Foresight
+		character_event = {id = light_lore.100}
+	}
+	option = {
+	trigger = {event_target:magic_caster = {check_variable = { which = "spell_power" value = 1}check_variable = { which = "spellknownlvl" value = 2}}	}
+		name = light_lore.2b#Divination
+		character_event = {id = light_lore.200}
+	}
+	option = {
+	trigger = {event_target:magic_caster = {check_variable = { which = "spell_power" value = 2}check_variable = { which = "spellknownlvl" value = 3}}	}
+		name = light_lore.2c#Chain Lightning
+		character_event = {id = light_lore.300}
+	}
+	option = {
+	trigger = {event_target:magic_caster = {check_variable = { which = "spell_power" value = 3}check_variable = { which = "spellknownlvl" value = 4}}	}
+		name = light_lore.2d#Comet of Cassondora.
+		character_event = {id = light_lore.400}
+	}
+}
+
+
+
+
+#Drain Magic
+
+
+character_event = {
+	id = light_lore.100#"High Magic; Soul Quench"
+	desc = light_lore.100_desc#"You channel the arcane powers and lash out towards the enemy."
+	is_triggered_only = yes
+	picture = GFX_evt_mage_lore_light
+	immediate = {
+		event_target:magic_caster = {
+			change_variable = {which = "spell_power" value = -1}
+			miscast_test_5 = yes
+		}
+	}
+	option = {
+		name = light_lore.100a#
+		dispel_setup_effect = yes
+		if = {
+			limit = {
+				event_target:magic_caster = {
+					has_character_flag = has_dispel
+				}
+			}
+			dispel_saving_roll_50 = yes
+			event_target:magic_caster = {
+				clr_character_flag = has_dispel
+			}
+		}
+		if = {
+			limit = {
+				event_target:magic_caster = {
+					NOR = {
+						has_character_flag = miscast
+						has_character_flag = dispeled
+					}
+				}
+			}
+			character_event = { id = light_lore.101}
+		}
+		if = {
+			limit = {
+				event_target:magic_caster = {
+					has_character_flag = dispeled
+				}
+			}
+			event_target:magic_caster = { clr_character_flag = dispeled}
+			character_event = { id = light_lore.501}
+		}
+		if = {
+			limit = {
+				event_target:magic_caster = { has_character_flag = miscast }
+			}
+			character_event = {id = magic_system.99991}#If has the miscast flag, skip to the miscast event table
+		}
+
+	}
+}
+
+character_event = {
+	id = light_lore.101#Soul Quench 1"
+	desc = light_lore.101#"Your power consumes the life of your chosen target "
+	is_triggered_only = yes
+	picture = GFX_evt_mage_lore_light
+	immediate = {
+		event_target:magic_caster = {
+			location = {
+				save_event_target_as = spellloc
+			}
+		}
+	}
+
+	option = {
+		name = light_lore.101a#No
+		character_event = { id = light_lore.500 }
+			any_character = {
+				limit = {
+					war_with = root
+					any_army = {
+						location = { province = event_target:spellloc }
+					}
+				}
+				if = {
+					limit = {
+						culture_group = daemonic_group
+					}
+					random_army = {
+						limit = {
+							location = { province = event_target:spellloc }
+						}
+						morale = -0.1
+						troops = -0.1
+					}
+				}
+				random_army = {
+					limit = {
+						location = { province = event_target:spellloc }
+					}
+					morale = -0.07
+					troops = -0.07
+				}
+			}
+
+	}
+}
+
+
+
+character_event = {
+	id = light_lore.200
+	desc = light_lore.200_desc
+	is_triggered_only = yes
+	picture = GFX_evt_mage_lore_light
+	immediate = {
+		event_target:magic_caster = {
+			change_variable = {which = "spell_power" value = -1}
+			miscast_test_5 = yes
+		}
+	}
+	option = {
+		name = light_lore.200a#
+		dispel_setup_effect = yes
+		if = {
+			limit = {
+				event_target:magic_caster = {
+					has_character_flag = has_dispel
+				}
+			}
+			dispel_saving_roll_50 = yes
+			event_target:magic_caster = {
+				clr_character_flag = has_dispel
+			}
+		}
+		if = {
+			limit = {
+				event_target:magic_caster = {
+					NOR = {
+						has_character_flag = miscast
+						has_character_flag = dispeled
+					}
+				}
+			}
+			character_event = { id = light_lore.201}
+		}
+		if = {
+			limit = {
+				event_target:magic_caster = {
+					has_character_flag = dispeled
+				}
+			}
+			event_target:magic_caster = { clr_character_flag = dispeled}
+			character_event = { id = light_lore.501}
+		}
+		if = {
+			limit = {
+				event_target:magic_caster = { has_character_flag = miscast }
+			}
+			character_event = {id = magic_system.99991}#If has the miscast flag, skip to the miscast event table
+		}
+
+	}
+}
+
+character_event = {
+	id = light_lore.201#Soul Quench 1"
+	desc = light_lore.201#"Your power consumes the life of your chosen target "
+	is_triggered_only = yes
+	picture = GFX_evt_mage_lore_light
+
+
+	option = {
+		name = light_lore.201a#No
+		character_event = { id = light_lore.500 }
+		event_target:magic_caster = {
+			add_character_modifier = { name = magic_lore_light_assault duration = 15 }
+		}
+	}
+}
+
+
+character_event = {
+	id = light_lore.300#"High Magic; Apotheosis"
+	desc = light_lore.300_desc#"You channel the arcane powers and let it flow to your dead and dying"
+	is_triggered_only = yes
+	picture = GFX_evt_mage_lore_light
+
+	immediate = {
+		event_target:magic_caster = {
+		change_variable = { which = "spell_power" value = -3}
+		miscast_test_7 = yes
+		}
+	}
+	option = {
+		name = light_lore.300a#
+		dispel_setup_effect = yes
+		if = {
+			limit = {
+				event_target:magic_caster = {
+					has_character_flag = has_dispel
+				}
+			}
+			dispel_saving_roll_50 = yes
+			event_target:magic_caster = {
+				clr_character_flag = has_dispel
+			}
+		}
+		if = {
+			limit = {
+				event_target:magic_caster = {
+					NOR = {
+						has_character_flag = miscast
+						has_character_flag = dispeled
+					}
+				}
+			}
+			character_event = { id = light_lore.301}
+		}
+		if = {
+			limit = {
+				event_target:magic_caster = {
+					has_character_flag = dispeled
+				}
+			}
+			event_target:magic_caster = { clr_character_flag = dispeled}
+			character_event = { id = light_lore.501}
+		}
+		if = {
+			limit = {
+				event_target:magic_caster = { has_character_flag = miscast }
+			}
+			character_event = {id = magic_system.99991}#If has the miscast flag, skip to the miscast event table
+		}
+	}
+}
+
+character_event = {
+	id = light_lore.301#Apotheosis 1"
+	desc = light_lore.301_desc#"Your spell restores those close to death or those freshly dead"
+	is_triggered_only = yes
+	picture = GFX_evt_mage_lore_light
+	immediate = {
+	}
+	option = {
+		name = light_lore.301a#Cast Another Spell ?
+		event_target:magic_caster = {
+			add_character_modifier = { name = magic_lore_light_wall duration = 15 }
+		}
+		character_event = { id = light_lore.500}
+	}
+}
+
+
+character_event = {
+	id = light_lore.400#"High Magic; Soul Quench"
+	desc = light_lore.400_desc#"You channel the arcane powers and lash out towards the enemy."
+	is_triggered_only = yes
+	picture = GFX_evt_mage_lore_light
+	immediate = {
+	event_target:magic_caster = {
+		change_variable = {which = "spell_power" value = -4}
+		miscast_test_8 = yes
+	}
+	}
+	option = {
+		name = light_lore.400a#
+
+		dispel_setup_effect = yes
+		if = {
+			limit = {
+				event_target:magic_caster = {
+					has_character_flag = has_dispel
+				}
+			}
+			dispel_saving_roll_50 = yes
+			event_target:magic_caster = {
+				clr_character_flag = has_dispel
+			}
+		}
+		if = {
+			limit = {
+				event_target:magic_caster = {
+					NOR = {
+						has_character_flag = miscast
+						has_character_flag = dispeled
+					}
+				}
+			}
+			character_event = { id = light_lore.401}
+		}
+		if = {
+			limit = {
+				event_target:magic_caster = {
+					has_character_flag = dispeled
+				}
+			}
+			event_target:magic_caster = { clr_character_flag = dispeled}
+			character_event = { id = light_lore.501}
+		}
+		if = {
+			limit = {
+				event_target:magic_caster = { has_character_flag = miscast }
+			}
+			character_event = {id = magic_system.99991}#If has the miscast flag, skip to the miscast event table
+		}
+	}
+}
+
+character_event = {
+	id = light_lore.401#Soul Quench 1"
+	desc = light_lore.401#"Your power consumes the life of your chosen target "
+	is_triggered_only = yes
+	picture = GFX_evt_mage_lore_light
+
+	option = {
+		name = high_magic_lore.401a#Cast Another Spell ?
+		root = {character_event = {id = light_lore.500}}
+		character_event = {id = light_lore.402}
+	}
+
+}
+
+character_event = {
+	id = light_lore.402#Firey_convocation event 1"
+	#desc = heavens_lore.402_desc#"Your power consumes the life of your chosen target "
+	is_triggered_only = yes
+	hide_window = yes
+	#picture = GFX_evt_mage_lore_heavens
+	option = {
+		random_army = {
+			limit = {
+				location = { province = event_target:spellloc }
+			}
+			morale = 0.5
+			troops = 0.05
+		}
+		random_army = {
+			limit = {
+				location = { event_target:spellloc = { any_neighbor_province = { province = prev } } }
+			}
+			morale = 0.5
+			troops = 0.05
+		}
+		any_character = {
+			limit = {
+				war_with = root
+				any_army = {
+					location = { province = event_target:spellloc }
+				}
+			}
+			if = {
+				limit = {
+					culture_group = daemonic_group
+				}
+				random_army = {
+					limit = {
+						location = { province = event_target:spellloc }
+					}
+					morale = -0.1
+					troops = -0.1
+				}
+			}			
+			random_army = {
+				limit = {
+					location = { province = event_target:spellloc }
+				}
+				morale = -0.3
+				troops = -0.05
+			}
+			
+		}
+		any_character = {
+			limit = {
+				war_with = root
+				any_army = {
+					location = { event_target:spellloc = { any_neighbor_province = { province = prev } } }
+				}
+			}
+			if = {
+				limit = {
+					culture_group = daemonic_group
+				}
+				random_army = {
+					limit = {
+						location = { province = event_target:spellloc }
+					}
+					morale = -0.1
+					troops = -0.1
+				}
+			}				
+			random_army = {
+				limit = {
+					location = { event_target:spellloc = { any_neighbor_province = { province = prev } } }
+				}
+				morale = -0.3
+				troops = -0.05
+			}
+		}
+	}
+}
+
+
+#process
+
+
+character_event = {
+	id = light_lore.500#"High Magic; Soul Quench"
+	desc = light_lore.500_desc#"You channel the arcane powers and lash out towards the enemy."
+	is_triggered_only = yes
+	picture = GFX_evt_mage_lore_light
+	immediate = {
+		event_target:magic_caster = {
+			magic_item_proc = yes
+		}
+	}
+	option = {
+		name = light_lore.500a
+		character_event = { id = light_lore.503}
+	}
+}
+
+character_event = {
+	id = light_lore.501#"High Magic; Soul Quench"
+	desc = light_lore.501_desc#"You channel the arcane powers and lash out towards the enemy."
+	is_triggered_only = yes
+	picture = GFX_evt_mage_lore_light
+	immediate = {
+		event_target:magic_caster = {
+			clr_character_flag = dispeled
+			magic_item_proc = yes
+		}
+
+	}
+	option = {
+		name = light_lore.501a
+		character_event = { id = light_lore.503}
+	}
+
+}
+
+
+
+character_event = {
+	id = light_lore.503#"High Magic; Soul Quench"
+	desc = light_lore.503
+	is_triggered_only = yes
+	picture = GFX_evt_mage_lore_light
+	option = {
+		name = light_lore.503a
+		trigger = {
+			event_target:magic_caster = {
+
+				check_variable = { which = "spell_power" value = 1 }
+			}
+		}
+		repeat_event = { id = light_lore.2 }
+	}
+	option = {
+		name = light_lore.503b
+		event_target:magic_caster = {
+			character_event = { id = magic_system.99997 }
+		}
+	}
+}
+
+
+
+
+character_event = {
+	id = light_lore.900#"High Magic; Soul Quench"
+	is_triggered_only = yes
+	picture = GFX_evt_mage_lore_heavens
+	hide_window = yes
+	ai = yes
+	trigger = {
+		trait = lore_light
+		NOT = {
+			has_character_modifier = magic_cooldown
+		}
+	}
+	immediate = {
+		save_event_target_as = magic_caster
+		event_target:magic_caster = {
+			location = {
+				save_event_target_as = spellloc
+			}
+
+		}
+		character_event = { id = light_lore.1 }
+	}
+
+}

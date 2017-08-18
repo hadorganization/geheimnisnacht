@@ -1643,7 +1643,7 @@ targetted_decisions = {
 			is_visible_vampire_trigger = yes
 		}
 		potential = {
-			is_vampire_trigger = no
+			is_living_human_trigger = yes
 			OR = {
 				host = {
 					character = FROM
@@ -1664,9 +1664,12 @@ targetted_decisions = {
 			NOT = {
 				character = FROM
 			}
-			trait = creature_human
 		}
 		allow = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			FROM = {
 				custom_tooltip = {
 					text = IS_NOT_INCAPACITATED
@@ -1695,10 +1698,8 @@ targetted_decisions = {
 							}
 						}
 						any_friend = {
-							NOT = {
+							nor = {
 								character = ROOT
-							}
-							NOT = {
 								trait = mage_apprentice
 							}
 						}
@@ -1732,7 +1733,8 @@ targetted_decisions = {
 				}
 				set_character_flag = taken_necromancer_decision
 				character_event = {
-					id = sorcererapprentice.17 days = 1
+					id = sorcererapprentice.17
+					days = 1
 				}
 			}
 			if = {
@@ -1858,19 +1860,11 @@ targetted_decisions = {
 			}
 			modifier = {
 				factor = 0.01
-				NOT = {
+				nor = {
 					diplomacy = 15
-				}
-				NOT = {
 					martial = 15
-				}
-				NOT = {
 					stewardship = 15
-				}
-				NOT = {
 					intrigue = 15
-				}
-				NOT = {
 					learning = 15
 				}
 				FROM = {
@@ -1887,9 +1881,6 @@ targetted_decisions = {
 			}
 			modifier = {
 				factor = 20
-				FROM = {
-					trait = vampire_necrarch_visible
-				}
 				trait = mage_apprentice
 				any_friend = {
 					character = FROM
@@ -1911,18 +1902,10 @@ targetted_decisions = {
 					trait = undernourished
 					trait = fat
 					trait = addict
-					NOT = {
+					nor = {
 						martial = 10
-					}
-					NOT = {
 						age = 16
 					}
-				}
-			}
-			modifier = {
-				factor = 0
-				FROM = {
-					trait = paranoid
 				}
 			}
 			modifier = {
@@ -1956,94 +1939,48 @@ targetted_decisions = {
 			modifier = {
 				factor = 0.25
 				FROM = {
-					NOT = {
+					nor = {
 						trait = vampire_carstein_visible
-					}
-				}
-				FROM = {
-					NOT = {
 						trait = vampire_lahmian_visible
 					}
 				}
 			}
 			modifier = {
 				factor = 0
-				ROOT = {
-					is_female = no
-				}
+				is_female = no				
 				FROM = {
 					trait = vampire_lahmian_visible
 				}
 			}
 			modifier = {
 				factor = 0.5
-				ROOT = {
-					NOT = {
-						age = 16
-					}
-				}
-				FROM = {
-					NOT = {
+				nor = {
+					age = 16
+					from = {
 						trait = vampire_carstein_visible
-					}
-				}
-			}
-			modifier = {
-				factor = 0
-				ROOT = {
-					NOT = {
-						age = 16
-					}
-				}
-				FROM = {
-					NOT = {
-						trait = vampire_carstein_visible
-					}
-				}
-				FROM = {
-					NOT = {
 						trait = vampire_lahmian_visible
 					}
 				}
 			}
 			modifier = {
 				factor = 0
-				ROOT = {
-					NOT = {
-						any_friend = {
-							character = FROM
-						}
+				nor = {
+					any_friend = {
+						character = FROM
 					}
-				}
-				ROOT = {
-					NOT = {
-						any_lover = {
-							character = FROM
-						}
+					any_lover = {
+						character = FROM
 					}
-				}
-				ROOT = {
-					NOT = {
-						any_child = {
-							character = FROM
-						}
+					any_child = {
+						character = FROM
 					}
-				}
-				FROM = {
-					NOT = {
-						opinion = {
-							who = ROOT value = 75
-						}
+					opinion = {
+						who = ROOT
+						value = 25
 					}
-				}
+				}				
 				FROM = {
 					trait = vampire_mahtmasi_visible
-				}
-			}
-			modifier = {
-				factor = 0
-				FROM = {
-					trait = kind
 				}
 			}
 			modifier = {
@@ -2059,7 +1996,7 @@ targetted_decisions = {
 				}
 			}
 			modifier = {
-				factor = 0
+				factor = 0.1
 				FROM = {
 					trait = envious
 				}
@@ -2085,15 +2022,9 @@ targetted_decisions = {
 				}
 			}
 			modifier = {
-				factor = 0.01
+				factor = 0.1
 				FROM = {
 					war = yes
-				}
-			}
-			modifier = {
-				factor = 0
-				FROM = {
-					lower_tier_than = COUNT
 				}
 			}
 			modifier = {
@@ -2103,21 +2034,11 @@ targetted_decisions = {
 				}
 			}
 			modifier = {
-				factor = 0.1
-				FROM = {
-					NOT = {
-						religion = ROOT
-					}
-				}
-				higher_tier_than = COUNT
+				factor = 2
+				higher_tier_than = COUNT				
 			}
 			modifier = {
-				factor = 0.25
-				FROM = {
-					NOT = {
-						religion = ROOT
-					}
-				}
+				factor = 2				
 				higher_tier_than = DUKE
 			}
 			modifier = {
@@ -2137,22 +2058,14 @@ targetted_decisions = {
 				}
 			}
 			modifier = {
-				factor = 0
+				factor = 0.1
 				NOT = {
 					age = 16
 				}
 				FROM = {
-					NOT = {
+					nor = {
 						trait = lunatic_1
-					}
-				}
-				FROM = {
-					NOT = {
 						trait = lunatic_2
-					}
-				}
-				FROM = {
-					NOT = {
 						trait = lunatic_3
 					}
 				}

@@ -1,0 +1,2367 @@
+namespace = wh_chaos_khorne
+
+# The Lord of Slaughter 1 - 10
+character_event = {
+	id = wh_chaos_khorne.0
+	desc = khornesstr0 # You are weak, Khorne does tolerate weakness, kill till your axe arm is tired and your skin is stained in blood, or suffer the fate of the weak!
+	picture = GFX_evt_large_army
+	border = GFX_event_normal_frame_war
+	only_playable = yes
+	religion = khorne
+	min_age = 16
+	capable_only = yes
+	is_triggered_only = yes
+
+	trigger = {
+		trait = brave
+		nor = {
+			martial = 8
+			has_character_flag = tested_by_Khorne
+			has_character_flag = failed_Khorne
+			trait = craven
+			trait = in_hiding
+		}
+	}
+
+	option = {
+		name = khornesstr0a # The Gods test me!
+		hidden_tooltip = {
+			character_event = {
+				id = wh_chaos_khorne.1
+				days = 3
+			}
+		}
+	}
+}
+
+# Fresh Meat
+character_event = {
+	id = wh_chaos_khorne.1
+	title = Weakling # Weakling
+	desc = khornesstr1 # Khorne abhors the weaklings that worship him for his might, prove you can stand tall on your own...
+	picture = "GFX_evt_daemons"
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = {
+			has_character_flag = duel
+		}
+	}
+
+	option = {
+		name = khornesstr1a # My life for Khorne!
+		save_event_target_as = duelist_a
+		set_character_flag = duel
+		# THE START
+		# Create the character to fight with
+		create_random_soldier = {
+			random_traits = yes
+			dynasty = none
+			religion = khorne
+			culture = ROOT
+			female = no
+			age = 16
+		}
+		# scope to character we created and send him duel init event
+		new_character = {
+			change_martial = 1
+			add_trait = brave
+			save_event_target_as = duelist_b
+			character_event = {
+				id = duelengine.1
+				days = 1
+			}
+		}
+		# THE END
+		hidden_tooltip = {
+			character_event = {
+				id = wh_chaos_khorne.110
+				days = 5
+			}
+		}
+	}
+
+	option = {
+		name = khornesstr1b # No, perhaps now is not the time...
+		add_trait = weak
+		set_character_flag = failed_Khorne
+	}
+}
+
+# A real challenge
+character_event = {
+	id = wh_chaos_khorne.2
+	title = SKULLS_FOR_THE_SKULL_THRONE # Skulls for the Skull Throne!
+	desc = khornesstr2 # Khorne sits upon his throne heaped in skulls, a new foe seeks to test you, a sacrifice must be made for the skull throne...
+	picture = "GFX_evt_daemons"
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = {
+			has_character_flag = duel
+		}
+	}
+
+	option = {
+		name = khornesstr2a # Khorne demands skulls...
+		set_character_flag = defeated_berserker
+		save_event_target_as = duelist_a
+		set_character_flag = duel
+		# THE START
+		# Create the character to fight with
+		create_random_soldier = {
+			random_traits = yes
+			dynasty = none
+			religion = khorne
+			culture = ROOT
+			female = no
+			age = 30
+		}
+		# scope to character we created and send him duel init event
+		new_character = {
+			hidden_tooltip = {
+				change_martial = 2
+				add_trait = brave
+				add_trait = wroth
+				add_trait = tall
+				add_trait = strong
+				add_trait = khorne_berserker
+				save_event_target_as = duelist_b
+				character_event = {
+					id = duelengine.1
+					days = 1
+				}
+			}
+		}
+		# THE END
+		hidden_tooltip = {
+			character_event = {
+				id = wh_chaos_khorne.120
+				days = 5
+			}
+		}
+		add_trait = wroth
+	}
+
+	option = {
+		name = khornesstr2b # I have already proven myself...
+		set_character_flag = tested_by_Khorne
+		add_trait = weak
+	}
+}
+
+# A taste of blood
+character_event = {
+	id = wh_chaos_khorne.3
+	title = BLOOD_FOR_THE_BLOOD_GOD # Blood for the blood god!
+	desc = khornesstr3 # You have killed a faithful servant of Khorne and now wear his skull as a trophy, but the god of blood still demands more...
+	picture = "GFX_evt_daemons"
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = {
+			has_character_flag = duel
+		}
+	}
+
+	option = {
+		name = khornesstr3a # Khorne's Vanguard
+		save_event_target_as = duelist_a
+		set_character_flag = duel
+		# THE START
+		# Create the character to fight with
+		create_random_soldier = {
+			dynasty = none
+			religion = khorne
+			culture = daemon_khorne
+			age = 30
+		}
+		# scope to character we created and send him duel init event
+		new_character = {
+			hidden_tooltip = {
+				change_martial = 4
+				add_trait = khorne_bloodletter
+				add_trait = cruel
+				add_trait = brave
+				add_trait = wroth
+				add_trait = tall
+				add_trait = strong
+				save_event_target_as = duelist_b
+				character_event = {
+					id = duelengine.1
+					days = 1
+				}
+			}
+		}
+		# THE END
+		hidden_tooltip = {
+			character_event = {
+				id = wh_chaos_khorne.130
+				days = 5
+			}
+			change_martial = 2
+		}
+	}
+
+	option = {
+		name = khornesstr3b # The foe is too strong...
+		set_character_flag = tested_by_Khorne
+		add_trait = weak
+	}
+}
+
+# win
+character_event = {
+	id = wh_chaos_khorne.4
+	title = BLOOD_FOR_THE_BLOOD_GOD # Blood for the blood god!
+	desc = khornesstr4 # You have proven that you need no one else to fight your foes, that your strength will carry the weight of Khorne's blood-thirst...
+	picture = "GFX_evt_khorne"
+	is_triggered_only = yes
+
+	option = {
+		name = khornesstr4a # My axe shall feast on my foes!
+		set_character_flag = tested_by_Khorne
+		wh_improve_strength_effect = yes
+		change_variable = {
+			which = "khorne_favor"
+			value = 1
+		}
+	}
+}
+
+# Khorne Berserker Events 10 - 20
+# became Berserker
+character_event = {
+	id = wh_chaos_khorne.10
+	desc = berserker0
+	picture = GFX_evt_viking_battle_oldgods
+	border = GFX_event_normal_frame_war
+	only_playable = yes
+	religion = khorne
+	min_age = 16
+	capable_only = yes
+	is_triggered_only = yes
+
+	trigger = {
+		is_alive = yes
+		NOT = {
+			trait = khorne_berserker
+		}
+		OR = {
+			trait = wroth
+			trait = aggressive_leader
+		}
+	}
+
+	weight_multiplier = {
+		factor = 1
+		modifier = {
+			factor = 1.5
+			trait = brave
+		}
+		modifier = {
+			factor = 1.75
+			trait = lunatic_3
+		}
+		modifier = {
+			factor = 1.5
+			trait = lunatic_2
+		}
+		modifier = {
+			factor = 1.25
+			trait = lunatic_1
+		}
+		modifier = {
+			factor = 1.5
+			trait = possessed
+		}
+		modifier = {
+			factor = 1.2
+			trait = drunkard
+		}
+		modifier = {
+			factor = 1.2
+			trait = cruel
+		}
+		modifier = {
+			is_strong_trigger = yes
+			factor = 1.2
+		}
+		modifier = {
+			factor = 0.5
+			trait = craven
+		}
+		modifier = {
+			trait = weak
+			factor = 0.8
+		}
+		modifier = {
+			factor = 0.7
+			trait = stressed
+		}
+		modifier = {
+			factor = 0.7
+			trait = depressed
+		}
+		modifier = {
+			factor = 0.8
+			trait = ill
+		}
+		modifier = {
+			factor = 0.8
+			trait = kind
+		}
+		modifier = {
+			factor = 0.5
+			trait = infirm
+		}
+		modifier = {
+			factor = 0.2
+			is_female = yes
+		}
+	}
+
+	option = {
+		name = berserker0A
+		add_trait = khorne_berserker
+	}
+}
+
+# Berserker is Maimed in battle
+character_event = {
+	id = wh_chaos_khorne.11
+	desc = berserker1
+	picture = GFX_evt_viking_battle_oldgods
+	border = GFX_event_normal_frame_war
+	only_playable = yes
+	religion = khorne
+	min_age = 16
+	capable_only = yes
+	is_triggered_only = yes
+
+	trigger = {
+		trait = khorne_berserker
+		NOT = {
+			trait = maimed
+		}
+		is_alive = yes
+	}
+
+	weight_multiplier = {
+		factor = 1
+		modifier = {
+			factor = 5
+			has_character_modifier = proving_bravery
+		}
+		modifier = {
+			factor = 1.5
+			trait = brave
+		}
+		modifier = {
+			factor = 0.5
+			trait = craven
+		}
+		modifier = {
+			trait = clubfooted
+			factor = 1.25
+		}
+		modifier = {
+			trait = hunchback
+			factor = 1.25
+		}
+		modifier = {
+			trait = lisp
+			factor = 1.1
+		}
+		modifier = {
+			trait = stutter
+			factor = 1.1
+		}
+		modifier = {
+			trait = dwarf
+			factor = 1.25
+		}
+		modifier = {
+			trait = genius
+			factor = 0.9
+		}
+		modifier = {
+			trait = quick
+			factor = 0.9
+		}
+		modifier = {
+			trait = slow
+			factor = 2.0
+		}
+		modifier = {
+			trait = imbecile
+			factor = 3.0
+		}
+		modifier = {
+			trait = inbred
+			factor = 3.0
+		}
+		modifier = {
+			is_strong_trigger = yes
+			factor = 0.7
+		}
+		modifier = {
+			trait = weak
+			factor = 2.5
+		}
+		modifier = {
+			factor = 1.25
+			trait = stressed
+		}
+		modifier = {
+			factor = 1.25
+			trait = depressed
+		}
+		modifier = {
+			factor = 1.75
+			trait = lunatic_3
+		}
+		modifier = {
+			factor = 1.5
+			trait = lunatic_2
+		}
+		modifier = {
+			factor = 1.25
+			trait = lunatic_1
+		}
+		modifier = {
+			factor = 1.5
+			trait = possessed
+		}
+		modifier = {
+			factor = 1.1
+			trait = ill
+		}
+		modifier = {
+			factor = 1.25
+			trait = pneumonic
+		}
+		modifier = {
+			factor = 1.25
+			trait = syphilitic
+		}
+		modifier = {
+			factor = 2.0
+			trait = leper
+		}
+		modifier = {
+			factor = 1.15
+			trait = wounded
+		}
+		modifier = {
+			factor = 2.0
+			trait = infirm
+		}
+		modifier = {
+			factor = 3.0
+			trait = incapable
+		}
+		modifier = {
+			factor = 1.1
+			trait = drunkard
+		}
+		modifier = {
+			factor = 1.1
+			trait = has_tuberculosis
+		}
+		modifier = {
+			factor = 1.1
+			trait = has_typhoid_fever
+		}
+		modifier = {
+			factor = 1.5
+			trait = has_typhus
+		}
+		modifier = {
+			factor = 1.5
+			trait = has_bubonic_plague
+		}
+		modifier = {
+			factor = 1.1
+			trait = has_measles
+		}
+		modifier = {
+			factor = 1.1
+			trait = has_small_pox
+		}
+	}
+
+	option = {
+		name = berserker1A
+		add_trait = maimed
+	}
+}
+
+# Berserker is Wounded in battle
+character_event = {
+	id = wh_chaos_khorne.12
+	desc = berserker2
+	picture = GFX_evt_viking_battle_oldgods
+	border = GFX_event_normal_frame_war
+	only_playable = yes
+	religion = khorne
+	min_age = 16
+	capable_only = yes
+	is_triggered_only = yes
+
+	trigger = {
+		trait = khorne_berserker
+		nor = {
+			trait = wounded
+			trait = maimed
+		}
+		is_alive = yes
+	}
+
+	weight_multiplier = {
+		factor = 1
+		modifier = {
+			factor = 5
+			has_character_modifier = proving_bravery
+		}
+		modifier = {
+			factor = 1.5
+			trait = brave
+		}
+		modifier = {
+			factor = 0.5
+			trait = craven
+		}
+		modifier = {
+			trait = clubfooted
+			factor = 1.25
+		}
+		modifier = {
+			trait = hunchback
+			factor = 1.25
+		}
+		modifier = {
+			trait = lisp
+			factor = 1.1
+		}
+		modifier = {
+			trait = stutter
+			factor = 1.1
+		}
+		modifier = {
+			trait = dwarf
+			factor = 1.25
+		}
+		modifier = {
+			trait = genius
+			factor = 0.9
+		}
+		modifier = {
+			trait = quick
+			factor = 0.9
+		}
+		modifier = {
+			trait = slow
+			factor = 2.0
+		}
+		modifier = {
+			trait = imbecile
+			factor = 3.0
+		}
+		modifier = {
+			trait = inbred
+			factor = 3.0
+		}
+		modifier = {
+			is_strong_trigger = yes
+			factor = 0.7
+		}
+		modifier = {
+			trait = weak
+			factor = 2.5
+		}
+		modifier = {
+			factor = 1.25
+			trait = stressed
+		}
+		modifier = {
+			factor = 1.25
+			trait = depressed
+		}
+		modifier = {
+			factor = 1.75
+			trait = lunatic_3
+		}
+		modifier = {
+			factor = 1.5
+			trait = lunatic_2
+		}
+		modifier = {
+			factor = 1.25
+			trait = lunatic_1
+		}
+		modifier = {
+			factor = 1.5
+			trait = possessed
+		}
+		modifier = {
+			factor = 1.1
+			trait = ill
+		}
+		modifier = {
+			factor = 1.25
+			trait = pneumonic
+		}
+		modifier = {
+			factor = 1.25
+			trait = syphilitic
+		}
+		modifier = {
+			factor = 2.0
+			trait = leper
+		}
+		modifier = {
+			factor = 1.25
+			trait = maimed
+		}
+		modifier = {
+			factor = 2.0
+			trait = infirm
+		}
+		modifier = {
+			factor = 3.0
+			trait = incapable
+		}
+		modifier = {
+			factor = 1.1
+			trait = drunkard
+		}
+		modifier = {
+			factor = 1.1
+			trait = has_tuberculosis
+		}
+		modifier = {
+			factor = 1.1
+			trait = has_typhoid_fever
+		}
+		modifier = {
+			factor = 1.5
+			trait = has_typhus
+		}
+		modifier = {
+			factor = 1.5
+			trait = has_bubonic_plague
+		}
+		modifier = {
+			factor = 1.1
+			trait = has_measles
+		}
+		modifier = {
+			factor = 1.1
+			trait = has_small_pox
+		}
+	}
+
+	option = {
+		name = berserker1A
+		add_trait = wounded
+	}
+}
+
+# Berserker is Killed in battle
+character_event = {
+	id = wh_chaos_khorne.13
+	desc = berserker3
+	picture = GFX_evt_viking_battle_oldgods
+	border = GFX_event_normal_frame_war
+	only_playable = yes
+	religion = khorne
+	min_age = 16
+	capable_only = yes
+	is_triggered_only = yes
+
+	trigger = {
+		trait = khorne_berserker
+	}
+
+	weight_multiplier = {
+		factor = 1
+		modifier = {
+			factor = 1.5
+			trait = brave
+		}
+		modifier = {
+			factor = 0.5
+			trait = craven
+		}
+		modifier = {
+			trait = clubfooted
+			factor = 1.25
+		}
+		modifier = {
+			trait = hunchback
+			factor = 1.25
+		}
+		modifier = {
+			trait = lisp
+			factor = 1.1
+		}
+		modifier = {
+			trait = stutter
+			factor = 1.1
+		}
+		modifier = {
+			trait = dwarf
+			factor = 1.25
+		}
+		modifier = {
+			trait = genius
+			factor = 0.9
+		}
+		modifier = {
+			trait = quick
+			factor = 0.9
+		}
+		modifier = {
+			trait = slow
+			factor = 2.0
+		}
+		modifier = {
+			trait = imbecile
+			factor = 3.0
+		}
+		modifier = {
+			trait = inbred
+			factor = 3.0
+		}
+		modifier = {
+			is_strong_trigger = yes
+			factor = 0.7
+		}
+		modifier = {
+			trait = weak
+			factor = 2.5
+		}
+		modifier = {
+			factor = 1.25
+			trait = stressed
+		}
+		modifier = {
+			factor = 1.25
+			trait = depressed
+		}
+		modifier = {
+			factor = 1.75
+			trait = lunatic_3
+		}
+		modifier = {
+			factor = 1.5
+			trait = lunatic_2
+		}
+		modifier = {
+			factor = 1.25
+			trait = lunatic_1
+		}
+		modifier = {
+			factor = 1.5
+			trait = possessed
+		}
+		modifier = {
+			factor = 1.1
+			trait = ill
+		}
+		modifier = {
+			factor = 1.25
+			trait = pneumonic
+		}
+		modifier = {
+			factor = 1.25
+			trait = syphilitic
+		}
+		modifier = {
+			factor = 2.0
+			trait = leper
+		}
+		modifier = {
+			factor = 1.15
+			trait = wounded
+		}
+		modifier = {
+			factor = 1.25
+			trait = maimed
+		}
+		modifier = {
+			factor = 2.0
+			trait = infirm
+		}
+		modifier = {
+			factor = 3.0
+			trait = incapable
+		}
+		modifier = {
+			factor = 1.1
+			trait = drunkard
+		}
+		modifier = {
+			factor = 1.1
+			trait = has_tuberculosis
+		}
+		modifier = {
+			factor = 1.1
+			trait = has_typhoid_fever
+		}
+		modifier = {
+			factor = 1.5
+			trait = has_typhus
+		}
+		modifier = {
+			factor = 1.5
+			trait = has_bubonic_plague
+		}
+		modifier = {
+			factor = 1.1
+			trait = has_measles
+		}
+		modifier = {
+			factor = 1.1
+			trait = has_small_pox
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				is_invincible_trigger = yes
+			}
+			antideath_effect = yes
+			break = yes
+		}
+		death = {
+			death_reason = death_battle
+			killer = FROMFROM
+		}
+		FROMFROM = {
+			character_event = {
+				id = 249
+			}
+			set_character_flag = temp_battle_kill_242
+		}
+		FROM = {
+			if = {
+				limit = {
+					NOT = {
+						has_character_flag = temp_battle_kill_242
+					}
+				}
+				character_event = {
+					id = 249
+				}
+			}
+		}
+		FROMFROM = {
+			clr_character_flag = temp_battle_kill_242
+		}
+	}
+
+	option = {
+		name = berserker3A
+	}
+}
+
+# Berserker kills scores of enemies in battle
+character_event = {
+	id = wh_chaos_khorne.14
+	desc = berserker4
+	picture = GFX_evt_viking_battle_oldgods
+	border = GFX_event_normal_frame_war
+	only_playable = yes
+	religion = khorne
+	min_age = 16
+	capable_only = yes
+	is_triggered_only = yes
+
+	trigger = {
+		trait = khorne_berserker
+	}
+
+	weight_multiplier = {
+		factor = 1
+		modifier = {
+			factor = 1.5
+			trait = brave
+		}
+		modifier = {
+			factor = 0.5
+			trait = craven
+		}
+		modifier = {
+			trait = genius
+			factor = 1.2
+		}
+		modifier = {
+			trait = quick
+			factor = 1.1
+		}
+		modifier = {
+			trait = slow
+			factor = 0.9
+		}
+		modifier = {
+			trait = imbecile
+			factor = 0.2
+		}
+		modifier = {
+			trait = inbred
+			factor = 0.2
+		}
+		modifier = {
+			is_strong_trigger = yes
+			factor = 1.5
+		}
+		modifier = {
+			trait = weak
+			factor = 0.8
+		}
+		modifier = {
+			factor = 0.8
+			trait = stressed
+		}
+		modifier = {
+			factor = 0.8
+			trait = depressed
+		}
+		modifier = {
+			factor = 0.5
+			trait = lunatic_3
+		}
+		modifier = {
+			factor = 0.75
+			trait = lunatic_2
+		}
+		modifier = {
+			factor = 0.95
+			trait = lunatic_1
+		}
+		modifier = {
+			factor = 0.75
+			trait = possessed
+		}
+		modifier = {
+			factor = 0.9
+			trait = ill
+		}
+		modifier = {
+			factor = 0.8
+			trait = pneumonic
+		}
+		modifier = {
+			factor = 0.8
+			trait = syphilitic
+		}
+		modifier = {
+			factor = 0.5
+			trait = leper
+		}
+		modifier = {
+			factor = 0.9
+			trait = wounded
+		}
+		modifier = {
+			factor = 0.8
+			trait = maimed
+		}
+		modifier = {
+			factor = 0.5
+			trait = infirm
+		}
+		modifier = {
+			factor = 0.4
+			trait = incapable
+		}
+		modifier = {
+			factor = 0.5
+			trait = drunkard
+		}
+		modifier = {
+			factor = 0.5
+			trait = has_tuberculosis
+		}
+		modifier = {
+			factor = 0.5
+			trait = has_typhoid_fever
+		}
+		modifier = {
+			factor = 0.5
+			trait = has_typhus
+		}
+		modifier = {
+			factor = 0.5
+			trait = has_bubonic_plague
+		}
+		modifier = {
+			factor = 0.5
+			trait = has_measles
+		}
+		modifier = {
+			factor = 0.5
+			trait = has_small_pox
+		}
+		modifier = {
+			factor = 0.5
+			trait = flu
+		}
+		modifier = {
+			factor = 0.5
+			trait = dysentery
+		}
+		modifier = {
+			factor = 0.5
+			trait = gout
+		}
+		modifier = {
+			factor = 0.5
+			trait = food_poisoning
+		}
+		modifier = {
+			factor = 0.5
+			trait = rabies
+		}
+		modifier = {
+			factor = 0.5
+			trait = cancer
+		}
+		modifier = {
+			factor = 0.5
+			trait = scurvy
+		}
+	}
+
+	option = {
+		name = berserker4A
+		prestige = 200
+		change_martial = 2
+		change_variable = {
+			which = "khorne_favor"
+			value = 1
+		}
+	}
+}
+
+# Berserker goes berserk against Courtier
+character_event = {
+	id = wh_chaos_khorne.15
+	desc = berserker5
+	picture = GFX_evt_viking_throneroom_oldgods
+	border = GFX_event_normal_frame_war
+	only_playable = yes
+	religion = khorne
+	min_age = 16
+	capable_only = yes
+	is_triggered_only = yes
+
+	option = {
+		name = berserker5A
+		random_list = {
+			60 = {
+				character_event = {
+					id = wh_chaos_khorne.16
+					days = 1
+				}
+			}
+			40 = {
+				character_event = {
+					id = wh_chaos_khorne.17
+					days = 1
+				}
+			}
+		}
+	}
+}
+
+# Courtier beaten
+character_event = {
+	id = wh_chaos_khorne.16
+	desc = berserker6
+	picture = GFX_evt_viking_throneroom_oldgods
+	border = GFX_event_normal_frame_war
+	is_triggered_only = yes
+	hide_from = yes
+
+	option = {
+		name = berserker6A
+		FROMFROM = {
+			add_trait = wounded
+			opinion = {
+				modifier = opinion_went_berserk
+				who = ROOT
+			}
+		}
+	}
+}
+
+# Courtier spared
+character_event = {
+	id = wh_chaos_khorne.17
+	desc = berserker7
+	picture = GFX_evt_viking_throneroom_oldgods
+	border = GFX_event_normal_frame_war
+	is_triggered_only = yes
+	hide_from = yes
+
+	option = {
+		name = berserker7A
+		piety = -20
+	}
+}
+
+# Favored warrior dies (ping)
+character_event = {
+	id = wh_chaos_khorne.19
+	hide_window = yes
+	religion = khorne
+	is_triggered_only = yes
+
+	trigger = {
+		death_reason = death_battle
+	}
+
+	immediate = {
+		long_character_event = {
+			id = wh_chaos_khorne.20
+		}
+	}
+}
+
+long_character_event = {
+	id = wh_chaos_khorne.20
+	title = EVTTITLE_berserker.10
+	desc = {
+		text = EVTDESCA_berserker.10
+		trigger = {
+			is_female = yes
+		}
+	}
+	desc = {
+		text = EVTDESCB_berserker.10
+		trigger = {
+			is_female = no
+		}
+	}
+	picture = "GFX_evt_khorne"
+	border = GFX_event_normal_frame_war
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAberserker.10
+	}
+}
+
+# khorne tournament 100 - 150 on_decade_pulse
+# Notify Host the event will soon be prepared
+character_event = {
+	id = wh_chaos_khorne.100
+	desc = EVTDESCschaosfl1
+	picture = GFX_evt_chaos_march
+	only_playable = yes
+	religion = khorne
+	only_independent = yes
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAschaosfl1
+		hidden_tooltip = {
+			long_character_event = {
+				id = wh_chaos_khorne.110
+				days = 10
+				random = 10
+			}
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# General cleanup event to remove flags and other stuff after the tournament has been completed
+character_event = {
+	id = wh_chaos_khorne.101
+	desc = EVTDESCschaosfl1900
+	picture = GFX_evt_chaos_march
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAschaosfl1900
+		remove_trait = questing
+		hidden_tooltip = {
+			set_variable = {
+				which = "khtournament_player"
+				value = 0
+			}
+			diplomatic_immunity = no
+			clr_character_flag = do_not_disturb
+			clr_character_flag = khornetournament_participant
+			clr_character_flag = kh_tournament_host
+			clr_character_flag = brawling_loser
+			clr_character_flag = kh_fight_1
+			clr_character_flag = kh_fight_2
+			clr_character_flag = kh_fight_3
+			clr_character_flag = kh_fight_4
+			clr_character_flag = kh_fight_5
+			clr_character_flag = kh_fight_6
+			clr_character_flag = kh_fight_7
+			clr_character_flag = kh_fight_8
+			clr_character_flag = kh_fight_9
+			clr_character_flag = kh_fight_10
+			clr_character_flag = kh_fight_11
+		}
+	}
+}
+
+# Invitation to Brawling contest
+letter_event = {
+	id = wh_chaos_khorne.102
+	desc = EVTDESCschaosfl1001
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAschaosfl1001
+		change_variable = {
+			which = "khorne_favor"
+			value = 2
+		}
+		set_character_flag = khornetournament_participant
+		hidden_tooltip = {
+			FROM = {
+				letter_event = {
+					id = wh_chaos_khorne.103 days = 1 random = 1
+				}
+			}
+		}
+		ai_chance = {
+			factor = 70
+		}
+	}
+
+	option = {
+		name = EVTOPTBschaosfl1001
+		change_variable = {
+			which = "khorne_favor"
+			value = -2
+		}
+		hidden_tooltip = {
+			FROM = {
+				letter_event = {
+					id = wh_chaos_khorne.104
+					days = 1
+					random = 1
+				}
+			}
+		}
+		ai_chance = {
+			factor = 30
+			modifier = {
+				factor = 0.5
+				trait = ambitious
+			}
+			modifier = {
+				factor = 0.5
+				trait = brave
+			}
+			modifier = {
+				factor = 0.75
+				trait = wroth
+			}
+			modifier = {
+				factor = 0.75
+				trait = proud
+			}
+			modifier = {
+				factor = 2
+				trait = wounded
+			}
+			modifier = {
+				factor = 2.5
+				trait = maimed
+			}
+			modifier = {
+				factor = 2.5
+				trait = blinded
+			}
+			modifier = {
+				factor = 2
+				trait = craven
+			}
+			modifier = {
+				factor = 0.5
+				trait = champion_khorne
+			}
+			modifier = {
+				factor = 0.15
+				trait = chosen_khorne
+			}
+			modifier = {
+				factor = 0
+				trait = prince_khorne
+			}
+			modifier = {
+				factor = 0.25
+				NOT = {
+					FROM = {
+						check_variable = {
+							which = "khtournament_player"
+							value = 3
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+# Notify Host guest will participate
+letter_event = {
+	id = wh_chaos_khorne.103
+	desc = EVTDESCschaosfl1002
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAschaosfl1002
+		hidden_tooltip = {
+			change_variable = {
+				which = "khtournament_player"
+				value = 1
+			}
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# Notify Host guest will not participate
+letter_event = {
+	id = wh_chaos_khorne.104
+	desc = EVTDESCschaosfl1003
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAschaosfl1003
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# The Tournament is about to start
+long_character_event = {
+	id = wh_chaos_khorne.110
+	# Make sure there's a bare minimum of challengers to start
+	desc = {
+		text = EVTDESCAschaosfl2
+		trigger = {
+			check_variable = {
+				which = "khtournament_player"
+				value = 3
+			}
+		}
+	}
+	# Make sure there's a bare minimum of challengers to start
+	desc = {
+		text = EVTDESCBschaosfl2
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = "khtournament_player"
+					value = 3
+				}
+			}
+		}
+	}
+	picture = GFX_evt_chaos_champions
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAschaosfl2
+		trigger = {
+			check_variable = {
+				which = "khtournament_player"
+				value = 3
+			}
+		}
+		add_trait = questing
+		change_variable = {
+			which = "khorne_favor"
+			value = 1
+		}
+		hidden_tooltip = {
+			set_variable = {
+				which = "khtournament_player"
+				value = 0
+			}
+			any_realm_character = {
+				limit = {
+					NOT = {
+						has_character_flag = kh_tournament_host
+					}
+					has_character_flag = khornetournament_participant
+				}
+				long_character_event = {
+					id = wh_chaos_khorne.111
+				}
+			}
+			character_event = {
+				id = wh_chaos_khorne.112
+			}
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+
+	option = {
+		name = EVTOPTBschaosfl2
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = "khtournament_player"
+					value = 3
+				}
+			}
+		}
+		prestige = -250
+		change_variable = {
+			which = "khorne_favor"
+			value = -1
+		}
+		hidden_tooltip = {
+			character_event = {
+				id = wh_chaos_khorne.101
+			}
+		}
+		hidden_tooltip = {
+			set_variable = {
+				which = "khtournament_player"
+				value = 0
+			}
+			any_realm_character = {
+				limit = {
+					NOT = {
+						has_character_flag = kh_tournament_host
+					}
+					has_character_flag = khornetournament_participant
+				}
+				character_event = {
+					id = wh_chaos_khorne.115
+					days = 7
+					random = 10
+				}
+			}
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# The Tournament is about to start - Notify other fighters
+long_character_event = {
+	id = wh_chaos_khorne.111
+	desc = EVTDESCschaosfl2001
+	picture = GFX_evt_chaos_champions
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAschaosfl2001
+		add_trait = questing
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# Brawl host starts with first fight
+character_event = {
+	id = wh_chaos_khorne.112
+	desc = EVTDESCschaosfl2002
+	picture = GFX_evt_chaos_champions
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAschaosfl2002
+		hidden_tooltip = {
+			random_realm_character = {
+				limit = {
+					NOT = {
+						character = ROOT
+					}
+					has_character_flag = khornetournament_participant
+				}
+				character_event = {
+					id = wh_chaos_khorne.113
+				}
+			}
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+character_event = {
+	id = wh_chaos_khorne.113
+	desc = EVTDESCschaosfl2003
+	picture = GFX_evt_chaos_champions
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAschaosfl2003
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = wh_chaos_khorne.114
+				}
+			}
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+character_event = {
+	id = wh_chaos_khorne.114
+	desc = EVTDESCschaosfl2004
+	picture = GFX_evt_chaos_champions
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAschaosfl2004
+		hidden_tooltip = {
+			FROM = {
+				character_event = {
+					id = wh_chaos_khorne.120
+				}
+			}
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# Not enough challengers, the tournament is cancelled
+character_event = {
+	id = wh_chaos_khorne.115
+	desc = EVTDESCschaosfl2005
+	picture = GFX_evt_chaos_champions
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAschaosfl2005
+		change_variable = {
+			which = "khorne_favor"
+			value = -1
+		}
+		hidden_tooltip = {
+			character_event = {
+				id = wh_chaos_khorne.101
+			}
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# Hidden fighting event to determine winner
+character_event = {
+	id = wh_chaos_khorne.120
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		save_event_target_as = duelist_a
+		save_event_target_as = kh_fighter_1
+		set_character_flag = duel
+		set_character_flag = duel_effect_noescape
+		set_character_flag = duel_no_death
+		set_character_flag = duel_wh_chaos_khorne.120
+		FROM = {
+			save_event_target_as = duelist_b
+			save_event_target_as = kh_fighter_2
+			set_character_flag = duel
+			set_character_flag = duel_effect_noescape
+			set_character_flag = duel_no_death
+			set_character_flag = duel_wh_chaos_khorne.120
+			character_event = {
+				id = duelengine.1
+			}
+		}
+		# To give random flavour text to the fights
+		random_list = {
+			15 = {
+				set_character_flag = kh_fight_1
+				FROM = {
+					set_character_flag = kh_fight_1
+				}
+			}
+			15 = {
+				set_character_flag = kh_fight_2
+				FROM = {
+					set_character_flag = kh_fight_2
+				}
+			}
+			15 = {
+				set_character_flag = kh_fight_3
+				FROM = {
+					set_character_flag = kh_fight_3
+				}
+			}
+			15 = {
+				set_character_flag = kh_fight_4
+				FROM = {
+					set_character_flag = kh_fight_4
+				}
+			}
+			15 = {
+				set_character_flag = kh_fight_5
+				FROM = {
+					set_character_flag = kh_fight_5
+				}
+			}
+			15 = {
+				set_character_flag = kh_fight_6
+				FROM = {
+					set_character_flag = kh_fight_6
+				}
+			}
+			10 = {
+				set_character_flag = kh_fight_7
+				FROM = {
+					set_character_flag = kh_fight_7
+				}
+			}
+			10 = {
+				set_character_flag = kh_fight_8
+				FROM = {
+					set_character_flag = kh_fight_8
+				}
+			}
+			10 = {
+				set_character_flag = kh_fight_9
+				FROM = {
+					set_character_flag = kh_fight_9
+				}
+			}
+			10 = {
+				set_character_flag = kh_fight_10
+				FROM = {
+					set_character_flag = kh_fight_10
+				}
+			}
+			10 = {
+				set_character_flag = kh_fight_11
+				FROM = {
+					set_character_flag = kh_fight_11
+				}
+			}
+		}
+	}
+}
+
+# Winning Warrior event
+long_character_event = {
+	id = wh_chaos_khorne.121
+	desc = {
+		text = EVTDESCAschaosfl3001
+		trigger = {
+			event_target:kh_fighter_1 = {
+				character = ROOT
+				has_character_flag = kh_fight_1
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCBschaosfl3001
+		trigger = {
+			event_target:kh_fighter_1 = {
+				character = ROOT
+				has_character_flag = kh_fight_2
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCCschaosfl3001
+		trigger = {
+			event_target:kh_fighter_1 = {
+				character = ROOT
+				has_character_flag = kh_fight_3
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCDschaosfl3001
+		trigger = {
+			event_target:kh_fighter_2 = {
+				character = ROOT
+				has_character_flag = kh_fight_1
+			}
+		}
+
+	}
+	desc = {
+		text = EVTDESCEschaosfl3001
+		trigger = {
+			event_target:kh_fighter_2 = {
+				character = ROOT
+				has_character_flag = kh_fight_2
+			}
+		}
+
+	}
+	desc = {
+		text = EVTDESCFschaosfl3001
+		trigger = {
+			event_target:kh_fighter_2 = {
+				character = ROOT
+				has_character_flag = kh_fight_3
+			}
+		}
+
+	}
+	desc = {
+		text = EVTDESCGschaosfl3001
+		trigger = {
+			event_target:kh_fighter_1 = {
+				character = ROOT
+				has_character_flag = kh_fight_4
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCHschaosfl3001
+		trigger = {
+			event_target:kh_fighter_1 = {
+				character = ROOT
+				has_character_flag = kh_fight_5
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCIschaosfl3001
+		trigger = {
+			event_target:kh_fighter_1 = {
+				character = ROOT
+				has_character_flag = kh_fight_6
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCLschaosfl3001
+		trigger = {
+			event_target:kh_fighter_1 = {
+				character = ROOT
+				has_character_flag = kh_fight_7
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCMschaosfl3001
+		trigger = {
+			event_target:kh_fighter_2 = {
+				character = ROOT
+				has_character_flag = kh_fight_4
+			}
+		}
+
+	}
+	desc = {
+		text = EVTDESCNschaosfl3001
+		trigger = {
+			event_target:kh_fighter_2 = {
+				character = ROOT
+				has_character_flag = kh_fight_5
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCOschaosfl3001
+		trigger = {
+			event_target:kh_fighter_2 = {
+				character = ROOT
+				has_character_flag = kh_fight_6
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCPschaosfl3001
+		trigger = {
+			event_target:kh_fighter_2 = {
+				character = ROOT
+				has_character_flag = kh_fight_7
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCQschaosfl3001
+		trigger = {
+			event_target:kh_fighter_1 = {
+				character = ROOT
+				has_character_flag = kh_fight_8
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCRschaosfl3001
+		trigger = {
+			event_target:kh_fighter_1 = {
+				character = ROOT
+				has_character_flag = kh_fight_9
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCSschaosfl3001
+		trigger = {
+			event_target:kh_fighter_1 = {
+				character = ROOT
+				has_character_flag = kh_fight_10
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCTschaosfl3001
+		trigger = {
+			event_target:kh_fighter_1 = {
+				character = ROOT
+				has_character_flag = kh_fight_11
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCUschaosfl3001
+		trigger = {
+			event_target:kh_fighter_2 = {
+				character = ROOT
+				has_character_flag = kh_fight_8
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCVschaosfl3001
+		trigger = {
+			event_target:kh_fighter_2 = {
+				character = ROOT
+				has_character_flag = kh_fight_9
+			}
+		}
+
+	}
+	desc = {
+		text = EVTDESCWschaosfl3001
+		trigger = {
+			event_target:kh_fighter_2 = {
+				character = ROOT
+				has_character_flag = kh_fight_10
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCXschaosfl3001
+		trigger = {
+			event_target:kh_fighter_2 = {
+				character = ROOT
+				has_character_flag = kh_fight_11
+			}
+		}
+	}
+	picture = GFX_evt_chaos_champions
+	is_triggered_only = yes
+
+	trigger = {
+		is_alive = yes
+	}
+
+	immediate = {
+		clr_character_flag = duel_wh_chaos_khorne.120
+		random = {
+			chance = 5
+			add_trait = wounded
+		}
+	}
+
+	option = {
+		name = EVTOPTAschaosfl3001
+		prestige = 25
+		hidden_tooltip = {
+			# send event to looooser
+ 			if = {
+				limit = {
+					event_target:kh_fighter_1 = {
+						character = ROOT
+					}
+				}
+				event_target:kh_fighter_2 = {
+					long_character_event = {
+						id = wh_chaos_khorne.122
+					}
+				}
+			}
+ 			if = {
+				limit = {
+					event_target:kh_fighter_2 = {
+						character = ROOT
+					}
+				}
+				event_target:kh_fighter_1 = {
+					long_character_event = {
+						id = wh_chaos_khorne.122
+					}
+				}
+			}
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# Loser Warrior event
+long_character_event = {
+	id = wh_chaos_khorne.122
+	desc = {
+		text = EVTDESCAschaosfl3002
+		trigger = {
+			FROM = {
+				has_character_flag = kh_fight_1
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCBschaosfl3002
+		trigger = {
+			FROM = {
+				has_character_flag = kh_fight_2
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCCschaosfl3002
+		trigger = {
+			FROM = {
+				has_character_flag = kh_fight_3
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCDschaosfl3002
+		trigger = {
+			FROM = {
+				has_character_flag = kh_fight_4
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCEschaosfl3002
+		trigger = {
+			FROM = {
+				has_character_flag = kh_fight_5
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCFschaosfl3002
+		trigger = {
+			FROM = {
+				has_character_flag = kh_fight_6
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCGschaosfl3002
+		trigger = {
+			FROM = {
+				has_character_flag = kh_fight_7
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCHschaosfl3002
+		trigger = {
+			FROM = {
+				has_character_flag = kh_fight_8
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCIschaosfl3002
+		trigger = {
+			FROM = {
+				has_character_flag = kh_fight_9
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCLschaosfl3002
+		trigger = {
+			FROM = {
+				has_character_flag = kh_fight_10
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCMschaosfl3002
+		trigger = {
+			FROM = {
+				has_character_flag = kh_fight_11
+			}
+		}
+	}
+	picture = GFX_evt_chaos_champions
+
+	immediate = {
+		clr_character_flag = duel_wh_chaos_khorne.120
+		random = {
+			chance = 50
+			add_trait = wounded
+		}
+		random = {
+			chance = 5
+			add_trait = maimed
+		}
+	}
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAschaosfl3002
+		change_variable = {
+			which = "khorne_favor"
+			value = -2
+		}
+		clr_character_flag = khornetournament_participant
+		set_character_flag = brawling_loser
+		hidden_tooltip = {
+			if = {
+				limit = {
+					is_invincible_trigger = yes
+				}
+				antideath_effect = yes
+				break = yes
+			}
+			death = {
+				death_reason = death_duel
+				killer = FROM
+			}
+ 			if = {
+				limit = {
+					event_target:kh_fighter_2 = {
+						character = ROOT
+					}
+				}
+				clear_event_target = kh_fighter_2
+				FROM = {
+					clear_event_target = kh_fighter_1
+				}
+			}
+ 			if = {
+				limit = {
+					event_target:kh_fighter_1 = {
+						character = ROOT
+					}
+				}
+				clear_event_target = kh_fighter_1
+				FROM = {
+					clear_event_target = kh_fighter_2
+				}
+			}
+			FROM = {
+				clr_character_flag = kh_fight_1
+				clr_character_flag = kh_fight_2
+				clr_character_flag = kh_fight_3
+				clr_character_flag = kh_fight_4
+				clr_character_flag = kh_fight_5
+				clr_character_flag = kh_fight_6
+				clr_character_flag = kh_fight_7
+				clr_character_flag = kh_fight_8
+				clr_character_flag = kh_fight_9
+				clr_character_flag = kh_fight_10
+				clr_character_flag = kh_fight_11
+			}
+			clr_character_flag = kh_fight_1
+			clr_character_flag = kh_fight_2
+			clr_character_flag = kh_fight_3
+			clr_character_flag = kh_fight_4
+			clr_character_flag = kh_fight_5
+			clr_character_flag = kh_fight_6
+			clr_character_flag = kh_fight_7
+			clr_character_flag = kh_fight_8
+			clr_character_flag = kh_fight_9
+			clr_character_flag = kh_fight_10
+			clr_character_flag = kh_fight_11
+			# If only FROM is left, she is the winner, inform her
+ 			if = {
+				limit = {
+					top_liege = {
+						any_realm_character = {
+							NOT = {
+								has_character_flag = brawling_loser
+							}
+							has_character_flag = khornetournament_participant
+							NOT = {
+								character = FROM
+							}
+							NOT = {
+								character = ROOT
+							}
+						}
+					}
+				}
+				FROM = {
+					character_event = {
+						id = wh_chaos_khorne.123
+					}
+				}
+				break = yes
+			}
+			# If only FROM is left, she is the winner, inform her
+			FROM = {
+				long_character_event = {
+					id = wh_chaos_khorne.130
+				}
+			}
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# You won, but there are other challengers
+character_event = {
+	id = wh_chaos_khorne.123
+	desc = EVTDESCschaosfl3003
+	picture = GFX_evt_chaos_champions
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAschaosfl3003
+		change_variable = {
+			which = "khorne_favor"
+			value = 2
+		}
+		hidden_tooltip = {
+ 			random_realm_character = {
+				limit = {
+					has_character_flag = khornetournament_participant
+					NOT = {
+						character = ROOT
+						has_character_flag = brawling_loser
+					}
+				}
+				# scope to second warrior
+				character_event = {
+					id = wh_chaos_khorne.113
+				}
+			}
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# You won the tournament
+long_character_event = {
+	id = wh_chaos_khorne.130
+	desc = {
+		text = EVTDESCAschaosfl4
+		# Winner is not the host
+		trigger = {
+			NOT = {
+				has_character_flag = kh_tournament_host
+			}
+		}
+	}
+	desc = {
+		text = EVTDESCBschaosfl4
+		# Winner is the host
+		trigger = {
+			has_character_flag = kh_tournament_host
+		}
+	}
+	picture = GFX_evt_chaos_champions
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAschaosfl4
+		change_variable = {
+			which = "khorne_favor"
+			value = 10
+		}
+		wealth = 45
+		prestige = 750
+		piety = 250
+		hidden_tooltip = {
+			location = {
+				ROOT = {
+					spawn_unit = {
+						cannot_inherit = yes
+						province = PREV
+						owner = ROOT
+						troops = {
+							light_infantry = {
+								500 500
+							}
+							heavy_infantry = {
+								200 200
+							}
+						}
+					}
+				}
+			}
+			random = {
+				chance = 50
+				remove_trait = content
+			}
+			random_list = {
+				# Became Brave
+				15 = {
+					character_event = {
+						id = wh_chaos_khorne.131
+						days = 6
+						random = 6
+					}
+				}
+				# Became Stronger
+				6 = {
+					character_event = {
+						id = wh_chaos_khorne.132
+						days = 6
+						random = 6
+					}
+				}
+				# Became Wroth
+				6 = {
+					character_event = {
+						id = wh_chaos_khorne.133
+						days = 6
+						random = 6
+					}
+				}
+				# Khorne's favour
+				1 = {
+					character_event = {
+						id = wh_chaos_khorne.134
+						days = 1
+						random = 2
+					}
+				}
+				# Nothing
+				72 = {
+				}
+			}
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# Became brave during the tournament
+character_event = {
+	id = wh_chaos_khorne.131
+	desc = EVTDESCAschaosfl5001
+	picture = GFX_evt_chaos_champions
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAschaosfl5001
+		if = {
+			limit = {
+				trait = brave
+			}
+			change_martial = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					trait = brave
+				}
+			}
+			add_trait = brave
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# Became stronger during the tournament
+character_event = {
+	id = wh_chaos_khorne.132
+	desc = EVTDESCAschaosfl5002
+	picture = GFX_evt_chaos_champions
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAschaosfl5002
+		if = {
+			limit = {
+				trait = strong
+			}
+			change_martial = 1
+		}
+		wh_improve_strength_effect = yes
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# Became wroth during the tournament
+character_event = {
+	id = wh_chaos_khorne.133
+	desc = EVTDESCAschaosfl5003
+	picture = GFX_evt_chaos_champions
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAschaosfl5003
+		if = {
+			limit = {
+				trait = wroth
+			}
+			change_martial = 1
+		}
+		if = {
+			limit = {
+				NOT = {
+					trait = wroth
+				}
+			}
+			add_trait = wroth
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# Received Khorne's favour for your prowess
+character_event = {
+	id = wh_chaos_khorne.134
+	desc = EVTDESCAschaosfl5004
+	picture = GFX_evt_chaos_champions
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAschaosfl5004
+		change_variable = {
+			which = "khorne_favor"
+			value = 10
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+}

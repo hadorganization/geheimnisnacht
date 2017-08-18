@@ -2,34 +2,6 @@
 
 decisions = {
 
-	# craft_item = {
-	# 	potential = {
-	# 		OR = {
-	# 			has_character_modifier = magic_power_1
-	# 			has_character_modifier = magic_power_2
-	# 			has_character_modifier = magic_power_3
-	# 			has_character_modifier = magic_power_4
-	# 		}
-	# 	}
-	# 	allow = {
-	# 		custom_tooltip = {
-	# 			text = IS_NOT_INCAPACITATED
-	# 			is_incapacitated_trigger = no
-	# 		}
-	# 		wealth = 250
-	# 	}
-	# 	effect = {
-	# 		ROOT = {
-	# 			character_event = {
-	# 				id = crafting.0
-	# 			}
-	# 		}
-	# 	}
-	# 	ai_will_do = {
-	# 		factor = 0
-	# 	}
-	# }
-
 	use_potion_of_healing = {
 		is_high_prio = yes
 		potential = {
@@ -461,7 +433,9 @@ decisions = {
 				random = {
 					chance = 20
 					character_event = {
-						id = mutation.1 days = 100 random = 100
+						id = mutation.1
+						days = 100
+						random = 100
 					}
 				}
 				add_character_modifier = {
@@ -472,7 +446,7 @@ decisions = {
 				character_event = {
 					id = schaos.27
 				}
-			} #receive event and decide what to do
+			}
 			piety = -450
 		}
 		revoke_allowed = {
@@ -1118,20 +1092,18 @@ decisions = {
 	}
 
 	hunt_demon_down = {
+		only_playable = yes
 		potential = {
-			is_ruler = yes
 			age = 16
-			higher_tier_than = BARON
 			nor = {
 				religion_group = chaos_gods_group
 				any_friend = {
 					is_demon_trigger = yes
 				}
 			}
-			#has_any_opinion_modifier = opinion_demon_havoc
+			is_cultist_trigger = no
 			any_courtier = {
 				is_demon_trigger = yes
-				is_ruler = no
 			}
 		}
 		allow = {
@@ -1208,6 +1180,12 @@ targetted_decisions = {
 			custom_tooltip = {
 				text = IS_NOT_INCAPACITATED
 				is_incapacitated_trigger = no
+			}
+			from = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
 			}
 			in_command = no
 		}
@@ -1331,11 +1309,17 @@ targetted_decisions = {
 			}
 		}
 		allow = {
-			in_command = yes
 			custom_tooltip = {
 				text = IS_NOT_INCAPACITATED
 				is_incapacitated_trigger = no
 			}
+			from = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
+			}
+			in_command = yes
 		}
 		effect = {
 			set_character_flag = casting
@@ -1522,88 +1506,88 @@ targetted_decisions = {
 		}
 	}
 
-	# spells disable for now
-	# healing_spell = {
-	# 	filter = court
-	# 	ai_target_filter = court
-	# 	from_potential = {
-	# 		trait = lore_high_magic
-	# 		custom_tooltip = {
-	# 			text = IS_NOT_INCAPACITATED
-	# 			is_incapacitated_trigger = no
-	# 		}
-	# 		NOT = {
-	# 			has_character_modifier = magic_cooldown
-	# 		}
-	# 		OR = {
-	# 			has_character_modifier = magic_power_1
-	# 			has_character_modifier = magic_power_2
-	# 			has_character_modifier = magic_power_3
-	# 			has_character_modifier = magic_power_4
-	# 		}
-	# 	}
-	# 	potential = {
-	# 		host = {
-	# 			character = FROM
-	# 		}
-	# 		wh_is_injured_trigger = yes
-	# 		is_undead_trigger = no
-	# 	}
-	# 	allow = {
-	# 	}
-	# 	effect = {
-	# 		if = {
-	# 			limit = {
-	# 				FROM = {
-	# 					religion = asrai_cadai
-	# 					NOT = {
-	# 						trait = creature_forestspirit
-	# 					}
-	# 				}
-	# 			}
-	# 			piety = -100
-	# 		}
-	# 		hidden_tooltip = {
-	# 			FROM = {
-	# 				add_character_modifier = {
-	# 					name = magic_cooldown
-	# 					duration = 300
-	# 					hidden = yes
-	# 				}
-	# 			}
-	# 			magic_physical_healing = yes
-	# 			magic_symptoms_healing = yes
-	# 		}
-	# 	}
-	# 	revoke_allowed = {
-	# 		always = yes
-	# 	}
-	# 	ai_will_do = {
-	# 		factor = 1
-	# 		modifier = {
-	# 			factor = 0
-	# 			FROM = {
-	# 				nor = {
-	# 					trait = kind
-	# 					dynasty = ROOT
-	# 				}
-	# 			}
-	# 		}
-	# 		modifier = {
-	# 			factor = 0.1
-	# 			FROM = {
-	# 				trait = envious
-	# 			}
-	# 		}
-	# 		modifier = {
-	# 			factor = 0.25
-	# 			religion = asrai_cadai
-	# 			NOT = {
-	# 				piety = 250
-	# 			}
-	# 		}
-	# 	}
-	# }
+	healing_spell = {
+		only_playable = yes
+		filter = court
+		ai_target_filter = court
+		from_potential = {
+			age = 16
+			z_combat_magic_caster = yes
+			z_combat_magic_valid_caster = yes
+			#piety = 200
+		}
+		potential = {
+			OR = {
+				character = FROM
+				liege = {
+					character = FROM
+				}
+				is_close_relative = from
+			}
+			or = {
+				and = {
+					wh_is_sick_trigger = yes
+					not = {
+						religion = nurgle
+					}
+				}
+				wh_magic_physical_healing_trigger = yes
+			}
+		}
+		allow = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
+			from = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
+			}
+		}
+		effect = {
+			save_event_target_as = spelltarget
+			location = {
+				save_event_target_as = spellloc
+			}
+			FROM = {
+				piety = -200
+				save_event_target_as = magic_caster
+				save_event_target_as = spelllord
+			}
+			magic_physical_healing = yes
+			magic_disease_healing = yes
+			magic_symptoms_healing = yes
+		}
+		revoke_allowed = {
+			always = yes
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				FROM = {
+					nor = {
+						trait = kind
+						dynasty = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.1
+				FROM = {
+					trait = envious
+				}
+			}
+			modifier = {
+				factor = 0.25
+				NOT = {
+					piety = 250
+				}
+			}
+		}
+	}
 
 	exorcism_spell = {
 		only_playable = yes
@@ -1843,7 +1827,6 @@ targetted_decisions = {
 			}
 		}
 	}
-	#the version for objects is a normal decision activated by having the proper traits
 
 	vassal_possess_ritual = {
 		only_playable = yes
@@ -1897,7 +1880,6 @@ targetted_decisions = {
 				custom_tooltip = {
 					text = IS_NOT_INCAPACITATED
 					is_incapacitated_trigger = no
-
 				}
 			}
 		}
@@ -2105,11 +2087,11 @@ targetted_decisions = {
 			}
 		}
 		potential = {
-			guardian = {
-				FROM = {
-					character = PREV
-				}
-			}
+			# guardian = {
+			# 	FROM = {
+			# 		character = PREV
+			# 	}
+			# }
 			age = 10
 			NOT = {
 				age = 15
@@ -2513,11 +2495,11 @@ targetted_decisions = {
 			}
 		}
 		potential = {
-			guardian = {
-				FROM = {
-					character = PREV
-				}
-			}
+			# guardian = {
+			# 	FROM = {
+			# 		character = PREV
+			# 	}
+			# }
 			OR = {
 				is_living_human_trigger = yes
 				trait = creature_elf
@@ -2827,7 +2809,7 @@ targetted_decisions = {
 				}
 			}
 			modifier = {
-				factor = 50
+				factor = 5
 				OR = {
 					father = {
 						character = FROM
@@ -2844,7 +2826,8 @@ targetted_decisions = {
 						employer = {
 							ROOT = {
 								father = {
-									character = PREVPREV }
+									character = PREVPREV
+								}
 							}
 						}
 					}
@@ -2852,7 +2835,8 @@ targetted_decisions = {
 						employer = {
 							ROOT = {
 								father = {
-									character = PREVPREV }
+									character = PREVPREV
+								}
 							}
 						}
 					}
@@ -2921,18 +2905,6 @@ targetted_decisions = {
 			modifier = {
 				factor = 0.85
 				trait = slothful
-			}
-			modifier = {
-				factor = 0.5
-				age = 14
-			}
-			modifier = {
-				factor = 0.75
-				FROM = {
-					NOT = {
-						religion = ROOT
-					}
-				}
 			}
 			modifier = {
 				factor = 0.25

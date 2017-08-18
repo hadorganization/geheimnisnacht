@@ -19,38 +19,73 @@ is_disease_immune_race = {
 
 wh_is_sick_trigger = {
 	or = {
-		trait = has_nurgles_rot
-		trait = has_measles
-		trait = has_typhus
-		trait = pneumonic
-		trait = has_tomb_rot
-		trait = has_bone_auge
 		trait = flu
 		trait = dysentery
 		trait = gout
+		trait = food_poisoning
 		trait = rabies
 		trait = cancer
+		trait = sick_incapable
+		trait = dancing_plague
 		trait = scurvy
+		trait = lovers_pox
+		trait = sickly
+		trait = ill
+		trait = pneumonic
+		trait = syphilitic
+		trait = leper
+		trait = has_tuberculosis
+		trait = has_typhoid_fever
+		trait = has_typhus
+		trait = has_bubonic_plague
+		trait = has_measles
+		trait = has_small_pox
+		trait = has_creeping_buboes
+		trait = has_green_pox
+		trait = has_red_pox
+		trait = has_rattlelung
+		trait = has_tomb_rot
+		trait = has_nurgles_rot
+		trait = has_bone_auge
 	}
 }
 
 wh_is_injured_trigger = {
 	or = {
-		trait = incapable
-		trait = fat
-		trait = undernourished
-		trait = infirm
 		trait = wounded
 		trait = maimed
-		trait = blinded
+		trait = incapable
+		trait = troubled_pregnancy
+		trait = hard_pregnancy
 		trait = disfigured
+		trait = severely_injured
 		trait = one_eyed
 		trait = one_handed
 		trait = one_legged
 		trait = mangled
-		trait = severely_injured
-		trait = lovers_pox
+		trait = cancer
+		trait = fat
+		trait = undernourished
+		trait = infirm
+		trait = blinded
 		trait = eunuch
+	}
+}
+
+wh_magic_physical_healing_trigger = {
+	or = {
+		trait = wounded
+		trait = maimed
+		trait = incapable
+		trait = troubled_pregnancy
+		trait = hard_pregnancy
+		trait = disfigured
+		trait = severely_injured
+		trait = one_eyed
+		trait = one_handed
+		trait = one_legged
+		trait = mangled
+		trait = cancer
 	}
 }
 
@@ -87,6 +122,75 @@ wh_is_mage_or_apprentice_trigger = {
 		has_character_modifier = magic_power_2
 		has_character_modifier = magic_power_3
 		has_character_modifier = magic_power_4
+	}
+}
+
+wh_cb_albion_check_trigger = {
+	NAND = {
+		location = {
+			region = world_albion
+		}
+		ROOT = {
+			has_global_flag = mists_of_albion
+			capital_scope = {
+				NOT = {
+					region = world_albion
+				}
+			}
+		}
+	}
+}
+
+wh_cb_root_not_same_realm_from_rigger = {
+	ROOT = {
+		NOT = {
+			same_realm = FROM
+		}
+	}
+}
+
+wh_cb_is_valid_title_trigger = {
+	OR = {
+		FROM = {
+			has_landed_title = PREV
+		}
+		holder_scope = {
+			is_liege_or_above = FROM
+		}
+	}
+}
+
+wh_cb_can_use_title_trigger = {
+	nor = {
+		ROOT = {
+			has_landed_title = PREV
+		}
+		holder_scope = {
+			is_liege_or_above = ROOT
+		}
+	}
+}
+
+wh_cb_pays_tribute_to_from_trigger = {
+	OR = {
+		pays_tribute_to = FROM
+		any_liege = {
+			OR = {
+				pays_tribute_to = FROM
+				FROM = {
+					pays_tribute_to = PREV
+				}
+			}
+		}
+	}
+}
+
+wh_cb_pays_tribute_to_root_trigger = {
+	OR = {
+		pays_tribute_to = ROOT
+		any_liege = {
+			pays_tribute_to = ROOT
+		}
 	}
 }
 
@@ -331,7 +435,7 @@ is_incorruptible_trigger = {
 		trait = creature_chaosspawn
 		trait = creature_celdragon
 		has_character_flag = forsaken_flag
-		wh_is_chaos_chosen_trigger yes
+		wh_is_chaos_chosen_trigger = yes
 		is_undead_trigger = yes
 		is_demon_trigger = yes
 	}
@@ -465,20 +569,14 @@ z_combat_magic_caster = {
 		trait = lore_ice
 		trait = lore_waaagh
 	}
-
 }
 
 z_combat_magic_valid_caster = {
 	NOR = {
 		has_character_modifier = magic_cooldown
 		has_character_flag = casting
-
 	}
-	NOR = {
-		trait = incapable
-		trait = resting
-		trait = incapacitated
-	}
+	is_incapacitated_trigger = no
 	OR = {
 		trait = chaos_dwarf_sorcerer
 		trait = khemri_liche_priest

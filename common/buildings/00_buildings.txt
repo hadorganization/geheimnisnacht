@@ -5,7 +5,6 @@
 #	trigger = used for tech requirement of the building, set to 0 if no requirement so it can be build automatically on new games
 #	gold_cost = cost to build the building
 #	build_time = time to build, in days
-
 #	ai_creation_factor = weight that the AI uses to determine what building to build
 #	extra_tech_building_start = when starting a new game this building will be pre-built if the province has higher tech than the requirement + this + random 0-1
 #}
@@ -18,33 +17,26 @@ city = {
 			TECH_FORTIFICATIONS_CONSTRUCTION = 0
 		}
 		potential = {
+			# эти не могут вообще
 			FROM = {
-				NOT = {
+				nor = {
 					culture_group = orc_group
-				}
-				NOT = {
 					culture_group = goblin_group
-				}
-				NOT = {
 					culture_group = lizardman_group
-				}
-				NOT = {
 					culture_group = dwarf_chaos_group
-				}
-				NOT = {
 					culture_group = dwarf_group
 				}
-				ROOT = {
-					NOT = {
-						culture = nehekharan
-					}
-				}
 			}
+			# скавены не могут в подземной империи
 			NAND = {
 				FROM = {
 					culture_group = skaven_group
 				}
 				region = world_underempire
+			}
+			# нельзя строить в неехаре
+			NOT = {
+				region = world_nehekhara
 			}
 		}
 		prerequisites = {

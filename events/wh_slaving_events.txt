@@ -8,12 +8,11 @@ character_event = {
 	desc = EVTDESCSLAVERY.1 # While raiding this province, you manage to round up a sizeable number of slaves. You can either sell them via a separate decision, or else use them in your own demesne provinces.
 	picture = "GFX_evt_slaves"
 	prisoner = no
-	only_rulers = yes
+	only_playable = yes
 	capable_only = yes
 	is_triggered_only = yes
 
 	trigger = {
-		higher_tier_than = BARON
 		in_command = yes
 		NOT = {
 			religion = hashut
@@ -26,6 +25,10 @@ character_event = {
 			religion = amazon
 		}
 		FROM = {
+			nor = {
+				culture_group = ROOT
+				has_province_modifier = slaves_taken
+			}
 			OR = {
 				culture_group = amazon_group
 				culture_group = arabyan_group
@@ -48,12 +51,6 @@ character_event = {
 				culture_group = asur_group
 				culture_group = druchi_group
 				culture_group = southlander_group
-			}
-			NOT = {
-				culture_group = ROOT
-			}
-			NOT = {
-				has_province_modifier = slaves_taken
 			}
 		}
 	}
@@ -89,7 +86,7 @@ character_event = {
 			}
 			FROM = {
 				add_province_modifier = {
-					name = slaves_taken 
+					name = slaves_taken
 					duration = 1835
 				}
 			}
@@ -220,7 +217,8 @@ character_event = {
 				}
 			}
 			add_province_modifier = {
-				name = elf_slaves duration = 3650
+				name = elf_slaves
+				duration = 3650
 			}
 		}
 	}
@@ -245,7 +243,8 @@ character_event = {
 				}
 			}
 			add_province_modifier = {
-				name = dwarf_slaves duration = 7300
+				name = dwarf_slaves
+				duration = 7300
 			}
 		}
 	}
@@ -288,7 +287,8 @@ character_event = {
 			}
 			location = {
 				add_province_modifier = {
-					name = human_slaves duration = 5500
+					name = human_slaves
+					duration = 5500
 				}
 			}
 		}
@@ -340,7 +340,8 @@ character_event = {
 			}
 			location = {
 				add_province_modifier = {
-					name = dwarf_slaves duration = 3650
+					name = dwarf_slaves
+					duration = 3650
 				}
 			}
 		}
@@ -433,7 +434,8 @@ character_event = {
 		FROM = {
 			location = {
 				add_province_modifier = {
-					name = human_slaves duration = 5500
+					name = human_slaves
+					duration = 5500
 				}
 			}
 		}
@@ -454,7 +456,8 @@ character_event = {
 		FROM = {
 			location = {
 				add_province_modifier = {
-					name = elf_slaves duration = 5500
+					name = elf_slaves
+					duration = 5500
 				}
 			}
 		}
@@ -475,7 +478,8 @@ character_event = {
 		FROM = {
 			location = {
 				add_province_modifier = {
-					name = dwarf_slaves duration = 5500
+					name = dwarf_slaves
+					duration = 5500
 				}
 			}
 		}

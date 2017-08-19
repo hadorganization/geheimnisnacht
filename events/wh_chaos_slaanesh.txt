@@ -1,21 +1,21 @@
-namespace = slaaneshbless
+namespace = wh_chaos_slaanesh
 
 # The Lord of Pleasure
 # Start looking for Pet Daemonette
 # character_event = {
-# 	id = slaaneshbless.0
+# 	id = wh_chaos_slaanesh.0
 # 	desc = slaaneshbless0
 # 	picture = GFX_evt_bishop
 # 	border = GFX_event_normal_frame_religion
 # 	is_triggered_only = yes
 # 	option = {
 # 		name = slaaneshbless0A
-# 		hidden_tooltip = { character_event = { id = slaaneshbless.1 days = 10 } }
+# 		hidden_tooltip = { character_event = { id = wh_chaos_slaanesh.1 days = 10 } }
 # 	}
 # }
 # Pet Daemonette is found
 # character_event = {
-# 	id = slaaneshbless.1
+# 	id = wh_chaos_slaanesh.1
 # 	desc = slaaneshbless1
 # 	picture = GFX_evt_bishop
 # 	hide_window = yes
@@ -52,24 +52,24 @@ namespace = slaaneshbless
 # 						who = ROOT
 # 						years = 100
 # 					}
-# 			character_event = { id = slaaneshbless.2 }
+# 			character_event = { id = wh_chaos_slaanesh.2 }
 # 			}
 # 			change_variable = { which = slaaneshfavor value = 6 }
 # 		}
 # 	}
 # Pet_Daemonette bounce event
 # character_event = {
-# 	id = slaaneshbless.2
+# 	id = wh_chaos_slaanesh.2
 # 	hide_window = yes
 # 	is_triggered_only = yes
 # 	option = {
 # 	name = slaaneshbless2A
-# 		FROM = { character_event = { id = slaaneshbless.3 } }
+# 		FROM = { character_event = { id = wh_chaos_slaanesh.3 } }
 # }
 # }
 # Notify player that Pet_Daemonette has been found
 # character_event = {
-# 	id = slaaneshbless.3
+# 	id = wh_chaos_slaanesh.3
 # 	desc = slaaneshbless3
 # 	picture = GFX_evt_bishop
 # 	border = GFX_event_normal_frame_religion
@@ -78,15 +78,25 @@ namespace = slaaneshbless
 # 		name = slaaneshbless3A
 # 	}
 # }
+
+# on_yearly_pulse
 character_event = {
-	id = slaaneshbless.4
+	id = wh_chaos_slaanesh.4
 	hide_window = yes
+	only_playable = yes
 	only_capable = yes
 	prisoner = no
 	min_age = 16
+	religion = slaanesh
+	is_triggered_only = yes
 
 	trigger = {
-		religion = slaanesh
+		NOT = {
+			has_character_flag = Pet_Daemonette_helped_ambition
+		}
+		any_friend = {
+			trait = slaanesh_daemonette
+		}
 		OR = {
 			has_ambition = obj_slaanesh_denounce_celibacy
 			has_ambition = obj_slaanesh_indulge_sexual_excess
@@ -97,12 +107,6 @@ character_event = {
 			has_ambition = obj_slaanesh_embrace_pride
 			has_ambition = obj_slaanesh_purge_imperfection
 		}
-		any_friend = {
-			trait = slaanesh_daemonette
-		}
-		NOT = {
-			has_character_flag = Pet_Daemonette_helped_ambition
-		}
 	}
 
 	immediate = {
@@ -112,7 +116,7 @@ character_event = {
 				trait = slaanesh_daemonette
 			}
 			character_event = {
-				id = slaaneshbless.5
+				id = wh_chaos_slaanesh.5
 			}
 		}
 	}
@@ -120,7 +124,7 @@ character_event = {
 
 # Pet_Daemonette bounce event
 character_event = {
-	id = slaaneshbless.5
+	id = wh_chaos_slaanesh.5
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -129,10 +133,10 @@ character_event = {
 			limit = {
 				OR = {
 					FROM = {
-						trait = zealous
-					}
-					FROM = {
-						trait = ambitious
+						or = {
+							trait = zealous
+							trait = ambitious
+						}
 					}
 					trait = genius
 				}
@@ -147,12 +151,8 @@ character_event = {
 		if = {
 			limit = {
 				FROM = {
-					NOT = {
+					nor = {
 						trait = zealous
-					}
-				}
-				FROM = {
-					NOT = {
 						trait = ambitious
 					}
 				}
@@ -169,14 +169,14 @@ character_event = {
 		}
 		FROM = {
 			character_event = {
-				id = slaaneshbless.6
+				id = wh_chaos_slaanesh.6
 			}
 		}
 	}
 }
 
 character_event = {
-	id = slaaneshbless.6
+	id = wh_chaos_slaanesh.6
 	desc = slaaneshbless6
 	picture = GFX_evt_bishop
 	border = GFX_event_normal_frame_religion

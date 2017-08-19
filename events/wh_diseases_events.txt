@@ -1,4 +1,4 @@
-
+# need check if this event still needed
 
 # Health Events (just Warhammer diseases)
 # Id : diseases namespace
@@ -10,51 +10,21 @@ character_event = {
 	desc = EVTDESC_DISEASE_1
 	picture = GFX_evt_khemri_king
 	min_age = 16
+	only_playable = yes
 
 	trigger = {
-		NOT = {
-			trait = creature_forestspirit
-		}
-		NOT = {
-			trait = creature_treekin
-		}
-		is_undead_trigger = no
-		NOT = {
-			trait = khorne_demon
-		}
-		NOT = {
-			trait = slaanesh_demon
-		}
-		NOT = {
-			trait = tzeentch_demon
+		is_disease_immune_race = no
+		not = {
+			religion = nehekharan_gods
+			trait = has_tomb_rot
 		}
 		location = {
 			region = world_nehekhara
 		}
-		NOT = {
-			religion = nehekharan_gods
-		}
-		NOT = {
-			trait = has_tomb_rot
-		}
-		OR = {
-			NOT = {
-				health = 25
-			}
-			religion = nurgle
-			society_member_of = cult_of_nurgle
-			society_member_of = cult_of_nurgle3
-		}
 	}
 
 	mean_time_to_happen = {
-		months = 85000
-		modifier = {
-			factor = 0.5
-			NOT = {
-				health = 30
-			}
-		}
+		years = 20
 		modifier = {
 			factor = 0.5
 			trait = greedy
@@ -64,7 +34,6 @@ character_event = {
 			OR = {
 				religion = nurgle
 				society_member_of = cult_of_nurgle
-				society_member_of = cult_of_nurgle3
 			}
 		}
 	}
@@ -84,16 +53,9 @@ character_event = {
 
 	trigger = {
 		trait = has_creeping_buboes
-		NOT = {
+		nor = {
 			religion = nurgle
-		}
-		NOT = {
 			society_member_of = cult_of_nurgle
-		}
-		NOT = {
-		}
-		NOT = {
-			society_member_of = cult_of_nurgle3
 		}
 	}
 
@@ -166,16 +128,9 @@ character_event = {
 
 	trigger = {
 		trait = has_typhus
-		NOT = {
+		nor = {
 			religion = nurgle
-		}
-		NOT = {
 			society_member_of = cult_of_nurgle
-		}
-		NOT = {
-		}
-		NOT = {
-			society_member_of = cult_of_nurgle3
 		}
 	}
 
@@ -227,16 +182,9 @@ character_event = {
 
 	trigger = {
 		trait = has_measles
-		NOT = {
+		nor = {
 			religion = nurgle
-		}
-		NOT = {
 			society_member_of = cult_of_nurgle
-		}
-		NOT = {
-		}
-		NOT = {
-			society_member_of = cult_of_nurgle3
 		}
 	}
 
@@ -288,16 +236,9 @@ character_event = {
 
 	trigger = {
 		trait = pneumonic
-		NOT = {
+		nor = {
 			religion = nurgle
-		}
-		NOT = {
 			society_member_of = cult_of_nurgle
-		}
-		NOT = {
-		}
-		NOT = {
-			society_member_of = cult_of_nurgle3
 		}
 	}
 

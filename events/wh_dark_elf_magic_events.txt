@@ -3,69 +3,6 @@ namespace = darkelfmagic
 # First some events to make sure that sorceresses only go to Ghrond if it is held by a dark elf
 # NO LONGER NEEDED - REQUIREMENTS DIRECTLY INTO THE ENLISTMENT TRIGGER
 
-# character_event = {
-# 	id = darkelfmagic.0
-
-# 	title = SORCERESS
-# 	desc = darkelfmagic0 # Ghrond is held by a dark elf
-
-# 	picture = "GFX_evt_sorceress"
-# 	min_age = 16
-
-# 	hide_window = yes
-# 	trigger = {
-
-# 	NOT = { has_global_flag = ghrond_druchi }
-# 	has_landed_title = k_ghrond
-
-# 	culture_group = druchi_group
-# 	}
-
-# 	mean_time_to_happen = {
-# 	days = 7
-
-# 	}
-# 	option = {
-
-# 	name = OK
-# 	set_global_flag = ghrond_druchi
-
-# 	clr_global_flag = ghrond_not_druchi
-# 	}
-
-# 	}
-# character_event = {
-
-# 	id = darkelfmagic.1
-# 	title = SORCERESS
-
-# 	desc = darkelfmagic1 # Ghrond is not held by a dark elf
-# 	picture = "GFX_evt_sorceress"
-
-# 	min_age = 16
-# 	hide_window = yes
-
-# 	trigger = {
-# 	NOT = { has_global_flag = ghrond_not_druchi }
-
-# 	has_landed_title = k_ghrond
-# 	NOT = { culture_group = druchi_group }
-
-# 	}
-# 	mean_time_to_happen = {
-
-# 	days = 7
-# 	}
-
-# 	option = {
-# 	name = OK
-
-# 	clr_global_flag = ghrond_druchi
-# 	set_global_flag = ghrond_not_druchi
-
-# 	}
-# }
-
 # Unlanded Druchi girls with the magic potential will have the choice to go to Ghrond and become sorceresses or hide their potential (player only)
 character_event = {
 	id = darkelfmagic.2
@@ -79,17 +16,11 @@ character_event = {
 	culture_group = druchi_group
 
 	trigger = {
-		culture_group = druchi_group
 		top_liege = {
 			trait = malekith
 		}
 		age = 16
-		OR = {
-			trait = magic_potential_1
-			trait = magic_potential_2
-			trait = magic_potential_3
-			trait = magic_potential_4
-		}
+		wh_has_any_magic_potential_reveal_trigger = yes
 		is_female = yes
 		NOT = {
 			trait = druchi_sorceress
@@ -139,7 +70,8 @@ character_event = {
 		add_trait = celibate
 		add_trait = disinherited
 		character_event = {
-			id = darkelfmagic.5 days = 160
+			id = darkelfmagic.5
+			days = 160
 		}
 		father = {
 			character_event = {
@@ -158,34 +90,7 @@ character_event = {
 		trigger = {
 			ai = no
 		}
-		if = {
-			limit = {
-				trait = magic_potential_4
-			}
-			remove_trait = magic_potential_4
-			set_character_flag = magic_potential_flag_4
-		}
-		if = {
-			limit = {
-				trait = magic_potential_3
-			}
-			remove_trait = magic_potential_3
-			set_character_flag = magic_potential_flag_3
-		}
-		if = {
-			limit = {
-				trait = magic_potential_2
-			}
-			remove_trait = magic_potential_2
-			set_character_flag = magic_potential_flag_2
-		}
-		if = {
-			limit = {
-				trait = magic_potential_1
-			}
-			remove_trait = magic_potential_1
-			set_character_flag = magic_potential_flag_1
-		}
+		wh_hide_magic_potential_effect = yes
 		hidden_tooltip = {
 			random_list = {
 				70 = {
@@ -231,13 +136,14 @@ character_event = {
 					}
 				}
 				30 = {
+					# discovered anyway and forced to go
 					character_event = {
-						id = darkelfmagic.2005 days = 200 random = 400
-					} # discovered anyway and forced to go
-
+						id = darkelfmagic.2005
+						days = 200
+						random = 400
+					}
 				}
 			}
-
 		}
 	}
 }
@@ -255,7 +161,6 @@ character_event = {
 	culture_group = druchi_group
 
 	trigger = {
-		culture_group = druchi_group
 		is_female = yes
 		NOT = {
 			trait = druchi_sorceress
@@ -263,12 +168,7 @@ character_event = {
 		top_liege = {
 			trait = malekith
 		}
-		OR = {
-			has_character_flag = magic_potential_flag_1
-			has_character_flag = magic_potential_flag_2
-			has_character_flag = magic_potential_flag_3
-			has_character_flag = magic_potential_flag_4
-		}
+		wh_has_any_magic_potential_hide_trigger = yes
 		# Is everything in place?
 		c_ghrond = {
 			holder_scope = {
@@ -324,34 +224,7 @@ character_event = {
 
 	option = {
 		name = EVTOPTAdarkelfmagic20005
-		if = {
-			limit = {
-				has_character_flag = magic_potential_flag_4
-			}
-			add_trait = magic_potential_4
-			clr_character_flag = magic_potential_flag_4
-		}
-		if = {
-			limit = {
-				has_character_flag = magic_potential_flag_3
-			}
-			add_trait = magic_potential_3
-			clr_character_flag = magic_potential_flag_3
-		}
-		if = {
-			limit = {
-				has_character_flag = magic_potential_flag_2
-			}
-			add_trait = magic_potential_2
-			clr_character_flag = magic_potential_flag_2
-		}
-		if = {
-			limit = {
-				has_character_flag = magic_potential_flag_1
-			}
-			add_trait = magic_potential_1
-			clr_character_flag = magic_potential_flag_1
-		}
+		wh_reveal_magic_potential_effect = yes
 		character_event = {
 			id = darkelfmagic.4 days = 7
 		}
@@ -421,7 +294,8 @@ character_event = {
 				value = 1
 			}
 			character_event = {
-				id = darkelfmagic.5 days = 365
+				id = darkelfmagic.5
+				days = 365
 			}
 			random_list = {
 				# good year
@@ -447,600 +321,110 @@ character_event = {
 				}
 				# bad year
 				10 = {
-					add_trait = craven
+					random_list = {
+						10 = {
+							add_trait = craven
+						}
+						10 = {
+							add_trait = slothful
+						}
+						10 = {
+							add_trait = paranoid
+						}
+						10 = {
+							add_trait = lustful
+						}
+						5 = {
+							add_trait = addict
+						}
+						5 = {
+							change_variable = {
+								which = "lunatic_counter"
+								value = 1
+							}
+							# lunacy counter
+							character_event = {
+								id = mutation.1005
+							}
+						}
+					}
 			 		modifier = {
 						factor = 0.5
 						trait = genius
-
 					}
 			 		modifier = {
 						factor = 0.65
 						trait = brilliant
-
 					}
 			 		modifier = {
 						factor = 0.75
 						trait = smart
-
 					}
 			 		modifier = {
 						factor = 0.85
 						trait = quick
-
 					}
 			 		modifier = {
 						factor = 0.95
 						trait = bright
-
 					}
 			 		modifier = {
 						factor = 1.25
 						trait = dim
-
 					}
 			 		modifier = {
 						factor = 1.35
 						trait = dumb
-
 					}
 			 		modifier = {
 						factor = 1.5
 						trait = slow
-
 					}
 			 		modifier = {
 						factor = 1.75
 						trait = idiot
-
 					}
 			 		modifier = {
 						factor = 2
 						trait = imbecile
-
 					}
 			 		modifier = {
 						factor = 0.95
 						trait = magic_potential_2
-
 					}
 			 		modifier = {
 						factor = 0.85
 						trait = magic_potential_3
-
 					}
 			 		modifier = {
 						factor = 0.65
 						trait = magic_potential_4
-
 					}
 			 		modifier = {
 						factor = 1.25
 						trait = slothful
-
 					}
 			 		modifier = {
 						factor = 1.35
 						trait = content
-
 					}
 			 		modifier = {
 						factor = 1.25
 						trait = drunkard
-
 					}
 			 		modifier = {
 						factor = 1.25
 						trait = addict
-
 					}
 			 		modifier = {
 						factor = 1.25
 						trait = gluttonous
-
 					}
 			 		modifier = {
 						factor = 1.25
 						trait = lustful
-
 					}
 				}
-				10 = {
-					add_trait = slothful
-			 		modifier = {
-						factor = 0.5
-						trait = genius
-
-					}
-			 		modifier = {
-						factor = 0.65
-						trait = brilliant
-
-					}
-			 		modifier = {
-						factor = 0.75
-						trait = smart
-
-					}
-			 		modifier = {
-						factor = 0.85
-						trait = quick
-
-					}
-			 		modifier = {
-						factor = 0.95
-						trait = bright
-
-					}
-			 		modifier = {
-						factor = 1.25
-						trait = dim
-
-					}
-			 		modifier = {
-						factor = 1.35
-						trait = dumb
-
-					}
-			 		modifier = {
-						factor = 1.5
-						trait = slow
-
-					}
-			 		modifier = {
-						factor = 1.75
-						trait = idiot
-
-					}
-			 		modifier = {
-						factor = 2
-						trait = imbecile
-
-					}
-			 		modifier = {
-						factor = 0.95
-						trait = magic_potential_2
-
-					}
-			 		modifier = {
-						factor = 0.85
-						trait = magic_potential_3
-
-					}
-			 		modifier = {
-						factor = 0.65
-						trait = magic_potential_4
-
-					}
-			 		modifier = {
-						factor = 1.25
-						trait = slothful
-
-					}
-			 		modifier = {
-						factor = 1.35
-						trait = content
-
-					}
-			 		modifier = {
-						factor = 1.25
-						trait = drunkard
-
-					}
-			 		modifier = {
-						factor = 1.25
-						trait = addict
-
-					}
-			 		modifier = {
-						factor = 1.25
-						trait = gluttonous
-
-					}
-			 		modifier = {
-						factor = 1.25
-						trait = lustful
-
-					}
-				}
-				10 = {
-					add_trait = paranoid
-			 		modifier = {
-						factor = 0.5
-						trait = genius
-
-					}
-			 		modifier = {
-						factor = 0.65
-						trait = brilliant
-
-					}
-			 		modifier = {
-						factor = 0.75
-						trait = smart
-
-					}
-			 		modifier = {
-						factor = 0.85
-						trait = quick
-
-					}
-			 		modifier = {
-						factor = 0.95
-						trait = bright
-
-					}
-			 		modifier = {
-						factor = 1.25
-						trait = dim
-
-					}
-			 		modifier = {
-						factor = 1.35
-						trait = dumb
-
-					}
-			 		modifier = {
-						factor = 1.5
-						trait = slow
-
-					}
-			 		modifier = {
-						factor = 1.75
-						trait = idiot
-
-					}
-			 		modifier = {
-						factor = 2
-						trait = imbecile
-
-					}
-			 		modifier = {
-						factor = 0.95
-						trait = magic_potential_2
-
-					}
-			 		modifier = {
-						factor = 0.85
-						trait = magic_potential_3
-
-					}
-			 		modifier = {
-						factor = 0.65
-						trait = magic_potential_4
-
-					}
-			 		modifier = {
-						factor = 1.25
-						trait = slothful
-
-					}
-			 		modifier = {
-						factor = 1.35
-						trait = content
-
-					}
-			 		modifier = {
-						factor = 1.25
-						trait = drunkard
-
-					}
-			 		modifier = {
-						factor = 1.25
-						trait = addict
-
-					}
-			 		modifier = {
-						factor = 1.25
-						trait = gluttonous
-
-					}
-			 		modifier = {
-						factor = 1.25
-						trait = lustful
-
-					}
-				}
-				10 = {
-					add_trait = lustful
-			 		modifier = {
-						factor = 0.5
-						trait = genius
-
-					}
-			 		modifier = {
-						factor = 0.65
-						trait = brilliant
-
-					}
-			 		modifier = {
-						factor = 0.75
-						trait = smart
-
-					}
-			 		modifier = {
-						factor = 0.85
-						trait = quick
-
-					}
-			 		modifier = {
-						factor = 0.95
-						trait = bright
-
-					}
-			 		modifier = {
-						factor = 1.25
-						trait = dim
-
-					}
-			 		modifier = {
-						factor = 1.35
-						trait = dumb
-
-					}
-			 		modifier = {
-						factor = 1.5
-						trait = slow
-
-					}
-			 		modifier = {
-						factor = 1.75
-						trait = idiot
-
-					}
-			 		modifier = {
-						factor = 2
-						trait = imbecile
-
-					}
-			 		modifier = {
-						factor = 0.95
-						trait = magic_potential_2
-
-					}
-			 		modifier = {
-						factor = 0.85
-						trait = magic_potential_3
-
-					}
-			 		modifier = {
-						factor = 0.65
-						trait = magic_potential_4
-
-					}
-			 		modifier = {
-						factor = 1.25
-						trait = slothful
-
-					}
-			 		modifier = {
-						factor = 1.35
-						trait = content
-
-					}
-			 		modifier = {
-						factor = 1.25
-						trait = drunkard
-
-					}
-			 		modifier = {
-						factor = 1.25
-						trait = addict
-
-					}
-			 		modifier = {
-						factor = 1.25
-						trait = gluttonous
-
-					}
-			 		modifier = {
-						factor = 1.25
-						trait = lustful
-
-					}
-				}
-				5 = {
-					add_trait = addict
-			 		modifier = {
-						factor = 0.5
-						trait = genius
-
-					}
-			 		modifier = {
-						factor = 0.65
-						trait = brilliant
-
-					}
-			 		modifier = {
-						factor = 0.75
-						trait = smart
-
-					}
-			 		modifier = {
-						factor = 0.85
-						trait = quick
-
-					}
-			 		modifier = {
-						factor = 0.95
-						trait = bright
-
-					}
-			 		modifier = {
-						factor = 1.25
-						trait = dim
-
-					}
-			 		modifier = {
-						factor = 1.35
-						trait = dumb
-
-					}
-			 		modifier = {
-						factor = 1.5
-						trait = slow
-
-					}
-			 		modifier = {
-						factor = 1.75
-						trait = idiot
-
-					}
-			 		modifier = {
-						factor = 2
-						trait = imbecile
-
-					}
-			 		modifier = {
-						factor = 0.95
-						trait = magic_potential_2
-
-					}
-			 		modifier = {
-						factor = 0.85
-						trait = magic_potential_3
-
-					}
-			 		modifier = {
-						factor = 0.65
-						trait = magic_potential_4
-
-					}
-			 		modifier = {
-						factor = 1.25
-						trait = slothful
-
-					}
-			 		modifier = {
-						factor = 1.35
-						trait = content
-
-					}
-			 		modifier = {
-						factor = 1.25
-						trait = drunkard
-
-					}
-			 		modifier = {
-						factor = 1.25
-						trait = addict
-
-					}
-			 		modifier = {
-						factor = 1.25
-						trait = gluttonous
-
-					}
-			 		modifier = {
-						factor = 1.25
-						trait = lustful
-
-					}
-				}
-				5 = {
-					change_variable = {
-						which = "lunatic_counter"
-						value = 1
-					}
-					character_event = {
-						id = mutation.1005
-					} # lunacy counter
-			 		modifier = {
-						factor = 0.5
-						trait = genius
-
-					}
-			 		modifier = {
-						factor = 0.65
-						trait = brilliant
-
-					}
-			 		modifier = {
-						factor = 0.75
-						trait = smart
-
-					}
-			 		modifier = {
-						factor = 0.85
-						trait = quick
-
-					}
-			 		modifier = {
-						factor = 0.95
-						trait = bright
-
-					}
-			 		modifier = {
-						factor = 1.25
-						trait = dim
-
-					}
-			 		modifier = {
-						factor = 1.35
-						trait = dumb
-
-					}
-			 		modifier = {
-						factor = 1.5
-						trait = slow
-
-					}
-			 		modifier = {
-						factor = 1.75
-						trait = idiot
-
-					}
-			 		modifier = {
-						factor = 2
-						trait = imbecile
-
-					}
-			 		modifier = {
-						factor = 0.95
-						trait = magic_potential_2
-
-					}
-			 		modifier = {
-						factor = 0.85
-						trait = magic_potential_3
-
-					}
-			 		modifier = {
-						factor = 0.65
-						trait = magic_potential_4
-
-					}
-			 		modifier = {
-						factor = 1.25
-						trait = slothful
-
-					}
-			 		modifier = {
-						factor = 1.35
-						trait = content
-
-					}
-			 		modifier = {
-						factor = 1.25
-						trait = drunkard
-
-					}
-			 		modifier = {
-						factor = 1.25
-						trait = addict
-
-					}
-			 		modifier = {
-						factor = 1.25
-						trait = gluttonous
-
-					}
-			 		modifier = {
-						factor = 1.25
-						trait = lustful
-
-					}
-				}
-
 			}
 		}
 	}

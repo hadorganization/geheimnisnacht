@@ -22,18 +22,11 @@ province_event = {
 				}
 			}
 		}
-		empire = {
-			or = {
-				title = e_chaos_wastes
-				title = e_kislev
-				title = e_norsca
-				title = e_araby
-				title = k_couronne
-				title = k_lyonesse
-				title = k_languille
-				title = k_stygian_wood
-				title = k_the_watchtowers
-			}
+		or = {
+			region = world_chaos_wastes
+			region = world_old_world
+			region = world_greater_araby
+			region = world_norsca
 		}
 		not = {
 			# Not if there is already an ongoing beastmen uprising for this province
@@ -55,99 +48,33 @@ province_event = {
 
 	immediate = {
 		clr_province_flag = beastman_horde_inv
-		random_list = {
-			65 = {
-				create_character = {
-					random_traits = yes
-					dynasty = none
-					religion = chaos
-					culture = beastman_main
-					female = no
-					age = 23
-					attributes = {
-						martial = 7
-					}
-					trait = creature_beastman
-					trait = tough_soldier
-					trait = horns_average
-				}
+		create_character = {
+			random_traits = yes
+			dynasty = none
+			religion = chaos
+			culture = beastman_main
+			female = no
+			age = 23
+			attributes = {
+				martial = 7
 			}
-			20 = {
-				create_character = {
-					random_traits = yes
-					dynasty = none
-					religion = khorne
-					culture = beastman_main
-					female = no
-					age = 23
-					attributes = {
-						martial = 9
-					}
-					trait = creature_beastman
-					trait = tough_soldier
-					trait = berserker
-					trait = horns_average
-				}
-			}
-			5 = {
-				create_character = {
-					random_traits = yes
-					dynasty = none
-					religion = slaanesh
-					culture = beastman_main
-					female = no
-					age = 23
-					attributes = {
-						intrigue = 5
-					}
-					trait = creature_beastman
-					trait = misguided_warrior
-					trait = horns_average
-				}
-			}
-			5 = {
-				create_character = {
-					random_traits = yes
-					dynasty = none
-					religion = nurgle
-					culture = beastman_main
-					female = no
-					age = 23
-					attributes = {
-						diplomacy = 5
-					}
-					trait = creature_beastman
-					trait = misguided_warrior
-					trait = horns_average
-				}
-			}
-			5 = {
-				create_character = {
-					random_traits = yes
-					dynasty = none
-					religion = tzeentch
-					culture = beastman_main
-					female = no
-					age = 23
-					attributes = {
-						learning = 5
-					}
-					trait = creature_beastman
-					trait = intricate_webweaver
-					trait = lore_tzeentch
-					trait = horns_average
-				}
-			}
+			trait = creature_beastman
+			trait = tough_soldier
+			trait = horns_average
 		}
 		new_character = {
-			culture = beastman_main
-			if = {
-				limit = {
-					trait = lore_tzeentch
+			random_list = {
+				60 = {
 				}
-				add_trait = bray_shaman
-				z_magic_power_sequential_addition = yes
-				z_magic_power_sequential_addition = yes
+				20 = {
+					change_martial = 9
+					add_trait = berserker
+				}
+				20 = {
+					add_trait = bray_shaman
+					add_trait = lore_dark_magic
+					z_magic_power_random = yes
+				}
 			}
 			create_title = {
 				tier = KING
@@ -1345,18 +1272,11 @@ character_event = {
 			}
 		}
 		capital_scope = {
-			empire = {
-				or = {
-					title = e_chaos_wastes
-					title = e_kislev
-					title = e_norsca
-					title = e_araby
-					title = k_couronne
-					title = k_lyonesse
-					title = k_languille
-					title = k_stygian_wood
-					title = k_the_watchtowers
-				}
+			or = {
+				region = world_chaos_wastes
+				region = world_old_world
+				region = world_greater_araby
+				region = world_norsca
 			}
 		}
 	}
@@ -2264,10 +2184,7 @@ character_event = {
 				character = ROOT
 			}
 		}
-		OR = {
-			religion_group = chaos_gods_group
-			trait = creature_beastman
-		}
+		trait = creature_beastman
 	}
 
 	option = {
@@ -2857,48 +2774,14 @@ character_event = {
 			}
 		}
 		OR = {
-			AND = {
-				OR = {
-					trait = genius
-					trait = elusive_shadow
-					trait = brilliant
-					trait = bright
-					trait = quick
-				}
-				religion = tzeentch
-			}
-			AND = {
-				OR = {
-					trait = beautiful
-					trait = fair
-					trait = pretty
-					trait = genius
-					trait = unsightly
-				}
-				religion = slaanesh
-			}
-			AND = {
-				OR = {
-					trait = genius
-					trait = midas_touched
-					trait = brilliant
-					trait = hunchback
-					trait = lisp
-					trait = stutter
-				}
-				religion = nurgle
-			}
-			AND = {
-				OR = {
-					trait = strong
-					trait = tough
-					trait = hardy
-					trait = genius
-					trait = brilliant
-					trait = brilliant_strategist
-				}
-				religion = chaos
-			}
+			trait = strong
+			trait = tough
+			trait = hardy
+			trait = genius
+			trait = brilliant
+			trait = bright
+			trait = quick
+			trait = brilliant_strategist
 		}
 		NOT = {
 			trait = bray_shaman
@@ -2907,8 +2790,6 @@ character_event = {
 
 	option = {
 		name = EVTOPTAbeastmen29
-		add_trait = bray_shaman
-		set_character_flag = ai_flag_refuse_conversion
  		mother = {
 			character_event = {
 				id = wh_beastmen.31
@@ -2921,24 +2802,8 @@ character_event = {
 				days = 1
 			}
 		}
-		if = {
-			limit = {
-				religion = tzeentch
-			}
-			add_trait = lore_tzeentch
-		}
-		if = {
-			limit = {
-				religion = slaanesh
-			}
-			add_trait = lore_slaanesh
-		}
-		if = {
-			limit = {
-				religion = chaos
-			}
-			add_trait = lore_dark_magic
-		}
+		add_trait = bray_shaman
+		add_trait = lore_dark_magic
 		z_magic_power_random = yes
 	}
 }
@@ -3155,13 +3020,9 @@ character_event = {
 				}
 				if = {
 					limit = {
-						NOT = {
+						nor = {
 							has_province_modifier = beastmen_scourging_2
-						}
-						NOT = {
 							has_province_modifier = beastmen_scourging_1
-						}
-						NOT = {
 							has_province_modifier = beastmen_scourging_3
 						}
 					}
@@ -3594,13 +3455,9 @@ character_event = {
 				}
 				if = {
 					limit = {
-						NOT = {
+						nor = {
 							has_province_modifier = beastmen_scourging_2
-						}
-						NOT = {
 							has_province_modifier = beastmen_scourging_1
-						}
-						NOT = {
 							has_province_modifier = beastmen_scourging_3
 						}
 					}
@@ -3760,12 +3617,10 @@ character_event = {
 					modifier = {
 						factor = 1.5
 						has_province_modifier = beastmen_scourging_3
-
 					}
 					modifier = {
 						factor = 1.75
 						has_province_modifier = beastman_herdstone
-
 					}
 					character_event = {
 						id = wh_beastmen.40
@@ -3886,31 +3741,21 @@ character_event = {
 character_event = {
 	id = wh_beastmen.41
 	hide_window = yes
+	is_triggered_only = yes
 
 	trigger = {
 		OR = {
-			trait = creature_human
-			trait = creature_amazon
+			is_living_human_trigger = yes
 			trait = creature_dwarf
 			trait = creature_chaos_dwarf
 		}
-		location = {
-			empire = {
-				or = {
-					title = e_chaos_wastes
-					title = e_kislev
-					title = e_norsca
-					title = e_araby
-					title = k_couronne
-					title = k_lyonesse
-					title = k_languille
-					title = k_stygian_wood
-					title = k_the_watchtowers
-				}
-			}
+		or = {
+			region = world_chaos_wastes
+			region = world_old_world
+			region = world_greater_araby
+			region = world_norsca
 		}
 	}
-	is_triggered_only = yes
 
 	immediate = {
 		random_list = {
@@ -4140,6 +3985,7 @@ character_event = {
 		}
 		prestige = 125
 		piety = 50
+
 		hidden_tooltip = {
 			if = {
 				limit = {
@@ -4267,8 +4113,7 @@ character_event = {
 					is_female = yes
 					is_ruler = no
 					OR = {
-						trait = creature_human
-						trait = creature_amazon
+						is_living_human_trigger = yes
 						trait = creature_elf
 						trait = creature_dwarf
 						trait = creature_chaos_dwarf
@@ -4288,8 +4133,7 @@ character_event = {
 							is_female = yes
 							is_ruler = no
 							OR = {
-								trait = creature_human
-								trait = creature_amazon
+						is_living_human_trigger = yes
 								trait = creature_elf
 								trait = creature_dwarf
 								trait = creature_chaos_dwarf

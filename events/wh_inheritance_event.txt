@@ -8,146 +8,116 @@ character_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		# absolutely can't reproduce
-		# greenskins
+		# absolutely can't reproduce		
 		or = {
 			father_even_if_dead = {
-				trait = creature_orc
-			}
-			mother_even_if_dead = {
-				trait = creature_orc
-			}
-		}
-		or = {
-			father_even_if_dead = {
-				trait = creature_goblin
-			}
-			mother_even_if_dead = {
-				trait = creature_goblin
-			}
-		}
-		or = {
-			father_even_if_dead = {
-				trait = creature_snotling
-			}
-			mother_even_if_dead = {
-				trait = creature_snotling
-			}
-		}
-		# lizardmens
-		or = {
-			father_even_if_dead = {
-				trait = creature_skink
-			}
-			mother_even_if_dead = {
-				trait = creature_skink
-			}
-		}
-		# spirits
-		or = {
-			father_even_if_dead = {
-				trait = creature_forestspirit
-			}
-			mother_even_if_dead = {
-				trait = creature_forestspirit
-			}
-		}
-		or = {
-			father_even_if_dead = {
-				trait = creature_treekin
-			}
-			mother_even_if_dead = {
-				trait = creature_treekin
-			}
-		}
-		# undeads or demons
-		or = {
-			father_even_if_dead = {
-				or = {
+				or = {					
+					# greenskins
+					trait = creature_orc
+					trait = creature_goblin
+					trait = creature_snotling
+					# lizardmens
+					trait = creature_skink
+					# spirits					
+					trait = creature_forestspirit
+					trait = creature_treekin
+					# undeads
 					is_undead_trigger = yes
+					# demons
 					is_demon_trigger = yes
 				}
 			}
 			mother_even_if_dead = {
-				or = {
+				or = {					
+					# greenskins
+					trait = creature_orc
+					trait = creature_goblin
+					trait = creature_snotling
+					# lizardmens
+					trait = creature_skink
+					# spirits					
+					trait = creature_forestspirit
+					trait = creature_treekin
+					# undeads
 					is_undead_trigger = yes
+					# demons
 					is_demon_trigger = yes
 				}
 			}
-		}
-		# check if mother and father have same trait
-		nor = {
-			# beastmen can hybridize with everyone else
-			father_even_if_dead = {
-				trait = creature_beastman
-			}
-			mother_even_if_dead = {
-				trait = creature_beastman
-			}
-			# human
-			and = {
+			# check if mother and father have same trait
+			nor = {
+				# beastmen can hybridize with everyone else
 				father_even_if_dead = {
-					or = {
-						trait = creature_human
-						trait = creature_amazon
+					trait = creature_beastman
+				}
+				mother_even_if_dead = {
+					trait = creature_beastman
+				}
+				# human
+				and = {
+					father_even_if_dead = {
+						or = {
+							trait = creature_human
+							trait = creature_amazon
+						}
+					}
+					mother_even_if_dead = {
+						or = {
+							trait = creature_human
+							trait = creature_amazon
+						}
 					}
 				}
-				mother_even_if_dead = {
-					or = {
-						trait = creature_human
-						trait = creature_amazon
+				# elf
+				and = {
+					father_even_if_dead = {
+						trait = creature_elf
+					}
+					mother_even_if_dead = {
+						trait = creature_elf
 					}
 				}
-			}
-			# elf
-			and = {
-				father_even_if_dead = {
-					trait = creature_elf
-				}
-				mother_even_if_dead = {
-					trait = creature_elf
-				}
-			}
-			# dwarf
-			and = {
-				father_even_if_dead = {
-					or = {
-						trait = creature_dwarf
-						trait = creature_chaos_dwarf
+				# dwarf
+				and = {
+					father_even_if_dead = {
+						or = {
+							trait = creature_dwarf
+							trait = creature_chaos_dwarf
+						}
+					}
+					mother_even_if_dead = {
+						or = {
+							trait = creature_dwarf
+							trait = creature_chaos_dwarf
+						}
 					}
 				}
-				mother_even_if_dead = {
-					or = {
-						trait = creature_dwarf
-						trait = creature_chaos_dwarf
+				# halfling
+				and = {
+					father_even_if_dead = {
+						trait = creature_halfling
+					}
+					mother_even_if_dead = {
+						trait = creature_halfling
 					}
 				}
-			}
-			# halfling
-			and = {
-				father_even_if_dead = {
-					trait = creature_halfling
+				# skaven
+				and = {
+					father_even_if_dead = {
+						trait = creature_skaven
+					}
+					mother_even_if_dead = {
+						trait = creature_skaven
+					}
 				}
-				mother_even_if_dead = {
-					trait = creature_halfling
-				}
-			}
-			# skaven
-			and = {
-				father_even_if_dead = {
-					trait = creature_skaven
-				}
-				mother_even_if_dead = {
-					trait = creature_skaven
-				}
-			}
-			# ogre
-			and = {
-				father_even_if_dead = {
-					trait = creature_ogre
-				}
-				mother_even_if_dead = {
-					trait = creature_ogre
+				# ogre
+				and = {
+					father_even_if_dead = {
+						trait = creature_ogre
+					}
+					mother_even_if_dead = {
+						trait = creature_ogre
+					}
 				}
 			}
 		}

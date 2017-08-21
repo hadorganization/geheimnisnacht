@@ -3,11 +3,8 @@ namespace = dwarfengineering
 # Establishing Zhufbar as centre for Engis
 character_event = {
 	id = dwarfengineering.0
-	title = ENGINEERING
-	desc = dwarfengineering.0 # Zhufbar is in dwarfen hands.
-	picture = "GFX_evt_dwarf_heroes"
-	min_age = 16
 	hide_window = yes
+	culture_group = dwarf_group
 	is_triggered_only = yes
 
 	trigger = {
@@ -15,11 +12,9 @@ character_event = {
 			has_global_flag = zhufbar_dwarf
 		}
 		has_landed_title = d_zhufbar
-		culture_group = dwarf_group
 	}
 
-	option = {
-		name = OK
+	immediate = {
 		set_global_flag = zhufbar_dwarf
 		clr_global_flag = zhufbar_not_dwarf
 	}
@@ -27,25 +22,18 @@ character_event = {
 
 character_event = {
 	id = dwarfengineering.1
-	title = ENGINEERING
-	desc = dwarfengineering.1 # zhufbar is not in dwarfen hands.
-	picture = "GFX_evt_dwarf_heroes"
-	min_age = 16
 	hide_window = yes
 	is_triggered_only = yes
 
 	trigger = {
 		NOT = {
 			has_global_flag = zhufbar_not_dwarf
-		}
-		has_landed_title = d_zhufbar
-		NOT = {
 			culture_group = dwarf_group
 		}
+		has_landed_title = d_zhufbar
 	}
 
-	option = {
-		name = OK
+	immediate = {
 		clr_global_flag = zhufbar_dwarf
 		set_global_flag = zhufbar_not-dwarf
 	}
@@ -58,21 +46,16 @@ character_event = {
 	desc = dwarfengineering.2 # You show a lot of promise in learning new things. You even got invited to learn from the Engineers in Zhufbar. What do you answer?
 	picture = "GFX_evt_dwarf_heroes"
 	min_age = 16
+	culture_group = dwarf_group
 	is_triggered_only = yes
 
 	trigger = {
 		is_landed = no
-		culture_group = dwarf_group
 		has_global_flag = zhufbar_dwarf
-		min_age = 16
 		trait = brilliant
 		NOT = {
 			trait = dwarf_engineer
-		}
-		NOT = {
 			has_character_flag = refused_zhufbar
-		}
-		NOT = {
 			has_character_flag = dwarfengineering2
 		}
 	}
@@ -180,10 +163,8 @@ character_event = {
 			limit = {
 				any_courtier = {
 					trait = dwarf_engineer
-					NOT = {
+					nor = {
 						trait = dwarf_engineer_master
-					}
-					NOT = {
 						has_character_flag = hired_engineer
 					}
 					is_landed = no
@@ -193,17 +174,16 @@ character_event = {
 			random_courtier = {
 				limit = {
 					trait = dwarf_engineer
-					NOT = {
+					nor = {
 						trait = dwarf_engineer_master
-					}
-					NOT = {
 						has_character_flag = hired_engineer
 					}
 					is_landed = no
 					is_married = no
 				}
 				character_event = {
-					id = dwarfengineering.7 days = 7
+					id = dwarfengineering.7
+					days = 7
 				}
 			}
 		}

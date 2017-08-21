@@ -19,7 +19,9 @@ character_event = {
 		}
 		has_character_flag = attending_druchii_feast
 		any_realm_character = {
+			has_character_flag = attending_druchii_feast
 			same_liege = ROOT
+			is_adult = yes
 			liege = {
 				NOT = {
 					had_character_flag = {
@@ -30,12 +32,8 @@ character_event = {
 				has_character_flag = holding_large_druchi_feast
 				has_character_modifier = holding_large_druchi_feast
 			}
-			is_adult = yes
-			NOT = {
+			nor = {
 				num_of_friends = 3
-			}
-			has_character_flag = attending_druchii_feast
-			NOT = {
 				character = ROOT
 				any_claim = {
 					holder_scope = {
@@ -49,8 +47,6 @@ character_event = {
 						}
 					}
 				}
-			}
-			NOT = {
 				has_opinion_modifier = {
 					who = ROOT
 					modifier = opinion_friend
@@ -83,17 +79,21 @@ character_event = {
 		name = EVTOPTDRUCHIFEAST.23.a # I have made a new ally tonight!
 		random_realm_character = {
 			limit = {
+				has_character_flag = attending_druchii_feast
 				same_liege = ROOT
+				is_adult = yes
 				liege = {
+					NOT = {
+						had_character_flag = {
+							flag = holding_large_druchi_feast
+							days = 30
+						}
+					}
 					has_character_flag = holding_large_druchi_feast
 					has_character_modifier = holding_large_druchi_feast
 				}
-				is_adult = yes
-				NOT = {
+				nor = {
 					num_of_friends = 3
-				}
-				has_character_flag = attending_druchii_feast
-				NOT = {
 					character = ROOT
 					any_claim = {
 						holder_scope = {
@@ -107,8 +107,6 @@ character_event = {
 							}
 						}
 					}
-				}
-				NOT = {
 					has_opinion_modifier = {
 						who = ROOT
 						modifier = opinion_friend
@@ -156,15 +154,9 @@ character_event = {
 	prisoner = no
 
 	trigger = {
+		has_character_flag = attending_druchii_feast
 		is_adult = yes
 		war = no
-		has_character_flag = attending_druchii_feast
-		NOT = {
-			trait = wounded
-		}
-		NOT = {
-			trait = maimed
-		}
 		martial = 9
 		OR = {
 			trait = duelist
@@ -172,45 +164,37 @@ character_event = {
 			trait = wroth
 			trait = cruel
 		}
-		NOT = {
+		nor = {
+			trait = wounded
+			trait = maimed
 			trait = craven
 		}
 		any_liege = {
-			NOT = {
+			has_character_modifier = holding_large_druchi_feast
+			has_character_flag = holding_large_druchi_feast
+			nor = {
 				had_character_flag = {
 					flag = holding_large_druchi_feast
 					days = 30
 				}
-			}
-			war = no
-			has_character_modifier = holding_large_druchi_feast
-			has_character_flag = holding_large_druchi_feast
-			NOT = {
 				has_character_flag = druchi_feast_duel
 			}
+			war = no
 			any_vassal = {
 				is_adult = yes
 				is_female = no
 				has_character_flag = attending_druchii_feast
-				NOT = {
+				nor = {
 					character = ROOT
-				}
-				NOT = {
 					reverse_opinion = {
 						who = ROOT
 						value = -50
 					}
-				}
-				NOT = {
 					opinion = {
 						who = ROOT
 						value = -50
 					}
-				}
-				NOT = {
 					trait = wounded
-				}
-				NOT = {
 					trait = maimed
 				}
 			}
@@ -647,7 +631,7 @@ character_event = {
 	picture = "GFX_evt_large_army"
 	max_age = 60
 	prisoner = no
-	only_rulers = yes
+	only_playable = yes
 	capable_only = yes
 
 	trigger = {

@@ -2640,15 +2640,18 @@ character_event = {
 				}
 			}
 		}
-		OR = {
-			AND = {
-				NOT = {
+		# видимо демон не должен служить демону
+		nand = {
+			is_demon_trigger = yes
+			liege = {
+				is_demon_trigger = yes
+			}
+		}
+		OR = {			
+			nor = {
+				trait = creature_beastman
+				liege = {
 					trait = creature_beastman
-				}
- 				NOT = {
-					liege = {
-						trait = creature_beastman
-					}
 				}
 			}
 			AND = {
@@ -2657,72 +2660,18 @@ character_event = {
 					trait = creature_beastman
 				}
 			}
-			AND = {
-				NOT = {
-					trait = khorne_demon
-				}
- 				NOT = {
-					liege = {
-						trait = khorne_demon
-					}
-				}
-			}
-			AND = {
-				NOT = {
-					trait = nurgle_demon
-				}
- 				NOT = {
-					liege = {
-						trait = nurgle_demon
-					}
-				}
-			}
-			AND = {
-				NOT = {
-					trait = slaanesh_demon
-				}
- 				NOT = {
-					liege = {
-						trait = slaanesh_demon
-					}
-				}
-			}
-			AND = {
-				NOT = {
-					trait = tzeentch_demon
-				}
- 				NOT = {
-					liege = {
-						trait = tzeentch_demon
-					}
-				}
-			}
-			AND = {
-				NOT = {
-					trait = hashut_kdaai
-				}
- 				NOT = {
-					liege = {
-						trait = hashut_kdaai
-					}
-				}
-			}
 		}
-		NOT = {
+		nor = {
 			liege = {
 				has_character_flag = asked_chancellor_petition
 			}
-		}
-		NOT = {
 			has_character_flag = asked_for_job
 		}
 		liege = {
 			job_chancellor = {
 				same_liege = ROOT
-				NOT = {
+				nor = {
 					diplomacy = ROOT
-				}
-				NOT = {
 					has_minor_title = title_regent
 				}
 			}

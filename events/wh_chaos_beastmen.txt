@@ -3,7 +3,7 @@ namespace = wh_beastmen
 # Beastmen tribe rises up (temporary rebel title created, with a leader and a war)
 # Triggered from "on_rebel_revolt"
 province_event = {
-	id = wh_beastmen.1
+	id = wh_chaos_beastmen.1
 	desc = EVTDESCbeastmen1
 	picture = GFX_evt_beastmen
 	border = GFX_event_normal_frame_war
@@ -22,18 +22,11 @@ province_event = {
 				}
 			}
 		}
-		empire = {
-			or = {
-				title = e_chaos_wastes
-				title = e_kislev
-				title = e_norsca
-				title = e_araby
-				title = k_couronne
-				title = k_lyonesse
-				title = k_languille
-				title = k_stygian_wood
-				title = k_the_watchtowers
-			}
+		or = {
+			region = world_chaos_wastes
+			region = world_old_world
+			region = world_greater_araby
+			region = world_norsca
 		}
 		not = {
 			# Not if there is already an ongoing beastmen uprising for this province
@@ -55,99 +48,33 @@ province_event = {
 
 	immediate = {
 		clr_province_flag = beastman_horde_inv
-		random_list = {
-			65 = {
-				create_character = {
-					random_traits = yes
-					dynasty = none
-					religion = chaos
-					culture = beastman_main
-					female = no
-					age = 23
-					attributes = {
-						martial = 7
-					}
-					trait = creature_beastman
-					trait = tough_soldier
-					trait = horns_average
-				}
+		create_character = {
+			random_traits = yes
+			dynasty = none
+			religion = chaos
+			culture = beastman_main
+			female = no
+			age = 23
+			attributes = {
+				martial = 7
 			}
-			20 = {
-				create_character = {
-					random_traits = yes
-					dynasty = none
-					religion = khorne
-					culture = beastman_main
-					female = no
-					age = 23
-					attributes = {
-						martial = 9
-					}
-					trait = creature_beastman
-					trait = tough_soldier
-					trait = berserker
-					trait = horns_average
-				}
-			}
-			5 = {
-				create_character = {
-					random_traits = yes
-					dynasty = none
-					religion = slaanesh
-					culture = beastman_main
-					female = no
-					age = 23
-					attributes = {
-						intrigue = 5
-					}
-					trait = creature_beastman
-					trait = misguided_warrior
-					trait = horns_average
-				}
-			}
-			5 = {
-				create_character = {
-					random_traits = yes
-					dynasty = none
-					religion = nurgle
-					culture = beastman_main
-					female = no
-					age = 23
-					attributes = {
-						diplomacy = 5
-					}
-					trait = creature_beastman
-					trait = misguided_warrior
-					trait = horns_average
-				}
-			}
-			5 = {
-				create_character = {
-					random_traits = yes
-					dynasty = none
-					religion = tzeentch
-					culture = beastman_main
-					female = no
-					age = 23
-					attributes = {
-						learning = 5
-					}
-					trait = creature_beastman
-					trait = intricate_webweaver
-					trait = lore_tzeentch
-					trait = horns_average
-				}
-			}
+			trait = creature_beastman
+			trait = tough_soldier
+			trait = horns_average
 		}
 		new_character = {
-			culture = beastman_main
-			if = {
-				limit = {
-					trait = lore_tzeentch
+			random_list = {
+				60 = {
 				}
-				add_trait = bray_shaman
-				z_magic_power_sequential_addition = yes
-				z_magic_power_sequential_addition = yes
+				20 = {
+					change_martial = 9
+					add_trait = berserker
+				}
+				20 = {
+					add_trait = bray_shaman
+					add_trait = lore_dark_magic
+					z_magic_power_random = yes
+				}
 			}
 			create_title = {
 				tier = KING
@@ -675,7 +602,7 @@ province_event = {
 			any_liege = {
 				# Inform the lieges
 				character_event = {
-					id = wh_beastmen.4
+					id = wh_chaos_beastmen.4
 				}
 			}
 		}
@@ -688,7 +615,7 @@ province_event = {
 
 # Morghur awakens on_decade_pulse
 character_event = {
-	id = wh_beastmen.2
+	id = wh_chaos_beastmen.2
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -725,7 +652,7 @@ character_event = {
 	immediate = {
 		capital_scope = {
 			province_event = {
-				id = wh_beastmen.3
+				id = wh_chaos_beastmen.3
 			}
 		}
 	}
@@ -733,7 +660,7 @@ character_event = {
 
 # spawn horde
 province_event = {
-	id = wh_beastmen.3
+	id = wh_chaos_beastmen.3
 	desc = EVTDESCbeastmen3
 	picture = GFX_evt_beastmen
 	border = GFX_event_normal_frame_war
@@ -1304,7 +1231,7 @@ province_event = {
 			any_liege = {
 				# Inform the lieges
 				character_event = {
-					id = wh_beastmen.4
+					id = wh_chaos_beastmen.4
 				}
 			}
 		}
@@ -1317,7 +1244,7 @@ province_event = {
 
 # Notify Liege
 character_event = {
-	id = wh_beastmen.4
+	id = wh_chaos_beastmen.4
 	desc = EVTDESCbeastmen4
 	picture = GFX_evt_beastmen
 	border = GFX_event_normal_frame_war
@@ -1331,7 +1258,7 @@ character_event = {
 
 # Random beastmen horde event
 character_event = {
-	id = wh_beastmen.6
+	id = wh_chaos_beastmen.6
 	hide_window = yes
 	only_playable = yes
 	is_triggered_only = yes
@@ -1345,18 +1272,11 @@ character_event = {
 			}
 		}
 		capital_scope = {
-			empire = {
-				or = {
-					title = e_chaos_wastes
-					title = e_kislev
-					title = e_norsca
-					title = e_araby
-					title = k_couronne
-					title = k_lyonesse
-					title = k_languille
-					title = k_stygian_wood
-					title = k_the_watchtowers
-				}
+			or = {
+				region = world_chaos_wastes
+				region = world_old_world
+				region = world_greater_araby
+				region = world_norsca
 			}
 		}
 	}
@@ -1420,7 +1340,7 @@ character_event = {
 		capital_scope = {
 			set_province_flag = beastman_horde_inv
 			province_event = {
-				id = wh_beastmen.1
+				id = wh_chaos_beastmen.1
 			}
 		}
 	}
@@ -1429,7 +1349,7 @@ character_event = {
 # Morghur corrupts a conquered province and gains more troops.
 # ROOT is attacker, FROM is province sieged
 character_event = {
-	id = wh_beastmen.5
+	id = wh_chaos_beastmen.5
 	desc = EVTDESCbeastmen5
 	picture = GFX_evt_beastmen
 	religion_group = chaos_gods_group
@@ -1474,7 +1394,7 @@ character_event = {
 		}
 		morghur = {
 			character_event = {
-				id = wh_beastmen.9
+				id = wh_chaos_beastmen.9
 			}
 		}
 		if = {
@@ -1493,7 +1413,7 @@ character_event = {
 				owner = {
 					top_liege = {
 						character_event = {
-							id = wh_beastmen.8
+							id = wh_chaos_beastmen.8
 						}
 					}
 				}
@@ -1533,7 +1453,7 @@ character_event = {
 			FROM = {
 				owner = {
 					character_event = {
-						id = wh_beastmen.7
+						id = wh_chaos_beastmen.7
 					}
 				}
 				set_province_flag = flag_province_scourged
@@ -1671,7 +1591,7 @@ character_event = {
 }
 
 character_event = {
-	id = wh_beastmen.7
+	id = wh_chaos_beastmen.7
 	desc = EVTDESCbeastmen7
 	picture = GFX_evt_beastmen
 	is_triggered_only = yes
@@ -1690,7 +1610,7 @@ character_event = {
 }
 
 character_event = {
-	id = wh_beastmen.8
+	id = wh_chaos_beastmen.8
 	desc = EVTDESCbeastmen8
 	picture = GFX_evt_beastmen
 	is_triggered_only = yes
@@ -1709,7 +1629,7 @@ character_event = {
 }
 
 character_event = {
-	id = wh_beastmen.9
+	id = wh_chaos_beastmen.9
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -1736,7 +1656,7 @@ character_event = {
 
 # Migrating
 character_event = {
-	id = wh_beastmen.10
+	id = wh_chaos_beastmen.10
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -1778,7 +1698,7 @@ character_event = {
 				}
 				clr_character_flag = migrating_away_vassal
 				character_event = {
-					id = wh_beastmen.13
+					id = wh_chaos_beastmen.13
 				}
 			}
 		}
@@ -1787,7 +1707,7 @@ character_event = {
 
 # Old vassal becomes independent due to migration
 character_event = {
-	id = wh_beastmen.13
+	id = wh_chaos_beastmen.13
 	desc = EVTDESCbeastmen13
 	picture = GFX_evt_beastmen_mist
 	is_triggered_only = yes
@@ -1801,7 +1721,7 @@ character_event = {
 # DESPOILING LAND JOB ACTION EFFECTS
 # The Marshal has managed to rally another herd
 character_event = {
-	id = wh_beastmen.14
+	id = wh_chaos_beastmen.14
 	title = EVTNAMEbeastmen14
 	desc = EVTDESCbeastmen14
 	picture = GFX_evt_beastmen_mist
@@ -1978,7 +1898,7 @@ character_event = {
 			}
 			liege = {
 				character_event = {
-					id = wh_beastmen.15
+					id = wh_chaos_beastmen.15
 				}
 			}
 		}
@@ -1987,7 +1907,7 @@ character_event = {
 
 # The liege is informed
 character_event = {
-	id = wh_beastmen.15
+	id = wh_chaos_beastmen.15
 	desc = EVTDESCbeastmen15
 	picture = GFX_evt_beastmen_mist
 	border = GFX_event_normal_frame_war
@@ -2050,7 +1970,7 @@ character_event = {
 
 # The Marshal has depleted all resources
 character_event = {
-	id = wh_beastmen.16
+	id = wh_chaos_beastmen.16
 	title = EVTNAMEbeastmen16
 	desc = EVTDESCbeastmen16
 	picture = GFX_evt_beastmen_mist
@@ -2191,7 +2111,7 @@ character_event = {
 		hidden_tooltip = {
 			liege = {
 				character_event = {
-					id = wh_beastmen.17
+					id = wh_chaos_beastmen.17
 				}
 			}
 		}
@@ -2200,7 +2120,7 @@ character_event = {
 
 # The liege is informed
 character_event = {
-	id = wh_beastmen.17
+	id = wh_chaos_beastmen.17
 	desc = EVTDESCbeastmen17
 	picture = GFX_evt_beastmen
 	border = GFX_event_normal_frame_war
@@ -2226,9 +2146,11 @@ character_event = {
 
 # A Beastman ruler dies
 character_event = {
-	id = wh_beastmen.18
+	id = wh_chaos_beastmen.18
 	hide_window = yes
-	only_rulers = yes
+	only_playable = yes
+	religion_group = chaos_gods_group
+	culture_group = beastman_group	
 	is_triggered_only = yes
 
 	trigger = {
@@ -2242,7 +2164,7 @@ character_event = {
 	immediate = {
 		killer = {
 			character_event = {
-				id = wh_beastmen.19
+				id = wh_chaos_beastmen.19
 			}
 		}
 	}
@@ -2250,7 +2172,7 @@ character_event = {
 
 # Killer event
 character_event = {
-	id = wh_beastmen.19
+	id = wh_chaos_beastmen.19
 	desc = EVTDESCbeastmen19
 	picture = GFX_evt_beastmen
 	border = GFX_event_normal_frame_war
@@ -2264,10 +2186,7 @@ character_event = {
 				character = ROOT
 			}
 		}
-		OR = {
-			religion_group = chaos_gods_group
-			trait = creature_beastman
-		}
+		trait = creature_beastman
 	}
 
 	option = {
@@ -2300,7 +2219,7 @@ character_event = {
 			FROM = {
 				liege = {
 					character_event = {
-						id = wh_beastmen.20
+						id = wh_chaos_beastmen.20
 					}
 				}
 			} # inform liege
@@ -2350,7 +2269,7 @@ character_event = {
 
 # Liege informed
 character_event = {
-	id = wh_beastmen.20
+	id = wh_chaos_beastmen.20
 	desc = EVTDESCbeastmen20
 	picture = GFX_evt_beastmen
 	border = GFX_event_normal_frame_war
@@ -2364,7 +2283,7 @@ character_event = {
 # # Horde breaks apart (on death)
 # character_event = {
 
-# id = wh_beastmen.21
+# id = wh_chaos_beastmen.21
 # hide_window = yes
 
 # is_triggered_only = yes
@@ -2391,7 +2310,7 @@ character_event = {
 # higher_tier_than = BARON }
 # set_defacto_liege = THIS
 
-# character_event = { id = wh_beastmen.22 }
+# character_event = { id = wh_chaos_beastmen.22 }
 # }
 
 # random_demesne_province = { # All human-cultured counties go to the next ruler nearby
@@ -2400,7 +2319,7 @@ character_event = {
 # NOT = { culture = beastman_main } }
 # random = { chance = 80
 
-# province_event = { id = wh_beastmen.57 } }
+# province_event = { id = wh_chaos_beastmen.57 } }
 # }
 
 # }
@@ -2410,7 +2329,7 @@ character_event = {
 # # Vassals informed of new independence
 
 # character_event = {
-# id = wh_beastmen.22
+# id = wh_chaos_beastmen.22
 
 # desc = EVTDESCbeastmen22
 # picture = GFX_evt_beastmen
@@ -2426,7 +2345,7 @@ character_event = {
 
 # Liege challenged
 character_event = {
-	id = wh_beastmen.23
+	id = wh_chaos_beastmen.23
 	desc = EVTDESCbeastmen23
 	picture = GFX_evt_beastmen
 	border = GFX_event_normal_frame_war
@@ -2443,7 +2362,7 @@ character_event = {
 		name = "EVTOPTbeastmen23"
 		FROM = {
 			character_event = {
-				id = wh_beastmen.28 tooltip = "DUELENGINE_TOOLTIP_1A"
+				id = wh_chaos_beastmen.28 tooltip = "DUELENGINE_TOOLTIP_1A"
 			}
 		}
 	}
@@ -2452,7 +2371,7 @@ character_event = {
 # SPREADING CHAOS JOB ACTION EFFECT
 # The Marshal has plundered and greatly increased your fame
 character_event = {
-	id = wh_beastmen.24
+	id = wh_chaos_beastmen.24
 	title = EVTNAMEbeastmen24
 	desc = EVTDESCbeastmen24
 	picture = GFX_evt_beastmen_mist
@@ -2623,7 +2542,7 @@ character_event = {
 			}
 			liege = {
 				character_event = {
-					id = wh_beastmen.25
+					id = wh_chaos_beastmen.25
 				}
 			}
 		}
@@ -2632,7 +2551,7 @@ character_event = {
 
 # Liege informed
 character_event = {
-	id = wh_beastmen.25
+	id = wh_chaos_beastmen.25
 	desc = EVTDESCbeastmen25
 	picture = GFX_evt_beastmen
 	border = GFX_event_normal_frame_war
@@ -2651,7 +2570,7 @@ character_event = {
 
 # The Marshal has depleted all resources
 character_event = {
-	id = wh_beastmen.26
+	id = wh_chaos_beastmen.26
 	title = EVTNAMEbeastmen16
 	desc = EVTDESCbeastmen16
 	picture = GFX_evt_beastmen_mist
@@ -2792,7 +2711,7 @@ character_event = {
 		hidden_tooltip = {
 			liege = {
 				character_event = {
-					id = wh_beastmen.27
+					id = wh_chaos_beastmen.27
 				}
 			}
 		}
@@ -2801,7 +2720,7 @@ character_event = {
 
 # The liege is informed
 character_event = {
-	id = wh_beastmen.27
+	id = wh_chaos_beastmen.27
 	desc = EVTDESCbeastmen17
 	picture = GFX_evt_beastmen
 	border = GFX_event_normal_frame_war
@@ -2830,7 +2749,7 @@ character_event = {
 
 # FROM = defender
 character_event = {
-	id = wh_beastmen.28
+	id = wh_chaos_beastmen.28
 	desc = EVTDESCbeastmen28
 	picture = GFX_evt_beastmen
 	border = "GFX_event_normal_frame_war"
@@ -2842,7 +2761,7 @@ character_event = {
 }
 
 character_event = {
-	id = wh_beastmen.29
+	id = wh_chaos_beastmen.29
 	desc = EVTDESCbeastmen29
 	picture = "GFX_evt_tzeentch"
 	is_triggered_only = yes
@@ -2857,48 +2776,14 @@ character_event = {
 			}
 		}
 		OR = {
-			AND = {
-				OR = {
-					trait = genius
-					trait = elusive_shadow
-					trait = brilliant
-					trait = bright
-					trait = quick
-				}
-				religion = tzeentch
-			}
-			AND = {
-				OR = {
-					trait = beautiful
-					trait = fair
-					trait = pretty
-					trait = genius
-					trait = unsightly
-				}
-				religion = slaanesh
-			}
-			AND = {
-				OR = {
-					trait = genius
-					trait = midas_touched
-					trait = brilliant
-					trait = hunchback
-					trait = lisp
-					trait = stutter
-				}
-				religion = nurgle
-			}
-			AND = {
-				OR = {
-					trait = strong
-					trait = tough
-					trait = hardy
-					trait = genius
-					trait = brilliant
-					trait = brilliant_strategist
-				}
-				religion = chaos
-			}
+			trait = strong
+			trait = tough
+			trait = hardy
+			trait = genius
+			trait = brilliant
+			trait = bright
+			trait = quick
+			trait = brilliant_strategist
 		}
 		NOT = {
 			trait = bray_shaman
@@ -2907,45 +2792,27 @@ character_event = {
 
 	option = {
 		name = EVTOPTAbeastmen29
-		add_trait = bray_shaman
-		set_character_flag = ai_flag_refuse_conversion
  		mother = {
 			character_event = {
-				id = wh_beastmen.31
+				id = wh_chaos_beastmen.31
 				days = 1
 			}
 		}
  		father = {
 			character_event = {
-				id = wh_beastmen.31
+				id = wh_chaos_beastmen.31
 				days = 1
 			}
 		}
-		if = {
-			limit = {
-				religion = tzeentch
-			}
-			add_trait = lore_tzeentch
-		}
-		if = {
-			limit = {
-				religion = slaanesh
-			}
-			add_trait = lore_slaanesh
-		}
-		if = {
-			limit = {
-				religion = chaos
-			}
-			add_trait = lore_dark_magic
-		}
+		add_trait = bray_shaman
+		add_trait = lore_dark_magic
 		z_magic_power_random = yes
 	}
 }
 
 # On birth event for bray shamans
 character_event = {
-	id = wh_beastmen.30
+	id = wh_chaos_beastmen.30
 	hide_window = yes
 	only_men = yes
 	is_triggered_only = yes
@@ -2967,7 +2834,7 @@ character_event = {
 					}
 				}
 				character_event = {
-					id = wh_beastmen.29
+					id = wh_chaos_beastmen.29
 					days = 120
 					random = 100
 				}
@@ -2979,7 +2846,7 @@ character_event = {
 }
 
 character_event = {
-	id = wh_beastmen.31
+	id = wh_chaos_beastmen.31
 	desc = EVTDESCbeastmen31
 	picture = "GFX_evt_tzeentch"
 	ai = no
@@ -2993,7 +2860,7 @@ character_event = {
 # DESPOILING LAND JOB ACTION EFFECTS (FOR STUPID AI ONLY)
 # The Marshal has managed to rally another herd
 character_event = {
-	id = wh_beastmen.32
+	id = wh_chaos_beastmen.32
 	title = EVTNAMEbeastmen14
 	desc = EVTDESCbeastmen14
 	picture = GFX_evt_beastmen_mist
@@ -3155,13 +3022,9 @@ character_event = {
 				}
 				if = {
 					limit = {
-						NOT = {
+						nor = {
 							has_province_modifier = beastmen_scourging_2
-						}
-						NOT = {
 							has_province_modifier = beastmen_scourging_1
-						}
-						NOT = {
 							has_province_modifier = beastmen_scourging_3
 						}
 					}
@@ -3173,7 +3036,7 @@ character_event = {
 			}
 			liege = {
 				character_event = {
-					id = wh_beastmen.33
+					id = wh_chaos_beastmen.33
 				}
 			}
 		}
@@ -3182,7 +3045,7 @@ character_event = {
 
 # The liege is informed
 character_event = {
-	id = wh_beastmen.33
+	id = wh_chaos_beastmen.33
 	desc = EVTDESCbeastmen15
 	picture = GFX_evt_beastmen_mist
 	border = GFX_event_normal_frame_war
@@ -3245,7 +3108,7 @@ character_event = {
 
 # The Marshal has depleted all resources
 character_event = {
-	id = wh_beastmen.34
+	id = wh_chaos_beastmen.34
 	title = EVTNAMEbeastmen16
 	desc = EVTDESCbeastmen16
 	picture = GFX_evt_beastmen_mist
@@ -3391,7 +3254,7 @@ character_event = {
 		hidden_tooltip = {
 			liege = {
 				character_event = {
-					id = wh_beastmen.35
+					id = wh_chaos_beastmen.35
 				}
 			}
 		}
@@ -3400,7 +3263,7 @@ character_event = {
 
 # The liege is informed
 character_event = {
-	id = wh_beastmen.35
+	id = wh_chaos_beastmen.35
 	desc = EVTDESCbeastmen17
 	picture = GFX_evt_beastmen
 	border = GFX_event_normal_frame_war
@@ -3435,7 +3298,7 @@ character_event = {
 # SPREADING CHAOS JOB ACTION EFFECT (FOR STUPID AI)
 # The Marshal has plundered and greatly increased your fame
 character_event = {
-	id = wh_beastmen.36
+	id = wh_chaos_beastmen.36
 	title = EVTNAMEbeastmen24
 	desc = EVTDESCbeastmen24
 	picture = GFX_evt_beastmen_mist
@@ -3594,13 +3457,9 @@ character_event = {
 				}
 				if = {
 					limit = {
-						NOT = {
+						nor = {
 							has_province_modifier = beastmen_scourging_2
-						}
-						NOT = {
 							has_province_modifier = beastmen_scourging_1
-						}
-						NOT = {
 							has_province_modifier = beastmen_scourging_3
 						}
 					}
@@ -3612,7 +3471,7 @@ character_event = {
 			}
 			liege = {
 				character_event = {
-					id = wh_beastmen.25
+					id = wh_chaos_beastmen.25
 				}
 			}
 		}
@@ -3622,7 +3481,7 @@ character_event = {
 # CLEANSING BEASTMEN
 # The Marshal suppressing revolts has a chance of removing a Herdstone and restoring his liege's culture and religion in a province.
 character_event = {
-	id = wh_beastmen.37
+	id = wh_chaos_beastmen.37
 	desc = EVTDESCbeastmen37
 	picture = GFX_evt_beastmen_mist
 	border = GFX_event_normal_frame_war
@@ -3725,7 +3584,7 @@ character_event = {
 		prestige = 50
 		liege = {
 			character_event = {
-				id = wh_beastmen.38
+				id = wh_chaos_beastmen.38
 			}
 		}
 	}
@@ -3733,7 +3592,7 @@ character_event = {
 
 # Liege: fund expedition?
 character_event = {
-	id = wh_beastmen.38
+	id = wh_chaos_beastmen.38
 	desc = EVTDESCbeastmen38
 	picture = GFX_evt_beastmen
 	border = GFX_event_normal_frame_war
@@ -3751,7 +3610,7 @@ character_event = {
 			random_list = {
 				80 = {
 					character_event = {
-						id = wh_beastmen.39
+						id = wh_chaos_beastmen.39
 						days = 25
 						random = 25
 					}
@@ -3760,15 +3619,13 @@ character_event = {
 					modifier = {
 						factor = 1.5
 						has_province_modifier = beastmen_scourging_3
-
 					}
 					modifier = {
 						factor = 1.75
 						has_province_modifier = beastman_herdstone
-
 					}
 					character_event = {
-						id = wh_beastmen.40
+						id = wh_chaos_beastmen.40
 						days = 25
 						random = 25
 					}
@@ -3792,7 +3649,7 @@ character_event = {
 
 # Liege: success
 character_event = {
-	id = wh_beastmen.39
+	id = wh_chaos_beastmen.39
 	desc = EVTDESCbeastmen39
 	picture = GFX_evt_beastmen
 	border = GFX_event_normal_frame_war
@@ -3858,7 +3715,7 @@ character_event = {
 
 # Liege: failure
 character_event = {
-	id = wh_beastmen.40
+	id = wh_chaos_beastmen.40
 	desc = EVTDESCbeastmen40
 	picture = GFX_evt_beastmen
 	border = GFX_event_normal_frame_war
@@ -3871,7 +3728,7 @@ character_event = {
 				random = {
 					chance = 20
 					province_event = {
-						id = wh_beastmen.1
+						id = wh_chaos_beastmen.1
 					}
 				}
 			}
@@ -3884,33 +3741,23 @@ character_event = {
 
 # On post birth event for turnskins
 character_event = {
-	id = wh_beastmen.41
+	id = wh_chaos_beastmen.41
 	hide_window = yes
+	is_triggered_only = yes
 
 	trigger = {
 		OR = {
-			trait = creature_human
-			trait = creature_amazon
+			is_living_human_trigger = yes
 			trait = creature_dwarf
 			trait = creature_chaos_dwarf
 		}
-		location = {
-			empire = {
-				or = {
-					title = e_chaos_wastes
-					title = e_kislev
-					title = e_norsca
-					title = e_araby
-					title = k_couronne
-					title = k_lyonesse
-					title = k_languille
-					title = k_stygian_wood
-					title = k_the_watchtowers
-				}
-			}
+		or = {
+			region = world_chaos_wastes
+			region = world_old_world
+			region = world_greater_araby
+			region = world_norsca
 		}
 	}
-	is_triggered_only = yes
 
 	immediate = {
 		random_list = {
@@ -3943,7 +3790,7 @@ character_event = {
 				set_graphical_culture = beastman_main
 				liege = {
 					character_event = {
-						id = wh_beastmen.42 days = 1
+						id = wh_chaos_beastmen.42 days = 1
 					}
 				}
 			}
@@ -3980,7 +3827,7 @@ character_event = {
 }
 
 character_event = {
-	id = wh_beastmen.42
+	id = wh_chaos_beastmen.42
 	desc = {
 		text = EVTDESCAbeastmen42
 		trigger = {
@@ -4125,7 +3972,7 @@ character_event = {
 
 # What to do with captured slaves?
 character_event = {
-	id = wh_beastmen.43
+	id = wh_chaos_beastmen.43
 	desc = EVTDESCbeastmen43
 	picture = GFX_evt_beastmen_charge
 	border = GFX_event_normal_frame_war
@@ -4140,6 +3987,7 @@ character_event = {
 		}
 		prestige = 125
 		piety = 50
+
 		hidden_tooltip = {
 			if = {
 				limit = {
@@ -4247,7 +4095,7 @@ character_event = {
 # The Beastmen ravage a province, one of them rapes a local
 # ROOT is attacker, FROM is province sieged
 character_event = {
-	id = wh_beastmen.47
+	id = wh_chaos_beastmen.47
 	hide_window = yes
 	culture_group = beastman_group
 	only_men = yes
@@ -4267,8 +4115,7 @@ character_event = {
 					is_female = yes
 					is_ruler = no
 					OR = {
-						trait = creature_human
-						trait = creature_amazon
+						is_living_human_trigger = yes
 						trait = creature_elf
 						trait = creature_dwarf
 						trait = creature_chaos_dwarf
@@ -4288,8 +4135,7 @@ character_event = {
 							is_female = yes
 							is_ruler = no
 							OR = {
-								trait = creature_human
-								trait = creature_amazon
+						is_living_human_trigger = yes
 								trait = creature_elf
 								trait = creature_dwarf
 								trait = creature_chaos_dwarf
@@ -4305,7 +4151,7 @@ character_event = {
 
 # Eat prisoner - (Jailer)
 character_event = {
-	id = wh_beastmen.48
+	id = wh_chaos_beastmen.48
 	desc = EVTDESCbeastme48
 	picture = GFX_evt_beastmen_charge
 	border = GFX_event_normal_frame_war
@@ -4390,7 +4236,7 @@ character_event = {
 # HERDSTONE OFFERING
 # Small horde
 character_event = {
-	id = wh_beastmen.49
+	id = wh_chaos_beastmen.49
 	desc = EVTDESCbeastmen49
 	picture = GFX_evt_beastmen_mist
 	border = GFX_event_normal_frame_war
@@ -4447,7 +4293,7 @@ character_event = {
 
 # Large horde
 character_event = {
-	id = wh_beastmen.50
+	id = wh_chaos_beastmen.50
 	desc = EVTDESCbeastmen50
 	picture = GFX_evt_beastmen_mist
 	border = GFX_event_normal_frame_war
@@ -4504,7 +4350,7 @@ character_event = {
 
 # Giants
 character_event = {
-	id = wh_beastmen.51
+	id = wh_chaos_beastmen.51
 	desc = EVTDESCbeastmen51
 	picture = GFX_evt_giant
 	border = GFX_event_normal_frame_war
@@ -4537,7 +4383,7 @@ character_event = {
 
 # Raiders (scope to capital)
 character_event = {
-	id = wh_beastmen.52
+	id = wh_chaos_beastmen.52
 	desc = EVTDESCbeastmen52
 	picture = GFX_evt_beastmen_charge
 	border = GFX_event_normal_frame_war
@@ -4546,7 +4392,7 @@ character_event = {
 	immediate = {
 		capital_scope = {
 			province_event = {
-				id = wh_beastmen.52001
+				id = wh_chaos_beastmen.52001
 			}
 		}
 	}
@@ -4558,7 +4404,7 @@ character_event = {
 
 # Raiders
 province_event = {
-	id = wh_beastmen.52001
+	id = wh_chaos_beastmen.52001
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -5182,7 +5028,7 @@ province_event = {
 			any_liege = {
 				# Inform the lieges
 				character_event = {
-					id = wh_beastmen.4
+					id = wh_chaos_beastmen.4
 				}
 			}
 		}
@@ -5191,7 +5037,7 @@ province_event = {
 
 # On-action combat event: De-hornified in action
 character_event = {
-	id = wh_beastmen.53
+	id = wh_chaos_beastmen.53
 	desc = EVTDESCbeastmen53
 	picture = GFX_evt_battle
 	border = GFX_event_normal_frame_war
@@ -5375,7 +5221,7 @@ character_event = {
 }
 
 character_event = {
-	id = wh_beastmen.54
+	id = wh_chaos_beastmen.54
  	hide_window = yes
 	capable_only = yes
 	culture_group = beastman_group
@@ -5521,7 +5367,7 @@ character_event = {
 
 # Cowardly AI: ATTACK, the game compels you! (duchy migration)
 character_event = {
-	id = wh_beastmen.55
+	id = wh_chaos_beastmen.55
  	hide_window = yes
 	capable_only = yes
 	culture_group = beastman_group
@@ -5588,7 +5434,7 @@ character_event = {
 
 # Random civilized people try and take land back (on five years pulse)
 character_event = {
-	id = wh_beastmen.56
+	id = wh_chaos_beastmen.56
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -5675,7 +5521,7 @@ character_event = {
 				}
 			}
 			province_event = {
-				id = wh_beastmen.57
+				id = wh_chaos_beastmen.57
 			}
 		}
 	}
@@ -5683,7 +5529,7 @@ character_event = {
 
 # Peasant Rebels rise up on_death to take back civilized lands
 province_event = {
-	id = wh_beastmen.57
+	id = wh_chaos_beastmen.57
 	desc = EVTDESCbeastmen57
 	picture = GFX_evt_peasants
 	border = GFX_event_normal_frame_war
@@ -6270,7 +6116,7 @@ province_event = {
 			any_liege = {
 				# Inform the lieges
 				character_event = {
-					id = wh_beastmen.58
+					id = wh_chaos_beastmen.58
 				}
 			}
 		}
@@ -6282,7 +6128,7 @@ province_event = {
 }
 
 character_event = {
-	id = wh_beastmen.58
+	id = wh_chaos_beastmen.58
 	desc = EVTDESCbeastmen58
 	picture = GFX_evt_peasants
 	border = GFX_event_normal_frame_war
@@ -6296,7 +6142,7 @@ character_event = {
 
 # Beastman childhood trait
 character_event = {
-	id = wh_beastmen.59
+	id = wh_chaos_beastmen.59
 	hide_window = yes
 	min_age = 8
  	max_age = 16
@@ -6311,22 +6157,22 @@ character_event = {
 		random_list = {
 			10 = {
 				character_event = {
-					id = wh_beastmen.60
+					id = wh_chaos_beastmen.60
 				}
 			} # wroth
 			10 = {
 				character_event = {
-					id = wh_beastmen.61
+					id = wh_chaos_beastmen.61
 				}
 			} # envious
 			10 = {
 				character_event = {
-					id = wh_beastmen.62
+					id = wh_chaos_beastmen.62
 				}
 			} # ambitious
 			10 = {
 				character_event = {
-					id = wh_beastmen.63
+					id = wh_chaos_beastmen.63
 				}
 			} # lustful
 			60 = {
@@ -6337,7 +6183,7 @@ character_event = {
 
 # Beastman childhood wrath
 character_event = {
-	id = wh_beastmen.60
+	id = wh_chaos_beastmen.60
 	desc = EVTDESCbeastmen60
 	picture = GFX_evt_beastmen_kids
 	border = GFX_event_normal_frame_war
@@ -6358,7 +6204,7 @@ character_event = {
 		add_trait = wroth
 		guardian = {
 			character_event = {
-				id = wh_beastmen.60005
+				id = wh_chaos_beastmen.60005
 			}
 		}
 	}
@@ -6366,7 +6212,7 @@ character_event = {
 
 # Notify Guardian
 character_event = {
-	id = wh_beastmen.60005
+	id = wh_chaos_beastmen.60005
 	desc = EVTDESCbeastmen60005
 	picture = GFX_evt_beastmen_kids
 	border = GFX_event_normal_frame_war
@@ -6380,7 +6226,7 @@ character_event = {
 
 # Beastman childhood cruelty
 character_event = {
-	id = wh_beastmen.61
+	id = wh_chaos_beastmen.61
 	desc = EVTDESCbeastmen61
 	picture = GFX_evt_beastmen_kids
 	border = GFX_event_normal_frame_war
@@ -6400,7 +6246,7 @@ character_event = {
 		add_trait = cruel
 		guardian = {
 			character_event = {
-				id = wh_beastmen.61005
+				id = wh_chaos_beastmen.61005
 			}
 		}
 	}
@@ -6408,7 +6254,7 @@ character_event = {
 
 # Notify Guardian
 character_event = {
-	id = wh_beastmen.61005
+	id = wh_chaos_beastmen.61005
 	desc = EVTDESCbeastmen61005
 	picture = GFX_evt_beastmen_kids
 	border = GFX_event_normal_frame_war
@@ -6422,7 +6268,7 @@ character_event = {
 
 # Beastman childhood ambitious
 character_event = {
-	id = wh_beastmen.62
+	id = wh_chaos_beastmen.62
 	desc = EVTDESCbeastmen62
 	picture = GFX_evt_beastmen_kids
 	border = GFX_event_normal_frame_war
@@ -6444,7 +6290,7 @@ character_event = {
 		add_trait = ambitious
 		guardian = {
 			character_event = {
-				id = wh_beastmen.62005
+				id = wh_chaos_beastmen.62005
 			}
 		}
 	}
@@ -6452,7 +6298,7 @@ character_event = {
 
 # Notify Guardian
 character_event = {
-	id = wh_beastmen.62005
+	id = wh_chaos_beastmen.62005
 	desc = EVTDESCbeastmen62005
 	picture = GFX_evt_beastmen_kids
 	border = GFX_event_normal_frame_war
@@ -6466,7 +6312,7 @@ character_event = {
 
 # Beastman childhood lust
 character_event = {
-	id = wh_beastmen.63
+	id = wh_chaos_beastmen.63
 	desc = EVTDESCbeastmen63
 	picture = GFX_evt_beastmen_kids
 	border = GFX_event_normal_frame_war
@@ -6487,7 +6333,7 @@ character_event = {
 		add_trait = lustful
 		guardian = {
 			character_event = {
-				id = wh_beastmen.63005
+				id = wh_chaos_beastmen.63005
 			}
 		}
 	}
@@ -6495,7 +6341,7 @@ character_event = {
 
 # Notify Guardian
 character_event = {
-	id = wh_beastmen.63005
+	id = wh_chaos_beastmen.63005
 	desc = EVTDESCbeastmen63005
 	picture = GFX_evt_beastmen_kids
 	border = GFX_event_normal_frame_war
@@ -6509,7 +6355,7 @@ character_event = {
 
 # on_inheritance event to stop duplicate clan titles
 character_event = {
-	id = wh_beastmen.999
+	id = wh_chaos_beastmen.999
 	hide_window = yes
 	is_triggered_only = yes
 

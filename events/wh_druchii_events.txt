@@ -4,19 +4,23 @@ namespace = druchiiinv
 character_event = {
 	id = druchiiinv.1
 	hide_window = yes
+	is_triggered_only = yes
 
+	# the chain stops when the modifier expires
 	trigger = {
 		has_character_modifier = preparing_ulthuan_invasion
-	}	# the chain stops when the modifier expires
-	is_triggered_only = yes
+	}
 
 	immediate = {
 		random_list = {
 			30 = {
+				# Some troops
 				character_event = {
-					id = druchiiinv.6 days = 40 random = 15
+					id = druchiiinv.6
+					days = 40
+					random = 15
 				}
-			}	# Some troops
+			}
 			20 = {
 				modifier = {
 					factor = 1.25
@@ -68,10 +72,13 @@ character_event = {
 						prestige = 100
 					}
 				}
+				# Famous Commander
 				character_event = {
-					id = druchiiinv.5 days = 40 random = 15
+					id = druchiiinv.5
+					days = 40
+					random = 15
 				}
-			}	# Famous Commander
+			}
 			10 = {
 				modifier = {
 					factor = 1.25
@@ -123,15 +130,21 @@ character_event = {
 						prestige = 100
 					}
 				}
+				# More troops
 				character_event = {
-					id = druchiiinv.4 days = 40 random = 15
+					id = druchiiinv.4
+					days = 40
+					random = 15
 				}
-			}	# More troops
+			}
 			40 = {
+				# repeat each month until expirement
 				character_event = {
-					id = druchiiinv.1 days = 40 random = 15
+					id = druchiiinv.1
+					days = 40
+					random = 15
 				}
-			}	# repeat each month until expirement
+			}
 		}
 	}
 }
@@ -153,6 +166,7 @@ character_event = {
 	}
 	picture = GFX_evt_ulthuan_war
 	border = GFX_event_normal_frame_war
+	ai = no
 	is_triggered_only = yes
 
 	option = {
@@ -187,15 +201,16 @@ character_event = {
 	}
 	picture = GFX_evt_ulthuan_war
 	border = GFX_event_normal_frame_war
+	is_triggered_only = yes
 
+	# If you start the war, the event won't pop up
 	trigger = {
 		NOT = {
 			any_war = {
 				using_cb = ulthuan_invasion
 			}
 		}
-	}	# If you start the war, the event won't pop up
-	is_triggered_only = yes
+	}
 
 	option = {
 		trigger = {
@@ -242,13 +257,14 @@ character_event = {
 			religion_group = cytharai_group
 		}
 	}
-
-	trigger = {
-		has_character_modifier = preparing_ulthuan_invasion
-	}	# the chain stops when the modifier expires
 	picture = GFX_evt_ulthuan_war
 	border = GFX_event_normal_frame_war
 	is_triggered_only = yes
+
+	# the chain stops when the modifier expires
+	trigger = {
+		has_character_modifier = preparing_ulthuan_invasion
+	}
 
 	option = {
 		name = EVTOPTBdruchiiinv.4
@@ -273,127 +289,10 @@ character_event = {
 			}
 		}
 		hidden_tooltip = {
-			random_list = {
-				30 = {
-					character_event = {
-						id = druchiiinv.6 days = 40 random = 15
-					}
-				}	# Some troops
-				20 = {
-					modifier = {
-						factor = 1.25
-						martial = 15
-					}
-					modifier = {
-						factor = 1.25
-						martial = 20
-					}
-					modifier = {
-						factor = 1.25
-						diplomacy = 15
-					}
-					modifier = {
-						factor = 1.25
-						diplomacy = 20
-					}
-					modifier = {
-						factor = 1.25
-						prestige = 1000
-					}
-					modifier = {
-						factor = 0.75
-						NOT = {
-							martial = 10
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							martial = 7
-						}
-					}
-					modifier = {
-						factor = 0.75
-						NOT = {
-							diplomacy = 10
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							diplomacy = 7
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							prestige = 100
-						}
-					}
-					character_event = {
-						id = druchiiinv.5 days = 40 random = 15
-					}
-				}	# Famous Commander
-				10 = {
-					modifier = {
-						factor = 1.25
-						martial = 15
-					}
-					modifier = {
-						factor = 1.25
-						martial = 20
-					}
-					modifier = {
-						factor = 1.25
-						diplomacy = 15
-					}
-					modifier = {
-						factor = 1.25
-						diplomacy = 20
-					}
-					modifier = {
-						factor = 1.25
-						prestige = 1000
-					}
-					modifier = {
-						factor = 0.75
-						NOT = {
-							martial = 10
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							martial = 7
-						}
-					}
-					modifier = {
-						factor = 0.75
-						NOT = {
-							diplomacy = 10
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							diplomacy = 7
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							prestige = 100
-						}
-					}
-					character_event = {
-						id = druchiiinv.4 days = 40 random = 15
-					}
-				}	# More troops
-				40 = {
-					character_event = {
-						id = druchiiinv.1 days = 40 random = 15
-					}
-				}	# repeat each month until expirement
+			character_event = {
+				id = druchiiinv.1
+				days = 40
+				random = 15
 			}
 		}
 	}
@@ -417,11 +316,12 @@ character_event = {
 	}
 	picture = GFX_evt_ulthuan_war
 	border = GFX_event_normal_frame_war
+	is_triggered_only = yes
 
+	# the chain stops when the modifier expires
 	trigger = {
 		has_character_modifier = preparing_ulthuan_invasion
-	}	# the chain stops when the modifier expires
-	is_triggered_only = yes
+	}
 
 	option = {
 		name = EVTOPTBdruchiiinv.5
@@ -461,127 +361,10 @@ character_event = {
 			earmark = prepared_invasion
 		}
 		hidden_tooltip = {
-			random_list = {
-				30 = {
-					character_event = {
-						id = druchiiinv.6 days = 40 random = 15
-					}
-				}	# Some troops
-				20 = {
-					modifier = {
-						factor = 1.25
-						martial = 15
-					}
-					modifier = {
-						factor = 1.25
-						martial = 20
-					}
-					modifier = {
-						factor = 1.25
-						diplomacy = 15
-					}
-					modifier = {
-						factor = 1.25
-						diplomacy = 20
-					}
-					modifier = {
-						factor = 1.25
-						prestige = 1000
-					}
-					modifier = {
-						factor = 0.75
-						NOT = {
-							martial = 10
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							martial = 7
-						}
-					}
-					modifier = {
-						factor = 0.75
-						NOT = {
-							diplomacy = 10
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							diplomacy = 7
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							prestige = 100
-						}
-					}
-					character_event = {
-						id = druchiiinv.5 days = 40 random = 15
-					}
-				}	# Famous Commander
-				10 = {
-					modifier = {
-						factor = 1.25
-						martial = 15
-					}
-					modifier = {
-						factor = 1.25
-						martial = 20
-					}
-					modifier = {
-						factor = 1.25
-						diplomacy = 15
-					}
-					modifier = {
-						factor = 1.25
-						diplomacy = 20
-					}
-					modifier = {
-						factor = 1.25
-						prestige = 1000
-					}
-					modifier = {
-						factor = 0.75
-						NOT = {
-							martial = 10
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							martial = 7
-						}
-					}
-					modifier = {
-						factor = 0.75
-						NOT = {
-							diplomacy = 10
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							diplomacy = 7
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							prestige = 100
-						}
-					}
-					character_event = {
-						id = druchiiinv.4 days = 40 random = 15
-					}
-				}	# More troops
-				40 = {
-					character_event = {
-						id = druchiiinv.1 days = 40 random = 15
-					}
-				}	# repeat each month until expirement
+			character_event = {
+				id = druchiiinv.1
+				days = 40
+				random = 15
 			}
 		}
 	}
@@ -605,11 +388,12 @@ character_event = {
 	}
 	picture = GFX_evt_ulthuan_war
 	border = GFX_event_normal_frame_war
+	is_triggered_only = yes
 
+	# the chain stops when the modifier expires
 	trigger = {
 		has_character_modifier = preparing_ulthuan_invasion
-	}	# the chain stops when the modifier expires
-	is_triggered_only = yes
+	}
 
 	option = {
 		name = EVTOPTBdruchiiinv.6
@@ -634,127 +418,10 @@ character_event = {
 			}
 		}
 		hidden_tooltip = {
-			random_list = {
-				30 = {
-					character_event = {
-						id = druchiiinv.6 days = 40 random = 15
-					}
-				}	# Some troops
-				20 = {
-					modifier = {
-						factor = 1.25
-						martial = 15
-					}
-					modifier = {
-						factor = 1.25
-						martial = 20
-					}
-					modifier = {
-						factor = 1.25
-						diplomacy = 15
-					}
-					modifier = {
-						factor = 1.25
-						diplomacy = 20
-					}
-					modifier = {
-						factor = 1.25
-						prestige = 1000
-					}
-					modifier = {
-						factor = 0.75
-						NOT = {
-							martial = 10
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							martial = 7
-						}
-					}
-					modifier = {
-						factor = 0.75
-						NOT = {
-							diplomacy = 10
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							diplomacy = 7
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							prestige = 100
-						}
-					}
-					character_event = {
-						id = druchiiinv.5 days = 40 random = 15
-					}
-				}	# Famous Commander
-				10 = {
-					modifier = {
-						factor = 1.25
-						martial = 15
-					}
-					modifier = {
-						factor = 1.25
-						martial = 20
-					}
-					modifier = {
-						factor = 1.25
-						diplomacy = 15
-					}
-					modifier = {
-						factor = 1.25
-						diplomacy = 20
-					}
-					modifier = {
-						factor = 1.25
-						prestige = 1000
-					}
-					modifier = {
-						factor = 0.75
-						NOT = {
-							martial = 10
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							martial = 7
-						}
-					}
-					modifier = {
-						factor = 0.75
-						NOT = {
-							diplomacy = 10
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							diplomacy = 7
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							prestige = 100
-						}
-					}
-					character_event = {
-						id = druchiiinv.4 days = 40 random = 15
-					}
-				}	# More troops
-				40 = {
-					character_event = {
-						id = druchiiinv.1 days = 40 random = 15
-					}
-				}	# repeat each month until expirement
+			character_event = {
+				id = druchiiinv.1
+				days = 40
+				random = 15
 			}
 		}
 	}
@@ -793,13 +460,9 @@ character_event = {
 		name = EVTOPTAdruchiiinv.8
 		any_vassal = {
 			limit = {
-				NOT = {
+				nor = {
 					trait = brave
-				}
-				NOT = {
 					trait = quick
-				}
-				NOT = {
 					trait = genius
 				}
 			}
@@ -810,13 +473,9 @@ character_event = {
 		}
 		any_courtier = {
 			limit = {
-				NOT = {
+				nor = {
 					trait = brave
-				}
-				NOT = {
 					trait = quick
-				}
-				NOT = {
 					trait = genius
 				}
 				is_ruler = no
@@ -854,13 +513,9 @@ character_event = {
 		name = EVTOPTAdruchiiinv.10
 		any_vassal = {
 			limit = {
-				NOT = {
+				nor = {
 					trait = brave
-				}
-				NOT = {
 					trait = quick
-				}
-				NOT = {
 					trait = genius
 				}
 			}
@@ -871,15 +526,12 @@ character_event = {
 		}
 		any_courtier = {
 			limit = {
-				NOT = {
+				nor = {
 					trait = brave
-				}
-				NOT = {
 					trait = quick
-				}
-				NOT = {
 					trait = genius
 				}
+				is_ruler = no
 			}
 			opinion = {
 				modifier = opinion_scared_into_submission
@@ -914,13 +566,9 @@ character_event = {
 		name = EVTOPTAdruchiiinv.12
 		any_vassal = {
 			limit = {
-				NOT = {
+				nor = {
 					trait = brave
-				}
-				NOT = {
 					trait = quick
-				}
-				NOT = {
 					trait = genius
 				}
 			}
@@ -931,15 +579,12 @@ character_event = {
 		}
 		any_courtier = {
 			limit = {
-				NOT = {
+				nor = {
 					trait = brave
-				}
-				NOT = {
 					trait = quick
-				}
-				NOT = {
 					trait = genius
 				}
+				is_ruler = no
 			}
 			opinion = {
 				modifier = opinion_scared_into_submission
@@ -974,13 +619,9 @@ character_event = {
 		name = EVTOPTAdruchiiinv.12005
 		any_vassal = {
 			limit = {
-				NOT = {
+				nor = {
 					trait = brave
-				}
-				NOT = {
 					trait = quick
-				}
-				NOT = {
 					trait = genius
 				}
 			}
@@ -991,15 +632,12 @@ character_event = {
 		}
 		any_courtier = {
 			limit = {
-				NOT = {
+				nor = {
 					trait = brave
-				}
-				NOT = {
 					trait = quick
-				}
-				NOT = {
 					trait = genius
 				}
+				is_ruler = no
 			}
 			opinion = {
 				modifier = opinion_scared_into_submission
@@ -1015,6 +653,7 @@ character_event = {
 	desc = EVTDESCA_druchiiinv.13005
 	picture = GFX_evt_wyvern
 	border = GFX_event_normal_frame_war
+	ai = no
 	is_triggered_only = yes
 
 	option = {
@@ -1038,11 +677,12 @@ character_event = {
 				id = druchiiinv.15
 			}
 		}
+		# destroy the Empire
 		current_heir = {
 			character_event = {
 				id = druchiiinv.20 days = 24 random = 15
 			}
-		} # destroy the Empire
+		}
 	}
 }
 
@@ -1054,35 +694,20 @@ long_character_event = {
 		text = EVTDESCA_druchiiinv.15
 		trigger = {
 			is_female = yes
-			OR = {
-				has_character_modifier = magic_power_1
-				has_character_modifier = magic_power_2
-				has_character_modifier = magic_power_3
-				has_character_modifier = magic_power_4
-			}
+			wh_has_any_magic_potential_reveal_trigger = yes
 		}
 	}
 	desc = {
 		text = EVTDESCB_druchiiinv.15
 		trigger = {
 			is_female = no
-			OR = {
-				has_character_modifier = magic_power_1
-				has_character_modifier = magic_power_2
-				has_character_modifier = magic_power_3
-				has_character_modifier = magic_power_4
-			}
+			wh_has_any_magic_potential_reveal_trigger = yes
 		}
 	}
 	desc = {
 		text = EVTDESCC_druchiiinv.15
 		trigger = {
-			NOT = {
-				has_character_modifier = magic_power_1
-				has_character_modifier = magic_power_2
-				has_character_modifier = magic_power_3
-				has_character_modifier = magic_power_4
-			}
+			wh_has_any_magic_potential_reveal_trigger = no
 		}
 	}
 	picture = GFX_evt_malekith
@@ -1101,6 +726,7 @@ character_event = {
 	desc = EVTDESCA_druchiiinv.16
 	picture = GFX_evt_malekith
 	border = GFX_event_normal_frame_war
+	ai = no
 	is_triggered_only = yes
 
 	option = {
@@ -1118,10 +744,8 @@ character_event = {
 	trigger = {
 		trait = creature_elf
 		is_female = no
-		NOT = {
+		nor = {
 			trait = in_hiding
-		}
-		NOT = {
 			trait = malekith
 		}
 		independent = no
@@ -1129,14 +753,8 @@ character_event = {
 			trait = malekith
 		}
 		OR = {
-			trait = magic_potential_1
-			trait = magic_potential_2
-			trait = magic_potential_3
-			trait = magic_potential_4
-			has_character_modifier = magic_power_1
-			has_character_modifier = magic_power_2
-			has_character_modifier = magic_power_3
-			has_character_modifier = magic_power_4
+			wh_is_mage_trigger = yes
+			wh_has_any_magic_potential_reveal_trigger = yes
 		}
 	}
 
@@ -1327,12 +945,11 @@ character_event = {
 	desc = EVTDESCdruchiiinv22
 	picture = "GFX_evt_dark_elf_soldiers"
 	border = GFX_event_normal_frame_religion
-	min_age = 15
-	max_age = 16
 	only_men = yes
 	only_capable = yes
 	prisoner = no
 	religion = cytharai
+	is_triggered_only = yes
 
 	trigger = {
 		NOT = {
@@ -1350,7 +967,6 @@ character_event = {
 			}
 		}
 	}
-	is_triggered_only = yes
 
 	option = {
 		name = EVTOPTAdruchiiinv22
@@ -1415,262 +1031,210 @@ character_event = {
 					modifier = {
 						factor = 0.5
 						trait = fragile
-
 					}
 					modifier = {
 						factor = 0.75
 						trait = weak
-
 					}
 					modifier = {
 						factor = 0.85
 						trait = soft
-
 					}
 					modifier = {
 						factor = 1.25
 						trait = hardy
-
 					}
 					modifier = {
 						factor = 1.5
 						trait = tough
-
 					}
 					modifier = {
 						factor = 1.75
 						trait = strong
-
 					}
 					modifier = {
 						factor = 0.5
 						trait = craven
-
 					}
 					modifier = {
 						factor = 1.15
 						trait = diligent
-
 					}
 					modifier = {
 						factor = 0.85
 						trait = drunkard
-
 					}
 					modifier = {
 						factor = 0.85
 						trait = addict
-
 					}
 					modifier = {
 						factor = 1.75
 						trait = brave
-
 					}
 					modifier = {
 						factor = 0.85
 						trait = fat
-
 					}
 					modifier = {
 						factor = 0.85
 						trait = undernourished
-
 					}
 					modifier = {
 						factor = 1.5
 						trait = ambitious
-
 					}
 					modifier = {
 						factor = 0.85
 						trait = content
-
 					}
 					modifier = {
 						factor = 1.85
 						trait = duelist
-
 					}
 					modifier = {
 						factor = 1.5
 						trait = hunter
-
 					}
 					modifier = {
 						factor = 0.5
 						trait = wounded
-
 					}
 					modifier = {
 						factor = 0.25
 						trait = maimed
-
 					}
 					modifier = {
 						factor = 0.75
 						trait = infirm
-
 					}
 					modifier = {
 						factor = 0.25
 						trait = blinded
-
 					}
 					modifier = {
 						factor = 1.25
 						trait = tall
-
 					}
 					modifier = {
 						factor = 0.5
 						trait = dwarf
-
 					}
 					modifier = {
 						factor = 0.5
 						trait = hunchback
-
 					}
 					modifier = {
 						factor = 0.75
 						trait = clubfooted
-
 					}
 					modifier = {
 						factor = 1.25
 						martial = 15
-
 					}
 					modifier = {
 						factor = 0.85
 						trait = stressed
-
 					}
 					modifier = {
 						factor = 0.75
 						trait = depressed
-
 					}
 					modifier = {
 						factor = 0.95
 						trait = dim
-
 					}
 					modifier = {
 						factor = 0.9
 						trait = dumb
-
 					}
 					modifier = {
 						factor = 0.85
 						trait = slow
-
 					}
 					modifier = {
 						factor = 0.8
 						trait = idiot
-
 					}
 					modifier = {
 						factor = 0.75
 						trait = imbecile
-
 					}
 					modifier = {
 						factor = 1.15
 						trait = bright
-
 					}
 					modifier = {
 						factor = 1.2
 						trait = smart
-
 					}
 					modifier = {
 						factor = 1.25
 						trait = quick
-
 					}
 					modifier = {
 						factor = 1.3
 						trait = brilliant
-
 					}
 					modifier = {
 						factor = 1.35
 						trait = genius
-
 					}
 					modifier = {
 						factor = 0.85
 						trait = slothful
-
 					}
 					modifier = {
 						factor = 0.9
 						trait = kind
-
 					}
 					modifier = {
 						factor = 0.9
 						trait = humble
-
 					}
 					modifier = {
 						factor = 0.9
 						trait = shy
-
 					}
 					modifier = {
 						factor = 1.1
 						trait = misguided_warrior
-
 					}
 					modifier = {
 						factor = 1.35
 						trait = tough_soldier
-
 					}
 					modifier = {
 						factor = 1.5
 						trait = skilled_tactician
-
 					}
 					modifier = {
 						factor = 1.75
 						trait = brilliant_strategist
-
 					}
 					modifier = {
 						factor = 1.35
 						trait = zealous
-
 					}
 					modifier = {
 						factor = 1.15
 						trait = cruel
-
 					}
 					modifier = {
 						factor = 0.95
 						trait = just
-
 					}
 					modifier = {
 						factor = 0.85
 						trait = complacent
-
 					}
 					modifier = {
 						factor = 1.5
 						trait = robust
-
 					}
 					modifier = {
 						factor = 0.75
 						trait = feeble
-
 					}
 					character_event = {
 						id = druchiiinv.22004 days = 18750
@@ -1678,7 +1242,9 @@ character_event = {
 				}
 				30 = {
 					character_event = {
-						id = druchiiinv.22006 days = 2150 random = 1500
+						id = druchiiinv.22006
+						days = 2150
+						random = 1500
 					}
 				}
 			}
@@ -1714,11 +1280,12 @@ character_event = {
 							duration = 180
 							hidden = yes
 						}
+						# Notify plotters and family
 						hidden_tooltip = {
 							character_event = {
 								id = CM.6400
 							}
-						} # Notify plotters and family
+						}
 					}
 				}
 			}
@@ -1786,12 +1353,12 @@ character_event = {
 				which = "lunatic_counter"
 				value = 4
 			}
+			# lunacy counter
 			hidden_tooltip = {
 				character_event = {
 					id = mutation.1005
 				}
-			} # lunacy counter
-
+			}
 		}
 	}
 
@@ -1811,24 +1378,20 @@ character_event = {
 					}
 				}
 			}
-
 		}
 		ai_chance = {
 			factor = 30
 			modifier = {
 				factor = 0.25
 				trait = craven
-
 			}
 			modifier = {
 				factor = 0.75
 				trait = ambitious
-
 			}
 			modifier = {
 				factor = 0.75
 				trait = deceitful
-
 			}
 		}
 	}
@@ -1843,17 +1406,14 @@ character_event = {
 			modifier = {
 				factor = 0.75
 				trait = brave
-
 			}
 			modifier = {
 				factor = 0.75
 				trait = content
-
 			}
 			modifier = {
 				factor = 0.75
 				trait = shy
-
 			}
 		}
 	}
@@ -1947,276 +1507,224 @@ character_event = {
 					modifier = {
 						factor = 1.5
 						trait = zealous
-
 					}
 					modifier = {
 						factor = 0.75
 						trait = cynical
-
 					}
 					modifier = {
 						factor = 0.5
 						trait = fragile
-
 					}
 					modifier = {
 						factor = 0.75
 						trait = weak
-
 					}
 					modifier = {
 						factor = 0.85
 						trait = soft
-
 					}
 					modifier = {
 						factor = 1.25
 						trait = hardy
-
 					}
 					modifier = {
 						factor = 1.5
 						trait = tough
-
 					}
 					modifier = {
 						factor = 1.75
 						trait = strong
-
 					}
 					modifier = {
 						factor = 0.5
 						trait = craven
-
 					}
 					modifier = {
 						factor = 1.15
 						trait = diligent
-
 					}
 					modifier = {
 						factor = 0.85
 						trait = drunkard
-
 					}
 					modifier = {
 						factor = 0.85
 						trait = addict
-
 					}
 					modifier = {
 						factor = 1.75
 						trait = brave
-
 					}
 					modifier = {
 						factor = 0.85
 						trait = fat
-
 					}
 					modifier = {
 						factor = 0.85
 						trait = undernourished
-
 					}
 					modifier = {
 						factor = 1.5
 						trait = ambitious
-
 					}
 					modifier = {
 						factor = 0.85
 						trait = content
-
 					}
 					modifier = {
 						factor = 1.85
 						trait = duelist
-
 					}
 					modifier = {
 						factor = 1.5
 						trait = hunter
-
 					}
 					modifier = {
 						factor = 0.5
 						trait = wounded
-
 					}
 					modifier = {
 						factor = 0.25
 						trait = maimed
-
 					}
 					modifier = {
 						factor = 0.75
 						trait = infirm
-
 					}
 					modifier = {
 						factor = 0.25
 						trait = blinded
-
 					}
 					modifier = {
 						factor = 1.25
 						trait = tall
-
 					}
 					modifier = {
 						factor = 0.5
 						trait = dwarf
-
 					}
 					modifier = {
 						factor = 0.5
 						trait = hunchback
-
 					}
 					modifier = {
 						factor = 0.75
 						trait = clubfooted
-
 					}
 					modifier = {
 						factor = 1.25
 						martial = 15
-
 					}
 					modifier = {
 						factor = 0.85
 						trait = stressed
-
 					}
 					modifier = {
 						factor = 0.75
 						trait = depressed
-
 					}
 					modifier = {
 						factor = 0.95
 						trait = dim
-
 					}
 					modifier = {
 						factor = 0.9
 						trait = dumb
-
 					}
 					modifier = {
 						factor = 0.85
 						trait = slow
-
 					}
 					modifier = {
 						factor = 0.8
 						trait = idiot
-
 					}
 					modifier = {
 						factor = 0.75
 						trait = imbecile
-
 					}
 					modifier = {
 						factor = 1.15
 						trait = bright
-
 					}
 					modifier = {
 						factor = 1.2
 						trait = smart
-
 					}
 					modifier = {
 						factor = 1.25
 						trait = quick
-
 					}
 					modifier = {
 						factor = 1.3
 						trait = brilliant
-
 					}
 					modifier = {
 						factor = 1.35
 						trait = genius
-
 					}
 					modifier = {
 						factor = 0.85
 						trait = slothful
-
 					}
 					modifier = {
 						factor = 0.9
 						trait = kind
-
 					}
 					modifier = {
 						factor = 0.9
 						trait = humble
-
 					}
 					modifier = {
 						factor = 0.9
 						trait = shy
-
 					}
 					modifier = {
 						factor = 1.1
 						trait = misguided_warrior
-
 					}
 					modifier = {
 						factor = 1.35
 						trait = tough_soldier
-
 					}
 					modifier = {
 						factor = 1.5
 						trait = skilled_tactician
-
 					}
 					modifier = {
 						factor = 1.75
 						trait = brilliant_strategist
-
 					}
 					modifier = {
 						factor = 1.35
 						trait = zealous
-
 					}
 					modifier = {
 						factor = 1.15
 						trait = cruel
-
 					}
 					modifier = {
 						factor = 0.95
 						trait = just
-
 					}
 					modifier = {
 						factor = 0.85
 						trait = complacent
-
 					}
 					modifier = {
 						factor = 1.5
 						trait = robust
-
 					}
 					modifier = {
 						factor = 0.75
 						trait = feeble
-
 					}
+					# End training
 					character_event = {
-						id = druchiiinv.23003 days = 3650
-					} # End training
+						id = druchiiinv.23003
+						days = 3650
+					}
 					random = {
 						chance = 45
 						character_event = {
@@ -2305,7 +1813,9 @@ character_event = {
 				}
 				35 = {
 					character_event = {
-						id = druchiiinv.23002 days = 2150 random = 1500
+						id = druchiiinv.23002
+						days = 2150
+						random = 1500
 					}
 				}
 			}
@@ -2537,19 +2047,21 @@ character_event = {
 character_event = {
 	id = druchiiinv.24
 	hide_window = yes
+	religion_group = cytharai_group
+	only_men = yes
+	is_triggered_only = yes
 
 	trigger = {
-		religion_group = cytharai_group
-		is_female = no
 		location = {
 			religion = cytharai
 		}
 	}
-	is_triggered_only = yes
 
 	immediate = {
 		character_event = {
-			id = druchiiinv.24001 days = 10 random = 20
+			id = druchiiinv.24001
+			days = 10
+			random = 20
 		}
 	}
 }
@@ -2586,272 +2098,218 @@ character_event = {
 					modifier = {
 						factor = 1.5
 						trait = zealous
-
 					}
 					modifier = {
 						factor = 0.75
 						trait = cynical
-
 					}
 					modifier = {
 						factor = 0.5
 						trait = fragile
-
 					}
 					modifier = {
 						factor = 0.75
 						trait = weak
-
 					}
 					modifier = {
 						factor = 0.85
 						trait = soft
-
 					}
 					modifier = {
 						factor = 1.25
 						trait = hardy
-
 					}
 					modifier = {
 						factor = 1.5
 						trait = tough
-
 					}
 					modifier = {
 						factor = 1.75
 						trait = strong
-
 					}
 					modifier = {
 						factor = 0.5
 						trait = craven
-
 					}
 					modifier = {
 						factor = 1.15
 						trait = diligent
-
 					}
 					modifier = {
 						factor = 0.85
 						trait = drunkard
-
 					}
 					modifier = {
 						factor = 0.85
 						trait = addict
-
 					}
 					modifier = {
 						factor = 1.75
 						trait = brave
-
 					}
 					modifier = {
 						factor = 0.85
 						trait = fat
-
 					}
 					modifier = {
 						factor = 0.85
 						trait = undernourished
-
 					}
 					modifier = {
 						factor = 1.5
 						trait = ambitious
-
 					}
 					modifier = {
 						factor = 0.85
 						trait = content
-
 					}
 					modifier = {
 						factor = 1.85
 						trait = duelist
-
 					}
 					modifier = {
 						factor = 1.5
 						trait = hunter
-
 					}
 					modifier = {
 						factor = 0.5
 						trait = wounded
-
 					}
 					modifier = {
 						factor = 0.25
 						trait = maimed
-
 					}
 					modifier = {
 						factor = 0.75
 						trait = infirm
-
 					}
 					modifier = {
 						factor = 0.25
 						trait = blinded
-
 					}
 					modifier = {
 						factor = 1.25
 						trait = tall
-
 					}
 					modifier = {
 						factor = 0.5
 						trait = dwarf
-
 					}
 					modifier = {
 						factor = 0.5
 						trait = hunchback
-
 					}
 					modifier = {
 						factor = 0.75
 						trait = clubfooted
-
 					}
 					modifier = {
 						factor = 1.25
 						martial = 15
-
 					}
 					modifier = {
 						factor = 0.85
 						trait = stressed
-
 					}
 					modifier = {
 						factor = 0.75
 						trait = depressed
-
 					}
 					modifier = {
 						factor = 0.95
 						trait = dim
-
 					}
 					modifier = {
 						factor = 0.9
 						trait = dumb
-
 					}
 					modifier = {
 						factor = 0.85
 						trait = slow
-
 					}
 					modifier = {
 						factor = 0.8
 						trait = idiot
-
 					}
 					modifier = {
 						factor = 0.75
 						trait = imbecile
-
 					}
 					modifier = {
 						factor = 1.15
 						trait = bright
-
 					}
 					modifier = {
 						factor = 1.2
 						trait = smart
-
 					}
 					modifier = {
 						factor = 1.25
 						trait = quick
-
 					}
 					modifier = {
 						factor = 1.3
 						trait = brilliant
-
 					}
 					modifier = {
 						factor = 1.35
 						trait = genius
-
 					}
 					modifier = {
 						factor = 0.85
 						trait = slothful
-
 					}
 					modifier = {
 						factor = 0.9
 						trait = kind
-
 					}
 					modifier = {
 						factor = 0.9
 						trait = humble
-
 					}
 					modifier = {
 						factor = 0.9
 						trait = shy
-
 					}
 					modifier = {
 						factor = 1.1
 						trait = misguided_warrior
-
 					}
 					modifier = {
 						factor = 1.35
 						trait = tough_soldier
-
 					}
 					modifier = {
 						factor = 1.5
 						trait = skilled_tactician
-
 					}
 					modifier = {
 						factor = 1.75
 						trait = brilliant_strategist
-
 					}
 					modifier = {
 						factor = 1.35
 						trait = zealous
-
 					}
 					modifier = {
 						factor = 1.15
 						trait = cruel
-
 					}
 					modifier = {
 						factor = 0.95
 						trait = just
-
 					}
 					modifier = {
 						factor = 0.85
 						trait = complacent
-
 					}
 					modifier = {
 						factor = 1.5
 						trait = robust
-
 					}
 					modifier = {
 						factor = 0.75
 						trait = feeble
-
 					}
 					character_event = {
 						id = druchiiinv.23003 days = 36500
@@ -2948,7 +2406,6 @@ character_event = {
 					}
 				}
 			}
-
 		}
 	}
 }

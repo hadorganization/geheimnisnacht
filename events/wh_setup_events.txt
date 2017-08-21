@@ -2912,10 +2912,6 @@ character_event = {
 		set_global_flag = knights_set
 		set_global_flag = children_added
 	}
-
-	option = {
-		name = OK
-	}
 }
 
 # Give Xen-Huong a temporary title to lock him out of diplo interactions
@@ -2966,15 +2962,38 @@ character_event = {
 
 character_event = {
 	id = DR_startup.8
+	only_playable = yes
+	hide_window = yes
 	is_triggered_only = yes
 
-	option = {
-		name = OK
-		any_character = {
+	trigger = {
+		ai = no
+		nor = {
+			has_global_flag = optionA
+			has_global_flag = optionB
+		}
+	}
+
+	immediate = {
+		if = {
 			limit = {
-				has_character_flag = duel_character_A
+				has_game_rule = {
+					name = warhammer_interracial_conv
+					value = off
+				}
 			}
-			clr_character_flag = duel_character_A
+			set_global_flag = optionA
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_game_rule = {
+						name = warhammer_interracial_conv
+						value = off
+					}
+				}
+			}
+			set_global_flag = optionB
 		}
 	}
 }

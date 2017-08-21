@@ -15,10 +15,8 @@ character_event = {
 	prisoner = no
 
 	trigger = {
-		NOT = {
+		NOR = {
 			trait = proud
-		}
-		NOT = {
 			trait = humble
 		}
 	}
@@ -132,14 +130,6 @@ character_event = {
 			factor = 0.5
 			trait = has_creeping_buboes
 		}
-		modifier = {
-			factor = 0.5
-			trait = has_typhus
-		}
-		modifier = {
-			factor = 0.5
-			trait = has_measles
-		}
 	}
 
 	option = {
@@ -202,14 +192,12 @@ character_event = {
 
 	trigger = {
 		spouse = {
+			is_ruler = no
 			is_abroad = no
-			prisoner = no
 			is_alive = yes
+			prisoner = no
 			NOT = {
 				age = 21
-			}
-			NOT = {
-				demesne_size = 1
 			}
 			fertility = 0.15
 		}
@@ -585,14 +573,6 @@ character_event = {
 			factor = 0.5
 			trait = has_creeping_buboes
 		}
-		modifier = {
-			factor = 0.5
-			trait = has_typhus
-		}
-		modifier = {
-			factor = 0.5
-			trait = has_measles
-		}
 	}
 
 	option = {
@@ -651,25 +631,15 @@ character_event = {
 
 	trigger = {
 		any_child = {
+			is_ruler = no
 			is_married = no
 			is_female = no
 			age = 16
-			NOT = {
+			NOR = {
 				age = 21
-			}
-			NOT = {
-				demesne_size = 1
-			}
-			NOT = {
 				trait = chaste
-			}
-			NOT = {
 				trait = celibate
-			}
-			NOT = {
 				trait = eunuch
-			}
-			NOT = {
 				is_ascetic_trigger = yes
 			}
 		}
@@ -678,25 +648,15 @@ character_event = {
 	immediate = {
 		random_child = {
 			limit = {
+				is_ruler = no
 				is_married = no
 				is_female = no
 				age = 16
-				NOT = {
+				NOR = {
 					age = 21
-				}
-				NOT = {
-					demesne_size = 1
-				}
-				NOT = {
 					trait = chaste
-				}
-				NOT = {
 					trait = celibate
-				}
-				NOT = {
 					trait = eunuch
-				}
-				NOT = {
 					is_ascetic_trigger = yes
 				}
 			}
@@ -707,10 +667,8 @@ character_event = {
 	option = {
 		name = EVTOPTA73006 # That's my boy
 		trigger = {
-			NOT = {
+			NOR = {
 				trait = chaste
-			}
-			NOT = {
 				trait = celibate
 			}
 		}
@@ -746,27 +704,27 @@ character_event = {
 		}
 	}
 
-	option = {
-		name = EVTOPTC73006 # Give him a beating for messing with inferiors
-		if = {
-			limit = {
-				religion = jain
-			}
-			piety = -20
-			custom_tooltip = {
-				text = jain_ahimsa_tooltip
-			}
-		}
-		event_target:knocked_up_maid = {
-			opinion = {
-				modifier = resentful_of_my_behaviour
-				who = ROOT
-				years = 2
-			}
-			add_trait = wroth
-			add_trait = ambitious
-		}
-	}
+	# option = {
+		# name = EVTOPTC73006 # Give him a beating for messing with inferiors
+		# if = {
+			# limit = {
+				# religion = jain
+			# }
+			# piety = -20
+			# custom_tooltip = {
+				# text = jain_ahimsa_tooltip
+			# }
+		# }
+		# event_target:knocked_up_maid = {
+			# opinion = {
+				# modifier = resentful_of_my_behaviour
+				# who = ROOT
+				# years = 2
+			# }
+			# add_trait = wroth
+			# add_trait = ambitious
+		# }
+	# }
 
 	option = {
 		name = EVTOPTD73006 # Send him to confess his sins
@@ -807,26 +765,20 @@ character_event = {
 	trigger = {
 		in_command = no
 		spouse = {
+			is_ruler = no
 			is_abroad = no
-			prisoner = no
 			is_alive = yes
-			NOT = {
+			prisoner = no
+			NOR = {
 				trait = shy
-			}
-			NOT = {
 				trait = zealous
-			}
-			NOT = {
-				demesne_size = 1
 			}
 			opinion = {
 				who = ROOT value = 10
 			}
 		}
-		NOT = {
+		NOR = {
 			trait = zealous
-		}
-		NOT = {
 			trait = charitable
 		}
 	}
@@ -1091,14 +1043,6 @@ character_event = {
 			factor = 0.5
 			trait = has_creeping_buboes
 		}
-		modifier = {
-			factor = 0.5
-			trait = has_typhus
-		}
-		modifier = {
-			factor = 0.5
-			trait = has_measles
-		}
 	}
 
 	option = {
@@ -1172,94 +1116,32 @@ character_event = {
 		OR = {
 			is_female = yes
 			NOT = {
-				liege = {
-					trait = creature_amazon
-				}
+				liege = { trait = creature_amazon }
 			}
 		}
-		OR = {
-			AND = {
-				NOT = {
-					trait = creature_beastman
-				}
- 				NOT = {
-					liege = {
-						trait = creature_beastman
-					}
-				}
-			}
-			AND = {
-				NOT = {
-					trait = khorne_demon
-				}
- 				NOT = {
-					liege = {
-						trait = khorne_demon
-					}
-				}
-			}
-			AND = {
-				NOT = {
-					trait = nurgle_demon
-				}
- 				NOT = {
-					liege = {
-						trait = nurgle_demon
-					}
-				}
-			}
-			AND = {
-				NOT = {
-					trait = slaanesh_demon
-				}
- 				NOT = {
-					liege = {
-						trait = slaanesh_demon
-					}
-				}
-			}
-			AND = {
-				NOT = {
-					trait = tzeentch_demon
-				}
- 				NOT = {
-					liege = {
-						trait = tzeentch_demon
-					}
-				}
-			}
-			AND = {
-				NOT = {
-					trait = hashut_kdaai
-				}
- 				NOT = {
-					liege = {
-						trait = hashut_kdaai
-					}
-				}
-			}
-			AND = {
-				trait = creature_beastman
- 				liege = {
-					trait = creature_beastman
-				}
-			}
-		}
-		NOT = {
-			liege = {
-				has_character_flag = asked_marshal_petition
-			}
-		}
-		NOT = {
-			has_character_flag = asked_for_job
-		}
+        NAND = {
+            is_demon_trigger = yes
+            liege = { is_demon_trigger = yes }
+        }
+        OR = {            
+            NOR = {
+                trait = creature_beastman
+                liege = { trait = creature_beastman }
+            }
+            AND = {
+                trait = creature_beastman
+                liege = { trait = creature_beastman }
+            }
+        }
+        NOR = {
+            liege = { has_character_flag = asked_chancellor_petition }
+            has_character_flag = asked_for_job
+        }
 		liege = {
 			job_marshal = {
 				same_liege = ROOT
-				NOT = {
+				NOR = {
 					martial = ROOT
-				}
-				NOT = {
 					has_minor_title = title_regent
 				}
 			}
@@ -1325,10 +1207,8 @@ letter_event = {
 		name = EVTOPTB73201
 		trigger = {
 			job_marshal = {
-				NOT = {
+				NOR = {
 					trait = stressed
-				}
-				NOT = {
 					trait = depressed
 				}
 			}
@@ -1394,10 +1274,8 @@ letter_event = {
 	option = {
 		name = EVTOPTB73202
 		trigger = {
-			NOT = {
+			NOR = {
 				trait = ambitious
-			}
-			NOT = {
 				trait = proud
 			}
 		}
@@ -1538,87 +1416,27 @@ character_event = {
 		OR = {
 			is_female = yes
 			NOT = {
-				liege = {
-					trait = creature_amazon
-				}
+				liege = { trait = creature_amazon }
 			}
 		}
-		OR = {
-			AND = {
-				NOT = {
-					trait = creature_beastman
-				}
- 				NOT = {
-					liege = {
-						trait = creature_beastman
-					}
-				}
-			}
-			AND = {
-				trait = creature_beastman
- 				liege = {
-					trait = creature_beastman
-				}
-			}
-			AND = {
-				NOT = {
-					trait = khorne_demon
-				}
- 				NOT = {
-					liege = {
-						trait = khorne_demon
-					}
-				}
-			}
-			AND = {
-				NOT = {
-					trait = nurgle_demon
-				}
- 				NOT = {
-					liege = {
-						trait = nurgle_demon
-					}
-				}
-			}
-			AND = {
-				NOT = {
-					trait = slaanesh_demon
-				}
- 				NOT = {
-					liege = {
-						trait = slaanesh_demon
-					}
-				}
-			}
-			AND = {
-				NOT = {
-					trait = tzeentch_demon
-				}
- 				NOT = {
-					liege = {
-						trait = tzeentch_demon
-					}
-				}
-			}
-			AND = {
-				NOT = {
-					trait = hashut_kdaai
-				}
- 				NOT = {
-					liege = {
-						trait = hashut_kdaai
-					}
-				}
-			}
-		}
-		NOT = {
-			liege = {
-				has_character_flag = asked_spymaster_petition
-			}
-		}
-		NOT = {
-			has_character_flag = asked_for_job
-		}
+        NAND = {
+            is_demon_trigger = yes
+            liege = { is_demon_trigger = yes }
+        }
+        OR = {            
+            NOR = {
+                trait = creature_beastman
+                liege = { trait = creature_beastman }
+            }
+            AND = {
+                trait = creature_beastman
+                liege = { trait = creature_beastman }
+            }
+        }
+        NOR = {
+            liege = { has_character_flag = asked_chancellor_petition }
+            has_character_flag = asked_for_job
+        }
 		liege = {
 			job_spymaster = {
 				same_liege = ROOT
@@ -1692,10 +1510,8 @@ letter_event = {
 		name = EVTOPTB73211
 		trigger = {
 			job_spymaster = {
-				NOT = {
+				NOR = {
 					trait = stressed
-				}
-				NOT = {
 					trait = depressed
 				}
 			}
@@ -1762,10 +1578,8 @@ letter_event = {
 	option = {
 		name = EVTOPTB73212
 		trigger = {
-			NOT = {
+			NOR = {
 				trait = ambitious
-			}
-			NOT = {
 				trait = proud
 			}
 		}
@@ -1901,87 +1715,27 @@ character_event = {
 		OR = {
 			is_female = yes
 			NOT = {
-				liege = {
-					trait = creature_amazon
-				}
+				liege = { trait = creature_amazon }
 			}
 		}
-		OR = {
-			AND = {
-				NOT = {
-					trait = creature_beastman
-				}
- 				NOT = {
-					liege = {
-						trait = creature_beastman
-					}
-				}
-			}
-			AND = {
-				trait = creature_beastman
- 				liege = {
-					trait = creature_beastman
-				}
-			}
-			AND = {
-				NOT = {
-					trait = khorne_demon
-				}
- 				NOT = {
-					liege = {
-						trait = khorne_demon
-					}
-				}
-			}
-			AND = {
-				NOT = {
-					trait = nurgle_demon
-				}
- 				NOT = {
-					liege = {
-						trait = nurgle_demon
-					}
-				}
-			}
-			AND = {
-				NOT = {
-					trait = slaanesh_demon
-				}
- 				NOT = {
-					liege = {
-						trait = slaanesh_demon
-					}
-				}
-			}
-			AND = {
-				NOT = {
-					trait = tzeentch_demon
-				}
- 				NOT = {
-					liege = {
-						trait = tzeentch_demon
-					}
-				}
-			}
-			AND = {
-				NOT = {
-					trait = hashut_kdaai
-				}
- 				NOT = {
-					liege = {
-						trait = hashut_kdaai
-					}
-				}
-			}
-		}
-		NOT = {
-			liege = {
-				has_character_flag = asked_treasurer_petition
-			}
-		}
-		NOT = {
-			has_character_flag = asked_for_job
-		}
+        NAND = {
+            is_demon_trigger = yes
+            liege = { is_demon_trigger = yes }
+        }
+        OR = {            
+            NOR = {
+                trait = creature_beastman
+                liege = { trait = creature_beastman }
+            }
+            AND = {
+                trait = creature_beastman
+                liege = { trait = creature_beastman }
+            }
+        }
+        NOR = {
+            liege = { has_character_flag = asked_chancellor_petition }
+            has_character_flag = asked_for_job
+        }
 		liege = {
 			job_treasurer = {
 				same_liege = ROOT
@@ -2053,10 +1807,8 @@ letter_event = {
 		name = EVTOPTB73221
 		trigger = {
 			job_treasurer = {
-				NOT = {
+				NOR = {
 					trait = stressed
-				}
-				NOT = {
 					trait = depressed
 				}
 			}
@@ -2122,10 +1874,8 @@ letter_event = {
 	option = {
 		name = EVTOPTB73222
 		trigger = {
-			NOT = {
+			NOR = {
 				trait = ambitious
-			}
-			NOT = {
 				trait = proud
 			}
 		}
@@ -2247,89 +1997,29 @@ character_event = {
 		OR = {
 			is_female = yes
 			NOT = {
-				liege = {
-					trait = creature_amazon
-				}
+				liege = { trait = creature_amazon }
 			}
 		}
-		OR = {
-			AND = {
-				NOT = {
-					trait = creature_beastman
-				}
- 				NOT = {
-					liege = {
-						trait = creature_beastman
-					}
-				}
-			}
-			AND = {
-				trait = creature_beastman
- 				liege = {
-					trait = creature_beastman
-				}
-			}
-			AND = {
-				NOT = {
-					trait = khorne_demon
-				}
- 				NOT = {
-					liege = {
-						trait = khorne_demon
-					}
-				}
-			}
-			AND = {
-				NOT = {
-					trait = nurgle_demon
-				}
- 				NOT = {
-					liege = {
-						trait = nurgle_demon
-					}
-				}
-			}
-			AND = {
-				NOT = {
-					trait = slaanesh_demon
-				}
- 				NOT = {
-					liege = {
-						trait = slaanesh_demon
-					}
-				}
-			}
-			AND = {
-				NOT = {
-					trait = tzeentch_demon
-				}
- 				NOT = {
-					liege = {
-						trait = tzeentch_demon
-					}
-				}
-			}
-			AND = {
-				NOT = {
-					trait = hashut_kdaai
-				}
- 				NOT = {
-					liege = {
-						trait = hashut_kdaai
-					}
-				}
-			}
-		}
+        NAND = {
+            is_demon_trigger = yes
+            liege = { is_demon_trigger = yes }
+        }
+        OR = {            
+            NOR = {
+                trait = creature_beastman
+                liege = { trait = creature_beastman }
+            }
+            AND = {
+                trait = creature_beastman
+                liege = { trait = creature_beastman }
+            }
+        }
 		independent = no
 		is_councillor = no
-		NOT = {
-			liege = {
-				has_character_flag = asked_lord_spiritual_petition
-			}
-		}
-		NOT = {
-			has_character_flag = asked_for_job
-		}
+        NOR = {
+            liege = { has_character_flag = asked_chancellor_petition }
+            has_character_flag = asked_for_job
+        }
 		liege = {
 			NOT = {
 				character = ROOT
@@ -2424,10 +2114,8 @@ letter_event = {
 		name = EVTOPTB73231
 		trigger = {
 			job_spiritual = {
-				NOT = {
+				NOR = {
 					trait = stressed
-				}
-				NOT = {
 					trait = depressed
 				}
 			}
@@ -2493,10 +2181,8 @@ letter_event = {
 	option = {
 		name = EVTOPTB73232
 		trigger = {
-			NOT = {
+			NOR = {
 				trait = ambitious
-			}
-			NOT = {
 				trait = proud
 			}
 		}
@@ -2529,10 +2215,8 @@ character_event = {
 					learning = ROOT
 				}
 				same_liege = ROOT
-				NOT = {
+				NOR = {
 					has_minor_title = title_regent
-				}
-				NOT = {
 					ROOT = {
 						is_liege_of = PREV
 					}
@@ -2632,46 +2316,37 @@ character_event = {
 		is_ruler = no
 		independent = no
 		is_councillor = no
-		OR = {
-			is_female = yes
-			NOT = {
-				liege = {
-					trait = creature_amazon
-				}
-			}
-		}
-		# видимо демон не должен служить демону
-		nand = {
-			is_demon_trigger = yes
-			liege = {
-				is_demon_trigger = yes
-			}
-		}
-		OR = {			
-			nor = {
-				trait = creature_beastman
-				liege = {
-					trait = creature_beastman
-				}
-			}
-			AND = {
-				trait = creature_beastman
- 				liege = {
-					trait = creature_beastman
-				}
-			}
-		}
-		nor = {
-			liege = {
-				has_character_flag = asked_chancellor_petition
-			}
-			has_character_flag = asked_for_job
-		}
+        OR = {
+            is_female = yes
+            NOT = {
+                liege = { trait = creature_amazon }
+            }
+        }
+        NAND = {
+            is_demon_trigger = yes
+            liege = { is_demon_trigger = yes }
+        }
+        OR = {            
+            NOR = {
+                trait = creature_beastman
+                liege = { trait = creature_beastman }
+            }
+            AND = {
+                trait = creature_beastman
+                liege = { trait = creature_beastman }
+            }
+        }
+        NOR = {
+            liege = { has_character_flag = asked_chancellor_petition }
+            has_character_flag = asked_for_job
+        }
 		liege = {
 			job_chancellor = {
 				same_liege = ROOT
-				nor = {
+				NOT = {
 					diplomacy = ROOT
+				}
+				NOT = {
 					has_minor_title = title_regent
 				}
 			}
@@ -2736,10 +2411,8 @@ letter_event = {
 		name = EVTOPTB73241
 		trigger = {
 			job_chancellor = {
-				NOT = {
+				NOR = {
 					trait = stressed
-				}
-				NOT = {
 					trait = depressed
 				}
 			}
@@ -2804,10 +2477,8 @@ letter_event = {
 	option = {
 		name = EVTOPTB73242
 		trigger = {
-			NOT = {
+			NOR = {
 				trait = ambitious
-			}
-			NOT = {
 				trait = proud
 			}
 		}

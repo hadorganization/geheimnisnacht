@@ -2753,35 +2753,28 @@ character_event = {
 	}
 }
 
-# Remove any unfulfilled grudges modifier
+# Remove any unfulfilled grudges modifier on_yearly_pulse
 character_event = {
 	id = DR_dwarfs.55
 	hide_window = yes
+	only_playable = yes
 	religion_group = dwarf_gods_group
-	only_rulers = yes
+	is_triggered_only = yes
 
 	trigger = {
-		religion_group = dwarf_gods_group
 		trait = creature_dwarf
 		NOT = {
 			any_opinion_modifier_target = {
 				reverse_has_opinion_modifier = {
-					who = ROOT modifier = opinion_dwarf_grudge
+					who = ROOT
+					modifier = opinion_dwarf_grudge
 				}
 			}
 		}
 	}
 
-	mean_time_to_happen = {
-		days = 5
-	}
-
 	immediate = {
 		log = "work event DR_dwarfs.55"
-	}
-
-	option = {
-		name = OK
 		remove_character_modifier = unfulfilled_grudges_1
 		remove_character_modifier = unfulfilled_grudges_2
 		remove_character_modifier = unfulfilled_grudges_3
@@ -2798,22 +2791,17 @@ character_event = {
 	hide_window = yes
 
 	trigger = {
-		religion_group = dwarf_gods_group
 		trait = creature_dwarf
 		is_lowborn = yes
+		current_heir = {
+			dynasty = ROOT
+		}
 		killer = {
 			NOR = {
 				trait = creature_orc
 				trait = creature_goblin
 				trait = creature_skaven
 				trait = creature_chaos_dwarf
-			}
-		}
-		current_heir = {
-			dynasty = ROOT
-		}
-		killer = {
-			NOT = {
 				dynasty = ROOT
 				is_primary_heir = yes
 			}
@@ -2825,10 +2813,6 @@ character_event = {
 		killer = {
 			save_event_target_as = grudge_killer
 		}
-	}
-
-	option = {
-		name = "EVTOPTADR_dwarfs.2"
 		current_heir = {
 			character_event = {
 				id = DR_dwarfs.57

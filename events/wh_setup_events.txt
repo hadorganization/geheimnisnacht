@@ -7,7 +7,7 @@ character_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		log = "work event DR_startup.1"		
+		log = "work event DR_startup.1"
 		trigger_switch = {
 			on_trigger = society_member_of
 			cult_of_khorne = {
@@ -31,6 +31,26 @@ character_event = {
 		}
 		character_event = {
 			id = DR_startup.10
+		}
+		# Witch Hunter Check
+		if = {
+			limit = {
+				culture = witchhunter_culture
+				NOT = {
+					trait = witch_hunter
+				}
+			}
+			add_trait = witch_hunter
+			add_trait = creature_human
+		}
+		if = {
+			limit = {
+				is_female = no
+				liege = {
+					trait = creature_amazon
+				}
+			}
+			add_trait = disinherited_amazon
 		}
 		# Humans
 		if = {
@@ -86,7 +106,6 @@ character_event = {
 					graphical_culture = striganygfx
 					graphical_culture = sartosangfx
 					graphical_culture = strygangfx
-					graphical_culture = amazongfx
 					graphical_culture = cathayangfx
 					graphical_culture = livingjadegfx
 					graphical_culture = wasaigfx
@@ -102,10 +121,6 @@ character_event = {
 					graphical_culture = estaliangfx
 					graphical_culture = mykengfx
 					graphical_culture = albiongfx
-					AND = {
-						is_female = no
-						culture_group = amazon_group
-					}
 				}
 				nor = {
 					trait = creature_human
@@ -115,16 +130,7 @@ character_event = {
 				}
 			}
 			add_trait = creature_human
-		}
-		# Witch Hunter Check
-		if = {
-			limit = {
-				culture = witchhunter_culture
-				NOT = {
-					trait = witch_hunter
-				}
-			}
-			add_trait = witch_hunter
+			break = yes
 		}
 		# # Blood Dragon Culture Check
 		# if = { limit = { culture = blooddragons_culture
@@ -136,7 +142,10 @@ character_event = {
 		if = {
 			limit = {
 				is_female = yes
-				culture_group = amazon_group
+				or = {
+					culture_group = amazon_group
+					graphical_culture = amazongfx
+				}
 				nor = {
 					trait = creature_amazon
 					trait = creature_human
@@ -145,15 +154,7 @@ character_event = {
 				}
 			}
 			add_trait = creature_amazon
-		}
-		if = {
-			limit = {
-				is_female = no
-				liege = {
-					trait = creature_amazon
-				}
-			}
-			add_trait = disinherited_amazon
+			break = yes
 		}
 		# Elfs
 		if = {
@@ -191,6 +192,7 @@ character_event = {
 				}
 				add_trait = elven_scion
 			}
+			break = yes
 		}
 		# Dwarfs
 		if = {
@@ -208,79 +210,78 @@ character_event = {
 				}
 			}
 			add_trait = creature_dwarf
-		}
-		if = {
 			# Dwarfs under the age of 75 are beardlings
-			limit = {
-				culture_group = dwarf_group
-				NOT = {
-					trait = beardling
+			if = {
+				limit = {
+					nor = {
+						trait = beardling
+						age = 75
+					}
+				}
+				add_trait = beardling
+			}
+			# Some dwarfs become warriors
+			if = {
+				limit = {
 					age = 75
+					is_female = no
+					nor = {
+						trait = thunderer
+						trait = quarreller
+						trait = dwarf_warrior
+						trait = hammerer
+						trait = ironbreaker
+						trait = longbeard
+						has_character_flag = dwarf_did_not_become_warrior
+						has_character_flag = becoming_thunderer
+						has_character_flag = becoming_quarreller
+						has_character_flag = becoming_dwarf_warrior
+					}
+				}
+				random_list = {
+					15 = {
+						modifier = {
+							factor = 4
+							martial = 10
+							NOT = {
+								trait = craven
+							}
+						}
+						add_trait = dwarf_warrior
+					}
+					5 = {
+						modifier = {
+							factor = 4
+							martial = 10
+							NOT = {
+								trait = craven
+							}
+						}
+						add_trait = quarreller
+					}
+					5 = {
+						modifier = {
+							factor = 4
+							martial = 10
+							NOT = {
+								trait = craven
+							}
+						}
+						add_trait = thunderer
+					}
+					75 = {
+						modifier = {
+							factor = 0
+							martial = 10
+							NOT = {
+								trait = craven
+							}
+						}
+						set_character_flag = dwarf_did_not_become_warrior
+					}
 				}
 			}
-			add_trait = beardling
-		}
-		# Some dwarfs become warriors
-		if = {
-			limit = {
-				culture_group = dwarf_group
-				age = 75
-				is_female = no
-				nor = {
-					trait = thunderer
-					trait = quarreller
-					trait = dwarf_warrior
-					trait = hammerer
-					trait = ironbreaker
-					trait = longbeard
-					has_character_flag = dwarf_did_not_become_warrior
-					has_character_flag = becoming_thunderer
-					has_character_flag = becoming_quarreller
-					has_character_flag = becoming_dwarf_warrior
-				}
-			}
-			random_list = {
-				15 = {
-					modifier = {
-						factor = 4
-						martial = 10
-						NOT = {
-							trait = craven
-						}
-					}
-					add_trait = dwarf_warrior
-				}
-				5 = {
-					modifier = {
-						factor = 4
-						martial = 10
-						NOT = {
-							trait = craven
-						}
-					}
-					add_trait = quarreller
-				}
-				5 = {
-					modifier = {
-						factor = 4
-						martial = 10
-						NOT = {
-							trait = craven
-						}
-					}
-					add_trait = thunderer
-				}
-				75 = {
-					modifier = {
-						factor = 0
-						martial = 10
-						NOT = {
-							trait = craven
-						}
-					}
-					set_character_flag = dwarf_did_not_become_warrior
-				}
-			}
+			break = yes
 		}
 		# Chaos Dwarfs
 		if = {
@@ -294,6 +295,7 @@ character_event = {
 				}
 			}
 			add_trait = creature_chaos_dwarf
+			break = yes
 		}
 		# Halflings
 		if = {
@@ -307,6 +309,7 @@ character_event = {
 				}
 			}
 			add_trait = creature_halfling
+			break = yes
 		}
 		# Orcs
 		if = {
@@ -350,6 +353,15 @@ character_event = {
 					add_trait = greenskin_gods_mork
 				}
 			}
+			# Greenskin Shamans
+			if = {
+				limit = {
+					is_theocracy = yes
+				}
+				add_trait = lore_waaagh
+				z_magic_power_sequential_addition = yes
+			}
+			break = yes
 		}
 		# Goblins
 		if = {
@@ -392,6 +404,15 @@ character_event = {
 					}
 				}
 			}
+			# Greenskin Shamans
+			if = {
+				limit = {
+					is_theocracy = yes
+				}
+				add_trait = lore_waaagh
+				z_magic_power_sequential_addition = yes
+			}
+			break = yes
 		}
 		# Snotlings
 		if = {
@@ -410,23 +431,7 @@ character_event = {
 				}
 			}
 			add_trait = creature_snotling
-		}
-		# Greenskin Shamans
-		if = {
-			limit = {
-				is_female = no
-				OR = {
-					trait = creature_orc
-					trait = creature_goblin
-				}
-			}
-			if = {
-				limit = {
-					is_theocracy = yes
-				}
-				add_trait = lore_waaagh
-				z_magic_power_sequential_addition = yes
-			}
+			break = yes
 		}
 		# Nehekharans
 		if = {
@@ -452,6 +457,7 @@ character_event = {
 			}
 			add_trait = khemri_tomb_king
 			set_government_type = nehekharan_government
+			break = yes
 		}
 		if = {
 			limit = {
@@ -488,6 +494,7 @@ character_event = {
 			any_spouse = {
 				remove_spouse = ROOT
 			}
+			break = yes
 		}
 		if = {
 			limit = {
@@ -522,6 +529,7 @@ character_event = {
 			set_government_type = theocracy_government
 			z_magic_power_sequential_addition = yes
 			z_magic_power_sequential_addition = yes
+			break = yes
 		}
 		# Lizardmen
 		if = {
@@ -551,6 +559,7 @@ character_event = {
 				}
 				dynasty = father_bastard
 			}
+			break = yes
 		}
 		# Skaven
 		if = {
@@ -587,6 +596,7 @@ character_event = {
 				}
 				add_trait = black_skaven
 			}
+			break = yes
 		}
 		# Forest spirits
 		if = {
@@ -598,6 +608,7 @@ character_event = {
 				}
 			}
 			add_trait = creature_forestspirit
+			break = yes
 		}
 		# Beastman
 		if = {
@@ -630,6 +641,7 @@ character_event = {
 					}
 				}
 			}
+			break = yes
 		}
 		# Ogre
 		if = {
@@ -640,6 +652,7 @@ character_event = {
 				}
 			}
 			add_trait = creature_ogre
+			break = yes
 		}
 		# Chaos Spawn
 		if = {
@@ -650,6 +663,7 @@ character_event = {
 				}
 			}
 			add_trait = creature_chaosspawn
+			break = yes
 		}
 		# Daemonette
 		if = {
@@ -662,6 +676,7 @@ character_event = {
 			}
 			add_trait = slaanesh_demon
 			add_trait = slaanesh_daemonette
+			break = yes
 		}
 		# Bloodletter
 		if = {
@@ -674,6 +689,7 @@ character_event = {
 			}
 			add_trait = khorne_demon
 			add_trait = khorne_bloodletter
+			break = yes
 		}
 		# Plaguebearer
 		if = {
@@ -686,6 +702,7 @@ character_event = {
 			}
 			add_trait = nurgle_demon
 			add_trait = nurgle_plaguebearer
+			break = yes
 		}
 		# Flamer
 		if = {
@@ -698,6 +715,7 @@ character_event = {
 			}
 			add_trait = tzeentch_demon
 			add_trait = tzeentch_flamer
+			break = yes
 		}
 		# Von Carstein vampire
 		if = {
@@ -719,6 +737,7 @@ character_event = {
 				}
 				add_trait = vampire_carstein_visible
 			}
+			break = yes
 		}
 		if = {
 			# Lahmian vampire
@@ -737,6 +756,7 @@ character_event = {
 				}
 				add_trait = vampire_lahmian_visible
 			}
+			break = yes
 		}
 		# if = { # Pig?
 		# limit = {

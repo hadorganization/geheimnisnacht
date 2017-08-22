@@ -1,31 +1,43 @@
 namespace = DR_startup
 
 # Misc startup stuff
-narrative_event = {
+character_event = {
 	id = DR_startup.1
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = {
-		NOT = {
-			has_global_flag = races_set
-		}
-	}
-
 	immediate = {
-		log = "work event DR_startup.1"
-	}
-
-	option = {
-		name = OK
+		log = "work event DR_startup.1"		
+		trigger_switch = {
+			on_trigger = society_member_of
+			cult_of_khorne = {
+				set_secret_religion = khorne
+			}
+			cult_of_nurgle = {
+				set_secret_religion = nurgle
+			}
+			cult_of_tzeentch = {
+				set_secret_religion = tzeentch
+			}
+			cult_of_slaanesh = {
+				set_secret_religion = slaanesh
+			}
+			cult_of_undivided = {
+				set_secret_religion = chaos
+			}
+			cult_of_pleasure = {
+				set_secret_religion = atharti
+			}
+		}
+		character_event = {
+			id = DR_startup.10
+		}
+		# Humans
 		if = {
 			limit = {
-				# Humans
-				NOT = {
-					AND = {
-						is_female = yes
-						culture_group = amazon_group
-					}
+				nand = {
+					is_female = yes
+					culture_group = amazon_group
 				}
 				OR = {
 					graphical_culture = westerngfx
@@ -95,16 +107,10 @@ narrative_event = {
 						culture_group = amazon_group
 					}
 				}
-				NOT = {
+				nor = {
 					trait = creature_human
-				}
-				NOT = {
 					trait = creature_amazon
-				}
-				NOT = {
 					trait = creature_monster
-				}
-				NOT = {
 					trait = creature_celdragon
 				}
 			}
@@ -126,100 +132,31 @@ narrative_event = {
 		# trait = vampire_blood_hidden } }
 		# set_graphical_culture = generic_vampire
 		# add_trait = vampire_blood_visible }
+		# Amazons
 		if = {
 			limit = {
-				liege = {
-					trait = creature_amazon
-				}
-			}
-			add_trait = disinherited_amazon
-		}
-		if = {
-			# Amazons
-			limit = {
-				OR = {
-					graphical_culture = westerngfx
-					graphical_culture = easterngfx
-					graphical_culture = muslimgfx
-					graphical_culture = frankishgfx
-					graphical_culture = englishgfx
-					graphical_culture = germangfx
-					graphical_culture = occitangfx
-					graphical_culture = southerngfx
-					graphical_culture = celticgfx
-					graphical_culture = norsegfx
-					graphical_culture = saxongfx
-					graphical_culture = normangfx
-					graphical_culture = easternslavicgfx
-					graphical_culture = westernslavicgfx
-					graphical_culture = byzantinegfx
-					graphical_culture = ugricgfx
-					graphical_culture = arabicgfx
-					graphical_culture = turkishgfx
-					graphical_culture = mongolgfx
-					graphical_culture = africangfx
-					graphical_culture = westafricangfx
-					graphical_culture = andalusiangfx
-					graphical_culture = persiangfx
-					graphical_culture = empiregfx
-					graphical_culture = sylvaniangfx
-					graphical_culture = kurgangfx
-					graphical_culture = arabyangfx
-					graphical_culture = northempiregfx
-					graphical_culture = tileagfx
-					graphical_culture = estileangfx
-					graphical_culture = hunggfx
-					graphical_culture = southarabyangfx
-					graphical_culture = northmangfx
-					graphical_culture = sartosantileangfx
-					graphical_culture = bretonniangfx
-					graphical_culture = nehekkagfx
-					graphical_culture = cumangfx
-					graphical_culture = livinglahmiangfx
-					graphical_culture = italiangfx
-					graphical_culture = reiklandergfx
-					graphical_culture = witchhuntergfx
-					graphical_culture = blooddragonsgfx
-					graphical_culture = bretonniangfx
-					graphical_culture = striganygfx
-					graphical_culture = sartosangfx
-					graphical_culture = strygangfx
-					graphical_culture = amazongfx
-					graphical_culture = cathayangfx
-					graphical_culture = livingjadegfx
-					graphical_culture = wasaigfx
-					graphical_culture = cophicgfx
-					graphical_culture = tevarigfx
-					graphical_culture = medeangfx
-					graphical_culture = arabyansartosangfx
-					graphical_culture = norscangfx
-					graphical_culture = norscansartosangfx
-					graphical_culture = kislevitegfx
-					graphical_culture = ropsmanngfx
-					graphical_culture = tileangfx
-					graphical_culture = estaliangfx
-					graphical_culture = mykengfx
-					graphical_culture = albiongfx
-				}
 				is_female = yes
 				culture_group = amazon_group
-				NOT = {
+				nor = {
 					trait = creature_amazon
-				}
-				NOT = {
 					trait = creature_human
-				}
-				NOT = {
 					trait = creature_monster
-				}
-				NOT = {
 					trait = creature_celdragon
 				}
 			}
 			add_trait = creature_amazon
 		}
 		if = {
-			# Elfs
+			limit = {
+				is_female = no
+				liege = {
+					trait = creature_amazon
+				}
+			}
+			add_trait = disinherited_amazon
+		}
+		# Elfs
+		if = {
 			limit = {
 				OR = {
 					graphical_culture = asurgfx
@@ -228,10 +165,8 @@ narrative_event = {
 					graphical_culture = asraigfx
 					graphical_culture = druchiigfx
 				}
-				NOT = {
+				nor = {
 					trait = creature_elf
-				}
-				NOT = {
 					trait = creature_treekin
 				}
 			}
@@ -257,8 +192,8 @@ narrative_event = {
 				add_trait = elven_scion
 			}
 		}
+		# Dwarfs
 		if = {
-			# Dwarfs
 			limit = {
 				OR = {
 					graphical_culture = dwarfgfx
@@ -285,13 +220,13 @@ narrative_event = {
 			}
 			add_trait = beardling
 		}
+		# Some dwarfs become warriors
 		if = {
-			# Some dwarfs become warriors
 			limit = {
 				culture_group = dwarf_group
 				age = 75
 				is_female = no
-				NOT = {
+				nor = {
 					trait = thunderer
 					trait = quarreller
 					trait = dwarf_warrior
@@ -347,8 +282,8 @@ narrative_event = {
 				}
 			}
 		}
+		# Chaos Dwarfs
 		if = {
-			# Chaos Dwarfs
 			limit = {
 				OR = {
 					graphical_culture = chaosdwarfgfx
@@ -360,8 +295,8 @@ narrative_event = {
 			}
 			add_trait = creature_chaos_dwarf
 		}
+		# Halflings
 		if = {
-			# Halflings
 			limit = {
 				OR = {
 					graphical_culture = hobbitsgfx
@@ -373,8 +308,8 @@ narrative_event = {
 			}
 			add_trait = creature_halfling
 		}
+		# Orcs
 		if = {
-			# Orcs
 			limit = {
 				OR = {
 					graphical_culture = orcgfx
@@ -416,8 +351,8 @@ narrative_event = {
 				}
 			}
 		}
+		# Goblins
 		if = {
-			# Goblins
 			limit = {
 				OR = {
 					graphical_culture = goblingfx
@@ -458,8 +393,8 @@ narrative_event = {
 				}
 			}
 		}
+		# Snotlings
 		if = {
-			# Snotlings
 			limit = {
 				OR = {
 					graphical_culture = goblingfx
@@ -481,22 +416,8 @@ narrative_event = {
 			limit = {
 				is_female = no
 				OR = {
-					AND = {
-						OR = {
-							graphical_culture = orcgfx
-							graphical_culture = savageorcgfx
-							graphical_culture = blackorcgfx
-						}
-						trait = creature_orc
-					}
-					AND = {
-						OR = {
-							graphical_culture = goblingfx
-							graphical_culture = forestgoblingfx
-							graphical_culture = nightgoblingfx
-						}
-						trait = creature_goblin
-					}
+					trait = creature_orc
+					trait = creature_goblin
 				}
 			}
 			if = {
@@ -507,8 +428,8 @@ narrative_event = {
 				z_magic_power_sequential_addition = yes
 			}
 		}
+		# Nehekharans
 		if = {
-			# Nehekharans
 			limit = {
 				graphical_culture = nehekharangfx
 				NOT = {
@@ -531,7 +452,6 @@ narrative_event = {
 			}
 			add_trait = khemri_tomb_king
 			set_government_type = nehekharan_government
-			break = yes
 		}
 		if = {
 			limit = {
@@ -543,10 +463,8 @@ narrative_event = {
 				}
 				OR = {
 					is_landed = no
-					NOT = {
+					nor = {
 						is_theocracy = yes
-					}
-					NOT = {
 						ruled_years = 2
 					}
 				}
@@ -570,7 +488,6 @@ narrative_event = {
 			any_spouse = {
 				remove_spouse = ROOT
 			}
-			break = yes
 		}
 		if = {
 			limit = {
@@ -606,8 +523,8 @@ narrative_event = {
 			z_magic_power_sequential_addition = yes
 			z_magic_power_sequential_addition = yes
 		}
+		# Lizardmen
 		if = {
-			# Skink Lizardmen
 			limit = {
 				graphical_culture = lizardmangfx
 				NOR = {
@@ -635,8 +552,8 @@ narrative_event = {
 				dynasty = father_bastard
 			}
 		}
+		# Skaven
 		if = {
-			# Skaven
 			limit = {
 				culture_group = skaven_group
 				NOT = {
@@ -663,50 +580,38 @@ narrative_event = {
 					graphical_culture = skavenwhitegfx
 				}
 				add_trait = white_skaven
-				break = yes
 			}
 			if = {
 				limit = {
 					graphical_culture = skavenblackgfx
 				}
 				add_trait = black_skaven
-				break = yes
 			}
 		}
+		# Forest spirits
 		if = {
-			# Forest spirits
 			limit = {
 				graphical_culture = treemangfx
-				NOT = {
+				nor = {
 					trait = creature_treekin
-				}
-				NOT = {
 					trait = creature_forestspirit
 				}
 			}
 			add_trait = creature_forestspirit
 		}
+		# Beastman
 		if = {
-			# Beastman
 			limit = {
-				OR = {
-					graphical_culture = beastmangfx
-				}
+				graphical_culture = beastmangfx
 			}
 			add_trait = creature_beastman
 			if = {
 				limit = {
 					is_female = no
-					NOT = {
+					nor = {
 						trait = horns_none
-					}
-					NOT = {
 						trait = horns_small
-					}
-					NOT = {
 						trait = horns_average
-					}
-					NOT = {
 						trait = horns_big
 					}
 				}
@@ -726,8 +631,8 @@ narrative_event = {
 				}
 			}
 		}
+		# Ogre
 		if = {
-			# Ogre
 			limit = {
 				graphical_culture = ogresgfx
 				NOT = {
@@ -736,8 +641,8 @@ narrative_event = {
 			}
 			add_trait = creature_ogre
 		}
+		# Chaos Spawn
 		if = {
-			# Chaos Spawn
 			limit = {
 				graphical_culture = chaosspawngfx
 				NOT = {
@@ -746,64 +651,56 @@ narrative_event = {
 			}
 			add_trait = creature_chaosspawn
 		}
+		# Daemonette
 		if = {
-			# Daemonette
 			limit = {
 				graphical_culture = daemonettegfx
-				NOT = {
+				nor = {
 					trait = slaanesh_demon
-				}
-				NOT = {
 					trait = slaanesh_daemonette
 				}
 			}
 			add_trait = slaanesh_demon
 			add_trait = slaanesh_daemonette
 		}
+		# Bloodletter
 		if = {
-			# Bloodletter
 			limit = {
 				graphical_culture = bloodlettergfx
-				NOT = {
+				nor = {
 					trait = khorne_demon
-				}
-				NOT = {
 					trait = khorne_bloodletter
 				}
 			}
 			add_trait = khorne_demon
 			add_trait = khorne_bloodletter
 		}
+		# Plaguebearer
 		if = {
-			# Plaguebearer
 			limit = {
 				graphical_culture = plaguebearergfx
-				NOT = {
+				nor = {
 					trait = nurgle_demon
-				}
-				NOT = {
 					trait = nurgle_plaguebearer
 				}
 			}
 			add_trait = nurgle_demon
 			add_trait = nurgle_plaguebearer
 		}
+		# Flamer
 		if = {
-			# Flamer
 			limit = {
 				graphical_culture = flamergfx
-				NOT = {
+				nor = {
 					trait = tzeentch_demon
-				}
-				NOT = {
 					trait = tzeentch_flamer
 				}
 			}
 			add_trait = tzeentch_demon
 			add_trait = tzeentch_flamer
 		}
+		# Von Carstein vampire
 		if = {
-			# Von Carstein vampire
 			limit = {
 				OR = {
 					graphical_culture = carsteingfx
@@ -911,249 +808,10 @@ narrative_event = {
 		# }
 		# }
 		# }
-		if = {
-			limit = {
-				is_female = no
-				OR = {
-					has_landed_title = d_sisters_of_sigmar
-					has_landed_title = d_sisters_of_faith_and_chastity
-					has_landed_title = d_brass_sisters
-					has_landed_title = d_midgard_shieldmaidens
-					has_landed_title = d_shieldmaidens_of_the_storm
-					has_landed_title = d_siren_sellswords
-					has_landed_title = d_sartosa_sirens
-					has_landed_title = d_mercy_killers
-					has_landed_title = d_slaves_of_excess
-					has_landed_title = d_velvet_touch
-					has_landed_title = d_tormentors
-					has_landed_title = d_atharti_pleasure_cruise
-					has_landed_title = d_barboza_lancers
-					has_landed_title = d_beastbloods
-					has_landed_title = d_brides_of_burning_blood
-					has_landed_title = d_children_of_excess
-					has_landed_title = d_chosen_of_anath_raema
-					has_landed_title = d_citadel_of_desolation
-					has_landed_title = d_claw_of_domination
-					has_landed_title = d_dark_accord
-					has_landed_title = d_dark_covenant_of_sorceresses
-					has_landed_title = d_dukhyls_militia
-					has_landed_title = d_festering_herd
-					has_landed_title = d_fleet_of_lothern
-					has_landed_title = d_fortress_of_dawn
-					has_landed_title = d_horned_hunters
-					has_landed_title = d_hortansish_fiends
-					has_landed_title = d_khalkaran_ravagers
-					has_landed_title = d_lynsk_defenders
-					has_landed_title = d_malefic_mistkin
-					has_landed_title = d_night_witches
-					has_landed_title = d_norscveg_band
-					has_landed_title = d_order_of_fury
-					has_landed_title = d_order_of_sword_and_scale
-					has_landed_title = d_order_of_the_eagle
-					has_landed_title = d_riders_of_loesh
-					has_landed_title = d_subui_chosen
-					has_landed_title = d_tides_of_magic
-					has_landed_title = d_tilean_inquisition
-				}
-			}
-			if = {
-				limit = {
-					is_invincible_trigger = yes
-				}
-				antideath_effect = yes
-				break = yes
-			}
-			death = yes
-		}
-		if = {
-			limit = {
-				is_female = no
-				OR = {
-					has_landed_title = k_cult_of_the_lady
-					has_landed_title = k_cult_of_shallya
-					has_landed_title = k_cult_of_myrmidia
-					AND = {
-						is_theocracy = yes
-						controls_religion = no
-						OR = {
-							religion = myrmidian
-							religion = shallyan
-							religion = amazon
-						}
-					}
-				}
-			}
-			if = {
-				limit = {
-					is_invincible_trigger = yes
-				}
-				antideath_effect = yes
-				break = yes
-			}
-			death = yes
-		}
 		# if = {
 		# limit = { has_landed_title = d_hashishin }
 		# grant_title = b_glak
 		# }
-		if = {
-			limit = {
-				trait = creature_slann
-			}
-			set_special_character_title = MAGE_PRIEST
-		}
-		if = {
-			limit = {
-				trait = creature_slann
-			}
-			set_special_character_title = MAGE_PRIEST
-		}
-		if = {
-			limit = {
-				religion = atruhayid
-				capital_scope = {
-					port = yes
-				}
-				FROM = {
-					tier = COUNT
-				}
-			}
-			set_special_character_title = CORSAIR
-		}
-		if = {
-			limit = {
-				religion = atruhayid
-				NOT = {
-					government = nomadic_government
-				}
-				capital_scope = {
-					port = yes
-				}
-				FROM = {
-					tier = DUKE
-				}
-			}
-			if = {
-				limit = {
-					is_female = no
-				}
-				set_special_character_title = CORSAIR_LORD
-			}
-			if = {
-				limit = {
-					is_female = yes
-				}
-				set_special_character_title = CORSAIR_LADY
-			}
-		}
-		if = {
-			limit = {
-				religion = atruhayid
-				NOT = {
-					government = nomadic_government
-				}
-				capital_scope = {
-					port = yes
-				}
-				FROM = {
-					tier = KING
-				}
-			}
-			if = {
-				limit = {
-					is_female = no
-				}
-				set_special_character_title = CORSAIR_PRINCE
-			}
-			if = {
-				limit = {
-					is_female = yes
-				}
-				set_special_character_title = CORSAIR_PRINCESS
-			}
-		}
-		if = {
-			limit = {
-				religion = atruhayid
-				NOT = {
-					government = nomadic_government
-				}
-				capital_scope = {
-					port = yes
-				}
-				FROM = {
-					tier = EMPEROR
-				}
-			}
-			if = {
-				limit = {
-					is_female = no
-				}
-				set_special_character_title = CORSAIR_KING
-			}
-			if = {
-				limit = {
-					is_female = yes
-				}
-				set_special_character_title = CORSAIR_QUEEN
-			}
-		}
-		set_global_flag = mists_of_albion
-		set_global_flag = everchosen_exists # Kharduun still alive
-		if = {
-			limit = {
-				has_game_rule = {
-					name = warhammer_mists_of_albion
-					value = off
-				}
-			}
-			clr_global_flag = mists_of_albion
-			set_global_flag = mists_of_albion_cleared
-		}
-		any_province = {
-			limit = {
-				region = world_surface_burrows
-				NOT = {
-					has_province_modifier = skaven_surface_tunnels
-				}
-			}
-			add_province_modifier = {
-				name = skaven_surface_tunnels
-				duration = -1
-			}
-		}
-		trigger_switch = {
-			on_trigger = society_member_of
-			cult_of_khorne = {
-				set_secret_religion = khorne
-			}
-			cult_of_nurgle = {
-				set_secret_religion = nurgle
-			}
-			cult_of_tzeentch = {
-				set_secret_religion = tzeentch
-			}
-			cult_of_slaanesh = {
-				set_secret_religion = slaanesh
-			}
-			cult_of_undivided = {
-				set_secret_religion = chaos
-			}
-			cult_of_pleasure = {
-				set_secret_religion = atharti
-			}
-		}
-		# any_playable_ruler = {
-		# character_event = { id = DR_startup.7 }
-		# }
-		k_cult_of_sigmar = {
-			holder_scope = {
-				character_event = {
-					id = DR_startup.5 days = 2
-				} # enable global flag
-			}
-		}
-		# set_global_flag = races_set
 	}
 }
 
@@ -1209,9 +867,6 @@ character_event = {
 
 	immediate = {
 		log = "work event DR_startup.2"
-	}
-
-	option = {
 		random_list = {
 			10 = {
 				create_random_soldier = {
@@ -1292,710 +947,8 @@ character_event = {
 			}
 		}
 		new_character = {
-			new_character = {
-				hidden_tooltip = {
-					if = {
-						limit = {
-							# Humans
-							OR = {
-								graphical_culture = westerngfx
-								graphical_culture = easterngfx
-								graphical_culture = muslimgfx
-								graphical_culture = frankishgfx
-								graphical_culture = englishgfx
-								graphical_culture = germangfx
-								graphical_culture = occitangfx
-								graphical_culture = southerngfx
-								graphical_culture = celticgfx
-								graphical_culture = norsegfx
-								graphical_culture = saxongfx
-								graphical_culture = normangfx
-								graphical_culture = easternslavicgfx
-								graphical_culture = westernslavicgfx
-								graphical_culture = byzantinegfx
-								graphical_culture = ugricgfx
-								graphical_culture = arabicgfx
-								graphical_culture = turkishgfx
-								graphical_culture = mongolgfx
-								graphical_culture = africangfx
-								graphical_culture = westafricangfx
-								graphical_culture = andalusiangfx
-								graphical_culture = persiangfx
-								graphical_culture = empiregfx
-								graphical_culture = sylvaniangfx
-								graphical_culture = kurgangfx
-								graphical_culture = arabyangfx
-								graphical_culture = northempiregfx
-								graphical_culture = tileagfx
-								graphical_culture = estileangfx
-								graphical_culture = hunggfx
-								graphical_culture = southarabyangfx
-								graphical_culture = northmangfx
-								graphical_culture = sartosantileangfx
-								graphical_culture = bretonniangfx
-								graphical_culture = nehekkagfx
-								graphical_culture = italiangfx
-								graphical_culture = reiklandergfx
-								graphical_culture = witchhuntergfx
-								graphical_culture = blooddragonsgfx
-								graphical_culture = bretonniangfx
-								graphical_culture = striganygfx
-								graphical_culture = sartosangfx
-								graphical_culture = strygangfx
-								graphical_culture = amazongfx
-								graphical_culture = cathayangfx
-								graphical_culture = livingjadegfx
-								graphical_culture = wasaigfx
-								graphical_culture = cophicgfx
-								graphical_culture = tevarigfx
-								graphical_culture = medeangfx
-								graphical_culture = arabyansartosangfx
-								graphical_culture = norscangfx
-								graphical_culture = norscansartosangfx
-								graphical_culture = kislevitegfx
-								graphical_culture = ropsmanngfx
-								graphical_culture = tileangfx
-								graphical_culture = estaliangfx
-								graphical_culture = mykengfx
-								graphical_culture = albiongfx
-								AND = {
-									is_female = no
-									culture_group = amazon_group
-								}
-							}
-							NOT = {
-								trait = creature_human
-							}
-							NOT = {
-								trait = creature_amazon
-							}
-							NOT = {
-								trait = creature_monster
-							}
-							NOT = {
-								trait = creature_celdragon
-							}
-						}
-						add_trait = creature_human
-					}
-					# Witch Hunter Check
-					if = {
-						limit = {
-							culture = witchhunter_culture
-							NOT = {
-								trait = witch_hunter
-							}
-						}
-						add_trait = witch_hunter
-					}
-					if = {
-						# Amazons
-						limit = {
-							OR = {
-								graphical_culture = westerngfx
-								graphical_culture = easterngfx
-								graphical_culture = muslimgfx
-								graphical_culture = frankishgfx
-								graphical_culture = englishgfx
-								graphical_culture = germangfx
-								graphical_culture = occitangfx
-								graphical_culture = southerngfx
-								graphical_culture = celticgfx
-								graphical_culture = norsegfx
-								graphical_culture = saxongfx
-								graphical_culture = normangfx
-								graphical_culture = easternslavicgfx
-								graphical_culture = westernslavicgfx
-								graphical_culture = byzantinegfx
-								graphical_culture = ugricgfx
-								graphical_culture = arabicgfx
-								graphical_culture = turkishgfx
-								graphical_culture = mongolgfx
-								graphical_culture = africangfx
-								graphical_culture = westafricangfx
-								graphical_culture = andalusiangfx
-								graphical_culture = persiangfx
-								graphical_culture = empiregfx
-								graphical_culture = sylvaniangfx
-								graphical_culture = kurgangfx
-								graphical_culture = arabyangfx
-								graphical_culture = northempiregfx
-								graphical_culture = tileagfx
-								graphical_culture = estileangfx
-								graphical_culture = hunggfx
-								graphical_culture = southarabyangfx
-								graphical_culture = northmangfx
-								graphical_culture = sartosantileangfx
-								graphical_culture = bretonniangfx
-								graphical_culture = nehekkagfx
-								graphical_culture = italiangfx
-								graphical_culture = reiklandergfx
-								graphical_culture = witchhuntergfx
-								graphical_culture = blooddragonsgfx
-								graphical_culture = bretonniangfx
-								graphical_culture = striganygfx
-								graphical_culture = sartosangfx
-								graphical_culture = strygangfx
-								graphical_culture = amazongfx
-								graphical_culture = cathayangfx
-								graphical_culture = livingjadegfx
-								graphical_culture = wasaigfx
-								graphical_culture = cophicgfx
-								graphical_culture = tevarigfx
-								graphical_culture = medeangfx
-								graphical_culture = arabyansartosangfx
-								graphical_culture = norscangfx
-								graphical_culture = norscansartosangfx
-								graphical_culture = kislevitegfx
-								graphical_culture = ropsmanngfx
-								graphical_culture = tileangfx
-								graphical_culture = estaliangfx
-								graphical_culture = mykengfx
-								graphical_culture = albiongfx
-							}
-							is_female = yes
-							culture_group = amazon_group
-							NOT = {
-								trait = creature_amazon
-							}
-							NOT = {
-								trait = creature_human
-							}
-							NOT = {
-								trait = creature_monster
-							}
-							NOT = {
-								trait = creature_celdragon
-							}
-						}
-						add_trait = creature_amazon
-					}
-					if = {
-						# Elfs
-						limit = {
-							OR = {
-								graphical_culture = asurgfx
-								graphical_culture = caledoriangfx
-								graphical_culture = nagarythiangfx
-								graphical_culture = asraigfx
-								graphical_culture = druchiigfx
-							}
-							NOT = {
-								trait = creature_elf
-							}
-							NOT = {
-								trait = creature_treekin
-							}
-						}
-						add_trait = creature_elf
-						if = {
-							limit = {
-								is_female = yes
-								age = 12
-								NOT = {
-									age = 45
-								}
-							}
-							add_trait = elven_maiden
-						}
-						if = {
-							limit = {
-								is_female = no
-								age = 12
-								NOT = {
-									age = 45
-								}
-							}
-							add_trait = elven_scion
-						}
-					}
-					if = {
-						# Dwarfs
-						limit = {
-							OR = {
-								graphical_culture = dwarfgfx
-								graphical_culture = imperialdwarfgfx
-								graphical_culture = norsedwarfgfx
-								graphical_culture = olddwarfgfx
-								graphical_culture = norseolddwarfgfx
-								graphical_culture = slayerdwarfgfx
-							}
-							NOT = {
-								trait = creature_dwarf
-							}
-						}
-						add_trait = creature_dwarf
-					}
-					if = {
-						# Dwarfs under the age of 75 are beardlings
-						limit = {
-							culture_group = dwarf_group
-							NOT = {
-								trait = beardling
-								age = 75
-							}
-						}
-						add_trait = beardling
-					}
-					if = {
-						# Some dwarfs become warriors
-						limit = {
-							culture_group = dwarf_group
-							age = 75
-							is_female = no
-							NOT = {
-								trait = thunderer
-								trait = quarreller
-								trait = dwarf_warrior
-								trait = hammerer
-								trait = ironbreaker
-								trait = longbeard
-								has_character_flag = dwarf_did_not_become_warrior
-								has_character_flag = becoming_thunderer
-								has_character_flag = becoming_quarreller
-								has_character_flag = becoming_dwarf_warrior
-							}
-						}
-						random_list = {
-							15 = {
-								modifier = {
-									factor = 4
-									martial = 10
-									NOT = {
-										trait = craven
-									}
-								}
-								add_trait = dwarf_warrior
-							}
-							5 = {
-								modifier = {
-									factor = 4
-									martial = 10
-									NOT = {
-										trait = craven
-									}
-								}
-								add_trait = quarreller
-							}
-							5 = {
-								modifier = {
-									factor = 4
-									martial = 10
-									NOT = {
-										trait = craven
-									}
-								}
-								add_trait = thunderer
-							}
-							75 = {
-								modifier = {
-									factor = 0
-									martial = 10
-									NOT = {
-										trait = craven
-									}
-								}
-								set_character_flag = dwarf_did_not_become_warrior
-							}
-						}
-					}
-					if = {
-						# Chaos Dwarfs
-						limit = {
-							OR = {
-								graphical_culture = chaosdwarfgfx
-								graphical_culture = oldchaosdwarfgfx
-							}
-							NOT = {
-								trait = creature_chaos_dwarf
-							}
-						}
-						add_trait = creature_chaos_dwarf
-					}
-					if = {
-						# Halflings
-						limit = {
-							OR = {
-								graphical_culture = hobbitsgfx
-								graphical_culture = miyangfx
-							}
-							NOT = {
-								trait = creature_halfling
-							}
-						}
-						add_trait = creature_halfling
-					}
-					if = {
-						# Orcs
-						limit = {
-							OR = {
-								graphical_culture = orcgfx
-								graphical_culture = savageorcgfx
-								graphical_culture = blackorcgfx
-							}
-							is_female = no
-							NOT = {
-								trait = creature_orc
-							}
-						}
-						add_trait = creature_orc
-						if = {
-							limit = {
-								graphical_culture = blackorcgfx
-							}
-							add_trait = black_orc_trait
-						}
-						random_list = {
-							35 = {
-								add_trait = orc_small
-							}
-							45 = {
-								add_trait = orc_average
-							}
-							15 = {
-								add_trait = orc_large
-							}
-							5 = {
-								add_trait = orc_huge
-							}
-						}
-						random_list = {
-							50 = {
-								add_trait = greenskin_gods_gork
-							}
-							50 = {
-								add_trait = greenskin_gods_mork
-							}
-						}
-					}
-					if = {
-						# Goblins
-						limit = {
-							OR = {
-								graphical_culture = goblingfx
-								graphical_culture = forestgoblingfx
-								graphical_culture = nightgoblingfx
-							}
-							is_female = no
-							NOT = {
-								trait = creature_goblin
-							}
-						}
-						add_trait = creature_goblin
-						random_list = {
-							45 = {
-								add_trait = goblin_small
-							}
-							40 = {
-								add_trait = goblin_average
-							}
-							10 = {
-								add_trait = goblin_large
-							}
-							5 = {
-								add_trait = goblin_huge
-							}
-						}
-						if = {
-							limit = {
-								religion = greenskin_gods
-							}
-							random_list = {
-								50 = {
-									add_trait = greenskin_gods_gork
-								}
-								50 = {
-									add_trait = greenskin_gods_mork
-								}
-							}
-						}
-					}
-					if = {
-						# Snotlings
-						limit = {
-							OR = {
-								graphical_culture = goblingfx
-								graphical_culture = forestgoblingfx
-								graphical_culture = nightgoblingfx
-								graphical_culture = orcgfx
-								graphical_culture = savageorcgfx
-							}
-							is_female = yes
-							NOT = {
-								trait = creature_snotling
-							}
-						}
-						add_trait = creature_snotling
-					}
-					# Greenskin Shamans
-					if = {
-						limit = {
-							is_female = no
-							OR = {
-								AND = {
-									OR = {
-										graphical_culture = orcgfx
-										graphical_culture = savageorcgfx
-										graphical_culture = blackorcgfx
-									}
-									trait = creature_orc
-								}
-								AND = {
-									OR = {
-										graphical_culture = goblingfx
-										graphical_culture = forestgoblingfx
-										graphical_culture = nightgoblingfx
-									}
-									trait = creature_goblin
-								}
-							}
-						}
-						if = {
-							limit = {
-								is_theocracy = yes
-							}
-							add_trait = lore_waaagh
-							z_magic_power_sequential_addition = yes
-						}
-					}
-					if = {
-						# Nehekharans
-						limit = {
-							graphical_culture = nehekharangfx
-							NOT = {
-								trait = creature_nehekharan
-							}
-						}
-						add_trait = creature_nehekharan
-						add_trait = khemri_soldier
-					}
-					if = {
-						# Skink Lizardmen
-						limit = {
-							graphical_culture = lizardmangfx
-							NOT = {
-								OR = {
-									trait = creature_skink
-									trait = creature_slann
-									trait = creature_saurus
-								}
-							}
-						}
-						add_trait = creature_skink
- 						if = {
-							limit = {
-								dynasty = 0
-							}
-							dynasty = father_bastard
-						}
-					}
-					if = {
-						# Skaven
-						limit = {
-							culture_group = skaven_group
-							NOT = {
-								trait = creature_skaven
-							}
-						}
-						add_trait = creature_skaven
-						if = {
-							limit = {
-								is_female = yes
-							}
-							add_trait = skaven_breeder
-						}
-						if = {
-							limit = {
-								graphical_culture = skavenwhitegfx
-								is_female = no
-								age = 16
-							}
-							add_trait = grey_seer
-						}
-						if = {
-							limit = {
-								graphical_culture = skavenwhitegfx
-							}
-							add_trait = white_skaven
-							break = yes
-						}
-						if = {
-							limit = {
-								graphical_culture = skavenblackgfx
-							}
-							add_trait = black_skaven
-							break = yes
-						}
-					}
-					if = {
-						# Forest spirits
-						limit = {
-							graphical_culture = treemangfx
-							NOT = {
-								trait = creature_treekin
-							}
-							NOT = {
-								trait = creature_forestspirit
-							}
-						}
-						add_trait = creature_forestspirit
-					}
-					if = {
-						# Beastman
-						limit = {
-							OR = {
-								graphical_culture = beastmangfx
-							}
-						}
-						add_trait = creature_beastman
-						if = {
-							limit = {
-								is_female = no
-								NOT = {
-									trait = horns_none
-								}
-								NOT = {
-									trait = horns_small
-								}
-								NOT = {
-									trait = horns_average
-								}
-								NOT = {
-									trait = horns_big
-								}
-							}
-							random_list = {
-								10 = {
-									add_trait = horns_none
-								}
-								40 = {
-									add_trait = horns_small
-								}
-								45 = {
-									add_trait = horns_average
-								}
-								5 = {
-									add_trait = horns_big
-								}
-							}
-						}
-					}
-					if = {
-						# Ogre
-						limit = {
-							graphical_culture = ogresgfx
-							NOT = {
-								trait = creature_ogre
-							}
-						}
-						add_trait = creature_ogre
-					}
-					if = {
-						# Chaos Spawn
-						limit = {
-							graphical_culture = chaosspawngfx
-							NOT = {
-								trait = creature_chaosspawn
-							}
-						}
-						add_trait = creature_chaosspawn
-					}
-					if = {
-						# Daemonette
-						limit = {
-							graphical_culture = daemonettegfx
-							NOT = {
-								trait = slaanesh_demon
-							}
-							NOT = {
-								trait = slaanesh_daemonette
-							}
-						}
-						add_trait = slaanesh_demon
-						add_trait = slaanesh_daemonette
-					}
-					if = {
-						# Bloodletter
-						limit = {
-							graphical_culture = bloodlettergfx
-							NOT = {
-								trait = khorne_demon
-							}
-							NOT = {
-								trait = khorne_bloodletter
-							}
-						}
-						add_trait = khorne_demon
-						add_trait = khorne_bloodletter
-					}
-					if = {
-						# Plaguebearer
-						limit = {
-							graphical_culture = plaguebearergfx
-							NOT = {
-								trait = nurgle_demon
-							}
-							NOT = {
-								trait = nurgle_plaguebearer
-							}
-						}
-						add_trait = nurgle_demon
-						add_trait = nurgle_plaguebearer
-					}
-					if = {
-						# Flamer
-						limit = {
-							graphical_culture = flamergfx
-							NOT = {
-								trait = tzeentch_demon
-							}
-							NOT = {
-								trait = tzeentch_flamer
-							}
-						}
-						add_trait = tzeentch_demon
-						add_trait = tzeentch_flamer
-					}
-					if = {
-						# Von Carstein vampire
-						limit = {
-							OR = {
-								graphical_culture = carsteingfx
-								graphical_culture = carsteineverkidgfx
-							}
-							NOT = {
-								trait = creature_human
-							}
-						}
-						add_trait = creature_human
-						if = {
-							limit = {
-								NOT = {
-									trait = vampire_carstein_visible
-								}
-							}
-							add_trait = vampire_carstein_visible
-						}
-					}
-					if = {
-						# Lahmian vampire
-						limit = {
-							graphical_culture = lahmiangfx
-							NOT = {
-								trait = creature_human
-							}
-						}
-						add_trait = creature_human
-						if = {
-							limit = {
-								NOT = {
-									trait = vampire_lahmian_visible
-								}
-							}
-							add_trait = vampire_lahmian_visible
-						}
-					}
-				}
+			character_event = {
+				id = DR_startup.1
 			}
 			ROOT = {
 				any_demesne_title = {
@@ -2031,9 +984,6 @@ character_event = {
 
 	immediate = {
 		log = "work event DR_startup.3"
-	}
-
-	option = {
 		random_list = {
 			10 = {
 				create_random_priest = {
@@ -2114,711 +1064,8 @@ character_event = {
 			}
 		}
 		new_character = {
-			new_character = {
-				hidden_tooltip = {
-					if = {
-						limit = {
-							# Humans
-							OR = {
-								graphical_culture = westerngfx
-								graphical_culture = easterngfx
-								graphical_culture = muslimgfx
-								graphical_culture = frankishgfx
-								graphical_culture = englishgfx
-								graphical_culture = germangfx
-								graphical_culture = occitangfx
-								graphical_culture = southerngfx
-								graphical_culture = celticgfx
-								graphical_culture = norsegfx
-								graphical_culture = saxongfx
-								graphical_culture = normangfx
-								graphical_culture = easternslavicgfx
-								graphical_culture = westernslavicgfx
-								graphical_culture = byzantinegfx
-								graphical_culture = ugricgfx
-								graphical_culture = arabicgfx
-								graphical_culture = turkishgfx
-								graphical_culture = mongolgfx
-								graphical_culture = africangfx
-								graphical_culture = westafricangfx
-								graphical_culture = andalusiangfx
-								graphical_culture = persiangfx
-								graphical_culture = empiregfx
-								graphical_culture = sylvaniangfx
-								graphical_culture = kurgangfx
-								graphical_culture = arabyangfx
-								graphical_culture = northempiregfx
-								graphical_culture = tileagfx
-								graphical_culture = estileangfx
-								graphical_culture = hunggfx
-								graphical_culture = southarabyangfx
-								graphical_culture = northmangfx
-								graphical_culture = sartosantileangfx
-								graphical_culture = bretonniangfx
-								graphical_culture = nehekkagfx
-								graphical_culture = italiangfx
-								graphical_culture = reiklandergfx
-								graphical_culture = witchhuntergfx
-								graphical_culture = blooddragonsgfx
-								graphical_culture = bretonniangfx
-								graphical_culture = striganygfx
-								graphical_culture = sartosangfx
-								graphical_culture = strygangfx
-								graphical_culture = amazongfx
-								graphical_culture = cathayangfx
-								graphical_culture = livingjadegfx
-								graphical_culture = wasaigfx
-								graphical_culture = cophicgfx
-								graphical_culture = tevarigfx
-								graphical_culture = medeangfx
-								graphical_culture = arabyansartosangfx
-								graphical_culture = norscangfx
-								graphical_culture = norscansartosangfx
-								graphical_culture = kislevitegfx
-								graphical_culture = ropsmanngfx
-								graphical_culture = tileangfx
-								graphical_culture = estaliangfx
-								graphical_culture = mykengfx
-								graphical_culture = albiongfx
-								AND = {
-									is_female = no
-									culture_group = amazon_group
-								}
-							}
-							NOT = {
-								trait = creature_human
-							}
-							NOT = {
-								trait = creature_amazon
-							}
-							NOT = {
-								trait = creature_monster
-							}
-							NOT = {
-								trait = creature_celdragon
-							}
-						}
-						add_trait = creature_human
-					}
-					# Witch Hunter Check
-					if = {
-						limit = {
-							culture = witchhunter_culture
-							NOT = {
-								trait = witch_hunter
-							}
-						}
-						add_trait = witch_hunter
-					}
-					if = {
-						# Amazons
-						limit = {
-							OR = {
-								graphical_culture = westerngfx
-								graphical_culture = easterngfx
-								graphical_culture = muslimgfx
-								graphical_culture = frankishgfx
-								graphical_culture = englishgfx
-								graphical_culture = germangfx
-								graphical_culture = occitangfx
-								graphical_culture = southerngfx
-								graphical_culture = celticgfx
-								graphical_culture = norsegfx
-								graphical_culture = saxongfx
-								graphical_culture = normangfx
-								graphical_culture = easternslavicgfx
-								graphical_culture = westernslavicgfx
-								graphical_culture = byzantinegfx
-								graphical_culture = ugricgfx
-								graphical_culture = arabicgfx
-								graphical_culture = turkishgfx
-								graphical_culture = mongolgfx
-								graphical_culture = africangfx
-								graphical_culture = westafricangfx
-								graphical_culture = andalusiangfx
-								graphical_culture = persiangfx
-								graphical_culture = empiregfx
-								graphical_culture = sylvaniangfx
-								graphical_culture = kurgangfx
-								graphical_culture = arabyangfx
-								graphical_culture = northempiregfx
-								graphical_culture = tileagfx
-								graphical_culture = estileangfx
-								graphical_culture = hunggfx
-								graphical_culture = southarabyangfx
-								graphical_culture = northmangfx
-								graphical_culture = sartosantileangfx
-								graphical_culture = bretonniangfx
-								graphical_culture = nehekkagfx
-								graphical_culture = italiangfx
-								graphical_culture = reiklandergfx
-								graphical_culture = witchhuntergfx
-								graphical_culture = blooddragonsgfx
-								graphical_culture = bretonniangfx
-								graphical_culture = striganygfx
-								graphical_culture = sartosangfx
-								graphical_culture = strygangfx
-								graphical_culture = amazongfx
-								graphical_culture = cathayangfx
-								graphical_culture = livingjadegfx
-								graphical_culture = wasaigfx
-								graphical_culture = cophicgfx
-								graphical_culture = tevarigfx
-								graphical_culture = medeangfx
-								graphical_culture = arabyansartosangfx
-								graphical_culture = norscangfx
-								graphical_culture = norscansartosangfx
-								graphical_culture = kislevitegfx
-								graphical_culture = ropsmanngfx
-								graphical_culture = tileangfx
-								graphical_culture = estaliangfx
-								graphical_culture = mykengfx
-								graphical_culture = albiongfx
-							}
-							is_female = yes
-							culture_group = amazon_group
-							NOT = {
-								trait = creature_amazon
-							}
-							NOT = {
-								trait = creature_human
-							}
-							NOT = {
-								trait = creature_monster
-							}
-							NOT = {
-								trait = creature_celdragon
-							}
-						}
-						add_trait = creature_amazon
-					}
-					if = {
-						# Elfs
-						limit = {
-							OR = {
-								graphical_culture = asurgfx
-								graphical_culture = caledoriangfx
-								graphical_culture = nagarythiangfx
-								graphical_culture = asraigfx
-								graphical_culture = druchiigfx
-							}
-							NOT = {
-								trait = creature_elf
-							}
-							NOT = {
-								trait = creature_treekin
-							}
-						}
-						add_trait = creature_elf
-						if = {
-							limit = {
-								is_female = yes
-								age = 12
-								NOT = {
-									age = 45
-								}
-							}
-							add_trait = elven_maiden
-						}
-						if = {
-							limit = {
-								is_female = no
-								age = 12
-								NOT = {
-									age = 45
-								}
-							}
-							add_trait = elven_scion
-						}
-					}
-					if = {
-						# Dwarfs
-						limit = {
-							OR = {
-								graphical_culture = dwarfgfx
-								graphical_culture = imperialdwarfgfx
-								graphical_culture = norsedwarfgfx
-								graphical_culture = olddwarfgfx
-								graphical_culture = norseolddwarfgfx
-								graphical_culture = slayerdwarfgfx
-							}
-							NOT = {
-								trait = creature_dwarf
-							}
-						}
-						add_trait = creature_dwarf
-					}
-					if = {
-						# Dwarfs under the age of 75 are beardlings
-						limit = {
-							culture_group = dwarf_group
-							NOT = {
-								trait = beardling
-								age = 75
-							}
-						}
-						add_trait = beardling
-					}
-					if = {
-						# Some dwarfs become warriors
-						limit = {
-							culture_group = dwarf_group
-							age = 75
-							is_female = no
-							NOT = {
-								trait = thunderer
-								trait = quarreller
-								trait = dwarf_warrior
-								trait = hammerer
-								trait = ironbreaker
-								trait = longbeard
-								has_character_flag = dwarf_did_not_become_warrior
-								has_character_flag = becoming_thunderer
-								has_character_flag = becoming_quarreller
-								has_character_flag = becoming_dwarf_warrior
-							}
-						}
-						random_list = {
-							15 = {
-								modifier = {
-									factor = 4
-									martial = 10
-									NOT = {
-										trait = craven
-									}
-								}
-								add_trait = dwarf_warrior
-							}
-							5 = {
-								modifier = {
-									factor = 4
-									martial = 10
-									NOT = {
-										trait = craven
-									}
-								}
-								add_trait = quarreller
-							}
-							5 = {
-								modifier = {
-									factor = 4
-									martial = 10
-									NOT = {
-										trait = craven
-									}
-								}
-								add_trait = thunderer
-							}
-							75 = {
-								modifier = {
-									factor = 0
-									martial = 10
-									NOT = {
-										trait = craven
-									}
-								}
-								set_character_flag = dwarf_did_not_become_warrior
-							}
-						}
-					}
-					if = {
-						# Chaos Dwarfs
-						limit = {
-							OR = {
-								graphical_culture = chaosdwarfgfx
-								graphical_culture = oldchaosdwarfgfx
-							}
-							NOT = {
-								trait = creature_chaos_dwarf
-							}
-						}
-						add_trait = creature_chaos_dwarf
-					}
-					if = {
-						# Halflings
-						limit = {
-							OR = {
-								graphical_culture = hobbitsgfx
-								graphical_culture = miyangfx
-							}
-							NOT = {
-								trait = creature_halfling
-							}
-						}
-						add_trait = creature_halfling
-					}
-					if = {
-						# Orcs
-						limit = {
-							OR = {
-								graphical_culture = orcgfx
-								graphical_culture = savageorcgfx
-								graphical_culture = blackorcgfx
-							}
-							is_female = no
-							NOT = {
-								trait = creature_orc
-							}
-						}
-						add_trait = creature_orc
-						if = {
-							limit = {
-								graphical_culture = blackorcgfx
-							}
-							add_trait = black_orc_trait
-						}
-						random_list = {
-							35 = {
-								add_trait = orc_small
-							}
-							45 = {
-								add_trait = orc_average
-							}
-							15 = {
-								add_trait = orc_large
-							}
-							5 = {
-								add_trait = orc_huge
-							}
-						}
-						random_list = {
-							50 = {
-								add_trait = greenskin_gods_gork
-							}
-							50 = {
-								add_trait = greenskin_gods_mork
-							}
-						}
-					}
-					if = {
-						# Goblins
-						limit = {
-							OR = {
-								graphical_culture = goblingfx
-								graphical_culture = forestgoblingfx
-								graphical_culture = nightgoblingfx
-							}
-							is_female = no
-							NOT = {
-								trait = creature_goblin
-							}
-						}
-						add_trait = creature_goblin
-						random_list = {
-							45 = {
-								add_trait = goblin_small
-							}
-							40 = {
-								add_trait = goblin_average
-							}
-							10 = {
-								add_trait = goblin_large
-							}
-							5 = {
-								add_trait = goblin_huge
-							}
-						}
-						if = {
-							limit = {
-								religion = greenskin_gods
-							}
-							random_list = {
-								50 = {
-									add_trait = greenskin_gods_gork
-								}
-								50 = {
-									add_trait = greenskin_gods_mork
-								}
-							}
-						}
-					}
-					if = {
-						# Snotlings
-						limit = {
-							OR = {
-								graphical_culture = goblingfx
-								graphical_culture = forestgoblingfx
-								graphical_culture = nightgoblingfx
-								graphical_culture = orcgfx
-								graphical_culture = savageorcgfx
-								graphical_culture = blackorcgfx
-							}
-							is_female = yes
-							NOT = {
-								trait = creature_snotling
-							}
-						}
-						add_trait = creature_snotling
-					}
-					# Greenskin Shamans
-					if = {
-						limit = {
-							is_female = no
-							OR = {
-								AND = {
-									OR = {
-										graphical_culture = orcgfx
-										graphical_culture = savageorcgfx
-										graphical_culture = blackorcgfx
-									}
-									trait = creature_orc
-								}
-								AND = {
-									OR = {
-										graphical_culture = goblingfx
-										graphical_culture = forestgoblingfx
-										graphical_culture = nightgoblingfx
-									}
-									trait = creature_goblin
-								}
-							}
-						}
-						if = {
-							limit = {
-								is_theocracy = yes
-							}
-							add_trait = lore_waaagh
-							z_magic_power_sequential_addition = yes
-						}
-					}
-					if = {
-						# Nehekharans
-						limit = {
-							graphical_culture = nehekharangfx
-							NOT = {
-								trait = creature_nehekharan
-							}
-						}
-						add_trait = creature_nehekharan
-						add_trait = khemri_soldier
-					}
-					if = {
-						# Skink Lizardmen
-						limit = {
-							graphical_culture = lizardmangfx
-							NOT = {
-								OR = {
-									trait = creature_skink
-									trait = creature_slann
-									trait = creature_saurus
-								}
-							}
-						}
-						add_trait = creature_skink
- 						if = {
-							limit = {
-								dynasty = 0
-							}
-							dynasty = father_bastard
-						}
-					}
-					if = {
-						# Skaven
-						limit = {
-							culture_group = skaven_group
-							NOT = {
-								trait = creature_skaven
-							}
-						}
-						add_trait = creature_skaven
-						if = {
-							limit = {
-								is_female = yes
-							}
-							add_trait = skaven_breeder
-						}
-						if = {
-							limit = {
-								graphical_culture = skavenwhitegfx
-								is_female = no
-								age = 16
-							}
-							add_trait = grey_seer
-						}
-						if = {
-							limit = {
-								graphical_culture = skavenwhitegfx
-							}
-							add_trait = white_skaven
-							break = yes
-						}
-						if = {
-							limit = {
-								graphical_culture = skavenblackgfx
-							}
-							add_trait = black_skaven
-							break = yes
-						}
-					}
-					if = {
-						# Forest spirits
-						limit = {
-							graphical_culture = treemangfx
-							NOT = {
-								trait = creature_treekin
-							}
-							NOT = {
-								trait = creature_forestspirit
-							}
-						}
-						add_trait = creature_forestspirit
-					}
-					if = {
-						# Beastman
-						limit = {
-							OR = {
-								graphical_culture = beastmangfx
-							}
-						}
-						add_trait = creature_beastman
-						if = {
-							limit = {
-								is_female = no
-								NOT = {
-									trait = horns_none
-								}
-								NOT = {
-									trait = horns_small
-								}
-								NOT = {
-									trait = horns_average
-								}
-								NOT = {
-									trait = horns_big
-								}
-							}
-							random_list = {
-								10 = {
-									add_trait = horns_none
-								}
-								40 = {
-									add_trait = horns_small
-								}
-								45 = {
-									add_trait = horns_average
-								}
-								5 = {
-									add_trait = horns_big
-								}
-							}
-						}
-					}
-					if = {
-						# Ogre
-						limit = {
-							graphical_culture = ogresgfx
-							NOT = {
-								trait = creature_ogre
-							}
-						}
-						add_trait = creature_ogre
-					}
-					if = {
-						# Chaos Spawn
-						limit = {
-							graphical_culture = chaosspawngfx
-							NOT = {
-								trait = creature_chaosspawn
-							}
-						}
-						add_trait = creature_chaosspawn
-					}
-					if = {
-						# Daemonette
-						limit = {
-							graphical_culture = daemonettegfx
-							NOT = {
-								trait = slaanesh_demon
-							}
-							NOT = {
-								trait = slaanesh_daemonette
-							}
-						}
-						add_trait = slaanesh_demon
-						add_trait = slaanesh_daemonette
-					}
-					if = {
-						# Bloodletter
-						limit = {
-							graphical_culture = bloodlettergfx
-							NOT = {
-								trait = khorne_demon
-							}
-							NOT = {
-								trait = khorne_bloodletter
-							}
-						}
-						add_trait = khorne_demon
-						add_trait = khorne_bloodletter
-					}
-					if = {
-						# Plaguebearer
-						limit = {
-							graphical_culture = plaguebearergfx
-							NOT = {
-								trait = nurgle_demon
-							}
-							NOT = {
-								trait = nurgle_plaguebearer
-							}
-						}
-						add_trait = nurgle_demon
-						add_trait = nurgle_plaguebearer
-					}
-					if = {
-						# Flamer
-						limit = {
-							graphical_culture = flamergfx
-							NOT = {
-								trait = tzeentch_demon
-							}
-							NOT = {
-								trait = tzeentch_flamer
-							}
-						}
-						add_trait = tzeentch_demon
-						add_trait = tzeentch_flamer
-					}
-					if = {
-						# Von Carstein vampire
-						limit = {
-							OR = {
-								graphical_culture = carsteingfx
-								graphical_culture = carsteineverkidgfx
-							}
-							NOT = {
-								trait = creature_human
-							}
-						}
-						add_trait = creature_human
-						if = {
-							limit = {
-								NOT = {
-									trait = vampire_carstein_visible
-								}
-							}
-							add_trait = vampire_carstein_visible
-						}
-					}
-					if = {
-						# Lahmian vampire
-						limit = {
-							graphical_culture = lahmiangfx
-							NOT = {
-								trait = creature_human
-							}
-						}
-						add_trait = creature_human
-						if = {
-							limit = {
-								NOT = {
-									trait = vampire_lahmian_visible
-								}
-							}
-							add_trait = vampire_lahmian_visible
-						}
-					}
-				}
+			character_event = {
+				id = DR_startup.1
 			}
 			ROOT = {
 				any_demesne_title = {
@@ -2855,12 +1102,9 @@ character_event = {
 		log = "work event DR_startup.4"
 		if = {
 			limit = {
-				is_female = no
-				NOT = {
-					OR = {
-						trait = bretonnian_knight
-						trait = grail_knight
-					}
+				nor = {
+					trait = bretonnian_knight
+					trait = grail_knight
 				}
 				OR = {
 					martial = 10
@@ -2871,9 +1115,7 @@ character_event = {
 				}
 			}
 			add_trait = bretonnian_knight
-			hidden_tooltip = {
-				give_minor_title = title_sir_bretonnian
-			}
+			give_minor_title = title_sir_bretonnian
 		}
 		if = {
 			limit = {
@@ -2897,9 +1139,7 @@ character_event = {
 				limit = {
 					is_female = yes
 				}
-				hidden_tooltip = {
-					give_minor_title = title_lady_knight_bretonnian
-				}
+				give_minor_title = title_lady_knight_bretonnian
 			}
 		}
 		# set_global_flag = knights_set
@@ -2915,6 +1155,14 @@ character_event = {
 	id = DR_startup.5
 	is_triggered_only = yes
 	hide_window = yes
+
+	trigger = {
+		nand = {
+			has_global_flag = races_set
+			has_global_flag = knights_set
+			has_global_flag = children_added
+		}
+	}
 
 	immediate = {
 		log = "work event DR_startup.5"
@@ -2972,6 +1220,7 @@ character_event = {
 	}
 }
 
+# game rules
 character_event = {
 	id = DR_startup.8
 	only_playable = yes
@@ -2979,10 +1228,8 @@ character_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		ai = no
-		nor = {
-			has_global_flag = optionA
-			has_global_flag = optionB
+		not = {
+			has_global_flag = DR_startup.8
 		}
 	}
 
@@ -3007,6 +1254,148 @@ character_event = {
 				}
 			}
 			set_global_flag = optionB
+		}
+		set_global_flag = mists_of_albion
+		set_global_flag = everchosen_exists # Kharduun still alive
+		if = {
+			limit = {
+				has_game_rule = {
+					name = warhammer_mists_of_albion
+					value = off
+				}
+			}
+			clr_global_flag = mists_of_albion
+			set_global_flag = mists_of_albion_cleared
+		}
+		set_global_flag = DR_startup.8
+	}
+}
+
+character_event = {
+	id = DR_startup.9
+	only_playable = yes
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		not = {
+			has_global_flag = DR_startup.9
+		}
+	}
+
+	immediate = {
+		log = "work event DR_startup.9"
+		any_province = {
+			limit = {
+				region = world_surface_burrows
+				NOT = {
+					has_province_modifier = skaven_surface_tunnels
+				}
+			}
+			add_province_modifier = {
+				name = skaven_surface_tunnels
+				duration = -1
+			}
+		}
+		set_global_flag = DR_startup.9
+	}
+}
+
+# title fix
+character_event = {
+	id = DR_startup.10
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		log = "work event DR_startup.10"
+		if = {
+			limit = {
+				trait = creature_slann
+			}
+			set_special_character_title = MAGE_PRIEST
+		}
+		if = {
+			limit = {
+				religion = atruhayid
+				capital_scope = {
+					port = yes
+				}
+				tier = COUNT
+			}
+			set_special_character_title = CORSAIR
+		}
+		if = {
+			limit = {
+				religion = atruhayid
+				NOT = {
+					government = nomadic_government
+				}
+				capital_scope = {
+					port = yes
+				}
+				tier = DUKE
+			}
+			if = {
+				limit = {
+					is_female = no
+				}
+				set_special_character_title = CORSAIR_LORD
+			}
+			if = {
+				limit = {
+					is_female = yes
+				}
+				set_special_character_title = CORSAIR_LADY
+			}
+		}
+		if = {
+			limit = {
+				religion = atruhayid
+				NOT = {
+					government = nomadic_government
+				}
+				capital_scope = {
+					port = yes
+				}
+				tier = KING
+			}
+			if = {
+				limit = {
+					is_female = no
+				}
+				set_special_character_title = CORSAIR_PRINCE
+			}
+			if = {
+				limit = {
+					is_female = yes
+				}
+				set_special_character_title = CORSAIR_PRINCESS
+			}
+		}
+		if = {
+			limit = {
+				religion = atruhayid
+				NOT = {
+					government = nomadic_government
+				}
+				capital_scope = {
+					port = yes
+				}
+				tier = EMPEROR
+			}
+			if = {
+				limit = {
+					is_female = no
+				}
+				set_special_character_title = CORSAIR_KING
+			}
+			if = {
+				limit = {
+					is_female = yes
+				}
+				set_special_character_title = CORSAIR_QUEEN
+			}
 		}
 	}
 }

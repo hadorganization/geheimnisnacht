@@ -2219,39 +2219,25 @@ character_event = {
 	}
 }
 
-# vassal under lunatic
+# vassal under lunatic on_yearly_pulse
 character_event = {
 	id = mutation.1015
 	hide_window = yes
+	only_playable = yes
 	min_age = 16
+	is_triggered_only = yes
 
 	trigger = {
 		independent = no
-		NOT = {
+		nor = {
 			trait = incapable
-		}
-		NOT = {
 			trait = lunatic_3
-		}
-		NOT = {
 			trait = lunatic_2
-		}
-		NOT = {
 			trait = lunatic_1
-		}
-		NOT = {
 			trait = trusting
-		}
-		NOT = {
 			has_any_opinion_modifier = opinion_lunatic_w
-		}
-		NOT = {
 			religion_group = necromantic_group
-		}
-		NOT = {
 			religion_group = chaos_gods_group
-		}
-		NOT = {
 			religion_group = horned_rat_god_group
 		}
 		liege = {
@@ -2260,10 +2246,6 @@ character_event = {
 				trait = lunatic_2
 			}
 		}
-	}
-
-	mean_time_to_happen = {
-		months = 2
 	}
 
 	immediate = {
@@ -2280,11 +2262,13 @@ character_event = {
 	}
 }
 
-# vassal no longer under lunatic (or turned to the chaos gods)
+# vassal no longer under lunatic (or turned to the chaos gods) on_yearly_pulse
 character_event = {
 	id = mutation.1016
 	hide_window = yes
+	only_playable = yes
 	min_age = 16
+	is_triggered_only = yes
 
 	trigger = {
 		independent = no
@@ -2301,16 +2285,12 @@ character_event = {
 			trait = lunatic_2
 			trait = lunatic_1
 			liege = {
-				NOT = {
+				nor = {
 					trait = lunatic_3
 					trait = lunatic_2
 				}
 			}
 		}
-	}
-
-	mean_time_to_happen = {
-		months = 2
 	}
 
 	immediate = {

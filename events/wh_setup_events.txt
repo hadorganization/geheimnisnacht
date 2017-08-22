@@ -12,6 +12,10 @@ narrative_event = {
 		}
 	}
 
+	immediate = {
+		log = "work event DR_startup.1"
+	}
+
 	option = {
 		name = OK
 		if = {
@@ -1203,6 +1207,10 @@ character_event = {
 		}
 	}
 
+	immediate = {
+		log = "work event DR_startup.2"
+	}
+
 	option = {
 		random_list = {
 			10 = {
@@ -2021,6 +2029,10 @@ character_event = {
 		}
 	}
 
+	immediate = {
+		log = "work event DR_startup.3"
+	}
+
 	option = {
 		random_list = {
 			10 = {
@@ -2823,27 +2835,24 @@ character_event = {
 	is_triggered_only = yes
 	hide_window = yes
 	min_age = 16
+	culture_group = bretonnian_group
 
 	trigger = {
-		NOT = {
-			OR = {
-				is_republic = yes
-				is_merchant_republic = yes
-				is_patrician = yes
-				is_theocracy = yes
-			}
-		}
-		NOT = {
-			dynasty = none
-		}
-		culture_group = bretonnian_group
 		OR = {
 			religion = grail
 			religion = false_grail
 		}
+		nor = {
+			is_republic = yes
+			is_merchant_republic = yes
+			is_patrician = yes
+			is_theocracy = yes
+			dynasty = none
+		}
 	}
 
 	immediate = {
+		log = "work event DR_startup.4"
 		if = {
 			limit = {
 				is_female = no
@@ -2908,6 +2917,7 @@ character_event = {
 	hide_window = yes
 
 	immediate = {
+		log = "work event DR_startup.5"
 		set_global_flag = races_set
 		set_global_flag = knights_set
 		set_global_flag = children_added
@@ -2921,6 +2931,7 @@ character_event = {
 	is_triggered_only = yes
 
 	immediate = {
+		log = "work event DR_startup.6"
 		create_title = {
 			tier = EMPEROR
 			landless = yes
@@ -2949,6 +2960,7 @@ character_event = {
 	is_triggered_only = yes
 
 	immediate = {
+		log = "work event DR_startup.7"
 		create_title = {
 			tier = DUKE
 			landless = yes
@@ -2975,6 +2987,7 @@ character_event = {
 	}
 
 	immediate = {
+		log = "work event DR_startup.8"
 		if = {
 			limit = {
 				has_game_rule = {

@@ -734,11 +734,11 @@ is_learned_trigger = {
 # trait = ares_own
 # }
 # AND = {
-# religion_group = muslim
+# religion_group = ormazd_gods_group
 # trait = mujahid
 # }
 # AND = {
-# religion_group = christian
+# religion_group = old_world_group
 # trait = crusader
 # }
 # AND = {
@@ -839,7 +839,7 @@ change_council_job_potential_trigger = {
 	NOT = {
 		AND = {
 			has_job_title = job_spiritual
-			# liege = { religion_group = muslim }
+			# liege = { religion_group = ormazd_gods_group }
 			religion = FROM
 		}
 	}
@@ -856,7 +856,7 @@ change_council_job_potential_trigger = {
 				can_be_spymaster_trigger = yes
 				AND = {
 					can_be_spiritual_trigger = yes
-					ROOT = { NOT = { religion_group = muslim } }
+					ROOT = { NOT = { religion_group = ormazd_gods_group } }
 				}
 			}
 		}
@@ -1443,8 +1443,8 @@ can_be_spiritual_trigger = {
 	}
 
 	OR = {
-		#NOT = { religion_group = muslim }
-		#NOT = { liege = { religion_group = muslim } }
+		#NOT = { religion_group = ormazd_gods_group }
+		#NOT = { liege = { religion_group = ormazd_gods_group } }
 		trait = grey_seer
 		trait = creature_slann
 		trait = khemri_liche_priest
@@ -2205,11 +2205,11 @@ useless_character_trigger = {
 # }
 
 # true_religion_group_christian_trigger = {
-# true_religion_group = christian
+# true_religion_group = old_world_group
 # }
 
 # true_religion_group_muslim_trigger = {
-# true_religion_group = muslim
+# true_religion_group = ormazd_gods_group
 # }
 
 # true_religion_group_jewish_group_trigger = {
@@ -2703,12 +2703,12 @@ is_secret_religious_society_member_trigger = {
 
 # is_christian_secret_religious_society_member_trigger = {
 # society_member_of = secret_religious_cult
-# secret_religion_group = christian
+# secret_religion_group = old_world_group
 # }
 
 # is_muslim_secret_religious_society_member_trigger = {
 # society_member_of = secret_religious_cult
-# secret_religion_group = muslim
+# secret_religion_group = ormazd_gods_group
 # }
 
 # is_zoroastrian_secret_religious_society_member_trigger = {
@@ -2886,11 +2886,11 @@ ok_sr_sympathy_mission_target_trigger = {
 		}
 		NOR = {
 			AND = {
-				true_religion_group = christian
+				true_religion_group = old_world_group
 				PREV = { trait = sympathy_christendom }
 			}
 			AND = {
-				true_religion_group = muslim
+				true_religion_group = ormazd_gods_group
 				PREV = { trait = sympathy_islam }
 			}
 			AND = {
@@ -3495,8 +3495,8 @@ has_common_devilworship_prerequisites = {
 has_satanists_prerequisites = {
 	has_common_devilworship_prerequisites = yes
 	OR = {
-		religion_group = christian
-		religion_group = muslim
+		religion_group = old_world_group
+		religion_group = ormazd_gods_group
 		religion_group = zoroastrian_group
 		religion_group = jewish_group
 		religion = zun_pagan
@@ -3891,14 +3891,14 @@ possibly_romantically_interested_in_each_other_trigger = {
 # any_artifact = {
 # has_artifact_flag = looted_artifact_tooltip_1
 # has_artifact_flag = christian
-# ROOT = { religion_group = christian }
+# ROOT = { religion_group = old_world_group }
 # }
 # }
 # NAND = {
 # any_artifact = {
 # has_artifact_flag = looted_artifact_tooltip_1
 # has_artifact_flag = muslim
-# ROOT = { religion_group = muslim }
+# ROOT = { religion_group = ormazd_gods_group }
 # }
 # }
 # NAND = {

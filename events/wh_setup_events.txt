@@ -1,12 +1,19 @@
 namespace = DR_startup
 
-# Misc startup stuff
+# Misc startup stuff, add trait event
 character_event = {
 	id = DR_startup.1
 	hide_window = yes
 	is_triggered_only = yes
+	
+	trigger = {
+		not = {
+			has_character_flag = wh_has_event_DR_startup.1
+		}
+	}
 
 	immediate = {
+		set_character_flag = wh_has_event_DR_startup.1
 		log = "work event DR_startup.1"
 		trigger_switch = {
 			on_trigger = society_member_of

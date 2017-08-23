@@ -5,10 +5,13 @@ character_event = {
 	id = DR_startup.1
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
-		not = {
-			has_character_flag = wh_has_event_DR_startup.1
+		or = {
+			has_character_flag = wh_has_event_DR_startup.1_trait_not_set
+			not = {
+				has_character_flag = wh_has_event_DR_startup.1
+			}
 		}
 	}
 
@@ -839,6 +842,7 @@ character_event = {
 		# limit = { has_landed_title = d_hashishin }
 		# grant_title = b_glak
 		# }
+		set_character_flag = wh_has_event_DR_startup.1_trait_not_set
 	}
 }
 

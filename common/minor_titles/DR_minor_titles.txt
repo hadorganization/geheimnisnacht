@@ -57,20 +57,17 @@ title_court_scholar = {
 	monthly_prestige = 0.75
 	
 	allowed_to_hold = {
-		OR = {
-			primary_title = { temporary = no }
-			NOT = {
-				primary_title = {
-					always = yes
-				}
+		NOR = {
+			primary_title = { 
+				temporary = yes 
 			}
+			trait = incapable
 		}
+		is_adult = yes
 		OR = {
 			learning = 10
 			trait = academic
 		}
-		is_adult = yes
-		NOT = { trait = incapable }
 	}
 	allowed_to_grant = {
 		religion_group = old_world_group
@@ -101,19 +98,16 @@ title_court_scribe = {
 	is_unique = yes
 	
 	allowed_to_hold = {
+		NOT = {
+			primary_title = { 
+				temporary = yes 
+			}
+		}
 		is_adult = yes
 		is_female = no
 		OR = {
 			diplomacy = 8
 			learning = 10
-		}
-		OR = {
-			primary_title = { temporary = no }
-			NOT = {
-				primary_title = {
-					always = yes
-				}
-			}
 		}
 	}
 	
@@ -188,10 +182,12 @@ title_diestro = {
 	revoke_allowed = no
 	
 	allowed_to_hold = {
-		age = 16
+		is_adult = yes
 		trait = duelist
-		NOT = { trait = craven }
-		NOT = { trait = infirm }
+		NOR = {
+			trait = craven
+			trait = infirm 
+		}
 	}
 	allowed_to_grant = {
 		OR =  {
@@ -221,17 +217,14 @@ title_court_herald = {
 	is_unique = yes
 	
 	allowed_to_hold = {
+		NOT = {
+			primary_title = { 
+				temporary = yes 
+			}
+		}
 		is_adult = yes
 		is_female = no
 		diplomacy = 8
-		OR = {
-			primary_title = { temporary = no }
-			NOT = {
-				primary_title = {
-					always = yes
-				}
-			}
-		}
 	}
 	
 	allowed_to_grant = {
@@ -262,18 +255,15 @@ title_chief_goldsmith = {
 	monthly_prestige = 0.75
 	
 	allowed_to_hold = {
-		OR = {
-			primary_title = { temporary = no }
-			NOT = {
-				primary_title = {
-					always = yes
-				}
+		NOR = {
+			primary_title = { 
+				temporary = yes 
 			}
+			trait = incapable
 		}
-		stewardship = 8
 		is_adult = yes
 		is_female = no
-		NOT = { trait = incapable }
+		stewardship = 8
 	}
 	
 	allowed_to_grant = {
@@ -302,18 +292,15 @@ title_chief_prospector = {
 	monthly_prestige = 0.75
 	
 	allowed_to_hold = {
-		OR = {
-			primary_title = { temporary = no }
-			NOT = {
-				primary_title = {
-					always = yes
-				}
+		NOR = {
+			primary_title = { 
+				temporary = yes 
 			}
+			trait = incapable
 		}
-		stewardship = 8
 		is_adult = yes
 		is_female = no
-		NOT = { trait = incapable }
+		stewardship = 8
 	}
 	
 	allowed_to_grant = {

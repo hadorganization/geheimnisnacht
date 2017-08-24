@@ -22,6 +22,23 @@ decisions = {
 			factor = 1
 		}
 	}
+	
+	use_elixir_of_eternal_youth = {
+		is_high_prio = yes
+		potential = {
+			immortal = no
+			has_artifact = elixir_of_eternal_youth
+		}
+		allow = {
+		}
+		effect = {
+			add_trait = immortal
+			destroy_artifact = elixir_of_eternal_youth
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
 
 	spirit_reinforcements = {
 		is_high_prio = yes
@@ -1157,6 +1174,43 @@ decisions = {
 }
 
 targetted_decisions = {
+	
+	use_elixir_of_love = {
+		only_playable = yes
+		ai_target_filter = self
+		filter = self
+		from_potential = {
+			ai = no
+			age = 16
+			is_no_females_race = no
+			cant_love_trigger = no
+			has_artifact = elixir_of_love
+		}
+		potential = {
+			age = 16
+			is_no_females_race = no
+			cant_love_trigger = no
+		}
+		allow = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
+			from = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
+			}			
+		}
+		effect = {
+			destroy_artifact = elixir_of_love
+			add_lover = from
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
 
 	z_craft_magic_item = {
 		only_playable = yes

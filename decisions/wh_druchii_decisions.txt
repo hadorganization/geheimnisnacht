@@ -6,7 +6,6 @@ targetted_decisions = {
 		ai_target_filter = all
 		only_playable = yes
 		from_potential = {
-			is_ruler = yes
 			higher_tier_than = DUKE
 			independent = yes
 			realm_size = 75		#At the very least...
@@ -88,9 +87,12 @@ targetted_decisions = {
 					id = wh_druchii.3 days = 720
 				}	#Fail event if not at war already
 			}
+			# Warn target
 			character_event = {
-				id = wh_druchii.2 days = 12 random = 30
-			}		# Warn target
+				id = wh_druchii.2 
+				days = 12 
+				random = 30
+			}		
 		}
 		revoke_allowed = {
 			always = no
@@ -209,7 +211,7 @@ targetted_decisions = {
 			hidden_tooltip = {
 				FROM = {
 					character_event = {
-						id = wh_druchii.8
+						id = wh_druchii.50
 					}
 				}
 			}
@@ -223,7 +225,7 @@ targetted_decisions = {
 			}
 			ROOT = {
 				character_event = {
-					id = wh_druchii.9
+					id = wh_druchii.51
 				}
 			}
 			death = {
@@ -354,7 +356,7 @@ targetted_decisions = {
 			hidden_tooltip = {
 				FROM = {
 					character_event = {
-						id = wh_druchii.10
+						id = wh_druchii.52
 					}
 				}
 			}
@@ -368,7 +370,7 @@ targetted_decisions = {
 			}
 			ROOT = {
 				character_event = {
-					id = wh_druchii.11
+					id = wh_druchii.53
 				}
 			}
 			death = {
@@ -490,7 +492,7 @@ targetted_decisions = {
 			hidden_tooltip = {
 				FROM = {
 					character_event = {
-						id = wh_druchii.12005
+						id = wh_druchii.56
 					}
 				}
 			}
@@ -504,7 +506,7 @@ targetted_decisions = {
 			}
 			ROOT = {
 				character_event = {
-					id = wh_druchii.13005
+					id = wh_druchii.57
 				}
 			}
 			death = {
@@ -626,7 +628,7 @@ targetted_decisions = {
 			hidden_tooltip = {
 				FROM = {
 					character_event = {
-						id = wh_druchii.12
+						id = wh_druchii.54
 					}
 				}
 			}
@@ -640,7 +642,7 @@ targetted_decisions = {
 			}
 			ROOT = {
 				character_event = {
-					id = wh_druchii.13
+					id = wh_druchii.55
 				}
 			}
 			death = {
@@ -734,24 +736,19 @@ decisions = {
 				wealth = 1000
 				trait = wounded
 			}
-			OR = {
-				trait = ambitious
-				trait = brave
-				ai = no
-			}
 		}
 		effect = {
-			ROOT = {
-				character_event = {
-					id = darkelf.8
-				}
-			}
+			character_event = {
+				id = wh_druchii.350
+			}		
 		}
 		ai_will_do = {
 			factor = 1
 			modifier = {
 				factor = 0
-				num_of_children = 0
+				not = {
+					num_of_children = 2
+				}
 			}
 			modifier = {
 				factor = 0
@@ -768,22 +765,12 @@ decisions = {
 		allow = {
 		}
 		effect = {
-			ROOT = {
-				character_event = {
-					id = darkelf.11
-				}
-			}
+			character_event = {
+				id = wh_druchii.354
+			}		
 		}
 		ai_will_do = {
 			factor = 1
-			modifier = {
-				factor = 0
-				num_of_children = 0
-			}
-			modifier = {
-				factor = 0
-				age = 35
-			}
 		}
 	}
 
@@ -792,7 +779,6 @@ decisions = {
 		only_playable = yes
 		potential = {
 			culture_group = druchi_group
-			is_ruler = yes
             OR = {
                 is_feudal = yes
                 is_tribal = yes
@@ -903,10 +889,8 @@ decisions = {
 			}
 		}
 		effect = {
-			ROOT = {
-				character_event = {
-					id = darkelf.25
-				}
+			character_event = {
+				id = wh_druchii.300			
 			}
 		}
 		revoke_allowed = {
@@ -963,7 +947,7 @@ decisions = {
 						}
 					}
 					character_event = {
-						id = wh_druchii.14
+						id = wh_druchii.104
 					}
 					opinion = {
 						modifier = opinion_coerced_into_leaving_faction
@@ -1107,7 +1091,7 @@ decisions = {
 					}
 					liege = {
 						character_event = {
-							id = wh_druchii.23
+							id = wh_druchii.200
 						}
 					}
 					break = yes
@@ -1115,7 +1099,7 @@ decisions = {
 			}
 			hidden_tooltip = {
 				character_event = {
-					id = wh_druchii.23001
+					id = wh_druchii.201
 				}
 			}
 		}

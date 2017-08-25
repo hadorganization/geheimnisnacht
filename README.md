@@ -1,4 +1,23 @@
 # Warhammer: Geheimnisnacht Community Edition
+
+Open source revision of Warhammer: Geheimnisnacht 1.1
+
+## The goals of the project:
++ Restructuring.
++ Optimization.
++ Bug fixes.
++ Adding new content.
+
+## Installation:
+<ol>
+  <li>Download program <a href="https://desktop.github.com/">dgithub esktop</a>.</li>
+  <li><div>Clone the repository in a folder with mods.</li>
+</ol>
+<img src="http://puu.sh/x7un9/0a162151d1.jpg" width="50%">
+<ol>
+  <li value="3">Move the geheimnisnacht.mod file one level higher.</li>
+</ol>
+
 Опен сорс доработка мода Warhammer: Geheimnisnacht 1.1
 
 ## Цели проекта:

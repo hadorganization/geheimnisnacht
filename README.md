@@ -10,7 +10,7 @@ Open source revision of Warhammer: Geheimnisnacht 1.1
 
 ## Installation:
 <ol>
-  <li>Download program <a href="https://desktop.github.com/">dgithub esktop</a>.</li>
+  <li>Download program <a href="https://desktop.github.com/">github desktop</a>.</li>
   <li><div>Clone the repository in a folder with mods.</li>
 </ol>
 <img src="http://puu.sh/x7un9/0a162151d1.jpg" width="50%">

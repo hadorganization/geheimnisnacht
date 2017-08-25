@@ -18,7 +18,6 @@ Open source revision of Warhammer: Geheimnisnacht 1.1
   <li value="3">Move the geheimnisnacht.mod file one level higher.</li>
 </ol>
 
-Опен сорс доработка мода Warhammer: Geheimnisnacht 1.1
 
 ## Цели проекта:
 + Реструктуризация.

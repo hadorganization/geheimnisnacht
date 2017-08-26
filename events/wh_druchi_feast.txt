@@ -8,16 +8,16 @@ character_event = {
 	id = druchii_feast.23
 	desc = EVTDESCDRUCHIFEAST.23 # Late at night, you speak to one of your guests and find that this is an amazing individual. You talk late into the night, plotting together and coming up with ways to achieve both your goals...
 	picture = "GFX_evt_large_army"
+	min_age = 16
 	capable_only = yes
 	prisoner = no
+	has_character_flag = attending_druchii_feast
+	war = no
 
 	trigger = {
-		is_adult = yes
-		war = no
 		NOT = {
 			num_of_friends = 3
 		}
-		has_character_flag = attending_druchii_feast
 		any_realm_character = {
 			has_character_flag = attending_druchii_feast
 			same_liege = ROOT
@@ -117,6 +117,7 @@ character_event = {
 					}
 				}
 			}
+			add_friend = root
 			opinion = {
 				modifier = opinion_friend
 				who = ROOT
@@ -143,6 +144,7 @@ character_event = {
 	option = {
 		name = EVTOPTDRUCHIFEAST.23.a # I have made a new ally tonight!
 		FROM = {
+			add_friend = from
 			opinion = {
 				modifier = opinion_friend
 				who = ROOT
@@ -158,13 +160,13 @@ character_event = {
 	desc = "EVTDESC72030"
 	picture = GFX_evt_melee
 	only_men = yes
+	min_age = 16
 	capable_only = yes
 	prisoner = no
+	has_character_flag = attending_druchii_feast
+	war = no
 
 	trigger = {
-		has_character_flag = attending_druchii_feast
-		is_adult = yes
-		war = no
 		martial = 9
 		OR = {
 			trait = duelist
@@ -177,34 +179,24 @@ character_event = {
 			trait = maimed
 			trait = craven
 		}
-		any_liege = {
-			has_character_modifier = holding_large_druchi_feast
-			has_character_flag = holding_large_druchi_feast
+		# think about it
+		any_realm_character = {
+			same_liege = ROOT
+			is_adult = yes
+			is_female = no
+			has_character_flag = attending_druchii_feast
 			nor = {
-				had_character_flag = {
-					flag = holding_large_druchi_feast
-					days = 30
+				character = ROOT
+				reverse_opinion = {
+					who = ROOT
+					value = -50
 				}
-				has_character_flag = druchi_feast_duel
-			}
-			war = no
-			any_vassal = {
-				is_adult = yes
-				is_female = no
-				has_character_flag = attending_druchii_feast
-				nor = {
-					character = ROOT
-					reverse_opinion = {
-						who = ROOT
-						value = -50
-					}
-					opinion = {
-						who = ROOT
-						value = -50
-					}
-					trait = wounded
-					trait = maimed
+				opinion = {
+					who = ROOT
+					value = -50
 				}
+				trait = wounded
+				trait = maimed
 			}
 		}
 	}
@@ -283,43 +275,33 @@ character_event = {
 
 	option = {
 		name = "EVTOPTA72030"
-		any_liege = {
+		any_realm_character = {
 			limit = {
-				has_character_flag = holding_large_druchi_feast
-				has_character_modifier = holding_large_druchi_feast
+				same_liege = ROOT
+				liege = {
+					has_character_flag = holding_large_druchi_feast
+					has_character_modifier = holding_large_druchi_feast
+				}
+				is_adult = yes
+				is_female = no
+				has_character_flag = attending_druchii_feast
+				nor = {
+					character = ROOT
+					trait = wounded
+					trait = maimed
+					reverse_opinion = {
+						who = ROOT
+						value = -50
+					}
+					opinion = {
+						who = ROOT
+						value = -50
+					}
+				}
 			}
-			set_character_flag = druchi_feast_duel
-			random_vassal = {
-				limit = {
-					is_adult = yes
-					is_female = no
-					has_character_flag = attending_druchii_feast
-					NOT = {
-						character = ROOT
-					}
-					NOT = {
-						reverse_opinion = {
-							who = ROOT
-							value = -50
-						}
-					}
-					NOT = {
-						opinion = {
-							who = ROOT
-							value = -50
-						}
-					}
-					NOT = {
-						trait = wounded
-					}
-					NOT = {
-						trait = maimed
-					}
-				}
-				character_event = {
-					id = druchii_feast.26
-					tooltip = "EVTTOOLTIP72031"
-				}
+			character_event = {
+				id = druchii_feast.26
+				tooltip = "EVTTOOLTIP72031"
 			}
 		}
 	}
@@ -343,60 +325,19 @@ character_event = {
 
 	option = {
 		name = "EVTOPTA72031" # Accept
-		random_list = {
-			35 = {
-				add_trait = wounded
-				hidden_tooltip = {
-					FROM = {
-						set_character_flag = wounded_opponent
-						character_event = {
-							id = druchii_feast.28
-						}
-					}
-				}
+		hidden_tooltip = {
+			from = {
+				save_event_target_as = duelist_a
+				set_character_flag = duel
+				set_character_flag = duel_effect_noescape
+				set_character_flag = duel_non_battle
 			}
-			35 = {
-				add_trait = maimed
-				hidden_tooltip = {
-					FROM = {
-						set_character_flag = maimed_opponent
-						character_event = {
-							id = druchii_feast.28
-						}
-					}
-				}
-			}
-			10 = {
-				if = {
-					limit = {
-						is_invincible_trigger = yes
-					}
-					antideath_effect = yes
-					break = yes
-				}
-				death = {
-					death_reason = death_duel
-				}
-				hidden_tooltip = {
-					FROM = {
-						set_character_flag = killed_opponent
-						character_event = {
-							id = druchii_feast.29
-						}
-					}
-				}
-			}
-			20 = {
-				any_liege = {
-					limit = {
-						has_character_flag = holding_large_druchi_feast
-						has_character_modifier = holding_large_druchi_feast
-					}
-					character_event = {
-						id = druchii_feast.30
-						tooltip = "EVTTOOLTIP72034"
-					}
-				}
+			save_event_target_as = duelist_b
+			set_character_flag = duel
+			set_character_flag = duel_effect_noescape
+			set_character_flag = duel_non_battle
+			character_event = {
+				id = duelengine.1
 			}
 		}
 	}
@@ -407,266 +348,19 @@ character_event = {
 	}
 }
 
-# Duel: Opponent is killed/maimed/wounded/nothing
-character_event = {
-	id = druchii_feast.28
-	desc = "EVTDESC72032"
-	picture = GFX_evt_melee
-	is_triggered_only = yes
-
-	immediate = {
-		log = "work event id = druchii_feast.28"
-	}
-
-	option = {
-		name = "EVTOPTA72032"
-		trigger = {
-			has_character_flag = wounded_opponent
-		}
-		random_list = {
-			10 = {
-				if = {
-					limit = {
-						is_invincible_trigger = yes
-					}
-					antideath_effect = yes
-					break = yes
-				}
-				death = {
-					death_reason = death_duel
-				}
-				hidden_tooltip = {
-					FROM = {
-						set_character_flag = killed_opponent
-						character_event = {
-							id = druchii_feast.29
-							tooltip = "EVTTOOLTIP72033"
-						}
-					}
-				}
-			}
-			20 = {
-				add_trait = maimed
-				hidden_tooltip = {
-					FROM = {
-						set_character_flag = maimed_opponent
-						character_event = {
-							id = druchii_feast.29
-							tooltip = "EVTTOOLTIP72033"
-						}
-					}
-				}
-			}
-			30 = {
-				add_trait = wounded
-				hidden_tooltip = {
-					FROM = {
-						set_character_flag = wounded_opponent
-						character_event = {
-							id = druchii_feast.29
-							tooltip = "EVTTOOLTIP72033"
-						}
-					}
-				}
-			}
-			40 = {
-				any_liege = {
-					limit = {
-						has_character_flag = holding_large_druchi_feast
-						has_character_modifier = holding_large_druchi_feast
-					}
-					character_event = {
-						id = druchii_feast.30
-						tooltip = "EVTTOOLTIP72034"
-					}
-				}
-			}
-		}
-	}
-
-	option = {
-		name = "EVTOPTB72032"
-		trigger = {
-			has_character_flag = maimed_opponent
-		}
-		random_list = {
-			1 = {
-				if = {
-					limit = {
-						is_invincible_trigger = yes
-					}
-					antideath_effect = yes
-					break = yes
-				}
-				death = {
-					death_reason = death_duel
-				}
-				FROM = {
-					set_character_flag = killed_opponent
-					character_event = {
-						id = druchii_feast.29
-						tooltip = "EVTTOOLTIP72033"
-					}
-				}
-			}
-			10 = {
-				add_trait = maimed
-				FROM = {
-					set_character_flag = maimed_opponent
-					character_event = {
-						id = druchii_feast.29
-						tooltip = "EVTTOOLTIP72033"
-					}
-				}
-			}
-			19 = {
-				add_trait = wounded
-				FROM = {
-					set_character_flag = wounded_opponent
-					character_event = {
-						id = druchii_feast.29
-						tooltip = "EVTTOOLTIP72033"
-					}
-				}
-			}
-			70 = {
-				any_liege = {
-					limit = {
-						has_character_flag = holding_large_druchi_feast
-						has_character_modifier = holding_large_druchi_feast
-					}
-					character_event = {
-						id = druchii_feast.30
-						tooltip = "EVTTOOLTIP72034"
-					}
-				}
-			}
-		}
-	}
-}
-
-# Duel
-character_event = {
-	id = druchii_feast.29
-	desc = "EVTDESC72033"
-	picture = GFX_evt_melee
-	is_triggered_only = yes
-
-	immediate = {
-		log = "work event id = druchii_feast.29"
-	}
-
-	option = {
-		name = "EVTOPTA72033"
-		trigger = {
-			has_character_flag = wounded_opponent
-		}
-		FROM = {
-			clr_character_flag = wounded_opponent
-			clr_character_flag = maimed_opponent
-		}
-		any_liege = {
-			limit = {
-				has_character_flag = holding_large_druchi_feast
-				has_character_modifier = holding_large_druchi_feast
-			}
-			character_event = {
-				id = 72036
-				tooltip = "EVTTOOLTIP72036"
-			}
-		}
-		clr_character_flag = wounded_opponent
-		change_martial = 1
-	}
-
-	option = {
-		name = "EVTOPTB72033"
-		trigger = {
-			has_character_flag = maimed_opponent
-		}
-		FROM = {
-			clr_character_flag = wounded_opponent
-			clr_character_flag = maimed_opponent
-		}
-		any_liege = {
-			limit = {
-				has_character_flag = holding_large_druchi_feast
-				has_character_modifier = holding_large_druchi_feast
-			}
-			character_event = {
-				id = 72037
-				tooltip = "EVTTOOLTIP72037"
-			}
-		}
-		clr_character_flag = maimed_opponent
-		change_martial = 2
-	}
-
-	option = {
-		name = "EVTOPTC72033"
-		trigger = {
-			has_character_flag = killed_opponent
-		}
-		clr_character_flag = killed_opponent
-		change_martial = 3
-		any_liege = {
-			limit = {
-				has_character_flag = holding_large_druchi_feast
-				has_character_modifier = holding_large_druchi_feast
-			}
-			character_event = {
-				id = 72035
-				tooltip = "EVTTOOLTIP72035"
-			}
-		}
-	}
-}
-
-# Duel: The End
-character_event = {
-	id = druchii_feast.30
-	desc = "EVTDESC72034"
-	picture = GFX_evt_melee
-	is_triggered_only = yes
-
-	immediate = {
-		log = "work event id = druchii_feast.30"
-	}
-
-	option = {
-		name = "EVTOPTA72034"
-		opinion = {
-			modifier = opinion_dislike
-			who = FROM
-			years = 10
-		}
-		FROM = {
-			FROM = {
-				reverse_opinion = {
-					modifier = opinion_dislike
-					who = Root
-					years = 10
-				}
-			}
-		}
-	}
-}
-
 # Friendly with another guest's spouse
 character_event = {
 	id = druchii_feast.50
 	desc = "EVTDESC72040"
 	picture = "GFX_evt_large_army"
-	max_age = 60
-	prisoner = no
 	only_playable = yes
+	min_age = 16
 	capable_only = yes
+	prisoner = no
+	has_character_flag = attending_druchii_feast
+	war = no
 
 	trigger = {
-		is_adult = yes
-		war = no
-		has_character_flag = attending_druchii_feast
-		is_married = yes
 		fertility = 0.4
 		any_realm_character = {
 			same_liege = ROOT
@@ -691,38 +385,15 @@ character_event = {
 				is_pregnant = no
 				is_alive = yes
 				is_abroad = no
-				NOT = {
+				nor = {
 					trait = celibate
-				}
-				NOT = {
 					trait = eunuch
-				}
-				NOT = {
-					age = 30
 				}
 				opinion = {
 					who = ROOT
 					value = 20
 				}
-				NOT = {
-					is_close_relative = root
-				}
-				OR = {
-					AND = {
-						is_female = yes
-						is_pregnant = no
-						ROOT = {
-							is_female = no
-						}
-					}
-					AND = {
-						is_female = no
-						ROOT = {
-							is_female = yes
-							is_pregnant = no
-						}
-					}
-				}
+				is_opposite_sex = root
 			}
 		}
 	}
@@ -831,38 +502,15 @@ character_event = {
 					is_pregnant = no
 					is_alive = yes
 					is_abroad = no
-					NOT = {
+					nor = {
 						trait = celibate
-					}
-					NOT = {
 						trait = eunuch
-					}
-					NOT = {
-						age = 30
 					}
 					opinion = {
 						who = ROOT
 						value = 20
 					}
-					NOT = {
-						is_close_relative = root
-					}
-					OR = {
-						AND = {
-							is_female = yes
-							is_pregnant = no
-							ROOT = {
-								is_female = no
-							}
-						}
-						AND = {
-							is_female = no
-							ROOT = {
-								is_female = yes
-								is_pregnant = no
-							}
-						}
-					}
+					is_opposite_sex = root
 				}
 			}
 			spouse = {
@@ -956,13 +604,13 @@ character_event = {
 	id = druchii_feast.53
 	desc = "EVTDESC72045"
 	picture = "GFX_evt_large_army"
-	prisoner = no
+	min_age = 16
 	capable_only = yes
+	prisoner = no
+	has_character_flag = attending_druchii_feast
+	war = no
 
 	trigger = {
-		is_adult = yes
-		war = no
-		has_character_flag = attending_druchii_feast
 		NOT = {
 			trait = drunkard
 		}
@@ -1122,13 +770,13 @@ character_event = {
 	id = druchii_feast.55
 	desc = "EVTDESC72046"
 	picture = "GFX_evt_large_army"
-	prisoner = no
+	min_age = 16
 	capable_only = yes
+	prisoner = no
+	has_character_flag = attending_druchii_feast
+	war = no
 
 	trigger = {
-		is_adult = yes
-		war = no
-		has_character_flag = attending_druchii_feast
 		trait = drunkard
 		any_liege = {
 			NOT = {
@@ -1216,13 +864,13 @@ character_event = {
 	id = druchii_feast.57
 	desc = "EVTDESC72048"
 	picture = "GFX_evt_large_army"
-	prisoner = no
+	min_age = 16
 	capable_only = yes
+	prisoner = no
+	has_character_flag = attending_druchii_feast
+	war = no
 
 	trigger = {
-		is_adult = yes
-		war = no
-		has_character_flag = attending_druchii_feast
 		trait = drunkard
 		any_liege = {
 			NOT = {
@@ -1352,12 +1000,13 @@ character_event = {
 	id = druchii_feast.59
 	desc = "EVTDESC72050"
 	picture = GFX_evt_bandits
-	prisoner = no
+	min_age = 16
 	capable_only = yes
+	prisoner = no
+	has_character_flag = attending_druchii_feast
+	war = no
 
 	trigger = {
-		war = no
-		has_character_flag = attending_druchii_feast
 		any_liege = {
 			NOT = {
 				had_character_flag = {

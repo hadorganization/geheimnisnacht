@@ -786,7 +786,6 @@ character_event = {
 							event_target:charB = {
 								or = {
 									religion_group = greenskin_gods_group
-									religion_group = horned_rat_god_group
 									is_demon_trigger = yes
 									is_invincible_trigger = yes
 									has_character_modifier = z_foresight_blessing_battle
@@ -795,6 +794,30 @@ character_event = {
 							}
 							event_target:charA = {
 								religion_group = greenskin_gods_group
+							}
+						}
+					}
+					# rats can take rats
+					modifier = {
+						factor = 0
+						nand = {
+							event_target:charB = {
+								religion_group = horned_rat_god_group
+							}
+							event_target:charA = {
+								religion_group = horned_rat_god_group
+							}
+						}
+					}
+					# non battle duels
+					modifier = {
+						factor = 0
+						or = {
+							event_target:charB = {
+								has_character_flag = duel_non_battle
+							}
+							event_target:charA = {
+								has_character_flag = duel_non_battle
 							}
 						}
 					}
@@ -846,7 +869,6 @@ character_event = {
 							event_target:charA = {
 								or = {
 									religion_group = greenskin_gods_group
-									religion_group = horned_rat_god_group
 									is_demon_trigger = yes
 									is_invincible_trigger = yes
 									has_character_modifier = z_foresight_blessing_battle
@@ -855,6 +877,30 @@ character_event = {
 							}
 							event_target:charB = {
 								religion_group = greenskin_gods_group
+							}
+						}
+					}
+					# rats can take rats
+					modifier = {
+						factor = 0
+						nand = {
+							event_target:charB = {
+								religion_group = horned_rat_god_group
+							}
+							event_target:charA = {
+								religion_group = horned_rat_god_group
+							}
+						}
+					}
+					# non battle duels
+					modifier = {
+						factor = 0
+						or = {
+							event_target:charB = {
+								has_character_flag = duel_non_battle
+							}
+							event_target:charA = {
+								has_character_flag = duel_non_battle
 							}
 						}
 					}
@@ -1365,11 +1411,34 @@ character_event = {
 				}
 				remove_character_modifier = z_foresight_blessing_battle
 			}
+			wh_duel_clean_effect = yes
 			break = yes
 		}
-		death = {
-			death_reason = death_duel
-			killer = event_target:charA
+		random_list = {
+			35 = {
+				add_trait = wounded
+				modifier = {
+					factor = 0
+					not = {
+						has_character_flag = duel_non_battle
+					}
+				}
+			}
+			35 = {
+				add_trait = maimed
+				modifier = {
+					factor = 0
+					not = {
+						has_character_flag = duel_non_battle
+					}
+				}
+			}
+			10 = {
+				death = {
+					death_reason = death_duel
+					killer = event_target:charA
+				}
+			}
 		}
 		wh_duel_clean_effect = yes
 	}
@@ -1408,11 +1477,34 @@ character_event = {
 				}
 				remove_character_modifier = z_foresight_blessing_battle
 			}
+			wh_duel_clean_effect = yes
 			break = yes
 		}
-		death = {
-			death_reason = death_duel
-			killer = event_target:charB
+		random_list = {
+			35 = {
+				add_trait = wounded
+				modifier = {
+					factor = 0
+					not = {
+						has_character_flag = duel_non_battle
+					}
+				}
+			}
+			35 = {
+				add_trait = maimed
+				modifier = {
+					factor = 0
+					not = {
+						has_character_flag = duel_non_battle
+					}
+				}
+			}
+			10 = {
+				death = {
+					death_reason = death_duel
+					killer = event_target:charA
+				}
+			}
 		}
 		wh_duel_clean_effect = yes
 	}
@@ -1495,8 +1587,8 @@ character_event = {
 				}
 			}
 		}
+		# Slayer level progression
 		if = {
-			# Slayer level progression
 			limit = {
 				trait = dwarf_slayer
 				NOT = {
@@ -1507,8 +1599,8 @@ character_event = {
 				id = DR_dwarfs.112
 			}
 		}
-		if = {
 			# if Slayer duel, Slayer flees province
+		if = {
 			limit = {
 				has_character_flag = duel_dwarf_slayer
 			}
@@ -1767,11 +1859,11 @@ character_event = {
 	border = GFX_event_normal_frame_war
 	is_triggered_only = yes
 
-	# charB got this event
 	immediate = {
 		log = "work event id = duelaction.204"
 	}
 
+	# charB got this event
 	option = {
 		name = OK
 		trigger = {

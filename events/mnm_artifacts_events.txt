@@ -6781,27 +6781,11 @@ character_event = {
 	only_capable = yes
 
 	trigger = {
-		NOT = { any_artifact = { has_artifact_flag = crown_jewel } }
-		OR = {
-			religion_group = christian
-			religion_group = jewish_group
-			religion_group = muslim
-			religion = west_african_pagan
-			religion = west_african_pagan_reformed
-			religion_group = indian_group
-			religion_group = zoroastrian_group
-			religion = zun_pagan
-			religion = zun_pagan_reformed
-			religion = norse_pagan
-			religion = norse_pagan_reformed
-			religion = tengri_pagan
-			religion = tengri_pagan_reformed
-			religion = slavic_pagan
-			religion = slavic_pagan_reformed
-			religion = baltic_pagan
-			religion = baltic_pagan_reformed
-			religion = finnish_pagan
-			religion = finnish_pagan_reformed
+    	NOR = {
+    		religion_group = greenskin_gods_group
+		religion = khorne
+		any_artifact = { has_artifact_flag = crown_jewel }
+		trait = creature_beastman
 		}
 	}
 
@@ -7650,116 +7634,206 @@ character_event = {
 
 ###WEAPON EVENTS###
 character_event = {
-	id = MNM.9115
-	desc = EVTDESC_MNM_9115
-	picture = GFX_evt_weaponsmith
-	border = GFX_event_normal_frame_economy
+    id = MNM.9115
+	 desc = { # default
+    	trigger = { 
+		NOR = {
+			religion_group = chaos_gods_group
+			religion_group = horned_rat_god_group
+			religion_group = greenskin_gods_group
+			religion_group = necromantic_group
+			} 
+		} 
+    	text = EVTDESC_MNM_9115
+    }
+    desc = { # undead and such
+    	trigger = { religion_group = necromantic_group } 
+    	text = EVTDESC_MNM_9115b
+    }
+	desc = { # greenskins
+    	trigger = { religion_group = greenskin_gods_group }
+    	text = EVTDESC_MNM_9115c
+    }
+    desc = { # skaven
+    	trigger = { religion_group = horned_rat_god_group } 
+    	text = EVTDESC_MNM_9115d
+    }
+	desc = { # chaos
+    	trigger = { religion_group = chaos_gods_group } 
+    	text = EVTDESC_MNM_9115e
+    }
+    picture = GFX_evt_weaponsmith
+    border = GFX_event_normal_frame_economy
 
-	hide_from = yes
-	is_triggered_only = yes
+    hide_from = yes
+    is_triggered_only = yes
 
-	has_dlc = "Mystics"
+    has_dlc = "Mystics"
 
-	min_age = 16
-	only_rulers = yes
-	only_capable = yes
+    min_age = 16
+    only_rulers = yes
+    only_capable = yes
+    
+    trigger = {
+    	NOT = { any_artifact = { has_artifact_flag = combat_weapon } }
+    	job_marshal = { always = yes }
+    }
 
-	trigger = {
-		NOT = { any_artifact = { has_artifact_flag = combat_weapon } }
-		job_marshal = { always = yes }
-	}
+    immediate = { #Selecting gender of the weapon smith
+#    	hidden_effect = {
+#	    	random_list = {
+#	    		50 = { #
+#	    			modifier = { factor = 0 NOT = { any_realm_character = { is_female = yes } } }
+#	    			modifier = { factor = 2 primary_title = { has_law = status_of_women_2 } }
+#	    			modifier = { factor = 2 primary_title = { has_law = status_of_women_3 } }
+#	    			modifier = { factor = 2 primary_title = { has_law = status_of_women_3 } }
+#	    			modifier = { factor = 6 has_game_rule = { name = gender value = all } } 
+#
+#	    			random_realm_character = { limit = { is_female = yes } save_event_target_as = weaponsmith_gender }
+#	    		} 
+#	    		50 = { #
+#	    			modifier = { factor = 0 NOT = { any_realm_character = { is_female = no } } }
+#	    			random_realm_character = { limit = { is_female = no } save_event_target_as = weaponsmith_gender }
+#	    		}
+#	    	}
+#    	}
 
-	immediate = { #Selecting gender of the weapon smith
-		log = "work event id = MNM.9115"
-		hidden_effect = {
-			random_list = {
-				50 = { #Chaos Dwarf
-					modifier = { factor = 0 NOT = { any_realm_character = { is_female = yes } } }
-					modifier = { factor = 2 primary_title = { has_law = status_of_women_2 } }
-					modifier = { factor = 2 primary_title = { has_law = status_of_women_3 } }
-					modifier = { factor = 2 primary_title = { has_law = status_of_women_3 } }
-					modifier = { factor = 6 has_game_rule = { name = gender value = all } }
+    	#Province for loc
+    	random_province = { 
+    		limit = { owner = { is_within_diplo_range = ROOT } }
+    		save_event_target_as = neighbor_province
+    	}
+    	random_demesne_province = {
+    		limit = { any_neighbor_province = { NOT = { owner = { character = ROOT } } } }
+    		random_neighbor_province = {
+    			limit = { NOT = { owner = { character = ROOT } } }
+    			save_event_target_as = neighbor_province
+    		}
+    	}
+    }
 
-					random_realm_character = { limit = { is_female = yes } save_event_target_as = weaponsmith_gender }
-				}
-				50 = { #Dwarf
-					modifier = { factor = 0 NOT = { any_realm_character = { is_female = no } } }
-					random_realm_character = { limit = { is_female = no } save_event_target_as = weaponsmith_gender }
-				}
-			}
-		}
+    #Yes, invite them!
+    option = { 
+        name = EVTOPTA_MNM_9115
+        custom_tooltip = { text = EVTOPTA_MNM_9115_TT }
 
-		#Province for loc
-		random_province = {
-			limit = { owner = { is_within_diplo_range = ROOT } }
-			save_event_target_as = neighbor_province
-		}
-		random_demesne_province = {
-			limit = { any_neighbor_province = { NOT = { owner = { character = ROOT } } } }
-			random_neighbor_province = {
-				limit = { NOT = { owner = { character = ROOT } } }
-				save_event_target_as = neighbor_province
-			}
-		}
-	}
+		hidden_tooltip = { 
+		save_event_target_as = weaponsmith_employer		
+		random_list = { 
+					20 = {
+					modifier = {
+					factor = 0
+					OR = { religion = vampiric
+						religion = chaos_gods_group
+						religion = horned_rat					
+						religion = cadai_group 
+						religion = cytharai_group } }
+					create_character = { #dwarf is default
+							random_traits = yes
+							learning = 16
+							dynasty = NONE
+							religion = ancestor_gods
+							culture = dwarf_main
+							female = no
+							age = 135
+							trait = creature_dwarf
+							trait = dwarf_engineer_master
+							trait = stubborn
+							}
+						}
+					20 = {
+					modifier = {
+					factor = 0
+					NOR = { religion = chaos_gods_group
+							religion = greenskin_gods_group } }
+					create_character = { # chaos dwarf for dark pantheon
+							random_traits = yes
+							learning = 16
+							dynasty = NONE
+							religion = hashut
+							culture = dwarf_chaos 
+							female = no
+							age = 161
+							trait = creature_chaos_dwarf
+							trait = stubborn
+							trait = cruel
+							trait = magic_potential_2
+							}
+						}
+					20 = {
+					modifier = {
+					factor = 0
+					NOT = { religion = horned_rat } }
+					create_character = { # skaven for skaven
+							random_traits = yes
+							learning = 15
+							dynasty = NONE
+							culture = skryre
+							religion = horned_rat
+							female = no
+							age = 33
+							trait = creature_skaven
+							trait = warlock_engineer
+							trait = cruel
+							}
+						}
+					20 = {
+					modifier = {
+					factor = 0
+					OR = { religion = vampiric
+						religion = chaos_gods_group 
+						religion = horned_rat	
+						religion = dwarf_gods_group } }
+					create_character = { # elf as an alternative
+							random_traits = yes
+							learning = 16
+							dynasty = NONE
+							religion = cadai
+							culture = avelorni
+							female = no
+							age = 457
+							trait = creature_elf
+							trait = proud
+							trait = magic_potential_2
+							}
+						}
+					20 = {
+					modifier = {
+					factor = 0
+					NOT = { religion = necromantic_group } }
+					create_character = { # vampire
+							random_traits = yes
+							learning = 15
+							dynasty = NONE
+							religion = vampiric
+							culture = strygan
+							female = no
+							age = 892
+							trait = cruel
+							trait = zealous
+							trait = hardy
+							trait = vampire_strigoi_visible
+							trait = lore_necromancy
+							}
+						}
+					}
+				new_character = { 
+	        		save_event_target_as = weaponsmith 
+					if = { limit = { trait = vampire_strigoi_visible } set_graphical_culture = strigoi_vampire }
+						}
+        	event_target:weaponsmith = { 
+        		give_nickname = nick_the_weaponsmith 
+        		character_event = { id = MNM.9116 days = 7 } 
+#        		character_event = { id = MNM.9117 } #no need for spouse
+        		}
+        } #closed hidden
+    }
 
-	#Yes, invite them!
-	option = {
-		name = EVTOPTA_MNM_9115
-		custom_tooltip = { text = EVTOPTA_MNM_9115_TT }
-
-		hidden_effect = {
-			save_event_target_as = weaponsmith_employer
-			if = {
-				limit = { event_target:weaponsmith_gender = { is_female = yes } }
-
-				create_character = {
-					age = 45
-					random_traits = no
-					female = yes
-					dynasty = none
-					trait = fortune_builder
-					trait = diligent
-					trait = strong
-					trait = honest
-					trait = brave
-				}
-				new_character = {
-					save_event_target_as = weaponsmith
-				}
-
-			}
-			if = {
-				limit = { event_target:weaponsmith_gender = { is_female = no } }
-
-				create_character = {
-					age = 45
-					random_traits = no
-					female = no
-					dynasty = none
-					trait = fortune_builder
-					trait = diligent
-					trait = strong
-					trait = honest
-					trait = brave
-				}
-				new_character = {
-					save_event_target_as = weaponsmith
-				}
-			}
-			event_target:weaponsmith = {
-				give_nickname = nick_the_weaponsmith
-				character_event = { id = MNM.9116 days = 7 }
-				character_event = { id = MNM.9117 } #gives spouse
-			}
-		}
-	}
-
-	#Don't invite them
-	option = {
-		name = EVTOPTB_MNM_9115
-		custom_tooltip = { text = EVTOPTB_MNM_9115_TT }
-	}
+    #Don't invite them
+    option = {
+        name = EVTOPTB_MNM_9115
+        custom_tooltip = { text = EVTOPTB_MNM_9115_TT }
+    }
 }
 
 #Ping event for weaponsmith

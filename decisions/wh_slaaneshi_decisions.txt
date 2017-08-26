@@ -59,7 +59,7 @@ decisions = {
 			modifier = {
 				factor = 1.25
 				trait = shy
-			}
+				}
 			modifier = {
 				factor = 1.25
 				trait = chaste
@@ -1238,6 +1238,7 @@ targetted_decisions = {
 		filter = court
 		ai_target_filter = court
 		from_potential = {
+			age = 16
 			nor = {
 				has_character_modifier = ai_quirking_cooldown
 				has_any_opinion_modifier = opinion_quirking
@@ -1262,15 +1263,10 @@ targetted_decisions = {
 				trait = creature_amazon
 				trait = slaanesh_demon
 			}
-			age = 16
 		}
 		potential = {
 			is_within_diplo_range = FROM
 			age = 16	# For now...
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
-			}
 			OR = {
 				trait = creature_elf
 				trait = creature_chaos_dwarf
@@ -1307,6 +1303,10 @@ targetted_decisions = {
 			}
 		}
 		allow = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
 			FROM = {
 				custom_tooltip = {
 					text = IS_NOT_INCAPACITATED
@@ -1322,7 +1322,9 @@ targetted_decisions = {
 					random = {
 						chance = 5	#Mutation chance
 						character_event = {
-							id = spleasure.57 days = 140 random = 200
+							id = spleasure.57
+							days = 140
+							random = 200
 						}
 					}
 				}
@@ -1352,7 +1354,7 @@ targetted_decisions = {
 		ai_will_do = {
 			factor = 1
 			modifier = {
-				factor = 0.15 # Less likely to do it
+				factor = 0.05 # Less likely to do it
 			}
 			modifier = {
 				factor = 2

@@ -919,41 +919,32 @@ settlement_decisions = {
 			FROM = {
 				wealth = 100
 			}
-			NOT = {
-				location = {
+			location = {
+				NOT = {
 					has_province_modifier = hunting_beastmen
 				}
-			}
-			OR = {
-				location = {
+				or = {
 					has_province_modifier = beastmen_scourging_1
-				}
-				location = {
 					has_province_modifier = beastmen_scourging_2
-				}
-				location = {
 					has_province_modifier = beastmen_scourging_3
-				}
-				location = {
 					has_province_modifier = beastman_herdstone
-				}
-				location = {
 					culture_group = beastman_group
 				}
 			}
 		}
 		effect = {
 			hidden_tooltip = {
-				FROM = {
-					character_event = {
-						id = wh_chaos_beastmen.38
-					}
-				}
 				location = {
+					save_event_target_as = wh_cleanse_beastman_presence_target
 					add_province_modifier = {
 						name = hunting_beastmen
 						duration = 60
 						hidden = yes
+					}
+				}
+				FROM = {
+					character_event = {
+						id = wh_chaos_beastmen.38
 					}
 				}
 			}

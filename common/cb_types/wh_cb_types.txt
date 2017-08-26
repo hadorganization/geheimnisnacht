@@ -19,10 +19,8 @@ skaven_tributary_cb = {
 			higher_tier_than = BARON
 			mercenary = no
 			is_tributary = no
-			NOT = {
+			nor = {
 				is_vassal_or_below = FROM
-			}
-			NOT = {
 				is_liege_or_above = FROM
 			}
 			wh_cb_pays_tribute_to_from_trigger = no
@@ -10498,10 +10496,7 @@ king_beastman_migration = {
 		ROOT = {
 			any_demesne_title = {
 				limit = {
-					nor = {
-						is_primary_type_title = yes
-						higher_tier_than = DUKE
-					}
+					tier = count
 				}
 				set_title_flag = migrating_away
 			}
@@ -10523,15 +10518,17 @@ king_beastman_migration = {
 		}
 	}
 	on_success_title = {
+		root = {
+			vassalize_or_take_under_title_destroy_duchies  = {
+				title = PREV
+				enemy = FROM
+				same_religion = yes # Only vassalize rulers of my religion
+				is_religious = yes
+				type = holy_war
+			}
+		}
 		hidden_tooltip = {
 			root = {
-				vassalize_or_take_under_title_destroy_duchies  = {
-					title = PREV
-					enemy = FROM
-					same_religion = yes # Only vassalize rulers of my religion
-					is_religious = yes
-					type = holy_war
-				}
 				character_event = {
 					id = wh_chaos_beastmen.10
 					days = 1
@@ -11361,10 +11358,8 @@ imperial_reconquest = {
 	}
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
-		NOT = {
+		nor = {
 			region = world_underempire
-		}
-		location = {
 			region = world_old_world_empire
 		}
 	}
@@ -12360,10 +12355,8 @@ jade_eradication_conquest = {
 					}
 				}
 				location = {
-					NOT = {
+					nor = {
 						religion = vampiric
-					}
-					NOT = {
 						culture = nehekharan
 					}
 				}

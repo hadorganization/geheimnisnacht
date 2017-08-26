@@ -1147,14 +1147,12 @@ character_event = {
 		name = EVTOPTA_druchifeast_1000
 		any_vassal = {
 			limit = {
+				age = 16
 				prisoner = no
 				war = no
 				in_command = no
 				NOT = {
 					trait = incapable
-				}
-				age = 16
-				NOT = {
 					has_character_flag = do_not_disturb
 				}
 			}
@@ -1238,16 +1236,18 @@ letter_event = {
 			}
 		}
 		set_character_flag = do_not_disturb
+		# Hidden - arrives at feast
 		hidden_tooltip = {
 			character_event = {
 				id = druchii_feast.1989 days = 12
 			}
-		} # Hidden - arrives at feast
+		}
+		# Safety event for clearing all flags
 		hidden_tooltip = {
 			character_event = {
 				id = druchii_feast.1990 days = 42
 			}
-		} # Safety event for clearing all flags
+		}
 		if = {
 			limit = {
 				is_married = yes
@@ -1279,11 +1279,12 @@ letter_event = {
 				duration = 180
 				hidden = yes
 			}
+			# Notify plotters and family
 			hidden_tooltip = {
 				character_event = {
 					id = CM.6400
 				}
-			} # Notify plotters and family
+			}
 		}
 	}
 
@@ -1535,7 +1536,8 @@ character_event = {
 		set_character_flag = druchii_feast_no_gift_to_lover
 		hidden_tooltip = {
 			character_event = {
-				id = druchii_feast.1007 days = 30
+				id = druchii_feast.1007
+				days = 30
 			}
 		}
 	}
@@ -1551,7 +1553,8 @@ character_event = {
 		set_character_flag = druchii_feast_fine_gift_to_lover
 		hidden_tooltip = {
 			character_event = {
-				id = druchii_feast.1007 days = 30
+				id = druchii_feast.1007
+				days = 30
 			}
 		}
 	}
@@ -1567,7 +1570,8 @@ character_event = {
 		set_character_flag = druchii_feast_small_gift_to_lover
 		hidden_tooltip = {
 			character_event = {
-				id = druchii_feast.1007 days = 30
+				id = druchii_feast.1007
+				days = 30
 			}
 		}
 	}
@@ -1586,7 +1590,8 @@ character_event = {
 		set_character_flag = druchii_feast_no_gift_to_lover
 		hidden_tooltip = {
 			character_event = {
-				id = druchii_feast.1007 days = 30
+				id = druchii_feast.1007
+				days = 30
 			}
 		}
 	}
@@ -1917,21 +1922,27 @@ character_event = {
 
 	option = {
 		name = EVTOPTA_druchifeast_1020
+		# Religious ceremony
 		hidden_tooltip = {
 			character_event = {
-				id = druchii_feast.1170 days = 25
+				id = druchii_feast.1170
+				days = 25
 			}
-		} # Religious ceremony
+		}
+		# End feast
 		hidden_tooltip = {
 			character_event = {
-				id = druchii_feast.1995 days = 30
+				id = druchii_feast.1995
+				days = 30
 			}
-		} # End feast
+		}
+		# Clearing all flags and modifiers after feast
 		hidden_tooltip = {
 			character_event = {
-				id = druchii_feast.1990 days = 31
+				id = druchii_feast.1990
+				days = 31
 			}
-		} # Clearing all flags and modifiers after feast
+		}
 		set_character_flag = druchii_feast_begun
 		hidden_tooltip = {
 			random_list = {
@@ -1958,11 +1969,13 @@ character_event = {
 				}
 			}
 			set_character_flag = attending_druchii_feast
+			# Clearing all flags and modifiers after feast
 			hidden_tooltip = {
 				character_event = {
-					id = druchii_feast.1990 days = 31
+					id = druchii_feast.1990
+					days = 31
 				}
-			} # Clearing all flags and modifiers after feast
+			}
 		}
 	}
 }
@@ -1976,15 +1989,6 @@ character_event = {
 	immediate = {
 		log = "work event id = druchii_feast.1989"
 		set_character_flag = attending_druchii_feast
-		random_list = {
-			# Choose random event
-			# 1 = { character_event = { id = druchii_feast.1140 days = 10 random = 5 } } # Apsara
-			# 1 = { character_event = { id = druchii_feast.1143 days = 10 random = 5 } } # Ghandarva
-			# 10 = { character_event = { id = druchii_feast.1150 days = 10 random = 5 } } # Sorceress and Slave
-			# 10 = { character_event = { id = druchii_feast.1160 days = 10 random = 5 } } # Monkeys
-			120 = {
-			} # No random event
-		}
 	}
 }
 
@@ -2130,18 +2134,11 @@ character_event = {
 # Random events at feast
 # ID druchifeast.1050-druchifeast.
 # Snake charmer
-# Snake charmer
 character_event = {
 	id = druchii_feast.1050
 	desc = EVTDESC_druchifeast_1050
 	picture = GFX_evt_feast
 	is_triggered_only = yes
-
-	trigger = {
-		capital_scope = {
-			region = world_india
-		}
-	}
 
 	immediate = {
 		log = "work event id = druchii_feast.1050"
@@ -2240,10 +2237,8 @@ character_event = {
 		name = EVTOPTA_druchifeast_1053
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					trait = stressed
-				}
-				NOT = {
 					trait = craven
 				}
 			}
@@ -2393,766 +2388,5 @@ character_event = {
 	option = {
 		name = EVTOPTA_druchifeast_1056
 		prestige = 30
-	}
-}
-
-# Magician
-# Magician performs at feast
-character_event = {
-	id = druchii_feast.1150
-	hide_window = yes
-	is_triggered_only = yes
-
-	trigger = {
-		ai = no
-	}
-
-	immediate = {
-		log = "work event id = druchii_feast.1150"
-		set_character_flag = druchii_feast_magician
-		random_list = {
-			10 = {
-				narrative_event = {
-					id = druchii_feast.1151
-				}
-			}
-			10 = {
-				narrative_event = {
-					id = druchii_feast.1152
-				}
-			}
-			10 = {
-				narrative_event = {
-					id = druchii_feast.1154
-				}
-			}
-		}
-	}
-}
-
-# Disappears boy in basket
-narrative_event = {
-	id = druchii_feast.1151
-	title = EVTTITLE_druchifeast_1051
-	desc = EVTDESC_druchifeast_1151
-	picture = GFX_evt_feast
-	is_triggered_only = yes
-
-	immediate = {
-		log = "work event id = druchii_feast.1151"
-	}
-
-	option = {
-		name = EVTOPTA_druchifeast_1151 # How interesting
-		add_character_modifier = {
-			name = entertaining_entertainment
-			days = 730
-		}
-	}
-
-	option = {
-		name = EVTOPTB_druchifeast_1151 # Guards, arrest him!
-		prestige = 20
-	}
-}
-
-# Cups and balls
-narrative_event = {
-	id = druchii_feast.1152
-	title = EVTTITLE_druchifeast_1051
-	desc = EVTDESC_druchifeast_1152
-	picture = GFX_evt_feast
-	is_triggered_only = yes
-
-	immediate = {
-		log = "work event id = druchii_feast.1152"
-	}
-
-	option = {
-		name = EVTOPTA_druchifeast_1152 # Left cup
-		hidden_tooltip = {
-			character_event = {
-				id = druchii_feast.1153
-			}
-		}
-	}
-
-	option = {
-		name = EVTOPTB_druchifeast_1152 # Middle cup
-		hidden_tooltip = {
-			character_event = {
-				id = druchii_feast.1153
-			}
-		}
-	}
-
-	option = {
-		name = EVTOPTC_druchifeast_1152 # Right cup
-		hidden_tooltip = {
-			character_event = {
-				id = druchii_feast.1153
-			}
-		}
-	}
-}
-
-# Cups and balls - guess is always wrong
-character_event = {
-	id = druchii_feast.1153
-	desc = EVTDESC_druchifeast_1153
-	picture = GFX_evt_feast
-	is_triggered_only = yes
-
-	immediate = {
-		log = "work event id = druchii_feast.1153"
-	}
-
-	option = {
-		name = EVTOPTA_druchifeast_1153 # Oh snap
-		prestige = -5
-	}
-
-	option = {
-		name = EVTOPTB_druchifeast_1153 # Angry - I think you are cheating!
-		tooltip_info = wroth
-		trigger = {
-			NOT = {
-				trait = genius
-			}
-			NOT = {
-				trait = quick
-			}
-			trait = wroth
-		}
-		prestige = 15
-		if = {
-			limit = {
-				NOT = {
-					trait = cynical
-				}
-			}
-			add_trait = cynical
-		}
-	}
-
-	option = {
-		name = EVTOPTC_druchifeast_1153 # I saw you cheating!
-		tooltip_info = genius
-		trigger = {
-			trait = genius
-			NOT = {
-				trait = quick
-			}
-		}
-		prestige = 30
-	}
-
-	option = {
-		name = EVTOPTC_druchifeast_1153 # I saw you cheating!
-		tooltip_info = quick
-		trigger = {
-			trait = quick
-			NOT = {
-				trait = genius
-			}
-		}
-		prestige = 30
-	}
-}
-
-# Rope trick
-narrative_event = {
-	id = druchii_feast.1154
-	title = EVTTITLE_druchifeast_1051
-	desc = EVTDESC_druchifeast_1154
-	picture = GFX_evt_feast
-	is_triggered_only = yes
-
-	immediate = {
-		log = "work event id = druchii_feast.1154"
-	}
-
-	option = {
-		name = EVTOPTA_druchifeast_1151 # Amazing!
-		add_character_modifier = {
-			name = entertaining_entertainment
-			days = 730
-		}
-	}
-
-	option = {
-		name = EVTOPTB_druchifeast_1154 # They cheat, I can see the hidden wire
-		tooltip_info = quick
-		trigger = {
-			trait = quick
-			NOT = {
-				trait = genius
-			}
-		}
-		prestige = 30
-	}
-
-	option = {
-		name = EVTOPTB_druchifeast_1154 # They cheat, I can see the hidden wire
-		tooltip_info = genius
-		trigger = {
-			trait = genius
-			NOT = {
-				trait = quick
-			}
-		}
-		prestige = 30
-	}
-}
-
-# Monkeys
-# Monkeys
-character_event = {
-	id = druchii_feast.1160
-	desc = EVTDESC_druchifeast_1160
-	picture = GFX_evt_feast
-	is_triggered_only = yes
-
-	trigger = {
-		capital_scope = {
-			region = world_india
-		}
-	}
-
-	immediate = {
-		log = "work event id = druchii_feast.1160"
-	}
-
-	option = {
-		name = EVTOPTA_druchifeast_1160 # Oh my!
-		trigger = {
-			NOT = {
-				trait = stressed
-			}
-			NOT = {
-				trait = depressed
-			}
-			NOT = {
-				trait = shy
-			}
-			NOT = {
-				trait = wroth
-			}
-			NOT = {
-				trait = craven
-			}
-			NOT = {
-				trait = paranoid
-			}
-		}
-		set_character_flag = bad_druchii_feast
-		prestige = -10
-	}
-
-	option = {
-		name = EVTOPTB_druchifeast_1160 # Hunter shoots monkey with bow
-		trigger = {
-			trait = hunter
-		}
-		tooltip_info = hunter
-		prestige = 30
-		clr_character_flag = bad_druchii_feast
-	}
-
-	option = {
-		name = EVTOPTC_druchifeast_1160 # Cruel or impaler catches monkey and tortures it
-		tooltip_info = impaler
-		trigger = {
-			trait = impaler
-			NOT = {
-				trait = cruel
-			}
-		}
-		add_character_modifier = {
-			name = entertaining_entertainment
-			days = 730
-		}
-		clr_character_flag = bad_druchii_feast
-	}
-
-	option = {
-		name = EVTOPTC_druchifeast_1160 # Cruel or impaler catches monkey and tortures it
-		tooltip_info = cruel
-		trigger = {
-			trait = cruel
-			NOT = {
-				trait = impaler
-			}
-		}
-		add_character_modifier = {
-			name = entertaining_entertainment
-			days = 730
-		}
-		clr_character_flag = bad_druchii_feast
-	}
-
-	option = {
-		name = EVTOPTD_druchifeast_1160 # Inbred is friend of monkeys
-		tooltip_info = inbred
-		trigger = {
-			trait = inbred
-			NOT = {
-				trait = imbecile
-			}
-		}
-		add_character_modifier = {
-			name = good_times
-			days = 730
-		}
-		clr_character_flag = bad_druchii_feast
-	}
-
-	option = {
-		name = EVTOPTD_druchifeast_1160 # Imbecile is friend of monkeys
-		tooltip_info = imbecile
-		trigger = {
-			trait = imbecile
-			NOT = {
-				trait = inbred
-			}
-		}
-		add_character_modifier = {
-			name = good_times
-			days = 730
-		}
-		clr_character_flag = bad_druchii_feast
-	}
-
-	option = {
-		name = EVTOPTE_druchifeast_1160 # Lunatic "marries" monkey
-		trigger = {
-			trait = lunatic
-		}
-		tooltip_info = lunatic
-		add_character_modifier = {
-			name = married_monkey
-			days = -1
-		}
-		add_character_modifier = {
-			name = good_times
-			days = 730
-		}
-		clr_character_flag = bad_druchii_feast
-	}
-
-	option = {
-		name = EVTOPTF_druchifeast_1160 # Good laugh cures stressed or depressed person
-		trigger = {
-			OR = {
-				trait = stressed
-				trait = depressed
-			}
-		}
-		if = {
-			limit = {
-				trait = stressed
-			}
-			remove_trait = stressed
-		}
-		if = {
-			limit = {
-				trait = depressed
-			}
-			remove_trait = depressed
-		}
-		add_character_modifier = {
-			name = good_times
-			days = 730
-		}
-		clr_character_flag = bad_druchii_feast
-	}
-
-	option = {
-		name = EVTOPTG_druchifeast_1160 # Some people are upset by this sort of thing...
-		trigger = {
-			OR = {
-				trait = shy
-				trait = wroth
-				trait = craven
-				trait = paranoid
-			}
-		}
-		add_trait = stressed
-		set_character_flag = bad_druchii_feast
-	}
-}
-
-# Religious ceremony
-# Religious ceremony - liege
-character_event = {
-	id = druchii_feast.1170
-	hide_window = yes
-	is_triggered_only = yes
-
-	immediate = {
-		log = "work event id = druchii_feast.1170"
-		if = {
-			limit = {
-				has_character_modifier = holding_large_druchi_feast
-			}
-			character_event = {
-				id = druchii_feast.1177
-			} # Kali Puja
-		}
-	}
-}
-
-# Kali Puja Celebration
-character_event = {
-	id = druchii_feast.1177
-	desc = EVTDESC_druchifeast_1177
-	picture = GFX_evt_feast
-	border = GFX_event_normal_frame_religion
-	is_triggered_only = yes
-	# option = {
-	# name = EVTOPTA_druchifeast_1177 # Stay with the basics
-	# any_vassal = {
-	# limit = {
-	# ai = no
-	# has_character_flag = attending_druchii_feast
-	# }
-	# hidden_tooltip = { character_event = { id = druchii_feast.1189 } }
-	# }
-	# hidden_tooltip = { character_event = { id = druchii_feast.1188 } }
-	# }
-
-	immediate = {
-		log = "work event id = druchii_feast.1177"
-	}
-
-	option = {
-		name = EVTOPTB_druchifeast_1177 # Really go for it - bloody madness
-		character_event = {
-			id = druchii_feast.1178
-		}
-	}
-}
-
-# Celebrate Kali - bloody madness - host
-character_event = {
-	id = druchii_feast.1178
-	desc = EVTDESC_druchifeast_1178
-	picture = GFX_evt_feast
-	border = GFX_event_normal_frame_religion
-	is_triggered_only = yes
-
-	immediate = {
-		log = "work event id = druchii_feast.1178"
-	}
-
-	option = {
-		name = EVTOPTA_druchifeast_1178 # 1 - Ritual sacrifice of prisoner
-		trigger = {
-			any_courtier = {
-				prisoner = yes
-				host = {
-					character = ROOT
-				}
-			}
-		}
-		random_courtier = {
-			limit = {
-				prisoner = yes
-				host = {
-					character = ROOT
-				}
-			}
-			character_event = {
-				id = druchii_feast.1190
-			}
-		}
-		prestige = 20
-	}
-
-	option = {
-		name = EVTOPTB_druchifeast_1178 # 2 - Ritual sacrifice of servant
-		any_vassal = {
-			limit = {
-				has_character_flag = attending_druchii_feast
-			}
-			hidden_tooltip = {
-				character_event = {
-					id = druchii_feast.1182
-				}
-			}
-		}
-		hidden_tooltip = {
-			character_event = {
-				id = druchii_feast.1181
-			}
-		}
-		prestige = 10
-	}
-
-	option = {
-		name = EVTOPTC_druchifeast_1178 # 3 - Massive ritual blood sacrifice of animals (elephants, massive)
-		# trigger = {
-		# capital_scope = {
-		# region = world_india
-		# }
-		# }
-		any_vassal = {
-			limit = {
-				has_character_flag = attending_druchii_feast
-			}
-			hidden_tooltip = {
-				narrative_event = {
-					id = druchii_feast.1184
-				}
-			}
-		}
-		hidden_tooltip = {
-			narrative_event = {
-				id = druchii_feast.1183
-			}
-		}
-		wealth = -10
-		prestige = 30
-	}
-}
-
-# Prisoner to be sacrificed gets this bridging event
-character_event = {
-	id = druchii_feast.1190
-	hide_window = yes
-	is_triggered_only = yes
-
-	immediate = {
-		log = "work event id = druchii_feast.1190"
-		FROM = {
-			any_vassal = {
-				limit = {
-					has_character_flag = attending_druchii_feast
-				}
-				hidden_tooltip = {
-					character_event = {
-						id = druchii_feast.1179
-					}
-				}
-			}
-			hidden_tooltip = {
-				character_event = {
-					id = druchii_feast.1180
-				}
-			}
-		}
-	}
-}
-
-# Celebrate Kali - bloody madness 1 - guests
-character_event = {
-	id = druchii_feast.1179
-	desc = EVTDESC_druchifeast_1179
-	picture = GFX_evt_feast
-	border = GFX_event_normal_frame_religion
-	is_triggered_only = yes
-
-	immediate = {
-		log = "work event id = druchii_feast.1179"
-	}
-
-	option = {
-		name = EVTOPTA_druchifeast_1179 #
-		piety = 10
-	}
-}
-
-# Celebrate Kali - bloody madness 1 - host
-character_event = {
-	id = druchii_feast.1180
-	desc = EVTDESC_druchifeast_1179
-	picture = GFX_evt_feast
-	border = GFX_event_normal_frame_religion
-	is_triggered_only = yes
-
-	immediate = {
-		log = "work event id = druchii_feast.1180"
-	}
-
-	option = {
-		name = EVTOPTA_druchifeast_1179 #
-		piety = 30
-		FROM = {
-			death = {
-				death_reason = death_sacrificed
-				killer = ROOT
-			}
-		}
-		# if = {
-		# limit = {
-		# NOT = { has_character_flag = achievement_kali_maaa }
-		# FROM = {
-		# primary_title = {
-		# OR = {
-		# tier = EMPEROR
-		# tier = KING
-		# }
-		# }
-		# }
-		# }
-		# set_character_flag = achievement_kali_maaa
-		# }
-	}
-}
-
-# Celebrate Kali - bloody madness 2 - host
-character_event = {
-	id = druchii_feast.1181
-	desc = EVTDESC_druchifeast_1181
-	picture = GFX_evt_feast
-	border = GFX_event_normal_frame_religion
-	is_triggered_only = yes
-
-	immediate = {
-		log = "work event id = druchii_feast.1181"
-	}
-
-	option = {
-		name = EVTOPTA_druchifeast_1179 #
-		piety = 30
-	}
-}
-
-# Celebrate Kali - bloody madness 2 - guests
-character_event = {
-	id = druchii_feast.1182
-	desc = EVTDESC_druchifeast_1181
-	picture = GFX_evt_feast
-	border = GFX_event_normal_frame_religion
-	is_triggered_only = yes
-
-	immediate = {
-		log = "work event id = druchii_feast.1182"
-	}
-
-	option = {
-		name = EVTOPTA_druchifeast_1179 #
-		piety = 10
-	}
-}
-
-# Celebrate Kali - bloody madness 3 - host
-narrative_event = {
-	id = druchii_feast.1183
-	title = EVTTITLE_druchifeast_1183
-	desc = EVTDESC_druchifeast_1183
-	picture = GFX_evt_feast
-	border = GFX_event_narrative_frame_religion
-	is_triggered_only = yes
-
-	immediate = {
-		log = "work event id = druchii_feast.1183"
-	}
-
-	option = {
-		name = EVTOPTA_druchifeast_1183 #
-		piety = 30
-	}
-}
-
-# Celebrate Kali - bloody madness 3 - guests
-narrative_event = {
-	id = druchii_feast.1184
-	title = EVTTITLE_druchifeast_1183
-	desc = EVTDESC_druchifeast_1183
-	picture = GFX_evt_feast
-	border = GFX_event_narrative_frame_religion
-	is_triggered_only = yes
-
-	immediate = {
-		log = "work event id = druchii_feast.1184"
-	}
-
-	option = {
-		name = EVTOPTA_druchifeast_1183 #
-		piety = 10
-	}
-}
-
-# Basic Kali Puja celebration - host
-character_event = {
-	id = druchii_feast.1188
-	desc = EVTDESC_druchifeast_1188
-	picture = GFX_evt_feast
-	border = GFX_event_normal_frame_religion
-	is_triggered_only = yes
-
-	immediate = {
-		log = "work event id = druchii_feast.1188"
-	}
-
-	option = {
-		name = EVTOPTA_druchifeast_1188 #
-		piety = 30
-	}
-}
-
-# Basic Kali Puja celebration - guests
-character_event = {
-	id = druchii_feast.1189
-	desc = EVTDESC_druchifeast_1188
-	picture = GFX_evt_feast
-	border = GFX_event_normal_frame_religion
-	is_triggered_only = yes
-
-	immediate = {
-		log = "work event id = druchii_feast.1189"
-	}
-
-	option = {
-		name = EVTOPTA_druchifeast_1188 #
-		piety = 10
-	}
-}
-
-# Flag management
-# Clear all character flags and modifiers
-character_event = {
-	id = druchii_feast.1990
-	hide_window = yes
-	is_triggered_only = yes
-
-	immediate = {
-		log = "work event id = druchii_feast.1990"
-		remove_character_modifier = holding_large_druchi_feast
-		clr_character_flag = attending_druchii_feast
-		clr_character_flag = druchii_feast_begun
-		clr_character_flag = druchii_feast_monkeys
-		clr_character_flag = druchii_feast_snake_charmer
-		clr_character_flag = druchii_feast_fine_gift_to_spouse
-		clr_character_flag = druchii_feast_small_gift_to_spouse
-		clr_character_flag = druchii_feast_no_gift_to_spouse
-		clr_character_flag = druchii_feast_fine_gift_to_lover
-		clr_character_flag = druchii_feast_small_gift_to_lover
-		clr_character_flag = druchii_feast_apsara
-		clr_character_flag = druchii_feast_gandharva
-		clr_character_flag = druchii_feast_magician
-		clr_character_flag = druchii_feast_religious_ceremony
-		clr_character_flag = sent_invitations
-		clr_character_flag = holding_large_druchi_feast
-		clr_character_flag = feast_jongleur
-		clr_character_flag = feast_musicians
-		clr_character_flag = feast_minstrel
-		clr_character_flag = feast_fireeaters
-		clr_character_flag = feast_conjurer
-		clr_character_flag = lavishly_food
-		clr_character_flag = medium_food
-		clr_character_flag = low_food
-		clr_character_flag = castle_problems
-		clr_character_flag = feast_jester
-		clr_character_flag = feast_drunkard_guest
-		clr_character_flag = druchi_feast_duel
-		clr_character_flag = feast_boar_hunt
-		clr_character_flag = coming_to_feast
-		clr_character_flag = wounded_opponent
-		clr_character_flag = maimed_opponent
-		clr_character_flag = killed_opponent
-		clr_character_flag = bad_druchii_feast
-		clr_character_flag = do_not_disturb
 	}
 }

@@ -1353,19 +1353,11 @@ targetted_decisions = {
 			age = 16
 			z_combat_magic_caster = yes
 			z_combat_magic_valid_caster = yes
-			OR = {
+			or = {
 				character = FROM
 				liege = {
 					character = FROM
 				}
-			}
-			or = {
-				ai = no
-				liege = {
-					ai = no
-				}                
-				in_battle = yes
-				in_siege = yes
 			}
 		}
 		allow = {
@@ -1381,6 +1373,18 @@ targetted_decisions = {
 			}
 			in_command = yes
 		}
+
+		ai_will_do = {
+			factor = 0.025
+			modifier = {
+				factor = 10
+				or = {
+					in_battle = yes
+                    in_siege = yes
+                    }
+			}
+		}
+
 		effect = {
 			set_character_flag = casting
 			save_event_target_as = magic_caster

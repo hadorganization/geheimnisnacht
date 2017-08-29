@@ -7,16 +7,19 @@
 # 5 - Archers
 # 6 - Special troops
 
-#IMPERIAL RETINUES#
-RETTYPE_IMPERIAL_KNIGHTS =
-{
+# IMPERIAL RETINUES
+RETTYPE_IMPERIAL_KNIGHTS = {
     first_type = 4
     first_amount = 100
 	hire_cost = 200
+
 	potential = {
 		culture_group = imperial_group
-		NOT = { culture = sudenburger }
+		NOT = {
+			culture = sudenburger
+		}
 		is_patrician = no
+		log = "test [This.GetName]"
 	}
     modifier = {
         knights_defensive = 0.5
@@ -25,36 +28,35 @@ RETTYPE_IMPERIAL_KNIGHTS =
     }
 }
 
-#RETTYPE_IMPERIAL_HUNTERS =
-#{
-#	first_type = 5
-#	first_amount = 450
-#	second_type = 6
-#	second_amount = 50
-#	special_troops = gunpowder
-#	
-#	potential = {
-#		culture_group = imperial_group
-#		NOT = { culture = sudenburger }
-#	}
-#	
-#	modifier = {
-#		archers_offensive = 0.4
-#		gunpowder_offensive = 0.4
-#	}
-#
-#}
+# RETTYPE_IMPERIAL_HUNTERS = {
+# 	first_type = 5
+# 	first_amount = 450
+# 	second_type = 6
+# 	second_amount = 50
+# 	special_troops = gunpowder
 
-RETTYPE_IMPERIAL_TOWNGUARD =
-{
+# 	potential = {
+# 		culture_group = imperial_group
+# 		NOT = { culture = sudenburger }
+# 	}
+# 	modifier = {
+# 		archers_offensive = 0.4
+# 		gunpowder_offensive = 0.4
+# 	}
+
+# }
+
+RETTYPE_IMPERIAL_TOWNGUARD = {
 	first_type = 1
 	first_amount = 75
 	second_type = 2
 	second_amount = 50
-	
+
 	potential = {
 		culture_group = imperial_group
-		NOT = { culture = sudenburger }
+		NOT = {
+			culture = sudenburger
+		}
 		is_patrician = yes
 	}
 	modifier = {
@@ -63,13 +65,12 @@ RETTYPE_IMPERIAL_TOWNGUARD =
 	}
 }
 
-RETTYPE_SUDINFBLOCK =
-{
+RETTYPE_SUDINFBLOCK = {
 	first_type = 0
 	first_amount = 125
 	second_type = 5
 	second_amount = 100
-	
+
 	potential = {
 		culture = sudenburger
 	}
@@ -79,14 +80,13 @@ RETTYPE_SUDINFBLOCK =
 	}
 }
 
-RETTYPE_SUDCAVBLOCK =
-{
+RETTYPE_SUDCAVBLOCK = {
 	first_type = 3
 	first_amount = 50
 	second_type = 6
 	second_amount = 50
 	special_troops = horse_archers
-	
+
 	potential = {
 		culture = sudenburger
 	}
@@ -96,14 +96,13 @@ RETTYPE_SUDCAVBLOCK =
 	}
 }
 
-RETTYPE_SUDGUNBLOCK =
-{
+RETTYPE_SUDGUNBLOCK = {
 	first_type = 0
 	first_amount = 75
 	second_type = 6
 	second_amount = 50
 	special_troops = gunpowder
-	
+
 	potential = {
 		culture = sudenburger
 	}
@@ -113,14 +112,13 @@ RETTYPE_SUDGUNBLOCK =
 	}
 }
 
-RETTYPE_SUDELEPHANT =
-{
+RETTYPE_SUDELEPHANT = {
 	first_type = 5
 	first_amount = 50
 	second_type = 6
 	second_amount = 20
 	special_troops = war_elephants
-	
+
 	potential = {
 		culture = sudenburger
 	}
@@ -130,13 +128,12 @@ RETTYPE_SUDELEPHANT =
 	}
 }
 
-RETTYPE_SUDHEVINFBLOCK =
-{
+RETTYPE_SUDHEVINFBLOCK = {
 	first_type = 1
 	first_amount = 125
 	second_type = 2
 	second_amount = 100
-	
+
 	potential = {
 		culture = sudenburger
 	}
@@ -146,14 +143,13 @@ RETTYPE_SUDHEVINFBLOCK =
 	}
 }
 
-RETTYPE_SUDHEVCAVBLOCK =
-{
+RETTYPE_SUDHEVCAVBLOCK = {
 	first_type = 6
 	first_amount = 75
 	second_type = 4
 	second_amount = 50
 	special_troops = camel_cavalry
-	
+
 	potential = {
 		culture = sudenburger
 	}
@@ -163,14 +159,13 @@ RETTYPE_SUDHEVCAVBLOCK =
 	}
 }
 
-RETTYPE_SUDARTYBLOCK =
-{
+RETTYPE_SUDARTYBLOCK = {
 	first_type = 0
 	first_amount = 150
 	second_type = 6
 	second_amount = 20
 	special_troops = artillery
-	
+
 	potential = {
 		culture = sudenburger
 	}
@@ -180,24 +175,19 @@ RETTYPE_SUDARTYBLOCK =
 	}
 }
 
-RETTYPE_REIKGUARD =
-{
+RETTYPE_REIKGUARD = {
 	first_type = 6
 	first_amount = 40
 	second_type = 4
 	second_amount = 40
 	special_troops = gunpowder
-	
+
 	potential = {
 	    OR = {
-		culture = reiklander
-		holder_scope = {
-		OR = {
-		has_landed_title = k_reikland
-		    any_vassal = {
-		    has_landed_title = k_reikland
-		            }
-	            }
+			culture = reiklander
+			has_landed_title = k_reikland
+			any_vassal = {
+				has_landed_title = k_reikland
 		    }
 	    }
 	}
@@ -211,24 +201,19 @@ RETTYPE_REIKGUARD =
 	}
 }
 
-RETTYPE_WISSENGUN =
-{
+RETTYPE_WISSENGUN = {
 	first_type = 6
 	first_amount = 40
 	second_type = 1
 	second_amount = 40
 	special_troops = gunpowder
-	
+
 	potential = {
 	    OR = {
-		culture = wissenlander
-		holder_scope = {
-		OR = {
-		has_landed_title = k_wissenland
-		    any_vassal = {
-		    has_landed_title = k_wissenland
-		            }
-	            }
+			culture = wissenlander
+			has_landed_title = k_wissenland
+			any_vassal = {
+				has_landed_title = k_wissenland
 		    }
 	    }
 	}
@@ -239,26 +224,21 @@ RETTYPE_WISSENGUN =
 	}
 }
 
-RETTYPE_WISSENARTY =
-{
+RETTYPE_WISSENARTY = {
 	first_type = 6
 	first_amount = 20
 	second_type = 2
 	second_amount = 60
 	special_troops = artillery
-	
+
 	potential = {
 	    OR = {
-		culture = wissenlander
-		holder_scope = {
-		OR = {
-		has_landed_title = k_wissenland
-		    any_vassal = {
-		    has_landed_title = k_wissenland
-		            }
-	            }
+			culture = wissenlander
+			has_landed_title = k_wissenland
+			any_vassal = {
+				has_landed_title = k_wissenland
 		    }
-	    }
+		}
 	}
 	modifier = {
 		artillery_defensive = 0.1
@@ -267,26 +247,21 @@ RETTYPE_WISSENARTY =
 	}
 }
 
-RETTYPE_SOLBLACKRIDER =
-{
+RETTYPE_SOLBLACKRIDER = {
 	first_type = 3
 	first_amount = 80
-	
+
 	potential = {
 	    OR = {
-		culture = sollander
-		holder_scope = {
-		OR = {
-		has_landed_title = k_wissenland
-		has_landed_title = k_solland
-		has_landed_title = d_sudenland
-		has_landed_title = d_soell
-		has_landed_title = d_pfeildorf
-		any_vassal = {
-		has_landed_title = k_wissenland
-		    }
-		        }
-	                }
+			culture = sollander
+			has_landed_title = k_wissenland
+			has_landed_title = k_solland
+			has_landed_title = d_sudenland
+			has_landed_title = d_soell
+			has_landed_title = d_pfeildorf
+			any_vassal = {
+				has_landed_title = k_wissenland
+			}
 	    }
 	}
 	modifier = {
@@ -295,21 +270,16 @@ RETTYPE_SOLBLACKRIDER =
 	}
 }
 
-RETTYPE_AVERLANLANDSKNECHT =
-{
+RETTYPE_AVERLANLANDSKNECHT = {
 	first_type = 2
 	first_amount = 80
-	
+
 	potential = {
 	    OR = {
-		culture = averlander
-		holder_scope = {
-		OR = {
-		has_landed_title = k_averland
-		any_vassal = {
-		has_landed_title = k_averland
-		        }
-	        }
+			culture = averlander
+			has_landed_title = k_averland
+			any_vassal = {
+				has_landed_title = k_averland
 			}
 	    }
 	}
@@ -319,21 +289,16 @@ RETTYPE_AVERLANLANDSKNECHT =
 	}
 }
 
-RETTYPE_DEATHWATCH =
-{
+RETTYPE_DEATHWATCH = {
 	first_type = 0
 	first_amount = 80
-	
+
 	potential = {
 	    OR = {
-		culture = stirlander
-		holder_scope = {
-		OR = {
-		has_landed_title = k_stirland
-		any_vassal = {
-		has_landed_title = k_stirland
-		        }
-	        }
+			culture = stirlander
+			has_landed_title = k_stirland
+			any_vassal = {
+				has_landed_title = k_stirland
 			}
 	    }
 	}
@@ -344,22 +309,17 @@ RETTYPE_DEATHWATCH =
 	}
 }
 
-RETTYPE_FORLORNHOPE =
-{
+RETTYPE_FORLORNHOPE = {
 	first_type = 1
 	first_amount = 80
-	
+
 	potential = {
 	    OR = {
-		culture = sylvanian
-		holder_scope = {
-		OR = {
-		has_landed_title = k_sylvania
-		has_landed_title = e_sylvania
-		any_vassal = {
-		has_landed_title = k_sylvania
-		        }
-	        }
+			culture = sylvanian
+			has_landed_title = k_sylvania
+			has_landed_title = e_sylvania
+			any_vassal = {
+				has_landed_title = k_sylvania
 			}
 	    }
 	}
@@ -370,23 +330,18 @@ RETTYPE_FORLORNHOPE =
 	}
 }
 
-RETTYPE_WESTERLANDMARINES =
-{
+RETTYPE_WESTERLANDMARINES = {
 	first_type = 1
 	first_amount = 40
 	second_type = 0
 	second_amount = 40
-	
+
 	potential = {
 	    OR = {
-		culture = westerlander
-		holder_scope = {
-		OR = {
-		has_landed_title = k_westerland
-		any_vassal = {
-		has_landed_title = k_westerland
-		        }
-	        }
+			culture = westerlander
+			has_landed_title = k_westerland
+			any_vassal = {
+				has_landed_title = k_westerland
 			}
 	    }
 	}
@@ -396,21 +351,16 @@ RETTYPE_WESTERLANDMARINES =
 	}
 }
 
-RETTYPE_NORDLANDERBESERKERS =
-{
+RETTYPE_NORDLANDERBESERKERS = {
 	first_type = 1
 	first_amount = 80
-	
+
 	potential = {
 	    OR = {
-		culture = nordlander
-		holder_scope = {
-		OR = {
-		has_landed_title = k_nordland
-		any_vassal = {
-		has_landed_title = k_nordland
-		        }
-	        }
+			culture = nordlander
+			has_landed_title = k_nordland
+			any_vassal = {
+				has_landed_title = k_nordland
 			}
 	    }
 	}
@@ -419,29 +369,24 @@ RETTYPE_NORDLANDERBESERKERS =
 	}
 }
 
-RETTYPE_DRAGONHEERBANN =
-{
+RETTYPE_DRAGONHEERBANN = {
 	first_type = 5
 	first_amount = 40
 	second_type = 6
 	second_amount = 40
 	special_troops = gunpowder
-	
+
 	potential = {
 	    OR = {
-		culture = drakwalder
-		holder_scope = {
-		OR = {
-		has_landed_title = k_middenland
-		has_landed_title = k_nordland
-		has_landed_title = k_drakwald
-		any_vassal = {
-		has_landed_title = k_middenland
-		has_landed_title = k_nordland
-		        }
-	        }
+			culture = drakwalder
+			has_landed_title = k_middenland
+			has_landed_title = k_nordland
+			has_landed_title = k_drakwald
+			any_vassal = {
+				has_landed_title = k_middenland
+				has_landed_title = k_nordland
 			}
-	    }
+		}
 	}
 	modifier = {
 		archers_morale = 0.1
@@ -451,21 +396,16 @@ RETTYPE_DRAGONHEERBANN =
 	}
 }
 
-RETTYPE_MIDDENLANDGREAT =
-{
+RETTYPE_MIDDENLANDGREAT = {
 	first_type = 1
 	first_amount = 80
-	
+
 	potential = {
 	    OR = {
-		culture = middenlander
-		holder_scope = {
-		OR = {
-		has_landed_title = k_middenland
-		any_vassal = {
-		has_landed_title = k_middenland
-		        }
-	        }
+			culture = middenlander
+			has_landed_title = k_middenland
+			any_vassal = {
+				has_landed_title = k_middenland
 			}
 	    }
 	}
@@ -476,21 +416,16 @@ RETTYPE_MIDDENLANDGREAT =
 	}
 }
 
-RETTYPE_BEASTHUNTERS =
-{
+RETTYPE_BEASTHUNTERS = {
 	first_type = 5
 	first_amount = 80
-	
+
 	potential = {
 	    OR = {
-		culture = talabeclander
-		holder_scope = {
-		OR = {
-		has_landed_title = k_talabecland
-		any_vassal = {
-		has_landed_title = k_talabecland
-		        }
-	        }
+			culture = talabeclander
+			has_landed_title = k_talabecland
+			any_vassal = {
+				has_landed_title = k_talabecland
 			}
 	    }
 	}
@@ -500,26 +435,21 @@ RETTYPE_BEASTHUNTERS =
 	}
 }
 
-RETTYPE_PIKESQUARE =
-{
+RETTYPE_PIKESQUARE = {
 	first_type = 2
 	first_amount = 40
 	second_type = 6
 	second_amount = 40
 	special_troops = gunpowder
-	
+
 	potential = {
 	    OR = {
-		culture = ostermarker
-		holder_scope = {
-		OR = {
-	    has_landed_title = k_ostermark
-		any_vassal = {
-		has_landed_title = k_ostermark
-		        }
-	        }
+			culture = ostermarker
+			has_landed_title = k_ostermark
+			any_vassal = {
+				has_landed_title = k_ostermark
 			}
-	    }
+		}
 	}
 	modifier = {
 		pikemen_defensive = 0.25
@@ -527,24 +457,19 @@ RETTYPE_PIKESQUARE =
 	}
 }
 
-RETTYPE_LONGRIFLES =
-{
+RETTYPE_LONGRIFLES = {
 	first_type = 6
 	first_amount = 80
 	special_troops = gunpowder
-	
+
 	potential = {
 	    OR = {
-		culture = hochlander
-		holder_scope = {
-		OR = {
-		has_landed_title = k_hochland
-		any_vassal = {
-		has_landed_title = k_hochland
-		        }
-	        }
+			culture = hochlander
+			has_landed_title = k_hochland
+			any_vassal = {
+				has_landed_title = k_hochland
 			}
-	    }
+		}
 	}
 	modifier = {
 		gunpowder_defensive = 0.15
@@ -552,24 +477,19 @@ RETTYPE_LONGRIFLES =
 	}
 }
 
-RETTYPE_OSTLANDEROGRES =
-{
+RETTYPE_OSTLANDEROGRES = {
 	first_type = 6
 	first_amount = 30
 	second_type = 1
 	second_amount = 50
 	special_troops = war_elephants
-	
+
 	potential = {
 	    OR = {
-		culture = ostlander
-		holder_scope = {
-		OR = {
-		has_landed_title = k_ostland
-		any_vassal = {
-		has_landed_title = k_ostland
-		        }
-	        }
+			culture = ostlander
+			has_landed_title = k_ostland
+			any_vassal = {
+				has_landed_title = k_ostland
 			}
 	    }
 	}
@@ -581,11 +501,10 @@ RETTYPE_OSTLANDEROGRES =
 	}
 }
 
-RETTYPE_SIGMARMONKS = 
-{
+RETTYPE_SIGMARMONKS = {
 	first_type = 1
 	first_amount = 150
-	
+
 	potential = {
 		religion = sigmarite
 	}
@@ -595,11 +514,10 @@ RETTYPE_SIGMARMONKS =
 	}
 }
 
-RETTYPE_WOLFULRIC = 
-{
+RETTYPE_WOLFULRIC = {
 	first_type = 1
 	first_amount = 175
-	
+
 	potential = {
 		religion = ulrican
 	}
@@ -609,11 +527,10 @@ RETTYPE_WOLFULRIC =
 	}
 }
 
-RETTYPE_GREENHATS = 
-{
+RETTYPE_GREENHATS = {
 	first_type = 5
 	first_amount = 125
-	
+
 	potential = {
 		religion = taalite
 	}
@@ -623,11 +540,10 @@ RETTYPE_GREENHATS =
 	}
 }
 
-RETTYPE_DRUIDS = 
-{
+RETTYPE_DRUIDS = {
 	first_type = 0
 	first_amount = 205
-	
+
 	potential = {
 		religion = old_faith
 	}
@@ -637,11 +553,10 @@ RETTYPE_DRUIDS =
 	}
 }
 
-RETTYPE_MANOWARS = 
-{
+RETTYPE_MANOWARS = {
 	first_type = 4
 	first_amount = 70
-	
+
 	potential = {
 		religion = manannite
 	}
@@ -652,15 +567,14 @@ RETTYPE_MANOWARS =
 	}
 }
 
-#BRETONNIAN RETINUES#
+# BRETONNIAN RETINUES
 
-RETTYPE_CUL_BRET =
-{
+RETTYPE_CUL_BRET = {
 	first_type = 0
 	first_amount = 175
 	second_type = 2
 	second_amount = 100
-	
+
 	potential = {
 		culture_group = bretonnian_group
 	}
@@ -670,14 +584,13 @@ RETTYPE_CUL_BRET =
 	}
 }
 
-RETTYPE_CUL_BRET2 =
-{
+RETTYPE_CUL_BRET2 = {
 	first_type = 0
 	first_amount = 100
 	second_type = 5
 	second_amount = 150
-	
-	
+
+
 	potential = {
 		culture_group = bretonnian_group
 	}
@@ -697,7 +610,7 @@ RETTYPE_CUL_BRET3 = {
     modifier = {
         knights_defensive = 0.3
         knights_offensive = 0.3
-        knights_morale = 0.45  
+        knights_morale = 0.45
     }
 }
 
@@ -706,9 +619,9 @@ grailknights = {
     first_amount = 125
 	hire_cost = 200
 	potential = {
-	   OR = {
-		religion = grail
-		religion = false_grail
+		OR = {
+			religion = grail
+			religion = false_grail
 		}
 		is_patrician = no
 	}
@@ -736,8 +649,7 @@ mountedyeomen = {
 RETTYPE_BRET_REPUBLIC1 = {
 	first_type = 1
 	first_amount = 150
-	
-	
+
 	potential = {
 		culture_group = bretonnian_group
 		is_patrician = yes
@@ -748,16 +660,14 @@ RETTYPE_BRET_REPUBLIC1 = {
 }
 
 
-#KISLEV RETINUES#
+# KISLEV RETINUES
 
-RETTYPE_CUL_KISLEV1 =
-{
+RETTYPE_CUL_KISLEV1 = {
 	first_type = 0
 	first_amount = 150
 	second_type = 5
 	second_amount = 125
-	
-	
+
 	potential = {
 		culture_group = kislevite_group
 	}
@@ -770,135 +680,122 @@ RETTYPE_CUL_KISLEV1 =
 	}
 }
 
-RETTYPE_CUL_KISLEV2 =
-{
+RETTYPE_CUL_KISLEV2 = {
 	first_type = 1
 	first_amount = 100
 	second_type = 2
 	second_amount = 125
-	
-	
+
 	potential = {
 		culture = kislevite
 	}
 	modifier = {
-                heavy_infantry_defensive = 0.1
-                pikemen_offensive = 0.1
-				heavy_infantry_morale = 0.15
-				pikemen_morale = 0.15
+        heavy_infantry_defensive = 0.1
+        pikemen_offensive = 0.1
+		heavy_infantry_morale = 0.15
+		pikemen_morale = 0.15
 	}
 }
 
-RETTYPE_CUL_KISLEV3 =
-{
+RETTYPE_CUL_KISLEV3 = {
 	first_type = 3
 	first_amount = 100
 	second_type = 6
 	second_amount = 175
 	special_troops = horse_archers
-	
-	
+
 	potential = {
 		culture = ungol
 	}
 	modifier = {
-	            light_cavalry_offensive = 0.1
-                horse_archers_defensive = 0.1
-                horse_archers_offensive = 0.2
-				horse_archers_morale = 0.2
-				light_cavalry_morale = 0.15
+	    light_cavalry_offensive = 0.1
+        horse_archers_defensive = 0.1
+        horse_archers_offensive = 0.2
+		horse_archers_morale = 0.2
+		light_cavalry_morale = 0.15
 	}
 }
 
-RETTYPE_CUL_KISLEV4 =
-{
+RETTYPE_CUL_KISLEV4 = {
 	first_type = 5
 	first_amount = 175
 	second_type = 0
 	second_amount = 75
-	
-	
+
 	potential = {
 		culture = ropsmann
 	}
 	modifier = {
-	            archers_offensive = 0.1
-                archers_defensive = 0.2
-				archers_morale = 0.2
+	    archers_offensive = 0.1
+        archers_defensive = 0.2
+		archers_morale = 0.2
 	}
 }
 
-RETTYPE_CUL_KISLEV5 =
-{
+RETTYPE_CUL_KISLEV5 = {
 	first_type = 4
 	first_amount = 125
-	
-	
+
 	potential = {
 		culture = kislevite
 	}
 	modifier = {
-	            knights_offensive = 0.25
-                knights_defensive = 0.1
-				knights_morale = 0.2
+	    knights_offensive = 0.25
+        knights_defensive = 0.1
+		knights_morale = 0.2
 	}
 }
 
-RETTYPE_CUL_KISLEV6 =
-{
+RETTYPE_CUL_KISLEV6 = {
 	first_type = 3
 	first_amount = 175
 	second_type = 4
 	second_amount = 90
-	
-	
+
 	potential = {
 		culture = gospodar
 	}
 	modifier = {
-	            light_cavalry_offensive = 0.1
-                knights_offensive = 0.15
-				knights_morale = 0.15
-				light_cavalry_morale = 0.15
+	    light_cavalry_offensive = 0.1
+        knights_offensive = 0.15
+		knights_morale = 0.15
+		light_cavalry_morale = 0.15
 	}
 }
 
-RETTYPE_CUL_KISLEV7 =
-{
+RETTYPE_CUL_KISLEV7 = {
 	first_type = 1
 	first_amount = 100
 	second_type = 6
 	second_amount = 150
-	
-	
+
 	potential = {
 	    OR = {
-		culture = gospodar
-		culture = kislevite
+			culture = gospodar
+			culture = kislevite
 		}
 	}
 	modifier = {
-	            heavy_infantry_offensive = 0.15
-				heavy_infantry_morale = 0.3
-				gunpowder_offensive = 0.25
-				gunpowder_morale = 0.25
+	    heavy_infantry_offensive = 0.15
+		heavy_infantry_morale = 0.3
+		gunpowder_offensive = 0.25
+		gunpowder_morale = 0.25
 	}
 }
 
-#VAMPIRE RETINUES#
+# VAMPIRE RETINUES
 
 vampireknights = {
     first_type = 6
     first_amount = 10
 	hire_cost = 100
 	special_troops = vampire_knights
+
 	potential = {
-	holder_scope = {
-	OR = {
-		trait = vampire_carstein_visible
-		trait = vampire_blood_visible
-	}
-	}
+		OR = {
+			trait = vampire_carstein_visible
+			trait = vampire_blood_visible
+		}
 	}
     modifier = {
         vampire_knights_defensive = 0.05
@@ -908,30 +805,31 @@ vampireknights = {
 }
 
 
-#ORC RETINUES#
+# ORC RETINUES
 
 blackorcs = {
     first_type = 1
     first_amount = 250
+
 	potential = {
 		culture = orc_main
 	}
     modifier = {
         heavy_infantry_defensive = 0.4
         heavy_infantry_offensive = 0.4
-        heavy_infantry_morale = 0.5       
+        heavy_infantry_morale = 0.5
     }
 }
 
-#FIMIR RETINUES#
+# FIMIR RETINUES
 
-fimirraiders =
-{
+fimirraiders = {
     first_type = 1
     first_amount = 50
 	second_type = 0
 	second_amount = 75
 	hire_cost = 175
+
 	potential = {
 		culture = fimir
 	}
@@ -945,12 +843,12 @@ fimirraiders =
     }
 }
 
-#DWARF RETINUES#
+# DWARF RETINUES
 
-dwarflongbeards =
-{
+dwarflongbeards = {
     first_type = 1
     first_amount = 150
+
 	potential = {
 		culture_group = dwarf_group
 		higher_real_tier_than = BARON
@@ -958,7 +856,7 @@ dwarflongbeards =
     modifier = {
         heavy_infantry_defensive = 0.4
         heavy_infantry_offensive = 0.4
-        heavy_infantry_morale = 0.4     
+        heavy_infantry_morale = 0.4
     }
 }
 
@@ -969,7 +867,7 @@ organ_guns = {
 	second_type = 1
 	second_amount = 100
 	special_troops = artillery
-	
+
 	potential = {
 		culture_group = dwarf_group
 		higher_real_tier_than = BARON
@@ -988,7 +886,7 @@ quarrellers = {
 
 	first_type = 5
 	first_amount = 150
-	
+
 	potential = {
 		culture_group = dwarf_group
 		higher_real_tier_than = BARON
@@ -1004,14 +902,12 @@ thunderers = {
 
 	first_type = 6
 	first_amount = 150
-	
 	special_troops = gunpowder
-	
+
 	potential = {
 		culture_group = dwarf_group
 		higher_real_tier_than = BARON
 	}
-	
 	modifier = {
 		gunpowder_offensive = 0.3
 		gunpowder_defensive = 0.3
@@ -1020,267 +916,251 @@ thunderers = {
 }
 
 
-#DARK ELF RETINUES#
+# DARK ELF RETINUES
 
-#Naggaroth#
-blackguard =
-{
+# Naggaroth
+blackguard = {
     first_type = 1
     first_amount = 200
+
 	potential = {
 		culture_group = druchi_group
-	holder_scope = {
 		has_landed_title = k_naggarond
-		}
 	}
     modifier = {
         heavy_infantry_defensive = 1.0
         heavy_infantry_offensive = 1.0
-        heavy_infantry_morale = 0.6     
+        heavy_infantry_morale = 0.6
     }
 }
 
-#Ghrond#
-ghrondsorceresses =
-{
+# Ghrond
+ghrondsorceresses = {
     first_type = 5
     first_amount = 175
+
 	potential = {
 		culture_group = druchi_group
-	holder_scope = {
-			has_landed_title = k_ghrond
-			trait = druchi_sorceress
-			}
-		}
+		has_landed_title = k_ghrond
+		trait = druchi_sorceress
+	}
     modifier = {
         archers_offensive = 1.5
-        archers_morale = 0.5     
+        archers_morale = 0.5
     }
 }
 
-#Karond Kar#
-karondkarcorsairs =
-{
+# Karond Kar
+karondkarcorsairs = {
     first_type = 5
 	second_type = 0
     first_amount = 250
 	second_amount = 250
+
 	potential = {
 		culture_group = druchi_group
-	holder_scope = {
 		has_landed_title = k_karond_kar
-			}
-		}
+
+	}
     modifier = {
-        archers_offensive = 0.7 
+        archers_offensive = 0.7
 		light_infantry_offensive = 0.7
     }
 }
 
-#Har Ganeth#
-harganethexecutioners =
-{
+# Har Ganeth
+harganethexecutioners = {
     first_type = 1
     first_amount = 275
+
 	potential = {
 		culture_group = druchi_group
-	holder_scope = {
-			has_landed_title = k_har_ganeth
-			}
-		}
+		has_landed_title = k_har_ganeth
+
+	}
     modifier = {
-        heavy_infantry_offensive = 1.5 
+        heavy_infantry_offensive = 1.5
 		heavy_infantry_defensive = 0.5
 		heavy_infantry_morale = 0.7
     }
 }
 
-#Cold One Knights#
-coldoneknights =
-{
+# Cold One Knights
+coldoneknights = {
     first_type = 4
     first_amount = 250
+
 	potential = {
 		culture_group = druchi_group
 	}
     modifier = {
         knights_defensive = 0.3
-        knights_offensive = 1.0    
+        knights_offensive = 1.0
     }
-	}
-	
-#Druuchi Spearmen#
-druchispearmen =
-{
+}
+
+# Druuchi Spearmen
+druchispearmen = {
     first_type = 2
     first_amount = 300
+
 	potential = {
 		culture_group = druchi_group
 	}
     modifier = {
         pikemen_defensive = 0.3
-        pikemen_offensive = 0.3    
+        pikemen_offensive = 0.3
     }
-	}
-	
-#Druuchi Crossbows#
-druchicrossbows =
-{
+}
+
+# Druuchi Crossbows
+druchicrossbows = {
     first_type = 5
     first_amount = 300
+
 	potential = {
 		culture_group = druchi_group
 	}
     modifier = {
         archers_offensive = 0.5
-        archers_morale = 0.6     
+        archers_morale = 0.6
     }
-	}
-	
-#Dark Riders#
-darkriders =
-{
+}
+
+# Dark Riders
+darkriders = {
     first_type = 3
     first_amount = 250
+
 	potential = {
 		culture_group = druchi_group
 	}
     modifier = {
         light_cavalry_offensive = 0.3
 		light_cavalry_defensive = 0.3
-        light_cavalry_morale = 0.2     
+        light_cavalry_morale = 0.2
     }
-	}
-	
-#Witch Elves#
-witchelves =
-{
+}
+
+# Witch Elves
+witchelves = {
     first_type = 0
     first_amount = 225
+
 	potential = {
 		culture_group = druchi_group
 	}
     modifier = {
         light_infantry_offensive = 1.0
 		light_infantry_defensive = -0.35
-		light_infantry_morale = 0.7    
+		light_infantry_morale = 0.7
     }
-	}
+}
 
-#HIGH ELF RETINUES#
+# HIGH ELF RETINUES
 
-#Tiranoc#
-tiranocchariots =
-{
+# Tiranoc
+tiranocchariots = {
     first_type = 6
     first_amount = 200
+
 	potential = {
 		culture_group = asur_group
-		holder_scope = {
 		OR = {
-		has_landed_title = e_ulthuan
-		has_landed_title = k_tiranoc
-		has_landed_title = d_tiranoc
-		has_landed_title = d_anroc
-		}
+			has_landed_title = e_ulthuan
+			has_landed_title = k_tiranoc
+			has_landed_title = d_tiranoc
+			has_landed_title = d_anroc
 		}
 	}
 	special_troops = chariots
     modifier = {
-       chariots_defensive = 0.5
-       chariots_offensive = 0.7
-       chariots_morale = 0.7  
+		chariots_defensive = 0.5
+		chariots_offensive = 0.7
+		chariots_morale = 0.7
     }
 }
 
-#Eataine#
-lothernseaguard =
-{
+# Eataine
+lothernseaguard = {
     first_type = 5
 	second_type = 0
     first_amount = 150
 	second_amount = 125
+
 	potential = {
 		culture_group = asur_group
-			holder_scope = {
 		OR = {
-		has_landed_title = e_ulthuan
-		has_landed_title = k_eataine }
-		}
-		}
+			has_landed_title = e_ulthuan
+			has_landed_title = k_eataine }
+	}
     modifier = {
-        archers_offensive = 0.7 
+        archers_offensive = 0.7
 		light_infantry_offensive = 0.7
     }
 }
 
-#Caledor#
-dragonprinces =
-{
+# Caledor
+dragonprinces = {
     first_type = 4
     first_amount = 200
+
 	potential = {
 		culture_group = asur_group
-			holder_scope = {
 		OR = {
-		has_landed_title = e_ulthuan
-		has_landed_title = d_dragonwake
-		has_landed_title = d_caladai
-		has_landed_title = d_caelandriol
-		has_landed_title = k_caledor
-	}
-	}
+			has_landed_title = e_ulthuan
+			has_landed_title = d_dragonwake
+			has_landed_title = d_caladai
+			has_landed_title = d_caelandriol
+			has_landed_title = k_caledor
+		}
 	}
     modifier = {
         knights_defensive = 1.0
-        knights_offensive = 1.0    
+        knights_offensive = 1.0
 		knights_morale = 1.0
 	}
-	}
-	
-#Nagarythe#
-shadowwarriors =
-{
+}
+
+# Nagarythe
+shadowwarriors = {
     first_type = 5
 	second_type = 0
     first_amount = 125
 	second_amount = 150
+
 	potential = {
 		culture_group = asur_group
-			holder_scope = {
 		OR = {
-		has_landed_title = e_ulthuan
-		has_landed_title = d_anlec
-		has_landed_title = d_shadowmarch
-		has_landed_title = d_isle_of_blight
-		has_landed_title = k_nagarythe
-		has_landed_title = d_the_isles
-		has_landed_title = d_sundered_strand
+			has_landed_title = e_ulthuan
+			has_landed_title = d_anlec
+			has_landed_title = d_shadowmarch
+			has_landed_title = d_isle_of_blight
+			has_landed_title = k_nagarythe
+			has_landed_title = d_the_isles
+			has_landed_title = d_sundered_strand
 		}
-		}
-		}
+	}
     modifier = {
-        archers_offensive = 0.7 
+        archers_offensive = 0.7
 		light_infantry_defensive = 1.0
     }
 }
 
-#Saphery#
-swordmasters =
-{
+# Saphery
+swordmasters = {
     first_type = 1
     first_amount = 200
+
 	potential = {
 		culture_group = asur_group
-			holder_scope = {
 		OR = {
-		has_landed_title = e_ulthuan
-		has_landed_title = k_saphery
-		has_landed_title = d_thanon
-		has_landed_title = d_finu
+			has_landed_title = e_ulthuan
+			has_landed_title = k_saphery
+			has_landed_title = d_thanon
+			has_landed_title = d_finu
 		}
-		}
-		}
+	}
     modifier = {
         heavy_infantry_offensive = 0.8
 		heavy_infantry_defensive = 0.8
@@ -1288,22 +1168,20 @@ swordmasters =
     }
 }
 
-#Chrace#
-whitelions =
-{
+# Chrace
+whitelions = {
     first_type = 1
     first_amount = 200
+
 	potential = {
 		culture_group = asur_group
-			holder_scope = {
-				OR = {
-				has_landed_title = e_ulthuan
-				has_landed_title = k_chrace
-				has_landed_title = d_chrace
-				has_landed_title = d_blackswale
-				}
-			}
+		OR = {
+			has_landed_title = e_ulthuan
+			has_landed_title = k_chrace
+			has_landed_title = d_chrace
+			has_landed_title = d_blackswale
 		}
+	}
     modifier = {
         heavy_infantry_offensive = 0.8
 		heavy_infantry_defensive = 0.8
@@ -1311,23 +1189,22 @@ whitelions =
     }
 }
 
-#Ellyrian Reavers#
-reavers =
-{
+# Ellyrian Reavers
+reavers = {
     first_type = 3
     first_amount = 200
+
 	potential = {
 		culture_group = asur_group
-		holder_scope = { OR = {
-				has_landed_title = e_ulthuan
-				has_landed_title = k_ellyrion
-				has_landed_title = d_elyr
-				has_landed_title = d_highvale
-				has_landed_title = d_reavers_mark
-				has_landed_title = d_arsuai
-				}
-			}
+		OR = {
+			has_landed_title = e_ulthuan
+			has_landed_title = k_ellyrion
+			has_landed_title = d_elyr
+			has_landed_title = d_highvale
+			has_landed_title = d_reavers_mark
+			has_landed_title = d_arsuai
 		}
+	}
     modifier = {
         light_cavalry_offensive = 0.6
 		light_cavalry_defensive = 0.3
@@ -1335,399 +1212,336 @@ reavers =
     }
 }
 
-#Elven Spearmen#
-elvenspearmen =
-{
+# Elven Spearmen
+elvenspearmen = {
     first_type = 2
     first_amount = 300
+
 	potential = {
 		culture_group = asur_group
 	}
     modifier = {
         pikemen_defensive = 0.3
-        pikemen_offensive = 0.3    
+        pikemen_offensive = 0.3
     }
-	}
-	
-#Elven Archers#
-elvenarchers =
-{
+}
+
+# Elven Archers
+elvenarchers = {
     first_type = 5
     first_amount = 300
+
 	potential = {
 		culture_group = asur_group
 	}
     modifier = {
         archers_offensive = 0.5
-        archers_morale = 0.6     
+        archers_morale = 0.6
     }
-	}
-	
-silverhelms =
-{
+}
+
+silverhelms = {
     first_type = 4
     first_amount = 200
+
 	potential = {
 		culture_group = asur_group
 	}
     modifier = {
         knights_defensive = 0.6
-        knights_offensive = 0.6  
+        knights_offensive = 0.6
 		knights_morale = 0.6
 	}
-	}
-	
-##KHEMRI##
+}
 
-#skeletonarchers =
-#{
- #   first_type = 5
-#    first_amount = 200
-#	potential = {
-#		culture_group = nehekharan_group
-#	}
- #   modifier = {
-  #      archers_offensive = 0.2
-   #     archers_morale = 1.0    
-    #}
-	#}
-	
-#skeletonspearmen =
-#{
- #   first_type = 2
-  #  first_amount = 200
-#	potential = {
-#		culture_group = nehekharan_group
-#	}
- #   modifier = {
-  #     pikemen_morale = 1.0    
-   # }
-	#}
-	
-#skeletoncavalry =
-#{
- #   first_type = 3
-  #  first_amount = 200
-#	potential = {
-#		culture_group = nehekharan_group
-#		}
- #   modifier = {
-#		light_cavalry_morale = 1.0
- #   }
-#}
+# KHEMRI
 
-##CHAOS/NORSCANS##
+# skeletonarchers =
+# {
+# first_type = 5
+# first_amount = 200
+# 	potential = {
+# 		culture_group = nehekharan_group
+# 	}
+# modifier = {
+# archers_offensive = 0.2
+# archers_morale = 1.0
+# }
+# }
 
-chaoschampions =
-{
-   first_type = 1
-   first_amount = 250
-   potential = {
+# skeletonspearmen =
+# {
+# first_type = 2
+# first_amount = 200
+# 	potential = {
+# 		culture_group = nehekharan_group
+# 	}
+# modifier = {
+# pikemen_morale = 1.0
+# }
+# }
+
+# skeletoncavalry =
+# {
+# first_type = 3
+# first_amount = 200
+# 	potential = {
+# 		culture_group = nehekharan_group
+# 		}
+# modifier = {
+# 		light_cavalry_morale = 1.0
+# }
+# }
+
+# CHAOS/NORSCANS
+
+chaoschampions = {
+	first_type = 1
+	first_amount = 250
+
+	potential = {
         religion = chaos
-	holder_scope = { NOT = { trait = creature_beastman } }
-	is_nomadic = no
+		NOT = {
+			trait = creature_beastman
 		}
+		is_nomadic = no
+	}
 	modifier = {
 	    heavy_infantry_offensive = 0.5
 		heavy_infantry_morale = 0.5
-		}
+	}
 }
 
-nurglitechampions =
-{
-   first_type = 1
-   first_amount = 250
-   potential = {
+nurglitechampions = {
+	first_type = 1
+	first_amount = 250
+	potential = {
         religion = nurgle
 		is_nomadic = no
-		}
+	}
 	modifier = {
 	    heavy_infantry_defensive = 0.6
 		heavy_infantry_morale = 0.3
-		}
+	}
 }
 
-khornatechampions =
-{
-   first_type = 1
-   first_amount = 250
-   potential = {
+khornatechampions = {
+	first_type = 1
+	first_amount = 250
+	potential = {
         religion = khorne
 		is_nomadic = no
-		}
+	}
 	modifier = {
 	    heavy_infantry_offensive = 0.7
-		}
+	}
 }
 
-slaaneshichampions =
-{
-   first_type = 1
-   first_amount = 250
-   potential = {
+slaaneshichampions = {
+	first_type = 1
+	first_amount = 250
+	potential = {
         religion = slaanesh
 		is_nomadic = no
-		}
+	}
 	modifier = {
 	    heavy_infantry_defensive = 0.15
 		heavy_infantry_morale = 0.7
-		}
+	}
 }
 
-tzeentchchampions =
-{
-   first_type = 1
-   first_amount = 250
-   potential = {
+tzeentchchampions = {
+	first_type = 1
+	first_amount = 250
+	potential = {
         religion = tzeentch
 		is_nomadic = no
-		}
+	}
 	modifier = {
 	    heavy_infantry_defensive = 0.35
 		heavy_infantry_morale = 0.35
 		heavy_infantry_offensive = 0.35
-		}
+	}
 }
 
-chaoswarriors =
-{
-   first_type = 1
-   first_amount = 350
-   potential = {
+chaoswarriors = {
+	first_type = 1
+	first_amount = 350
+	potential = {
         religion_group = chaos_gods_group
 		is_nomadic = no
-		holder_scope = {
 		OR = {
-		trait = champion_undivided
-		trait = champion_khorne
-		trait = champion_nurgle
-		trait = champion_slaanesh
-		trait = champion_tzeentch
-		trait = chaos_chosen
-		trait = chosen_khorne
-		trait = chosen_nurgle
-		trait = chosen_slaanesh
-		trait = chosen_tzeentch
-		trait = prince_khorne
-		trait = prince_nurgle
-		trait = prince_slaanesh
-		trait = prince_tzeentch
-		}
+			is_demon_prince_trigger = yes
+			wh_is_chaos_chosen_trigger = yes
+			wh_is_chaos_champion_trigger = yes
 		}
 	}
 	modifier = {
 	    heavy_infantry_defensive = 0.2
 		heavy_infantry_morale = 0.35
 		heavy_infantry_offensive = 0.3
-		}
+	}
 }
 
-chaoschariots =
-{
-   first_type = 6
-   first_amount = 150
-   special_troops = chariots #
-   potential = {
+chaoschariots = {
+	first_type = 6
+	first_amount = 150
+	special_troops = chariots
+	potential = {
         religion_group = chaos_gods_group
 		is_nomadic = no
-		holder_scope = {
 		OR = {
-		trait = champion_undivided
-		trait = champion_khorne
-		trait = champion_nurgle
-		trait = champion_slaanesh
-		trait = champion_tzeentch
-		trait = chaos_chosen
-		trait = chosen_khorne
-		trait = chosen_nurgle
-		trait = chosen_slaanesh
-		trait = chosen_tzeentch
-		trait = prince_khorne
-		trait = prince_nurgle
-		trait = prince_slaanesh
-		trait = prince_tzeentch
-		}
+			is_demon_prince_trigger = yes
+			wh_is_chaos_chosen_trigger = yes
+			wh_is_chaos_champion_trigger = yes
 		}
 	}
 	modifier = {
 		chariots_morale = 0.2
 		chariots_offensive = 0.55
-		}
+	}
 }
 
-chaosmarauders =
-{
-   first_type = 0
-   first_amount = 200
-   second_amount = 125
-   second_type = 5
-   potential = {
+chaosmarauders = {
+	first_type = 0
+	first_amount = 200
+	second_type = 5
+	second_amount = 125
+
+	potential = {
         religion_group = chaos_gods_group
 		is_nomadic = no
-		holder_scope = {
 		OR = {
-		trait = champion_undivided
-		trait = champion_khorne
-		trait = champion_nurgle
-		trait = champion_slaanesh
-		trait = champion_tzeentch
-		trait = chaos_chosen
-		trait = chosen_khorne
-		trait = chosen_nurgle
-		trait = chosen_slaanesh
-		trait = chosen_tzeentch
-		trait = prince_khorne
-		trait = prince_nurgle
-		trait = prince_slaanesh
-		trait = prince_tzeentch
-		}
+			is_demon_prince_trigger = yes
+			wh_is_chaos_chosen_trigger = yes
+			wh_is_chaos_champion_trigger = yes
 		}
 	}
 	modifier = {
 		light_infantry_morale = 0.15
 		light_infantry_offensive = 0.35
-		}
+	}
 }
 
-dragonogres =
-{
-   first_type = 6
-   first_amount = 25
-   special_troops = war_elephants
-   potential = {
+dragonogres = {
+	first_type = 6
+	first_amount = 25
+	special_troops = war_elephants
+
+	potential = {
         religion_group = chaos_gods_group
 		is_nomadic = no
-		holder_scope = {
 		OR = {
-		trait = chaos_chosen
-		trait = chosen_khorne
-		trait = chosen_nurgle
-		trait = chosen_slaanesh
-		trait = chosen_tzeentch
-		trait = prince_khorne
-		trait = prince_nurgle
-		trait = prince_slaanesh
-		trait = prince_tzeentch
-		}
+			is_demon_prince_trigger = yes
+			wh_is_chaos_chosen_trigger = yes
 		}
 	}
 	modifier = {
 	    war_elephants_defensive = 0.6
 		war_elephants_morale = 0.5
 		war_elephants_offensive = 0.5
-		}
+	}
 }
 
-dragonogreshaggoth =
-{
-   first_type = 6
-   first_amount = 2
-   special_troops = war_elephants
-   potential = {
+dragonogreshaggoth = {
+	first_type = 6
+	first_amount = 2
+	special_troops = war_elephants
+
+	potential = {
         religion_group = chaos_gods_group
-		holder_scope = {
-		OR = {
-		trait = prince_khorne
-		trait = prince_nurgle
-		trait = prince_slaanesh
-		trait = prince_tzeentch
-		}
-		}
+		is_demon_prince_trigger = yes
 	}
 	modifier = {
 	    war_elephants_defensive = 0.75
 		war_elephants_morale = 0.6
 		war_elephants_offensive = 0.6
-		}
+	}
 }
 
-norscanoathsworn =
-{
-   first_type = 1
-   first_amount = 150
-   second_type = 5
-   second_amount = 100
-   potential = {
+norscanoathsworn = {
+	first_type = 1
+	first_amount = 150
+	second_type = 5
+	second_amount = 100
+
+	potential = {
         culture_group = norscan_group
-		}
+	}
 	modifier = {
 	    heavy_infantry_offensive = 0.35
 		archers_offensive = 0.3
-		}
+	}
 }
 
-norscanwarband =
-{
-   first_type = 0
-   first_amount = 250
-   second_type = 5
-   second_amount = 100
-   potential = {
+norscanwarband = {
+	first_type = 0
+	first_amount = 250
+	second_type = 5
+	second_amount = 100
+
+	potential = {
         culture_group = norscan_group
-		}
+	}
 	modifier = {
 	    light_infantry_offensive = 0.25
 		archers_offensive = 0.25
-		}
+	}
 }
 
-norscanreavers =
-{
-   first_type = 3
-   first_amount = 225
-   second_type = 0
-   second_amount = 75
-   potential = {
+norscanreavers = {
+	first_type = 3
+	first_amount = 225
+	second_type = 0
+	second_amount = 75
+
+	potential = {
         culture_group = norscan_group
-		}
+	}
 	modifier = {
 	    light_cavalry_offensive = 0.25
 		light_cavalry_defensive = 0.15
-		}
+	}
 }
 
-hungnoblecavalry =
-{
-   first_type = 6
-   first_amount = 200
-   second_type = 4
-   second_amount = 150
-   
-   special_troops = horse_archers
-   
-   potential = {
+hungnoblecavalry = {
+	first_type = 6
+	first_amount = 200
+	second_type = 4
+	second_amount = 150
+	special_troops = horse_archers
+
+	potential = {
         culture_group = hung_group
-		}
+	}
 	modifier = {
 	    horse_archers_offensive = 0.45
 		horse_archers_morale = 0.35
 		knights_offensive = 0.3
-		}
+	}
 }
 
-kurganmaraudercavalry =
-{
-   first_type = 3
-   first_amount = 350
-   
-   potential = {
+kurganmaraudercavalry = {
+	first_type = 3
+	first_amount = 350
+
+	potential = {
         culture_group = kurgan_group
-		}
+	}
 	modifier = {
 	    light_cavalry_offensive = 0.65
-		}
+	}
 }
 
-##AMAZONS##
+# AMAZONS
 
 amazon_spearmaiden = {
 	first_type = 0
 	first_amount = 250
-	
+
 	potential = {
 		culture_group = amazon_group
 	}
-	
 	modifier = {
 	    light_infantry_defensive = 0.50
 		light_infantry_morale = 0.50
@@ -1738,11 +1552,10 @@ amazon_spearmaiden = {
 amazon_beast_mistress = {
 	first_type = 4
 	first_amount = 100
-	
+
 	potential = {
 		culture_group = amazon_group
 	}
-	
 	modifier = {
 		knights_offensive = 0.65
 		knights_defensive = 0.65
@@ -1754,18 +1567,17 @@ amazon_temple_guards = {
 	first_amount = 100
 	second_type = 5
 	second_amount = 100
-	
+
 	potential = {
 		culture_group = amazon_group
 	}
-	
 	modifier = {
 	    pikemen_offensive = 0.65
 		archers_offensive = 1.00
 	}
 }
 
-##TILEANS/ESTALIANS/MYKENS/SARTOSANS##
+# TILEANS/ESTALIANS/MYKENS/SARTOSANS
 
 excubitoroi_seniores = {
 	first_type = 4
@@ -1773,11 +1585,10 @@ excubitoroi_seniores = {
 	second_type = 6
 	second_amount = 75
 	special_troops = horse_archers
-	
+
 	potential = {
 		culture = myken
 	}
-	
 	modifier = {
 	    knights_morale = 0.35
 		knights_defensive = 0.4
@@ -1791,11 +1602,10 @@ comitos_primoti = {
 	first_amount = 130
 	second_type = 2
 	second_amount = 95
-	
+
 	potential = {
 		culture = myken
 	}
-	
 	modifier = {
 	    pikemen_defensive = 0.5
 		heavy_infantry_defensive = 0.35
@@ -1807,11 +1617,10 @@ foederati_scutarii = {
 	first_amount = 225
 	second_type = 5
 	second_amount = 75
-	
+
 	potential = {
 		culture = myken
 	}
-	
 	modifier = {
 	    light_infantry_offensive = 1.0
 		light_infantry_morale = 0.5
@@ -1822,11 +1631,10 @@ foederati_scutarii = {
 rodeleros = {
 	first_type = 0
 	first_amount = 350
-	
+
 	potential = {
 		culture_group = estalian_group
 	}
-	
 	modifier = {
 	    light_infantry_morale = 0.5
 		light_cavalry_offensive = 0.45
@@ -1838,11 +1646,10 @@ terciosquare = {
 	first_amount = 215
 	second_type = 5
 	second_amount = 85
-	
+
 	potential = {
 		culture_group = estalian_group
 	}
-	
 	modifier = {
 	    pikemen_morale = 0.45
 		archers_morale = 0.3
@@ -1854,12 +1661,11 @@ guardiareal = {
 	first_amount = 105
 	second_type = 6
 	second_amount = 100
-	
 	special_troops = gunpowder
+
 	potential = {
 		culture_group = estalian_group
 	}
-	
 	modifier = {
 	    pikemen_morale = 0.35
 		gunpowder_morale = 0.45
@@ -1872,11 +1678,10 @@ conquistadors = {
 	first_amount = 150
 	second_type = 3
 	second_amount = 125
-	
+
 	potential = {
 		culture_group = estalian_group
 	}
-	
 	modifier = {
 		knights_morale = 0.4
 		light_cavalry_morale = 0.4
@@ -1888,12 +1693,13 @@ pikecondottieri = {
 	first_amount = 175
 	second_type = 1
 	second_amount = 125
-	
+
 	potential = {
 		culture_group = tilean_group
-		NOT = { culture = myken }
+		NOT = {
+			culture = myken
+		}
     }
-	
 	modifier = {
 		pikemen_defensive = 0.4
 	}
@@ -1904,12 +1710,13 @@ crossbowcondottieri = {
 	first_amount = 130
 	second_type = 1
 	second_amount = 70
-	
+
 	potential = {
 		culture_group = tilean_group
-		NOT = { culture = myken }
+		NOT = {
+			culture = myken
+		}
 	}
-	
 	modifier = {
 		pikemen_defensive = 0.35
 		archers_defensive = 0.4
@@ -1919,13 +1726,14 @@ crossbowcondottieri = {
 musketeercondottieri = {
 	first_type = 6
 	first_amount = 150
-	
+
 	special_troops = gunpowder
 	potential = {
 		culture_group = tilean_group
-		NOT = { culture = myken }
+		NOT = {
+			culture = myken
+		}
 	}
-	
 	modifier = {
 		gunpowder_defensive = 0.55
 	}
@@ -1934,11 +1742,10 @@ musketeercondottieri = {
 myrmidons = {
 	first_type = 1
 	first_amount = 350
-	
+
 	potential = {
 		religion = myrmidian
 	}
-	
 	modifier = {
 		heavy_infantry_defensive = 0.45
 		heavy_infantry_morale = 0.4
@@ -1948,11 +1755,10 @@ myrmidons = {
 buccaneers = {
 	first_type = 2
 	first_amount = 150
-	
+
 	potential = {
 		culture = sartosan_tilean
 	}
-	
 	modifier = {
 	    pikemen_morale = 0.35
 	}
@@ -1962,11 +1768,10 @@ tileansharpshooters = {
 	first_type = 6
 	first_amount = 100
 	special_troops = gunpowder
-	
+
 	potential = {
 		culture = sartosan_tilean
 	}
-	
 	modifier = {
 	    gunpowder_offensive = 0.5
 	}
@@ -1975,11 +1780,10 @@ tileansharpshooters = {
 corsairs = {
 	first_type = 0
 	first_amount = 175
-	
+
 	potential = {
 		culture = sartosan_arabyan
 	}
-	
 	modifier = {
 	    light_infantry_offensive = 0.4
 	}
@@ -1991,11 +1795,10 @@ grand_bombards = {
 	second_type = 6
 	second_amount = 10
 	special_troops = artillery
-	
+
 	potential = {
 		culture = sartosan_arabyan
 	}
-	
 	modifier = {
 	    artillery_offensive = 0.55
 		heavy_infantry_defensive = 0.25
@@ -2006,11 +1809,10 @@ grand_bombards = {
 reavers = {
 	first_type = 1
 	first_amount = 125
-	
+
 	potential = {
 		culture = sartosan_norscan
 	}
-	
 	modifier = {
 	    heavy_infantry_defensive = 0.05
 		heavy_infantry_morale = 0.15
@@ -2024,11 +1826,10 @@ mercmarauders = {
 	second_type = 6
 	second_amount = 60
 	special_troops = horse_archers
-	
+
 	potential = {
 		culture = sartosan_norscan
 	}
-	
 	modifier = {
 	    light_cavalry_morale = 0.1
 		light_cavalry_offensive = 0.35
@@ -2037,15 +1838,16 @@ mercmarauders = {
 	}
 }
 
-#Chaos Dwarfs
+# Chaos Dwarfs
 
 RET_fireglaives = {
     first_type = 6
     first_amount = 150
-	potential = {
-		holder_scope = { trait = creature_chaos_dwarf }
-	}
 	special_troops = gunpowder
+
+	potential = {
+		trait = creature_chaos_dwarf
+	}
     modifier = {
 		gunpowder_offensive = 0.2
 		gunpowder_defensive = 0.2
@@ -2059,10 +1861,12 @@ RET_earthshaker = {
     first_amount = 50
 	second_type = 1
 	second_amount = 100
-	potential = {
-		holder_scope = { trait = creature_chaos_dwarf }
-	}
 	special_troops = artillery
+
+
+	potential = {
+		trait = creature_chaos_dwarf
+	}
     modifier = {
 		artillery_offensive = 0.5
 		artillery_defensive = 0.5
@@ -2077,7 +1881,7 @@ RET_bull_centaurs = {
     first_type = 4
     first_amount = 150
 	potential = {
-		holder_scope = { trait = creature_chaos_dwarf }
+		trait = creature_chaos_dwarf
 	}
     modifier = {
 		knights_offensive = 0.5
@@ -2090,7 +1894,7 @@ RET_infernalguard = {
     first_type = 1
     first_amount = 150
 	potential = {
-		holder_scope = { trait = creature_chaos_dwarf }
+		trait = creature_chaos_dwarf
 	}
     modifier = {
 		heavy_infantry_offensive = 0.4
@@ -2105,9 +1909,9 @@ RET_hobgoblin_slavers = {
 	second_type = 6
     second_amount = 100
 	special_troops = horse_archers
-	
+
 	potential = {
-		holder_scope = { trait = creature_chaos_dwarf }
+		trait = creature_chaos_dwarf
 	}
     modifier = {
 		light_cavalry_defensive = -0.1
@@ -2119,26 +1923,22 @@ RET_hobgoblin_slavers = {
     }
 }
 
-#Araby
-RETTYPE_CUL_ARABY = 
-{
+# Araby
+RETTYPE_CUL_ARABY = {
 	first_type = 6
 	first_amount = 150
 	second_type = 3
 	second_amount = 100
-	
 	special_troops = camel_cavalry
-	
+
 	potential = {
 		is_nomadic = no
 		OR = {
-		culture = cophic
-		culture = tevari
-		culture = nehekka
+			culture = cophic
+			culture = tevari
+			culture = nehekka
 		}
 	}
-	
-	
 	modifier = {
 		camel_cavalry_offensive = 0.2
 		camel_cavalry_defensive = 0.2
@@ -2152,38 +1952,34 @@ RETTYPE_CUL_ARABY_4 = {
 	second_type = 6
 	second_amount = 95
 	special_troops = horse_archers
-	
+
 	potential = {
 		is_nomadic = no
 		OR = {
-		culture = tevari
-		culture = nehekka
-		culture = ramaccan
+			culture = tevari
+			culture = nehekka
+			culture = ramaccan
 		}
 	}
-	
-	
     modifier = {
 		light_cavalry_morale = 0.5
 		light_cavalry_offensive = 0.3
-       
+
     }
 }
 
 RETTYPE_CUL_ARABY_5 = {
     first_type = 6
     first_amount = 75
-	special_troops = daemonic_host #Flying Carpets!
-	
+	special_troops = daemonic_host # Flying Carpets!
+
 	potential = {
 		is_nomadic = no
 		OR = {
-		culture = tevari
-		culture = nehekka
+			culture = tevari
+			culture = nehekka
 		}
 	}
-	
-	
     modifier = {
 		daemonic_host_offensive = 0.5
 		daemonic_host_defensive = 0.2
@@ -2196,17 +1992,15 @@ RETTYPE_CUL_ARABY6 ={
 	second_type = 6
 	second_amount = 100
 	special_troops = gunpowder
-	
+
 	potential = {
 		is_nomadic = no
 		culture = ramaccan
 	}
-	
-	
     modifier = {
 		heavy_infantry_morale = 0.5
 		gunpowder_offensive = 0.35
-       
+
     }
 }
 
@@ -2216,18 +2010,16 @@ RETTYPE_CUL_ARABY7 ={
 	second_type = 6
 	second_amount = 15
 	special_troops = artillery
-	
+
 	potential = {
 		is_nomadic = no
 		culture = ramaccan
 	}
-	
-	
     modifier = {
 		archers_defensive = 0.15
 		artillery_offensive = 0.7
 		artillery_defensive = -0.15
-       
+
     }
 }
 
@@ -2237,13 +2029,11 @@ RETTYPE_CUL_ARABY8 ={
 	second_type = 6
 	second_amount = 25
 	special_troops = war_elephants
-	
+
 	potential = {
 		is_nomadic = no
 		culture = medean
 	}
-	
-	
     modifier = {
 		heavy_infantry_morale = 0.15
 		war_elephants_offensive = 0.4
@@ -2252,36 +2042,30 @@ RETTYPE_CUL_ARABY8 ={
 
 RETTYPE_CUL_ARABY9 ={
     first_type = 5
-	
     first_amount = 200
-	
+
 	potential = {
 		is_nomadic = no
 		culture = medean
 	}
-	
-	
     modifier = {
 		archers_morale = 0.2
 		archers_offensive = 0.45
-       
+
     }
 }
 
 RETTYPE_CUL_ARABY10 ={
     first_type = 2
     first_amount = 250
-	
+
 	potential = {
 		is_nomadic = no
 		culture = medean
 	}
-	
-	
     modifier = {
 		pikemen_defensive = 0.5
 		pikemen_morale = 0.5
-       
     }
 }
 
@@ -2290,70 +2074,60 @@ RETTYPE_CUL_ARABY2 ={
     first_amount = 150
 	second_type = 5
 	second_amount = 125
-	
+
 	potential = {
 		is_nomadic = no
 		culture = cophic
 	}
-	
-	
     modifier = {
 		archers_offensive = 0.4
 		pikemen_defensive = 0.4
-       
     }
 }
 
-RETTYPE_CUL_ARABY3 = 
-{
+RETTYPE_CUL_ARABY3 = {
 	first_type = 4
 	first_amount = 150
-	
+
 	second_type = 6
 	second_amount = 100
 
 	special_troops = horse_archers
-	
+
 	potential = {
 		is_nomadic = no
 		culture = cophic
 	}
-	
 	modifier = {
 		knights_offensive = 0.3
 		horse_archers_offensive = 0.3
 	}
 }
 
-RETTYPE_CUL_BAJAYI = 
-{
+RETTYPE_CUL_BAJAYI = {
 	first_type = 0
 	first_amount = 400
-	
+
 	potential = {
 		is_nomadic = no
 		culture = bayaji
 	}
-	
 	modifier = {
 		light_infantry_offensive = 0.4
 		light_infantry_defensive = 0.4
 	}
 }
 
-RETTYPE_CUL_WASAI = 
-{
+RETTYPE_CUL_WASAI = {
 	first_type = 0
 	first_amount = 400
-	
 	second_type = 5
 	second_amount = 100
-	
+
 	potential = {
 		is_nomadic = no
 		culture = wasai
 	}
-	
 	modifier = {
 		light_infantry_offensive = 0.6
 		light_infantry_defensive = 0.1
@@ -2362,16 +2136,16 @@ RETTYPE_CUL_WASAI =
 }
 
 
-#Wasaili
+# Wasaili
 RETTYPE_CUL_WASAILI = {
 	first_type = 2
 	first_amount = 400
-	
+
 	potential = {
 		is_nomadic = no
 		culture = wasaili
 	}
-	
+
 	modifier = {
 		pikemen_offensive = 0.2
 		pikemen_defensive = 0.2
@@ -2379,51 +2153,57 @@ RETTYPE_CUL_WASAILI = {
 	}
 }
 
-#Oriental cultures
-RETTYPE_CUL_CATHAY = 
-{
+# Oriental cultures
+RETTYPE_CUL_CATHAY = {
 	first_type = 6
 	first_amount = 400
-	
 	second_type = 2
 	second_amount = 600
+	special_troops = gunpowder
 
-	special_troops = gunpowder 
-
-	
 	potential = {
 		is_nomadic = no
-		OR = { culture = cathayan
-			culture = living_jade }
+		OR = {
+			culture = cathayan
+			culture = living_jade
+		}
 		religion = draconite
-		capital_holding = { OR = { has_building = ca_cathayan_gunnery_barracks_1 
-					has_building = ca_cathayan_gunnery_barracks_2  
-					has_building = ca_cathayan_gunnery_barracks_3  
-					has_building = ca_cathayan_gunnery_barracks_4 }
-				}
+		capital_holding = {
+			OR = {
+				has_building = ca_cathayan_gunnery_barracks_1
+				has_building = ca_cathayan_gunnery_barracks_2
+				has_building = ca_cathayan_gunnery_barracks_3
+				has_building = ca_cathayan_gunnery_barracks_4
+			}
+		}
 	}
-	
 	modifier = {
 		pikemen_defensive = 0.5
-		gunpowder_offensive = 0.9 #Repeating crossbows
+		gunpowder_offensive = 0.9 # Repeating crossbows
 	}
 }
 
 terracotta_warriors = {
 	first_type = 2
 	first_amount = 1000
-	
+
 	potential = {
-		OR = { culture = cathayan
-			culture = living_jade }
+		OR = {
+			culture = cathayan
+			culture = living_jade
+		}
 		religion = draconite
 		is_nomadic = no
-		any_courtier = { trait = clay_sculptor }
-		any_courtier = { trait = astromancer }
+		any_courtier = {
+			trait = clay_sculptor
+		}
+		any_courtier = {
+			trait = astromancer
+		}
 	}
 	hire_cost = 30
 	maintenance_multiplier = 0
-	
+
 	modifier = {
 		pikemen_offensive = -0.3
 		pikemen_defensive = -0.3
@@ -2434,18 +2214,24 @@ terracotta_warriors = {
 brass_soldiers = {
 	first_type = 1
 	first_amount = 500
-	
+
 	potential = {
-		OR = { culture = cathayan
-			culture = living_jade }
+		OR = {
+			culture = cathayan
+			culture = living_jade
+		}
 		religion = draconite
 		is_nomadic = no
-		any_courtier = { trait = clay_sculptor }
-		any_courtier = { trait = astromancer }
+		any_courtier = {
+			trait = clay_sculptor
+		}
+		any_courtier = {
+			trait = astromancer
+		}
 	}
 	hire_cost = 350
 	maintenance_multiplier = 0.1
-	
+
 	modifier = {
 		heavy_infantry_offensive = -0.3
 		heavy_infantry_defensive = 0.1
@@ -2458,18 +2244,24 @@ brass_titan = {
 	second_type = 1
 	second_amount = 90
 	special_troops = war_elephants
-	
+
 	potential = {
-		OR = { culture = cathayan
-			culture = living_jade }
+		OR = {
+			culture = cathayan
+			culture = living_jade
+		}
 		religion = draconite
 		is_nomadic = no
-		any_courtier = { trait = clay_sculptor }
-		any_courtier = { trait = astromancer }
+		any_courtier = {
+			trait = clay_sculptor
+		}
+		any_courtier = {
+			trait = astromancer
+		}
 	}
 	hire_cost = 250
 	maintenance_multiplier = 0.1
-	
+
 	modifier = {
 		war_elephants_offensive = 0.55
 		war_elephants_defensive = 3.0
@@ -2487,19 +2279,23 @@ artillery_battery = {
 	second_amount = 100
 	special_troops = artillery
 	hire_cost = 350
-	
+
 	potential = {
-		OR = { culture = cathayan
-			culture = living_jade }
+		OR = {
+			culture = cathayan
+			culture = living_jade
+		}
 		religion = draconite
 		is_nomadic = no
-		capital_holding = { OR = { has_building = ca_cathayan_gunnery_barracks_1 
-					has_building = ca_cathayan_gunnery_barracks_2  
-					has_building = ca_cathayan_gunnery_barracks_3  
-					has_building = ca_cathayan_gunnery_barracks_4 }
-				}
+		capital_holding = {
+			OR = {
+				has_building = ca_cathayan_gunnery_barracks_1
+				has_building = ca_cathayan_gunnery_barracks_2
+				has_building = ca_cathayan_gunnery_barracks_3
+				has_building = ca_cathayan_gunnery_barracks_4
+			}
+		}
 	}
-	
 	modifier = {
 		artillery_offensive = -0.05
 		artillery_defensive = 0.5
@@ -2509,51 +2305,46 @@ artillery_battery = {
 RETTYPE_CUL_NIPPON = {
 	first_type = 1
 	first_amount = 300
-	
+
 	potential = {
 		is_nomadic = no
 		culture = nipponese
 	}
-	
+
 	modifier = {
 		heavy_infantry_offensive = 0.6
 		heavy_infantry_morale = 0.4
 	}
 }
 
-RETTYPE_CUL_IND = 
-{
+RETTYPE_CUL_IND = {
 	first_type = 5
 	first_amount = 200
 	second_type = 6
 	second_amount = 20
-	
 	special_troops = war_elephants
-	
+
 	potential = {
 		is_nomadic = no
 		culture = indish
 	}
-	
 	modifier = {
 		archers_offensive = 0.1
 		archers_defensive = 0.3
 	}
 }
 
-#Albion
-RETTYPE_CUL_ALBION = 
-{
+# Albion
+RETTYPE_CUL_ALBION = {
 	first_type = 0
 	first_amount = 125
 	second_type = 1
 	second_amount = 35
-	
+
 	potential = {
 		is_nomadic = no
 		culture_group = albion_group
 	}
-	
 	modifier = {
 		light_infantry_offensive = 0.17
 		light_infantry_defensive = 0.07
@@ -2563,12 +2354,11 @@ RETTYPE_CUL_ALBION =
 	}
 }
 
-#Halflings
+# Halflings
 RETTYPE_CUL_HALFLING_MOOT ={
     first_type = 5
     first_amount = 300
-	
-	
+
 	potential = {
 		is_nomadic = no
 		culture_group = halfling_old_world
@@ -2576,17 +2366,16 @@ RETTYPE_CUL_HALFLING_MOOT ={
     modifier = {
         archers_offensive = 0.3
         archers_defensive = 0.6
-       
+
     }
 }
 
 RETTYPE_CUL_HALFLING_MIYAN ={
     first_type = 0
     first_amount = 150
-	
 	first_type = 5
     first_amount = 200
-	
+
 	potential = {
 		is_nomadic = no
 		culture_group = halfling_lustrian
@@ -2594,27 +2383,23 @@ RETTYPE_CUL_HALFLING_MIYAN ={
     modifier = {
         archers_offensive = 0.4
         light_infantry_defensive = 0.4
-       
     }
 }
 
-#Strigany
-RETTYPE_CUL_STRIGOS = 
-{
+# Strigany
+RETTYPE_CUL_STRIGOS = {
 	first_type = 4
 	first_amount = 100
-	
 	second_type = 3
 	second_amount = 150
-	
+
 	potential = {
 		is_nomadic = no
 		OR = {
-		culture = strigany
-		trait = vampire_strigoi_visible
+			culture = strigany
+			trait = vampire_strigoi_visible
 		}
 	}
-	
 	modifier = {
 		knights_defensive = 0.1
 		knights_morale = 0.1
@@ -2626,19 +2411,15 @@ RETTYPE_CUL_STRIGOS =
 striganyinfantry = {
 	first_type = 1
 	first_amount = 125
-	
 	second_type = 0
 	second_amount = 425
-	
+
 	potential = {
-		holder_scope = {
 		OR = {
-		has_landed_title = e_strygos
-		has_landed_title = e_strygos_2
+			has_landed_title = e_strygos
+			has_landed_title = e_strygos_2
 		}
-		}
-	  }
-	
+	}
 	modifier = {
 		light_infantry_defensive = 0.2
 		light_infantry_morale = 0.15
@@ -2650,19 +2431,16 @@ striganyinfantry = {
 bloodlegioncavalry = {
 	first_type = 3
 	first_amount = 225
-	
+
 	second_type = 4
 	second_amount = 50
-	
+
 	potential = {
-		holder_scope = {
 		OR = {
-		has_landed_title = e_strygos
-		has_landed_title = e_strygos_2
+			has_landed_title = e_strygos
+			has_landed_title = e_strygos_2
 		}
-		}
-	  }
-	
+	}
 	modifier = {
 		light_cavalry_offensive = 0.3
 		light_cavalry_morale = 0.4
@@ -2674,19 +2452,16 @@ bloodlegioncavalry = {
 ghoulguard = {
 	first_type = 5
 	first_amount = 95
-	
 	second_type = 2
 	second_amount = 250
-	
+
 	potential = {
-		holder_scope = {
 		OR = {
-		has_landed_title = e_strygos
-		has_landed_title = e_strygos_2
+			has_landed_title = e_strygos
+			has_landed_title = e_strygos_2
 		}
-		}
-	  }
-	
+	}
+
 	modifier = {
 		pikemen_defensive = 0.25
 		pikemen_morale = 0.25
@@ -2699,16 +2474,13 @@ wainriders = {
 	first_type = 6
 	first_amount = 225
     special_troops = horse_archers
-	
+
 	potential = {
-		holder_scope = {
 		OR = {
-		has_landed_title = e_strygos
-		has_landed_title = e_strygos_2
+			has_landed_title = e_strygos
+			has_landed_title = e_strygos_2
 		}
-		}
-	  }
-	
+	}
 	modifier = {
 		horse_archers_defensive = 0.3
 		horse_archers_morale = 0.5
@@ -2716,41 +2488,37 @@ wainriders = {
 	}
 }
 
-RETTYPE_CUL_STRYGAN = 
-{
+RETTYPE_CUL_STRYGAN = {
 	first_type = 1
 	first_amount = 275
-	
+
 	potential = {
 		is_nomadic = no
 		OR = {
-		culture = strygan
-		trait = vampire_strigoi_visible
+			culture = strygan
+			trait = vampire_strigoi_visible
 		}
 	}
-	
 	modifier = {
 		heavy_infantry_defensive = 0.6
 	}
 }
 
-#Wood Elf
-RETTYPE_CUL_ASRAI = 
-{
+# Wood Elf
+RETTYPE_CUL_ASRAI = {
 	first_type = 5
 	first_amount = 300
-	
+
 	potential = {
 		culture_group = asrai_group
 	}
-	
 	modifier = {
 		archers_offensive = 0.45
 		archers_defensive = 0.3
 	}
 }
 
-#Lahmian ( Living )
+# Lahmian ( Living )
 RETTYPE_CUL_LAHMIAN = {
 	first_type = 1
 	first_amount = 300
@@ -2764,372 +2532,283 @@ RETTYPE_CUL_LAHMIAN = {
 	}
 }
 
-#Chaos Nomad retinues
-#Dismounted Marauders
-CHAOS_RETTYPE_INF1 = 
-{
+# Chaos Nomad retinues
+# Dismounted Marauders
+CHAOS_RETTYPE_INF1 = {
 	first_type = 0
 	first_amount = 300
-	
 	hire_cost = 14
-	
 	maintenance_multiplier = 0.29
-	
-	potential = {
-		is_nomadic = yes
-		culture_group = kurgan_group
-	}
-}
-#Dismounted Chaos Knights
-CHAOS_RETTYPE_INF2 = 
-{
-	first_type = 1
-	first_amount = 325
-	
-	hire_cost = 13
-	
-	maintenance_multiplier = 0.31
-	
-	potential = {
-		is_nomadic = yes
-		OR = {
-		trait = chaos_chosen
-		trait = chosen_khorne
-		trait = chosen_nurgle
-		trait = chosen_slaanesh
-		trait = chosen_tzeentch
-		trait = prince_khorne
-		trait = prince_nurgle
-		trait = prince_slaanesh
-		trait = prince_tzeentch
-		}
-		OR = {
-		culture_group = kurgan_group
-		culture_group = hung_group
-		}
-	}
-}
-#Chaos Warriors
-CHAOS_RETTYPE_INF3 = 
-{
-	first_type = 1
-	first_amount = 285
-	
-	hire_cost = 17
-	
-	maintenance_multiplier = 0.3
-	
-	potential = {
-		is_nomadic = yes
-		culture_group = kurgan_group
-	}
-}
-#Melee Marauders
-CHAOS_RETTYPE_CAV1 = 
-{
-	first_type = 3
-	first_amount = 300
-	
-	hire_cost = 15
-	costs_prestige = yes
-	
-	maintenance_multiplier = 0.27
-	
-	potential = {
-		is_nomadic = yes
-		culture_group = kurgan_group
-	}
-}
-#Skirmisher Marauders
-CHAOS_RETTYPE_CAV2 = 
-{
-	first_type = 6
-	first_amount = 300
-	
-	special_troops = horse_archers
-	
-	hire_cost = 25
-	costs_prestige = yes
-	
-	maintenance_multiplier = 0.5263
-	
+
 	potential = {
 		is_nomadic = yes
 		culture_group = kurgan_group
 	}
 }
 
-#Mixed Marauders
-CHAOS_RETTYPE_CAV3 = 
-{
+# Dismounted Chaos Knights
+CHAOS_RETTYPE_INF2 = {
+	first_type = 1
+	first_amount = 325
+	hire_cost = 13
+	maintenance_multiplier = 0.31
+
+	potential = {
+		is_nomadic = yes
+		OR = {
+			is_demon_prince_trigger = yes
+			wh_is_chaos_chosen_trigger = yes
+		}
+		OR = {
+			culture_group = kurgan_group
+			culture_group = hung_group
+		}
+	}
+}
+
+# Chaos Warriors
+CHAOS_RETTYPE_INF3 = {
+	first_type = 1
+	first_amount = 285
+	hire_cost = 17
+	maintenance_multiplier = 0.3
+
+	potential = {
+		is_nomadic = yes
+		culture_group = kurgan_group
+	}
+}
+
+# Melee Marauders
+CHAOS_RETTYPE_CAV1 = {
+	first_type = 3
+	first_amount = 300
+	hire_cost = 15
+	costs_prestige = yes
+	maintenance_multiplier = 0.27
+
+	potential = {
+		is_nomadic = yes
+		culture_group = kurgan_group
+	}
+}
+
+# Skirmisher Marauders
+CHAOS_RETTYPE_CAV2 = {
+	first_type = 6
+	first_amount = 300
+	special_troops = horse_archers
+	hire_cost = 25
+	costs_prestige = yes
+	maintenance_multiplier = 0.5263
+
+	potential = {
+		is_nomadic = yes
+		culture_group = kurgan_group
+	}
+}
+
+# Mixed Marauders
+CHAOS_RETTYPE_CAV3 = {
 	first_type = 6
 	first_amount = 175
 	second_type = 3
 	second_amount = 250
-	
 	special_troops = horse_archers
-	
 	hire_cost = 30
 	costs_prestige = yes
-	
 	maintenance_multiplier = 0.5374
-	
+
 	potential = {
 		is_nomadic = yes
 		culture_group = kurgan_group
 	}
 }
-#Mixed Chaos Knights
-CHAOS_RETTYPE_CAV4 = 
-{
+
+# Mixed Chaos Knights
+CHAOS_RETTYPE_CAV4 = {
 	first_type = 4
 	first_amount = 195
 	second_type = 6
 	second_amount = 225
-	
 	special_troops = horse_archers
-	
 	hire_cost = 56
 	costs_prestige = yes
-	
 	maintenance_multiplier = 0.238
-	
+
 	potential = {
 		is_nomadic = yes
 		OR = {
-		trait = chaos_chosen
-		trait = chosen_khorne
-		trait = chosen_nurgle
-		trait = chosen_slaanesh
-		trait = chosen_tzeentch
-		trait = prince_khorne
-		trait = prince_nurgle
-		trait = prince_slaanesh
-		trait = prince_tzeentch
+			is_demon_prince_trigger = yes
+			wh_is_chaos_chosen_trigger = yes
 		}
 		OR = {
-		culture_group = kurgan_group
-		culture_group = hung_group
+			culture_group = kurgan_group
+			culture_group = hung_group
 		}
 	}
 }
-#Chaos Knights
-CHAOS_RETTYPE_CAV5 = 
-{
+# Chaos Knights
+CHAOS_RETTYPE_CAV5 = {
 	first_type = 4
 	first_amount = 250
-	
 	hire_cost = 68
 	costs_prestige = yes
-	
 	maintenance_multiplier = 0.349
-	
+
 	potential = {
 		is_nomadic = yes
 		culture_group = kurgan_group
 	}
 }
-#Spawns and Forsaken
-CHAOS_RETTYPE_MON1 = 
-{
+# Spawns and Forsaken
+CHAOS_RETTYPE_MON1 = {
 	first_type = 6
 	first_amount = 200
-	
 	hire_cost = 110
-	
 	maintenance_multiplier = 0.349
-	
 	special_troops = daemonic_host
-	
+
 	potential = {
 		is_nomadic = yes
 		OR = {
-		culture_group = kurgan_group
-		culture_group = hung_group
+			culture_group = kurgan_group
+			culture_group = hung_group
 		}
 	}
 }
 
-#Nomad retinues
-HORDE_RETTYPE_CAV1 = 
-{
+# Nomad retinues
+HORDE_RETTYPE_CAV1 = {
 	first_type = 3
 	first_amount = 250
-	
 	hire_cost = 10
 	costs_prestige = yes
-	
 	maintenance_multiplier = 0.27
-	
+
 	potential = {
 		is_nomadic = yes
 		trait = creature_human
 		NOT = {
-		culture_group = kurgan_group
+			culture_group = kurgan_group
 		}
 	}
 }
 
-HORDE_RETTYPE_CAV2 = 
-{
+HORDE_RETTYPE_CAV2 = {
 	first_type = 3
 	first_amount = 225
 	second_type = 6
 	second_amount = 25
-
 	special_troops = horse_archers
-	
 	hire_cost = 25
 	costs_prestige = yes
-	
 	maintenance_multiplier = 0.5263
-	
+
 	potential = {
 		is_nomadic = yes
 		trait = creature_human
 		NOT = {
-		culture_group = kurgan_group
+			culture_group = kurgan_group
 		}
 	}
 }
 
-HORDE_RETTYPE_CAV3 =
-{
+HORDE_RETTYPE_CAV3 = {
 	first_type = 3
 	first_amount = 200
 	second_type = 6
 	second_amount = 50
-
 	special_troops = horse_archers
-	
 	hire_cost = 25
-	
 	maintenance_multiplier = 0.125
-	
+
 	potential = {
 		is_nomadic = yes
 		trait = creature_human
 		NOT = {
-		culture_group = kurgan_group
+			culture_group = kurgan_group
 		}
 	}
 }
 
-HORDE_RETTYPE_CAV4 =
-{
+HORDE_RETTYPE_CAV4 = {
 	first_type = 3
 	first_amount = 150
 	second_type = 6
 	second_amount = 100
-
 	special_troops = horse_archers
-	
 	hire_cost = 50
-	
 	maintenance_multiplier = 0.238
-	
+
 	potential = {
 		is_nomadic = yes
 		trait = creature_human
 		NOT = {
-		culture_group = kurgan_group
+			culture_group = kurgan_group
 		}
 	}
 }
 
-HORDE_RETTYPE_CAV5 =
-{
+HORDE_RETTYPE_CAV5 = {
 	first_type = 3
 	first_amount = 200
 	second_type = 4
 	second_amount = 50
-	
 	hire_cost = 50
-	
 	maintenance_multiplier = 0.227
-	
+
 	potential = {
 		is_nomadic = yes
 		trait = creature_human
 		NOT = {
-		culture_group = kurgan_group
+			culture_group = kurgan_group
 		}
 	}
 }
 
-HORDE_RETTYPE_CAV6 =
-{
+HORDE_RETTYPE_CAV6 = {
 	first_type = 3
 	first_amount = 100
 	second_type = 4
 	second_amount = 150
-	
 	hire_cost = 75
-	
 	maintenance_multiplier = 0.25
-	
+
 	potential = {
 		is_nomadic = yes
 		trait = creature_human
 		NOT = {
-		culture_group = kurgan_group
+			culture_group = kurgan_group
 		}
 	}
 }
 
-HORDE_RETTYPE_CAV7 =
-{
+HORDE_RETTYPE_CAV7 = {
 	first_type = 6
 	first_amount = 250
-	
 	special_troops = horse_archers
-	
 	hire_cost = 75
-	
 	maintenance_multiplier = 0.3
-	
+
 	potential = {
 		is_nomadic = yes
         trait = creature_human
 		NOT = {
-		culture_group = kurgan_group
+			culture_group = kurgan_group
 		}
 	}
 }
-
-# HORDE_RETTYPE_INDIAN = 
-# {
-	# first_type = 3
-	# first_amount = 200
-	# second_type = 6
-	# second_amount = 50
-	
-	# special_troops = war_elephants
-
-	# hire_cost = 100
-	
-	# maintenance_multiplier = 0.625
-	
-	# potential = {
-		# is_nomadic = yes
-		# capital_scope = {
-			# region = world_india
-		# }
-	# }
-# }
 
 HORDE_RETTYPE_DESERT = {
 	first_type = 3
 	first_amount = 100
 	second_type = 6
 	second_amount = 150
-	
 	special_troops = camel_cavalry
-	
 	hire_cost = 50
-	
 	maintenance_multiplier = 0.416
-	
+
 	potential = {
 		is_nomadic = yes
 		trait = creature_human
@@ -3139,325 +2818,251 @@ HORDE_RETTYPE_DESERT = {
 	}
 }
 
-HORDE_RETTYPE_EUROPE = {
-	first_type = 4
-	first_amount = 250
-	
-	hire_cost = 100
-	
-	maintenance_multiplier = 0.37
-	
-	potential = {
-		is_nomadic = yes
-		trait = creature_human
-		capital_scope = {
-			OR = {
-				region = world_europe_west
-				region = world_europe_south
-			}
-		}
-	}
-}
-
 HORDE_RETTYPE_MAMMOTH = {
 	first_type = 6
 	first_amount = 100
-	
 	special_troops = war_elephants
-
 	hire_cost = 100
-	
 	maintenance_multiplier = 0.625
-	
+
 	potential = {
 		is_nomadic = yes
 		trait = creature_human
 		capital_scope = {
-			# region = world_india #Replace with Norsca and Chaos Wastes regions when they  are in
 			OR = {
-				empire = { title = e_norsca }
-				empire = { title = e_chaos_wastes }
+				region = world_chaos_wastes
+				region = world_chaos_wastes
 			}
 		}
 	}
 }
 
-HORDE_RETTYPE_BEASTMEN1 = 
-{
+HORDE_RETTYPE_BEASTMEN1 = {
 	first_type = 0
 	first_amount = 300
-	
 	hire_cost = 8
 	costs_prestige = yes
-	
 	maintenance_multiplier = 0.27
-	
+
 	potential = {
 		is_nomadic = yes
 		trait = creature_beastman
 	}
 }
 
-HORDE_RETTYPE_BEASTMEN2 = 
-{
+HORDE_RETTYPE_BEASTMEN2 = {
 	first_type = 0
 	first_amount = 275
 	second_type = 1
 	second_amount = 50
-	
 	hire_cost = 25
 	costs_prestige = yes
-	
 	maintenance_multiplier = 0.5263
-	
+
 	potential = {
 		is_nomadic = yes
 		trait = creature_beastman
 	}
 }
 
-HORDE_RETTYPE_BEASTMEN3 =
-{
+HORDE_RETTYPE_BEASTMEN3 = {
 	first_type = 0
 	first_amount = 150
 	second_type = 1
 	second_amount = 120
-	
 	hire_cost = 45
 	costs_prestige = yes
-	
 	maintenance_multiplier = 0.525
-	
+
 	potential = {
 		is_nomadic = yes
 		trait = creature_beastman
 	}
 }
 
-HORDE_RETTYPE_BEASTMEN4 =
-{
+HORDE_RETTYPE_BEASTMEN4 = {
 	first_type = 0
 	first_amount = 175
 	second_type = 1
 	second_amount = 150
-	
 	hire_cost = 75
-	
 	maintenance_multiplier = 0.238
-	
+
 	potential = {
 		is_nomadic = yes
 		trait = creature_beastman
 	}
 }
 
-HORDE_RETTYPE_BEASTMEN5 =
-{
+HORDE_RETTYPE_BEASTMEN5 = {
 	first_type = 0
 	first_amount = 250
 	second_type = 2
 	second_amount = 75
-	
 	hire_cost = 50
-	
 	maintenance_multiplier = 0.227
-	
+
 	potential = {
 		is_nomadic = yes
 		trait = creature_beastman
 	}
 }
 
-HORDE_RETTYPE_BEASTMEN6 =
-{
+HORDE_RETTYPE_BEASTMEN6 = {
 	first_type = 3
 	first_amount = 150
 	second_type = 4
 	second_amount = 175
-	
 	hire_cost = 100
-	
 	maintenance_multiplier = 0.25
-	
+
 	potential = {
 		is_nomadic = yes
 		trait = creature_beastman
 	}
 }
 
-HORDE_RETTYPE_BEASTMEN7 =
-{
+HORDE_RETTYPE_BEASTMEN7 = {
 	first_type = 6
 	first_amount = 300
-	
 	special_troops = war_elephants
-	
 	hire_cost = 175
-	
 	maintenance_multiplier = 0.3
-	
+
 	potential = {
 		is_nomadic = yes
 		trait = creature_beastman
 	}
 }
-HORDE_RETTYPE_OGRE1 = 
-{
+HORDE_RETTYPE_OGRE1 = {
 	first_type = 0
 	first_amount = 300
-	
 	hire_cost = 8
 	costs_prestige = yes
-	
 	maintenance_multiplier = 0.27
-	
+
 	potential = {
 		is_nomadic = yes
 		trait = creature_ogre
 	}
 }
 
-HORDE_RETTYPE_OGRE2 = 
-{
+HORDE_RETTYPE_OGRE2 = {
 	first_type = 0
 	first_amount = 175
 	second_type = 1
 	second_amount = 125
-	
 	hire_cost = 25
 	costs_prestige = yes
-	
 	maintenance_multiplier = 0.5263
-	
+
 	potential = {
 		is_nomadic = yes
 		trait = creature_ogre
 	}
 }
 
-HORDE_RETTYPE_OGRE3 =
-{
+HORDE_RETTYPE_OGRE3 = {
 	first_type = 1
 	first_amount = 250
 	second_type = 6
 	second_amount = 50
 	special_troops = gunpowder
-
-	
 	hire_cost = 45
-	
 	maintenance_multiplier = 0.725
-	
+
 	potential = {
 		is_nomadic = yes
 		trait = creature_ogre
 	}
 }
 
-HORDE_RETTYPE_OGRE4 =
-{
+HORDE_RETTYPE_OGRE4 = {
 	first_type = 0
 	first_amount = 250
 	second_type = 5
 	second_amount = 150
-	
 	hire_cost = 50
-	
 	maintenance_multiplier = 0.238
-	
+
 	potential = {
 		is_nomadic = yes
 		trait = creature_ogre
 	}
 }
 
-HORDE_RETTYPE_OGRE5 =
-{
+HORDE_RETTYPE_OGRE5 = {
 	first_type = 6
 	first_amount = 50
     special_troops = war_elephants
-	
 	hire_cost = 50
-	
 	maintenance_multiplier = 0.227
-	
+
 	potential = {
 		is_nomadic = yes
 		trait = creature_ogre
 	}
 }
 
-HORDE_RETTYPE_OGRE6 =
-{
+HORDE_RETTYPE_OGRE6 = {
 	first_type = 6
 	first_amount = 150
 	second_type = 3
 	second_amount = 175
 	special_troops = horse_archers
-	
 	hire_cost = 75
-	
 	maintenance_multiplier = 0.25
-	
+
 	potential = {
 		is_nomadic = yes
 		trait = creature_ogre
 	}
 }
 
-HORDE_RETTYPE_OGRE7 =
-{
+HORDE_RETTYPE_OGRE7 = {
 	first_type = 4
 	first_amount = 175
-	
 	hire_cost = 175
-	
 	maintenance_multiplier = 0.3
-	
+
 	potential = {
 		is_nomadic = yes
 		trait = creature_ogre
 	}
 }
-HORDE_RETTYPE_OGRE8 =
-{
+HORDE_RETTYPE_OGRE8 = {
 	first_type = 1
 	first_amount = 150
 	second_type = 6
 	second_amount = 10
 	special_troops = artillery
-	
 	hire_cost = 175
-	
 	maintenance_multiplier = 0.3
-	
+
 	potential = {
 		is_nomadic = yes
 		trait = creature_ogre
 	}
 }
 
-grave_guard =
-{
+grave_guard = {
 	first_type = 6
 	first_amount = 250
-	
 	special_troops = undead_horde
-	
 	hire_cost = 250
-	#costs_piety = yes
-	
+	# costs_piety = yes
 	maintenance_multiplier = 0
-	
-	potential = {		OR = { 		
-					trait = vampire_lahmian_visible
-					trait = vampire_carstein_visible
-					trait = vampire_blood_visible
-					trait = vampire_strigoi_visible
-					trait = vampire_necrarch_visible
-					# trait = vampire_jade_visible 
-					# trait = vampire_mahtmasi_visible
-					 } 
+
+	potential = {
+		OR = {
+			trait = vampire_lahmian_visible
+			trait = vampire_carstein_visible
+			trait = vampire_blood_visible
+			trait = vampire_strigoi_visible
+			trait = vampire_necrarch_visible
+			# trait = vampire_jade_visible
+			# trait = vampire_mahtmasi_visible
+		}
 	}
 	modifier = {
 		undead_horde_offensive = 0.2
@@ -3470,13 +3075,14 @@ jade_retinue = {
 	first_type = 1
 	first_amount = 40
 	second_type = 0
-	second_amount = 50 #Skink slaves
+	second_amount = 50 # Skink slaves
 	hire_cost = 400
 	maintenance_multiplier = 0
-	
-	potential = { trait = vampire_jade_visible
-			}
-	
+
+	potential = {
+		trait = vampire_jade_visible
+	}
+
 	modifier = {
 		heavy_infantry_offensive = 4
 		heavy_infantry_defensive = 4
@@ -3484,20 +3090,25 @@ jade_retinue = {
 	}
 }
 
-#LIZARDMEN
+# LIZARDMEN
 
 saurus_batch = {
 	first_type = 1
 	first_amount = 120
 	hire_cost = 40
-	
-	potential = { OR = { culture_group = lizardman_group
-				AND = { trait = vampire_jade_visible
-					any_demesne_province = { culture_group = lizardman_group
-								religion_group = necromantic_group } } 
-				} 
+
+	potential = {
+		OR = {
+			culture_group = lizardman_group
+			AND = {
+				trait = vampire_jade_visible
+				any_demesne_province = {
+					culture_group = lizardman_group
+					religion_group = necromantic_group
+				}
 			}
-	
+		}
+	}
 	modifier = {
 		heavy_infantry_offensive = 0.25
 		heavy_infantry_defensive = 0.5
@@ -3510,9 +3121,10 @@ kroxigors = {
 	first_amount = 60
 	special_troops = war_elephants
 	hire_cost = 60
-	
-	potential = { culture_group = lizardman_group }
-	
+
+	potential = {
+		culture_group = lizardman_group
+	}
 	modifier = {
 		war_elephants_offensive = 0.5
 		war_elephants_defensive = 0.75
@@ -3526,9 +3138,10 @@ salamanders = {
 	second_type = 1
 	second_amount = 60
 	hire_cost = 120
-	
-	potential = { culture_group = lizardman_group }
-	
+
+	potential = {
+		culture_group = lizardman_group
+	}
 	modifier = {
 		heavy_infantry_offensive = 0.4
 		heavy_infantry_morale = 0.25
@@ -3537,14 +3150,15 @@ salamanders = {
 	}
 }
 
-#SKAVEN
+# SKAVEN
 stormvermin_retinue = {
 	first_type = 2
 	first_amount = 560
 	hire_cost = 160
-	
-	potential = { culture = skaven_main }
-	
+
+	potential = {
+		culture = skaven_main
+	}
 	modifier = {
 		heavy_infantry_offensive = 0.1
 		heavy_infantry_defensive = 0.02
@@ -3555,15 +3169,16 @@ stormvermin_retinue = {
 assassins_squad = {
     first_type = 1
     first_amount = 50
-	potential = { culture = eshin }
 
+	potential = {
+		culture = eshin
+	}
     modifier = {
         heavy_infantry_defensive = -0.05
         heavy_infantry_offensive = 1
-        heavy_infantry_morale = 0.05    
+        heavy_infantry_morale = 0.05
     }
 }
-
 
 warplightning_cannons = {
 	first_type = 6
@@ -3572,9 +3187,10 @@ warplightning_cannons = {
 	second_amount = 80
 	special_troops = artillery
 	hire_cost = 160
-	
-	potential = { culture = skryre }
-	
+
+	potential = {
+		culture = skryre
+	}
 	modifier = {
 		artillery_offensive = 8
 		artillery_defensive = -0.07
@@ -3588,9 +3204,10 @@ doom_wheel = {
 	second_type = 0
 	second_amount = 85
 	hire_cost = 200
-	
-	potential = { culture = skryre }
-	
+
+	potential = {
+		culture = skryre
+	}
 	modifier = {
 		knights_offensive = 17
 		knights_defensive = 2
@@ -3603,23 +3220,26 @@ hellpit_abominations = {
 	first_amount = 50
 	special_troops = war_elephants
 	hire_cost = 200
-	
-	potential = { culture = moulder }
-	
+
+	potential = {
+		culture = moulder
+	}
 	modifier = {
 		war_elephants_offensive = 2
 		war_elephants_defensive = 2
 		war_elephants_morale = 1
 	}
 }
+
 plagueclaw_catapults = {
 	first_type = 6
 	first_amount = 40
 	special_troops = artillery
 	hire_cost = 120
-	
-	potential = { culture = pestilens }
-	
+
+	potential = {
+		culture = pestilens
+	}
 	modifier = {
 		artillery_offensive = 3
 		artillery_defensive = 0.05

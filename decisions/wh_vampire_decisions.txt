@@ -6,6 +6,7 @@ decisions = {
 		only_playable = yes
 		potential = {
 			independent = no
+			is_living_human_trigger = yes
 			liege = {
 				age = 16
 				OR = {
@@ -18,7 +19,6 @@ decisions = {
 					trait = vampire_mahtmasi_visible
 				}
 			}
-			is_living_human_trigger = yes
 		}
 		allow = {
 			custom_tooltip = {
@@ -1635,11 +1635,10 @@ decisions = {
 targetted_decisions = {
 
 	turn_courtier_into_vampire = {
+		only_playable = yes
 		filter = realm
 		ai_target_filter = realm
-		only_rulers = yes
 		from_potential = {
-			is_ruler = yes
 			is_visible_vampire_trigger = yes
 		}
 		potential = {
@@ -1687,6 +1686,7 @@ targetted_decisions = {
 							character = ROOT
 						}
 					}
+					# strange place
 					AND = {
 						ROOT = {
 							NOR = {
@@ -1749,7 +1749,8 @@ targetted_decisions = {
 					random = {
 						chance = 10
 						character_event = {
-							id = svampires.77 }
+							id = svampires.77
+						}
 					}
 				}
 			}
@@ -1947,7 +1948,7 @@ targetted_decisions = {
 			}
 			modifier = {
 				factor = 0
-				is_female = no				
+				is_female = no
 				FROM = {
 					trait = vampire_lahmian_visible
 				}
@@ -1978,7 +1979,7 @@ targetted_decisions = {
 						who = ROOT
 						value = 25
 					}
-				}				
+				}
 				FROM = {
 					trait = vampire_mahtmasi_visible
 				}
@@ -2035,10 +2036,10 @@ targetted_decisions = {
 			}
 			modifier = {
 				factor = 2
-				higher_tier_than = COUNT				
+				higher_tier_than = COUNT
 			}
 			modifier = {
-				factor = 2				
+				factor = 2
 				higher_tier_than = DUKE
 			}
 			modifier = {

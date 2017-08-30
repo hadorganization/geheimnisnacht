@@ -5655,75 +5655,30 @@ character_event = {
 character_event = {
 	id = DR_greenskins.174
 	hide_window = yes
+	is_triggered_only = yes
 
 	trigger = {
+		# the chain stops when the modifier expires
 		has_character_modifier = preparing_waaagh_invasion
-	}	# the chain stops when the modifier expires
-	is_triggered_only = yes
+	}
 
 	immediate = {
 		log = "work event id = DR_greenskins.174"
+		character_event = {
+			id = DR_greenskins.174
+			days = 40
+			random = 15
+		}
 		random_list = {
-			30 = {
+			# troops
+			20 = {
 				character_event = {
-					id = DR_greenskins.179 days = 40 random = 15
+					id = DR_greenskins.177
+					days = 40
+					random = 15
 				}
 			}
-			20 = {
-				modifier = {
-					factor = 1.25
-					martial = 15
-				}
-				modifier = {
-					factor = 1.25
-					martial = 20
-				}
-				modifier = {
-					factor = 1.25
-					diplomacy = 15
-				}
-				modifier = {
-					factor = 1.25
-					diplomacy = 20
-				}
-				modifier = {
-					factor = 1.25
-					prestige = 1000
-				}
-				modifier = {
-					factor = 0.75
-					NOT = {
-						martial = 10
-					}
-				}
-				modifier = {
-					factor = 0.5
-					NOT = {
-						martial = 7
-					}
-				}
-				modifier = {
-					factor = 0.75
-					NOT = {
-						diplomacy = 10
-					}
-				}
-				modifier = {
-					factor = 0.5
-					NOT = {
-						diplomacy = 7
-					}
-				}
-				modifier = {
-					factor = 0.5
-					NOT = {
-						prestige = 100
-					}
-				}
-				character_event = {
-					id = DR_greenskins.178 days = 40 random = 15
-				}
-			}	# Famous Commander
+			# Famous Commander
 			10 = {
 				modifier = {
 					factor = 1.25
@@ -5776,14 +5731,69 @@ character_event = {
 					}
 				}
 				character_event = {
-					id = DR_greenskins.177 days = 40 random = 15
+					id = DR_greenskins.178
+					days = 40
+					random = 15
 				}
-			}	# More troops
-			40 = {
+			}
+			# less troops
+			30 = {
+				modifier = {
+					factor = 1.25
+					martial = 15
+				}
+				modifier = {
+					factor = 1.25
+					martial = 20
+				}
+				modifier = {
+					factor = 1.25
+					diplomacy = 15
+				}
+				modifier = {
+					factor = 1.25
+					diplomacy = 20
+				}
+				modifier = {
+					factor = 1.25
+					prestige = 1000
+				}
+				modifier = {
+					factor = 0.75
+					NOT = {
+						martial = 10
+					}
+				}
+				modifier = {
+					factor = 0.5
+					NOT = {
+						martial = 7
+					}
+				}
+				modifier = {
+					factor = 0.75
+					NOT = {
+						diplomacy = 10
+					}
+				}
+				modifier = {
+					factor = 0.5
+					NOT = {
+						diplomacy = 7
+					}
+				}
+				modifier = {
+					factor = 0.5
+					NOT = {
+						prestige = 100
+					}
+				}
 				character_event = {
-					id = DR_greenskins.174 days = 40 random = 15
+					id = DR_greenskins.179
+					days = 40
+					random = 15
 				}
-			}	# repeat each month until expirement
+			}
 		}
 	}
 }
@@ -5811,6 +5821,7 @@ character_event = {
 	desc = EVTDESCA_greenskins_waaagh_waited
 	picture = GFX_evt_greenskinanimosity
 	border = GFX_event_normal_frame_war
+	is_triggered_only = yes
 
 	trigger = {
 		NOT = {
@@ -5821,7 +5832,6 @@ character_event = {
 		has_character_flag = preparing_waaagh_invasion_flag
 	}
 	# If you start the war, the event won't pop up
-	is_triggered_only = yes
 
 	immediate = {
 		log = "work event id = DR_greenskins.176"
@@ -5840,17 +5850,16 @@ character_event = {
 }
 
 # Troops flock to your banner
-# The target character is in FROM
 character_event = {
 	id = DR_greenskins.177
+	picture = GFX_evt_orc_banner
+	border = GFX_event_normal_frame_war
 	desc = EVTDESCA_greenskins_waaagh_horde
+	is_triggered_only = yes
 
 	trigger = {
 		has_character_modifier = preparing_waaagh_invasion
 	}	# the chain stops when the modifier expires
-	picture = GFX_evt_orc_banner
-	border = GFX_event_normal_frame_war
-	is_triggered_only = yes
 
 	immediate = {
 		log = "work event id = DR_greenskins.177"
@@ -5867,6 +5876,7 @@ character_event = {
 					match_mult = 0.3
 					earmark = prepared_invasion
 					match_min = 650
+					cannot_inherit = yes
 					attrition = 0
 				}
 				spawn_fleet = {
@@ -5876,149 +5886,24 @@ character_event = {
 					match_mult = 0.3
 					match_min = 7
 					earmark = prepared_invasion
+					cannot_inherit = yes
 				}
-			}
-		}
-		hidden_tooltip = {
-			random_list = {
-				30 = {
-					character_event = {
-						id = DR_greenskins.179 days = 40 random = 15
-					}
-				}	# Some troops
-				20 = {
-					modifier = {
-						factor = 1.25
-						martial = 15
-					}
-					modifier = {
-						factor = 1.25
-						martial = 20
-					}
-					modifier = {
-						factor = 1.25
-						diplomacy = 15
-					}
-					modifier = {
-						factor = 1.25
-						diplomacy = 20
-					}
-					modifier = {
-						factor = 1.25
-						prestige = 1000
-					}
-					modifier = {
-						factor = 0.75
-						NOT = {
-							martial = 10
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							martial = 7
-						}
-					}
-					modifier = {
-						factor = 0.75
-						NOT = {
-							diplomacy = 10
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							diplomacy = 7
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							prestige = 100
-						}
-					}
-					character_event = {
-						id = DR_greenskins.178 days = 40 random = 15
-					}
-				}	# Famous Commander
-				10 = {
-					modifier = {
-						factor = 1.25
-						martial = 15
-					}
-					modifier = {
-						factor = 1.25
-						martial = 20
-					}
-					modifier = {
-						factor = 1.25
-						diplomacy = 15
-					}
-					modifier = {
-						factor = 1.25
-						diplomacy = 20
-					}
-					modifier = {
-						factor = 1.25
-						prestige = 1000
-					}
-					modifier = {
-						factor = 0.75
-						NOT = {
-							martial = 10
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							martial = 7
-						}
-					}
-					modifier = {
-						factor = 0.75
-						NOT = {
-							diplomacy = 10
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							diplomacy = 7
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							prestige = 100
-						}
-					}
-					character_event = {
-						id = DR_greenskins.179 days = 40 random = 15
-					}
-				}	# More troops
-				40 = {
-					character_event = {
-						id = DR_greenskins.174 days = 40 random = 15
-					}
-				}	# repeat each month until expirement
-
 			}
 		}
 	}
 }
 
 # A hero and his retinue appear in your court
-# The target character is in FROM
 character_event = {
 	id = DR_greenskins.178
 	desc = EVTDESCA_greenskins_waaagh_horde_bigun
 	picture = GFX_evt_orc_charging
 	border = GFX_event_normal_frame_war
+	is_triggered_only = yes
 
 	trigger = {
 		has_character_modifier = preparing_waaagh_invasion
 	}	# the chain stops when the modifier expires
-	is_triggered_only = yes
 
 	immediate = {
 		log = "work event id = DR_greenskins.178"
@@ -6050,6 +5935,7 @@ character_event = {
 					match_mult = 0.5
 					match_min = 900
 					earmark = prepared_invasion
+					cannot_inherit = yes
 					attrition = 0
 				}
 			}
@@ -6061,137 +5947,12 @@ character_event = {
 			match_mult = 0.5
 			match_min = 10
 			earmark = prepared_invasion
-		}
-		hidden_tooltip = {
-			random_list = {
-				30 = {
-					character_event = {
-						id = DR_greenskins.179 days = 40 random = 15
-					}
-				}	# Some troops
-				20 = {
-					modifier = {
-						factor = 1.25
-						martial = 15
-					}
-					modifier = {
-						factor = 1.25
-						martial = 20
-					}
-					modifier = {
-						factor = 1.25
-						diplomacy = 15
-					}
-					modifier = {
-						factor = 1.25
-						diplomacy = 20
-					}
-					modifier = {
-						factor = 1.25
-						prestige = 1000
-					}
-					modifier = {
-						factor = 0.75
-						NOT = {
-							martial = 10
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							martial = 7
-						}
-					}
-					modifier = {
-						factor = 0.75
-						NOT = {
-							diplomacy = 10
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							diplomacy = 7
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							prestige = 100
-						}
-					}
-					character_event = {
-						id = DR_greenskins.178 days = 40 random = 15
-					}
-				}	# Famous Commander
-				10 = {
-					modifier = {
-						factor = 1.25
-						martial = 15
-					}
-					modifier = {
-						factor = 1.25
-						martial = 20
-					}
-					modifier = {
-						factor = 1.25
-						diplomacy = 15
-					}
-					modifier = {
-						factor = 1.25
-						diplomacy = 20
-					}
-					modifier = {
-						factor = 1.25
-						prestige = 1000
-					}
-					modifier = {
-						factor = 0.75
-						NOT = {
-							martial = 10
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							martial = 7
-						}
-					}
-					modifier = {
-						factor = 0.75
-						NOT = {
-							diplomacy = 10
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							diplomacy = 7
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							prestige = 100
-						}
-					}
-					character_event = {
-						id = DR_greenskins.179 days = 40 random = 15
-					}
-				}	# More troops
-				40 = {
-					character_event = {
-						id = DR_greenskins.174 days = 40 random = 15
-					}
-				}	# repeat each month until expirement
-
-			}
+			cannot_inherit = yes
 		}
 	}
 }
 
 # A smaller force arrives for the invasion
-# The target character is in FROM
 character_event = {
 	id = DR_greenskins.179
 	desc = EVTDESCA_greenskins_waaagh_horde_small
@@ -6218,6 +5979,7 @@ character_event = {
 					match_mult = 0.2
 					match_min = 500
 					earmark = prepared_invasion
+					cannot_inherit = yes
 					attrition = 0
 				}
 				spawn_fleet = {
@@ -6227,132 +5989,8 @@ character_event = {
 					match_mult = 0.2
 					match_min = 5
 					earmark = prepared_invasion
+					cannot_inherit = yes
 				}
-			}
-		}
-		hidden_tooltip = {
-			random_list = {
-				30 = {
-					character_event = {
-						id = DR_greenskins.179 days = 40 random = 15
-					}
-				}	# Some troops
-				20 = {
-					modifier = {
-						factor = 1.25
-						martial = 15
-					}
-					modifier = {
-						factor = 1.25
-						martial = 20
-					}
-					modifier = {
-						factor = 1.25
-						diplomacy = 15
-					}
-					modifier = {
-						factor = 1.25
-						diplomacy = 20
-					}
-					modifier = {
-						factor = 1.25
-						prestige = 1000
-					}
-					modifier = {
-						factor = 0.75
-						NOT = {
-							martial = 10
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							martial = 7
-						}
-					}
-					modifier = {
-						factor = 0.75
-						NOT = {
-							diplomacy = 10
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							diplomacy = 7
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							prestige = 100
-						}
-					}
-					character_event = {
-						id = DR_greenskins.178 days = 40 random = 15
-					}
-				}	# Famous Commander
-				10 = {
-					modifier = {
-						factor = 1.25
-						martial = 15
-					}
-					modifier = {
-						factor = 1.25
-						martial = 20
-					}
-					modifier = {
-						factor = 1.25
-						diplomacy = 15
-					}
-					modifier = {
-						factor = 1.25
-						diplomacy = 20
-					}
-					modifier = {
-						factor = 1.25
-						prestige = 1000
-					}
-					modifier = {
-						factor = 0.75
-						NOT = {
-							martial = 10
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							martial = 7
-						}
-					}
-					modifier = {
-						factor = 0.75
-						NOT = {
-							diplomacy = 10
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							diplomacy = 7
-						}
-					}
-					modifier = {
-						factor = 0.5
-						NOT = {
-							prestige = 100
-						}
-					}
-					character_event = {
-						id = DR_greenskins.179 days = 40 random = 15
-					}
-				}	# More troops
-				40 = {
-					character_event = {
-						id = DR_greenskins.174 days = 40 random = 15
-					}
-				}	# repeat each month until expirement
-
 			}
 		}
 	}
@@ -6391,19 +6029,15 @@ character_event = {
 # Greenskins rise against ruler with "Weak Warboss" modifier
 character_event = {
 	id = DR_greenskins.181
-	desc = EVTDESC_greenskin_uprising_revolt3
-	picture = GFX_evt_greenskinanimosity
-	border = GFX_event_normal_frame_war
+	#desc = EVTDESC_greenskin_uprising_revolt3
+	#picture = GFX_evt_greenskinanimosity
+	#border = GFX_event_normal_frame_war
 	hide_window = yes
 	only_playable = yes
+	religion_group = greenskin_gods_group
 	is_triggered_only = yes
 
 	trigger = {
-		OR = {
-			culture_group = orc_group
-			culture_group = goblin_group
-			religion_group = greenskin_gods_group
-		}
 		higher_real_tier_than = DUKE
 		has_character_modifier = weak_warboss
 	}
@@ -6411,7 +6045,8 @@ character_event = {
 	immediate = {
 		log = "work event id = DR_greenskins.181"
 		capital_scope = {
-			set_province_flag = greenskin_horde_inv province_event = {
+			set_province_flag = greenskin_horde_inv
+			province_event = {
 				id = DR_greenskins.171
 			}
 		}
@@ -6425,8 +6060,8 @@ character_event = {
 # In case Greenskins capture a province with the "Troublesome Greenskin population" debuff, remove it
 province_event = {
 	id = DR_greenskins.182
-	desc = "DR_greenskins.151.desc"
-	picture = GFX_evt_orcs1
+	#desc = "DR_greenskins.151.desc"
+	#picture = GFX_evt_orcs1
 	hide_window = yes
 
 	trigger = {
@@ -6447,10 +6082,6 @@ province_event = {
 	immediate = {
 		log = "work event id = DR_greenskins.182"
 		remove_province_modifier = greenskin_population_bad
-	}
-
-	option = {
-		name = OK
 	}
 }
 

@@ -1202,7 +1202,9 @@ targetted_decisions = {
 			}
 		}
 		effect = {
-			destroy_artifact = elixir_of_love
+			from = {
+				destroy_artifact = elixir_of_love
+			}
 			add_lover = from
 		}
 		ai_will_do = {
@@ -1353,16 +1355,11 @@ targetted_decisions = {
 			age = 16
 			z_combat_magic_caster = yes
 			z_combat_magic_valid_caster = yes
-			OR = {
+			or = {
 				character = FROM
 				liege = {
 					character = FROM
 				}
-			}
-			or = {
-				ai = no
-				in_battle = yes
-				in_siege = yes
 			}
 		}
 		allow = {
@@ -1378,6 +1375,18 @@ targetted_decisions = {
 			}
 			in_command = yes
 		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0.01
+				nor = {
+					in_battle = yes
+                    in_siege = yes
+                }
+			}
+		}
+
 		effect = {
 			set_character_flag = casting
 			save_event_target_as = magic_caster

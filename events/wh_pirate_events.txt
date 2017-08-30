@@ -7,14 +7,13 @@ character_event = {
 	picture = GFX_evt_vikings_arriving_oldgods
 	border = GFX_event_normal_frame_war
 	hide_from = yes
-	is_triggered_only = yes
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	religion = stromfels
+	is_triggered_only = yes
 
 	trigger = {
-		religion = stromfels
 		has_dlc = "The Old Gods"
 		NOT = {
 			trait = buccaneer
@@ -197,19 +196,14 @@ character_event = {
 # Pirates kidnap noble at the high seas!
 character_event = {
 	id = DR_pirates.17
+	hide_window = yes
 	only_playable = yes
 	min_age = 16
 	capable_only = yes
 	prisoner = no
-	hide_window = yes
+	religion = stromfels
 
 	trigger = {
-		religion = stromfels
-		# NOT = {
-		# any_liege = {
-		# NOT = { religion = stromfels }
-		# }
-		# }
 		capital_scope = {
 			port = yes
 		}
@@ -282,30 +276,23 @@ character_event = {
 					port = yes
 				}
 				demesne_size = 1
-				NOT = {
-					same_realm = ROOT
-				}
 				is_within_diplo_range = ROOT
 				OR = {
 					trait = creature_human
 					trait = creature_dwarf
 					trait = creature_elf
 				}
-				NOR = {
-					trait = vampire_strigoi_hidden
-					trait = vampire_necrarch_hidden
-					trait = vampire_strigoi_visible
-					trait = vampire_necrarch_visible
+				not = {
+					same_realm = ROOT
 				}
+				is_undead_trigger = no
 			}
 			random_courtier = {
 				limit = {
 					age = 15
 					prisoner = no
-					NOT = {
+					nor = {
 						trait = in_hiding
-					}
-					NOT = {
 						trait = incapable
 					}
 					has_epidemic = no
@@ -333,12 +320,7 @@ character_event = {
 						trait = creature_dwarf
 						trait = creature_elf
 					}
-					NOR = {
-						trait = vampire_strigoi_hidden
-						trait = vampire_necrarch_hidden
-						trait = vampire_strigoi_visible
-						trait = vampire_necrarch_visible
-					}
+					is_undead_trigger = no
 				}
 				character_event = {
 					id = DR_pirates.18
@@ -346,10 +328,8 @@ character_event = {
 				any_ward = {
 					limit = {
 						prisoner = no
-						NOT = {
+						nor = {
 							trait = in_hiding
-						}
-						NOT = {
 							trait = incapable
 						}
 						in_command = no
@@ -361,10 +341,6 @@ character_event = {
 				}
 			}
 		}
-	}
-
-	option = {
-		name = OK
 	}
 }
 
@@ -520,7 +496,7 @@ character_event = {
 # }
 # # Create a fleet, just to be sure
 # spawn_fleet = {
-# province = closest 
+# province = closest
 # owner = ROOT
 # disband_on_peace = yes
 # troops =

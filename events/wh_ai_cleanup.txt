@@ -139,7 +139,7 @@ character_event = {
 	}
 }
 
-# Everqueen Trait Lost for on_yearly_pulse on_new_holder
+# Everqueen Trait Lost or gain on_yearly_pulse on_new_holder
 character_event = {
 	id = aicleanup.005
 	hide_window = yes
@@ -148,16 +148,32 @@ character_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		trait = everqueen
-		NOT = {
-			has_landed_title = k_avelorn
+		or = {
+			and = {
+				trait = everqueen
+				NOT = {
+					has_landed_title = k_avelorn
+				}
+			}
+			and = {			
+				trait = everqueen_heir
+				has_landed_title = k_avelorn
+			}
 		}
-		is_alive = yes
 	}
 
 	immediate = {
 		log = "work event id = aicleanup.005"
-		remove_trait = everqueen
+		remove_trait = everqueen		
+		# fix everchild
+		if = {
+			limit = {
+				trait = everqueen_heir
+				has_landed_title = k_avelorn
+			}
+			remove_trait = everqueen_heir
+			add_trait = everqueen
+		}
 	}
 }
 

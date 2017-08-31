@@ -8,14 +8,14 @@ namespace = SJDwarfevents
 character_event = {
 	id = SJDwarfevents.1
 	desc = SJDwarfevents.1.desc
-	picture = GFX_evt_feast # <-- insert picture here
+	picture = GFX_evt_feast
 	min_age = 16
 	prisoner = no
-	only_rulers = yes
+	only_playable = yes
 	capable_only = yes
+	culture_group = dwarf_group
 
 	trigger = {
-		culture_group = dwarf_group
 		NOT = {
 			trait = temperate
 		}
@@ -28,12 +28,12 @@ character_event = {
 			trait = drunkard
 		}
 	}
-	# Drink until you can drink no more!
 
 	immediate = {
 		log = "work event id = SJDwarfevents.1"
 	}
 
+	# Drink until you can drink no more!
 	option = {
 		name = SJDwarfevents.1.option1
 		ai_chance = {
@@ -62,8 +62,8 @@ character_event = {
 			}
 		}
 	}
-	# I am a dwarf not a drunkard!
 
+	# I am a dwarf not a drunkard!
 	option = {
 		name = SJDwarfevents.1.option2
 		ai_chance = {
@@ -96,17 +96,16 @@ character_event = {
 
 character_event = {
 	id = SJDwarfevents.2
-	desc = SJDwarfevents.2.desc
-	picture = GFX_evt_council # <-- insert picture name here
-	# Your miners have found a rich vein of high quality gold ore which the miners has eagerly started to work on.
+	desc = SJDwarfevents.2.desc	# Your miners have found a rich vein of high quality gold ore which the miners has eagerly started to work on.
+	picture = GFX_evt_council
 	is_triggered_only = yes
 	only_rulers = yes
 	min_age = 16
 	capable_only = yes
 	prisoner = no
+	culture_group = dwarf_group
 
 	trigger = {
-		culture_group = dwarf_group
 		any_demesne_province = {
 			OR = {
 				has_building = ca_mine_1
@@ -126,12 +125,12 @@ character_event = {
 			trait = greedy
 		}
 	}
-	# What a pleasant surprise!
 
 	immediate = {
 		log = "work event id = SJDwarfevents.2"
 	}
 
+	# What a pleasant surprise!
 	option = {
 		name = SJDwarfevents.2.option1
 		prestige = 20
@@ -149,7 +148,8 @@ character_event = {
 					has_building = ca_mine_5
 					has_building = ca_mine_6
 				}
-			} # rich gold vein found recently
+			}
+			# rich gold vein found recently
 			add_province_modifier = {
 				name = SJ_found_rich_gold_vein_as_dwarf
 				duration = 730
@@ -162,17 +162,17 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.3
 	desc = SJDwarfevents.3.desc
-	picture = GFX_evt_drunk # <-- insert picture here
+	picture = GFX_evt_drunk
 	# A confused dwarf has been found strolling around in the caves beneath [Capital.GetName]. He asks for your permission to stay at your court until he remembers who he was before and where he comes from.
 	is_triggered_only = yes
-	only_rulers = yes
+	only_playable = yes
 	prisoner = no
+	ai = no
+	culture = dwarf_main
+	religion = ancestor_gods
 
 	trigger = {
-		ai = no
 		lower_tier_than = KING
-		culture = dwarf_main
-		religion = ancestor_gods
 		capital_scope = {
 			OR = {
 				terrain = mountain
@@ -184,12 +184,12 @@ character_event = {
 	weight_multiplier = {
 		factor = 1
 	}
-	# You can stay
 
 	immediate = {
 		log = "work event id = SJDwarfevents.3"
 	}
 
+	# You can stay
 	option = {
 		name = SJDwarfevents.3.option1
 		ai_chance = {
@@ -223,8 +223,9 @@ character_event = {
 			}
 		}
 		piety = 10
-	} # I got more important things to worry about.
+	}
 
+	# I got more important things to worry about.
 	option = {
 		name = SJDwarfevents.3.option2
 		ai_chance = {
@@ -248,13 +249,13 @@ character_event = {
 narrative_event = {
 	id = SJDwarfevents.4
 	desc = SJDwarfevents.4.desc # description of dwarfen masonry
-	picture = GFX_evt_castle_construction # <-- insert picture name here
+	picture = GFX_evt_castle_construction
+	is_triggered_only = yes
 
-	trigger = {
+	#trigger = {
 		# 		has_character_flag = SJ_has_not_had_mason_info_event
 		# 		NOT = { has_character_flag = SJ_has_had_mason_info_event }
-	}
-	is_triggered_only = yes
+	#}
 
 	immediate = {
 		log = "work event id = SJDwarfevents.4"
@@ -270,16 +271,15 @@ narrative_event = {
 
 character_event = {
 	id = SJDwarfevents.5
-	desc = SJDwarfevents.5.desc
-	picture = GFX_evt_castle_construction # <-- Insert picture name here
-	# You have tried to make a small statue of a dwarfen warrior warrior, which even though it just barely resembles a dwarf and the axe is way to small, it is still not complete trash.
+	desc = SJDwarfevents.5.desc	# You have tried to make a small statue of a dwarfen warrior warrior, which even though it just barely resembles a dwarf and the axe is way to small, it is still not complete trash.
+	picture = GFX_evt_castle_construction
 	is_triggered_only = yes
-	# A good attempt
 
 	immediate = {
 		log = "work event id = SJDwarfevents.5"
 	}
 
+	# A good attempt
 	option = {
 		name = SJDwarfevents.5.option1
 		prestige = 10
@@ -296,9 +296,8 @@ character_event = {
 
 character_event = {
 	id = SJDwarfevents.6
-	desc = SJDwarfevents.6.desc
-	picture = GFX_evt_castle_construction # <-- insert picture name here
-	# Your attempt at making a small statue of a dwarfen warrior failed miserably. Halfway through you accidentaly broke the statue which probably didn't matter as the statue would have looked awful anyway.
+	desc = SJDwarfevents.6.desc	# Your attempt at making a small statue of a dwarfen warrior failed miserably. Halfway through you accidentaly broke the statue which probably didn't matter as the statue would have looked awful anyway.
+	picture = GFX_evt_castle_construction
 	is_triggered_only = yes
 
 	immediate = {
@@ -317,9 +316,8 @@ character_event = {
 
 character_event = {
 	id = SJDwarfevents.7
-	desc = SJDwarfevents.7.desc
-	picture = GFX_evt_castle_construction # <-- insert picture name here
-	# There is a very rough wall in one the watchtowers in [Capital.GetName] which you have decided to smooth out. The wall actually ended up quit smooth even though there are some scratches in it.
+	desc = SJDwarfevents.7.desc	# There is a very rough wall in one the watchtowers in [Capital.GetName] which you have decided to smooth out. The wall actually ended up quit smooth even though there are some scratches in it.
+	picture = GFX_evt_castle_construction
 	is_triggered_only = yes
 
 	immediate = {
@@ -342,16 +340,15 @@ character_event = {
 
 character_event = {
 	id = SJDwarfevents.8
-	desc = SJDwarfevents.8.desc
-	picture = GFX_evt_castle_construction # <-- insert picture name here
-	# There is a very rough wall in one of your watchtowers in [Capital.GetName] which you have decided to smooth out. The wall just ended up looking even worse than it was before and very unstable.
+	desc = SJDwarfevents.8.desc # There is a very rough wall in one of your watchtowers in [Capital.GetName] which you have decided to smooth out. The wall just ended up looking even worse than it was before and very unstable.
+	picture = GFX_evt_castle_construction
 	is_triggered_only = yes
-	# It will have to be rebuilt
 
 	immediate = {
 		log = "work event id = SJDwarfevents.8"
 	}
 
+	# It will have to be rebuilt
 	option = {
 		name = SJDwarfevents.8.option1
 		prestige = -10
@@ -366,7 +363,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.9
 	desc = SJDwarfevents.9.desc
-	picture = GFX_evt_castle_construction # <-- insert picture name here
+	picture = GFX_evt_castle_construction
 	# You have decided to join your masons in their daily work, they learnt you a lot of new stuff and you are very sure that you can put that practice to the test.
 	is_triggered_only = yes
 
@@ -394,9 +391,8 @@ character_event = {
 
 character_event = {
 	id = SJDwarfevents.10
-	desc = SJDwarfevents.10.desc
-	picture = GFX_evt_castle_construction # <-- insert picture name here
-	# You have decided to join your masons in their daily work, they carefully gave you some tips but you # had a very tough time understanding what they ment so you could not really help them that much.
+	desc = SJDwarfevents.10.desc # You have decided to join your masons in their daily work, they carefully gave you some tips but you # had a very tough time understanding what they ment so you could not really help them that much.
+	picture = GFX_evt_castle_construction
 	is_triggered_only = yes
 	only_rulers = yes
 	min_age = 16
@@ -407,12 +403,12 @@ character_event = {
 		has_character_flag = SJ_dwarfen_new_mason
 		war = no
 	}
-	# It will have to be rebuilt
 
 	immediate = {
 		log = "work event id = SJDwarfevents.10"
 	}
 
+	# It will have to be rebuilt
 	option = {
 		name = SJDwarfevents.10.option1
 		prestige = -10
@@ -425,19 +421,15 @@ character_event = {
 
 character_event = {
 	id = SJDwarfevents.11
-	desc = SJDwarfevents.11.desc
-	picture = GFX_evt_castle_construction # <-- insert picture name here
-	# You have chosen the very uneven floor in the throon room to smooth out. The floor actually ended up quit smooth so you are migthy pleased with yourself now.
+	desc = SJDwarfevents.11.desc # You have chosen the very uneven floor in the throon room to smooth out. The floor actually ended up quit smooth so you are migthy pleased with yourself now.
+	picture = GFX_evt_castle_construction
 	is_triggered_only = yes
 	only_rulers = yes
 	min_age = 16
 	capable_only = yes
 	prisoner = no
-
-	trigger = {
-		has_character_flag = SJ_dwarfen_new_mason
-		war = no
-	}
+	has_character_flag = SJ_dwarfen_new_mason
+	war = no
 
 	immediate = {
 		log = "work event id = SJDwarfevents.11"
@@ -459,25 +451,21 @@ character_event = {
 
 character_event = {
 	id = SJDwarfevents.12
-	desc = SJDwarfevents.12.desc
-	picture = GFX_evt_castle_construction # <-- insert picture name here
-	# You have lately been smoothing out the uneven floor in the throne room, but it ended in complete disaster and you wouldn't be surprised if the floor is even more uneven now than before.
+	desc = SJDwarfevents.12.desc # You have lately been smoothing out the uneven floor in the throne room, but it ended in complete disaster and you wouldn't be surprised if the floor is even more uneven now than before.
+	picture = GFX_evt_castle_construction
 	is_triggered_only = yes
 	only_rulers = yes
 	min_age = 16
 	capable_only = yes
 	prisoner = no
-
-	trigger = {
-		has_character_flag = SJ_dwarfen_new_mason
-		war = no
-	}
-	# It will have to be rebuilt
+	has_character_flag = SJ_dwarfen_new_mason
+	war = no
 
 	immediate = {
 		log = "work event id = SJDwarfevents.12"
 	}
 
+	# It will have to be rebuilt
 	option = {
 		name = SJDwarfevents.12.option1
 		prestige = -50
@@ -490,9 +478,8 @@ character_event = {
 
 character_event = {
 	id = SJDwarfevents.13
-	desc = SJDwarfevents.13.desc
-	picture = GFX_evt_castle_construction # <-- insert picture here
-	# Your skills in masonry has improved significantly. You are now at the level of your own masons, which considering how good dwarfs are at masonry is quite an achievment!
+	desc = SJDwarfevents.13.desc # Your skills in masonry has improved significantly. You are now at the level of your own masons, which considering how good dwarfs are at masonry is quite an achievment!
+	picture = GFX_evt_castle_construction
 	is_triggered_only = yes
 
 	immediate = {
@@ -512,9 +499,8 @@ character_event = {
 
 character_event = {
 	id = SJDwarfevents.14
-	desc = SJDwarfevents.14.desc
-	picture = GFX_evt_castle_construction # <-- insert picture name here
-	# You decided a while back to engrave the pillars in your throne room, which you have now finally finished. The elaborate runes cover most of the pillars which now stands firmly in your throne room.
+	desc = SJDwarfevents.14.desc # You decided a while back to engrave the pillars in your throne room, which you have now finally finished. The elaborate runes cover most of the pillars which now stands firmly in your throne room.
+	picture = GFX_evt_castle_construction
 	is_triggered_only = yes
 
 	immediate = {
@@ -536,9 +522,8 @@ character_event = {
 
 character_event = {
 	id = SJDwarfevents.15
-	desc = SJDwarfevents.15.desc
-	picture = GFX_evt_castle_construction # <-- insert picture here
-	# You decided some time ago to engrave the pillars in your throne room. But you have at several points in the engraving accidentally left large cracks in the pillars so you sadly need to buy new ones.
+	desc = SJDwarfevents.15.desc # You decided some time ago to engrave the pillars in your throne room. But you have at several points in the engraving accidentally left large cracks in the pillars so you sadly need to buy new ones.
+	picture = GFX_evt_castle_construction
 	is_triggered_only = yes
 
 	immediate = {
@@ -557,9 +542,8 @@ character_event = {
 
 character_event = {
 	id = SJDwarfevents.16
-	desc = SJDwarfevents.16.desc
-	picture = GFX_evt_castle_construction # <-- insert picture name here
-	# You have for the last weeks been working on rebuilding the entrance to the castle as the entrance was very battered. The entrance looks sturdier than ever before which pleases you enormously.
+	desc = SJDwarfevents.16.desc # You have for the last weeks been working on rebuilding the entrance to the castle as the entrance was very battered. The entrance looks sturdier than ever before which pleases you enormously.
+	picture = GFX_evt_castle_construction
 	is_triggered_only = yes
 
 	immediate = {
@@ -581,9 +565,8 @@ character_event = {
 
 character_event = {
 	id = SJDwarfevents.17
-	desc = SJDwarfevents.17.desc
-	picture = GFX_evt_castle_construction # <-- insert picture here
-	# While repairing the castle's entrance so did it accidentaly collaps in on itself so you have been forced to reinforce with a couple of sellswords to guard the entrance in the meantime.
+	desc = SJDwarfevents.17.desc # While repairing the castle's entrance so did it accidentaly collaps in on itself so you have been forced to reinforce with a couple of sellswords to guard the entrance in the meantime.
+	picture = GFX_evt_castle_construction
 	is_triggered_only = yes
 
 	immediate = {
@@ -603,9 +586,8 @@ character_event = {
 
 character_event = {
 	id = SJDwarfevents.18
-	desc = SJDwarfevents.18.desc
-	picture = GFX_evt_castle_construction # <-- insert picture name here
-	# The reparations of the castles battlements has gone far better than expected, the battlements are not only wider but also considerably more redoubtable!
+	desc = SJDwarfevents.18.desc # The reparations of the castles battlements has gone far better than expected, the battlements are not only wider but also considerably more redoubtable!
+	picture = GFX_evt_castle_construction
 	is_triggered_only = yes
 
 	immediate = {
@@ -631,9 +613,8 @@ character_event = {
 
 character_event = {
 	id = SJDwarfevents.19
-	desc = SJDwarfevents.19.desc
-	picture = GFX_evt_castle_construction # <-- insert picture here
-	# While repairing the castle's entrance so did it accidentally collapse in on itself so you have been forced to reinforce with a couple of sellswords to guard the entrance in the meantime.
+	desc = SJDwarfevents.19.desc # While repairing the castle's entrance so did it accidentally collapse in on itself so you have been forced to reinforce with a couple of sellswords to guard the entrance in the meantime.
+	picture = GFX_evt_castle_construction
 	is_triggered_only = yes
 
 	immediate = {
@@ -659,9 +640,8 @@ character_event = {
 
 character_event = {
 	id = SJDwarfevents.20
-	desc = SJDwarfevents.20.desc
-	picture = GFX_evt_spymaster # <-- insert picture name here
-	# Your rival deserves to feel pain and what better way to make him feel pain than to destroy what he loves, like his statues...
+	desc = SJDwarfevents.20.desc # Your rival deserves to feel pain and what better way to make him feel pain than to destroy what he loves, like his statues...
+	picture = GFX_evt_spymaster
 	prisoner = no
 	min_age = 16
 	capable_only = yes
@@ -682,12 +662,12 @@ character_event = {
 			trait = envious
 		}
 	}
-	# Do it
 
 	immediate = {
 		log = "work event id = SJDwarfevents.20"
 	}
 
+	# Do it
 	option = {
 		name = SJDwarfevents.20.option1
 		ai_chance = {
@@ -730,8 +710,9 @@ character_event = {
 				days = 2
 			}
 		}
-	} # Don't do it
+	}
 
+	# Don't do it
 	option = {
 		name = SJDwarfevents.20.option2
 		ai_chance = {
@@ -759,16 +740,15 @@ character_event = {
 
 character_event = {
 	id = SJDwarfevents.21
-	desc = SJDwarfevents.21.desc
-	picture = GFX_evt_courtiers_talking # <-- insert picture name here
-	# One morning when you come down to your statue workshop you suddenly see most of the statues shattered on the floor. Several years of work now lies shattered on the floor.
+	desc = SJDwarfevents.21.desc # One morning when you come down to your statue workshop you suddenly see most of the statues shattered on the floor. Several years of work now lies shattered on the floor.
+	picture = GFX_evt_courtiers_talking
 	is_triggered_only = yes
-	# MY STATUES!!!
 
 	immediate = {
 		log = "work event id = SJDwarfevents.21"
 	}
 
+	# MY STATUES!!!
 	option = {
 		name = SJDwarfevents.21.option1
 		prestige = -250
@@ -793,16 +773,15 @@ character_event = {
 
 character_event = {
 	id = SJDwarfevents.22
-	desc = SJDwarfevents.22.desc
-	picture = GFX_evt_spymaster # <-- insert picture here
-	# [From.GetTitledName] has finally felt the pain that [From.GetSHeHe] deserves. Rumor says that [From.GetSheHe] is devastated by [From.GetHerHis] loss and you can't stop yourself from grinning at the news.
+	desc = SJDwarfevents.22.desc # [From.GetTitledName] has finally felt the pain that [From.GetSHeHe] deserves. Rumor says that [From.GetSheHe] is devastated by [From.GetHerHis] loss and you can't stop yourself from grinning at the news.
+	picture = GFX_evt_spymaster
 	is_triggered_only = yes
-	# I am so sneaky!
 
 	immediate = {
 		log = "work event id = SJDwarfevents.22"
 	}
 
+	# I am so sneaky!
 	option = {
 		name = SJDwarfevents.22.option1
 		change_intrigue = 1
@@ -811,16 +790,15 @@ character_event = {
 
 character_event = {
 	id = SJDwarfevents.23
-	desc = SJDwarfevents.23.desc
-	picture = GFX_evt_castle_construction # <-- insert picture here
-	# The road network in one of your provinces is severely lacking after a small flood which destroyed most of the bridges that were still there. But you and your masons may be able to rebuild them again.
+	desc = SJDwarfevents.23.desc # The road network in one of your provinces is severely lacking after a small flood which destroyed most of the bridges that were still there. But you and your masons may be able to rebuild them again.
+	picture = GFX_evt_castle_construction
 	is_triggered_only = yes
-	# And we will rebuild them even better this time
 
 	immediate = {
 		log = "work event id = SJDwarfevents.23"
 	}
 
+	# And we will rebuild them even better this time
 	option = {
 		name = SJDwarfevents.23.option1
 		ai_chance = {
@@ -862,8 +840,9 @@ character_event = {
 			}
 		}
 		prestige = 50
-	} # I wasn't planning on travelling there anyway
+	}
 
+	# I wasn't planning on travelling there anyway
 	option = {
 		name = SJDwarfevents.23.option2
 		ai_chance = {
@@ -875,16 +854,15 @@ character_event = {
 
 character_event = {
 	id = SJDwarfevents.24
-	desc = SJDwarfevents.24.desc
-	picture = GFX_evt_castle_construction # <-- insert picture here
-	# You have for a long time thought about creating a statue of one of three most important of the ancestral gods - Valaya, Grimnir or Grungni. But who will you choose?
+	desc = SJDwarfevents.24.desc # You have for a long time thought about creating a statue of one of three most important of the ancestral gods - Valaya, Grimnir or Grungni. But who will you choose?
+	picture = GFX_evt_castle_construction
 	is_triggered_only = yes
-	# will make a statue of Grimnir
 
 	immediate = {
 		log = "work event id = SJDwarfevents.24"
 	}
 
+	# will make a statue of Grimnir
 	option = {
 		name = SJDwarfevents.24.option1
 		ai_chance = {
@@ -913,8 +891,9 @@ character_event = {
 				}
 			}
 		}
-	} # I will make a statue of Grungni
+	}
 
+	# I will make a statue of Grungni
 	option = {
 		name = SJDwarfevents.24.option2
 		ai_chance = {
@@ -943,8 +922,8 @@ character_event = {
 				}
 			}
 		}
-	} # I will make statue of Valaya
-
+	}
+	# I will make statue of Valaya
 	option = {
 		name = SJDwarfevents.24.option3
 		ai_chance = {
@@ -1004,7 +983,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.25
 	desc = SJDwarfevents.25.desc
-	picture = GFX_evt_spymaster # <-- insert picture name here
+	picture = GFX_evt_spymaster
 	min_age = 16
 	capable_only = yes
 	prisoner = no
@@ -1182,7 +1161,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.26
 	desc = SJDwarfevents.26.desc
-	picture = GFX_evt_spymaster # <-- insert picture name here
+	picture = GFX_evt_spymaster
 	is_triggered_only = yes
 
 	immediate = {
@@ -1213,7 +1192,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.27
 	desc = SJDwarfevents.27.desc
-	picture = GFX_evt_spymaster # <-- insert picture name here
+	picture = GFX_evt_spymaster
 	is_triggered_only = yes
 
 	immediate = {
@@ -1246,7 +1225,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.28
 	desc = SJDwarfevents.28.desc
-	picture = GFX_evt_spymaster # <-- insert picture name here
+	picture = GFX_evt_spymaster
 	is_triggered_only = yes
 
 	immediate = {
@@ -1281,7 +1260,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.29
 	desc = SJDwarfevents.29.desc
-	picture = GFX_evt_spymaster # <-- insert picture name here
+	picture = GFX_evt_spymaster
 	is_triggered_only = yes
 
 	immediate = {
@@ -1298,7 +1277,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.30
 	desc = SJDwarfevents.30.desc
-	picture = GFX_evt_spymaster # <-- insert picture name here
+	picture = GFX_evt_spymaster
 	is_triggered_only = yes
 
 	immediate = {
@@ -1323,7 +1302,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.31
 	desc = SJDwarfevents.31.desc
-	picture = GFX_evt_castle_construction # <-- insert picture name here
+	picture = GFX_evt_castle_construction
 	is_triggered_only = yes
 
 	immediate = {
@@ -1370,7 +1349,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.32
 	desc = SJDwarfevents.32.desc
-	picture = GFX_evt_castle_construction # <-- insert picture name here
+	picture = GFX_evt_castle_construction
 	is_triggered_only = yes
 
 	immediate = {
@@ -1390,7 +1369,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.33
 	desc = SJDwarfevents.33.desc
-	picture = GFX_evt_castle_construction # <-- insert picture here
+	picture = GFX_evt_castle_construction
 	is_triggered_only = yes
 
 	immediate = {
@@ -1412,7 +1391,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.34
 	desc = SJDwarfevents.34.desc
-	picture = GFX_evt_castle_construction # <-- insert picture here
+	picture = GFX_evt_castle_construction
 	is_triggered_only = yes
 
 	immediate = {
@@ -1473,89 +1452,18 @@ character_event = {
 	}
 }
 
-# Removes double traits # There's no such thing as double traits - Silfae
-# character_event = {
-
-# 	id = SJDwarfevents.35
-# 	hide_window = yes
-
-# 	is_triggered_only = yes
-# 	min_age = 75
-
-# 	trigger = {
-# 		OR = {
-
-# 			ROOT = {
-# 				trait = thunderer
-
-# 				count = 2
-# 			}
-
-# 			ROOT = {
-# 				trait = quarreller
-
-# 				count = 2
-# 			}
-
-# 			ROOT = {
-# 				trait = dwarf_warrior
-
-# 				count = 2
-# 			}
-
-# 		}
-# 	}
-
-# 	immediate = {
-# 		if = {
-
-# 			limit = {
-# 				ROOT = {
-
-# 					trait = quarreller
-# 				}
-
-# 			}
-# 			remove_trait = quarreller
-
-# 		}
-# 		if = {
-
-# 			limit = {
-# 				ROOT = {
-
-# 					trait = thunderer
-# 				}
-
-# 			}
-# 			remove_trait = thunderer
-
-# 		}
-# 		if = {
-
-# 			limit = {
-# 				ROOT = {
-
-# 					trait = dwarf_warrior
-# 				}
-
-# 			}
-# 			remove_trait = dwarf_warrior
-
-# 		}
-# 	}
-
-# }
 # Visiting humans and tastes their awful beer! :)
 character_event = {
 	id = SJDwarfevents.36
 	desc = SJDwarfevents.36.desc
-	picture = GFX_evt_feast # <-- insert picture name here
+	picture = GFX_evt_feast
 	only_rulers = yes
 	min_age = 16
 	capable_only = yes
 	prisoner = no
 	only_men = yes
+	culture_group = dwarf_group
+	war = no
 
 	trigger = {
 		trait = creature_dwarf
@@ -1571,7 +1479,6 @@ character_event = {
 			}
 			war = no
 		}
-		war = no
 	}
 
 	mean_time_to_happen = {
@@ -1589,12 +1496,12 @@ character_event = {
 			trait = temperate
 		}
 	}
-	# Are you trying to poison me?!
 
 	immediate = {
 		log = "work event id = SJDwarfevents.36"
 	}
 
+	# Are you trying to poison me?!
 	option = {
 		name = SJDwarfevents.36.option1
 		ai_chance = {
@@ -1656,8 +1563,8 @@ character_event = {
 		}
 		piety = -10
 	}
-	# You don't say a thing
 
+	# You don't say a thing
 	option = {
 		name = SJDwarfevents.36.option2
 		ai_chance = {
@@ -1695,14 +1602,14 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.37
 	desc = SJDwarfevents.37.desc
-	picture = GFX_evt_feast # <-- insert picture name here
+	picture = GFX_evt_feast
 	is_triggered_only = yes
-	# Stop being so rude, dwarf!
 
 	immediate = {
 		log = "work event id = SJDwarfevents.37"
 	}
 
+	# Stop being so rude, dwarf!
 	option = {
 		name = SJDwarfevents.37.option1
 		ai_chance = {
@@ -1740,8 +1647,8 @@ character_event = {
 			}
 		}
 	}
-	# You give the dwarf some of your dwarfen beer
 
+	# You give the dwarf some of your dwarfen beer
 	option = {
 		name = SJDwarfevents.37.option2
 		trigger = {
@@ -1770,8 +1677,8 @@ character_event = {
 			}
 		}
 	}
-	# Buy some dwarfen beer.
 
+	# Buy some dwarfen beer.
 	option = {
 		name = SJDwarfevents.37.option3
 		ai_chance = {
@@ -1834,7 +1741,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.38
 	desc = SJDwarfevents.38.desc
-	picture = GFX_evt_feast # <-- insert picture name here
+	picture = GFX_evt_feast
 	is_triggered_only = yes
 
 	immediate = {
@@ -1857,7 +1764,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.39
 	desc = SJDwarfevents.39.desc
-	picture = GFX_evt_feast # <-- insert picture name here
+	picture = GFX_evt_feast
 	is_triggered_only = yes
 
 	immediate = {
@@ -1880,14 +1787,10 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.40
 	desc = SJDwarfevents.40.desc
-	picture = GFX_evt_feast # <-- insert picture name here
+	picture = GFX_evt_feast
 	min_age = 40
 	max_age = 400
 	culture_group = dwarf_group
-
-	trigger = {
-		culture_group = dwarf_group
-	}
 
 	mean_time_to_happen = {
 		years = 150
@@ -1896,12 +1799,12 @@ character_event = {
 			trait = envious
 		}
 	}
-	# We are a glorious folk
 
 	immediate = {
 		log = "work event id = SJDwarfevents.40"
 	}
 
+	# We are a glorious folk
 	option = {
 		name = SJDwarfevents.40.option1
 		ai_chance = {
@@ -1947,46 +1850,24 @@ character_event = {
 	}
 }
 
-# Now the traits are opposites and therefore cannot coexist by design - Silfae
-# character_event = {
-
-# 	id = SJDwarfevents.41
-# 	hide_window = yes
-
-# 	trigger = {
-# 		trait = dwarf_mason
-
-# 		trait = dwarf_master_mason
-# 	}
-
-# 	mean_time_to_happen = {
-# 		days = 1
-
-# 	}
-# 	immediate = {
-
-# 		remove_trait = dwarf_mason
-# 	}
-
-# }
 # Visiting tavern
 
 # Will you visit the tavern or not?
 character_event = {
 	id = SJDwarfevents.42
 	desc = SJDwarfevents.42.desc
-	picture = GFX_evt_feast # <-- insert picture name here
+	picture = GFX_evt_feast
 	is_triggered_only = yes
 	only_rulers = yes
 	min_age = 16
 	max_age = 400
 	capable_only = yes
 	prisoner = no
+	culture_group = dwarf_group
+	religion_group = dwarf_gods_group
 
 	trigger = {
 		trait = creature_dwarf
-		culture_group = dwarf_group
-		religion_group = dwarf_gods_group
 		NOT = {
 			trait = temperate
 			higher_tier_than = DUKE
@@ -1996,12 +1877,12 @@ character_event = {
 	weight_multiplier = {
 		factor = 1
 	}
-	# I will!!!
 
 	immediate = {
 		log = "work event id = SJDwarfevents.42"
 	}
 
+	# I will!!!
 	option = {
 		name = SJDwarfevents.42.option1
 		ai_chance = {
@@ -2015,8 +1896,9 @@ character_event = {
 			id = SJDwarfevents.43
 			tooltip = SJDwarftooltips.tooltip13
 		}
-	}# I don't think so...
+	}
 
+	# I don't think so...
 	option = {
 		name = SJDwarfevents.42.option2
 		ai_chance = {
@@ -2027,8 +1909,9 @@ character_event = {
 			chance = 20
 			add_trait = shy
 		}
-	}# I got work to do!
+	}
 
+	# I got work to do!
 	option = {
 		name = SJDwarfevents.42.option3
 		trigger = {
@@ -2049,14 +1932,14 @@ character_event = {
 narrative_event = {
 	id = SJDwarfevents.43
 	desc = SJDwarfevents.43.desc
-	picture = GFX_evt_feast # <-- insert picture name here
+	picture = GFX_evt_feast
 	is_triggered_only = yes
-	# Sit by yourself
 
 	immediate = {
 		log = "work event id = SJDwarfevents.43"
 	}
 
+	# Sit by yourself
 	option = {
 		name = SJDwarfevents.43.option1
 		ai_chance = {
@@ -2114,8 +1997,9 @@ narrative_event = {
 				}
 			}
 		}
-	}# Visit the human traders from far away lands
+	}
 
+	# Visit the human traders from far away lands
 	option = {
 		name = SJDwarfevents.43.option2
 		ai_chance = {
@@ -2184,8 +2068,9 @@ narrative_event = {
 				}
 			}
 		}
-	} # Visit the drinking dwarfs
+	}
 
+	# Visit the drinking dwarfs
 	option = {
 		name = SJDwarfevents.43.option3
 		ai_chance = {
@@ -2236,7 +2121,7 @@ narrative_event = {
 character_event = {
 	id = SJDwarfevents.44
 	desc = SJDwarfevents.44.desc
-	picture = GFX_evt_feast # <-- insert picture name here
+	picture = GFX_evt_feast
 	is_triggered_only = yes
 
 	immediate = {
@@ -2321,7 +2206,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.45
 	desc = SJDwarfevents.45.desc
-	picture = GFX_evt_feast # <-- insert picture name here
+	picture = GFX_evt_feast
 	is_triggered_only = yes
 
 	immediate = {
@@ -2395,7 +2280,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.46
 	desc = SJDwarfevents.46.desc
-	picture = GFX_evt_drunk # <-- insert picture name here
+	picture = GFX_evt_drunk
 	is_triggered_only = yes
 
 	immediate = {
@@ -2466,14 +2351,14 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.47
 	desc = SJDwarfevents.47.desc
-	picture = GFX_evt_feast # <-- insert picture name here
+	picture = GFX_evt_feast
 	is_triggered_only = yes
-	# Accept
 
 	immediate = {
 		log = "work event id = SJDwarfevents.47"
 	}
 
+	# Accept
 	option = {
 		name = SJDwarfevents.47.option1
 		ai_chance = {
@@ -2491,21 +2376,19 @@ character_event = {
 				trait = trusting
 			}
 		}
-		ROOT = {
-			random_courtier = {
-				limit = {
-					NOT = {
-						num_of_friends = 2
-						is_rival = ROOT
-						distance = {
-							who = ROOT
-							distance = 2
-						}
+		random_courtier = {
+			limit = {
+				NOT = {
+					num_of_friends = 2
+					is_rival = ROOT
+					distance = {
+						who = ROOT
+						distance = 2
 					}
-					age = 16
 				}
-				add_friend = ROOT
+				age = 16
 			}
+			add_friend = ROOT
 		}
 		hidden_tooltip = {
 			character_event = {
@@ -2513,8 +2396,9 @@ character_event = {
 				days = 1
 			}
 		}
-	} # Don't accept
+	}
 
+	# Don't accept
 	option = {
 		name = SJDwarfevents.47.option2
 		ai_chance = {
@@ -2545,14 +2429,14 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.48
 	desc = SJDwarfevents.48.desc
-	picture = GFX_evt_feast # <-- insert picture name here
+	picture = GFX_evt_feast
 	is_triggered_only = yes
-	# Buy the book
 
 	immediate = {
 		log = "work event id = SJDwarfevents.48"
 	}
 
+	# Buy the book
 	option = {
 		name = SJDwarfevents.48.option1
 		ai_chance = {
@@ -2589,8 +2473,9 @@ character_event = {
 				}
 			}
 		}
-	} # It is obviously a fraud
+	}
 
+	# It is obviously a fraud
 	option = {
 		name = SJDwarfevents.48.option2
 		ai_chance = {
@@ -2625,7 +2510,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.49
 	desc = SJDwarfevents.49.desc
-	picture = GFX_evt_library # <-- insert picture name here
+	picture = GFX_evt_library
 	is_triggered_only = yes
 
 	immediate = {
@@ -2652,7 +2537,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.50
 	desc = SJDwarfevents.50.desc
-	picture = GFX_evt_library # <-- insert picture name here
+	picture = GFX_evt_library
 	is_triggered_only = yes
 
 	immediate = {
@@ -2675,7 +2560,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.51
 	desc = SJDwarfevents.51.desc
-	picture = GFX_evt_feast # <-- insert picture name here
+	picture = GFX_evt_feast
 	is_triggered_only = yes
 
 	immediate = {
@@ -2701,7 +2586,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.52
 	desc = SJDwarfevents.52.desc
-	picture = GFX_evt_feast # <-- insert picture name here
+	picture = GFX_evt_feast
 	is_triggered_only = yes
 
 	immediate = {
@@ -2724,7 +2609,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.53
 	desc = SJDwarfevents.53.desc
-	picture = GFX_evt_feast # <-- insert picture name here
+	picture = GFX_evt_feast
 	is_triggered_only = yes
 
 	immediate = {
@@ -2765,7 +2650,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.54
 	desc = SJDwarfevents.54.desc
-	picture = GFX_evt_feast # <-- insert picture name here
+	picture = GFX_evt_feast
 	is_triggered_only = yes
 
 	immediate = {
@@ -2810,7 +2695,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.55
 	desc = SJDwarfevents.55.desc
-	picture = GFX_evt_feast # <-- insert picture name here
+	picture = GFX_evt_feast
 	is_triggered_only = yes
 
 	immediate = {
@@ -2843,14 +2728,14 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.56
 	desc = SJDwarfevents.56.desc
-	picture = GFX_evt_feast # <-- insert picture name here
+	picture = GFX_evt_feast
 	is_triggered_only = yes
-	# accept
 
 	immediate = {
 		log = "work event id = SJDwarfevents.56"
 	}
 
+	# accept
 	option = {
 		name = SJDwarfevents.56.option1
 		ai_chance = {
@@ -2912,7 +2797,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.57
 	desc = SJDwarfevents.57.desc
-	picture = GFX_evt_feast # <-- insert picture name here
+	picture = GFX_evt_feast
 	is_triggered_only = yes
 
 	immediate = {
@@ -2940,7 +2825,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.58
 	desc = SJDwarfevents.58.desc
-	picture = GFX_evt_feast # <-- insert picture name here
+	picture = GFX_evt_feast
 	is_triggered_only = yes
 
 	immediate = {
@@ -2964,7 +2849,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.59
 	desc = SJDwarfevents.59.desc
-	picture = GFX_evt_feast # <-- insert picture name here
+	picture = GFX_evt_feast
 	is_triggered_only = yes
 
 	immediate = {
@@ -2977,7 +2862,6 @@ character_event = {
 }
 
 # umbrella event for masonry events
-
 character_event = {
 	id = SJDwarfevents.60
 	hide_window = yes
@@ -3174,13 +3058,13 @@ character_event = {
 # Dwarfen children gets the beardling trait
 character_event = {
 	id = SJDwarfevents.61
-	is_triggered_only = yes
 	hide_window = yes
+	culture_group = dwarf_group
+	religion_group = dwarf_gods_group
+	is_triggered_only = yes
 
 	trigger = {
 		trait = creature_dwarf
-		culture_group = dwarf_group
-		religion_group = dwarf_gods_group
 		NOT = {
 			trait = beardling
 		}
@@ -3196,52 +3080,34 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.62
 	desc = SJDwarfevents.62.desc
-	picture = GFX_evt_child_play # <-- insert picture name here
+	picture = GFX_evt_child_play
 	only_men = yes
 	min_age = 75
 	max_age = 90
+	culture_group = dwarf_group
 
 	trigger = {
 		trait = beardling
 		trait = creature_dwarf
-		culture_group = dwarf_group
-		NOT = {
+		nor = {
 			trait = thunderer
-		}
-		NOT = {
 			trait = quarreller
-		}
-		NOT = {
 			trait = dwarf_warrior
-		}
-		NOT = {
 			trait = longbeard
-		}
-		NOT = {
 			trait = ironbreaker
-		}
-		NOT = {
 			trait = hammerer
-		}
-		NOT = {
 			has_character_flag = dwarf_did_not_become_warrior
-		}
-		NOT = {
 			has_character_flag = becoming_thunderer
-		}
-		NOT = {
 			has_character_flag = becoming_quarreller
-		}
-		NOT = {
 			has_character_flag = becoming_dwarf_warrior
 		}
 	}
-	# Becomes Quarreller
 
 	immediate = {
 		log = "work event id = SJDwarfevents.62"
 	}
 
+	# Becomes Quarreller
 	option = {
 		trigger = {
 			not = {
@@ -3417,8 +3283,9 @@ character_event = {
 			id = SJDwarfevents.63
 			tooltip = SJDwarftooltips.tooltip20
 		}
-	} # Becomes dwarfen warrior
+	}
 
+	# Becomes dwarfen warrior
 	option = {
 		trigger = {
 			not = {
@@ -3580,8 +3447,9 @@ character_event = {
 			id = SJDwarfevents.63
 			tooltip = SJDwarftooltips.tooltip20
 		}
-	} # Becomes thunderer
+	}
 
+	# Becomes thunderer
 	option = {
 		trigger = {
 			not = {
@@ -3757,8 +3625,9 @@ character_event = {
 			id = SJDwarfevents.63
 			tooltip = SJDwarftooltips.tooltip20
 		}
-	} # Don't become anything at all
+	}
 
+	# Don't become anything at all
 	option = {
 		name = SJDwarfevents.62.option4
 		trigger = {
@@ -3797,7 +3666,7 @@ character_event = {
 # training - start
 narrative_event = {
 	id = SJDwarfevents.63
-	picture = GFX_evt_meele # <-- insert picture name here
+	picture = GFX_evt_meele
 	desc = {
 		text = SJDwarfevents.63a.desc
 		trigger = {
@@ -3826,8 +3695,8 @@ narrative_event = {
 		name = SJDwarfevents.63.option1
 		hidden_tooltip = {
 			random_list = {
+				# You do well
 				75 = {
-					# You do well
 					modifier = {
 						factor = 0.5
 						NOT = {
@@ -3838,11 +3707,12 @@ narrative_event = {
 						id = SJDwarfevents.64
 					}
 				}
+				# You do poorly
 				25 = {
 					modifier = {
 						factor = 0.5
 						martial = 15
-					} # You do poorly
+					}
 					character_event = {
 						id = SJDwarfevents.65
 					}
@@ -3856,7 +3726,7 @@ narrative_event = {
 # The training goes well
 character_event = {
 	id = SJDwarfevents.64
-	picture = GFX_evt_meele # <-- insert picture name here
+	picture = GFX_evt_meele
 	desc = {
 		text = SJDwarfevents.64a.desc
 		trigger = {
@@ -3894,7 +3764,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.65
 	desc = SJDwarfevents.65.desc
-	picture = GFX_evt_meele # <-- insert picture name here
+	picture = GFX_evt_meele
 	is_triggered_only = yes
 
 	immediate = {
@@ -3916,7 +3786,7 @@ character_event = {
 # You become a Quarreller/Dwarfen warrior/Thunderer
 character_event = {
 	id = SJDwarfevents.66
-	picture = GFX_evt_knight_kneeling # <-- insert picture name here
+	picture = GFX_evt_knight_kneeling
 	desc = {
 		text = SJDwarfevents.66a.desc
 		trigger = {
@@ -3973,7 +3843,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.67
 	desc = SJDwarfevents.67.desc
-	picture = GFX_evt_knight_kneeling # <-- insert picture name here
+	picture = GFX_evt_knight_kneeling
 	is_triggered_only = yes
 
 	immediate = {
@@ -3999,7 +3869,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.68
 	desc = SJDwarfevents.68.desc
-	picture = GFX_evt_knight_kneeling # <-- insert picture name here
+	picture = GFX_evt_knight_kneeling
 	only_rulers = yes
 	min_age = 250
 	max_age = 270
@@ -4018,12 +3888,12 @@ character_event = {
 	mean_time_to_happen = {
 		years = 10
 	}
-	# Becomes Longbeard
 
 	immediate = {
 		log = "work event id = SJDwarfevents.68"
 	}
 
+	# Becomes Longbeard
 	option = {
 		name = SJDwarfevents.68.option1
 		ai_chance = {
@@ -4033,8 +3903,8 @@ character_event = {
 		prestige = 200
 		piety = 50
 	}
-	# Becomes Ironbreaker
 
+	# Becomes Ironbreaker
 	option = {
 		name = SJDwarfevents.68.option2
 		trigger = {
@@ -4058,7 +3928,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.69
 	desc = SJDwarfevents.69.desc
-	picture = GFX_evt_knight_kneeling # <-- insert picture name here
+	picture = GFX_evt_knight_kneeling
 	is_triggered_only = yes
 
 	immediate = {
@@ -4176,7 +4046,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.72
 	desc = SJDwarfevents.72.desc
-	picture = GFX_evt_battle # <-- insert picture name here
+	picture = GFX_evt_battle
 	is_triggered_only = yes
 	only_rulers = yes
 	min_age = 75
@@ -4186,7 +4056,7 @@ character_event = {
 	trigger = {
 		trait = dwarf_warrior
 		martial = 15
-		NOT = {
+		nor = {
 			trait = craven
 			trait = maimed
 		}
@@ -4227,7 +4097,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.73
 	desc = SJDwarfevents.73.desc
-	picture = GFX_evt_battle # <-- insert picture name here
+	picture = GFX_evt_battle
 	is_triggered_only = yes
 	only_rulers = yes
 	min_age = 75
@@ -4237,7 +4107,7 @@ character_event = {
 	trigger = {
 		trait = thunderer
 		martial = 15
-		NOT = {
+		nor = {
 			trait = craven
 			trait = maimed
 		}
@@ -4278,7 +4148,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.74
 	desc = SJDwarfevents.74.desc
-	picture = GFX_evt_battle # <-- insert picture name here
+	picture = GFX_evt_battle
 	is_triggered_only = yes
 	only_rulers = yes
 	min_age = 16
@@ -4288,7 +4158,7 @@ character_event = {
 	trigger = {
 		trait = quarreller
 		martial = 15
-		NOT = {
+		nor = {
 			trait = craven
 			trait = maimed
 		}
@@ -4328,7 +4198,7 @@ character_event = {
 # Characters meet on the training field (start)
 character_event = {
 	id = SJDwarfevents.75
-	picture = GFX_evt_family_feud_republic # <-- insert picture name here
+	picture = GFX_evt_family_feud_republic
 	desc = {
 		text = SJDwarfevents.75a.desc
 		trigger = {
@@ -4352,21 +4222,20 @@ character_event = {
 	min_age = 75
 	capable_only = yes
 	prisoner = no
+	culture_group = dwarf_group
+	religion_group = dwarf_gods_group
 
 	trigger = {
 		trait = creature_dwarf
-		culture_group = dwarf_group
-		religion_group = dwarf_gods_group
 		OR = {
 			trait = thunderer
 			trait = dwarf_warrior
 			trait = quarreller
 
 		}
-		NOT = {
+		nor = {
 			trait = maimed
 			trait = slothful
-
 		}
 		any_courtier = {
 			OR = {
@@ -4390,12 +4259,12 @@ character_event = {
 		factor = 1
 
 	}
-	# You practice together
 
 	immediate = {
 		log = "work event id = SJDwarfevents.75"
 	}
 
+	# You practice together
 	option = {
 		name = SJDwarfevents.75.option1
 		ai_chance = {
@@ -4456,8 +4325,9 @@ character_event = {
 			}
 
 		}
-	} # You don't practice together
+	}
 
+	# You don't practice together
 	option = {
 		name = SJDwarfevents.75.option1
 		ai_chance = {
@@ -4481,10 +4351,10 @@ character_event = {
 	}
 }
 
-# # You duel together (friendly of course)
+# You duel together (friendly of course)
 character_event = {
 	id = SJDwarfevents.76
-	picture = GFX_evt_family_feud_republic # <-- insert picture name here
+	picture = GFX_evt_family_feud_republic
 	desc = {
 		text = SJDwarfevents.75a.desc
 		trigger = {
@@ -4525,7 +4395,6 @@ character_event = {
 		}
 		event_target:dueling_partner_dwarf = {
 			clear_event_target = dueling_partner_dwarf
-
 		}
 	}
 }
@@ -4534,22 +4403,21 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.77
 	desc = SJDwarfevents.77.desc
-	picture = GFX_evt_battle # <-- insert picture name here
+	picture = GFX_evt_battle
 	is_triggered_only = yes
 	min_age = 75
 	capable_only = yes
 	prisoner = no
+	culture_group = dwarf_group
+	religion_group = dwarf_gods_group
 
 	trigger = {
 		trait = creature_dwarf
-		culture_group = dwarf_group
-		religion_group = dwarf_gods_group
 		OR = {
 			trait = dwarf_warrior
 			trait = hammerer
 			trait = ironbreaker
 			trait = longbeard
-
 		}
 		any_realm_lord = {
 			in_battle = yes
@@ -4597,7 +4465,6 @@ character_event = {
 
 			}
 		}
-
 	}
 }
 
@@ -4605,7 +4472,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.78
 	desc = SJDwarfevents.78.desc
-	picture = GFX_evt_battle # <-- insert picture name here
+	picture = GFX_evt_battle
 	is_triggered_only = yes
 
 	immediate = {
@@ -4630,7 +4497,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.79
 	desc = SJDwarfevents.79.desc
-	picture = GFX_evt_battle # <-- insert picture name here
+	picture = GFX_evt_battle
 	is_triggered_only = yes
 
 	immediate = {
@@ -4664,7 +4531,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.80
 	desc = SJDwarfevents.80.desc
-	picture = GFX_evt_battle # <-- insert picture name here
+	picture = GFX_evt_battle
 	is_triggered_only = yes
 
 	immediate = {
@@ -4687,7 +4554,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.81
 	desc = SJDwarfevents.81.desc
-	picture = GFX_evt_battle # <-- insert picture name here
+	picture = GFX_evt_battle
 	is_triggered_only = yes
 	min_age = 75
 	capable_only = yes
@@ -4697,7 +4564,6 @@ character_event = {
 		OR = {
 			trait = thunderer
 			trait = quarreller
-
 		}
 		any_realm_lord = {
 			OR = {
@@ -4711,13 +4577,11 @@ character_event = {
 
 			}
 			in_battle = yes
-
 		}
 	}
 
 	weight_multiplier = {
 		factor = 1
-
 	}
 
 	immediate = {
@@ -4761,7 +4625,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.82
 	desc = SJDwarfevents.81.desc
-	picture = GFX_evt_battle # <-- insert picture name here
+	picture = GFX_evt_battle
 	is_triggered_only = yes
 
 	immediate = {
@@ -4785,7 +4649,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.83
 	desc = SJDwarfevents.83.desc
-	picture = GFX_evt_battle # <-- insert picture name here
+	picture = GFX_evt_battle
 	is_triggered_only = yes
 	min_age = 250
 	capable_only = yes
@@ -4802,12 +4666,10 @@ character_event = {
 
 			}
 		}
-
 	}
 
 	weight_multiplier = {
 		factor = 1
-
 	}
 
 	immediate = {
@@ -4850,7 +4712,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.84
 	desc = SJDwarfevents.83.desc
-	picture = GFX_evt_battle # <-- insert picture name here
+	picture = GFX_evt_battle
 	is_triggered_only = yes
 
 	immediate = {
@@ -4878,17 +4740,15 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.85
 	desc = SJDwarfevents.85.desc
-	picture = GFX_evt_battle # <-- insert picture name here
+	picture = GFX_evt_battle
 	is_triggered_only = yes
 
 	trigger = {
 		trait = hammerer
-
 	}
 
 	weight_multiplier = {
 		factor = 1
-
 	}
 
 	immediate = {
@@ -4917,7 +4777,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.86
 	desc = SJDwarfevents.86.desc
-	picture = GFX_evt_feast # <-- insert picture name here
+	picture = GFX_evt_feast
 	is_triggered_only = yes
 	min_age = 75
 	prisoner = no
@@ -4930,10 +4790,8 @@ character_event = {
 			trait = quarreller
 			trait = longbeard
 			trait = ironbreaker
-
 		}
 		war = no
-
 	}
 
 	weight_multiplier = {
@@ -4952,15 +4810,12 @@ character_event = {
 		if = {
 			limit = {
 				trait = shy
-
 			}
 			random = {
 				chance = 30
 				remove_trait = shy
-
 			}
 		}
-
 	}
 }
 
@@ -4968,17 +4823,16 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.87
 	desc = SJDwarfevents.87.desc
-	picture = GFX_evt_child_play # <-- insert picture name her
+	picture = GFX_evt_child_play
 	min_age = 75
 	max_age = 80
 	only_women = yes
+	culture_group = dwarf_group
 	is_triggered_only = yes
 
 	trigger = {
 		trait = beardling
 		trait = creature_dwarf
-		culture_group = dwarf_group
-		is_female = yes
 	}
 
 	mean_time_to_happen = {
@@ -4997,14 +4851,12 @@ character_event = {
 	}
 }
 
-# Two of them meet... # Start # ROOT
+# Two of them meet...
+# Start
+# ROOT
 character_event = {
 	id = SJDwarfevents.88
-	picture = GFX_evt_joust # <-- insert picture name here
-	min_age = 75
-	max_age = 250
-	capable_only = yes
-	prisoner = no
+	picture = GFX_evt_joust
 	desc = {
 		text = SJDwarfevents.88a.desc
 		trigger = {
@@ -5017,6 +4869,11 @@ character_event = {
 			trait = quarreller
 		}
 	}
+	min_age = 75
+	max_age = 250
+	capable_only = yes
+	prisoner = no
+	war = no
 	is_triggered_only = yes
 
 	trigger = {
@@ -5042,18 +4899,17 @@ character_event = {
 				}
 			}
 		}
-		war = no
 	}
 
 	weight_multiplier = {
 		factor = 1
 	}
-	# Fight
 
 	immediate = {
 		log = "work event id = SJDwarfevents.88"
 	}
 
+	# Fight
 	option = {
 		name = SJDwarfevents.88.option1
 		ai_chance = {
@@ -5110,8 +4966,8 @@ character_event = {
 			add_trait = proud
 		}
 	}
-	# Don't fight
 
+	# Don't fight
 	option = {
 		name = SJDwarfevents.88.option1
 		ai_chance = {
@@ -5125,11 +4981,12 @@ character_event = {
 	}
 }
 
-# Two of them meet... # End # FROM
+# Two of them meet...
+# End
+# FROM
 character_event = {
 	id = SJDwarfevents.89
-	picture = GFX_evt_joust # <-- insert picture name here
-	is_triggered_only = yes
+	picture = GFX_evt_joust
 	desc = {
 		text = SJDwarfevents.89a.desc
 		trigger = {
@@ -5142,6 +4999,7 @@ character_event = {
 			trait = quarreller
 		}
 	}
+	is_triggered_only = yes
 
 	immediate = {
 		log = "work event id = SJDwarfevents.89"
@@ -5166,7 +5024,7 @@ character_event = {
 # Son does not get into the same warrior class as father thunders/quarrellers # Start # ROOT
 character_event = {
 	id = SJDwarfevents.90
-	picture = GFX_evt_son_asking_father # <-- insert picture name here
+	picture = GFX_evt_son_asking_father
 	desc = {
 		text = SJDwarfevents.90a.desc
 		trigger = {
@@ -5180,12 +5038,12 @@ character_event = {
 		}
 	}
 	is_triggered_only = yes
-	# Don't accept it
 
 	immediate = {
 		log = "work event id = SJDwarfevents.90"
 	}
 
+	# Don't accept it
 	option = {
 		name = SJDwarfevents.90.option1
 		ai_chance = {
@@ -5209,8 +5067,8 @@ character_event = {
 			}
 		}
 	}
-	# accept it
 
+	# accept it
 	option = {
 		name = SJDwarfevents.90.option2
 		ai_chance = {
@@ -5380,7 +5238,7 @@ character_event = {
 character_event = {
 	id = SJDwarfevents.94
 	desc = SJDwarfevents.94.desc
-	picture = GFX_evt_bad_news # <-- insert picture name here
+	picture = GFX_evt_bad_news
 	is_triggered_only = yes
 
 	immediate = {

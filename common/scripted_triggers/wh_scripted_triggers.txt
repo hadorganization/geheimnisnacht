@@ -105,14 +105,10 @@ wh_num_of_consorts_trigger = {
 }
 
 wh_has_any_magic_potential_trigger = {
-	trait = magic_potential_1
-	trait = magic_potential_2
-	trait = magic_potential_3
-	trait = magic_potential_4
-	has_character_flag = magic_potential_flag_1
-	has_character_flag = magic_potential_flag_2
-	has_character_flag = magic_potential_flag_3
-	has_character_flag = magic_potential_flag_4
+	or = {
+		wh_has_any_magic_potential_reveal_trigger = yes
+		wh_has_any_magic_potential_hide_trigger = yes
+	}
 }
 
 wh_has_any_magic_potential_reveal_trigger = {
@@ -137,10 +133,7 @@ wh_is_mage_or_apprentice_trigger = {
 	or = {
 		trait = hedge_wizard
 		trait = mage_apprentice
-		has_character_modifier = magic_power_1
-		has_character_modifier = magic_power_2
-		has_character_modifier = magic_power_3
-		has_character_modifier = magic_power_4
+		wh_is_mage_trigger = yes
 	}
 }
 
@@ -426,12 +419,14 @@ is_incapacitated_trigger = {
 		trait = pregnancy_finishing
 		trait = in_stock
 		trait = pet_consort
-		trait = on_pilgrimage
 		trait = creature_celdragon
 		trait = hollowed
 		has_character_modifier = in_seclusion
 		has_character_modifier = in_meditation
 		has_character_modifier = doing_penance
+		trait = in_hiding
+		trait = on_hajj
+		trait = on_pilgrimage
 	}
 }
 
@@ -605,28 +600,7 @@ z_combat_magic_valid_caster = {
 		has_character_flag = casting
 	}
 	is_incapacitated_trigger = no
-	OR = {
-		trait = chaos_dwarf_sorcerer
-		trait = khemri_liche_priest
-		trait = warlock_engineer
-		trait = lore_vermin
-		trait = lore_dark_magic
-		trait = lore_necromancy
-		trait = lore_beasts
-		trait = lore_heavens
-		trait = lore_fire
-		trait = lore_metal
-		trait = lore_light
-		trait = lore_shadows
-		trait = lore_life
-		trait = lore_death
-		trait = lore_high_magic
-		trait = lore_nurgle
-		trait = lore_slaanesh
-		trait = lore_tzeentch
-		trait = lore_ice
-		trait = lore_waaagh
-	}
+	z_combat_magic_caster = yes
 	z_has_magic_power_true = yes
 }
 
@@ -771,10 +745,7 @@ z_plot_succeed = {
 
 z_has_magic_power_true = {
 	or = {
-		has_character_modifier = magic_power_4
-		has_character_modifier = magic_power_3
-		has_character_modifier = magic_power_2
-		has_character_modifier = magic_power_1
+		wh_is_mage_trigger = yes
 		and = {
 			trait = warlock_engineer
 			or = {
@@ -866,7 +837,7 @@ league_potential_trigger = {
 	higher_real_tier_than = BARON
 	trait = creature_human
 	capital_scope = {
-		region =  world_old_world_border_princes
+		region = world_old_world_border_princes
 	}
 }
 

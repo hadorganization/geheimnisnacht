@@ -182,12 +182,7 @@ decisions = {
 			trait = asrai_spellsinger
 			trait = creature_elf
 			in_command = yes
-			OR = {
-				has_character_modifier = magic_power_1
-				has_character_modifier = magic_power_2
-				has_character_modifier = magic_power_3
-				has_character_modifier = magic_power_4
-			}
+			wh_is_mage_trigger = yes
 		}
 		allow = {
 			custom_tooltip = {
@@ -293,7 +288,6 @@ decisions = {
 
 	hide_deformity_spells = {
 		potential = {
-			is_incapacitated_trigger = no
 			age = 16
 			NOT = {
 				has_character_modifier = hds_magic_cooldown
@@ -315,12 +309,7 @@ decisions = {
 				trait = mut_tongue
 				trait = mut_crests
 			}
-			OR = {
-				has_character_modifier = magic_power_1
-				has_character_modifier = magic_power_2
-				has_character_modifier = magic_power_3
-				has_character_modifier = magic_power_4
-			}
+			wh_is_mage_trigger = yes
 		}
 		allow = {
 			custom_tooltip = {
@@ -429,12 +418,7 @@ decisions = {
 				trait = lore_shadows
 				trait = bray_shaman
 			}
-			OR = {
-				has_character_modifier = magic_power_1
-				has_character_modifier = magic_power_2
-				has_character_modifier = magic_power_3
-				has_character_modifier = magic_power_4
-			}
+			wh_is_mage_trigger = yes
 		}
 		allow = {
 			piety = 450
@@ -548,11 +532,8 @@ decisions = {
 			age = 12
 			nor = {
 				religion = asrai_cadai
-				has_character_modifier = magic_power_1
-				has_character_modifier = magic_power_2
-				has_character_modifier = magic_power_3
-				has_character_modifier = magic_power_4
 			}
+			wh_is_mage_trigger = no
 			any_courtier = {
 				age = 16
 				custom_tooltip = {
@@ -572,12 +553,7 @@ decisions = {
 					trait = lore_shadows
 					trait = bray_shaman
 				}
-				OR = {
-					has_character_modifier = magic_power_1
-					has_character_modifier = magic_power_2
-					has_character_modifier = magic_power_3
-					has_character_modifier = magic_power_4
-				}
+				wh_is_mage_trigger = yes
 			}
 		}
 		allow = {
@@ -604,12 +580,7 @@ decisions = {
 							trait = lore_shadows
 							trait = bray_shaman
 						}
-						OR = {
-							has_character_modifier = magic_power_1
-							has_character_modifier = magic_power_2
-							has_character_modifier = magic_power_3
-							has_character_modifier = magic_power_4
-						}
+						wh_is_mage_trigger = yes
 					}
 					# mage decides if he wants to do it
 					character_event = {
@@ -638,12 +609,7 @@ decisions = {
 			modifier = {
 				factor = 0
 				any_friend = {
-					OR = {
-						trait = tzeentch_demon
-						trait = nurgle_demon
-						trait = slaanesh_demon
-						trait = khorne_demon
-					}
+					is_demon_trigger = yes
 				}
 			}
 			modifier = {
@@ -689,9 +655,8 @@ decisions = {
 
 	learn_magic_yourself = {
 		#for private characters studying by themselves
+		only_playable = yes
 		potential = {
-			is_ruler = yes
-			higher_tier_than = BARON
 			age = 12
 			OR = {
 				is_living_human_trigger = yes
@@ -705,11 +670,8 @@ decisions = {
 				top_liege = {
 					trait = malekith
 				}
-				has_character_modifier = magic_power_1
-				has_character_modifier = magic_power_2
-				has_character_modifier = magic_power_3
-				has_character_modifier = magic_power_4
 			}
+			wh_is_mage_trigger = no
 			OR = {
 				independent = yes
 				liege = {
@@ -752,9 +714,10 @@ decisions = {
 					}
 					set_character_flag = learning_as_kid
 				}
+				# Start studying
 				character_event = {
 					id = sorcererapprentice.12
-				} #Start studying
+				}
 				if = {
 					limit = {
 						religion_group = cadai_group
@@ -842,9 +805,8 @@ decisions = {
 
 	learn_necromancy_yourself = {
 		#for private characters studying by themselves
+		only_playable = yes
 		potential = {
-			is_ruler = yes
-			higher_tier_than = BARON
 			age = 16
 			OR = {
 				is_vampire_trigger = yes
@@ -872,10 +834,7 @@ decisions = {
 				top_liege = {
 					trait = malekith
 				}
-				has_character_modifier = magic_power_1
-				has_character_modifier = magic_power_2
-				has_character_modifier = magic_power_3
-				has_character_modifier = magic_power_4
+				wh_is_mage_trigger = yes
 			}
 			OR = {
 				independent = yes
@@ -1013,17 +972,11 @@ decisions = {
 	}
 
 	undead_summoning = {
+		only_playable = yes
 		potential = {
-			is_ruler = yes
-			higher_tier_than = BARON
 			age = 16
 			trait = lore_necromancy
-			OR = {
-				has_character_modifier = magic_power_1
-				has_character_modifier = magic_power_2
-				has_character_modifier = magic_power_3
-				has_character_modifier = magic_power_4
-			}
+			wh_is_mage_trigger = yes
 		}
 		allow = {
 			piety = 150
@@ -1185,6 +1138,7 @@ targetted_decisions = {
 			has_artifact = elixir_of_love
 		}
 		potential = {
+			is_within_diplo_range = FROM
 			age = 16
 			is_no_females_race = no
 			cant_love_trigger = no
@@ -1666,12 +1620,7 @@ targetted_decisions = {
 			NOT = {
 				has_character_modifier = magic_cooldown
 			}
-			OR = {
-				has_character_modifier = magic_power_1
-				has_character_modifier = magic_power_2
-				has_character_modifier = magic_power_3
-				has_character_modifier = magic_power_4
-			}
+			wh_is_mage_trigger = yes
 		}
 		potential = {
 			trait = possessed
@@ -2180,10 +2129,7 @@ targetted_decisions = {
 				trait = vampire_blood_visible
 				trait = vampire_blood_hidden
 				has_character_modifier = apprenticeship_refused
-				has_character_modifier = magic_power_1
-				has_character_modifier = magic_power_2
-				has_character_modifier = magic_power_3
-				has_character_modifier = magic_power_4
+				wh_is_mage_trigger = yes
 			}
 		}
 		allow = {
@@ -2575,10 +2521,7 @@ targetted_decisions = {
 				trait = mage_apprentice
 				trait = hedge_wizard
 				has_character_modifier = apprenticeship_refused
-				has_character_modifier = magic_power_1
-				has_character_modifier = magic_power_2
-				has_character_modifier = magic_power_3
-				has_character_modifier = magic_power_4
+				wh_is_mage_trigger = yes
 			}
 		}
 		allow = {
@@ -2795,6 +2738,7 @@ targetted_decisions = {
 				trait = khemri_tomb_king
 				trait = creature_human
 			}
+			wh_is_mage_trigger = no
 			nor = {
 				trait = mage_apprentice
 				trait = vampire_blood_hidden
@@ -2803,10 +2747,6 @@ targetted_decisions = {
 				has_character_flag = taken_hedge_wizard_decision
 				has_character_flag = taken_necromancer_decision
 				has_character_modifier = apprenticeship_refused_necr
-				has_character_modifier = magic_power_1
-				has_character_modifier = magic_power_2
-				has_character_modifier = magic_power_3
-				has_character_modifier = magic_power_4
 				trait = king_settra
 			}
 		}

@@ -3083,21 +3083,14 @@ dispel_setup_effect = {
 			    or = {
 			     	and = {
 			     		or = {
-			     			has_character_modifier = magic_power_4
-			     			has_character_modifier = magic_power_3
-			     			has_character_modifier = magic_power_2
-			     			has_character_modifier = magic_power_1
+			     			wh_is_mage_trigger = yes
 			     			trait = warlock_engineer
-
 						}
 			     		not = {
 			     			has_character_modifier = dispel_cooldown
-
 						}
-
 					}
 			     	has_character_modifier = z_light_magic_wards_of_light
-
 				}
 			}
 		}
@@ -3109,21 +3102,14 @@ dispel_setup_effect = {
 			    or = {
 			     	and = {
 			     		or = {
-			     			has_character_modifier = magic_power_4
-			     			has_character_modifier = magic_power_3
-			     			has_character_modifier = magic_power_2
-			     			has_character_modifier = magic_power_1
+			     			wh_is_mage_trigger = yes
 			     			trait = warlock_engineer
-
 						}
 			     		not = {
 			     			has_character_modifier = dispel_cooldown
-
 						}
-
 					}
 			     	has_character_modifier = z_light_magic_wards_of_light
-
 				}
 			}
 			save_event_target_as = magic_dispeler
@@ -31220,6 +31206,10 @@ z_magic_power_sequential_subtraction = {
 			which = "magicxp"
 			value = 15
 		}
+		# give second chance
+		clr_character_flag = taken_hedge_wizard_decision
+		clr_character_flag = taken_necromancer_decision
+		remove_trait = hedge_wizard
 	}
 	if = {
 		limit = {

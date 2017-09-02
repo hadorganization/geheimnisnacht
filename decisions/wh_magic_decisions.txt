@@ -399,7 +399,14 @@ decisions = {
 			always = yes
 		}
 		ai_will_do = {
-			factor = 0
+			factor = 1
+			modifier = {
+				factor = 0
+				nand = {
+					is_female = yes
+					wh_is_beautiful_trigger = yes
+				}
+			}
 		}
 	}
 
@@ -467,12 +474,7 @@ decisions = {
 			modifier = {
 				factor = 0
 				any_courtier = {
-					OR = {
-						trait = tzeentch_demon
-						trait = nurgle_demon
-						trait = slaanesh_demon
-						trait = khorne_demon
-					}
+					is_demon_trigger = yes
 				}
 			}
 			modifier = {
@@ -2123,13 +2125,11 @@ targetted_decisions = {
 				trait = creature_amazon
 				trait = creature_human
 			}
+			wh_is_mage_or_apprentice_trigger = no
 			nor = {
-				trait = mage_apprentice
-				trait = hedge_wizard
 				trait = vampire_blood_visible
 				trait = vampire_blood_hidden
 				has_character_modifier = apprenticeship_refused
-				wh_is_mage_trigger = yes
 			}
 		}
 		allow = {
@@ -2516,12 +2516,10 @@ targetted_decisions = {
 				trait = creature_elf
 			}
 			age = 10
+			wh_is_mage_or_apprentice_trigger = no
 			nor = {
 				age = 15
-				trait = mage_apprentice
-				trait = hedge_wizard
 				has_character_modifier = apprenticeship_refused
-				wh_is_mage_trigger = yes
 			}
 		}
 		allow = {
@@ -2738,12 +2736,10 @@ targetted_decisions = {
 				trait = khemri_tomb_king
 				trait = creature_human
 			}
-			wh_is_mage_trigger = no
+			wh_is_mage_or_apprentice_trigger = no
 			nor = {
-				trait = mage_apprentice
 				trait = vampire_blood_hidden
 				trait = vampire_blood_visible
-				trait = hedge_wizard
 				has_character_flag = taken_hedge_wizard_decision
 				has_character_flag = taken_necromancer_decision
 				has_character_modifier = apprenticeship_refused_necr

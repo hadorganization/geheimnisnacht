@@ -8,7 +8,6 @@ character_event = {
 	religion_group = dwarf_gods_group
 
 	trigger = {
-		religion_group = dwarf_gods_group
 		trait = creature_dwarf
 		OR = {
 			mother_even_if_dead = {
@@ -38,12 +37,12 @@ character_event = {
 			}
 			any_opinion_modifier_target = {
 				limit = {
-					# trait = trait_dwarf_grudge
 					NOT = {
 						dynasty = PREV
 					}
 					reverse_has_opinion_modifier = {
-						who = PREV modifier = opinion_dwarf_grudge
+						who = PREV
+						modifier = opinion_dwarf_grudge
 					}
 				}
 				if = {
@@ -64,26 +63,6 @@ character_event = {
 						modifier = opinion_dwarf_grudge
 					}
 				}
-				# hidden_tooltip = {
-				# any_dynasty_member = {
-				# limit = {
-				# NOT = { character = PREV }
-				# is_alive = yes
-				# NOT = {
-				# any_child = {
-				# OR = {
-				# character = ROOT
-				# any_child = { character = ROOT }
-				# }
-				# }
-				# }
-				# }
-				# reverse_opinion = {
-				# who = ROOT
-				# modifier = opinion_dwarf_grudge
-				# }
-				# }
-				# }
 			}
 		}
 	}
@@ -95,16 +74,15 @@ character_event = {
 	id = DR_dwarfs.2
 	desc = EVTDESCDR_dwarfs.2
 	picture = GFX_evt_dwarf_angry_look
-	is_triggered_only = yes
 	religion_group = dwarf_gods_group
+	is_triggered_only = yes
 
 	trigger = {
-		religion_group = dwarf_gods_group
 		trait = creature_dwarf
-		is_lowborn = yes
+		#is_lowborn = yes
 		# Not if FROM is from any race whom the Dwarfs have a race-wide grudge against
-		NOR = {
-			FROM = {
+		FROM = {
+			NOR = {
 				trait = creature_orc
 				trait = creature_goblin
 				trait = creature_skaven
@@ -119,6 +97,7 @@ character_event = {
 
 	option = {
 		name = "EVTOPTADR_dwarfs.2"
+		# strange place
 		IF = {
 			limit = {
 				FROM = {
@@ -183,12 +162,10 @@ character_event = {
 	option = {
 		# A matter of honour!
 		name = EVTOPTADR_dwarfs.3
-		ROOT = {
-			opinion = {
-				who = FROMFROM
-				months = 10000
-				modifier = opinion_dwarf_grudge
-			}
+		opinion = {
+			who = FROMFROM
+			months = 10000
+			modifier = opinion_dwarf_grudge
 		}
 		piety = 50
 	}
@@ -216,7 +193,8 @@ character_event = {
 						dynasty = ROOT
 					}
 					reverse_has_opinion_modifier = {
-						who = ROOT modifier = opinion_dwarf_grudge
+						who = ROOT
+						modifier = opinion_dwarf_grudge
 					}
 				}
 			}
@@ -224,17 +202,7 @@ character_event = {
 		}
 	}
 
-	option = {
-		trigger = {
-			NOT = {
-				has_character_flag = has_dwarf_grudge
-			}
-		}
-		name = EVTOPTADR_dwarfs.4
-		clr_character_flag = has_dwarf_grudge
-	}
 	# Grudges
-
 	option = {
 		name = EVTOPTBDR_dwarfs.4
 		trigger = {
@@ -243,9 +211,9 @@ character_event = {
 		any_opinion_modifier_target = {
 			limit = {
 				is_alive = yes
-				# trait = trait_dwarf_grudge
 				reverse_has_opinion_modifier = {
-					who = ROOT modifier = opinion_dwarf_grudge
+					who = ROOT
+					modifier = opinion_dwarf_grudge
 				}
 				NOT = {
 					dynasty = ROOT
@@ -254,75 +222,9 @@ character_event = {
 			custom_tooltip = {
 				text = TOOLTIPLISTGRUDGES1
 			}
-			# hidden_tooltip = {
-			# random_list = {
-			# 33 = {
-			# set_character_flag = grudgename1
-			# }
-			# 33 = {
-			# set_character_flag = grudgename2
-			# }
-			# 33 = {
-			# set_character_flag = grudgename3
-			# }
-			# }
-			# }
-			# if = {
-			# limit = { has_character_flag = grudgename1 }
-			# custom_tooltip = { text = TOOLTIPLISTGRUDGES1 }
-			# clr_character_flag = grudgename1
-			# }
-			# if = {
-			# limit = { has_character_flag = grudgename2 }
-			# custom_tooltip = { text = TOOLTIPLISTGRUDGES2 }
-			# clr_character_flag = grudgename2
-			# }
-			# if = {
-			# limit = { has_character_flag = grudgename3 }
-			# custom_tooltip = { text = TOOLTIPLISTGRUDGES3 }
-			# clr_character_flag = grudgename3
-			# }
 		}
 		clr_character_flag = has_dwarf_grudge
 	}
-	# # ALL DWARF GRUDGES
-	# option = {
-	# name = EVTOPTCDR_dwarfs.4
-	# any_independent_ruler = {
-	# if = {
-	# limit = {
-	# # trait = trait_dwarf_grudge
-	# NOT = { dynasty = ROOT }
-	# }
-	# any_opinion_modifier_target = {
-	# limit = {
-	# # trait = trait_dwarf_grudge
-	# reverse_has_opinion_modifier = { who = PREV modifier = opinion_dwarf_grudge }
-	# NOT = { dynasty = PREV }
-	# NOT = { dynasty = ROOT }
-	# is_older_than = PREV
-	# }
-	# custom_tooltip = { text = TOOLTIPLISTALLGRUDGES }
-	# }
-	# }
-	# any_realm_character = {
-	# limit = {
-	# # trait = trait_dwarf_grudge
-	# NOT = { dynasty = ROOT }
-	# }
-	# any_opinion_modifier_target = {
-	# limit = {
-	# # trait = trait_dwarf_grudge
-	# reverse_has_opinion_modifier = { who = PREV modifier = opinion_dwarf_grudge }
-	# NOT = { dynasty = PREV }
-	# NOT = { dynasty = ROOT }
-	# is_older_than = PREV
-	# }
-	# custom_tooltip = { text = TOOLTIPLISTALLGRUDGES }
-	# }
-	# }
-	# }
-	# }
 }
 
 # Jump to grudge event
@@ -352,10 +254,6 @@ character_event = {
 				id = DR_dwarfs.2
 			}
 		}
-	}
-
-	option = {
-		name = OK
 	}
 }
 
@@ -412,7 +310,8 @@ character_event = {
 			if = {
 				limit = {
 					reverse_has_opinion_modifier = {
-						who = ROOT modifier = opinion_dwarf_grudge
+						who = ROOT
+						modifier = opinion_dwarf_grudge
 					}
 				}
 				custom_tooltip = {
@@ -486,7 +385,8 @@ character_event = {
 			if = {
 				limit = {
 					reverse_has_opinion_modifier = {
-						who = ROOT modifier = opinion_dwarf_grudge
+						who = ROOT
+						modifier = opinion_dwarf_grudge
 					}
 				}
 				custom_tooltip = {
@@ -558,7 +458,8 @@ character_event = {
 			if = {
 				limit = {
 					reverse_has_opinion_modifier = {
-						who = ROOT modifier = opinion_dwarf_grudge
+						who = ROOT
+						modifier = opinion_dwarf_grudge
 					}
 				}
 				custom_tooltip = {
@@ -589,30 +490,23 @@ character_event = {
 	}
 }
 
-# Fall into negative honour
-# Become slayer or live as oathbreaker
+# Fall into negative honour Become slayer or live as oathbreaker on_yearly_pulse
 character_event = {
 	id = DR_dwarfs.7
 	desc = EVTDESCDR_dwarfs.7
 	picture = GFX_evt_dwarf_thinking
-	only_rulers = yes
+	only_playable = yes
 	religion_group = dwarf_gods_group
+	is_triggered_only = yes
 
 	trigger = {
-		religion_group = dwarf_gods_group
 		trait = creature_dwarf
-		NOT = {
+		nor = {
 			piety = -50
-		}
-		NOR = {
 			trait = dwarf_slayer
 			# trait = dwarf_slayer_king
 			trait = dwarf_oathbreaker
 		}
-	}
-
-	mean_time_to_happen = {
-		days = 5
 	}
 
 	immediate = {
@@ -1052,10 +946,8 @@ character_event = {
 				random_demesne_title = {
 					limit = {
 						tier = COUNT
-						NOT = {
+						nor = {
 							title = PREV
-						}
-						NOT = {
 							is_primary_holder_title = yes
 						}
 					}
@@ -1818,7 +1710,8 @@ character_event = {
 			if = {
 				limit = {
 					reverse_has_opinion_modifier = {
-						who = ROOT modifier = opinion_dwarf_grudge
+						who = ROOT
+						modifier = opinion_dwarf_grudge
 					}
 				}
 				custom_tooltip = {
@@ -1875,9 +1768,8 @@ character_event = {
 	religion_group = dwarf_gods_group
 
 	trigger = {
-		religion_group = dwarf_gods_group
 		trait = creature_dwarf
-		is_lowborn = yes
+		#is_lowborn = yes
 	}
 
 	immediate = {
@@ -1962,12 +1854,12 @@ character_event = {
 	id = DR_dwarfs.27
 	desc = EVTDESCDR_dwarfs.27
 	picture = GFX_evt_dwarf_angry_look
+	religion_group = dwarf_gods_group
 	is_triggered_only = yes
 
 	trigger = {
-		religion_group = dwarf_gods_group
 		trait = creature_dwarf
-		is_lowborn = yes
+		#is_lowborn = yes
 	}
 
 	immediate = {
@@ -2004,13 +1896,9 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					is_friend = FROM
-				}
-				NOT = {
 					is_lover = FROM
-				}
-				NOT = {
 					num_of_rivals = 3
 				}
 			}
@@ -2191,54 +2079,44 @@ character_event = {
 			}
 			modifier = {
 				factor = 1.25
-				ROOT = {
-					opinion = {
-						who = FROM
-						value = 20
-					}
+				opinion = {
+					who = FROM
+					value = 20
 				}
 			}
 			modifier = {
 				factor = 1.25
-				ROOT = {
-					opinion = {
-						who = FROM
-						value = 40
-					}
+				opinion = {
+					who = FROM
+					value = 40
 				}
 			}
 			modifier = {
 				factor = 1.5
-				ROOT = {
-					opinion = {
-						who = FROM
-						value = 60
-					}
+				opinion = {
+					who = FROM
+					value = 60
 				}
 			}
 			modifier = {
 				factor = 1.5
-				ROOT = {
-					opinion = {
-						who = FROM
-						value = 80
-					}
+				opinion = {
+					who = FROM
+					value = 80
 				}
 			}
 			modifier = {
 				factor = 1.75
-				ROOT = {
-					opinion = {
-						who = FROM
-						value = 100
-					}
+				opinion = {
+					who = FROM
+					value = 100
 				}
 			}
 		}
 	}
 
+	# refuse to give the money
 	option = {
-		# refuse to give the money
 		name = EVTOPTBDR_dwarfs.28
 		# Now, if the money was more than what he could give, give prestige hit as well.
 		hidden_tooltip = {
@@ -2436,8 +2314,7 @@ character_event = {
 				trait = creature_chaos_dwarf
 			}
 		}
-		is_lowborn = yes
-		religion_group = dwarf_gods_group
+		#is_lowborn = yes
 		trait = creature_dwarf
 	}
 
@@ -2477,7 +2354,7 @@ character_event = {
 			text = TOOLTIPNEWGRUDGE
 		}
 		hidden_tooltip = {
-			# add_trait = trait_dwarf_grudge # Grudge targetting
+			# Grudge targetting
 			any_dynasty_member = {
 				limit = {
 					is_alive = yes
@@ -2507,19 +2384,17 @@ character_event = {
 # Decline Call to Arms Grudge bounce
 character_event = {
 	id = DR_dwarfs.51
-	is_triggered_only = yes
 	hide_window = yes
+	religion_group = dwarf_gods_group
+	is_triggered_only = yes
 
 	trigger = {
-		religion_group = dwarf_gods_group
 		trait = creature_dwarf
 	}
 
 	immediate = {
 		log = "work event id = DR_dwarfs.51"
-		ROOT = {
-			save_event_target_as = dwarf_grudged_decline_call
-		}
+		save_event_target_as = dwarf_grudged_decline_call
 	}
 
 	option = {
@@ -2534,23 +2409,16 @@ character_event = {
 
 character_event = {
 	id = DR_dwarfs.52
-	is_triggered_only = yes
 	hide_window = yes
+	religion_group = dwarf_gods_group
+	is_triggered_only = yes
 
 	trigger = {
-		religion_group = dwarf_gods_group
 		trait = creature_dwarf
 	}
 
 	immediate = {
 		log = "work event id = DR_dwarfs.52"
-	}
-
-	option = {
-		name = OK
-		# ROOT = {
-		# save_event_target_as = dwarf_grudge_target
-		# }
 		event_target:dwarf_grudged_decline_call = {
 			character_event = {
 				id = DR_dwarfs.26
@@ -2564,11 +2432,10 @@ character_event = {
 	id = DR_dwarfs.53
 	desc = EVTDESCDR_dwarfs.53
 	picture = GFX_evt_dwarf_angry_look
+	religion_group = dwarf_gods_group
 	is_triggered_only = yes
-	# hide_window = yes
 
 	trigger = {
-		religion_group = dwarf_gods_group
 		trait = creature_dwarf
 	}
 
@@ -2601,46 +2468,41 @@ character_event = {
 	# }
 }
 
-# Add unfulfilled grudges modifier
+# Add unfulfilled grudges modifier on_yearly_pulse
 character_event = {
 	id = DR_dwarfs.54
 	hide_window = yes
+	only_playable = yes
 	religion_group = dwarf_gods_group
-	only_rulers = yes
+	is_triggered_only = yes
 
 	trigger = {
-		religion_group = dwarf_gods_group
 		trait = creature_dwarf
 		any_opinion_modifier_target = {
 			reverse_has_opinion_modifier = {
-				who = ROOT modifier = opinion_dwarf_grudge
+				who = ROOT
+				modifier = opinion_dwarf_grudge
 			}
 		}
 	}
 
-	mean_time_to_happen = {
-		days = 5
-	}
-
 	immediate = {
 		log = "work event id = DR_dwarfs.54"
-	}
-
-	option = {
-		name = OK
 		if = {
 			limit = {
 				any_opinion_modifier_target = {
 					count = 1
 					reverse_has_opinion_modifier = {
-						who = ROOT modifier = opinion_dwarf_grudge
+						who = ROOT
+						modifier = opinion_dwarf_grudge
 					}
 				}
 				not = {
 					any_opinion_modifier_target = {
 						count = 2
 						reverse_has_opinion_modifier = {
-							who = ROOT modifier = opinion_dwarf_grudge
+							who = ROOT
+							modifier = opinion_dwarf_grudge
 						}
 					}
 				}
@@ -2792,7 +2654,7 @@ character_event = {
 
 	trigger = {
 		trait = creature_dwarf
-		is_lowborn = yes
+		#is_lowborn = yes
 		current_heir = {
 			dynasty = ROOT
 		}
@@ -2826,11 +2688,10 @@ character_event = {
 	picture = GFX_evt_dwarf_angry_look
 	desc = EVTDESCDR_dwarfs.50_dead_dwarf_relative
 	is_triggered_only = yes
+	only_playable = yes
 	religion_group = dwarf_gods_group
-	only_rulers = yes
 
 	trigger = {
-		religion_group = dwarf_gods_group
 		trait = creature_dwarf
 	}
 
@@ -2905,10 +2766,6 @@ character_event = {
 
 	immediate = {
 		log = "work event id = DR_dwarfs.58"
-	}
-
-	option = {
-		name = OK
 		FROM = {
 			character_event = {
 				id = DR_dwarfs.59
@@ -3151,10 +3008,10 @@ character_event = {
 	id = DR_dwarfs.60
 	desc = EVTDESCDR_dwarfs.60
 	picture = GFX_evt_dwarf_angry_look
+	religion_group = dwarf_gods_group
 	is_triggered_only = yes
 
 	trigger = {
-		religion_group = dwarf_gods_group
 		trait = creature_dwarf
 	}
 
@@ -3162,9 +3019,9 @@ character_event = {
 		log = "work event id = DR_dwarfs.60"
 	}
 
+	# The Grudgerizer
 	option = {
 		name = "EVTOPTADR_dwarfs.2"
-		# The Grudgerizer
 		FROM = {
 			reverse_opinion = {
 				who = ROOT
@@ -3176,7 +3033,7 @@ character_event = {
 			text = TOOLTIPNEWGRUDGE
 		}
 		hidden_tooltip = {
-			# add_trait = trait_dwarf_grudge # Grudge targetting
+			# Grudge targetting
 			any_dynasty_member = {
 				limit = {
 					is_alive = yes
@@ -3184,10 +3041,6 @@ character_event = {
 						character = ROOT
 					}
 				}
-				# opinion = {
-				# who = FROM
-				# modifier = opinion_dwarf_grudge
-				# }
 				character_event = {
 					id = DR_dwarfs.3
 				}
@@ -3214,48 +3067,31 @@ character_event = {
 	religion_group = dwarf_gods_group
 
 	trigger = {
-		religion_group = dwarf_gods_group
 		trait = creature_dwarf
 		trait = dwarf_slayer
 		in_command = no
 		NOT = {
 			has_character_modifier = recent_slayer_work
 		}
-		# OR = {
-		# NOT = { has_character_flag = slayer_stays_because_of_friendship }
-		# had_character_flag = { flag = slayer_stays_because_of_friendship days = 365 }
-		# }
-		# OR = {
-		# NOT = { has_character_flag = slayer_stays_because_of_greed }
-		# had_character_flag = { flag = slayer_stays_because_of_greed days = 365 }
-		# }
-		# OR = {
-		# NOT = { has_character_flag = slayer_stays_because_of_sloth }
-		# had_character_flag = { flag = slayer_stays_because_of_sloth days = 365 }
-		# }
-		# OR = {
-		# NOT = { has_character_flag = slayer_stays_because_of_pride }
-		# had_character_flag = { flag = slayer_stays_because_of_pride days = 365 }
-		# }
-		# OR = {
-		# NOT = { has_character_flag = slayer_stays_because_of_lust }
-		# had_character_flag = { flag = slayer_stays_because_of_lust days = 365 }
-		# }
 	}
 
 	mean_time_to_happen = {
 		months = 12
 		modifier = {
-			factor = 0.8 trait = diligent
+			factor = 0.8
+			trait = diligent
 		}
 		modifier = {
-			factor = 2 trait = slothful
+			factor = 2
+			trait = slothful
 		}
 		modifier = {
-			factor = 2 trait = wounded
+			factor = 2
+			trait = wounded
 		}
 		modifier = {
-			factor = 2.5 trait = maimed
+			factor = 2.5
+			trait = maimed
 		}
 		modifier = {
 			factor = 0.9
@@ -3317,10 +3153,6 @@ character_event = {
 				}
 			}
 		}
-		# modifier = {
-		# factor = 4
-		# liege = { reverse_has_opinion_modifier = { who = ROOT modifier = opinion_asked_to_stay } }
-		# }
 		modifier = {
 			factor = 100
 			liege = {
@@ -3336,18 +3168,10 @@ character_event = {
 				}
 			}
 		}
-		# modifier = {
-		# factor = 0.5
-		# any_playable_ruler = { has_character_flag = invited_witcher }
-		# }
 	}
 
 	immediate = {
 		log = "work event id = DR_dwarfs.100"
-	}
-
-	option = {
-		name = OK
 		liege = {
 			character_event = {
 				id = DR_dwarfs.102
@@ -3381,92 +3205,6 @@ character_event = {
 			}
 		}
 	}
-	# option = { # Friend - ask to stay
-	# name = EVTOPTBwitcher.2
-	# trigger = {
-	# FROM = {
-	# is_friend = ROOT
-	# NOT = { has_character_flag = slayer_stays_because_of_friendship }
-	# }
-	# }
-	# custom_tooltip = { text = slayer_will_stay_longer }
-	# FROM = { set_character_flag = slayer_stays_because_of_friendship }
-	# }
-	# option = { # Greedy witcher - bribe to stay
-	# name = EVTOPTCwitcher.2
-	# trigger = {
-	# FROM = {
-	# trait = greedy
-	# NOT = { has_character_flag = slayer_stays_because_of_greed }
-	# }
-	# }
-	# custom_tooltip = { text = slayer_will_stay_longer }
-	# wealth = -10
-	# FROM = {
-	# wealth = 10
-	# set_character_flag = slayer_stays_because_of_greed
-	# }
-	# }
-	# option = { # Slothful witcher - convince to stay
-	# name = EVTOPTDwitcher.2
-	# trigger = {
-	# FROM = {
-	# trait = slothful
-	# NOT = { has_character_flag = slayer_stays_because_of_sloth }
-	# }
-	# }
-	# custom_tooltip = { text = slayer_will_stay_longer }
-	# FROM = { set_character_flag = slayer_stays_because_of_sloth }
-	# prestige = -20
-	# }
-	# option = { # Proud witcher - give minor title to stay
-	# name = EVTOPTEwitcher.2
-	# trigger = {
-	# FROM = {
-	# trait = proud
-	# NOT = { has_character_flag = slayer_stays_because_of_pride }
-	# NOT = { has_minor_title = title_court_witcher }
-	# }
-	# }
-	# custom_tooltip = { text = slayer_will_stay_longer }
-	# FROM = {
-	# give_minor_title = title_court_witcher
-	# set_character_flag = slayer_stays_because_of_pride
-	# }
-	# }
-	# option = { # Lustful witcher - give minor title to stay
-	# name = EVTOPTFwitcher.2
-	# trigger = {
-	# FROM = {
-	# trait = lustful
-	# has_lover = yes
-	# NOT = { has_character_flag = slayer_stays_because_of_lust }
-	# }
-	# any_courtier = {
-	# age = 15
-	# NOT = { has_character_modifier = old_age }
-	# is_female = yes
-	# has_lover = no
-	# is_married = yes
-	# }
-	# }
-	# custom_tooltip = { text = slayer_will_stay_longer }
-	# FROM = {
-	# ROOT = {
-	# random_courtier = {
-	# limit = {
-	# age = 15
-	# NOT = { has_character_modifier = old_age }
-	# is_female = yes
-	# has_lover = no
-	# is_married = yes
-	# }
-	# add_lover = PREVPREV
-	# }
-	# }
-	# set_character_flag = slayer_stays_because_of_lust
-	# }
-	# }
 }
 
 # Slayer - Leave to ...
@@ -3474,368 +3212,310 @@ character_event = {
 	id = DR_dwarfs.103
 	hide_window = yes
 	is_triggered_only = yes
-	# immediate = {
-	# clr_character_flag = slayer_stays_because_of_friendship
-	# clr_character_flag = slayer_stays_because_of_greed
-	# clr_character_flag = slayer_stays_because_of_sloth
-	# clr_character_flag = slayer_stays_because_of_pride
-	# clr_character_flag = slayer_stays_because_of_lust
-	# }
 
 	immediate = {
 		log = "work event id = DR_dwarfs.103"
-	}
-
-	option = {
 		# ... neighbor province ruled by Greenskin/Beast/Skaven/Vamp/Chaos
-		name = OK
-		trigger = {
+		if = {
+			limit = {
+				liege = {
+					any_demesne_province = {
+						any_neighbor_province = {
+							NOT = {
+								region = world_underempire
+							}
+							owner = {
+								NOT = {
+									character = liege
+								}
+								any_courtier = {
+									NOT = {
+										trait = dwarf_slayer
+									}
+								}
+								OR = {
+									trait = creature_orc
+									trait = creature_goblin
+									trait = creature_beastman
+									trait = creature_skaven
+									is_vampire_trigger = yes
+									religion_group = chaos_gods_group
+								}
+							}
+						}
+					}
+				}
+			}
 			liege = {
-				any_demesne_province = {
-					any_neighbor_province = {
-						location = {
-							NOT = {
-								region = world_underempire
-							}
-						}
-						owner = {
-							NOT = {
-								character = liege
-							}
-							any_courtier = {
-								NOT = {
-									trait = dwarf_slayer
-								}
-							}
-							OR = {
-								trait = creature_orc
-								trait = creature_goblin
-								trait = creature_beastman
-								trait = creature_skaven
-								trait = vampire_lahmian_visible
-								trait = vampire_carstein_visible
-								trait = vampire_blood_visible
-								trait = vampire_strigoi_visible
-								trait = vampire_necrarch_visible
-								trait = vampire_jade_visible
-								trait = vampire_mahtmasi_visible
-								religion_group = chaos_gods_group
-							}
-						}
-					}
-				}
-			}
-		}
-		liege = {
-			random_demesne_province = {
-				limit = {
-					any_neighbor_province = {
-						location = {
-							NOT = {
-								region = world_underempire
-							}
-						}
-						owner = {
-							NOT = {
-								character = liege
-							}
-							any_courtier = {
-								NOT = {
-									trait = dwarf_slayer
-								}
-							}
-							OR = {
-								trait = creature_orc
-								trait = creature_goblin
-								trait = creature_beastman
-								trait = creature_skaven
-								trait = vampire_lahmian_visible
-								trait = vampire_carstein_visible
-								trait = vampire_blood_visible
-								trait = vampire_strigoi_visible
-								trait = vampire_necrarch_visible
-								trait = vampire_jade_visible
-								trait = vampire_mahtmasi_visible
-								religion_group = chaos_gods_group
-							}
-						}
-					}
-				}
-				random_neighbor_province = {
+				random_demesne_province = {
 					limit = {
-						location = {
+						any_neighbor_province = {
 							NOT = {
 								region = world_underempire
 							}
-						}
-						owner = {
-							NOT = {
-								character = liege
-							}
-							any_courtier = {
+							owner = {
 								NOT = {
-									trait = dwarf_slayer
+									character = liege
 								}
-							}
-							OR = {
-								trait = creature_orc
-								trait = creature_goblin
-								trait = creature_beastman
-								trait = creature_skaven
-								trait = vampire_lahmian_visible
-								trait = vampire_carstein_visible
-								trait = vampire_blood_visible
-								trait = vampire_strigoi_visible
-								trait = vampire_necrarch_visible
-								trait = vampire_jade_visible
-								trait = vampire_mahtmasi_visible
-								religion_group = chaos_gods_group
+								any_courtier = {
+									NOT = {
+										trait = dwarf_slayer
+									}
+								}
+								OR = {
+									trait = creature_orc
+									trait = creature_goblin
+									trait = creature_beastman
+									trait = creature_skaven
+									is_vampire_trigger = yes
+									religion_group = chaos_gods_group
+								}
 							}
 						}
 					}
-					owner = {
-						reverse_banish = ROOT
-						ROOT = {
-							character_event = {
-								id = DR_dwarfs.109 days = 1
+					random_neighbor_province = {
+						limit = {
+							location = {
+								NOT = {
+									region = world_underempire
+								}
+							}
+							owner = {
+								NOT = {
+									character = liege
+								}
+								any_courtier = {
+									NOT = {
+										trait = dwarf_slayer
+									}
+								}
+								OR = {
+									trait = creature_orc
+									trait = creature_goblin
+									trait = creature_beastman
+									trait = creature_skaven
+									is_vampire_trigger = yes
+									religion_group = chaos_gods_group
+								}
+							}
+						}
+						owner = {
+							reverse_banish = ROOT
+							ROOT = {
+								character_event = {
+									id = DR_dwarfs.109
+									days = 1
+								}
 							}
 						}
 					}
 				}
 			}
+			break = yes
 		}
-		ai_chance = {
-			factor = 1000
-		}
-	}
-
-	option = {
 		# ... neighbor province with monster problems
-		name = OK
-		trigger = {
+		if = {
+			limit = {
+				liege = {
+					any_demesne_province = {
+						any_neighbor_province = {
+							owner = {
+								nor = {
+									character = liege
+									religion_group = chaos_gods_group
+								}
+								any_courtier = {
+									NOT = {
+										trait = dwarf_slayer
+									}
+								}
+								OR = {
+									trait = creature_human
+									trait = creature_dwarf
+									trait = creature_elf
+								}
+							}
+							OR = {
+								has_province_modifier = greenskin_population_bad
+								has_province_modifier = beastmen_scourging_1
+								has_province_modifier = beastmen_scourging_2
+								has_province_modifier = beastmen_scourging_3
+								has_province_modifier = beastman_herdstone
+								culture_group = beastman_group
+							}
+						}
+					}
+				}
+			}
 			liege = {
-				any_demesne_province = {
-					any_neighbor_province = {
-						owner = {
-							NOT = {
-								character = liege
-							}
-							any_courtier = {
-								NOT = {
-									trait = dwarf_slayer
-								}
-							}
-							NOT = {
-								religion_group = chaos_gods_group
-							}
-							OR = {
-								trait = creature_human
-								trait = creature_dwarf
-								trait = creature_elf
-							}
-						}
-						OR = {
-							has_province_modifier = greenskin_population_bad
-							has_province_modifier = beastmen_scourging_1
-							has_province_modifier = beastmen_scourging_2
-							has_province_modifier = beastmen_scourging_3
-							has_province_modifier = beastman_herdstone
-							culture_group = beastman_group
-						}
-					}
-				}
-			}
-		}
-		liege = {
-			random_demesne_province = {
-				limit = {
-					any_neighbor_province = {
-						owner = {
-							NOT = {
-								character = liege
-							}
-							any_courtier = {
-								NOT = {
-									trait = dwarf_slayer
-								}
-							}
-							NOT = {
-								religion_group = chaos_gods_group
-							}
-							OR = {
-								trait = creature_human
-								trait = creature_dwarf
-								trait = creature_elf
-							}
-						}
-						OR = {
-							has_province_modifier = greenskin_population_bad
-							has_province_modifier = beastmen_scourging_1
-							has_province_modifier = beastmen_scourging_2
-							has_province_modifier = beastmen_scourging_3
-							has_province_modifier = beastman_herdstone
-							culture_group = beastman_group
-						}
-					}
-				}
-				random_neighbor_province = {
+				random_demesne_province = {
 					limit = {
-						owner = {
-							NOT = {
-								character = liege
-							}
-							any_courtier = {
-								NOT = {
-									trait = dwarf_slayer
+						any_neighbor_province = {
+							owner = {
+								nor = {
+									character = liege
+									religion_group = chaos_gods_group
+								}
+								any_courtier = {
+									NOT = {
+										trait = dwarf_slayer
+									}
+								}
+								OR = {
+									trait = creature_human
+									trait = creature_dwarf
+									trait = creature_elf
 								}
 							}
-							NOT = {
-								religion_group = chaos_gods_group
-							}
 							OR = {
-								trait = creature_human
-								trait = creature_dwarf
-								trait = creature_elf
+								has_province_modifier = greenskin_population_bad
+								has_province_modifier = beastmen_scourging_1
+								has_province_modifier = beastmen_scourging_2
+								has_province_modifier = beastmen_scourging_3
+								has_province_modifier = beastman_herdstone
+								culture_group = beastman_group
 							}
-						}
-						OR = {
-							has_province_modifier = greenskin_population_bad
-							has_province_modifier = beastmen_scourging_1
-							has_province_modifier = beastmen_scourging_2
-							has_province_modifier = beastmen_scourging_3
-							has_province_modifier = beastman_herdstone
-							culture_group = beastman_group
 						}
 					}
-					owner = {
-						reverse_banish = ROOT
-						character_event = {
-							id = DR_dwarfs.104
+					random_neighbor_province = {
+						limit = {
+							owner = {
+								nor = {
+									character = liege
+									religion_group = chaos_gods_group
+								}
+								any_courtier = {
+									NOT = {
+										trait = dwarf_slayer
+									}
+								}
+								OR = {
+									trait = creature_human
+									trait = creature_dwarf
+									trait = creature_elf
+								}
+							}
+							OR = {
+								has_province_modifier = greenskin_population_bad
+								has_province_modifier = beastmen_scourging_1
+								has_province_modifier = beastmen_scourging_2
+								has_province_modifier = beastmen_scourging_3
+								has_province_modifier = beastman_herdstone
+								culture_group = beastman_group
+							}
+						}
+						owner = {
+							reverse_banish = ROOT
+							character_event = {
+								id = DR_dwarfs.104
+							}
 						}
 					}
 				}
 			}
+			break = yes
 		}
-		ai_chance = {
-			factor = 100
-		}
-	}
-
-	option = {
 		# ... random neighbor province where any slayers haven't recently visited
-		name = OK
-		trigger = {
+		if = {
+			limit = {
+				liege = {
+					any_demesne_province = {
+						any_neighbor_province = {
+							owner = {
+								nor = {
+									character = liege
+									religion_group = chaos_gods_group
+								}
+								any_courtier = {
+									NOT = {
+										trait = dwarf_slayer
+									}
+								}
+								OR = {
+									trait = creature_human
+									trait = creature_dwarf
+									trait = creature_elf
+								}
+							}
+							NOT = {
+								has_province_modifier = monster_purge
+							}
+						}
+					}
+				}
+			}
 			liege = {
-				any_demesne_province = {
-					any_neighbor_province = {
-						owner = {
-							NOT = {
-								character = liege
-							}
-							any_courtier = {
-								NOT = {
-									trait = dwarf_slayer
-								}
-							}
-							NOT = {
-								religion_group = chaos_gods_group
-							}
-							OR = {
-								trait = creature_human
-								trait = creature_dwarf
-								trait = creature_elf
-							}
-						}
-						NOT = {
-							has_province_modifier = monster_purge
-						}
-					}
-				}
-			}
-		}
-		liege = {
-			random_demesne_province = {
-				limit = {
-					any_neighbor_province = {
-						owner = {
-							NOT = {
-								character = liege
-							}
-							any_courtier = {
-								NOT = {
-									trait = dwarf_slayer
-								}
-							}
-							NOT = {
-								religion_group = chaos_gods_group
-							}
-							OR = {
-								trait = creature_human
-								trait = creature_dwarf
-								trait = creature_elf
-							}
-						}
-						NOT = {
-							has_province_modifier = monster_purge
-						}
-					}
-				}
-				random_neighbor_province = {
+				random_demesne_province = {
 					limit = {
-						owner = {
-							NOT = {
-								character = liege
-							}
-							any_courtier = {
-								NOT = {
-									trait = dwarf_slayer
+						any_neighbor_province = {
+							owner = {
+								nor = {
+									character = liege
+									religion_group = chaos_gods_group
+								}
+								any_courtier = {
+									NOT = {
+										trait = dwarf_slayer
+									}
+								}
+								OR = {
+									trait = creature_human
+									trait = creature_dwarf
+									trait = creature_elf
 								}
 							}
 							NOT = {
-								religion_group = chaos_gods_group
+								has_province_modifier = monster_purge
 							}
-							OR = {
-								trait = creature_human
-								trait = creature_dwarf
-								trait = creature_elf
-							}
-						}
-						NOT = {
-							has_province_modifier = monster_purge
 						}
 					}
-					owner = {
-						reverse_banish = ROOT
-						character_event = {
-							id = DR_dwarfs.104
+					random_neighbor_province = {
+						limit = {
+							owner = {
+								nor = {
+									character = liege
+									religion_group = chaos_gods_group
+								}
+								any_courtier = {
+									NOT = {
+										trait = dwarf_slayer
+									}
+								}
+								OR = {
+									trait = creature_human
+									trait = creature_dwarf
+									trait = creature_elf
+								}
+							}
+							NOT = {
+								has_province_modifier = monster_purge
+							}
+						}
+						owner = {
+							reverse_banish = ROOT
+							character_event = {
+								id = DR_dwarfs.104
+							}
 						}
 					}
 				}
 			}
+			break = yes
 		}
-		ai_chance = {
-			factor = 10
-		}
-	}
-
-	option = {
 		# ... random neighbor province
-		name = OK
 		liege = {
 			random_demesne_province = {
 				limit = {
 					any_neighbor_province = {
 						owner = {
-							NOT = {
+							nor = {
 								character = liege
+								religion_group = chaos_gods_group
 							}
 							any_courtier = {
 								NOT = {
 									trait = dwarf_slayer
 								}
-							}
-							NOT = {
-								religion_group = chaos_gods_group
 							}
 							OR = {
 								trait = creature_human
@@ -3848,8 +3528,9 @@ character_event = {
 				random_neighbor_province = {
 					limit = {
 						owner = {
-							NOT = {
+							nor = {
 								character = liege
+								religion_group = chaos_gods_group
 							}
 							any_courtier = {
 								NOT = {
@@ -3857,7 +3538,6 @@ character_event = {
 								}
 							}
 							NOT = {
-								religion_group = chaos_gods_group
 							}
 							OR = {
 								trait = creature_human
@@ -3875,25 +3555,7 @@ character_event = {
 				}
 			}
 		}
-		ai_chance = {
-			factor = 1
-		}
 	}
-	# option = { # ... the court of a ruler who invited witcher
-	# name = OK
-	# trigger = {
-	# any_playable_ruler = { has_character_flag = invited_witcher }
-	# }
-	# random_playable_ruler = {
-	# limit = {
-	# has_character_flag = invited_witcher
-	# any_courtier = { NOT = { trait = dwarf_slayer } }
-	# }
-	# reverse_banish = ROOT
-	# character_event = { id = DR_dwarfs.104 }
-	# }
-	# ai_chance = { factor = 1000 }
-	# }
 }
 
 # Liege - A Slayer has arrived in your court
@@ -3908,22 +3570,15 @@ character_event = {
 	}
 
 	option = {
-		# OK
 		name = EVTOPTADR_dwarfs.104
-		# clr_character_flag = invited_witcher
 		ai_chance = {
 			factor = 10
 		}
 	}
 
+	# I have no need for the slayer
 	option = {
-		# I have no need for the slayer
 		name = EVTOPTBDR_dwarfs.104
-		trigger = {
-			NOT = {
-				has_character_flag = invited_witcher
-			}
-		}
 		FROM = {
 			character_event = {
 				id = DR_dwarfs.103
@@ -3931,25 +3586,8 @@ character_event = {
 		}
 		ai_chance = {
 			factor = 5
-			# modifier = { factor = 2 trait = racist }
 		}
 	}
-	# option = { # Throw him in prison
-	# name = EVTOPTBwitcher.4
-	# tooltip_info = racist
-	# trigger = {
-	# NOT = { has_character_flag = invited_witcher }
-	# trait = racist
-	# }
-	# FROM = { imprison = ROOT }
-	# ai_chance = {
-	# factor = 2
-	# modifier = { factor = 2 trait = deceitful }
-	# modifier = { factor = 2 trait = wroth }
-	# modifier = { factor = 2 trait = impaler }
-	# modifier = { factor = 2 trait = cruel }
-	# }
-	# }
 }
 
 # Slayer generic monster hunting
@@ -4002,10 +3640,6 @@ character_event = {
 
 	immediate = {
 		log = "work event id = DR_dwarfs.105"
-	}
-
-	option = {
-		name = OK
 		liege = {
 			random_demesne_province = {
 				limit = {
@@ -4176,10 +3810,6 @@ character_event = {
 			}
 		}
 	}
-
-	option = {
-		name = OK
-	}
 }
 
 # Ruler - Slayer arrives at province ruled by Greenskin/Beast/Skaven/Vamp/Chaos and tries to kill it
@@ -4279,10 +3909,6 @@ character_event = {
 
 	immediate = {
 		log = "work event id = DR_dwarfs.112"
-	}
-
-	option = {
-		name = OK
 		if = {
 			limit = {
 				NOR = {
@@ -4342,10 +3968,6 @@ character_event = {
 
 	immediate = {
 		log = "work event id = DR_dwarfs.113"
-	}
-
-	option = {
-		name = OK
 		clr_character_flag = duel_dwarf_slayer
 		random_playable_ruler = {
 			limit = {

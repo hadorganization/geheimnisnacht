@@ -3,11 +3,12 @@
 # character, spouse, rivals, friends, liege_titles, vassal_titles, realm_titles, realm_characters, realm_characters_plus, independent_rulers
 # Special: society_plot. When trigger fulfilled, anyone within the society can be invited. ROOT is the plotter. FROM is the target. FROMFROM is the society
 # Note that "player_allow" has the target as ROOT, and the plotter (the player) as FROM!
+
 ###############
 # PLOTS
 ###############
-# Gain one of the liege's landed titles
 
+# Gain one of the liege's landed titles
 plot_gain_title = {
 	type = liege_titles
 	military_plot = yes
@@ -363,8 +364,8 @@ plot_gain_title = {
 		}
 	}
 }
-# Gain one of a vassal's landed titles
 
+# Gain one of a vassal's landed titles
 plot_gain_vassal_title = {
 	type = vassal_titles
 	vassal_rank_plot = yes
@@ -779,8 +780,8 @@ plot_gain_vassal_title = {
 		}
 	}
 }
-# Get a character killed
 
+# Get a character killed
 plot_kill_character = {
 	type = realm_characters_plus # All characters in the same realm, plus rivals and relatives of self, parents, children and spouse, and quest target
 	intrigue_plot = yes
@@ -801,28 +802,16 @@ plot_kill_character = {
 	potential = {
 		prisoner = no
 		age = 16
-		NOT = {
+		nor = {
 			trait = incapable
-		}
-		NOT = {
 			trait = skaven_breeder
-		}
-		NOT = {
 			AND = {
 				ai = yes
-				trait = honest
-			}
-		}
-		NOT = {
-			AND = {
-				ai = yes
-				trait = kind
-			}
-		}
-		NOT = {
-			AND = {
-				ai = yes
-				trait = just
+				or = {
+					trait = honest
+					trait = kind
+					trait = just
+				}
 			}
 		}
 		hidden_tooltip = {
@@ -840,10 +829,8 @@ plot_kill_character = {
 				any_child = {
 					OR = {
 						any_pretender_title = {
-							NOT = {
+							nor = {
 								holder = ROOT
-							}
-							NOT = {
 								current_heir = {
 									character = ROOT
 								}
@@ -876,12 +863,12 @@ plot_kill_character = {
 					has_lover = yes
 				}
 				# Is nuts...
-				trait = lunatic_3
 				trait = lunatic_2
+				trait = lunatic_3
 				trait = possessed
-				#Is one of those little, treacherous, green shits
+				# Is one of those little, treacherous, green shits
 				trait = creature_goblin
-				#Not as treacherous as the most magnificent Skaven race
+				# Not as treacherous as the most magnificent Skaven race
 				trait = creature_skaven
 			}
 		}
@@ -899,61 +886,25 @@ plot_kill_character = {
 			trait = lunatic_3
 			trait = lunatic_2
 		}
-		NOT = {
-			AND = {
-				FROM = {
-					trait = creature_skink
-				}
-				trait = creature_slann
-			}
-		}
-		ROOT = {
-			NOR = {
-				trait = prince_khorne
-				trait = prince_nurgle
-				trait = prince_slaanesh
-				trait = prince_tzeentch
-				trait = creature_forestspirit
-				trait = creature_treekin
-				trait = vampire_strigoi_visible
-				trait = vampire_necrarch_visible
-				trait = creature_slann
-				trait = creature_celdragon
-			}
-		}
-		OR = {
-			#Vampires plot normally against other vampires, but mortals need the special plot against them
-			ROOT = {
-				NOR = {
-					trait = vampire_lahmian_visible
-					trait = vampire_carstein_visible
-					trait = vampire_blood_visible
-					trait = vampire_strigoi_visible
-					trait = vampire_necrarch_visible
-					trait = vampire_jade_visible
-					trait = vampire_mahtmasi_visible
-				}
-			}
+		nand = {
 			FROM = {
-				OR = {
-					trait = vampire_lahmian_visible
-					trait = vampire_carstein_visible
-					trait = vampire_blood_visible
-					trait = vampire_strigoi_visible
-					trait = vampire_necrarch_visible
-					trait = vampire_jade_visible
-					trait = vampire_mahtmasi_visible
-				}
+				trait = creature_skink
 			}
+			trait = creature_slann
 		}
-		NOT = {
+		is_demon_prince_trigger = no
+		NOR = {
+			trait = creature_forestspirit
+			trait = creature_treekin
+			trait = vampire_strigoi_visible
+			trait = vampire_necrarch_visible
+			trait = creature_slann
+			trait = creature_celdragon
+			# This case is covered by another plot
 			any_spouse = {
 				character = FROM
 			}
-		} # This case is covered by another plot
-		is_within_diplo_range = FROM
-		# Don't kill my lovers, or their children
-		NOT = {
+			# Don't kill my lovers, or their children
 			FROM = {
 				any_lover = {
 					OR = {
@@ -963,13 +914,22 @@ plot_kill_character = {
 					}
 				}
 			}
-		}
-		NOT = {
 			is_friend = FROM
+		}
+		OR = {
+			#Vampires plot normally against other vampires, but mortals need the special plot against them
+			is_vampire_trigger = no
+			FROM = {
+				is_vampire_trigger = yes
+			}
 		}
 	}
 	# Target character scope
 	allow = {
+		is_within_diplo_range = FROM
+		NOT = {
+			has_blood_oath_with = FROM
+		}
 		OR = {
 			NOT = {
 				character = FROM
@@ -977,64 +937,25 @@ plot_kill_character = {
 			trait = lunatic_3
 			trait = lunatic_2
 		}
-		NOT = {
-			AND = {
-				FROM = {
-					trait = creature_skink
-				}
-				trait = creature_slann
-			}
-		}
-		ROOT = {
-			NOR = {
-				trait = prince_khorne
-				trait = prince_nurgle
-				trait = prince_slaanesh
-				trait = prince_tzeentch
-				trait = creature_forestspirit
-				trait = creature_treekin
-				trait = vampire_strigoi_visible
-				trait = vampire_necrarch_visible
-				trait = creature_slann
-				trait = creature_celdragon
-			}
-		}
-		OR = {
-			#Vampires plot normally against other vampires, but mortals need the special plot against them
-			ROOT = {
-				NOR = {
-					trait = vampire_lahmian_visible
-					trait = vampire_carstein_visible
-					trait = vampire_blood_visible
-					trait = vampire_strigoi_visible
-					trait = vampire_necrarch_visible
-					trait = vampire_jade_visible
-					trait = vampire_mahtmasi_visible
-				}
-			}
+		nand = {
 			FROM = {
-				OR = {
-					trait = vampire_lahmian_visible
-					trait = vampire_carstein_visible
-					trait = vampire_blood_visible
-					trait = vampire_strigoi_visible
-					trait = vampire_necrarch_visible
-					trait = vampire_jade_visible
-					trait = vampire_mahtmasi_visible
-				}
+				trait = creature_skink
 			}
+			trait = creature_slann
 		}
-		NOT = {
+		is_demon_prince_trigger = no
+		NOR = {
+			trait = creature_forestspirit
+			trait = creature_treekin
+			trait = vampire_strigoi_visible
+			trait = vampire_necrarch_visible
+			trait = creature_slann
+			trait = creature_celdragon
+			# This case is covered by another plot
 			any_spouse = {
 				character = FROM
 			}
-		} # This case is covered by another plot
-		NOT = {
-			has_blood_oath_with = FROM
-		}
-		is_within_diplo_range = FROM
-		# Don't kill my lovers, or their children
-		NOT = {
+			# Don't kill my lovers, or their children
 			FROM = {
 				any_lover = {
 					OR = {
@@ -1044,9 +965,14 @@ plot_kill_character = {
 					}
 				}
 			}
-		}
-		NOT = {
 			is_friend = FROM
+		}
+		OR = {
+			#Vampires plot normally against other vampires, but mortals need the special plot against them
+			is_vampire_trigger = no
+			FROM = {
+				is_vampire_trigger = yes
+			}
 		}
 		FROM = {
 			OR = {
@@ -1069,18 +995,6 @@ plot_kill_character = {
 						}
 					}
 				}
-				# #You're a goblin and the target is any other Greenskin
-				# AND = {
-				# trait = creature_goblin
-				# ROOT = {
-				# OR = {
-				# trait = creature_goblin
-				# trait = creature_orc
-				# culture_group = orc_group
-				# culture_group = goblin_group
-				# }
-				# }
-				# }
 				# Kill a ruler if I'm the heir
 				AND = {
 					any_heir_title = {
@@ -1221,10 +1135,11 @@ plot_kill_character = {
 	}
 	# ROOT = target FROM = joiner FROMFROM = plotter
 	allow_join = {
+		# Not my own children
 		ROOT = {
 			NOT = {
 				is_child_of = FROM
-			} # Not my own children
+			}
 		}
 	}
 	chance = {
@@ -1240,13 +1155,9 @@ plot_kill_character = {
 			factor = 0.01
 			FROM = {
 				trait = content
-				NOT = {
+				nor = {
 					trait = lunatic_3
-				}
-				NOT = {
 					trait = lunatic_2
-				}
-				NOT = {
 					trait = possessed
 				}
 			}
@@ -1329,32 +1240,26 @@ plot_kill_character = {
 		modifier = {
 			factor = 0
 			their_opinion = {
-				who = FROM value = 0
+				who = FROM
+				value = 0
 			}
-			NOT = {
-				OR = {
-					FROM = {
-						trait = envious
+			from = {
+				nor = {
+					trait = envious
+					trait = deceitful
+					trait = ambitious
+					ROOT = {
+						is_murder_quest_target_of_prev_trigger = yes
 					}
-					FROM = {
-						trait = deceitful
-					}
-					FROM = {
-						trait = ambitious
-					}
-					FROM = {
-						ROOT = {
-							is_murder_quest_target_of_prev_trigger = yes
-						}
-					} #MNM murder missions
-				}
+				} #MNM murder missions
 			}
 		}
 		modifier = {
 			factor = 1.5
 			NOT = {
 				their_opinion = {
-					who = FROM value = -25
+					who = FROM
+					value = -25
 				}
 			}
 		}
@@ -1362,7 +1267,8 @@ plot_kill_character = {
 			factor = 2.0
 			NOT = {
 				their_opinion = {
-					who = FROM value = -50
+					who = FROM
+					value = -50
 				}
 			}
 		}
@@ -1370,7 +1276,8 @@ plot_kill_character = {
 			factor = 2.0
 			NOT = {
 				their_opinion = {
-					who = FROM value = -75
+					who = FROM
+					value = -75
 				}
 			}
 		}
@@ -1440,9 +1347,7 @@ plot_kill_character = {
 			FROM = {
 				trait = creature_goblin
 			}
-			ROOT = {
-				culture_group = orc_group
-			}
+			culture_group = orc_group
 		}
 		#Even more against weak warbosses
 		modifier = {
@@ -1450,10 +1355,8 @@ plot_kill_character = {
 			FROM = {
 				trait = creature_goblin
 			}
-			ROOT = {
-				culture_group = orc_group
-				has_character_modifier = weak_warboss
-			}
+			culture_group = orc_group
+			has_character_modifier = weak_warboss
 		}
 		#Little, green and treacherous
 		modifier = {
@@ -1461,9 +1364,7 @@ plot_kill_character = {
 			FROM = {
 				trait = creature_goblin
 			}
-			ROOT = {
-				culture_group = goblin_group
-			}
+			culture_group = goblin_group
 		}
 		#Even more against weak warbosses
 		modifier = {
@@ -1471,10 +1372,12 @@ plot_kill_character = {
 			FROM = {
 				trait = creature_goblin
 			}
-			ROOT = {
-				culture_group = goblin_group
-				has_character_modifier = weak_warboss
-			}
+			culture_group = goblin_group
+			has_character_modifier = weak_warboss
+		}
+		modifier = {
+			factor = 0.01
+			trair = malekith
 		}
 	}
 	success = {
@@ -1505,8 +1408,8 @@ plot_kill_character = {
 		}
 	}
 }
-# Get a spouse killed
 
+# Get a spouse killed
 plot_kill_spouse = {
 	type = spouse
 	intrigue_plot = yes
@@ -1845,8 +1748,8 @@ plot_kill_spouse = {
 		}
 	}
 }
-# Cut down a fellow vassal to size
 
+# Cut down a fellow vassal to size
 plot_weaken_fellow_vassal = {
 	type = realm_titles
 	military_plot = yes
@@ -2207,11 +2110,12 @@ plot_weaken_fellow_vassal = {
 		}
 	}
 }
+
 #################################
 ### Plots to Fabricate Claims ###
 #################################
-# Vassal ruler plots to gain claim on liege's title
 
+# Vassal ruler plots to gain claim on liege's title
 plot_gain_liege_title = {
 	type = liege_titles
 	vassal_intrigue_plot = yes
@@ -2488,8 +2392,8 @@ plot_gain_liege_title = {
 		}
 	}
 }
-# Vassal ruler plots to gain claim on a fellow vassal's title
 
+# Vassal ruler plots to gain claim on a fellow vassal's title
 plot_gain_fellow_vassal_title = {
 	type = realm_titles
 	vassal_intrigue_plot = yes
@@ -2759,8 +2663,8 @@ plot_gain_fellow_vassal_title = {
 		}
 	}
 }
-# Seize Trade Post (Republics only)
 
+# Seize Trade Post (Republics only)
 plot_seize_trade_post = {
 	type = rep_trade_posts
 	intrigue_plot = yes
@@ -3032,9 +2936,9 @@ plot_seize_trade_post = {
 		seize_trade_post = FROM
 	}
 }
+
 ###SOCIETIES PLOTS###
 ###Assassins###
-
 plot_assassins_collect_debt = {
 	type = realm_characters_plus # All characters in the same realm, plus rivals and relatives of self, parents, children and spouse, and quest target
 	intrigue_plot = yes

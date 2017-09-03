@@ -2,12 +2,12 @@ decisions = {
 	patrolyourlands = {
 		only_playable = yes
 		potential = {
+			age = 16
+			religion = grail
 			nor = {
 				trait = on_knight_quest
 				has_character_flag = on_grail_quest
 			}
-			age = 16
-			religion = grail
 			OR = {
 				trait = bretonnian_knight_errant
 				trait = bretonnian_knight
@@ -15,11 +15,9 @@ decisions = {
 			}
 			OR = {
 				ai = no
-				OR = {
-					trait = brave
-					trait = proud
-					trait = ambitious
-				}
+				trait = brave
+				trait = proud
+				trait = ambitious
 			}
 		}
 		allow = {
@@ -59,7 +57,7 @@ decisions = {
 			}
 		}
 		allow = {
-			ai = no
+			#ai = no
 		}
 		effect = {
 			character_event = {
@@ -90,14 +88,12 @@ decisions = {
 			}
 			OR = {
 				ai = no
-				OR = {
-					primary_title = {
-						higher_real_tier_than = COUNT
-					}
-					trait = brave
-					trait = proud
-					trait = ambitious
+				primary_title = {
+					higher_real_tier_than = COUNT
 				}
+				trait = brave
+				trait = proud
+				trait = ambitious
 			}
 		}
 		allow = {
@@ -105,9 +101,8 @@ decisions = {
 				text = IS_NOT_INCAPACITATED
 				is_incapacitated_trigger = no
 			}
-			nor = {
+			not = {
 				trait = wounded
-				trait = craven
 			}
 		}
 		effect = {

@@ -3063,56 +3063,6 @@ targetted_decisions = {
 		}
 	}
 
-	commission_necrarch_crafting = {
-		filter = all
-		ai_target_filter = all
-      	from_potential = {
-           	OR = {
-                is_visible_vampire_trigger = yes
-				AND = {
-					religion = nagashi
-					trait = creature_nehekharan
-				}
-			}
-		}
-      	potential = {
-			trait = vampire_necrarch_visible
-           	wh_is_mage_trigger = yes
-			is_within_diplo_range = FROM
-		}
-        allow = {
-			from = {
-				custom_tooltip = {
-					text = IS_NOT_INCAPACITATED
-					is_incapacitated_trigger = no
-				}
-				wealth = 375
-			}
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
-			}
-      	    nor = {
-				character = FROM
-				has_character_modifier = recently_asked_crafting
-			}
-		}
-        effect = {
-			add_character_modifier = {
-				name = recently_asked_crafting
-				duration = 1000
-			}
-			FROM = {
-				character_event = {
-					id = svampires.48
-				}
-			}
-		}
-        ai_will_do = {
-            factor = 0.001 # 1% chance per year of commissioning per year
-		}
-	}
-
 	jade_hipnotize = {
 		filter = court
 		ai_target_filter = court

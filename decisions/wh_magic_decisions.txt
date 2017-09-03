@@ -1181,6 +1181,17 @@ targetted_decisions = {
 				liege = {
 					character = FROM
 				}
+				and = {
+					from = {
+						OR = {
+							is_visible_vampire_trigger = yes
+							trait = creature_nehekharan
+						}
+					}
+					trait = vampire_necrarch_visible
+           			wh_is_mage_trigger = yes
+					is_within_diplo_range = FROM
+				}
 			}
 		}
 		allow = {
@@ -1436,14 +1447,11 @@ targetted_decisions = {
 		from_potential = {
 			OR = {
 				ai = no
-				OR = {
-					trait = cruel
-					trait = impaler
-					trait = greedy
-					is_vampire_trigger = yes
-				}
+				trait = cruel
+				trait = impaler
+				trait = greedy
+				is_vampire_trigger = yes
 			}
-			higher_tier_than = BARON
 		}
 		potential = {
 			prisoner = yes

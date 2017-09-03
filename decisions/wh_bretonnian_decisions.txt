@@ -38,7 +38,7 @@ decisions = {
 			factor = 1
 			modifier = {
 				factor = 0
-				num_of_children = 0
+				has_children = no
 			}
 			modifier = {
 				factor = 0
@@ -79,29 +79,35 @@ decisions = {
 			trait = bretonnian_knight
 			nor = {
 				trait = grail_knight
-				trait = on_knight_quest
 				has_character_flag = on_grail_quest
 			}
 			OR = {
 				ai = no
-				primary_title = {
-					higher_real_tier_than = COUNT
-				}
+				higher_real_tier_than = COUNT
 				trait = brave
 				trait = proud
 				trait = ambitious
 			}
 		}
 		allow = {
-			custom_tooltip = {
-				text = IS_NOT_INCAPACITATED
-				is_incapacitated_trigger = no
+			or = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
+				trait = on_knight_quest
 			}
 			not = {
 				trait = wounded
 			}
 		}
 		effect = {
+			if = {
+				limit = {
+					trait = on_knight_quest
+				}
+				remove_trait = on_knight_quest
+			}
 			character_event = {
 				id = wh_bretonnia.21
 			}
@@ -109,14 +115,33 @@ decisions = {
 		ai_will_do = {
 			factor = 1
 			modifier = {
+				factor = 0.05
+			}
+			modifier = {
+				factor = 0.05
+				has_children = no
+			}
+			modifier = {
 				factor = 0
 				NOT = {
 					martial = 10
 				}
 			}
 			modifier = {
-				factor = 0.5
-				nor = {
+				factor = 2
+				martial = 10
+			}
+			modifier = {
+				factor = 2
+				martial = 15
+			}
+			modifier = {
+				factor = 2
+				martial = 20
+			}
+			modifier = {
+				factor = 2
+				or = {
 					trait = ambitious
 					trait = zealous
 					trait = brave

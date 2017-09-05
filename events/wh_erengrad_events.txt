@@ -32,13 +32,11 @@ narrative_event = {
 
 	immediate = {
 		log = "work event id = erengrad.100"
+		set_global_flag = erengrad_claim
 	}
 
 	option = {
 		name = EVTOPTA_ERENGRAD_0 # Punitive expedition
-		ai_chance = {
-			factor = 75
-		}
 		prestige = 50
 		add_claim = k_norvard
 		k_norvard = {
@@ -50,25 +48,27 @@ narrative_event = {
 				}
 			}
 		}
-		set_global_flag = erengrad_claim
+		ai_chance = {
+			factor = 75
+		}
 	}
 
 	option = {
 		name = EVTOPTB_ERENGRAD_0 # Demand bribe
-		ai_chance = {
-			factor = 25
-		}
 		prestige = -100
 		k_norvard = {
 			holder_scope = {
 				hidden_tooltip = {
 					narrative_event = {
-						id = erengrad.102 days = 7
+						id = erengrad.102
+						days = 7
 					}
 				}
 			}
 		}
-		set_global_flag = erengrad_claim
+		ai_chance = {
+			factor = 25
+		}
 	}
 }
 
@@ -86,28 +86,20 @@ narrative_event = {
 		NOT = {
 			has_global_flag = veche
 		}
-		ROOT = {
-			has_landed_title = e_kislev
-			has_landed_title = k_norvard
+		from = {
+			title = k_norvard
 		}
+		has_landed_title = e_kislev
+		#has_landed_title = k_norvard
 	}
 
 	immediate = {
 		log = "work event id = erengrad.101"
+		set_global_flag = veche
 	}
 
 	option = {
 		name = EVTOPTA_ERENGRAD_1 # Burn the Veche and seize their wealth
-		ai_chance = {
-			factor = 25
-			modifier = {
-				factor = 0
-				OR = {
-					trait = kind
-					trait = charitable
-				}
-			}
-		}
 		prestige = -100 # Beneath the dignity of a feudal ruler to do the job of the Burghers.
 		wealth = 500
 		c_erengrad = {
@@ -135,23 +127,20 @@ narrative_event = {
 				years = 200
 			}
 		}
-		set_global_flag = veche
+		ai_chance = {
+			factor = 25
+			modifier = {
+				factor = 0
+				OR = {
+					trait = kind
+					trait = charitable
+				}
+			}
+		}
 	}
 
 	option = {
 		name = EVTOPTB_ERENGRAD_1 # Let the burghers keep their trade routes as your vassal
-		ai_chance = {
-			factor = 75
-			modifier = {
-				factor = 0
-				OR = {
-					has_global_flag = defiant_erengrad
-					trait = cruel
-					trait = wroth
-					trait = greedy
-				}
-			}
-		}
 		d_erengrad = {
 			holder_scope = {
 				k_norvard = {
@@ -169,7 +158,18 @@ narrative_event = {
 					}
 				}
 			}
-			set_global_flag = veche
+		}
+		ai_chance = {
+			factor = 75
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = defiant_erengrad
+					trait = cruel
+					trait = wroth
+					trait = greedy
+				}
+			}
 		}
 	}
 }

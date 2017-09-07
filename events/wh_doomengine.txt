@@ -1,9 +1,8 @@
-namespace = doomengine
+namespace = wh_doomengine
 
 # Doom counter events
-# reserved 0-19
 province_event = {
-	id = doomengine.0
+	id = wh_doomengine.0
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -12,20 +11,20 @@ province_event = {
 	}
 
 	immediate = {
-		log = "work event id = doomengine.0 for [Root.GetBestName]"
+		log = "work event id = wh_doomengine.0 for [Root.GetBestName]"
 		# initialisation
 		if = {
 			limit = {
 				NOT = {
 					check_variable = {
 						which = "doom_counter"
-						value = 1
+						value = 0
 					}
 				}
 			}
 			set_variable = {
 				which = "doom_counter"
-				value = 1
+				value = 0
 			}
 		}
 		if = {
@@ -102,12 +101,12 @@ province_event = {
 
 # DOOM COUNTER RAISING EVENTS
 character_event = {
-	id = doomengine.1
+	id = wh_doomengine.1
 	hide_window = yes
 	is_triggered_only = yes
 
 	immediate = {
-		log = "work event id = doomengine.1 for [Root.GetBestName]"
+		log = "work event id = wh_doomengine.1 for [Root.GetBestName]"
 		1 = {
 			change_variable = {
 				which = "doom_counter"
@@ -119,7 +118,7 @@ character_event = {
 
 # ENDTIME COUNTER INCREASES on_decade_pulse
 province_event = {
-	id = doomengine.1005
+	id = wh_doomengine.2
 	is_triggered_only = yes
 	hide_window = yes
 
@@ -128,7 +127,7 @@ province_event = {
 	}
 
 	immediate = {
-		log = "work event id = doomengine.1005 for [Root.GetBestName]"
+		log = "work event id = wh_doomengine.2 for [Root.GetBestName]"
 		random_list = {
 			30 = {
 				change_variable = {
@@ -164,7 +163,7 @@ province_event = {
 			}
 			any_playable_ruler = {
 				narrative_event = {
-					id = doomengine.1006
+					id = wh_doomengine.3
 				}
 			}
 		}
@@ -172,14 +171,14 @@ province_event = {
 }
 
 narrative_event = {
-	id = doomengine.1006
+	id = wh_doomengine.3
 	title = EVTTITLE_DOOMENGINE_1006
 	desc = EVTDESC_DOOMENGINE_1006
 	picture = GFX_evt_chaos_hordes
 	is_triggered_only = yes
 
 	immediate = {
-		log = "work event id = doomengine.1006 for [Root.GetBestName]"
+		log = "work event id = wh_doomengine.3 for [Root.GetBestName]"
 	}
 
 	option = {
@@ -200,28 +199,28 @@ narrative_event = {
 
 # think about it
 province_event = {
-	id = doomengine.200
+	id = wh_doomengine.4
 	hide_window = yes
 	is_triggered_only = yes
 
 	trigger = {
 		province_id = 1509 # averlone
-		1509 = {
-			owner = {				
+		#1509 = {
+			owner = {
 				trait = everqueen
 			}
-		}
+		#}
 	}
 
 	immediate = {
-		log = "work event id = doomengine.200 for [Root.GetBestName]"
+		log = "work event id = wh_doomengine.4 for [Root.GetBestName]"
 		1 = {
 			if = {
 				limit = {
 					# FIXME create vortex first
 					check_variable = {
 						which = "doom_counter"
-						value = 3
+						value = 1
 					}
 				}
 				random_list = {
@@ -240,5 +239,112 @@ province_event = {
 				}
 			}
 		}
+	}
+}
+
+# The notifier, in one compact event on_five_year_pulse
+character_event = {
+	id = wh_doomengine.5
+	border = "GFX_event_normal_frame_religion"
+	picture = "GFX_evt_cultist"
+	desc = {
+		trigger = {
+			1 = {
+				check_variable = {
+					which = "doom_counter"
+					value = 0 # The winds of chaos are very weak
+				}
+				NOT = {
+					check_variable = {
+						which = "doom_counter"
+						value = 15
+					}
+				}
+			}
+		}
+		text = VeryWeakDoom
+	}
+	desc = {
+		trigger = {
+			1 = {
+				check_variable = {
+					which = "doom_counter"
+					value = 15 # The winds of chaos are weak
+				}
+				NOT = {
+					check_variable = {
+						which = "doom_counter"
+						value = 30
+					}
+				}
+			}
+		}
+		text = WeakDoom
+	}
+	desc = {
+		trigger = {
+			1 = {
+				check_variable = {
+					which = "doom_counter"
+					value = 30 # The winds of chaos are moderate
+				}
+				NOT = {
+					check_variable = {
+						which = "doom_counter"
+						value = 60
+					}
+				}
+			}
+		}
+		text = ModerateDoom
+	}
+	desc = {
+		trigger = {
+			1 = {
+				check_variable = {
+					which = "doom_counter"
+					value = 60 # The winds of chaos are strong
+				}
+				NOT = {
+					check_variable = {
+						which = "doom_counter"
+						value = 90
+					}
+				}
+			}
+		}
+		text = StrongDoom
+	}
+	desc = {
+		trigger = {
+			1 = {
+				check_variable = {
+					which = "doom_counter"
+					value = 90 # The winds of chaos are very strong
+				}
+			}
+		}
+		text = VeryStrongDoom
+	}
+	ai = no
+	notification = yes
+	is_triggered_only = yes
+
+	trigger = {
+		ai = no
+		1 = {
+			check_variable = {
+				which = "doom_counter"
+				value = 0 # The Doom counter exists
+			}
+		}
+	}
+
+	immediate = {
+		log = "work event id = wh_doomengine.5 for [Root.GetBestName]"
+	}
+
+	option = {
+		name = WeAreDoomed
 	}
 }

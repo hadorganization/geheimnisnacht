@@ -7,6 +7,7 @@ decisions = {
 	ai_race_trait_check = {
 		potential = {
 			ai = yes
+			is_demon_trigger = no
 			nor = {
 				trait = creature_human
 				trait = creature_amazon
@@ -23,14 +24,13 @@ decisions = {
 				trait = creature_slann
 				trait = creature_skaven
 				trait = creature_forestspirit
+				trait = creature_treekin
 				trait = creature_beastman
 				trait = creature_ogre
 				trait = creature_chaosspawn
-				trait = slaanesh_demon
-				trait = khorne_demon
-				trait = tzeentch_demon
 				trait = vampire_carstein_visible
 				trait = vampire_lahmian_visible
+				trait = creature_celdragon
 			}
 		}
         allow = {
@@ -198,20 +198,14 @@ decisions = {
 			}
 		}
         ai_will_do = {
-			factor = 1500
+			factor = 1
 		}
 	}
 	# Intermarriage fix
     ai_intermarriage_fix_elf = {
 		potential = {
 			ai = yes
-			OR = {
-				graphical_culture = asurgfx
-				graphical_culture = nagarythiangfx
-				graphical_culture = caledoriangfx
-				graphical_culture = asraigfx
-				graphical_culture = druchiigfx
-			}
+			trait = creature_elf
 			NOR = {
 				trait = elven_scion
 				trait = elven_maiden
@@ -223,17 +217,6 @@ decisions = {
 			is_married = no
 		}
         allow = {
-			OR = {
-				graphical_culture = asurgfx
-				graphical_culture = nagarythiangfx
-				graphical_culture = caledoriangfx
-				graphical_culture = asraigfx
-				graphical_culture = druchiigfx
-			}
-			NOR = {
-				trait = elven_scion
-				trait = elven_maiden
-			}
 		}
         effect = {
 			if = {
@@ -250,7 +233,7 @@ decisions = {
 			}
 		}
         ai_will_do = {
-			factor = 1500
+			factor = 1
 		}
 	}
 }

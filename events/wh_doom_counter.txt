@@ -19,60 +19,13 @@ province_event = {
 				NOT = {
 					check_variable = {
 						which = "doom_counter"
-						value = 3
+						value = 1
 					}
 				}
 			}
 			set_variable = {
 				which = "doom_counter"
-				value = 3
-			}
-		}
-		if = {
- 			limit = {
- 				k_avelorn = {
- 					owner = {
- 						trait = everqueen
-					}
-				}
-			}
- 			set_global_flag = vortex_exists
-		}
-		if = {
- 			limit = {
-	 			not = {
-	 				k_avelorn = {
-	 					owner = {
-	 						trait = everqueen
-						}
-					}
-				}
-			}
- 			clr_global_flag = vortex_exists
-		}
-		# changing due to the vortex existence
-		if = {
-			limit = {
-				# FIXME create vortex first
-				has_global_flag = vortex_exists
-				check_variable = {
-					which = "doom_counter"
-					value = 3
-				}
-			}
-			random_list = {
-				60 = {
-					change_variable = {
-						which = "doom_counter"
-						value = -1
-					}
-				}
-				20 = {
-					change_variable = {
-						which = "doom_counter"
-						value = -3
-					}
-				}
+				value = 1
 			}
 		}
 		if = {
@@ -148,7 +101,6 @@ province_event = {
 }
 
 # DOOM COUNTER RAISING EVENTS
-# works
 character_event = {
 	id = doomengine.1
 	hide_window = yes
@@ -165,17 +117,14 @@ character_event = {
 	}
 }
 
-# ENDTIME COUNTER INCREASES
+# ENDTIME COUNTER INCREASES on_decade_pulse
 province_event = {
 	id = doomengine.1005
+	is_triggered_only = yes
 	hide_window = yes
 
 	trigger = {
 		province_id = 1 # The Chaos Realms
-	}
-
- 	mean_time_to_happen = {
-		months = 120
 	}
 
 	immediate = {
@@ -191,22 +140,18 @@ province_event = {
 				modifier = {
 					factor = 0.75
 					has_global_flag = doom_medium
-
 				}
 				modifier = {
 					factor = 0.5
 					has_global_flag = doom_high
-
 				}
 				modifier = {
 					factor = 0.25
 					has_global_flag = doom_very_high
-
 				}
 				modifier = {
 					factor = 0.25
 					has_global_flag = all_slann_dead
-
 				}
 			}
 		}
@@ -217,8 +162,10 @@ province_event = {
 					value = 50
 				}
 			}
-			narrative_event = {
-				id = doomengine.1006
+			any_playable_ruler = {
+				narrative_event = {
+					id = doomengine.1006
+				}
 			}
 		}
 	}
@@ -250,17 +197,18 @@ narrative_event = {
 		}
 	}
 }
+
+# think about it
 province_event = {
 	id = doomengine.200
 	hide_window = yes
 	is_triggered_only = yes
 
 	trigger = {
-		province_id = 1509 # The Chaos Realms
+		province_id = 1509 # averlone
 		1509 = {
-			owner = {
-				culture = avelorni
-				religion = cadai
+			owner = {				
+				trait = everqueen
 			}
 		}
 	}

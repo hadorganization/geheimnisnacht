@@ -76,6 +76,8 @@ character_event = {
 				OR = {
 					graphical_culture = amazongfx
 					graphical_culture = westerngfx
+					graphical_culture = westerlandergfx
+					graphical_culture = sudenburgergfx
 					graphical_culture = easterngfx
 					graphical_culture = muslimgfx
 					graphical_culture = frankishgfx
@@ -577,6 +579,16 @@ character_event = {
 			}
 			break = yes
 		}
+		if = {
+			limit = {
+				graphical_culture = slanngfx
+				not = {
+					trait = creature_slann
+				}
+			}
+			add_trait = creature_slann
+			break = yes
+		}
 		# Skaven
 		if = {
 			limit = {
@@ -857,7 +869,7 @@ character_event = {
 		# grant_title = b_glak
 		# }
 		set_character_flag = wh_has_event_DR_startup.1_trait_not_set
-		log = "wh_has_event_DR_startup.1_trait_not_set"
+		log = "wh_has_event_DR_startup.1_trait_not_set for [Root.GetBestName]"
 	}
 }
 

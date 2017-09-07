@@ -17606,29 +17606,14 @@ character_event = {
 			limit = {
 				government = congregation_government
 			}
-			set_government_type = congregation_government
-			capital_scope = {
-				province_event = {
-					id = shunters.30003 days = 1
+			# we need it?
+			#set_government_type = congregation_government
+			current_heir = {
+				character_event = {
+					id = shunters.30002
+					days = 1
 				}
 			}
-		}
-	}
-}
-
-# Ping to province while the randomly selected heir is chosen automatically by Open Elective
-province_event = {
-	id = shunters.30003
-	hide_window = yes
-	is_triggered_only = yes
-
-	immediate = {
-		log = "work event id = shunters.30003 for [Root.GetBestName]"
-		holder_scope = {
-			character_event = {
-				id = shunters.30002
-			}
-			set_government_type = congregation_government
 		}
 	}
 }
@@ -17647,7 +17632,8 @@ character_event = {
 				mercenary = yes
 			}
 			activate_title = {
-				title = THIS status = no
+				title = THIS
+				status = no
 			}
 			destroy_landed_title = THIS
 		}
@@ -17737,7 +17723,6 @@ character_event = {
 				}
 			}
 			break = yes
-
 		}
 		# If no elegible character is aviable, create a new one
 		random_list = {

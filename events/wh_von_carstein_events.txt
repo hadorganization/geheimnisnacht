@@ -1,7 +1,7 @@
 namespace = carstein
 
 # Talabecland & Ostermark > Middenland & Hochland > Ostland > Westerland & Nordland > Reikland - Vlads path of expansion towards as named by Illathid
-# Carstein event - line starts, he gets event - army
+# Carstein event - line starts, he gets event army, on_startup
 character_event = {
 	id = carstein.0
 	title = CONQUEST
@@ -1523,33 +1523,5 @@ character_event = {
 	option = {
 		name = DAMNATIONS# Damnations!
 		prestige = -100
-	}
-}
-
-character_event = {
-	id = carstein.14
-	hide_window = yes
-	is_triggered_only = yes
-
-	trigger = {
-		NOT = {
-			has_global_flag = vampire_wars_started
-		}
-	}
-
-	immediate = {
-		log = "work event id = carstein.14 for [Root.GetBestName]"
-	}
-
-	option = {
-		name = OK
-		e_sylvania = {
-			holder_scope = {
-				character_event = {
-					id = carstein.0
-				}
-			}
-		}
-		set_global_flag = vampire_wars_started
 	}
 }

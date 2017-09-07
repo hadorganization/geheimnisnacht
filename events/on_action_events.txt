@@ -4440,6 +4440,7 @@ diploresponse_event = {
 # GRANT_LANDED_TITLE_INTERACTION_ACCEPT_EVENT =
 diploresponse_event = {
 	id = 228
+	desc = "EVTDESC228"
 	is_triggered_only = yes
 	major = no
 	is_friendly = yes
@@ -4453,11 +4454,7 @@ diploresponse_event = {
 		if = {
 			limit = {
 				OR = {
-					trait = khorne_demon
-					trait = nurgle_demon
-					trait = slaanesh_demon
-					trait = tzeentch_demon
-					trait = hashut_kdaai
+					is_demon_trigger = yes
 					trait = creature_forestspirit
 					trait = creature_toad
 					trait = creature_pig
@@ -4470,7 +4467,6 @@ diploresponse_event = {
 			}
 		}
 	}
-	desc = "EVTDESC228"
 
 	option = {
 		name = OK
@@ -7491,8 +7487,6 @@ diploresponse_event = {
 # Inheritance of Traits
 character_event = {
 	id = 45340
-	desc = "EVTDESC45340"
-	picture = "GFX_evt_death"
 	is_triggered_only = yes
 	hide_window = yes
 
@@ -7501,7 +7495,8 @@ character_event = {
 		# Item Inheritance
 		if = {
 			limit = {
-				trait = lahmian_queen NOT = {
+				trait = lahmian_queen
+				NOT = {
 					has_character_flag = do_not_inherit_sword
 				}
 			}
@@ -7528,7 +7523,8 @@ character_event = {
 				limit = {
 					NOT = {
 						trait = dead_target
-					} is_patrician = yes
+					} 
+					is_patrician = yes
 				}
 				family_palace = {
 					current_heir = {
@@ -7774,9 +7770,5 @@ character_event = {
 			}
 			remove_trait = dead_target
 		}
-	}
-
-	option = {
-		name = OK
 	}
 }

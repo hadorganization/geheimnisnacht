@@ -2413,10 +2413,15 @@ character_event = {
 		trigger = {
 			is_vampire_trigger = yes
 		}
-		FROM = {
-			destroy_artifact = carstein_ring
+		any_artifact = {
+			limit = {
+				has_artifact_flag = carstein_ring
+			}
+			transfer_artifact = {
+				from = from
+				to = root
+			}
 		}
-		add_artifact = carstein_ring
 		if = {
 			limit = {
 				religion_group = necromantic_group

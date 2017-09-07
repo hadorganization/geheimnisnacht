@@ -13,12 +13,6 @@ decisions = {
 				trait = bretonnian_knight
 				trait = grail_knight
 			}
-			OR = {
-				ai = no
-				trait = brave
-				trait = proud
-				trait = ambitious
-			}
 		}
 		allow = {
 			custom_tooltip = {
@@ -44,15 +38,29 @@ decisions = {
 				factor = 0
 				age = 35
 			}
+			modifier = {
+				factor = 0
+				war = yes
+			}
+			modifier = {
+				factor = 0
+				nor = {
+					trait = brave
+					trait = proud
+					trait = ambitious
+				}
+			}
 		}
 	}
 
 	returntoyourcastle = {
 		potential = {
 			trait = on_knight_quest
+			not = {
+				has_character_flag = on_grail_quest
+			}
 		}
 		allow = {
-			#ai = no
 		}
 		effect = {
 			character_event = {
@@ -66,6 +74,7 @@ decisions = {
 				nor = {
 					age = 35
 					has_character_flag = on_grail_quest
+					war = yes
 				}
 			}
 		}
@@ -80,13 +89,6 @@ decisions = {
 			nor = {
 				trait = grail_knight
 				has_character_flag = on_grail_quest
-			}
-			OR = {
-				ai = no
-				higher_real_tier_than = COUNT
-				trait = brave
-				trait = proud
-				trait = ambitious
 			}
 		}
 		allow = {
@@ -140,12 +142,17 @@ decisions = {
 				martial = 20
 			}
 			modifier = {
-				factor = 2
-				or = {
+				factor = 0.01
+				nor = {
 					trait = ambitious
 					trait = zealous
+					trait = proud
 					trait = brave
 				}
+			}
+			modifier = {
+				factor = 0.01
+				tier = COUNT
 			}
 		}
 	}

@@ -9,7 +9,6 @@ character_event = {
 	only_playable = yes
 	religion = grail
 	min_age = 16
-	only_men = yes
 	is_triggered_only = yes
 
 	trigger = {
@@ -45,7 +44,6 @@ character_event = {
 	desc = EVTDESCBRETONNIA.1 # You are a skilled warrior, and it is time you took up your duties to the realm and became a Knight-errant of BRETONNIA
 	picture = "GFX_evt_bretonnians"
 	min_age = 16
-	only_men = yes
 	is_triggered_only = yes
 
 	trigger = {
@@ -99,7 +97,6 @@ character_event = {
 	only_playable = yes
 	religion = grail
 	min_age = 16
-	only_men = yes
 	is_triggered_only = yes
 
 	trigger = {
@@ -125,7 +122,6 @@ character_event = {
 	only_playable = yes
 	religion = grail
 	min_age = 35
-	only_men = yes
 	is_triggered_only = yes
 
 	trigger = {
@@ -182,7 +178,6 @@ character_event = {
 	only_playable = yes
 	religion = grail
 	min_age = 16
-	only_men = yes
 	prisoner = no
 	is_triggered_only = yes
 
@@ -338,7 +333,6 @@ character_event = {
 	only_playable = yes
 	religion = grail
 	min_age = 16
-	only_men = yes
 	prisoner = no
 	is_triggered_only = yes
 
@@ -497,7 +491,6 @@ character_event = {
 	only_playable = yes
 	religion = grail
 	min_age = 16
-	only_men = yes
 	prisoner = no
 	is_triggered_only = yes
 
@@ -756,7 +749,6 @@ character_event = {
 	min_age = 16
 	only_playable = yes
 	religion = grail
-	only_men = yes
 	is_triggered_only = yes
 
 	trigger = {
@@ -807,10 +799,7 @@ character_event = {
 	title = THE_GRAIL_QUEST
 	desc = EVTDESCBRETONNIA.22 # You come across a remote shrine, dedicated to a sighting of The Lady many years ago. Rich offerings are on hand, and the pilgrims ask you to donate to the shrine to help feed the local village.
 	picture = "GFX_evt_tribal_shrine"
-	only_playable = yes
-	religion = grail
-	min_age = 16
-	only_men = yes
+	has_character_flag = on_grail_quest
 	prisoner = no
 	is_triggered_only = yes
 
@@ -850,12 +839,8 @@ character_event = {
 	title = THE_GRAIL_QUEST
 	desc = EVTDESCBRETONNIA.23 # You know you are not the bravest of knights, so when you hear word that a norscan berserker has slain twenty men single-handedly and he suddenly appears over the horizon you are cautious about riding him down, but...
 	picture = "GFX_evt_bretonnians"
-	min_age = 16
-	only_playable = yes
-	religion = grail
-	only_men = yes
-	prisoner = no
 	has_character_flag = on_grail_quest
+	prisoner = no
 	is_triggered_only = yes
 
 	trigger = {
@@ -913,15 +898,11 @@ character_event = {
 	title = THE_GRAIL_QUEST
 	desc = EVTDESCBRETONNIA.24 # You are not the purest or most abstinent of knights, and just as you sit in a tavern considering these flaws of yours, a gorgeous barmaid approaches with a large pitcher of wine and a warm inviting smile...
 	picture = "GFX_evt_feast"
-	only_playable = yes
-	religion = grail
-	min_age = 16
-	only_men = yes
+	has_character_flag = on_grail_quest
 	prisoner = no
 	is_triggered_only = yes
 
 	trigger = {
-		has_character_flag = on_grail_quest
 		trait = on_knight_quest
 		OR = {
 			trait = hedonist
@@ -958,15 +939,11 @@ character_event = {
 	title = THE_GRAIL_QUEST
 	desc = EVTDESCBRETONNIA.25 # While in a tavern, a peasant suddenly bumps into you and spills cheap wine all over you. He yells at you for being in his way, before realizing you are a knight, and then he slowly backs away with a sneer...
 	picture = "GFX_evt_feast"
-	only_playable = yes
-	religion = grail
-	min_age = 16
-	only_men = yes
+	has_character_flag = on_grail_quest
 	prisoner = no
 	is_triggered_only = yes
 
 	trigger = {
-		has_character_flag = on_grail_quest
 		trait = on_knight_quest
 		OR = {
 			trait = cruel
@@ -1003,15 +980,11 @@ character_event = {
 	title = THE_GRAIL_QUEST
 	desc = EVTDESCBRETONNIA.26 # You can't believe it... one day while riding in the woods, the Green Knight appears. This is the final test! If you prove worthy and defeat him, the Lady of the Lake will appear and allow you to sip from the Holy Grail!
 	picture = "GFX_evt_bretonnians"
-	only_playable = yes
-	religion = grail
-	min_age = 16
-	only_men = yes
+	has_character_flag = on_grail_quest
 	prisoner = no
 	is_triggered_only = yes
 
 	trigger = {
-		has_character_flag = on_grail_quest
 		trait = on_knight_quest
 		nor = {
 			trait = cruel
@@ -1051,12 +1024,15 @@ character_event = {
 			add_trait = brave
 			save_event_target_as = duelist_b
 			character_event = {
-				id = duelengine.1 days = 1
+				id = duelengine.1
+				days = 1
 			}
 		}
 		# Trigger the event to finish the quest - auto cancelled if character is dead.
 		character_event = {
-			id = wh_bretonnia.27 days = 30 random = 5
+			id = wh_bretonnia.27
+			days = 30
+			random = 5
 		}
 		# THE END
 	}
@@ -1068,15 +1044,11 @@ character_event = {
 	title = THE_LADY_OF_THE_LAKE
 	desc = EVTDESCBRETONNIA.27 # It... it's finally happening! The Lady of the Lake appears before you, her grace and beauty beyond compare. Purified from your trials she allows you to sip from the Grail, and you feel vitality and strength flow into you!
 	picture = "GFX_evt_knight_kneeling"
-	only_playable = yes
-	religion = grail
-	min_age = 16
-	only_men = yes
+	has_character_flag = on_grail_quest
 	prisoner = no
 	is_triggered_only = yes
 
 	trigger = {
-		has_character_flag = on_grail_quest
 		trait = on_knight_quest
 		nor = {
 			trait = cruel
@@ -1114,13 +1086,11 @@ character_event = {
 	only_playable = yes
 	religion = grail
 	min_age = 16
-	only_men = yes
 	prisoner = no
 	is_triggered_only = yes
 
 	trigger = {
 		has_landed_title = e_bretonnia
-		religion = grail
 		nor = {
 			trait = grail_knight
 			has_character_flag = bretonnia30
@@ -1138,7 +1108,8 @@ character_event = {
 		add_trait = on_knight_quest
 		set_character_flag = on_grail_quest
 		character_event = {
-			id = wh_bretonnia.31 days = 2555
+			id = wh_bretonnia.31
+			days = 2555
 		}
 	}
 
@@ -1164,7 +1135,8 @@ character_event = {
 		}
 		any_playable_ruler = {
 			character_event = {
-				id = wh_bretonnia.33 days = 7
+				id = wh_bretonnia.33
+				days = 7
 			}
 		}
 	}
@@ -1179,7 +1151,6 @@ character_event = {
 	only_playable = yes
 	religion = grail
 	min_age = 16
-	only_men = yes
 	prisoner = no
 	is_triggered_only = yes
 
@@ -1195,7 +1166,8 @@ character_event = {
 		clr_character_flag = on_grail_quest
 		any_playable_ruler = {
 			character_event = {
-				id = wh_bretonnia.32 days = 7
+				id = wh_bretonnia.32
+				days = 7
 			}
 		}
 	}
@@ -1210,7 +1182,8 @@ character_event = {
 		set_character_flag = false_grail_quest
 		any_playable_ruler = {
 			character_event = {
-				id = wh_bretonnia.34 days = 7
+				id = wh_bretonnia.34
+				days = 7
 			}
 		}
 	}
@@ -1298,7 +1271,6 @@ character_event = {
 	only_playable = yes
 	religion = grail
 	min_age = 16
-	only_men = yes
 	is_triggered_only = yes
 
 	trigger = {
@@ -1345,7 +1317,6 @@ character_event = {
 	min_age = 16
 	only_playable = yes
 	religion = grail
-	only_men = yes
 	is_triggered_only = yes
 
 	trigger = {
@@ -1399,7 +1370,6 @@ character_event = {
 	max_age = 40
 	capable_only = yes
 	prisoner = no
-	only_men = yes
 	culture_group = bretonnian_group
 
 	trigger = {
@@ -2316,8 +2286,7 @@ character_event = {
 	id = wh_bretonnia.124
 	desc = "DR_bretonnia_become_knight_battle" # Battlefield Promotion
 	picture = "GFX_battle_promotion"
-	is_triggered_only = yes
-	only_men = yes # Might re-evaluate this on the future
+	is_triggered_only = yes # Might re-evaluate this on the future
 	capable_only = yes
 	culture_group = bretonnian_group
 
@@ -2477,7 +2446,6 @@ character_event = {
 	desc = "DR_bretonnia_become_knight_siege" # Battlefield Promotion (siege)
 	picture = "GFX_battle_promotion"
 	is_triggered_only = yes
-	only_men = yes
 	capable_only = yes
 	culture_group = bretonnian_group
 

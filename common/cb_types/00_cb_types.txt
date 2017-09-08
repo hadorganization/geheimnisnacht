@@ -3558,6 +3558,38 @@ religious = {
 				modifier = won_holy_war
 				years = 20
 			}
+			if = {
+				limit = {
+					not = {
+						religion_group = chaos_gods_group
+					}
+					from = {
+						religion_group = chaos_gods_group
+					}
+					1 = {
+						change_variable = {
+							which = "doom_counter"
+							value = -1
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					religion_group = chaos_gods_group
+					from = {
+						not = {
+							religion_group = chaos_gods_group
+						}
+					}
+					1 = {
+						change_variable = {
+							which = "doom_counter"
+							value = 0.5
+						}
+					}
+				}
+			}
 		}
 		FROM = {
 			religion_authority = {
@@ -3639,6 +3671,38 @@ religious = {
 			religion_authority = {
 				modifier = won_holy_war
 				years = 20
+			}
+			if = {
+				limit = {
+					not = {
+						religion_group = chaos_gods_group
+					}
+					root = {
+						religion_group = chaos_gods_group
+					}
+					1 = {
+						change_variable = {
+							which = "doom_counter"
+							value = -1
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					religion_group = chaos_gods_group
+					root = {
+						not = {
+							religion_group = chaos_gods_group
+						}
+					}
+					1 = {
+						change_variable = {
+							which = "doom_counter"
+							value = 0.5
+						}
+					}
+				}
 			}
 		}
 	}

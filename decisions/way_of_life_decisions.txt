@@ -67,22 +67,11 @@ targetted_decisions = {
 		from_potential = {
 			has_focus = focus_seduction
 			is_marriage_adult = yes
-			NOT = {
-				trait = incapable
-			}
-			NOT = {
-				trait = incapacitated
-			}
-			NOT = {
-				trait = studying_magic
-			}
-    		NOT = {
+			nor = {
 				culture_group = daemonic_group
-			}
-			prisoner = no
-			NOT = {
 				has_any_opinion_modifier = opinion_seducing
 			}
+			
 			OR = {
 				ai = no
 				AND = {
@@ -104,144 +93,78 @@ targetted_decisions = {
 						}
 					}
 					is_ill = no
-					NOT = {
+					nor = {
 						trait = eunuch
-					}
-					NOT = {
 						trait = infirm
-					}
-					NOT = {
 						trait = inbred
-					}
-					NOT = {
 						trait = imbecile
-					}
-					NOT = {
 						trait = chaste
-					}
-					NOT = {
 						trait = shy
-					}
-					#Not for Lizardmen or Greenskins
-					NOT = {
-						trait = creature_goblin
-					}
-					NOT = {
-						trait = creature_orc
-					}
-					NOT = {
-						trait = creature_skink
-					}
-					NOT = {
-						culture_group = orc_group
-					}
-					NOT = {
-						culture_group = goblin_group
-					}
-					NOT = {
-						culture_group = lizardman_group
 					}
 				}
 			}
 		}
 		potential = {
 			is_marriage_adult = yes
-			NOT = {
+			is_no_females_race = no
+			nor = {
 				character = FROM
-			}
-			NOT = {
-				trait = incapable
-			}
-			prisoner = no
-			NOT = {
 				is_lover = FROM
-			}
-			NOT = {
 				is_former_lover = FROM
-			}
-			NOT = {
 				is_consort = FROM
-			}
-			NOT = {
 				any_spouse = {
 					character = FROM
 				}
-			}
-			NOT = {
 				is_child_of = FROM
-			}
-			NOT = {
 				mother_even_if_dead = {
 					is_child_of = FROM
 				}
-			}
-			NOT = {
 				father_even_if_dead = {
 					is_child_of = FROM
 				}
 			}
 			FROM = {
-				NOT = {
+				nor = {
 					is_child_of = ROOT
-				}
-				NOT = {
 					mother_even_if_dead = {
 						is_child_of = ROOT
 					}
-				}
-				NOT = {
 					father_even_if_dead = {
 						is_child_of = ROOT
 					}
 				}
 			}
 			OR = {
-				AND = {
-					FROM = {
-						NOT = {
-							trait = homosexual
-						}
-					}
-					NOT = {
-						trait = homosexual
-					}
-					OR = {
-						FROM = {
-							trait = transgender
-						}
-						NOT = {
-							same_sex = FROM
-						}
-					}
+				NOT = {
+					same_sex = FROM
 				}
-				AND = {
+				FROM = {
+					trait = transgender
+				}
+				and = {
 					FROM = {
 						trait = homosexual
 					}
-					trait = homosexual
-					OR = {
-						FROM = {
-							trait = transgender
-						}
-						same_sex = FROM
-					}
+					trait = homosexual					
 				}
-			}
-			#Not for Lizardmen or Greenskins
-			nor = {
-				trait = creature_goblin
-				trait = creature_orc
-				trait = creature_skink
-				culture_group = orc_group
-				culture_group = goblin_group
-				culture_group = lizardman_group
-				culture_group = daemonic_group
 			}
 		}
 		allow = {
+			from = {
+				custom_tooltip = {
+					text = IS_NOT_INCAPACITATED
+					is_incapacitated_trigger = no
+				}
+			}
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
+			is_within_diplo_range = FROM
 			NOR = {
 				has_opinion_modifier = {
-					who = FROM modifier = opinion_seduced_refused
+					who = FROM
+					modifier = opinion_seduced_refused
 				}
 				has_character_modifier = dismissed_proposal
 				trait = celibate
@@ -255,11 +178,9 @@ targetted_decisions = {
 					#non-AI Humans can always try to seduce other humans
 					FROM = {
 						ai = no
-					}
-					ROOT = {
 						trait = creature_human
 					}
-					FROM = {
+					ROOT = {
 						trait = creature_human
 					}
 				}
@@ -268,38 +189,32 @@ targetted_decisions = {
 					FROM = {
 						trait = vampire_lahmian_visible
 					}
-					OR = {
-						ROOT = {
+					ROOT = {
+						or = {
 							trait = creature_human
-						}
-						ROOT = {
 							trait = creature_elf
 						}
 					}
 				}
 				AND = {
 					#Option B chosen at startup allows for more seductions across some racial lines
-					FROM = {
-						ai = no
-					}
 					has_global_flag = optionB
 					custom_tooltip = {
 						text = Chose_option_B_a_startup
+					}
+					FROM = {
+						ai = no
 					}
 					OR = {
 						AND = {
 							#non-AI male Dwarves can seduce human women#
 							ROOT = {
 								trait = creature_human
+								is_female = yes
 							}
 							FROM = {
 								trait = creature_dwarf
-							}
-							FROM = {
 								is_female = no
-							}
-							ROOT = {
-								is_female = yes
 							}
 						}
 						AND = {
@@ -317,12 +232,11 @@ targetted_decisions = {
 								trait = creature_elf
 							}
 							FROM = {
-								trait=  creature_human
+								trait =  creature_human
 							}
 						}
 					}
 				}
-				is_within_diplo_range = FROM
 			}
 		}
 		effect = {
@@ -336,10 +250,8 @@ targetted_decisions = {
 					if = {
 						limit = {
 							is_close_relative = ROOT
-							NOT = {
+							nor = {
 								religion = ormazd
-							}
-							NOT = {
 								religion = kitabid
 							}
 						}
@@ -350,6 +262,9 @@ targetted_decisions = {
 					}
 					if = {
 						limit = {
+							not = {
+								trait = transgender
+							}							
 							same_sex = ROOT
 						}
 						character_event = {
@@ -370,13 +285,11 @@ targetted_decisions = {
 								trait = monk
 								trait = nun
 								ROOT = {
-									is_priest = yes
-								}
-								ROOT = {
-									trait = monk
-								}
-								ROOT = {
-									trait = nun
+									or = {
+										is_priest = yes
+										trait = monk
+										trait = nun
+									}
 								}
 							}
 						}
@@ -387,7 +300,6 @@ targetted_decisions = {
 					}
 					if = {
 						limit = {
-							is_immortal_trigger = no
 							OR = {
 								AND = {
 									OR = {

@@ -31,28 +31,16 @@ character_event = {
 
 	trigger = {
 		age = 40		# elves
-		NOT = {
-			society_member_of = cult_of_pleasure
-		}
-		NOT = {
-			has_character_flag = spirituallytempted_slaanesh
-		}
-		NOT = {
-			has_character_flag = physicallytempted_slaanesh
-		}
-		NOT = {
-			trait = malekith
-		}
-		NOT = {
-			trait = everqueen
-		}
-		NOT = {
-			has_character_flag = ai_flag_refuse_conversion
-		}
 		trait = creature_elf
-		NOT = {
+		nor = {
 			religion = cult_of_pleasure
 			religion = atharti
+			society_member_of = cult_of_pleasure
+			has_character_flag = spirituallytempted_slaanesh
+			has_character_flag = physicallytempted_slaanesh
+			has_character_flag = ai_flag_refuse_conversion
+			trait = malekith
+			trait = everqueen
 		}
 		OR = {
 			religion = cadai
@@ -3503,8 +3491,9 @@ character_event = {
 		}
 	}
 
+	# Enflame his lust
 	option = {
-		name = EVTOPTDspleasure.69			# Enflame his lust
+		name = EVTOPTDspleasure.69
 		trigger = {
 			OR = {
 				has_character_flag = physicallytempted_slaanesh
@@ -3514,7 +3503,9 @@ character_event = {
 		hidden_tooltip = {
 			FROM = {
 				character_event = {
-					id = spleasure.87 days = 10 random = 15
+					id = spleasure.87 
+					days = 10 
+					random = 15
 				}
 			}
 		}

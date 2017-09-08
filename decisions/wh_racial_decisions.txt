@@ -78,114 +78,56 @@ decisions = {
 				is_alive = yes
 			}
 			OR = {
-				AND = {
-					trait = creature_human
+				spouse = {
+					cannot_marry_race_trigger = yes
+				}
+				nor = {
+					has_global_flag = optionB
+					# beastmen can hybridize with everyone else
 					spouse = {
-						nor = {
+						trait = creature_beastman
+					}
+					# human
+					and = {
+						spouse = {
 							trait = creature_human
-							trait = creature_amazon
-							trait = creature_beastman
 						}
-						OR = {
-							ai = no
-							NOT = {
-								has_global_flag = optionB
-							}
-						}
+						trait = creature_human
 					}
-				}
-				AND = {
-					trait = creature_dwarf
-					spouse = {
-						NOT = {
-							trait = creature_dwarf
-						}
-						NOT = {
-							trait = creature_chaos_dwarf
-						}
-						OR = {
-							ai = no
-							NOT = {
-								has_global_flag = optionB
-							}
-						}
-					}
-				}
-				AND = {
-					trait = creature_elf
-					spouse = {
-						NOT = {
+					# elf
+					and = {
+						spouse = {
 							trait = creature_elf
 						}
-						OR = {
-							ai = no
-							NOT = {
-								has_global_flag = optionB
+						trait = creature_elf
+					}
+					# dwarf
+					and = {
+						spouse = {
+							or = {
+								trait = creature_dwarf
+								trait = creature_chaos_dwarf
 							}
 						}
+						or = {
+							trait = creature_dwarf
+							trait = creature_chaos_dwarf
+						}
 					}
-				}
-				AND = {
-					trait = creature_halfling
-					spouse = {
-						NOT = {
+					# halfling
+					and = {
+						spouse = {
 							trait = creature_halfling
 						}
-						OR = {
-							ai = no
-							NOT = {
-								has_global_flag = optionB
-							}
-						}
+						trait = creature_halfling
 					}
-				}
-				AND = {
-					trait = creature_ogre
-					spouse = {
-						NOT = {
+					# ogre
+					and = {
+						spouse = {
 							trait = creature_ogre
 						}
-						OR = {
-							ai = no
-							NOT = {
-								has_global_flag = optionB
-							}
-						}
+						trait = creature_ogre
 					}
-				}
-				AND = {
-					trait = creature_skaven
-					spouse = {
-						NOT = {
-							trait = creature_skaven
-						}
-						OR = {
-							ai = no
-							NOT = {
-								has_global_flag = optionB
-							}
-						}
-					}
-				}
-				AND = {
-					trait = creature_orc
-					is_married = yes
-				}
-				AND = {
-					trait = creature_goblin
-					is_married = yes
-				}
-				AND = {
-					trait = creature_saurus
-					is_married = yes
-				}
-				AND = {
-					trait = creature_skink
-					is_married = yes
-				}
-				AND = {
-					trait = creature_slann
-					is_married = yes
 				}
 			}
 		}

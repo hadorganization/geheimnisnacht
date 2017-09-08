@@ -109,32 +109,32 @@ targetted_decisions = {
 	}
 
 	vassalize_new_elector = {
-        from_potential = {
-            ai = no  # "ai_target_filter = all" is expensive, so ai instead uses MTTH event ElectiveLeagues.40
-            league_potential_trigger = yes
+		from_potential = {
+			ai = no  # "ai_target_filter = all" is expensive, so ai instead uses MTTH event ElectiveLeagues.40
+			league_potential_trigger = yes
 		}
-        potential = {
-            NOT = {
+		potential = {
+			NOT = {
 				character = FROM
 			}
-            league_potential_trigger = yes
+			league_potential_trigger = yes
 		}
-        allow = {
-            FROM = {
-                primary_title = {
-                    has_law = succ_feudal_elective
-                    is_titular = yes
+		allow = {
+			FROM = {
+				primary_title = {
+					has_law = succ_feudal_elective
+					is_titular = yes
 				}
-                # Sorry for the indent, players, but it gets the scopes correct for sharing scripted triggers
-                ROOT = {
-                    custom_tooltip = {
-                        text = LOWER_RANK_THAN_US
-                        lower_real_tier_than = PREV
+				# Sorry for the indent, players, but it gets the scopes correct for sharing scripted triggers
+				ROOT = {
+					custom_tooltip = {
+						text = LOWER_RANK_THAN_US
+						lower_real_tier_than = PREV
 					}
-                    THIS_can_be_elector_of_PREV_trigger = yes
-                    THIS_can_join_PREV_league_trigger = yes
-                    THIS_and_FROM_are_adjacent_trigger = yes
-                    NOT = {
+					THIS_can_be_elector_of_PREV_trigger = yes
+					THIS_can_join_PREV_league_trigger = yes
+					THIS_and_FROM_are_adjacent_trigger = yes
+					NOT = {
 						has_opinion_modifier = {
 							who = FROM  modifier = opinion_granted_independence
 						}
@@ -142,8 +142,8 @@ targetted_decisions = {
 				}
 			}
 		}
-        effect = {
-            add_THIS_to_FROM_existing_league_effect = yes
+		effect = {
+			add_THIS_to_FROM_existing_league_effect = yes
 		}
 	}
 }
@@ -313,84 +313,84 @@ decisions = {
 	celebrate_atruhayid_festival = {
 		only_playable = yes
 		is_high_prio = yes
-        potential = {
-            is_feudal = yes
-            religion = atruhayid
-            nor = {
-                has_character_modifier = holding_atruhayid_feast
-                has_character_modifier = large_feast_timer
-                has_character_modifier = fabulous_feast
+		potential = {
+			is_feudal = yes
+			religion = atruhayid
+			nor = {
+				has_character_modifier = holding_atruhayid_feast
+				has_character_modifier = large_feast_timer
+				has_character_modifier = fabulous_feast
 				has_character_flag = do_not_disturb
-                liege = {
-                    has_character_modifier = holding_atruhayid_feast
+				liege = {
+					has_character_modifier = holding_atruhayid_feast
 				}
 			}
-            num_of_vassals = 1
+			num_of_vassals = 1
 		}
-        allow = {
+		allow = {
 			custom_tooltip = {
 				text = IS_NOT_INCAPACITATED
 				is_incapacitated_trigger = no
 			}
-            war = no
-            any_demesne_title = {
-                is_occupied = no
+			war = no
+			any_demesne_title = {
+				is_occupied = no
 			}
-            scaled_wealth = 0.2
-            month = 5
+			scaled_wealth = 0.2
+			month = 5
 			NOT = {
 				month = 9
 			}
-            prestige = 100
+			prestige = 100
 		}
-        effect = {
-            scaled_wealth = -0.2
-            add_character_modifier = {
-                name = holding_atruhayid_feast
-                duration = 365
+		effect = {
+			scaled_wealth = -0.2
+			add_character_modifier = {
+				name = holding_atruhayid_feast
+				duration = 365
 			}
-            set_character_flag = recent_minor_decision
-            set_character_flag = do_not_disturb
-            hidden_tooltip = {
+			set_character_flag = recent_minor_decision
+			set_character_flag = do_not_disturb
+			hidden_tooltip = {
 				character_event = {
 					id = DR_misc.1500
 				}
 			}
 		}
-        revoke_allowed = {
-            always = no
+		revoke_allowed = {
+			always = no
 		}
-        ai_will_do = {
-            factor = 0.1
-            modifier = {
-                factor = 0
-                NOT = {
-                    scaled_wealth = 2
+		ai_will_do = {
+			factor = 0.1
+			modifier = {
+				factor = 0
+				NOT = {
+					scaled_wealth = 2
 				}
 			}
-            modifier = {
-                factor = 0.5
-                trait = shy
+			modifier = {
+				factor = 0.5
+				trait = shy
 			}
-            modifier = {
-                factor = 0.5
-                NOT = {
+			modifier = {
+				factor = 0.5
+				NOT = {
 					diplomacy = 10
 				}
 			}
-            modifier = {
-                factor = 0
-                has_character_flag = recent_minor_decision
-                NOT = {
-                    had_character_flag = {
-                        flag = recent_minor_decision
-                        days = 730
+			modifier = {
+				factor = 0
+				has_character_flag = recent_minor_decision
+				NOT = {
+					had_character_flag = {
+						flag = recent_minor_decision
+						days = 730
 					}
 				}
 			}
-            modifier = {
-                factor = 0
-                NOT = {
+			modifier = {
+				factor = 0
+				NOT = {
 					age = 30
 				}
 			}
@@ -401,29 +401,29 @@ decisions = {
 	# Only for human rulers inside the Borderlands region
 	create_elective_league = {
 		only_playable = yes
-        potential = {
-            ai = no  # adjacency calculation is expensive, so ai instead uses MTTH event ElectiveLeagues.30
-            OR = {
-                real_tier = KING
-                real_tier = DUKE
-                real_tier = COUNT
+		potential = {
+			ai = no  # adjacency calculation is expensive, so ai instead uses MTTH event ElectiveLeagues.30
+			OR = {
+				real_tier = KING
+				real_tier = DUKE
+				real_tier = COUNT
 			}
-            league_potential_trigger = yes
+			league_potential_trigger = yes
 		}
-        allow = {
-            is_feudal = yes
-            # religion_allows_feudal_elective_trigger = yes
-            any_independent_ruler = {
-                THIS_and_PREV_same_rank_trigger = yes
-                THIS_can_join_PREV_league_trigger = yes
-                THIS_and_FROM_are_adjacent_trigger = yes
+		allow = {
+			is_feudal = yes
+			# religion_allows_feudal_elective_trigger = yes
+			any_independent_ruler = {
+				THIS_and_PREV_same_rank_trigger = yes
+				THIS_can_join_PREV_league_trigger = yes
+				THIS_and_FROM_are_adjacent_trigger = yes
 			}
 		}
-        effect = {
-            custom_tooltip = {
-                text = create_elective_league_effect
-                hidden_tooltip = {
-                    character_event = {
+		effect = {
+			custom_tooltip = {
+				text = create_elective_league_effect
+				hidden_tooltip = {
+					character_event = {
 						id = DR_misc.1031
 					}
 				}

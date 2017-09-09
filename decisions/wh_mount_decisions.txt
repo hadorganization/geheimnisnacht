@@ -277,4 +277,49 @@ decisions = {
 			}
 		}
 	}
+	
+	trainawarbearmount = {
+		only_playable = yes
+		potential = {
+			age = 12
+			nor = {
+				has_character_flag = war_bear_mount
+				has_artifact = war_bear_mount
+				culture = sylvanian
+			}
+			OR = {
+				culture_group = kislevite_group
+				religion = ursun
+			}
+		}
+		allow = {
+			custom_tooltip = {
+				text = IS_NOT_INCAPACITATED
+				is_incapacitated_trigger = no
+			}
+			wealth = 1000
+		}
+		effect = {
+			set_character_flag = war_bear_mount
+			character_event = {
+				id = mounts.13
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = {
+					martial = 15
+				}
+			}
+			modifier = {
+				factor = 0
+				any_artifact = {
+					has_artifact_flag = mount
+				}
+			}
+		}
+	}
+
 }

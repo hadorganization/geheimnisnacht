@@ -335,3 +335,45 @@ character_event = {
 		add_artifact = nightmare_mount
 	}
 }
+
+#warbear mount menu
+character_event = {
+	id = mounts.13
+	title = A_WAR_BEAR_MOUNT
+	desc = EVTDESCMOUNTS.13 # As a true devotee of the cult of Ursun Bear, you are engaged in training, to find a strong bear in the harsh, snow-covered lands.
+	picture = "GFX_evt_desert"	
+	is_triggered_only = yes
+	
+	option = {
+		name = I_MET_MY_BROTHER
+		wealth = -1000
+		piety = -500
+		character_event = { 
+			id = mounts.14 
+			days = 3650 
+		}
+	}
+	
+	option = {
+		name = MAYBE_LATER
+		clr_character_flag = war_bear_mount
+		trigger = { 
+			ai = no 
+		}
+	}
+	
+}
+character_event = {
+	id = mounts.14
+	title = A_WAR_BEAR_MOUNT
+	desc = EVTDESCMOUNTS.14 # Over the years, many times have gone to find your companion and now the search is over. Glory to Ursun.
+	picture = "GFX_evt_desert"	
+	is_triggered_only = yes
+	
+	option = {
+		name = GLORY_TO_URSUN
+		clr_character_flag = war_bear_mount
+		add_artifact = war_bear_mount
+	}
+	
+}

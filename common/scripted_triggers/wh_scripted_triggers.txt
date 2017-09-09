@@ -234,19 +234,6 @@ is_long_lived_character = {
 	}
 }
 
-is_no_females_race = {
-	OR = {
-		trait = creature_skink
-		trait = creature_saurus
-		trait = creature_orc
-		trait = creature_goblin
-		trait = creature_snotling
-		trait = creature_nehekharan
-		trait = creature_slann
-		trait = creature_skaven
-	}
-}
-
 is_mutated_trigger = {
 	OR = {
 		trait = mutation_minor
@@ -274,11 +261,11 @@ is_demon_trigger = {
 		trait = slaanesh_demon
 		trait = nurgle_demon
 		trait = tzeentch_demon
-		trait = khorne_bloodletter
-		trait = nurgle_plaguebearer
-		trait = slaanesh_daemonette
-		trait = tzeentch_flamer
 		trait = hashut_kdaai
+		# trait = khorne_bloodletter
+		# trait = nurgle_plaguebearer
+		# trait = slaanesh_daemonette
+		# trait = tzeentch_flamer
 	}
 }
 
@@ -359,20 +346,75 @@ is_living_human_trigger = {
 	is_vampire_trigger = no
 }
 
-cant_love_trigger = {
-	nor = {
-		is_demon_trigger = yes
-		trait = creature_goblin
-		trait = creature_orc
+is_no_females_race = {
+	OR = {
 		trait = creature_skink
+		trait = creature_saurus
+		trait = creature_orc
+		trait = creature_goblin
+		trait = creature_snotling
+		trait = creature_nehekharan # hmmm
+		trait = creature_slann
 		trait = creature_skaven
-		culture_group = orc_group
-		culture_group = goblin_group
-		culture_group = lizardman_group
+	}
+}
+
+can_love_trigger = {
+	is_demon_trigger = no
+	is_no_females_race = no
+	nor = {
 		trait = pet_consort
 		trait = druchi_witch_elf
 		trait = druchi_assassin
-		trait = skaven_breeder
+	}
+}
+
+wh_this_and_root_can_love_trigger = {
+	#is_valid_romance_target = ROOT
+	can_love_trigger = yes
+	is_marriage_adult = yes
+	root = {
+		can_love_trigger = yes
+		s_marriage_adult = yes
+	}
+	nor = {
+		is_lover = root
+		character = root
+	}
+	or = {
+		and = {
+			is_opposite_sex = root
+			or = {
+				nor = {
+					trait = homosexual
+					root = {
+						trait = homosexual
+					}
+				}
+				and = {
+					trait = transgender
+					root = {
+						trait = homosexual
+					}
+				}
+				and = {
+					trait = homosexual
+					root = {
+						trait = transgender
+					}
+				}
+			}
+		}
+		and = {
+			same_sex = root
+			trait = homosexual
+			or = {
+				root = {
+					trait = homosexual
+				}
+				trait = transgender
+			}
+		}
 	}
 }
 
@@ -386,17 +428,18 @@ is_invincible_trigger = {
 }
 
 is_immortal_trigger = {
-	OR = {
-		has_artifact = elixir_of_eternal_youth
-		trait = immortal
-		trait = creature_orc
-		trait = creature_goblin
-		trait = creature_slann
-		trait = creature_celdragon
-		is_undead_trigger = yes
-		is_demon_trigger = yes
-		is_demon_prince_trigger = yes
-	}
+	immortal = yes
+	# OR = {
+	# 	has_artifact = elixir_of_eternal_youth
+	# 	trait = immortal
+	# 	trait = creature_orc
+	# 	trait = creature_goblin
+	# 	trait = creature_slann
+	# 	trait = creature_celdragon
+	# 	is_undead_trigger = yes
+	# 	is_demon_trigger = yes
+	# 	is_demon_prince_trigger = yes
+	# }
 }
 
 is_incapacitated_trigger = {
@@ -501,7 +544,7 @@ cannot_marry_trigger = {
 }
 
 cannot_marry_race_trigger = {
-	or = {	
+	or = {
 		# chosen cannot marry good or bad?
 		is_demon_trigger = yes
 		trait = creature_amazon

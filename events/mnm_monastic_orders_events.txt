@@ -779,8 +779,8 @@ character_event = {
 		text = EVTDESC_4405_SLOTHFUL
 		picture = GFX_evt_recovery
 	}
-	# Indulge
 
+	# Indulge
 	immediate = {
 		log = "work event id = MNM.4405 for [Root.GetBestName]"
 	}
@@ -829,8 +829,8 @@ character_event = {
 			}
 		}
 	}
-	# Fight it
 
+	# Fight it
 	option = {
 		name = {
 			trigger = {
@@ -1010,9 +1010,7 @@ character_event = {
 			limit = {
 				has_character_flag = holy_seclusion_lustful
 				event_target:holy_seclusion_lover = {
-					NOT = {
-						is_lover = ROOT
-					}
+					wh_this_and_root_can_love_trigger = yes
 				}
 			}
 			random = {
@@ -1516,8 +1514,8 @@ character_event = {
 			save_event_target_as = potential_friend
 		}
 	}
-	# Go out and talk with them
 
+	# Go out and talk with them
 	option = {
 		name = EVTOPTA_MNM_4410
 		custom_tooltip = {
@@ -1775,8 +1773,8 @@ character_event = {
 			save_event_target_as = court_spiritual
 		}
 	}
-	# You keep reading
 
+	# You keep reading
 	option = {
 		name = EVTOPTA_MNM_4414
 		random_list = {
@@ -2097,8 +2095,8 @@ character_event = {
 			has_quest = quest_monastic_order_meditation
 		}
 	}
-	# Teach them about the scripture
 
+	# Teach them about the scripture
 	immediate = {
 		log = "work event id = MNM.4420 for [Root.GetBestName]"
 	}
@@ -2168,8 +2166,8 @@ character_event = {
 			}
 		}
 	}
-	# Be patient with them
 
+	# Be patient with them
 	option = {
 		name = EVTOPTB_MNM_4420
 		custom_tooltip = {
@@ -2201,8 +2199,8 @@ character_event = {
 			}
 		}
 	}
-	# Sho away
 
+	# Sho away
 	option = {
 		name = EVTOPTC_MNM_4420
 		random_list = {
@@ -5746,6 +5744,11 @@ character_event = {
 	option = {
 		# Do it
 		name = EVTOPTB_MNM_4441
+		trigger = {
+			from = {
+				wh_this_and_root_can_love_trigger = yes
+			}
+		}
 		add_trait = homosexual
 		event_target:monastic_friend = {
 			add_trait = homosexual

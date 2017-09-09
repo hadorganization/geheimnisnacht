@@ -186,7 +186,7 @@ character_event = {
 						}
 					}
 				}
-				is_valid_romance_target = ROOT
+				wh_this_and_root_can_love_trigger = yes
 			}
 			character_event = {
 				id = 450
@@ -770,6 +770,7 @@ character_event = {
 		liege = {
 			random_courtier = {
 				limit = {
+					wh_this_and_root_can_love_trigger = yes
 					is_ruler = no
 					has_lover = no
 					is_pregnant = no
@@ -778,26 +779,6 @@ character_event = {
 					is_ill = no
 					NOT = {
 						is_close_relative = ROOT
-					}
-					OR = {
-						AND = {
-							NOT = {
-								trait = homosexual
-							}
-							ROOT = {
-								NOT = {
-									trait = homosexual
-								}
-							}
-							is_opposite_sex = ROOT
-						}
-						AND = {
-							trait = homosexual
-							ROOT = {
-								trait = homosexual
-							}
-							same_sex = ROOT
-						}
 					}
 					OR = {
 						is_female = no
@@ -4453,8 +4434,8 @@ character_event = {
 	is_triggered_only = yes
 	# immediate = {
 	# 	add_trait = ill
-	# }
 
+	# }
 	immediate = {
 		log = "work event id = 315 for [Root.GetBestName]"
 	}

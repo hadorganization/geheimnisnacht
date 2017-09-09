@@ -51,7 +51,8 @@ character_event = {
 			}
 			add_trait = widowed
 			character_event = {
-				id = widowed.4 days = 14
+				id = widowed.4
+				days = 14
 			}
 		}
 	}
@@ -71,24 +72,14 @@ character_event = {
 				who = ROOT
 				value = 50
 			}
-			NOT = {
+			nor = {
 				trait = widowed
-			}
-			NOT = {
 				any_spouse = {
 					character = ROOT
 				}
-			}
-			NOT = {
 				num_of_lovers = 2
-			}
-			NOT = {
 				trait = cruel
-			}
-			NOT = {
 				trait = cynical
-			}
-			NOT = {
 				trait = impaler
 			}
 			OR = {
@@ -109,24 +100,14 @@ character_event = {
 					who = ROOT
 					value = 50
 				}
-				NOT = {
+				nor = {
 					trait = widowed
-				}
-				NOT = {
 					any_spouse = {
 						character = ROOT
 					}
-				}
-				NOT = {
 					num_of_lovers = 2
-				}
-				NOT = {
 					trait = cruel
-				}
-				NOT = {
 					trait = cynical
-				}
-				NOT = {
 					trait = impaler
 				}
 				OR = {
@@ -137,7 +118,8 @@ character_event = {
 				}
 			}
 			character_event = {
-				id = widowed.4 days = 14
+				id = widowed.4
+				days = 14
 			}
 		}
 	}
@@ -175,65 +157,20 @@ character_event = {
 		name = WIDOWOPTA # Drown yourself in wine
 		trigger = {
 			is_female = no
-			NOT = {
+			nor = {
 				trait = chaste
-			}
-			NOT = {
 				trait = celibate
-			}
-		}
-		ai_chance = {
-			factor = 1
-			modifier = {
-				factor = 0.1
-				trait = temperate
-			}
-			modifier = {
-				factor = 0.25
-				trait = shy
-			}
-			modifier = {
-				factor = 3
-				trait = lustful
-			}
-			modifier = {
-				factor = 3
-				trait = drunkard
-			}
-			modifier = {
-				factor = 3
-				trait = hedonist
-			}
-			modifier = {
-				factor = 1.5
-				trait = proud
-			}
-			modifier = {
-				factor = 1.5
-				trait = gregarious
-			}
-			modifier = {
-				factor = 1.5
-				OR = {
-					trait = hedonist
-					trait = falconer
-					trait = duelist
-					trait = hunter
-				}
-			}
-			modifier = {
-				factor = 1.5
-				trait = gluttonous
 			}
 		}
 		random = {
 			chance = 90
 			add_trait = depressed
+			# Notify
 			hidden_tooltip = {
 				character_event = {
 					id = 38288
 				}
-			} # Notify
+			}
 		}
 		if = {
 			limit = {
@@ -247,11 +184,12 @@ character_event = {
 		random = {
 			chance = 50
 			add_trait = drunkard
+			# Notify
 			hidden_tooltip = {
 				character_event = {
 					id = 38286
 				}
-			} # Notify
+			}
 		}
 		# chance of lustful, gluttonous, hedonist, wounded
 		if = {
@@ -327,10 +265,8 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					trait = wounded
-				}
-				NOT = {
 					trait = maimed
 				}
 			}
@@ -347,66 +283,55 @@ character_event = {
 				}
 			}
 		}
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0.1
+				trait = temperate
+			}
+			modifier = {
+				factor = 0.25
+				trait = shy
+			}
+			modifier = {
+				factor = 3
+				trait = lustful
+			}
+			modifier = {
+				factor = 3
+				trait = drunkard
+			}
+			modifier = {
+				factor = 3
+				trait = hedonist
+			}
+			modifier = {
+				factor = 1.5
+				trait = proud
+			}
+			modifier = {
+				factor = 1.5
+				trait = gregarious
+			}
+			modifier = {
+				factor = 1.5
+				OR = {
+					trait = hedonist
+					trait = falconer
+					trait = duelist
+					trait = hunter
+				}
+			}
+			modifier = {
+				factor = 1.5
+				trait = gluttonous
+			}
+		}
 	}
 
 	option = {
 		# Lose yourself in books and songs and the wisdom of others
 		name = WIDOWOPTB
-		ai_chance = {
-			factor = 1
-			modifier = {
-				factor = 10
-				has_character_flag = vlad_von_carstein
-			}
-			modifier = {
-				factor = 0.1
-				trait = brave
-			}
-			modifier = {
-				factor = 0.1
-				trait = wroth
-			}
-			modifier = {
-				factor = 0.1
-				trait = ambitious
-			}
-			modifier = {
-				factor = 3
-				trait = patient
-			}
-			modifier = {
-				factor = 3
-				trait = humble
-			}
-			modifier = {
-				factor = 3
-				trait = content
-			}
-			modifier = {
-				factor = 3
-				trait = scholar
-			}
-			modifier = {
-				factor = 3
-				trait = mystic
-			}
-			modifier = {
-				factor = 3
-				trait = poet
-			}
-			modifier = {
-				factor = 1.5
-				learning = 10
-			}
-			modifier = {
-				factor = 1.5
-				learning = 14
-			}
-			modifier = {
-				factor = 10
-				learning = 18
-			}
-		}
 		random = {
 			chance = 90
 			add_trait = depressed
@@ -494,6 +419,61 @@ character_event = {
 				}
 			}
 		}
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 10
+				has_character_flag = vlad_von_carstein
+			}
+			modifier = {
+				factor = 0.1
+				trait = brave
+			}
+			modifier = {
+				factor = 0.1
+				trait = wroth
+			}
+			modifier = {
+				factor = 0.1
+				trait = ambitious
+			}
+			modifier = {
+				factor = 3
+				trait = patient
+			}
+			modifier = {
+				factor = 3
+				trait = humble
+			}
+			modifier = {
+				factor = 3
+				trait = content
+			}
+			modifier = {
+				factor = 3
+				trait = scholar
+			}
+			modifier = {
+				factor = 3
+				trait = mystic
+			}
+			modifier = {
+				factor = 3
+				trait = poet
+			}
+			modifier = {
+				factor = 1.5
+				learning = 10
+			}
+			modifier = {
+				factor = 1.5
+				learning = 14
+			}
+			modifier = {
+				factor = 10
+				learning = 18
+			}
+		}
 	}
 
 	option = {
@@ -501,63 +481,20 @@ character_event = {
 		name = WIDOWOPTC
 		trigger = {
 			is_ruler = yes
-			NOT = {
+			nor = {
 				trait = chaste
-			}
-			NOT = {
 				trait = celibate
 			}
 			any_courtier = {
 				age = 16
 				ai = yes
-				OR = {
-					AND = {
-						is_female = no
-						OR = {
-							ROOT = {
-								trait = homosexual
-								is_female = no
-							}
-							ROOT = {
-								NOT = {
-									trait = homosexual
-								}
-								is_female = yes
-							}
-						}
-					}
-					AND = {
-						is_female = yes
-						OR = {
-							ROOT = {
-								trait = homosexual
-								is_female = yes
-							}
-							ROOT = {
-								NOT = {
-									trait = homosexual
-								}
-								is_female = no
-							}
-						}
-					}
-				}
-				NOT = {
+				wh_this_and_root_can_love_trigger = yes
+				nor = {
 					trait = celibate
-				}
-				NOT = {
 					trait = chaste
-				}
-				NOT = {
 					trait = monk
-				}
-				NOT = {
 					trait = nun
-				}
-				NOT = {
 					has_lover = yes
-				}
-				NOT = {
 					is_close_relative = ROOT
 				}
 				opinion = {
@@ -566,20 +503,79 @@ character_event = {
 				}
 				OR = {
 					ROOT = {
-						trait = lustful
-					}
-					ROOT = {
-						trait = hedonist
-					}
-					ROOT = {
-						trait = drunkard
+						or = {
+							trait = lustful
+							trait = hedonist
+							trait = drunkard
+						}
 					}
 					reverse_opinion = {
 						who = ROOT
 						value = 0
 					}
-					trait = fair
+					wh_is_beautiful_trigger = yes
 				}
+			}
+		}
+		random_courtier = {
+			limit = {
+				age = 16
+				ai = yes
+				wh_this_and_root_can_love_trigger = yes
+				nor = {
+					trait = celibate
+					trait = chaste
+					trait = monk
+					trait = nun
+					has_lover = yes
+					is_close_relative = ROOT
+				}
+				opinion = {
+					who = ROOT
+					value = 0
+				}
+				OR = {
+					ROOT = {
+						or = {
+							trait = lustful
+							trait = hedonist
+							trait = drunkard
+						}
+					}
+					reverse_opinion = {
+						who = ROOT
+						value = 0
+					}
+					wh_is_beautiful_trigger = yes
+				}
+			}
+			add_lover = ROOT
+		}
+		if = {
+			limit = {
+				trait = widowed
+			}
+			if = {
+				limit = {
+					trait = shy
+				}
+				remove_trait = shy
+			}
+			any_child = {
+				opinion = {
+					who = ROOT
+					modifier = opinion_disgruntled
+					years = 5
+				}
+			}
+		}
+		if = {
+			limit = {
+				trait = widowed
+			}
+			random = {
+				chance = 40
+				remove_trait = widowed
 			}
 		}
 		ai_chance = {
@@ -613,163 +609,12 @@ character_event = {
 				trait = kind
 			}
 		}
-		random_courtier = {
-			limit = {
-				age = 16
-				ai = yes
-				OR = {
-					AND = {
-						is_female = no
-						OR = {
-							ROOT = {
-								trait = homosexual
-								is_female = no
-							}
-							ROOT = {
-								NOT = {
-									trait = homosexual
-								}
-								is_female = yes
-							}
-						}
-					}
-					AND = {
-						is_female = yes
-						OR = {
-							ROOT = {
-								trait = homosexual
-								is_female = yes
-							}
-							ROOT = {
-								NOT = {
-									trait = homosexual
-								}
-								is_female = no
-							}
-						}
-					}
-				}
-				NOT = {
-					trait = celibate
-				}
-				NOT = {
-					trait = chaste
-				}
-				NOT = {
-					trait = monk
-				}
-				NOT = {
-					trait = nun
-				}
-				NOT = {
-					has_lover = yes
-				}
-				NOT = {
-					is_close_relative = ROOT
-				}
-				opinion = {
-					who = ROOT
-					value = 0
-				}
-				OR = {
-					ROOT = {
-						trait = lustful
-					}
-					ROOT = {
-						trait = hedonist
-					}
-					ROOT = {
-						trait = drunkard
-					}
-					reverse_opinion = {
-						who = ROOT
-						value = 0
-					}
-					trait = fair
-				}
-			}
-			add_lover = ROOT
-		}
-		if = {
-			limit = {
-				trait = widowed
-			}
-			if = {
-				limit = {
-					trait = shy
-				}
-				remove_trait = shy
-			}
-			any_child = {
-				opinion = {
-					who = ROOT
-					modifier = opinion_disgruntled
-					years = 5
-				}
-			}
-		}
-		if = {
-			limit = {
-				trait = widowed
-			}
-			random = {
-				chance = 40
-				remove_trait = widowed
-			}
-		}
 	}
-	# callous fucker option
 
+	# callous fucker option
 	option = {
 		# This is nonsense. I am an adult and will move on with my life.
 		name = WIDOWOPTD
-		ai_chance = {
-			factor = 1
-			modifier = {
-				factor = 0
-				has_character_flag = vlad_von_carstein
-			}
-			modifier = {
-				factor = 0
-				trait = kind
-			}
-			modifier = {
-				factor = 0.1
-				trait = lustful
-			}
-			modifier = {
-				factor = 0.1
-				trait = humble
-			}
-			modifier = {
-				factor = 0.25
-				trait = zealous
-			}
-			modifier = {
-				factor = 0.25
-				trait = shy
-			}
-			modifier = {
-				factor = 3
-				trait = impaler
-			}
-			modifier = {
-				factor = 3
-				trait = celibate
-			}
-			modifier = {
-				factor = 3
-				trait = cruel
-			}
-			modifier = {
-				factor = 3
-				trait = cynical
-			}
-			modifier = {
-				factor = 3
-				trait = proud
-			}
-		}
 		if = {
 			limit = {
 				trait = widowed
@@ -905,9 +750,56 @@ character_event = {
 				}
 			}
 		}
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_character_flag = vlad_von_carstein
+			}
+			modifier = {
+				factor = 0
+				trait = kind
+			}
+			modifier = {
+				factor = 0.1
+				trait = lustful
+			}
+			modifier = {
+				factor = 0.1
+				trait = humble
+			}
+			modifier = {
+				factor = 0.25
+				trait = zealous
+			}
+			modifier = {
+				factor = 0.25
+				trait = shy
+			}
+			modifier = {
+				factor = 3
+				trait = impaler
+			}
+			modifier = {
+				factor = 3
+				trait = celibate
+			}
+			modifier = {
+				factor = 3
+				trait = cruel
+			}
+			modifier = {
+				factor = 3
+				trait = cynical
+			}
+			modifier = {
+				factor = 3
+				trait = proud
+			}
+		}
 	}
-	# Wife was culled
 
+	# Wife was culled
 	option = {
 		name = WIDOWOPTE
 		remove_trait = depressed
@@ -920,8 +812,8 @@ character_event = {
 	id = widowed.5
 	desc = EVTDESCwidowed.5 # As time marches on, I feel old wounds healing. I can look back on the cherished memories, and not be absorbed in the painful ones.
 	picture = GFX_evt_recovery
-	# is_triggered_only = yes
 
+	# is_triggered_only = yes
 	trigger = {
 		trait = widowed
 	}

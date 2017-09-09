@@ -20,24 +20,14 @@ targetted_decisions = {
 			ai = no
 			has_dlc = "Way of Life"
 			has_lover = yes
-			NOT = {
-				culture_group = daemonic_group
-			}
 		}
 		potential = {
 			is_lover = FROM
-			NOT = {
-				culture_group = daemonic_group
-			}
-			NOT = {
+			nor = {
 				trait = pet_consort
-			}
-			NOT = {
 				any_spouse = {
 					character = FROM
 				}
-			}
-			NOT = {
 				any_consort = {
 					character = FROM
 				}
@@ -49,7 +39,8 @@ targetted_decisions = {
 		effect = {
 			FROM = {
 				character_event = {
-					id = WoL.1109 tooltip = EVTTOOLTIP64046
+					id = WoL.1109 
+					tooltip = EVTTOOLTIP64046
 				}
 			}
 		}
@@ -66,12 +57,11 @@ targetted_decisions = {
 		ai_target_filter = realm
 		from_potential = {
 			has_focus = focus_seduction
-			is_marriage_adult = yes
+			wh_this_and_root_can_love_trigger = yes
 			nor = {
 				culture_group = daemonic_group
 				has_any_opinion_modifier = opinion_seducing
-			}
-			
+			}			
 			OR = {
 				ai = no
 				AND = {
@@ -105,11 +95,7 @@ targetted_decisions = {
 			}
 		}
 		potential = {
-			is_marriage_adult = yes
-			is_no_females_race = no
 			nor = {
-				character = FROM
-				is_lover = FROM
 				is_former_lover = FROM
 				is_consort = FROM
 				any_spouse = {
@@ -132,20 +118,6 @@ targetted_decisions = {
 					father_even_if_dead = {
 						is_child_of = ROOT
 					}
-				}
-			}
-			OR = {
-				NOT = {
-					same_sex = FROM
-				}
-				FROM = {
-					trait = transgender
-				}
-				and = {
-					FROM = {
-						trait = homosexual
-					}
-					trait = homosexual					
 				}
 			}
 		}

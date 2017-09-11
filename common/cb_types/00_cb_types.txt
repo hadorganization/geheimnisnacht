@@ -1908,21 +1908,6 @@ claim_all = {
 				}
 			}
 		}
-		# hidden_tooltip = {
-		# ROOT = {
-		# if = {
-		# limit = {
-		# has_dlc = "Legacy of Rome"
-		# OR = {
-		# has_landed_title = e_byzantium
-		# has_landed_title = e_roman_empire
-		# }
-		# religion_group = old_world_group
-		# }
-		# character_event = { id = LoR.30 days = 12 }
-		# }
-		# }
-		# }
 		any_attacker = {
 			limit = {
 				character = ROOT
@@ -2752,10 +2737,7 @@ invasion = {
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
 		wh_cb_is_valid_title_trigger = yes
-		nor = {
-			region = world_underempire
-			region = world_nehekhara
-		}
+		wh_underempire_or_nehekhara_trigger = no
 	}
 	is_valid_title = {
 		wh_cb_is_valid_title_trigger = yes
@@ -2809,17 +2791,6 @@ invasion = {
 					}
 					give_nickname = nick_the_conqueror
 				}
-				# if = {
-				# limit = {
-				# has_dlc = "Legacy of Rome"
-				# OR = {
-				# has_landed_title = e_byzantium
-				# has_landed_title = e_roman_empire
-				# }
-				# religion_group = old_world_group
-				# }
-				# character_event = { id = LoR.30 days = 12 }
-				# }
 			}
 		}
 		FROM = {
@@ -2901,19 +2872,6 @@ invasion = {
 			}
 			participation_scaled_prestige = 200
 		}
-		# FROM = {
-		# if = {
-		# limit = {
-		# has_dlc = "Legacy of Rome"
-		# OR = {
-		# has_landed_title = e_byzantium
-		# has_landed_title = e_roman_empire
-		# }
-		# religion_group = old_world_group
-		# }
-		# hidden_tooltip = { character_event = { id = LoR.30 days = 12 } }
-		# }
-		# }
 		any_defender = {
 			limit = {
 				NOT = {
@@ -2981,10 +2939,7 @@ tribal_invasion = {
 	}
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
-		nor = {
-			region = world_underempire
-			region = world_nehekhara
-		}
+		wh_underempire_or_nehekhara_trigger = no
 		ROOT = {
 			is_nomadic = no
 			OR = {
@@ -3184,17 +3139,6 @@ tribal_invasion = {
 					}
 				}
 			}
-			# if = {
-			# limit = {
-			# has_dlc = "Legacy of Rome"
-			# OR = {
-			# has_landed_title = e_byzantium
-			# has_landed_title = e_roman_empire
-			# }
-			# religion_group = old_world_group
-			# }
-			# hidden_tooltip = { character_event = { id = LoR.30 days = 12 } }
-			# }
 		}
 		any_defender = {
 			limit = {
@@ -3269,71 +3213,7 @@ tribal_invasion = {
 				}
 			}
 		}
-		#	# Try to guide the Hordes in the right direction
-		#	modifier = {
-		#		factor = 0.1
-		#		ROOT = {
-		#			OR = {
-		#				dynasty = 613 # Seljuks
-		#				dynasty = 800 # Timurids
-		#				primary_title = { title = e_il-khanate }
-		#			}
-		#		}
-		#		OR = {
-		#			empire = {
-		#				NOT = {
-		#					OR = {
-		#						title = e_persia
-		#						title = e_byzantium
-		#						title = e_arabia
-		#					}
-		#				}
-		#			}
-		#			FROM = {
-		#				primary_title = { title = e_golden_horde }
-		#				NOT = { year = 1300 }
-		#			}
-		#		}
-		#	}
-		#	modifier = {
-		#		factor = 0.1
-		#		ROOT = {
-		#			primary_title = { title = e_golden_horde }
-		#		}
-		#		OR = {
-		#			empire = {
-		#				OR = {
-		#					title = e_persia
-		#					title = e_byzantium
-		#					title = e_arabia
-		#				}
-		#			}
-		#			FROM = {
-		#				primary_title = { title = e_il-khanate }
-		#				NOT = { year = 1300 }
-		#			}
-		#		}
-		#	}
-		#	modifier = {
-		#		factor = 0.1
-		#		ROOT = {
-		#			culture = hungarian
-		#			primary_title = {
-		#				OR = {
-		#					title = k_hungary
-		#					title = e_carpathia
-		#				}
-		#			}
-		#		}
-		#		empire = {
-		#			OR = {
-		#				title = e_tartaria
-		#				title = e_russia
-		#			}
-		#		}
-		#	}
 	}
-
 }
 
 # Holy War CB
@@ -3433,10 +3313,7 @@ religious = {
 				region = world_albion
 			}
 		}
-		NOT = {
-			de_jure_liege_or_above = e_the_under_empire
-			de_jure_liege_or_above = e_nehekhara
-		} #the duchy must have at least one county which is NOT nehekharan (if all are, it is dead land, and cannot be occupied).
+		wh_underempire_or_nehekhara_trigger = no
 
 
 		# The attacker needs at least one county in the target kingdom, or a border, or be only two sea zones away from one of your counties
@@ -6335,10 +6212,7 @@ muslim_invasion = {
 	}
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
-		nor = {
-			region = world_underempire
-			region = world_nehekhara
-		}
+		wh_underempire_or_nehekhara_trigger = no
 
 
 		# Muslims require the target to have at least 6 counties within the target kingdom
@@ -7490,19 +7364,6 @@ viking_invasion = {
 		FROM = {
 			prestige = 300
 		}
-		# FROM = {
-		# if = {
-		# limit = {
-		# has_dlc = "Legacy of Rome"
-		# OR = {
-		# has_landed_title = e_byzantium
-		# has_landed_title = e_roman_empire
-		# }
-		# religion_group = old_world_group
-		# }
-		# hidden_tooltip = { character_event = { id = LoR.30 days = 12 } }
-		# }
-		# }
 		any_defender = {
 			limit = {
 				character = FROM
@@ -7623,8 +7484,10 @@ pagan_subjugation = {
 	}
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
-		NOT = {
-			de_jure_liege_or_above = e_the_under_empire
+		location = {
+			NOT = {
+				region = world_underempire
+			}
 		}
 	}
 	on_add = {
@@ -7741,19 +7604,6 @@ pagan_subjugation = {
 		FROM = {
 			piety = 100
 		}
-		# FROM = {
-		# if = {
-		# limit = {
-		# has_dlc = "Legacy of Rome"
-		# OR = {
-		# has_landed_title = e_byzantium
-		# has_landed_title = e_roman_empire
-		# }
-		# religion_group = old_world_group
-		# }
-		# hidden_tooltip = { character_event = { id = LoR.30 days = 12 } }
-		# }
-		# }
 		any_defender = {
 			limit = {
 				character = FROM
@@ -8420,10 +8270,7 @@ caliphal_subjugation = {
 	}
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
-		nor = {
-			region = world_underempire
-			region = world_nehekhara
-		}
+		wh_underempire_or_nehekhara_trigger = no
 		FROM = {
 			any_realm_title = {
 				de_jure_liege_or_above = PREVPREV
@@ -8597,10 +8444,7 @@ muslim_county_conquest = {
 	}
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
-		nor = {
-			region = world_underempire
-			region = world_nehekhara
-		}
+		wh_underempire_or_nehekhara_trigger = no
 		tier = count
 		OR = {
 			FROM = {

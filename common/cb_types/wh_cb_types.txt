@@ -907,7 +907,9 @@ underempire_conquest = {
 	can_use_title = {
 		tier = count
 		wh_cb_albion_check_trigger = yes
-		region = world_underempire
+		location = {
+			region = world_underempire
+		}
 		OR = {
 			FROM = {
 				has_landed_title = PREV
@@ -1077,8 +1079,10 @@ nehekharan_county_conquest = {
 	can_use_title = {
 		tier = count
 		wh_cb_albion_check_trigger = yes
-		NOT = {
-			region = world_underempire
+		location = {
+			NOT = {
+				region = world_underempire
+			}
 		}
 		OR = {
 			FROM = {
@@ -1266,8 +1270,10 @@ nehekharan_subjugation = {
 	}
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
-		NOT = {
-			region = world_underempire
+		location = {
+			NOT = {
+				region = world_underempire
+			}
 		}
 		region = world_nehekhara
 		FROM = {
@@ -1277,9 +1283,6 @@ nehekharan_subjugation = {
 		}
 	}
 	is_valid_title = {
-		NOT = {
-			region = world_underempire
-		}
 		FROM = {
 			any_realm_title = {
 				de_jure_liege_or_above = PREVPREV
@@ -1496,8 +1499,10 @@ desert_expedition = {
 	}
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
-		NOT = {
-			region = world_underempire
+		location = {
+			NOT = {
+				region = world_underempire
+			}
 		}
 		# The attacker needs at least one county in the target kingdom, or a border, or be only two sea zones away from one of your counties
 		any_direct_de_jure_vassal_title = {
@@ -1754,8 +1759,10 @@ punish_graverobbers = {
 	}
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
-		NOT = {
-			region = world_underempire
+		location = {
+			NOT = {
+				region = world_underempire
+			}
 		}
 	}
 	on_add_title = {
@@ -1908,8 +1915,10 @@ nehekharan_county_colonisation = {
 	can_use_title = {
 		tier = count
 		wh_cb_albion_check_trigger = yes
-		NOT = {
-			region = world_underempire
+		location = {
+			NOT = {
+				region = world_underempire
+			}
 		}
 		region = world_nehekhara
 		OR = {
@@ -2088,8 +2097,10 @@ lustrian_rampage = {
 	}
 	is_valid_title = {
 		tier = count
-		NOT = {
-			region = world_underempire
+		location = {
+			NOT = {
+				region = world_underempire
+			}
 		}
 		wh_cb_is_valid_title_trigger = yes
 	}
@@ -2220,8 +2231,10 @@ realignment_process_cb = {
 		}
 	}
 	is_valid_title = {
-		NOT = {
-			region = world_underempire
+		location = {
+			NOT = {
+				region = world_underempire
+			}
 		}
 		OR = {
 			tier = emperor
@@ -2471,10 +2484,7 @@ skink_subjugation = {
 	}
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
-		nor = {
-			region = world_underempire
-			region = world_nehekhara
-		}
+		wh_underempire_or_nehekhara_trigger = no
 		FROM = {
 			any_realm_title = {
 				de_jure_liege_or_above = PREVPREV
@@ -2761,10 +2771,7 @@ flower_war_raid = {
 	}
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
-		nor = {
-			region = world_underempire
-			region = world_nehekhara
-		}
+		wh_underempire_or_nehekhara_trigger = no
 		# The attacker needs at least one county in the target kingdom, or a border, or be only two sea zones away from one of your counties
 		any_direct_de_jure_vassal_title = {
 			OR = {
@@ -3096,8 +3103,10 @@ tablet_search = {
 	}
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
-		NOT = {
-			region = world_underempire
+		location = {
+			NOT = {
+				region = world_underempire
+			}
 		}
 		FROM = {
 			any_realm_title = {
@@ -3398,10 +3407,7 @@ sotek_conquest_cb = {
 	}
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
-		nor = {
-			region = world_underempire
-			region = world_nehekhara
-		}
+		wh_underempire_or_nehekhara_trigger = no
 		OR = {
 			capital_scope = {
 				region = world_new_world_lustria
@@ -3609,10 +3615,7 @@ crazy_skinks_cb = {
 	}
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
-		nor = {
-			region = world_underempire
-			region = world_nehekhara
-		}
+		wh_underempire_or_nehekhara_trigger = no
 		# The attacker needs at least one county in the target kingdom, or a border, or be only two sea zones away from one of your counties
 		any_direct_de_jure_vassal_title = {
 			OR = {
@@ -3830,8 +3833,10 @@ strengthen_amazonia_cb = {
 		}
 	}
 	is_valid_title = {
-		NOT = {
-			region = world_underempire
+		location = {
+			NOT = {
+				region = world_underempire
+			}
 		}
 		OR = {
 			tier = emperor
@@ -4071,10 +4076,7 @@ amazon_subjugation = {
 	}
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
-		nor = {
-			region = world_underempire
-			region = world_nehekhara
-		}
+		wh_underempire_or_nehekhara_trigger = no
 		FROM = {
 			any_realm_title = {
 				de_jure_liege_or_above = PREVPREV
@@ -4341,10 +4343,7 @@ orc_county_conquest = {
 	can_use_title = {
 		tier = count
 		wh_cb_albion_check_trigger = yes
-		nor = {
-			region = world_underempire
-			region = world_nehekhara
-		}
+		wh_underempire_or_nehekhara_trigger = no
 		ROOT = {
 			NOT = {
 				has_opinion_modifier = {
@@ -4560,10 +4559,7 @@ waaagh_invasion = {
 	}
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
-		nor = {
-			region = world_underempire
-			region = world_nehekhara
-		}
+		wh_underempire_or_nehekhara_trigger = no
 	}
 	is_valid_title = {
 		FROM = {
@@ -4865,10 +4861,7 @@ greenskin_uprising = {
 		}
 	}
 	can_use_title = {
-		nor = {
-			region = world_underempire
-			region = world_nehekhara
-		}
+		wh_underempire_or_nehekhara_trigger = no
 	}
 	is_valid_title = {
 		tier = count
@@ -4988,8 +4981,10 @@ purge_greenskins = {
 		tier = count
 		wh_cb_albion_check_trigger = yes
 		wh_cb_can_use_title_trigger = yes
-		NOT = {
-			region = world_underempire
+		location = {
+			NOT = {
+				region = world_underempire
+			}
 		}
 		location = {
 			any_neighbor_province = {
@@ -5446,10 +5441,7 @@ coastal_elf_colonization = {
 	can_use_title = {
 		tier = count
 		wh_cb_albion_check_trigger = yes
-		nor = {
-			region = world_underempire
-			region = world_nehekhara
-		}
+		wh_underempire_or_nehekhara_trigger = no
 		OR = {
 			FROM = {
 				has_landed_title = PREV
@@ -5680,10 +5672,7 @@ inland_elf_colonization = {
 	}
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
-		nor = {
-			region = world_underempire
-			region = world_nehekhara
-		}
+		wh_underempire_or_nehekhara_trigger = no
 		# The attacker needs at least one county in the target kingdom, or a border, or be only two sea zones away from one of your counties
 		any_direct_de_jure_vassal_title = {
 			OR = {
@@ -5937,10 +5926,7 @@ druchii_subjugation = {
 	}
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
-		nor = {
-			region = world_underempire
-			region = world_nehekhara
-		}
+		wh_underempire_or_nehekhara_trigger = no
 		FROM = {
 			any_realm_title = {
 				de_jure_liege_or_above = PREVPREV
@@ -6515,8 +6501,10 @@ great_wild_hunt = {
 	}
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
-		NOT = {
-			region = world_underempire
+		location = {
+			NOT = {
+				region = world_underempire
+			}
 		}
 		# The attacker needs at least one county in the target kingdom, or a border, or be only two sea zones away from one of your counties
 		any_direct_de_jure_vassal_title = {
@@ -7156,8 +7144,10 @@ dwarven_reconquest = {
 	can_use_title = {
 		tier = count
 		wh_cb_albion_check_trigger = yes
-		NOT = {
-			region = world_underempire
+		location = {
+			NOT = {
+				region = world_underempire
+			}
 		}
 		OR = {
 			FROM = {
@@ -7887,8 +7877,10 @@ crusade = {
 	}
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
-		NOT = {
-			region = world_underempire
+		location = {
+			NOT = {
+				region = world_underempire
+			}
 		}
 		FROM = {
 			any_realm_title = {
@@ -8364,8 +8356,10 @@ chaos_subjugation = {
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
 		# our victim should be a chaos lord
-		NOT = {
-			region = world_underempire
+		location = {
+			NOT = {
+				region = world_underempire
+			}
 		}
 		FROM = {
 			any_realm_title = {
@@ -8933,8 +8927,10 @@ daemonic_subjugation = {
 	}
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
-		NOT = {
-			region = world_underempire
+		location = {
+			NOT = {
+				region = world_underempire
+			}
 		}
 		FROM = {
 			any_realm_title = {
@@ -9539,8 +9535,10 @@ unholy_raid = {
 	}
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
-		NOT = {
-			region = world_underempire
+		location = {
+			NOT = {
+				region = world_underempire
+			}
 		}
 		# The attacker needs at least one county in the target kingdom, or a border, or be only two sea zones away from one of your counties
 		any_direct_de_jure_vassal_title = {
@@ -10307,10 +10305,7 @@ beastman_migration = {
 	}
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
-		nor = {
-			region = world_nehekhara
-			region = world_underempire
-		}
+		wh_underempire_or_nehekhara_trigger = no
 		any_direct_de_jure_vassal_title = {
 			OR = {
 				holder_scope = {
@@ -10473,10 +10468,7 @@ king_beastman_migration = {
 				}
 			}
 		}
-		nor = {
-			region = world_underempire
-			region = world_nehekhara
-		}
+		wh_underempire_or_nehekhara_trigger = no
 	}
 	is_valid_title = {
 		FROM = {
@@ -10619,10 +10611,7 @@ chaos_dwarf_slaver_raid = {
 	}
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
-		nor = {
-			region = world_underempire
-			region = world_nehekhara
-		}
+		wh_underempire_or_nehekhara_trigger = no
 		# The attacker needs at least one county in the target kingdom, or a border, or be only two sea zones away from one of your counties
 		any_direct_de_jure_vassal_title = {
 			OR = {
@@ -11358,10 +11347,7 @@ imperial_reconquest = {
 	}
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
-		nor = {
-			region = world_underempire
-			region = world_old_world_empire
-		}
+		wh_underempire_or_nehekhara_trigger = no
 	}
 	is_valid = {
 		ROOT = {
@@ -11605,8 +11591,10 @@ vlad_subjugation = {
 	}
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
-		NOT = {
-			region = world_underempire
+		location = {
+			NOT = {
+				region = world_underempire
+			}
 		}
 		ROOT = {
 			has_artifact = carstein_ring
@@ -11810,8 +11798,10 @@ strigoi_invasion = {
 	}
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
-		NOT = {
-			region = world_underempire
+		location = {
+			NOT = {
+				region = world_underempire
+			}
 		}
 		capital_scope = {
 			region = world_badlands_strygos
@@ -12008,8 +11998,10 @@ strygan_reconquest = {
 	}
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
-		NOT = {
-			region = world_underempire
+		location = {
+			NOT = {
+				region = world_underempire
+			}
 		}
 		capital_scope = {
 			region = world_badlands_strygos
@@ -12134,10 +12126,7 @@ necrarch_thrall_raid = {
 	}
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
-		nor = {
-			region = world_underempire
-			region = world_nehekhara
-		}
+		wh_underempire_or_nehekhara_trigger = no
 		# The attacker needs at least one county in the target kingdom, or a border, or be only two sea zones away from one of your counties
 		any_direct_de_jure_vassal_title = {
 			OR = {
@@ -12305,10 +12294,7 @@ jade_eradication_conquest = {
 	}
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
-		nor = {
-			region = world_underempire
-			region = world_nehekhara
-		}
+		wh_underempire_or_nehekhara_trigger = no
 	}
 	is_valid = {
 		wh_cb_root_not_same_realm_from_rigger = yes
@@ -12462,10 +12448,7 @@ cathayan_eradication_conquest = {
 	}
 	can_use_title = {
 		wh_cb_albion_check_trigger = yes
-		nor = {
-			region = world_underempire
-			region = world_nehekhara
-		}
+		wh_underempire_or_nehekhara_trigger = no
 	}
 	is_valid = {
 		wh_cb_root_not_same_realm_from_rigger = yes

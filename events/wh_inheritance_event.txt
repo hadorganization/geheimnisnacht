@@ -1196,7 +1196,7 @@ character_event = {
 					}
 				}
 			}
-		
+
 	# may be count magic power of parents?
 			# set flag
 			if = {
@@ -1325,6 +1325,372 @@ character_event = {
 				character_event = {
 					id = wh_chaos_beastmen.42
 					days = 1
+				}
+			}
+		}
+	}
+}
+
+# menopause for mortal women on_five_year_pulse
+character_event = {
+	id = wh_inheritance.3
+	hide_window = yes
+	only_women = yes
+	min_age = 45
+	max_age = 65
+	is_triggered_only = yes
+
+	trigger = {
+		immortal = no
+		not = {
+			trait = infertile
+		}
+	}
+
+	immediate = {
+		log = "work event id = wh_inheritance.3 for [Root.GetBestName]"
+		if = {
+			limit = {
+				fertility = -1
+			}
+			add_trait = infertile
+		}
+	}
+}
+
+# Both following events are activated on_post_birth
+# elven infertility - each time they get pregnant, there is a chance it is their last child they can have
+character_event = {
+	id = wh_inheritance.4
+	desc = EVTDESCHEALTH.1				# You can feel that this will be your last child.
+	picture = "GFX_evt_pregnancy"
+	is_triggered_only = yes
+
+	trigger = {
+		trait = creature_elf
+	}
+
+	immediate = {
+		log = "work event id = wh_inheritance.4 for [Root.GetBestName]"
+		remove_trait = hard_pregnancy
+	}
+
+	option = {
+		name = OK
+		if = {
+			limit = {
+				culture_group = asur_group
+			}
+			random = {
+				chance = 50
+				if = {
+					limit = {
+						fertility = -1
+					}
+					add_trait = infertile
+				}
+			}
+		}
+		if = {
+			limit = {
+				culture_group = asrai_group
+			}
+			random = {
+				chance = 40
+				if = {
+					limit = {
+						fertility = -1
+					}
+					add_trait = infertile
+				}
+			}
+		}
+		if = {
+			limit = {
+				culture_group = druchi_group
+			}
+			random = {
+				chance = 30
+				if = {
+					limit = {
+						fertility = -1
+					}
+					add_trait = infertile
+				}
+			}
+		}
+	}
+}
+
+# dwarven infertility - with each child there is a chance of permanent infertility.At 40 % , the average number of children will be something like 2.2 or 2.3
+character_event = {
+	id = wh_inheritance.5
+	desc = EVTDESCHEALTH.1			# You can feel that this will be your last child.
+	picture = "GFX_evt_pregnancy"
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			trait = creature_dwarf
+			trait = creature_chaos_dwarf
+		}
+		# not = {
+			# trait = infertile
+		# }
+	}
+
+	immediate = {
+		log = "work event id = wh_inheritance.5 for [Root.GetBestName]"
+		remove_trait = hard_pregnancy
+	}
+
+	option = {
+		name = OK
+		random = {
+			chance = 45
+			if = {
+				limit = {
+					fertility = -1
+				}
+				add_trait = infertile
+			}
+		}
+	}
+}
+
+# fires for the kid, pings to the mother
+character_event = {
+	id = wh_inheritance.6
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			mother = {
+				OR = {
+					trait = creature_elf
+					trait = creature_dwarf
+					trait = creature_chaos_dwarf
+
+				}
+				NOT = {
+					trait = infertile
+				}
+			}
+			father = {
+				age = 200
+				trait = creature_elf
+				NOT = {
+					trait = infertile
+				}
+			}
+		}
+	}
+
+	immediate = {
+		log = "work event id = wh_inheritance.6 for [Root.GetBestName]"
+		if = {
+			limit = {
+				mother = {
+					trait = creature_elf
+				}
+			}
+			mother = {
+				character_event = {
+					id = wh_inheritance.4
+					days = 2
+				}
+			}
+		}
+		if = {
+			limit = {
+				father = {
+					trait = creature_elf
+					age = 200
+				}
+			}
+			father = {
+				character_event = {
+					id = wh_inheritance.7
+					days = 2
+				}
+			}
+		}
+		if = {
+			limit = {
+				father = {
+					OR = {
+						trait = creature_dwarf
+						trait = creature_chaos_dwarf
+					}
+					age = 120
+				}
+			}
+			father = {
+				character_event = {
+					id = wh_inheritance.8
+					days = 2
+				}
+			}
+		}
+		if = {
+			limit = {
+				mother = {
+					OR = {
+						trait = creature_dwarf
+						trait = creature_chaos_dwarf
+					}
+				}
+			}
+			mother = {
+				character_event = {
+					id = wh_inheritance.5
+					days = 2
+				}
+			}
+		}
+	}
+}
+
+# elven infertility - male elves are no longer excluded
+character_event = {
+	id = wh_inheritance.7
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		trait = creature_elf
+	}
+
+	immediate = {
+		log = "work event id = wh_inheritance.7 for [Root.GetBestName]"
+		random_list = {
+			10 = {
+				modifier = {
+					factor = 5
+					culture_group = asur_group
+				}
+				modifier = {
+					factor = 6
+					culture_group = asrai_group
+				}
+				modifier = {
+					factor = 7
+					culture_group = druchi_group
+				}
+				modifier = {
+					factor = 0.75
+					age = 500
+				}
+				modifier = {
+					factor = 0.75
+					age = 750
+				}
+				modifier = {
+					factor = 0.75
+					age = 1000
+				}
+				modifier = {
+					factor = 0.25
+					age = 1500
+				}
+				modifier = {
+					factor = 0.75
+					trait = incapable
+				}
+				modifier = {
+					factor = 0.75
+					trait = burnt_by_asuryan
+				}
+				modifier = {
+					factor = 0.75
+					trait = infirm
+				}
+				modifier = {
+					factor = 0.75
+					trait = mutation_minor
+				}
+				modifier = {
+					factor = 0.75
+					trait = mutation_major
+				}
+				modifier = {
+					factor = 0.5
+					trait = mutation_massive
+				}
+			}
+			50 = {
+				if = {
+					limit = {
+						fertility = -1
+					}
+					add_trait = infertile
+				}
+			}
+		}
+	}
+}
+
+# dwarven infertility - male dwarves are no longer excluded
+character_event = {
+	id = wh_inheritance.8
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			trait = creature_dwarf
+			trait = creature_chaos_dwarf
+		}
+	}
+
+	immediate = {
+		log = "work event id = wh_inheritance.8 for [Root.GetBestName]"
+		random_list = {
+			60 = {
+ 				modifier = {
+					factor = 0.75
+					age = 150
+				}
+ 				modifier = {
+					factor = 0.75
+					age = 200
+				}
+ 				modifier = {
+					factor = 0.75
+					age = 250
+				}
+ 				modifier = {
+					factor = 0.25
+					age = 300
+				}
+ 				modifier = {
+					factor = 0.75
+					trait = incapable
+				}
+ 				modifier = {
+					factor = 0.75
+					trait = infirm
+				}
+ 				modifier = {
+					factor = 0.75
+					trait = mutation_minor
+				}
+ 				modifier = {
+					factor = 0.75
+					trait = mutation_major
+				}
+ 				modifier = {
+					factor = 0.5
+					trait = mutation_massive
+				}
+			}
+			40 = {
+				if = {
+					limit = {
+						fertility = -1
+					}
+					add_trait = infertile
 				}
 			}
 		}

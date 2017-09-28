@@ -33,6 +33,24 @@ character_event = {
 
 	immediate = {
 		log = "work event id = wh_maintenance.2 for [Root.GetBestName]"
+		any_realm_province = {
+			# In case non-Greenskins capture a province that's being "colonized", it'll get a "Greenskin population" debuff that will go away in when a Marshal suppresses them
+			province_event = {
+				id = wh_greenskins.151
+			}
+			# In case Greenskins capture a province with the "Troublesome Greenskin population" debuff, remove it
+			province_event = {
+				id = wh_greenskins.182
+			}
+			# Remove colonization modifiers for non-greenskin rulers
+			province_event = {
+				id = wh_greenskins.205
+			}
+			# Greenskin province culture flips if ruler is of a Greenskin subculture in its same group
+			province_event = {
+				id = wh_greenskins.211
+			}
+		}
 		# nehekhara fix
 		any_realm_province = {
 			limit = {

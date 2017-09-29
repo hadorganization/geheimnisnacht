@@ -1696,3 +1696,78 @@ character_event = {
 		}
 	}
 }
+
+# send lahmian_queen trait to heir on_death
+character_event = {
+	id = wh_inheritance.9
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		trait = lahmian_queen
+	}
+
+	immediate = {
+		log = "work event id = wh_inheritance.9 for [Root.GetBestName]"
+		if = {
+			limit = {
+				current_heir = {
+					dynasty = ROOT
+					is_female = yes
+					is_alive = yes
+					NOT = {
+						trait = lahmian_queen
+					}
+				}
+			}
+			current_heir = {
+				add_trait = lahmian_queen
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				any_child = {
+					is_alive = yes
+					is_female = yes
+					NOT = {
+						trait = lahmian_queen
+					}
+				}
+			}
+			random_child = {
+				limit = {
+					is_alive = yes
+					is_female = yes
+					NOT = {
+						trait = lahmian_queen
+					}
+				}
+				add_trait = lahmian_queen
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				any_dynasty_member = {
+					is_alive = yes
+					is_female = yes
+					NOT = {
+						trait = lahmian_queen
+					}
+				}
+			}
+			random_dynasty_member = {
+				limit = {
+					is_alive = yes
+					is_female = yes
+					NOT = {
+						trait = lahmian_queen
+					}
+				}
+				add_trait = lahmian_queen
+			}
+			break = yes
+		}
+	}
+}

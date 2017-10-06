@@ -7,12 +7,12 @@ character_event = {
 	title = A_COURTIER_WINS_A_VICTORY # A courtier wins a victory
 	desc = EVTDESCHIGHELF.0 # While on a border patrol, one of your courtiers defeated a band of raiders almost single-handedly driving them off. He is hailed as a great warrior by all in the court.
 	picture = "GFX_evt_elf_army"
+	only_playable = yes
 	min_age = 16
+	culture_group = asur_group
 	is_triggered_only = yes
 
 	trigger = {
-		culture_group = asur_group
-		is_ruler = yes
 		any_courtier = {
 			martial = 12
 			trait = brave
@@ -65,12 +65,12 @@ character_event = {
 	title = A_COURTIER_DISGRACES_HIMSELF # A courtier disgraces himself
 	desc = EVTDESCHIGHELF.1 # While on a border patrol, a courtier's small force was ambushed, but he fled and left his men to die! His name is in disgrace, and he has shamed our entire court with his cowardice.
 	picture = "GFX_evt_elf_army"
+	only_playable = yes
 	min_age = 16
+	culture_group = asur_group
 	is_triggered_only = yes
 
 	trigger = {
-		is_ruler = yes
-		culture_group = asur_group
 		any_courtier = {
 			age = 16
 			OR = {
@@ -149,13 +149,10 @@ character_event = {
 	title = A_NEW_SONG # A new song
 	desc = EVTDESCHIGHELF.2 # This courtier has composed a stunning new epic, which brings tears to the eyes of anyone who hears it. At the feast table, even hardened warriors are seen with misty eyes, reminiscing of the glories of your ancient race.
 	picture = "GFX_evt_elf_city"
+	only_playable = yes
 	min_age = 16
+	culture_group = asur_group
 	is_triggered_only = yes
-
-	trigger = {
-		is_ruler = yes
-		culture_group = asur_group
-	}
 
 	immediate = {
 		log = "work event id = highelf.2 for [Root.GetBestName]"
@@ -194,13 +191,10 @@ character_event = {
 	title = A_GREAT_HUNT # A great Hunt
 	desc = EVTDESCHIGHELF.3 # Foul creatures such as manticores and hydras sometimes make their way down from the Anulii mountains. Your huntsmaster is arranging a great hunt, do you wish to join in it and perhaps get a new trophy for the walls of your feast hall?
 	picture = "GFX_evt_elf_forest"
+	only_playable = yes
 	min_age = 16
+	culture_group = asur_group
 	is_triggered_only = yes
-
-	trigger = {
-		is_ruler = yes
-		culture_group = asur_group
-	}
 
 	immediate = {
 		log = "work event id = highelf.3 for [Root.GetBestName]"
@@ -269,18 +263,16 @@ character_event = {
 	min_age = 16
 	only_men = yes
 	prisoner = no
+	culture_group = asur_group
 	only_capable = yes
+	is_triggered_only = yes
 
 	trigger = {
-		age = 16
 		has_landed_title = e_ulthuan
 		trait = creature_elf
 		trait = phoenix_king	# only for those who crossed the flames
-		culture_group = asur_group
-		NOT = {
+		nor = {
 			has_character_flag = highelf4
-		}
-		NOT = {
 			everqueen_heir = {
 				is_alive = yes
 			}
@@ -294,10 +286,6 @@ character_event = {
 			has_landed_title = k_avelorn
 			age = 16
 		}
-	}
-
-	mean_time_to_happen = {
-		days = 7
 	}
 
 	immediate = {
@@ -314,7 +302,8 @@ character_event = {
 				has_landed_title = k_avelorn
 			}
 			character_event = {
-				id = highelf.5 days = 7
+				id = highelf.5
+				days = 7
 			}
 		}
 	}
@@ -326,7 +315,6 @@ character_event = {
 	title = CEREMONIAL_MARRIAGE # Ceremonial Marriage
 	desc = EVTDESCHIGHELF.5 # While the Phoenix King is the political center of Ulthuan, you are its spiritual heart. It is tradition that you have a year-long ritual marriage, and produce an heir, who shall be the next Everqueen.
 	picture = "GFX_evt_elf_forest"
-	min_age = 16
 	is_triggered_only = yes
 
 	immediate = {
@@ -376,7 +364,6 @@ character_event = {
 	title = A_NEW_EVERQUEEN # A New EverQueen
 	desc = EVTDESCHIGHELF.7 # Nine months after the visit from the Phoenix King, a child is born. Avelorn rejoices at the birth of its future Everqueen!
 	picture = "GFX_evt_elf_forest"
-	min_age = 16
 	is_triggered_only = yes
 
 	immediate = {
@@ -385,6 +372,7 @@ character_event = {
 
 	option = {
 		name = EVTOPTHIGHELF.7.a # I knew it was going to be a girl!
+		# may be need to remake this
 		FROMFROM = {
 			character_event = {
 				id = highelf.8 days = 7
@@ -432,7 +420,6 @@ character_event = {
 	title = A_DAUGHTER_IS_BORN # A Daughter is Born
 	desc = EVTDESCHIGHELF.8 # Word reaches you that all of Avelorn and Ulthuan rejoice - a new Everqueen has been born, you have fathered a beautiful daughter!
 	picture = "GFX_evt_elf_forest"
-	min_age = 16
 	is_triggered_only = yes
 
 	immediate = {

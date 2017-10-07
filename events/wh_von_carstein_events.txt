@@ -20,6 +20,38 @@ character_event = {
 	immediate = {
 		log = "work event id = carstein.0 for [Root.GetBestName]"
 		set_global_flag = carstein1
+		any_playable_ruler = {
+			limit = {
+				OR = {
+					culture_group = imperial_group
+					culture_group = kislevite_group
+					culture_group = estalian_group
+					culture_group = tilean_group
+					culture_group = bretonnian_group
+					culture_group = dwarf_group
+				}
+			}
+			character_event = {
+				id = carstein.1
+				days = 7
+			}
+		}
+		any_playable_ruler = {
+			limit = {
+				nor = {
+					culture_group = imperial_group
+					culture_group = kislevite_group
+					culture_group = estalian_group
+					culture_group = tilean_group
+					culture_group = bretonnian_group
+					culture_group = dwarf_group
+				}
+			}
+			character_event = {
+				id = carstein.2
+				days = 30
+			}
+		}
 	}
 
 	option = {
@@ -41,10 +73,6 @@ character_event = {
 					}
 					earmark = vlad_undead
 				}
-			}
-		}
-		location = {
-			ROOT = {
 				spawn_unit = {
 					province = PREV
 					troops = {
@@ -54,10 +82,6 @@ character_event = {
 					}
 					earmark = vlad_undead
 				}
-			}
-		}
-		location = {
-			ROOT = {
 				spawn_unit = {
 					province = PREV
 					troops = {
@@ -67,10 +91,6 @@ character_event = {
 					}
 					earmark = vlad_undead
 				}
-			}
-		}
-		location = {
-			ROOT = {
 				spawn_unit = {
 					province = PREV
 					troops = {
@@ -80,112 +100,80 @@ character_event = {
 					}
 					earmark = vlad_undead
 				}
-			}
-		}
-		any_playable_ruler = {
-			limit = {
-				OR = {
-					culture_group = imperial_group
-					culture_group = kislevite_group
-					culture_group = estalian_group
-					culture_group = tilean_group
-					culture_group = bretonnian_group
-					culture_group = dwarf_group
-				}
-			}
-			character_event = {
-				id = carstein.1
-				days = 7
-			}
-		}
-		any_playable_ruler = {
-			limit = {
-				nor = {
-					culture_group = imperial_group
-					culture_group = kislevite_group
-					culture_group = estalian_group
-					culture_group = tilean_group
-					culture_group = bretonnian_group
-					culture_group = dwarf_group
-				}
-			}
-			character_event = {
-				id = carstein.2 
-				days = 30
 			}
 		}
 		# Help the AI not screw this up on start
-		if = {
-			limit = {
-				ai = yes
-			}
-			location = {
-				ROOT = {
-					spawn_unit = {
-						province = PREV
-						troops = {
-							vampire_knights = {
-								50 50
-							}
-						}
-						earmark = vlad_undead
-					}
-				}
-			}
-			location = {
-				ROOT = {
-					spawn_unit = {
-						province = PREV
-						troops = {
-							undead_horde = {
-								5000 2500
+		# if = {
+		# 	limit = {
+		# 		ai = yes
+		# 	}
+		# 	location = {
+		# 		ROOT = {
+		# 			spawn_unit = {
+		# 				province = PREV
+		# 				troops = {
+		# 					vampire_knights = {
+		# 						50 50
+		# 					}
+		# 				}
+		# 				earmark = vlad_undead
+		# 			}
+		# 		}
+		# 	}
+		# 	location = {
+		# 		ROOT = {
+		# 			spawn_unit = {
+		# 				province = PREV
+		# 				troops = {
+		# 					undead_horde = {
+		# 						5000 2500
 
-							}
-						}
-						earmark = vlad_undead
-					}
-				}
-			}
-			location = {
-				ROOT = {
-					spawn_unit = {
-						province = PREV
-						troops = {
-							undead_horde = {
-								5000 2500
-							}
-						}
-						earmark = vlad_undead
-					}
-				}
-			}
-			location = {
-				ROOT = {
-					spawn_unit = {
-						province = PREV
-						troops = {
-							undead_horde = {
-								8500 5000
-							}
-						}
-						earmark = vlad_undead
-					}
-				}
-			}
-			location = {
-				ROOT = {
-					spawn_unit = {
-						province = PREV
-						troops = {
-							undead_horde = {
-								8500 5000
-							}
-						}
-						earmark = vlad_undead
-					}
-				}
-			}
-		}
+		# 					}
+		# 				}
+		# 				earmark = vlad_undead
+		# 			}
+		# 		}
+		# 	}
+		# 	location = {
+		# 		ROOT = {
+		# 			spawn_unit = {
+		# 				province = PREV
+		# 				troops = {
+		# 					undead_horde = {
+		# 						5000 2500
+		# 					}
+		# 				}
+		# 				earmark = vlad_undead
+		# 			}
+		# 		}
+		# 	}
+		# 	location = {
+		# 		ROOT = {
+		# 			spawn_unit = {
+		# 				province = PREV
+		# 				troops = {
+		# 					undead_horde = {
+		# 						8500 5000
+		# 					}
+		# 				}
+		# 				earmark = vlad_undead
+		# 			}
+		# 		}
+		# 	}
+		# 	location = {
+		# 		ROOT = {
+		# 			spawn_unit = {
+		# 				province = PREV
+		# 				troops = {
+		# 					undead_horde = {
+		# 						8500 5000
+		# 					}
+		# 				}
+		# 				earmark = vlad_undead
+		# 			}
+		# 		}
+		# 	}
+		# }
 	}
 
 	option = {
@@ -205,10 +193,6 @@ character_event = {
 					}
 					earmark = vlad_undead
 				}
-			}
-		}
-		location = {
-			ROOT = {
 				spawn_unit = {
 					province = PREV
 					troops = {
@@ -218,10 +202,6 @@ character_event = {
 					}
 					earmark = vlad_undead
 				}
-			}
-		}
-		location = {
-			ROOT = {
 				spawn_unit = {
 					province = PREV
 					troops = {
@@ -231,10 +211,6 @@ character_event = {
 					}
 					earmark = vlad_undead
 				}
-			}
-		}
-		location = {
-			ROOT = {
 				spawn_unit = {
 					province = PREV
 					troops = {
@@ -244,38 +220,6 @@ character_event = {
 					}
 					earmark = vlad_undead
 				}
-			}
-		}
-		any_playable_ruler = {
-			limit = {
-				OR = {
-					culture_group = imperial_group
-					culture_group = kislevite_group
-					culture_group = estalian_group
-					culture_group = tilean_group
-					culture_group = bretonnian_group
-					culture_group = dwarf_group
-				}
-			}
-			character_event = {
-				id = carstein.1
-				days = 7
-			}
-		}
-		any_playable_ruler = {
-			limit = {
-				nor = {
-					culture_group = imperial_group
-					culture_group = kislevite_group
-					culture_group = estalian_group
-					culture_group = tilean_group
-					culture_group = bretonnian_group
-					culture_group = dwarf_group
-				}
-			}
-			character_event = {
-				id = carstein.2 
-				days = 30
 			}
 		}
 	}
@@ -317,139 +261,21 @@ character_event = {
 	}
 }
 
-# # Von Carstein gets series of wars leading him deeper into the Empire
-# No need for this event ATM
-
-# character_event = {
-# id = carstein.3
-
-# title = CONQUEST
-# desc = EVTDESCCARSTEIN.3
-
-# picture = "GFX_evt_carstein"
-# trigger = {
-
-# AND = {
-# trait = carstein_ring
-
-# NOT = {
-# has_character_flag = refused_expansion_path
-
-# }
-# NOT = {
-
-# has_character_flag = carstein3
-# }
-
-# OR = {
-# any_vassal = {
-
-# has_landed_title = k_sylvania
-# }
-
-# has_landed_title = k_sylvania
-# }
-
-# OR = {
-# any_vassal = {
-
-# has_landed_title = k_ostermark
-# }
-
-# has_landed_title = k_ostermark
-# }
-
-# }
-# }
-
-# mean_time_to_happen = {
-# months = 12
-
-# }
-# option = {
-
-# name = ALL_SHALL_FALL_BEFORE_ME
-# set_character_flag = carstein3
-
-# k_talabecland = {
-# reverse_war = {
-
-# target = ROOT
-# casus_belli = vlad_subjugation
-
-# }
-# }
-
-# location = {
-# ROOT = {
-
-# spawn_unit = {
-# province = PREV
-
-# troops = {
-# light_infantry = {
-
-# 3000 3000
-# }
-
-# }
-# earmark = vlad_undead
-
-# }
-# }
-
-# }
-# location = {
-
-# ROOT = {
-# spawn_unit = {
-
-# province = PREV
-# troops = {
-
-# light_cavalry = {
-# 500 500
-
-# }
-# }
-
-# earmark = vlad_undead
-# }
-
-# }
-# }
-
-# }
-# option = {
-
-# name = EVTOPTCARSTEIN.3.b # No, I'll decide my own path of expansion.
-# trigger = {
-
-# ai = no
-# }
-
-# set_character_flag = refused_expansion_path
-# }
-
-# }
 # Von Carstein gets series of wars leading him deeper into the Empire
 character_event = {
 	id = carstein.4
 	title = CONQUEST
 	desc = EVTDESCCARSTEIN.4
 	picture = "GFX_evt_carstein"
+	only_independent = yes
 	religion = vampiric
+	war = no
+	is_triggered_only = yes
 
 	trigger = {
-		war = no
-		primary_title = {
-			higher_tier_than = KING
-		}
 		has_artifact = carstein_ring
-		NOT = {
+		nor = {
 			has_character_flag = refused_expansion_path
-		}
-		NOT = {
 			has_character_flag = carstein4
 		}
 		OR = {
@@ -470,10 +296,6 @@ character_event = {
 			}
 			has_landed_title = k_talabecland
 		}
-	}
-
-	mean_time_to_happen = {
-		months = 12
 	}
 
 	immediate = {
@@ -525,38 +347,37 @@ character_event = {
 				}
 
 			}
-			location = {
-				ROOT = {
-					spawn_unit = {
-						province = PREV
-						troops = {
-							undead_horde = {
-								8500 8500
+			# location = {
+			# 	ROOT = {
+			# 		spawn_unit = {
+			# 			province = PREV
+			# 			troops = {
+			# 				undead_horde = {
+			# 					8500 8500
 
-							}
-						}
-						earmark = vlad_undead
+			# 				}
+			# 			}
+			# 			earmark = vlad_undead
 
-					}
-				}
+			# 		}
+			# 	}
 
-			}
-			location = {
-				ROOT = {
-					spawn_unit = {
-						province = PREV
-						troops = {
-							undead_horde = {
-								8500 8500
+			# }
+			# location = {
+			# 	ROOT = {
+			# 		spawn_unit = {
+			# 			province = PREV
+			# 			troops = {
+			# 				undead_horde = {
+			# 					8500 8500
 
-							}
-						}
-						earmark = vlad_undead
+			# 				}
+			# 			}
+			# 			earmark = vlad_undead
 
-					}
-				}
-
-			}
+			# 		}
+			# 	}
+			# }
 		}
 	}
 
@@ -569,160 +390,21 @@ character_event = {
 	}
 }
 
-# Von Carstein gets series of wars leading him deeper into the Empire
-# no need for this ATM
-
-# character_event = {
-# id = carstein.5
-
-# title = CONQUEST
-# desc = EVTDESCCARSTEIN.5
-
-# picture = "GFX_evt_carstein"
-# trigger = {
-
-# war = no
-# AND = {
-
-# trait = carstein_ring
-# NOT = {
-
-# has_character_flag = refused_expansion_path
-# }
-
-# NOT = {
-# has_character_flag = carstein5
-
-# }
-# OR = {
-
-# any_vassal = {
-# has_landed_title = k_sylvania
-
-# }
-# has_landed_title = k_sylvania
-
-# }
-# OR = {
-
-# any_vassal = {
-# has_landed_title = k_ostermark
-
-# }
-# has_landed_title = k_ostermark
-
-# }
-# OR = {
-
-# any_vassal = {
-# has_landed_title = k_talabecland
-
-# }
-# has_landed_title = k_talabecland
-
-# }
-# OR = {
-
-# any_vassal = {
-# has_landed_title = k_hochland
-
-# }
-# has_landed_title = k_hochland
-
-# }
-# }
-
-# }
-# mean_time_to_happen = {
-
-# months = 12
-# }
-
-# option = {
-# name = VICTORY_IS_INEVITABLE
-
-# set_character_flag = carstein5
-# k_middenland = {
-
-# reverse_war = {
-# target = ROOT
-
-# casus_belli = vlad_subjugation
-# }
-
-# }
-# location = {
-
-# ROOT = {
-# spawn_unit = {
-
-# province = PREV
-# troops = {
-
-# light_infantry = {
-# 1000 1000
-
-# }
-# }
-
-# earmark = vlad_undead
-# }
-
-# }
-# }
-
-# location = {
-# ROOT = {
-
-# spawn_unit = {
-# province = PREV
-
-# troops = {
-# light_cavalry = {
-
-# 500 500
-# }
-
-# }
-# earmark = vlad_undead
-
-# }
-# }
-
-# }
-# }
-
-# option = {
-# name = EVTOPTCARSTEIN.3.b # No, I'll decide my own path of expansion.
-
-# trigger = {
-# ai = no
-
-# }
-# set_character_flag = refused_expansion_path
-
-# }
-# }
-
-# Von Carstein gets series of wars leading him deeper into the Empire
 character_event = {
 	id = carstein.6
 	title = CONQUEST
 	desc = EVTDESCCARSTEIN.6
 	picture = "GFX_evt_carstein"
+	only_independent = yes
+	religion = vampiric
+	war = no
+	is_triggered_only = yes
 
 	trigger = {
-		trait = carstein_ring
-		war = no
-		primary_title = {
-			higher_tier_than = KING
-		}
-		has_character_flag = vlad_von_carstein
-		NOT = {
+		has_artifact = carstein_ring
+		nor = {
 			has_character_flag = refused_expansion_path
-		}
-		NOT = {
-			has_character_flag = carstein6
+			has_character_flag = carstein4
 		}
 		OR = {
 			any_vassal = {
@@ -756,10 +438,6 @@ character_event = {
 		}
 	}
 
-	mean_time_to_happen = {
-		months = 12
-	}
-
 	immediate = {
 		log = "work event id = carstein.6 for [Root.GetBestName]"
 	}
@@ -784,14 +462,11 @@ character_event = {
 						troops = {
 							vampire_knights = {
 								50 50
-
 							}
 						}
 						earmark = vlad_undead
-
 					}
 				}
-
 			}
 			location = {
 				ROOT = {
@@ -800,14 +475,11 @@ character_event = {
 						troops = {
 							undead_horde = {
 								2000 2000
-
 							}
 						}
 						earmark = vlad_undead
-
 					}
 				}
-
 			}
 			location = {
 				ROOT = {
@@ -816,47 +488,39 @@ character_event = {
 						troops = {
 							undead_horde = {
 								2000 2000
-
 							}
 						}
 						earmark = vlad_undead
-
 					}
 				}
-
 			}
-			location = {
-				ROOT = {
-					spawn_unit = {
-						province = PREV
-						troops = {
-							undead_horde = {
-								2500 2500
+			# location = {
+			# 	ROOT = {
+			# 		spawn_unit = {
+			# 			province = PREV
+			# 			troops = {
+			# 				undead_horde = {
+			# 					2500 2500
+			# 				}
+			# 			}
+			# 			earmark = vlad_undead
+			# 		}
+			# 	}
+			# }
+			# location = {
+			# 	ROOT = {
+			# 		spawn_unit = {
+			# 			province = PREV
+			# 			troops = {
+			# 				undead_horde = {
+			# 					2500 2500
 
-							}
-						}
-						earmark = vlad_undead
-
-					}
-				}
-
-			}
-			location = {
-				ROOT = {
-					spawn_unit = {
-						province = PREV
-						troops = {
-							undead_horde = {
-								2500 2500
-
-							}
-						}
-						earmark = vlad_undead
-
-					}
-				}
-
-			}
+			# 				}
+			# 			}
+			# 			earmark = vlad_undead
+			# 		}
+			# 	}
+			# }
 		}
 	}
 
@@ -869,25 +533,21 @@ character_event = {
 	}
 }
 
-# Von Carstein gets series of wars leading him deeper into the Empire
 character_event = {
 	id = carstein.11
 	title = CONQUEST
 	desc = EVTDESCCARSTEIN.11
 	picture = "GFX_evt_carstein"
+	only_independent = yes
+	religion = vampiric
+	war = no
+	is_triggered_only = yes
 
 	trigger = {
 		has_artifact = carstein_ring
-		war = no
-		primary_title = {
-			higher_tier_than = KING
-		}
-		has_character_flag = vlad_von_carstein
-		NOT = {
-			has_character_flag = carstein11
-		}
-		NOT = {
+		nor = {
 			has_character_flag = refused_expansion_path
+			has_character_flag = carstein4
 		}
 		OR = {
 			any_vassal = {
@@ -996,38 +656,32 @@ character_event = {
 				}
 
 			}
-			location = {
-				ROOT = {
-					spawn_unit = {
-						province = PREV
-						troops = {
-							undead_horde = {
-								2500 2500
-
-							}
-						}
-						earmark = vlad_undead
-
-					}
-				}
-
-			}
-			location = {
-				ROOT = {
-					spawn_unit = {
-						province = PREV
-						troops = {
-							undead_horde = {
-								2500 2500
-
-							}
-						}
-						earmark = vlad_undead
-
-					}
-				}
-
-			}
+			# location = {
+			# 	ROOT = {
+			# 		spawn_unit = {
+			# 			province = PREV
+			# 			troops = {
+			# 				undead_horde = {
+			# 					2500 2500
+			# 				}
+			# 			}
+			# 			earmark = vlad_undead
+			# 		}
+			# 	}
+			# }
+			# location = {
+			# 	ROOT = {
+			# 		spawn_unit = {
+			# 			province = PREV
+			# 			troops = {
+			# 				undead_horde = {
+			# 					2500 2500
+			# 				}
+			# 			}
+			# 			earmark = vlad_undead
+			# 		}
+			# 	}
+			# }
 		}
 	}
 
@@ -1040,323 +694,6 @@ character_event = {
 	}
 }
 
-# Von Carstein gets series of wars leading him deeper into the Empire
-# no need for this ATM
-
-# character_event = {
-# id = carstein.12
-
-# title = CONQUEST
-# desc = EVTDESCCARSTEIN.12
-
-# picture = "GFX_evt_carstein"
-# trigger = {
-
-# trait = carstein_ring
-# war = no
-
-# AND = {
-# has_character_flag = vlad_von_carstein
-
-# NOT = {
-# has_character_flag = refused_expansion_path
-
-# }
-# NOT = {
-
-# has_character_flag = carstein12
-# }
-
-# OR = {
-# any_vassal = {
-
-# has_landed_title = k_sylvania
-# }
-
-# has_landed_title = k_sylvania
-# }
-
-# OR = {
-# any_vassal = {
-
-# has_landed_title = k_ostermark
-# }
-
-# has_landed_title = k_ostermark
-# }
-
-# OR = {
-# any_vassal = {
-
-# has_landed_title = k_talabecland
-# }
-
-# has_landed_title = k_talabecland
-# }
-
-# OR = {
-# any_vassal = {
-
-# has_landed_title = k_hochland
-# }
-
-# has_landed_title = k_hochland
-# }
-
-# OR = {
-# any_vassal = {
-
-# has_landed_title = k_middenland
-# }
-
-# has_landed_title = k_middenland
-# }
-
-# OR = {
-# any_vassal = {
-
-# has_landed_title = k_ostland
-# }
-
-# has_landed_title = k_ostland
-# }
-
-# OR = {
-# any_vassal = {
-
-# has_landed_title = k_nordland
-# }
-
-# has_landed_title = k_nordland
-# }
-
-# }
-# }
-
-# mean_time_to_happen = {
-# months = 12
-
-# }
-# option = {
-
-# name = VICTORY_IS_INEVITABLE
-# has_character_flag = carstein12
-
-# k_westerland = {
-# reverse_war = {
-
-# target = ROOT
-# casus_belli = vlad_subjugation
-
-# }
-# }
-
-# location = {
-# ROOT = {
-
-# spawn_unit = {
-# province = PREV
-
-# troops = {
-# light_infantry = {
-
-# 1000 1000
-# }
-
-# }
-# earmark = vlad_undead
-
-# }
-# }
-
-# }
-# location = {
-
-# ROOT = {
-# spawn_unit = {
-
-# province = PREV
-# troops = {
-
-# light_cavalry = {
-# 500 500
-
-# }
-# }
-
-# earmark = vlad_undead
-# }
-
-# }
-# }
-
-# }
-# option = {
-
-# name = EVTOPTCARSTEIN.3.b # No, I'll decide my own path of expansion.
-# trigger = {
-
-# ai = no
-# }
-
-# set_character_flag = refused_expansion_path
-# }
-
-# }
-# Human Von Carstein loses his ring once he gets to 150 realm size
-
-# character_event = {
-# 	id = carstein.12
-
-# 	title = DISASTER# Disaster
-# 	desc = EVTDESCCARSTEIN.7
-
-# 	picture = "GFX_evt_carstein"
-# 	trigger = {
-
-# 		trait = carstein_ring
-# 		ai = no
-
-# 		realm_size = 150
-# 		}
-
-# 	mean_time_to_happen = {
-# 		months = 1
-
-# 	}
-# 	option = {
-
-# 		name = CURSES
-# 		remove_trait = carstein_ring
-
-# 		any_playable_ruler = {
-# 			limit = {
-
-# 				OR = {
-# 					culture_group = imperial_group
-
-# 					culture_group = kislevite_group
-# 					culture_group = estalian_group
-
-# 					culture_group = tilean_group
-# 					culture_group = bretonnian_group
-
-# 					culture_group = dwarf_group
-# 				}
-
-# 				ai = no
-# 			}
-
-# 			character_event = {
-# 				id = carstein.8 days = 7
-
-# 			}
-# 		}
-
-# 		any_playable_ruler = {
-# 			limit = {
-
-# 				AND = {
-# 					NOT = {
-
-# 						culture_group = imperial_group
-# 					}
-
-# 					NOT = {
-# 						culture_group = kislevite_group
-
-# 					}
-# 					NOT = {
-
-# 						culture_group = estalian_group
-# 					}
-
-# 					NOT = {
-# 						culture_group = tilean_group
-
-# 					}
-# 					NOT = {
-
-# 						culture_group = bretonnian_group
-# 					}
-
-# 					NOT = {
-# 						culture_group = dwarf_group
-
-# 					}
-# 				}
-
-# 				ai = no
-# 			}
-
-# 			character_event = {
-# 				id = carstein.8 days = 30
-
-# 			}
-# 		}
-
-# 	}
-# }
-
-# AI Von Carstein loses his ring once he dies 5 times
-# character_event = {
-
-# 	id = carstein.7
-# 	title = DISASTER# Disaster
-
-# 	desc = EVTDESCCARSTEIN.7
-# 	picture = "GFX_evt_carstein"
-
-# 	trigger = {
-# 		trait = carstein_ring
-
-# 		ai = yes
-# 		check_variable = { which = carstein_death_count value = 5 }
-
-# 	}
-# 	mean_time_to_happen = {
-
-# 		months = 1
-# 	}
-
-# 	option = {
-# 		name = CURSES
-
-# 		remove_trait = carstein_ring
-# 		any_playable_ruler = {
-
-# 			limit = { OR = { culture_group = imperial_group
-# 					culture_group = kislevite_group
-
-# 					culture_group = estalian_group
-# 					culture_group = tilean_group
-
-# 					culture_group = bretonnian_group
-# 					culture_group = dwarf_group }
-
-# 				ai = no }
-# 			character_event = { id = carstein.8 days = 7 }
-
-# 			}
-# 		any_playable_ruler = {
-
-# 			limit = { NOT = { culture_group = imperial_group }
-# 					NOT = { culture_group = kislevite_group }
-
-# 					NOT = { culture_group = estalian_group }
-# 					NOT = { culture_group = tilean_group }
-
-# 					NOT = { culture_group = bretonnian_group }
-# 					NOT = { culture_group = dwarf_group }
-
-# 				ai = no }
-# 			character_event = { id = carstein.8 days = 30 }
-
-# 		}
-# 	}
-
-# }
-# world is informed
 character_event = {
 	id = carstein.8
 	title = GOOD_NEWS# Good news!
@@ -1379,10 +716,7 @@ character_event = {
 	title = DISASTER# Disaster
 	desc = EVTDESCCARSTEIN.9
 	picture = "GFX_evt_carstein"
-
-	trigger = {
-		has_character_flag = vlad_von_carstein
-	}
+	has_character_flag = vlad_von_carstein
 	is_triggered_only = yes
 
 	immediate = {
@@ -1403,36 +737,26 @@ character_event = {
 					culture_group = bretonnian_group
 					culture_group = dwarf_group
 				}
-				ai = no
 			}
 			character_event = {
-				id = carstein.10 days = 7
+				id = carstein.10
+				days = 7
 			}
 		}
 		any_playable_ruler = {
 			limit = {
-				NOT = {
+				nor = {
 					culture_group = imperial_group
-				}
-				NOT = {
 					culture_group = kislevite_group
-				}
-				NOT = {
 					culture_group = estalian_group
-				}
-				NOT = {
 					culture_group = tilean_group
-				}
-				NOT = {
 					culture_group = bretonnian_group
-				}
-				NOT = {
 					culture_group = dwarf_group
 				}
-				ai = no
 			}
 			character_event = {
-				id = carstein.10 days = 30
+				id = carstein.10
+				days = 30
 			}
 		}
 	}
@@ -1444,6 +768,7 @@ character_event = {
 	title = DISASTER# Disaster
 	desc = EVTDESCCARSTEIN.10
 	picture = "GFX_evt_zombies"
+	ai = no
 	is_triggered_only = yes
 
 	immediate = {

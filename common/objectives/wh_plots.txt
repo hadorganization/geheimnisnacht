@@ -7,6 +7,7 @@ plot_steal_carstein_ring = {
 	# Plotter scope
 	potential = {
 		has_global_flag = carstein_ring_revealed
+		is_playable = yes
 		age = 16
 		is_incapacitated_trigger = no
 		root = {
@@ -47,44 +48,14 @@ plot_steal_carstein_ring = {
 			factor = 2.0
 			FROM = {
 				trait = envious
-				OR = {
-					trait = vampire_lahmian_visible
-					trait = vampire_carstein_visible
-					trait = vampire_blood_visible
-					trait = vampire_strigoi_visible
-					trait = vampire_necrarch_visible
-					trait = vampire_jade_visible
-					trait = vampire_mahtmasi_visible
-					trait = vampire_lahmian_hidden
-					trait = vampire_carstein_hidden
-					trait = vampire_blood_hidden
-					trait = vampire_strigoi_hidden
-					trait = vampire_necrarch_hidden
-					trait = vampire_jade_hidden
-					trait = vampire_mahtmasi_hidden
-				}
+				is_vampire_trigger = yes
 			}
 		}
 		modifier = {
 			factor = 3.5
 			FROM = {
 				trait = ambitious
-				OR = {
-					trait = vampire_lahmian_visible
-					trait = vampire_carstein_visible
-					trait = vampire_blood_visible
-					trait = vampire_strigoi_visible
-					trait = vampire_necrarch_visible
-					trait = vampire_jade_visible
-					trait = vampire_mahtmasi_visible
-					trait = vampire_lahmian_hidden
-					trait = vampire_carstein_hidden
-					trait = vampire_blood_hidden
-					trait = vampire_strigoi_hidden
-					trait = vampire_necrarch_hidden
-					trait = vampire_jade_hidden
-					trait = vampire_mahtmasi_hidden
-				}
+				is_vampire_trigger = yes
 			}
 		}
 		modifier = {
@@ -93,22 +64,7 @@ plot_steal_carstein_ring = {
 				any_rival = {
 					character = ROOT
 				}
-				OR = {
-					trait = vampire_lahmian_visible
-					trait = vampire_carstein_visible
-					trait = vampire_blood_visible
-					trait = vampire_strigoi_visible
-					trait = vampire_necrarch_visible
-					trait = vampire_jade_visible
-					trait = vampire_mahtmasi_visible
-					trait = vampire_lahmian_hidden
-					trait = vampire_carstein_hidden
-					trait = vampire_blood_hidden
-					trait = vampire_strigoi_hidden
-					trait = vampire_necrarch_hidden
-					trait = vampire_jade_hidden
-					trait = vampire_mahtmasi_hidden
-				}
+				is_vampire_trigger = yes
 			}
 		}
 		modifier = {
@@ -135,22 +91,7 @@ plot_steal_carstein_ring = {
 			factor = 2.0
 			FROM = {
 				trait = deceitful
-				OR = {
-					trait = vampire_lahmian_visible
-					trait = vampire_carstein_visible
-					trait = vampire_blood_visible
-					trait = vampire_strigoi_visible
-					trait = vampire_necrarch_visible
-					trait = vampire_jade_visible
-					trait = vampire_mahtmasi_visible
-					trait = vampire_lahmian_hidden
-					trait = vampire_carstein_hidden
-					trait = vampire_blood_hidden
-					trait = vampire_strigoi_hidden
-					trait = vampire_necrarch_hidden
-					trait = vampire_jade_hidden
-					trait = vampire_mahtmasi_hidden
-				}
+				is_vampire_trigger = yes
 			}
 		}
 		modifier = {
@@ -409,42 +350,26 @@ plot_hunt_character = {
 			trait = vampire_strigoi_visible
 			trait = vampire_necrarch_visible
 			trait = creature_slann
+			# Vampires plot normally against other vampires, but mortals need the special plot against them
 			AND = {
-				#Vampires plot normally against other vampires, but mortals need the special plot against them
 				ROOT = {
-					OR = {
-						trait = vampire_lahmian_visible
-						trait = vampire_carstein_visible
-						trait = vampire_blood_visible
-						trait = vampire_strigoi_visible
-						trait = vampire_necrarch_visible
-						trait = vampire_jade_visible
-						trait = vampire_mahtmasi_visible
-					}
+					is_vampire_trigger = yes
 				}
 				FROM = {
-					NOR = {
-						trait = vampire_lahmian_visible
-						trait = vampire_carstein_visible
-						trait = vampire_blood_visible
-						trait = vampire_strigoi_visible
-						trait = vampire_necrarch_visible
-						trait = vampire_jade_visible
-						trait = vampire_mahtmasi_visible
-					}
+					is_vampire_trigger = no
 				}
 			}
 		}
 		OR = {
+			NOT = {
+				trait = creature_slann
+			}
 			FROM = {
 				NOR = {
 					trait = creature_saurus
 					trait = creature_slann
 					trait = creature_skink
 				}
-			}
-			NOT = {
-				trait = creature_slann
 			}
 		}
 		# Don't kill my lovers, or their children
@@ -531,6 +456,18 @@ plot_hunt_character = {
 	}
 	chance = {
 		factor = 2
+		# try to kill vlad
+		modifier = {
+			factor = 5
+			has_artifact = carstein_ring
+			FROM = {
+				or = {
+					trait = witch_hunter
+					religion = sigmarite
+					religion = grail
+				}
+			}
+		}
 		modifier = {
 			factor = 0.1
 			FROM = {
@@ -630,25 +567,9 @@ plot_hunt_character = {
 		modifier = {
 			factor = 0.05
 			FROM = {
-				OR = {
-					trait = vampire_carstein_visible
-					trait = vampire_blood_visible
-					trait = vampire_lahmian_visible
-					trait = vampire_strigoi_visible
-					trait = vampire_necrarch_visible
-					trait = vampire_jade_visible
-					trait = vampire_mahtmasi_visible
-				}
+				is_vampire_trigger = yes
 			}
-			OR = {
-				trait = vampire_carstein_visible
-				trait = vampire_blood_visible
-				trait = vampire_lahmian_visible
-				trait = vampire_strigoi_visible
-				trait = vampire_necrarch_visible
-				trait = vampire_jade_visible
-				trait = vampire_mahtmasi_visible
-			}
+			is_vampire_trigger = yes
 		}
 		modifier = {
 			factor = 0
@@ -664,15 +585,7 @@ plot_hunt_character = {
 			FROM = {
 				trait = vampire_necrarch_visible
 			}
-			OR = {
-				trait = vampire_carstein_visible
-				trait = vampire_blood_visible
-				trait = vampire_lahmian_visible
-				trait = vampire_strigoi_visible
-				trait = vampire_necrarch_visible
-				trait = vampire_jade_visible
-				trait = vampire_mahtmasi_visible
-			}
+			is_vampire_trigger = yes
 		}
 		modifier = {
 			factor = 2.0

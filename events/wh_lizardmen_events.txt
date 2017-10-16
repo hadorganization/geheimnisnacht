@@ -3,11 +3,11 @@ namespace = slizardmen
 # A Skink Priest is generated from a spawning pool
 character_event = {
 	id = slizardmen.1
+	culture = lizardman
 	desc = EVTDESCslizardmens1
 	picture = GFX_evt_lustria_jungle
 
 	trigger = {
-		culture = lizardman
 		or = {
 			trait = creature_skink
 			trait = creature_slann
@@ -1015,6 +1015,7 @@ letter_event = {
 # Found fragment of ancient tablet.
 character_event = {
 	id = 122001 # USED TO BE slizardmen.11
+	culture_group = lizardman_group
 	title = EVTNAMEslizardmen11
 	desc = EVTDESCslizardmen11
 	picture = GFX_evt_lizardmen_temples
@@ -1022,7 +1023,6 @@ character_event = {
 	prisoner = no
 
 	trigger = {
-		culture_group = lizardman_group
 		has_job_action = action_explore_ruins
 	}
 
@@ -1137,10 +1137,10 @@ character_event = {
 	desc = EVTDESCslizardmen13
 	picture = GFX_evt_lizardmen_saurus
 	is_triggered_only = yes
+	religion_group = old_ones_group
 	# only_playable = yes
 
 	trigger = {
-		religion_group = old_ones_group
 		FROM = {
 			NOT = {
 				location = {
@@ -6047,9 +6047,9 @@ character_event = {
 	desc = EVTDESCslizardmen31005
 	picture = GFX_evt_lustria_slann
 	is_triggered_only = yes
+	war = yes
 
 	trigger = {
-		war = yes
 		NOT = {
 			has_character_flag = warring_slann
 		}
@@ -6111,9 +6111,9 @@ character_event = {
 	desc = EVTDESCslizardmen32005
 	picture = GFX_evt_lustria_slann
 	is_triggered_only = yes
+	war = yes
 
 	trigger = {
-		war = yes
 		NOT = {
 			has_character_flag = warring_slann
 		}
@@ -12673,11 +12673,11 @@ character_event = {
 	desc = EVTDESCslizardmen60
 	picture = GFX_evt_amazon
 	is_triggered_only = yes
+	only_women = yes
+	religion = amazon
 	# only_playable = yes
 
 	trigger = {
-		religion = amazon
-		is_female = yes
 		NOT = {
 			location = {
 				has_province_modifier = province_slave_raid
@@ -17310,6 +17310,7 @@ character_event = {
 character_event = {
 	id = slizardmen.82
 	hide_window = yes
+	war = no
 	only_women = yes
 	min_age = 16
 	max_age = 350
@@ -17319,7 +17320,6 @@ character_event = {
 	religion = amazon
 	ai = no
 	trigger = {
-		war = no
 		trait = creature_amazon
 		NOR = {
 			trait = complacent
@@ -19656,10 +19656,10 @@ character_event = {
 	picture = "GFX_evt_lustria_slann"
 	hide_window = yes
 	is_triggered_only = yes # Triggered by bi-yearly pulse
+	only_rulers = yes
 	only_playable = yes # Maybe remove, depending on how we handle sleeping non-ruling Slann
 
 	trigger = {
-		is_ruler = yes
 		trait = creature_slann
 	}
 
@@ -19778,10 +19778,10 @@ character_event = {
 	desc = lizardman102desc
 	picture = "GFX_evt_lustria_slann"
 	is_triggered_only = yes
+	only_rulers = yes
 	only_playable = yes # Maybe remove, depending on how we handle sleeping non-ruling Slann
 
 	trigger = {
-		is_ruler = yes
 		trait = creature_slann
 		# trait = lizardman_sleepingslann
 	}
@@ -19920,10 +19920,10 @@ character_event = {
 	desc = lizardman103desc
 	picture = "GFX_evt_lustria_slann"
 	is_triggered_only = yes
+	only_rulers = yes
 	only_playable = yes # Maybe remove, depending on how we handle sleeping non-ruling Slann
 
 	trigger = {
-		is_ruler = yes
 		trait = creature_slann
 		trait = lizardman_sleepingslann
 	}
@@ -21937,9 +21937,9 @@ character_event = {
 	id = slizardmen.280
 	hide_window = yes
 	is_triggered_only = yes
+	culture = lizardman
 
 	trigger = {
-		culture = lizardman
 		any_demesne_province = {
 			has_province_modifier = lustria_jungle
 			OR = {
@@ -22075,9 +22075,9 @@ province_event = {
 	picture = "GFX_evt_lustria_dinosaur"
 	border = GFX_event_normal_frame_war
 	is_triggered_only = yes
+	has_dlc = "The Old Gods"
 
 	trigger = {
-		has_dlc = "The Old Gods"
 		# has_province_modifier = lustria_jungle
 		has_province_modifier = lustria_oppressive_jungle
 		NOT = {
@@ -22785,6 +22785,7 @@ character_event = {
 # 400: Return of the Chameleon Skinks
 narrative_event = {
 	id = slizardmen.400
+	religion = old_ones
 	title = "lizardman400title"
 	desc = "lizardman400desc"
 	picture = "GFX_evt_crusaders"
@@ -22794,7 +22795,6 @@ narrative_event = {
 	only_men = yes
 
 	trigger = {
-		religion = old_ones
 		is_heretic = no
 		year = 2040
 		NOT = {

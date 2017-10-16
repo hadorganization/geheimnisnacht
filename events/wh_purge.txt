@@ -1,45 +1,35 @@
+# need to move to lizarmen events
+
 namespace = z_purge
 
 # First for the goodies, purging the baddies
 character_event = {
 	id = z_purge.0
-	desc = purgedesc # There are hostile creatures in your realm, they must be purged and the threat removed. It's time to send in the troops...
+	#desc = purgedesc # There are hostile creatures in your realm, they must be purged and the threat removed. It's time to send in the troops...
 	hide_window = yes
 	is_triggered_only = yes # annual pulse
 
 	immediate = {
 		log = "work event id = z_purge.0 for [Root.GetBestName]"
-	}
-
-	option = {
-		name = purge0A # Yes, send them at once!
 		set_character_flag = purge_in_progress
-		ROOT = {
-			character_event = {
-				id = z_purge.1 days = 3650
-			}
+		character_event = {
+			id = z_purge.1 days = 3650
 		}
-		ROOT = {
-			character_event = {
-				id = z_purge.2 days = 3690
-			}
+		character_event = {
+			id = z_purge.2 days = 3690
 		}
 	}
 }
 
 character_event = {
 	id = z_purge.1
-	desc = purge1desc # Your land has been purged of enemies, and now the time will come to settle the new wilderness with your people.
-	picture = GFX_abandoned_lands
+	#desc = purge1desc # Your land has been purged of enemies, and now the time will come to settle the new wilderness with your people.
+	#picture = GFX_abandoned_lands
 	hide_window = yes
 	is_triggered_only = yes
 
 	immediate = {
 		log = "work event id = z_purge.1 for [Root.GetBestName]"
-	}
-
-	option = {
-		name = OK
 		event_target:purge_prov = {
 			location = {
 				culture = lizardman
@@ -52,17 +42,13 @@ character_event = {
 # hidden event to clear the purge flag after 10 years so the ruler can purge again
 character_event = {
 	id = z_purge.2
-	desc = purgedesc
-	picture = GFX_abandoned_lands
+	#desc = purgedesc
+	#picture = GFX_abandoned_lands
 	hide_window = yes
 	is_triggered_only = yes
 
 	immediate = {
 		log = "work event id = z_purge.2 for [Root.GetBestName]"
-	}
-
-	option = {
-		name = OK
 		clr_character_flag = purge_in_progress
 	}
 }
@@ -91,7 +77,7 @@ narrative_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 240
+		years = 20
 		modifier = {
 			factor = 3.0
 			liege = {
@@ -312,7 +298,7 @@ narrative_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 480
+		years = 40
 		modifier = {
 			factor = 3.0
 			liege = {

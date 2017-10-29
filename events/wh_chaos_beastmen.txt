@@ -1432,36 +1432,6 @@ character_event = {
 			}
 		}
 		hidden_tooltip = {
-			if = {
-				limit = {
-					FROM = {
-						OR = {
-							any_neighbor_province = {
-								OR = {
-									is_nomadic = yes
-									is_tribal = yes
-								}
-							}
-							has_province_flag = flag_province_scourged
-							NOT = {
-								num_of_settlements = 2
-							}
-						}
-					}
-				}
-				random = {
-					chance = 1
-					FROM = {
-						convert_to = TRIBAL
-						random_province_holding = {
-							limit = {
-								is_capital = no
-							}
-							destroy_settlement = THIS
-						}
-					}
-				}
-			}
 			FROM = {
 				owner = {
 					character_event = {

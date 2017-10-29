@@ -1858,8 +1858,8 @@ character_event = {
 	picture = GFX_evt_wild_hunt
 	is_triggered_only = yes
 	religion = asrai_cadai
+	only_playable = yes
 
-	# only_playable = yes
 	trigger = {
 		higher_tier_than = COUNT
 		is_tribal = yes
@@ -1938,30 +1938,6 @@ character_event = {
 		}
 		FROM = {
 			set_province_flag = flag_province_scourged
-		}
-		if = {
-			limit = {
-				FROM = {
-					OR = {
-						any_neighbor_province = {
-							is_tribal = yes
-						}
-						has_province_flag = flag_province_scourged
-						NOT = {
-							num_of_settlements = 2
-						}
-					}
-					NOT = {
-						is_nomadic = yes
-					}
-				}
-			}
-			random = {
-				chance = 1
-				FROM = {
-					convert_to = TRIBAL
-				}
-			}
 		}
 		if = {
 			limit = {

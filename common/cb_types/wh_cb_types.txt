@@ -11370,7 +11370,7 @@ imperial_reconquest = {
 	}
 }
 
-##Imperial Reconquest for Emperors - THIS IS FOR THE CIVIL WAR ERA, IT WILL BE INVALIDATED ONCE THE TITULAR TITLES DISAPPEAR AS THE EMPIRE IS REFORMED##
+# Imperial Reconquest for Emperors - THIS IS FOR THE CIVIL WAR ERA, IT WILL BE INVALIDATED ONCE THE TITULAR TITLES DISAPPEAR AS THE EMPIRE IS REFORMED
 imperial_reconquest2 = {
     name = CB_NAME_IMPERIAL
     war_name = WAR_NAME_IMPERIAL
@@ -11381,9 +11381,14 @@ imperial_reconquest2 = {
 
     can_use = {
         ROOT = {
-			NOT = { trait = vampire_necrarch_visible }
-			FROM = { NOT = { trait = vampire_necrarch_visible }
-	}
+			NOT = {
+				trait = vampire_necrarch_visible
+			}
+			FROM = {
+				NOT = {
+					trait = vampire_necrarch_visible
+				}
+			}
             OR = {
                 has_landed_title = e_westerland
                 has_landed_title = e_reikland
@@ -11391,62 +11396,55 @@ imperial_reconquest2 = {
                 has_landed_title = e_talabecland
                 AND = {
                     has_landed_title = e_sylvania
-                    NOT = { trait = carstein_ring}
+                    NOT = {
+						trait = carstein_ring
+					}
                 }
             }
 			independent = yes
-			NOT = { same_realm = FROM }
+			NOT = {
+				same_realm = FROM
+			}
         }
     }
 
     can_use_title = {
-		NAND = {
-			location = { region = world_albion }
-			ROOT = {
-				has_global_flag = mists_of_albion
-				capital_scope = { NOT = { region = world_albion } }
-			}
-		}
-		NOT = { de_jure_liege_or_above = e_the_under_empire } 
-        OR = {
-            de_jure_liege_or_above = k_westerland
-            de_jure_liege_or_above = k_middenland
-            de_jure_liege_or_above = k_nordland
-            de_jure_liege_or_above = k_hochland
-            de_jure_liege_or_above = k_ostland
-            de_jure_liege_or_above = k_talabecland
-            de_jure_liege_or_above = k_stirland
-            de_jure_liege_or_above = k_reikland
-            de_jure_liege_or_above = k_wissenland
-            de_jure_liege_or_above = k_averland
-            de_jure_liege_or_above = k_ostermark
-        }
+		region = world_old_world_empire
     }
-    
+
     is_valid = {
         ROOT = {
             independent = yes
-            NOT = { same_realm = FROM 
+            NOT = {
+				same_realm = FROM
 			}
         }
     }
-    
+
     on_success = {
         any_attacker = {
-            limit = { character = ROOT }
+            limit = {
+				character = ROOT
+			}
             participation_scaled_prestige = 100
         }
         any_attacker = {
-            limit = { NOT = { character = ROOT } }
-            hidden_tooltip = { 
+            limit = {
+				NOT = {
+					character = ROOT
+				}
+			}
+            hidden_tooltip = {
                 participation_scaled_prestige = 100
             }
         }
-        FROM = { prestige = -100 }
+        FROM = {
+			prestige = -100
+		}
     }
 
     on_success_title = {
-        custom_tooltip = { 
+        custom_tooltip = {
             text = tribal_invasion_succ_tip
             hidden_tooltip = {
                 ROOT = {
@@ -11459,14 +11457,18 @@ imperial_reconquest2 = {
         }
         if = {
             limit = {
-                holder_scope = { character = FROM }
+                holder_scope = {
+					character = FROM
+				}
             }
             usurp_title_only = ROOT
         }
     }
 
     on_fail = {
-        ROOT = { prestige = -150 }
+        ROOT = {
+			prestige = -150
+		}
     }
 
     on_reverse_demand = {
@@ -11475,16 +11477,24 @@ imperial_reconquest2 = {
                 to = FROM
                 value = 4.0
             }
-            ROOT = { prestige = -200 }
+            ROOT = {
+				prestige = -200
+			}
         }
         any_defender = {
-            limit = { character = FROM }
+            limit = {
+				character = FROM
+			}
             participation_scaled_piety = 100
             participation_scaled_prestige = 200
         }
         any_defender = {
-            limit = { NOT = { character = FROM } }
-            hidden_tooltip = { 
+            limit = {
+				NOT = {
+					character = FROM
+				}
+			}
+            hidden_tooltip = {
                 participation_scaled_piety = 100
                 participation_scaled_prestige = 200
             }
@@ -11494,7 +11504,7 @@ imperial_reconquest2 = {
     attacker_ai_victory_worth = {
         factor = -1 # always accept
     }
-    
+
     attacker_ai_defeat_worth = {
         factor = 100
     }
@@ -11502,12 +11512,11 @@ imperial_reconquest2 = {
     defender_ai_victory_worth = {
         factor = -1 # always accept
     }
-    
+
     defender_ai_defeat_worth = {
         factor = 100
     }
 }
-
 
 witch_hunter_forceinvestigation_cb = {
 	name = CB_NAME_HUNTERINVESTIGATION

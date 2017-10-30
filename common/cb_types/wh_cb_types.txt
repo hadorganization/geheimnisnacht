@@ -627,6 +627,7 @@ skaven_foreignconquest = {
 	can_use = {
 		# Greenskins are barred from using most usual CBs
 		ROOT = {
+			wh_cb_this_or_from_is_necrarch_trigger = no
 			culture_group = skaven_group
 			higher_tier_than = DUKE	# Only for big Clans
 			wh_cb_pays_tribute_to_from_trigger = no
@@ -640,9 +641,6 @@ skaven_foreignconquest = {
 			}
 		}
 		FROM = {
-			NOT = {
-				trait = vampire_necrarch_visible
-			}
 			NOT = {
 				culture_group = skaven_group
 			}
@@ -4927,10 +4925,10 @@ purge_greenskins = {
 	}
 	can_use = {
 		ROOT = {
+			wh_cb_this_or_from_is_necrarch_trigger = no
 			nor = {
 				culture_group = lizardman_group
 				religion_group = greenskin_gods_group
-				trait = vampire_necrarch_visible
 				trait = creature_nehekharan
 				trait = creature_beastman
 				trait = creature_dwarf
@@ -9803,9 +9801,7 @@ everchosen_invasion = {
 	}
 	can_use = {
 		ROOT = {
-			NOT = {
-				trait = vampire_necrarch_visible
-			}
+			wh_cb_this_or_from_is_necrarch_trigger = no
 			NOT = {
 				trait = creature_beastman
 			}
@@ -11253,14 +11249,7 @@ imperial_reconquest = {
 	check_de_jure_tier = DUKE # this scans all dejure duchies for the counties which are held by or vassals(or below) of selected character. Only valid if is_permanent = yes
 	can_use = {
 		ROOT = {
-			NOT = {
-				trait = vampire_necrarch_visible
-			}
-			FROM = {
-				NOT = {
-					trait = vampire_necrarch_visible
-				}
-			}
+			wh_cb_this_or_from_is_necrarch_trigger = no
 			has_landed_title = e_the_empire
 			independent = yes
 			religion_group = old_world_group
@@ -11381,14 +11370,7 @@ imperial_reconquest2 = {
 
     can_use = {
         ROOT = {
-			NOT = {
-				trait = vampire_necrarch_visible
-			}
-			FROM = {
-				NOT = {
-					trait = vampire_necrarch_visible
-				}
-			}
+			wh_cb_this_or_from_is_necrarch_trigger = no
             OR = {
                 has_landed_title = e_westerland
                 has_landed_title = e_reikland
@@ -11397,7 +11379,7 @@ imperial_reconquest2 = {
                 AND = {
                     has_landed_title = e_sylvania
                     NOT = {
-						trait = carstein_ring
+						has_artifact = carstein_ring
 					}
                 }
             }
@@ -11634,9 +11616,9 @@ vlad_subjugation = {
 	can_use = {
 		ROOT = {
 			has_artifact = carstein_ring
+			wh_cb_this_or_from_is_necrarch_trigger = no
 			nor = {
 				same_realm = FROM
-				trait = vampire_necrarch_visible
 				is_liege_or_above = FROM
 			}
 			primary_title = {
@@ -12646,9 +12628,7 @@ cathayan_subjugation = {
 					piety = 1000
 				}
 			}
-			NOT = {
-				trait = vampire_necrarch_visible
-			}
+			wh_cb_this_or_from_is_necrarch_trigger = no
 			NOT = {
 				same_realm = FROM
 			}

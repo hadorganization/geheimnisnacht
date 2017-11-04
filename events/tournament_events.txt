@@ -276,10 +276,8 @@ character_event = {
 				modifier = {
 					factor = 0
 					OR = {
-						NOT = {
+						nor = {
 							has_character_flag = attending_tournament
-						}
-						NOT = {
 							age = 16
 						}
 						lifestyle_traits = 1
@@ -655,10 +653,8 @@ character_event = {
 					factor = 0
 					OR = {
 						is_female = yes
-						NOT = {
+						nor = {
 							age = 16
-						}
-						NOT = {
 							trait = drunkard
 						}
 						trait = wounded
@@ -954,10 +950,8 @@ character_event = {
 					}
 					any_realm_lord = {
 						limit = {
-							NOT = {
+							nor = {
 								character = ROOT
-							}
-							NOT = {
 								tier = BARON
 							}
 							capital_scope = {
@@ -1134,10 +1128,8 @@ character_event = {
 								any_realm_lord = {
 									# Invite all lords as spectators
 									limit = {
-										NOT = {
+										nor = {
 											character = ROOT
-										}
-										NOT = {
 											tier = BARON
 										}
 										OR = {
@@ -1205,10 +1197,8 @@ character_event = {
 			}
 			modifier = {
 				factor = 0
-				NOT = {
+				nor = {
 					higher_tier_than = DUKE
-				}
-				NOT = {
 					OR = {
 						trait = ambitious
 						trait = proud
@@ -1291,10 +1281,8 @@ character_event = {
 					any_realm_lord = {
 						# Invite all lords as spectators
 						limit = {
-							NOT = {
+							nor = {
 								character = ROOT
-							}
-							NOT = {
 								tier = BARON
 							}
 						}
@@ -1358,13 +1346,9 @@ letter_event = {
 	}
 
 	trigger = {
-		NOT = {
+		nor = {
 			has_character_flag = tourny_in_progress
-		}
-		NOT = {
 			has_character_flag = attending_tournament
-		}
-		NOT = {
 			AND = {
 				FROM = {
 					has_character_flag = small_tourny
@@ -1389,16 +1373,10 @@ letter_event = {
 			is_patrician = yes
 			is_tribal = yes
 		}
-		NOT = {
+		nor = {
 			trait = incapable
-		}
-		NOT = {
 			trait = blinded
-		}
-		NOT = {
 			trait = maimed
-		}
-		NOT = {
 			trait = infirm
 		}
 		OR = {
@@ -1832,10 +1810,8 @@ letter_event = {
 			}
 			modifier = {
 				factor = 5
-				NOT = {
+				nor = {
 					religion = grail
-				}
-				NOT = {
 					trait = bretonnian_knight
 				}
 			}
@@ -2866,10 +2842,8 @@ character_event = {
 							has_opinion_modifier = {
 								who = PREV modifier = opinion_attending_tournament
 							}
-							NOT = {
+							nor = {
 								has_character_flag = lost_tournament
-							}
-							NOT = {
 								character = PREVPREV
 							}
 						}
@@ -3153,10 +3127,8 @@ character_event = {
 					has_opinion_modifier = {
 						who = PREV modifier = opinion_attending_tournament
 					}
-					NOT = {
+					nor = {
 						has_character_flag = lost_tournament
-					}
-					NOT = {
 						character = ROOT
 					}
 					OR = {
@@ -3259,10 +3231,8 @@ character_event = {
 					AND = {
 						trait = skilled_warrior
 						FROM = {
-							NOT = {
+							nor = {
 								trait = master_warrior
-							}
-							NOT = {
 								trait = skilled_warrior
 							}
 						}
@@ -3358,10 +3328,8 @@ character_event = {
 					AND = {
 						trait = skilled_warrior
 						FROM = {
-							NOT = {
+							nor = {
 								trait = master_warrior
-							}
-							NOT = {
 								trait = skilled_warrior
 							}
 						}
@@ -4717,13 +4685,9 @@ character_event = {
 								who = PREV modifier = opinion_spectating_tournament
 							}
 						}
-						NOT = {
+						nor = {
 							character = ROOT
-						}
-						NOT = {
 							character = FROM
-						}
-						NOT = {
 							character = PREV
 						}
 					}
@@ -4867,13 +4831,9 @@ character_event = {
 								who = PREV modifier = opinion_spectating_tournament
 							}
 						}
-						NOT = {
+						nor = {
 							character = ROOT
-						}
-						NOT = {
 							character = FROM
-						}
-						NOT = {
 							character = PREV
 						}
 					}
@@ -4998,10 +4958,8 @@ character_event = {
 		FROM = {
 			if = {
 				limit = {
-					NOT = {
+					nor = {
 						has_character_flag = won_match_up
-					}
-					NOT = {
 						character = ROOT
 					}
 				}
@@ -5015,10 +4973,8 @@ character_event = {
 		FROMFROM = {
 			if = {
 				limit = {
-					NOT = {
+					nor = {
 						has_character_flag = won_match_up
-					}
-					NOT = {
 						character = ROOT
 					}
 				}
@@ -5062,10 +5018,8 @@ character_event = {
 							has_opinion_modifier = {
 								who = PREV modifier = opinion_attending_tournament
 							}
-							NOT = {
+							nor = {
 								has_character_flag = lost_tournament
-							}
-							NOT = {
 								character = ROOT
 							}
 						}
@@ -5098,13 +5052,9 @@ character_event = {
 									who = PREV modifier = opinion_spectating_tournament
 								}
 							}
-							NOT = {
+							nor = {
 								character = ROOT
-							}
-							NOT = {
 								character = FROM
-							}
-							NOT = {
 								character = PREV
 							}
 							OR = {
@@ -5122,10 +5072,8 @@ character_event = {
 			# If semi-finalist inform host
 			if = {
 				limit = {
-					NOT = {
+					nor = {
 						has_character_flag = tournament_winner_found
-					}
-					NOT = {
 						any_opinion_modifier_target = {
 							has_character_flag = attending_tournament
 							has_opinion_modifier = {
@@ -5160,13 +5108,9 @@ character_event = {
 									who = PREV modifier = opinion_spectating_tournament
 								}
 							}
-							NOT = {
+							nor = {
 								character = ROOT
-							}
-							NOT = {
 								character = FROM
-							}
-							NOT = {
 								character = PREV
 							}
 							OR = {
@@ -5246,10 +5190,8 @@ character_event = {
 		if = {
 			limit = {
 				FROM = {
-					NOT = {
+					nor = {
 						trait = master_warrior
-					}
-					NOT = {
 						higher_tier_than = DUKE
 					}
 					OR = {
@@ -5263,13 +5205,9 @@ character_event = {
 		if = {
 			limit = {
 				FROM = {
-					NOT = {
+					nor = {
 						trait = master_warrior
-					}
-					NOT = {
 						trait = skilled_warrior
-					}
-					NOT = {
 						higher_tier_than = COUNT
 					}
 					OR = {
@@ -5283,16 +5221,10 @@ character_event = {
 		if = {
 			limit = {
 				FROM = {
-					NOT = {
+					nor = {
 						trait = master_warrior
-					}
-					NOT = {
 						trait = skilled_warrior
-					}
-					NOT = {
 						trait = trained_warrior
-					}
-					NOT = {
 						higher_tier_than = BARON
 					}
 				}
@@ -5455,10 +5387,8 @@ character_event = {
 		name = "EVTOPTA70088"
 		trigger = {
 			OR = {
-				NOT = {
+				nor = {
 					has_character_flag = tournament_spectator
-				}
-				NOT = {
 					dynasty = FROMFROM
 				}
 			}
@@ -5559,10 +5489,8 @@ character_event = {
 					has_character_flag = tournament_spectator
 				}
 				AND = {
-					NOT = {
+					nor = {
 						dynasty = FROM
-					}
-					NOT = {
 						dynasty = FROMFROM
 					}
 				}
@@ -5651,10 +5579,8 @@ character_event = {
 		trigger = {
 			has_character_flag = tournament_spectator
 			dynasty = FROMFROM
-			NOT = {
+			nor = {
 				is_close_relative = FROMFROM
-			}
-			NOT = {
 				dynasty = FROM
 			}
 		}
@@ -5677,10 +5603,8 @@ character_event = {
 			dynasty = FROMFROM
 			is_close_relative = FROMFROM
 			OR = {
-				NOT = {
+				nor = {
 					dynasty = FROM
-				}
-				NOT = {
 					is_close_relative = FROM
 				}
 			}
@@ -5742,10 +5666,8 @@ character_event = {
 			}
 			if = {
 				limit = {
-					NOT = {
+					nor = {
 						has_character_modifier = grand_tourny_1st_1
-					}
-					NOT = {
 						has_character_flag = grand_tourny_1st
 					}
 				}
@@ -5819,10 +5741,8 @@ character_event = {
 			}
 			if = {
 				limit = {
-					NOT = {
+					nor = {
 						has_character_modifier = normal_tourny_1st_1
-					}
-					NOT = {
 						has_character_flag = normal_tourny_1st
 					}
 				}
@@ -5896,10 +5816,8 @@ character_event = {
 			}
 			if = {
 				limit = {
-					NOT = {
+					nor = {
 						has_character_modifier = small_tourny_1st_1
-					}
-					NOT = {
 						has_character_flag = small_tourny_1st
 					}
 				}
@@ -6036,10 +5954,8 @@ character_event = {
 			}
 			if = {
 				limit = {
-					NOT = {
+					nor = {
 						has_character_modifier = grand_tourny_2nd_1
-					}
-					NOT = {
 						has_character_flag = grand_tourny_2nd
 					}
 				}
@@ -6113,10 +6029,8 @@ character_event = {
 			}
 			if = {
 				limit = {
-					NOT = {
+					nor = {
 						has_character_modifier = normal_tourny_2nd_1
-					}
-					NOT = {
 						has_character_flag = normal_tourny_2nd
 					}
 				}
@@ -6190,10 +6104,8 @@ character_event = {
 			}
 			if = {
 				limit = {
-					NOT = {
+					nor = {
 						has_character_modifier = small_tourny_2nd_1
-					}
-					NOT = {
 						has_character_flag = small_tourny_2nd
 					}
 				}
@@ -6405,10 +6317,8 @@ character_event = {
 			}
 			if = {
 				limit = {
-					NOT = {
+					nor = {
 						has_character_modifier = grand_tourny_3rd_1
-					}
-					NOT = {
 						has_character_flag = grand_tourny_3rd
 					}
 				}
@@ -6482,10 +6392,8 @@ character_event = {
 			}
 			if = {
 				limit = {
-					NOT = {
+					nor = {
 						has_character_modifier = normal_tourny_3rd_1
-					}
-					NOT = {
 						has_character_flag = normal_tourny_3rd
 					}
 				}
@@ -6559,10 +6467,8 @@ character_event = {
 			}
 			if = {
 				limit = {
-					NOT = {
+					nor = {
 						has_character_modifier = small_tourny_3rd_1
-					}
-					NOT = {
 						has_character_flag = small_tourny_3rd
 					}
 				}
@@ -7009,10 +6915,8 @@ character_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOT = {
+		nor = {
 			trait = craven
-		}
-		NOT = {
 			trait = brave
 		}
 	}
@@ -7037,10 +6941,8 @@ character_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOT = {
+		nor = {
 			trait = brave
-		}
-		NOT = {
 			trait = craven
 		}
 	}
@@ -7090,10 +6992,8 @@ character_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOT = {
+		nor = {
 			trait = syphilitic
-		}
-		NOT = {
 			trait = celibate
 		}
 	}
@@ -7460,10 +7360,8 @@ character_event = {
 								has_character_flag = attending_tournament
 							}
 						}
-						NOT = {
+						nor = {
 							has_character_flag = queen_love_beauty
-						}
-						NOT = {
 							is_lover = ROOT
 						}
 					}
@@ -7488,25 +7386,13 @@ character_event = {
 							higher_tier_than = BARON
 							has_character_flag = attending_tournament
 						}
-						NOT = {
+						nor = {
 							trait = ugly
-						}
-						NOT = {
 							trait = dwarf
-						}
-						NOT = {
 							trait = inbred
-						}
-						NOT = {
 							trait = hunchback
-						}
-						NOT = {
 							trait = harelip
-						}
-						NOT = {
 							has_character_flag = queen_love_beauty
-						}
-						NOT = {
 							is_lover = ROOT
 						}
 					}
@@ -7527,25 +7413,13 @@ character_event = {
 							trait = incapable
 						}
 						prisoner = no
-						NOT = {
+						nor = {
 							trait = ugly
-						}
-						NOT = {
 							trait = dwarf
-						}
-						NOT = {
 							trait = inbred
-						}
-						NOT = {
 							trait = hunchback
-						}
-						NOT = {
 							trait = harelip
-						}
-						NOT = {
 							has_character_flag = queen_love_beauty
-						}
-						NOT = {
 							is_lover = ROOT
 						}
 						OR = {
@@ -7963,10 +7837,8 @@ character_event = {
 		any_spouse = {
 			limit = {
 				is_alive = yes
-				NOT = {
+				nor = {
 					has_character_flag = queen_love_beauty
-				}
-				NOT = {
 					trait = incapable
 				}
 				prisoner = no
@@ -8039,10 +7911,8 @@ character_event = {
 		any_spouse = {
 			limit = {
 				is_alive = yes
-				NOT = {
+				nor = {
 					has_character_flag = queen_love_beauty
-				}
-				NOT = {
 					trait = incapable
 				}
 				prisoner = no
@@ -8115,10 +7985,8 @@ character_event = {
 		any_spouse = {
 			limit = {
 				is_alive = yes
-				NOT = {
+				nor = {
 					has_character_flag = queen_love_beauty
-				}
-				NOT = {
 					trait = incapable
 				}
 				prisoner = no
@@ -8191,10 +8059,8 @@ character_event = {
 		any_spouse = {
 			limit = {
 				is_alive = yes
-				NOT = {
+				nor = {
 					has_character_flag = queen_love_beauty
-				}
-				NOT = {
 					trait = incapable
 				}
 				prisoner = no
@@ -8262,10 +8128,8 @@ character_event = {
 		any_spouse = {
 			limit = {
 				is_alive = yes
-				NOT = {
+				nor = {
 					has_character_flag = queen_love_beauty
-				}
-				NOT = {
 					trait = incapable
 				}
 				prisoner = no
@@ -9111,21 +8975,15 @@ character_event = {
 			}
 			is_married = FROM
 		}
-		NOT = {
+		nor = {
 			trait = celibate
-		}
-		NOT = {
 			trait = eunuch
 		}
 		FROM = {
 			age = 14
-			NOT = {
+			nor = {
 				is_lover = ROOT
-			}
-			NOT = {
 				trait = celibate
-			}
-			NOT = {
 				trait = incapable
 			}
 			prisoner = no
@@ -9555,10 +9413,8 @@ character_event = {
 			any_realm_character = {
 				limit = {
 					has_character_flag = grand_tourny_3rd
-					NOT = {
+					nor = {
 						has_character_flag = grand_tourny_1st
-					}
-					NOT = {
 						has_character_flag = grand_tourny_2nd
 					}
 				}
@@ -9783,10 +9639,8 @@ character_event = {
 			any_realm_character = {
 				limit = {
 					has_character_flag = normal_tourny_3rd
-					NOT = {
+					nor = {
 						has_character_flag = normal_tourny_1st
-					}
-					NOT = {
 						has_character_flag = normal_tourny_2nd
 					}
 					OR = {
@@ -10098,10 +9952,8 @@ character_event = {
 			any_realm_character = {
 				limit = {
 					has_character_flag = small_tourny_3rd
-					NOT = {
+					nor = {
 						has_character_flag = small_tourny_1st
-					}
-					NOT = {
 						has_character_flag = small_tourny_2nd
 					}
 					OR = {
@@ -10487,13 +10339,9 @@ letter_event = {
 	}
 
 	trigger = {
-		NOT = {
+		nor = {
 			has_character_flag = tourny_in_progress
-		}
-		NOT = {
 			has_character_flag = attending_tournament
-		}
-		NOT = {
 			AND = {
 				FROM = {
 					has_character_flag = small_tourny
@@ -11591,13 +11439,9 @@ character_event = {
 			}
 			if = {
 				limit = {
-					NOT = {
+					nor = {
 						personality_traits = 5
-					}
-					NOT = {
 						trait = lustful
-					}
-					NOT = {
 						trait = chaste
 					}
 				}
@@ -11648,13 +11492,9 @@ character_event = {
 			prestige = -20
 			if = {
 				limit = {
-					NOT = {
+					nor = {
 						personality_traits = 5
-					}
-					NOT = {
 						trait = temperate
-					}
-					NOT = {
 						trait = gluttonous
 					}
 				}
@@ -11710,13 +11550,9 @@ character_event = {
 			}
 			if = {
 				limit = {
-					NOT = {
+					nor = {
 						personality_traits = 5
-					}
-					NOT = {
 						trait = wroth
-					}
-					NOT = {
 						trait = patient
 					}
 				}
@@ -11757,10 +11593,8 @@ character_event = {
 			limit = {
 				age = 6
 				# trait = squire
-				NOT = {
+				nor = {
 					trait = master_warrior
-				}
-				NOT = {
 					trait = skilled_warrior
 				}
 				is_female = no
@@ -11792,13 +11626,9 @@ character_event = {
 				}
 				if = {
 					limit = {
-						NOT = {
+						nor = {
 							trait = skilled_warrior
-						}
-						NOT = {
 							trait = trained_warrior
-						}
-						NOT = {
 							trait = poor_warrior
 						}
 					}
@@ -11860,13 +11690,9 @@ character_event = {
 		}
 		if = {
 			limit = {
-				NOT = {
+				nor = {
 					trait = skilled_warrior
-				}
-				NOT = {
 					trait = trained_warrior
-				}
-				NOT = {
 					trait = poor_warrior
 				}
 			}
@@ -11923,10 +11749,8 @@ character_event = {
 								who = ROOT modifier = opinion_attending_tournament
 							}
 							prisoner = no
-							NOT = {
+							nor = {
 								trait = incapable
-							}
-							NOT = {
 								character = PREVPREV
 							}
 						}
@@ -11965,10 +11789,8 @@ character_event = {
 						who = ROOT modifier = opinion_attending_tournament
 					}
 					prisoner = no
-					NOT = {
+					nor = {
 						trait = incapable
-					}
-					NOT = {
 						trait = maimed
 					}
 				}
@@ -11995,10 +11817,8 @@ character_event = {
 						who = ROOT modifier = opinion_attending_tournament
 					}
 					prisoner = no
-					NOT = {
+					nor = {
 						trait = incapable
-					}
-					NOT = {
 						trait = wounded
 					}
 				}
@@ -12025,10 +11845,8 @@ character_event = {
 						who = ROOT modifier = opinion_attending_tournament
 					}
 					prisoner = no
-					NOT = {
+					nor = {
 						trait = incapable
-					}
-					NOT = {
 						trait = wounded
 					}
 				}
@@ -12055,10 +11873,8 @@ character_event = {
 						who = ROOT modifier = opinion_attending_tournament
 					}
 					prisoner = no
-					NOT = {
+					nor = {
 						trait = incapable
-					}
-					NOT = {
 						trait = wounded
 					}
 				}
@@ -12107,10 +11923,8 @@ character_event = {
 					}
 				}
 				prisoner = no
-				NOT = {
+				nor = {
 					trait = incapable
-				}
-				NOT = {
 					has_character_flag = ai_tourney_medal
 				}
 			}
@@ -12136,10 +11950,8 @@ character_event = {
 					}
 				}
 				prisoner = no
-				NOT = {
+				nor = {
 					trait = incapable
-				}
-				NOT = {
 					has_character_flag = ai_tourney_medal
 				}
 			}
@@ -12164,10 +11976,8 @@ character_event = {
 					}
 				}
 				prisoner = no
-				NOT = {
+				nor = {
 					trait = incapable
-				}
-				NOT = {
 					has_character_flag = ai_tourney_medal
 				}
 			}
@@ -12231,10 +12041,8 @@ character_event = {
 					}
 				}
 				prisoner = no
-				NOT = {
+				nor = {
 					trait = incapable
-				}
-				NOT = {
 					has_character_flag = ai_tourney_medal
 				}
 			}
@@ -12279,10 +12087,8 @@ character_event = {
 					}
 				}
 				prisoner = no
-				NOT = {
+				nor = {
 					trait = incapable
-				}
-				NOT = {
 					has_character_flag = ai_tourney_medal
 				}
 			}
@@ -12301,10 +12107,8 @@ character_event = {
 				}
 				combat_rating = 3
 				prisoner = no
-				NOT = {
+				nor = {
 					trait = incapable
-				}
-				NOT = {
 					has_character_flag = ai_tourney_medal
 				}
 			}
@@ -12362,10 +12166,8 @@ character_event = {
 				}
 				combat_rating = 3
 				prisoner = no
-				NOT = {
+				nor = {
 					trait = incapable
-				}
-				NOT = {
 					has_character_flag = ai_tourney_medal
 				}
 			}
@@ -12404,10 +12206,8 @@ character_event = {
 				}
 				combat_rating = 3
 				prisoner = no
-				NOT = {
+				nor = {
 					trait = incapable
-				}
-				NOT = {
 					has_character_flag = ai_tourney_medal
 				}
 			}
@@ -12426,10 +12226,8 @@ character_event = {
 				}
 				combat_rating = 0
 				prisoner = no
-				NOT = {
+				nor = {
 					trait = incapable
-				}
-				NOT = {
 					has_character_flag = ai_tourney_medal
 				}
 			}
@@ -12487,10 +12285,8 @@ character_event = {
 				}
 				combat_rating = 0
 				prisoner = no
-				NOT = {
+				nor = {
 					trait = incapable
-				}
-				NOT = {
 					has_character_flag = ai_tourney_medal
 				}
 			}
@@ -12529,10 +12325,8 @@ character_event = {
 				}
 				combat_rating = 0
 				prisoner = no
-				NOT = {
+				nor = {
 					trait = incapable
-				}
-				NOT = {
 					has_character_flag = ai_tourney_medal
 				}
 			}
@@ -12550,10 +12344,8 @@ character_event = {
 					who = ROOT modifier = opinion_attending_melee
 				}
 				prisoner = no
-				NOT = {
+				nor = {
 					trait = incapable
-				}
-				NOT = {
 					has_character_flag = ai_tourney_medal
 				}
 			}
@@ -12610,10 +12402,8 @@ character_event = {
 					who = ROOT modifier = opinion_attending_melee
 				}
 				prisoner = no
-				NOT = {
+				nor = {
 					trait = incapable
-				}
-				NOT = {
 					has_character_flag = ai_tourney_medal
 				}
 			}
@@ -12651,10 +12441,8 @@ character_event = {
 					who = ROOT modifier = opinion_attending_melee
 				}
 				prisoner = no
-				NOT = {
+				nor = {
 					trait = incapable
-				}
-				NOT = {
 					has_character_flag = ai_tourney_medal
 				}
 			}

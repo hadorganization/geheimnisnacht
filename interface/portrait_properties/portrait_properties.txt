@@ -4,24 +4,31 @@
 
 # p0 background
 0 = {
-	0 = { # castle 1
+	0 = {
+		# castle 1
 		factor = 1
 		modifier = {
 			factor = 0
-			NOT = { religion_group = old_world_group }
+			NOT = {
+				religion_group = old_world_group
+			}
 		}
 	}
 
-	1 = { #throne room
+	1 = {
+		#throne room
 		factor = 50
 		modifier = {
 			factor = 0
-			NOT = { real_tier = king }
-			NOT = { real_tier = emperor }
+			nor = {
+				real_tier = king
+				real_tier = emperor
+			}
 		}
 	}
 
-	2 = { # dungeon
+	2 = {
+		# dungeon
 		factor = 100
 		modifier = {
 			factor = 0
@@ -29,32 +36,37 @@
 		}
 	}
 
-	3 = { # forest
+	3 = {
+		# forest
 		factor = 1
 		modifier = {
 			factor = 0
-			religion_group = ormazdic_gods_group
+			religion_group = ormazd_gods_group
 		}
 	}
 
-	4 = { # bed
+	4 = {
+		# bed
 		factor = 100
 		modifier = {
 			factor = 0
-			NOT = { trait = incapable }
-			NOT = { trait = infirm }
+			nor = {
+				trait = incapable
+				trait = infirm
+			}
 		}
 		modifier = {
 			factor = 0.01
 			trait = infirm
 		}
 	}
-	
-	5 = { # tavern
+
+	5 = {
+		# tavern
 		factor = 100
 		modifier = {
 			factor = 0
-			NOT = { 
+			NOT = {
 				OR = {
 					trait = drunkard
 					trait = hedonist
@@ -63,20 +75,24 @@
 			}
 		}
 	}
-	
-	6 = { # military camp
+
+	6 = {
+		# military camp
 		factor = 100
 		modifier = {
 			factor = 0
 			in_command = no
-			NOT = { has_job_title  = job_marshal }
+			NOT = {
+				has_job_title  = job_marshal
+			}
 		}
 		modifier = {
 			factor = 0.02
 			has_job_title = job_marshal
 		}
 	}
-	7 = { # Dolmen
+	7 = {
+		# Dolmen
 		factor = 1
 		modifier = {
 			factor = 0
@@ -87,20 +103,24 @@
 			}
 		}
 	}
-	8 = { # Gallows
+	8 = {
+		# Gallows
 		factor = 0
 	}
-	9 = { # Church
+	9 = {
+		# Church
 		factor = 100
 		modifier = {
 			factor = 0
-			NOT = { religion_group = old_world_group }
+			NOT = {
+				religion_group = old_world_group
+			}
 		}
 		modifier = {
 			factor = 0
 			is_ruler = no
-			
-			}
+
+		}
 		modifier = {
 			factor = 0
 			OR = {
@@ -109,109 +129,133 @@
 			}
 		}
 	}
-	10 = { # Desert
+	10 = {
+		# Desert
 		factor = 1
 		modifier = {
 			factor = 0
-			NOT = { religion_group = ormazd_gods_group }
+			NOT = {
+				religion_group = ormazd_gods_group
+			}
 			#NOT = { capital_scope = { terrain = desert } }
 			#NOT = { capital_scope = { terrain = coastal_desert } }
 		}
 	}
-	11 = { # Steppe
+	11 = {
+		# Steppe
 		factor = 1
 		modifier = {
 			factor = 0
 			#NOT = { capital_scope = { terrain = steppe } }
 			#NOT = { capital_scope = { terrain = plains } }
-			NOR = { 
-				culture_group = kurgan_group 
-				culture_group = hung_group 
+			NOR = {
+				culture_group = kurgan_group
+				culture_group = hung_group
 			}
 		}
 		modifier = {
 			factor = 10
-			OR = { 
-				culture_group = kurgan_group 
-				culture_group = hung_group 
+			OR = {
+				culture_group = kurgan_group
+				culture_group = hung_group
 			}
 		}
 	}
-	12 = { # Ocean w ships
+	12 = {
+		# Ocean w ships
 		factor = 1
 		modifier = {
 			factor = 0
-			NOT = { religion = stromfels }
-		}
-	}
-	13 = { # Muslim interior
-		factor = 1
-		modifier = {
-			factor = 0
-			NOT = { religion_group = ormazd_gods_group }
-		}
-	}
-	14 = { # Harem
-		factor = 1
-		modifier = {
-			factor = 0
-			NOT = { religion_group = ormazd_gods_group }
-		}
-	}
-	15 = { # Muslim interior 2
-		factor = 1
-		modifier = {
-			factor = 0
-			NOT = { religion_group = ormazd_gods_group }
-		}
-	}
-
-	16 = { # Mongol camp 1
-		factor = 1
-		modifier = {
-			factor = 0
-			NOR = { 
-				culture_group = kurgan_group 
-				culture_group = hung_group 
+			NOT = {
+				religion = stromfels
 			}
 		}
 	}
-
-	17 = { # Mongol camp 2
+	13 = {
+		# Muslim interior
 		factor = 1
 		modifier = {
 			factor = 0
-			NOR = { 
-				culture_group = kurgan_group 
-				culture_group = hung_group 
+			NOT = {
+				religion_group = ormazd_gods_group
+			}
+		}
+	}
+	14 = {
+		# Harem
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = {
+				religion_group = ormazd_gods_group
+			}
+		}
+	}
+	15 = {
+		# Muslim interior 2
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = {
+				religion_group = ormazd_gods_group
 			}
 		}
 	}
 
-	18 = { # Papal palace
+	16 = {
+		# Mongol camp 1
+		factor = 1
+		modifier = {
+			factor = 0
+			NOR = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+			}
+		}
+	}
+
+	17 = {
+		# Mongol camp 2
+		factor = 1
+		modifier = {
+			factor = 0
+			NOR = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+			}
+		}
+	}
+
+	18 = {
+		# Papal palace
 		factor = 100
 		modifier = {
 			factor = 0
-			NOT = { has_landed_title = k_cult_of_myrmidia }
-			NOT = { has_landed_title = k_cult_of_sigmar }
-			NOT = { has_landed_title = k_cult_of_shallya }
-			NOT = { has_landed_title = k_cult_of_the_lady }
-			
+			nor = {
+				has_landed_title = k_cult_of_myrmidia
+				has_landed_title = k_cult_of_sigmar
+				has_landed_title = k_cult_of_shallya
+				has_landed_title = k_cult_of_the_lady
+			}
+
 		}
 	}
 
-	19 = { # Muslim mosque
+	19 = {
+		# Muslim mosque
 		factor = 100
 		modifier = {
 			factor = 0
-			NOT = { religion_group = ormazd_gods_group }
+			NOT = {
+				religion_group = ormazd_gods_group
+			}
 		}
 
 		modifier = {
 			factor = 0
 			is_ruler = no
-			
-			}
+
+		}
 		modifier = {
 			factor = 0
 			OR = {
@@ -221,7 +265,8 @@
 		}
 	}
 
-	20 = { # Pagan human sacrifice
+	20 = {
+		# Pagan human sacrifice
 		factor = 1
 		modifier = {
 			factor = 0
@@ -236,7 +281,8 @@
 
 # p1 hair  --- WARNING! Property 1 MUST be Hair, otherwise the hair hiding helmets wont work ---
 1 = {
-	0 = { # Completely bald
+	0 = {
+		# Completely bald
 		factor = 1
 		modifier = {
 			factor = 100
@@ -245,7 +291,9 @@
 		modifier = {
 			factor = 0.1
 			is_female = no
-			NOT = { age = 50 }
+			NOT = {
+				age = 50
+			}
 		}
 		modifier = {
 			factor = 0.1
@@ -253,32 +301,38 @@
 		}
 	}
 
-	1 = { # Black Adder
+	1 = {
+		# Black Adder
 		factor = 1
-		
-	}
-	
-	2 = { # Page
-		factor = 1
-		
+
 	}
 
-	3 = { # Synth
+	2 = {
+		# Page
 		factor = 1
-		
+
 	}
 
-	4 = { # Long Straight
+	3 = {
+		# Synth
 		factor = 1
-		
+
 	}
 
-	5 = { # Long Curly
+	4 = {
+		# Long Straight
 		factor = 1
-		
+
 	}
 
-	6 = {  # Tonsure
+	5 = {
+		# Long Curly
+		factor = 1
+
+	}
+
+	6 = {
+		# Tonsure
 		factor = 1
 		modifier = {
 			factor = 0
@@ -288,12 +342,14 @@
 		modifier = {
 			factor = 0
 			is_female = no
-			NOT = { trait = detached_priest }
-			NOT = { trait = martial_cleric }
-			NOT = { trait = scholarly_theologian }
-			NOT = { trait = mastermind_theologian }
-			NOT = { has_job_title = job_spiritual }
-			NOT = { trait = monk }
+			nor = {
+				trait = detached_priest
+				trait = martial_cleric
+				trait = scholarly_theologian
+				trait = mastermind_theologian
+				has_job_title = job_spiritual
+				trait = monk
+			}
 		}
 
 		modifier = {
@@ -301,28 +357,33 @@
 			is_female = no
 			trait = monk
 		}
-		
+
 	}
-	
-	7 = {  # Short
+
+	7 = {
+		# Short
 		factor = 1
-		
+
 	}
-	
-	8 = { # Short Curly
-		factor = 1
-	}
-	
-	9 = {  # Short Uncouth
+
+	8 = {
+		# Short Curly
 		factor = 1
 	}
-	
-	10 = {  # Long Uncouth
+
+	9 = {
+		# Short Uncouth
 		factor = 1
-		
 	}
-	
-	11 = { # Balding
+
+	10 = {
+		# Long Uncouth
+		factor = 1
+
+	}
+
+	11 = {
+		# Balding
 		factor = 1
 		modifier = {
 			factor = 0.1
@@ -332,39 +393,45 @@
 			}
 		}
 	}
-	
-	12 = { # Marine
+
+	12 = {
+		# Marine
 		factor = 1
-		
+
 	}
-	
-	13 = { # Mohawk
-		factor = 1
-	}
-	
-	14 = { # Mohawk
+
+	13 = {
+		# Mohawk
 		factor = 1
 	}
-	
-	15 = { # Mohawk
+
+	14 = {
+		# Mohawk
+		factor = 1
+	}
+
+	15 = {
+		# Mohawk
 		factor = 1
 	}
 }
 
 # p2 base
-#2 = {
-#}
+2 = {
+}
 
 # p3 clothes
 3 = {
-	
-	0 = { # Royal clothes 1
+	0 = {
+		# Royal clothes 1
 		factor = 1
 		modifier = {
 			factor = 0
 			culture_group = imperial_group
-			NOT = { culture = sylvanian }
-			NOT = { has_landed_title = e_the_empire }	#Only the Emperor gets the laurels
+			nor = {
+				culture = sylvanian
+				has_landed_title = e_the_empire
+			}	#Only the Emperor gets the laurels
 		}
 		modifier = {
 			factor = 0
@@ -372,11 +439,15 @@
 		}
 		modifier = {
 			factor = 0
-			OR = { culture_group = kurgan_group
+			OR = {
+				culture_group = kurgan_group
 				culture_group = hung_group
-				culture_group = norscan_group }
-			NOT = { trait = chosen_khorne }
-			
+				culture_group = norscan_group
+			}
+			NOT = {
+				trait = chosen_khorne
+			}
+
 		}
 		modifier = {
 			factor = 0
@@ -387,18 +458,25 @@
 		}
 		modifier = {
 			factor = 0
-			NOT = { real_tier = king }
-			NOT = { real_tier = emperor }
-			NOT = { spouse = { real_tier = king } }
-			NOT = { spouse = { real_tier = emperor } }
-			NOT = { has_minor_title = title_prince }
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				real_tier = king
+				real_tier = emperor
+				spouse = {
+					real_tier = king
+				}
+				spouse = {
+					real_tier = emperor
+				}
+				has_minor_title = title_prince
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 		}
 	}
-	
-	1 = { # Royal clothes 2
+
+	1 = {
+		# Royal clothes 2
 		factor = 1
 		modifier = {
 			factor = 0
@@ -407,7 +485,9 @@
 		modifier = {
 			factor = 0
 			culture_group = imperial_group
-			NOT = { culture = sylvanian }
+			NOT = {
+				culture = sylvanian
+			}
 			has_landed_title = e_the_empire
 		}
 		modifier = {
@@ -419,26 +499,41 @@
 		}
 		modifier = {
 			factor = 0
-			OR = { culture_group = kurgan_group
+			OR = {
+				culture_group = kurgan_group
 				culture_group = hung_group
-				culture_group = norscan_group }
-			NOT = { trait = chosen_nurgle }
-			
+				culture_group = norscan_group
+			}
+			NOT = {
+				trait = chosen_nurgle
+			}
+
 		}
 		modifier = {
 			factor = 0
-			NOT = { real_tier = king }
-			NOT = { real_tier = emperor }
-			NOT = { spouse = { real_tier = king } }
-			NOT = { spouse = { real_tier = emperor } }
-			NOT = { has_minor_title = title_prince }
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				real_tier = king
+				real_tier = emperor
+				spouse = {
+					real_tier = king
+				}
+			}
+			NOT = {
+				spouse = {
+					real_tier = emperor
+				}
+			}
+			nor = {
+				has_minor_title = title_prince
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 		}
 	}
-	
-	2 = { # Royal clothes 3
+
+	2 = {
+		# Royal clothes 3
 		factor = 1
 		modifier = {
 			factor = 0
@@ -453,35 +548,52 @@
 		}
 		modifier = {
 			factor = 0
-			OR = { culture_group = kurgan_group
+			OR = {
+				culture_group = kurgan_group
 				culture_group = hung_group
-				culture_group = norscan_group }
-			NOT = { trait = chosen_slaanesh }
+				culture_group = norscan_group
+			}
+			NOT = {
+				trait = chosen_slaanesh
+			}
 		}
 		modifier = {
 			factor = 0
 			culture_group = imperial_group
-			NOT = { culture = sylvanian }
+			NOT = {
+				culture = sylvanian
+			}
 			has_landed_title = e_the_empire
 		}
 		modifier = {
 			factor = 0
-			NOT = { real_tier = king }
-			NOT = { real_tier = emperor }
-			NOT = { spouse = { real_tier = king } }
-			NOT = { spouse = { real_tier = emperor } }
-			NOT = { has_minor_title = title_prince }
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				real_tier = king
+				real_tier = emperor
+				spouse = {
+					real_tier = king
+				}
+			}
+			NOT = {
+				spouse = {
+					real_tier = emperor
+				}
+			}
+			nor = {
+				has_minor_title = title_prince
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 		}
 		modifier = {
 			factor = 100
 			character = 55019	#Yazmine
 		}
 	}
-	
-	3 = { # Noble clothes 1
+
+	3 = {
+		# Noble clothes 1
 		factor = 1
 		modifier = {
 			factor = 0
@@ -496,27 +608,46 @@
 		}
 		modifier = {
 			factor = 0
-			OR = { culture_group = kurgan_group
+			OR = {
+				culture_group = kurgan_group
 				culture_group = hung_group
-				culture_group = norscan_group }
-			NOT = { trait = chosen_tzeentch }
+				culture_group = norscan_group
+			}
+			NOT = {
+				trait = chosen_tzeentch
+			}
 		}
 		modifier = {
 			factor = 0
-			NOT = { real_tier = duke }
-			NOT = { real_tier = count }
-			NOT = { real_tier = baron }
-			NOT = { spouse = { real_tier = duke } }
-			NOT = { spouse = { real_tier = count } }
-			NOT = { spouse = { real_tier = baron } }
-			NOT = { has_minor_title = title_prince }
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				real_tier = duke
+				real_tier = count
+				real_tier = baron
+				spouse = {
+					real_tier = duke
+				}
+			}
+			NOT = {
+				spouse = {
+					real_tier = count
+				}
+			}
+			NOT = {
+				spouse = {
+					real_tier = baron
+				}
+			}
+			nor = {
+				has_minor_title = title_prince
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 		}
 	}
-	
-	4 = { # Noble clothes 2
+
+	4 = {
+		# Noble clothes 2
 		factor = 1
 		modifier = {
 			factor = 0
@@ -531,27 +662,46 @@
 		}
 		modifier = {
 			factor = 0
-			OR = { culture_group = kurgan_group
+			OR = {
+				culture_group = kurgan_group
 				culture_group = hung_group
-				culture_group = norscan_group }
-			NOT = { trait = champion_khorne }
+				culture_group = norscan_group
+			}
+			NOT = {
+				trait = champion_khorne
+			}
 		}
 		modifier = {
 			factor = 0
-			NOT = { real_tier = duke }
-			NOT = { real_tier = count }
-			NOT = { real_tier = baron }
-			NOT = { spouse = { real_tier = duke } }
-			NOT = { spouse = { real_tier = count } }
-			NOT = { spouse = { real_tier = baron } }
-			NOT = { has_minor_title = title_prince }
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				real_tier = duke
+				real_tier = count
+				real_tier = baron
+				spouse = {
+					real_tier = duke
+				}
+			}
+			NOT = {
+				spouse = {
+					real_tier = count
+				}
+			}
+			NOT = {
+				spouse = {
+					real_tier = baron
+				}
+			}
+			nor = {
+				has_minor_title = title_prince
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 		}
 	}
-	
-	5 = { # Noble clothes 3
+
+	5 = {
+		# Noble clothes 3
 		factor = 1
 		modifier = {
 			factor = 0
@@ -562,23 +712,41 @@
 		}
 		modifier = {
 			factor = 0
-			OR = { culture_group = kurgan_group
+			OR = {
+				culture_group = kurgan_group
 				culture_group = hung_group
-				culture_group = norscan_group }
-			NOT = { trait = champion_nurgle }
+				culture_group = norscan_group
+			}
+			NOT = {
+				trait = champion_nurgle
+			}
 		}
 		modifier = {
 			factor = 0
-			NOT = { real_tier = duke }
-			NOT = { real_tier = count }
-			NOT = { real_tier = baron }
-			NOT = { spouse = { real_tier = duke } }
-			NOT = { spouse = { real_tier = count } }
-			NOT = { spouse = { real_tier = baron } }
-			NOT = { has_minor_title = title_prince }
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				real_tier = duke
+				real_tier = count
+				real_tier = baron
+				spouse = {
+					real_tier = duke
+				}
+			}
+			NOT = {
+				spouse = {
+					real_tier = count
+				}
+			}
+			NOT = {
+				spouse = {
+					real_tier = baron
+				}
+			}
+			nor = {
+				has_minor_title = title_prince
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 		}
 		modifier = {
 			factor = 0
@@ -589,8 +757,9 @@
 			character = 55000 	#Ali
 		}
 	}
-	
-	6 = { # Modest clothes 1
+
+	6 = {
+		# Modest clothes 1
 		factor = 1
 		modifier = {
 			factor = 0
@@ -598,24 +767,36 @@
 		}
 		modifier = {
 			factor = 0
-			OR = { culture_group = kurgan_group
+			OR = {
+				culture_group = kurgan_group
 				culture_group = hung_group
-				culture_group = norscan_group }
-			NOT = { trait = champion_slaanesh }
+				culture_group = norscan_group
+			}
+			NOT = {
+				trait = champion_slaanesh
+			}
 		}
 		modifier = {
 			factor = 0
-			NOT = { trait = peasant_leader }
-			NOT = { trait = heresiarch }
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				trait = peasant_leader
+				trait = heresiarch
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 			OR = {
 				is_ruler = yes
 				has_minor_title = title_prince
-				spouse = { real_tier = emperor }
-				spouse = { real_tier = king }
-				spouse = { real_tier = duke }
+				spouse = {
+					real_tier = emperor
+				}
+				spouse = {
+					real_tier = king
+				}
+				spouse = {
+					real_tier = duke
+				}
 			}
 		}
 		modifier = {
@@ -625,7 +806,8 @@
 			religion_group = old_gods_group
 		}
 	}
-	7 = { # Modest clothes 2
+	7 = {
+		# Modest clothes 2
 		factor = 1
 		modifier = {
 			factor = 0
@@ -633,66 +815,91 @@
 		}
 		modifier = {
 			factor = 0
-			OR = { culture_group = kurgan_group
+			OR = {
+				culture_group = kurgan_group
 				culture_group = hung_group
-				culture_group = norscan_group }
-			NOT = { trait = champion_tzeentch }
+				culture_group = norscan_group
+			}
+			NOT = {
+				trait = champion_tzeentch
+			}
 		}
 		modifier = {
 			factor = 0
-			NOT = { trait = peasant_leader }
-			NOT = { trait = heresiarch }
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				trait = peasant_leader
+				trait = heresiarch
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 			OR = {
 				is_ruler = yes
 				has_minor_title = title_prince
-				spouse = { real_tier = emperor }
-				spouse = { real_tier = king }
-				spouse = { real_tier = duke }
+				spouse = {
+					real_tier = emperor
+				}
+				spouse = {
+					real_tier = king
+				}
+				spouse = {
+					real_tier = duke
+				}
 			}
 		}
 	}
-	
-	8 = { # Modest clothes 3
+
+	8 = {
+		# Modest clothes 3
 		factor = 1
 		modifier = {
 			factor = 0
 			trait = khemri_liche_priest
 		}
-	#	modifier = {
-	#		factor = 0
-	#		culture_group = kurgan_group
-	#		lower_tier_than = EMPEROR
-	#	}
+		#	modifier = {
+		#		factor = 0
+		#		culture_group = kurgan_group
+		#		lower_tier_than = EMPEROR
+		#	}
 		modifier = {
 			factor = 0
-			OR = { culture_group = kurgan_group
+			OR = {
+				culture_group = kurgan_group
 				culture_group = hung_group
-				culture_group = norscan_group }
-			OR = { trait = champion_khorne
+				culture_group = norscan_group
+			}
+			OR = {
+				trait = champion_khorne
 				trait = champion_nurgle
 				trait = champion_slaanesh
 				trait = champion_tzeentch
 				trait = chosen_khorne
 				trait = chosen_nurgle
 				trait = chosen_slaanesh
-				trait = chosen_tzeentch }
+				trait = chosen_tzeentch
+			}
 		}
 		modifier = {
 			factor = 0
-			NOT = { trait = peasant_leader }
-			NOT = { trait = heresiarch }
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				trait = peasant_leader
+				trait = heresiarch
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 			OR = {
 				is_ruler = yes
 				has_minor_title = title_prince
-				spouse = { real_tier = emperor }
-				spouse = { real_tier = king }
-				spouse = { real_tier = duke }
+				spouse = {
+					real_tier = emperor
+				}
+				spouse = {
+					real_tier = king
+				}
+				spouse = {
+					real_tier = duke
+				}
 			}
 		}
 	}
@@ -701,10 +908,12 @@
 		factor = 3
 		modifier = {
 			factor = 0
-			NOT = { trait = creature_nehekharan }
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				trait = creature_nehekharan
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 			OR = {
 				real_tier = king
 				real_tier = emperor
@@ -714,19 +923,24 @@
 						real_tier = baron
 					}
 				}
-				spouse = { real_tier = king }
-				spouse = { real_tier = emperor }
+				spouse = {
+					real_tier = king
+				}
+				spouse = {
+					real_tier = emperor
+				}
 			}
 		}
-	#	modifier = {
-	#		factor = 0
-	#		culture_group = kurgan_group
-	#		higher_tier_than = KING
-	#	}
+		#	modifier = {
+		#		factor = 0
+		#		culture_group = kurgan_group
+		#		higher_tier_than = KING
+		#	}
 		modifier = {
 			factor = 0
 			culture_group = norscan_group
-			OR = { trait = champion_khorne
+			OR = {
+				trait = champion_khorne
 				trait = champion_nurgle
 				trait = champion_slaanesh
 				trait = champion_tzeentch
@@ -734,67 +948,86 @@
 				trait = chosen_nurgle
 				trait = chosen_slaanesh
 				trait = chosen_tzeentch
-				lower_tier_than = KING }
+				lower_tier_than = KING
+			}
 		}
 		modifier = {
 			factor = 0
 			culture_group = kurgan_group
-			OR = { trait = champion_khorne
+			OR = {
+				trait = champion_khorne
 				trait = champion_nurgle
 				trait = champion_slaanesh
 				trait = champion_tzeentch
 				trait = chosen_khorne
 				trait = chosen_nurgle
 				trait = chosen_slaanesh
-				trait = chosen_tzeentch }
+				trait = chosen_tzeentch
+			}
 		}
 		modifier = {
 			factor = 0
 			culture_group = hung_group
-			OR = { trait = champion_khorne
+			OR = {
+				trait = champion_khorne
 				trait = champion_nurgle
 				trait = champion_slaanesh
 				trait = champion_tzeentch
 				trait = chosen_khorne
 				trait = chosen_nurgle
 				trait = chosen_slaanesh
-				trait = chosen_tzeentch }
+				trait = chosen_tzeentch
+			}
 		}
 		modifier = {
 			factor = 0
-			NOT = { trait = creature_nehekharan }
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
-			NOT = { has_job_title = job_spymaster }
+			nor = {
+				trait = creature_nehekharan
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+				has_job_title = job_spymaster
+			}
 			in_command = no
 			culture_group = asrai_group
 		}
 		modifier = {
 			factor = 0
-			NOR = { trait = grey_seer
-				trait = eshin_assassin 
-				trait = plaguelord 
-				trait = master_moulder 
-				trait = warlock_engineer }
-			liege = { any_war = { using_cb = great_wild_hunt } }
-			any_war = { using_cb = great_wild_hunt }	#asrai are dressed like rangers, except during Wild Hunts
+			NOR = {
+				trait = grey_seer
+				trait = eshin_assassin
+				trait = plaguelord
+				trait = master_moulder
+				trait = warlock_engineer
+			}
+			liege = {
+				any_war = {
+					using_cb = great_wild_hunt
+				}
+			}
+			any_war = {
+				using_cb = great_wild_hunt
+			}	#asrai are dressed like rangers, except during Wild Hunts
 			in_command = yes
 			culture_group = asrai_group
 		}
 		modifier = {
 			factor = 0
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
-			NOT = { trait = creature_nehekharan }
-			NOT = { has_job_title = job_spymaster }
-			NOT = { culture_group = asrai_group }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+				trait = creature_nehekharan
+				has_job_title = job_spymaster
+				culture_group = asrai_group
+			}
 		}
 		modifier = {
 			factor = 0
 			trait = creature_nehekharan
-			NOT = { trait = khemri_liche_priest }
+			NOT = {
+				trait = khemri_liche_priest
+			}
 		}
 	}
 	# Martial clothes
@@ -802,18 +1035,18 @@
 		factor = 100
 		modifier = {
 			factor = 0
-			NOT = { has_job_title  = job_marshal }
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
-			NOT = { martial = 10 }
-			NOT = {
+			nor = {
+				has_job_title  = job_marshal
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+				martial = 10
 				primary_title = {
 					OR = {
 						mercenary = yes
-						title = d_knights_hospitaler
-						title = d_knights_templar
-						title = d_teutonic_order
+						# title = d_knights_hospitaler
+						# title = d_knights_templar
+						# title = d_teutonic_order
 					}
 				}
 			}
@@ -827,36 +1060,45 @@
 			factor = 0
 			in_command = yes
 			higher_tier_than = COUNT
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
-			NOT = {
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
 				primary_title = {
-					OR = { mercenary = yes
-						title = d_knights_hospitaler
-						title = d_knights_templar
-						title = d_teutonic_order }
+					OR = {
+						mercenary = yes
+						# title = d_knights_hospitaler
+						# title = d_knights_templar
+						# title = d_teutonic_order
 					}
 				}
-			OR = { culture_group = goblin_group
+			}
+			OR = {
+				culture_group = goblin_group
 				culture_group = orc_group
 				culture_group = beastman_group
 				culture = blooddragons_culture
-				culture = sartosan_tilean 
-				AND = { culture_group = imperial_group
-					has_landed_title = e_the_empire } } #They all wear armors
+				culture = sartosan_tilean
+				AND = {
+					culture_group = imperial_group
+					has_landed_title = e_the_empire
+				}
+			} #They all wear armors
 		}
 		modifier = {
 			factor = 0
 			in_command = no
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 		}
 		modifier = {
 			factor = 0
 			culture_group = norscan_group
-			OR = { trait = champion_khorne
+			OR = {
+				trait = champion_khorne
 				trait = champion_nurgle
 				trait = champion_slaanesh
 				trait = champion_tzeentch
@@ -864,49 +1106,66 @@
 				trait = chosen_nurgle
 				trait = chosen_slaanesh
 				trait = chosen_tzeentch
-				higher_tier_than = DUKE }
+				higher_tier_than = DUKE
+			}
 		}
 		modifier = {
 			factor = 0
 			culture_group = kurgan_group
-			OR = { trait = champion_khorne
+			OR = {
+				trait = champion_khorne
 				trait = champion_nurgle
 				trait = champion_slaanesh
 				trait = champion_tzeentch
 				trait = chosen_khorne
 				trait = chosen_nurgle
 				trait = chosen_slaanesh
-				trait = chosen_tzeentch }
+				trait = chosen_tzeentch
+			}
 		}
 		modifier = {
 			factor = 0
 			culture_group = hung_group
-			OR = { trait = champion_khorne
+			OR = {
+				trait = champion_khorne
 				trait = champion_nurgle
 				trait = champion_slaanesh
 				trait = champion_tzeentch
 				trait = chosen_khorne
 				trait = chosen_nurgle
 				trait = chosen_slaanesh
-				trait = chosen_tzeentch }
+				trait = chosen_tzeentch
+			}
 		}
 		modifier = {
 			factor = 0
 			culture_group = asrai_group
-			NOT = { any_war = { using_cb = great_wild_hunt } }
-			NOT = { liege = { any_war = { using_cb = great_wild_hunt } } }
+			NOT = {
+				any_war = {
+					using_cb = great_wild_hunt
+				}
+			}
+			NOT = {
+				liege = {
+					any_war = {
+						using_cb = great_wild_hunt
+					}
+				}
+			}
 		}
 		modifier = {
 			factor = 0
-			OR = { trait = grey_seer
-				trait = eshin_assassin 
-				trait = plaguelord 
-				trait = master_moulder 
-				trait = warlock_engineer }
+			OR = {
+				trait = grey_seer
+				trait = eshin_assassin
+				trait = plaguelord
+				trait = master_moulder
+				trait = warlock_engineer
+			}
 		}
 		hide_layers = {
 			# Bret characters get no hair when in military clothing ( ie. mail coif )
-			1 = { 
+			1 = {
 				graphical_culture = bretonniangfx
 			}
 		}
@@ -917,15 +1176,18 @@
 		factor = 100
 		modifier = {
 			factor = 0
-			OR = { culture_group = kurgan_group
+			OR = {
+				culture_group = kurgan_group
 				culture_group = hung_group
-				culture_group = norscan_group }
+				culture_group = norscan_group
+			}
 			higher_tier_than = BARON
 		}
 		modifier = {
 			factor = 0
 			culture_group = norscan_group
-			OR = { trait = champion_khorne
+			OR = {
+				trait = champion_khorne
 				trait = champion_nurgle
 				trait = champion_slaanesh
 				trait = champion_tzeentch
@@ -933,39 +1195,46 @@
 				trait = chosen_nurgle
 				trait = chosen_slaanesh
 				trait = chosen_tzeentch
-				higher_tier_than = DUKE }
+				higher_tier_than = DUKE
+			}
 		}
 		modifier = {
 			factor = 0
 			culture_group = kurgan_group
-			OR = { trait = champion_khorne
+			OR = {
+				trait = champion_khorne
 				trait = champion_nurgle
 				trait = champion_slaanesh
 				trait = champion_tzeentch
 				trait = chosen_khorne
 				trait = chosen_nurgle
 				trait = chosen_slaanesh
-				trait = chosen_tzeentch }
+				trait = chosen_tzeentch
+			}
 		}
 		modifier = {
 			factor = 0
 			culture_group = hung_group
-			OR = { trait = champion_khorne
+			OR = {
+				trait = champion_khorne
 				trait = champion_nurgle
 				trait = champion_slaanesh
 				trait = champion_tzeentch
 				trait = chosen_khorne
 				trait = chosen_nurgle
 				trait = chosen_slaanesh
-				trait = chosen_tzeentch }
+				trait = chosen_tzeentch
+			}
 		}
 		modifier = {
 			factor = 0
 			prisoner = no
-			NOT = { trait = pet_consort }
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = norscan_group }
-			NOT = { culture_group = hung_group }
+			nor = {
+				trait = pet_consort
+				culture_group = kurgan_group
+				culture_group = norscan_group
+				culture_group = hung_group
+			}
 		}
 	}
 }
@@ -988,57 +1257,57 @@
 		factor = 1
 		modifier = {
 			factor = 0
-				trait = mut_beak
-			}
+			trait = mut_beak
+		}
 	}
 	2 = {
 		factor = 1
 		modifier = {
 			factor = 0
-				trait = mut_beak
-			}
+			trait = mut_beak
+		}
 	}
 	3 = {
 		factor = 1
 		modifier = {
 			factor = 0
-				trait = mut_beak
-			}
+			trait = mut_beak
+		}
 	}
 	4 = {
 		factor = 1
 		modifier = {
 			factor = 0
-				trait = mut_beak
-			}
+			trait = mut_beak
+		}
 	}
 	5 = {
 		factor = 1
 		modifier = {
 			factor = 0
-				trait = mut_beak
-			}
+			trait = mut_beak
+		}
 	}
 	6 = {
 		factor = 1
 		modifier = {
 			factor = 0
-				trait = mut_beak
-			}
+			trait = mut_beak
+		}
 	}
 	7 = {
 		factor = 1
 		modifier = {
 			factor = 0
-				trait = mut_beak
-			}
+			trait = mut_beak
+		}
 	}
 	8 = {
 		factor = 1
 		modifier = {
 			factor = 0
-				trait = mut_beak
-			}
+			trait = mut_beak
+		}
 	}
 	9 = {
 		factor = 1
@@ -1049,14 +1318,14 @@
 		}
 		modifier = {
 			factor = 0
-				trait = mut_beak
-			}
+			trait = mut_beak
+		}
 	}
 	10 = {
 		factor = 1
 		modifier = {
 			factor = 0
-			religion_group = ormazd_gods_group 
+			religion_group = ormazd_gods_group
 		}
 		modifier = {
 			factor = 20
@@ -1068,53 +1337,53 @@
 			religion_group = old_world_group
 			OR = {
 				culture = myken
-				culture = miraglian 
+				culture = miraglian
 			}
 		}
 		modifier = {
 			factor = 0
-				trait = mut_beak
-			}
+			trait = mut_beak
+		}
 	}
-	
+
 	11 = {
 		factor = 1
 		modifier = {
 			factor = 0
-				trait = mut_beak
-			}
+			trait = mut_beak
+		}
 	}
-	
+
 	12 = {
 		factor = 1
 		modifier = {
 			factor = 0
-				trait = mut_beak
-			}
+			trait = mut_beak
+		}
 	}
-	
+
 	13 = {
 		factor = 1
 		modifier = {
 			factor = 0
-				trait = mut_beak
-			}
+			trait = mut_beak
+		}
 	}
-	
+
 	14 = {
 		factor = 1
 		modifier = {
 			factor = 0
-				trait = mut_beak
-			}
+			trait = mut_beak
+		}
 	}
-	
+
 	15 = {
 		factor = 1
 		modifier = {
 			factor = 0
-				trait = mut_beak
-			}
+			trait = mut_beak
+		}
 	}
 }
 
@@ -1126,15 +1395,21 @@
 		modifier = {
 			factor = 0
 			culture_group = imperial_group
-			NOT = { culture = sylvanian }
-			NOT = { has_landed_title = e_the_empire }
+			nor = {
+				culture = sylvanian
+				has_landed_title = e_the_empire
+			}
 		}
 		modifier = {
 			factor = 0
-			OR = { culture_group = norscan_group
+			OR = {
+				culture_group = norscan_group
 				culture_group = hung_group
-				culture_group = kurgan_group }
-			NOT = { trait = chosen_khorne }
+				culture_group = kurgan_group
+			}
+			NOT = {
+				trait = chosen_khorne
+			}
 		}
 		modifier = {
 			factor = 0
@@ -1146,23 +1421,29 @@
 		}
 		modifier = {
 			factor = 0
-			character = 55000 
+			character = 55000
 		}
 		modifier = {
 			factor = 0
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
-			NOT = { trait = everqueen }
-			NOT = { real_tier = emperor }
-			NOT = { spouse = { real_tier = emperor } }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+				trait = everqueen
+				real_tier = emperor
+				spouse = {
+					real_tier = emperor
+				}
+			}
 		}
 		modifier = {
 			factor = 0
 			is_feudal = no
 			is_tribal = no
 			is_nomadic = no
-			NOT = { trait = everqueen }
+			NOT = {
+				trait = everqueen
+			}
 		}
 		modifier = {
 			factor = 0
@@ -1187,7 +1468,7 @@
 			character = 55000 	#Ali
 		}
 	}
-	
+
 	# Royal crown/turban 1
 	1 = {
 		factor = 1
@@ -1201,33 +1482,45 @@
 		}
 		modifier = {
 			factor = 0
-			OR = { culture_group = norscan_group
+			OR = {
+				culture_group = norscan_group
 				culture_group = hung_group
-				culture_group = kurgan_group }
-			NOT = { trait = chosen_nurgle }
+				culture_group = kurgan_group
+			}
+			NOT = {
+				trait = chosen_nurgle
+			}
 		}
 		modifier = {
 			factor = 0
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
-			NOT = { real_tier = king }
-			NOT = { spouse = { real_tier = king } }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+				real_tier = king
+				spouse = {
+					real_tier = king
+				}
+			}
 		}
 		modifier = {
 			factor = 0
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 			is_feudal = no
 			is_tribal = no
 			is_nomadic = no
 		}
 		modifier = {
 			factor = 0
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 			OR = {
 				trait = peasant_leader
 				trait = heresiarch
@@ -1235,16 +1528,20 @@
 		}
 		modifier = {
 			factor = 0
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 			prisoner = yes
 		}
 		modifier = {
 			factor = 0
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 			OR = {
 				trait = mut_doublehead
 				# trait = mut_beak
@@ -1273,33 +1570,45 @@
 		}
 		modifier = {
 			factor = 0
-			OR = { culture_group = norscan_group
+			OR = {
+				culture_group = norscan_group
 				culture_group = hung_group
-				culture_group = kurgan_group }
-			NOT = { trait = chosen_slaanesh }
+				culture_group = kurgan_group
+			}
+			NOT = {
+				trait = chosen_slaanesh
+			}
 		}
 		modifier = {
 			factor = 0
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
-			NOT = { real_tier = king }
-			NOT = { spouse = { real_tier = king } }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+				real_tier = king
+				spouse = {
+					real_tier = king
+				}
+			}
 		}
 		modifier = {
 			factor = 0
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 			is_feudal = no
 			is_tribal = no
 			is_nomadic = no
 		}
 		modifier = {
 			factor = 0
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 			OR = {
 				trait = peasant_leader
 				trait = heresiarch
@@ -1307,9 +1616,11 @@
 		}
 		modifier = {
 			factor = 0
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 			prisoner = yes
 		}
 		modifier = {
@@ -1332,7 +1643,7 @@
 			character = 55000 	#Ali
 		}
 		modifier = {
-			factor = 100 #Only the best floppy hat for the Halfling King, no fedoras pls	
+			factor = 100 #Only the best floppy hat for the Halfling King, no fedoras pls
 			culture_group = halfling_old_world
 			has_landed_title = k_mootland
 
@@ -1344,10 +1655,14 @@
 		factor = 1
 		modifier = {
 			factor = 0
-			OR = { culture_group = norscan_group
+			OR = {
+				culture_group = norscan_group
 				culture_group = hung_group
-				culture_group = kurgan_group }
-			NOT = { trait = chosen_tzeentch }
+				culture_group = kurgan_group
+			}
+			NOT = {
+				trait = chosen_tzeentch
+			}
 		}
 		modifier = {
 			factor = 0
@@ -1359,26 +1674,34 @@
 		}
 		modifier = {
 			factor = 0
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
-			NOT = { real_tier = king }
-			NOT = { spouse = { real_tier = king } }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+				real_tier = king
+				spouse = {
+					real_tier = king
+				}
+			}
 		}
 		modifier = {
 			factor = 0
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 			is_feudal = no
 			is_tribal = no
 			is_nomadic = no
 		}
 		modifier = {
 			factor = 0
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 			OR = {
 				trait = peasant_leader
 				trait = heresiarch
@@ -1386,9 +1709,11 @@
 		}
 		modifier = {
 			factor = 0
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 			prisoner = yes
 		}
 		modifier = {
@@ -1418,62 +1743,94 @@
 		modifier = {
 			factor = 0
 			culture_group = kurgan_group
-			NOT = { trait = champion_khorne }
+			NOT = {
+				trait = champion_khorne
+			}
 		}
 		modifier = {
 			factor = 0
 			culture_group = hung_group
-			NOT = { trait = champion_khorne }
+			NOT = {
+				trait = champion_khorne
+			}
 		}
 		modifier = {
 			factor = 0
 			culture_group = norscan_group
-			NOT = { higher_tier_than = DUKE }
+			NOT = {
+				higher_tier_than = DUKE
+			}
 		}
 		modifier = {
 			factor = 0
 			culture_group = norscan_group
-			OR = { trait = chosen_khorne
+			OR = {
+				trait = chosen_khorne
 				trait = chosen_nurgle
 				trait = chosen_tzeentch
-				trait = chosen_slaanesh }
+				trait = chosen_slaanesh
+			}
 		}
 		modifier = {
 			factor = 0
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 			is_feudal = yes
-			NOT = { real_tier = duke }
-			NOT = { spouse = { real_tier = duke } }
-			NOT = { has_minor_title = title_prince }
+			nor = {
+				real_tier = duke
+				spouse = {
+					real_tier = duke
+				}
+			}
+			NOT = {
+				has_minor_title = title_prince
+			}
 		}
 		modifier = {
 			factor = 0
 			is_republic = yes
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
-			NOT = { real_tier = duke }
-			NOT = { real_tier = king }
-			NOT = { real_tier = emperor }
-			NOT = { has_minor_title = title_prince }
-			NOT = { spouse = { real_tier = emperor } }
-			NOT = { spouse = { real_tier = king } }
-			NOT = { spouse = { real_tier = duke } }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+				real_tier = duke
+				real_tier = king
+				real_tier = emperor
+				has_minor_title = title_prince
+				spouse = {
+					real_tier = emperor
+				}
+			}
+			NOT = {
+				spouse = {
+					real_tier = king
+				}
+			}
+			NOT = {
+				spouse = {
+					real_tier = duke
+				}
+			}
 		}
 		modifier = {
 			factor = 0
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = norscan_group
+			}
 			#is_feudal = yes
 			real_tier = king
 		}
 		modifier = {
 			factor = 0
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 			OR = {
 				trait = peasant_leader
 				trait = heresiarch
@@ -1481,9 +1838,11 @@
 		}
 		modifier = {
 			factor = 0
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 			prisoner = yes
 		}
 		modifier = {
@@ -1509,7 +1868,9 @@
 		modifier = {
 			factor = 0
 			culture_group = kurgan_group
-			NOT = { trait = champion_nurgle }
+			NOT = {
+				trait = champion_nurgle
+			}
 		}
 		modifier = {
 			factor = 0
@@ -1518,54 +1879,72 @@
 		modifier = {
 			factor = 0
 			culture_group = hung_group
-			NOT = { trait = champion_nurgle }
+			NOT = {
+				trait = champion_nurgle
+			}
 		}
 		modifier = {
 			factor = 0
-			culture_group = norscan_group 
+			culture_group = norscan_group
 			higher_tier_than = DUKE
 		}
 		modifier = {
 			factor = 0
-			culture_group = norscan_group 
+			culture_group = norscan_group
 			lower_tier_than = DUKE
 		}
 		modifier = {
 			factor = 0
 			culture_group = norscan_group
-			OR = { trait = chosen_khorne
+			OR = {
+				trait = chosen_khorne
 				trait = chosen_nurgle
 				trait = chosen_tzeentch
-				trait = chosen_slaanesh }
+				trait = chosen_slaanesh
+			}
 		}
 		modifier = {
 			factor = 0
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
-			OR = { real_tier = emperor
-				real_tier = king }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
+			OR = {
+				real_tier = emperor
+				real_tier = king
+			}
 		}
 		modifier = {
 			factor = 0
-			NOT = { trait = peasant_leader }
-			NOT = { trait = heresiarch }
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				trait = peasant_leader
+				trait = heresiarch
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 			OR = {
 				is_ruler = yes
 				has_minor_title = title_prince
-				spouse = { real_tier = emperor }
-				spouse = { real_tier = king }
-				spouse = { real_tier = duke }
+				spouse = {
+					real_tier = emperor
+				}
+				spouse = {
+					real_tier = king
+				}
+				spouse = {
+					real_tier = duke
+				}
 			}
 		}
 		modifier = {
 			factor = 10
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 			is_ruler = yes
 			is_theocracy = yes
 			religion_group = old_gods_group
@@ -1573,9 +1952,11 @@
 		modifier = {
 			factor = 0
 			prisoner = yes
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 		}
 		modifier = {
 			factor = 0
@@ -1589,7 +1970,7 @@
 			character = 55000 	#Ali
 		}
 	}
-	
+
 	# Common headgear 2 - hood
 	6 = {
 		factor = 1
@@ -1600,7 +1981,9 @@
 		modifier = {
 			factor = 0
 			culture_group = kurgan_group
-			NOT = { trait = champion_slaanesh }
+			NOT = {
+				trait = champion_slaanesh
+			}
 		}
 		modifier = {
 			factor = 0
@@ -1609,52 +1992,72 @@
 		modifier = {
 			factor = 0
 			culture_group = hung_group
-			NOT = { trait = champion_slaanesh }
+			NOT = {
+				trait = champion_slaanesh
+			}
 		}
 		modifier = {
 			factor = 0
 			culture_group = norscan_group
-			OR = { real_tier = emperor
+			OR = {
+				real_tier = emperor
 				real_tier = king
-				real_tier = duke }
+				real_tier = duke
+			}
 		}
 		modifier = {
 			factor = 0
 			culture_group = norscan_group
-			OR = { trait = chosen_khorne
+			OR = {
+				trait = chosen_khorne
 				trait = chosen_nurgle
 				trait = chosen_tzeentch
-				trait = chosen_slaanesh }
+				trait = chosen_slaanesh
+			}
 		}
 		modifier = {
 			factor = 0
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
-			OR = { real_tier = emperor
-				real_tier = king }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
+			OR = {
+				real_tier = emperor
+				real_tier = king
+			}
 		}
 		modifier = {
 			factor = 0
-			NOT = { trait = peasant_leader }
-			NOT = { trait = heresiarch }
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				trait = peasant_leader
+				trait = heresiarch
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 			OR = {
 				is_ruler = yes
 				has_minor_title = title_prince
-				spouse = { real_tier = emperor }
-				spouse = { real_tier = king }
-				spouse = { real_tier = duke }
+				spouse = {
+					real_tier = emperor
+				}
+				spouse = {
+					real_tier = king
+				}
+				spouse = {
+					real_tier = duke
+				}
 			}
 		}
 		modifier = {
 			factor = 0
 			prisoner = yes
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 		}
 		modifier = {
 			factor = 0
@@ -1683,60 +2086,81 @@
 		modifier = {
 			factor = 0
 			culture_group = kurgan_group
-			NOT = { trait = champion_tzeentch }
+			NOT = {
+				trait = champion_tzeentch
+			}
 		}
 		modifier = {
 			factor = 0
 			culture_group = hung_group
-			NOT = { trait = champion_tzeentch }
+			NOT = {
+				trait = champion_tzeentch
+			}
 		}
 		modifier = {
 			factor = 0
 			culture_group = norscan_group
-			OR = {  real_tier = duke
+			OR = {
+				real_tier = duke
 				real_tier = king
-				real_tier = emperor }
+				real_tier = emperor
+			}
 		}
 		modifier = {
 			factor = 0
 			culture_group = norscan_group
-			OR = { trait = chosen_khorne
+			OR = {
+				trait = chosen_khorne
 				trait = chosen_nurgle
 				trait = chosen_tzeentch
-				trait = chosen_slaanesh }
+				trait = chosen_slaanesh
+			}
 		}
 		modifier = {
 			factor = 0
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
-			NOT = { character = 55000 }
-			OR = { real_tier = emperor
-				real_tier = king }
-		}
-		modifier = {
-			factor = 0
-			NOT = { trait = peasant_leader }
-			NOT = { character = 55000 }
-			NOT = { trait = heresiarch }
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+				character = 55000
+			}
 			OR = {
-				NOT = { religion = orthodox }
+				real_tier = emperor
+				real_tier = king
+			}
+		}
+		modifier = {
+			factor = 0
+			nor = {
+				trait = peasant_leader
+				character = 55000
+				trait = heresiarch
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
+			OR = {
 				is_ruler = yes
 				has_minor_title = title_prince
-				spouse = { real_tier = emperor }
-				spouse = { real_tier = king }
-				spouse = { real_tier = duke }
+				spouse = {
+					real_tier = emperor
+				}
+				spouse = {
+					real_tier = king
+				}
+				spouse = {
+					real_tier = duke
+				}
 			}
 		}
 		modifier = {
 			factor = 0
 			prisoner = yes
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 		}
 		modifier = {
 			factor = 0
@@ -1750,7 +2174,7 @@
 			character = 55000 	#Ali
 		}
 	}
-	
+
 	# Common headgear 4 - hood
 	8 = {
 		factor = 1
@@ -1760,8 +2184,10 @@
 		}
 		modifier = {
 			factor = 0
-			OR = { culture_group = norscan_group
-				culture_group = kurgan_group }
+			OR = {
+				culture_group = norscan_group
+				culture_group = kurgan_group
+			}
 			in_command = no
 		}
 		modifier = {
@@ -1771,7 +2197,8 @@
 		modifier = {
 			factor = 0
 			culture_group = norscan_group
-			OR = { trait = champion_khorne
+			OR = {
+				trait = champion_khorne
 				trait = champion_nurgle
 				trait = champion_slaanesh
 				trait = champion_tzeentch
@@ -1781,60 +2208,79 @@
 				trait = chosen_tzeentch
 				real_tier = duke
 				real_tier = king
-				real_tier = emperor }
-		}
-		modifier = {
-			factor = 0
-			culture_group = kurgan_group
-			OR = { trait = champion_khorne
-				trait = champion_nurgle
-				trait = champion_slaanesh
-				trait = champion_tzeentch
-				trait = chosen_khorne
-				trait = chosen_nurgle
-				trait = chosen_slaanesh
-				trait = chosen_tzeentch }
-		}
-		modifier = {
-			factor = 0
-			culture_group = hung_group
-			OR = { trait = champion_khorne
-				trait = champion_nurgle
-				trait = champion_slaanesh
-				trait = champion_tzeentch
-				trait = chosen_khorne
-				trait = chosen_nurgle
-				trait = chosen_slaanesh
-				trait = chosen_tzeentch }
-		}
-		modifier = {
-			factor = 0
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
-			OR = { real_tier = emperor
-				real_tier = king }
-		}
-		modifier = {
-			factor = 0
-			NOT = { trait = peasant_leader }
-			NOT = { trait = heresiarch }
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
-			OR = {
-				is_ruler = yes
-				has_minor_title = title_prince
-				spouse = { real_tier = emperor }
-				spouse = { real_tier = king }
-				spouse = { real_tier = duke }
+				real_tier = emperor
 			}
 		}
 		modifier = {
 			factor = 0
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			culture_group = kurgan_group
+			OR = {
+				trait = champion_khorne
+				trait = champion_nurgle
+				trait = champion_slaanesh
+				trait = champion_tzeentch
+				trait = chosen_khorne
+				trait = chosen_nurgle
+				trait = chosen_slaanesh
+				trait = chosen_tzeentch
+			}
+		}
+		modifier = {
+			factor = 0
+			culture_group = hung_group
+			OR = {
+				trait = champion_khorne
+				trait = champion_nurgle
+				trait = champion_slaanesh
+				trait = champion_tzeentch
+				trait = chosen_khorne
+				trait = chosen_nurgle
+				trait = chosen_slaanesh
+				trait = chosen_tzeentch
+			}
+		}
+		modifier = {
+			factor = 0
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
+			OR = {
+				real_tier = emperor
+				real_tier = king
+			}
+		}
+		modifier = {
+			factor = 0
+			nor = {
+				trait = peasant_leader
+				trait = heresiarch
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
+			OR = {
+				is_ruler = yes
+				has_minor_title = title_prince
+				spouse = {
+					real_tier = emperor
+				}
+				spouse = {
+					real_tier = king
+				}
+				spouse = {
+					real_tier = duke
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 			prisoner = yes
 		}
 		modifier = {
@@ -1851,10 +2297,12 @@
 		factor = 3
 		modifier = {
 			factor = 0
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
-			NOT = { trait = creature_nehekharan }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+				trait = creature_nehekharan
+			}
 			OR = {
 				real_tier = king
 				real_tier = emperor
@@ -1864,8 +2312,12 @@
 						real_tier = baron
 					}
 				}
-				spouse = { real_tier = king }
-				spouse = { real_tier = emperor }
+				spouse = {
+					real_tier = king
+				}
+				spouse = {
+					real_tier = emperor
+				}
 			}
 		}
 		modifier = {
@@ -1874,85 +2326,109 @@
 		}
 		modifier = {
 			factor = 0
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
-			NOT = { trait = creature_nehekharan }
-			NOT = { has_job_title = job_spymaster }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+				trait = creature_nehekharan
+				has_job_title = job_spymaster
+			}
 			in_command = no
 			culture_group = asrai_group
 		}
 		modifier = {
 			factor = 0
-			any_war = { using_cb = great_wild_hunt }
-			liege = { any_war = { using_cb = great_wild_hunt } }
+			any_war = {
+				using_cb = great_wild_hunt
+			}
+			liege = {
+				any_war = {
+					using_cb = great_wild_hunt
+				}
+			}
 			in_command = yes
 			culture_group = asrai_group
 		}
 		modifier = {
 			factor = 0
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
-			NOT = { trait = creature_nehekharan }
-			NOT = { has_job_title = job_spymaster }
-			NOT = { culture_group = asrai_group }
-			NOT = { culture_group = arabyan_group }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+				trait = creature_nehekharan
+				has_job_title = job_spymaster
+				culture_group = asrai_group
+				culture_group = arabyan_group
+			}
 		}
 		modifier = {
 			factor = 0
-			culture_group = arabyan_group 
-			OR = { is_female = no
+			culture_group = arabyan_group
+			OR = {
+				is_female = no
 				is_married = yes
 				is_ruler = yes
-				AND = { NOT = { religion = ormazd }
-					NOT = { religion = kitabid } }
-				 }
+				AND = {
+					nor = {
+						religion = ormazd
+						religion = kitabid
+					}
+				}
+			}
 		}
 		modifier = {
 			factor = 100
-			culture_group = arabyan_group 
+			culture_group = arabyan_group
 			is_female = yes
 			is_married = no
 			is_ruler = no
-			OR = { religion = ormazd
-				religion = kitabid }
-	
+			OR = {
+				religion = ormazd
+				religion = kitabid
+			}
+
 		}
 		modifier = {
 			factor = 0
-			OR = { culture_group = norscan_group
-				culture_group = kurgan_group }
+			OR = {
+				culture_group = norscan_group
+				culture_group = kurgan_group
+			}
 			in_command = yes
 		}
 		modifier = {
 			factor = 0
 			culture_group = kurgan_group
-			OR = { trait = champion_khorne
+			OR = {
+				trait = champion_khorne
 				trait = champion_nurgle
 				trait = champion_slaanesh
 				trait = champion_tzeentch
 				trait = chosen_khorne
 				trait = chosen_nurgle
 				trait = chosen_slaanesh
-				trait = chosen_tzeentch }
+				trait = chosen_tzeentch
+			}
 		}
 		modifier = {
 			factor = 0
 			culture_group = hung_group
-			OR = { trait = champion_khorne
+			OR = {
+				trait = champion_khorne
 				trait = champion_nurgle
 				trait = champion_slaanesh
 				trait = champion_tzeentch
 				trait = chosen_khorne
 				trait = chosen_nurgle
 				trait = chosen_slaanesh
-				trait = chosen_tzeentch }
+				trait = chosen_tzeentch
+			}
 		}
 		modifier = {
 			factor = 0
 			culture_group = norscan_group
-			OR = { trait = champion_khorne
+			OR = {
+				trait = champion_khorne
 				trait = champion_nurgle
 				trait = champion_slaanesh
 				trait = champion_tzeentch
@@ -1962,18 +2438,23 @@
 				trait = chosen_tzeentch
 				real_tier = duke
 				real_tier = king
-				real_tier = emperor }
+				real_tier = emperor
+			}
 		}
 		modifier = {
 			factor = 0
 			trait = creature_nehekharan
-			NOT = { trait = khemri_liche_priest }
+			NOT = {
+				trait = khemri_liche_priest
+			}
 		}
 		modifier = {
 			factor = 0
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = norscan_group }
-			NOT = { culture_group = hung_group }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = norscan_group
+				culture_group = hung_group
+			}
 			prisoner = yes
 		}
 		modifier = {
@@ -1993,19 +2474,25 @@
 		factor = 100
 		modifier = {
 			factor = 0
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = norscan_group }
-			NOT = { culture_group = hung_group }
-			OR = { real_tier = emperor
-				real_tier = king }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = norscan_group
+				culture_group = hung_group
+			}
+			OR = {
+				real_tier = emperor
+				real_tier = king
+			}
 		}
 		modifier = {
 			factor = 0
-			NOT = { has_job_title  = job_marshal }
-			NOT = { martial = 10 }
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = norscan_group }
-			NOT = { culture_group = hung_group }
+			nor = {
+				has_job_title  = job_marshal
+				martial = 10
+				culture_group = kurgan_group
+				culture_group = norscan_group
+				culture_group = hung_group
+			}
 		}
 		modifier = {
 			factor = 0
@@ -2019,36 +2506,54 @@
 			factor = 0
 			in_command = yes
 			higher_tier_than = COUNT
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
-			NOT = {
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
 				primary_title = {
-					OR = { mercenary = yes
-						title = d_knights_hospitaler
-						title = d_knights_templar
-						title = d_teutonic_order }
+					OR = {
+						mercenary = yes
+						# title = d_knights_hospitaler
+						# title = d_knights_templar
+						# title = d_teutonic_order
 					}
 				}
-			OR = { culture_group = goblin_group
+			}
+			OR = {
+				culture_group = goblin_group
 				culture_group = orc_group
 				culture_group = beastman_group
 				culture = blooddragons_culture
-				culture = sartosan_tilean 
-				AND = { culture_group = imperial_group
-					has_landed_title = e_the_empire } } #They all wear armors
+				culture = sartosan_tilean
+				AND = {
+					culture_group = imperial_group
+					has_landed_title = e_the_empire
+				}
+			} #They all wear armors
 		}
 		modifier = {
 			factor = 0
 			culture_group = asrai_group
-			NOT = { any_war = { using_cb = great_wild_hunt } }
-			NOT = { liege = { any_war = { using_cb = great_wild_hunt } } }
+			NOT = {
+				any_war = {
+					using_cb = great_wild_hunt
+				}
+			}
+			NOT = {
+				liege = {
+					any_war = {
+						using_cb = great_wild_hunt
+					}
+				}
+			}
 		}
 		modifier = {
 			factor = 0
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+			}
 			prisoner = yes
 		}
 		modifier = {
@@ -2060,41 +2565,49 @@
 		}
 		modifier = {
 			factor = 0
-			OR = { culture_group = norscan_group
-				culture_group = kurgan_group }
+			OR = {
+				culture_group = norscan_group
+				culture_group = kurgan_group
+			}
 			in_command = yes
 		}
 		modifier = {
 			factor = 0
 			culture_group = kurgan_group
-			OR = { trait = champion_khorne
+			OR = {
+				trait = champion_khorne
 				trait = champion_nurgle
 				trait = champion_slaanesh
 				trait = champion_tzeentch
 				trait = chosen_khorne
 				trait = chosen_nurgle
 				trait = chosen_slaanesh
-				trait = chosen_tzeentch }
+				trait = chosen_tzeentch
+			}
 		}
 		modifier = {
 			factor = 0
 			culture_group = hung_group
-			OR = { trait = champion_khorne
+			OR = {
+				trait = champion_khorne
 				trait = champion_nurgle
 				trait = champion_slaanesh
 				trait = champion_tzeentch
 				trait = chosen_khorne
 				trait = chosen_nurgle
 				trait = chosen_slaanesh
-				trait = chosen_tzeentch }
+				trait = chosen_tzeentch
+			}
 		}
 		modifier = {
 			factor = 0
-			OR = { trait = grey_seer
-				trait = eshin_assassin 
-				trait = plaguelord 
-				trait = master_moulder 
-				trait = warlock_engineer }
+			OR = {
+				trait = grey_seer
+				trait = eshin_assassin
+				trait = plaguelord
+				trait = master_moulder
+				trait = warlock_engineer
+			}
 		}
 	}
 
@@ -2104,39 +2617,46 @@
 		factor = 3
 		modifier = {
 			factor = 0
-			OR = { culture_group = norscan_group
+			OR = {
+				culture_group = norscan_group
 				culture_group = hung_group
-				culture_group = kurgan_group }
+				culture_group = kurgan_group
+			}
 			in_command = yes
 		}
 		modifier = {
 			factor = 0
 			culture_group = kurgan_group
-			OR = { trait = champion_khorne
+			OR = {
+				trait = champion_khorne
 				trait = champion_nurgle
 				trait = champion_slaanesh
 				trait = champion_tzeentch
 				trait = chosen_khorne
 				trait = chosen_nurgle
 				trait = chosen_slaanesh
-				trait = chosen_tzeentch }
+				trait = chosen_tzeentch
+			}
 		}
 		modifier = {
 			factor = 0
 			culture_group = hung_group
-			OR = { trait = champion_khorne
+			OR = {
+				trait = champion_khorne
 				trait = champion_nurgle
 				trait = champion_slaanesh
 				trait = champion_tzeentch
 				trait = chosen_khorne
 				trait = chosen_nurgle
 				trait = chosen_slaanesh
-				trait = chosen_tzeentch }
+				trait = chosen_tzeentch
+			}
 		}
 		modifier = {
 			factor = 0
-			culture_group = norscan_group 
-			OR = { trait = champion_khorne
+			culture_group = norscan_group
+			OR = {
+				trait = champion_khorne
 				trait = champion_nurgle
 				trait = champion_slaanesh
 				trait = champion_tzeentch
@@ -2146,23 +2666,32 @@
 				trait = chosen_tzeentch
 				real_tier = emperor
 				real_tier = king
-				real_tier = duke }
+				real_tier = duke
+			}
 		}
 		modifier = {
 			factor = 0
-			NOT = { culture_group = kurgan_group }
-			NOT = { culture_group = hung_group }
-			NOT = { culture_group = norscan_group }
-			NOT = { prisoner = yes }
-			NOT = { trait = black_orc_trait }
+			nor = {
+				culture_group = kurgan_group
+				culture_group = hung_group
+				culture_group = norscan_group
+				prisoner = yes
+				trait = black_orc_trait
+			}
 			OR = {
 				real_tier = emperor
 				real_tier = king
 				real_tier = duke
 				has_minor_title = title_prince
-				spouse = { real_tier = emperor }
-				spouse = { real_tier = king }
-				spouse = { real_tier = duke }
+				spouse = {
+					real_tier = emperor
+				}
+				spouse = {
+					real_tier = king
+				}
+				spouse = {
+					real_tier = duke
+				}
 			}
 		}
 	}
@@ -2170,7 +2699,8 @@
 
 # p6 imprisoned
 6 = {
-	0 = { # blank
+	0 = {
+		# blank
 		factor = 100
 		modifier = {
 			factor = 0
@@ -2178,7 +2708,8 @@
 		}
 	}
 
-	1 = { # prisoner
+	1 = {
+		# prisoner
 		factor = 100
 		modifier = {
 			factor = 0
@@ -2189,7 +2720,8 @@
 
 # p7 scars
 7 = {
-	0 = { # blank
+	0 = {
+		# blank
 		factor = 100
 		modifier = {
 			factor = 0
@@ -2200,52 +2732,70 @@
 			trait = fat
 		}
  	}
-	1 = { # undernourished
+	1 = {
+		# undernourished
 		factor = 100
 		modifier = {
 			factor = 0
-			NOT = { trait = undernourished }
+			NOT = {
+				trait = undernourished
+			}
 		}
  	}
-	2 = { # fat female
+	2 = {
+		# fat female
 		factor = 1
 		modifier = {
 			factor = 0
-			OR = { is_female = no
-				AND = { is_female = yes
-					trait = transgender } }
+			OR = {
+				is_female = no
+				AND = {
+					is_female = yes
+					trait = transgender
+				}
 			}
+		}
 		modifier = {
 			factor = 0
 			trait = undernourished
 		}
 		modifier = {
 			factor = 0
-			NOT = { trait = fat }
+			NOT = {
+				trait = fat
+			}
 		}
   	}
-	3 = { # fat male
+	3 = {
+		# fat male
 		factor = 1
 		modifier = {
 			factor = 0
-			OR = { is_female = yes
-				AND = { is_female = no
-					trait = transgender } }
+			OR = {
+				is_female = yes
+				AND = {
+					is_female = no
+					trait = transgender
+				}
 			}
+		}
 		modifier = {
 			factor = 0
 			trait = undernourished
 		}
 		modifier = {
 			factor = 0
-			NOT = { trait = fat }
+			NOT = {
+				trait = fat
+			}
 		}
   	}
 }
 
 # p8 red dots
 8 = {
-	0 = { # blank
+	0 = {
+		# blank
 		factor = 100
 		modifier = {
 			factor = 0
@@ -2262,41 +2812,44 @@
 			}
 		}
  	}
-	1 = { # Toad Polymorph
+	1 = {
+		# Toad Polymorph
 		factor = 0
 		# modifier = {
-			# factor = 0
-			# OR = {
-				# NOT = {
-					# trait = creature_toad
-				# }
-			# }
+		# factor = 0
+		# OR = {
+		# NOT = {
+		# trait = creature_toad
+		# }
+		# }
 		# }
   	}
-	2 = { # Pig Polymorph 
+	2 = {
+		# Pig Polymorph
 		factor = 0
 		# modifier = {
-			# factor = 0
-			# OR = {
-				# NOT = {
-					# trait = creature_pig
-				# }
-			# }
+		# factor = 0
+		# OR = {
+		# NOT = {
+		# trait = creature_pig
+		# }
+		# }
 		# }
   	}
-	3 = { # Lustrian Dino
+	3 = {
+		# Lustrian Dino
 		factor = 100
 		modifier = {
 			factor = 0
 			OR = {
-				NOT = {					
-				has_nickname = nick_the_razorback
-				has_nickname = nick_the_cold_one
-				has_nickname = nick_the_terradon
-				has_nickname = nick_the_stegadon
-				has_nickname = nick_the_sauropod
-				has_nickname = nick_the_thunder_lizard
-				has_nickname = nick_the_carnosaur
+				NOT = {
+					has_nickname = nick_the_razorback
+					has_nickname = nick_the_cold_one
+					has_nickname = nick_the_terradon
+					has_nickname = nick_the_stegadon
+					has_nickname = nick_the_sauropod
+					has_nickname = nick_the_thunder_lizard
+					has_nickname = nick_the_carnosaur
 				}
 			}
 		}
@@ -2308,45 +2861,53 @@
 
 9 = {
 
-	0 = { # blank
+	0 = {
+		# blank
 		factor = 100
 		modifier = {
 			factor = 0
-				OR = { trait = has_bubonic_plague 
-					trait = has_nurgles_rot
-					trait = burnt_by_asuryan  
-					trait = staked
-					trait = scarred
-					trait = maimed
-					trait = wounded
-					trait = mut_thirdeye
-					trait = mut_spines
-					trait = mut_scales
-					trait = mut_tongue
-					trait = mut_crests
-					trait = mut_horns
-					trait = mut_doublehead
-					trait = mut_beak
-					trait = mut_teeth
-					trait = mut_eyes
-					trait = mut_bigeyes
-					trait = disfigured }
+			OR = {
+				trait = has_bubonic_plague
+				trait = has_nurgles_rot
+				trait = burnt_by_asuryan
+				trait = staked
+				trait = scarred
+				trait = maimed
+				trait = wounded
+				trait = mut_thirdeye
+				trait = mut_spines
+				trait = mut_scales
+				trait = mut_tongue
+				trait = mut_crests
+				trait = mut_horns
+				trait = mut_doublehead
+				trait = mut_beak
+				trait = mut_teeth
+				trait = mut_eyes
+				trait = mut_bigeyes
+				trait = disfigured
+			}
 		}
  	}
 
-	1 = { # boils
+	1 = {
+		# boils
 		factor = 100
 		modifier = {
 			factor = 0
-			NOT = { trait = has_bubonic_plague }
-			NOT = { trait = has_nurgles_rot }
+			nor = {
+				trait = has_bubonic_plague
+				trait = has_nurgles_rot
 			}
+		}
  	}
-	2 = { # scar 
+	2 = {
+		# scar
 		factor = 1
 		modifier = {
 			factor = 0
-			OR = { trait = burnt_by_asuryan  
+			OR = {
+				trait = burnt_by_asuryan
 				trait = staked
 				trait = has_bubonic_plague
 				trait = has_nurgles_rot
@@ -2361,49 +2922,63 @@
 				trait = mut_teeth
 				trait = mut_eyes
 				trait = mut_bigeyes
-				trait = disfigured }
+				trait = disfigured
 			}
+		}
 		modifier = {
 			factor = 0
-			NOT = { 
-				OR = { trait = maimed
+			NOT = {
+				OR = {
+					trait = maimed
 					trait = wounded
 					trait = scarred
-					}
 				}
 			}
+		}
    	}
 
-	3 = { # burnt by asuryan
+	3 = {
+		# burnt by asuryan
 		factor = 1
 		modifier = {
 			factor = 0
-			NOT = { trait = burnt_by_asuryan }
-			NOT = { trait = staked }
+			nor = {
+				trait = burnt_by_asuryan
+				trait = staked
 			}
+		}
    	}
 
-	4 = { # disfigurement
+	4 = {
+		# disfigurement
 		factor = 1
 		modifier = {
 			factor = 0
-			NOT = { trait = disfigured }
+			NOT = {
+				trait = disfigured
 			}
+		}
 		modifier = {
 			factor = 0
-			OR = { trait = staked
-				trait = burnt_by_asuryan }
+			OR = {
+				trait = staked
+				trait = burnt_by_asuryan
 			}
+		}
   	}
-	5 = { # horns
+	5 = {
+		# horns
 		factor = 1
 		modifier = {
 			factor = 0
-			NOT = { trait = mut_horns }
+			NOT = {
+				trait = mut_horns
 			}
+		}
 		modifier = {
 			factor = 0
-			OR = { trait = burnt_by_asuryan
+			OR = {
+				trait = burnt_by_asuryan
 				trait = staked
 				trait = mut_thirdeye
 				trait = mut_spines
@@ -2416,18 +2991,23 @@
 				trait = mut_teeth
 				trait = mut_eyes
 				trait = mut_bigeyes
-				trait = disfigured }
+				trait = disfigured
 			}
+		}
   	}
-	6 = { # crests
+	6 = {
+		# crests
 		factor = 1
 		modifier = {
 			factor = 0
-			NOT = { trait = mut_crests }
+			NOT = {
+				trait = mut_crests
 			}
+		}
 		modifier = {
 			factor = 0
-			OR = { trait = burnt_by_asuryan  
+			OR = {
+				trait = burnt_by_asuryan
 				trait = staked
 				trait = mut_thirdeye
 				trait = mut_spines
@@ -2440,18 +3020,23 @@
 				trait = mut_teeth
 				trait = mut_eyes
 				trait = mut_bigeyes
-				trait = disfigured }
+				trait = disfigured
 			}
+		}
   	}
-	7 = { # tongue
+	7 = {
+		# tongue
 		factor = 1
 		modifier = {
 			factor = 0
-			NOT = { trait = mut_tongue }
+			NOT = {
+				trait = mut_tongue
 			}
+		}
 		modifier = {
 			factor = 0
-			OR = { trait = burnt_by_asuryan  
+			OR = {
+				trait = burnt_by_asuryan
 				trait = staked
 				trait = mut_thirdeye
 				trait = mut_spines
@@ -2464,19 +3049,24 @@
 				trait = mut_teeth
 				trait = mut_eyes
 				trait = mut_bigeyes
-				trait = disfigured }
+				trait = disfigured
 			}
+		}
   	}
-	8 = { # scales
+	8 = {
+		# scales
 		factor = 1
 		modifier = {
 			factor = 0
-			NOT = { trait = mut_scales }
+			NOT = {
+				trait = mut_scales
 			}
+		}
 		modifier = {
 			factor = 0
-			OR = { trait = burnt_by_asuryan 
-				trait = staked 
+			OR = {
+				trait = burnt_by_asuryan
+				trait = staked
 				trait = mut_thirdeye
 				trait = mut_spines
 				# trait  = mut_scales
@@ -2488,18 +3078,23 @@
 				trait = mut_teeth
 				trait = mut_eyes
 				trait = mut_bigeyes
-				trait = disfigured }
+				trait = disfigured
 			}
+		}
   	}
-	9 = { # spines
+	9 = {
+		# spines
 		factor = 1
 		modifier = {
 			factor = 0
-			NOT = { trait = mut_spines }
+			NOT = {
+				trait = mut_spines
 			}
+		}
 		modifier = {
 			factor = 0
-			OR = { trait = burnt_by_asuryan 
+			OR = {
+				trait = burnt_by_asuryan
 				trait = staked
 				trait = mut_thirdeye
 				# trait = mut_spines
@@ -2512,19 +3107,24 @@
 				trait = mut_teeth
 				trait = mut_eyes
 				trait = mut_bigeyes
-				trait = disfigured }
+				trait = disfigured
 			}
+		}
   	}
-	10 = { # third eye
+	10 = {
+		# third eye
 		factor = 1
 		modifier = {
 			factor = 0
-			NOT = { trait = mut_thirdeye }
+			NOT = {
+				trait = mut_thirdeye
 			}
+		}
 		modifier = {
 			factor = 0
-			OR = { trait = burnt_by_asuryan 
-				trait = staked 
+			OR = {
+				trait = burnt_by_asuryan
+				trait = staked
 				# trait = mut_thirdeye
 				trait = mut_spines
 				trait = mut_scales
@@ -2536,18 +3136,23 @@
 				trait = mut_teeth
 				trait = mut_eyes
 				trait = mut_bigeyes
-				trait = disfigured }
+				trait = disfigured
 			}
+		}
   	}
-	11 = { # second head
+	11 = {
+		# second head
 		factor = 1
 		modifier = {
 			factor = 0
-			NOT = { trait = mut_doublehead }
+			NOT = {
+				trait = mut_doublehead
 			}
+		}
 		modifier = {
 			factor = 0
-			OR = { trait = burnt_by_asuryan  
+			OR = {
+				trait = burnt_by_asuryan
 				trait = staked
 				trait = mut_thirdeye
 				trait = mut_spines
@@ -2560,18 +3165,23 @@
 				trait = mut_teeth
 				trait = mut_eyes
 				trait = mut_bigeyes
-				trait = disfigured }
+				trait = disfigured
 			}
+		}
   	}
-	12 = { # beak
+	12 = {
+		# beak
 		factor = 1
 		modifier = {
 			factor = 0
-			NOT = { trait = mut_beak }
+			NOT = {
+				trait = mut_beak
 			}
+		}
 		modifier = {
 			factor = 0
-			OR = { trait = burnt_by_asuryan  
+			OR = {
+				trait = burnt_by_asuryan
 				trait = staked
 				trait = mut_thirdeye
 				trait = mut_spines
@@ -2584,18 +3194,23 @@
 				trait = mut_teeth
 				trait = mut_eyes
 				trait = mut_bigeyes
-				trait = disfigured }
+				trait = disfigured
 			}
+		}
   	}
-	13 = { # teeth
+	13 = {
+		# teeth
 		factor = 1
 		modifier = {
 			factor = 0
-			NOT = { trait = mut_teeth }
+			NOT = {
+				trait = mut_teeth
 			}
+		}
 		modifier = {
 			factor = 0
-			OR = { trait = burnt_by_asuryan  
+			OR = {
+				trait = burnt_by_asuryan
 				trait = staked
 				trait = mut_thirdeye
 				trait = mut_spines
@@ -2608,18 +3223,23 @@
 				# trait = mut_teeth
 				trait = mut_eyes
 				trait = mut_bigeyes
-				trait = disfigured }
+				trait = disfigured
 			}
+		}
   	}
-	14 = { # eyes
+	14 = {
+		# eyes
 		factor = 1
 		modifier = {
 			factor = 0
-			NOT = { trait = mut_eyes }
+			NOT = {
+				trait = mut_eyes
 			}
+		}
 		modifier = {
 			factor = 0
-			OR = { trait = burnt_by_asuryan  
+			OR = {
+				trait = burnt_by_asuryan
 				trait = staked
 				trait = mut_thirdeye
 				trait = mut_spines
@@ -2632,18 +3252,23 @@
 				trait = mut_teeth
 				# trait = mut_eyes
 				trait = mut_bigeyes
-				trait = disfigured }
+				trait = disfigured
 			}
+		}
   	}
-	15 = { # big eyes
+	15 = {
+		# big eyes
 		factor = 1
 		modifier = {
 			factor = 0
-			NOT = { trait = mut_bigeyes }
+			NOT = {
+				trait = mut_bigeyes
 			}
+		}
 		modifier = {
 			factor = 0
-			OR = { trait = burnt_by_asuryan  
+			OR = {
+				trait = burnt_by_asuryan
 				trait = staked
 				trait = mut_thirdeye
 				trait = mut_spines
@@ -2656,10 +3281,11 @@
 				trait = mut_teeth
 				trait = mut_eyes
 				# trait = mut_bigeyes
-				trait = disfigured }
+				trait = disfigured
 			}
+		}
   	}
- 	
+
 }
 
 # p10 blinded
@@ -2669,34 +3295,42 @@
 		modifier = {
 			factor = 0
 			trait = blinded
-			NOT = { trait = creature_beastman }
-			NOT = { trait = creature_nehekharan }
-			NOT = { trait = creature_slann }
+			nor = {
+				trait = creature_beastman
+				trait = creature_nehekharan
+				trait = creature_slann
+			}
 		}
 		modifier = {
 			factor = 0
 			trait = mut_beak
-			NOT = { trait = creature_beastman }
-			NOT = { trait = creature_nehekharan }
-			NOT = { trait = creature_slann }
+			nor = {
+				trait = creature_beastman
+				trait = creature_nehekharan
+				trait = creature_slann
+			}
 		}
 		modifier = {
 			factor = 0
 			trait = creature_beastman
-			NOT = { trait = horns_none }
+			NOT = {
+				trait = horns_none
+			}
 		}
 		modifier = {
 			factor = 0
 			trait = creature_slann
-			NOT = { trait = lizardman_sleepingslann }
+			NOT = {
+				trait = lizardman_sleepingslann
+			}
 		}
 		modifier = {
 			factor = 0
-			trait = creature_nehekharan 
+			trait = creature_nehekharan
 			trait = khemri_mask
 		}
 	}
-	
+
 	1 =  {
 		factor = 100
 		modifier = {
@@ -2707,28 +3341,38 @@
 		modifier = {
 			factor = 100
 			trait = creature_slann
-			NOT = { trait = lizardman_sleepingslann }
+			NOT = {
+				trait = lizardman_sleepingslann
+			}
 		}
 		modifier = {
 			factor = 0
-			NOT = { trait = blinded }
-			NOT = { trait = creature_beastman }
-			NOT = { trait = creature_nehekharan }
+			nor = {
+				trait = blinded
+				trait = creature_beastman
+				trait = creature_nehekharan
+			}
 		}
 		modifier = {
 			factor = 0
 			trait = creature_beastman
-			NOT = { trait = horns_none }
+			NOT = {
+				trait = horns_none
+			}
 		}
 		modifier = {
 			factor = 0
-			trait = creature_nehekharan 
-			NOT = { trait = khemri_mask }
+			trait = creature_nehekharan
+			NOT = {
+				trait = khemri_mask
+			}
 		}
 		modifier = {
 			factor = 0
-			NOT = { trait = creature_beastman }
-			NOT = { trait = creature_slann }
+			nor = {
+				trait = creature_beastman
+				trait = creature_slann
+			}
 			trait = mut_beak
 		}
 	}
@@ -2737,62 +3381,80 @@
 		factor = 1
 		modifier = {
 			factor = 100
-			NOT = { trait = creature_beastman }
+			NOT = {
+				trait = creature_beastman
+			}
 			trait = mut_beak
 		}
 		modifier = {
 			factor = 0
-			NOT = { trait = creature_beastman }
-			NOT = { trait = mut_beak }
+			nor = {
+				trait = creature_beastman
+				trait = mut_beak
+			}
 		}
 		modifier = {
 			factor = 0
 			trait = creature_beastman
-			OR = { trait = horns_none 
+			OR = {
+				trait = horns_none
 				trait = horns_average
-				trait = horns_big }
+				trait = horns_big
+			}
 		}
 	}
 	3 =  {
 		factor = 1
 		modifier = {
 			factor = 0
-			NOT = { trait = creature_beastman }
+			NOT = {
+				trait = creature_beastman
+			}
 		}
 		modifier = {
 			factor = 0
 			trait = creature_beastman
-			OR = { trait = horns_none 
+			OR = {
+				trait = horns_none
 				trait = horns_average
-				trait = horns_big }
+				trait = horns_big
+			}
 		}
 	}
 	4 =  {
 		factor = 1
 		modifier = {
 			factor = 0
-			NOT = { trait = creature_beastman }
+			NOT = {
+				trait = creature_beastman
+			}
 		}
 		modifier = {
 			factor = 0
 			trait = creature_beastman
-			OR = { trait = horns_none 
+			OR = {
+				trait = horns_none
 				trait = horns_average
-				trait = horns_big }
+				trait = horns_big
+			}
 		}
 	}
 	5 =  {
 		factor = 1
 		modifier = {
 			factor = 0
-			NOT = { trait = creature_beastman }
+			NOT = {
+				trait = creature_beastman
+			}
 		}
 		modifier = {
 			factor = 0
 			trait = creature_beastman
-			OR = { trait = horns_none 
+			OR = {
+				trait = horns_none
 				trait = horns_average
-				trait = horns_big }
+				trait = horns_big
+			}
 		}
 	}
 	#horns average
@@ -2800,70 +3462,90 @@
 		factor = 1
 		modifier = {
 			factor = 0
-			NOT = { trait = creature_beastman }
+			NOT = {
+				trait = creature_beastman
+			}
 		}
 		modifier = {
 			factor = 0
 			trait = creature_beastman
-			OR = { trait = horns_none 
+			OR = {
+				trait = horns_none
 				trait = horns_small
-				trait = horns_big }
+				trait = horns_big
+			}
 		}
 	}
 	7 =  {
 		factor = 1
 		modifier = {
 			factor = 0
-			NOT = { trait = creature_beastman }
+			NOT = {
+				trait = creature_beastman
+			}
 		}
 		modifier = {
 			factor = 0
 			trait = creature_beastman
-			OR = { trait = horns_none 
+			OR = {
+				trait = horns_none
 				trait = horns_small
-				trait = horns_big }
+				trait = horns_big
+			}
 		}
 	}
 	8 =  {
 		factor = 1
 		modifier = {
 			factor = 0
-			NOT = { trait = creature_beastman }
+			NOT = {
+				trait = creature_beastman
+			}
 		}
 		modifier = {
 			factor = 0
 			trait = creature_beastman
-			OR = { trait = horns_none 
+			OR = {
+				trait = horns_none
 				trait = horns_small
-				trait = horns_big }
+				trait = horns_big
+			}
 		}
 	}
 	9 =  {
 		factor = 1
 		modifier = {
 			factor = 0
-			NOT = { trait = creature_beastman }
+			NOT = {
+				trait = creature_beastman
+			}
 		}
 		modifier = {
 			factor = 0
 			trait = creature_beastman
-			OR = { trait = horns_none 
+			OR = {
+				trait = horns_none
 				trait = horns_small
-				trait = horns_big }
+				trait = horns_big
+			}
 		}
 	}
 	10 =  {
 		factor = 1
 		modifier = {
 			factor = 0
-			NOT = { trait = creature_beastman }
+			NOT = {
+				trait = creature_beastman
+			}
 		}
 		modifier = {
 			factor = 0
 			trait = creature_beastman
-			OR = { trait = horns_none 
+			OR = {
+				trait = horns_none
 				trait = horns_small
-				trait = horns_big }
+				trait = horns_big
+			}
 		}
 	}
 	#horns big
@@ -2871,56 +3553,72 @@
 		factor = 1
 		modifier = {
 			factor = 0
-			NOT = { trait = creature_beastman }
+			NOT = {
+				trait = creature_beastman
+			}
 		}
 		modifier = {
 			factor = 0
 			trait = creature_beastman
-			OR = { trait = horns_none 
+			OR = {
+				trait = horns_none
 				trait = horns_small
-				trait = horns_average }
+				trait = horns_average
+			}
 		}
 	}
 	12 =  {
 		factor = 1
 		modifier = {
 			factor = 0
-			NOT = { trait = creature_beastman }
+			NOT = {
+				trait = creature_beastman
+			}
 		}
 		modifier = {
 			factor = 0
 			trait = creature_beastman
-			OR = { trait = horns_none 
+			OR = {
+				trait = horns_none
 				trait = horns_small
-				trait = horns_average }
+				trait = horns_average
+			}
 		}
 	}
 	13 =  {
 		factor = 1
 		modifier = {
 			factor = 0
-			NOT = { trait = creature_beastman }
+			NOT = {
+				trait = creature_beastman
+			}
 		}
 		modifier = {
 			factor = 0
 			trait = creature_beastman
-			OR = { trait = horns_none 
+			OR = {
+				trait = horns_none
 				trait = horns_small
-				trait = horns_average }
+				trait = horns_average
+			}
 		}
 	}
 	14 =  {
 		factor = 1
 		modifier = {
 			factor = 0
-			NOT = { trait = creature_beastman }
+			NOT = {
+				trait = creature_beastman
+			}
 		}
 		modifier = {
 			factor = 0
 			trait = creature_beastman
-			OR = { trait = horns_none 
+			OR = {
+				trait = horns_none
 				trait = horns_small
-				trait = horns_average }
+				trait = horns_average
+			}
 		}
 	}
 }
@@ -2929,7 +3627,8 @@
 
 # p11 player
 11 = {
-	0 = { # blank
+	0 = {
+		# blank
 		factor = 100
 		modifier = {
 			factor = 0
@@ -2940,7 +3639,8 @@
 		}
 	}
 
-	1 = { # player
+	1 = {
+		# player
 		factor = 100
 		modifier = {
 			factor = 0
@@ -2954,31 +3654,33 @@
 
 # p12 mask for the disfigured
 12 = {
-	0 = { # blank
+	0 = {
+		# blank
 		factor = 100
 		modifier = {
 			factor = 0
-			OR = { 
-				trait = disfigured 
+			OR = {
+				trait = disfigured
 				has_character_modifier = attending_masquerade
 				has_character_modifier = forced_mask
 			}
 		}
 	}
 
-	1 = { # mask 1 bone
+	1 = {
+		# mask 1 bone
 		factor = 1
 		modifier = {
 			factor = 0
 			OR = {
-				NOR = { 
-					trait = disfigured 
+				NOR = {
+					trait = disfigured
 					has_character_modifier = attending_masquerade
 					has_character_modifier = forced_mask
 				}
 				AND = {
-					OR = { 
-						trait = disfigured 
+					OR = {
+						trait = disfigured
 						has_character_modifier = attending_masquerade
 						has_character_modifier = forced_mask
 					}
@@ -2995,20 +3697,21 @@
 		modifier = {
 			factor = 0
 			OR = {
-				religion_group = chaos_group
+				religion_group = chaos_gods_group
 				culture_group = kurgan_group
 				culture_group = hung_group
 			}
 		}
 	}
 
-	2 = { # mask 2 silver
+	2 = {
+		# mask 2 silver
 		factor = 1
 		modifier = {
 			factor = 0
 			OR = {
-				NOR = { 
-					trait = disfigured 
+				NOR = {
+					trait = disfigured
 					has_character_modifier = attending_masquerade
 					has_character_modifier = forced_mask
 				}
@@ -3018,12 +3721,18 @@
 				}
 				AND = {
 					is_landed = yes
-					NOT = { higher_tier_than = DUKE }
+					NOT = {
+						higher_tier_than = DUKE
+					}
 				}
 				AND = {
 					is_landed = no
 					is_married = yes
-					spouse = { NOT = { higher_tier_than = DUKE } }
+					spouse = {
+						NOT = {
+							higher_tier_than = DUKE
+						}
+					}
 				}
 				is_tribal = yes
 				is_nomadic = yes
@@ -3035,20 +3744,21 @@
 		modifier = {
 			factor = 0
 			OR = {
-				religion_group = chaos_group
+				religion_group = chaos_gods_group
 				culture_group = kurgan_group
 				culture_group = hung_group
 			}
 		}
 	}
 
-	3 = { # mask 3 iron
+	3 = {
+		# mask 3 iron
 		factor = 1
 		modifier = {
 			factor = 0
 			OR = {
-				NOR = { 
-					trait = disfigured 
+				NOR = {
+					trait = disfigured
 					has_character_modifier = attending_masquerade
 					has_character_modifier = forced_mask
 				}
@@ -3059,7 +3769,9 @@
 				AND = {
 					is_landed = no
 					is_married = yes
-					spouse = { higher_tier_than = DUKE }
+					spouse = {
+						higher_tier_than = DUKE
+					}
 				}
 				is_tribal = yes
 				is_nomadic = yes
@@ -3071,20 +3783,21 @@
 		modifier = {
 			factor = 0
 			OR = {
-				religion_group = chaos_group
+				religion_group = chaos_gods_group
 				culture_group = kurgan_group
 				culture_group = hung_group
 			}
 		}
 	}
-	
-	4 = { # mask 4 bone - blue stripes
+
+	4 = {
+		# mask 4 bone - blue stripes
 		factor = 1
 		modifier = {
 			factor = 0
 			OR = {
-				NOR = { 
-					trait = disfigured 
+				NOR = {
+					trait = disfigured
 					has_character_modifier = attending_masquerade
 					has_character_modifier = forced_mask
 				}
@@ -3103,20 +3816,21 @@
 		modifier = {
 			factor = 0
 			OR = {
-				religion_group = chaos_group
+				religion_group = chaos_gods_group
 				culture_group = kurgan_group
 				culture_group = hung_group
 			}
 		}
 	}
-	
-	5 = { # mask 5 bone - orange stripes
+
+	5 = {
+		# mask 5 bone - orange stripes
 		factor = 1
 		modifier = {
 			factor = 0
 			OR = {
-				NOR = { 
-					trait = disfigured 
+				NOR = {
+					trait = disfigured
 					has_character_modifier = attending_masquerade
 					has_character_modifier = forced_mask
 				}
@@ -3134,20 +3848,21 @@
 		modifier = {
 			factor = 0
 			OR = {
-				religion_group = chaos_group
+				religion_group = chaos_gods_group
 				culture_group = kurgan_group
 				culture_group = hung_group
 			}
 		}
 	}
-	
-	6 = { # mask 6 bone - red dots
+
+	6 = {
+		# mask 6 bone - red dots
 		factor = 1
 		modifier = {
 			factor = 0
 			OR = {
-				NOR = { 
-					trait = disfigured 
+				NOR = {
+					trait = disfigured
 					has_character_modifier = attending_masquerade
 					has_character_modifier = forced_mask
 				}
@@ -3178,20 +3893,21 @@
 		modifier = {
 			factor = 0
 			OR = {
-				religion_group = chaos_group
+				religion_group = chaos_gods_group
 				culture_group = kurgan_group
 				culture_group = hung_group
 			}
 		}
 	}
-	
-	7 = { # mask 7 bone - black stripes
+
+	7 = {
+		# mask 7 bone - black stripes
 		factor = 1
 		modifier = {
 			factor = 0
 			OR = {
-				NOR = { 
-					trait = disfigured 
+				NOR = {
+					trait = disfigured
 					has_character_modifier = attending_masquerade
 					has_character_modifier = forced_mask
 				}
@@ -3212,11 +3928,11 @@
 				is_nomadic = yes
 			}
 		}
-		
+
 		modifier = {
 			factor = 0
 			OR = {
-				religion_group = chaos_group
+				religion_group = chaos_gods_group
 				culture_group = kurgan_group
 				culture_group = hung_group
 			}
@@ -3231,20 +3947,21 @@
 		modifier = {
 			factor = 0
 			OR = {
-				religion_group = chaos_group
+				religion_group = chaos_gods_group
 				culture_group = kurgan_group
 				culture_group = hung_group
 			}
 		}
 	}
-	
-	8 = { # mask 8 bone - red stripes/eyes
+
+	8 = {
+		# mask 8 bone - red stripes/eyes
 		factor = 1
 		modifier = {
 			factor = 0
 			OR = {
-				NOR = { 
-					trait = disfigured 
+				NOR = {
+					trait = disfigured
 					has_character_modifier = attending_masquerade
 					has_character_modifier = forced_mask
 				}
@@ -3265,20 +3982,21 @@
 		modifier = {
 			factor = 0
 			OR = {
-				religion_group = chaos_group
+				religion_group = chaos_gods_group
 				culture_group = kurgan_group
 				culture_group = hung_group
 			}
 		}
 	}
-	
-	9 = { # mask 9 bone - black eyes/lightning
+
+	9 = {
+		# mask 9 bone - black eyes/lightning
 		factor = 1
 		modifier = {
 			factor = 0
 			OR = {
-				NOR = { 
-					trait = disfigured 
+				NOR = {
+					trait = disfigured
 					has_character_modifier = attending_masquerade
 					has_character_modifier = forced_mask
 				}
@@ -3299,20 +4017,21 @@
 		modifier = {
 			factor = 0
 			OR = {
-				religion_group = chaos_group
+				religion_group = chaos_gods_group
 				culture_group = kurgan_group
 				culture_group = hung_group
 			}
 		}
 	}
-	
-	10 = { # mask 10 - decorated silver
+
+	10 = {
+		# mask 10 - decorated silver
 		factor = 1
 		modifier = {
 			factor = 0
 			OR = {
-				NOR = { 
-					trait = disfigured 
+				NOR = {
+					trait = disfigured
 					has_character_modifier = attending_masquerade
 					has_character_modifier = forced_mask
 				}
@@ -3322,12 +4041,18 @@
 				}
 				AND = {
 					is_landed = yes
-					NOT = { higher_tier_than = DUKE }
+					NOT = {
+						higher_tier_than = DUKE
+					}
 				}
 				AND = {
 					is_landed = no
 					is_married = yes
-					spouse = { NOT = { higher_tier_than = DUKE } }
+					spouse = {
+						NOT = {
+							higher_tier_than = DUKE
+						}
+					}
 				}
 				is_tribal = yes
 				is_nomadic = yes
@@ -3348,20 +4073,21 @@
 		modifier = {
 			factor = 0
 			OR = {
-				religion_group = chaos_group
+				religion_group = chaos_gods_group
 				culture_group = kurgan_group
 				culture_group = hung_group
 			}
 		}
 	}
-	
-	11 = { # mask 11 - decorated gold
+
+	11 = {
+		# mask 11 - decorated gold
 		factor = 2
 		modifier = {
 			factor = 0
 			OR = {
-				NOR = { 
-					trait = disfigured 
+				NOR = {
+					trait = disfigured
 					has_character_modifier = attending_masquerade
 					has_character_modifier = forced_mask
 				}
@@ -3371,12 +4097,18 @@
 				}
 				AND = {
 					is_landed = yes
-					NOT = { higher_tier_than = DUKE }
+					NOT = {
+						higher_tier_than = DUKE
+					}
 				}
 				AND = {
 					is_landed = no
 					is_married = yes
-					spouse = { NOT = { higher_tier_than = DUKE } }
+					spouse = {
+						NOT = {
+							higher_tier_than = DUKE
+						}
+					}
 				}
 				is_tribal = yes
 				is_nomadic = yes
@@ -3385,19 +4117,21 @@
 					religion_group = chaos_gods_group
 				}
 			}
-			NOT = { has_character_modifier = golden_mask }
+			NOT = {
+				has_character_modifier = golden_mask
+			}
 		}
 		modifier = {
 			factor = 0
-			NOR = {
+			nor = {
 				trait = greedy
 				trait = proud
 				trait = ambitious
 				trait = envious
 				culture_group = southlander_group
 				culture = tevari
+				has_character_modifier = golden_mask
 			}
-			NOT = { has_character_modifier = golden_mask }
 		}
 		modifier = {
 			factor = 5
@@ -3410,20 +4144,21 @@
 		modifier = {
 			factor = 0
 			OR = {
-				religion_group = chaos_group
+				religion_group = chaos_gods_group
 				culture_group = kurgan_group
 				culture_group = hung_group
 			}
 		}
 	}
-	
-	12 = { # mask 12 - full mask 1 leather
+
+	12 = {
+		# mask 12 - full mask 1 leather
 		factor = 1
 		modifier = {
 			factor = 0
 			OR = {
-				NOR = { 
-					trait = disfigured 
+				NOR = {
+					trait = disfigured
 					has_character_modifier = attending_masquerade
 					has_character_modifier = forced_mask
 				}
@@ -3433,12 +4168,18 @@
 				}
 				AND = {
 					is_landed = yes
-					NOT = { higher_tier_than = DUKE }
+					NOT = {
+						higher_tier_than = DUKE
+					}
 				}
 				AND = {
 					is_landed = no
 					is_married = yes
-					spouse = { NOT = { higher_tier_than = DUKE } }
+					spouse = {
+						NOT = {
+							higher_tier_than = DUKE
+						}
+					}
 				}
 				OR = {
 					religion_group = old_gods_group
@@ -3450,20 +4191,21 @@
 		modifier = {
 			factor = 0
 			OR = {
-				religion_group = chaos_group
+				religion_group = chaos_gods_group
 				culture_group = kurgan_group
 				culture_group = hung_group
 			}
 		}
 	}
-	
-	13 = { # mask 13 - full mask 2 bone
+
+	13 = {
+		# mask 13 - full mask 2 bone
 		factor = 1
 		modifier = {
 			factor = 0
 			OR = {
-				NOR = { 
-					trait = disfigured 
+				NOR = {
+					trait = disfigured
 					has_character_modifier = attending_masquerade
 					has_character_modifier = forced_mask
 				}
@@ -3473,12 +4215,18 @@
 				}
 				AND = {
 					is_landed = yes
-					NOT = { higher_tier_than = DUKE }
+					NOT = {
+						higher_tier_than = DUKE
+					}
 				}
 				AND = {
 					is_landed = no
 					is_married = yes
-					spouse = { NOT = { higher_tier_than = DUKE } }
+					spouse = {
+						NOT = {
+							higher_tier_than = DUKE
+						}
+					}
 				}
 				OR = {
 					religion_group = old_gods_group
@@ -3490,7 +4238,7 @@
 		modifier = {
 			factor = 0
 			OR = {
-				religion_group = chaos_group
+				religion_group = chaos_gods_group
 				culture_group = kurgan_group
 				culture_group = hung_group
 			}
@@ -3500,21 +4248,27 @@
 
 # p13 eyepatch for one_eyed
 13 = {
-	0 = { # blank
+	0 = {
+		# blank
 		factor = 100
 		modifier = {
 			factor = 0
 			trait = one_eyed
-			NOT = { has_character_modifier = glass_eye }
+			NOT = {
+				has_character_modifier = glass_eye
+			}
 		}
 	}
 
-	1 = { # eyepatch 1
+	1 = {
+		# eyepatch 1
 		factor = 1
 		modifier = {
 			factor = 0
 			OR = {
-				NOT = { trait = one_eyed }
+				NOT = {
+					trait = one_eyed
+				}
 				has_character_modifier = glass_eye
 			}
 		}
@@ -3523,19 +4277,23 @@
 			religion = stromfels
 		}
 	}
-	
-	2 = { # eyepatch 2 - red leather
+
+	2 = {
+		# eyepatch 2 - red leather
 		factor = 1
 		modifier = {
 			factor = 0
 			OR = {
-				NOT = { trait = one_eyed }
+				NOT = {
+					trait = one_eyed
+				}
 				has_character_modifier = glass_eye
 			}
 		}
 	}
-	
-	3 = { # eyepatch 3 - painted eye
+
+	3 = {
+		# eyepatch 3 - painted eye
 		factor = 1
 		modifier = {
 			factor = 0
@@ -3558,24 +4316,30 @@
 			}
 		}
 	}
-	
-	4 = { # eyepatch 4 - red
+
+	4 = {
+		# eyepatch 4 - red
 		factor = 1
 		modifier = {
 			factor = 0
 			OR = {
-				NOT = { trait = one_eyed }
+				NOT = {
+					trait = one_eyed
+				}
 				has_character_modifier = glass_eye
 			}
 		}
 	}
-	
-	5 = { # eyepatch 5 - white rag
+
+	5 = {
+		# eyepatch 5 - white rag
 		factor = 1
 		modifier = {
 			factor = 0
 			OR = {
-				NOT = { trait = one_eyed }
+				NOT = {
+					trait = one_eyed
+				}
 				has_character_modifier = glass_eye
 			}
 		}
@@ -3587,13 +4351,16 @@
 			}
 		}
 	}
-	
-	6 = { # eyepatch 6 - blue rag
+
+	6 = {
+		# eyepatch 6 - blue rag
 		factor = 1
 		modifier = {
 			factor = 0
 			OR = {
-				NOT = { trait = one_eyed }
+				NOT = {
+					trait = one_eyed
+				}
 				has_character_modifier = glass_eye
 			}
 		}
@@ -3605,13 +4372,16 @@
 			}
 		}
 	}
-	
-	7 = { # eyepatch 7 - green rag
+
+	7 = {
+		# eyepatch 7 - green rag
 		factor = 1
 		modifier = {
 			factor = 0
 			OR = {
-				NOT = { trait = one_eyed }
+				NOT = {
+					trait = one_eyed
+				}
 				has_character_modifier = glass_eye
 			}
 		}
@@ -3620,19 +4390,23 @@
 			religion_group = ormazd_gods_group
 		}
 	}
-	
-	8 = { # eyepatch 8 - red rag
+
+	8 = {
+		# eyepatch 8 - red rag
 		factor = 1
 		modifier = {
 			factor = 0
 			OR = {
-				NOT = { trait = one_eyed }
+				NOT = {
+					trait = one_eyed
+				}
 				has_character_modifier = glass_eye
 			}
 		}
 	}
-	
-	9 = { # eyepatch 9 - bloodied rag
+
+	9 = {
+		# eyepatch 9 - bloodied rag
 		factor = 1
 		modifier = {
 			factor = 0
@@ -3661,7 +4435,7 @@
 			martial = 12
 		}
 	}
-	
+
 	10 = { # eyepatch 10 - tartan rag
 		factor = 3
 		modifier = {
@@ -3675,7 +4449,7 @@
 			}
 		}
 	}
-	
+
 	11 = { # eyepatch 11 - scarred eye 1
 		factor = 1
 		modifier = {
@@ -3698,7 +4472,7 @@
 			}
 		}
 	}
-	
+
 	12 = { # eyepatch 12 - scarred eye 2
 		factor = 1
 		modifier = {

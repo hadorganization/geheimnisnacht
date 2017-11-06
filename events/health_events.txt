@@ -25,7 +25,6 @@ character_event = {
 	min_age = 16
 	capable_only = yes
 	lacks_dlc = "Reapers"
-	is_triggered_only = yes
 
 	trigger = {
 		is_disease_immune_race = no
@@ -54,20 +53,20 @@ character_event = {
 		}
 	}
 
-	weight_multiplier = {
-		factor = 0.00600
+	mean_time_to_happen = {
+		years = 1666
 		modifier = {
-			factor = 10.00
+			factor = 0.1
 			spouse = {
 				trait = syphilitic
 			}
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			in_command = yes
 		}
 		modifier = {
-			factor = 40.00
+			factor = 0.025
 			OR = {
 				religion = nurgle
 				society_member_of = cult_of_nurgle
@@ -75,15 +74,15 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			trait = lustful
 		}
 		modifier = {
-			factor = 1.67
+			factor = 0.6
 			trait = hedonist
 		}
 		modifier = {
-			factor = 0.20
+			factor = 5.0
 			trait = chaste
 		}
 	}
@@ -110,7 +109,6 @@ character_event = {
 	is_sick = yes
 	only_capable = yes
 	lacks_dlc = "Reapers"
-	is_triggered_only = yes
 
 	trigger = {
 		health = 6
@@ -122,14 +120,14 @@ character_event = {
 		}
 	}
 
-	weight_multiplier = {
-		factor = 0.00480
+	mean_time_to_happen = {
+		years = 2083
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			health = 8
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			health = 9
 		}
 	}
@@ -152,7 +150,6 @@ character_event = {
 	border = GFX_event_normal_frame_religion
 	min_age = 10
 	only_capable = yes
-	is_triggered_only = yes
 
 	trigger = {
 		is_disease_immune_race = no
@@ -170,30 +167,30 @@ character_event = {
 		}
 	}
 
-	weight_multiplier = {
-		factor = 0.00480
+	mean_time_to_happen = {
+		years = 2083
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			NOT = {
 				health = 4
 			}
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			in_command = yes
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			any_courtier = {
 				trait = leper
 			}
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			is_weak_trigger = yes
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			OR = {
 				trait = infection
 				trait = severely_injured
@@ -201,11 +198,11 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			trait = charitable
 		}
 		modifier = {
-			factor = 40.00
+			factor = 0.025
 			OR = {
 				religion = nurgle
 				trait = plaguelord
@@ -274,7 +271,6 @@ character_event = {
 	min_age = 16
 	is_sick = yes
 	only_capable = yes
-	is_triggered_only = yes
 
 	trigger = {
 		health = 4
@@ -293,8 +289,8 @@ character_event = {
 		# }
 	}
 
-	weight_multiplier = {
-		factor = 0.00480
+	mean_time_to_happen = {
+		years = 2083
 	}
 
 	immediate = {
@@ -368,7 +364,6 @@ character_event = {
 		}
 	}
 	min_age = 10
-	is_triggered_only = yes
 
 	trigger = {
 		NOT = {
@@ -386,29 +381,29 @@ character_event = {
 		}
 	}
 
-	weight_multiplier = {
-		factor = 0.00250
+	mean_time_to_happen = {
+		years = 4000# once in 4000 years on average
 		modifier = {
-			factor = 333.33
+			factor = 0.003 # 12 years on average
 			OR = {
 				trait = syphilitic
 				trait = has_aztec_disease
 			}
 		}
 		modifier = {
-			factor = 166.67
+			factor = 0.006 # 24 years on average
 			prisoner = yes
 			has_character_modifier = the_oubliette
 		}
 		modifier = {
-			factor = 50.00
+			factor = 0.02 # 80 years on average
 			OR = {
 				trait = has_typhoid_fever
 				trait = has_typhus
 			}
 		}
 		modifier = {
-			factor = 10.00
+			factor = 0.1
 			prisoner = yes
 			nor = {
 				has_character_modifier = the_oubliette
@@ -416,7 +411,7 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 5.00
+			factor = 0.2 # 800 years on average
 			is_ill = yes
 			NOR = {
 				trait = has_typhoid_fever
@@ -426,48 +421,48 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 400.00
+			factor = 0.0025 # 1 year on average, rabies will also be ill
 			trait = rabies
 		}
 		modifier = {
-			factor = 10.00
+			factor = 0.1
 			trait = incapable # Coma due to brain damage. Wakes up a lunatic.
 		}
 		modifier = {
-			factor = 10.00
+			factor = 0.1
 			trait = incapable
 			immortal = yes # Incapable immortals more likely to wake up nuts
 		}
 		modifier = {
-			factor = 4.00
+			factor = 0.25
 			trait = paranoid
 		}
 		modifier = {
-			factor = 4.00
+			factor = 0.25
 			trait = stressed
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			trait = depressed
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			trait = zealous
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			trait = inbred
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			trait = imbecile
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			trait = genius
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			trait = drunkard
 		}
 	}
@@ -570,7 +565,6 @@ character_event = {
 	border = GFX_event_normal_frame_religion
 	min_age = 16
 	only_capable = yes
-	is_triggered_only = yes
 
 	trigger = {
 		health = 4
@@ -586,10 +580,10 @@ character_event = {
 		is_vampire_trigger = no
 	}
 
-	weight_multiplier = {
-		factor = 0.01000
+	mean_time_to_happen = {
+		years = 1000
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			health = 6
 		}
 	}
@@ -662,7 +656,6 @@ character_event = {
 	}
 	min_age = 10
 	only_capable = yes
-	is_triggered_only = yes
 
 	trigger = {
 		nor = {
@@ -680,131 +673,131 @@ character_event = {
 		is_incorruptible_trigger = no
 	}
 
-	weight_multiplier = {
-		factor = 0.00800
+	mean_time_to_happen = {
+		years = 1250
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			check_variable = {
 				which = "lunatic_counter" value = 25
 			}
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			check_variable = {
 				which = "lunatic_counter" value = 30
 			}
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			check_variable = {
 				which = "lunatic_counter" value = 35
 			}
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			check_variable = {
 				which = "lunatic_counter" value = 40
 			}
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			check_variable = {
 				which = "lunatic_counter" value = 50
 			}
 		}
 		modifier = {
-			factor = 4.00
+			factor = 0.25
 			check_variable = {
 				which = "lunatic_counter" value = 60
 			}
 		}
 		modifier = {
-			factor = 4.00
+			factor = 0.25
 			check_variable = {
 				which = "lunatic_counter" value = 70
 			}
 		}
 		modifier = {
-			factor = 4.00
+			factor = 0.25
 			check_variable = {
 				which = "lunatic_counter" value = 80
 			}
 		}
 		modifier = {
-			factor = 4.00
+			factor = 0.25
 			check_variable = {
 				which = "lunatic_counter" value = 90
 			}
 		}
 		modifier = {
-			factor = 1.11
+			factor = 0.9
 			NOT = {
 				prestige = 20
 			}
 		}
 		modifier = {
-			factor = 1.11
+			factor = 0.9
 			NOT = {
 				piety = 10
 			}
 		}
 		modifier = {
-			factor = 1.11
+			factor = 0.9
 			trait = zealous
 		}
 		modifier = {
-			factor = 0.10
+			factor = 10
 			trait = creature_elf
 		}
 		modifier = {
-			factor = 0.10
+			factor = 10
 			trait = malekith
 		}
 		modifier = {
-			factor = 0.20
+			factor = 5
 			trait = phoenix_king
 		}
 		modifier = {
-			factor = 0.10
+			factor = 10
 			trait = everqueen
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2
 			trait = everqueen_heir
 		}
 		modifier = {
-			factor = 0.10
+			factor = 10
 			trait = avatar_kurnous
 		}
 		modifier = {
-			factor = 0.10
+			factor = 10
 			trait = avatar_isha
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2
 			trait = asur_mage
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2
 			trait = druchi_mage
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2
 			trait = druchi_sorceress
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2
 			trait = asrai_spellsinger
 		}
 		modifier = {
-			factor = 1.43
+			factor = 0.7
 			OR = {
 				has_global_flag = doom_medium
 				has_global_flag = doom_high
 			}
 		}
 		modifier = {
-			factor = 4.00
+			factor = 0.25
 			OR = {
 				has_character_flag = magic_potential_flag_3
 				has_character_flag = magic_potential_flag_4
@@ -813,13 +806,13 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 2.50
+			factor = 0.4
 			location = {
 				has_province_modifier = ravaged_by_chaos
 			}
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			location = {
 				empire = {
 					title = e_chaos_wastes
@@ -827,7 +820,7 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 0.51
+			factor = 1.95
 			NOT = {
 				location = {
 					empire = {
@@ -837,7 +830,7 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			OR = {
 				society_member_of = cult_of_undivided
 				society_member_of = cult_of_slaanesh
@@ -1000,7 +993,6 @@ character_event = {
 	}
 	min_age = 10
 	only_capable = yes
-	is_triggered_only = yes
 
 	trigger = {
 		health = 4
@@ -1012,14 +1004,14 @@ character_event = {
 		}
 	}
 
-	weight_multiplier = {
-		factor = 0.00800
+	mean_time_to_happen = {
+		years = 1250
 		modifier = {
-			factor = 1.11
+			factor = 0.9
 			prestige = 20
 		}
 		modifier = {
-			factor = 1.11
+			factor = 0.9
 			piety = 10
 		}
 	}
@@ -1066,7 +1058,6 @@ character_event = {
 	border = GFX_event_normal_frame_religion
 	min_age = 16
 	only_capable = yes
-	is_triggered_only = yes
 
 	trigger = {
 		OR = {
@@ -1080,18 +1071,18 @@ character_event = {
 		}
 	}
 
-	weight_multiplier = {
-		factor = 0.06024
+	mean_time_to_happen = {
+		years = 166
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			trait = diligent
 		}
 		modifier = {
-			factor = 1.25
+			factor = 0.8
 			in_command = yes
 		}
 		modifier = {
-			factor = 0.10
+			factor = 10.0
 			trait = slothful
 		}
 	}
@@ -1114,16 +1105,15 @@ character_event = {
 	border = GFX_event_normal_frame_religion
 	min_age = 16
 	only_capable = yes
-	is_triggered_only = yes
 
 	trigger = {
 		trait = stressed
 	}
 
-	weight_multiplier = {
-		factor = 0.10000
+	mean_time_to_happen = {
+		years = 100
 		modifier = {
-			factor = 200.00
+			factor = 0.005
 			is_ruler = no
 			is_councillor = no
 			in_command = no
@@ -1132,29 +1122,29 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			is_ruler = no
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			is_councillor = no
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			in_command = no
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			NOT = {
 				has_minor_title = title_regent
 			}
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			trait = addict
 		}
 		modifier = {
-			factor = 20.00
+			factor = 0.05
 			NOT = {
 				trait = khorne_demon
 				trait = nurgle_demon
@@ -1183,7 +1173,6 @@ character_event = {
 	border = GFX_event_normal_frame_religion
 	min_age = 10
 	only_capable = yes
-	is_triggered_only = yes
 
 	trigger = {
 		nor = {
@@ -1193,10 +1182,10 @@ character_event = {
 		}
 	}
 
-	weight_multiplier = {
-		factor = 0.01000
+	mean_time_to_happen = {
+		years = 1000
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			NOT = {
 				age = 20
 			}
@@ -1205,7 +1194,7 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			NOT = {
 				age = 20
 			}
@@ -1214,35 +1203,35 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			trait = cynical
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			trait = stressed
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			is_ill = yes
 		}
 		modifier = {
-			factor = 1.43
+			factor = 0.7
 			trait = slothful
 		}
 		modifier = {
-			factor = 1.43
+			factor = 0.7
 			trait = ugly
 		}
 		modifier = {
-			factor = 1.25
+			factor = 0.8
 			trait = ambitious
 		}
 		modifier = {
-			factor = 1.25
+			factor = 0.8
 			in_command = yes
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2.0
 			trait = diligent
 		}
 	}
@@ -1265,52 +1254,51 @@ character_event = {
 	border = GFX_event_normal_frame_religion
 	min_age = 10
 	only_capable = yes
-	is_triggered_only = yes
 
 	trigger = {
 		trait = depressed
 	}
 
-	weight_multiplier = {
-		factor = 0.10000
+	mean_time_to_happen = {
+		years = 100
 		modifier = {
-			factor = 10.00
+			factor = 0.1
 			trait = content
 		}
 		modifier = {
-			factor = 10.00
+			factor = 0.1
 			trait = zealous
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			trait = diligent
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2.0
 			trait = cynical
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2.0
 			trait = stressed
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2.0
 			is_ill = yes
 		}
 		modifier = {
-			factor = 0.67
+			factor = 1.5
 			trait = slothful
 		}
 		modifier = {
-			factor = 0.67
+			factor = 1.5
 			trait = ugly
 		}
 		modifier = {
-			factor = 0.77
+			factor = 1.3
 			trait = ambitious
 		}
 		modifier = {
-			factor = 0.77
+			factor = 1.3
 			in_command = yes
 		}
 	}
@@ -1349,7 +1337,6 @@ character_event = {
 character_event = {
 	id = 6063
 	hide_window = yes
-	is_triggered_only = yes
 
 	trigger = {
 		health = 3.0
@@ -1363,48 +1350,48 @@ character_event = {
 		}
 	}
 
-	weight_multiplier = {
-		factor = 0.33333
+	mean_time_to_happen = {
+		years = 30
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			trait = depressed
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			trait = stressed
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			is_weak_trigger = yes
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			prisoner = yes
 			has_character_modifier = the_oubliette
 		}
 		modifier = {
-			factor = 1.11
+			factor = 0.9
 			prisoner = yes
 			has_character_modifier = the_dungeon
 		}
 		modifier = {
-			factor = 0.67
+			factor = 1.5
 			base_health = 6
 		}
 		modifier = {
-			factor = 0.67
+			factor = 1.5
 			is_strong_trigger = yes
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2.0
 			base_health = 7
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2.0
 			base_health = 8
 		}
 		modifier = {
-			factor = 20.00
+			factor = 0.05
 			OR = {
 				religion = nurgle
 				trait = plaguelord
@@ -1412,21 +1399,21 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			has_game_rule = {
 				name = non_epidemic_diseases
 				value = more
 			}
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2
 			has_game_rule = {
 				name = non_epidemic_diseases
 				value = fewer
 			}
 		}
 		modifier = {
-			factor = 0.25
+			factor = 4
 			has_game_rule = {
 				name = non_epidemic_diseases
 				value = rare
@@ -1462,7 +1449,6 @@ character_event = {
 	picture = GFX_evt_recovery
 	border = GFX_event_normal_frame_religion
 	is_sick = yes
-	is_triggered_only = yes
 
 	trigger = {
 		base_health = 3
@@ -1474,26 +1460,26 @@ character_event = {
 		}
 	}
 
-	weight_multiplier = {
-		factor = 1
+	mean_time_to_happen = {
+		years = 1
 		modifier = {
-			factor = 0.50
+			factor = 2.0
 			trait = depressed
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2.0
 			trait = stressed
 		}
 		modifier = {
-			factor = 3.33
+			factor = 0.3
 			base_health = 5
 		}
 		modifier = {
-			factor = 5.00
+			factor = 0.2
 			base_health = 6
 		}
 		modifier = {
-			factor = 10.00
+			factor = 0.1
 			base_health = 7
 		}
 	}
@@ -1517,24 +1503,23 @@ character_event = {
 	border = GFX_event_normal_frame_religion
 	max_age = 7
 	is_sick = yes
-	is_triggered_only = yes
 
 	trigger = {
 		trait = sickly
 	}
 
-	weight_multiplier = {
-		factor = 1
+	mean_time_to_happen = {
+		years = 1
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			age = 3
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			age = 4
 		}
 		modifier = {
-			factor = 100.00
+			factor = 0.01
 			age = 5
 		}
 	}
@@ -1557,7 +1542,6 @@ character_event = {
 	border = GFX_event_normal_frame_religion
 	is_sick = yes
 	lacks_dlc = "Reapers"
-	is_triggered_only = yes
 
 	trigger = {
 		is_disease_immune_race = no
@@ -1571,49 +1555,49 @@ character_event = {
 		}
 	}
 
-	weight_multiplier = {
-		factor = 0.50000
+	mean_time_to_happen = {
+		years = 20
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			NOT = {
 				base_health = 5
 			}
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			NOT = {
 				base_health = 4
 			}
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			trait = depressed
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			trait = stressed
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2.0
 			base_health = 6
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2.0
 			base_health = 7
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2.0
 			base_health = 8
 		}
 		modifier = {
-			factor = 4.00
+			factor = 0.25
 			NOT = {
 				month = 2
 			}		# jan and feb
 			in_command = yes
 		}
 		modifier = {
-			factor = 10.00
+			factor = 0.1
 			OR = {
 				religion = nurgle
 				trait = plaguelord
@@ -1709,7 +1693,6 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
 
 	trigger = {
 		OR = {
@@ -1723,26 +1706,26 @@ character_event = {
 		}
 	}
 
-	weight_multiplier = {
-		factor = 0.01200
+	mean_time_to_happen = {
+		years = 833
 		modifier = {
-			factor = 1.11
+			factor = 0.9
 			trait = brave
 		}
 		modifier = {
-			factor = 1.25
+			factor = 0.8
 			in_command = yes
 		}
 		modifier = {
-			factor = 1.43
+			factor = 0.7
 			is_ruler = yes
 		}
 		modifier = {
-			factor = 1.67
+			factor = 0.6
 			trait = misguided_warrior
 		}
 		modifier = {
-			factor = 0.91
+			factor = 1.1
 			trait = paranoid
 		}
 	}
@@ -1763,7 +1746,6 @@ character_event = {
 	desc = EVTDESC6081
 	picture = GFX_evt_recovery
 	border = GFX_event_normal_frame_religion
-	is_triggered_only = yes
 
 	trigger = {
 		base_health = 4
@@ -1773,14 +1755,14 @@ character_event = {
 		}
 	}
 
-	weight_multiplier = {
-		factor = 1
+	mean_time_to_happen = {
+		years = 2
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			base_health = 5.1
 		}
 		modifier = {
-			factor = 2.50
+			factor = 0.4
 			base_health = 6
 		}
 	}
@@ -1802,7 +1784,6 @@ character_event = {
 	desc = EVTDESC6082
 	picture = GFX_evt_illness
 	border = GFX_event_normal_frame_religion
-	is_triggered_only = yes
 
 	trigger = {
 		is_disease_immune_race = no
@@ -1819,32 +1800,32 @@ character_event = {
 		is_ill = no
 	}
 
-	weight_multiplier = {
-		factor = 0.50000
+	mean_time_to_happen = {
+		years = 20
 		modifier = {
-			factor = 1.11
+			factor = 0.9
 			in_command = yes
 		}
 		modifier = {
-			factor = 1.25
+			factor = 0.8
 			trait = leper
 		}
 		modifier = {
-			factor = 1.25
+			factor = 0.8
 			NOT = {
 				base_health = 6
 			}
 		}
 		modifier = {
-			factor = 1.25
+			factor = 0.8
 			age = 60
 		}
 		modifier = {
-			factor = 1.25
+			factor = 0.8
 			age = 70
 		}
 		modifier = {
-			factor = 4.00
+			factor = 0.25
 			OR = {
 				religion = nurgle
 				trait = plaguelord
@@ -1892,7 +1873,6 @@ character_event = {
 	border = GFX_event_normal_frame_religion
 	min_age = 45
 	only_capable = yes
-	is_triggered_only = yes
 
 	trigger = {
 		nor = {
@@ -1911,54 +1891,54 @@ character_event = {
 		}
 	}
 
-	weight_multiplier = {
-		factor = 0.10000
+	mean_time_to_happen = {
+		years = 100
 		modifier = {
-			factor = 1.25
+			factor = 0.8
 			age = 60
 		}
 		modifier = {
-			factor = 1.43
+			factor = 0.7
 			age = 70
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			age = 80
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			age = 90
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			trait = cancer
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			is_weak_trigger = yes
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			NOT = {
 				base_health = 5.0
 			}
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			NOT = {
 				base_health = 4.0
 			}
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2.0
 			base_health = 5.1
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2.0
 			base_health = 6.0
 		}
 		modifier = {
-			factor = 0.25
+			factor = 4.0
 			trait = grail_knight
 		}
 	}
@@ -1979,7 +1959,6 @@ character_event = {
 	desc = EVTDESC6110
 	picture = GFX_evt_recovery
 	border = GFX_event_normal_frame_religion
-	is_triggered_only = yes
 
 	trigger = {
 		OR = {
@@ -2003,32 +1982,32 @@ character_event = {
 		}
 	}
 
-	weight_multiplier = {
-		factor = 1
+	mean_time_to_happen = {
+		years = 10
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			NOT = {
 				health = 3.0
 			}
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			NOT = {
 				base_health = 5.0
 			}
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2.0
 			NOT = {
 				trait = infirm
 			}
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2.0
 			base_health = 5.1
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2.0
 			base_health = 6.0
 		}
 	}
@@ -2052,74 +2031,73 @@ character_event = {
 	border = GFX_event_normal_frame_religion
 	is_sick = yes
 	lacks_dlc = "Reapers"
-	is_triggered_only = yes
 
 	trigger = {
 		trait = has_tuberculosis
 	}
 
-	weight_multiplier = {
-		factor = 1
+	mean_time_to_happen = {
+		years = 2
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			base_health = 5.1
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			base_health = 6.0
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			base_health = 7.0
 		}
 		modifier = {
-			factor = 0.67
+			factor = 1.5
 			NOT = {
 				base_health = 5.0
 			}
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2.0
 			NOT = {
 				base_health = 4.1
 			}
 		}
 		modifier = {
-			factor = 1.52
+			factor = 0.66
 			NOT = {
 				age = 20
 			}
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			NOT = {
 				age = 30
 			}
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			NOT = {
 				age = 40
 			}
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2.0
 			age = 50
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2.0
 			age = 70
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2.0
 			is_ill = yes
 		}
 		modifier = {
-			factor = 0.25
+			factor = 4.0
 			trait = infirm
 		}
 		modifier = {
-			factor = 0.20
+			factor = 5.0
 			trait = incapable
 		}
 	}
@@ -2231,74 +2209,73 @@ character_event = {
 	border = GFX_event_normal_frame_religion
 	is_sick = yes
 	lacks_dlc = "Reapers"
-	is_triggered_only = yes
 
 	trigger = {
 		trait = has_typhus
 	}
 
-	weight_multiplier = {
-		factor = 1
+	mean_time_to_happen = {
+		years = 1
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			base_health = 5.1
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			base_health = 6.0
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			base_health = 7.0
 		}
 		modifier = {
-			factor = 0.67
+			factor = 1.5
 			NOT = {
 				base_health = 5.0
 			}
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2.0
 			NOT = {
 				base_health = 4.1
 			}
 		}
 		modifier = {
-			factor = 1.52
+			factor = 0.66
 			NOT = {
 				age = 20
 			}
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			NOT = {
 				age = 30
 			}
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			NOT = {
 				age = 40
 			}
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2.0
 			age = 50
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2.0
 			age = 70
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2.0
 			is_ill = yes
 		}
 		modifier = {
-			factor = 0.25
+			factor = 4.0
 			trait = infirm
 		}
 		modifier = {
-			factor = 0.20
+			factor = 5.0
 			trait = incapable
 		}
 	}
@@ -2598,7 +2575,6 @@ character_event = {
 	prisoner = no
 	only_playable = yes
 	only_independent = yes
-	is_triggered_only = yes
 
 	trigger = {
 		OR = {
@@ -2608,8 +2584,8 @@ character_event = {
 		}
 	}
 
-	weight_multiplier = {
-		factor = 0.28571
+	mean_time_to_happen = {
+		years = 35
 	}
 
 	immediate = {
@@ -2884,7 +2860,6 @@ character_event = {
 	ai = no
 	min_age = 16
 	prisoner = no
-	is_triggered_only = yes
 
 	trigger = {
 		OR = {
@@ -2894,8 +2869,8 @@ character_event = {
 		}
 	}
 
-	weight_multiplier = {
-		factor = 0.28571
+	mean_time_to_happen = {
+		years = 35
 	}
 
 	immediate = {
@@ -2918,7 +2893,6 @@ character_event = {
 	ai = no
 	min_age = 16
 	prisoner = no
-	is_triggered_only = yes
 
 	trigger = {
 		OR = {
@@ -2928,8 +2902,8 @@ character_event = {
 		}
 	}
 
-	weight_multiplier = {
-		factor = 0.28571
+	mean_time_to_happen = {
+		years = 35
 	}
 
 	immediate = {
@@ -2954,7 +2928,6 @@ character_event = {
 	only_capable = yes
 	only_playable = yes
 	lacks_dlc = "Zeus"
-	is_triggered_only = yes
 
 	trigger = {
 		# NOT = {
@@ -2973,8 +2946,8 @@ character_event = {
 		}
 	}
 
-	weight_multiplier = {
-		factor = 0.28571
+	mean_time_to_happen = {
+		years = 35
 	}
 
 	immediate = {
@@ -3033,7 +3006,6 @@ character_event = {
 	min_age = 16
 	prisoner = no
 	only_playable = yes
-	is_triggered_only = yes
 
 	trigger = {
 		# NOT = {
@@ -3059,10 +3031,10 @@ character_event = {
 		set_character_flag = the_old_ones_are_waking
 	}
 
-	weight_multiplier = {
-		factor = 0.12048
+	mean_time_to_happen = {
+		years = 83
 		modifier = {
-			factor = 0.01
+			factor = 100
 			NOT = {
 				trait = lunatic_3
 			}
@@ -3105,7 +3077,6 @@ character_event = {
 	min_age = 16
 	prisoner = no
 	only_playable = yes
-	is_triggered_only = yes
 
 	trigger = {
 		NOT = {
@@ -3131,10 +3102,10 @@ character_event = {
 		set_character_flag = the_old_ones_are_waking
 	}
 
-	weight_multiplier = {
-		factor = 0.12048
+	mean_time_to_happen = {
+		years = 83
 		modifier = {
-			factor = 0.01
+			factor = 100
 			NOT = {
 				trait = lunatic_3
 			}
@@ -3177,7 +3148,6 @@ character_event = {
 	min_age = 16
 	prisoner = no
 	only_playable = yes
-	is_triggered_only = yes
 
 	trigger = {
 		# NOT = {
@@ -3203,10 +3173,10 @@ character_event = {
 		set_character_flag = the_old_ones_are_waking
 	}
 
-	weight_multiplier = {
-		factor = 0.12048
+	mean_time_to_happen = {
+		years = 83
 		modifier = {
-			factor = 0.01
+			factor = 100
 			NOT = {
 				trait = lunatic_3
 			}
@@ -3249,7 +3219,6 @@ character_event = {
 	min_age = 16
 	prisoner = no
 	only_playable = yes
-	is_triggered_only = yes
 
 	trigger = {
 		# NOT = {
@@ -3275,10 +3244,10 @@ character_event = {
 		set_character_flag = the_old_ones_are_waking
 	}
 
-	weight_multiplier = {
-		factor = 0.12048
+	mean_time_to_happen = {
+		years = 83
 		modifier = {
-			factor = 0.01
+			factor = 100
 			NOT = {
 				trait = lunatic_3
 			}

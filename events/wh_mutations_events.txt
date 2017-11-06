@@ -33,7 +33,6 @@ character_event = {
 	id = mutation.1
 	hide_window = yes
 
-	is_triggered_only = yes
 	# things which exclude mutation
 	trigger = {
 		NOT = {
@@ -115,42 +114,42 @@ character_event = {
 		}
 	}
 
-	weight_multiplier = {
-		factor = 0.03333
+	mean_time_to_happen = {
+		years = 300
 		# Cosmic modifers not geography or trait dependent
 		# Morrslieb presence
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			has_global_flag = morrslieb_full
 		}
 		# Chaos counter modifier
 		modifier = {
-			factor = 1.11
+			factor = 0.9
 			has_global_flag = doom_low
 		}
 		modifier = {
-			factor = 1.67
+			factor = 0.6
 			has_global_flag = doom_medium
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			has_global_flag = doom_high
 		}
 		modifier = {
-			factor = 2.50
+			factor = 0.4
 			has_global_flag = doom_very_high
 		}
 		modifier = {
-			factor = 3.33
+			factor = 0.3
 			has_global_flag = doom
 		}
 		# Trait dependent modifiers
 		modifier = {
-			factor = 0.10
+			factor = 10
 			trait = creature_dwarf
 		}
 		modifier = {
-			factor = 0.10
+			factor = 10
 			OR = {
 				trait = creature_orc
 				trait = creature_snotling
@@ -158,31 +157,31 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2
 			trait = creature_chaos_dwarf
 		}
 		modifier = {
-			factor = 0.25
+			factor = 4
 			trait = creature_skaven
 		}
 		modifier = {
-			factor = 0.25
+			factor = 4
 			trait = creature_halfling
 		}
 		modifier = {
-			factor = 0.25
+			factor = 4
 			trait = creature_skink
 		}
 		modifier = {
-			factor = 0.17
+			factor = 6
 			trait = creature_saurus
 		}
 		modifier = {
-			factor = 0.56
+			factor = 1.8		# Knows how to take precautions
 			trait = witch_hunter
 		}
 		modifier = {
-			factor = 1.43
+			factor = 0.7
 			OR = {
 				trait = mutation_minor
 				trait = mutation_major
@@ -190,15 +189,15 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 1.11
+			factor = 0.9
 			trait = addict
 		}
 		modifier = {
-			factor = 1.25
+			factor = 0.8
 			trait = lore_tzeentch
 		}
 		modifier = {
-			factor = 1.11
+			factor = 0.9
 			wh_is_mage_trigger = no
 			nor = {
 				trait = magic_potential_3
@@ -211,7 +210,7 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2
 			has_character_flag = forsaken_flag
 		}
 		# Getting mutated by by nurgle illness (this should be placed in nurgle's disease effct
@@ -219,12 +218,12 @@ character_event = {
 		# Religion dependent modifier (obviously service under darks gods banner increase chance)
 		# basic modifer
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			religion_group = chaos_gods_group
 		}
 		# modifier for more zealous guys
 		modifier = {
-			factor = 0.80
+			factor = 1.25
 			religion_group = chaos_gods_group
 			piety = 50
 			NOT = {
@@ -232,22 +231,22 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 1.11
+			factor = 0.9
 			religion_group = chaos_gods_group
 			piety = 200
 		}
 		modifier = {
-			factor = 1.25
+			factor = 0.8
 			religion_group = chaos_gods_group
 			piety = 500
 		}
 		# CULTISTS MUTATE FASTER
 		modifier = {
-			factor = 1.43
+			factor = 0.7
 			society_member_of = cult_of_tzeentch
 		}
 		modifier = {
-			factor = 1.25
+			factor = 0.8
 			OR = {
 				society_member_of = cult_of_khorne
 				society_member_of = cult_of_slaanesh
@@ -257,7 +256,7 @@ character_event = {
 		}
 		# Location dependent modifiers
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			location = {
 				empire = {
 					title = e_chaos_wastes
@@ -265,7 +264,7 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			location = {
 				kingdom = {
 					title = k_sylvania
@@ -273,7 +272,7 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			location = {
 				kingdom = {
 					title = k_mousillon
@@ -281,7 +280,7 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			location = {
 				duchy = {
 					title = d_geisterforst
@@ -289,14 +288,14 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 2.86
+			factor = 0.35
 			location = {
 				has_province_modifier = warpdust_traces
 			}
 		}
 		# Game Rule
 		modifier = {
-			factor = 0.02
+			factor = 50
 			has_game_rule = {
 				name = warhammer_mutations
 				value = decreased
@@ -992,7 +991,6 @@ character_event = {
 	desc = "EVTDESC_MUTATION_1009"
 	picture = GFX_evt_lunatic
 
-	is_triggered_only = yes
 	# things which exclude mutation
 	trigger = {
 		nor = {
@@ -1050,42 +1048,42 @@ character_event = {
 		} # more likely to devolve into chaos spawn
 	}
 
-	weight_multiplier = {
-		factor = 0.06667
+	mean_time_to_happen = {
+		years = 150
 		# Cosmic modifers not geography or trait dependent
 		# Morrslieb presence
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			has_global_flag = morrslieb_full
 		}
 		# Chaos counter modifier
 		modifier = {
-			factor = 1.11
+			factor = 0.9
 			has_global_flag = doom_low
 		}
 		modifier = {
-			factor = 1.67
+			factor = 0.6
 			has_global_flag = doom_medium
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			has_global_flag = doom_high
 		}
 		modifier = {
-			factor = 2.50
+			factor = 0.4
 			has_global_flag = doom_very_high
 		}
 		modifier = {
-			factor = 3.33
+			factor = 0.3
 			has_global_flag = doom
 		}
 		# Trait dependent modifiers
 		modifier = {
-			factor = 0.10
+			factor = 10
 			trait = creature_dwarf
 		}
 		modifier = {
-			factor = 0.10
+			factor = 10
 			OR = {
 				trait = creature_orc
 				trait = creature_snotling
@@ -1093,26 +1091,31 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2
 			trait = creature_chaos_dwarf
 		}
 		modifier = {
-			factor = 0.25
+			factor = 4
 			trait = creature_skaven
 		}
 		modifier = {
-			factor = 0.25
+			factor = 4
 			trait = creature_halfling
 		}
 		modifier = {
+<<<<<<< HEAD
 			factor = 0.20
 			nor = {
+=======
+			factor = 5
+			NOT = {
+>>>>>>> parent of 54d696f... move events to on actions
 				trait = mutation_minor
 				trait = mutation_major
 			}
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			OR = {
 				trait = mutation_minor
 				trait = mutation_major
@@ -1120,50 +1123,50 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			NOT = {
 				piety = 50
 			}
 		}
 		# modifier for more zealous guys
 		modifier = {
-			factor = 0.67
+			factor = 1.5
 			piety = 50
 		}
 		modifier = {
-			factor = 0.67
+			factor = 1.5
 			piety = 200
 		}
 		modifier = {
-			factor = 0.67
+			factor = 1.5
 			piety = 500
 		}
 		modifier = {
-			factor = 0.67
+			factor = 1.5
 			piety = 600
 		}
 		modifier = {
-			factor = 0.67
+			factor = 1.5
 			piety = 700
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2
 			piety = 800
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2
 			piety = 900
 		}
 		modifier = {
-			factor = 0.33
+			factor = 3
 			piety = 1000
 		}
 		modifier = {
-			factor = 0.07
+			factor = 15		# though if you survived by this point you should be a Demon Prince by know...
 			piety = 2000
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2
 			check_variable = {
 				which = "khorne_favor"
 				value = 25
@@ -1171,7 +1174,7 @@ character_event = {
 			religion = khorne
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2
 			check_variable = {
 				which = "nurgle_favor"
 				value = 25
@@ -1179,7 +1182,7 @@ character_event = {
 			religion = nurgle
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2
 			check_variable = {
 				which = "slaanesh_favor"
 				value = 25
@@ -1187,7 +1190,7 @@ character_event = {
 			religion = slaanesh
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2
 			check_variable = {
 				which = "tzeentch_favor"
 				value = 25
@@ -1195,63 +1198,63 @@ character_event = {
 			religion = tzeentch
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			check_variable = {
 				which = "lunatic_counter"
 				value = 25
 			}
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			check_variable = {
 				which = "lunatic_counter"
 				value = 30
 			}
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			check_variable = {
 				which = "lunatic_counter"
 				value = 35
 			}
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			check_variable = {
 				which = "lunatic_counter"
 				value = 40
 			}
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			check_variable = {
 				which = "lunatic_counter"
 				value = 50
 			}
 		}
 		modifier = {
-			factor = 4.00
+			factor = 0.25
 			check_variable = {
 				which = "lunatic_counter"
 				value = 60
 			}
 		}
 		modifier = {
-			factor = 4.00
+			factor = 0.25
 			check_variable = {
 				which = "lunatic_counter"
 				value = 70
 			}
 		}
 		modifier = {
-			factor = 4.00
+			factor = 0.25
 			check_variable = {
 				which = "lunatic_counter"
 				value = 80
 			}
 		}
 		modifier = {
-			factor = 4.00
+			factor = 0.25
 			check_variable = {
 				which = "lunatic_counter"
 				value = 90
@@ -1259,7 +1262,7 @@ character_event = {
 		}
 		# Location dependent modifiers
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			location = {
 				empire = {
 					title = e_chaos_wastes
@@ -1267,7 +1270,7 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			location = {
 				kingdom = {
 					title = k_sylvania
@@ -1275,7 +1278,7 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			location = {
 				kingdom = {
 					title = k_mousillon
@@ -1283,7 +1286,7 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			location = {
 				duchy = {
 					title = d_geisterforst
@@ -1291,7 +1294,7 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			location = {
 				has_province_modifier = warpdust_traces
 			}
@@ -1342,7 +1345,6 @@ character_event = {
 	desc = "EVTDESC_MUTATION_1010"
 	picture = GFX_evt_chaos_spawn
 
-	is_triggered_only = yes
 	# things which exclude mutation
 	trigger = {
 		nor = {
@@ -1391,42 +1393,42 @@ character_event = {
 		trait = lunatic_3
 	}
 
-	weight_multiplier = {
-		factor = 0.10000
+	mean_time_to_happen = {
+		years = 100
 		# Cosmic modifers not geography or trait dependent
 		# Morrslieb presence
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			has_global_flag = morrslieb_full
 		}
 		# Chaos counter modifier
 		modifier = {
-			factor = 1.11
+			factor = 0.9
 			has_global_flag = doom_low
 		}
 		modifier = {
-			factor = 1.67
+			factor = 0.6
 			has_global_flag = doom_medium
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			has_global_flag = doom_high
 		}
 		modifier = {
-			factor = 2.50
+			factor = 0.4
 			has_global_flag = doom_very_high
 		}
 		modifier = {
-			factor = 3.33
+			factor = 0.3
 			has_global_flag = doom
 		}
 		# Trait dependent modifiers
 		modifier = {
-			factor = 0.10
+			factor = 10
 			trait = creature_dwarf
 		}
 		modifier = {
-			factor = 0.10
+			factor = 10
 			OR = {
 				trait = creature_orc
 				trait = creature_snotling
@@ -1434,62 +1436,62 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2
 			trait = creature_chaos_dwarf
 		}
 		modifier = {
-			factor = 0.25
+			factor = 4
 			trait = creature_skaven
 		}
 		modifier = {
-			factor = 0.25
+			factor = 4
 			trait = creature_halfling
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			NOT = {
 				piety = 50
 			}
 		}
 		# modifier for more zealous guys
 		modifier = {
-			factor = 0.80
+			factor = 1.25
 			piety = 50
 		}
 		modifier = {
-			factor = 0.80
+			factor = 1.25
 			piety = 200
 		}
 		modifier = {
-			factor = 0.80
+			factor = 1.25
 			piety = 500
 		}
 		modifier = {
-			factor = 0.80
+			factor = 1.25
 			piety = 600
 		}
 		modifier = {
-			factor = 0.80
+			factor = 1.25
 			piety = 700
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2
 			piety = 800
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2
 			piety = 900
 		}
 		modifier = {
-			factor = 0.33
+			factor = 3
 			piety = 1000
 		}
 		modifier = {
-			factor = 0.20
+			factor = 5		# though if you survived by this point you should be a Demon Prince by know...
 			piety = 2000
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2
 			check_variable = {
 				which = "khorne_favor"
 				value = 25
@@ -1497,7 +1499,7 @@ character_event = {
 			religion = khorne
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2
 			check_variable = {
 				which = "nurgle_favor"
 				value = 25
@@ -1505,7 +1507,7 @@ character_event = {
 			religion = nurgle
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2
 			check_variable = {
 				which = "slaanesh_favor"
 				value = 25
@@ -1513,7 +1515,7 @@ character_event = {
 			religion = slaanesh
 		}
 		modifier = {
-			factor = 0.50
+			factor = 2
 			check_variable = {
 				which = "tzeentch_favor"
 				value = 25
@@ -1521,84 +1523,84 @@ character_event = {
 			religion = tzeentch
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			check_variable = {
 				which = "mutation_counter"
 				value = 25
 			}
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			check_variable = {
 				which = "mutation_counter"
 				value = 30
 			}
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			check_variable = {
 				which = "mutation_counter"
 				value = 35
 			}
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			check_variable = {
 				which = "mutation_counter"
 				value = 40
 			}
 		}
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			check_variable = {
 				which = "mutation_counter"
 				value = 50
 			}
 		}
 		modifier = {
-			factor = 4.00
+			factor = 0.25
 			check_variable = {
 				which = "mutation_counter"
 				value = 60
 			}
 		}
 		modifier = {
-			factor = 4.00
+			factor = 0.25
 			check_variable = {
 				which = "mutation_counter"
 				value = 70
 			}
 		}
 		modifier = {
-			factor = 4.00
+			factor = 0.25
 			check_variable = {
 				which = "mutation_counter"
 				value = 80
 			}
 		}
 		modifier = {
-			factor = 4.00
+			factor = 0.25
 			check_variable = {
 				which = "mutation_counter"
 				value = 90
 			}
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			check_variable = {
 				which = "lunatic_counter"
 				value = 25
 			}
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			check_variable = {
 				which = "lunatic_counter"
 				value = 50
 			}
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			check_variable = {
 				which = "lunatic_counter"
 				value = 75
@@ -1606,7 +1608,7 @@ character_event = {
 		}
 		# Location dependent modifiers
 		modifier = {
-			factor = 2.00
+			factor = 0.5
 			location = {
 				empire = {
 					title = e_chaos_wastes
@@ -1614,7 +1616,7 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			location = {
 				kingdom = {
 					title = k_sylvania
@@ -1622,7 +1624,7 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			location = {
 				kingdom = {
 					title = k_mousillon
@@ -1630,7 +1632,7 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			location = {
 				duchy = {
 					title = d_geisterforst
@@ -1638,7 +1640,7 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 1.33
+			factor = 0.75
 			location = {
 				has_province_modifier = warpdust_traces
 			}

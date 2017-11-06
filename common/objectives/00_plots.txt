@@ -23,13 +23,9 @@ plot_gain_title = {
 		primary_title = {
 			higher_tier_than = BARON
 		}
-		NOT = {
+		nor = {
 			trait = incapable
-		}
-		NOT = {
 			trait = skaven_breeder
-		}
-		NOT = {
 			trait = imbecile
 		}
 		OR = {
@@ -380,10 +376,8 @@ plot_gain_vassal_title = {
 			higher_tier_than = COUNT
 			temporary = no
 		}
-		NOT = {
+		nor = {
 			trait = incapable
-		}
-		NOT = {
 			trait = imbecile
 		}
 		OR = {
@@ -484,10 +478,8 @@ plot_gain_vassal_title = {
 					}
 				}
 			}
-			NOT = {
+			nor = {
 				has_non_aggression_pact_with = FROM
-			}
-			NOT = {
 				reverse_has_truce = FROM
 			}
 		}
@@ -1420,12 +1412,12 @@ plot_kill_spouse = {
 			society_rank >= 2
 		}
 		OR = {
-			FROM = {
-				NOR = {
-					religion = shiite
-					trait = secretly_shiite
-				}
-			}
+			# FROM = {
+			# 	NOR = {
+			# 		religion = shiite
+			# 		trait = secretly_shiite
+			# 	}
+			# }
 			ROOT = {
 				has_quest = quest_the_assassins_assassination
 				quest_target = {
@@ -1439,22 +1431,15 @@ plot_kill_spouse = {
 		prisoner = no
 		age = 16
 		is_married = yes
-		NOT = {
+		nor = {
 			trait = incapable
-		}
-		NOT = {
 			trait = skaven_breeder
-		}
-		NOT = {
 			AND = {
 				ai = yes
-				trait = honest
-			}
-		}
-		NOT = {
-			AND = {
-				ai = yes
-				trait = kind
+				or = {
+					trait = honest
+					trait = kind
+				}
 			}
 		}
 	}
@@ -2131,20 +2116,14 @@ plot_gain_liege_title = {
 		is_landed = yes
 		independent = no
 		mercenary = no
-		NOT = {
+		nor = {
 			trait = incapable
-		}
-		NOT = {
 			trait = skaven_breeder
-		}
-		NOT = {
 			trait = imbecile
 		}
 		liege = {
-			NOT = {
+			nor = {
 				is_father = ROOT
-			}
-			NOT = {
 				is_mother = ROOT
 			}
 		}
@@ -2408,10 +2387,8 @@ plot_gain_fellow_vassal_title = {
 		}
 		is_landed = yes
 		independent = no
-		NOT = {
+		nor = {
 			trait = incapable
-		}
-		NOT = {
 			trait = imbecile
 		}
 	}
@@ -2675,13 +2652,9 @@ plot_seize_trade_post = {
 		is_merchant_republic = no
 		prisoner = no
 		age = 16
-		NOT = {
+		nor = {
 			trait = skaven_breeder
-		}
-		NOT = {
 			trait = incapable
-		}
-		NOT = {
 			trait = imbecile
 		}
 	}
@@ -2699,10 +2672,8 @@ plot_seize_trade_post = {
 					character = FROM
 				}
 			}
-			NOT = {
+			nor = {
 				character = FROM
-			}
-			NOT = {
 				has_opinion_modifier = {
 					who = FROM modifier = opinion_seized_tp
 				}

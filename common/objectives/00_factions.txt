@@ -145,13 +145,11 @@ faction_succ_seniority = {
 			}
 		}
 		holder_scope = {
-			NOT = {
+			nor = {
 				any_war = {
 					war_title = ROOT
 					using_cb = change_seniority_succession_law
 				}
-			}
-			NOT = {
 				reverse_has_opinion_modifier = {
 					who = FROM
 					modifier = opinion_coerced_into_leaving_faction
@@ -946,13 +944,11 @@ faction_succ_primogeniture = {
 			}
 		}
 		holder_scope = {
-			NOT = {
+			nor = {
 				any_war = {
 					war_title = ROOT
 					using_cb = change_primogeniture_succession_law
 				}
-			}
-			NOT = {
 				reverse_has_opinion_modifier = {
 					who = FROM
 					modifier = opinion_coerced_into_leaving_faction
@@ -1723,13 +1719,11 @@ faction_succ_gavelkind = {
 			}
 		}
 		holder_scope = {
-			NOT = {
+			nor = {
 				any_war = {
 					war_title = ROOT
 					using_cb = change_gavelkind_succession_law
 				}
-			}
-			NOT = {
 				reverse_has_opinion_modifier = {
 					who = FROM
 					modifier = opinion_coerced_into_leaving_faction
@@ -2558,13 +2552,11 @@ faction_succ_feudal_elective = {
 			higher_tier_than = DUKE
 		}
 		holder_scope = {
-			NOT = {
+			nor = {
 				any_war = {
 					war_title = ROOT
 					using_cb = change_feudal_elective_succession_law
 				}
-			}
-			NOT = {
 				reverse_has_opinion_modifier = {
 					who = FROM
 					modifier = opinion_coerced_into_leaving_faction
@@ -3344,13 +3336,11 @@ faction_lower_crown_authority = {
 			has_law = crown_authority_0
 		}
 		holder_scope = {
-			NOT = {
+			nor = {
 				any_war = {
 					war_title = ROOT
 					using_cb = lower_crown_authority_law
 				}
-			}
-			NOT = {
 				reverse_has_opinion_modifier = {
 					who = FROM
 					modifier = opinion_coerced_into_leaving_faction
@@ -3678,12 +3668,10 @@ faction_lower_crown_authority = {
 		}
 		modifier = {
 			factor = 0
-			NOT = {
+			nor = {
 				crownlaw_title = {
 					title = FROMFROM
 				}
-			}
-			NOT = {
 				has_opinion_modifier = {
 					who = FROM
 					modifier = opinion_coerced_into_joining_faction
@@ -3696,12 +3684,10 @@ faction_lower_crown_authority = {
 		}
 		modifier = {
 			factor = 0
-			NOT = {
+			nor = {
 				opinion = {
 					who = FROM value = -40
 				}
-			}
-			NOT = {
 				has_opinion_modifier = {
 					who = FROM
 					modifier = opinion_coerced_into_joining_faction
@@ -4015,13 +4001,11 @@ faction_lower_tribal_organization = {
 			has_law = tribal_organization_0
 		}
 		holder_scope = {
-			NOT = {
+			nor = {
 				any_war = {
 					war_title = ROOT
 					using_cb = lower_tribal_organization_law
 				}
-			}
-			NOT = {
 				reverse_has_opinion_modifier = {
 					who = FROM
 					modifier = opinion_coerced_into_leaving_faction
@@ -4377,12 +4361,10 @@ faction_lower_tribal_organization = {
 		}
 		modifier = {
 			factor = 0
-			NOT = {
+			nor = {
 				opinion = {
 					who = FROM value = -40
 				}
-			}
-			NOT = {
 				has_opinion_modifier = {
 					who = FROM
 					modifier = opinion_coerced_into_joining_faction
@@ -4658,7 +4640,7 @@ faction_independence = {
 				}
 			}
 			# Not allowed to start factions like this if our capital borders the liege's capital
-			NOT = {
+			nor = {
 				capital_scope = {
 					any_neighbor_province = {
 						ROOT = {
@@ -4668,8 +4650,6 @@ faction_independence = {
 						}
 					}
 				}
-			}
-			NOT = {
 				any_demesne_title = {
 					temporary = yes
 				}
@@ -4687,15 +4667,13 @@ faction_independence = {
 			}
 		}
 		# No independence factions in merchant republics
-		NOT = {
+		nor = {
 			AND = {
 				is_merchant_republic = yes
 				liege = {
 					is_merchant_republic = yes
 				}
 			}
-		}
-		NOT = {
 			has_character_modifier = faction_independence_ultimatum_timer
 		}
 		mercenary = no
@@ -4722,7 +4700,7 @@ faction_independence = {
 		}
 		OR = {
 			ai = no
-			NOT = {
+			nor = {
 				AND = {
 					trait = creature_elf
 					religion = asrai_cadai
@@ -4736,8 +4714,6 @@ faction_independence = {
 					}
 				}
 			}	#same for Asrai
-		}
-		NOR = {
 			has_opinion_modifier = {
 				who = LIEGE
 				modifier = opinion_coerced_into_leaving_faction
@@ -6137,12 +6113,10 @@ faction_claimant = {
 		}
 		modifier = {
 			factor = 0
-			NOT = {
+			nor = {
 				new_character = {
 					character = FROM
 				}
-			}
-			NOT = {
 				new_character = {
 					FROM = {
 						OR = {
@@ -6653,12 +6627,10 @@ faction_claimant = {
 			FROMFROM = {
 				is_conquered = yes
 			}
-			NOT = {
+			nor = {
 				new_character = {
 					culture = ROOT
 				}
-			}
-			NOT = {
 				has_opinion_modifier = {
 					who = FROM
 					modifier = opinion_coerced_into_joining_faction
@@ -6671,12 +6643,10 @@ faction_claimant = {
 			FROMFROM = {
 				claimed_by = ROOT
 			}
-			NOT = {
+			nor = {
 				new_character = {
 					character = ROOT
 				}
-			}
-			NOT = {
 				has_opinion_modifier = {
 					who = FROM
 					modifier = opinion_coerced_into_joining_faction
@@ -6722,12 +6692,10 @@ faction_claimant = {
 		modifier = {
 			# If the claimant is not me, make sure I like the claimant more than my current liege
 			factor = 0
-			NOT = {
+			nor = {
 				new_character = {
 					character = ROOT
 				}
-			}
-			NOT = {
 				new_character = {
 					ROOT = {
 						OR = {
@@ -6754,8 +6722,6 @@ faction_claimant = {
 						}
 					}
 				}
-			}
-			NOT = {
 				has_opinion_modifier = {
 					who = FROM
 					modifier = opinion_coerced_into_joining_faction
@@ -8259,12 +8225,10 @@ faction_overthrow = {
 		}
 		modifier = {
 			factor = 0
-			NOT = {
+			nor = {
 				opinion = {
 					who = FROM value = -40
 				}
-			}
-			NOT = {
 				has_opinion_modifier = {
 					who = FROM
 					modifier = opinion_coerced_into_joining_faction
@@ -8797,13 +8761,11 @@ faction_increase_council_power = {
 					has_law = war_voting_power_0
 				}
 			}
-			NOT = {
+			nor = {
 				any_war = {
 					war_title = ROOT
 					using_cb = increase_council_power_war
 				}
-			}
-			NOT = {
 				reverse_has_opinion_modifier = {
 					who = FROM
 					modifier = opinion_coerced_into_leaving_faction
@@ -9164,12 +9126,10 @@ faction_increase_council_power = {
 		}
 		modifier = {
 			factor = 0
-			NOT = {
+			nor = {
 				opinion = {
 					who = FROM value = -40
 				}
-			}
-			NOT = {
 				has_opinion_modifier = {
 					who = FROM
 					modifier = opinion_coerced_into_joining_faction
@@ -9572,13 +9532,11 @@ faction_powerful_vassal_takeover = {
 			}
 		}
 		holder_scope = {
-			NOT = {
+			nor = {
 				any_war = {
 					war_title = ROOT
 					using_cb = powerful_vassal_takeover_war
 				}
-			}
-			NOR = {
 				reverse_has_opinion_modifier = {
 					who = FROM
 					modifier = opinion_coerced_into_leaving_faction
@@ -9916,12 +9874,10 @@ faction_powerful_vassal_takeover = {
 		}
 		modifier = {
 			factor = 0
-			NOT = {
+			nor = {
 				opinion = {
 					who = FROM value = -40
 				}
-			}
-			NOT = {
 				has_opinion_modifier = {
 					who = FROM
 					modifier = opinion_coerced_into_joining_faction

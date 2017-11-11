@@ -2096,38 +2096,29 @@ character_event = {
 	}
 }
 
-# Pick up event - if there are no witch hunters in the realm, the top liege spawns several himself
+# Pick up event - if there are no witch hunters in the realm, the top liege spawns several himself on_yearly_pulse
 character_event = {
 	id = witchhunter.34
-	min_age = 1
-	religion_group = old_world_group
 	title = WITCH_HUNTERS # Witch Hunters
 	desc = EVTDESC_WITCHHUNTER_35 # "Witch Hunters are a necessary evil - though their methods can be cruel, they are the first line of defense against the spread of Chaos. Since there are no witch hunters in your realm, do you want to invite some?"
 	picture = "GFX_evt_witch_hunters"
+	is_triggered_only = yes
 	only_playable = yes
 	religion_group = old_world_group
 
 	trigger = {
 		higher_tier_than = COUNT
-		top_liege = {
-			NOT = {
+		nor = {
+			top_liege = {
 				has_character_modifier = expelled_k_witch_hunters_order
 			}
-		}
-		NOT = {
 			any_realm_character = {
 				trait = witch_hunter
 			}
-		}
-		NOT = {
 			has_character_flag = witchhunter34
 		}
 		is_nomadic = no
 		is_tribal = no
-	}
-
-	mean_time_to_happen = {
-		months = 1
 	}
 
 	immediate = {

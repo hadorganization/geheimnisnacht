@@ -1110,25 +1110,25 @@ nehekharan_county_conquest = {
 	on_success_title = {
 		usurp_title_plus_barony_if_unlanded = ROOT
 		any_de_jure_vassal_title = {
-		 	limit = {
-			 	has_holder = yes
-			 	holder_scope = {
+			limit = {
+				has_holder = yes
+				holder_scope = {
 					OR = {
-					 	character = FROM
-					 	is_liege_or_above = FROM
-					 	AND = {
-						 	is_liege_or_above = ROOT
-					 		NOT = {
+						character = FROM
+						is_liege_or_above = FROM
+						AND = {
+							is_liege_or_above = ROOT
+							NOT = {
 								culture = ROOT
 							}
-					 		NOT = {
+							NOT = {
 								religion = ROOT
 							}
 						}
 					}
 				}
 			}
-	 		usurp_title = ROOT
+			usurp_title = ROOT
 		}
 		any_attacker = {
 			limit = {
@@ -1774,7 +1774,7 @@ punish_graverobbers = {
 			}
 			hidden_tooltip = {
 				ROOT = {
-	 				remove_opinion = {
+					remove_opinion = {
 						who = FROM
 						modifier = opinion_graverobbed_me
 					}
@@ -1933,25 +1933,25 @@ nehekharan_county_colonisation = {
 	on_success_title = {
 		usurp_title_plus_barony_if_unlanded = ROOT
 		any_de_jure_vassal_title = {
-		 	limit = {
-			 	has_holder = yes
-			 	holder_scope = {
+			limit = {
+				has_holder = yes
+				holder_scope = {
 					OR = {
-					 	character = FROM
-					 	is_liege_or_above = FROM
-					 	AND = {
-						 	is_liege_or_above = ROOT
-					 		NOT = {
+						character = FROM
+						is_liege_or_above = FROM
+						AND = {
+							is_liege_or_above = ROOT
+							NOT = {
 								culture = ROOT
 							}
-					 		NOT = {
+							NOT = {
 								religion = ROOT
 							}
 						}
 					}
 				}
 			}
-	 		usurp_title = ROOT
+			usurp_title = ROOT
 		}
 		any_attacker = {
 			limit = {
@@ -8345,7 +8345,7 @@ chaos_subjugation = {
 			}
 			hidden_tooltip = {
 				any_courtier = {
-	 				piety = 100
+					piety = 100
 					if = {
 						limit = {
 							religion = tzeentch
@@ -8552,7 +8552,7 @@ chaos_subjugation = {
 			}
 			hidden_tooltip = {
 				any_courtier = {
-	 				piety = 100
+					piety = 100
 					if = {
 						limit = {
 							religion = tzeentch
@@ -8734,7 +8734,7 @@ chaos_subjugation = {
 			}
 			hidden_tooltip = {
 				any_courtier = {
-	 				piety = 100
+					piety = 100
 					if = {
 						limit = {
 							religion = tzeentch
@@ -8912,7 +8912,7 @@ daemonic_subjugation = {
 			}
 			hidden_tooltip = {
 				any_courtier = {
-	 				piety = 100
+					piety = 100
 					if = {
 						limit = {
 							religion = tzeentch
@@ -9129,7 +9129,7 @@ daemonic_subjugation = {
 			}
 			hidden_tooltip = {
 				any_courtier = {
-	 				piety = 100
+					piety = 100
 					if = {
 						limit = {
 							religion = tzeentch
@@ -9317,7 +9317,7 @@ daemonic_subjugation = {
 			}
 			hidden_tooltip = {
 				any_courtier = {
-	 				piety = 100
+					piety = 100
 					if = {
 						limit = {
 							religion = tzeentch
@@ -11361,143 +11361,143 @@ imperial_reconquest = {
 
 # Imperial Reconquest for Emperors - THIS IS FOR THE CIVIL WAR ERA, IT WILL BE INVALIDATED ONCE THE TITULAR TITLES DISAPPEAR AS THE EMPIRE IS REFORMED
 imperial_reconquest2 = {
-    name = CB_NAME_IMPERIAL
-    war_name = WAR_NAME_IMPERIAL
-    sprite = 17
-    truce_days = 1825
-    is_permanent = yes
-    check_de_jure_tier = DUKE # this scans all dejure duchies for the counties which are held by or vassals(or below) of selected character. Only valid if is_permanent = yes
+	name = CB_NAME_IMPERIAL
+	war_name = WAR_NAME_IMPERIAL
+	sprite = 17
+	truce_days = 1825
+	is_permanent = yes
+	check_de_jure_tier = DUKE # this scans all dejure duchies for the counties which are held by or vassals(or below) of selected character. Only valid if is_permanent = yes
 
-    can_use = {
-        ROOT = {
+	can_use = {
+		ROOT = {
 			wh_cb_this_or_from_is_necrarch_trigger = no
-            OR = {
-                has_landed_title = e_westerland
-                has_landed_title = e_reikland
-                has_landed_title = e_middenland
-                has_landed_title = e_talabecland
-                AND = {
-                    has_landed_title = e_sylvania
-                    NOT = {
+			OR = {
+				has_landed_title = e_westerland
+				has_landed_title = e_reikland
+				has_landed_title = e_middenland
+				has_landed_title = e_talabecland
+				AND = {
+					has_landed_title = e_sylvania
+					NOT = {
 						has_artifact = carstein_ring
 					}
-                }
-            }
+				}
+			}
 			independent = yes
 			NOT = {
 				same_realm = FROM
 			}
-        }
-    }
+		}
+	}
 
-    can_use_title = {
+	can_use_title = {
 		region = world_old_world_empire
-    }
+	}
 
-    is_valid = {
-        ROOT = {
-            independent = yes
-            NOT = {
+	is_valid = {
+		ROOT = {
+			independent = yes
+			NOT = {
 				same_realm = FROM
 			}
-        }
-    }
+		}
+	}
 
-    on_success = {
-        any_attacker = {
-            limit = {
+	on_success = {
+		any_attacker = {
+			limit = {
 				character = ROOT
 			}
-            participation_scaled_prestige = 100
-        }
-        any_attacker = {
-            limit = {
+			participation_scaled_prestige = 100
+		}
+		any_attacker = {
+			limit = {
 				NOT = {
 					character = ROOT
 				}
 			}
-            hidden_tooltip = {
-                participation_scaled_prestige = 100
-            }
-        }
-        FROM = {
+			hidden_tooltip = {
+				participation_scaled_prestige = 100
+			}
+		}
+		FROM = {
 			prestige = -100
 		}
-    }
+	}
 
-    on_success_title = {
-        custom_tooltip = {
-            text = tribal_invasion_succ_tip
-            hidden_tooltip = {
-                ROOT = {
-                    vassalize_or_take_under_title = {
-                        title = PREV
-                        enemy = FROM
-                    }
-                }
-            }
-        }
-        if = {
-            limit = {
-                holder_scope = {
+	on_success_title = {
+		custom_tooltip = {
+			text = tribal_invasion_succ_tip
+			hidden_tooltip = {
+				ROOT = {
+					vassalize_or_take_under_title = {
+						title = PREV
+						enemy = FROM
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				holder_scope = {
 					character = FROM
 				}
-            }
-            usurp_title_only = ROOT
-        }
-    }
+			}
+			usurp_title_only = ROOT
+		}
+	}
 
-    on_fail = {
-        ROOT = {
+	on_fail = {
+		ROOT = {
 			prestige = -150
 		}
-    }
+	}
 
-    on_reverse_demand = {
-        ROOT = {
-            transfer_scaled_wealth = {
-                to = FROM
-                value = 4.0
-            }
-            ROOT = {
+	on_reverse_demand = {
+		ROOT = {
+			transfer_scaled_wealth = {
+				to = FROM
+				value = 4.0
+			}
+			ROOT = {
 				prestige = -200
 			}
-        }
-        any_defender = {
-            limit = {
+		}
+		any_defender = {
+			limit = {
 				character = FROM
 			}
-            participation_scaled_piety = 100
-            participation_scaled_prestige = 200
-        }
-        any_defender = {
-            limit = {
+			participation_scaled_piety = 100
+			participation_scaled_prestige = 200
+		}
+		any_defender = {
+			limit = {
 				NOT = {
 					character = FROM
 				}
 			}
-            hidden_tooltip = {
-                participation_scaled_piety = 100
-                participation_scaled_prestige = 200
-            }
-        }
-    }
+			hidden_tooltip = {
+				participation_scaled_piety = 100
+				participation_scaled_prestige = 200
+			}
+		}
+	}
 
-    attacker_ai_victory_worth = {
-        factor = -1 # always accept
-    }
+	attacker_ai_victory_worth = {
+		factor = -1 # always accept
+	}
 
-    attacker_ai_defeat_worth = {
-        factor = 100
-    }
+	attacker_ai_defeat_worth = {
+		factor = 100
+	}
 
-    defender_ai_victory_worth = {
-        factor = -1 # always accept
-    }
+	defender_ai_victory_worth = {
+		factor = -1 # always accept
+	}
 
-    defender_ai_defeat_worth = {
-        factor = 100
-    }
+	defender_ai_defeat_worth = {
+		factor = 100
+	}
 }
 
 witch_hunter_forceinvestigation_cb = {

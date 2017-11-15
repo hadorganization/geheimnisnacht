@@ -706,88 +706,6 @@ character_event = {
 	}
 }
 
-# Give the proper age traits to dwarves
-character_event = {
-	id = aicleanup.023
-	hide_window = yes
-	only_men = yes
-	religion_group = dwarf_gods_group
-	is_triggered_only = yes
-
-	trigger = {
-		trait = creature_dwarf
-		NOT = {
-			trait = dwarf_slayer
-		}
-	}
-
-	immediate = {
-		log = "work event id = aicleanup.023 for [Root.GetBestName]"
-		if = {
-			limit = {
-				NOT = {
-					age = 75
-				}
-			}
-			add_trait = beardling
-		}
-		if = {
-			limit = {
-				age = 75
-				martial = 20
-				nor = {
-					trait = quarreller
-					trait = hammerer
-					trait = dwarf_warrior
-					trait = thunderer
-				}
-			}
-			add_trait = thunderer
-			remove_trait = beardling
-		}
-		if = {
-			limit = {
-				age = 75
-				diplomacy = 15
-				nor = {
-					trait = quarreller
-					trait = hammerer
-					trait = dwarf_warrior
-					trait = thunderer
-				}
-			}
-			add_trait = quarreller
-			remove_trait = beardling
-		}
-		if = {
-			limit = {
-				age = 75
-				nor = {
-					martial = 20
-					diplomacy = 15
-					trait = quarreller
-					trait = hammerer
-					trait = dwarf_warrior
-					trait = thunderer
-				}
-			}
-			add_trait = dwarf_warrior
-			remove_trait = beardling
-		}
-		if = {
-			limit = {
-				age = 250
-				nor = {
-					trait = longbeard
-					trait = ironbreaker
-				}
-			}
-			add_trait = longbeard
-			remove_trait = beardling
-		}
-	}
-}
-
 # Red Dukedoms breaks on the character's death
 character_event = {
 	id = aicleanup.024
@@ -812,7 +730,6 @@ character_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	only_men = yes
-	only_men = yes
 	religion = amazon
 	
 	trigger = {
@@ -820,10 +737,7 @@ character_event = {
 			trait = creature_amazon
 		}
 		mother = {
-			OR = {
-				trait = creature_human
-				trait = creature_amazon
-			}
+			trait = creature_amazon
 		}
 	}
 
@@ -839,7 +753,6 @@ character_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	only_women = yes
-	only_men = yes
 	religion = amazon
 
 	trigger = {
@@ -847,23 +760,17 @@ character_event = {
 			trait = creature_amazon
 		}
 		mother = {
-			OR = {
-				trait = creature_human
-				trait = creature_amazon
-			}
+			trait = creature_amazon
 		}
 		father = {
-			OR = {
-				trait = creature_human
-				trait = creature_amazon
-			}
+			trait = creature_human
 		}
 	}
 
 	immediate = {
 		log = "work event id = aicleanup.026 for [Root.GetBestName]"
-		remove_trait = creature_human
-		add_trait = creature_amazon
+		#remove_trait = creature_human
+		#add_trait = creature_amazon
 		remove_trait = bastard
 		remove_trait = legit_bastard
 		mother = {

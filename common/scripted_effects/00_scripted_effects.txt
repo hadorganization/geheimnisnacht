@@ -3865,122 +3865,122 @@ add_cat_effect = {
 	}
 }
 
-add_crusade_trait_effect = {
-	if = {
-		limit = {
-			OR = {
-				religion = norscan_gods
-				religion = norscan_gods
-			}
-		}
-		add_trait = valhalla_bound
-		break = yes
-	}
-	if = {
-		limit = {
-			OR = {
-				religion = tengri_pagan
-				religion = tengri_pagan_reformed
-			}
-		}
-		add_trait = tengri_warrior
-		break = yes
-	}
-	if = {
-		limit = {
-			OR = {
-				religion = baltic_pagan
-				religion = baltic_pagan_reformed
-			}
-		}
-		add_trait = romuvas_own
-		break = yes
-	}
-	if = {
-		limit = {
-			OR = {
-				religion = finnish_pagan
-				religion = finnish_pagan_reformed
-			}
-		}
-		add_trait = ukkos_shield
-		break = yes
-	}
-	if = {
-		limit = {
-			OR = {
-				religion = aztec
-				religion = aztec_reformed
-			}
-		}
-		add_trait = eagle_warrior
-		break = yes
-	}
-	if = {
-		limit = {
-			OR = {
-				religion = slavic_pagan
-				religion = slavic_pagan_reformed
-			}
-		}
-		add_trait = peruns_chosen
-		break = yes
-	}
-	if = {
-		limit = {
-			OR = {
-				religion = west_african_pagan
-				religion = west_african_pagan_reformed
-			}
-		}
-		add_trait = nyames_shield
-		break = yes
-	}
-	if = {
-		limit = {
-			OR = {
-				religion = zun_pagan
-				religion = zun_pagan_reformed
-			}
-		}
-		add_trait = sun_warrior
-		break = yes
-	}
-	if = {
-		limit = {
-			religion = hellenic_pagan
-		}
-		add_trait = ares_own
-		break = yes
-	}
-	if = {
-		limit = {
-			religion_group = ormazd_gods_group
-		}
-		add_trait = mujahid
-		break = yes
-	}
-	if = {
-		limit = {
-			religion_group = old_world_group
-		}
-		add_trait = crusader
-		break = yes
-	}
-	if = {
-		limit = {
-			religion_group = zoroastrian_group
-		}
-		add_trait = gondi_shahansha
-		break = yes
-	}
-	if = {
-		limit = {
-			religion_group = jewish_group
-		}
-		add_trait = shaddai
-	}
-}
+# add_crusade_trait_effect = {
+# 	if = {
+# 		limit = {
+# 			OR = {
+# 				religion = norscan_gods
+# 				religion = norscan_gods
+# 			}
+# 		}
+# 		add_trait = valhalla_bound
+# 		break = yes
+# 	}
+# 	if = {
+# 		limit = {
+# 			OR = {
+# 				religion = tengri_pagan
+# 				religion = tengri_pagan_reformed
+# 			}
+# 		}
+# 		add_trait = tengri_warrior
+# 		break = yes
+# 	}
+# 	if = {
+# 		limit = {
+# 			OR = {
+# 				religion = baltic_pagan
+# 				religion = baltic_pagan_reformed
+# 			}
+# 		}
+# 		add_trait = romuvas_own
+# 		break = yes
+# 	}
+# 	if = {
+# 		limit = {
+# 			OR = {
+# 				religion = finnish_pagan
+# 				religion = finnish_pagan_reformed
+# 			}
+# 		}
+# 		add_trait = ukkos_shield
+# 		break = yes
+# 	}
+# 	if = {
+# 		limit = {
+# 			OR = {
+# 				religion = aztec
+# 				religion = aztec_reformed
+# 			}
+# 		}
+# 		add_trait = eagle_warrior
+# 		break = yes
+# 	}
+# 	if = {
+# 		limit = {
+# 			OR = {
+# 				religion = slavic_pagan
+# 				religion = slavic_pagan_reformed
+# 			}
+# 		}
+# 		add_trait = peruns_chosen
+# 		break = yes
+# 	}
+# 	if = {
+# 		limit = {
+# 			OR = {
+# 				religion = west_african_pagan
+# 				religion = west_african_pagan_reformed
+# 			}
+# 		}
+# 		add_trait = nyames_shield
+# 		break = yes
+# 	}
+# 	if = {
+# 		limit = {
+# 			OR = {
+# 				religion = zun_pagan
+# 				religion = zun_pagan_reformed
+# 			}
+# 		}
+# 		add_trait = sun_warrior
+# 		break = yes
+# 	}
+# 	if = {
+# 		limit = {
+# 			religion = hellenic_pagan
+# 		}
+# 		add_trait = ares_own
+# 		break = yes
+# 	}
+# 	if = {
+# 		limit = {
+# 			religion_group = ormazd_gods_group
+# 		}
+# 		add_trait = mujahid
+# 		break = yes
+# 	}
+# 	if = {
+# 		limit = {
+# 			religion_group = old_world_group
+# 		}
+# 		add_trait = crusader
+# 		break = yes
+# 	}
+# 	if = {
+# 		limit = {
+# 			religion_group = zoroastrian_group
+# 		}
+# 		add_trait = gondi_shahansha
+# 		break = yes
+# 	}
+# 	if = {
+# 		limit = {
+# 			religion_group = jewish_group
+# 		}
+# 		add_trait = shaddai
+# 	}
+# }
 
 ###MONKS & MYSTICS###
 remove_assassins_debt_effect = {
@@ -4980,20 +4980,14 @@ monastic_order_purity_effect = {
 				trait = proud
 				trait = deceitful
 				trait = cruel
-				AND = {
-					trait = lustful
-					NOT = { religion = hindu }
-				}
+				trait = lustful
 				trait = ambitious
+				trait = chaste
 				NOT = { trait = humble }
 				NOT = { trait = charitable }
 				NOT = { trait = kind }
 				NOT = { trait = temperate }
 				NOT = { trait = honest }
-				NAND = {
-					trait = chaste
-					NOT = { religion = hindu }
-				}
 				NOT = { trait = patient }
 				NOT = { trait = diligent }
 				NOT = { trait = content }
@@ -7027,18 +7021,18 @@ add_ascetic_trait_effect = {
 			limit = { religion_group = old_world_group }
 			add_trait = nun
 		}
-		if = {
-			limit = { religion = jain }
-			add_trait = aryika
-		}
-		if = {
-			limit = { religion = buddhist }
-			add_trait = bhikkhuni
-		}
-		if = {
-			limit = { religion = hindu }
-			add_trait = sanyasini
-		}
+		# if = {
+		# 	limit = { religion = jain }
+		# 	add_trait = aryika
+		# }
+		# if = {
+		# 	limit = { religion = buddhist }
+		# 	add_trait = bhikkhuni
+		# }
+		# if = {
+		# 	limit = { religion = hindu }
+		# 	add_trait = sanyasini
+		# }
 	}
 	if = {
 		limit = { is_female = no }
@@ -7046,18 +7040,18 @@ add_ascetic_trait_effect = {
 			limit = { religion_group = old_world_group }
 			add_trait = monk
 		}
-		if = {
-			limit = { religion = jain }
-			add_trait = muni
-		}
-		if = {
-			limit = { religion = buddhist }
-			add_trait = bhikkhu
-		}
-		if = {
-			limit = { religion = hindu }
-			add_trait = sanyasi
-		}
+		# if = {
+		# 	limit = { religion = jain }
+		# 	add_trait = muni
+		# }
+		# if = {
+		# 	limit = { religion = buddhist }
+		# 	add_trait = bhikkhu
+		# }
+		# if = {
+		# 	limit = { religion = hindu }
+		# 	add_trait = sanyasi
+		# }
 	}
 }
 
@@ -7080,32 +7074,32 @@ print_scope_effect = {
 	log = "------------------------------"
 }
 
-add_sympathy_for_prevs_true_religion_effect = {
-	if = {
-		limit = { PREV = { true_religion_group_christian_trigger = yes } }
-		add_trait = sympathy_christendom
-	}
-	if = {
-		limit = { PREV = { true_religion_group_muslim_trigger = yes } }
-		add_trait = sympathy_islam
-	}
-	if = {
-		limit = { PREV = { true_religion_group_pagan_group_trigger = yes } }
-		add_trait = sympathy_pagans
-	}
-	if = {
-		limit = { PREV = { true_religion_group_zoroastrian_group_trigger = yes } }
-		add_trait = sympathy_zoroastrianism
-	}
-	if = {
-		limit = { PREV = { true_religion_group_jewish_group_trigger = yes } }
-		add_trait = sympathy_judaism
-	}
-	if = {
-		limit = { PREV = { true_religion_group_indian_group_trigger = yes } }
-		add_trait = sympathy_indian
-	}
-}
+# add_sympathy_for_prevs_true_religion_effect = {
+# 	if = {
+# 		limit = { PREV = { true_religion_group_christian_trigger = yes } }
+# 		add_trait = sympathy_christendom
+# 	}
+# 	if = {
+# 		limit = { PREV = { true_religion_group_muslim_trigger = yes } }
+# 		add_trait = sympathy_islam
+# 	}
+# 	if = {
+# 		limit = { PREV = { true_religion_group_pagan_group_trigger = yes } }
+# 		add_trait = sympathy_pagans
+# 	}
+# 	if = {
+# 		limit = { PREV = { true_religion_group_zoroastrian_group_trigger = yes } }
+# 		add_trait = sympathy_zoroastrianism
+# 	}
+# 	if = {
+# 		limit = { PREV = { true_religion_group_jewish_group_trigger = yes } }
+# 		add_trait = sympathy_judaism
+# 	}
+# 	if = {
+# 		limit = { PREV = { true_religion_group_indian_group_trigger = yes } }
+# 		add_trait = sympathy_indian
+# 	}
+# }
 
 add_trait_for_prevs_secret_religion_society_effect = {
 	set_secret_religion = PREV
@@ -7236,17 +7230,7 @@ increase_visibility_minor_effect = {
 		if = {
 			limit = {
 				controls_religion = no
-				OR = {
-					religion_group = old_world_group
-					religion = fraticelli
-					religion = orthodox
-					religion = miaphysite
-					religion = monophysite
-					religion = monothelite
-					religion = paulician
-					religion = nestorian
-					religion = yazidi
-				}
+				religion_group = old_world_group
 			}
 			add_trait = excommunicated
 		}

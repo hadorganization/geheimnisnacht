@@ -262,12 +262,6 @@ character_event = {
 				days = 1
 				random = 365
 			}
-			# Give the proper age traits to dwarves
-			character_event = {
-				id = aicleanup.023
-				days = 1
-				random = 365
-			}
 			# Red Duke starts his invasion
 			character_event = {
 				id = svampires.16
@@ -430,12 +424,6 @@ character_event = {
 			add_trait = creature_human
 			break = yes
 		}
-		# # Blood Dragon Culture Check
-		# if = { limit = { culture = blooddragons_culture
-		# NOR = { trait = vampire_blood_visible
-		# trait = vampire_blood_hidden } }
-		# set_graphical_culture = generic_vampire
-		# add_trait = vampire_blood_visible }
 		# Amazons
 		if = {
 			limit = {
@@ -1029,10 +1017,7 @@ character_event = {
 		# Von Carstein vampire
 		if = {
 			limit = {
-				OR = {
-					graphical_culture = carsteingfx
-					graphical_culture = carsteineverkidgfx
-				}
+				graphical_culture = carsteingfx
 			}
 			if = {
 				limit = {
@@ -1081,69 +1066,6 @@ character_event = {
 		# NOT = { trait = creature_pig }
 		# }
 		# add_trait = creature_pig
-		# }
-		# if = { # Vampires - Commented since random_list doesn't work properly on startup FOR SOME REASON
-		# limit = {
-		# religion = vampiric
-		# OR = {
-		# culture_group = amazon_group
-		# culture_group = arabyan_group
-		# culture_group = bretonnian_group
-		# culture_group = estalian_group
-		# culture_group = hung_group
-		# culture_group = immortal_group
-		# culture_group = imperial_group
-		# culture_group = kislevite_group
-		# culture_group = kurgan_group
-		# culture_group = norscan_group
-		# culture_group = oriental_group
-		# culture_group = strigany_group
-		# culture_group = sartosan_group
-		# culture_group = tilean_group
-		# }
-		# NOT = {
-		# OR = {
-		# trait = vampire_lahmian_visible
-		# trait = vampire_carstein_visible
-		# trait = vampire_blood_visible
-		# trait = vampire_strigoi_visible
-		# trait = vampire_necrarch_visible
-		# trait = vampire_jade_visible
-		# trait = vampire_mahtmasi_visible
-		# }
-		# }
-		# }
-		# random_list = {
-		# 20 = {
-		# modifier = {
-		# factor = 80
-		# female = yes
-		# culture = strigany
-		# }
-		# add_trait = vampire_lahmian_visible
-		# }
-		# 20 = {
-		# modifier = {
-		# factor = 80
-		# culture = imperial_group
-		# location = { kingdom = k_sylvania }
-		# }
-		# add_trait = vampire_carstein_visible
-		# }
-		# 20 = {
-		# modifier = {
-		# factor = 80
-		# culture = bretonnian_group
-		# }
-		# add_trait = vampire_blood_visible
-		# }
-		# 20 = {
-		# add_trait = vampire_strigoi_visible
-		# }
-		# 20 = {
-		# add_trait = vampire_necrarch_visible
-		# }
-		# }
 		# }
 		# if = {
 		# limit = { has_landed_title = d_hashishin }

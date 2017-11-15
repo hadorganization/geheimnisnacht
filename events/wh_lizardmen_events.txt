@@ -19946,8 +19946,10 @@ province_event = {
 		modifier = {
 			factor = 1.5
 			any_neighbor_province = {
-				is_tribal = no
-				is_nomadic = no
+				any_province_holding = {
+					is_tribal = no
+					is_nomadic = no
+				}
 			}
 		}
 		modifier = {
@@ -19976,12 +19978,16 @@ province_event = {
 		}
 		modifier = {
 			factor = 2
-			is_tribal = no
-			is_nomadic = no
+			any_province_holding = {
+				is_tribal = no
+				is_nomadic = no
+			}
 		}
 		modifier = {
 			factor = 0.5
-			is_nomadic = yes
+			any_province_holding = {
+				is_nomadic = yes
+			}
 		}
 		modifier = {
 			factor = 1.15
@@ -20034,17 +20040,11 @@ province_event = {
 		modifier = {
 			# Jungle grows faster if more controlled
 			factor = 0.9
-			holder_scope = {
-				ai = no
-			}
 			has_province_modifier = lustria_light_jungle
 		}
 		modifier = {
 			# Jungle grows a little slower once it's dense
 			factor = 1.5
-			holder_scope = {
-				ai = no
-			}
 			has_province_modifier = lustria_dense_jungle
 		}
 	}
